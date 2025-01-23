@@ -1,0 +1,2 @@
+NSMicrophoneUsageDescription = "Будь ласка, дозвольте мікрофон для запису";
+PermissionGroupNotification = "Це сповіщення";

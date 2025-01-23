@@ -1,0 +1,68 @@
+com.BlatTestSnowa.app-jetified-play-services-base-18.3.0-0 C:\Users\Andrii\.gradle\caches\transforms-3\01df24ec7ae3a9ace4542fc71c9103d0\transformed\jetified-play-services-base-18.3.0\res
+com.BlatTestSnowa.app-jetified-firebase-common-20.4.3-1 C:\Users\Andrii\.gradle\caches\transforms-3\028cc9f8ebb535899d37d775387db02c\transformed\jetified-firebase-common-20.4.3\res
+com.BlatTestSnowa.app-jetified-play-services-basement-18.3.0-2 C:\Users\Andrii\.gradle\caches\transforms-3\13ff20602e1135a86bac4c3a98454125\transformed\jetified-play-services-basement-18.3.0\res
+com.BlatTestSnowa.app-jetified-savedstate-1.2.1-3 C:\Users\Andrii\.gradle\caches\transforms-3\2e1f4964c455db81a3dcc5218c389037\transformed\jetified-savedstate-1.2.1\res
+com.BlatTestSnowa.app-jetified-android-maps-utils-3.6.0-4 C:\Users\Andrii\.gradle\caches\transforms-3\334e7869e69b506611a0987047a010b6\transformed\jetified-android-maps-utils-3.6.0\res
+com.BlatTestSnowa.app-lifecycle-viewmodel-2.7.0-5 C:\Users\Andrii\.gradle\caches\transforms-3\36d3b02390a42a7137ae3056c4a2a73f\transformed\lifecycle-viewmodel-2.7.0\res
+com.BlatTestSnowa.app-jetified-lifecycle-process-2.7.0-6 C:\Users\Andrii\.gradle\caches\transforms-3\3993e0595a4f6c378315bf42ea59c8f6\transformed\jetified-lifecycle-process-2.7.0\res
+com.BlatTestSnowa.app-jetified-window-java-1.2.0-7 C:\Users\Andrii\.gradle\caches\transforms-3\4bd7f731547ae7de097be4ea0c14d63a\transformed\jetified-window-java-1.2.0\res
+com.BlatTestSnowa.app-fragment-1.7.1-8 C:\Users\Andrii\.gradle\caches\transforms-3\4bd8155a52bf20e8576ac30e5fcb5de8\transformed\fragment-1.7.1\res
+com.BlatTestSnowa.app-jetified-annotation-experimental-1.4.0-9 C:\Users\Andrii\.gradle\caches\transforms-3\4f92c77b8bbc2a9b1e8e7556f9d19829\transformed\jetified-annotation-experimental-1.4.0\res
+com.BlatTestSnowa.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-10 C:\Users\Andrii\.gradle\caches\transforms-3\502e9ad3676e62b93e75177eb14ed290\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.BlatTestSnowa.app-jetified-core-ktx-1.13.1-11 C:\Users\Andrii\.gradle\caches\transforms-3\55a071a1a38bf1821fd4cfd3a04339ae\transformed\jetified-core-ktx-1.13.1\res
+com.BlatTestSnowa.app-core-runtime-2.2.0-12 C:\Users\Andrii\.gradle\caches\transforms-3\5caf82c546ddf3b52310d2904c4e83a1\transformed\core-runtime-2.2.0\res
+com.BlatTestSnowa.app-jetified-core-1.0.0-13 C:\Users\Andrii\.gradle\caches\transforms-3\5d49a77eb0e016c70ce4c80ffddd4028\transformed\jetified-core-1.0.0\res
+com.BlatTestSnowa.app-browser-1.5.0-14 C:\Users\Andrii\.gradle\caches\transforms-3\69a10c78a1d39e5e3a1d9f25eb532668\transformed\browser-1.5.0\res
+com.BlatTestSnowa.app-jetified-window-1.2.0-15 C:\Users\Andrii\.gradle\caches\transforms-3\73d03b27c8bb2523b5043fcc9560132d\transformed\jetified-window-1.2.0\res
+com.BlatTestSnowa.app-core-1.13.1-16 C:\Users\Andrii\.gradle\caches\transforms-3\79114ecb2399529a69b53ca08221d71a\transformed\core-1.13.1\res
+com.BlatTestSnowa.app-lifecycle-livedata-core-2.7.0-17 C:\Users\Andrii\.gradle\caches\transforms-3\813395a72f090cf844596fdf668f2a06\transformed\lifecycle-livedata-core-2.7.0\res
+com.BlatTestSnowa.app-lifecycle-livedata-2.7.0-18 C:\Users\Andrii\.gradle\caches\transforms-3\8283e471550f5266bc169406f4b5eb8a\transformed\lifecycle-livedata-2.7.0\res
+com.BlatTestSnowa.app-jetified-profileinstaller-1.3.1-19 C:\Users\Andrii\.gradle\caches\transforms-3\8615f4627cf1399b216f4345868abd86\transformed\jetified-profileinstaller-1.3.1\res
+com.BlatTestSnowa.app-jetified-startup-runtime-1.1.1-20 C:\Users\Andrii\.gradle\caches\transforms-3\89487f491c50b430623fe23cfec82601\transformed\jetified-startup-runtime-1.1.1\res
+com.BlatTestSnowa.app-jetified-lifecycle-livedata-core-ktx-2.7.0-21 C:\Users\Andrii\.gradle\caches\transforms-3\927075d08f41699809460bcdc12e1e08\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.BlatTestSnowa.app-jetified-exoplayer-core-2.18.7-22 C:\Users\Andrii\.gradle\caches\transforms-3\a615478b57740a8e67a0166cdd0277f1\transformed\jetified-exoplayer-core-2.18.7\res
+com.BlatTestSnowa.app-jetified-play-services-auth-20.7.0-23 C:\Users\Andrii\.gradle\caches\transforms-3\a68203a0abdbcff44708937a623d5c47\transformed\jetified-play-services-auth-20.7.0\res
+com.BlatTestSnowa.app-lifecycle-runtime-2.7.0-24 C:\Users\Andrii\.gradle\caches\transforms-3\ae68f66fae09075c1adce8ddf568e2b8\transformed\lifecycle-runtime-2.7.0\res
+com.BlatTestSnowa.app-jetified-tracing-1.2.0-25 C:\Users\Andrii\.gradle\caches\transforms-3\b01ae83f9410d0e9ad2d06f6aa84dd5f\transformed\jetified-tracing-1.2.0\res
+com.BlatTestSnowa.app-jetified-appcompat-resources-1.6.1-26 C:\Users\Andrii\.gradle\caches\transforms-3\c09c624584df83b196bacec0f246a762\transformed\jetified-appcompat-resources-1.6.1\res
+com.BlatTestSnowa.app-appcompat-1.6.1-27 C:\Users\Andrii\.gradle\caches\transforms-3\c1b074f36eb8f7a2c7c7a40f632f7ee8\transformed\appcompat-1.6.1\res
+com.BlatTestSnowa.app-jetified-play-services-maps-18.2.0-28 C:\Users\Andrii\.gradle\caches\transforms-3\c5c8ba90ca07468d6e3fb13021cdc515\transformed\jetified-play-services-maps-18.2.0\res
+com.BlatTestSnowa.app-jetified-activity-1.8.1-29 C:\Users\Andrii\.gradle\caches\transforms-3\de6981ccaabf9219eefd1b014a11cd30\transformed\jetified-activity-1.8.1\res
+com.BlatTestSnowa.app-jetified-emoji2-1.2.0-30 C:\Users\Andrii\.gradle\caches\transforms-3\e66f07612949d6685c1e1cea1a47508b\transformed\jetified-emoji2-1.2.0\res
+com.BlatTestSnowa.app-jetified-emoji2-views-helper-1.2.0-31 C:\Users\Andrii\.gradle\caches\transforms-3\ea995644fe6311adc93ee67714fb9480\transformed\jetified-emoji2-views-helper-1.2.0\res
+com.BlatTestSnowa.app-jetified-datastore-preferences-1.0.0-32 C:\Users\Andrii\.gradle\caches\transforms-3\f0c8996b0d050059b10ed00b5da2f207\transformed\jetified-datastore-preferences-1.0.0\res
+com.BlatTestSnowa.app-jetified-datastore-1.0.0-33 C:\Users\Andrii\.gradle\caches\transforms-3\f93f6164d1b3303f3ca566bf1be388f3\transformed\jetified-datastore-1.0.0\res
+com.BlatTestSnowa.app-debug-34 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\android\app\src\debug\res
+com.BlatTestSnowa.app-main-35 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\android\app\src\main\res
+com.BlatTestSnowa.app-res-36 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\generated\crashlytics\res\debug
+com.BlatTestSnowa.app-google-services-37 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\generated\res\google-services\debug
+com.BlatTestSnowa.app-pngs-38 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\generated\res\pngs\debug
+com.BlatTestSnowa.app-resValues-39 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\generated\res\resValues\debug
+com.BlatTestSnowa.app-rs-40 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\generated\res\rs\debug
+com.BlatTestSnowa.app-mergeDebugResources-41 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.BlatTestSnowa.app-mergeDebugResources-42 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.BlatTestSnowa.app-merged_res-43 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\app\intermediates\merged_res\debug
+com.BlatTestSnowa.app-packaged_res-44 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\cloud_firestore\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-45 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\cloud_functions\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-46 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\device_info_plus\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-47 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\file_picker\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-48 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\firebase_auth\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-49 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\firebase_core\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-50 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\firebase_crashlytics\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-51 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\firebase_performance\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-52 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\firebase_storage\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-53 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-54 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\geolocator_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-55 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\google_maps_flutter_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-56 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\google_sign_in_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-57 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\image_picker_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-58 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\location\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-59 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\path_provider_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-60 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\permission_handler_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-61 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\record_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-62 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\share\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-63 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\shared_preferences_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-64 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\sign_in_with_apple\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-65 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\sqflite\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-66 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\url_launcher_android\intermediates\packaged_res\debug
+com.BlatTestSnowa.app-packaged_res-67 C:\Users\Andrii\Downloads\crystallised_in (7)\crystallised_in\build\video_player_android\intermediates\packaged_res\debug

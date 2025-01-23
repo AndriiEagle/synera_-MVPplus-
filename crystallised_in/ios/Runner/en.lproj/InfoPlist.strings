@@ -1,0 +1,2 @@
+NSMicrophoneUsageDescription = "Please allow microphone to record";
+PermissionGroupNotification = "This is Notification";

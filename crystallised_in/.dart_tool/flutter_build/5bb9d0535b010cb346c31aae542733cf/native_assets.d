@@ -1,0 +1,1 @@
+ C:\\Users\\Andrii\\Downloads\\crystallised_in\ (7)\\crystallised_in\\.dart_tool\\flutter_build\\5bb9d0535b010cb346c31aae542733cf\\native_assets.yaml: 

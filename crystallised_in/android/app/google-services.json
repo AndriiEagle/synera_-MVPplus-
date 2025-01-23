@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "531353109436",
+    "firebase_url": "https://crystalisedin-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "crystalisedin",
+    "storage_bucket": "crystalisedin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531353109436:android:8eb0e3f69d36e8d3b261b9",
+        "android_client_info": {
+          "package_name": "com.BlatTestSnowa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531353109436-t9iltl42brp949qfe8il6cr74rm8pnld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BlatTestSnowa",
+            "certificate_hash": "56be6c3fdb96c706d0eede47ba42cfd72d60a051"
+          }
+        },
+        {
+          "client_id": "531353109436-dm8nop0tm0qdffe977e1dvjd4n2v04mr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BlatTestSnowa",
+            "certificate_hash": "c2bb41e96d411a55b23746ff7898a53d16f06b5a"
+          }
+        },
+        {
+          "client_id": "531353109436-jhhk1onumrfun111vvq86tp7q6ub1rqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbWS7I3qQ5IS7ex7PU80_t0tMJ9obDleY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531353109436-jhhk1onumrfun111vvq86tp7q6ub1rqf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531353109436-8pd7nootangj76nm025odm7b1381pm8i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.BlatTestSnowa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
