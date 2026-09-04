@@ -11,6 +11,9 @@ No item in this document is passed merely because a page or dependency exists. U
 | Fixture persistence after SQL test | Zero Auth users, profiles and requests |
 | Supabase security/performance advisors | Zero findings |
 | Local browser/REST adapter tests | 9/9 PASS; adapter responses mocked |
+| Collaboration, economics and HTTP tests | 15/15 PASS; total 24/24 with adapter tests |
+| Matching role-order test | 64 combinations PASS; not a fairness or LLM benchmark |
+| Local business-profile laboratory | Browser comparison, consent revocation, approval reset, swap and pricing interaction PASS; [details](meeting-gilbert/VALIDATION.md) |
 | Configured browser unavailable state | PASS: clear message, disabled login, explicit demo button |
 | Synthetic A → B / C isolation / B response | PASS in the browser, including return to online mode |
 | Auth/REST gateway | BLOCKED: HTTP 402 exceed_db_size_quota |

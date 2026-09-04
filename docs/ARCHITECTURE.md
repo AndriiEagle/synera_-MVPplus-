@@ -16,6 +16,10 @@ flowchart LR
 
 The [schema](../supabase/schema.sql) is applied and [transactional access tests](../supabase/acceptance.sql) passed. Auth/REST availability is blocked at the provider gateway despite the working database-management connection. No service-role key or administrative API is exposed to the browser. No Firebase data was migrated. Email confirmation remains enabled; registration, real browser persistence, deletion and moderation still require acceptance.
 
+## Local collaboration laboratory
+
+The separate `/lab.html` page reuses the same server/build allowlist. `matching.mjs` is a pure deterministic baseline on explicitly projected fields; `economics.mjs` calculates editable assumptions. The lab has no Supabase or LLM connection and does not read existing member profiles. [Shared-mediator design and exact limits](meeting-gilbert/MEDIATOR.md) describe the implemented slice and the later authenticated journey.
+
 ## Legacy Flutter / Firebase architecture
 
 Inspected on 2026-09-04 at `ba4e07567dc06139c336f9ad9262af88f31c5e7d`. This map describes code, not deployed infrastructure.
