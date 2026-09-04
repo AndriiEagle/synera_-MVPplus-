@@ -31,3 +31,11 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Synera browser releases and local credentials
+web_launch/dist/
+web_launch/dist-demo/
+.env
+.env.*
+!.env.example
+*.private.json
