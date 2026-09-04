@@ -4,21 +4,21 @@
 
 Для поточного пакета підходить Cloudflare Pages або Workers Static Assets: статичні запити й зберігання assets безплатні; серверні Workers мають окремі правила тарифікації. Цій вебверсії серверний Worker не потрібен. [Офіційні умови](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/).
 
-Pages Free має 500 збірок/місяць, до 20 000 файлів і 25 MiB на файл. Поточний пакет Synera з лабораторією містить 14 маленьких файлів. [Ліміти Pages](https://developers.cloudflare.com/pages/platform/limits/). Ці умови перевірено 2026-09-04; перед публікацією перевірити тариф саме вибраного акаунта.
+Pages Free має 500 збірок/місяць, до 20 000 файлів і 25 MiB на файл. Поточний пакет Synera з лабораторією містить 15 маленьких файлів. [Ліміти Pages](https://developers.cloudflare.com/pages/platform/limits/). Ці умови перевірено 2026-09-04; перед публікацією перевірити тариф саме вибраного акаунта.
 
 ## Підготовка
 
 З кореня репозиторію:
 
 ```powershell
-node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/server.test.mjs
+node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/profile-portability.test.mjs web_launch/server.test.mjs
 node web_launch/health-check.mjs
 node web_launch/build.mjs
 ```
 
 Поточний health check завершується блокером HTTP 402. Це не виправляється завантаженням сайту на інший хостинг.
 
-Результат збірки: `web_launch/dist/` — десять публічних assets з єдиного переліку `web_launch/assets.mjs` (включно з лабораторією) та config.json, _headers, 404.html, release.json. У release.json є SHA-256 десяти вихідних assets; це квитанція локальної збірки, не доказ публікації. Старий восьмифайловий архів лишається історичним артефактом попереднього етапу.
+Результат збірки: `web_launch/dist/` — одинадцять публічних assets з єдиного переліку `web_launch/assets.mjs` (включно з лабораторією та профільним portability module) та config.json, _headers, 404.html, release.json. У release.json є SHA-256 одинадцяти вихідних assets; це квитанція локальної збірки, не доказ публікації. Старий восьмифайловий архів лишається історичним артефактом попереднього етапу.
 
 Builder копіює лише цей перелік. Якщо в папці знайшовся сторонній файл, він зупиняється замість видалення. Старий Flutter-код, браузерний профіль, .git, SQL, тести й приватні налаштування до пакета не потрапляють. Publishable key у config.json є дозволеним публічним ідентифікатором клієнта; права перевіряє Supabase.
 

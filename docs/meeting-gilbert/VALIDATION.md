@@ -10,7 +10,7 @@ The first new HTTP test expected a non-existent `mode` field in demo config; tha
 
 `node web_launch/export-economics.mjs`: **60 scenario rows** in [pricing-scenarios.csv](pricing-scenarios.csv). All rows are hypothetical; the generator reuses the tested financial model. It covers five prices, three member counts, two manual-time levels and two VAT scenarios.
 
-Both `node web_launch/build.mjs --demo` and `node web_launch/build.mjs` completed: **14 files each**, including ten hashed public assets and four generated files. Builds are local and unpublished. The demo build has no backend URL/key. The configured build retains the existing public Supabase client configuration; it does not establish gateway availability.
+Both `node web_launch/build.mjs --demo` and `node web_launch/build.mjs` completed: **15 files each**, including eleven hashed public assets and four generated files. Builds are local and unpublished. The demo build has no backend URL/key. The configured build retains the existing public Supabase client configuration; it does not establish gateway availability.
 
 The bounded packet verifier checked 17 Markdown files and 71 local links with zero broken targets, recalculated all 60 CSV rows, and checked both release allowlists/hashes. Its public-release secret-pattern check found no candidates; this is not a full source/history secret audit. The external machine-readable record is `meeting-packet-validation.json` in the parent review folder.
 

@@ -1,7 +1,7 @@
 export const DEMO_PROFILES = [
-  { id: 'demo-a', display_name: 'Учасник А', city: 'Цюрих', offers: 'Фотографія', seeks: 'Мовна практика', is_discoverable: true },
-  { id: 'demo-b', display_name: 'Учасник Б', city: 'Цюрих', offers: 'Мовна практика', seeks: 'Фотографія', is_discoverable: true },
-  { id: 'demo-c', display_name: 'Учасник В', city: 'Баден', offers: 'Прогулянки містом', seeks: 'Партнер для спорту', is_discoverable: true },
+  { id: 'demo-a', display_name: 'Учасник А', city: 'Цюрих', offers: 'Відеопрезентація і дизайн профілю', seeks: 'B2B-продажі та перші інтро', is_discoverable: true },
+  { id: 'demo-b', display_name: 'Учасник Б', city: 'Цюрих', offers: 'B2B-продажі та customer interviews', seeks: 'Відеопрезентація продукту', is_discoverable: true },
+  { id: 'demo-c', display_name: 'Учасник В', city: 'Баден', offers: 'Воркшопи для комʼюніті', seeks: 'Партнер для спорту', is_discoverable: true },
 ];
 
 export class DemoStore {

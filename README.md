@@ -15,6 +15,7 @@ For a completely offline demonstration: `node web_launch/server.mjs --demo`.
 | Prepare the Gilbert meeting: research, pricing, prompts and prototype | [Meeting packet](docs/meeting-gilbert/README.uk.md) |
 | Current launch status, cost and exact blocker | [Supabase launch](docs/SUPABASE_LAUNCH.uk.md) |
 | Run, build and verify the browser version | [Browser setup](web_launch/README.md) |
+| Import/export profile cards and safe sharing | [Profile portability](docs/PROFILE_PORTABILITY.uk.md) |
 | Explain and demonstrate the product | [Presentation guide](docs/PRESENTATION.uk.md) |
 | See the remaining work in order | [Refresh plan](docs/REFRESH_PLAN.uk.md) |
 | Prepare the static hosting package | [Hosting guide](docs/HOSTING.uk.md) |
@@ -30,7 +31,8 @@ For a completely offline demonstration: `node web_launch/server.mjs --demo`.
 - [Profiles and meeting requests](supabase/schema.sql) with explicit column grants, RLS, opt-in discovery, participant-only request reads, recipient-only responses, and duplicate pending-request protection.
 - [Transactional database acceptance](supabase/acceptance.sql) passed. No fixture accounts or data remain. Security and performance advisors returned no findings.
 - Browser code uses the project URL and a modern public client key. No service-role key, paid AI, map service, external assets, tracking, or package installation is required.
-- Twenty-four local tests cover the adapter, synthetic journey, matching baseline, economics and HTTP boundary. The static release contains fourteen allowlisted/generated files.
+- Profile import/export adds a consent-gated portable card, clipboard/Web Share support, sensitive contact blocking and deterministic match hints without scraping third-party accounts.
+- Thirty-three local tests cover the adapter, synthetic journey, matching baseline, economics, profile portability and HTTP boundary. The static release contains fifteen allowlisted/generated files.
 - [The collaboration laboratory](web_launch/lab.html) adds editable synthetic business profiles, two-sided need coverage, consent/conflict checks, approximate nearby filtering and a pricing calculator. It uses deterministic local rules; no LLM or live billing is connected.
 - Seven old AI-secret literals were removed from the local Flutter source; its API manager now refuses direct OpenAI calls. That Dart change has not been compiled because Flutter/Dart are unavailable here.
 

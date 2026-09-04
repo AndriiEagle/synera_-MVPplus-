@@ -18,7 +18,9 @@ To run the synthetic demonstration without calling any external service:
 node web_launch/server.mjs --demo
 ```
 
-The server binds to 127.0.0.1 and serves ten public application assets plus public configuration. The server and builder share `assets.mjs` as their allowlist. It does not serve source directories, SQL, .git, test files or credentials. A restart requires signing in again because sessions remain in memory; data successfully stored in Supabase is independent of that session.
+The server binds to 127.0.0.1 and serves eleven public application assets plus public configuration. The server and builder share `assets.mjs` as their allowlist. It does not serve source directories, SQL, .git, test files or credentials. A restart requires signing in again because sessions remain in memory; data successfully stored in Supabase is independent of that session.
+
+The profile screen includes a local [profile portability](../docs/PROFILE_PORTABILITY.uk.md) workflow: users can paste their own profile text or Synera JSON, confirm that they have the right to use it, review the parsed fields, and apply it to the form. Sharing uses a manual text card, Web Share when available, and clipboard fallback. It does not fetch LinkedIn/Google/social profiles, copy third-party accounts, store external account IDs, or publish a profile without the existing discoverability checkbox.
 
 ## Collaboration laboratory
 
@@ -45,15 +47,15 @@ Email confirmation remains enabled and anonymous sign-in disabled in the project
 ## Verification
 
 ```powershell
-node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/server.test.mjs
+node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/profile-portability.test.mjs web_launch/server.test.mjs
 node web_launch/health-check.mjs
 node web_launch/build.mjs
 ```
 
-- Twenty-four local tests passed, including 64 role-order combinations within one matching test. Online adapter tests use mocked responses and do not prove real authentication. See [meeting validation](../docs/meeting-gilbert/VALIDATION.md).
+- Thirty-three local tests passed, including 64 role-order combinations within one matching test. Online adapter tests use mocked responses and do not prove real authentication. See [meeting validation](../docs/meeting-gilbert/VALIDATION.md).
 - The SQL tests exercise owner and participant isolation, opt-in visibility, recipient responses, immutable final responses, duplicate requests and column grants.
 - The health check is read-only, sends no password and makes no automatic retry. Exit 2 means the gateway is restricted/unavailable. A reachable result still does not claim launch readiness.
-- The builder produces fourteen allowlisted/generated static files in `web_launch/dist` (or `dist-demo` with `--demo`). It refuses an unexpected existing file and never copies the parent repository. See [hosting](../docs/HOSTING.uk.md).
+- The builder produces fifteen allowlisted/generated static files in `web_launch/dist` (or `dist-demo` with `--demo`). It refuses an unexpected existing file and never copies the parent repository. See [hosting](../docs/HOSTING.uk.md).
 
 The browser has passed the synthetic A → B invitation / C isolation / B acceptance journey and literal rendering of HTML-like profile text. The configured launch must also display a clear unavailable state while keeping password submission disabled during the provider restriction.
 

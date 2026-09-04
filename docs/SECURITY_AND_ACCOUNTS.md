@@ -12,6 +12,8 @@ The new project's gateway is restricted with HTTP 402 `exceed_db_size_quota`; se
 
 The static package includes only allowlisted browser files and public configuration; old Firebase/Maps/AI configuration, browser databases and Git history are excluded. The historical inventory and legacy findings below remain useful for restoring or publishing the original repository.
 
+Profile portability is intentionally local and consent-gated. The app accepts pasted own-profile text or Synera JSON, strips the data down to the current public profile fields, blocks email/phone/secret-like content before applying or sharing, and sets imported JSON visibility to private by default. It does not fetch LinkedIn/Google/social profiles or automate third-party account copying. See [profile portability](PROFILE_PORTABILITY.uk.md).
+
 ## Verified access and configuration
 
 | Item | Result on 2026-09-04 |
