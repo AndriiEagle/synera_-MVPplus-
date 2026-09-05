@@ -6,14 +6,14 @@ import { createHash } from 'node:crypto';
 import { loadConfig, securityHeaders } from './config.mjs';
 import { PUBLIC_ASSETS } from './assets.mjs';
 const root = path.dirname(fileURLToPath(import.meta.url));
-const destination = path.resolve(root, process.argv.includes('--demo') ? 'dist-demo' : 'dist');
+const destination = path.resolve(root, process.argv.includes('--offline') ? 'dist-real-offline' : 'dist-real');
 const assets = Object.keys(PUBLIC_ASSETS);
 const generated = ['config.json', '_headers', '404.html', 'release.json'];
-const config = await loadConfig({ demo: process.argv.includes('--demo') });
+const config = await loadConfig({ demo: process.argv.includes('--offline') });
 await fs.mkdir(destination, { recursive: true });
 const existing = await fs.readdir(destination);
 if (existing.some(file => ![...assets, ...generated].includes(file))) throw new Error('Unexpected file in release directory; inspect before continuing.');
-const receipt = { built_at: new Date().toISOString(), mode: config.supabaseUrl ? 'supabase' : 'synthetic-demo', files: [], published: false };
+const receipt = { built_at: new Date().toISOString(), mode: config.supabaseUrl ? 'real-user-supabase-pilot' : 'local-profile-draft', registration_enabled: config.registrationEnabled, embedded_ai_enabled: false, files: [], published: false };
 for (const asset of assets) {
   const data = await fs.readFile(path.join(root, asset));
   await fs.writeFile(path.join(destination, asset), data);

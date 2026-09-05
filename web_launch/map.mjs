@@ -1,4 +1,5 @@
-// Small city map: no API key, geolocation, address lookup or third-party script.
+// Approximate city map: no API key, geolocation, address lookup or third-party script.
+import { CITIES } from './matching.mjs';
 export function worldPoint(lat, lon, zoom = 13) {
   const safeLat = Math.min(85, Math.max(-85, lat));
   const sin = Math.sin(safeLat * Math.PI / 180), scale = 256 * 2 ** zoom;
@@ -20,7 +21,9 @@ const CITY_CENTERS = [
   [/^(winterthur|вінтертур)$/iu, 47.500, 8.724],
 ];
 export function cityLocation(profile) {
-  if (profile.is_bot && Number.isFinite(profile.lat) && Number.isFinite(profile.lon)) return profile;
+  if (profile.map_visible !== true || profile.is_discoverable !== true) return null;
+  const selected = CITIES[profile.brief?.city_code];
+  if (selected) return { ...profile, lat: selected.lat, lon: selected.lon, place: selected.label + ' · центр міста, не GPS', location_kind: 'city' };
   const city = CITY_CENTERS.find(([pattern]) => pattern.test(String(profile.city || '').trim()));
   return city ? { ...profile, lat: city[1], lon: city[2], place: `${profile.city} · центр міста, не GPS`, location_kind: 'city' } : null;
 }
@@ -55,7 +58,7 @@ export function createPeopleMap(target, onSelect) {
       marker.setAttribute('aria-label', marker.title); marker.style.left = `${x}px`; marker.style.top = `${y}px`;
       marker.addEventListener('click', () => onSelect(person)); markers.append(marker);
     }
-    caption.textContent = `${visible} точок у видимій зоні. ${roads ? 'Фон OpenStreetMap.' : 'Схема без вулиць; фон карти можна ввімкнути окремо.'} Місця ботів вигадані. Для людей показано лише центр указаного міста.`;
+    caption.textContent = `${visible} точок у видимій зоні. ${roads ? 'Фон OpenStreetMap.' : 'Схема без вулиць; фон карти можна ввімкнути окремо.'} Лише центр міста за дозволом учасника. Кілька людей в одному місті мають спільну точку; усі профілі є в списку.`;
   }
   const observer = new ResizeObserver(() => { if (viewport.clientWidth) render(); }); observer.observe(viewport);
   return { setPeople(value) { people = value.map(cityLocation).filter(Boolean); render(); },

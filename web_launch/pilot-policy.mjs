@@ -1,4 +1,4 @@
-export const POLICY_VERSION = '2026-09-05-pilot-1';
+export const POLICY_VERSION = '2026-09-05-pilot-2';
 export const OPERATOR = Object.freeze({ name: 'Andrii Pokrovskyi', email: 'andriipokrovskyi@gmail.com' });
 export function consentRecord(value = {}) {
   const terms = value.terms === true || value.terms_accepted === true;

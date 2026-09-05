@@ -12,6 +12,11 @@ export function validateConfig(config) {
     if (typeof config.pilotSafetyEnabled !== 'boolean') throw new Error('Invalid pilot safety setting');
     optional.pilotSafetyEnabled = config.pilotSafetyEnabled;
   }
+  if (config.realPilotEnabled !== undefined) {
+    if (typeof config.realPilotEnabled !== 'boolean') throw new Error('Invalid real pilot setting');
+    optional.realPilotEnabled = config.realPilotEnabled;
+  }
+  if (registrationEnabled && !config.realPilotEnabled) throw new Error('Registration requires the reviewed real-pilot schema.');
   if (config.publicSiteUrl) {
     const url = new URL(config.publicSiteUrl);
     if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/' || url.search || url.hash || /^(localhost|127\.|10\.|192\.168\.|\[)/.test(url.hostname)) throw new Error('Public HTTPS origin required');

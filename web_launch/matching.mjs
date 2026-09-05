@@ -65,7 +65,7 @@ export function compareProfiles(left, right, { asOf = new Date().toISOString().s
   for (const p of parties) {
     if (!p.offers.length || !p.needs.length) missing.push(`${p.id}: заповніть пропозиції та потреби.`);
     if (!p.languages.length || !p.modes.length) missing.push(`${p.id}: вкажіть мову і формат співпраці.`);
-    if (!p.city || p.maxKm === null) missing.push(`${p.id}: вкажіть місто і прийнятну відстань.`);
+    if ((!p.city && !p.remote) || p.maxKm === null) missing.push(`${p.id}: вкажіть місто або онлайн і прийнятну відстань.`);
     if (!p.availableFrom || !p.availableUntil || p.availableFrom > p.availableUntil) missing.push(`${p.id}: уточніть період доступності.`);
     if (!p.updatedAt || p.updatedAt > asOf || dayNumber(asOf) - dayNumber(p.updatedAt) > 30) missing.push(`${p.id}: актуальність профілю не підтверджена за останні 30 днів.`);
   }
@@ -77,11 +77,12 @@ export function compareProfiles(left, right, { asOf = new Date().toISOString().s
   if (!languages.length) conflicts.push('Не вказано спільної мови.');
   if (!modes.length) conflicts.push('Формати співпраці не збігаються.');
   if (from > until) conflicts.push('Немає спільного періоду доступності.');
+  if (!remote && distanceKm === null) conflicts.push('Для особистої зустрічі уточніть міста обох сторін.');
   if (!remote && distanceKm > Math.min(a.maxKm, b.maxKm)) conflicts.push('Відстань перевищує обмеження принаймні однієї сторони.');
   if ((a.requiresConfidentiality && !b.acceptsConfidentiality) || (b.requiresConfidentiality && !a.acceptsConfidentiality)) conflicts.push('Є незгода щодо конфіденційності.');
   if (conflicts.length) return stop('incompatible', conflicts);
   const directions = [coverage(a, b), coverage(b, a)], score = Math.min(...directions.map(d => d.percent));
-  const result = { ...base, score, directions, logistics: { languages, modes, from, until, remote, distanceKm: Math.round(distanceKm) } };
+  const result = { ...base, score, directions, logistics: { languages, modes, from, until, remote, distanceKm: distanceKm === null ? null : Math.round(distanceKm) } };
   if (!score) return { ...result, status: 'insufficient_mutual_value', reasons: ['В одному з напрямків не знайдено покриття заявлених потреб. Це не оцінка цінності людини.'] };
   return { ...result, status: 'review_candidate', reasons: ['Є заявлена користь для обох. Компетентність і результат ще не перевірені.'],
     plan: directions.map(d => ({ giver: d.giver, receiver: d.receiver, topic: d.matched[0].tag, action: `Показати один приклад роботи: ${CAPABILITIES[d.matched[0].tag]}. Узгодити один вимірюваний результат пробної співпраці.` })) };

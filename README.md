@@ -1,50 +1,39 @@
-# Synera MVP+
+# Synera — real-user PWA pilot
 
-Synera helps people find mutual interests and exchange practical help: a profile → discovering people → a meeting request.
+Synera turns an owned professional profile into a concrete, mutually useful introduction: profile → bilateral fit → proposed time → accepted conversation.
 
-**Current status: Supabase schema applied; online launch blocked by the organization's HTTP 402 quota restriction.** The browser demonstration works with synthetic data. Real sign-in, persistent browser journeys, and public launch have not passed acceptance.
+**Current launch state: blocked.** The UI and adapters have been rebuilt for real profiles. Supabase Auth still returns HTTP 402 (verified 2026-09-05). No public HTTPS release or real-account browser acceptance is claimed.
 
 ## Start here
 
-**2026-09-05 mobile pilot:** installable-web-app assets for Android/iPhone, ten labelled simulation bots, hourly demo responses, an opt-in OpenStreetMap layer, owned LinkedIn CSV/GPT profile transfer and pilot terms are implemented locally. [Mobile launch checklist](docs/MOBILE_PILOT.uk.md) separates the tested demo from the still-blocked online account journey. No APK/IPA or published mobile link exists yet.
+[Current scope and launch gates — Ukrainian](docs/REAL_PILOT.uk.md) is the current source of truth. It supersedes the earlier demo/bot/native-app plans.
 
-Run `node web_launch/server.mjs` from this directory using the existing Node.js installation. Open the printed localhost address. The app checks the configured Supabase service before enabling login. If it is unavailable, **Переглянути демонстрацію** opens a clearly labeled synthetic scenario.
+    node web_launch/server.mjs --local-ai
 
-For a completely offline demonstration: `node web_launch/server.mjs --demo`.
+Open the printed loopback URL. The real-user shell contains no demo profiles, simulation controls, bot timers, pricing pages or laboratory routes. When the backend is unavailable, a person can prepare and export their own private draft. It never pretends to create an account.
 
-| Need | Document |
-| --- | --- |
-| Install on Android/iPhone and see every launch prerequisite | [Mobile pilot](docs/MOBILE_PILOT.uk.md) |
-| Continue implementation with exact acceptance criteria | [Improved implementation prompt](docs/MOBILE_IMPLEMENTATION_PROMPT.uk.md) |
-| Review the hourly AI pack and capped-cost proposal | [Demo bot plan](docs/DEMO_BOTS.uk.md) |
-| Prepare the Gilbert meeting: research, pricing, prompts and prototype | [Meeting packet](docs/meeting-gilbert/README.uk.md) |
-| Current launch status, cost and exact blocker | [Supabase launch](docs/SUPABASE_LAUNCH.uk.md) |
-| Run, build and verify the browser version | [Browser setup](web_launch/README.md) |
-| Import/export profile cards and safe sharing | [Profile portability](docs/PROFILE_PORTABILITY.uk.md) |
-| Explain and demonstrate the product | [Presentation guide](docs/PRESENTATION.uk.md) |
-| See the remaining work in order | [Refresh plan](docs/REFRESH_PLAN.uk.md) |
-| Prepare the static hosting package | [Hosting guide](docs/HOSTING.uk.md) |
-| Find source and data boundaries | [Architecture](docs/ARCHITECTURE.md) |
-| Restore the original Flutter source | [Legacy application setup](crystallised_in/README.md) |
-| Review keys, accounts and privacy | [Security review](docs/SECURITY_AND_ACCOUNTS.md) |
-| Understand passed and blocked checks | [Acceptance](docs/ACCEPTANCE.md) |
-| Reproduce the source audit | [Audit evidence](docs/VERIFICATION.md) |
+AI is optional and explicit. The local route reuses the existing DOMOVYK adapter, validates source quotations, and requires human review. One local API test passed with schema-constrained generation, exact source evidence and a reviewed browser draft. This is a single public fixture, not a general quality benchmark. The portable ChatGPT prompt/JSON path works in the editor without a Synera API charge; the user performs any ChatGPT request in their own account. Automatic public-site AI hosting is still a launch dependency.
 
-## Implemented and verified on 2026-09-04
+## Implemented in this revision
 
-- A dedicated `synera-demo` project in the existing Supabase organization, with a confirmed creation quote of $0/month.
-- [Profiles and meeting requests](supabase/schema.sql) with explicit column grants, RLS, opt-in discovery, participant-only request reads, recipient-only responses, and duplicate pending-request protection.
-- [Transactional database acceptance](supabase/acceptance.sql) passed. No fixture accounts or data remain. Security and performance advisors returned no findings.
-- Browser code uses the project URL and a modern public client key. No service-role key, paid AI, map service, external assets, tracking, or package installation is required.
-- Profile import/export adds a consent-gated portable card, clipboard/Web Share support, sensitive contact blocking and deterministic match hints without scraping third-party accounts.
-- Thirty-three local tests cover the adapter, synthetic journey, matching baseline, economics, profile portability and HTTP boundary. The static release contains fifteen allowlisted/generated files.
-- [The collaboration laboratory](web_launch/lab.html) adds editable synthetic business profiles, two-sided need coverage, consent/conflict checks, approximate nearby filtering and a pricing calculator. It uses deterministic local rules; no LLM or live billing is connected.
-- Seven old AI-secret literals were removed from the local Flutter source; its API manager now refuses direct OpenAI calls. That Dart change has not been compiled because Flutter/Dart are unavailable here.
+- Private profile, owned CSV/text/JSON import, complete profile/conditions export, clipboard and Web Share.
+- Structured goals, offered/needed capabilities, languages, dates, distance, online mode and confidentiality preferences.
+- Symmetric comparison with explanations for both sides; no probability-of-success or human-value rating.
+- Invitations with a proposed time, duration and place; participant-only messages after acceptance; UTC calendar export.
+- Block/report controls, data export, separate map visibility and confirmed profile deletion.
+- Versioned pilot terms naming the operator supplied by the user.
+- Separate public asset allowlist; no backend adapter, tests, SQL or legacy demo assets in the release.
 
-## External blockers and limits
+The online implementation requires [review proposal SQL](supabase/real-pilot.proposal.sql). It is **not applied**. The new [transactional database acceptance script](supabase/real-pilot.acceptance.sql) is **not run**. The existing [baseline snapshot](supabase/schema.sql) is already applied; do not reapply it.
 
-The existing Supabase organization's Auth and REST endpoints return HTTP 402 `exceed_db_size_quota`. Current displayed usage is only 5%; the dashboard shows a billing cycle ending **7 September 2026**. Current size alone does not establish when a historical quota restriction will clear. See the launch document for evidence and the provider's policy.
+## Verify and build
 
-Email delivery and real Auth/REST acceptance must pass before opening registration. Public hosting has not been deployed. The browser now has its own opt-in city map; the original Flutter app, diaries, recordings and AI are not migrated by this implementation.
+    node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/profile-portability.test.mjs web_launch/mobile-pilot.test.mjs web_launch/real-pilot.test.mjs web_launch/server.test.mjs
+    node web_launch/build.mjs
+    node web_launch/health-check.mjs
 
-The original repository is based on `ba4e07567dc06139c336f9ad9262af88f31c5e7d`. Its Firebase rules and handlers still require remediation; generated/browser files and old credentials remain in remote history. No key revocation, history rewrite, remote push or modification to the three older Supabase projects has been performed.
+The build writes only reviewed public files to web_launch/dist-real. It does not publish them. The static build never includes the local AI nonce or server code.
+
+[Browser setup](web_launch/README.md) · [Mobile launch](docs/MOBILE_PILOT.uk.md) · [Implementation prompt](docs/MOBILE_IMPLEMENTATION_PROMPT.uk.md) · [Prepared Support request](docs/SUPABASE_SUPPORT_REQUEST.md)
+
+The older Flutter/Firebase code and historical research remain in the repository for reference. They are not part of this PWA release and have not received production security remediation.

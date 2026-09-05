@@ -54,7 +54,9 @@ test('GPT JSON fences are parsed, import visibility is always off, archive JSON 
 });
 test('map uses a bounded visible tile area and never invents precise real-user locations', () => {
   assert.ok(visibleTiles({ lat: 47.376, lon: 8.536 }, 390, 360, 13).length <= 9);
-  assert.equal(cityLocation({ city: 'Zürich', lat: 1, lon: 2 }).location_kind, 'city');
+  assert.equal(cityLocation({ city: 'Zürich', lat: 1, lon: 2 }), null);
+  const located = cityLocation({ city: 'Zürich', lat: 1, lon: 2, map_visible: true, is_discoverable: true });
+  assert.equal(located.location_kind, 'city'); assert.notEqual(located.lat, 1);
   assert.equal(cityLocation({ city: 'Unknown' }), null);
 });
 test('registration fails closed without verified schema, site and explicit consent', async () => {
@@ -89,7 +91,8 @@ test('service worker intercepts only public shell/config; online API, query toke
     let intercepted = false; listeners.fetch({ request: new Request(url), respondWith() { intercepted = true; } }); assert.equal(intercepted, false, url);
   }
   let response; listeners.fetch({ request: new Request('https://synera.example/config.json'), respondWith(value) { response = value; } });
-  const config = await (await response).json(); assert.equal(config.offline, true); assert.equal(config.registrationEnabled, false); assert.equal(config.supabaseUrl, '');
+  const unavailable = await response; assert.equal(unavailable.status, 503);
+  const config = await unavailable.json(); assert.deepEqual(config, { offline: true });
 });
 test('PWA manifest icons exist and public shell imports are all included in the release allowlist', async () => {
   const manifest = JSON.parse(await fs.readFile(new URL('./manifest.webmanifest', import.meta.url), 'utf8')); assert.equal(manifest.display, 'standalone');

@@ -35,6 +35,8 @@ google-services.json
 # Synera browser releases and local credentials
 web_launch/dist/
 web_launch/dist-demo/
+web_launch/dist-real/
+web_launch/dist-real-offline/
 .env
 .env.*
 !.env.example

@@ -60,7 +60,7 @@ test('matching: no common language, time, mode or confidentiality agreement bloc
 });
 
 test('matching: stale, future, malformed and missing data abstain; no self match', () => {
-  for (const mutation of [p => p.updatedAt = '2026-01-01', p => p.updatedAt = '2026-12-01', p => p.availableUntil = '2026-02-30', p => p.offers = [], p => p.needs = [], p => p.city = 'unknown']) {
+  for (const mutation of [p => p.updatedAt = '2026-01-01', p => p.updatedAt = '2026-12-01', p => p.availableUntil = '2026-02-30', p => p.offers = [], p => p.needs = [], p => { p.city = 'unknown'; p.remote = false; }]) {
     const [a, b] = pair(); mutation(b); assert.equal(compareProfiles(a, b, options).status, 'needs_information');
   }
   const [a, b] = pair(); assert.equal(compareProfiles(a, a, options).status, 'needs_information');

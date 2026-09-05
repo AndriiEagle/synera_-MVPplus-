@@ -15,5 +15,5 @@ if ('serviceWorker' in navigator && window.isSecureContext) {
     status.textContent = 'Офлайн-режим недоступний у цьому браузері. Онлайн-сторінкою можна користуватись.';
   });
 }
-window.addEventListener('offline', () => { status.textContent = 'Немає інтернету. Демо доступне після першого завантаження; онлайн-зміни потребують з’єднання.'; });
+window.addEventListener('offline', () => { status.textContent = 'Немає інтернету. Незбережена чернетка залишається у вкладці. Завантаж JSON перед закриттям; серверні зміни потребують з’єднання.'; });
 window.addEventListener('online', () => { status.textContent = 'З’єднання відновлено.'; });
