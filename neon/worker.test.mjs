@@ -124,11 +124,21 @@ test('Neon reuses the exact profile contract and sends no browser bearer token o
   assert.equal(calls[1].init.headers['X-Synera-Client'], '1');
 });
 
+test('browser fetch is called without rebinding its receiver to the store', async () => {
+  const strictFetch = function () {
+    assert.equal(this, undefined, 'Native browser fetch must not receive a store as its receiver');
+    return Promise.resolve(new Response('{}'));
+  };
+  await new NeonStore({ backend: 'neon' }, strictFetch).availability();
+  await new SupabaseStore({ supabaseUrl: 'https://sample.supabase.co', publishableKey: 'sb_publishable_test' }, strictFetch).availability();
+});
+
 test('migration preserves canonical rules, adds private verified-member gate, and never assumes it was applied', async () => {
   const [base, proposal, acceptance] = await Promise.all(['schema.sql', 'real-pilot.proposal.sql', 'real-pilot.acceptance.sql'].map(file => fs.readFile(new URL('../supabase/' + file, import.meta.url), 'utf8')));
   const sql = generateSchema(base, proposal), checks = generateAcceptance(acceptance);
-  assert.doesNotMatch(sql, /auth\.users|auth\.uid\(\)|(?:sender_id|user_id|recipient_id) uuid/);
-  assert.match(sql, /id text primary key references neon_auth\."user"/);
+  assert.doesNotMatch(sql, /auth\.users|auth\.user_id\(\)|(?:sender_id|user_id|recipient_id) text/);
+  assert.match(sql, /id uuid primary key references neon_auth\."user"/);
+  assert.match(sql, /language sql stable security invoker return auth\.uid\(\);/);
   for (const policy of ['profiles_unblocked', 'meetings_response_unblocked', 'messages_create', 'reports_create']) assert.ok(sql.includes(policy));
   assert.match(sql, /u\."emailVerified"=true/);
   assert.equal((sql.match(/create policy synera_members_only/g) || []).length, 6);

@@ -3,10 +3,7 @@ import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 
 export function adaptSql(sql) {
-  return sql.replaceAll('auth.users', 'neon_auth."user"').replaceAll('auth.uid()', 'auth.user_id()')
-    .replace(/\b(user_id|sender_id|recipient_id|blocker_id|blocked_id|reporter_id|reported_id) uuid\b/g, '$1 text')
-    .replace(/id uuid primary key references neon_auth\."user"/g, 'id text primary key references neon_auth."user"')
-    .replace('declare actor uuid :=', 'declare actor text :=')
+  return sql.replaceAll('auth.users', 'neon_auth."user"').replaceAll('auth.uid()', 'public.synera_user_id()')
     .replace(/, anon\b/g, '').replace(/, service_role\b/g, '');
 }
 const tables = ['profiles', 'pilot_consents', 'meeting_requests', 'meeting_messages', 'profile_blocks', 'profile_reports'];
@@ -38,7 +35,7 @@ create function public.synera_pilot_member() returns boolean
 language sql stable security definer set search_path = '' as $$
   select exists (
     select 1 from neon_auth."user" u join public.synera_pilot_members m on m.email=lower(u.email)
-    where u.id=(select auth.user_id()) and u."emailVerified"=true
+    where u.id=(select public.synera_user_id()) and u."emailVerified"=true
   );
 $$;
 revoke all on function public.synera_pilot_member() from public, authenticated;
@@ -55,19 +52,26 @@ export function generateSchema(baseline, proposal) {
 -- Source SHA256 baseline=${hashes[0]} proposal=${hashes[1]}
 begin;
 do $$ begin
-  if to_regclass('neon_auth."user"') is null or to_regprocedure('auth.user_id()') is null then raise exception 'Enable Neon Auth and Data API first'; end if;
+  if to_regclass('neon_auth."user"') is null or to_regprocedure('auth.uid()') is null then raise exception 'Enable Neon Auth and Data API first'; end if;
   if to_regclass('public.profiles') is not null then raise exception 'Target is not empty; inspect before migration'; end if;
-  if (select data_type from information_schema.columns where table_schema='neon_auth' and table_name='user' and column_name='id') is distinct from 'text' then raise exception 'Inspect Neon identity type before migration'; end if;
+  if (select data_type from information_schema.columns where table_schema='neon_auth' and table_name='user' and column_name='id') is distinct from 'uuid' then raise exception 'Inspect Neon identity type before migration'; end if;
 end $$;
 revoke create on schema public from public, authenticated;
 grant usage on schema public to authenticated;
+-- Neon owns the auth schema and its USAGE grant is not delegable by neondb_owner.
+-- SQL-standard body binds the provider function at CREATE time. This remains
+-- SECURITY INVOKER: no privilege elevation, custom JWT parsing, or provider replacement.
+create function public.synera_user_id() returns uuid
+language sql stable security invoker return auth.uid();
+revoke all on function public.synera_user_id() from public;
+grant execute on function public.synera_user_id() to authenticated;
 ${adaptSql(body)}
 ${membership}
 ${grantsCleanup}
 -- No email addresses are seeded. Add explicitly invited, verified participants as owner.
 commit;
 `;
-  if (/auth\.users|auth\.uid\(\)|(?:sender_id|recipient_id|user_id|blocker_id|blocked_id|reporter_id|reported_id) uuid/.test(result)) throw new Error('Incomplete identity migration');
+  if (/auth\.users|auth\.user_id\(\)|(?:sender_id|recipient_id|user_id|blocker_id|blocked_id|reporter_id|reported_id) text/.test(result)) throw new Error('Incomplete identity migration');
   return result;
 }
 
@@ -85,11 +89,11 @@ insert into public.synera_pilot_members(email) values ('a@synera-acceptance.exam
 set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"44444444-4444-4444-8444-444444444444","role":"authenticated"}',true);
 do $$ begin
-  if auth.user_id() is distinct from '44444444-4444-4444-8444-444444444444' then raise exception 'JWT fixture context unsupported; inspect auth.user_id without replacing it'; end if;
+  if public.synera_user_id() is distinct from '44444444-4444-4444-8444-444444444444' then raise exception 'JWT fixture context unsupported; inspect auth.uid without replacing it'; end if;
   if public.synera_pilot_member() then raise exception 'Uninvited member passed'; end if;
   begin
     insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
-      values (auth.user_id(),'2026-09-05-pilot-3',true,true);
+      values (public.synera_user_id(),'2026-09-05-pilot-3',true,true);
     raise exception 'Uninvited user entered pilot';
   exception when insufficient_privilege then null; end;
   begin perform 1 from public.synera_pilot_members; raise exception 'Invited emails leaked'; exception when insufficient_privilege then null; end;

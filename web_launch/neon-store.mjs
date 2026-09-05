@@ -8,7 +8,7 @@ export class NeonStore extends ProfileStore {
   constructor(config, fetchImpl = fetch) {
     super();
     if (config.backend !== 'neon') throw new Error('Neon configuration required');
-    this.fetch = fetchImpl;
+    this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
     this.publicSiteUrl = config.publicSiteUrl || '';

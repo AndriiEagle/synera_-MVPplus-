@@ -1,7 +1,12 @@
 {
-  "checked_at_utc": "2026-09-05T19:10:09Z",
+  "checked_at_utc": "2026-09-05T20:03:30.9364603Z",
   "scope": "Neon and Cloudflare migration for a real-user Synera PWA pilot",
-  "tests": { "passed": 66, "failed": 0, "evidence": "artifacts/neon-tests.txt", "provider_responses": "local test doubles, not live Auth or RLS" },
+  "tests": {
+    "passed": 67,
+    "failed": 0,
+    "evidence": "artifacts/neon-tests.txt",
+    "provider_responses": "local test doubles, not live Auth or RLS"
+  },
   "neon_live_read_only": {
     "project_name": "synera",
     "project_id": "quiet-credit-94155104",
@@ -14,22 +19,128 @@
     "sql_query_succeeded": true,
     "sql_query": "select current_database() as database_name, (select count(*) from information_schema.tables where table_schema='public' and table_type='BASE TABLE') as public_tables, to_regclass('neon_auth.\"user\"') is not null as auth_enabled;"
   },
-  "browser": { "preview_origin": "http://127.0.0.1:54753", "viewport_width": 390, "viewport_height": 844, "document_width": 375, "password_field_hidden_in_neon_mode": true, "physical_phone_tested": false },
+  "browser": {
+    "preview_origin": "http://127.0.0.1:54753",
+    "viewport_width": 390,
+    "viewport_height": 844,
+    "document_width": 375,
+    "password_field_hidden_in_neon_mode": true,
+    "physical_phone_tested": false
+  },
   "release": {
     "directory": "web_launch/dist-neon",
     "files": 23,
-    "archive": "../synera-neon-pilot-20260905.zip",
-    "bytes": 68068,
-    "sha256": "7EAF0A95BC5B09293ADB973A68A6EB8E2A1409809CE6058A846494E5867C4A30",
+    "archive": "../synera-neon-pilot-20260905-r2.zip",
+    "bytes": 68092,
+    "sha256": "E935AFD19AF99C529ABC5EDA509BA298FBB5619D872971F8B4247BC761386C96",
     "cloudflare_pages_advanced_mode": true,
     "unexpected_private_archive_entries": [],
-    "published": false
+    "published": true,
+    "public_url": "https://synera-pilot.pages.dev"
   },
-  "not_verified": ["Neon OTP email delivery", "Neon session cookie and JWT contract", "live migration and transactional RLS acceptance", "Cloudflare runtime", "two real-user journeys", "physical Android and iPhone installation", "automatic public profile AI"],
-  "approval": { "requested": "Enable Auth and Data API, apply prepared schema to existing synera Neon project, create Free Cloudflare Pages and publish closed pilot then open only after acceptance", "received": false },
-  "cloudflare_login": "login page open; authentication required",
+  "not_verified": [
+    "Neon OTP email delivery",
+    "Neon session cookie and JWT contract",
+    "saved profile through real-user HTTP session",
+    "two real-user journeys",
+    "physical Android and iPhone installation",
+    "automatic public profile AI"
+  ],
+  "approval": {
+    "requested": "Enable Auth and Data API, apply prepared schema to existing synera Neon project, create Free Cloudflare Pages and publish closed pilot then open only after acceptance",
+    "received": true,
+    "source": "User explicitly approved annotated Neon Ohio and Cloudflare Free deployment request",
+    "maximum_usd": 0,
+    "no_card_or_upgrade": true
+  },
+  "cloudflare_login": "Authenticated via existing Google session",
   "provider_calls": 0,
   "actual_usd": 0,
   "models_used": [],
-  "ready_for_launch": false
+  "ready_for_launch": false,
+  "neon_applied": {
+    "data_api_enabled": true,
+    "schema_statements": 106,
+    "google_oauth_removed": true,
+    "commit_verified": true,
+    "acceptance_pass": true,
+    "fixture_residue_counts": {
+      "profiles": 0,
+      "consents": 0,
+      "meetings": 0,
+      "counters": 0,
+      "auth_users": 0,
+      "members": 0
+    },
+    "identity_type": "uuid",
+    "allow_localhost": false,
+    "acceptance_statements": 39,
+    "auth_enabled": true,
+    "rollback_verified": true,
+    "trusted_origin": "https://synera-pilot.pages.dev",
+    "rls_tables": 8,
+    "owner_admitted_after_rollback": true,
+    "schema_sha256": "29D6DC4CE677ADA3984F24C9A11A3E19D720546C1D2D66F0821A281C2A1C206A",
+    "verify_signup": true,
+    "acceptance_sha256": "6482D43A4F6397217BCF51AF99F1DDFC68F7089C4BE6563E3DAC25D048E16A57"
+  },
+  "cloudflare": {
+    "current_workers_plan": "Free",
+    "upgrade": false,
+    "card_added": false,
+    "fail_closed": true,
+    "price_usd": 0,
+    "runtime_variables_configured": 6,
+    "private_members_variable_type": "secret",
+    "project": "synera-pilot",
+    "sql_password_in_runtime": false,
+    "account_id": "37d2df88cd4557b3c81da2a7002bba1e"
+  },
+  "live_browser": {
+    "status": "Pilot for real participants",
+    "origin": "https://synera-pilot.pages.dev",
+    "email_and_send_code_enabled": true,
+    "native_fetch_receiver_fixed": true,
+    "login_verified": false,
+    "policy_dialog_opened": true,
+    "otp_requested": false,
+    "personal_consent_submitted_by_agent": false
+  },
+  "http_checks": [
+    {
+      "status": 200,
+      "cache": "no-store",
+      "path": "/"
+    },
+    {
+      "status": 200,
+      "cache": "no-store",
+      "path": "/config.json"
+    },
+    {
+      "status": 200,
+      "cache": "no-store",
+      "path": "/api/neon/health"
+    },
+    {
+      "status": 200,
+      "cache": "no-store",
+      "path": "/api/neon/session"
+    },
+    {
+      "status": 401,
+      "cache": "no-store",
+      "path": "/api/neon/data/profiles"
+    },
+    {
+      "status": 404,
+      "cache": "no-store",
+      "path": "/_worker.js"
+    },
+    {
+      "status": 404,
+      "cache": "no-store",
+      "path": "/release.json"
+    }
+  ]
 }

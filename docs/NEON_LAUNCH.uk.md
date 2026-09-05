@@ -1,10 +1,10 @@
 # Synera: перенесення на безплатний Neon
 
-NOW — підготувати реальний приватний PWA-пілот на Neon Free + Cloudflare Pages Free. Supabase не є залежністю цього пакета.
+NOW — приватний PWA-пілот опублікований: **https://synera-pilot.pages.dev**. Завершити особистий вхід власника й перевірити збереження профілю. Supabase не є залежністю цього пакета.
 
 | Маршрут | Чому | Межа доказу |
 | --- | --- | --- |
-| A RECOMMENDED — Neon + Cloudflare Pages | Зберігає PostgreSQL, PostgREST, правила доступу й увесь поточний інтерфейс | Новий адаптер та пакет перевіряються локально; живий Auth/SQL/телефон ще мають пройти приймання |
+| A RECOMMENDED — Neon + Cloudflare Pages | Вже опубліковано за $0 на Free, без картки/апгрейду | SQL/RLS, HTTPS та форма входу перевірені; особистий OTP-вхід і фізичний телефон ще потребують приймання |
 | B FALLBACK — Appwrite Cloud Free | Готові auth, email OTP, база, functions і hosting в одному сервісі | Потрібен інший адаптер даних і повторна перевірка доступу; його не реалізовано паралельно |
 
 ## Що реально є
@@ -14,11 +14,16 @@ NOW — підготувати реальний приватний PWA-піло�
 - Project: `quiet-credit-94155104`; branch: `br-dawn-field-axoxc3c4` (`production`).
 - Organization: `org-dry-mud-32460338`.
 - Region: **AWS US East 2 (Ohio), США**, PostgreSQL 18. Не Frankfurt. Не змінювати регіон і не створювати дубль без потреби/погодження.
-- Auth показує **Enable Neon Auth**: ще не увімкнений. Не відкривали connection string і не витягували паролів.
-- Нову SQL-схему не застосовано. Cloudflare-проєкт не створено, сайт не опубліковано.
-- Read-only SQL фактично виконався: `database_name=neondb`, `public_tables=0`, `auth_enabled=false`.
-- Локальне приймання: **66/66 PASS**, мобільна ширина 390 px без горизонтального прокручування; це не доказ живого OTP/RLS або фізичного телефона. [Receipt](../artifacts/neon-validation.json).
-- Готовий ZIP: `../synera-neon-pilot-20260905.zip` від кореня репозиторію, 23 файли, 68 068 bytes. SHA256 `7EAF0A95BC5B09293ADB973A68A6EB8E2A1409809CE6058A846494E5867C4A30`.
+- Neon Auth і Data API увімкнено. Connection string і пароль БД не відкривали; runtime їх не використовує.
+- Застосовано `neon/schema.proposal.sql`: 106 SQL statements до COMMIT. 8 таблиць із RLS. `neon/acceptance.sql`: 39 statements до ROLLBACK, результат PASS для згоди, приватності, власності запрошень, повідомлень, блокування, видалення й лімітів.
+- Після ROLLBACK перевірено нулі: auth users, profiles, meetings, consents, members і counters. Потім додано тільки погодженого першого учасника до приватного списку.
+- Живий контракт Neon: `neon_auth.user.id` має тип **uuid**. `public.synera_user_id()` — SECURITY INVOKER із SQL-standard body `return auth.uid()`. Це виклик незміненої функції провайдера; обхід RLS і підвищення прав відсутні. Звичайний GRANT USAGE на провайдерську `auth` від owner виявився no-op; сумісний виклик реально перевірено перед міграцією.
+- Cloudflare account `37d2df88cd4557b3c81da2a7002bba1e`, Pages project `synera-pilot`. Поточний Workers plan Free/$0 перевірено у dashboard. Fail closed увімкнено. Створено один проєкт, без Git push, встановлень, картки чи апгрейду.
+- Trusted domain: тільки `https://synera-pilot.pages.dev`; localhost вимкнено; перевірку email кодом увімкнено; зайвий Google OAuth provider прибрано. Shared mail provider: для приватного тестування.
+- HTTPS `/` і `/config.json` = 200; health через Worker до Neon = 200; порожня session = 200; profiles без сесії = 401; `_worker.js` і `release.json` = 404. Відповіді no-store.
+- Виправлено браузерний виклик native fetch в обох адаптерах; **67/67 локальних тестів PASS**. На живому сайті форма показує «Пілот для реальних учасників», email і кнопку надсилання коду. [Receipt](../artifacts/neon-validation.json).
+- Опублікований ZIP r2: `../synera-neon-pilot-20260905-r2.zip`, 23 файли. SHA256 `E935AFD19AF99C529ABC5EDA509BA298FBB5619D872971F8B4247BC761386C96`. Попередній ZIP збережено.
+- Особистий вхід ще не пройдено: власнику відкрито форму правил; його відповідь містила текст SQL замість підтвердження входу. Не записувати прийняття правил, вік чи підтвердження email за нього. SQL-тестові згоди відкочено.
 
 ## Безплатні межі: первинні джерела, перевірено 2026-09-05
 
@@ -37,15 +42,15 @@ NOW — підготувати реальний приватний PWA-піло�
 2. `web_launch/neon-store.mjs` — запити тільки до власного домену. Email → код із листа → правила → власний профіль.
 3. `neon/worker.mjs` — вузький проксі на Cloudflare. Neon перевіряє OTP і сесію; браузер отримує тільки HttpOnly cookie. JWT з `Set-Auth-Jwt` передається Data API на сервері. Немає самописних паролів або ключа власника БД у runtime.
 4. Відкрито тільки конкретні Auth-дії та 6 таблиць. Немає довільного проксі/RPC/SQL. Є Origin/Host-перевірки, межа body 4096 байтів, точний список запрошених email, заборона редиректів провайдера і автоматичних повторів.
-5. `neon/schema.proposal.sql` генерується з існуючих SQL-джерел. Identity стає text, auth.uid замінюється auth.user_id, збережено RLS/column grants/блокування/ліміти. Додано приватний список запрошених і перевірку підтвердженого email **у самій БД**. Обхід браузера не повинен надавати доступ.
-6. `neon/acceptance.sql` — транзакційні фікстури з ROLLBACK; перевіряє стороннього/незапрошеного користувача та попередні межі. **Не запускали.** Якщо JWT context або структура Neon Auth відрізняється, тест зупиняється; не замінювати функції провайдера, щоб отримати PASS.
+5. `neon/schema.proposal.sql` генерується з існуючих SQL-джерел, зберігає UUID та використовує вузький виклик штатної `auth.uid()`. Збережено RLS/column grants/блокування/ліміти. Додано приватний список запрошених і перевірку підтвердженого email **у самій БД**. Застосовано до цього проєкту; повторно не запускати.
+6. `neon/acceptance.sql` — транзакційні фікстури з ROLLBACK; фактично виконано з PASS. Коментарі NOT RUN у відтворюваному шаблоні не є live-статусом: фактичний результат наведено в receipt. Функції провайдера не замінювали.
 7. `web_launch/dist-neon` — 23 файли, включно з `_worker.js` та `_routes.json`. SQL, тести, паролі, локальний AI й старі демоботи не потрапляють у роздачу. Worker генерує `/config.json` із серверних flags; початково все закрито.
 
 Це пакет для **Cloudflare Pages Advanced mode**, не довільний static host. `_worker.js` офіційно підтримує dashboard upload. [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/), [Advanced mode](https://developers.cloudflare.com/pages/functions/advanced-mode/).
 
-## Конкретний обсяг зовнішнього запуску для погодження
+## Погоджений обсяг зовнішнього запуску
 
-Твої AGENTS.md вимагають точної згоди на production/configuration, публікацію, секрети та зовнішні повідомлення. Локальні файли підготовлено до цього кроку.
+2026-09-05 власник явно погодив застосування схеми до Neon synera в Ohio та публікацію приватного пілота через Cloudflare Free за $0, без картки й апгрейдів. Повторної згоди на ці кроки не потрібно.
 
 - Використати тільки створений **synera / quiet-credit-94155104**, Free, Ohio.
 - Увімкнути Neon Auth і Data API; увімкнути email OTP/verification, exact trusted domain; вимкнути зайві sign-in providers і localhost після перевірки.
@@ -87,6 +92,8 @@ NOW — підготувати реальний приватний PWA-піло�
 
 У [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) є 10k безплатних neurons/day. Це кандидат для окремого малого AI-запиту після входу, а не вже перевірена інтеграція. Потрібні точний дозволений Free model, перевірка Free account/hard stop, дозвіл користувача, server-side ліміт, receipt без тексту профілю й фактичний тест. Деякі моделі вже вимагають Paid plan — [офіційна зміна](https://developers.cloudflare.com/changelog/post/2026-07-28-models-require-workers-paid/). Немає автоматичного платного fallback або обіцянки, що всі AI-виклики будуть безлімітними.
 
+Додаткова перевірка 2026-09-05: фактичний Cloudflare account має Workers Free та 10k neurons/day. Кандидат — `@cf/google/gemma-4-26b-a4b-it`: прямо вказаний серед моделей, доступних на Free, в офіційній зміні вище. [Контракт моделі](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/) має `max_completion_tokens`, `reasoning_effort`, `response_format` і usage; базова тарифна ціна $0.10/$0.30 за мільйон input/output tokens не є поточними витратами цього пілота. `gemma-3-12b-it` відхилено як deprecated. Жодної AI binding, нового AI endpoint, AI SQL migration або модельного виклику не створено: це перевірений напрям наступної реалізації, не активована функція.
+
 PARKED — Appwrite-перенесення, Google/GitHub-вхід у саму апку, магазини, APK/IPA, платежі, боти й платний background AI.
 
-NEXT (10–20 хв) — погоджений запуск налаштувань Auth/Data API у вже створеному Neon-проєкті; потім виконання SQL acceptance. Повний пілот не оголошувати готовим до реальної перевірки пошти, БД, AI та телефона.
+NEXT (5–15 хв) — особистий вхід власника на https://synera-pilot.pages.dev: email → правила → код із листа → прихований профіль → перевірка збереження після перезавантаження. Повний пілот не оголошувати готовим до реальної перевірки пошти, профілю, AI та телефона.

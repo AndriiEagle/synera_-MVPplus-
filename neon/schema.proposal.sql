@@ -3,16 +3,23 @@
 -- Source SHA256 baseline=3f43e06c102ad9439a67b19f6dac62d76cd1b12f405f347ee856d011a8313bd3 proposal=e99c9a009fe926e5b737227ef069531e3444022cc638d1f114bc24b7051ff7b5
 begin;
 do $$ begin
-  if to_regclass('neon_auth."user"') is null or to_regprocedure('auth.user_id()') is null then raise exception 'Enable Neon Auth and Data API first'; end if;
+  if to_regclass('neon_auth."user"') is null or to_regprocedure('auth.uid()') is null then raise exception 'Enable Neon Auth and Data API first'; end if;
   if to_regclass('public.profiles') is not null then raise exception 'Target is not empty; inspect before migration'; end if;
-  if (select data_type from information_schema.columns where table_schema='neon_auth' and table_name='user' and column_name='id') is distinct from 'text' then raise exception 'Inspect Neon identity type before migration'; end if;
+  if (select data_type from information_schema.columns where table_schema='neon_auth' and table_name='user' and column_name='id') is distinct from 'uuid' then raise exception 'Inspect Neon identity type before migration'; end if;
 end $$;
 revoke create on schema public from public, authenticated;
 grant usage on schema public to authenticated;
+-- Neon owns the auth schema and its USAGE grant is not delegable by neondb_owner.
+-- SQL-standard body binds the provider function at CREATE time. This remains
+-- SECURITY INVOKER: no privilege elevation, custom JWT parsing, or provider replacement.
+create function public.synera_user_id() returns uuid
+language sql stable security invoker return auth.uid();
+revoke all on function public.synera_user_id() from public;
+grant execute on function public.synera_user_id() to authenticated;
 
 
 create table public.profiles (
-  id text primary key references neon_auth."user"(id) on delete cascade,
+  id uuid primary key references neon_auth."user"(id) on delete cascade,
   display_name text not null check (char_length(btrim(display_name)) between 1 and 60),
   city text not null default '' check (char_length(city) <= 80),
   offers text not null default '' check (char_length(offers) <= 300),
@@ -28,18 +35,18 @@ grant insert (id, display_name, city, offers, seeks, is_discoverable),
       on public.profiles to authenticated;
 
 create policy profiles_read on public.profiles for select to authenticated
-  using ((select auth.user_id()) = id or is_discoverable);
+  using ((select public.synera_user_id()) = id or is_discoverable);
 create policy profiles_create on public.profiles for insert to authenticated
-  with check ((select auth.user_id()) = id);
+  with check ((select public.synera_user_id()) = id);
 create policy profiles_update on public.profiles for update to authenticated
-  using ((select auth.user_id()) = id) with check ((select auth.user_id()) = id);
+  using ((select public.synera_user_id()) = id) with check ((select public.synera_user_id()) = id);
 create policy profiles_delete on public.profiles for delete to authenticated
-  using ((select auth.user_id()) = id);
+  using ((select public.synera_user_id()) = id);
 
 create table public.meeting_requests (
   id uuid primary key default gen_random_uuid(),
-  sender_id text not null references public.profiles(id) on delete cascade,
-  recipient_id text not null references public.profiles(id) on delete cascade,
+  sender_id uuid not null references public.profiles(id) on delete cascade,
+  recipient_id uuid not null references public.profiles(id) on delete cascade,
   note text not null check (char_length(btrim(note)) between 1 and 500),
   status text not null default 'pending' check (status in ('pending', 'accepted', 'declined')),
   created_at timestamptz not null default now(),
@@ -55,13 +62,13 @@ grant insert (sender_id, recipient_id, note) on public.meeting_requests to authe
 grant update (status) on public.meeting_requests to authenticated;
 
 create policy meetings_read on public.meeting_requests for select to authenticated
-  using ((select auth.user_id()) in (sender_id, recipient_id));
+  using ((select public.synera_user_id()) in (sender_id, recipient_id));
 create policy meetings_create on public.meeting_requests for insert to authenticated
-  with check ((select auth.user_id()) = sender_id and status = 'pending'
+  with check ((select public.synera_user_id()) = sender_id and status = 'pending'
     and exists (select 1 from public.profiles p where p.id = recipient_id and p.is_discoverable));
 create policy meetings_respond on public.meeting_requests for update to authenticated
-  using ((select auth.user_id()) = recipient_id and status = 'pending')
-  with check ((select auth.user_id()) = recipient_id and status in ('accepted', 'declined'));
+  using ((select public.synera_user_id()) = recipient_id and status = 'pending')
+  with check ((select public.synera_user_id()) = recipient_id and status in ('accepted', 'declined'));
 
 
 
@@ -72,7 +79,7 @@ do $$ begin
 end $$;
 
 create table public.pilot_consents (
-  user_id text not null references neon_auth."user"(id) on delete cascade,
+  user_id uuid not null references neon_auth."user"(id) on delete cascade,
   policy_version text not null check (policy_version = '2026-09-05-pilot-3'),
   terms_accepted boolean not null check (terms_accepted),
   privacy_acknowledged boolean not null check (privacy_acknowledged),
@@ -83,8 +90,8 @@ alter table public.pilot_consents enable row level security;
 revoke all on public.pilot_consents from public, authenticated;
 grant select on public.pilot_consents to authenticated;
 grant insert (user_id, policy_version, terms_accepted, privacy_acknowledged) on public.pilot_consents to authenticated;
-create policy consent_read on public.pilot_consents for select to authenticated using (user_id = (select auth.user_id()));
-create policy consent_create on public.pilot_consents for insert to authenticated with check (user_id = (select auth.user_id()));
+create policy consent_read on public.pilot_consents for select to authenticated using (user_id = (select public.synera_user_id()));
+create policy consent_create on public.pilot_consents for insert to authenticated with check (user_id = (select public.synera_user_id()));
 
 create function public.synera_valid_brief(b jsonb) returns boolean
 language plpgsql immutable security invoker set search_path = '' as $$
@@ -138,15 +145,15 @@ revoke all on function public.synera_touch_profile() from public, authenticated;
 create trigger synera_profile_updated before update on public.profiles for each row execute function public.synera_touch_profile();
 
 create policy profiles_consent on public.profiles as restrictive for all to authenticated
-using (exists (select 1 from public.pilot_consents c where c.user_id = (select auth.user_id()) and c.policy_version = '2026-09-05-pilot-3'))
-with check (exists (select 1 from public.pilot_consents c where c.user_id = (select auth.user_id()) and c.policy_version = '2026-09-05-pilot-3'));
+using (exists (select 1 from public.pilot_consents c where c.user_id = (select public.synera_user_id()) and c.policy_version = '2026-09-05-pilot-3'))
+with check (exists (select 1 from public.pilot_consents c where c.user_id = (select public.synera_user_id()) and c.policy_version = '2026-09-05-pilot-3'));
 create policy meetings_consent on public.meeting_requests as restrictive for all to authenticated
-using (exists (select 1 from public.pilot_consents c where c.user_id = (select auth.user_id()) and c.policy_version = '2026-09-05-pilot-3'))
-with check (exists (select 1 from public.pilot_consents c where c.user_id = (select auth.user_id()) and c.policy_version = '2026-09-05-pilot-3'));
+using (exists (select 1 from public.pilot_consents c where c.user_id = (select public.synera_user_id()) and c.policy_version = '2026-09-05-pilot-3'))
+with check (exists (select 1 from public.pilot_consents c where c.user_id = (select public.synera_user_id()) and c.policy_version = '2026-09-05-pilot-3'));
 
 create table public.profile_blocks (
-  blocker_id text not null references neon_auth."user"(id) on delete cascade,
-  blocked_id text not null references neon_auth."user"(id) on delete cascade,
+  blocker_id uuid not null references neon_auth."user"(id) on delete cascade,
+  blocked_id uuid not null references neon_auth."user"(id) on delete cascade,
   created_at timestamptz not null default now(),
   primary key (blocker_id, blocked_id), check (blocker_id <> blocked_id)
 );
@@ -156,11 +163,11 @@ revoke all on public.profile_blocks from public, authenticated;
 grant select, delete on public.profile_blocks to authenticated;
 grant insert (blocker_id, blocked_id) on public.profile_blocks to authenticated;
 -- Both participants can observe a block. This explicit boundary avoids an RLS-bypassing definer function.
-create policy blocks_read on public.profile_blocks for select to authenticated using ((select auth.user_id()) in (blocker_id, blocked_id));
-create policy blocks_create on public.profile_blocks for insert to authenticated with check (blocker_id = (select auth.user_id()));
-create policy blocks_delete on public.profile_blocks for delete to authenticated using (blocker_id = (select auth.user_id()));
+create policy blocks_read on public.profile_blocks for select to authenticated using ((select public.synera_user_id()) in (blocker_id, blocked_id));
+create policy blocks_create on public.profile_blocks for insert to authenticated with check (blocker_id = (select public.synera_user_id()));
+create policy blocks_delete on public.profile_blocks for delete to authenticated using (blocker_id = (select public.synera_user_id()));
 create policy profiles_unblocked on public.profiles as restrictive for select to authenticated using (
-  not exists (select 1 from public.profile_blocks b where (b.blocker_id = (select auth.user_id()) and b.blocked_id = profiles.id) or (b.blocked_id = (select auth.user_id()) and b.blocker_id = profiles.id)));
+  not exists (select 1 from public.profile_blocks b where (b.blocker_id = (select public.synera_user_id()) and b.blocked_id = profiles.id) or (b.blocked_id = (select public.synera_user_id()) and b.blocker_id = profiles.id)));
 
 alter table public.meeting_requests drop constraint meeting_requests_status_check;
 alter table public.meeting_requests
@@ -185,8 +192,8 @@ create unique index meetings_pending_pair on public.meeting_requests(least(sende
 create policy meetings_plan on public.meeting_requests as restrictive for insert to authenticated
 with check (proposed_at > now() and proposed_at <= now() + interval '90 days' and duration_minutes is not null and meeting_place is not null
   and not exists (select 1 from public.profile_blocks b where (b.blocker_id = sender_id and b.blocked_id = recipient_id) or (b.blocked_id = sender_id and b.blocker_id = recipient_id)));
-create policy meetings_cancel on public.meeting_requests for update to authenticated using ((select auth.user_id()) = sender_id and status in ('pending','accepted'))
-with check ((select auth.user_id()) = sender_id and status = 'cancelled');
+create policy meetings_cancel on public.meeting_requests for update to authenticated using ((select public.synera_user_id()) = sender_id and status in ('pending','accepted'))
+with check ((select public.synera_user_id()) = sender_id and status = 'cancelled');
 create policy meetings_response_unblocked on public.meeting_requests as restrictive for update to authenticated
 using (true) with check (status <> 'accepted' or (proposed_at > now()
   and not exists (select 1 from public.profile_blocks b where (b.blocker_id = sender_id and b.blocked_id = recipient_id) or (b.blocked_id = sender_id and b.blocker_id = recipient_id))));
@@ -194,7 +201,7 @@ using (true) with check (status <> 'accepted' or (proposed_at > now()
 create table public.meeting_messages (
   id uuid primary key default gen_random_uuid(),
   meeting_id uuid not null references public.meeting_requests(id) on delete cascade,
-  sender_id text not null references neon_auth."user"(id) on delete cascade,
+  sender_id uuid not null references neon_auth."user"(id) on delete cascade,
   body text not null check (length(btrim(body)) between 1 and 1000),
   created_at timestamptz not null default now()
 );
@@ -205,15 +212,15 @@ revoke all on public.meeting_messages from public, authenticated;
 grant select on public.meeting_messages to authenticated;
 grant insert (meeting_id, sender_id, body) on public.meeting_messages to authenticated;
 create policy messages_read on public.meeting_messages for select to authenticated using (
-  exists (select 1 from public.meeting_requests m where m.id = meeting_id and (select auth.user_id()) in (m.sender_id,m.recipient_id)));
-create policy messages_create on public.meeting_messages for insert to authenticated with check (sender_id = (select auth.user_id()) and
-  exists (select 1 from public.meeting_requests m where m.id = meeting_id and m.status = 'accepted' and (select auth.user_id()) in (m.sender_id,m.recipient_id)
+  exists (select 1 from public.meeting_requests m where m.id = meeting_id and (select public.synera_user_id()) in (m.sender_id,m.recipient_id)));
+create policy messages_create on public.meeting_messages for insert to authenticated with check (sender_id = (select public.synera_user_id()) and
+  exists (select 1 from public.meeting_requests m where m.id = meeting_id and m.status = 'accepted' and (select public.synera_user_id()) in (m.sender_id,m.recipient_id)
     and not exists (select 1 from public.profile_blocks b where (b.blocker_id = m.sender_id and b.blocked_id = m.recipient_id) or (b.blocked_id = m.sender_id and b.blocker_id = m.recipient_id))));
 
 create table public.profile_reports (
   id uuid primary key default gen_random_uuid(),
-  reporter_id text not null references neon_auth."user"(id) on delete cascade,
-  reported_id text not null references neon_auth."user"(id) on delete cascade,
+  reporter_id uuid not null references neon_auth."user"(id) on delete cascade,
+  reported_id uuid not null references neon_auth."user"(id) on delete cascade,
   reason text not null check (reason in ('spam','impersonation','harassment','other')),
   detail text not null default '' check (length(detail) <= 500),
   created_at timestamptz not null default now(), check (reporter_id <> reported_id)
@@ -224,14 +231,14 @@ alter table public.profile_reports enable row level security;
 revoke all on public.profile_reports from public, authenticated;
 grant select on public.profile_reports to authenticated;
 grant insert (reporter_id, reported_id, reason, detail) on public.profile_reports to authenticated;
-create policy reports_read on public.profile_reports for select to authenticated using (reporter_id = (select auth.user_id()));
-create policy reports_create on public.profile_reports for insert to authenticated with check (reporter_id = (select auth.user_id())
-  and exists (select 1 from public.pilot_consents c where c.user_id = (select auth.user_id()) and c.policy_version = '2026-09-05-pilot-3'));
+create policy reports_read on public.profile_reports for select to authenticated using (reporter_id = (select public.synera_user_id()));
+create policy reports_create on public.profile_reports for insert to authenticated with check (reporter_id = (select public.synera_user_id())
+  and exists (select 1 from public.pilot_consents c where c.user_id = (select public.synera_user_id()) and c.policy_version = '2026-09-05-pilot-3'));
 
 -- Admission counters survive profile deletion; deleting/recreating a profile cannot reset the limit.
 -- No client grants or policies: callers cannot edit their own counters. This is not an AI spend ledger.
 create table public.synera_write_limits (
-  user_id text primary key references neon_auth."user"(id) on delete cascade,
+  user_id uuid primary key references neon_auth."user"(id) on delete cascade,
   window_started_at timestamptz not null default now(),
   invitations integer not null default 0,
   messages integer not null default 0,
@@ -243,7 +250,7 @@ revoke all on public.synera_write_limits from public, authenticated;
 -- no dynamic SQL, fixed empty search_path, no execute grant, and callable only as these triggers.
 -- INVOKER cannot update the protected counter; granting client UPDATE would defeat this boundary.
 create function public.synera_limit_writes() returns trigger language plpgsql security definer set search_path = '' as $$
-declare actor text := auth.user_id(); counter public.synera_write_limits%rowtype;
+declare actor uuid := public.synera_user_id(); counter public.synera_write_limits%rowtype;
 begin
   if actor is null then raise exception 'Authentication required'; end if;
   if tg_table_name not in ('meeting_requests','meeting_messages','profile_reports') then raise exception 'Unsupported trigger'; end if;
@@ -283,7 +290,7 @@ create function public.synera_pilot_member() returns boolean
 language sql stable security definer set search_path = '' as $$
   select exists (
     select 1 from neon_auth."user" u join public.synera_pilot_members m on m.email=lower(u.email)
-    where u.id=(select auth.user_id()) and u."emailVerified"=true
+    where u.id=(select public.synera_user_id()) and u."emailVerified"=true
   );
 $$;
 revoke all on function public.synera_pilot_member() from public, authenticated;

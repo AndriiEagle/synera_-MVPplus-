@@ -15,7 +15,7 @@ export class SupabaseStore extends ProfileStore {
     if (!/^sb_publishable_[A-Za-z0-9_-]+$/.test(publishableKey)) throw new Error('Publishable key required');
     this.url = url.origin;
     this.key = publishableKey;
-    this.fetch = fetchImpl;
+    this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = pilotSafetyEnabled;
     this.realPilotEnabled = realPilotEnabled;
     this.publicSiteUrl = publicSiteUrl;

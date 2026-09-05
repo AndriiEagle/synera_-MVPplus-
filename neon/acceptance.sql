@@ -10,11 +10,11 @@ insert into public.synera_pilot_members(email) values ('a@synera-acceptance.exam
 set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"44444444-4444-4444-8444-444444444444","role":"authenticated"}',true);
 do $$ begin
-  if auth.user_id() is distinct from '44444444-4444-4444-8444-444444444444' then raise exception 'JWT fixture context unsupported; inspect auth.user_id without replacing it'; end if;
+  if public.synera_user_id() is distinct from '44444444-4444-4444-8444-444444444444' then raise exception 'JWT fixture context unsupported; inspect auth.uid without replacing it'; end if;
   if public.synera_pilot_member() then raise exception 'Uninvited member passed'; end if;
   begin
     insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
-      values (auth.user_id(),'2026-09-05-pilot-3',true,true);
+      values (public.synera_user_id(),'2026-09-05-pilot-3',true,true);
     raise exception 'Uninvited user entered pilot';
   exception when insufficient_privilege then null; end;
   begin perform 1 from public.synera_pilot_members; raise exception 'Invited emails leaked'; exception when insufficient_privilege then null; end;
@@ -37,11 +37,11 @@ insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_
 do $$ begin
   if (select count(*) from public.profiles) <> 2 then raise exception 'Owner/private/visible boundary failed'; end if;
   begin
-    update public.profiles set updated_at=now()-interval '2 years' where id=auth.user_id();
+    update public.profiles set updated_at=now()-interval '2 years' where id=public.synera_user_id();
     raise exception 'Client changed freshness timestamp';
   exception when insufficient_privilege then null; end;
   begin
-    update public.profiles set brief=brief || '{"admin":true}'::jsonb where id=auth.user_id();
+    update public.profiles set brief=brief || '{"admin":true}'::jsonb where id=public.synera_user_id();
     raise exception 'Unknown brief key accepted';
   exception when check_violation then null; end;
   begin
@@ -62,27 +62,27 @@ do $$ begin
     raise exception 'Client forged identity snapshot';
   exception when insufficient_privilege then null; end;
   begin
-    insert into public.meeting_messages(meeting_id,sender_id,body) select id,auth.user_id(),'Before acceptance' from public.meeting_requests;
+    insert into public.meeting_messages(meeting_id,sender_id,body) select id,public.synera_user_id(),'Before acceptance' from public.meeting_requests;
     raise exception 'Messaging allowed before acceptance';
   exception when insufficient_privilege then null; end;
 end $$;
 
 select set_config('request.jwt.claims','{"sub":"33333333-3333-4333-8333-333333333333","role":"authenticated"}',true);
-insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged) values (auth.user_id(),'2026-09-05-pilot-3',true,true);
+insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged) values (public.synera_user_id(),'2026-09-05-pilot-3',true,true);
 do $$ begin
   if exists(select 1 from public.meeting_requests) or exists(select 1 from public.meeting_messages) then raise exception 'Third-party conversation leak'; end if;
 end $$;
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
-insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged) values (auth.user_id(),'2026-09-05-pilot-3',true,true);
+insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged) values (public.synera_user_id(),'2026-09-05-pilot-3',true,true);
 update public.meeting_requests set status='accepted';
 do $$ begin if not exists(select 1 from public.meeting_requests where status='accepted') then raise exception 'Recipient acceptance failed'; end if; end $$;
-insert into public.meeting_messages(meeting_id,sender_id,body) select id,auth.user_id(),'Accepted conversation' from public.meeting_requests;
-insert into public.profile_blocks(blocker_id,blocked_id) values (auth.user_id(),'11111111-1111-4111-8111-111111111111');
+insert into public.meeting_messages(meeting_id,sender_id,body) select id,public.synera_user_id(),'Accepted conversation' from public.meeting_requests;
+insert into public.profile_blocks(blocker_id,blocked_id) values (public.synera_user_id(),'11111111-1111-4111-8111-111111111111');
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
 do $$ begin
   if exists(select 1 from public.profiles where id='22222222-2222-4222-8222-222222222222') then raise exception 'Block did not hide peer'; end if;
   begin
-    insert into public.meeting_messages(meeting_id,sender_id,body) select id,auth.user_id(),'Blocked message' from public.meeting_requests;
+    insert into public.meeting_messages(meeting_id,sender_id,body) select id,public.synera_user_id(),'Blocked message' from public.meeting_requests;
     raise exception 'Message passed block';
   exception when insufficient_privilege then null; end;
 end $$;
@@ -91,9 +91,9 @@ reset role;
 do $$ begin if (select count(*) from public.profile_blocks) <> 1 then raise exception 'Block owner boundary failed'; end if; end $$;
 set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
-delete from public.profile_blocks where blocker_id=auth.user_id();
+delete from public.profile_blocks where blocker_id=public.synera_user_id();
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-delete from public.profiles where id=auth.user_id();
+delete from public.profiles where id=public.synera_user_id();
 reset role;
 do $$ begin
   if exists(select 1 from public.meeting_requests) or exists(select 1 from public.meeting_messages) then raise exception 'Profile deletion did not cascade'; end if;
