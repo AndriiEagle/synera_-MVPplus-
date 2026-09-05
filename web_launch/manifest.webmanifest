@@ -1,6 +1,6 @@
 {
   "id": "/", "name": "Synera — взаємна користь", "short_name": "Synera",
-  "description": "Профіль, взаємні знайомства та зустрічі. Демо з позначеними вигаданими персонажами.",
+  "description": "Профіль, взаємні знайомства та короткі зустрічі на основі явної взаємної користі.",
   "lang": "uk", "start_url": "/", "scope": "/", "display": "standalone",
   "background_color": "#f6f5ef", "theme_color": "#254f3b",
   "icons": [

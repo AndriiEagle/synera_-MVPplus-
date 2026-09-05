@@ -1,36 +1,153 @@
 {
-  "checked_at_utc": "2026-09-05T22:52:39.960Z",
+  "checked_at_utc": "2026-09-05T23:32:21.587Z",
   "origin": "https://synera-pilot.pages.dev",
-  "release": "r7",
+  "release": "r8",
   "assets": [
     {
       "name": "index.html",
       "status": 200,
+      "bytes": 21638,
       "sha256": "c99431f838f4e1ef1070e2651ebbe4f3523e198783fe2d6870ad77f5ea182c3b",
       "matches_build": true
     },
     {
       "name": "app.mjs",
       "status": 200,
+      "bytes": 55131,
       "sha256": "bda31dae4976d629da6d5f242fcc3005e37d4e64c699755231689b244bb82bf3",
+      "matches_build": true
+    },
+    {
+      "name": "online-store.mjs",
+      "status": 200,
+      "bytes": 5968,
+      "sha256": "3b54f54badb8538cbd38f3f1a9a5d0785a41879af2c0dcc675c49548a01e4544",
+      "matches_build": true
+    },
+    {
+      "name": "profile-portability.mjs",
+      "status": 200,
+      "bytes": 13608,
+      "sha256": "75bbc8c5c7825e7f6d014facf7ae602c534e99b838e9d892f9363b02a0521c2d",
+      "matches_build": true
+    },
+    {
+      "name": "profile-brief.mjs",
+      "status": 200,
+      "bytes": 8007,
+      "sha256": "e8e0515558ab00f714f2e5870a80dd2ffa1b3da0d88eb9acc892141919f00269",
+      "matches_build": true
+    },
+    {
+      "name": "calendar.mjs",
+      "status": 200,
+      "bytes": 1602,
+      "sha256": "1600cd51fa5513404d010db26c66e89794d3d89fdcea9e83ae8032fd6b19f120",
       "matches_build": true
     },
     {
       "name": "style.css",
       "status": 200,
+      "bytes": 21955,
       "sha256": "0cabe0f1edccbce837e7589ef096801b214f7829f3304a0e88ef36b86844860f",
+      "matches_build": true
+    },
+    {
+      "name": "matching.mjs",
+      "status": 200,
+      "bytes": 9243,
+      "sha256": "3c2d11b0f7d9ce770d7ec9fa28a5ed8f41a044f61347ca24bbfc67606297e9fe",
+      "matches_build": true
+    },
+    {
+      "name": "profile-store.mjs",
+      "status": 200,
+      "bytes": 12213,
+      "sha256": "d6da332a596ebb3f4fcaab0ef35bdcda8ff2fc3bcfcdb0b7302158c4edf487c2",
+      "matches_build": true
+    },
+    {
+      "name": "neon-store.mjs",
+      "status": 200,
+      "bytes": 2673,
+      "sha256": "23383b4a5e4b0c69fc92e9c69f373c6ac828a83f685b5df5a8bbac09bb6741c0",
       "matches_build": true
     },
     {
       "name": "chatgpt-transfer.mjs",
       "status": 200,
+      "bytes": 4554,
       "sha256": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40",
+      "matches_build": true
+    },
+    {
+      "name": "map.mjs",
+      "status": 200,
+      "bytes": 5356,
+      "sha256": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5",
+      "matches_build": true
+    },
+    {
+      "name": "pilot-policy.mjs",
+      "status": 200,
+      "bytes": 1854,
+      "sha256": "2448fccaa949df9066d93d604c9670700db06e20b476866b43a7a46063194ac1",
+      "matches_build": true
+    },
+    {
+      "name": "profile-package.mjs",
+      "status": 200,
+      "bytes": 1703,
+      "sha256": "792588575f310600b69735ede80219d187cf002a45f6157bff4630fa3ede7a15",
+      "matches_build": true
+    },
+    {
+      "name": "manifest.webmanifest",
+      "status": 200,
+      "bytes": 659,
+      "sha256": "a34d76bc57e569bcbf5ed6d6a3afd56582263622a0d4868da9928498b1268cff",
+      "matches_build": true
+    },
+    {
+      "name": "pwa.mjs",
+      "status": 200,
+      "bytes": 2106,
+      "sha256": "bafc1358e3ca2f628bfffc1fc6092c801ef8c146b9c1ec32ee6b2b895af0c589",
       "matches_build": true
     },
     {
       "name": "sw.mjs",
       "status": 200,
+      "bytes": 1644,
       "sha256": "2ba9388b2d93d4d032b389a0cb7e7441de062e893581e048082a78df03ae7686",
+      "matches_build": true
+    },
+    {
+      "name": "legal.html",
+      "status": 200,
+      "bytes": 13816,
+      "sha256": "9f957770ef73a821ac9593200718c1ec246d10713b21d8df3fda155696e3cb6c",
+      "matches_build": true
+    },
+    {
+      "name": "icon-192.png",
+      "status": 200,
+      "bytes": 1454,
+      "sha256": "9046dd1aa8ea969113df88a1c0ea247860b8bdf17c8c582d79287296e87b7a2e",
+      "matches_build": true
+    },
+    {
+      "name": "icon-512.png",
+      "status": 200,
+      "bytes": 4416,
+      "sha256": "387a4ff069a57080b2b4221e7bc2f249c0b5bd10db2229e115fd5116b606eed4",
+      "matches_build": true
+    },
+    {
+      "name": "apple-touch-icon.png",
+      "status": 200,
+      "bytes": 1393,
+      "sha256": "92631ba395566bec05e5856754cfca942f2c5b94cdf5e3e5c2ff16045ecc907d",
       "matches_build": true
     }
   ],
@@ -39,12 +156,19 @@
       "path": "/legal.html",
       "status": 200,
       "final_path": "/legal",
+      "request": "public legal alias",
       "passed": true
     },
     {
       "path": "/_worker.js",
       "status": 404,
       "final_path": "/_worker.js",
+      "passed": true
+    },
+    {
+      "path": "/release.json",
+      "status": 404,
+      "final_path": "/release.json",
       "passed": true
     },
     {
@@ -69,5 +193,7 @@
     "referrer-policy": "no-referrer",
     "permissions-policy": "camera=(), microphone=(), geolocation=()"
   },
+  "pwa_description": "Профіль, взаємні знайомства та короткі зустрічі на основі явної взаємної користі.",
+  "legal_notice_updated": true,
   "passed": true
 }

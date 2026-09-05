@@ -1,18 +1,29 @@
 {
-  "task":"synera-chatgpt-profile-transfer",
-  "status":"implemented-and-published",
-  "single_now":"Selective, reviewable transfer from a user's ordinary ChatGPT into the existing Synera profile form",
-  "agents":{
-    "research":"completed; official ChatGPT memory/API and complimentary-token boundary",
-    "module":"completed; web_launch/chatgpt-transfer.mjs and tests",
-    "root":"completed; UI integration, stale-preview fix, browser acceptance, build and Cloudflare publish"
+  "task": "synera-chatgpt-profile-transfer",
+  "status": "implemented-and-published",
+  "single_now": "Selective, reviewable transfer from a user's ordinary ChatGPT into the existing Synera profile form",
+  "agents": {
+    "research": "completed; official ChatGPT memory/API and complimentary-token boundary",
+    "module": "completed; web_launch/chatgpt-transfer.mjs and tests",
+    "root": "completed; UI integration, stale-preview fix, browser acceptance, build and Cloudflare publish"
   },
-  "shared_evidence":["artifacts/chatgpt-transfer/agent-plan.json","artifacts/chatgpt-transfer/validation.json","artifacts/chatgpt-transfer/live-http.json","artifacts/chatgpt-transfer/tests.txt"],
-  "release":"r7",
-  "public_url":"https://synera-pilot.pages.dev",
-  "next":"User runs the guided transfer with their own ChatGPT response, reviews the draft, then saves it",
-  "parked":["consumer ChatGPT memory API/automatic history sync","published ChatGPT MCP connector","server AI and physical phone acceptance","paid provider swarm until unknown Token Monster receipts are reconciled"],
-  "provider_calls":0,
-  "actual_usd":0,
-  "secrets_or_personal_memory_sent":false
+  "shared_evidence": [
+    "artifacts/chatgpt-transfer/agent-plan.json",
+    "artifacts/chatgpt-transfer/validation.json",
+    "artifacts/chatgpt-transfer/live-http.json",
+    "artifacts/chatgpt-transfer/tests.txt"
+  ],
+  "release": "r8",
+  "public_url": "https://synera-pilot.pages.dev",
+  "next": "User runs the guided transfer with their own ChatGPT response, reviews the draft, then saves it",
+  "parked": [
+    "consumer ChatGPT memory API/automatic history sync",
+    "published ChatGPT MCP connector",
+    "server AI and physical phone acceptance",
+    "paid provider swarm until unknown Token Monster receipts are reconciled"
+  ],
+  "provider_calls": 0,
+  "actual_usd": 0,
+  "secrets_or_personal_memory_sent": false,
+  "checked_at_utc": "2026-09-05T23:32:21.587Z"
 }
