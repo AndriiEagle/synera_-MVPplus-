@@ -4,6 +4,8 @@ No item in this document is passed merely because a page or dependency exists. U
 
 ## Current browser / Supabase results
 
+2026-09-05 update: **45/45 Node tests PASS**, both 25-file static builds PASS, mobile viewport shows 10 demo bots without horizontal overflow, and the synthetic invite → next hour → accepted journey plus opt-in OSM tiles and GPT import preview passed browser smoke. Unsaved imported fields survive a simulation tick. [Full mobile evidence and launch gates](MOBILE_PILOT.uk.md). Device installation, live signup/recovery/consent, the new SQL proposal and API-driven bots remain NOT ACCEPTED. Auth gateway was rechecked and remains HTTP 402; read-only database counts are zero.
+
 | Check | Result on 2026-09-04 |
 | --- | --- |
 | Dedicated project and schema | Applied; creation quote $0/month |

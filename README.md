@@ -6,12 +6,17 @@ Synera helps people find mutual interests and exchange practical help: a profile
 
 ## Start here
 
+**2026-09-05 mobile pilot:** installable-web-app assets for Android/iPhone, ten labelled simulation bots, hourly demo responses, an opt-in OpenStreetMap layer, owned LinkedIn CSV/GPT profile transfer and pilot terms are implemented locally. [Mobile launch checklist](docs/MOBILE_PILOT.uk.md) separates the tested demo from the still-blocked online account journey. No APK/IPA or published mobile link exists yet.
+
 Run `node web_launch/server.mjs` from this directory using the existing Node.js installation. Open the printed localhost address. The app checks the configured Supabase service before enabling login. If it is unavailable, **Переглянути демонстрацію** opens a clearly labeled synthetic scenario.
 
 For a completely offline demonstration: `node web_launch/server.mjs --demo`.
 
 | Need | Document |
 | --- | --- |
+| Install on Android/iPhone and see every launch prerequisite | [Mobile pilot](docs/MOBILE_PILOT.uk.md) |
+| Continue implementation with exact acceptance criteria | [Improved implementation prompt](docs/MOBILE_IMPLEMENTATION_PROMPT.uk.md) |
+| Review the hourly AI pack and capped-cost proposal | [Demo bot plan](docs/DEMO_BOTS.uk.md) |
 | Prepare the Gilbert meeting: research, pricing, prompts and prototype | [Meeting packet](docs/meeting-gilbert/README.uk.md) |
 | Current launch status, cost and exact blocker | [Supabase launch](docs/SUPABASE_LAUNCH.uk.md) |
 | Run, build and verify the browser version | [Browser setup](web_launch/README.md) |
@@ -40,6 +45,6 @@ For a completely offline demonstration: `node web_launch/server.mjs --demo`.
 
 The existing Supabase organization's Auth and REST endpoints return HTTP 402 `exceed_db_size_quota`. Current displayed usage is only 5%; the dashboard shows a billing cycle ending **7 September 2026**. Current size alone does not establish when a historical quota restriction will clear. See the launch document for evidence and the provider's policy.
 
-Email delivery and real Auth/REST acceptance must pass before opening registration. Public hosting has not been deployed. The original Flutter app, maps, diaries, recordings and AI are not migrated by the browser implementation.
+Email delivery and real Auth/REST acceptance must pass before opening registration. Public hosting has not been deployed. The browser now has its own opt-in city map; the original Flutter app, diaries, recordings and AI are not migrated by this implementation.
 
 The original repository is based on `ba4e07567dc06139c336f9ad9262af88f31c5e7d`. Its Firebase rules and handlers still require remediation; generated/browser files and old credentials remain in remote history. No key revocation, history rewrite, remote push or modification to the three older Supabase projects has been performed.

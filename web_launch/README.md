@@ -2,6 +2,8 @@
 
 This browser implementation covers profile → opt-in discovery → meeting requests. It accompanies the original Flutter source; it is not a completed Flutter migration.
 
+Updated 2026-09-05: [mobile pilot](../docs/MOBILE_PILOT.uk.md), ten labelled hourly demo personas, install manifest/icons/service worker, owned LinkedIn Profile.csv/GPT JSON import, map and versioned rules. Demo remains in memory and cannot create a real account.
+
 ## Run
 
 Use the existing Node.js installation from the repository root:
@@ -18,7 +20,9 @@ To run the synthetic demonstration without calling any external service:
 node web_launch/server.mjs --demo
 ```
 
-The server binds to 127.0.0.1 and serves eleven public application assets plus public configuration. The server and builder share `assets.mjs` as their allowlist. It does not serve source directories, SQL, .git, test files or credentials. A restart requires signing in again because sessions remain in memory; data successfully stored in Supabase is independent of that session.
+The server binds to 127.0.0.1 and serves 21 public application assets plus public configuration. The server and builder share `assets.mjs` as their allowlist. It does not serve source directories, SQL, .git, test files or credentials. Online sessions default to memory; an explicit remember-device checkbox can persist only the rotating refresh token. Logout removes it even if the server request fails. Persistence tests use mocked Auth responses, not live accounts.
+
+The PWA service worker caches explicit shell assets only. It never caches Auth/REST, query-string callbacks, map tiles or imported data. Offline config selects the synthetic demo with registration disabled. OpenStreetMap loads visible tiles only after an explicit UI action, uses browser caching and a per-image origin referrer, and shows attribution. The phone must use a published HTTPS origin; the PC's localhost URL is not a phone installation link.
 
 The profile screen includes a local [profile portability](../docs/PROFILE_PORTABILITY.uk.md) workflow: users can paste their own profile text or Synera JSON, confirm that they have the right to use it, review the parsed fields, and apply it to the form. Sharing uses a manual text card, Web Share when available, and clipboard fallback. It does not fetch LinkedIn/Google/social profiles, copy third-party accounts, store external account IDs, or publish a profile without the existing discoverability checkbox.
 
@@ -47,15 +51,15 @@ Email confirmation remains enabled and anonymous sign-in disabled in the project
 ## Verification
 
 ```powershell
-node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/profile-portability.test.mjs web_launch/server.test.mjs
+node --test web_launch/data.test.mjs web_launch/matching.test.mjs web_launch/economics.test.mjs web_launch/profile-portability.test.mjs web_launch/mobile-pilot.test.mjs web_launch/server.test.mjs
 node web_launch/health-check.mjs
 node web_launch/build.mjs
 ```
 
-- Thirty-three local tests passed, including 64 role-order combinations within one matching test. Online adapter tests use mocked responses and do not prove real authentication. See [meeting validation](../docs/meeting-gilbert/VALIDATION.md).
+- The test suite includes the original 33 checks plus 12 mobile-pilot checks. Online adapter tests use mocked responses and do not prove real authentication. See [mobile acceptance](../docs/MOBILE_PILOT.uk.md).
 - The SQL tests exercise owner and participant isolation, opt-in visibility, recipient responses, immutable final responses, duplicate requests and column grants.
 - The health check is read-only, sends no password and makes no automatic retry. Exit 2 means the gateway is restricted/unavailable. A reachable result still does not claim launch readiness.
-- The builder produces fifteen allowlisted/generated static files in `web_launch/dist` (or `dist-demo` with `--demo`). It refuses an unexpected existing file and never copies the parent repository. See [hosting](../docs/HOSTING.uk.md).
+- The builder produces 25 allowlisted/generated static files in `web_launch/dist` (or `dist-demo` with `--demo`). It refuses an unexpected existing file and never copies the parent repository. See [hosting](../docs/HOSTING.uk.md).
 
 The browser has passed the synthetic A → B invitation / C isolation / B acceptance journey and literal rendering of HTML-like profile text. The configured launch must also display a clear unavailable state while keeping password submission disabled during the provider restriction.
 

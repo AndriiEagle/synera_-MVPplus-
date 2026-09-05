@@ -39,3 +39,4 @@ web_launch/dist-demo/
 .env.*
 !.env.example
 *.private.json
+artifacts/*.response.txt

@@ -89,7 +89,31 @@ function parseJsonProfile(input) {
   try { parsed = JSON.parse(input); }
   catch { return null; }
   if (![parsed?.format, parsed?.version].includes(PORTABLE_PROFILE_FORMAT)) return null;
-  return cleanProfileFields(parsed.profile ?? parsed);
+  return { ...cleanProfileFields(parsed.profile ?? parsed), is_discoverable: false };
+}
+
+// One user-selected Profile.csv from the member's official LinkedIn export.
+// No Connections.csv, ZIP archive, URL fetching, or arbitrary account dump.
+export function parseProfileCsv(input, { authorized = false } = {}) {
+  if (!authorized) return parseProfileImport('', { authorized });
+  const text = String(input ?? '').replace(/^\uFEFF/, '');
+  if (text.length > 50000) throw new Error('Файл завеликий. Вибери лише Profile.csv свого профілю.');
+  if (sensitiveFindings(text).includes('secret')) return { status: 'blocked_sensitive', profile: blankProfile(), warnings: ['У файлі виявлено можливий ключ. Імпорт зупинено.'] };
+  const rows = []; let row = [], value = '', quoted = false;
+  for (let i = 0; i <= text.length; i++) {
+    const c = text[i];
+    if (c === '"') { if (quoted && text[i + 1] === '"') { value += '"'; i++; } else quoted = !quoted; }
+    else if (!quoted && (c === ',' || c === '\n' || c === undefined)) {
+      row.push(value.replace(/\r$/, '')); value = '';
+      if (c !== ',') { if (row.some(Boolean)) rows.push(row); row = []; }
+    } else if (c !== undefined) value += c;
+  }
+  if (quoted || rows.length !== 2 || rows[0].length !== rows[1].length) throw new Error('Потрібен CSV з одним власним профілем: заголовок і один запис.');
+  const fields = Object.fromEntries(rows[0].map((key, i) => [key.trim().toLowerCase(), rows[1][i]]));
+  if (!('first name' in fields) || !('last name' in fields) || !('headline' in fields || 'summary' in fields)) throw new Error('Це не Profile.csv. Файл контактів не імпортується.');
+  const profile = cleanProfileFields({ display_name: `${fields['first name']} ${fields['last name']}`, city: fields['geo location'] || fields['location'] || '', offers: fields['headline'] || fields['summary'] || '', seeks: '' });
+  if (profileSafetyFindings(profile).length) return { status: 'blocked_sensitive', profile: blankProfile(), warnings: ['У публічних полях є приватні контакти. Відредагуй файл перед імпортом.'] };
+  return { status: 'needs_review', profile, warnings: ['Взято лише ім’я, місто й заголовок. Приватні колонки пропущено. Уточни свою пропозицію та заповни «Шукаю».'] };
 }
 
 function firstLineCandidate(input) {
@@ -98,11 +122,13 @@ function firstLineCandidate(input) {
 
 export function parseProfileImport(input, { authorized = false } = {}) {
   if (!authorized) return { status: 'consent_required', profile: blankProfile(), warnings: ['Потрібне підтвердження, що це власний профіль або є дозвіл.'] };
-  const text = compact(input, 5000, { multiline: true });
+  if (String(input ?? '').length > 5000) return { status: 'needs_review', profile: blankProfile(), warnings: ['Текст завеликий. Перенеси тільки короткий профіль, до 5000 символів.'] };
+  const text = compact(String(input ?? '').replace(/^\s*```(?:json)?\s*\n?([\s\S]*?)\n?```\s*$/i, '$1'), 5000, { multiline: true });
   if (!text) return { status: 'needs_review', profile: blankProfile(), warnings: ['Встав текст профілю або Synera JSON.'] };
   const sensitive = sensitiveFindings(text);
   if (sensitive.length) return { status: 'blocked_sensitive', profile: blankProfile(), warnings: ['Знайдено email, телефон або ключ. Прибери приватні контакти/секрети перед імпортом.'] };
   const json = parseJsonProfile(text);
+  if (/^[\[{]/.test(text) && !json) return { status: 'needs_review', profile: blankProfile(), warnings: ['Потрібен JSON формату synera-profile-1, а не повний архів акаунта.'] };
   const profile = json ?? parseLabeledText(text);
   const warnings = [];
   if (!json && !Object.values(profile).some(Boolean)) {
@@ -111,6 +137,7 @@ export function parseProfileImport(input, { authorized = false } = {}) {
   }
   const missing = profileCompletion(profile).missing;
   if (missing.length) warnings.push(`Не вистачає: ${missing.join(', ')}.`);
+  profile.is_discoverable = false;
   return { status: profile.display_name && (profile.offers || profile.seeks) ? 'ready' : 'needs_review', profile, warnings };
 }
 

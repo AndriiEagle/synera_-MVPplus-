@@ -1,3 +1,5 @@
+import { BOT_PROFILES, simulationAt, simulatedReply, hourSlot } from './simulation.mjs';
+import { consentRecord, POLICY_VERSION } from './pilot-policy.mjs';
 export const DEMO_PROFILES = [
   { id: 'demo-a', display_name: 'Учасник А', city: 'Цюрих', offers: 'Відеопрезентація і дизайн профілю', seeks: 'B2B-продажі та перші інтро', is_discoverable: true },
   { id: 'demo-b', display_name: 'Учасник Б', city: 'Цюрих', offers: 'B2B-продажі та customer interviews', seeks: 'Відеопрезентація продукту', is_discoverable: true },
@@ -9,6 +11,26 @@ export class DemoStore {
   user = null;
   profiles = structuredClone(DEMO_PROFILES);
   requests = [];
+  simulationEnabled = false;
+  simulationOffset = 0;
+  consents = [];
+  constructor({ bots = false } = {}) {
+    this.simulationEnabled = bots;
+    if (bots) this.profiles = [structuredClone(DEMO_PROFILES[0]), ...structuredClone(BOT_PROFILES)];
+  }
+  simulationTime() { return new Date(Date.now() + this.simulationOffset * 3600000); }
+  async tick() {
+    if (!this.simulationEnabled || !this.user) return;
+    const at = this.simulationTime(), slot = hourSlot(at);
+    for (const request of this.requests) {
+      const bot = this.profiles.find(p => p.id === request.recipient_id && p.is_bot);
+      if (bot && bot.id !== this.user.id && request.status === 'pending' && request.created_hour < slot) {
+        Object.assign(request, simulatedReply(this.profiles.find(p => p.id === request.sender_id), bot, at));
+      }
+    }
+  }
+  async advanceHour() { this.simulationOffset++; await this.tick(); }
+  async acceptPolicy(value) { this.consents.push({ ...consentRecord(value), user_id: this.requireUser(), accepted_at: new Date().toISOString(), demo_only: true }); }
   async signIn(id = 'demo-a') {
     if (!this.profiles.some(p => p.id === id)) throw new Error('Unknown demo user');
     this.user = { id };
@@ -23,7 +45,11 @@ export class DemoStore {
   }
   async discover() {
     const id = this.requireUser();
-    return structuredClone(this.profiles.filter(p => p.id !== id && p.is_discoverable));
+    const states = this.simulationEnabled ? simulationAt(this.simulationTime()) : [];
+    return structuredClone(this.profiles.filter(p => p.id !== id && p.is_discoverable).map(p => {
+      const state = states.find(bot => bot.id === p.id);
+      return state ? { ...state, ...p, lat: state.lat, lon: state.lon } : p;
+    }));
   }
   async meetings() {
     const id = this.requireUser();
@@ -34,7 +60,7 @@ export class DemoStore {
     if (recipient === id || !this.profiles.some(p => p.id === recipient && p.is_discoverable)) throw new Error('Recipient unavailable');
     if (!note.trim() || note.length > 500) throw new Error('Invalid note');
     if (this.requests.some(r => r.sender_id === id && r.recipient_id === recipient && r.status === 'pending')) throw new Error('Pending request exists');
-    this.requests.push({ id: crypto.randomUUID(), sender_id: id, recipient_id: recipient, note: note.trim(), status: 'pending', created_at: new Date().toISOString() });
+    this.requests.push({ id: crypto.randomUUID(), sender_id: id, recipient_id: recipient, note: note.trim(), status: 'pending', created_at: new Date().toISOString(), created_hour: hourSlot(this.simulationTime()) });
   }
   async respond(id, status) {
     const user = this.requireUser();
@@ -74,15 +100,29 @@ export class SupabaseStore {
   mode = 'supabase';
   #session = null;
   #refresh = null;
-  constructor({ supabaseUrl, publishableKey }, fetchImpl = fetch) {
+  #storage = null;
+  constructor({ supabaseUrl, publishableKey, pilotSafetyEnabled = false, publicSiteUrl = '' }, fetchImpl = fetch) {
     const url = new URL(supabaseUrl);
     if (url.protocol !== 'https:' || !/^[a-z0-9]+\.supabase\.co$/.test(url.hostname) || url.username || url.password || url.pathname !== '/' || url.search || url.hash) throw new Error('Invalid project URL');
     if (!/^sb_publishable_[A-Za-z0-9_-]+$/.test(publishableKey)) throw new Error('Publishable key required');
     this.url = url.origin;
     this.key = publishableKey;
     this.fetch = fetchImpl;
+    this.pilotSafetyEnabled = pilotSafetyEnabled;
+    this.publicSiteUrl = publicSiteUrl;
   }
   get user() { return this.#session?.user ?? null; }
+  get storageKey() { return `synera-session:${this.url}`; }
+  remember(storage) { this.#storage = storage; }
+  forgetStoredSession() { try { this.#storage?.removeItem(this.storageKey); } catch {} }
+  async restore(storage) {
+    let value;
+    try { value = JSON.parse(storage.getItem(this.storageKey) || 'null'); } catch { storage.removeItem(this.storageKey); return false; }
+    if (!value?.refresh_token || typeof value.refresh_token !== 'string' || value.refresh_token.length > 4096) return false;
+    this.#storage = storage;
+    try { this.#acceptSession(await this.#send('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: value.refresh_token } })); return true; }
+    catch (error) { this.#session = null; this.forgetStoredSession(); throw error; }
+  }
   async availability() { await this.#send('/auth/v1/settings'); return true; }
   async #send(path, { method = 'GET', body, authenticated = false, prefer } = {}) {
     const headers = { apikey: this.key, 'Content-Type': 'application/json' };
@@ -103,27 +143,54 @@ export class SupabaseStore {
   #acceptSession(result) {
     if (!result?.access_token || !result?.refresh_token || !result?.user?.id) throw new Error('Session unavailable');
     this.#session = { ...result, expires_at: result.expires_at ?? Math.floor(Date.now() / 1000) + result.expires_in };
+    try { this.#storage?.setItem(this.storageKey, JSON.stringify({ refresh_token: result.refresh_token })); } catch {}
   }
   async #freshSession() {
     if (!this.#session) throw new Error('Sign in required');
     if (this.#session.expires_at > Date.now() / 1000 + 30) return;
     if (!this.#refresh) {
       this.#refresh = this.#send('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: this.#session.refresh_token } })
-        .then(value => this.#acceptSession(value)).catch(error => { this.#session = null; throw error; }).finally(() => { this.#refresh = null; });
+        .then(value => this.#acceptSession(value)).catch(error => { this.#session = null; this.forgetStoredSession(); throw error; }).finally(() => { this.#refresh = null; });
     }
     await this.#refresh;
   }
   async signIn(email, password) {
     this.#acceptSession(await this.#send('/auth/v1/token?grant_type=password', { method: 'POST', body: { email, password } }));
   }
-  async signUp(email, password) {
-    const result = await this.#send('/auth/v1/signup', { method: 'POST', body: { email, password } });
+  async signUp(email, password, accepted) {
+    if (!this.pilotSafetyEnabled) throw new Error('Пілот ще не готовий до реєстрації.');
+    if (typeof password !== 'string' || password.length < 12 || password.length > 128) throw new Error('Для нового акаунта потрібен пароль від 12 до 128 символів.');
+    const consent = consentRecord(accepted);
+    const result = await this.#send('/auth/v1/signup', { method: 'POST', body: { email, password, data: { signup_policy_version: consent.policy_version } } });
     if (result?.access_token) this.#acceptSession(result);
     return Boolean(this.user);
   }
+  async hasPolicy() {
+    if (!this.pilotSafetyEnabled) return false;
+    const rows = await this.#send(`/rest/v1/pilot_consents?user_id=eq.${encodeURIComponent(this.requireUser())}&policy_version=eq.${POLICY_VERSION}&select=policy_version&limit=1`, { authenticated: true });
+    return rows.length === 1;
+  }
+  async acceptPolicy(value) {
+    if (!this.pilotSafetyEnabled) throw new Error('Серверне підтвердження правил ще не підключене.');
+    const accepted = consentRecord(value);
+    await this.#send('/rest/v1/pilot_consents', { method: 'POST', authenticated: true, prefer: 'return=minimal',
+      body: { user_id: this.requireUser(), policy_version: accepted.policy_version, terms_accepted: true, privacy_acknowledged: true } });
+  }
+  async requestPasswordReset(email) {
+    if (!this.publicSiteUrl) throw new Error('Адресу повернення ще не налаштовано.');
+    await this.#send(`/auth/v1/recover?redirect_to=${encodeURIComponent(this.publicSiteUrl + '/')}`, { method: 'POST', body: { email } });
+  }
+  async verifyEmailToken(tokenHash, type) {
+    if (!['email', 'recovery'].includes(type) || !/^[a-fA-F0-9]{32,128}$/.test(tokenHash)) throw new Error('Недійсне посилання підтвердження.');
+    this.#acceptSession(await this.#send('/auth/v1/verify', { method: 'POST', body: { token_hash: tokenHash, type } }));
+  }
+  async updatePassword(password) {
+    if (typeof password !== 'string' || password.length < 12 || password.length > 128) throw new Error('Пароль має містити від 12 до 128 символів.');
+    await this.#send('/auth/v1/user', { method: 'PUT', authenticated: true, body: { password } });
+  }
   async signOut() {
     try { if (this.#session) await this.#send('/auth/v1/logout?scope=local', { method: 'POST', authenticated: true }); }
-    finally { this.#session = null; }
+    finally { this.#session = null; this.forgetStoredSession(); }
   }
   requireUser() { if (!this.user) throw new Error('Sign in required'); return this.user.id; }
   async ownProfile() {
