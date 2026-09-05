@@ -4,7 +4,8 @@ import { cleanProfileFields, createInvitationDraft, createShareCard, parseProfil
 import { completeProfileJson as createPortableProfileJson, importCompleteProfile as parseProfileImport } from './profile-package.mjs';
 import { normalizeBrief, briefProblems, compareRealProfiles, collaborationDraft, CAPABILITIES, CITIES, LANGUAGES, MODES, profileAIPayload, profileAIPrompt, validateAIDraft } from './profile-brief.mjs';
 import { createPeopleMap } from './map.mjs';
-import { GPT_PROFILE_PROMPT, consentRecord } from './pilot-policy.mjs';
+import { consentRecord } from './pilot-policy.mjs';
+import { CHATGPT_PROFILE_PROMPT, summarizeTransfer } from './chatgpt-transfer.mjs';
 import { meetingCalendar } from './calendar.mjs';
 const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
@@ -14,6 +15,7 @@ if (emailCallback.hash || callbackUrl.hash || callbackUrl.searchParams.has('erro
 let store, config, onlineReady = false, own, people = [], meetings = [], recipient, currentTab = 'profile', busy = false, draft, policyAction;
 let importFormat = 'text', importedBrief, pageOffset = 0, morePeople = false, activeChat, safetyPerson, aiPayload, aiSource, aiDraft;
 let otpEmail = '', otpConsent = null;
+let importSnapshot = '', importRevision = 0;
 const labels = { pending: 'Очікує відповіді', accepted: 'Прийнято', declined: 'Відхилено', cancelled: 'Скасовано' };
 const peopleMap = createPeopleMap($('#people-map'), person => {
   $('#map-selected').textContent = person.display_name + ' · ' + person.city + ' (центр міста)';
@@ -304,9 +306,23 @@ $('#apply-ai').addEventListener('click',()=>{
 });
 $('#ai-cancel').addEventListener('click',()=>{$('#ai-dialog').close();resetAI();});
 
-$('#import-profile').addEventListener('click', () => { $('#import-status').textContent = ''; $('#import-preview').hidden = true; $('#apply-import').hidden = true; $('#import-dialog').showModal(); });
+function resetImportPreview() { importRevision++; importSnapshot = ''; importedBrief = undefined; $('#import-preview').hidden = true; $('#apply-import').hidden = true; $('#import-brief-summary').replaceChildren(); }
+function resetImportSession() {
+  resetImportPreview(); importFormat = 'text'; $('#import-status').textContent = '';
+  $('#profile-import-text').value = ''; $('#profile-import-text').maxLength = 5000; $('#profile-authorized').checked = false;
+  for (const id of ['import-display-name', 'import-city', 'import-offers', 'import-seeks', 'profile-file']) $('#' + id).value = '';
+}
+function openProfileImport(chatgpt = false) {
+  resetImportSession(); $('#profile-source').selectedIndex = 0;
+  if (chatgpt) $('#profile-source').value = 'chatgpt';
+  updateImportSource(); $('#import-dialog').showModal();
+}
+$('#import-profile').addEventListener('click', () => openProfileImport());
+$('#start-chatgpt-transfer').addEventListener('click', () => openProfileImport(true));
 $('#import-cancel').addEventListener('click', () => $('#import-dialog').close());
+$('#import-dialog').addEventListener('close', resetImportSession);
 $('#parse-profile').addEventListener('click', () => {
+  resetImportPreview();
   let result;
   try { result = (importFormat === 'csv' ? parseProfileCsv : parseProfileImport)($('#profile-import-text').value, { authorized: $('#profile-authorized').checked }); }
   catch (error) { $('#import-status').textContent = error.message; $('#import-preview').hidden = true; $('#apply-import').hidden = true; return; }
@@ -314,19 +330,27 @@ $('#parse-profile').addEventListener('click', () => {
   $('#import-preview').hidden = !['ready', 'needs_review'].includes(result.status);
   $('#apply-import').hidden = $('#import-preview').hidden;
   if (!$('#import-preview').hidden) {
+    importSnapshot = JSON.stringify([importFormat, $('#profile-import-text').value]);
     importedBrief = result.profile.brief;
     $('#import-display-name').value = result.profile.display_name;
     $('#import-city').value = result.profile.city;
     $('#import-offers').value = result.profile.offers;
     $('#import-seeks').value = result.profile.seeks;
+    if (importedBrief) {
+      $('#import-brief-summary').append(el('h3', 'Умови з відповіді'));
+      for (const row of summarizeTransfer(result.profile)) { const item = el('p'); item.append(el('strong', row.label + ': '), el('span', row.value)); $('#import-brief-summary').append(item); }
+      $('#import-brief-summary').append(el('p', 'Це пропозиції з ChatGPT. Перевір актуальність; усі умови можна змінити у формі перед збереженням.', 'fine'));
+    }
+    $('#import-preview').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 });
 $('#apply-import').addEventListener('click', () => {
   if (!$('#profile-authorized').checked) { $('#import-status').textContent = 'Підтвердь право переносити цей профіль.'; return; }
+  if ($('#import-preview').hidden || importSnapshot !== JSON.stringify([importFormat, $('#profile-import-text').value])) { resetImportPreview(); $('#import-status').textContent = 'Відповідь змінилася. Перевір нове прев’ю перед застосуванням.'; return; }
   const profile = { ...importPreviewProfile(), brief: importedBrief }, findings = profileSafetyFindings(profile);
   if (findings.length) { $('#import-status').textContent = 'Прибери email, телефон або ключі з полів перед застосуванням.'; return; }
   if (!profile.display_name || (!profile.offers && !profile.seeks)) { $('#import-status').textContent = 'Потрібне ім’я і хоча б одна конкретна пропозиція або потреба.'; return; }
-  fillProfileForm(profile); form.elements.namedItem('is_discoverable').checked = false; $('#profile-import-text').value = ''; $('#profile-authorized').checked = false; $('#import-dialog').close(); message('Поля профілю заповнено з імпорту. Видимість вимкнена. Перевір і натисни «Зберегти профіль».');
+  fillProfileForm(profile); form.dataset.dirty = 'true'; form.elements.namedItem('is_discoverable').checked = false; $('#profile-import-text').value = ''; $('#profile-authorized').checked = false; resetImportPreview(); $('#import-dialog').close(); message('Поля й умови заповнено з імпорту. Видимість вимкнена. Перевір і натисни «Зберегти профіль».');
 });
 function openShareDialog() {
   try {
@@ -356,25 +380,52 @@ $('#native-share-profile').addEventListener('click', async () => {
 const importTools = el('div', undefined, 'import-tools');
 const fileLabel = el('label', 'Обрати свій файл: Profile.csv, .json або .txt');
 const fileInput = el('input'); fileInput.type = 'file'; fileInput.id = 'profile-file'; fileInput.accept = '.csv,.json,.txt'; fileLabel.append(fileInput);
-const promptDetails = el('details'); promptDetails.append(el('summary', 'Перенести профіль із ChatGPT'));
-const promptText = el('textarea'); promptText.id = 'gpt-profile-prompt'; promptText.readOnly = true; promptText.value = GPT_PROFILE_PROMPT; promptText.rows = 6; promptDetails.append(promptText);
-promptDetails.append(btn('Скопіювати промпт для GPT', async () => { $('#import-status').textContent = await copyText(GPT_PROFILE_PROMPT, '#gpt-profile-prompt') ? 'Встав промпт у власний чат GPT, потім перенеси сюди лише отриманий JSON.' : 'Скопіюй промпт із поля вручну.'; }, true));
+const promptDetails = el('section', undefined, 'chatgpt-guide'); promptDetails.id = 'chatgpt-guide'; promptDetails.hidden = true;
+promptDetails.append(el('h3', 'Твій ChatGPT → твій профіль'));
+promptDetails.append(el('p', 'Synera не читає пам’ять твого ChatGPT. Попроси свій звичайний чат скласти професійну чернетку з того, що йому доступно. Передай сюди лише результат.', 'fine'));
+const transferSteps = el('ol', undefined, 'transfer-steps');
+for (const [title, hint] of [['Скопіюй завдання', 'Готова інструкція — без твоїх особистих даних.'], ['Встав у свій ChatGPT', 'У звичайний чат із доступною пам’яттю або в розмову, де ти вже розповідав про себе.'], ['Поверни відповідь сюди', 'Встав JSON нижче. Synera розбере поля, а ти перевіриш чернетку.']]) { const li = el('li'); li.append(el('strong', title), el('span', hint)); transferSteps.append(li); }
+promptDetails.append(transferSteps);
+const transferActions = el('div', undefined, 'actions');
+const copyPromptButton = btn('1. Скопіювати завдання', async () => { const copied = await copyText(CHATGPT_PROFILE_PROMPT, '#gpt-profile-prompt'); $('#import-status').textContent = copied ? 'Скопійовано. Відкрий свій ChatGPT і встав завдання. Потім поверни лише відповідь JSON.' : 'Копіювання недоступне. Відкрий текст завдання нижче й скопіюй вручну.'; if (!copied) promptDisclosure.open = true; }); copyPromptButton.id = 'copy-chatgpt-transfer';
+const openChatGPT = el('a', '2. Відкрити ChatGPT ↗', 'button-link quiet'); openChatGPT.href = 'https://chatgpt.com/'; openChatGPT.target = '_blank'; openChatGPT.rel = 'noopener noreferrer';
+transferActions.append(copyPromptButton, openChatGPT); promptDetails.append(transferActions);
+const promptDisclosure = el('details'); promptDisclosure.append(el('summary', 'Переглянути завдання'));
+const promptText = el('textarea'); promptText.id = 'gpt-profile-prompt'; promptText.setAttribute('aria-label', 'Завдання для твого ChatGPT'); promptText.readOnly = true; promptText.value = CHATGPT_PROFILE_PROMPT; promptText.rows = 6; promptDisclosure.append(promptText); promptDetails.append(promptDisclosure);
 const importHint = el('p', 'LinkedIn: Settings & Privacy → Data privacy → Get a copy of your data. Вибери власний Profile.csv. Повний архів, контакти й посилання на чужі профілі не імпортуються.', 'fine');
-importTools.append(fileLabel, importHint, promptDetails); $('#profile-source').closest('label').after(importTools);
+importTools.append(promptDetails, fileLabel, importHint); $('#profile-source').closest('label').after(importTools);
 importTools.before($('#profile-authorized').closest('label'));
-const gptOption = el('option', 'ChatGPT → Synera JSON'); $('#profile-source').append(gptOption);
+const gptOption = el('option', 'Мій ChatGPT'); gptOption.value = 'chatgpt'; $('#profile-source').append(gptOption);
+function updateImportSource() {
+  const fromChatGPT = $('#profile-source').value === 'chatgpt';
+  promptDetails.hidden = !fromChatGPT; fileLabel.hidden = fromChatGPT; importHint.hidden = fromChatGPT;
+  $('#paste-chatgpt-response').hidden = !fromChatGPT;
+  $('#profile-import-text').placeholder = fromChatGPT ? 'Встав сюди відповідь JSON із твого ChatGPT…' : 'Name: ...\nCity: ...\nI can help with: ...\nLooking for: ...';
+}
+$('#paste-chatgpt-response').addEventListener('click', async () => {
+  if (!$('#profile-authorized').checked) { $('#import-status').textContent = 'Спочатку підтвердь право перенести ці дані.'; return; }
+  const revision = importRevision;
+  try {
+    const text = await navigator.clipboard.readText();
+    if (!$('#profile-authorized').checked || revision !== importRevision) return;
+    if (text.length > 5000) { $('#import-status').textContent = 'Відповідь завелика. Потрібен короткий профіль JSON, а не вся переписка.'; return; }
+    resetImportPreview(); importFormat = 'text'; $('#profile-import-text').value = text; $('#parse-profile').click();
+  } catch { $('#import-status').textContent = 'Натисни на поле відповіді й вибери «Вставити» або Ctrl+V.'; $('#profile-import-text').focus(); }
+});
 fileInput.addEventListener('change', async () => {
   const file = fileInput.files?.[0]; if (!file) return;
+  resetImportPreview(); const revision = importRevision;
   if (!$('#profile-authorized').checked) { $('#import-status').textContent = 'Спочатку підтвердь право на перенесення, потім вибери файл.'; fileInput.value = ''; return; }
   const csv = /\.csv$/i.test(file.name);
   if (!/\.(csv|json|txt)$/i.test(file.name) || file.size > (csv ? 50000 : 10000)) { $('#import-status').textContent = 'Вибери короткий профіль: CSV до 50 KB або JSON/TXT до 10 KB. Повний архів акаунта не підходить.'; fileInput.value = ''; return; }
-  const text = await file.text(); if (!$('#profile-authorized').checked) return;
+  const text = await file.text(); if (!$('#profile-authorized').checked || revision !== importRevision) return;
   importFormat = csv ? 'csv' : 'text'; $('#profile-import-text').maxLength = csv ? 50000 : 5000; $('#profile-import-text').value = text;
   $('#parse-profile').click(); fileInput.value = '';
 });
-$('#profile-import-text').addEventListener('input', () => { $('#import-preview').hidden = true; $('#apply-import').hidden = true; });
-$('#profile-source').addEventListener('change', () => { importFormat = 'text'; $('#profile-import-text').maxLength = 5000; $('#import-preview').hidden = true; $('#apply-import').hidden = true; });
-$('#profile-authorized').addEventListener('change', () => { if (!$('#profile-authorized').checked) { $('#import-preview').hidden = true; $('#apply-import').hidden = true; } });
+$('#profile-import-text').addEventListener('input', resetImportPreview);
+$('#profile-import-text').addEventListener('paste', () => { setTimeout(() => { if ($('#profile-authorized').checked) $('#parse-profile').click(); }, 0); });
+$('#profile-source').addEventListener('change', () => { importFormat = 'text'; $('#profile-import-text').maxLength = 5000; resetImportPreview(); updateImportSource(); });
+$('#profile-authorized').addEventListener('change', () => { if (!$('#profile-authorized').checked) resetImportPreview(); });
 $('#share-dialog .actions').append(btn('Завантажити JSON', () => {
   const blob = new Blob([createPortableProfileJson(readProfileForm())], { type: 'application/json' }); const url = URL.createObjectURL(blob);
   const link = el('a'); link.href = url; link.download = 'synera-profile.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);

@@ -174,7 +174,7 @@ test('published worker serves only the allowlist, keeps configuration closed and
   for (const path of ['/_worker.js', '/release.json', '/neon/schema.proposal.sql', '/config.public.json', '/server/local-profile-ai.mjs', '/data.mjs', '/lab.html']) assert.equal((await worker.fetch(new Request(origin + path), settings)).status, 404);
   const response = await worker.fetch(new Request(origin + '/config.json'), settings);
   const config = await response.json(); assert.equal(config.registrationEnabled, false); assert.equal(config.backend, 'neon');
-  assert.equal(response.headers.get('Cache-Control'), 'no-store'); assert.match(response.headers.get('Content-Security-Policy'), /connect-src 'self';/);
+  assert.equal(response.headers.get('Cache-Control'), 'no-store'); assert.equal(response.headers.get('Strict-Transport-Security'), 'max-age=31536000'); assert.match(response.headers.get('Content-Security-Policy'), /connect-src 'self';/);
   assert.doesNotMatch(JSON.stringify(config), /PILOT_EMAILS|AUTH_URL|DATA_URL/);
 });
 

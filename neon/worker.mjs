@@ -173,7 +173,7 @@ export function createNeonWorker(publicAssets) {
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);
     const headers = new Headers(response.headers);
-    headers.set('Cache-Control', 'no-store'); headers.set('X-Content-Type-Options', 'nosniff'); headers.set('Referrer-Policy', 'no-referrer');
+    headers.set('Cache-Control', 'no-store'); headers.set('Strict-Transport-Security', 'max-age=31536000'); headers.set('X-Content-Type-Options', 'nosniff'); headers.set('Referrer-Policy', 'no-referrer');
     headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
     headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; worker-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'");
     return new Response(response.body, { status: response.status, headers });

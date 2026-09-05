@@ -1,0 +1,73 @@
+{
+  "checked_at_utc": "2026-09-05T22:52:39.960Z",
+  "origin": "https://synera-pilot.pages.dev",
+  "release": "r7",
+  "assets": [
+    {
+      "name": "index.html",
+      "status": 200,
+      "sha256": "c99431f838f4e1ef1070e2651ebbe4f3523e198783fe2d6870ad77f5ea182c3b",
+      "matches_build": true
+    },
+    {
+      "name": "app.mjs",
+      "status": 200,
+      "sha256": "bda31dae4976d629da6d5f242fcc3005e37d4e64c699755231689b244bb82bf3",
+      "matches_build": true
+    },
+    {
+      "name": "style.css",
+      "status": 200,
+      "sha256": "0cabe0f1edccbce837e7589ef096801b214f7829f3304a0e88ef36b86844860f",
+      "matches_build": true
+    },
+    {
+      "name": "chatgpt-transfer.mjs",
+      "status": 200,
+      "sha256": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40",
+      "matches_build": true
+    },
+    {
+      "name": "sw.mjs",
+      "status": 200,
+      "sha256": "2ba9388b2d93d4d032b389a0cb7e7441de062e893581e048082a78df03ae7686",
+      "matches_build": true
+    }
+  ],
+  "boundaries": [
+    {
+      "path": "/legal.html",
+      "status": 200,
+      "final_path": "/legal",
+      "passed": true
+    },
+    {
+      "path": "/_worker.js",
+      "status": 404,
+      "final_path": "/_worker.js",
+      "passed": true
+    },
+    {
+      "path": "/api/neon/data/profiles",
+      "status": 403,
+      "final_path": "/api/neon/data/profiles",
+      "request": "anonymous without X-Synera-Client",
+      "passed": true
+    },
+    {
+      "path": "/api/neon/data/profiles",
+      "status": 401,
+      "final_path": "/api/neon/data/profiles",
+      "request": "browser client header without session",
+      "passed": true
+    }
+  ],
+  "security_headers": {
+    "strict-transport-security": "max-age=31536000",
+    "content-security-policy": "present",
+    "x-content-type-options": "nosniff",
+    "referrer-policy": "no-referrer",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()"
+  },
+  "passed": true
+}
