@@ -19,7 +19,7 @@ const peopleMap = createPeopleMap($('#people-map'), person => {
   $('#map-selected').textContent = person.display_name + ' · ' + person.city + ' (центр міста)';
   document.getElementById('person-' + person.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
-function message(text, error = false) { $('#notice').textContent = text; $('#notice').classList.toggle('error', error); }
+function message(text, error = false) { $('#notice').textContent = text; $('#notice').classList.toggle('error', error); if (error) $('#notice').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
 function el(tag, text, className) { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; }
 function btn(text, action, quiet = false) { const node = el('button', text, quiet ? 'quiet' : ''); node.type = 'button'; node.addEventListener('click', () => run(action)); return node; }
 function closeDialog(selector) { const dialog = $(selector); if (dialog.open) dialog.close(); }
@@ -70,19 +70,28 @@ function applyAuthState() {
   $('#signup').hidden = config?.backend === 'neon' || !config?.registrationEnabled;
   $('#otp-tools').hidden = config?.backend !== 'neon' || !otpEmail;
   $('#otp-code').required = config?.backend === 'neon' && Boolean(otpEmail);
+  if (config?.backend === 'neon') {
+    const continuing = Boolean(store?.user);
+    $('#auth-title').textContent = continuing ? 'Завершимо вхід' : otpEmail ? 'Перевір свою пошту' : 'Почни зі знайомства';
+    $('#auth-step').textContent = continuing ? 'КРОК 3 / 3 · ТВІЙ ПРОФІЛЬ' : otpEmail ? 'КРОК 2 / 3 · ПІДТВЕРДЖЕННЯ' : 'КРОК 1 / 3 · ВХІД';
+    $('#auth-submit').textContent = continuing ? 'Продовжити вхід' : otpEmail ? 'Підтвердити код' : 'Отримати код на пошту';
+    $('#otp-code').required = Boolean(otpEmail) && !continuing;
+    $('#otp-field').hidden = !otpEmail || continuing;
+    $('#otp-tools').hidden = !otpEmail || continuing;
+  }
   $('#run-ai').disabled = busy || !config?.localAI?.enabled || !$('#ai-consent').checked;
   $('#apply-ai').disabled = busy || !aiDraft || !$('#ai-consent').checked;
   $('#more-people').hidden = !morePeople;
 }
 async function run(action) {
   if (busy) return;
-  busy = true; document.querySelectorAll('button').forEach(b => b.disabled = true);
+  busy = true; $('#auth-form').setAttribute('aria-busy', 'true'); document.querySelectorAll('button').forEach(b => b.disabled = true);
   try { await action(); }
   catch (error) {
     message(error instanceof ServiceError ? error.message : (error?.userMessage || 'Не вдалося завершити дію. Перевір дані та з’єднання. Незбережені поля залишаються у формі.'), true);
     if (error?.status === 402) { onlineReady = false; $('#mode').textContent = 'Вхід тимчасово недоступний'; }
     if (!store?.user && own?.id) showSignedOut();
-  } finally { busy = false; document.querySelectorAll('button').forEach(b => b.disabled = false); applyAuthState(); }
+  } finally { busy = false; $('#auth-form').setAttribute('aria-busy', 'false'); document.querySelectorAll('button').forEach(b => b.disabled = false); applyAuthState(); }
 }
 function knownError(text) { const error = new Error(text); error.userMessage = text; return error; }
 function requireAccount() { if (!store?.user) throw knownError('Це чернетка у вкладці. Для збереження, пошуку людей і зустрічей потрібно увійти.'); }
@@ -118,7 +127,7 @@ async function checkOnline() {
   try { await store.availability(); }
   catch (error) { $('#mode').textContent = 'Вхід тимчасово недоступний'; $('#welcome-text').textContent = 'База тимчасово не приймає вхід. Ти можеш підготувати власний профіль у вкладці й зберегти копію файлом.'; throw error instanceof ServiceError ? error : knownError('Онлайн-вхід зараз недоступний. Чернетка та імпорт власного профілю працюють у вкладці.'); }
   if (!config.realPilotEnabled || !config.pilotSafetyEnabled) { $('#mode').textContent = 'Готуємо відкриття пілоту'; $('#welcome-text').textContent = 'Онлайн-сервіс відповідає. Реєстрація відкриється після перевірки правил і захисту даних.'; return; }
-  onlineReady = true; $('#mode').textContent = 'Пілот для реальних учасників'; $('#welcome-text').textContent = 'Увійди або створи акаунт. Новий профіль прихований, доки ти не дозволиш його показ.'; applyAuthState();
+  onlineReady = true; $('#mode').textContent = 'Приватний пілот'; $('#welcome-text').textContent = 'Увійди за запрошенням. Ми надішлемо одноразовий код на твій email.'; applyAuthState();
 }
 async function load({ profile = false } = {}) {
   requireAccount();
@@ -210,23 +219,25 @@ $('#check-online').addEventListener('click',()=>run(checkOnline));
 $('#policy-cancel').addEventListener('click',()=>{policyAction=null;$('#password').value='';$('#policy-dialog').close();});
 $('#policy-dialog').addEventListener('cancel',()=>{policyAction=null;$('#password').value='';});
 $('#policy-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{const accepted=consentRecord({terms:$('#accept-terms').checked,privacy:$('#accept-privacy').checked});const action=policyAction;policyAction=null;$('#policy-dialog').close();if(action)await action(accepted);});});
+async function sendLoginCode(accepted) {
+  const email = $('#email').value.trim();
+  await store.requestOtp(email, accepted); otpEmail = email; otpConsent = accepted;
+  $('#email').readOnly = true; $('#otp-field').hidden = false; $('#otp-code').value = '';
+  $('#welcome-text').textContent = 'Введи 6 цифр з останнього листа. Якщо листа немає, перевір «Спам».';
+  applyAuthState(); message('Код надіслано. Відкрий останній лист від Synera / Neon.'); $('#otp-code').focus();
+}
 function requestLoginCode() {
   if (!$('#email').reportValidity() || !$('#email').value || !config.registrationEnabled) return;
-  requestPolicy(async accepted => {
-    const email = $('#email').value.trim();
-    await store.requestOtp(email, accepted); otpEmail = email; otpConsent = accepted;
-    $('#email').readOnly = true; $('#otp-field').hidden = false; $('#otp-code').value = '';
-    $('#auth-submit').textContent = 'Підтвердити код';
-    message('Код надіслано на твою пошту. Введи його тут; перевір також «Спам».'); $('#otp-code').focus();
-  });
+  if (otpConsent && otpEmail === $('#email').value.trim()) { run(() => sendLoginCode(otpConsent)); return; }
+  requestPolicy(sendLoginCode);
 }
 $('#resend-otp').addEventListener('click', requestLoginCode);
 $('#change-otp-email').addEventListener('click', () => { otpEmail = ''; otpConsent = null; $('#email').readOnly = false; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#auth-submit').textContent = 'Надіслати код'; applyAuthState(); $('#email').focus(); });
 $('#auth-form').addEventListener('submit',event=>{event.preventDefault();
   if (config?.backend === 'neon') {
-    if (!otpEmail) { requestLoginCode(); return; }
-    run(async()=>{ try { await store.verifyOtp(otpEmail, $('#otp-code').value.trim()); } finally { $('#otp-code').value = ''; }
-      const accepted = otpConsent; otpConsent = null; await finishOnlineSignIn(accepted); }); return;
+    if (!otpEmail && !store.user) { requestLoginCode(); return; }
+    run(async()=>{ if (!store.user) { await store.verifyOtp(otpEmail, $('#otp-code').value.trim()); $('#otp-code').value = ''; }
+      await finishOnlineSignIn(otpConsent); otpConsent = null; }); return;
   }
   run(async()=>{store.remember($('#remember-session').checked?safeStorage():null);try{await store.signIn($('#email').value.trim(),$('#password').value);}finally{$('#password').value='';}await finishOnlineSignIn();});});
 $('#signup').addEventListener('click',()=>{if(!$('#auth-form').reportValidity())return;if($('#password').value.length<12){message('Для нового акаунта потрібен пароль від 12 до 128 символів.',true);return;}requestPolicy(async consent=>{let ready;try{ready=await store.signUp($('#email').value.trim(),$('#password').value,consent);}finally{$('#password').value='';}if(ready){await store.acceptPolicy(consent);await load({profile:true});tab('profile');}message(ready?'Акаунт створено. Перевір профіль і збережи.':'Перевір пошту, підтвердь email і увійди. На першому вході підтвердження правил буде записано з акаунтом.');});});
@@ -393,7 +404,7 @@ try {
     $('#session-hint').textContent = 'Вхід кодом із email. На спільному пристрої натискай «Вийти» після роботи.';
   }
   $('#registration-note').textContent = config.registrationEnabled ? 'Реєстрація відкрита. Для нового акаунта потрібні підтвердження email і пароль від 12 символів.' : 'Реєстрація закрита до завершення перевірки сервісу.';
-  if (config.backend === 'neon') $('#registration-note').textContent = config.registrationEnabled ? 'Приватний пілот за запрошенням. База й авторизація — Neon. Пароль не потрібен.' : 'Готуємо вхід через Neon. Можна вже заповнити власну чернетку.';
+  if (config.backend === 'neon') $('#registration-note').textContent = config.registrationEnabled ? 'Пароль не потрібен. Профіль прихований, доки ти сам не ввімкнеш його видимість.' : 'Готуємо вхід. Можна вже заповнити власну чернетку.';
   await run(async () => {
     await checkOnline();
     if (!onlineReady) return;

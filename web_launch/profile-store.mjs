@@ -9,7 +9,7 @@ export function validateProfile(p) {
 }
 
 export class ServiceError extends Error {
-  constructor(status) {
+  constructor(status, code) {
     const messages = {
       400: 'Перевір email і дані входу. Код або посилання підтвердження могли застаріти.',
       401: 'Сесію завершено. Увійди ще раз.',
@@ -19,8 +19,17 @@ export class ServiceError extends Error {
       422: 'Перевір введені дані.',
       429: 'Забагато спроб. Зачекай кілька хвилин перед наступною.',
     };
-    super(messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
-    this.name = 'ServiceError'; this.status = status;
+    const authMessages = {
+      otp_invalid: 'Код неправильний або вже використаний. Перевір останній лист або натисни «Надіслати код знову».',
+      otp_verification_unavailable: 'Не вдалося перевірити код через з’єднання. Спробуй підтвердити ще раз.',
+      otp_delivery_unavailable: 'Не вдалося надіслати лист. Зачекай хвилину й повтори спробу.',
+      session_cookie_unavailable: 'Email підтверджено, але зберегти вхід не вдалося. Потрібен новий код. Якщо помилка повториться, повідом оператору: AUTH-COOKIE.',
+      session_token_unavailable: 'Вхід підтверджено, але доступ до профілю ще не отримано. Спробуй продовжити вхід. Код помилки: AUTH-TOKEN.',
+      session_unavailable: 'Не вдалося відновити з’єднання з акаунтом. Спробуй ще раз.',
+      data_unavailable: 'Не вдалося завантажити або зберегти дані. Повтори дію; введені поля залишаються у формі.',
+    };
+    super((code === 'otp_invalid' || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    this.name = 'ServiceError'; this.status = status; this.code = Object.hasOwn(authMessages, code) ? code : undefined;
   }
 }
 

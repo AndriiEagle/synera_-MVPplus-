@@ -23,7 +23,8 @@ export class NeonStore extends ProfileStore {
       ...(body === undefined ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(20000) });
     if (!response.ok) {
       if (response.status === 401) this.#user = null;
-      throw new ServiceError(response.status);
+      const details = await response.json().catch(() => null);
+      throw new ServiceError(response.status, details?.error);
     }
     const text = await response.text();
     return text ? JSON.parse(text) : null;

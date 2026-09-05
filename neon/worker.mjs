@@ -3,12 +3,14 @@ import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
 const SESSION_COOKIE = '__Host-synera-session';
-const NEON_COOKIE = '__Secure-neonauth.session_token';
+// Exact upstream name from neondatabase/neon-js packages/auth/src/server/constants.ts.
+// The overview docs still show an older spelling; accepting it loses successful OTP sessions.
+const NEON_COOKIE = '__Secure-neon-auth.session_token';
 const TABLES = new Set(['profiles', 'pilot_consents', 'meeting_requests', 'meeting_messages', 'profile_blocks', 'profile_reports']);
 const METHODS = new Set(['GET', 'POST', 'PATCH', 'DELETE']);
 const jsonHeaders = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
 const answer = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { ...jsonHeaders, ...headers } });
-class GatewayError extends Error { constructor(status) { super('Gateway request rejected'); this.status = status; } }
+class GatewayError extends Error { constructor(status, code = 'service_unavailable') { super('Gateway request rejected'); this.status = status; this.code = code; } }
 
 function originValue(value) {
   const url = new URL(value);
@@ -39,9 +41,9 @@ function cookieValue(request) {
 function providerCookie(response) {
   const values = response.headers.getSetCookie();
   const found = values.map(v => v.split(';')[0]).filter(v => v.startsWith(NEON_COOKIE + '='));
-  if (found.length !== 1) throw new GatewayError(503);
+  if (found.length !== 1) throw new GatewayError(503, 'session_cookie_unavailable');
   const value = found[0].slice(NEON_COOKIE.length + 1);
-  if (!value || value.length > 4096 || /[^\x21-\x3a\x3c-\x7e]/.test(value)) throw new GatewayError(503);
+  if (!value || value.length > 4096 || /[^\x21-\x3a\x3c-\x7e]/.test(value)) throw new GatewayError(503, 'session_cookie_unavailable');
   return value;
 }
 function sessionCookie(value) { return `${SESSION_COOKIE}=${value}; Path=/; Secure; HttpOnly; SameSite=Lax${value ? '' : '; Max-Age=0'}`; }
@@ -73,14 +75,18 @@ function checkedEmail(body, allowed) {
   if (!allowed.has(email)) throw new GatewayError(403);
   return email;
 }
-async function checkedFetch(fetchImpl, url, init) {
-  const response = await fetchImpl(url, { ...init, redirect: 'manual', signal: AbortSignal.timeout(12000), cache: 'no-store' });
-  if (!response.ok) throw new GatewayError([400, 401, 403, 409, 422, 429].includes(response.status) ? response.status : 503);
+async function checkedFetch(fetchImpl, url, init, code = 'service_unavailable') {
+  let response;
+  try { response = await fetchImpl(url, { ...init, redirect: 'manual', signal: AbortSignal.timeout(12000), cache: 'no-store' }); }
+  catch { throw new GatewayError(503, code); }
+  if (!response.ok) throw new GatewayError([400, 401, 403, 409, 422, 429].includes(response.status) ? response.status : 503,
+    code === 'otp_verification_unavailable' && [400, 401, 422].includes(response.status) ? 'otp_invalid' : code);
   return response;
 }
 async function authRequest(fetchImpl, endpoints, path, { method = 'GET', body, cookie = '' } = {}) {
   return checkedFetch(fetchImpl, endpoints.auth + path, { method, headers: { 'Content-Type': 'application/json', Origin: endpoints.origin,
-    ...(cookie ? { Cookie: `${NEON_COOKIE}=${cookie}` } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    'X-Neon-Auth-Middleware': 'true', ...(cookie ? { Cookie: `${NEON_COOKIE}=${cookie}` } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) },
+    path === '/sign-in/email-otp' ? 'otp_verification_unavailable' : path === '/email-otp/send-verification-otp' ? 'otp_delivery_unavailable' : 'session_unavailable');
 }
 async function getSession(fetchImpl, endpoints, cookie, allowed) {
   if (!cookie) return null;
@@ -89,7 +95,7 @@ async function getSession(fetchImpl, endpoints, cookie, allowed) {
   if (!data?.session) return null;
   const user = publicUser(data, allowed), jwt = response.headers.get('set-auth-jwt');
   // Shape validation only. The Neon Data API, not this proxy, verifies the signature.
-  if (!jwt || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(jwt) || jwt.length > 16384) throw new GatewayError(503);
+  if (!jwt || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(jwt) || jwt.length > 16384) throw new GatewayError(503, 'session_token_unavailable');
   return { user, jwt };
 }
 
@@ -142,18 +148,20 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     if (prefer && !/^(return=(minimal|representation)|resolution=(merge|ignore)-duplicates)(,(return=(minimal|representation)|resolution=(merge|ignore)-duplicates))*$/.test(prefer)) throw new GatewayError(400);
     const response = await checkedFetch(fetchImpl, endpoints.data + '/' + match[1] + url.search, { method: request.method,
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt, ...(prefer ? { Prefer: prefer } : {}) },
-      ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+      ...(body === undefined ? {} : { body: JSON.stringify(body) }) }, 'data_unavailable');
     // RLS and column grants enforce ownership even if somebody bypasses the browser UI.
     return new Response(response.body, { status: response.status, headers: jsonHeaders });
   } catch (error) {
     const status = error instanceof GatewayError ? error.status : 503;
     const clear = status === 401 || new URL(request.url).pathname === '/api/neon/logout';
-    return answer({ error: 'service_unavailable', status }, status, clear ? { 'Set-Cookie': sessionCookie('') } : {});
+    return answer({ error: error instanceof GatewayError ? error.code : 'service_unavailable', status }, status, clear ? { 'Set-Cookie': sessionCookie('') } : {});
   }
 }
 
 export function createNeonWorker(publicAssets) {
-  const allowedAssets = new Set(['/', ...publicAssets.map(name => '/' + name)]);
+  // Pages redirects .html URLs to extensionless paths. Admit only aliases of
+  // already-public HTML files, otherwise /legal.html redirects into our 404.
+  const allowedAssets = new Set(['/', ...publicAssets.flatMap(name => name.endsWith('.html') ? ['/' + name, '/' + name.slice(0, -5)] : ['/' + name])]);
   return { async fetch(request, env) {
     const url = new URL(request.url);
     let response;

@@ -1,8 +1,8 @@
 {
-  "checked_at_utc": "2026-09-05T20:03:30.9364603Z",
+  "checked_at_utc": "2026-09-05T20:45:18.681Z",
   "scope": "Neon and Cloudflare migration for a real-user Synera PWA pilot",
   "tests": {
-    "passed": 67,
+    "passed": 71,
     "failed": 0,
     "evidence": "artifacts/neon-tests.txt",
     "provider_responses": "local test doubles, not live Auth or RLS"
@@ -30,18 +30,16 @@
   "release": {
     "directory": "web_launch/dist-neon",
     "files": 23,
-    "archive": "../synera-neon-pilot-20260905-r2.zip",
-    "bytes": 68092,
-    "sha256": "E935AFD19AF99C529ABC5EDA509BA298FBB5619D872971F8B4247BC761386C96",
+    "archive": "../synera-neon-pilot-20260905-r5.zip",
+    "bytes": 71398,
+    "sha256": "A94E60E8C75D8093348E454E9BD8905DFAC90C32D5F10BA1D1F55190CFF24AFE",
     "cloudflare_pages_advanced_mode": true,
     "unexpected_private_archive_entries": [],
     "published": true,
-    "public_url": "https://synera-pilot.pages.dev"
+    "public_url": "https://synera-pilot.pages.dev",
+    "revision": "r5"
   },
   "not_verified": [
-    "Neon OTP email delivery",
-    "Neon session cookie and JWT contract",
-    "saved profile through real-user HTTP session",
     "two real-user journeys",
     "physical Android and iPhone installation",
     "automatic public profile AI"
@@ -97,14 +95,22 @@
     "account_id": "37d2df88cd4557b3c81da2a7002bba1e"
   },
   "live_browser": {
-    "status": "Pilot for real participants",
+    "status": "Private pilot",
     "origin": "https://synera-pilot.pages.dev",
     "email_and_send_code_enabled": true,
     "native_fetch_receiver_fixed": true,
-    "login_verified": false,
+    "login_verified": true,
     "policy_dialog_opened": true,
-    "otp_requested": false,
-    "personal_consent_submitted_by_agent": false
+    "otp_requested": true,
+    "personal_consent_submitted_by_agent": false,
+    "otp_delivery_user_reported": true,
+    "owner_report": "Signed in with new code",
+    "session_restored_after_reload": true,
+    "profile_name_restored_after_reload": true,
+    "discoverable": false,
+    "map_visible": false,
+    "people_meetings_privacy_views_opened": true,
+    "browser_errors": 0
   },
   "http_checks": [
     {
@@ -142,5 +148,35 @@
       "cache": "no-store",
       "path": "/release.json"
     }
-  ]
+  ],
+  "login_fix": {
+    "release": "r3",
+    "published": true,
+    "report": "docs/LOGIN_FIX_2026-09-05.uk.md",
+    "actual_pre_fix_counts": {
+      "users": 1,
+      "verified_users": 1,
+      "active_sessions": 1,
+      "consents": 0,
+      "profiles": 0
+    },
+    "correct_cookie": "__Secure-neon-auth.session_token",
+    "source": "https://github.com/neondatabase/neon-js/blob/main/packages/auth/src/server/constants.ts",
+    "http_evidence": "artifacts/neon-login-fix-http.json",
+    "new_real_otp_verification": "passed_user_and_browser",
+    "local_mobile_form_overflow": false,
+    "real_profile_saved": true,
+    "actual_post_fix_counts": {
+      "verified_users": 1,
+      "consents": 1,
+      "profiles": 1,
+      "visible_profiles": 0,
+      "map_profiles": 0
+    },
+    "live_viewport_width": 682,
+    "live_document_width": 667,
+    "live_form_overflows": [],
+    "final_release": "r5",
+    "extensionless_legal_route_verified": true
+  }
 }

@@ -58,7 +58,7 @@ test('OTP requires an invited email, explicit current consent and a bounded body
 test('OTP verification keeps provider session, identity metadata and JWT out of browser JSON', async () => {
   const calls = [];
   const upstream = async (...args) => { calls.push(args); return new Response(JSON.stringify({ user: { ...user, privateMetadata: 'unnecessary' }, token: 'secret-provider-token' }),
-    { headers: { 'Set-Cookie': '__Secure-neonauth.session_token=opaque-secret; Path=/; Domain=neon.tech; Secure; HttpOnly; SameSite=None; Max-Age=604800', 'Set-Auth-Jwt': jwt } }); };
+    { headers: { 'Set-Cookie': '__Secure-neon-auth.session_token=opaque-secret; Path=/; Domain=neon.tech; Secure; HttpOnly; SameSite=None; Max-Age=604800', 'Set-Auth-Jwt': jwt } }); };
   const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env, upstream);
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { user: { id: user.id, email: user.email } });
@@ -75,11 +75,80 @@ test('a fresh provider session supplies the data token; caller Authorization and
   const upstream = async (url, init) => { calls.push({ url, init }); return calls.length === 1 ? upstreamSession() : new Response(JSON.stringify([{ id: user.id, display_name: 'Owned test profile' }])); };
   const response = await handleNeon(request('/data/profiles?select=id,display_name&limit=50', { headers: { ...browserCookie, Cookie: browserCookie.Cookie + '; unrelated=sensitive', Authorization: 'Bearer attacker-token' } }), env, upstream);
   assert.equal(response.status, 200); assert.equal(calls.length, 2);
-  assert.equal(calls[0].init.headers.Cookie, '__Secure-neonauth.session_token=opaque-secret');
+  assert.equal(calls[0].init.headers.Cookie, '__Secure-neon-auth.session_token=opaque-secret');
   assert.equal(calls[1].init.headers.Authorization, 'Bearer ' + jwt);
   assert.equal(calls[1].init.headers.Cookie, undefined);
   assert.equal(calls[1].url, env.SYNERA_NEON_DATA_URL + '/profiles?select=id,display_name&limit=50');
   assert.equal(response.headers.get('set-auth-jwt'), null);
+});
+
+test('current Neon cookie survives OTP -> browser session -> data; unrelated cookie caches stay private', async () => {
+  const headers = new Headers();
+  headers.append('Set-Cookie', '__Secure-neon-auth.session_data=private-cache; Path=/; Secure; HttpOnly');
+  headers.append('Set-Cookie', '__Secure-neon-auth.session_token=signed.opaque%2Bvalue; Path=/; Secure; HttpOnly; SameSite=None');
+  const verified = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+    async () => new Response(JSON.stringify({ user }), { headers }));
+  assert.equal(verified.status, 200);
+  const cookie = verified.headers.get('set-cookie').split(';')[0];
+  let calls = 0;
+  const data = await handleNeon(request('/data/pilot_consents', { headers: { Cookie: cookie } }), env, async (url, init) => {
+    calls++;
+    if (calls === 1) {
+      assert.equal(init.headers.Cookie, '__Secure-neon-auth.session_token=signed.opaque%2Bvalue');
+      assert.equal(init.headers['X-Neon-Auth-Middleware'], 'true');
+      return upstreamSession();
+    }
+    assert.equal(init.headers.Authorization, 'Bearer ' + jwt);
+    return new Response('[]');
+  });
+  assert.equal(data.status, 200); assert.equal(calls, 2);
+  assert.equal(JSON.stringify([...verified.headers]).includes('private-cache'), false);
+});
+
+test('Cloudflare extensionless HTML redirects stay inside the public asset allowlist', async () => {
+  const worker = createNeonWorker(['index.html', 'legal.html', 'style.css']);
+  const requests = [];
+  const assets = { fetch: async req => { requests.push(new URL(req.url).pathname); return new Response('Public legal page'); } };
+  const response = await worker.fetch(new Request(origin + '/legal'), { ...env, ASSETS: assets });
+  assert.equal(response.status, 200); assert.equal(await response.text(), 'Public legal page');
+  for (const path of ['/private', '/worker', '/release', '/schema']) {
+    assert.equal((await worker.fetch(new Request(origin + path), { ...env, ASSETS: assets })).status, 404);
+  }
+  assert.deepEqual(requests, ['/legal']);
+});
+
+test('missing or ambiguous provider cookies fail closed with an actionable code, never a raw provider body', async () => {
+  for (const values of [
+    ['__Secure-neonauth.session_token=old-spelling; Path=/'],
+    ['__Secure-neon-auth.session_token=a; Path=/', '__Secure-neon-auth.session_token=b; Path=/'],
+  ]) {
+    const headers = new Headers(); values.forEach(v => headers.append('Set-Cookie', v));
+    const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+      async () => new Response(JSON.stringify({ user }), { headers }));
+    assert.equal(response.status, 503);
+    assert.deepEqual(await response.json(), { error: 'session_cookie_unavailable', status: 503 });
+    assert.equal(response.headers.get('set-cookie'), null);
+  }
+  const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+    async () => new Response(JSON.stringify({ message: 'private email and code must not leak' }), { status: 400 }));
+  assert.deepEqual(await response.json(), { error: 'otp_invalid', status: 400 });
+});
+
+test('client explains expired OTP and treats a temporary data failure as recoverable without forgetting the user', async () => {
+  let calls = 0;
+  const store = new NeonStore({ backend: 'neon', pilotSafetyEnabled: true, realPilotEnabled: true }, async () => {
+    calls++;
+    if (calls === 1) return new Response(JSON.stringify({ error: 'otp_invalid' }), { status: 400 });
+    if (calls === 2) return new Response(JSON.stringify({ user }));
+    if (calls === 3) return new Response(JSON.stringify({ error: 'data_unavailable' }), { status: 503 });
+    return new Response('[]');
+  });
+  await assert.rejects(store.verifyOtp(user.email, '123456'), error => error.code === 'otp_invalid' && /вже використаний/.test(error.message));
+  await store.verifyOtp(user.email, '123456');
+  await assert.rejects(store.hasPolicy(), error => error.code === 'data_unavailable');
+  assert.equal(store.user.id, user.id);
+  assert.equal(await store.hasPolicy(), false);
+  assert.equal(calls, 4);
 });
 
 test('missing, malformed or revoked sessions stop before any data access; no hidden retry on provider failures', async () => {
