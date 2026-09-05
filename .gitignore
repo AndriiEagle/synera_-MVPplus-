@@ -37,6 +37,7 @@ web_launch/dist/
 web_launch/dist-demo/
 web_launch/dist-real/
 web_launch/dist-real-offline/
+web_launch/dist-neon/
 .env
 .env.*
 !.env.example

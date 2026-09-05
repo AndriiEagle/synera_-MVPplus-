@@ -1,5 +1,7 @@
 # Synera — real-user PWA pilot
 
+> Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](docs/NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.
+
 Synera turns an owned professional profile into a concrete, mutually useful introduction: profile → bilateral fit → proposed time → accepted conversation.
 
 **Current launch state: blocked.** The UI and adapters have been rebuilt for real profiles. Supabase Auth still returns HTTP 402 (verified 2026-09-05). No public HTTPS release or real-account browser acceptance is claimed.

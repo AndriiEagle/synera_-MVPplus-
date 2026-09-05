@@ -1,5 +1,7 @@
 # Synera real-user browser pilot
 
+> Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](../docs/NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.
+
 The current main app is for real owned profiles. Legacy demo fixtures remain available to unit tests only. The static server does not expose data.mjs, simulation.mjs, lab pages or lab fixtures.
 
 ## Local run

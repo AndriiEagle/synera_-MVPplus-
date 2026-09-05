@@ -1,0 +1,129 @@
+import { consentRecord, POLICY_VERSION } from './pilot-policy.mjs';
+import { normalizeBrief, briefProblems } from './profile-brief.mjs';
+import { profileSafetyFindings } from './profile-portability.mjs';
+export function validateProfile(p) {
+  for (const [key, max] of [['display_name', 60], ['city', 80], ['offers', 300], ['seeks', 300]]) {
+    if (typeof p[key] !== 'string' || p[key].trim().length > max) throw new Error('Invalid profile');
+  }
+  if (!p.display_name.trim() || typeof p.is_discoverable !== 'boolean') throw new Error('Invalid profile');
+}
+
+export class ServiceError extends Error {
+  constructor(status) {
+    const messages = {
+      400: 'Перевір email і дані входу. Код або посилання підтвердження могли застаріти.',
+      401: 'Сесію завершено. Увійди ще раз.',
+      402: 'Онлайн-сервіс тимчасово недоступний через обмеження хостингу. Власник уже має інформацію для відновлення.',
+      403: 'Недостатньо прав для цієї дії.',
+      409: 'Такий запит уже існує. Відкрий розділ «Зустрічі».',
+      422: 'Перевір введені дані.',
+      429: 'Забагато спроб. Зачекай кілька хвилин перед наступною.',
+    };
+    super(messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    this.name = 'ServiceError'; this.status = status;
+  }
+}
+
+// Shared profile and meeting contract; providers implement authentication and _send.
+export class ProfileStore {
+  requireUser() { if (!this.user) throw new Error('Sign in required'); return this.user.id; }
+  async hasPolicy() {
+    if (!this.pilotSafetyEnabled) return false;
+    const rows = await this._send(`/rest/v1/pilot_consents?user_id=eq.${encodeURIComponent(this.requireUser())}&policy_version=eq.${POLICY_VERSION}&select=policy_version&limit=1`, { authenticated: true });
+    return rows.length === 1;
+  }
+  async acceptPolicy(value) {
+    if (!this.pilotSafetyEnabled) throw new Error('Серверне підтвердження правил ще не підключене.');
+    const accepted = consentRecord(value);
+    await this._send('/rest/v1/pilot_consents', { method: 'POST', authenticated: true, prefer: 'return=minimal',
+      body: { user_id: this.requireUser(), policy_version: accepted.policy_version, terms_accepted: true, privacy_acknowledged: true } });
+  }
+  async ownProfile() {
+    const id = this.requireUser();
+    const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(id)}&select=${this.profileColumns}`, { authenticated: true });
+    return rows[0] ?? { id, display_name: '', city: '', offers: '', seeks: '', is_discoverable: false, brief: normalizeBrief(), map_visible: false };
+  }
+  get profileColumns() { return 'id,display_name,city,offers,seeks,is_discoverable' + (this.realPilotEnabled ? ',brief,map_visible,updated_at' : ''); }
+  async saveProfile(profile) {
+    validateProfile(profile);
+    if (profileSafetyFindings(profile).length || profileSafetyFindings({ offers: profile.brief?.goal }).length) throw new Error('Прибери контакти, ключі та приватні дані з картки профілю.');
+    const { display_name, city, offers, seeks, is_discoverable } = profile;
+    const extra = this.realPilotEnabled ? { brief: normalizeBrief(profile.brief), map_visible: profile.map_visible === true && is_discoverable } : {};
+    if (this.realPilotEnabled && is_discoverable && briefProblems(extra.brief).length) throw new Error('Перед публікацією заповни умови співпраці: ' + briefProblems(extra.brief).join('; '));
+    await this._send('/rest/v1/profiles?on_conflict=id', { method: 'POST', authenticated: true,
+      prefer: 'resolution=merge-duplicates,return=minimal', body: { id: this.requireUser(), display_name, city, offers, seeks, is_discoverable, ...extra } });
+  }
+  async discover({ offset = 0 } = {}) {
+    if (!Number.isInteger(offset) || offset < 0 || offset > 10000) throw new Error('Invalid page');
+    return this._send(`/rest/v1/profiles?is_discoverable=eq.true&id=neq.${encodeURIComponent(this.requireUser())}&select=${this.profileColumns}&order=id.asc&limit=50&offset=${offset}`, { authenticated: true });
+  }
+  async meetings() {
+    this.requireUser();
+    return this._send('/rest/v1/meeting_requests?select=id,sender_id,recipient_id,note,status,created_at' + (this.realPilotEnabled ? ',proposed_at,duration_minutes,meeting_place,sender_name,recipient_name' : '') + '&order=created_at.desc&limit=100', { authenticated: true });
+  }
+  async invite(recipient, note, plan = {}) {
+    if (!note.trim() || note.length > 500 || recipient === this.requireUser()) throw new Error('Invalid request');
+    const extra = {};
+    if (this.realPilotEnabled) {
+      if (!Number.isFinite(Date.parse(plan.proposed_at)) || Date.parse(plan.proposed_at) <= Date.now() || Date.parse(plan.proposed_at) > Date.now() + 90 * 86400000) throw new Error('Обери час у наступні 90 днів.');
+      if (![20, 30, 60].includes(plan.duration_minutes) || !['Онлайн', 'Zürich', 'Winterthur', 'Zug', 'Basel', 'Bern'].includes(plan.meeting_place)) throw new Error('Обери тривалість і місце.');
+      Object.assign(extra, { proposed_at: new Date(plan.proposed_at).toISOString(), duration_minutes: plan.duration_minutes, meeting_place: plan.meeting_place });
+    }
+    await this._send('/rest/v1/meeting_requests', { method: 'POST', authenticated: true, prefer: 'return=minimal',
+      body: { sender_id: this.requireUser(), recipient_id: recipient, note: note.trim(), ...extra } });
+  }
+  async respond(id, status) {
+    if (!['accepted', 'declined'].includes(status)) throw new Error('Invalid status');
+    const rows = await this._send(`/rest/v1/meeting_requests?id=eq.${encodeURIComponent(id)}&status=eq.pending`, {
+      method: 'PATCH', authenticated: true, prefer: 'return=representation', body: { status } });
+    if (rows.length !== 1) throw new Error('Request unavailable');
+  }
+  requireRealPilot() { this.requireUser(); if (!this.realPilotEnabled) throw new Error('Ця дія стане доступною після оновлення сервера пілоту.'); }
+  async cancelMeeting(id) {
+    this.requireRealPilot();
+    const rows = await this._send(`/rest/v1/meeting_requests?id=eq.${encodeURIComponent(id)}&sender_id=eq.${encodeURIComponent(this.requireUser())}&status=in.(pending,accepted)`, { method: 'PATCH', authenticated: true, prefer: 'return=representation', body: { status: 'cancelled' } });
+    if (rows.length !== 1) throw new Error('Запит уже змінено або недоступний.');
+  }
+  async messages(meetingId) {
+    this.requireRealPilot();
+    return this._send(`/rest/v1/meeting_messages?meeting_id=eq.${encodeURIComponent(meetingId)}&select=id,sender_id,body,created_at&order=created_at.desc&limit=100`, { authenticated: true });
+  }
+  async sendMessage(meetingId, body) {
+    this.requireRealPilot();
+    if (typeof body !== 'string' || !body.trim() || body.length > 1000) throw new Error('Повідомлення має містити 1–1000 символів.');
+    await this._send('/rest/v1/meeting_messages', { method: 'POST', authenticated: true, body: { meeting_id: meetingId, sender_id: this.requireUser(), body: body.trim() } });
+  }
+  async blocks() { this.requireRealPilot(); return this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&select=blocked_id,created_at&order=created_at.desc`, { authenticated: true }); }
+  async block(id) { this.requireRealPilot(); if (id === this.requireUser()) throw new Error('Invalid block'); await this._send('/rest/v1/profile_blocks', { method: 'POST', authenticated: true, body: { blocker_id: this.requireUser(), blocked_id: id }, prefer: 'resolution=ignore-duplicates,return=minimal' }); }
+  async unblock(id) { this.requireRealPilot(); await this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&blocked_id=eq.${encodeURIComponent(id)}`, { method: 'DELETE', authenticated: true }); }
+  async report(id, reason, detail) {
+    this.requireRealPilot();
+    if (!['spam', 'impersonation', 'harassment', 'other'].includes(reason) || typeof detail !== 'string' || detail.length > 500 || id === this.requireUser()) throw new Error('Invalid report');
+    await this._send('/rest/v1/profile_reports', { method: 'POST', authenticated: true, body: { reporter_id: this.requireUser(), reported_id: id, reason, detail: detail.trim() } });
+  }
+  async deleteProfile() {
+    this.requireRealPilot();
+    const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
+    if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
+  }
+  async exportAccount() {
+    this.requireRealPilot();
+    const collect = async (table, columns, filter = '') => {
+      const all = [];
+      for (let offset = 0; offset < 100000; offset += 500) {
+        const rows = await this._send('/rest/v1/' + table + '?select=' + columns + filter + '&order=' + (table === 'pilot_consents' ? 'accepted_at' : 'created_at') + '.asc&limit=500&offset=' + offset, { authenticated: true });
+        all.push(...rows);
+        if (rows.length < 500) return all;
+      }
+      throw new Error('Експорт перевищує межу файлу. Звернися до оператора за повною копією.');
+    };
+    const [profile, consents, invitations, messages, blocks, reports] = await Promise.all([
+      this.ownProfile(), collect('pilot_consents','policy_version,terms_accepted,privacy_acknowledged,accepted_at'),
+      collect('meeting_requests','id,sender_id,recipient_id,note,status,created_at,proposed_at,duration_minutes,meeting_place,sender_name,recipient_name'),
+      collect('meeting_messages','id,meeting_id,sender_id,body,created_at'),
+      collect('profile_blocks','blocked_id,created_at','&blocker_id=eq.' + encodeURIComponent(this.requireUser())),
+      collect('profile_reports','reported_id,reason,detail,created_at'),
+    ]);
+    return { format: 'synera-account-export-1', private: true, exported_at: new Date().toISOString(), account: { id: this.user.id, email: this.user.email }, profile, consents, invitations, messages, blocks, reports };
+  }
+}

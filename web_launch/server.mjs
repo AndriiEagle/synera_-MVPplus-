@@ -7,7 +7,7 @@ import { PUBLIC_ASSETS } from './assets.mjs';
 import { randomBytes } from 'node:crypto';
 import { createLocalProfileAI, readSmallBody } from './server/local-profile-ai.mjs';
 const root = path.dirname(fileURLToPath(import.meta.url));
-const config = await loadConfig({ demo: process.argv.includes('--demo') });
+const config = await loadConfig({ demo: process.argv.includes('--demo'), neon: process.argv.includes('--neon-preview') });
 const localAI = process.argv.includes('--local-ai') ? { enabled: true, nonce: randomBytes(24).toString('hex') } : null;
 const profileAI = localAI ? createLocalProfileAI({ nonce: localAI.nonce }) : null;
 const allowed = new Map(Object.entries(PUBLIC_ASSETS).map(([name, type]) => ['/' + name, [name, type]]));

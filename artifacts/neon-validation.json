@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-09-05T19:10:09Z",
+  "scope": "Neon and Cloudflare migration for a real-user Synera PWA pilot",
+  "tests": { "passed": 66, "failed": 0, "evidence": "artifacts/neon-tests.txt", "provider_responses": "local test doubles, not live Auth or RLS" },
+  "neon_live_read_only": {
+    "project_name": "synera",
+    "project_id": "quiet-credit-94155104",
+    "branch_id": "br-dawn-field-axoxc3c4",
+    "region": "AWS US East 2 (Ohio), USA",
+    "postgres_version": 18,
+    "database": "neondb",
+    "public_base_tables": 0,
+    "auth_enabled": false,
+    "sql_query_succeeded": true,
+    "sql_query": "select current_database() as database_name, (select count(*) from information_schema.tables where table_schema='public' and table_type='BASE TABLE') as public_tables, to_regclass('neon_auth.\"user\"') is not null as auth_enabled;"
+  },
+  "browser": { "preview_origin": "http://127.0.0.1:54753", "viewport_width": 390, "viewport_height": 844, "document_width": 375, "password_field_hidden_in_neon_mode": true, "physical_phone_tested": false },
+  "release": {
+    "directory": "web_launch/dist-neon",
+    "files": 23,
+    "archive": "../synera-neon-pilot-20260905.zip",
+    "bytes": 68068,
+    "sha256": "7EAF0A95BC5B09293ADB973A68A6EB8E2A1409809CE6058A846494E5867C4A30",
+    "cloudflare_pages_advanced_mode": true,
+    "unexpected_private_archive_entries": [],
+    "published": false
+  },
+  "not_verified": ["Neon OTP email delivery", "Neon session cookie and JWT contract", "live migration and transactional RLS acceptance", "Cloudflare runtime", "two real-user journeys", "physical Android and iPhone installation", "automatic public profile AI"],
+  "approval": { "requested": "Enable Auth and Data API, apply prepared schema to existing synera Neon project, create Free Cloudflare Pages and publish closed pilot then open only after acceptance", "received": false },
+  "cloudflare_login": "login page open; authentication required",
+  "provider_calls": 0,
+  "actual_usd": 0,
+  "models_used": [],
+  "ready_for_launch": false
+}

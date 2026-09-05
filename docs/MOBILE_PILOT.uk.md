@@ -1,5 +1,7 @@
 # Мобільний пілот Synera
 
+> Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.
+
 Поточний вибір: реальні профілі через PWA на Android та iPhone, з AI за явним вибором людини. Демо, боти, APK/IPA, магазини, платежі й платні фонові завдання виключені.
 
 [Актуальний стан, реалізація та порядок запуску](REAL_PILOT.uk.md).

@@ -1,5 +1,7 @@
 # Продовження Synera: завершити реальний пілот
 
+> Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.
+
 Працюй у поточному checkout Synera, збережи всі локальні зміни. Прочитай docs/REAL_PILOT.uk.md і актуальний git diff. Не починай нову демоверсію.
 
 Мета: двоє реальних добровільних учасників на Android/iPhone відкривають HTTPS PWA, створюють власні акаунти, підтверджують правила, переносять власні профілі, перевіряють AI-пропозиції, бачать причину взаємної користі, погоджують конкретний час і можуть обмінятися деталями, заблокувати контакт та експортувати/видалити дані.
