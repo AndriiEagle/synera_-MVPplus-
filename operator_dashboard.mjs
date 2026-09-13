@@ -4,6 +4,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const SCHEMA = 'synera.telemetry.v1';
 const CORE_EVENTS = Object.freeze([
@@ -256,9 +257,9 @@ ${alertHtml}
 }
 
 // CLI entry
-if (process.argv[1]) {
-  const scriptPath = new URL(process.argv[1], import.meta.url).href;
-  if (import.meta.url === scriptPath) {
+// new URL('C:\...') parses the drive letter as a scheme, so the guard never matched and the
+// CLI silently did nothing while exiting 0. pathToFileURL is the pattern neon/generate-schema.mjs uses.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [,, inputPath, outputPath] = process.argv;
   if (!inputPath) {
     console.error('Usage: node operator_dashboard.mjs <events.jsonl> [output.html]');
