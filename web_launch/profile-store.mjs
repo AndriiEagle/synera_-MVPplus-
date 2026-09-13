@@ -115,6 +115,24 @@ export class ProfileStore {
     const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
     if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
   }
+  // SYN_STORE_CARRIES_CASE_STATE: case state per pair, exactly what createCaseState returns.
+  // No free text, no contacts, no transcript; the stored hash is never recomputed on read.
+  async saveCaseState(state) {
+    this.requireRealPilot();
+    const CASE_KEYS = ['schema', 'caseId', 'participants', 'version', 'material', 'termsHash', 'status', 'approvals', 'binding', 'approvalAttestation', 'createdAt', 'updatedAt', 'expiresAt', 'closedBy', 'closedAt', 'closeReason', 'timeAuthority', 'events'];
+    const validId = value => typeof value === 'string' && value.length >= 1 && value.length <= 64 && /^[A-Za-z0-9_:-]+$/.test(value);
+    if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Invalid case state');
+    const clean = {};
+    for (const key of CASE_KEYS) if (Object.hasOwn(state, key)) clean[key] = state[key];
+    clean.schema = 'synera.case-state.v1';
+    await this._send('/rest/v1/match_cases?on_conflict=case_id', { method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: { case_id: clean.caseId, state: clean } });
+  }
+  async caseState(caseId) {
+    this.requireRealPilot();
+    if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Invalid case id');
+    const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=state&limit=1`, { authenticated: true });
+    return rows?.[0]?.state ?? null;
+  }
   async exportAccount() {
     this.requireRealPilot();
     const collect = async (table, columns, filter = '') => {

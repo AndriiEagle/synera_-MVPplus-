@@ -114,3 +114,106 @@ test('one API pack uses only ten synthetic personas, low reasoning and one attem
   const duplicate = structuredClone(value); duplicate.bots[1].id = duplicate.bots[0].id; assert.throws(() => validateBotHour(duplicate, at));
   const secret = structuredClone(value); secret.bots[0].activity = 'contact@example.invalid'; assert.throws(() => validateBotHour(secret, at));
 });
+test('SYN_CONSENT_STATE_BEFORE_USE: no top-level binding of app.mjs is declared after the startup await', async () => {
+  // Session restore runs inside the startup await and calls fillProfileForm/renderPeople; any top-level
+  // const/let/class declared below that await is still in its temporal dead zone at that moment.
+  const lines = (await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8')).split(/\r?\n/);
+  const startup = lines.findIndex(line => line.includes("await fetch('/config.json'"));
+  assert.ok(startup > 0, 'startup await not found');
+  const late = lines.slice(startup).filter(line => /^(const|let|class)\s/.test(line));
+  assert.deepEqual(late, []);
+  const source = lines.join('\n');
+  assert.ok(source.indexOf('const consentState') < source.indexOf('consentState.'), 'consentState is read before it is declared');
+});
+test('SYN_CONSENT_PANEL_MARKUP: every consent id app.mjs looks up exists once in index.html, off by default, recording locked', async () => {
+  // The app null-guards these lookups, so missing markup degrades silently into a gate nobody can open.
+  const app = await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8');
+  const html = await fs.readFile(new URL('./index.html', import.meta.url), 'utf8');
+  const ids = [...new Set([...app.matchAll(/getElementById\('(consent-[a-z-]+)'\)/g)].map(match => match[1]))];
+  assert.equal(ids.length, 7);
+  for (const id of ids) assert.equal(html.split(`id="${id}"`).length - 1, 1, id);
+  const inputs = [...html.matchAll(/<input id="consent-[^>]*>/g)].map(match => match[0]);
+  assert.equal(inputs.length, 7);
+  for (const input of inputs) assert.equal(/\schecked\b/.test(input), false, input);
+  assert.match(inputs.find(input => input.includes('consent-recording')), /\sdisabled\b/);
+});
+test('SYN_RUN_KEEPS_GATES: run() restores each button instead of enabling every gated one', async () => {
+  // Executes the real run() from app.mjs with stub buttons; a blanket re-enable reopened the introduction gate.
+  const source = await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8');
+  const start = source.indexOf('async function run(action) {');
+  const end = source.indexOf('\n}\n', start);
+  assert.ok(start >= 0 && end > start, 'run() not found');
+  const gated = { disabled: true }, open = { disabled: false }, created = { disabled: true };
+  const buttons = [gated, open];
+  const context = {
+    busy: false, store: null, own: null, onlineReady: true, ServiceError: class {}, Map,
+    document: { querySelectorAll: () => buttons },
+    $: () => ({ setAttribute() {}, textContent: '' }),
+    message: () => {}, showSignedOut: () => {}, applyAuthState: () => {},
+  };
+  vm.runInNewContext(source.slice(start, end + 2) + '\nglobalThis.run = run;', context);
+  let during;
+  await context.run(async () => { during = [gated.disabled, open.disabled]; buttons.push(created); });
+  assert.deepEqual(during, [true, true]);
+  assert.equal(gated.disabled, true, 'a gated button was re-enabled');
+  assert.equal(open.disabled, false);
+  assert.equal(created.disabled, true, 'a button rendered during the action lost its own state');
+  await context.run(async () => { throw new Error('boom'); });
+  assert.equal(gated.disabled, true);
+  assert.equal(open.disabled, false);
+});
+test('SYN_CASE_ACTION_NOT_NESTED: a case button click reaches the domain action through btn() -> run()', async () => {
+  // Executes the real btn/run/caseAction trio; a nested run() inside caseAction returned early and dropped every approval.
+  const source = await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8');
+  const slice = header => { const start = source.indexOf(header); const end = source.indexOf('\n}\n', start); assert.ok(start >= 0 && end > start, header); return source.slice(start, end + 2); };
+  const fnLine = header => { const start = source.indexOf(header); assert.ok(start >= 0, header); return source.slice(start, source.indexOf('\n', start) + 1); };
+  const listeners = [], messages = [];
+  const context = {
+    busy: false, store: null, own: null, onlineReady: true, ServiceError: class {}, Map,
+    document: { querySelectorAll: () => [] },
+    $: () => ({ setAttribute() {}, textContent: '' }),
+    el: () => ({ type: '', addEventListener: (_, handler) => listeners.push(handler) }),
+    knownError: text => new Error(text), renderPeople: () => {},
+    message: text => messages.push(text), showSignedOut: () => {}, applyAuthState: () => {},
+  };
+  vm.runInNewContext([fnLine('function btn('), slice('async function run(action) {'), slice('function caseAction(')].join('\n') + '\nglobalThis.btn = btn;', context);
+  const calls = [];
+  context.btn('Підтвердити умови', () => context.caseAction('person-b', key => calls.push(key), 'saved'));
+  await listeners[0]();
+  assert.deepEqual(calls, ['person-b']);
+  assert.deepEqual(messages, ['saved']);
+});
+test('SYN_INTRODUCTION_NEEDS_CONSENT: no code path can open the invite button without the introduction consent', async () => {
+  // caseSection renders asynchronously after the consent gate; an assignment there must not reopen it.
+  const source = await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8');
+  const assignments = [...source.matchAll(/inviteButton\.disabled\s*=\s*([^;]+);/g)].map(match => match[1].trim());
+  assert.ok(assignments.length >= 2);
+  const opening = assignments.filter(value => value !== 'true');
+  assert.ok(opening.length >= 1);
+  for (const value of opening) {
+    const variable = value.replace(/^!/, '');
+    const decided = source.match(new RegExp('const ' + variable + ' = ([^;]+);'))?.[1] ?? value;
+    assert.match(decided, /consentState\.introduction/, value);
+  }
+});
+
+test('SYN_CONSENT_PANEL_7: seven toggles in index.html, defaults off, recording locked, revokes instant', async () => {
+  const html = await fs.readFile(new URL('./index.html', import.meta.url), 'utf8');
+  const ids = ['consent-visibility','consent-comparison','consent-introduction','consent-external-ai','consent-recording','consent-summary','consent-analytics-sync'];
+  for (const id of ids) assert.ok(html.includes(`id="${id}"`), `toggle ${id} missing`);
+  // recording toggle is disabled (locked OFF)
+  const recInput = html.match(/<input id="consent-recording"[^>]*>/)[0];
+  assert.ok(recInput.includes('disabled'), 'recording must be disabled');
+  // each toggle has microcopy "що це дає тобі"
+  const panel = html.slice(html.indexOf('SYN_CONSENT_PANEL_MARKUP'), html.indexOf('SYN_CONSENT_PANEL_MARKUP') + 5000);
+  assert.equal((panel.match(/що це дає тобі/g) || []).length, 7);
+  const app = await fs.readFile(new URL('./app.mjs', import.meta.url), 'utf8');
+  // revoke comparison -> case output hidden
+  assert.ok(app.includes('!consentState.comparison'), 'comparison revoke guard missing');
+  // revoke introduction -> invite button disabled
+  assert.ok(app.includes('!consentState.introduction'), 'introduction revoke guard missing');
+  // analytics off -> zero telemetry writes (no writeEventsLog call in app.mjs)
+  assert.ok(!app.includes('writeEventsLog'), 'app.mjs must not call telemetry writer');
+  // consentState initialized with all defaults false
+  assert.ok(app.includes('comparison: false') && app.includes('introduction: false') && app.includes('analytics_sync: false'), 'consent defaults not all false');
+});

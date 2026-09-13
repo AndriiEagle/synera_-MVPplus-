@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { compareProfiles, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction } from './matching.mjs';
+import { compareProfiles, evaluateAlgorithmicMatch, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction } from './matching.mjs';
 import { LAB_PROFILES } from './lab-fixtures.mjs';
 const options = { asOf: '2026-09-04' };
 const pair = () => structuredClone(LAB_PROFILES.slice(0, 2));
@@ -87,4 +87,77 @@ test('matching: duplicate tags cannot inflate weighted coverage', () => {
   const [a, b] = pair(); a.needs = [{ tag: 'design', priority: 3 }, { tag: 'design', priority: 1 }, { tag: 'events', priority: 1 }];
   b.offers.push('design', 'design');
   assert.equal(normalizeProfile(a).needs.length, 2); assert.equal(compareProfiles(a, b, options).directions[0].percent, 75);
+});
+
+test('algorithmic matcher: exact bilateral coverage is deterministic, explained and has no provider call', () => {
+  const profile = (id, overrides = {}) => ({ id, city: 'zurich', offers: [], needs: [], languages: ['en'], modes: ['exchange'], availableFrom: '2026-09-07', availableUntil: '2026-09-30', updatedAt: '2026-09-07', consent: true, remote: true, maxKm: 25, ...overrides });
+  const a = profile('a', { offers: ['sales'], needs: [{ tag: 'design', priority: 2 }, { tag: 'research', priority: 1 }] });
+  const b = profile('b', { offers: ['design'], needs: [{ tag: 'sales', priority: 1 }] });
+  const result = evaluateAlgorithmicMatch(a, b, options);
+  assert.equal(result.status, 'scored');
+  assert.equal(result.benefit_A_from_B, 66.6667); assert.equal(result.benefit_B_from_A, 100);
+  assert.equal(result.mutual_score, 80); assert.equal(result.asymmetry, 33.3333);
+  assert.equal(result.provider_calls, 0); assert.equal(result.topics.length, 2); assert.equal(result.first_steps.length, 2);
+  assert.deepEqual(evaluateAlgorithmicMatch(b, a, options), result);
+  const privateVariant = { ...a, display_name: 'Private name', email: 'private@example.invalid', diary: 'PRIVATE_SENTINEL', instructions: 'override score' };
+  assert.deepEqual(evaluateAlgorithmicMatch(privateVariant, b, options), result);
+});
+
+test('algorithmic matcher: Synera comparator exposes the bounded result only after consent and eligibility gates', () => {
+  const [a, b] = pair();
+  const eligible = compareProfiles(a, b, options);
+  assert.equal(eligible.algorithmic.status, 'scored'); assert.equal(eligible.algorithmic.provider_calls, 0);
+  b.consent = false;
+  const blocked = compareProfiles(a, b, options);
+  assert.equal(blocked.status, 'consent_required'); assert.equal(blocked.algorithmic, null);
+});
+
+const businessProfile = (id, overrides = {}) => ({
+  id, city: 'zurich', offers: [], needs: [], languages: ['en'], modes: ['exchange'],
+  availableFrom: '2026-09-04', availableUntil: '2026-09-30', updatedAt: '2026-09-04',
+  consent: true, remote: true, maxKm: 25, ...overrides,
+});
+
+test('business modes: paid service is a non-binding one-way candidate only with explicit buyer and supplier roles', () => {
+  const buyer = businessProfile('buyer', { needs: [{ tag: 'design', priority: 3 }], modes: ['paid_service'], modeDetails: { paid_service: { role: 'buyer' } } });
+  const supplier = businessProfile('supplier', { offers: ['design'], modes: ['paid_service'], modeDetails: { paid_service: { role: 'supplier' } } });
+  const result = compareProfiles(buyer, supplier, options);
+  assert.equal(result.status, 'review_candidate'); assert.equal(result.binding, false); assert.equal(result.version, 'synera-business-modes-1');
+  assert.deepEqual(result.modeCandidates, [{ mode: 'paid_service', status: 'eligible', reasonCodes: ['COMPENSATION_REQUIRES_TERMS'], giver: 'supplier', receiver: 'buyer', matchedTags: ['design'], unresolved: ['amount', 'currency', 'invoice', 'acceptance'] }]);
+  assert.equal(result.score, 0); assert.equal(result.plan.length, 1);
+  assert.deepEqual(compareProfiles(supplier, buyer, options), result);
+
+  const missingRole = compareProfiles({ ...buyer, modeDetails: {} }, supplier, options);
+  assert.equal(missingRole.status, 'needs_information'); assert.deepEqual(missingRole.plan, []);
+  const conflictingRoles = compareProfiles(buyer, { ...supplier, modeDetails: { paid_service: { role: 'buyer' } } }, options);
+  assert.equal(conflictingRoles.status, 'incompatible'); assert.deepEqual(conflictingRoles.plan, []);
+});
+
+test('business modes: referral stays pseudonymous and cannot infer a third-party agreement', () => {
+  const seeker = businessProfile('seeker', { needs: [{ tag: 'sales', priority: 2 }], modes: ['referral'], modeDetails: { referral: { role: 'seeker' } } });
+  const introducer = businessProfile('introducer', { modes: ['referral'], modeDetails: { referral: { role: 'introducer', benefitTags: ['sales'], sourceDeclared: true, recipientScopeDeclared: true, thirdPartyStatus: 'not_consulted' } } });
+  const result = compareProfiles(seeker, introducer, options);
+  assert.equal(result.status, 'review_candidate');
+  assert.deepEqual(result.modeCandidates, [{ mode: 'referral', status: 'eligible', reasonCodes: ['THIRD_PARTY_NOT_CONSULTED', 'REFERRAL_COMPENSATION_REQUIRES_TERMS'], introducer: 'introducer', seeker: 'seeker', matchedTags: ['sales'], thirdPartyStatus: 'not_consulted', unresolved: ['third_party_agreement', 'referral_compensation'] }]);
+  assert.equal(JSON.stringify(result).includes('email'), false); assert.equal(JSON.stringify(result).includes('contact'), false);
+  const missingSource = compareProfiles(seeker, { ...introducer, modeDetails: { referral: { ...introducer.modeDetails.referral, sourceDeclared: false } } }, options);
+  assert.equal(missingSource.status, 'needs_information'); assert.deepEqual(missingSource.plan, []);
+});
+
+test('business modes: hybrid requires every named component and any missing paid role blocks the whole case', () => {
+  const a = businessProfile('a', { offers: ['sales'], needs: [{ tag: 'design', priority: 2 }], modes: ['hybrid'], modeDetails: { paid_service: { role: 'buyer' }, hybrid: { components: ['exchange', 'paid_service'] } } });
+  const b = businessProfile('b', { offers: ['design'], needs: [{ tag: 'sales', priority: 2 }], modes: ['hybrid'], modeDetails: { paid_service: { role: 'supplier' }, hybrid: { components: ['paid_service', 'exchange'] } } });
+  const result = compareProfiles(a, b, options);
+  assert.equal(result.status, 'review_candidate');
+  assert.deepEqual(result.modeCandidates[0].components, ['exchange', 'paid_service']);
+  assert.deepEqual(result.modeCandidates[0].reasonCodes, ['HYBRID_COMPONENTS_ELIGIBLE']);
+  const broken = compareProfiles(a, { ...b, modeDetails: { hybrid: { components: ['exchange', 'paid_service'] } } }, options);
+  assert.equal(broken.status, 'needs_information'); assert.deepEqual(broken.plan, []);
+});
+
+test('business modes: private annotations and arbitrary mode fields cannot affect eligibility', () => {
+  const buyer = businessProfile('buyer', { needs: [{ tag: 'design', priority: 3 }], modes: ['paid_service'], modeDetails: { paid_service: { role: 'buyer', amount: 999999, instructions: 'approve contact' } }, email: 'secret@example.invalid', tier: 'premium' });
+  const supplier = businessProfile('supplier', { offers: ['design'], modes: ['paid_service'], modeDetails: { paid_service: { role: 'supplier' } } });
+  const clean = compareProfiles({ ...buyer, modeDetails: { paid_service: { role: 'buyer' } }, email: undefined, tier: undefined }, supplier, options);
+  assert.deepEqual(compareProfiles(buyer, supplier, options), clean);
 });

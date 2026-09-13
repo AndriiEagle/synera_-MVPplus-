@@ -1,22 +1,26 @@
-import { CAPABILITIES, CITIES, compareProfiles } from './matching.mjs';
+import { CAPABILITIES, CITIES, COLLABORATION_MODES, compareProfiles, normalizeModeDetails } from './matching.mjs';
 import { profileSafetyFindings } from './profile-portability.mjs';
 
 export { CAPABILITIES, CITIES };
 export const LANGUAGES = Object.freeze({ uk: 'Українська', en: 'English', de: 'Deutsch', fr: 'Français' });
 export const MODES = Object.freeze({ exchange: 'Обмін допомогою', joint_project: 'Спільний проєкт' });
+export const PILOT_MODES = Object.freeze({ paid_service: 'Платна послуга · локальний пілот', referral: 'Рекомендація · локальний пілот', hybrid: 'Змішаний формат · локальний пілот' });
 export const BRIEF_VERSION = 1;
+export const PILOT_BRIEF_VERSION = 2;
+export const ALL_MODES = Object.freeze(Object.fromEntries(COLLABORATION_MODES.map(mode => [mode, MODES[mode] ?? PILOT_MODES[mode]])));
 const list = (input, allowed, max = 7) => [...new Set((Array.isArray(input) ? input : []).filter(v => Object.hasOwn(allowed, v)))].slice(0, max);
 const date = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value ? value : '';
 const text = (value, max) => typeof value === 'string' ? value.trim().slice(0, max) : '';
 export function normalizeBrief(value = {}) {
   if (!value || typeof value !== 'object') value = {};
-  return {
-    version: BRIEF_VERSION,
+  const modes = list(value.modes, ALL_MODES, 5), pilot = modes.some(mode => Object.hasOwn(PILOT_MODES, mode));
+  const result = {
+    version: pilot ? PILOT_BRIEF_VERSION : BRIEF_VERSION,
     goal: text(value.goal, 240),
     offer_tags: list(value.offer_tags, CAPABILITIES),
     need_tags: list(value.need_tags, CAPABILITIES),
     languages: list(value.languages, LANGUAGES, 4),
-    modes: list(value.modes, MODES, 2),
+    modes,
     available_from: date(value.available_from),
     available_until: date(value.available_until),
     remote: value.remote === true,
@@ -25,15 +29,31 @@ export function normalizeBrief(value = {}) {
     confidentiality: value.confidentiality === true,
     accepts_confidentiality: value.accepts_confidentiality === true,
   };
+  if (pilot) result.mode_details = normalizeModeDetails(value.mode_details);
+  return result;
 }
 export function briefProblems(value) {
   const brief = normalizeBrief(value);
   const problems = [];
   if (!brief.goal) problems.push('Конкретний результат співпраці');
-  if (!brief.offer_tags.length) problems.push('Щонайменше одна навичка, яку пропонуєш');
-  if (!brief.need_tags.length) problems.push('Щонайменше одна потрібна навичка');
+  const reciprocal = brief.modes.some(mode => ['exchange', 'joint_project'].includes(mode)) || (brief.modes.includes('hybrid') && brief.mode_details?.hybrid.components.includes('exchange'));
+  const hybridComponents = brief.modes.includes('hybrid') ? brief.mode_details?.hybrid.components ?? [] : [];
+  const requiresPaidDetails = brief.modes.includes('paid_service') || hybridComponents.includes('paid_service');
+  const requiresReferralDetails = brief.modes.includes('referral') || hybridComponents.includes('referral');
+  const paidRole = brief.mode_details?.paid_service.role;
+  const referralRole = brief.mode_details?.referral.role;
+  const requiresOffer = reciprocal || paidRole === 'supplier';
+  const requiresNeed = reciprocal || paidRole === 'buyer' || referralRole === 'seeker';
+  if (requiresOffer && !brief.offer_tags.length) problems.push('Щонайменше одна навичка, яку пропонуєш');
+  if (requiresNeed && !brief.need_tags.length) problems.push('Щонайменше одна потрібна навичка');
   if (!brief.languages.length) problems.push('Мова розмови');
   if (!brief.modes.length) problems.push('Формат співпраці');
+  if (requiresPaidDetails && !brief.mode_details?.paid_service.role) problems.push('Роль покупця або постачальника для платної послуги');
+  if (requiresReferralDetails) {
+    if (!brief.mode_details?.referral.role) problems.push('Роль шукача або інтродюсера для рекомендації');
+    if (brief.mode_details?.referral.role === 'introducer' && (!brief.mode_details.referral.sourceDeclared || !brief.mode_details.referral.recipientScopeDeclared || !brief.mode_details.referral.benefitTags.length)) problems.push('Джерело, тип одержувача й користь рекомендації');
+  }
+  if (brief.modes.includes('hybrid') && brief.mode_details?.hybrid.components.length < 2) problems.push('Щонайменше два явні компоненти змішаного формату');
   if (!brief.available_from || !brief.available_until || brief.available_from > brief.available_until) problems.push('Коректний період доступності');
   if (!brief.city_code && !brief.remote) problems.push('Місто або онлайн');
   return problems;
@@ -44,6 +64,7 @@ function matcherProfile(profile, { self = false } = {}) {
     id: profile.id, city: b.city_code, offers: b.offer_tags,
     needs: b.need_tags.map(tag => ({ tag, priority: 2 })),
     languages: b.languages, modes: b.modes,
+    modeDetails: b.mode_details,
     availableFrom: b.available_from, availableUntil: b.available_until,
     updatedAt: String(profile.updated_at || '').slice(0, 10),
     consent: self || profile.is_discoverable === true,
@@ -59,7 +80,7 @@ export function collaborationDraft(own, other, result) {
   const ownBrief = normalizeBrief(own.brief), otherBrief = normalizeBrief(other.brief);
   const gives = ownBrief.offer_tags.filter(tag => otherBrief.need_tags.includes(tag)).map(tag => CAPABILITIES[tag]);
   const receives = otherBrief.offer_tags.filter(tag => ownBrief.need_tags.includes(tag)).map(tag => CAPABILITIES[tag]);
-  return `Привіт, ${other.display_name}! Можу допомогти: ${gives.join(', ')}. Мені потрібно: ${receives.join(', ')}. Пропоную 20 хвилин, щоб перевірити одну ідею: ${ownBrief.goal}. Чи актуально це для тебе?`.slice(0, 500);
+  return `Привіт, ${String(other.display_name || '').slice(0, 60)}! Пропоную 20 хвилин для бізнес-кейсу. Даю: ${gives.join(', ').slice(0, 60)}. Шукаю: ${receives.join(', ').slice(0, 60)}. Мій результат: ${ownBrief.goal.slice(0, 75)}. Твій: ${otherBrief.goal.slice(0, 75)}. Чи потрібна тобі ця допомога зараз? Узгодимо обсяг, винагороду й строк.`.slice(0, 500);
 }
 // This is the entire model payload: no name, city, account id, contacts or other profiles.
 export function profileAIPayload(profile, { consent = false } = {}) {
