@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "mode": "plan_only",
+  "objective": "Prepare a source-bound, privacy-reviewed, documentation-only Synera GitHub package for later development across 2-3 authorized hosts.",
+  "current_state": "Public base is legacy Flutter/Firebase; modern local web/Neon source remains unpublished; V6 approval defect reproduced, not fixed.",
+  "scope_change": "explicitly_approved",
+  "success_criteria": [
+    "Five sequential review layers with concrete evidence",
+    "Preserve 19 V6 tasks and original hashes with explicit corrections",
+    "Publish only reviewed package and verify remote commit/files"
+  ],
+  "forbidden_actions": [
+    "Product implementation",
+    "Production migration/deploy",
+    "Paid dispatch without fresh exact approval",
+    "External human messages/jobs",
+    "Copy secrets or raw chats",
+    "Publish unreviewed source history"
+  ],
+  "validation": {
+    "method": "Source binding, task contract checks, held-out counterexamples, independent reviewer, scoped Git remote readback",
+    "evidence_required": [
+      "SOURCE_MANIFEST.json",
+      "REVIEW_LAYERS.json",
+      "ACCEPTANCE.json"
+    ]
+  },
+  "steps": [
+    {
+      "phase": "validation",
+      "step_id": "R1-01-source_scope",
+      "depends_on": [],
+      "touch_policy": "bounded_multi_file",
+      "allowed_files": [
+        "docs/multihost-20260915/SOURCE_MANIFEST.json",
+        "docs/multihost-20260915/V6_TASKS.json"
+      ],
+      "must_preserve": [
+        "Original V5/V6 bytes and 19 acceptance clauses",
+        "Modern product source and public base",
+        "No product execution authority transferred"
+      ],
+      "conflict_check": "Review exact package diff; one integrator owns all package writes; preserve unrelated dirty work.",
+      "negative_prompt": [
+        "Do not dispatch implementation, migrate, deploy or widen publication scope.",
+        "Do not turn synthetic checks into runtime acceptance."
+      ],
+      "negative_examples": [
+        "Bad: push local modern source history with this docs PR.",
+        "Bad: count expired lease as stopped worker."
+      ],
+      "stop_conditions": [
+        "SOURCE_DRIFT",
+        "UNRESOLVED_PRIVATE_PAYLOAD",
+        "ORACLE_FAIL"
+      ],
+      "acceptance_marker": "R1_LAYER_1_VERIFIED_WITH_LIMITS",
+      "working_behavior": false,
+      "validation": {
+        "label": "VERIFIED_WITH_LIMITS",
+        "commands": [
+          "python -B docs/multihost-20260915/check_package.py"
+        ],
+        "evidence": [
+          "Live Git base and V5/V6 preservation hashes; Terra handoff observation"
+        ]
+      },
+      "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."
+    },
+    {
+      "phase": "validation",
+      "step_id": "R1-02-contracts",
+      "depends_on": [
+        "R1-01-source_scope"
+      ],
+      "touch_policy": "bounded_multi_file",
+      "allowed_files": [
+        "docs/multihost-20260915/PLAN.json",
+        "docs/multihost-20260915/CROSSWALK.uk.md",
+        "docs/multihost-20260915/OPERATIONS.uk.md",
+        "docs/multihost-20260915/PRODUCT.uk.md",
+        "docs/multihost-20260915/V6-03-CONTRACT.uk.md"
+      ],
+      "must_preserve": [
+        "Original V5/V6 bytes and 19 acceptance clauses",
+        "Modern product source and public base",
+        "No product execution authority transferred"
+      ],
+      "conflict_check": "Review exact package diff; one integrator owns all package writes; preserve unrelated dirty work.",
+      "negative_prompt": [
+        "Do not dispatch implementation, migrate, deploy or widen publication scope.",
+        "Do not turn synthetic checks into runtime acceptance."
+      ],
+      "negative_examples": [
+        "Bad: push local modern source history with this docs PR.",
+        "Bad: count expired lease as stopped worker."
+      ],
+      "stop_conditions": [
+        "SOURCE_DRIFT",
+        "UNRESOLVED_PRIVATE_PAYLOAD",
+        "ORACLE_FAIL"
+      ],
+      "acceptance_marker": "R1_LAYER_2_VERIFIED_WITH_LIMITS",
+      "working_behavior": false,
+      "validation": {
+        "label": "VERIFIED_WITH_LIMITS",
+        "commands": [
+          "python -B docs/multihost-20260915/check_package.py"
+        ],
+        "evidence": [
+          "19-task DAG; explicit source/derived ownership; privacy/adaptation/consent clauses"
+        ]
+      },
+      "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."
+    },
+    {
+      "phase": "validation",
+      "step_id": "R1-03-math_oracles",
+      "depends_on": [
+        "R1-02-contracts"
+      ],
+      "touch_policy": "bounded_multi_file",
+      "allowed_files": [
+        "docs/multihost-20260915/MATH.uk.md",
+        "docs/multihost-20260915/test_contracts.py",
+        "docs/multihost-20260915/check_package.py",
+        "docs/multihost-20260915/FREE_REVIEW_ACCEPTANCE.json"
+      ],
+      "must_preserve": [
+        "Original V5/V6 bytes and 19 acceptance clauses",
+        "Modern product source and public base",
+        "No product execution authority transferred"
+      ],
+      "conflict_check": "Review exact package diff; one integrator owns all package writes; preserve unrelated dirty work.",
+      "negative_prompt": [
+        "Do not dispatch implementation, migrate, deploy or widen publication scope.",
+        "Do not turn synthetic checks into runtime acceptance."
+      ],
+      "negative_examples": [
+        "Bad: push local modern source history with this docs PR.",
+        "Bad: count expired lease as stopped worker."
+      ],
+      "stop_conditions": [
+        "SOURCE_DRIFT",
+        "UNRESOLVED_PRIVATE_PAYLOAD",
+        "ORACLE_FAIL"
+      ],
+      "acceptance_marker": "R1_LAYER_3_VERIFIED_WITH_LIMITS",
+      "working_behavior": false,
+      "validation": {
+        "label": "VERIFIED_WITH_LIMITS",
+        "commands": [
+          "python -B docs/multihost-20260915/check_package.py"
+        ],
+        "evidence": [
+          "Held-out numerical and concurrency counterexamples; mutation rejection"
+        ]
+      },
+      "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."
+    },
+    {
+      "phase": "reviewer",
+      "step_id": "R1-04-independent_review",
+      "depends_on": [
+        "R1-03-math_oracles"
+      ],
+      "touch_policy": "bounded_multi_file",
+      "allowed_files": [
+        "docs/multihost-20260915/.gitattributes",
+        "docs/multihost-20260915/check_package.py",
+        "docs/multihost-20260915/CROSSWALK.uk.md",
+        "docs/multihost-20260915/FREE_REVIEW_ACCEPTANCE.json",
+        "docs/multihost-20260915/MATH.uk.md",
+        "docs/multihost-20260915/OPERATIONS.uk.md",
+        "docs/multihost-20260915/PLAN.json",
+        "docs/multihost-20260915/PRODUCT.uk.md",
+        "docs/multihost-20260915/README.uk.md",
+        "docs/multihost-20260915/REVIEW_LAYERS.json",
+        "docs/multihost-20260915/SOURCE_EVIDENCE.json",
+        "docs/multihost-20260915/SOURCE_MANIFEST.json",
+        "docs/multihost-20260915/test_contracts.py",
+        "docs/multihost-20260915/V6-03-CONTRACT.uk.md",
+        "docs/multihost-20260915/V6_TASKS.json"
+      ],
+      "must_preserve": [
+        "Original V5/V6 bytes and 19 acceptance clauses",
+        "Modern product source and public base",
+        "No product execution authority transferred"
+      ],
+      "conflict_check": "Independent review may make one narrow correction to earlier package artifacts; preserve source bytes and all accepted invariants. Any changed proof gets an affected recheck.",
+      "negative_prompt": [
+        "Do not dispatch implementation, migrate, deploy or widen publication scope.",
+        "Do not turn synthetic checks into runtime acceptance."
+      ],
+      "negative_examples": [
+        "Bad: push local modern source history with this docs PR.",
+        "Bad: count expired lease as stopped worker."
+      ],
+      "stop_conditions": [
+        "SOURCE_DRIFT",
+        "UNRESOLVED_PRIVATE_PAYLOAD",
+        "ORACLE_FAIL"
+      ],
+      "acceptance_marker": "R1_LAYER_4_VERIFIED_WITH_LIMITS",
+      "working_behavior": false,
+      "validation": {
+        "label": "VERIFIED_WITH_LIMITS",
+        "commands": [
+          "python -B docs/multihost-20260915/check_package.py"
+        ],
+        "evidence": [
+          "Read-only independent reviewer source and packet findings, corrections verified"
+        ]
+      },
+      "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."
+    },
+    {
+      "phase": "validation",
+      "step_id": "R1-05-publication",
+      "depends_on": [
+        "R1-04-independent_review"
+      ],
+      "touch_policy": "bounded_multi_file",
+      "allowed_files": [
+        "docs/multihost-20260915/ACCEPTANCE.json",
+        "docs/multihost-20260915/README.uk.md",
+        "docs/multihost-20260915/REVIEW_LAYERS.json",
+        "docs/multihost-20260915/PLAN.json"
+      ],
+      "must_preserve": [
+        "Original V5/V6 bytes and 19 acceptance clauses",
+        "Modern product source and public base",
+        "No product execution authority transferred"
+      ],
+      "conflict_check": "Review exact package diff; one integrator owns all package writes; preserve unrelated dirty work.",
+      "negative_prompt": [
+        "Do not dispatch implementation, migrate, deploy or widen publication scope.",
+        "Do not turn synthetic checks into runtime acceptance."
+      ],
+      "negative_examples": [
+        "Bad: push local modern source history with this docs PR.",
+        "Bad: count expired lease as stopped worker."
+      ],
+      "stop_conditions": [
+        "SOURCE_DRIFT",
+        "UNRESOLVED_PRIVATE_PAYLOAD",
+        "ORACLE_FAIL"
+      ],
+      "acceptance_marker": "R1_LAYER_5_VERIFIED_WITH_LIMITS",
+      "working_behavior": false,
+      "validation": {
+        "label": "NEEDS_REVIEW",
+        "commands": [
+          "python -B docs/multihost-20260915/check_package.py"
+        ],
+        "evidence": [
+          "Public-only allowlist, local checks, exact commit push and remote readback"
+        ]
+      },
+      "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."
+    }
+  ]
+}

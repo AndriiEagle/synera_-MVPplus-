@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL_REUSE_LOCAL_SPECIFICATION_CHECKS",
+  "whole_output_accepted": false,
+  "new_provider_calls": 0,
+  "historical_receipt": {
+    "requested_model": "inclusionai/ling-3.0-flash-fin:free",
+    "actual_model": "inclusionai/ling-3.0-flash-fin:free",
+    "provider": "Novita",
+    "backend": "openrouter",
+    "route_identity_verified": true,
+    "cost": 0.0,
+    "cost_evidence_type": "provider_usage_cost",
+    "prompt_tokens": 213,
+    "completion_tokens": 2962,
+    "truncated": false,
+    "latency_s": 9.25
+  },
+  "original_output_sha256": "9446aaa4404e366cbf7c7a97b6e0bf4d2e8428f59bd52540ed0feaa3f4dcc3e5",
+  "original_receipt_sha256": "c48c15c3843115cf6ae1db712a3312dbb639c864948ebb8a941450528d4c0c0a",
+  "format_repair": "Removed one complete Markdown JSON fence locally; original preserved.",
+  "findings": [
+    {
+      "id": "F1",
+      "verdict": "REFINED",
+      "reason": "Lease liveness precheck alone has check-write race; require fencing/CAS at effect sink.",
+      "oracle": "test_stale_epoch_and_check_write_race"
+    },
+    {
+      "id": "F2",
+      "verdict": "REFINED",
+      "reason": "Historical hash alone insufficient; bind current relevant input revisions and revalidate compatible disjoint changes. No blanket same-source ban.",
+      "oracle": "test_relevant_input_drift_and_disjoint_updates; actual source-CAS runtime remains untested"
+    },
+    {
+      "id": "F3",
+      "verdict": "REJECTED",
+      "reason": "Different tasks may legitimately share input hash. No new pending-merge registry; use existing effect-scoped idempotency.",
+      "oracle": "test_duplicate_id_is_effect_scoped_not_source_scoped"
+    },
+    {
+      "id": "F4",
+      "verdict": "REFINED",
+      "reason": "Replay identity useful, but exactly-once overall claim and monotonic proposal IDs unnecessary. Persist/reconcile at canonical effect sink.",
+      "oracle": "test_duplicate_id_is_effect_scoped_not_source_scoped"
+    },
+    {
+      "id": "F5",
+      "verdict": "REJECTED_TRACE_RETAINED_ATOMIC_ADMISSION_REQUIREMENT",
+      "reason": "Trace starts with refused admission and does not establish claimed fourth active worker. Expired lease also does not stop existing process.",
+      "oracle": "test_lost_heartbeat_is_not_process_stop"
+    }
+  ],
+  "math_verdict": "REJECTED: missing N in worker throughput, unjustified integrator bottleneck, unbounded free capacity assumption",
+  "math_oracle": "test_throughput_worker_and_integrator_bottlenecks",
+  "acceptance_limit": "Pure synthetic specification checks, not multi-host runtime acceptance. Historical receipt is observed locally, no provider call repeated."
+}

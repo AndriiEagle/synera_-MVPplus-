@@ -1,0 +1,1889 @@
+{
+  "schema": "synera.plan-addendum.v6",
+  "kind": "planning_data_not_dispatch_authority",
+  "date": "2026-09-15",
+  "concurrency_max": 3,
+  "node_limit": 24,
+  "tasks": [
+    {
+      "id": "V6-00",
+      "depends_on": [],
+      "owner_role": "baseline",
+      "legacy_refs": "C13.L2",
+      "objective": "Зафіксувати baseline і contract regression для B2",
+      "source_paths": [
+        "web_launch/profile-store.mjs",
+        "web_launch/real-pilot.test.mjs"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/workflow/approval-boundary.test.mjs",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Existing suite passes; test authentic principal A submitting approval B fails on current implementation through observable store request, with fixture explaining why; do not fix yet",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "REPRODUCED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/profile-store.mjs",
+          "web_launch/real-pilot.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-01",
+          "V6-02",
+          "V6-03",
+          "V6-09",
+          "V6-12"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "outcome": {
+        "defect_reproduced": true,
+        "defect_fixed": false,
+        "product_accepted": false,
+        "evidence": "workflow/approval-probe.tap",
+        "limit": "client transport boundary with stub; not live database authorization"
+      },
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-01",
+      "depends_on": [
+        "V6-00"
+      ],
+      "owner_role": "product",
+      "legacy_refs": "C07.L2",
+      "objective": "Підготувати DE-CH словник для всього основного journey",
+      "source_paths": [
+        "web_launch/index.html"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/work/V6-01.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "All visible flow labels inventoried; consent negatives and unresolved terms preserved; human German review remains pending",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/index.html"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-07"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-02",
+      "depends_on": [
+        "V6-00"
+      ],
+      "owner_role": "design",
+      "legacy_refs": "C06.L1-C06.L4",
+      "objective": "Дизайн-специфікація і tokens proposal",
+      "source_paths": [
+        "web_launch/style.css",
+        "web_launch/index.html"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/work/V6-02.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Five screens include loading/error/empty/expired/revoked; preserve control IDs and consent semantics; usability criteria predeclared",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/style.css",
+          "web_launch/index.html"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-08"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-03",
+      "depends_on": [
+        "V6-00"
+      ],
+      "owner_role": "data",
+      "legacy_refs": "B2-rework",
+      "objective": "Узгодити per-party store/schema contract",
+      "source_paths": [
+        "web_launch/profile-store.mjs",
+        "supabase/case-state.proposal.sql",
+        "supabase/case-state.acceptance.sql"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/work/V6-03.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Explicit request-response-auth-version contract; authenticated identity owns only own approval; stale version rejected atomically; old deployed schemas untouched",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/profile-store.mjs",
+          "supabase/case-state.proposal.sql",
+          "supabase/case-state.acceptance.sql"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-04"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-04",
+      "depends_on": [
+        "V6-03"
+      ],
+      "owner_role": "data",
+      "legacy_refs": "B2-rework",
+      "objective": "Реалізувати B2 у чинному store",
+      "source_paths": [
+        "web_launch/profile-store.mjs",
+        "web_launch/real-pilot.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/profile-store.mjs",
+        "web_launch/real-pilot.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-04.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Regression now passes; roundtrip persists current material and separate own approval; foreign approval and stale version rejected; no state blob writing both approvals",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/profile-store.mjs",
+          "web_launch/real-pilot.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-05"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-05",
+      "depends_on": [
+        "V6-04"
+      ],
+      "owner_role": "data",
+      "legacy_refs": "C6",
+      "objective": "Worker allowlist та контракт доступу",
+      "source_paths": [
+        "neon/worker.mjs",
+        "neon/case-state.acceptance.sql"
+      ],
+      "owned_paths": [
+        "neon/worker.mjs",
+        "neon/case-state.acceptance.sql"
+      ],
+      "draft_output": "v6/work/V6-05.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Unauthenticated, third-party, forged actor and disallowed route requests rejected; mock cannot certify RLS; actual DB acceptance stays gated",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "neon/worker.mjs",
+          "neon/case-state.acceptance.sql"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-06",
+          "V6-16"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-06",
+      "depends_on": [
+        "V6-05"
+      ],
+      "owner_role": "integrator",
+      "legacy_refs": "X6",
+      "objective": "Підключити case store в UI",
+      "source_paths": [
+        "web_launch/app.mjs",
+        "web_launch/mobile-pilot.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/app.mjs",
+        "web_launch/mobile-pilot.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-06.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Two synthetic sessions observe own and peer approvals only after persisted readback; offline/409 keeps pending or conflict; never success on failed write",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/app.mjs",
+          "web_launch/mobile-pilot.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-07",
+          "V6-11",
+          "V6-13",
+          "V6-14"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-07",
+      "depends_on": [
+        "V6-01",
+        "V6-06"
+      ],
+      "owner_role": "integrator",
+      "legacy_refs": "C07.L2",
+      "objective": "Інтегрувати вибір DE-CH/EN/UK",
+      "source_paths": [
+        "web_launch/app.mjs",
+        "web_launch/index.html",
+        "web_launch/data.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/app.mjs",
+        "web_launch/index.html",
+        "web_launch/data.mjs"
+      ],
+      "draft_output": "v6/work/V6-07.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Switch language preserves draft and approvals; every primary journey and error readable in selected language; consent meaning preserved",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/app.mjs",
+          "web_launch/index.html",
+          "web_launch/data.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-08"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-08",
+      "depends_on": [
+        "V6-02",
+        "V6-07"
+      ],
+      "owner_role": "integrator",
+      "legacy_refs": "C06.L2-C06.L4",
+      "objective": "Інтегрувати дизайн і стани",
+      "source_paths": [
+        "web_launch/style.css",
+        "web_launch/index.html"
+      ],
+      "owned_paths": [
+        "web_launch/style.css",
+        "web_launch/index.html"
+      ],
+      "draft_output": "v6/work/V6-08.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Keyboard full journey, visible focus, 200% zoom, mobile widths, reduced motion, error recovery and readable consent; screenshots inspected; no visual acceptance claim from CSS existence",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/style.css",
+          "web_launch/index.html"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-09",
+      "depends_on": [
+        "V6-00"
+      ],
+      "owner_role": "math",
+      "legacy_refs": "M06",
+      "objective": "Додати пояснену свіжість",
+      "source_paths": [
+        "web_launch/matching.mjs",
+        "web_launch/matching.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/matching.mjs",
+        "web_launch/matching.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-09.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "At age 0 weight 1; one half-life .5; monotonic; invalid/future timestamp explicit; freshness never grants/revokes consent or changes legacy matching silently",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/matching.mjs",
+          "web_launch/matching.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-10"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-10",
+      "depends_on": [
+        "V6-09"
+      ],
+      "owner_role": "math",
+      "legacy_refs": "M07",
+      "objective": "Ліміти пропозицій на людину",
+      "source_paths": [
+        "web_launch/matching.mjs",
+        "web_launch/matching.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/matching.mjs",
+        "web_launch/matching.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-10.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Small synthetic graphs equal exhaustive optimum; quotas and eligibility hold; deterministic ties; no hidden exclusion; original pair comparator preserved",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/matching.mjs",
+          "web_launch/matching.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-11",
+      "depends_on": [
+        "V6-06"
+      ],
+      "owner_role": "analytics",
+      "legacy_refs": "M12/C09.L4",
+      "objective": "Воронка з чесними знаменниками",
+      "source_paths": [
+        "web_launch/economics.mjs",
+        "web_launch/economics.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/economics.mjs",
+        "web_launch/economics.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-11.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "10 cases, 6 accepted and 4 missing stays 6/10, missing=4; duplicate events idempotent; no cross-window or synthetic-real mix",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/economics.mjs",
+          "web_launch/economics.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-12",
+      "depends_on": [
+        "V6-00"
+      ],
+      "owner_role": "calendar",
+      "legacy_refs": "M17",
+      "objective": "Спільні слоти з Europe/Zurich",
+      "source_paths": [
+        "web_launch/calendar.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/calendar.mjs"
+      ],
+      "draft_output": "v6/work/V6-12.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Intersection only; DST skipped and repeated local times explicit; empty availability yields none; no automatic booking",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/calendar.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-13",
+      "depends_on": [
+        "V6-06"
+      ],
+      "owner_role": "privacy",
+      "legacy_refs": "F1-F7/C14",
+      "objective": "Перевірити і доповнити поточний memory import",
+      "source_paths": [
+        "web_launch/profile-import.mjs",
+        "web_launch/profile-import.test.mjs",
+        "web_launch/chatgpt-transfer.mjs",
+        "web_launch/profile-portability.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/profile-import.mjs",
+        "web_launch/profile-import.test.mjs",
+        "web_launch/chatgpt-transfer.mjs",
+        "web_launch/profile-portability.mjs"
+      ],
+      "draft_output": "v6/work/V6-13.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Malicious instructions stay text; unknown fields unconfirmed; archive bounds; no network before consent; duplicate idempotent; export/revoke semantics verified",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/profile-import.mjs",
+          "web_launch/profile-import.test.mjs",
+          "web_launch/chatgpt-transfer.mjs",
+          "web_launch/profile-portability.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-14",
+      "depends_on": [
+        "V6-06"
+      ],
+      "owner_role": "domain",
+      "legacy_refs": "C01.L6-C01.L7",
+      "objective": "Докази й приймання отримувачем",
+      "source_paths": [
+        "web_launch/business-case.mjs",
+        "web_launch/business-case.test.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/business-case.mjs",
+        "web_launch/business-case.test.mjs"
+      ],
+      "draft_output": "v6/work/V6-14.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Only relevant recipient confirms outcome; self declaration not promoted by sender; changed material invalidates both approvals; no external participant ownership",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/business-case.mjs",
+          "web_launch/business-case.test.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-15"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-15",
+      "depends_on": [
+        "V6-08",
+        "V6-10",
+        "V6-11",
+        "V6-12",
+        "V6-13",
+        "V6-14"
+      ],
+      "owner_role": "acceptance",
+      "legacy_refs": "D1/C13.L3",
+      "objective": "Локальне наскрізне приймання",
+      "source_paths": [
+        "web_launch/mobile-pilot.test.mjs",
+        "web_launch/build.mjs"
+      ],
+      "owned_paths": [
+        "web_launch/mobile-pilot.test.mjs",
+        "web_launch/build.mjs"
+      ],
+      "draft_output": "v6/work/V6-15.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Full suite and offline build; two synthetic sessions complete and revoke journey; inspect actual browser screens; mutate critical gates and require failure; restore and recheck",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": false,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/mobile-pilot.test.mjs",
+          "web_launch/build.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-16"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-16",
+      "depends_on": [
+        "V6-05",
+        "V6-15"
+      ],
+      "owner_role": "acceptance",
+      "legacy_refs": "D2/H1",
+      "objective": "Isolated DB/RLS acceptance після authority",
+      "source_paths": [
+        "neon/case-state.migration.sql",
+        "neon/case-state.acceptance.sql"
+      ],
+      "owned_paths": [
+        "neon/case-state.migration.sql",
+        "neon/case-state.acceptance.sql"
+      ],
+      "draft_output": "v6/work/V6-16.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Authorized disposable DB only; two real auth identities plus outsider, race/expiry/forged approval and rollback; mocks or SQL text not acceptance",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": true,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "neon/case-state.migration.sql",
+          "neon/case-state.acceptance.sql"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback",
+        "authorized human outcome"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-17"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-17",
+      "depends_on": [
+        "V6-16"
+      ],
+      "owner_role": "operator",
+      "legacy_refs": "D3/H2",
+      "objective": "Приватний двосторонній пілот після authority",
+      "source_paths": [
+        "web_launch/legal.html"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/work/V6-17.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Legal/data roles reviewed; separately authorized release plus migration; two consenting persons complete approve/revoke/export journey; no public signup",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": true,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/legal.html"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback",
+        "authorized human outcome"
+      ],
+      "handoff": {
+        "next_task_ids": [
+          "V6-18"
+        ],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    },
+    {
+      "id": "V6-18",
+      "depends_on": [
+        "V6-17"
+      ],
+      "owner_role": "operator",
+      "legacy_refs": "D4",
+      "objective": "Когорта і бізнес-рішення",
+      "source_paths": [
+        "web_launch/economics.mjs"
+      ],
+      "owned_paths": [],
+      "draft_output": "v6/work/V6-18.md",
+      "privacy": "local_only",
+      "route": "local_first",
+      "acceptance": "Predeclared cohort over elapsed 14 days, all denominators/support time and manual baseline; WTP only after value; never manufacture participants or outcomes",
+      "rollback": "Reverse only own reviewed patch; restore exact pre-task bytes without overwriting later unrelated edits; human reconcile if conflicts.",
+      "attempt_limit": 2,
+      "status": "PLANNED",
+      "external_gate": true,
+      "input_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "current_source_hashes",
+          "source_locators",
+          "authority",
+          "acceptance_fixture"
+        ],
+        "source_paths": [
+          "web_launch/economics.mjs"
+        ],
+        "missing_behavior": "CONTRACT_PENDING; inspect only; do not send to worker"
+      },
+      "output_contract": {
+        "required": [
+          "task_id",
+          "requirement_revision",
+          "input_hashes",
+          "changed_paths",
+          "artifact_path",
+          "artifact_sha256",
+          "tests_run",
+          "observations",
+          "unknowns",
+          "proposed_children"
+        ],
+        "artifact_is_advisory": true,
+        "acceptance_claim_allowed": false
+      },
+      "error_contract": {
+        "types": [
+          "SOURCE_DRIFT",
+          "LOCK_CONFLICT",
+          "FORMAT_ONLY",
+          "SEMANTIC_FAIL",
+          "TOOL_YIELD",
+          "TIMEOUT",
+          "UNKNOWN_COST",
+          "TRUNCATED",
+          "AUTH",
+          "PRIVACY",
+          "BUDGET",
+          "RATE_LIMIT",
+          "INTEGRATION_FAIL",
+          "USER_STOP"
+        ],
+        "recovery": "OPERATIONS.uk.md#відновлення",
+        "inherited_attempt_limit": 2
+      },
+      "required_evidence": [
+        "current input/source hashes",
+        "task-shaped oracle result",
+        "independent integrated outcome locator",
+        "scope and authority readback",
+        "authorized human outcome"
+      ],
+      "handoff": {
+        "next_task_ids": [],
+        "required": [
+          "remaining_acceptance_clauses",
+          "blocker_evidence",
+          "current_reservation_id_or_no_hosted_calls",
+          "source_hashes"
+        ],
+        "same_scope_and_cap": true
+      },
+      "source_lock_policy": "Canonical executor owns lease; one writer per exact normalized path; check hashes before apply and integrate; this JSON acquires no locks.",
+      "source_status": "LOCAL_SOURCE_ONLY_NOT_IN_PUBLIC_BASE"
+    }
+  ],
+  "revision": "multihost-r1",
+  "source_manifest": "SOURCE_MANIFEST.json",
+  "dispatch_allowed": false,
+  "paid_authorized_cap_usd": 0,
+  "old_paid_cap_transferred": false,
+  "implementation_started_by_this_revision": false,
+  "r1_overrides": {
+    "V6-04": {
+      "owned_paths": [
+        "web_launch/profile-store.mjs",
+        "web_launch/real-pilot.test.mjs",
+        "web_launch/case-store.test.mjs"
+      ],
+      "reason": "Move the external RED invariant into source tests; own-party positive roundtrip prevents reject-all fix."
+    },
+    "V6-05": {
+      "owned_paths": [
+        "neon/worker.mjs",
+        "neon/worker.test.mjs",
+        "supabase/case-state.proposal.sql",
+        "supabase/case-state.acceptance.sql",
+        "neon/generate-schema.mjs"
+      ],
+      "derived_paths": [
+        "neon/case-state.migration.sql",
+        "neon/case-state.acceptance.sql"
+      ],
+      "reason": "Edit canonical SQL and generator only; regenerate and byte-check derived outputs."
+    },
+    "V6-12": {
+      "owned_paths": [
+        "web_launch/calendar.mjs",
+        "web_launch/calendar.test.mjs"
+      ],
+      "reason": "Add task-shaped DST/interval regression."
+    },
+    "V6-16": {
+      "owned_paths": [],
+      "derived_read_only_paths": [
+        "neon/case-state.migration.sql",
+        "neon/case-state.acceptance.sql"
+      ],
+      "reason": "Acceptance report only; schema failures route back to canonical owner."
+    }
+  },
+  "external_prerequisites": [
+    "SOURCE_PUBLICATION_REVIEW before public-base implementation",
+    "EXPLICIT_IMPLEMENTATION_AUTHORITY",
+    "DISTRIBUTED_ADMISSION_PROOF before multihost mutation"
+  ]
+}

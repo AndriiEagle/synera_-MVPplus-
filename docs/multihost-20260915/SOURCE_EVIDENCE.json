@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "kind": "static_source_locators_not_new_claim_ledger",
+  "product_commit": "2aa7fae6a4f002ed880cb97ec780de41e328af97",
+  "evidence": [
+    {
+      "claim": "approval_blob",
+      "root_alias": "product",
+      "path": "web_launch/profile-store.mjs",
+      "line_start": 120,
+      "line_end": 129,
+      "symbol_or_locator": "saveCaseState",
+      "file_sha256": "64308ea8bda66059a4dcff517dfd855f5c4ef8426842094d53d270579db441d6",
+      "verdict": "REPRODUCED_CLIENT_BOUNDARY",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "versioned_domain",
+      "root_alias": "product",
+      "path": "web_launch/business-case.mjs",
+      "line_start": 230,
+      "line_end": 263,
+      "symbol_or_locator": "approveCase/reviseCase",
+      "file_sha256": "963cf8be61750b48841c46be77efa361423b4d081ebbd299725b1de9186c4e40",
+      "verdict": "REUSE",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "generated_sql",
+      "root_alias": "product",
+      "path": "neon/generate-schema.mjs",
+      "line_start": 121,
+      "line_end": 180,
+      "symbol_or_locator": "case-state source mapping",
+      "file_sha256": "9883dc6fa47e43a493c1566ed97e236703550e9b8ba696a5ad50b40b43e789c7",
+      "verdict": "CANONICAL_SOURCE_REQUIRED",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "minimal_matcher",
+      "root_alias": "product",
+      "path": "web_launch/matching.mjs",
+      "line_start": 118,
+      "line_end": 256,
+      "symbol_or_locator": "evaluateAlgorithmicMatch/reviewIntroduction",
+      "file_sha256": "848ff01c407a883674ddd6f12ad20202aaa7bca983bf15c406a9a1ee4e306f3c",
+      "verdict": "REUSE",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "import",
+      "root_alias": "product",
+      "path": "web_launch/profile-import.mjs",
+      "line_start": 89,
+      "line_end": 107,
+      "symbol_or_locator": "redaction",
+      "file_sha256": "a9c034adad45f97eb2b92ea66528a5d0e4dcc808a7732d012a938d9afeb39e4b",
+      "verdict": "REUSE",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "ki_bus",
+      "root_alias": "ki",
+      "path": "andrey-os/ki_bus.py",
+      "line_start": 188,
+      "line_end": 222,
+      "symbol_or_locator": "lease",
+      "file_sha256": "118a2d2171ed5f6d445520a259bbf891ca34ba16211a46374ef31ed48ab7b9eb",
+      "verdict": "PRESENT_NO_FENCING_PROOF",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "dag",
+      "root_alias": "ki",
+      "path": "andrey-os/harness/dag_wave_advisor.py",
+      "line_start": 1,
+      "line_end": 5,
+      "symbol_or_locator": "caller authority boundary",
+      "file_sha256": "585836fb2743e87a11cf33db5720449c77a3963393b6cc0f261af091f0c8c736",
+      "verdict": "ADVISORY_ONLY",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    },
+    {
+      "claim": "worker_policy",
+      "root_alias": "ki",
+      "path": "token-monster/policy_contract.py",
+      "line_start": 49,
+      "line_end": 60,
+      "symbol_or_locator": "contract maxima",
+      "file_sha256": "f21863e8fe21998c839112c975a2575c4d970577f60cf61dbda0208937789eef",
+      "verdict": "NO_SHARED_FLEET_CEILING_PROOF",
+      "check": "Read-only independent source review; no runtime deployment assertion"
+    }
+  ]
+}

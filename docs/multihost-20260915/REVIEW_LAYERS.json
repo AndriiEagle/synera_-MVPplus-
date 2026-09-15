@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "kind": "finite_documentation_review_evidence_not_runtime_ledger",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "source_and_scope",
+      "status": "VERIFIED_WITH_LIMITS",
+      "checks": [
+        "Both source and planning branches clean at intake",
+        "Public main SHA resolved remotely",
+        "Local modern delta: 12 commits, 116 files",
+        "V5/V6 source bytes hashed without modification",
+        "KI-BUS Synera directory inspected: Soul handoff only"
+      ],
+      "corrections": [
+        "Use documentation-only branch; modern source publication is a prerequisite",
+        "Prior task paid cap is not transferred"
+      ],
+      "limits": [
+        "Terra latest not reconciled",
+        "Product remains on HOLD"
+      ],
+      "completed_at_utc": "2026-09-15T19:06:36.985755+00:00"
+    },
+    {
+      "layer": 2,
+      "name": "contracts_ownership_product",
+      "status": "VERIFIED_WITH_LIMITS",
+      "checks": [
+        "Master-planner validator PASS for five finite sequential preparation contracts",
+        "19 V6 tasks topologically ordered with input/output/error/acceptance/rollback",
+        "Four source/derived ownership overrides explicit",
+        "Per-party proposal defines principal/version/atomicity/readback and eight acceptance cases",
+        "Privacy presets remain granular; adaptation limited to versioned presentation/schema"
+      ],
+      "corrections": [
+        "V6-04 explicit case-store semantic regression",
+        "V6-05 canonical SQL/generator ownership",
+        "V6-12 calendar regression file",
+        "V6-16 derived SQL is read-only"
+      ],
+      "limits": [
+        "Per-party backend operation mapping still requires source review",
+        "Design direction is not visual/human acceptance",
+        "No implementation or dispatch"
+      ],
+      "artifact_hashes": {
+        "PLAN.json": "098d448f3ea1f43dd10adce10a60495945d4804c0cee7cf6b24389fb733455ea",
+        "V6_TASKS.json": "da3c5c09bc67c49f9c749b29f91b8fb06a927640ebf09a61ff9c98b445873a52",
+        "CROSSWALK.uk.md": "728203e63d6d92478c80cb9d5801bcb9ab2d6497ce45a6968521575631996857",
+        "V6-03-CONTRACT.uk.md": "5e620503a79ce221f0e0696bf6183709f97aa441685804c0036c77a2064364b0",
+        "OPERATIONS.uk.md": "78cf08661d669225ad2233c90d169de9c3ff3954b173090bf023f58c6ded887c",
+        "PRODUCT.uk.md": "05c65c8a4a74c70bdebb4de820fe3475c5d7895f9e6a2b26989f64b973ac6334"
+      },
+      "completed_at_utc": "2026-09-15T19:17:07.553662+00:00"
+    },
+    {
+      "layer": 3,
+      "name": "math_and_adversarial_oracles",
+      "status": "VERIFIED_WITH_LIMITS",
+      "checks": [
+        "9 local specification tests PASS",
+        "8 intentional plan mutants rejected: cycle, missing dependency, worker ceiling, paid cap, dispatch, shared writer, path escape, empty acceptance",
+        "Held-out source drift/disjoint-update and effect-idempotency cases",
+        "Correct-root current source suite 140/140 PASS",
+        "Original approval probe still returns exit 1 for forged peer approval; control passes"
+      ],
+      "corrections": [
+        "Reject source-hash-only deduplication",
+        "Correct N/T_worker throughput; integrator not always bottleneck",
+        "Do not release a process slot on heartbeat/lease expiry alone",
+        "Initial source-suite command used wrong cwd; preserved failure and reran from modern source root"
+      ],
+      "limits": [
+        "Synthetic reference checks do not implement distributed enforcement",
+        "Approval defect not fixed; DB and UI product acceptance not claimed"
+      ],
+      "artifact_hashes": {
+        "MATH.uk.md": "87d34774e64c289fecab410680f04e9f5e1302d743e13de46e17b1ba04c330ab",
+        "test_contracts.py": "c01b1d20718f30560bc8c6d98fdb7c0e684de53c379d1e4897593b6005a27225",
+        "check_package.py": "4960e4e8a898823466f7e0e7d50b29f71115d7c7aea188e706e800bc244fc5af",
+        "FREE_REVIEW_ACCEPTANCE.json": "5cf764c7d5c5c16e89dcbf6b2c3a8b01d188a23e9ab90ddfb6b012d777b6a13d"
+      },
+      "local_evidence_hashes": {
+        "source-tests.tap": "0542cb1be907a9f575e3616ffca564548c9bce6af37fc98cdf27bec69a6e4aaf",
+        "source-tests-correct-root.tap": "99073376c0a589d95e30db4a5fd7316d121244d223509cf309817f8e15f8ad3e",
+        "approval-probe.tap": "048d114dd7a8df68f123fd9d4eec3c6218f5160458374b909a2d7bfa403f8269"
+      },
+      "completed_at_utc": "2026-09-15T19:19:46.681537+00:00"
+    },
+    {
+      "layer": 4,
+      "name": "independent_source_and_package_review",
+      "status": "VERIFIED_WITH_LIMITS",
+      "reviewer": "Separate read-only ki-reviewer agent; not author of package",
+      "checks": [
+        "Independent source review found and rechecked canonical SQL and semantic regression corrections",
+        "Independent package review: no additional content blocker; 9/9 synthetic tests PASS",
+        "All original V6 acceptance/dependency/owner/source/rollback/attempt fields preserved",
+        "20 original planning files and 25 source input hashes read back",
+        "Bounded package-only sensitive-pattern scan clear; no repository/history audit claimed",
+        "Package LF policy and staged byte-for-byte readback verified"
+      ],
+      "finding": "P2: five-layer wording and acceptance receipt were ahead of evidence",
+      "corrections": [
+        "Label fifth layer and acceptance receipt pending before remote readback",
+        "Add --final acceptance gate that fails on missing receipt/layers/inventory",
+        "Correct V5 locator to bible/MASTER_PLAN_ADDENDUM_V5.json",
+        "Normalize package JSON to LF and add scoped .gitattributes; earlier layer artifact hashes are historical pre-normalization checkpoints"
+      ],
+      "limits": [
+        "Remote publication not yet claimed",
+        "Product source, distributed enforcement and human acceptance remain held"
+      ],
+      "completed_at_utc": "2026-09-15T19:25:22.638401+00:00"
+    }
+  ]
+}
