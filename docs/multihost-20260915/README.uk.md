@@ -10,7 +10,7 @@
 2. [Зіставлення V6, ownership і DAG](CROSSWALK.uk.md), [19 збережених карток](V6_TASKS.json).
 3. [План підготовки й контракти](PLAN.json), [робота між хостами та відновлення](OPERATIONS.uk.md).
 4. [Продукт, дизайн і приватність](PRODUCT.uk.md), [математика й контрприклади](MATH.uk.md).
-5. [Запис послідовних перевірок](REVIEW_LAYERS.json), [локальне приймання попереднього review](FREE_REVIEW_ACCEPTANCE.json). Шари 1–4 перевірені; шар 5 і фінальна квитанція очікують remote readback.
+5. [Запис послідовних перевірок](REVIEW_LAYERS.json), [локальне приймання попереднього review](FREE_REVIEW_ACCEPTANCE.json). Усі п’ять шарів завершені для документаційного scope; [квитанція приймання](ACCEPTANCE.json) містить хеші та межі доказів.
 
 ## Рішення про GitHub-базу
 
@@ -38,6 +38,6 @@ python -B -m unittest discover -s docs/multihost-20260915 -p "test_*.py"
 git diff --check
 ```
 
-Ці команди не потребують сучасного source checkout, мережі чи моделей. Вони перевіряють документаційні контракти й synthetic examples; не доводять роботу runtime, бази, UI, бюджету провайдера або майбутнього агента. `ACCEPTANCE.json` ще не створена: її буде додано після scoped remote readback. До цього `--final` має відхиляти пакет як незавершений; без `--final` доступна перевірка чернетки.
+Ці команди не потребують сучасного source checkout, мережі чи моделей. Вони перевіряють документаційні контракти й synthetic examples; не доводять роботу runtime, бази, UI, бюджету провайдера або майбутнього агента. `ACCEPTANCE.json` створена після byte-for-byte readback усіх 15 файлів першого GitHub payload commit. Фінальний evidence commit додає цю квитанцію; його remote HEAD і blob readback фіксуються в PR та вихідній задачі. `--final` відхиляє відсутню квитанцію, незавершені шари або змінені хеші; без прапорця доступна перевірка чернетки.
 
 **NEXT, 15 хв:** звірити відповідь Terra з manifest і почати V6-03 як документаційний контракт на локальному сучасному джерелі; source implementation лишається за окремим дозволом та SOURCE_PUBLICATION_REVIEW.

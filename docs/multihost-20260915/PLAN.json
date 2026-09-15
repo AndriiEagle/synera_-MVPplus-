@@ -249,12 +249,13 @@
       "acceptance_marker": "R1_LAYER_5_VERIFIED_WITH_LIMITS",
       "working_behavior": false,
       "validation": {
-        "label": "NEEDS_REVIEW",
+        "label": "VERIFIED_WITH_LIMITS",
         "commands": [
           "python -B docs/multihost-20260915/check_package.py"
         ],
         "evidence": [
-          "Public-only allowlist, local checks, exact commit push and remote readback"
+          "Public-only allowlist, local checks, exact commit push and remote readback",
+          "GitHub payload e36e0fe8e18272fe399f8618120a92bb6655790f: 15/15 blob readbacks equal; final evidence commit separately verified in source task/PR"
         ]
       },
       "rollback": "Revert only reviewed package patch/commit after inverse-diff review; never reset unrelated work."

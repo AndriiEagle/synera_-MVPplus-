@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "status": "DOCUMENTATION_ACCEPTED_WITH_EXPLICIT_PRODUCT_HOLDS",
+  "date_utc": "2026-09-15T19:27:53.816359+00:00",
+  "scope": "docs/multihost-20260915 only",
+  "layers_completed": 5,
+  "independent_review": "Separate read-only reviewer; content accepted after pending-state wording correction",
+  "payload_commit_verified_remotely": "e36e0fe8e18272fe399f8618120a92bb6655790f",
+  "remote_payload_files_verified": 15,
+  "current_source_tests": {
+    "count": 140,
+    "pass": 140,
+    "fail": 0,
+    "working_directory": "modern_source_root",
+    "scope": "web_launch and neon test files plus operator_dashboard.test.mjs"
+  },
+  "approval_probe": {
+    "control_pass": 1,
+    "invariant_fail": 1,
+    "exit_code": 1,
+    "defect_fixed": false,
+    "live_database_exploit_proven": false
+  },
+  "specification_tests": {
+    "methods": 9,
+    "plan_mutants_rejected": 8,
+    "scope": "Synthetic examples only, not distributed runtime enforcement"
+  },
+  "preservation": {
+    "original_planning_files": 20,
+    "modern_source_inputs": 25,
+    "original_v6_task_contracts": 19
+  },
+  "publication_review": {
+    "patterns": "No local user paths, UNC hosts, emails, provider-secret/JWT/private-key patterns in package",
+    "limits": "Bounded package review; not full repository/history secret audit",
+    "line_endings": "LF enforced by package-scoped .gitattributes"
+  },
+  "provider_usage": {
+    "new_provider_calls": 0,
+    "new_provider_usd": 0,
+    "historical_reused_calls": 1,
+    "historical_reused_model": "inclusionai/ling-3.0-flash-fin:free",
+    "historical_reused_provider_usd": 0,
+    "historical_input_tokens": 213,
+    "historical_output_tokens": 2962,
+    "historical_latency_s": 9.25,
+    "reviewer_subagent": "ki-reviewer (Terra), app usage not provider-receipted here",
+    "subscription_savings": null,
+    "retrieval_characters_observed": 8805,
+    "retrieval_time_s": null
+  },
+  "holds": [
+    "SOURCE_PUBLICATION_REVIEW",
+    "TERRA_LATEST_UNRECONCILED",
+    "DISTRIBUTED_ADMISSION_AND_FENCING_UNPROVEN",
+    "PRODUCT_APPROVAL_DEFECT",
+    "DISPOSABLE_DB_ACCEPTANCE",
+    "HUMAN_DESIGN_PRIVACY_AND_PILOT"
+  ],
+  "hash_scope": "All other current package files; this receipt is anchored by its Git commit, not a recursive self-hash. Earlier layer hashes are historical checkpoints.",
+  "artifact_hashes": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "check_package.py": "4db7f8515df176e5d300568375341c2cc3c6470cc1ac5b4aadb5f1376e3a9ab0",
+    "CROSSWALK.uk.md": "728203e63d6d92478c80cb9d5801bcb9ab2d6497ce45a6968521575631996857",
+    "FREE_REVIEW_ACCEPTANCE.json": "183c3f108290ea4911e35f3a86459dbd4b5b8d8226e7e939091af2251d488e43",
+    "MATH.uk.md": "87d34774e64c289fecab410680f04e9f5e1302d743e13de46e17b1ba04c330ab",
+    "OPERATIONS.uk.md": "78cf08661d669225ad2233c90d169de9c3ff3954b173090bf023f58c6ded887c",
+    "PLAN.json": "5f0340c0c155cbfcf87a6192e659114ae76e1cc821239099d5b688885c8906a9",
+    "PRODUCT.uk.md": "05c65c8a4a74c70bdebb4de820fe3475c5d7895f9e6a2b26989f64b973ac6334",
+    "README.uk.md": "fa3cfa2f8b9a0a81da814b30824952a0aeba64194f54458e641ef94cebb71c39",
+    "REVIEW_LAYERS.json": "e44cc97ba15a92f5407af3ec55bf51bc229349fa7e9d0f54edc30f2ddcf8f74c",
+    "SOURCE_EVIDENCE.json": "c0cce5d2824166af12da46c8332fdcb66049df4aa8f39a9453f806fb05419645",
+    "SOURCE_MANIFEST.json": "32fa4bdf9984f72cb21d22bd0d1c11fbe9e7f4b9bda418086e4f645602c39c2f",
+    "test_contracts.py": "c01b1d20718f30560bc8c6d98fdb7c0e684de53c379d1e4897593b6005a27225",
+    "V6-03-CONTRACT.uk.md": "5e620503a79ce221f0e0696bf6183709f97aa441685804c0036c77a2064364b0",
+    "V6_TASKS.json": "fe0b70236d925217c508a05b79c08478a256da1a2ea9e93ebb06c4fbe75f1525"
+  }
+}

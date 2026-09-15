@@ -114,6 +114,32 @@
         "Product source, distributed enforcement and human acceptance remain held"
       ],
       "completed_at_utc": "2026-09-15T19:25:22.638401+00:00"
+    },
+    {
+      "layer": 5,
+      "name": "scoped_publication_and_remote_readback",
+      "status": "VERIFIED_WITH_LIMITS",
+      "checks": [
+        "First documentation commit pushed to the authorized branch",
+        "GitHub ref equals local payload commit",
+        "All 15 remote GitHub blobs downloaded and compared byte-for-byte with local payload",
+        "No source changes or out-of-package paths published",
+        "Final gate rejected missing acceptance before publication; final receipt now created from actual readback",
+        "Final Terra handoff directory still contains only Soul discovery snapshot"
+      ],
+      "payload_commit_verified": "e36e0fe8e18272fe399f8618120a92bb6655790f",
+      "remote_file_count": 15,
+      "remote_readback_sha256": "4ae60bc0d3f976fefa4d48e5d36d014d42800dd1758730ff669cb63c1c0ae869",
+      "corrections": [
+        "Finalize README and PLAN status only after actual remote evidence",
+        "Add hash-bound ACCEPTANCE as a follow-up evidence commit"
+      ],
+      "limits": [
+        "This layer proves the preceding payload commit; final evidence-only commit receives a separate final readback recorded in the source task/PR",
+        "Product approval defect and source-publication prerequisite remain open",
+        "No Terra latest-version reconciliation or multihost runtime acceptance"
+      ],
+      "completed_at_utc": "2026-09-15T19:27:53.816359+00:00"
     }
   ]
 }
