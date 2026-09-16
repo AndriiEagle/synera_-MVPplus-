@@ -158,6 +158,20 @@ Explicit state when suitable candidate is absent
 
 Import/portability також зберігаються через наявні profile-import, profile-portability, chatgpt-transfer. Calendar має accepted-meeting/time validation. App navigation/auth та account controls потребують свого regression coverage при source transfer, не лише загального «нового дизайну».
 
+## Юридичний ланцюжок V5 (E1–E5): не перенесений у R1/R2
+
+[Архів V5](archive/MASTER_PLAN_V5.json) мав окрему хвилю `E_legal` з пʼятьма кроками поза простором P01–P16 (тому вони поза схемою [CONTEXT.json](CONTEXT.json) і не зʼявляються в таблиці вимог вище):
+
+| V5 step_id | Артефакт | p_refs | Стан у R1/R2 |
+|---|---|---|---|
+| E1-privacy-notice-draft | Privacy Notice v1 (7 consent-пунктів) | LEGAL-P0-01, P10 | EXPLICITLY_PARKED — немає V6/R2 картки |
+| E2-tos-draft | ToS v1, 12 clauses | LEGAL-P0-02 | EXPLICITLY_PARKED |
+| E3-dpa-scc-package | DPA/SCC processor checklist | LEGAL-P0-03 | EXPLICITLY_PARKED |
+| E4-retention-schedule | Retention schedule (proposals) | LEGAL-P2-02 | EXPLICITLY_PARKED |
+| E5-dpia-template | DPIA template (one-page) | LEGAL-P2-01 | EXPLICITLY_PARKED |
+
+P10 (Privacy) вище покриває вимогу на рівні продукту (granular consent/retention/export), але не ці пʼять конкретних юридичних артефактів. Жоден не отримав V6 чи R2 картку. Це не помилка R1/R2 — обидва явно не брали на себе legal-scope — але для швейцарського пілоту (FADP/GDPR) це відкрита прогалина, яку варто закрити до, а не під час, першого реального пілоту.
+
 ## Карта — обов’язкова явна частина scope
 
 [GEO-01: Maps і тимчасова live-локація перед зустріччю](MAPS_AND_LOCATION.uk.md) відділяє legacy Google Maps, чинну city-only web map і нову чітко описану поведінку sharing/navigation. Немає підстав видаляти карту чи оголошувати live-навігацію готовою.
