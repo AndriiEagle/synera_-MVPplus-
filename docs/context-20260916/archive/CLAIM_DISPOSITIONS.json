@@ -1,0 +1,328 @@
+{
+  "kind": "archived_factcheck_not_feature_requirements",
+  "current_external_verification": false,
+  "do_not_use_as_current_legal_financial_or_market_advice": true,
+  "source_sha256": "da67483ddeb86f55f734c35861df730953d651e07aa59c3dcd7c8d2c2f1942ca",
+  "claims": [
+    {
+      "id": "F01",
+      "historical_claim_under_review": "Весь ринок фрилансу впав на 80%",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не використовувати -80% у pitch або прогнозі.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "F02",
+      "historical_claim_under_review": "Upwork Q2 2026 GSV змінився на -3,6% YoY",
+      "historical_status": "VERIFIED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Використовувати лише з назвою метрики, періодом і джерелом.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "F03",
+      "historical_claim_under_review": "Fiverr annual active buyers змінилися на -21,9% YoY на 2026-06-30",
+      "historical_status": "VERIFIED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не порівнювати напряму із GSV як ту саму метрику.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "F04",
+      "historical_claim_under_review": "Конкуренти не мають AI для матчингу та співпраці",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Перевагу шукати у результатах вузького сегмента.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "F05",
+      "historical_claim_under_review": "Великі компанії працюватимуть лише з великими екосистемами",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не робити загальні висновки про конкретні компанії.",
+      "source_ids": []
+    },
+    {
+      "id": "F06",
+      "historical_claim_under_review": "Швейцарський ринок захистить від копіювання",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Перевіряти retention та доступ до спільноти.",
+      "source_ids": []
+    },
+    {
+      "id": "F07",
+      "historical_claim_under_review": "Масові реєстрації прийдуть безплатно",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Рахувати fully loaded CAC, включаючи час.",
+      "source_ids": []
+    },
+    {
+      "id": "F08",
+      "historical_claim_under_review": "Великий waitlist доводить інвестиційну цінність",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Звітувати funnel та повторне використання.",
+      "source_ids": []
+    },
+    {
+      "id": "F09",
+      "historical_claim_under_review": "Swiss B2B автоматично звільняє від AI Act",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Перед live-класифікацією залучити фахівця.",
+      "source_ids": [
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "F10",
+      "historical_claim_under_review": "Будь-який business rating цілком дозволений",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не будувати універсальний human score.",
+      "source_ids": [
+        "S04",
+        "S07"
+      ]
+    },
+    {
+      "id": "F11",
+      "historical_claim_under_review": "Власна БД дозволяє вільно керувати всіма зібраними даними",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Consent, retention, access, deletion та purpose limitation.",
+      "source_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "F12",
+      "historical_claim_under_review": "Існує офіційне джерело бізнес-реєстрації у Швейцарії",
+      "historical_status": "VERIFIED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Реєстровий доказ позначати з конкретними межами.",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "id": "F13",
+      "historical_claim_under_review": "Згода й актуальні наміри дадуть кращий matching",
+      "historical_status": "PROPOSAL",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Порівняти з ручним baseline на однакових eligible-парах.",
+      "source_ids": []
+    },
+    {
+      "id": "F14",
+      "historical_claim_under_review": "Експертний перегляд потрібен у відповідальних сценаріях",
+      "historical_status": "QUALIFIED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Визначити кваліфікацію, scope, конфлікти інтересів.",
+      "source_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "F15",
+      "historical_claim_under_review": "До CHF100k / EUR30k немає податків",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Country/year/tax type/service-specific facts.",
+      "source_ids": [
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "id": "F16",
+      "historical_claim_under_review": "Освітній ярлик або інша дата рахунку автоматично зніме податки",
+      "historical_status": "EXPERT_REQUIRED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не генерувати інструкції перейменування чи заднього датування.",
+      "source_ids": []
+    },
+    {
+      "id": "F17",
+      "historical_claim_under_review": "Один-два клієнти автоматично означають працівника",
+      "historical_status": "CONTRADICTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Направлення до належного органу/експерта.",
+      "source_ids": [
+        "S11"
+      ]
+    },
+    {
+      "id": "F18",
+      "historical_claim_under_review": "Загальної згоди при реєстрації достатньо для будь-якого запису",
+      "historical_status": "EXPERT_REQUIRED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Окремий opt-in, зрозуміла мета, альтернатива без запису.",
+      "source_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "F19",
+      "historical_claim_under_review": "Подорожі по місяцю гарантують законність роботи й податків",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не вбудовувати travel-hopping рекомендації.",
+      "source_ids": []
+    },
+    {
+      "id": "F20",
+      "historical_claim_under_review": "Комісії 1–2% достатньо для сталого бізнесу",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Sensitivity model, не прогноз прибутковості.",
+      "source_ids": []
+    },
+    {
+      "id": "F21",
+      "historical_claim_under_review": "Всі AI-провайдери крадуть і роздають бізнес-дані",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Перевіряти умови та мінімізувати payload; не поширювати звинувачення.",
+      "source_ids": []
+    },
+    {
+      "id": "F22",
+      "historical_claim_under_review": "До придатного продукту гарантовано 2–3 тижні",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Планувати acceptance slices, не обіцяти строк.",
+      "source_ids": []
+    },
+    {
+      "id": "F23",
+      "historical_claim_under_review": "Є підтверджена подія/партнерство наприкінці вересня",
+      "historical_status": "UNSUPPORTED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Не надсилати й не бронювати автоматично.",
+      "source_ids": []
+    },
+    {
+      "id": "F24",
+      "historical_claim_under_review": "ЄК повідомляє дату 2027-12-02 для правил Annex III після Omnibus",
+      "historical_status": "VERIFIED",
+      "historical_review_date": "2026-09-07",
+      "product_decision": "Оновити старі примітки; не трактувати відтермінування як повний виняток.",
+      "source_ids": [
+        "S08"
+      ]
+    }
+  ],
+  "external_source_index": [
+    {
+      "id": "S01",
+      "title": "Upwork Q2 2026 results",
+      "publication": "2026-08-10",
+      "accessed": "2026-09-07",
+      "url": "https://investors.upwork.com/news-releases/news-release-details/upwork-reports-second-quarter-2026-financial-results",
+      "limit": "Company-reported unaudited quarterly platform metrics; not whole freelance market"
+    },
+    {
+      "id": "S02",
+      "title": "Fiverr Q2 2026 results",
+      "publication": "2026-07",
+      "accessed": "2026-09-07",
+      "url": "https://investors.fiverr.com/news-releases/news-release-details/fiverr-announces-second-quarter-2026-results",
+      "limit": "Annual active buyers; rounded counts and published change; not equivalent to GSV"
+    },
+    {
+      "id": "S03",
+      "title": "Upwork Uma",
+      "publication": "undated",
+      "accessed": "2026-09-07",
+      "url": "https://www.upwork.com/uma/",
+      "limit": "Vendor description confirms advertised functionality, not independently measured quality"
+    },
+    {
+      "id": "S04",
+      "title": "FDPIC AI and data protection",
+      "publication": "2025-09-24",
+      "accessed": "2026-09-07",
+      "url": "https://www.edoeb.admin.ch/en/ai-and-data-protection",
+      "limit": "Swiss regulator guidance"
+    },
+    {
+      "id": "S05",
+      "title": "FDPIC recording conversations",
+      "publication": "undated",
+      "accessed": "2026-09-07",
+      "url": "https://www.edoeb.admin.ch/en/recording-conversations",
+      "limit": "General rule with exceptions; does not establish consent for this source recording"
+    },
+    {
+      "id": "S06",
+      "title": "AI Act Article 2",
+      "publication": "2024 text with update warning",
+      "accessed": "2026-09-07",
+      "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-2",
+      "limit": "Territorial scope; displayed text carries Omnibus update warning"
+    },
+    {
+      "id": "S07",
+      "title": "AI Act Annex III",
+      "publication": "2024 text with update warning",
+      "accessed": "2026-09-07",
+      "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3",
+      "limit": "Work-related uses; final product classification needs expert review"
+    },
+    {
+      "id": "S08",
+      "title": "Commission AI Omnibus update",
+      "publication": "2026-07-27",
+      "accessed": "2026-09-07",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+      "limit": "Commission states Annex III timeline 2027-12-02; does not exempt data protection/prohibitions"
+    },
+    {
+      "id": "S09",
+      "title": "ESTV MWST tax liability",
+      "publication": "undated",
+      "accessed": "2026-09-07",
+      "url": "https://www.estv.admin.ch/de/mwst-steuerpflicht",
+      "limit": "VAT thresholds subject to conditions; not all taxes"
+    },
+    {
+      "id": "S10",
+      "title": "Germany UStG section 19",
+      "publication": "current fetched text",
+      "accessed": "2026-09-07",
+      "url": "https://www.gesetze-im-internet.de/ustg_1980/__19.html",
+      "limit": "25k previous year / 100k current year VAT small business conditions"
+    },
+    {
+      "id": "S11",
+      "title": "AHV leaflet 2.02",
+      "publication": "2026-01-01",
+      "accessed": "2026-09-07",
+      "url": "https://www.ahv-iv.ch/p/2.02.e",
+      "limit": "Employment status based on actual circumstances"
+    },
+    {
+      "id": "S12",
+      "title": "Swiss Justice commercial register Zefix",
+      "publication": "undated",
+      "accessed": "2026-09-07",
+      "url": "https://www.bj.admin.ch/de/handelsregister-zefix-und-regix",
+      "limit": "Official register information; no proof of professional quality"
+    }
+  ]
+}

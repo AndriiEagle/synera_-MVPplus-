@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "status": "CONTEXT_RECONCILED_WITH_SOURCE_AND_RUNTIME_LIMITS",
+  "date_utc": "2026-09-16T14:11:14.579297+00:00",
+  "coverage": {
+    "original_requirements": 16,
+    "abstract_product_decisions": 61,
+    "historical_claim_assessments": 24,
+    "historical_v4_steps": 26,
+    "historical_v5_steps": 23,
+    "v6_tasks_preserved": 19
+  },
+  "verification": [
+    "Five context test methods PASS; missing requirement/map/source/acceptance and false archive-current/dispatch mutants rejected",
+    "R1 final gate PASS; R1 bytes unchanged",
+    "Read-only independent source reviewer confirmed map distinction and ownership gaps",
+    "Four actual city-map consent/precision probes PASS; no live GPS/UI acceptance",
+    "23 original source/document hashes unchanged",
+    "Bounded public package secret/local-path/email scan clear",
+    "17 private documents copied to existing KI-BUS asset_drop; zip and all entry bytes read back"
+  ],
+  "private_delivery": {
+    "classification": "LOCAL_ONLY",
+    "bundle_sha256": "09dea988afd89b5cd6b19f947e58ab2385c29bdb525c39d01b2d0f3e20dae952",
+    "entry_count": 17,
+    "receiver_read_proven": false
+  },
+  "terra": "ACK received: adopted Soul V6; no divergent plan reported. Full inventory and modern-source test on Terra unproven.",
+  "limitations": [
+    "Documentation completeness is not product implementation",
+    "Modern source publication/mirror still needs clean source review; no Git history bundle sent",
+    "Original Bible JSON invalid escape preserved; Markdown fallback explicit",
+    "Claude session permissions unchanged",
+    "No automatic sync daemon or future monitoring",
+    "No measured subscription-token savings or zero-subscription guarantee"
+  ],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "public_artifact_hashes": {
+    "README.md": "8f1e3ea73fbe4f26caeb32f4769d1cbc76f6115c1294e28394d0a6973f08432d",
+    ".gitattributes": "d35e460cd9bb07a8d78dfc9f460a6996b81886d8d1a35135423530cfdb4905ca",
+    "SYNERA_START_HERE.uk.md": "9c7ceb707e2414a8f57fcb3444f42cd2b10c8e978313bf10031f9efcb1bd6273",
+    "docs/context-20260916/.gitattributes": "db8210c0016c485947a41d8bcbc1b3af4eb5e39d1ccd754177ff63904069cb8a",
+    "docs/context-20260916/check_context.py": "1a3bec6767bee93bbf773c1cd7fa50d1ec8897ba0f2d8ef37115b69cf54a46f6",
+    "docs/context-20260916/CONTEXT.json": "b3558da727f0483f5ac3cff84127bf2c8cef74a8abf04b2fc67d8a126ca3201e",
+    "docs/context-20260916/INSIGHTS.json": "4e5df29f7d13cdc4509938966b0974c8e2b7535da855905803c76278cb1c86f1",
+    "docs/context-20260916/MAPS_AND_LOCATION.uk.md": "94105d0ec5f7e97b86daf6885fdeaa51f32297cc7bc5cbf47f634e03edd79808",
+    "docs/context-20260916/PRODUCT_CONTEXT.uk.md": "fa9856b6604b1b6809b566b35587167f811b7c521da4cc45aa7761c89de90071",
+    "docs/context-20260916/test_context.py": "32dfe1605ee8d85ca0444e0bd12ef027657a5da8c5b17f7f40e0972e1646b19c",
+    "docs/context-20260916/archive/CLAIM_DISPOSITIONS.json": "1d35fee2498846a0be0cabaac2147623beed74ecb10a43935f28abc40e19b749",
+    "docs/context-20260916/archive/MASTER_PLAN_V4.json": "b9862cf3d81c29519639953fd6bcf923312eeea5d6a4d34fc36c4ecb05d440e4",
+    "docs/context-20260916/archive/MASTER_PLAN_V5.json": "2ca2dcd14d09cc4ce92668162228b226b6c8be1c986e5f8e1329187b11412e76",
+    "docs/context-20260916/archive/PRODUCT_SPEC.json": "db420eced73f7bd26475f2d49a8dc79f905afcb9f5c06bfdf53cd95545fd8d6e"
+  }
+}

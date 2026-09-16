@@ -1,0 +1,290 @@
+{
+  "kind": "historical_source_projection_not_execution_authority",
+  "source_sha256": "28c612d1001f2de9b3e8d062a0e14bdb5804c9053b84679ac7a50a19e8629ebd",
+  "source_date": "2026-09-07",
+  "current_runtime_status": "NOT_INFERRED_FROM_ARCHIVE",
+  "data": {
+    "schema": "synera.handoff.spec.v1",
+    "created": "2026-09-07",
+    "purpose": "requirements_for_next_chat_not_execution_authority",
+    "product": "Synera",
+    "sources": [
+      "R26",
+      "R27"
+    ],
+    "source_gaps": [
+      {
+        "source": "R27",
+        "start": 0,
+        "end": 149,
+        "status": "UNRESOLVED_NOT_SILENCE"
+      }
+    ],
+    "core": "Prepared business collaboration with explicit value for both parties",
+    "modes": [
+      {
+        "id": "exchange",
+        "currently_supported": true
+      },
+      {
+        "id": "joint_project",
+        "currently_supported": true
+      },
+      {
+        "id": "paid_service",
+        "currently_supported": false
+      },
+      {
+        "id": "referral",
+        "currently_supported": false
+      },
+      {
+        "id": "hybrid",
+        "currently_supported": false
+      }
+    ],
+    "entities": {
+      "Profile": [
+        "id",
+        "schema_version",
+        "capabilities",
+        "current_needs",
+        "desired_outcome",
+        "capacity",
+        "languages",
+        "availability",
+        "allowed_modes",
+        "visibility"
+      ],
+      "BusinessCase": [
+        "id",
+        "participants",
+        "mode",
+        "need_versions",
+        "revision",
+        "content_hash",
+        "benefits",
+        "proposed_terms",
+        "unresolved",
+        "status"
+      ],
+      "Acceptance": [
+        "case_id",
+        "revision",
+        "participant_id",
+        "accepted_at_server",
+        "revoked_at"
+      ],
+      "Evidence": [
+        "owner_id",
+        "service_id",
+        "source",
+        "scope",
+        "checked_by",
+        "checked_at",
+        "status",
+        "expires_at"
+      ],
+      "ExpertReview": [
+        "case_id",
+        "expert_id",
+        "qualification_scope",
+        "authorized_fields",
+        "conflicts",
+        "finding",
+        "limits"
+      ],
+      "Outcome": [
+        "case_id",
+        "revision",
+        "submitted_by",
+        "accepted_by",
+        "disputed",
+        "feedback_missing"
+      ],
+      "Consent": [
+        "actor_id",
+        "purpose",
+        "object_scope",
+        "version",
+        "granted_at",
+        "revoked_at"
+      ]
+    },
+    "case_states": [
+      "draft",
+      "needs_information",
+      "candidate",
+      "mutual_interest",
+      "terms_proposed",
+      "terms_agreed",
+      "trial_in_progress",
+      "submitted",
+      "accepted",
+      "disputed",
+      "withdrawn",
+      "expired"
+    ],
+    "state_rules": [
+      "No automatic transition to mutual_interest for another party",
+      "terms_agreed requires both current revision acceptances",
+      "Material revision resets acceptance",
+      "submitted is not accepted",
+      "Consent revocation blocks new dependent actions without silently erasing legal records"
+    ],
+    "requirements": [
+      {
+        "id": "P01",
+        "area": "Profile",
+        "requirement": "Explicit capabilities, current needs, desired result, availability and allowed collaboration modes",
+        "acceptance": "Old profile imports remain valid; new fields default private/unconfirmed.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P02",
+        "area": "Matching",
+        "requirement": "Extend existing matcher for exchange, paid_service, referral, hybrid",
+        "acceptance": "Both parties allow mode and have current availability. Exchange requires bilateral skill fit; paid_service requires explicit compensation interest on both sides; referral requires agreed referral scheme and third-party contact consent; hybrid validates each component; joint_project requires shared outcome and contributions. Positive and negative cases for each mode.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P03",
+        "area": "Mutual interest",
+        "requirement": "Both participants independently confirm current interest",
+        "acceptance": "One-sided click cannot confirm the other party; revocation closes consent-dependent actions.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P04",
+        "area": "Case revision",
+        "requirement": "Immutable revisions of proposed collaboration terms",
+        "acceptance": "Both accept identical revision/hash. Any change to agreed content including scope, price, deadlines, acceptance, IP, confidentiality or termination resets both acceptances; cosmetic UI outside agreed content does not. Retention is separately governed.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P05",
+        "area": "Terms",
+        "requirement": "Scope, out-of-scope, deadlines, compensation, acceptance, IP, termination",
+        "acceptance": "Missing required terms cannot become agreed; no guessed financial values.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P06",
+        "area": "Evidence",
+        "requirement": "Service-specific evidence with owner, source, scope, date and status",
+        "acceptance": "Track provenance, verification and freshness separately; expiry never erases historic evidence or implies low competence. Expired eligibility blocks current regulated expert dispatch where required.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P07",
+        "area": "Expert review",
+        "requirement": "Qualified expert reviews consented fact pack for a specific subject",
+        "acceptance": "Check subject competence, jurisdiction, current evidence, conflicts and referral fees before dispatch; license only where applicable. No eligible expert means pending, no arbitrary substitution.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P08",
+        "area": "Delivery",
+        "requirement": "Record submitted trial output and recipient decision",
+        "acceptance": "Submission alone is not acceptance; dispute is represented without automatic guilt.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P09",
+        "area": "Feedback",
+        "requirement": "Immediate and optional delayed outcome feedback",
+        "acceptance": "No reply is missing data; not negative competence or automatic credit penalty.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P10",
+        "area": "Privacy",
+        "requirement": "Granular consent, purpose, access, retention and export",
+        "acceptance": "Hidden profiles remain undiscoverable; revocation prevents new model dispatch; retention policy covers derived data.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P11",
+        "area": "AI",
+        "requirement": "Reuse canonical adapter, schema validation and source attribution",
+        "acceptance": "Untrusted profile text cannot authorize actions; output never invents skills, price or legal conclusions.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P12",
+        "area": "Communication",
+        "requirement": "Draft introduction and schedule via existing flow",
+        "acceptance": "No message or recording without explicit user action and appropriate participant consent.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P13",
+        "area": "Economics",
+        "requirement": "Measure variable cost per useful outcome before billing",
+        "acceptance": "Unknown cost stays unknown; paid tier cannot buy a higher competence score.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P14",
+        "area": "Pilot",
+        "requirement": "Fixed denominator funnel with missing-data and repeated-participant tracking",
+        "acceptance": "Predeclare cohort, observation period, fixed denominators, decision thresholds and baseline. Suggested operational pilot: 10 disjoint pairs, 14 days, 5 mutually agreed briefs and 3 accepted trials; these are proposals, not observed demand. Track repeated participants, response rate, willingness to pay and support costs; no causal AI claim from nonrandom comparisons.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P15",
+        "area": "Migration",
+        "requirement": "Versioned extension using current profile/store/backend",
+        "acceptance": "Old exports round-trip; permissions and deletions preserved; no second durable store.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      },
+      {
+        "id": "P16",
+        "area": "Cold start",
+        "requirement": "Explicit state when suitable candidate is absent",
+        "acceptance": "No fabricated participants or AI-generated evidence; invite a real colleague through authorized flow.",
+        "status": "PROPOSED_NOT_FULLY_IMPLEMENTED"
+      }
+    ],
+    "priorities": {
+      "now": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P15",
+        "P16"
+      ],
+      "next": [
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P14"
+      ],
+      "cross_cutting": [
+        "P10",
+        "P11",
+        "P12",
+        "P13"
+      ],
+      "parked": [
+        "autonomous legal advice",
+        "universal human rating",
+        "recording by default",
+        "payments",
+        "global expansion",
+        "training on conversations"
+      ]
+    },
+    "acceptance_boundaries": {
+      "previous_local_tests": 64,
+      "current_full_spec_runtime_acceptance": false,
+      "browser_acceptance": false,
+      "real_two_user_acceptance": false,
+      "paid_demand": false,
+      "legal_clearance": false
+    }
+  }
+}

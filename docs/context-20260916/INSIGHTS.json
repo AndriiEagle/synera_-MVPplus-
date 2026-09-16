@@ -1,0 +1,433 @@
+{
+  "kind": "sanitized_projection_private_story_columns_omitted",
+  "source_sha256": "20e8c895213e892615d4d9b8178a60d66c3db37a7bf8c861a437f3d5e60cd1a7",
+  "items": [
+    {
+      "id": "D01",
+      "source_id": "original_single_context",
+      "source_line": 138,
+      "product_implication": "Канал пілоту; дата й згода не підтверджені",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D02",
+      "source_id": "original_single_context",
+      "source_line": 139,
+      "product_implication": "Окремий тип партнерства й експертної пропозиції",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D03",
+      "source_id": "original_single_context",
+      "source_line": 140,
+      "product_implication": "Підбір експерта за країною/предметом; передавання погоджених фактів",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D04",
+      "source_id": "original_single_context",
+      "source_line": 141,
+      "product_implication": "Перебудова наявної Synera; нова платформа з нуля не потрібна",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D05",
+      "source_id": "original_single_context",
+      "source_line": 142,
+      "product_implication": "Гіпотеза позиціонування, а не універсальний факт про компанії",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D06",
+      "source_id": "original_single_context",
+      "source_line": 143,
+      "product_implication": "Review — структурована послуга з межами відповідальності",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D07",
+      "source_id": "original_single_context",
+      "source_line": 144,
+      "product_implication": "Не приймати як юридичний виняток",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D08",
+      "source_id": "original_single_context",
+      "source_line": 145,
+      "product_implication": "Довіра й distribution можуть допомогти; географія не гарантує переваги",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D09",
+      "source_id": "original_single_context",
+      "source_line": 146,
+      "product_implication": "Експеримент залучення; CAC не дорівнює нулю без вимірювання",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D10",
+      "source_id": "original_single_context",
+      "source_line": 147,
+      "product_implication": "Розділити зареєстрованих, активованих, платників і корисні результати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D11",
+      "source_id": "original_single_context",
+      "source_line": 148,
+      "product_implication": "Дані мають умови використання; існування бізнесу ≠ майстерність",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D12",
+      "source_id": "original_single_context",
+      "source_line": 149,
+      "product_implication": "Перевірити актуальність, provenance і перевагу над baseline",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D13",
+      "source_id": "original_single_context",
+      "source_line": 150,
+      "product_implication": "paid/referral/hybrid режими; згода на комісійні умови",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D14",
+      "source_id": "original_single_context",
+      "source_line": 151,
+      "product_implication": "Давати пробу без вигаданої репутації; missing evidence не карати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D15",
+      "source_id": "original_single_context",
+      "source_line": 152,
+      "product_implication": "Оцінка з розмови, не гарантований строк; scope визначає готовність",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D16",
+      "source_id": "original_single_context",
+      "source_line": 153,
+      "product_implication": "Потребу тестувати; числове твердження не підтверджено",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D17",
+      "source_id": "original_single_context",
+      "source_line": 154,
+      "product_implication": "Приватний досвід, не доказ загальної відмови enterprise від постачальників",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "D18",
+      "source_id": "original_single_context",
+      "source_line": 155,
+      "product_implication": "Потреба в контролі даних корисна; звинувачення без доказу не повторювати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C01",
+      "source_id": "original_single_context",
+      "source_line": 553,
+      "product_implication": "Показувати одну пару та її результат, а не всю майбутню екосистему",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C02",
+      "source_id": "original_single_context",
+      "source_line": 554,
+      "product_implication": "Поля фактичної географії й дозволеного формату; не обіцяти «працюй звідусіль»",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C03",
+      "source_id": "original_single_context",
+      "source_line": 555,
+      "product_implication": "Джерельні попередження за конкретною країною; правила «місяць» не кодувати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C04",
+      "source_id": "original_single_context",
+      "source_line": 556,
+      "product_implication": "Не зводити правові правила до одного порогу обороту",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C05",
+      "source_id": "original_single_context",
+      "source_line": 557,
+      "product_implication": "Перевірити активацію на події; це гіпотеза, не доказ конверсії",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C06",
+      "source_id": "original_single_context",
+      "source_line": 558,
+      "product_implication": "Корисна тема підтримки, але не інструкція змінювати назви/дати заднім числом",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C07",
+      "source_id": "original_single_context",
+      "source_line": 559,
+      "product_implication": "Збирати бізнес-контекст лише коли потрібен; не видавати приватні історії за норму",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C08",
+      "source_id": "original_single_context",
+      "source_line": 560,
+      "product_implication": "Гіпотеза «чому зараз», перевірити інтерв’ю з цільовими учасниками",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C09",
+      "source_id": "original_single_context",
+      "source_line": 561,
+      "product_implication": "Перевіряти конкретних конкурентів; не обіцяти, що Synera єдина",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C10",
+      "source_id": "original_single_context",
+      "source_line": 562,
+      "product_implication": "Почати з професійних подій і знайомих спільнот",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C11",
+      "source_id": "original_single_context",
+      "source_line": 563,
+      "product_implication": "Підготовка умов у першому продукті; платіжна роль окремо досліджується",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C12",
+      "source_id": "original_single_context",
+      "source_line": 564,
+      "product_implication": "Малий закритий пілот; окремий облік джерела залучення",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C13",
+      "source_id": "original_single_context",
+      "source_line": 565,
+      "product_implication": "Зберегти двостороннє ядро чинної Synera",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C14",
+      "source_id": "original_single_context",
+      "source_line": 566,
+      "product_implication": "Комісію залишити гіпотезою до вимірювання витрат",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C15",
+      "source_id": "original_single_context",
+      "source_line": 567,
+      "product_implication": "Відрізняти консультацію від виконання й вимагати приклад роботи",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C16",
+      "source_id": "original_single_context",
+      "source_line": 568,
+      "product_implication": "Не діагностувати особистість; розглядати перевірювані дії та скарги",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C17",
+      "source_id": "original_single_context",
+      "source_line": 569,
+      "product_implication": "Мінімізація даних корисна; автоматичного правового винятку немає",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C18",
+      "source_id": "original_single_context",
+      "source_line": 570,
+      "product_implication": "Чернетки з підтвердженням людини; джерела, дата й оскарження доказів",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C19",
+      "source_id": "original_single_context",
+      "source_line": 571,
+      "product_implication": "Зберегти як довгу візію; не включати у перший реліз",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C20",
+      "source_id": "original_single_context",
+      "source_line": 572,
+      "product_implication": "Перший пілот локальний; cross-border окремий модуль після перевірки",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C21",
+      "source_id": "original_single_context",
+      "source_line": 573,
+      "product_implication": "Підказувати питання фахівцю, не створювати автоматичні юридичні висновки",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C22",
+      "source_id": "original_single_context",
+      "source_line": 574,
+      "product_implication": "Потрібні реальні обставини; правило «1–2 клієнти = працівник» не застосовувати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C23",
+      "source_id": "original_single_context",
+      "source_line": 575,
+      "product_implication": "Нішування за бізнес-потребою та здатністю отримати результат",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C24",
+      "source_id": "original_single_context",
+      "source_line": 576,
+      "product_implication": "Не запускати білінг; спершу виміряти вартість одного корисного кейсу",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C25",
+      "source_id": "original_single_context",
+      "source_line": 577,
+      "product_implication": "Достатньо перевірити двосторонній попит і домовленість",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C26",
+      "source_id": "original_single_context",
+      "source_line": 578,
+      "product_implication": "Потрібні дані; не виводити ціну з віку компанії чи відсутності сайту",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C27",
+      "source_id": "original_single_context",
+      "source_line": 579,
+      "product_implication": "Утримання через зручність; обмеження обходу потребують окремого правового розгляду",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C28",
+      "source_id": "original_single_context",
+      "source_line": 580,
+      "product_implication": "Продавати конкретний результат співпраці; простий інтерфейс",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C29",
+      "source_id": "original_single_context",
+      "source_line": 581,
+      "product_implication": "Міряти прийняту зустріч і завершений мікропроєкт",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C30",
+      "source_id": "original_single_context",
+      "source_line": 582,
+      "product_implication": "Наявні запрошення/чат повторно використати; автоматичну розсилку не вмикати",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C31",
+      "source_id": "original_single_context",
+      "source_line": 583,
+      "product_implication": "Професійний профіль, потреба, пропозиція, умови",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C32",
+      "source_id": "original_single_context",
+      "source_line": 584,
+      "product_implication": "Гіпотеза майбутнього; не обіцяти безподатковість чи універсальну мобільність",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C33",
+      "source_id": "original_single_context",
+      "source_line": 585,
+      "product_implication": "Версія джерела, юрисдикція, дата, невідомі факти; утримання від відповіді",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C34",
+      "source_id": "original_single_context",
+      "source_line": 586,
+      "product_implication": "Ціль і потужність зараз; фінансові поля приватні й необов’язкові",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C35",
+      "source_id": "original_single_context",
+      "source_line": 587,
+      "product_implication": "Не переносити озвучені суми й умови без перевірки",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C36",
+      "source_id": "original_single_context",
+      "source_line": 588,
+      "product_implication": "Доказ компетентності за конкретною послугою; не загальний рейтинг людини",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C37",
+      "source_id": "original_single_context",
+      "source_line": 589,
+      "product_implication": "Починати з простого результату; партнерські комісії лише прозоро",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C38",
+      "source_id": "original_single_context",
+      "source_line": 590,
+      "product_implication": "Основний шлях: профіль → кейс → проба → результат",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C39",
+      "source_id": "original_single_context",
+      "source_line": 591,
+      "product_implication": "Порівняння обіцяного й виконаного, право відповіді; не AI-детектор брехні",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C40",
+      "source_id": "original_single_context",
+      "source_line": 592,
+      "product_implication": "Відкладений відгук; не карати експерта за нерозуміння слухача",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C41",
+      "source_id": "original_single_context",
+      "source_line": 593,
+      "product_implication": "Окремий добровільний запис; альтернатива — погоджений підсумок без запису",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C42",
+      "source_id": "original_single_context",
+      "source_line": 594,
+      "product_implication": "Не продавати приватні записи; агрегати та права на використання окремо",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "C43",
+      "source_id": "original_single_context",
+      "source_line": 595,
+      "product_implication": "Доказ цінності перед залученням інвестора; підписки не дорівнюють попиту",
+      "status": "PRESERVED_SOURCE_DECISION_NOT_RUNTIME_ACCEPTANCE"
+    }
+  ]
+}

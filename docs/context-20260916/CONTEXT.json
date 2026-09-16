@@ -1,0 +1,548 @@
+{
+  "schema_version": 1,
+  "revision": "R2_CONTEXT_RECONCILIATION_20260916",
+  "purpose": "Static derived source map; not a new router, queue, registry or execution authority",
+  "dispatch_allowed": false,
+  "paid_authorized_cap_usd": 0,
+  "modern_source_commit": "2aa7fae6a4f002ed880cb97ec780de41e328af97",
+  "r1_base_commit": "82c2ec5945b16abc0a689278500a326a2a1f03c9",
+  "sources": [
+    {
+      "id": "original_single_context",
+      "source_path": "output/synera-handoff-20260907-v1/SINGLE_CONTEXT.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "20e8c895213e892615d4d9b8178a60d66c3db37a7bf8c861a437f3d5e60cd1a7",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "original_spec",
+      "source_path": "output/synera-handoff-20260907-v1/SPEC.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "28c612d1001f2de9b3e8d062a0e14bdb5804c9053b84679ac7a50a19e8629ebd",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "original_claims",
+      "source_path": "output/synera-handoff-20260907-v1/CLAIMS.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "da67483ddeb86f55f734c35861df730953d651e07aa59c3dcd7c8d2c2f1942ca",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "original_sources",
+      "source_path": "output/synera-handoff-20260907-v1/SOURCES.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "6634ee6f51fa20569f6d7f34939ec6f068c6a3705fb8c18a58c8fe9fb9a52d72",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "product_dna",
+      "source_path": "output/synera-handoff-20260907-v1/01_PRODUCT_DNA.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "b055a5e09a5fe5b331d73840d684d435f9030e0df87c3649c286e817a42a43ef",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "recording_delta",
+      "source_path": "output/synera-handoff-20260907-v1/02_FINAL_RECORDING_DELTA.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "f033d413d97a9d8081b2e5174c48cb830f35ebf3f7e2a64e11cbacb72d6f3ca3",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "code_state_historical",
+      "source_path": "output/synera-handoff-20260907-v1/CODE_STATE.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "add6e7b0ec4d8c3cb51f44749c50e2bd4aee0277940838064b0a8f101554ba63",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "master_plan_v4",
+      "source_path": "output/cnra-solo-rebuild-20260909/CNRA_SOLO_MASTER_PLAN.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "48e7fb918a344e5ceaeeec79ebc5e8eb60fbfb4b6a20b01e1669e9fca9c06110",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "genesis",
+      "source_path": "output/cnra-solo-rebuild-20260909/GENESIS_SPEC.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "b9162241e846a8979685335e8eb0035ce96b525590507ec974e54cff798eac92",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "bible_markdown",
+      "source_path": "output/cnra-solo-rebuild-20260909/bible/SYNERA_BIBLE.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "4773787addaa1dc42b7b49e9a992f9165c7d2b902580e6d98571eb9524b03903",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "bible_json",
+      "source_path": "output/cnra-solo-rebuild-20260909/bible/SYNERA_BIBLE.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "4ca1a79c52745c125aaa4858626fa32e6af9acff338475f6afe048fb17690501",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "INVALID_JSON_ORIGINAL_PRESERVED_USE_MARKDOWN"
+    },
+    {
+      "id": "plan_v5",
+      "source_path": "output/cnra-solo-rebuild-20260909/bible/MASTER_PLAN_ADDENDUM_V5.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "c613fa559c4f3fe91f64ace1b9611f6ac517418be2d64ce6e2e54b35d07b3ccb",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "v6_plan",
+      "source_path": "output/cnra-solo-rebuild-20260909/v6/EXECUTION_PLAN.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "d88bf015f7d4ceeba3604efa96aae7e45fe871dd1767f17620faf5dbdbc3a56b",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "v6_tasks",
+      "source_path": "output/cnra-solo-rebuild-20260909/v6/TASKS.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "9bfe7d44029b16e18c43d1b2e1d7aaddf680ec7ea57f343ea02581a75a5de564",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "v6_handoff",
+      "source_path": "output/cnra-solo-rebuild-20260909/v6/HANDOFF.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "9f62a56394983f7e76ba940c3afa250ecf42ccdc76dc867ca2ce522d6bb966b4",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "v6_workflow",
+      "source_path": "output/cnra-solo-rebuild-20260909/v6/workflow/WORKFLOW.uk.md",
+      "root_alias": "WORKSPACE",
+      "sha256": "32635ee1deb4f475c7635952f4e873b2560dc82740c63b2473af64a0a77dcc21",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "v6_report",
+      "source_path": "output/cnra-solo-rebuild-20260909/v6/workflow/REPORT.json",
+      "root_alias": "WORKSPACE",
+      "sha256": "8f77167ffc114ad1c16efda7cbf3d4fa08a5c6bb5ec5b1fddff0434657f37836",
+      "availability": "PRIVATE_OR_LOCAL_SOURCE",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "legacy_map",
+      "source_path": "crystallised_in/lib/app_pages/map/map_page/map_page_widget.dart",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "0fc27900ec1abd87110f02f0cb80df5b00de00e9a65bc9df54aa7fef76fa6de1",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "legacy_map_widget",
+      "source_path": "crystallised_in/lib/custom_code/widgets/firestore_map.dart",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "77183a8df78c9427b7b9c75a767de1dc8b3db6067e9befdcbf6856a71a0c4c37",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "web_map",
+      "source_path": "web_launch/map.mjs",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "web_matcher",
+      "source_path": "web_launch/matching.mjs",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "848ff01c407a883674ddd6f12ad20202aaa7bca983bf15c406a9a1ee4e306f3c",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "web_app",
+      "source_path": "web_launch/app.mjs",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "88701c022c07ecd4406a8ca4ce06bafefc861214d54133d633eb6691e1b039d3",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    },
+    {
+      "id": "web_assets",
+      "source_path": "web_launch/assets.mjs",
+      "root_alias": "MODERN_SOURCE",
+      "sha256": "2734af102da6f512adff8aff370c1ecefdff9094e3c6206293320858f162fc1c",
+      "availability": "MODERN_SOURCE_LOCAL_ONLY",
+      "parse_state": "READABLE"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "P01",
+      "requirement": "Explicit capabilities, current needs, desired result, availability and allowed collaboration modes",
+      "acceptance": "Old profile imports remain valid; new fields default private/unconfirmed.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P01]",
+      "v6_task_ids": [
+        "V6-13"
+      ],
+      "legacy_refs_from_bible": [
+        "A1",
+        "A2",
+        "A3",
+        "A5",
+        "B1"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Profile schema/needs/availability needs legacy-source preservation; import task alone does not cover every field.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P02",
+      "requirement": "Extend existing matcher for exchange, paid_service, referral, hybrid",
+      "acceptance": "Both parties allow mode and have current availability. Exchange requires bilateral skill fit; paid_service requires explicit compensation interest on both sides; referral requires agreed referral scheme and third-party contact consent; hybrid validates each component; joint_project requires shared outcome and contributions. Positive and negative cases for each mode.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P02]",
+      "v6_task_ids": [
+        "V6-10"
+      ],
+      "legacy_refs_from_bible": [
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Preserve all five modes and component eligibility; capacity task is not full mode implementation.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P03",
+      "requirement": "Both participants independently confirm current interest",
+      "acceptance": "One-sided click cannot confirm the other party; revocation closes consent-dependent actions.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P03]",
+      "v6_task_ids": [
+        "V6-03",
+        "V6-04",
+        "V6-05",
+        "V6-06"
+      ],
+      "legacy_refs_from_bible": [
+        "A7",
+        "A9"
+      ],
+      "coverage_verdict": "PLANNED_NOT_ACCEPTED",
+      "gap_or_boundary": "Own-party interest and approval require actual persistence/auth acceptance.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P04",
+      "requirement": "Immutable revisions of proposed collaboration terms",
+      "acceptance": "Both accept identical revision/hash. Any change to agreed content including scope, price, deadlines, acceptance, IP, confidentiality or termination resets both acceptances; cosmetic UI outside agreed content does not. Retention is separately governed.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P04]",
+      "v6_task_ids": [
+        "V6-03",
+        "V6-04",
+        "V6-14"
+      ],
+      "legacy_refs_from_bible": [
+        "A6",
+        "A7",
+        "A8",
+        "B2",
+        "C2"
+      ],
+      "coverage_verdict": "PLANNED_NOT_ACCEPTED",
+      "gap_or_boundary": "Material version/hash invalidation; client transport defect remains open.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P05",
+      "requirement": "Scope, out-of-scope, deadlines, compensation, acceptance, IP, termination",
+      "acceptance": "Missing required terms cannot become agreed; no guessed financial values.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P05]",
+      "v6_task_ids": [
+        "V6-03",
+        "V6-14"
+      ],
+      "legacy_refs_from_bible": [
+        "A6"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Complete terms and missing-field behavior remain domain/UI acceptance requirements.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P06",
+      "requirement": "Service-specific evidence with owner, source, scope, date and status",
+      "acceptance": "Track provenance, verification and freshness separately; expiry never erases historic evidence or implies low competence. Expired eligibility blocks current regulated expert dispatch where required.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P06]",
+      "v6_task_ids": [
+        "V6-09",
+        "V6-14"
+      ],
+      "legacy_refs_from_bible": [
+        "A6"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Source/scope/provenance/expiry are distinct; freshness alone is not evidence verification.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P07",
+      "requirement": "Qualified expert reviews consented fact pack for a specific subject",
+      "acceptance": "Check subject competence, jurisdiction, current evidence, conflicts and referral fees before dispatch; license only where applicable. No eligible expert means pending, no arbitrary substitution.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P07]",
+      "v6_task_ids": [],
+      "legacy_refs_from_bible": [],
+      "coverage_verdict": "EXPLICITLY_PARKED",
+      "gap_or_boundary": "Qualified expert workflow is retained in full spec; not assigned an implementation card in V6.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P08",
+      "requirement": "Record submitted trial output and recipient decision",
+      "acceptance": "Submission alone is not acceptance; dispute is represented without automatic guilt.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P08]",
+      "v6_task_ids": [
+        "V6-14"
+      ],
+      "legacy_refs_from_bible": [
+        "A11"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Recipient acceptance is related; full submitted-output/dispute behavior needs explicit coverage.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P09",
+      "requirement": "Immediate and optional delayed outcome feedback",
+      "acceptance": "No reply is missing data; not negative competence or automatic credit penalty.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P09]",
+      "v6_task_ids": [
+        "V6-11"
+      ],
+      "legacy_refs_from_bible": [
+        "A12"
+      ],
+      "coverage_verdict": "MISSING_DEDICATED_OWNER",
+      "gap_or_boundary": "V6-11 funnel is related; immediate/delayed feedback has no V6 owner/acceptance.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P10",
+      "requirement": "Granular consent, purpose, access, retention and export",
+      "acceptance": "Hidden profiles remain undiscoverable; revocation prevents new model dispatch; retention policy covers derived data.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P10]",
+      "v6_task_ids": [
+        "V6-13",
+        "V6-16"
+      ],
+      "legacy_refs_from_bible": [
+        "A9",
+        "C3"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Granular permissions and derived-data retention require backend/browser/human checks.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P11",
+      "requirement": "Reuse canonical adapter, schema validation and source attribution",
+      "acceptance": "Untrusted profile text cannot authorize actions; output never invents skills, price or legal conclusions.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P11]",
+      "v6_task_ids": [],
+      "legacy_refs_from_bible": [],
+      "coverage_verdict": "CROSS_CUTTING_SOURCE_REVIEW",
+      "gap_or_boundary": "Reuse canonical adapter/schema/source attribution; no V6 dedicated implementation owner.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P12",
+      "requirement": "Draft introduction and schedule via existing flow",
+      "acceptance": "No message or recording without explicit user action and appropriate participant consent.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P12]",
+      "v6_task_ids": [
+        "V6-12"
+      ],
+      "legacy_refs_from_bible": [
+        "A9"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Calendar overlap does not replace invitation/chat/recording-consent behavior.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P13",
+      "requirement": "Measure variable cost per useful outcome before billing",
+      "acceptance": "Unknown cost stays unknown; paid tier cannot buy a higher competence score.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P13]",
+      "v6_task_ids": [
+        "V6-11",
+        "V6-18"
+      ],
+      "legacy_refs_from_bible": [],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "Measure all variable costs; unknown remains unknown; no competence score for payment.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P14",
+      "requirement": "Fixed denominator funnel with missing-data and repeated-participant tracking",
+      "acceptance": "Predeclare cohort, observation period, fixed denominators, decision thresholds and baseline. Suggested operational pilot: 10 disjoint pairs, 14 days, 5 mutually agreed briefs and 3 accepted trials; these are proposals, not observed demand. Track repeated participants, response rate, willingness to pay and support costs; no causal AI claim from nonrandom comparisons.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P14]",
+      "v6_task_ids": [
+        "V6-17",
+        "V6-18"
+      ],
+      "legacy_refs_from_bible": [
+        "D2"
+      ],
+      "coverage_verdict": "EXTERNAL_GATE",
+      "gap_or_boundary": "Proposed cohort thresholds are not measured demand.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P15",
+      "requirement": "Versioned extension using current profile/store/backend",
+      "acceptance": "Old exports round-trip; permissions and deletions preserved; no second durable store.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P15]",
+      "v6_task_ids": [
+        "V6-03",
+        "V6-04",
+        "V6-13",
+        "V6-16"
+      ],
+      "legacy_refs_from_bible": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "C1"
+      ],
+      "coverage_verdict": "PARTIAL",
+      "gap_or_boundary": "All legacy exports/permissions/deletions need migration oracle; no new durable store.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    },
+    {
+      "requirement_id": "P16",
+      "requirement": "Explicit state when suitable candidate is absent",
+      "acceptance": "No fabricated participants or AI-generated evidence; invite a real colleague through authorized flow.",
+      "source_id": "original_spec",
+      "source_locator": "requirements[id=P16]",
+      "v6_task_ids": [
+        "V6-02",
+        "V6-08",
+        "V6-15"
+      ],
+      "legacy_refs_from_bible": [
+        "A10"
+      ],
+      "coverage_verdict": "MISSING_PRESERVATION_ORACLE",
+      "gap_or_boundary": "Cold start exists in app.mjs:355-376; generic V6 empty-state tasks do not own its full preservation oracle.",
+      "v6_task_ids_are_related_not_proof_of_complete_ownership": true
+    }
+  ],
+  "geo_requirement": {
+    "id": "GEO-01",
+    "origin": "User clarification 2026-09-16 plus legacy map source; not falsely attributed to P01-P16",
+    "document": "MAPS_AND_LOCATION.uk.md",
+    "status": "REQUIREMENT_CAPTURED_IMPLEMENTATION_NOT_ACCEPTED",
+    "v6_task_added": false
+  },
+  "terra": {
+    "state": "ACK_RECEIVED_SOURCE_MIRROR_PENDING",
+    "ack_file": "handoff-20260915T222000Z-terra-ack.json",
+    "ack_sha256": "14604b838fe1ebf8eea62b183cef049c94e846ab0ee951d2d1dd057f32058bff",
+    "reported_no_divergent_plan": true,
+    "independently_verified_full_terra_inventory": false,
+    "modern_source_baseline_on_terra": "UNPROVEN"
+  },
+  "invariants": [
+    "All P01-P16 must be mapped, parked or visibly incomplete",
+    "F01-F24 are archived factual assessments, not 24 feature tasks",
+    "C01-C43 and D01-D18 preserve abstract decisions, not private stories",
+    "Legacy/current map must remain explicitly visible",
+    "Originals and accepted R1 bytes remain unchanged",
+    "No public raw transcript, credentials, private host/account data"
+  ],
+  "preservation_inventory": [
+    {
+      "id": "LEGACY_MAP",
+      "capability": "Google Maps + location capture source",
+      "source_id": "legacy_map",
+      "locator": "42-57,111-205",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    },
+    {
+      "id": "CITY_MAP",
+      "capability": "Consent-gated city-centre map, optional OSM, no live GPS",
+      "source_id": "web_map",
+      "locator": "23-28,30-74",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    },
+    {
+      "id": "PROFILE",
+      "capability": "Discoverability/map visibility/modes",
+      "source_id": "web_app",
+      "locator": "43-77",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    },
+    {
+      "id": "DISCOVERY",
+      "capability": "Browse/filter and truthful cold-start real-colleague path",
+      "source_id": "web_app",
+      "locator": "355-376",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    },
+    {
+      "id": "CASE",
+      "capability": "Material/hash/approvals with known persistence defect",
+      "source_id": "web_app",
+      "locator": "233-334",
+      "status": "SOURCE_PRESENT_KNOWN_DEFECT"
+    },
+    {
+      "id": "MEETING",
+      "capability": "Meeting/chat and accepted-meeting ICS export",
+      "source_id": "web_app",
+      "locator": "421-435",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    },
+    {
+      "id": "PRIVACY",
+      "capability": "Consent/block/export/delete controls",
+      "source_id": "web_app",
+      "locator": "506-507",
+      "status": "SOURCE_PRESENT_RUNTIME_UNPROVEN"
+    }
+  ]
+}
