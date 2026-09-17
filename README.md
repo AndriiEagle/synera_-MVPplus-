@@ -1,5 +1,8 @@
 # synera_-MVPplus-
-Android app for 12 life sphere MatchMaking
+
+Deep matching між соло-підприємцями та мікробізнесом. Стартова географія — Цюрих.
+
+Рамку «12 сфер життя», з якої проєкт починався, знято як публічну ідентичність продукту й збережено в архіві як походження (SCOPE-R3-01).
 
 ## Current rebuild context
 

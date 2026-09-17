@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "revision": "R3_ADAPTIVE_LAYER_AND_STATE_AUDIT_20260917_B",
+  "purpose": "Captured new product requirement plus repository state audit; not a router, queue, optimizer or execution authority",
+  "dispatch_allowed": false,
+  "paid_authorized_cap_usd": 0,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "audited_commit": "03fb4ddbd5c0d57253637ed2b5beb42c92f4d24f",
+  "audited_branch": "codex/synera-multihost-plan-20260915",
+  "main_commit": "ba4e07567dc06139c336f9ad9262af88f31c5e7d",
+  "r1_base_commit": "82c2ec5945b16abc0a689278500a326a2a1f03c9",
+  "modern_source_commit": "2aa7fae6a4f002ed880cb97ec780de41e328af97",
+  "modern_source_available_to_this_session": false,
+  "legacy_source_available_to_this_session": true,
+  "legacy_source_note": "crystallised_in/ is public: 3162 tracked files, 144 .dart. Both GEO-01 legacy map sources are present and byte-identical to the CONTEXT.json record modulo line endings (see DEF-R3-08).",
+  "requirement_origin": "Andrii spoken clarification 2026-09-17; not retroactively attributed to P01-P16",
+  "preserves_unchanged": [
+    "P01-P16 identifiers, acceptance clauses and coverage verdicts",
+    "GEO-01 status REQUIREMENT_CAPTURED_IMPLEMENTATION_NOT_ACCEPTED with v6_task_added false",
+    "F01-F24 archived claim assessments",
+    "C01-C43 and D01-D18 preserved decisions",
+    "19 V6 task cards and their statuses",
+    "R1 bytes and R2 document bytes"
+  ],
+  "scope_declarations": [
+    {
+      "id": "SCOPE-R3-01",
+      "statement": "Public product identity is deep matching between solo entrepreneurs and micro-business, starting geography Zurich. The 12-life-spheres framing is retired as public identity and retained as archived origin.",
+      "defect": "README.md at repository root still declares 'Android app for 12 life sphere MatchMaking'",
+      "status": "DECLARED_NOT_REFLECTED_IN_REPO"
+    },
+    {
+      "id": "SCOPE-R3-02",
+      "statement": "Client-facing Synera is one product (deep matching). Anything running behind it creates no obligation, data flow or cost attributed to the client surface, and the boundary is declared explicitly rather than implied.",
+      "status": "DECLARED"
+    }
+  ],
+  "adp_requirements": [
+    {
+      "id": "ADP-01",
+      "requirement": "Match depth: rank expected mutual value of a specific exchange, not only mode eligibility",
+      "acceptance": "Ranking explainable per pair from named inputs; unknown utility stays UNKNOWN, never becomes 0 and never auto-excludes a person; no ranking by general person quality.",
+      "verdict": "EXTENDS_P02",
+      "related_existing": [
+        "P02",
+        "MATH.uk.md:w_ab=min(u_ab,u_ba)"
+      ],
+      "collides_with": [],
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-02",
+      "requirement": "Reciprocity observation to surface one-sided takers, as pair state rather than person rating",
+      "acceptance": "Asymmetry computed over completed cases of a specific pair; surfaced as state of that relationship, never a global score attached to a profile; no reply and missing evidence are never penalised.",
+      "verdict": "COLLIDES_RESOLVED_BY_FORM",
+      "related_existing": [
+        "P09",
+        "C36",
+        "D14",
+        "MATH.uk.md:w_ab=min(u_ab,u_ba)"
+      ],
+      "collides_with": [
+        "C36",
+        "D14",
+        "P09"
+      ],
+      "resolution": "Conservative edge utility min(u_ab,u_ba) already sanctioned in MATH.uk.md does not hide a one-sided zero; reputation attaches to the pair and case, not the person.",
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-03",
+      "requirement": "Progressive per-user interface adaptation accumulating slowly over days",
+      "acceptance": "Every adaptation is reversible by the user in one action, inspectable on demand, and bounded to presentation only: information architecture and control meaning never change; agreed case material is never re-presented in a way that shifts meaning.",
+      "verdict": "BOUNDED_BY_C28",
+      "related_existing": [
+        "C28",
+        "P04"
+      ],
+      "collides_with": [
+        "C28"
+      ],
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-04",
+      "requirement": "Context adaptation for canton, language, locality, weather and holidays",
+      "acceptance": "Context inputs affect meeting logistics and language/copy only; they do not enter eligibility or ranking without a separately declared decision; weather and holiday data are advisory and create no obligation.",
+      "verdict": "PARTIALLY_EXISTS",
+      "related_existing": [
+        "V6-01",
+        "V6-07",
+        "V6-12"
+      ],
+      "collides_with": [],
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-05",
+      "requirement": "Declared telemetry substrate feeding ADP-01, ADP-02 and ADP-03",
+      "acceptance": "Declared event schema with a named purpose per event; nothing collected without a named use; retention and export governed by P10; no exact coordinates or case material in telemetry; no second durable store.",
+      "verdict": "HARD_COLLISION_NEEDS_OWNER_DECISION",
+      "related_existing": [
+        "P10",
+        "P15",
+        "C17",
+        "GEO-01"
+      ],
+      "collides_with": [
+        "P10",
+        "P15",
+        "C17"
+      ],
+      "open_decision": "High telemetry versus data minimisation cannot be resolved by engineering default. Recommended split: product-event telemetry yes, human-behaviour telemetry no.",
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-06",
+      "requirement": "Bounded self-modification across three levels",
+      "acceptance": "Level 1 runtime configuration and presentation allowed within ADP-03; level 2 proposing schema/code/flow change with explanation and diff allowed; level 3 autonomous merge, deploy or change of agreed case material forbidden. Every autonomous change versioned, attributed and revertible; a change touching agreed content resets both acceptances; untrusted profile text never authorises an action.",
+      "verdict": "MUST_BE_BOUNDED",
+      "related_existing": [
+        "P04",
+        "P11"
+      ],
+      "collides_with": [
+        "P04",
+        "P11"
+      ],
+      "dispatch_recommended_now": false
+    },
+    {
+      "id": "ADP-07",
+      "requirement": "Product surface driven by versioned configuration so market re-shaping is a config revision, not a rewrite",
+      "acceptance": "Modes, fields, copy and flow steps are versioned configuration; migration invariants of P15 hold, old exports round-trip, permissions and deletions preserved; no second durable store introduced by the configuration mechanism.",
+      "verdict": "DESIGN_CONSTRAINT",
+      "related_existing": [
+        "P15"
+      ],
+      "collides_with": [],
+      "dispatch_recommended_now": true,
+      "why_now": "Architectural constraint, cheap if accepted before implementation, close to unpayable if retrofitted.",
+      "contract": {
+        "document": "ADP-07-CONFIG-CONTRACT.uk.md",
+        "reference_implementation": "adp07_surface_config.py",
+        "status": "DRAFT_FOR_SOURCE_REVIEW",
+        "checks": "8/8",
+        "central_rule": "A case pins the config version it was agreed under; agreed cases keep rendering and exporting under that pin whatever the surface does next.",
+        "change_classes": [
+          "PRESENTATION",
+          "SURFACE_ADDITIVE",
+          "REMOVAL",
+          "MATERIAL"
+        ],
+        "open_preconditions": [
+          "store and Data API mapping needs source review",
+          "authority to raise a config version belongs to V6-05",
+          "transactional version-raise plus case pin is the same compare-and-set as V6-03",
+          "retention policy for live config versions undefined",
+          "classification of hint copy inside an agreed field needs legal review once E1-E5 unpark"
+        ]
+      }
+    },
+    {
+      "id": "ADP-08",
+      "requirement": "Single optimisation substrate connecting the two formalisations already present in the repository",
+      "acceptance": "One objective function with an explicit decision on which of min(u_ab,u_ba) or M_ij = S_ij - C_ij governs pair selection; the two are not equivalent and are not merged silently; self-tuning only over measured inputs; unmeasured parameters stay UNKNOWN; decorative or quantum formulations excluded until a task-shaped measurable gain exists.",
+      "verdict": "SUBSTRATE_EXISTS_UNCONNECTED",
+      "related_existing": [
+        "docs/multihost-20260915/MATH.uk.md",
+        "ki-math-extract.md"
+      ],
+      "collides_with": [],
+      "prior_decision_quoted": "MATH.uk.md: quantum mechanics, resonance and decorative formulas are not evidence of effectiveness and do not enter implementation without a task-shaped gain",
+      "dispatch_recommended_now": true,
+      "why_now": "No invention required; connect two existing documents and choose one of two formulas.",
+      "contract": {
+        "document": "ADP-08-DECISION.uk.md",
+        "reference_implementation": "adp08_matching.py",
+        "status": "DECIDED_FOR_SOURCE_REVIEW",
+        "checks": "9/9",
+        "decision": "min(u_ab,u_ba) governs pair selection; the additive form is rejected because it selects one-sided pairs. Lambda moves from the vertex term to the edge term; per-person capacity is V6-10, not a new constraint.",
+        "objective": "max sum_e w_e x_e, w_e = min(u_ab,u_ba)*2^(-age/half_life) - lambda_e, s.t. sum_{e incident v} x_e <= cap_v, only ELIGIBLE_SCORED edges enter",
+        "structural_finding": "b_i = 0 in the product reading because a participant alone produces no collaboration; therefore the lambda/b regime table from ki-math-extract.md does not transfer, although its pair-beats-singles criterion does (verified on 20000 instances).",
+        "unknown_inputs": [
+          "u_ab scale and collection method",
+          "lambda_e coordination cost per collaboration",
+          "freshness half_life"
+        ]
+      }
+    },
+    {
+      "id": "ADP-09",
+      "requirement": "Declared ecosystem boundary",
+      "acceptance": "Work outside the client surface creates no obligation, data flow or cost attributed to the client product; the boundary is written down; no internal system reaches case material without the same consent required of an external one.",
+      "verdict": "SCOPE_DECLARATION",
+      "related_existing": [
+        "P10",
+        "P11"
+      ],
+      "collides_with": [],
+      "dispatch_recommended_now": false
+    }
+  ],
+  "sequencing": {
+    "rule": "ADP-02, ADP-03 and ADP-05 all read the same thing: a trustworthy record of who agreed to what. That record is P03 and P04, both PLANNED_NOT_ACCEPTED with an open persistence defect at web_app:233-334. Adaptation trained on unreliable consent data is worse than no adaptation.",
+    "order": [
+      "P03 and P04 accepted via V6-03 contract then V6-04 and V6-05",
+      "ADP-07 and ADP-08 now, as architectural constraint and document connection",
+      "ADP-01 and ADP-04 after a working matcher",
+      "ADP-05 only after an explicit owner decision on the P10/P15 collision",
+      "ADP-02 and ADP-03 last, when there is something reliable to measure",
+      "ADP-06 and ADP-09 are standing declarations with no separate cost"
+    ]
+  },
+  "defects_found": [
+    {
+      "id": "DEF-R3-01",
+      "severity": "BLOCKS_DOCUMENTED_GATE",
+      "statement": "python -B docs/context-20260916/check_context.py --final fails with 'artifact drift: docs/context-20260916/PRODUCT_CONTEXT.uk.md' on branch HEAD",
+      "introduced_by": "561f3d8878151ce475dab1d37cc5594d4d4bc9bc",
+      "introduced_at_utc": "2026-09-16T18:47:06Z",
+      "recorded_hash": "fa9856b6604b1b6809b566b35587167f811b7c521da4cc45aa7761c89de90071",
+      "actual_hash": "47c6a310535953706fd8a7c65b34a7661ef4f52ae9b4d8bd6e2a15784fe175ed",
+      "fix": "0001-fix-r2-reconciliation-hash.patch",
+      "fix_verified": "git apply --check OK on 03fb4dd; after apply check_context.py --final returns PASS_FINAL_CONTEXT"
+    },
+    {
+      "id": "DEF-R3-02",
+      "severity": "OPERATIONAL_RISK",
+      "statement": "Entire documentation package exists only on an unmerged branch; main is a single 2025-01-23 'test commit'. Divergence main...branch is 0/6, so the merge is a clean fast-forward.",
+      "fix": "Merge the branch into main"
+    },
+    {
+      "id": "DEF-R3-03",
+      "severity": "CONTEXT_LOSS",
+      "statement": "SYNERA_START_HERE.uk.md is described as the index of all real documents but references 10 of 28 substantive files. Unindexed and materially needed: V6-03-CONTRACT.uk.md, MATH.uk.md, synera-gap-V4-V5-V6.md, ki-math-extract.md, RECONCILIATION.json and the whole R1 acceptance layer.",
+      "consequence_observed": "The GEO-01 card written 2026-09-17 marked the per-party authority contract as a missing prerequisite while a draft contract already existed in the package.",
+      "fix": "Extend the START_HERE index; all added links must resolve because check_context.py validates them"
+    },
+    {
+      "id": "DEF-R3-04",
+      "severity": "DECLARATION_MISMATCH",
+      "statement": "README.md still declares the retired 12-life-spheres product identity",
+      "fix": "Rewrite README.md to the SCOPE-R3-01 statement"
+    },
+    {
+      "id": "DEF-R3-05",
+      "severity": "HYGIENE",
+      "statement": "crystallised_in/ holds 3162 tracked files of which 144 are .dart; 2565 are build/ output and 144 are .dart_tool/, tracked despite .gitignore because they were committed before the rule. .idea/ is tracked for the same reason.",
+      "fix": "git rm --cached the build output before any reviewed source transfer"
+    },
+    {
+      "id": "DEF-R3-06",
+      "severity": "HYGIENE_NOT_A_LEAK",
+      "statement": "A Chrome debug profile is committed at crystallised_in/android/.dart_tool/chrome-device/Default/ including Login Data, Login Data For Account, Network/Cookies and Network/Trust Tokens. Contents inspected: only the meta table has rows (3 schema rows) in all four SQLite files; logins and cookies tables are empty. No credential exposure found.",
+      "fix": "Remove with the rest of .dart_tool/; no incident response required"
+    },
+    {
+      "id": "DEF-R3-08",
+      "severity": "VERIFICATION_TRAP",
+      "statement": "MODERN_SOURCE hashes in CONTEXT.json were computed on a CRLF (Windows) checkout. The repository stores LF, so recomputing them on Linux, macOS or GitHub yields a mismatch that looks like source divergence but is not.",
+      "evidence": "legacy_map recorded 0fc27900ec1abd87110f02f0cb80df5b00de00e9a65bc9df54aa7fef76fa6de1; as checked out (LF) 964fc638345cb7e8...; the same bytes forced to CRLF reproduce the recorded hash exactly. Same result for legacy_map_widget: recorded 77183a8df78c9427..., LF 35af7e0e81d6b495..., CRLF matches.",
+      "consequence": "The package's credibility rests on hash verification; a hash that only reproduces on one operating system will read as divergence to the next executor. Commit 37cee3f already fixed this class of problem for root files via .gitattributes, but only for those.",
+      "content_divergence_found": false,
+      "fix": "Record LF-normalised hashes for MODERN_SOURCE entries, or state the CRLF normalisation explicitly next to them"
+    },
+    {
+      "id": "DEF-R3-07",
+      "severity": "MISFILED",
+      "statement": "ki-math-extract.md sits at the Synera repository root but documents fleet worker-selection mathematics, not Synera product mathematics. It nevertheless contains the optimiser form referenced by ADP-08.",
+      "fix": "Move to the fleet repository or mark explicitly as cross-project"
+    }
+  ],
+  "local_device_check": {
+    "device": "desktop-g2j9ou0",
+    "reachable": true,
+    "connected_folders": 0,
+    "synera_working_directory_found": false,
+    "paths_probed": [
+      "~/Desktop",
+      "~/Desktop/KI",
+      "~/Desktop/KI/output",
+      "~/Desktop/KI-distributed-factory",
+      "~/Desktop/Desktop_2026_August/01_Projects",
+      "~/Desktop/AGI",
+      "~/Desktop/AGI/products",
+      "~/src"
+    ],
+    "statement": "Not found is not the same as nonexistent. Uncommitted local changes were NOT checked. Owner must name the path for WORKSPACE (contains output/synera-handoff-20260907-v1) and MODERN_SOURCE (contains web_launch)."
+  },
+  "verification_performed": [
+    "Full clone of the public repository; both branch heads recorded",
+    "14 recorded R2 artifact hashes recomputed: 13 match, 1 drift (DEF-R3-01)",
+    "check_context.py --final: FAIL before fix, PASS_FINAL_CONTEXT after fix",
+    "check_package.py --final: PASS_DOCUMENTATION_ACCEPTANCE_ONLY, 19 tasks, 26 effective owned files",
+    "Fix patch applied to a clean checkout of 03fb4dd and re-verified",
+    "V6 task statuses read directly: V6-00 REPRODUCED, V6-01 to V6-18 PLANNED",
+    "Committed Chrome profile SQLite tables inspected by row count only, no values read",
+    "adp07_surface_config.py: 8/8 contract checks pass (allowlist and store ban, material reset, cosmetic non-reset, silent removal refused, agreed-case export byte-identical across a revision, permissions and deletions survive, version must rise, classification boundaries)",
+    "adp08_matching.py: 9/9 checks pass, including the MATH.uk.md greedy counterexample reproduced exactly (greedy 9 vs optimum 16) and the ki-math-extract.md pair criterion verified on 20000 random instances with 0 disagreements"
+  ],
+  "limitations": [
+    "Documentation completeness is not product implementation",
+    "No runtime, UI or database acceptance performed",
+    "Modern source web_launch was not read; it is absent from the repository",
+    "Private originals were not read",
+    "This session cannot write to the repository; deliverables are patches and documents",
+    "ADP acceptance clauses are captured requirements, not verified behaviour"
+  ],
+  "contracts_drafted": {
+    "note": "ADP-07 and ADP-08 were the only two requirements recommended for work before P03/P04 acceptance. Both now carry a contract and a runnable harness. No other ADP requirement was advanced.",
+    "harness_results": {
+      "adp07_surface_config.py": "8/8",
+      "adp08_matching.py": "9/9"
+    },
+    "self_corrections": [
+      "ADP-08 E4: first claim was stronger than the data supported; restated and re-measured (selection differs in 16.8% of random instances).",
+      "ADP-08 E7: first version measured an even cohort, got spread 0, and still reported PASS via a hardcoded True. Corrected to an odd cohort where one person is starved 0/200 rounds.",
+      "ADP-08 E8: first version claimed the exhaustive oracle covers the P14 pilot and measured n=10. P14 means 10 disjoint pairs, which is 20 participants, and density dominates n. Both axes now measured."
+    ],
+    "dispatch_state": "still false; these are contracts for source review, not implementation"
+  }
+}

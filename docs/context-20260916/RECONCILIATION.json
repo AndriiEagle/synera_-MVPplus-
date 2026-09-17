@@ -37,9 +37,9 @@
   "provider_calls": 0,
   "provider_usd": 0,
   "public_artifact_hashes": {
-    "README.md": "8f1e3ea73fbe4f26caeb32f4769d1cbc76f6115c1294e28394d0a6973f08432d",
+    "README.md": "70c8b3f083afc772361db4de7cbc09140816ea0e40f18a28a1eb9d9aadcd6fd6",
     ".gitattributes": "7632f0a5c8992a95c515c586c23f73390341d0f631d40b931775d806d1c684d1",
-    "SYNERA_START_HERE.uk.md": "9c7ceb707e2414a8f57fcb3444f42cd2b10c8e978313bf10031f9efcb1bd6273",
+    "SYNERA_START_HERE.uk.md": "ba22aa97812694e5b0d3abf10f756db62928e2b327af0e88b0f11758d498d099",
     "docs/context-20260916/.gitattributes": "db8210c0016c485947a41d8bcbc1b3af4eb5e39d1ccd754177ff63904069cb8a",
     "docs/context-20260916/check_context.py": "1a3bec6767bee93bbf773c1cd7fa50d1ec8897ba0f2d8ef37115b69cf54a46f6",
     "docs/context-20260916/CONTEXT.json": "b3558da727f0483f5ac3cff84127bf2c8cef74a8abf04b2fc67d8a126ca3201e",

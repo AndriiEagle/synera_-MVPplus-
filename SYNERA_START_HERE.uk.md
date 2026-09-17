@@ -15,6 +15,7 @@
 | Повний продуктовий scope для нового виконавця | [PRODUCT_CONTEXT](docs/context-20260916/PRODUCT_CONTEXT.uk.md), [карта вимог](docs/context-20260916/CONTEXT.json), [Maps/live location](docs/context-20260916/MAPS_AND_LOCATION.uk.md) | Вимоги зібрані; реалізація не сертифікована |
 | Архів планування | [P01–P16](docs/context-20260916/archive/PRODUCT_SPEC.json), [V4: 26 кроків](docs/context-20260916/archive/MASTER_PLAN_V4.json), [V5: 23 кроки](docs/context-20260916/archive/MASTER_PLAN_V5.json), [61 продуктовий висновок](docs/context-20260916/INSIGHTS.json), [24 архівні оцінки тверджень](docs/context-20260916/archive/CLAIM_DISPOSITIONS.json) | Повні task/spec проєкції; старі статуси/caps не поточні |
 | V6 і підготовка multihost | [19 задач V6](docs/multihost-20260915/V6_TASKS.json), [R1 entry](docs/multihost-20260915/README.uk.md) | Окремий прийнятий документаційний snapshot; його bytes збережені |
+| Аудит стану + адаптивний шар (R3) | [R3 entry](docs/adaptive-20260917/README.uk.md), [стан і дефекти](docs/adaptive-20260917/SYNERA_R3_STATE.uk.md), [ADP-01…09](docs/adaptive-20260917/ADAPTIVE_LAYER.uk.md) | Вимога зафіксована; ADP-07 і ADP-08 мають контракти для source review, решта не просунута |
 | Реальний код | legacy `crystallised_in/` у публічній базі; сучасний локальний `web_launch/`/Neon на `2aa7fae6a4f002ed880cb97ec780de41e328af97` | Сучасний source не входить до цього docs PR; потрібен окремий reviewed source transfer |
 
 `SINGLE_CONTEXT.uk.md` — великий локальний оригінальний handoff від 2026-09-07, а не назва поточного executable plan. Він містить приватний контекст і посилання на записи; публічну GitHub-версію замінює явна очищена проєкція вище. Оригінал, V4/V5/V6, Genesis і Bible збережені в приватному docs-пакеті на чинному KI-BUS; local source index містить їх абсолютні шляхи й хеші. Raw audio/transcripts, ключі й Git history до цього пакета не входять.
@@ -24,6 +25,20 @@
 R1 готував multihost execution і V6, але не містив повного індексу попередніх документів та функцій. Тому його 16 файлів не були повним контекстом перебудови. Google Maps присутній у legacy Flutter source; web map показує центри міст з окремим дозволом і optional OSM background. **Live GPS перед зустріччю та навігація одне до одного — явна вимога GEO-01, її готовність не доведена.** У початкових P01–P16 цього окремого пункту немає; R2 не вигадує старого P-id для нього.
 
 R2 також позначає partial coverage для профілю, modes, доказів, delayed feedback, комунікації, migration і cold start. Наявність загальної фрази у V6 не дорівнює прийманню всього старого requirement.
+
+## Повний перелік файлів пакета
+
+R2 індексував десять файлів із двадцяти восьми. Нижче — решта, разом із тим, що додав R3. Відсутність файла в індексі вже коштувала однієї неправильної оцінки пререквізиту, тому перелік тут повний.
+
+**R2, `docs/context-20260916/`:** [RECONCILIATION.json](docs/context-20260916/RECONCILIATION.json) — приймальний receipt і хеші публічних артефактів; [check_context.py](docs/context-20260916/check_context.py) і [test_context.py](docs/context-20260916/test_context.py) — gate й тести.
+
+**R1, `docs/multihost-20260915/`:** [V6-03-CONTRACT.uk.md](docs/multihost-20260915/V6-03-CONTRACT.uk.md) — draft per-party persistence contract; [MATH.uk.md](docs/multihost-20260915/MATH.uk.md) — математика матчингу, свіжості, черг і fairness; [CROSSWALK.uk.md](docs/multihost-20260915/CROSSWALK.uk.md), [PRODUCT.uk.md](docs/multihost-20260915/PRODUCT.uk.md), [OPERATIONS.uk.md](docs/multihost-20260915/OPERATIONS.uk.md); [PLAN.json](docs/multihost-20260915/PLAN.json), [ACCEPTANCE.json](docs/multihost-20260915/ACCEPTANCE.json), [REVIEW_LAYERS.json](docs/multihost-20260915/REVIEW_LAYERS.json), [FREE_REVIEW_ACCEPTANCE.json](docs/multihost-20260915/FREE_REVIEW_ACCEPTANCE.json), [SOURCE_MANIFEST.json](docs/multihost-20260915/SOURCE_MANIFEST.json), [SOURCE_EVIDENCE.json](docs/multihost-20260915/SOURCE_EVIDENCE.json); [check_package.py](docs/multihost-20260915/check_package.py), [test_contracts.py](docs/multihost-20260915/test_contracts.py).
+
+**Корінь:** [synera-gap-V4-V5-V6.md](synera-gap-V4-V5-V6.md) — gap-аналіз V4→V5→V6 зі списком загубленого; [ki-math-extract.md](ki-math-extract.md) — математика вибору виконавців флоту, лежить тут cross-project і за змістом належить репозиторію флоту.
+
+**R3, `docs/adaptive-20260917/`:** [README.uk.md](docs/adaptive-20260917/README.uk.md), [SYNERA_R3_STATE.uk.md](docs/adaptive-20260917/SYNERA_R3_STATE.uk.md), [ADAPTIVE_LAYER.uk.md](docs/adaptive-20260917/ADAPTIVE_LAYER.uk.md), [ADP-07-CONFIG-CONTRACT.uk.md](docs/adaptive-20260917/ADP-07-CONFIG-CONTRACT.uk.md), [ADP-08-DECISION.uk.md](docs/adaptive-20260917/ADP-08-DECISION.uk.md), [GEO-01 card](docs/adaptive-20260917/GEO01_IMPLEMENTATION_CARD.uk.md), [CONTEXT_R3.json](docs/adaptive-20260917/CONTEXT_R3.json), [check_r3.py](docs/adaptive-20260917/check_r3.py).
+
+**Пастка перевірки:** хеші `MODERN_SOURCE` у [CONTEXT.json](docs/context-20260916/CONTEXT.json) пораховані на CRLF-checkout. На Linux, macOS і на GitHub вони не збігаються, хоча вміст ідентичний. Перевіряй їх через `check_r3.py --repo .`, який розрізняє нормалізацію рядків і справжню розбіжність.
 
 ## Soul, Terra, Claude і GitHub
 
