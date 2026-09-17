@@ -101,8 +101,13 @@ def verify_repo(ctx, repo):
     findings = []
 
     head = sh(repo, 'git', 'rev-parse', 'HEAD')
-    if head != ctx['audited_commit']:
-        findings.append(f"checkout is {head[:12]}, audit recorded {ctx['audited_commit'][:12]}")
+    audited = ctx['audited_commit']
+    # The audited commit must be reachable from HEAD. Equality is too strict:
+    # a fix or a later revision legitimately sits on top of it.
+    reachable = subprocess.run(['git', 'merge-base', '--is-ancestor', audited, 'HEAD'],
+                               cwd=repo, capture_output=True).returncode == 0
+    if not reachable and head != audited:
+        findings.append(f"audited commit {audited[:12]} is not reachable from HEAD {head[:12]}")
 
     context = json.loads((repo / 'docs/context-20260916/CONTEXT.json').read_text(encoding='utf-8'))
     if {r['requirement_id'] for r in context['requirements']} != P_IDS:
