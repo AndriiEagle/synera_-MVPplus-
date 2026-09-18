@@ -21,9 +21,9 @@ language plpgsql immutable security invoker set search_path = '' as $$
 declare item text; referral_keys text[] := array['role','benefitTags','sourceDeclared','recipientScopeDeclared','thirdPartyStatus'];
 begin
   if jsonb_typeof(d) is distinct from 'object' or not d ?& array['paid_service','referral','hybrid'] or d - array['paid_service','referral','hybrid'] <> '{}'::jsonb then return false; end if;
-  if jsonb_typeof(d->'paid_service') is distinct from 'object' or d->'paid_service' - 'role' <> '{}'::jsonb
+  if jsonb_typeof(d->'paid_service') is distinct from 'object' or (d->'paid_service') - 'role' <> '{}'::jsonb
     or jsonb_typeof(d->'paid_service'->'role') is distinct from 'string' or d->'paid_service'->>'role' not in ('','buyer','supplier') then return false; end if;
-  if jsonb_typeof(d->'referral') is distinct from 'object' or not d->'referral' ?& referral_keys or d->'referral' - referral_keys <> '{}'::jsonb then return false; end if;
+  if jsonb_typeof(d->'referral') is distinct from 'object' or not d->'referral' ?& referral_keys or (d->'referral') - referral_keys <> '{}'::jsonb then return false; end if;
   if jsonb_typeof(d->'referral'->'role') is distinct from 'string' or d->'referral'->>'role' not in ('','introducer','seeker') then return false; end if;
   if jsonb_typeof(d->'referral'->'sourceDeclared') is distinct from 'boolean' or jsonb_typeof(d->'referral'->'recipientScopeDeclared') is distinct from 'boolean' then return false; end if;
   if jsonb_typeof(d->'referral'->'thirdPartyStatus') is distinct from 'string' or d->'referral'->>'thirdPartyStatus' not in ('not_consulted','consented') then return false; end if;
@@ -32,7 +32,7 @@ begin
     if item is null or item not in ('automation','design','research','sales','video','finance','events') then return false; end if;
   end loop;
   if (select count(distinct v) from jsonb_array_elements_text(d->'referral'->'benefitTags') v) <> jsonb_array_length(d->'referral'->'benefitTags') then return false; end if;
-  if jsonb_typeof(d->'hybrid') is distinct from 'object' or d->'hybrid' - 'components' <> '{}'::jsonb or jsonb_typeof(d->'hybrid'->'components') is distinct from 'array' then return false; end if;
+  if jsonb_typeof(d->'hybrid') is distinct from 'object' or (d->'hybrid') - 'components' <> '{}'::jsonb or jsonb_typeof(d->'hybrid'->'components') is distinct from 'array' then return false; end if;
   for item in select jsonb_array_elements_text(d->'hybrid'->'components') loop
     if item is null or item not in ('exchange','paid_service','referral') then return false; end if;
   end loop;
@@ -63,7 +63,7 @@ begin
   if not (b->'max_km' = any(array['0','25','50','100','300']::jsonb[])) then return false; end if;
   foreach k in array array['offer_tags','need_tags','languages','modes'] loop
     if jsonb_typeof(b->k) is distinct from 'array' then return false; end if;
-    if jsonb_array_length(b->k) > case k when 'languages' then 4 when 'modes' then 5 else 7 end then return false; end if;
+    if jsonb_array_length(b->k) > (case k when 'languages' then 4 when 'modes' then 5 else 7 end) then return false; end if;
     for item in select jsonb_array_elements_text(b->k) loop
       if k in ('offer_tags','need_tags') and item not in ('automation','design','research','sales','video','finance','events') then return false; end if;
       if k = 'languages' and item not in ('uk','en','de','fr') then return false; end if;
