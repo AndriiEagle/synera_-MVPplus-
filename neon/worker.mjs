@@ -6,7 +6,10 @@ const SESSION_COOKIE = '__Host-synera-session';
 // Exact upstream name from neondatabase/neon-js packages/auth/src/server/constants.ts.
 // The overview docs still show an older spelling; accepting it loses successful OTP sessions.
 const NEON_COOKIE = '__Secure-neon-auth.session_token';
-const TABLES = new Set(['profiles', 'pilot_consents', 'meeting_requests', 'meeting_messages', 'profile_blocks', 'profile_reports']);
+// match_cases and match_case_approvals are added by neon/case-state.migration.sql. The gateway only
+// forwards; ownership and the one-approval-per-party rule are enforced by RLS on those tables.
+const TABLES = new Set(['profiles', 'pilot_consents', 'meeting_requests', 'meeting_messages', 'profile_blocks', 'profile_reports',
+  'match_cases', 'match_case_approvals']);
 const METHODS = new Set(['GET', 'POST', 'PATCH', 'DELETE']);
 const jsonHeaders = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
 const answer = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { ...jsonHeaders, ...headers } });

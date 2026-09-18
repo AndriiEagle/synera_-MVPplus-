@@ -39,6 +39,41 @@ test('closed backend, wrong origins, bad configuration and unsupported routes ma
   assert.equal(calls, 0); assert.throws(() => neonEndpoints({ ...env, SYNERA_NEON_AUTH_URL: env.SYNERA_NEON_AUTH_URL + '?password=secret' }));
 });
 
+test('the case-state tables are reachable through the gateway and the allowlist stays an allowlist', async () => {
+  // STATUS.md item 3: neon/worker.mjs must allow match_cases and match_case_approvals.
+  // The gateway forwards only; RLS on those tables is what refuses a forged approval.
+  for (const path of ['/data/match_cases', '/data/match_case_approvals']) {
+    const calls = [];
+    const upstream = async (url, init) => { calls.push({ url, init }); return calls.length === 1 ? upstreamSession() : new Response('[]'); };
+    const response = await handleNeon(request(path, { headers: { ...browserCookie, Authorization: 'Bearer attacker-token' } }), env, upstream);
+    assert.equal(response.status, 200, path);
+    assert.equal(calls.length, 2, path);
+    assert.equal(calls[1].init.headers.Authorization, 'Bearer ' + jwt, 'caller Authorization is discarded');
+    assert.equal(calls[1].init.headers.Cookie, undefined);
+  }
+
+  // the exact shapes profile-store.mjs uses
+  const readCalls = [];
+  const readUpstream = async (url, init) => { readCalls.push({ url, init }); return readCalls.length === 1 ? upstreamSession() : new Response('[]'); };
+  const read = await handleNeon(request('/data/match_cases?case_id=eq.case-a-b&select=state&limit=1', { headers: browserCookie }), env, readUpstream);
+  assert.equal(read.status, 200);
+  assert.match(readCalls[1].url, /\/match_cases\?case_id=eq\.case-a-b&select=state&limit=1$/);
+
+  const writeCalls = [];
+  const writeUpstream = async (url, init) => { writeCalls.push({ url, init }); return writeCalls.length === 1 ? upstreamSession() : new Response(null, { status: 204 }); };
+  const write = await handleNeon(request('/data/match_cases?on_conflict=case_id', { method: 'POST', body: { case_id: 'case-a-b', state: {} },
+    headers: { ...browserCookie, Prefer: 'resolution=merge-duplicates,return=minimal' } }), env, writeUpstream);
+  assert.equal(write.status, 204);
+  assert.equal(writeCalls[1].init.headers.Prefer, 'resolution=merge-duplicates,return=minimal');
+
+  // nothing else was opened along with them
+  let calls = 0; const never = async () => { calls++; throw new Error('Unexpected request'); };
+  for (const path of ['/data/match_case_secrets', '/data/synera_pilot_members', '/data/match_cases_view', '/data/rpc']) {
+    assert.equal((await handleNeon(request(path), env, never)).status, 404, path);
+  }
+  assert.equal(calls, 0);
+});
+
 test('OTP requires an invited email, explicit current consent and a bounded body before sending', async () => {
   const calls = []; const upstream = async (...args) => { calls.push(args); return new Response('{}'); };
   const consent = consentRecord({ terms: true, privacy: true });
