@@ -117,14 +117,43 @@ export class ProfileStore {
   }
   // SYN_STORE_CARRIES_CASE_STATE: case state per pair, exactly what createCaseState returns.
   // No free text, no contacts, no transcript; the stored hash is never recomputed on read.
+  // SYN_OWN_APPROVAL_ONLY: a caller writes only its own approval. Every other party's
+  // approval is re-read from the stored row and kept only while it still matches the
+  // version and terms hash being written; the status is derived here and never taken
+  // from the payload. This removes the client-side path that let one party record the
+  // other party's approval. It is defence in depth, not the authority: the server-side
+  // gate (match_case_approvals + RLS in supabase/case-state.proposal.sql) is still
+  // labelled PRESENT_BUT_UNTESTED in bible/STATUS.md and remains the real enforcement.
   async saveCaseState(state) {
     this.requireRealPilot();
+    const me = this.requireUser();
     const CASE_KEYS = ['schema', 'caseId', 'participants', 'version', 'material', 'termsHash', 'status', 'approvals', 'binding', 'approvalAttestation', 'createdAt', 'updatedAt', 'expiresAt', 'closedBy', 'closedAt', 'closeReason', 'timeAuthority', 'events'];
     const validId = value => typeof value === 'string' && value.length >= 1 && value.length <= 64 && /^[A-Za-z0-9_:-]+$/.test(value);
     if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Invalid case state');
     const clean = {};
     for (const key of CASE_KEYS) if (Object.hasOwn(state, key)) clean[key] = state[key];
     clean.schema = 'synera.case-state.v1';
+    const stored = await this.caseState(clean.caseId);
+    if (stored) {
+      const same = Array.isArray(stored.participants) && stored.participants.length === clean.participants.length
+        && stored.participants.every((id, index) => id === clean.participants[index]);
+      if (!same) throw new Error('Case participants cannot change');
+      if (Number.isSafeInteger(stored.version) && clean.version < stored.version) throw new Error('Case version cannot move backwards');
+    }
+    const closed = ['revoked', 'abandoned'].includes(clean.status);
+    if (closed && clean.closedBy !== me) throw new Error('A case is closed only by the party doing it');
+    const approvals = {};
+    if (!closed) {
+      for (const id of clean.participants) {
+        const candidate = id === me ? clean.approvals?.[id] : stored?.approvals?.[id];
+        if (!candidate || typeof candidate !== 'object' || candidate.partyId !== id) continue;
+        if (candidate.version !== clean.version || candidate.termsHash !== clean.termsHash) continue;
+        approvals[id] = candidate;
+      }
+      clean.status = clean.participants.every(id => approvals[id]) ? 'approved_for_next_step'
+        : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
+    }
+    clean.approvals = approvals;
     await this._send('/rest/v1/match_cases?on_conflict=case_id', { method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: { case_id: clean.caseId, state: clean } });
   }
   async caseState(caseId) {
