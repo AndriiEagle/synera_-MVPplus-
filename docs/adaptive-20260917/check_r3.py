@@ -61,6 +61,13 @@ def validate_addendum(ctx):
         if row['dispatch_recommended_now']:
             raise ValueError(f'{rid} recommended before the consent record it depends on')
 
+    # A superseded entry must name where it was corrected, or the correction rots.
+    for row in rows:
+        if 'superseded_by' in row or 'superseded_note' in row:
+            ref = row.get('superseded_by', '')
+            if '#SUP-' not in ref or not row.get('superseded_note'):
+                raise ValueError(f"{row['id']}: superseded without a usable reference and note")
+
     # A contract may only exist for a requirement that was recommended for work.
     # This is the guard against quietly advancing the parked ones.
     for row in rows:

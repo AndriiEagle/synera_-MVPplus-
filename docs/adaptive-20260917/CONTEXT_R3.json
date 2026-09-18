@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "R3_ADAPTIVE_LAYER_AND_STATE_AUDIT_20260917_B",
+  "revision": "R3_ADAPTIVE_LAYER_AND_STATE_AUDIT_20260917_C",
   "purpose": "Captured new product requirement plus repository state audit; not a router, queue, optimizer or execution authority",
   "dispatch_allowed": false,
   "paid_authorized_cap_usd": 0,
@@ -112,7 +112,9 @@
         "C17"
       ],
       "open_decision": "High telemetry versus data minimisation cannot be resolved by engineering default. Recommended split: product-event telemetry yes, human-behaviour telemetry no.",
-      "dispatch_recommended_now": false
+      "dispatch_recommended_now": false,
+      "superseded_by": "docs/reality-20260918/SUPERSEDED.json#SUP-04",
+      "superseded_note": "The telemetry contract is already implemented in web_launch/economics.mjs (SYN_TELEMETRY_CONTRACT) exactly as this entry recommended. No owner decision is pending."
     },
     {
       "id": "ADP-06",
@@ -187,7 +189,9 @@
           "lambda_e coordination cost per collaboration",
           "freshness half_life"
         ]
-      }
+      },
+      "superseded_by": "docs/reality-20260918/SUPERSEDED.json#SUP-05",
+      "superseded_note": "evaluateAlgorithmicMatch already computes a harmonic mutual score and a separate asymmetry, tested. The formula choice was made in code before this entry was written."
     },
     {
       "id": "ADP-09",
@@ -320,5 +324,12 @@
       "ADP-08 E8: first version claimed the exhaustive oracle covers the P14 pilot and measured n=10. P14 means 10 disjoint pairs, which is 20 participants, and density dominates n. Both axes now measured."
     ],
     "dispatch_state": "still false; these are contracts for source review, not implementation"
-  }
+  },
+  "corrections": [
+    {
+      "by": "R4, docs/reality-20260918/",
+      "date": "2026-09-18",
+      "statement": "R3 was written without access to the modern source. Two of its nine requirements described work that the code had already done. The entries are kept as the record of what was believed, each now naming its correction."
+    }
+  ]
 }

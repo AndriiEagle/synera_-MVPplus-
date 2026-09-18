@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "revision": "R4_CODE_REALITY_20260918",
+  "purpose": "Claims in R1/R2/R3 that the modern source contradicts; measured, not restated",
+  "dispatch_allowed": false,
+  "paid_authorized_cap_usd": 0,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "modern_source_commit": "2aa7fae6a4f002ed880cb97ec780de41e328af97",
+  "modern_source_commit_date": "2026-09-13",
+  "modern_source_published": false,
+  "measured_on": "2026-09-18",
+  "measured_with": "Node v22.22.2 on Linux, from a copy of the working tree",
+  "why_this_exists": "R1, R2 and R3 were written without access to the code. Each executor read a projection of a projection. The R3 author repeated the mistake and produced two wrong conclusions, corrected here.",
+  "measurements": {
+    "test_command": "node --test web_launch/*.test.mjs neon/worker.test.mjs operator_dashboard.test.mjs",
+    "run_from": "repository root, not web_launch/",
+    "tests_total": 148,
+    "tests_passing": 148,
+    "tests_before_approval_fix": 140,
+    "matcher_tests": 16,
+    "offline_build_files": 27,
+    "neon_sql_regenerates_byte_identical": true
+  },
+  "superseded": [
+    {
+      "id": "SUP-01",
+      "document": "docs/context-20260916/CONTEXT.json",
+      "locator": "requirements[requirement_id=P02]",
+      "claim": "PARTIAL. Preserve all five modes and component eligibility; capacity task is not full mode implementation.",
+      "reality": "All five collaboration modes are implemented in web_launch/matching.mjs with roles, role conflict, needs_information states and unresolved terms; positive and negative cases are covered by 16 tests in matching.test.mjs.",
+      "evidence": [
+        "web_launch/matching.mjs: reciprocalCandidate, paidCandidate, referralCandidate, hybridCandidate, evaluateModes, normalizeModeDetails",
+        "web_launch/matching.test.mjs: 16 tests including paid service requires explicit buyer and supplier; referral cannot infer third-party agreement; hybrid blocked by any missing component; a one-way benefit is not promoted as reciprocal",
+        "handoff snapshot 2026-09-07 code_snapshot/matching.mjs is 9243 bytes and contains none of these functions; current file is 21142 bytes"
+      ],
+      "still_open": "Runtime and two-party browser acceptance are not proven by these tests."
+    },
+    {
+      "id": "SUP-02",
+      "document": "synera-gap-V4-V5-V6.md",
+      "locator": "section 4c and summary 6",
+      "claim": "G8 operator dashboard: Немає у V6 — listed among lost V4/V5 tasks.",
+      "reality": "operator_dashboard.mjs, operator_dashboard.html and operator_dashboard.test.mjs exist in the modern source; the tests are part of the 148 that pass.",
+      "evidence": [
+        "operator_dashboard.mjs (12138 bytes)",
+        "operator_dashboard.html (8959 bytes)",
+        "operator_dashboard.test.mjs (5509 bytes)"
+      ],
+      "still_open": "Whether the dashboard covers everything V5 G8 intended was not compared clause by clause."
+    },
+    {
+      "id": "SUP-03",
+      "document": "docs/context-20260916/CONTEXT.json",
+      "locator": "requirements[requirement_id=P04].gap_or_boundary",
+      "claim": "Material version/hash invalidation; client transport defect remains open — the defect is never named.",
+      "reality": "The defect is named in bible/STATUS.md and located in web_launch/profile-store.mjs saveCaseState: the method accepted a whole JSON state blob including approvals, so one party could record the other party's approval and the status approved_for_next_step. Reproduced: a payload from u-1 put approvals ['u-2'] on the wire. The client side is now closed and pinned by tests; the server side is not.",
+      "evidence": [
+        "bible/STATUS.md: saveCaseState still posts one JSON state blob, which would let a client write the other party's approval (step B2-rework)",
+        "web_launch/profile-store.mjs: SYN_OWN_APPROVAL_ONLY in saveCaseState",
+        "web_launch/case-approval-guard.test.mjs: 8 tests, 6 of which fail against the unpatched code"
+      ],
+      "still_open": "Authoritative enforcement is match_case_approvals with RLS in supabase/case-state.proposal.sql, still labelled PRESENT_BUT_UNTESTED; no statement has reached any database."
+    },
+    {
+      "id": "SUP-04",
+      "document": "docs/adaptive-20260917/CONTEXT_R3.json",
+      "locator": "adp_requirements[id=ADP-05]",
+      "claim": "HARD_COLLISION_NEEDS_OWNER_DECISION: high telemetry versus data minimisation cannot be resolved by engineering default; owner decision required.",
+      "reality": "The telemetry contract is already implemented and matches the split R3 itself recommended: append-only events.jsonl, nothing written without consent, PII and unknown event types rejected, 10 second deduplication, test-overridable path, node-only.",
+      "evidence": [
+        "web_launch/economics.mjs: SYN_TELEMETRY_CONTRACT",
+        "web_launch/economics.test.mjs: three SYN_TELEMETRY_CONTRACT tests"
+      ],
+      "still_open": "Retention, export and deletion of telemetry against P10 were not audited here.",
+      "correction_of": "R3, written by the same assistant on 2026-09-17"
+    },
+    {
+      "id": "SUP-05",
+      "document": "docs/adaptive-20260917/ADP-08-DECISION.uk.md",
+      "locator": "section 1, the decision itself",
+      "claim": "A decision is needed on which of min(u_ab,u_ba) or M_ij = S_ij - C_ij governs pair selection; min() is chosen.",
+      "reality": "evaluateAlgorithmicMatch already computes bilateral coverage, a harmonic mutual_score and a separate asymmetry, with evidence_ids, reason_codes, an explicit not-scored list, provider_calls 0 and expected_value_usd null. The harmonic mean carries the same one-sided-zero property as the proposed min() and is already covered by tests. R3 re-derived a weaker form of an existing, tested decision from documentation.",
+      "evidence": [
+        "web_launch/matching.mjs: evaluateAlgorithmicMatch, algorithmicDirection, ALGORITHMIC_NOT_SCORED",
+        "docs/ALGORITHMIC_MATCHING.uk.md: status VERIFIED_LOCAL for the browser module",
+        "web_launch/matching.test.mjs: two algorithmic matcher tests"
+      ],
+      "still_open": "The ADP-08 document keeps value only as an explanation of why a one-sided zero must not be hidden. The formula choice is already made in code.",
+      "correction_of": "R3, written by the same assistant on 2026-09-17"
+    },
+    {
+      "id": "SUP-06",
+      "document": "docs/multihost-20260915/SOURCE_MANIFEST.json",
+      "locator": "modern_source_published, remote_base_gap",
+      "claim": "modern_source_published false; remote_base_gap 12 commits, 116 files, 10698 insertions — with no inventory of what those contain.",
+      "reality": "The claim itself still holds: the code is not published. What was missing is any statement of its contents. CODE_REALITY.uk.md now inventories it: operator dashboard, neon and supabase migration and acceptance SQL, a live Neon database already running schema.proposal.sql with 106 statements and acceptance PASS, the AI adapter with its schema, profile import and portability, PWA, legal page, and a seven-file pilot package under docs/meeting-gilbert.",
+      "evidence": [
+        "docs/reality-20260918/CODE_REALITY.uk.md, section 'Що є в коді, чого немає в жодному документі пакета'",
+        "bible/STATUS.md quoting docs/NEON_LAUNCH.uk.md: 106 statements, acceptance PASS"
+      ],
+      "still_open": "Publication still requires the source review hold named in SOURCE_MANIFEST.json. A full-history git bundle was taken on 2026-09-17 (4788 objects) as a backup, not as publication."
+    }
+  ],
+  "remaining_work": {
+    "source": "bible/STATUS.md, 2026-09-11, label PRESENT_BUT_UNTESTED",
+    "items": [
+      "case-state.acceptance.sql must pass on a disposable database (Neon branch or local Docker Postgres) with separate human approval; no statement has been parsed by Postgres yet",
+      "neon/worker.mjs must allow match_cases and match_case_approvals; its TABLES set has six tables today",
+      "the wave A UI must deploy together with the migration, or the database rejects brief v2 and meetings_need_approved_case refuses every invitation without a case approved by both parties"
+    ],
+    "closed_since": [
+      "saveCaseState no longer lets one party record the other party's approval (client side only)"
+    ]
+  },
+  "limitations": [
+    "Measured on a copy of the working tree, not on the user's machine",
+    "No database was contacted, no migration applied, no deploy performed",
+    "Browser scenarios, two real consents, payments and production readiness are not claimed",
+    "This document changes no R1, R2 or R3 bytes; it supersedes specific claims by reference"
+  ]
+}
