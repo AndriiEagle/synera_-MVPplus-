@@ -226,20 +226,38 @@ const caseErrorText = error => {
 };
 // SYN_CASE_ACTION_NOT_NESTED: btn() already runs this inside run(); a second run() would see busy and drop the click.
 function caseAction(personId, action, note) {
-  try { action(personId); }
-  catch (error) { throw knownError(caseErrorText(error)); }
-  renderPeople();
-  message(note);
+  return (async () => {
+    try {
+      await action(personId);
+      if (store && store.saveCaseState) {
+        const state = caseStates.get(personId);
+        if (state) await store.saveCaseState(state);
+      }
+    }
+    catch (error) { throw knownError(caseErrorText(error)); }
+    renderPeople();
+    message(note);
+  })();
 }
 function caseSection(person, comparison, businessCase, gate = {}) {
   const box = el('div', undefined, 'case-state'); box.hidden = true; const epoch = caseEpoch;
   (async () => {
     try {
       const material = caseMaterialFor(person, comparison);
+      const caseId = ('case-' + [own.id, person.id].sort().join('-')).slice(0, 64);
       let state = caseStates.get(person.id);
+      if (!state && store && store.caseState) {
+        try {
+          const stored = await store.caseState(caseId);
+          if (stored) {
+            state = stored;
+            if (epoch === caseEpoch) caseStates.set(person.id, state);
+          }
+        } catch {}
+      }
       if (material) {
         const now = new Date().toISOString();
-        if (!state) state = await createCaseState({ caseId: ('case-' + person.id).slice(0, 64), participants: [own.id, person.id], material, now, expiresAt: new Date(Date.parse(material.trial.due_on + 'T00:00:00.000Z') + 86400000).toISOString() });
+        if (!state) state = await createCaseState({ caseId, participants: [own.id, person.id], material, now, expiresAt: new Date(Date.parse(material.trial.due_on + 'T00:00:00.000Z') + 86400000).toISOString() });
         else {
           const revised = await reviseCase(state, { material, now });
           if (revised.termsHash !== state.termsHash) { state = revised; caseNotices.set(person.id, 'material_change'); }
