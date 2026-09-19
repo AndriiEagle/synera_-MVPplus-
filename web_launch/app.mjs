@@ -4,7 +4,8 @@ import { cleanProfileFields, createInvitationDraft, createShareCard, parseProfil
 import { completeProfileJson as createPortableProfileJson, importCompleteProfile as parseProfileImport } from './profile-package.mjs';
 import { normalizeBrief, briefProblems, compareRealProfiles, collaborationDraft, ALL_MODES, CAPABILITIES, CITIES, LANGUAGES, MODES, profileAIPayload, profileAIPrompt, validateAIDraft } from './profile-brief.mjs';
 // SYN_CASE_STATE_IMPORTED
-import { buildBusinessCase, businessCaseText, createCaseState, approveCase, withdrawApproval, reviseCase, reviewCaseAction, INVALIDATION_MATRIX, caseMaterialProblems, materialTermsFromInput } from './business-case.mjs';
+import { buildBusinessCase, businessCaseText, createCaseState, approveCase, withdrawApproval, reviseCase, reviewCaseAction, INVALIDATION_MATRIX, caseMaterialProblems, materialTermsFromInput, getDeliverableProofStates, supplyDeliverableEvidence, recordDeliverableScopeCheck, acceptDeliverable } from './business-case.mjs';
+import { buildMeetingCard, revokeMeetingCardConsent } from './meeting-card.mjs';
 // SYN_INTRODUCTION_GATED
 import { reviewIntroduction } from './matching.mjs';
 import { createPeopleMap } from './map.mjs';
@@ -193,6 +194,8 @@ const COMPENSATION_LABELS = { unresolved: 'не погоджено', agreed_exch
 const TERMS_LABELS = { revision_limit: 'Ліміт правок', confidentiality: 'Конфіденційність', intellectual_property: 'Права на результат', cancellation: 'Припинення співпраці' };
 const TERM_VALUE_LABELS = { confidentiality: { unresolved: 'не погоджено', required: 'потрібна', not_required: 'не потрібна' }, intellectual_property: { unresolved: 'не погоджено', giver: 'у сторони, що надає роботу', receiver: 'у отримувача', shared: 'спільно' }, cancellation: { unresolved: 'не погоджено', mutual_written_notice: 'спільне письмове повідомлення', either_party_before_start: 'будь-яка сторона до початку' } };
 const CASE_STATUS_LABELS = { draft: 'чернетка', awaiting_approval: 'очікує підтверджень сторін', approved_for_next_step: 'підтверджено обома сторонами · лише наступний крок', revoked: 'відкликано', abandoned: 'залишено' };
+const PROOF_STAGE_LABELS = { self_declared: 'Заявлено', evidence_supplied: 'Доказ надано', checked_with_scope: 'Обсяг перевірено', outcome_confirmed: 'Результат підтверджено' };
+const meetingCardConsents = new Map();
 const currentApproval = (state, id) => { const record = state?.approvals?.[id]; return Boolean(record && record.version === state.version && record.termsHash === state.termsHash); };
 const matrixNotice = reason => { const row = INVALIDATION_MATRIX[reason]; return { clear_both: 'обидва погодження стерто', clear_withdrawing_party: 'погодження стерто лише у відкликаючої сторони', preserve_as_history: 'погодження залишено як історію' }[row.approvals] + '; ' + { block: 'наступний крок заблоковано' }[row.next_action] + '; ' + { increment: 'номер версії піднято', preserve: 'номер версії без змін' }[row.version] + '; ' + { preserve: 'історію збережено' }[row.history] + '.'; };
 function caseMaterialFor(person, comparison) {
@@ -345,6 +348,85 @@ function caseSection(person, comparison, businessCase, gate = {}) {
       box.append(approvals);
       const notice = caseNotices.get(person.id);
       if (notice) box.append(el('p', 'Наслідок: ' + matrixNotice(notice), 'fine'));
+
+      // C01.L6 & C01.L7: Deliverable proof states and receiver outcome acceptance
+      const proofStates = getDeliverableProofStates(state);
+      const deliverableSection = el('div', undefined, 'case-deliverables');
+      deliverableSection.append(el('h4', 'Пробні результати та прийняття (C01.L6/L7)'));
+      state.material.trial.deliverables.forEach((deliverable, index) => {
+        const proof = proofStates[index] || { stage: 'self_declared' };
+        const row = el('div', undefined, 'deliverable-row');
+        row.append(el('p', 'Результат #' + (index + 1) + ': від ' + nameOf(deliverable.giver_id) + ' для ' + nameOf(deliverable.receiver_id) + ' — ' + deliverable.target, 'fine'));
+        row.append(el('p', 'Статус доказу: ' + (PROOF_STAGE_LABELS[proof.stage] || proof.stage), 'fine'));
+        if (proof.evidence_uri) row.append(el('p', 'Посилання на доказ: ' + proof.evidence_uri, 'fine'));
+        if (proof.scope_notes) row.append(el('p', 'Нотатки обсягу: ' + proof.scope_notes, 'fine'));
+
+        // Giver action: supply evidence
+        if (own.id === deliverable.giver_id && proof.stage === 'self_declared') {
+          const supplyBtn = btn('Надати доказ виконання', () => {
+            const uri = typeof prompt === 'function' ? prompt('Вкажи посилання на доказ виконаної роботи:') : null;
+            if (uri && uri.trim()) {
+              caseAction(person.id, key => {
+                const current = caseStates.get(key);
+                const next = supplyDeliverableEvidence(current, { deliverableIndex: index, partyId: own.id, evidenceUri: uri.trim(), now: new Date().toISOString() });
+                caseStates.set(key, next);
+              }, 'Доказ надано. Очікує перевірки отримувачем.');
+            }
+          });
+          row.append(supplyBtn);
+        }
+
+        // Receiver action: scope check
+        if (own.id === deliverable.receiver_id && proof.stage === 'evidence_supplied') {
+          const checkBtn = btn('Узгодити обсяг', () => {
+            const notes = typeof prompt === 'function' ? prompt('Нотатки щодо перевірки обсягу:') : null;
+            if (notes && notes.trim()) {
+              caseAction(person.id, key => {
+                const current = caseStates.get(key);
+                const next = recordDeliverableScopeCheck(current, { deliverableIndex: index, partyId: own.id, scopeNotes: notes.trim(), now: new Date().toISOString() });
+                caseStates.set(key, next);
+              }, 'Обсяг перевірено.');
+            }
+          });
+          row.append(checkBtn);
+        }
+
+        // Receiver action: accept outcome (C01.L7 invariant: ONLY receiver)
+        if (own.id === deliverable.receiver_id && proof.stage === 'checked_with_scope') {
+          const acceptBtn = btn('Підтвердити прийняття результату', () => {
+            caseAction(person.id, key => {
+              const current = caseStates.get(key);
+              const next = acceptDeliverable(current, { deliverableIndex: index, partyId: own.id, now: new Date().toISOString() });
+              caseStates.set(key, next);
+            }, 'Результат прийнято отримувачем.');
+          });
+          row.append(acceptBtn);
+        }
+
+        deliverableSection.append(row);
+      });
+      box.append(deliverableSection);
+
+      // C10.L2: Meeting card "Ми зустрілися"
+      const cardSection = el('div', undefined, 'case-meeting-card');
+      cardSection.append(el('h4', 'Картка «Ми зустрілися» (C10.L2)'));
+      const consents = meetingCardConsents.get(person.id) || { [own.id]: false, [person.id]: false };
+      const card = buildMeetingCard({ caseState: state, profiles: { [own.id]: own, [person.id]: person }, consents: { [own.id]: { meetingCardShare: consents[own.id] }, [person.id]: { meetingCardShare: consents[person.id] } } });
+      const toggleLabel = el('label', 'Дозволити публікацію картки зустрічі (без цін і контактів): ');
+      const toggle = el('input'); toggle.type = 'checkbox'; toggle.checked = Boolean(consents[own.id]);
+      toggle.addEventListener('change', () => {
+        consents[own.id] = toggle.checked;
+        meetingCardConsents.set(person.id, consents);
+        renderPeople();
+      });
+      toggleLabel.append(toggle);
+      cardSection.append(toggleLabel);
+      if (card.shareable) {
+        cardSection.append(el('p', 'Картка активна: ' + card.pairing + ' · ' + card.headline, 'fine'));
+      } else {
+        cardSection.append(el('p', 'Картка не опублікована (' + (card.reason === 'MUTUAL_CONSENT_REQUIRED' ? 'потрібна згода обох сторін' : 'кейс закрито') + ').', 'fine'));
+      }
+      box.append(cardSection);
       // SYN_INTRODUCTION_GATED
       if (gate.inviteButton) {
         const gateResult = reviewIntroduction(comparison, { [own.id]: currentApproval(state, own.id), [person.id]: currentApproval(state, person.id) });

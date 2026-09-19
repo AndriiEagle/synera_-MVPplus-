@@ -1,4 +1,5 @@
 import { compareRealProfiles, normalizeBrief, CAPABILITIES } from './profile-brief.mjs';
+import { createProofState, advanceProofState, downgradeOnMaterialChange } from './proof-state.mjs';
 
 // A presentation of the existing matcher, not a second ranking engine or a contract.
 export function buildBusinessCase(own, other, options = {}) {
@@ -286,3 +287,133 @@ export async function reviewCaseAction(state, { action, permissions, now }) {
   for (const [field, reason] of required) if (!state.participants.every(id => permissions?.[id]?.[field] === true)) return { allowed: false, binding: false, reasonCodes: [reason] };
   return { allowed: true, binding: false, reasonCodes: [], caseId: state.caseId, version: state.version, termsHash: state.termsHash };
 }
+
+export function getDeliverableProofStates(state) {
+  assertState(state);
+  const deliverables = state.material?.trial?.deliverables || [];
+  let proofStates = deliverables.map(() => createProofState('self_declared', { version: 1, updated_at: state.createdAt }));
+
+  for (const event of state.events || []) {
+    if (event.type === 'material_changed') {
+      proofStates = (deliverables || []).map((_, idx) => downgradeOnMaterialChange(proofStates[idx], 'terms_modified'));
+    } else if (event.type === 'evidence_supplied' && Number.isInteger(event.deliverableIndex) && proofStates[event.deliverableIndex]) {
+      proofStates[event.deliverableIndex] = advanceProofState(proofStates[event.deliverableIndex], 'evidence_supplied', {
+        evidence_uri: event.evidenceUri,
+      });
+    } else if (event.type === 'deliverable_scope_checked' && Number.isInteger(event.deliverableIndex) && proofStates[event.deliverableIndex]) {
+      proofStates[event.deliverableIndex] = advanceProofState(proofStates[event.deliverableIndex], 'checked_with_scope', {
+        scope_notes: event.scopeNotes,
+      });
+    } else if (event.type === 'deliverable_accepted' && Number.isInteger(event.deliverableIndex) && proofStates[event.deliverableIndex]) {
+      proofStates[event.deliverableIndex] = advanceProofState(proofStates[event.deliverableIndex], 'outcome_confirmed', {
+        confirmed_by_party_a: true,
+        confirmed_by_party_b: true,
+      });
+    }
+  }
+
+  return proofStates;
+}
+
+export function supplyDeliverableEvidence(state, { deliverableIndex, partyId, evidenceUri, now }) {
+  assertState(state);
+  if (!validInstant(now) || now < state.updatedAt) throw new Error('Invalid evidence timestamp');
+  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed or expired');
+  if (!state.participants.includes(partyId)) throw new Error('Party is not a case participant');
+
+  const deliverables = state.material?.trial?.deliverables || [];
+  if (!Number.isInteger(deliverableIndex) || deliverableIndex < 0 || deliverableIndex >= deliverables.length) {
+    throw new Error('Invalid deliverable index');
+  }
+  const deliverable = deliverables[deliverableIndex];
+  if (partyId !== deliverable.giver_id) {
+    throw new Error('Only deliverable giver can supply evidence');
+  }
+  if (typeof evidenceUri !== 'string' || !evidenceUri.trim()) {
+    throw new Error('Evidence URI must be a non-empty string');
+  }
+
+  const proofStates = getDeliverableProofStates(state);
+  const currentProof = proofStates[deliverableIndex];
+  advanceProofState(currentProof, 'evidence_supplied', { evidence_uri: evidenceUri.trim() });
+
+  const next = clone(state);
+  next.updatedAt = now;
+  next.events.push({
+    type: 'evidence_supplied',
+    by: partyId,
+    deliverableIndex,
+    evidenceUri: evidenceUri.trim(),
+    at: now,
+    version: next.version,
+  });
+  return next;
+}
+
+export function recordDeliverableScopeCheck(state, { deliverableIndex, partyId, scopeNotes, now }) {
+  assertState(state);
+  if (!validInstant(now) || now < state.updatedAt) throw new Error('Invalid scope check timestamp');
+  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed or expired');
+  if (!state.participants.includes(partyId)) throw new Error('Party is not a case participant');
+
+  const deliverables = state.material?.trial?.deliverables || [];
+  if (!Number.isInteger(deliverableIndex) || deliverableIndex < 0 || deliverableIndex >= deliverables.length) {
+    throw new Error('Invalid deliverable index');
+  }
+  if (typeof scopeNotes !== 'string' || !scopeNotes.trim()) {
+    throw new Error('Scope notes must be a non-empty string');
+  }
+
+  const proofStates = getDeliverableProofStates(state);
+  const currentProof = proofStates[deliverableIndex];
+  advanceProofState(currentProof, 'checked_with_scope', { scope_notes: scopeNotes.trim() });
+
+  const next = clone(state);
+  next.updatedAt = now;
+  next.events.push({
+    type: 'deliverable_scope_checked',
+    by: partyId,
+    deliverableIndex,
+    scopeNotes: scopeNotes.trim(),
+    at: now,
+    version: next.version,
+  });
+  return next;
+}
+
+export function acceptDeliverable(state, { deliverableIndex, partyId, now }) {
+  assertState(state);
+  if (!validInstant(now) || now < state.updatedAt) throw new Error('Invalid acceptance timestamp');
+  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed or expired');
+  if (!state.participants.includes(partyId)) throw new Error('Party is not a case participant');
+
+  const deliverables = state.material?.trial?.deliverables || [];
+  if (!Number.isInteger(deliverableIndex) || deliverableIndex < 0 || deliverableIndex >= deliverables.length) {
+    throw new Error('Invalid deliverable index');
+  }
+  const deliverable = deliverables[deliverableIndex];
+
+  // Invariant C01.L7: Only relevant recipient confirms outcome; self declaration not promoted by sender
+  if (partyId === deliverable.giver_id) {
+    throw new Error('Giver cannot accept own outcome');
+  }
+  if (partyId !== deliverable.receiver_id) {
+    throw new Error('Only deliverable receiver can accept outcome');
+  }
+
+  const proofStates = getDeliverableProofStates(state);
+  const currentProof = proofStates[deliverableIndex];
+  advanceProofState(currentProof, 'outcome_confirmed', { confirmed_by_party_a: true, confirmed_by_party_b: true });
+
+  const next = clone(state);
+  next.updatedAt = now;
+  next.events.push({
+    type: 'deliverable_accepted',
+    by: partyId,
+    deliverableIndex,
+    at: now,
+    version: next.version,
+  });
+  return next;
+}
+

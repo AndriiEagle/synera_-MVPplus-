@@ -48,3 +48,8 @@ dialog{background:#fff;border-color:#d3dfd6;box-shadow:0 24px 100px #0a241633;bo
 #lang-switcher .lang-btn:hover{background:#e2ede5}
 #lang-switcher .lang-btn.active{background:#fff;color:#184a33;box-shadow:0 1px 4px #1b422918}
 @media(max-width:650px){header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}#lang-switcher{margin-left:auto}#lang-switcher .lang-btn{min-height:44px;min-width:44px;padding:4px 10px;font-size:12px}}
+.case-deliverables,.case-meeting-card{margin-top:14px;padding:12px 14px;background:#f8faf8;border:1px solid #d5e3d8;border-radius:10px}
+.case-deliverables h4,.case-meeting-card h4{margin:0 0 8px;font-size:13px;font-weight:650;color:#204832}
+.deliverable-row{padding:8px 0;border-bottom:1px solid #e2ece4}
+.deliverable-row:last-child{border-bottom:none}
+.case-meeting-card label{display:flex;align-items:center;gap:8px;font-size:13px;color:#244431;cursor:pointer}
