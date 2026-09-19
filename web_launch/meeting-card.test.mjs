@@ -156,3 +156,27 @@ test('C10.L2: closed or revoked case blocks meeting card even with mutual consen
   assert.equal(card.revoked, true);
   assert.equal(card.reason, 'CASE_CLOSED');
 });
+
+import { renderMeetingCardHTML } from './meeting-card.mjs';
+
+test('C06.L6: renderMeetingCardHTML generates correct HTML and handles revoked cards', () => {
+  const revokedCard = { schema: 'synera.meeting-card.v1', shareable: false };
+  assert.match(renderMeetingCardHTML(revokedCard), /Card unavailable or revoked/);
+  
+  const validCard = {
+    schema: 'synera.meeting-card.v1',
+    shareable: true,
+    caseId: 'test-case-id',
+    headline: 'Ми зустрілися',
+    pairing: 'Alice ⇄ Bob',
+    participants: [
+      { displayName: 'Alice', give: [{capability: 'Code', target: 'Backend'}], take: [] },
+      { displayName: 'Bob', give: [], take: [{capability: 'Code', target: 'Backend'}] }
+    ],
+    sharedAt: '2026-09-20T00:00:00.000Z'
+  };
+  const html = renderMeetingCardHTML(validCard);
+  assert.match(html, /Ми зустрілися/);
+  assert.match(html, /Alice ⇄ Bob/);
+  assert.match(html, /Backend/);
+});

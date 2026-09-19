@@ -115,3 +115,21 @@ test('SYN_TELEMETRY_CONTRACT: events.jsonl writer is append-only, test-path over
   assert.throws(() => validateTelemetryEvent({ type: 'profile_completed', at: 'nope', source: 'real', properties: {} }));
   await (await import('node:fs/promises')).rm(path);
 });
+
+import { caseEconomics } from './economics.mjs';
+
+test('C11.L1: caseEconomics computes total case cost', () => {
+  const result = caseEconomics({
+    aiPrompts: 3,
+    aiCostPerPrompt: 0.02,
+    operatorMinutes: 15,
+    operatorHourlyRate: 60,
+    gatewayFees: 0.50
+  });
+  assert.equal(result.aiCost, 0.06);
+  assert.equal(result.operatorCost, 15.0);
+  assert.equal(result.gatewayFees, 0.50);
+  assert.equal(result.totalCost, 15.56);
+  
+  assert.throws(() => caseEconomics({ aiPrompts: -1 }), /Invalid case economics input/);
+});
