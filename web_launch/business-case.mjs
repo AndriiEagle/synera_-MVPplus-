@@ -197,7 +197,7 @@ export function caseParticipantProblems(input, participants) {
 }
 
 function assertState(state) {
-  if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || new Set(state.participants).size !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || typeof state.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(state.termsHash) || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events) || !validInstant(state.createdAt) || !validInstant(state.updatedAt) || !validInstant(state.expiresAt)) throw new Error('Invalid case state');
+  if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || new Set(state.participants).size !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || typeof state.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(state.termsHash) || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events) || !validInstant(state.createdAt) || !validInstant(state.updatedAt) || !validInstant(state.expiresAt)) throw new Error('Некоректний стан кейсу');
 }
 
 async function stateIntegrityProblems(state) {

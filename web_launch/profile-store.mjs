@@ -3,9 +3,9 @@ import { normalizeBrief, briefProblems } from './profile-brief.mjs';
 import { profileSafetyFindings } from './profile-portability.mjs';
 export function validateProfile(p) {
   for (const [key, max] of [['display_name', 60], ['city', 80], ['offers', 300], ['seeks', 300]]) {
-    if (typeof p[key] !== 'string' || p[key].trim().length > max) throw new Error('Invalid profile');
+    if (typeof p[key] !== 'string' || p[key].trim().length > max) throw new Error('Некоректний профіль');
   }
-  if (!p.display_name.trim() || typeof p.is_discoverable !== 'boolean') throw new Error('Invalid profile');
+  if (!p.display_name.trim() || typeof p.is_discoverable !== 'boolean') throw new Error('Некоректний профіль');
 }
 
 export class ServiceError extends Error {
@@ -35,7 +35,7 @@ export class ServiceError extends Error {
 
 // Shared profile and meeting contract; providers implement authentication and _send.
 export class ProfileStore {
-  requireUser() { if (!this.user) throw new Error('Sign in required'); return this.user.id; }
+  requireUser() { if (!this.user) throw new Error('Потрібна авторизація'); return this.user.id; }
   async hasPolicy() {
     if (!this.pilotSafetyEnabled) return false;
     const rows = await this._send(`/rest/v1/pilot_consents?user_id=eq.${encodeURIComponent(this.requireUser())}&policy_version=eq.${POLICY_VERSION}&select=policy_version&limit=1`, { authenticated: true });
@@ -63,7 +63,7 @@ export class ProfileStore {
       prefer: 'resolution=merge-duplicates,return=minimal', body: { id: this.requireUser(), display_name, city, offers, seeks, is_discoverable, ...extra } });
   }
   async discover({ offset = 0 } = {}) {
-    if (!Number.isInteger(offset) || offset < 0 || offset > 10000) throw new Error('Invalid page');
+    if (!Number.isInteger(offset) || offset < 0 || offset > 10000) throw new Error('Некоректна сторінка');
     return this._send(`/rest/v1/profiles?is_discoverable=eq.true&id=neq.${encodeURIComponent(this.requireUser())}&select=${this.profileColumns}&order=id.asc&limit=50&offset=${offset}`, { authenticated: true });
   }
   async meetings() {
@@ -71,7 +71,7 @@ export class ProfileStore {
     return this._send('/rest/v1/meeting_requests?select=id,sender_id,recipient_id,note,status,created_at' + (this.realPilotEnabled ? ',proposed_at,duration_minutes,meeting_place,sender_name,recipient_name' : '') + '&order=created_at.desc&limit=100', { authenticated: true });
   }
   async invite(recipient, note, plan = {}) {
-    if (!note.trim() || note.length > 500 || recipient === this.requireUser()) throw new Error('Invalid request');
+    if (!note.trim() || note.length > 500 || recipient === this.requireUser()) throw new Error('Некоректний запит');
     const extra = {};
     if (this.realPilotEnabled) {
       if (!Number.isFinite(Date.parse(plan.proposed_at)) || Date.parse(plan.proposed_at) <= Date.now() || Date.parse(plan.proposed_at) > Date.now() + 90 * 86400000) throw new Error('Обери час у наступні 90 днів.');
@@ -82,10 +82,10 @@ export class ProfileStore {
       body: { sender_id: this.requireUser(), recipient_id: recipient, note: note.trim(), ...extra } });
   }
   async respond(id, status) {
-    if (!['accepted', 'declined'].includes(status)) throw new Error('Invalid status');
+    if (!['accepted', 'declined'].includes(status)) throw new Error('Некоректний статус');
     const rows = await this._send(`/rest/v1/meeting_requests?id=eq.${encodeURIComponent(id)}&status=eq.pending`, {
       method: 'PATCH', authenticated: true, prefer: 'return=representation', body: { status } });
-    if (rows.length !== 1) throw new Error('Request unavailable');
+    if (rows.length !== 1) throw new Error('Запит недоступний');
   }
   requireRealPilot() { this.requireUser(); if (!this.realPilotEnabled) throw new Error('Ця дія стане доступною після оновлення сервера пілоту.'); }
   async cancelMeeting(id) {
@@ -103,11 +103,11 @@ export class ProfileStore {
     await this._send('/rest/v1/meeting_messages', { method: 'POST', authenticated: true, body: { meeting_id: meetingId, sender_id: this.requireUser(), body: body.trim() } });
   }
   async blocks() { this.requireRealPilot(); return this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&select=blocked_id,created_at&order=created_at.desc`, { authenticated: true }); }
-  async block(id) { this.requireRealPilot(); if (id === this.requireUser()) throw new Error('Invalid block'); await this._send('/rest/v1/profile_blocks', { method: 'POST', authenticated: true, body: { blocker_id: this.requireUser(), blocked_id: id }, prefer: 'resolution=ignore-duplicates,return=minimal' }); }
+  async block(id) { this.requireRealPilot(); if (id === this.requireUser()) throw new Error('Некоректне блокування'); await this._send('/rest/v1/profile_blocks', { method: 'POST', authenticated: true, body: { blocker_id: this.requireUser(), blocked_id: id }, prefer: 'resolution=ignore-duplicates,return=minimal' }); }
   async unblock(id) { this.requireRealPilot(); await this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&blocked_id=eq.${encodeURIComponent(id)}`, { method: 'DELETE', authenticated: true }); }
   async report(id, reason, detail) {
     this.requireRealPilot();
-    if (!['spam', 'impersonation', 'harassment', 'other'].includes(reason) || typeof detail !== 'string' || detail.length > 500 || id === this.requireUser()) throw new Error('Invalid report');
+    if (!['spam', 'impersonation', 'harassment', 'other'].includes(reason) || typeof detail !== 'string' || detail.length > 500 || id === this.requireUser()) throw new Error('Некоректна скарга');
     await this._send('/rest/v1/profile_reports', { method: 'POST', authenticated: true, body: { reporter_id: this.requireUser(), reported_id: id, reason, detail: detail.trim() } });
   }
   async deleteProfile() {
@@ -129,7 +129,7 @@ export class ProfileStore {
     const me = this.requireUser();
     const CASE_KEYS = ['schema', 'caseId', 'participants', 'version', 'material', 'termsHash', 'status', 'approvals', 'binding', 'approvalAttestation', 'createdAt', 'updatedAt', 'expiresAt', 'closedBy', 'closedAt', 'closeReason', 'timeAuthority', 'events'];
     const validId = value => typeof value === 'string' && value.length >= 1 && value.length <= 64 && /^[A-Za-z0-9_:-]+$/.test(value);
-    if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Invalid case state');
+    if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Некоректний стан кейсу');
     const clean = {};
     for (const key of CASE_KEYS) if (Object.hasOwn(state, key)) clean[key] = state[key];
     clean.schema = 'synera.case-state.v1';
@@ -137,11 +137,11 @@ export class ProfileStore {
     if (stored) {
       const same = Array.isArray(stored.participants) && stored.participants.length === clean.participants.length
         && stored.participants.every((id, index) => id === clean.participants[index]);
-      if (!same) throw new Error('Case participants cannot change');
-      if (Number.isSafeInteger(stored.version) && clean.version < stored.version) throw new Error('Case version cannot move backwards');
+      if (!same) throw new Error('Учасники кейсу не можуть змінюватися');
+      if (Number.isSafeInteger(stored.version) && clean.version < stored.version) throw new Error('Версія кейсу не може зменшуватися');
     }
     const closed = ['revoked', 'abandoned'].includes(clean.status);
-    if (closed && clean.closedBy !== me) throw new Error('A case is closed only by the party doing it');
+    if (closed && clean.closedBy !== me) throw new Error('Кейс може бути закритий лише ініціатором');
     const approvals = {};
     if (!closed) {
       for (const id of clean.participants) {
@@ -172,7 +172,7 @@ export class ProfileStore {
   }
   async caseState(caseId) {
     this.requireRealPilot();
-    if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Invalid case id');
+    if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Некоректний ідентифікатор кейсу');
     const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=state&limit=1`, { authenticated: true });
     return rows?.[0]?.state ?? null;
   }

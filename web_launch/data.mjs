@@ -38,7 +38,7 @@ export class DemoStore {
     this.user = { id };
   }
   async signOut() { this.user = null; }
-  requireUser() { if (!this.user) throw new Error('Sign in required'); return this.user.id; }
+  requireUser() { if (!this.user) throw new Error('Потрібна авторизація'); return this.user.id; }
   async ownProfile() { return structuredClone(this.profiles.find(p => p.id === this.requireUser())); }
   async saveProfile(profile) {
     const id = this.requireUser();
@@ -66,7 +66,7 @@ export class DemoStore {
   }
   async respond(id, status) {
     const user = this.requireUser();
-    if (!['accepted', 'declined'].includes(status)) throw new Error('Invalid status');
+    if (!['accepted', 'declined'].includes(status)) throw new Error('Некоректний статус');
     const row = this.requests.find(r => r.id === id && r.recipient_id === user && r.status === 'pending');
     if (!row) throw new Error('Not allowed');
     row.status = status;

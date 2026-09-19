@@ -143,9 +143,9 @@ export function parseProfileImport(input, { authorized = false } = {}) {
 
 export function createPortableProfile(profile, { exportedAt = new Date().toISOString() } = {}) {
   const cleaned = cleanProfileFields(profile);
-  if (!cleaned.display_name) throw new Error('Profile name is required');
+  if (!cleaned.display_name) throw new Error('Ім\'я профілю є обов\'язковим');
   const sensitive = profileSafetyFindings(cleaned);
-  if (sensitive.length) throw new Error('Remove private contacts or secrets before sharing');
+  if (sensitive.length) throw new Error('Прибери контакти, ключі та приватні дані перед поширенням');
   return {
     format: PORTABLE_PROFILE_FORMAT,
     exported_at: exportedAt,

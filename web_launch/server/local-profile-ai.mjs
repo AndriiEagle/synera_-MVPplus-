@@ -25,14 +25,14 @@ function python(args, input = '') {
 export async function runLocalProfileModel(prompt) {
   // Canonical DOMOVYK adapter rechecks resource/presence gates. No provider fallback or automatic retry.
   const result = await python(['run', '--task-class', 'extraction', '--stdin', '--start', '--schema', profileSchema, '--max-tokens', '1200', '--temperature', '0'], prompt);
-  if (result.code !== 0 || !result.value?.result?.content || !result.value.receipt) throw new Error('Local AI unavailable');
+  if (result.code !== 0 || !result.value?.result?.content || !result.value.receipt) throw new Error('Локальний AI недоступний');
   const receipt = JSON.parse(await fs.readFile(result.value.receipt, 'utf8'));
-  if (!validLocalReceipt(receipt, prompt, result.value.result.content)) throw new Error('Local receipt unavailable');
+  if (!validLocalReceipt(receipt, prompt, result.value.result.content)) throw new Error('Локальний чек недоступний');
   return {
     content: result.value.result.content,
     review: async () => {
       const reviewed = await python(['accept', '--receipt', result.value.receipt, '--verdict', 'needs_review', '--evidence', 'Synera JSON and exact source quotations validated; human confirmation in the profile editor is still required.']);
-      if (![0, 2].includes(reviewed.code)) throw new Error('Acceptance receipt unavailable');
+      if (![0, 2].includes(reviewed.code)) throw new Error('Чек підтвердження недоступний');
     },
   };
 }
@@ -53,8 +53,8 @@ export function createLocalProfileAI({ nonce, runModel = runLocalProfileModel, m
     let payload;
     try {
       const value = JSON.parse(body);
-      if (!value || Array.isArray(value) || Object.keys(value).some(k => !['version','consent','offers','seeks','goal'].includes(k)) || value.version !== 1 || value.consent !== true) throw new Error('Invalid input');
-      for (const [key, max] of [['offers',300],['seeks',300],['goal',240]]) if (typeof value[key] !== 'string' || value[key].length > max) throw new Error('Invalid input');
+      if (!value || Array.isArray(value) || Object.keys(value).some(k => !['version','consent','offers','seeks','goal'].includes(k)) || value.version !== 1 || value.consent !== true) throw new Error('Некоректні вхідні дані');
+      for (const [key, max] of [['offers',300],['seeks',300],['goal',240]]) if (typeof value[key] !== 'string' || value[key].length > max) throw new Error('Некоректні вхідні дані');
       payload = profileAIPayload(value, { consent: value.consent });
     } catch { return fail(422, 'Перевір дозвіл, довжину тексту та прибери контакти й ключі.'); }
     if (running) return fail(429, 'Один AI-запит уже виконується. Дочекайся результату.');

@@ -55,7 +55,7 @@ export class SupabaseStore extends ProfileStore {
     try { this.#storage?.setItem(this.storageKey, JSON.stringify({ refresh_token: result.refresh_token })); } catch {}
   }
   async #freshSession() {
-    if (!this.#session) throw new Error('Sign in required');
+    if (!this.#session) throw new Error('Потрібна авторизація');
     if (this.#session.expires_at > Date.now() / 1000 + 30) return;
     if (!this.#refresh) {
       this.#refresh = this._send('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: this.#session.refresh_token } })
