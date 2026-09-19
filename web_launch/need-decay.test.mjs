@@ -16,6 +16,15 @@ test('need-decay: freshly created need has score near 1.0', () => {
   assert.equal(fresh.age_days, 0);
 });
 
+test('need-decay: future timestamp is explicitly invalid/stale', () => {
+  const now = new Date('2026-09-19T12:00:00Z');
+  const future = new Date('2026-09-20T12:00:00Z');
+  const res = calculateNeedFreshness(future, now);
+  assert.equal(res.score, 0.0);
+  assert.equal(res.is_stale, true);
+  assert.equal(res.age_days, 0);
+});
+
 test('need-decay: decaying follows exponential curve', () => {
   const t0 = new Date('2026-08-01T00:00:00Z');
   const t30d = new Date('2026-08-31T00:00:00Z'); // 30 days later = 1 tau

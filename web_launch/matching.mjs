@@ -1,4 +1,7 @@
 // Local, deterministic baseline. This is not an LLM, a probability model or an arbitrator.
+import { calculateNeedFreshness } from './need-decay.mjs';
+import { solveBMatching } from './b-matching.mjs';
+
 export const CAPABILITIES = Object.freeze({ automation: 'Автоматизація процесів', design: 'Дизайн продукту', research: 'Інтерв’ю з клієнтами', sales: 'B2B-продажі', video: 'Відеопрезентація', finance: 'Бюджетування', events: 'Організація подій' });
 export const CITIES = Object.freeze({ zurich: { label: 'Zürich', lat: 47.3769, lon: 8.5417 }, winterthur: { label: 'Winterthur', lat: 47.499, lon: 8.7241 }, zug: { label: 'Zug', lat: 47.1662, lon: 8.5155 }, basel: { label: 'Basel', lat: 47.5596, lon: 7.5886 }, bern: { label: 'Bern', lat: 46.948, lon: 7.4474 } });
 const LANGUAGES = ['de', 'en', 'uk', 'fr'];
@@ -88,16 +91,22 @@ const roundedRatio = (numerator, denominator) => {
   return Math.floor((2 * numerator * 10000 + denominator) / (2 * denominator)) / 10000;
 };
 
-function algorithmicDirection(receiver, supplier, direction, receiverLabel, supplierLabel) {
+function algorithmicDirection(receiver, supplier, direction, receiverLabel, supplierLabel, asOfDate) {
   const needs = [...receiver.needs].sort((a, b) => a.tag.localeCompare(b.tag));
   const total = needs.reduce((sum, need) => sum + need.priority * 100, 0);
   if (!total) return { score: null, links: [], ranked: [] };
   const offers = new Set(supplier.offers);
   let covered = 0;
   const links = [], ranked = [];
+  const receiverDate = receiver.updatedAt || asOfDate;
+  
   for (const need of needs) {
     if (!offers.has(need.tag)) continue;
-    const effective = need.priority * 100;
+    
+    const freshness = calculateNeedFreshness(receiverDate, asOfDate);
+    const w = freshness.is_stale ? 0 : freshness.score;
+    const effective = need.priority * 100 * w;
+    
     const link = {
       direction,
       need_id: `${receiverLabel}-need-${need.tag}`,
@@ -105,6 +114,11 @@ function algorithmicDirection(receiver, supplier, direction, receiverLabel, supp
       tag: need.tag,
       contribution: roundedRatio(100 * effective, total),
       evidence_ids: [`${receiverLabel}-declared-need-${need.tag}`, `${supplierLabel}-declared-offer-${need.tag}`],
+      freshness: {
+        weight: freshness.score,
+        age_days: freshness.age_days,
+        is_stale: freshness.is_stale
+      }
     };
     covered += effective;
     links.push(link);
@@ -123,8 +137,8 @@ export function evaluateAlgorithmicMatch(left, right, { asOf = new Date().toISOS
   if (parties.some(p => !p.offers.length && !p.needs.length)) return emptyAlgorithmicResult('needs_information', ['PROFILE_INCOMPLETE']);
 
   const [a, b] = parties;
-  const fromA = algorithmicDirection(a, b, 'A_from_B', 'party-a', 'party-b');
-  const fromB = algorithmicDirection(b, a, 'B_from_A', 'party-b', 'party-a');
+  const fromA = algorithmicDirection(a, b, 'A_from_B', 'party-a', 'party-b', asOf);
+  const fromB = algorithmicDirection(b, a, 'B_from_A', 'party-b', 'party-a', asOf);
   const result = emptyAlgorithmicResult('scored');
   if (fromA.score === null) result.reason_codes.push('NO_ACTIVE_NEEDS_A');
   else result.benefit_A_from_B = roundedRatio(fromA.score.numerator, fromA.score.denominator);
@@ -264,4 +278,30 @@ export function caseWithoutIdentity(left, right, options) {
   if (pair.some(p => !p.consent)) return { status: 'consent_required', profiles: [] };
   const profiles = pair.map((p, index) => ({ ...p, id: `party-${index + 1}`, mapConsent: false }));
   return { privacy: 'Pseudonymous, not guaranteed anonymous. Local use by default.', profiles, comparison: compareProfiles(...profiles, options) };
+}
+
+export function evaluateCohortMatches(profiles, quotas = {}, options = {}) {
+  const candidates = [];
+  const validProfiles = profiles.map(normalizeProfile).filter(p => p.id && p.consent);
+
+  for (let i = 0; i < validProfiles.length; i++) {
+    for (let j = i + 1; j < validProfiles.length; j++) {
+      const left = validProfiles[i];
+      const right = validProfiles[j];
+      
+      const comparison = compareProfiles(left, right, options);
+      if (comparison.status === 'review_candidate') {
+        const alg = comparison.algorithmic;
+        if (alg && typeof alg.mutual_score === 'number' && alg.mutual_score > 0) {
+          candidates.push({
+            partyA: left.id,
+            partyB: right.id,
+            weight: alg.mutual_score
+          });
+        }
+      }
+    }
+  }
+
+  return solveBMatching(candidates, quotas, options);
 }

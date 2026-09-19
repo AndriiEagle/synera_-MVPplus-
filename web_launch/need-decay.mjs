@@ -9,11 +9,11 @@ export function calculateNeedFreshness(createdAt, now = new Date(), tauDays = DE
   const createdTime = typeof createdAt === 'string' || typeof createdAt === 'number' ? new Date(createdAt).getTime() : createdAt.getTime();
   const currentTime = typeof now === 'string' || typeof now === 'number' ? new Date(now).getTime() : now.getTime();
 
-  if (isNaN(createdTime) || isNaN(currentTime)) {
+  if (isNaN(createdTime) || isNaN(currentTime) || currentTime < createdTime) {
     return { score: 0.0, is_stale: true, age_days: 0 };
   }
 
-  const deltaMs = Math.max(0, currentTime - createdTime);
+  const deltaMs = currentTime - createdTime;
   const deltaDays = deltaMs / (1000 * 60 * 60 * 24);
 
   // Експоненційне згасання актуальності
