@@ -155,6 +155,20 @@ export class ProfileStore {
     }
     clean.approvals = approvals;
     await this._send('/rest/v1/match_cases?on_conflict=case_id', { method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: { case_id: clean.caseId, state: clean } });
+    if (clean.approvals?.[me]) {
+      const myAppr = clean.approvals[me];
+      await this._send('/rest/v1/match_case_approvals', {
+        method: 'POST',
+        authenticated: true,
+        prefer: 'resolution=merge-duplicates,return=minimal',
+        body: {
+          case_id: clean.caseId,
+          party_id: me,
+          approved_version: myAppr.version,
+          approved_terms_hash: myAppr.termsHash
+        }
+      });
+    }
   }
   async caseState(caseId) {
     this.requireRealPilot();

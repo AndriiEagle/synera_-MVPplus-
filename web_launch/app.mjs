@@ -874,14 +874,46 @@ applyAuthState();renderProfileProgress();
   consentToggles.analytics_sync?.addEventListener('change', () => { consentState.analytics_sync = consentToggles.analytics_sync.checked; });
 }
 
+function applyDomTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const translation = t(key);
+    if (translation && translation !== key) {
+      if (key === 'intro.title') {
+        const parts = translation.split('\n');
+        el.innerHTML = `${parts[0]}<br><span>${parts[1] || ''}</span>`;
+      } else if (translation.includes('\n')) {
+        el.innerHTML = translation.replace(/\n/g, '<br>');
+      } else {
+        el.textContent = translation;
+      }
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    const translation = t(key);
+    if (translation && translation !== key) {
+      el.placeholder = translation;
+    }
+  });
+  document.documentElement.lang = getLocale();
+}
+
 {
   const langButtons = document.querySelectorAll('#lang-switcher .lang-btn');
+  const storedLang = (() => { try { return localStorage.getItem('synera_lang'); } catch { return null; } })();
+  if (storedLang && setLocale(storedLang)) {
+    langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === storedLang));
+  }
+  applyDomTranslations();
+
   langButtons.forEach(button => {
     button.addEventListener('click', () => {
       const lang = button.dataset.lang;
       if (setLocale(lang)) {
         langButtons.forEach(b => b.classList.toggle('active', b === button));
         try { localStorage.setItem('synera_lang', lang); } catch {}
+        applyDomTranslations();
       }
     });
   });

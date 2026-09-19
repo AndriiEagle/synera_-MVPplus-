@@ -183,3 +183,22 @@ test('a caller who is not a participant writes no approval at all', async () => 
   const sent = written(calls);
   assert.deepEqual(Object.keys(sent.approvals), [OTHER], 'only the stored approval survives; an outsider adds none');
 });
+
+test('V6-03: own approval is written separately to match_case_approvals for Neon RLS', async () => {
+  const state = await freshCase();
+  const mine = approveCase(state, { partyId: ME, termsHash: state.termsHash, now: '2026-09-08T11:00:00.000Z' });
+
+  const store = new ProfileStore();
+  const calls = wire(store, null);
+  await store.saveCaseState(mine);
+
+  const approvalCall = calls.find(call => call.path === '/rest/v1/match_case_approvals');
+  assert.ok(approvalCall, 'must post to /rest/v1/match_case_approvals');
+  assert.deepEqual(approvalCall.options.body, {
+    case_id: 'case-guard',
+    party_id: ME,
+    approved_version: mine.version,
+    approved_terms_hash: mine.termsHash,
+  });
+});
+
