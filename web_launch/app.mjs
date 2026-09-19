@@ -13,6 +13,7 @@ import { CHATGPT_PROFILE_PROMPT, summarizeTransfer } from './chatgpt-transfer.mj
 // SYN_IMPORT: export parsing stays local, deterministic, in-memory only.
 import { parseChatGptExport, parseClaudeExport, redactHints, mapHintsToProfileDraft } from './profile-import.mjs';
 import { meetingCalendar } from './calendar.mjs';
+import { getLocale, setLocale, t } from './i18n.mjs';
 const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
 const callbackUrl = new URL(location.href);
@@ -871,4 +872,17 @@ applyAuthState();renderProfileProgress();
   consentToggles.recording?.addEventListener('change', () => { consentState.recording = false; consentToggles.recording.checked = false; });
   consentToggles.summary?.addEventListener('change', () => { consentState.summary = consentToggles.summary.checked; });
   consentToggles.analytics_sync?.addEventListener('change', () => { consentState.analytics_sync = consentToggles.analytics_sync.checked; });
+}
+
+{
+  const langButtons = document.querySelectorAll('#lang-switcher .lang-btn');
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const lang = button.dataset.lang;
+      if (setLocale(lang)) {
+        langButtons.forEach(b => b.classList.toggle('active', b === button));
+        try { localStorage.setItem('synera_lang', lang); } catch {}
+      }
+    });
+  });
 }
