@@ -5,6 +5,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { calculateKaplanMeierSurvival, buildMarkovTransitionMatrix, analyzeMarkovAbsorbingChain } from './web_launch/funnel-analytics.mjs';
 
 const SCHEMA = 'synera.telemetry.v1';
 const CORE_EVENTS = Object.freeze([
@@ -113,6 +114,72 @@ function computeAlerts(events) {
   return alerts;
 }
 
+function extractMarkovTransitions(events) {
+  const pairs = new Map();
+  const transitions = [];
+  const sorted = [...events].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
+
+  for (const e of sorted) {
+    const pid = e.properties?.pair_id;
+    if (!pid) continue;
+    if (!pairs.has(pid)) pairs.set(pid, { state: 'draft' });
+    const p = pairs.get(pid);
+    if (p.state === 'completed_deal' || p.state === 'dropped') continue;
+
+    let nextState = p.state;
+    switch (e.type) {
+      case 'case_created': nextState = 'draft'; break;
+      case 'approval_given': nextState = 'awaiting_approval'; break;
+      case 'trial_agreed': nextState = 'approved_for_next_step'; break;
+      case 'intro_requested': nextState = 'meeting_held'; break;
+      case 'trial_completed': nextState = 'completed_deal'; break;
+      case 'dispute_opened': case 'consent_revoked': nextState = 'dropped'; break;
+    }
+    
+    if (nextState !== p.state) {
+      transitions.push({ from: p.state, to: nextState });
+      p.state = nextState;
+    }
+  }
+  return transitions;
+}
+
+function extractKaplanMeierRecords(events) {
+  const pairs = new Map();
+  const sorted = [...events].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
+
+  for (const e of sorted) {
+    const pid = e.properties?.pair_id;
+    if (!pid) continue;
+    if (e.type === 'case_created') pairs.set(pid, { start: Date.parse(e.at), end: null, dropped: false });
+    const p = pairs.get(pid);
+    if (!p) continue;
+
+    if (e.type === 'trial_completed') { p.end = Date.parse(e.at); p.dropped = false; }
+    else if (e.type === 'dispute_opened' || e.type === 'consent_revoked') { p.end = Date.parse(e.at); p.dropped = true; }
+  }
+
+  const dayBuckets = {};
+  for (const [pid, p] of pairs) {
+    if (p.end) {
+      const days = Math.floor((p.end - p.start) / (1000 * 3600 * 24));
+      if (!dayBuckets[days]) dayBuckets[days] = { dropped: 0, completed: 0 };
+      if (p.dropped) dayBuckets[days].dropped++;
+      else dayBuckets[days].completed++;
+    }
+  }
+
+  const days = Object.keys(dayBuckets).map(Number).sort((a, b) => a - b);
+  let atRisk = pairs.size;
+  const records = [];
+  for (const day of days) {
+    const dropped = dayBuckets[day].dropped;
+    records.push({ day, atRisk, dropped });
+    atRisk -= (dropped + dayBuckets[day].completed);
+  }
+  return records;
+}
+
 export function computeDashboard(events) {
   const real = filterBySource(events, 'real');
   const synthetic = filterBySource(events, 'synthetic');
@@ -123,6 +190,11 @@ export function computeDashboard(events) {
   const cityDist = cityDistribution(real);
   const alerts = computeAlerts(real);
   const opLoad = operatorLoadByCategory(real);
+
+  const transitions = extractMarkovTransitions(real);
+  const markov = analyzeMarkovAbsorbingChain(buildMarkovTransitionMatrix(transitions));
+  const kmRecords = extractKaplanMeierRecords(real);
+  const km = calculateKaplanMeierSurvival(kmRecords);
 
   return {
     generatedAt: new Date().toISOString(),
@@ -159,6 +231,11 @@ export function computeDashboard(events) {
       acceptedVsManual: null,
       paidReferralRatio: null,
     },
+    funnelAnalytics: {
+      markovSuccessProbability: markov.successProbabilityFromDraft,
+      markovExpectedSteps: markov.expectedStepsFromDraft,
+      kaplanMeier: km,
+    },
     alerts,
   };
 }
@@ -194,6 +271,22 @@ export function renderDashboardHtml(metrics) {
     <table><thead><tr><th>Code</th><th>Message</th></tr></thead><tbody>${alertRows}</tbody></table>
   ` : '<h2>Alerts</h2><p class="fine">No alerts.</p>';
 
+  const markovSuccess = metrics.funnelAnalytics.markovSuccessProbability;
+  const markovSteps = metrics.funnelAnalytics.markovExpectedSteps;
+  const funnelAnalyticsHtml = `
+    <div class="panel"><h2>Funnel Analytics (M11/M12)</h2>
+      <p>Markov Success Probability: <strong>${fmtPct(markovSuccess)}</strong></p>
+      <p>Expected Steps to Absorption: <strong>${fmtNum(markovSteps)}</strong></p>
+      <h3>Kaplan-Meier Survival</h3>
+      <table>
+        <thead><tr><th>Day</th><th>Survival</th><th>Cumulative Drop</th></tr></thead>
+        <tbody>
+          ${metrics.funnelAnalytics.kaplanMeier.length ? metrics.funnelAnalytics.kaplanMeier.map(r => `<tr><td>${r.day}</td><td>${fmtPct(r.survival)}</td><td>${fmtPct(r.cumulativeDrop)}</td></tr>`).join('') : '<tr><td colspan="3">No records</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+  `;
+
   return `<!doctype html><html lang="uk"><meta charset="utf-8">
 <title>Synera Operator Cockpit</title>
 <style>
@@ -225,6 +318,7 @@ button:hover{background:#0052a3}
   <div class="panel"><h2>Revenue Signals</h2>
     <p class="fine">Requires case terms correlation — not yet available from telemetry alone.</p>
   </div>
+  ${funnelAnalyticsHtml}
 </div>
 ${alertHtml}
 <h2>Export</h2>
