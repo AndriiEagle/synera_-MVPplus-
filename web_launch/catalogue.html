@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synera Component Catalogue</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding: 40px; background: var(--synera-bg, #f5f7f4); }
+    .catalog-section { margin-bottom: 40px; padding: 20px; background: white; border: 1px solid var(--line, #dce4de); border-radius: 12px; }
+    h2 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line, #dce4de); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px; align-items: start; }
+    .item-label { font-size: 12px; color: #666; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    
+    /* Simulate states for presentation */
+    .sim-hover { filter: brightness(1.08); box-shadow: 0 2px 6px #193c2814; }
+    .sim-focus { outline: 3px solid #8da679; outline-offset: 2px; }
+    .sim-error { border-color: #bc6734; background: #fff0e5; }
+    .sim-loading { position: relative; padding-right: 44px; }
+    .sim-loading::after { content: ""; position: absolute; right: 18px; top: 17px; width: 15px; height: 15px; border: 2px solid #ffffff80; border-top-color: #fff; border-radius: 50%; animation: auth-spin .7s linear infinite; }
+  </style>
+</head>
+<body>
+  <h1>Component Catalogue (C06.L3)</h1>
+  
+  <section class="catalog-section">
+    <h2>Primary Buttons</h2>
+    <div class="grid">
+      <div>
+        <div class="item-label">Default</div>
+        <button>Confirm Action</button>
+      </div>
+      <div>
+        <div class="item-label">Hover</div>
+        <button class="sim-hover">Confirm Action</button>
+      </div>
+      <div>
+        <div class="item-label">Focus</div>
+        <button class="sim-focus">Confirm Action</button>
+      </div>
+      <div>
+        <div class="item-label">Disabled</div>
+        <button disabled>Confirm Action</button>
+      </div>
+      <div>
+        <div class="item-label">Loading</div>
+        <button class="sim-loading">Confirm Action</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <h2>Quiet Buttons</h2>
+    <div class="grid">
+      <div>
+        <div class="item-label">Default</div>
+        <button class="quiet">Cancel</button>
+      </div>
+      <div>
+        <div class="item-label">Hover</div>
+        <button class="quiet sim-hover">Cancel</button>
+      </div>
+      <div>
+        <div class="item-label">Focus</div>
+        <button class="quiet sim-focus">Cancel</button>
+      </div>
+      <div>
+        <div class="item-label">Disabled</div>
+        <button class="quiet" disabled>Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <h2>Text Inputs</h2>
+    <div class="grid">
+      <div>
+        <div class="item-label">Default</div>
+        <input type="text" placeholder="Your Name">
+      </div>
+      <div>
+        <div class="item-label">Focus</div>
+        <input type="text" class="sim-focus" value="Focused Input">
+      </div>
+      <div>
+        <div class="item-label">Disabled</div>
+        <input type="text" disabled value="Disabled Input">
+      </div>
+      <div>
+        <div class="item-label">Error</div>
+        <input type="text" class="sim-error" value="Invalid Input">
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <h2>Checkboxes</h2>
+    <div class="grid">
+      <div>
+        <div class="item-label">Default (Unchecked)</div>
+        <label class="check"><input type="checkbox"> Option 1</label>
+      </div>
+      <div>
+        <div class="item-label">Default (Checked)</div>
+        <label class="check"><input type="checkbox" checked> Option 2</label>
+      </div>
+      <div>
+        <div class="item-label">Disabled</div>
+        <label class="check" style="opacity:0.5"><input type="checkbox" disabled> Option 3</label>
+      </div>
+    </div>
+  </section>
+  
+  <section class="catalog-section">
+    <h2>Notices</h2>
+    <div class="grid" style="grid-template-columns: 1fr 1fr">
+      <div>
+        <div class="item-label">Default (Info)</div>
+        <div class="notice">This is a helpful information notice.</div>
+      </div>
+      <div>
+        <div class="item-label">Error</div>
+        <div class="notice error">There was a problem processing your request.</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
