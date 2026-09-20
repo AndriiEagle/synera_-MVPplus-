@@ -1018,3 +1018,5 @@ function applyDomTranslations() {
     });
   });
 }
+
+import './iceberg-client.mjs';
