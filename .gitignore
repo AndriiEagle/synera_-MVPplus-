@@ -43,3 +43,5 @@ web_launch/dist-neon/
 !.env.example
 *.private.json
 artifacts/*.response.txt
+
+node_modules/
