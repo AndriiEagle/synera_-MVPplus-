@@ -1230,12 +1230,12 @@ body:not(.signed-in) .mode-actions {
 }
 button {
   min-height: 44px;
-  border-radius: var(--radius-0);
+  border-radius: var(--radius-9);
   line-height: 1.45;
   font-size: 14px;
   transition:
-    background 0.15s ease,
-    box-shadow 0.15s ease;
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 button:hover {
   filter: none;
@@ -1756,7 +1756,7 @@ footer {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  transition: all 0.15s ease;
+  transition: all 0.3s ease;
 }
 #lang-switcher .lang-btn:hover {
   background: var(--color-e2ede5);
