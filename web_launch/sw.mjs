@@ -31,3 +31,42 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+// C07.L6: PWA Badge & Push (stub)
+self.addEventListener('push', event => {
+  const data = event.data ? event.data.json() : { title: 'Нове сповіщення', body: '...' };
+  
+  if (navigator.setAppBadge) {
+    navigator.setAppBadge(1).catch(console.error);
+  }
+  
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: '/icon-192.png',
+      badge: '/icon-192.png',
+      data: data.url || '/'
+    })
+  );
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  
+  if (navigator.clearAppBadge) {
+    navigator.clearAppBadge().catch(console.error);
+  }
+  
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      for (const client of clientList) {
+        if (client.url.includes(self.location.origin) && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(event.notification.data || '/');
+      }
+    })
+  );
+});
