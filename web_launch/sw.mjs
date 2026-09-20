@@ -12,8 +12,16 @@ self.addEventListener('fetch', event => {
     return;
   }
   if (url.search || !SHELL.includes(url.pathname)) return;
-  event.respondWith(fetch(event.request).then(async response => {
-    if (response.ok) { const cache = await caches.open(CACHE); await cache.put(event.request, response.clone()); }
-    return response;
-  }).catch(() => caches.match(event.request)));
+  event.respondWith(
+    caches.match(event.request).then(cachedResponse => {
+      const fetchPromise = fetch(event.request).then(async response => {
+        if (response.ok) { 
+          const cache = await caches.open(CACHE); 
+          await cache.put(event.request, response.clone()); 
+        }
+        return response;
+      }).catch(() => { /* offline fallback handled by cache */ });
+      return cachedResponse || fetchPromise;
+    })
+  );
 });
