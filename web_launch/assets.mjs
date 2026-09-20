@@ -7,5 +7,6 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'swiss-compliance.mjs': 'text/javascript',
   'funnel-analytics.mjs': 'text/javascript',
   'manifest.webmanifest': 'application/manifest+json', 'pwa.mjs': 'text/javascript', 'sw.mjs': 'text/javascript',
-  'legal.html': 'text/html', 'icon-192.png': 'image/png', 'icon-512.png': 'image/png', 'apple-touch-icon.png': 'image/png',
+  'legal.html': 'text/html', 'catalogue.html': 'text/html', 'icon-192.png': 'image/png', 'icon-512.png': 'image/png', 'apple-touch-icon.png': 'image/png',
+  'tokens.css': 'text/css', 'cascade.mjs': 'text/javascript', 'iceberg-client.mjs': 'text/javascript'
 });
