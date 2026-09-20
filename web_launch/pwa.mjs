@@ -14,8 +14,28 @@ if (installButton) {
   if (installed()) installButton.hidden = true;
 }
 if ('serviceWorker' in navigator && window.isSecureContext) {
-  navigator.serviceWorker.register('/sw.mjs', { type: 'module', updateViaCache: 'none' }).catch(() => {
+  navigator.serviceWorker.register('/sw.mjs', { type: 'module', updateViaCache: 'none' })
+  .then(reg => {
+    reg.addEventListener('updatefound', () => {
+      const newWorker = reg.installing;
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          status.textContent = 'Synera оновлюється. Перезавантажуємо...';
+          setTimeout(() => window.location.reload(), 1500);
+        }
+      });
+    });
+  })
+  .catch(() => {
     status.textContent = 'Офлайн-режим недоступний у цьому браузері. Онлайн-сторінкою можна користуватись.';
+  });
+  
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
   });
 }
 window.addEventListener('offline', () => { status.textContent = 'Немає інтернету. Незбережена чернетка залишається у вкладці. Завантаж JSON перед закриттям; серверні зміни потребують з’єднання.'; });
