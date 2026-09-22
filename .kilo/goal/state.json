@@ -3,7 +3,7 @@
   "goal_file": "GOAL.md",
   "created": "2026-09-22T00:50:00Z",
   "status": "working",
-  "current_phase": 3,
+  "current_phase": 4,
   "current_step": 0,
   "phases": [
     {
@@ -64,7 +64,7 @@
           "action": "forge_micro",
           "spec": "find all thrown error strings in *.mjs; replace English domain errors with Ukrainian; produce report",
           "verify_cmd": "! grep -r 'throw.*[A-Za-z]\\{10,\\}' web_launch/*.mjs 2>/dev/null | grep -v 'ukrainian\\|україн' || true",
-          "status": "pending"
+          "status": "done"
         }
       ],
       "status": "done"
@@ -157,7 +157,7 @@
           "action": "forge_micro",
           "spec": "implement worker allowlist tables; gateway-only access; tests",
           "verify_cmd": "test -f web_launch/worker_allowlist.mjs && node web_launch/worker_allowlist.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "3.2",
@@ -165,7 +165,7 @@
           "action": "forge_micro",
           "spec": "implement case sync via store; two-browser test with mock",
           "verify_cmd": "test -f web_launch/sync/x6_sync.mjs && node web_launch/sync/x6_sync.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "3.3",
@@ -173,7 +173,7 @@
           "action": "forge_micro",
           "spec": "server enforces per-field audience levels; not only UI",
           "verify_cmd": "test -f web_launch/privacy/audience_levels.mjs && node web_launch/privacy/audience_levels.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "3.4",
@@ -181,9 +181,10 @@
           "action": "forge_micro",
           "spec": "hidden person cannot see hidden fields; no notification to them",
           "verify_cmd": "test -f web_launch/privacy/soft_block.mjs && node web_launch/privacy/soft_block.test.mjs",
-          "status": "pending"
+          "status": "done"
         }
-      ]
+      ],
+      "status": "done"
     },
     {
       "id": 4,
@@ -417,6 +418,6 @@
       ]
     }
   ],
-  "next_action": "start_phase_3",
+  "next_action": "start_phase_4",
   "signals_log": "signals.log"
 }
