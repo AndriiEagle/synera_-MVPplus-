@@ -3,7 +3,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-dna = json.load(open(r'C:\Users\Andrii\Desktop\synera\synera-docs\plan\readiness\READINESS_DNA.json', encoding='utf-8'))
+dna = json.load(open(r'C:\Users\Andrii\Desktop\synera-clone\plan\readiness\READINESS_DNA.json', encoding='utf-8'))
 
 done, blocked, pending = [], [], []
 
