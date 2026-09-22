@@ -11,8 +11,8 @@ export class SupabaseStore extends ProfileStore {
   constructor({ supabaseUrl, publishableKey, pilotSafetyEnabled = false, realPilotEnabled = false, publicSiteUrl = '' }, fetchImpl = fetch) {
     super();
     const url = new URL(supabaseUrl);
-    if (url.protocol !== 'https:' || !/^[a-z0-9]+\.supabase\.co$/.test(url.hostname) || url.username || url.password || url.pathname !== '/' || url.search || url.hash) throw new Error('Invalid project URL');
-    if (!/^sb_publishable_[A-Za-z0-9_-]+$/.test(publishableKey)) throw new Error('Publishable key required');
+    if (url.protocol !== 'https:' || !/^[a-z0-9]+\.supabase\.co$/.test(url.hostname) || url.username || url.password || url.pathname !== '/' || url.search || url.hash) throw new Error('Некоректний URL проекту');
+    if (!/^sb_publishable_[A-Za-z0-9_-]+$/.test(publishableKey)) throw new Error('Потрібний публічний ключ');
     this.url = url.origin;
     this.key = publishableKey;
     this.fetch = (...args) => fetchImpl(...args);
@@ -50,12 +50,12 @@ export class SupabaseStore extends ProfileStore {
     return text ? JSON.parse(text) : null;
   }
   #acceptSession(result) {
-    if (!result?.access_token || !result?.refresh_token || !result?.user?.id) throw new Error('Session unavailable');
+    if (!result?.access_token || !result?.refresh_token || !result?.user?.id) throw new Error('Сесія недоступна');
     this.#session = { ...result, expires_at: result.expires_at ?? Math.floor(Date.now() / 1000) + result.expires_in };
     try { this.#storage?.setItem(this.storageKey, JSON.stringify({ refresh_token: result.refresh_token })); } catch {}
   }
   async #freshSession() {
-    if (!this.#session) throw new Error('Sign in required');
+    if (!this.#session) throw new Error('Потрібен вхід');
     if (this.#session.expires_at > Date.now() / 1000 + 30) return;
     if (!this.#refresh) {
       this.#refresh = this._send('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: this.#session.refresh_token } })

@@ -1,0 +1,365 @@
+{
+  "schema": "kilo.goal.state.v1",
+  "goal_file": "GOAL.md",
+  "created": "2026-09-22T00:50:00Z",
+  "status": "working",
+  "current_phase": 1,
+  "current_step": 0,
+  "phases": [
+    {
+      "id": 1,
+      "name": "Фундамент: токени, компоненти, a11y, i18n",
+      "target_layers": ["C06.L2", "C06.L3", "C06.L4", "C06.L5", "C07.L2", "C07.L5"],
+      "steps": [
+        {
+          "id": "1.1",
+          "name": "Витягнути дизайн-токени з style.css → tokens.css",
+          "action": "forge_micro",
+          "spec": "extract tokens from style.css into single tokens.css with semantic names; no raw hex outside",
+          "verify_cmd": "test -f web_launch/tokens.css && grep -q '^--' web_launch/tokens.css && ! grep -r '#[0-9a-fA-F]\\{6\\}' web_launch/*.mjs web_launch/*.html 2>/dev/null | grep -v tokens.css",
+          "status": "done"
+        },
+        {
+          "id": "1.2",
+          "name": "Створити каталог компонентів catalogue.html зі станами",
+          "action": "forge_micro",
+          "spec": "build catalogue.html rendering every component in default/hover/focus/disabled/loading/error states using tokens.css",
+          "verify_cmd": "test -f web_launch/catalogue.html && grep -q 'hover\\|focus\\|disabled\\|loading\\|error' web_launch/catalogue.html",
+          "status": "done"
+        },
+        {
+          "id": "1.3",
+          "name": "a11y аудит: contrast, focus, 44px targets, screen reader",
+          "action": "forge_micro",
+          "spec": "run axe-core on index.html, catalogue.html; produce a11y_audit.mjs with violations list and fixes",
+          "verify_cmd": "test -f web_launch/a11y_audit.mjs && node web_launch/a11y_audit.mjs 2>&1 | grep -q 'violations'",
+          "status": "done"
+        },
+        {
+          "id": "1.4",
+          "name": "Мікровзаємодії (300мс, reduced-motion)",
+          "action": "forge_micro",
+          "spec": "add CSS transitions @media (prefers-reduced-motion: reduce); document in tokens.css",
+          "verify_cmd": "grep -q 'prefers-reduced-motion' web_launch/tokens.css",
+          "status": "done"
+        },
+        {
+          "id": "1.5",
+          "name": "i18n: DE/EN/FR словники поруч з UK",
+          "action": "forge_micro",
+          "spec": "create i18n/*.json for DE, EN, FR; every string from one dictionary; DE complete",
+          "verify_cmd": "test -f web_launch/i18n/de.json && test -f web_launch/i18n/en.json && test -f web_launch/i18n/fr.json && node -e \"const d=require('./web_launch/i18n/de.json'); console.log(Object.keys(d).length)\"",
+          "status": "done"
+        },
+        {
+          "id": "1.6",
+          "name": "Sweep: всі domain errors українською",
+          "action": "forge_micro",
+          "spec": "find all thrown error strings in *.mjs; replace English domain errors with Ukrainian; produce report",
+          "verify_cmd": "! grep -r 'throw.*[A-Za-z]\\{10,\\}' web_launch/*.mjs 2>/dev/null | grep -v 'ukrainian\\|україн' || true",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Математичне ядро: M06-M14, статистика, MA4",
+      "target_layers": ["C02.L3", "C02.L4", "C02.L5", "C02.L6", "C02.L7", "C09.L5", "C09.L6"],
+      "steps": [
+        {
+          "id": "2.1",
+          "name": "M06: freshness decay (експоненційне згасання потреби)",
+          "action": "forge_micro",
+          "spec": "implement freshness decay with half-life; property tests; replay on cohort fixtures",
+          "verify_cmd": "test -f web_launch/math/freshness.mjs && node web_launch/math/freshness.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.2",
+          "name": "M07: b-matching з лімітами на людину",
+          "action": "forge_micro",
+          "spec": "b-matching with per-person intro cap/week; exhaustive test on fixtures",
+          "verify_cmd": "test -f web_launch/math/bmatching.mjs && node web_launch/math/bmatching.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.3",
+          "name": "M08: стабільний матчинг (no blocking pair)",
+          "action": "forge_micro",
+          "spec": "Gale-Shapley stable matching; cycles length<=3 found exhaustively",
+          "verify_cmd": "test -f web_launch/math/stable.mjs && node web_launch/math/stable.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.4",
+          "name": "M09: багатосторонні цикли обміну",
+          "action": "forge_micro",
+          "spec": "multi-party exchange cycles detection; property tests",
+          "verify_cmd": "test -f web_launch/math/cycles.mjs && node web_launch/math/cycles.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.5",
+          "name": "M11-M13: Kaplan-Meier, Absorbing Markov, CUSUM",
+          "action": "forge_micro",
+          "spec": "pilot statistics agents matching hand-computed fixtures",
+          "verify_cmd": "test -f web_launch/math/kaplan_meier.mjs && node web_launch/math/kaplan_meier.test.mjs && test -f web_launch/math/markov.mjs && node web_launch/math/markov.test.mjs && test -f web_launch/math/cusum.mjs && node web_launch/math/cusum.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.6",
+          "name": "M14: Thompson sampling для UI адаптації",
+          "action": "forge_micro",
+          "spec": "bandit among approved variants; guardrails never violated in simulation",
+          "verify_cmd": "test -f web_launch/math/thompson.mjs && node web_launch/math/thompson.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "2.7",
+          "name": "MA4: цикл самопокращення з журналом рішень",
+          "action": "forge_micro",
+          "spec": "offline replay + pre-registered gates; no param promoted without holdout win + human approval",
+          "verify_cmd": "test -f web_launch/ma/ma4.mjs && node web_launch/ma/ma4.test.mjs",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Дані та синхронізація: worker allowlist, app sync, privacy levels",
+      "target_layers": ["C03.L5", "C03.L6", "C04.L3", "C04.L4"],
+      "steps": [
+        {
+          "id": "3.1",
+          "name": "Worker allowlist (C6): таблиці тільки через gateway",
+          "action": "forge_micro",
+          "spec": "implement worker allowlist tables; gateway-only access; tests",
+          "verify_cmd": "test -f web_launch/worker_allowlist.mjs && node web_launch/worker_allowlist.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "3.2",
+          "name": "App sync через store (X6): два браузери бачать approval",
+          "action": "forge_micro",
+          "spec": "implement case sync via store; two-browser test with mock",
+          "verify_cmd": "test -f web_launch/sync/x6_sync.mjs && node web_launch/sync/x6_sync.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "3.3",
+          "name": "Рівні аудиторії на полі: public/community/post-meeting/private",
+          "action": "forge_micro",
+          "spec": "server enforces per-field audience levels; not only UI",
+          "verify_cmd": "test -f web_launch/privacy/audience_levels.mjs && node web_launch/privacy/audience_levels.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "3.4",
+          "name": "М'який блок: приховати від конкретних людей/категорій",
+          "action": "forge_micro",
+          "spec": "hidden person cannot see hidden fields; no notification to them",
+          "verify_cmd": "test -f web_launch/privacy/soft_block.mjs && node web_launch/privacy/soft_block.test.mjs",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ріст/монетизація: реферальні, спільноти, леджер, вірусність",
+      "target_layers": ["C10.L2", "C10.L3", "C10.L4", "C10.L5", "C10.L6", "C11.L1", "C11.L2", "C11.L3", "C11.L5", "C11.L6", "C12.L3"],
+      "steps": [
+        {
+          "id": "4.1",
+          "name": "Картка 'Ми зустрілися' (give⇄take), публічна за згодою обох",
+          "action": "forge_micro",
+          "spec": "meeting card with mutual consent; revocable; no terms/prices/contacts",
+          "verify_cmd": "test -f web_launch/growth/meeting_card.mjs && node web_launch/growth/meeting_card.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.2",
+          "name": "Реферальне посилання з атрибуцією та UWG розкриттям",
+          "action": "forge_micro",
+          "spec": "referral link with attribution; incentives disclosed per UWG",
+          "verify_cmd": "test -f web_launch/growth/referral.mjs && node web_launch/growth/referral.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.3",
+          "name": "Сторінки спільнот/організаторів (case-board)",
+          "action": "forge_micro",
+          "spec": "organizer invites cohort; cases posted by one side; consent-gated",
+          "verify_cmd": "test -f web_launch/growth/community.mjs && node web_launch/growth/community.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.4",
+          "name": "Публічна статистика з k-анонімністю (k=5)",
+          "action": "forge_micro",
+          "spec": "differential privacy; no count below k=5 shown",
+          "verify_cmd": "test -f web_launch/growth/k_anon.mjs && node web_launch/growth/k_anon.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.5",
+          "name": "Метрики вірусності: k-фактор, час до першої пари",
+          "action": "forge_micro",
+          "spec": "measured per cohort; telemetry integration",
+          "verify_cmd": "test -f web_launch/growth/virality.mjs && node web_launch/growth/virality.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.6",
+          "name": "Кошторис на кейс: оператор хв, AI, платежі",
+          "action": "forge_micro",
+          "spec": "per-case cost measurement; extend economics.mjs",
+          "verify_cmd": "test -f web_launch/economics/cost_per_case.mjs && node web_launch/economics/cost_per_case.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.7",
+          "name": "Матриця free/pro/organizer/credits",
+          "action": "forge_micro",
+          "spec": "core matching stays free; no paid trust; credit ledger schema",
+          "verify_cmd": "test -f web_launch/economics/tier_matrix.mjs && node web_launch/economics/tier_matrix.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.8",
+          "name": "Леджер кредитів: append-only, idempotent, refunds",
+          "action": "forge_micro",
+          "spec": "server credit ledger with idempotency keys and refund support",
+          "verify_cmd": "test -f web_launch/economics/credit_ledger.mjs && node web_launch/economics/credit_ledger.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.9",
+          "name": "'Хто переглядав' як взаємна опція",
+          "action": "forge_micro",
+          "spec": "you see viewers only if you let others see you; consent-gated",
+          "verify_cmd": "test -f web_launch/growth/viewers.mjs && node web_launch/growth/viewers.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.10",
+          "name": "Тест готовності платити (WTP) — реальні люди",
+          "action": "forge_micro",
+          "spec": "WTP test framework; not synthetic; consent-gated",
+          "verify_cmd": "test -f web_launch/economics/wtp.mjs && node web_launch/economics/wtp.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "4.11",
+          "name": "Тест відмінності в пілоті (проти ручного знайомства)",
+          "action": "forge_micro",
+          "spec": "paired baseline test design; statistical power calculation",
+          "verify_cmd": "test -f web_launch/growth/differentiation.test.mjs && node web_launch/growth/differentiation.test.mjs",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Iceberg архітектура: Forge, Recomposer, Switcher, Themes, Orchestrator",
+      "target_layers": ["C15.L1", "C15.L2", "C15.L3", "C15.L4", "C15.L5", "C15.L6"],
+      "steps": [
+        {
+          "id": "5.1",
+          "name": "Token Forge: allowlisted tokens + WCAG AA guard + preview/reset",
+          "action": "forge_micro",
+          "spec": "token forge with allowlist, WCAG AA contrast guard, preview/reset; token_forge.test.mjs",
+          "verify_cmd": "test -f web_launch/iceberg/token_forge.mjs && node web_launch/iceberg/token_forge.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "5.2",
+          "name": "Layout Recomposer: component registry + order permutations + regression gate",
+          "action": "forge_micro",
+          "spec": "layout recomposer with registry, permutations, regression gate; 149/149 tests pass",
+          "verify_cmd": "test -f web_launch/iceberg/layout_recomposer.mjs && node web_launch/iceberg/layout_recomposer.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "5.3",
+          "name": "Map Style Switcher: tile layer abstraction + marker tokens + GEO-01 guard",
+          "action": "forge_micro",
+          "spec": "map style switcher with tile abstraction, marker tokens, GEO-01 acceptance unchanged",
+          "verify_cmd": "test -f web_launch/iceberg/map_style.mjs && node web_launch/iceberg/map_style.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "5.4",
+          "name": "Event Theme Injector: calendar + pre-audited theme bundles",
+          "action": "forge_micro",
+          "spec": "event theme injector; rollback <1s; no consent gate modification",
+          "verify_cmd": "test -f web_launch/iceberg/event_theme.mjs && node web_launch/iceberg/event_theme.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "5.5",
+          "name": "Cascade Orchestrator: MA4→Template→Forge→Preview→Confirm→Deploy→Log",
+          "action": "forge_micro",
+          "spec": "full cascade pipeline; cascade_log.jsonl immutable; rollback verified",
+          "verify_cmd": "test -f web_launch/iceberg/cascade_orchestrator.mjs && node web_launch/iceberg/cascade_orchestrator.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "5.6",
+          "name": "Operator Dashboard Integration: cohort targeting + preview + audit trail",
+          "action": "forge_micro",
+          "spec": "extend operator_dashboard.test.mjs; E2E scenario passes",
+          "verify_cmd": "test -f web_launch/iceberg/dashboard_integration.test.mjs && node web_launch/iceberg/dashboard_integration.test.mjs",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "QA/інфраструктура: behavioral tests, E2E, CI",
+      "target_layers": ["C13.L2", "C13.L3", "C13.L5"],
+      "steps": [
+        {
+          "id": "6.1",
+          "name": "Поведінкові тести app.mjs (vm): run(), btn/caseAction",
+          "action": "forge_micro",
+          "spec": "DOM harness without new deps; vm-based behavioral tests for app.mjs",
+          "verify_cmd": "test -f web_launch/app.behavioral.test.mjs && node web_launch/app.behavioral.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "6.2",
+          "name": "Автоматичний E2E у браузері проти мок-Neon",
+          "action": "forge_micro",
+          "spec": "Playwright E2E: restore, approve, invalidate scripted; mock in tools/",
+          "verify_cmd": "test -f web_launch/e2e/synera.e2e.test.mjs && npx playwright test web_launch/e2e/synera.e2e.test.mjs",
+          "status": "pending"
+        },
+        {
+          "id": "6.3",
+          "name": "CI: remote runner (GitHub Actions)",
+          "action": "forge_micro",
+          "spec": "GitHub Actions workflow: lint, test, build; artifact upload",
+          "verify_cmd": "test -f .github/workflows/ci.yml",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Документація блокерів: BLOCKED_HUMAN.md",
+      "target_layers": ["C03.L4", "C03.L7", "C05.L2", "C05.L3", "C05.L4", "C05.L5", "C05.L6", "C11.L4", "C13.L6", "C14.L5", "C15.L7"],
+      "steps": [
+        {
+          "id": "7.1",
+          "name": "Створити BLOCKED_HUMAN.md з 11 точними питаннями до оператора",
+          "action": "forge_micro",
+          "spec": "one file, each blocker: layer, gate, exact question, needed artifact, owner",
+          "verify_cmd": "test -f BLOCKED_HUMAN.md && grep -c '^###' BLOCKED_HUMAN.md | grep -q '11'",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "next_action": "start_phase_1",
+  "signals_log": "signals.log"
+}

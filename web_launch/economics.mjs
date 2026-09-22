@@ -1,7 +1,7 @@
 // Scenario assumptions, not actual provider usage, taxes due, demand or accounting profit.
 export function economics({ price = 39, members = 50, minutes = 10, hourly = 45, ai = 1, infrastructure = 50, fixedHours = 8, acquisition = 200, vat = 0, paymentPercent = 2.9, billingPercent = 0.7, paymentFixed = 0.30 } = {}) {
   const values = [price, members, minutes, hourly, ai, infrastructure, fixedHours, acquisition, vat, paymentPercent, billingPercent, paymentFixed];
-  if (values.some(n => !Number.isFinite(n) || n < 0) || price <= 0 || !Number.isInteger(members) || vat > 100 || paymentPercent + billingPercent > 100) throw new Error('Invalid scenario');
+  if (values.some(n => !Number.isFinite(n) || n < 0) || price <= 0 || !Number.isInteger(members) || vat > 100 || paymentPercent + billingPercent > 100) throw new Error('Некоректний сценарій');
   const revenuePerMember = price / (1 + vat / 100);
   const feesPerMember = price * (paymentPercent + billingPercent) / 100 + paymentFixed;
   const timePerMember = minutes * hourly / 60;
@@ -26,24 +26,24 @@ const validInstant = value => typeof value === 'string' && Number.isFinite(Date.
 const validKey = value => typeof value === 'string' && /^[a-z0-9:-]{1,100}$/.test(value);
 
 function validatePilotEvent(event) {
-  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Invalid pilot event');
-  if (!validKey(event.eventId) || !validKey(event.pairKey) || !validKey(event.caseId)) throw new Error('Pilot event requires pseudonymous keys');
-  if (!PILOT_SOURCES.has(event.source)) throw new Error('Pilot event source must be real_authorized or synthetic_test');
-  if (!PILOT_CHANNELS.has(event.channel) || !PILOT_STATES.includes(event.state) || !validInstant(event.occurredAt)) throw new Error('Invalid pilot channel, state or time');
-  if (!Number.isFinite(event.operatorMinutes) || event.operatorMinutes < 0) throw new Error('Operator minutes must be measured');
-  if (event.directCashCost !== null && (!Number.isFinite(event.directCashCost) || event.directCashCost < 0)) throw new Error('Cash cost must be measured or unknown');
+  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Некоректна подія пілоту');
+  if (!validKey(event.eventId) || !validKey(event.pairKey) || !validKey(event.caseId)) throw new Error('Подія пілоту вимагає псевдонімні ключі');
+  if (!PILOT_SOURCES.has(event.source)) throw new Error('Джерело події пілоту має бути real_authorized або synthetic_test');
+  if (!PILOT_CHANNELS.has(event.channel) || !PILOT_STATES.includes(event.state) || !validInstant(event.occurredAt)) throw new Error('Некоректний канал, стан або час пілоту');
+  if (!Number.isFinite(event.operatorMinutes) || event.operatorMinutes < 0) throw new Error('Хвилини оператора мають бути виміряні');
+  if (event.directCashCost !== null && (!Number.isFinite(event.directCashCost) || event.directCashCost < 0)) throw new Error('Грошова витрата має бути виміряною або невідомою');
   if (['outcome_accepted', 'outcome_rejected'].includes(event.state)) {
     const expected = event.state === 'outcome_accepted' ? 'accepted' : 'rejected';
-    if (!Number.isInteger(event.caseVersion) || event.caseVersion < 1 || typeof event.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(event.termsHash) || event.recipientDecision !== expected) throw new Error('Outcome decision must reference the exact case version and terms hash');
+    if (!Number.isInteger(event.caseVersion) || event.caseVersion < 1 || typeof event.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(event.termsHash) || event.recipientDecision !== expected) throw new Error('Рішення про результат має посилатися на точну версію кейсу та хеш умов');
   }
   return event;
 }
 
 export function pilotFunnel(events, { source = 'real_authorized' } = {}) {
-  if (!PILOT_SOURCES.has(source) || !Array.isArray(events)) throw new Error('Invalid pilot funnel input');
+  if (!PILOT_SOURCES.has(source) || !Array.isArray(events)) throw new Error('Некоректний вхід воронки пілоту');
   const seen = new Set(), valid = events.map(validatePilotEvent);
   for (const event of valid) {
-    if (seen.has(event.eventId)) throw new Error('Duplicate pilot event id');
+    if (seen.has(event.eventId)) throw new Error('Дублювання ID події пілоту');
     seen.add(event.eventId);
   }
   const selected = valid.filter(event => event.source === source);
@@ -71,31 +71,31 @@ const PROFILE_IMPORT_KEYS = 'draftHash,fieldsConfirmed,source,timestamp';
 const PROFILE_IMPORT_FIELD = /^[a-z0-9_.]{1,64}$/;
 
 export function createProfileImportedEvent({ source, fieldsConfirmed, draftHash, timestamp } = {}) {
-  if (!PROFILE_IMPORT_SOURCES.includes(source)) throw new Error('Profile import source must be real or synthetic');
-  if (!Array.isArray(fieldsConfirmed) || !fieldsConfirmed.length || fieldsConfirmed.length > 64 || new Set(fieldsConfirmed).size !== fieldsConfirmed.length || !fieldsConfirmed.every(field => typeof field === 'string' && PROFILE_IMPORT_FIELD.test(field))) throw new Error('fieldsConfirmed must be unique pseudonymous field keys like offer_tags.sales');
-  if (typeof draftHash !== 'string' || !/^[a-f0-9]{64}$/.test(draftHash)) throw new Error('draftHash must be a sha-256 hex digest of the confirmed draft');
-  if (!validInstant(timestamp)) throw new Error('Invalid profile_imported timestamp');
+  if (!PROFILE_IMPORT_SOURCES.includes(source)) throw new Error('Джерело імпорту профілю має бути real або synthetic');
+  if (!Array.isArray(fieldsConfirmed) || !fieldsConfirmed.length || fieldsConfirmed.length > 64 || new Set(fieldsConfirmed).size !== fieldsConfirmed.length || !fieldsConfirmed.every(field => typeof field === 'string' && PROFILE_IMPORT_FIELD.test(field))) throw new Error('fieldsConfirmed мають бути унікальними псевдонімними ключами полів як offer_tags.sales');
+  if (typeof draftHash !== 'string' || !/^[a-f0-9]{64}$/.test(draftHash)) throw new Error('draftHash має бути sha-256 hex дайджестом підтвердженого чернетки');
+  if (!validInstant(timestamp)) throw new Error('Некоректний timestamp profile_imported');
   return { source, fieldsConfirmed: [...fieldsConfirmed], draftHash, timestamp };
 }
 
 function validateProfileImportedEvent(event) {
-  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Invalid profile_imported event');
-  if (Object.keys(event).sort().join(',') !== PROFILE_IMPORT_KEYS) throw new Error('profile_imported allows only source, fieldsConfirmed, draftHash, timestamp');
+  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Некоректна подія profile_imported');
+  if (Object.keys(event).sort().join(',') !== PROFILE_IMPORT_KEYS) throw new Error('profile_imported дозволяє лише source, fieldsConfirmed, draftHash, timestamp');
   return createProfileImportedEvent(event);
 }
 
 export function appendProfileImportedEvent(events, event) {
-  if (!Array.isArray(events)) throw new Error('Profile import log must be an array');
+  if (!Array.isArray(events)) throw new Error('Лог імпорту профілю має бути масивом');
   const validated = validateProfileImportedEvent(event);
   for (const existing of events) {
     const known = validateProfileImportedEvent(existing);
-    if (known.source === validated.source && known.draftHash === validated.draftHash && known.timestamp === validated.timestamp && JSON.stringify(known.fieldsConfirmed) === JSON.stringify(validated.fieldsConfirmed)) throw new Error('Duplicate profile_imported event');
+    if (known.source === validated.source && known.draftHash === validated.draftHash && known.timestamp === validated.timestamp && JSON.stringify(known.fieldsConfirmed) === JSON.stringify(validated.fieldsConfirmed)) throw new Error('Дублювання події profile_imported');
   }
   return [...events, validated];
 }
 
 export function profileImportMeta(events, { source } = {}) {
-  if (!PROFILE_IMPORT_SOURCES.includes(source)) throw new Error('Profile import source must be real or synthetic');
+  if (!PROFILE_IMPORT_SOURCES.includes(source)) throw new Error('Джерело імпорту профілю має бути real або synthetic');
   const selected = (Array.isArray(events) ? events : []).map(validateProfileImportedEvent).filter(event => event.source === source);
   return {
     schema: 'synera.profile-import.meta.v1', source, eventCount: selected.length,
@@ -118,19 +118,19 @@ const TELEMETRY_PROPERTIES = new Set(['pair_id', 'profile_id', 'mode', 'version'
 const TELEMETRY_PII = [/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/iu, /(?<![A-Za-z0-9_-])(?:\+?\d[\s().-]*){9,}(?![A-Za-z0-9_-])/u, /\b(?:sb_secret_|sk-[A-Za-z0-9_-]{20,}|AIza[A-Za-z0-9_-]{20,}|ya29\.)/u];
 
 export function validateTelemetryEvent(event) {
-  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Invalid telemetry event');
-  if (!TELEMETRY_EVENTS.includes(event.type) || !validInstant(event.at) || !TELEMETRY_SOURCES.includes(event.source)) throw new Error('Telemetry event requires a core type, instant and real|synthetic source');
+  if (!event || typeof event !== 'object' || Array.isArray(event)) throw new Error('Некоректна телеметрична подія');
+  if (!TELEMETRY_EVENTS.includes(event.type) || !validInstant(event.at) || !TELEMETRY_SOURCES.includes(event.source)) throw new Error('Телеметрична подія вимагає базовий тип, миттєво та real|synthetic джерело');
   const properties = event.properties ?? {};
-  if (!properties || typeof properties !== 'object' || Array.isArray(properties)) throw new Error('Telemetry properties must be a flat object');
+  if (!properties || typeof properties !== 'object' || Array.isArray(properties)) throw new Error("Властивості телеметрії мають бути плоским об'єктом");
   for (const [key, value] of Object.entries(properties)) {
-    if (!TELEMETRY_PROPERTIES.has(key)) throw new Error(`Telemetry property ${key} is not in the allowlist`);
+    if (!TELEMETRY_PROPERTIES.has(key)) throw new Error(`Властивість телеметрії ${key} не в дозволеному списку`);
     const ok = typeof value === 'boolean' || (Number.isFinite(value) && typeof value === 'number') || (typeof value === 'string' && value.length <= 120 && !TELEMETRY_PII.some(pattern => pattern.test(value)));
-    if (!ok) throw new Error(`Telemetry property ${key} must be a bounded pseudonymous value without PII`);
+    if (!ok) throw new Error(`Властивість телеметрії ${key} має бути обмеженим псевдонімним значенням без PII`);
   }
   const minutes = properties.operator_minutes;
   if (minutes !== undefined) {
-    if (!Number.isFinite(minutes) || minutes < 0) throw new Error('Operator minutes must be a non-negative measured number');
-    if (!OPERATOR_CATEGORIES.includes(properties.operator_category)) throw new Error('Operator minutes require a category: clarification, moderation, technical or dispute');
+    if (!Number.isFinite(minutes) || minutes < 0) throw new Error("Хвилини оператора мають бути невід'ємним виміряним числом");
+    if (!OPERATOR_CATEGORIES.includes(properties.operator_category)) throw new Error('Хвилини оператора вимагають категорію: clarification, moderation, technical або dispute');
   }
   return { schema: TELEMETRY_SCHEMA, type: event.type, at: event.at, source: event.source, properties: { ...properties } };
 }
@@ -138,7 +138,7 @@ export function validateTelemetryEvent(event) {
 // 10-second dedup: identical logical events inside one 10s bucket collapse to one line.
 export function telemetryDedupHash(event) {
   const bucket = Math.floor(Date.parse(validInstant(event.at) ? event.at : new Date(NaN).toISOString()) / 10000);
-  if (!Number.isFinite(bucket)) throw new Error('Invalid telemetry event time');
+  if (!Number.isFinite(bucket)) throw new Error('Некоректний час телеметричної події');
   const input = [event.type, event.source, event.properties?.pair_id ?? '', event.properties?.profile_id ?? '', bucket].join('|');
   let hash = 5381;
   for (const byte of new TextEncoder().encode(input)) hash = ((hash * 33) ^ byte) >>> 0;
@@ -146,7 +146,7 @@ export function telemetryDedupHash(event) {
 }
 
 export function appendEvent(events, event, { analyticsConsent = false } = {}) {
-  if (!Array.isArray(events)) throw new Error('Telemetry log must be an array');
+  if (!Array.isArray(events)) throw new Error('Лог телеметрії має бути масивом');
   if (!analyticsConsent) return events; // zero writes, not even a refusal marker (addendum G7 gate)
   const validated = validateTelemetryEvent(event);
   validated.dedupHash = telemetryDedupHash(validated);

@@ -12,7 +12,7 @@ const generated = ['config.json', '_headers', '404.html', 'release.json'];
 const config = await loadConfig({ demo: process.argv.includes('--offline') });
 await fs.mkdir(destination, { recursive: true });
 const existing = await fs.readdir(destination);
-if (existing.some(file => ![...assets, ...generated].includes(file))) throw new Error('Unexpected file in release directory; inspect before continuing.');
+if (existing.some(file => ![...assets, ...generated].includes(file))) throw new Error('Неочікуваний файл у релізній директорії; перевірте перед продовженням.');
 const receipt = { built_at: new Date().toISOString(), mode: config.supabaseUrl ? 'real-user-supabase-pilot' : 'local-profile-draft', registration_enabled: config.registrationEnabled, embedded_ai_enabled: false, files: [], published: false };
 for (const asset of assets) {
   const data = await fs.readFile(path.join(root, asset));

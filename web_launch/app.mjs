@@ -602,7 +602,7 @@ function openShareDialog() {
     $('#share-status').textContent = 'Це ручна картка для знайомства. JSON переносить профіль назад у Synera; видимість після імпорту вимкнена.';
     $('#share-dialog').showModal();
   } catch (error) {
-    message(error.message === 'Profile name is required' ? 'Спочатку заповни ім’я профілю.' : 'Прибери приватні контакти або ключі перед поширенням.', true);
+    message(error.message === 'Ім'я профілю обов'язкове' ? 'Спочатку заповни ім’я профілю.' : 'Прибери приватні контакти або ключі перед поширенням.', true);
   }
 }
 $('#export-profile').addEventListener('click', openShareDialog);
@@ -802,7 +802,7 @@ recoveryDialog.addEventListener('cancel', () => run(async () => { recoveryInput.
 
 try {
   const response = await fetch('/config.json', { cache: 'no-store' });
-  if (!response.ok) throw new Error('Configuration unavailable');
+  if (!response.ok) throw new Error('Конфігурація недоступна');
   config = await response.json();
   store = config.backend === 'neon' ? new NeonStore(config) : config.supabaseUrl ? new SupabaseStore(config) : null;
   if (config.backend === 'neon') {

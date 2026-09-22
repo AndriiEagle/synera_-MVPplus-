@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Synera Component Catalogue</title>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .catalogue { max-width: 1200px; margin: 0 auto; padding: 32px; }
+  .catalogue-section { margin-bottom: 64px; }
+  .catalogue-section h2 { border-bottom: 1px solid var(--color-line); padding-bottom: 8px; margin-bottom: 24px; }
+  .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .component-card { background: var(--color-bg-panel-alt); border: 1px solid var(--color-line); border-radius: var(--radius-6xl); padding: 24px; }
+  .component-card h3 { margin: 0 0 16px; font-size: var(--font-size-3xl); color: var(--color-green-primary); }
+  .state-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+  .state-label { font-size: var(--font-size-sm); font-weight: 600; color: var(--color-muted); min-width: 100px; }
+  .focus-ring:focus-visible { outline: var(--focus-outline-width) solid var(--color-green-accent); outline-offset: var(--focus-outline-offset); }
+  .disabled-demo { opacity: 0.5; pointer-events: none; }
+  .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #ffffff80; border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .code-ref { font-size: var(--font-size-xs); color: var(--color-muted); font-family: var(--font-mono); margin-top: 8px; display: block; }
+</style>
+</head>
+<body>
+<main class="catalogue">
+<h1>Synera Component Catalogue</h1>
+<p class="lead">All components in all states: default, hover, focus, disabled, loading, error</p>
+
+<!-- BUTTONS -->
+<section class="catalogue-section">
+<h2>Buttons</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Primary Button</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<button class="focus-ring">Primary</button>
+</div>
+<div class="state-row">
+<span class="state-label">Hover</span>
+<button class="focus-ring" style="background: var(--color-green-hover);">Primary</button>
+</div>
+<div class="state-row">
+<span class="state-label">Focus</span>
+<button class="focus-ring" style="outline: var(--focus-outline-width) solid var(--color-green-accent); outline-offset: var(--focus-outline-offset);">Primary</button>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<button class="focus-ring disabled-demo" disabled>Primary</button>
+</div>
+<div class="state-row">
+<span class="state-label">Loading</span>
+<button class="focus-ring" disabled><span class="loading-spinner"></span>Loading…</button>
+</div>
+<p class="code-ref">style.css: button (primary)</p>
+</div>
+
+<div class="component-card">
+<h3>Quiet Button</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<button class="quiet focus-ring">Quiet</button>
+</div>
+<div class="state-row">
+<span class="state-label">Hover</span>
+<button class="quiet focus-ring" style="background: var(--color-bg-welcome);">Quiet</button>
+</div>
+<div class="state-row">
+<span class="state-label">Focus</span>
+<button class="quiet focus-ring" style="outline: var(--focus-outline-width) solid var(--color-green-accent); outline-offset: var(--focus-outline-offset);">Quiet</button>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<button class="quiet focus-ring disabled-demo" disabled>Quiet</button>
+</div>
+<p class="code-ref">style.css: button.quiet</p>
+</div>
+
+<div class="component-card">
+<h3>Tab Button (Navigation)</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<button class="tab focus-ring">Tab</button>
+</div>
+<div class="state-row">
+<span class="state-label">Active</span>
+<button class="tab active focus-ring">Tab</button>
+</div>
+<div class="state-row">
+<span class="state-label">Hover</span>
+<button class="tab focus-ring" style="background: var(--color-bg-welcome);">Tab</button>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<button class="tab focus-ring disabled-demo" disabled>Tab</button>
+</div>
+<p class="code-ref">style.css: .workspace-bar .tab</p>
+</div>
+</div>
+</section>
+
+<!-- INPUTS -->
+<section class="catalogue-section">
+<h2>Form Inputs</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Text Input</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<input type="text" class="focus-ring" placeholder="Placeholder text" style="min-width: 200px;">
+</div>
+<div class="state-row">
+<span class="state-label">Focus</span>
+<input type="text" class="focus-ring" placeholder="Focused" style="min-width: 200px; outline-color: var(--color-green-focus);">
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<input type="text" class="focus-ring disabled-demo" placeholder="Disabled" disabled style="min-width: 200px;">
+</div>
+<div class="state-row">
+<span class="state-label">Error</span>
+<input type="text" class="focus-ring" placeholder="Error state" style="min-width: 200px; border-color: var(--color-warning-border-alt);">
+</div>
+<div class="state-row">
+<span class="state-label">Readonly</span>
+<label><input type="text" class="focus-ring" value="Readonly value" readonly style="min-width: 200px;" aria-label="Readonly example"></label>
+</div>
+<p class="code-ref">style.css: input, textarea, select</p>
+</div>
+
+<div class="component-card">
+<h3>Email Input</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<input type="email" class="focus-ring" placeholder="name@example.com" style="min-width: 200px;">
+</div>
+<div class="state-row">
+<span class="state-label">Invalid</span>
+<label><input type="email" class="focus-ring" value="invalid-email" style="min-width: 200px; border-color: var(--color-warning-border-alt);" aria-label="Invalid email example"></label>
+</div>
+<p class="code-ref">style.css: input[type=email]</p>
+</div>
+
+<div class="component-card">
+<h3>Password Input</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<input type="password" class="focus-ring" placeholder="••••••••" style="min-width: 200px;">
+</div>
+<p class="code-ref">style.css: input[type=password]</p>
+</div>
+
+<div class="component-card">
+<h3>Search Input</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<input type="search" class="focus-ring" placeholder="Search…" style="min-width: 200px;">
+</div>
+<p class="code-ref">style.css: input[type=search]</p>
+</div>
+
+<div class="component-card">
+<h3>Textarea</h3>
+<div class="state-row" style="align-items: flex-start;">
+<span class="state-label">Default</span>
+<textarea class="focus-ring" placeholder="Multi-line text…" rows="3" style="min-width: 200px;" aria-label="Default textarea"></textarea>
+</div>
+<div class="state-row" style="align-items: flex-start;">
+<span class="state-label">Focus</span>
+<textarea class="focus-ring" placeholder="Focused" rows="3" style="min-width: 200px; outline-color: var(--color-green-focus);" aria-label="Focused textarea"></textarea>
+</div>
+<div class="state-row" style="align-items: flex-start;">
+<span class="state-label">Disabled</span>
+<textarea class="focus-ring disabled-demo" placeholder="Disabled" rows="3" disabled style="min-width: 200px;" aria-label="Disabled textarea"></textarea>
+</div>
+<p class="code-ref">style.css: textarea</p>
+</div>
+
+<div class="component-card">
+<h3>Select</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<select class="focus-ring" style="min-width: 200px;" aria-label="Select example"><option>Choose…</option><option>Option 1</option><option>Option 2</option></select>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<select class="focus-ring disabled-demo" disabled style="min-width: 200px;" aria-label="Disabled select"><option>Disabled</option></select>
+</div>
+<p class="code-ref">style.css: select</p>
+</div>
+
+<div class="component-card">
+<h3>Checkbox</h3>
+<div class="state-row">
+<span class="state-label">Unchecked</span>
+<label class="check"><input type="checkbox" class="focus-ring"> Option</label>
+</div>
+<div class="state-row">
+<span class="state-label">Checked</span>
+<label class="check"><input type="checkbox" class="focus-ring" checked> Option</label>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<label class="check disabled-demo"><input type="checkbox" class="focus-ring" disabled> Option</label>
+</div>
+<div class="state-row">
+<span class="state-label">Error</span>
+<label class="check"><input type="checkbox" class="focus-ring" required> Required</label>
+</div>
+<p class="code-ref">style.css: .check input</p>
+</div>
+
+<div class="component-card">
+<h3>Radio</h3>
+<div class="state-row">
+<span class="state-label">Unselected</span>
+<label class="check"><input type="radio" name="demo" class="focus-ring"> Option A</label>
+</div>
+<div class="state-row">
+<span class="state-label">Selected</span>
+<label class="check"><input type="radio" name="demo" class="focus-ring" checked> Option B</label>
+</div>
+<div class="state-row">
+<span class="state-label">Disabled</span>
+<label class="check disabled-demo"><input type="radio" name="demo2" class="focus-ring" disabled> Option</label>
+</div>
+<p class="code-ref">style.css: .check input[type=radio]</p>
+</div>
+</div>
+</section>
+
+<!-- CARDS -->
+<section class="catalogue-section">
+<h2>Cards</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Person Card</h3>
+<div class="person" style="box-shadow: var(--shadow-card);">
+<div class="profile-head">
+<div><p class="eyebrow">ПРОФІЛЬ УЧАСНИКА</p><h3>Олена Ковальчук</h3></div>
+<div class="profile-tools"><button class="quiet focus-ring">Дії</button></div>
+</div>
+<div class="fit"><small>МАТЧ 87%</small><span>Дизайн інтерфейсів · Фігма, прототипи · Українська, Англійська</span></div>
+<div class="tags"><span>UI/UX</span><span>Прототипування</span><span>Дизайн-системи</span></div>
+<div class="actions" style="margin-top: 16px;"><button class="focus-ring">Запросити</button><button class="quiet focus-ring">Профіль</button></div>
+</div>
+<p class="code-ref">style.css: .person</p>
+</div>
+
+<div class="component-card">
+<h3>Meeting Card</h3>
+<div class="meeting" style="box-shadow: var(--shadow-card);">
+<div class="profile-head">
+<div><p class="eyebrow">ЗУСТРІЧ</p><h3>Перевірка дизайн-системи</h3></div>
+</div>
+<div class="fit"><small>СТАТУС</small><span>Очікує підтвердження</span></div>
+<p style="margin: 12px 0; color: var(--color-muted);">Онлайн · 30 хв · 15.01.2025 14:00</p>
+<div class="actions"><button class="focus-ring">Чат</button><button class="quiet focus-ring">Деталі</button></div>
+</div>
+<p class="code-ref">style.css: .meeting</p>
+</div>
+
+<div class="component-card">
+<h3>Profile Panel Card</h3>
+<div class="panel profile-panel" style="max-width: 100%;">
+<div class="profile-head">
+<div><p class="eyebrow">ТВІЙ ПРОФІЛЬ</p><h2>Що можемо зробити разом?</h2></div>
+<div class="profile-tools"><button class="quiet focus-ring">Імпорт</button><button class="quiet focus-ring">Картка</button></div>
+</div>
+<div class="form-pair"><label>Ім'я<input name="display_name" class="focus-ring" placeholder="Ваше ім'я"></label><label>Місто<input name="city" class="focus-ring" placeholder="Місто"></label></div>
+<label>Можу допомогти з…<textarea name="offers" class="focus-ring" rows="2" placeholder="Конкретна навичка"></textarea></label>
+<label>Зараз шукаю…<textarea name="seeks" class="focus-ring" rows="2" placeholder="Яка допомога потрібна"></textarea></label>
+<div class="actions"><button type="submit" class="focus-ring">Зберегти</button><button class="quiet focus-ring">Запросити колегу</button></div>
+</div>
+<p class="code-ref">style.css: .profile-panel</p>
+</div>
+</div>
+</section>
+
+<!-- PANELS -->
+<section class="catalogue-section">
+<h2>Panels</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Welcome Panel</h3>
+<div class="panel welcome">
+<div><p class="eyebrow">КРОК 1 / 3 · ВХІД</p><h2>Почни зі знайомства</h2><p>Перевіряємо, чи доступний вхід.</p></div>
+<form><fieldset class="focus-ring"><label>Email<input type="email" class="focus-ring" placeholder="name@example.com" required></label><label>Пароль<input type="password" class="focus-ring" required></label><div class="actions"><button type="submit" class="focus-ring">Увійти</button><button type="button" class="quiet focus-ring">Створити акаунт</button></div></fieldset></form>
+</div>
+<p class="code-ref">style.css: .panel.welcome</p>
+</div>
+
+<div class="component-card">
+<h3>Standard Panel</h3>
+<div class="panel"><h3>Panel Title</h3><p>Panel content with <strong>bold</strong> and <em>italic</em> text.</p><div class="actions"><button class="focus-ring">Action</button><button class="quiet focus-ring">Secondary</button></div></div>
+<p class="code-ref">style.css: .panel</p>
+</div>
+
+<div class="component-card">
+<h3>Settings Panel (Narrow)</h3>
+<div class="panel narrow"><h2>Твої дані й межі</h2>
+<fieldset><legend><h3>Дозволи</h3></legend>
+<label class="check"><input type="checkbox" class="focus-ring"><span>Показувати профіль<br><span class="fine">опис дозволу</span></span></label>
+<label class="check"><input type="checkbox" class="focus-ring"><span>Порівнювати профіль<br><span class="fine">опис дозволу</span></span></label>
+<label class="check"><input type="checkbox" class="focus-ring" disabled><span>Запис зустрічей — недоступно<br><span class="fine">захищено</span></span></label>
+</fieldset>
+<hr><button class="quiet focus-ring">Завантажити дані</button></div>
+<p class="code-ref">style.css: .panel.narrow, #consent-panel</p>
+</div>
+</div>
+</section>
+
+<!-- NOTICES -->
+<section class="catalogue-section">
+<h2>Notices & Alerts</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Info Notice</h3>
+<div class="notice" role="status" aria-live="polite">Це інформаційне повідомлення для користувача.</div>
+<p class="code-ref">style.css: .notice</p>
+</div>
+
+<div class="component-card">
+<h3>Error Notice</h3>
+<div class="notice error" role="alert">Сталася помилка. Спробуйте ще раз.</div>
+<p class="code-ref">style.css: .notice.error</p>
+</div>
+
+<div class="component-card">
+<h3>Success Notice (Real Participant)</h3>
+<div class="notice" style="background: var(--color-notice-bg-alt); border-color: var(--color-notice-border-alt); color: var(--color-notice-text-alt);">Успішно збережено!</div>
+<p class="code-ref">style.css: .notice (real participant variant)</p>
+</div>
+
+<div class="component-card">
+<h3>Warning Notice (Real Participant)</h3>
+<div class="notice error" style="background: var(--color-warning-bg-alt); border-color: var(--color-warning-border-alt); color: var(--color-warning-text-alt);">Попередження: дія небезпечна.</div>
+<p class="code-ref">style.css: .notice.error (real participant variant)</p>
+</div>
+</div>
+</section>
+
+<!-- BADGES -->
+<section class="catalogue-section">
+<h2>Badges</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Mode Badge</h3>
+<div class="state-row">
+<span class="state-label">Default</span>
+<span class="badge">Перевірка доступу</span>
+</div>
+<div class="state-row">
+<span class="state-label">Real Participant</span>
+<span class="badge" style="background: var(--color-green-bg); color: var(--color-green-lighter); border-color: var(--color-green-border);">Активний</span>
+</div>
+<p class="code-ref">style.css: .badge</p>
+</div>
+
+<div class="component-card">
+<h3>Bot Label</h3>
+<span class="bot-label">AI АСИСТЕНТ</span>
+<p class="code-ref">style.css: .bot-label</p>
+</div>
+
+<div class="component-card">
+<h3>Tags</h3>
+<div class="tags"><span>UI/UX</span><span>Дизайн</span><span>Прототипи</span><span>Дослідження</span></div>
+<p class="code-ref">style.css: .tags span</p>
+</div>
+</div>
+</section>
+
+<!-- DIALOGS -->
+<section class="catalogue-section">
+<h2>Dialogs</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Auth / Policy Dialog</h3>
+<dialog open style="max-width: 500px;">
+<form><p class="eyebrow">ПРАВИЛА ПІЛОТУ</p><h2>Почати з довіри</h2>
+<label class="check"><input type="checkbox" class="focus-ring" required><span>Мені 18+, я приймаю правила.</span></label>
+<label class="check"><input type="checkbox" class="focus-ring" required><span>Прочитав повідомлення про дані.</span></label>
+<div class="actions"><button type="submit" class="focus-ring">Підтвердити</button><button type="button" class="quiet focus-ring">Скасувати</button></div></form>
+</dialog>
+<p class="code-ref">style.css: dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Invite Dialog</h3>
+<dialog open style="max-width: 500px;">
+<form><p class="eyebrow">ПЕРЕВІРИТИ ОДНУ ІДЕЮ</p><h2>Запит на зустріч</h2>
+<label>Користь<textarea class="focus-ring" rows="3" required placeholder="Що буде корисним…"></textarea></label>
+<label>Час<input type="datetime-local" class="focus-ring" required></label>
+<div class="form-pair"><label>Тривалість<select class="focus-ring" aria-label="Duration"><option value="20">20 хв</option><option value="30">30 хв</option><option value="60">60 хв</option></select></label><label>Де<select class="focus-ring" aria-label="Location"><option>Онлайн</option><option>Zürich</option></select></label></div>
+<div class="actions"><button type="submit" class="focus-ring">Надіслати</button><button type="button" class="quiet focus-ring">Скасувати</button></div></form>
+</dialog>
+<p class="code-ref">style.css: #invite-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>AI Dialog</h3>
+<dialog open style="max-width: 600px;">
+<div class="dialog-body"><p class="eyebrow">AI ДЛЯ ТВОГО ПРОФІЛЮ</p><h2>Ти контролюєш, що буде оброблено</h2>
+<label class="check"><input type="checkbox" class="focus-ring" id="ai-consent"><span>Це мій професійний опис. Дозволяю AI обробити.</span></label>
+<pre class="data-preview">{"offers":[],"seeks":[]}</pre>
+<div id="ai-result"></div>
+<div class="actions"><button type="button" class="focus-ring">Створити пропозиції</button><button type="button" class="quiet focus-ring" hidden>Перенести вибране</button><button type="button" class="quiet focus-ring">Закрити</button></div></div>
+</dialog>
+<p class="code-ref">style.css: #ai-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Chat Dialog</h3>
+<dialog open style="max-width: 500px;">
+<form><h2>Уточнити зустріч</h2>
+<div class="chat-messages" style="max-height: 200px;"><div class="chat-message"><small>14:30</small><p>Привіт! Готовий почати?</p></div></div>
+<label>Повідомлення<textarea class="focus-ring" rows="2" required></textarea></label>
+<div class="actions"><button type="submit" class="focus-ring">Надіслати</button><button type="button" class="quiet focus-ring">Оновити</button><button type="button" class="quiet focus-ring">Закрити</button></div></form>
+</dialog>
+<p class="code-ref">style.css: #chat-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Safety / Report Dialog</h3>
+<dialog open style="max-width: 500px;">
+<form><h2>Межі спілкування</h2>
+<label>Причина<select class="focus-ring" aria-label="Report reason"><option value="spam">Спам</option><option value="harassment">Переслідування</option><option value="other">Інше</option></select></label>
+<label>Деталі<textarea class="focus-ring" rows="2" maxlength="500"></textarea></label>
+<div class="actions"><button type="submit" class="focus-ring">Подати скаргу</button><button type="button" class="quiet focus-ring">Заблокувати</button><button type="button" class="quiet focus-ring">Закрити</button></div></form>
+</dialog>
+<p class="code-ref">style.css: #safety-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Delete Confirmation Dialog</h3>
+<dialog open style="max-width: 500px;">
+<form><h2>Видалити профіль?</h2>
+<p>Профіль, усі зустрічі й повідомлення зникнуть.</p>
+<label>Введи ВИДАЛИТИ<input class="focus-ring" required pattern="ВИДАЛИТИ" autocomplete="off"></label>
+<div class="actions"><button type="submit" class="focus-ring" style="background: var(--color-warning-border-alt);">Видалити назавжди</button><button type="button" class="quiet focus-ring">Скасувати</button></div></form>
+</dialog>
+<p class="code-ref">style.css: #delete-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Import Dialog</h3>
+<dialog open style="max-width: 630px;">
+<div class="dialog-body"><p class="eyebrow">ПЕРЕНЕСТИ ПРОФІЛЬ</p><h2>Перенеси свій досвід</h2>
+<label>Джерело<select class="focus-ring" aria-label="Import source"><option>Synera JSON</option><option>LinkedIn / CV</option></select></label>
+<label>Текст<textarea class="focus-ring" rows="4" maxlength="5000"></textarea></label>
+<label class="check"><input type="checkbox" class="focus-ring"><span>Це мій профіль.</span></label>
+<p id="import-status" class="fine"></p>
+<fieldset hidden><label>Ім'я<input class="focus-ring"></label><label>Місто<input class="focus-ring"></label></fieldset>
+<div class="actions"><button type="button" class="focus-ring">Перевірити</button><button type="button" class="quiet focus-ring" hidden>Застосувати</button><button type="button" class="quiet focus-ring">Закрити</button></div></div>
+</dialog>
+<p class="code-ref">style.css: #import-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>Share Dialog</h3>
+<dialog open style="max-width: 500px;">
+<div class="dialog-body"><p class="eyebrow">ПРОФІЛЬ ДЛЯ ПОШИРЕННЯ</p><h2>Картка Synera</h2>
+<textarea class="focus-ring" readonly rows="6" aria-label="Profile card preview">Synera Profile Card\nName: Олена Ковальчук\nCity: Zürich\nOffers: UI/UX Design\nSeeks: Frontend Dev</textarea>
+<p class="fine"></p>
+<div class="actions"><button type="button" class="focus-ring">Копіювати текст</button><button type="button" class="quiet focus-ring">Поділитися</button><button type="button" class="quiet focus-ring">JSON</button><button type="button" class="quiet focus-ring">Закрити</button></div></div>
+</dialog>
+<p class="code-ref">style.css: #share-dialog</p>
+</div>
+
+<div class="component-card">
+<h3>ChatGPT Transfer Dialog</h3>
+<dialog open style="max-width: 630px;">
+<div class="dialog-body"><p class="eyebrow">ПОЧНИ З ТОГО, ЩО ВЖЕ Є</p><h3>Твій ChatGPT уже знає про тебе?</h3>
+<p>Перенеси професійну чернетку.</p>
+<ol class="transfer-steps"><li><strong>Крок 1</strong><span>Скопіюй промпт</span></li><li><strong>Крок 2</strong><span>Встав у ChatGPT</span></li><li><strong>Крок 3</strong><span>Перенеси JSON сюди</span></li></ol>
+<div class="chatgpt-guide"><textarea class="focus-ring" readonly rows="4" aria-label="ChatGPT prompt example">Prompt for ChatGPT…</textarea>
+<div class="actions"><button class="quiet focus-ring">Копіювати промпт</button><button class="quiet focus-ring">Вставити відповідь</button></div>
+<label>JSON-відповідь<textarea class="focus-ring" rows="4"></textarea></label>
+<button class="quiet focus-ring">Перевірити відповідь</button></div></div>
+</dialog>
+<p class="code-ref">style.css: .chatgpt-guide, .transfer-steps</p>
+</div>
+</div>
+</section>
+
+<!-- NAVIGATION -->
+<section class="catalogue-section">
+<h2>Navigation & Toolbars</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Workspace Bar</h3>
+<div class="workspace-bar">
+<nav aria-label="Розділи" style="width: 100%; display: flex; gap: 6px; background: var(--color-bg-visibility); border: 1px solid var(--color-line); border-radius: var(--radius-3xl); padding: 5px;">
+<button class="tab focus-ring">Люди</button>
+<button class="tab active focus-ring">Мій профіль</button>
+<button class="tab focus-ring">Зустрічі <span>3</span></button>
+<button class="tab focus-ring">Приватність</button>
+</nav>
+</div>
+<p class="code-ref">style.css: .workspace-bar nav</p>
+</div>
+
+<div class="component-card">
+<h3>Install Bar</h3>
+<div class="install-bar"><button class="quiet focus-ring" type="button">Встановити Synera</button><p class="fine">Android та iPhone · з домашнього екрана</p></div>
+<p class="code-ref">style.css: .install-bar</p>
+</div>
+
+<div class="component-card">
+<h3>Simulation Panel</h3>
+<div class="simulation-panel">
+<div><p class="eyebrow">СИМУЛЯЦІЯ</p><p>Це симуляція роботи системи.</p></div>
+<div class="actions"><button class="focus-ring">Запустити</button><button class="quiet focus-ring">Скасувати</button></div>
+</div>
+<p class="code-ref">style.css: .simulation-panel</p>
+</div>
+
+<div class="component-card">
+<h3>Journey Steps</h3>
+<ol class="journey"><li><span>01</span><div><strong>Даю й шукаю</strong><small>Твоя компетенція та потреба.</small></div></li><li><span>02</span><div><strong>Бізнес-кейс для двох</strong><small>Користь кожному.</small></div></li><li><span>03</span><div><strong>Перевірте співпрацю</strong><small>Один невеликий результат.</small></div></li></ol>
+<p class="code-ref">style.css: .journey</p>
+</div>
+</div>
+</section>
+
+<!-- MAP -->
+<section class="catalogue-section">
+<h2>Map Components</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Map Viewport</h3>
+<div class="map-viewport" style="height: 200px;">
+<div class="map-base"></div>
+<div class="map-markers">
+<div class="map-marker" style="left: 30%; top: 40%;">1</div>
+<div class="map-marker" style="left: 60%; top: 60%;">2</div>
+</div>
+</div>
+<div class="map-tools"><button class="quiet focus-ring" aria-label="Zoom in">+</button><button class="quiet focus-ring" aria-label="Zoom out">−</button><button class="quiet focus-ring">Reset</button><button class="quiet focus-ring">OSM</button></div>
+<p class="code-ref">style.css: .map-viewport, .map-marker, .map-tools</p>
+</div>
+
+<div class="component-card">
+<h3>Map Marker States</h3>
+<div class="state-row" style="justify-content: center;">
+<div class="map-marker" style="position: relative; transform: none;">1</div>
+<div class="map-marker focus-ring" style="position: relative; transform: none; outline-color: #ba8d36;">2</div>
+<div class="map-marker" style="position: relative; transform: none; opacity: 0.5;">3</div>
+</div>
+<p class="fine" style="text-align: center; margin-top: 8px;">Default · Focus · Disabled</p>
+<p class="code-ref">style.css: .map-marker</p>
+</div>
+</div>
+</section>
+
+<!-- FORM SECTIONS -->
+<section class="catalogue-section">
+<h2>Form Sections & Fieldsets</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Choice Set (Checkbox Group)</h3>
+<fieldset class="choice-set"><legend>Користь від рекомендації</legend>
+<label class="check"><input type="checkbox" class="focus-ring" value="automation"><span>Автоматизація</span></label>
+<label class="check"><input type="checkbox" class="focus-ring" value="design" checked><span>Дизайн</span></label>
+<label class="check"><input type="checkbox" class="focus-ring" value="research"><span>Дослідження</span></label>
+<label class="check"><input type="checkbox" class="focus-ring" value="sales"><span>Продажі</span></label>
+</fieldset>
+<p class="code-ref">style.css: .choice-set</p>
+</div>
+
+<div class="component-card">
+<h3>Visibility Section</h3>
+<div class="visibility">
+<label class="check"><input type="checkbox" class="focus-ring"><span>Показувати профіль учасникам</span></label>
+<label class="check"><input type="checkbox" class="focus-ring"><span>Показувати місто на карті</span></label>
+<p class="fine">Email і точна адреса не потрапляють в картку.</p>
+</div>
+<p class="code-ref">style.css: .visibility</p>
+</div>
+
+<div class="component-card">
+<h3>AI Entry</h3>
+<div class="ai-entry">
+<div><strong>Структурувати з AI</strong><p class="fine">AI пропонує навички з твого тексту.</p></div>
+<button class="focus-ring">AI-помічник</button>
+</div>
+<p class="code-ref">style.css: .ai-entry</p>
+</div>
+
+<div class="component-card">
+<h3>Brief Details (Collapsible)</h3>
+<details class="brief-details" open><summary class="focus-ring">Навички та умови співпраці</summary>
+<p class="fine">Обери лише те, що справді можеш дати.</p>
+<div class="form-pair"><label>Роль<select class="focus-ring" aria-label="Role"><option>Не визначено</option><option>Покупець</option><option>Постачальник</option></select></label><label>Рекомендація<select class="focus-ring" aria-label="Referral role"><option>Не визначено</option><option>Інтродюсер</option><option>Шукаю</option></select></label></div>
+</details>
+<p class="code-ref">style.css: .brief-details</p>
+</div>
+</div>
+</section>
+
+<!-- DATA PREVIEW -->
+<section class="catalogue-section">
+<h2>Data Display</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Data Preview (Monospace)</h3>
+<pre class="data-preview">{
+  "display_name": "Олена Ковальчук",
+  "city": "Zürich",
+  "offers": ["UI/UX", "Figma"],
+  "seeks": ["Frontend", "React"]
+}</pre>
+<p class="code-ref">style.css: .data-preview</p>
+</div>
+
+<div class="component-card">
+<h3>Bot Activity</h3>
+<div class="bot-activity">AI аналізує профіль… Знайдено 3 навички. Готово.</div>
+<p class="code-ref">style.css: .bot-activity</p>
+</div>
+
+<div class="component-card">
+<h3>Empty State</h3>
+<div class="empty">Профілів не знайдено. Змініть фільтри.</div>
+<p class="code-ref">style.css: .empty</p>
+</div>
+
+<div class="component-card">
+<h3>Profile Transfer Banner</h3>
+<div class="profile-transfer">
+<div><p class="eyebrow">ПОЧНИ З ТОГО, ЩО ВЖЕ Є</p><h3>Твій ChatGPT уже знає про тебе?</h3><p>Перенеси професійну чернетку.</p></div>
+<button class="focus-ring">Заповнити з ChatGPT</button>
+</div>
+<p class="code-ref">style.css: .profile-transfer</p>
+</div>
+</div>
+</section>
+
+<!-- CHAT MESSAGES -->
+<section class="catalogue-section">
+<h2>Chat Messages</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Message List</h3>
+<div class="chat-messages" style="max-height: 300px;">
+<div class="chat-message"><small>14:30</small><p>Привіт! Готовий обговорити деталі?</p></div>
+<div class="chat-message"><small>14:32</small><p>Так, давай домовимося про перший крок.</p></div>
+<div class="chat-message fit"><small>14:35</small><p><strong>Домовленість #1</strong><span>Перевірити пропозицію з 3 клієнтами до п'ятниці.</span></div></div>
+</div>
+<p class="code-ref">style.css: .chat-messages, .chat-message, .fit</p>
+</div>
+</div>
+</section>
+
+<!-- RESPONSIVE STATES -->
+<section class="catalogue-section">
+<h2>Responsive Variants (Mobile ≤650px)</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>Mobile Header</h3>
+<header style="height: auto; min-height: 76px; flex-wrap: wrap; gap: 10px; padding: 15px; border-bottom: 1px solid var(--color-line); display: flex; align-items: center;">
+<a class="brand" style="font-size: 28px;">synera<span>●</span></a>
+<span class="badge" style="font-size: 10px; max-width: 190px;">Перевірка</span>
+<button class="quiet" style="margin-left: auto;">Вийти</button>
+</header>
+<p class="code-ref">style.css: @media(max-width:650px) header</p>
+</div>
+
+<div class="component-card">
+<h3>Mobile Welcome Card</h3>
+<div class="welcome" style="padding: 25px 22px; gap: 22px; border-radius: 18px; max-width: 610px; margin: auto;">
+<div><p class="eyebrow" style="font-size: 9px;">КРОК 1 / 3</p><h2 style="font-size: 24px;">Почни зі знайомства</h2><p style="font-size: 14px;">Перевіряємо доступ.</p></div>
+<form><fieldset><label>Email<input type="email" class="focus-ring" style="min-height: 44px;"></label><label>Пароль<input type="password" class="focus-ring" style="min-height: 44px;"></label><div class="actions"><button type="submit" class="focus-ring" style="width: 100%; min-height: 50px;">Увійти</button></div></fieldset></form>
+</div>
+<p class="code-ref">style.css: @media(max-width:650px) .welcome</p>
+</div>
+
+<div class="component-card">
+<h3>Mobile Workspace Bar</h3>
+<div class="workspace-bar" style="background: var(--color-bg); top: 0; padding: 7px 0;">
+<nav style="background: var(--color-bg-visibility); padding: 4px; gap: 2px; display: flex;">
+<button class="tab" style="font-size: 11px; min-height: 46px; padding: 8px 6px;">Люди</button>
+<button class="tab active" style="font-size: 11px; min-height: 46px; padding: 8px 6px;">Профіль</button>
+<button class="tab" style="font-size: 11px; min-height: 46px; padding: 8px 6px;">Зустрічі</button>
+<button class="tab" style="font-size: 11px; min-height: 46px; padding: 8px 6px;">Налаштування</button>
+</nav>
+</div>
+<p class="code-ref">style.css: @media(max-width:650px) .workspace-bar</p>
+</div>
+</div>
+</section>
+
+<!-- FOCUS STATES SHOWCASE -->
+<section class="catalogue-section">
+<h2>Focus Visible States</h2>
+<div class="component-grid">
+<div class="component-card">
+<h3>All Focusable Elements</h3>
+<p>Every interactive element has a visible focus ring (3px solid #94ad66, offset 3px):</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+<button class="focus-ring">Button</button>
+<button class="quiet focus-ring">Quiet</button>
+<a href="#" class="focus-ring" style="display: inline-flex; align-items: center; padding: 13px 19px; background: var(--color-green-primary); color: white; border-radius: var(--radius-lg); text-decoration: none;">Link</a>
+<input type="text" class="focus-ring" placeholder="Input" style="min-width: 150px;">
+<select class="focus-ring" aria-label="Select example"><option>Select</option></select>
+<textarea class="focus-ring" rows="1" style="min-width: 150px;" aria-label="Textarea example"></textarea>
+<label class="check"><input type="checkbox" class="focus-ring"> Check</label>
+<summary class="focus-ring">Details</summary>
+</div>
+<p class="code-ref">style.css: :focus-visible</p>
+</div>
+</div>
+</section>
+
+</main>
+<footer style="margin-top: 64px; padding: 24px; text-align: center; color: var(--color-muted); font-size: var(--font-size-sm);">
+Synera Component Catalogue · Built with tokens.css · <a href="/index.html" style="color: var(--color-green-primary);">Back to App</a>
+</footer>
+</body>
+</html>

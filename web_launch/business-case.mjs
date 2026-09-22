@@ -90,19 +90,19 @@ const validId = value => typeof value === 'string' && /^[a-z0-9-]{1,64}$/.test(v
 const validDay = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
 const validInstant = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
 const boundedText = (value, label) => {
-  if (typeof value !== 'string' || !value.trim() || value.trim().length > 2000) throw new Error(`Invalid ${label}`);
+  if (typeof value !== 'string' || !value.trim() || value.trim().length > 2000) throw new Error(`Некоректне ${label}`);
   return value.trim();
 };
 const enumValue = (value, allowed, fallback) => allowed.has(value) ? value : fallback;
 const uniqueSorted = (input, allowed) => [...new Set((Array.isArray(input) ? input : []).filter(value => allowed.has(value)))].sort();
 
 function normalizedOutcome(value = {}) {
-  if (!validId(value.receiver_id) || !CAPABILITY_KEYS.has(value.capability_tag)) throw new Error('Invalid outcome owner or capability');
+  if (!validId(value.receiver_id) || !CAPABILITY_KEYS.has(value.capability_tag)) throw new Error('Некоректний власник результату або здатність');
   return { receiver_id: value.receiver_id, capability_tag: value.capability_tag, target: boundedText(value.target, 'outcome target') };
 }
 
 function normalizedDeliverable(value = {}) {
-  if (!validId(value.giver_id) || !validId(value.receiver_id) || value.giver_id === value.receiver_id || !CAPABILITY_KEYS.has(value.capability_tag)) throw new Error('Invalid deliverable parties or capability');
+  if (!validId(value.giver_id) || !validId(value.receiver_id) || value.giver_id === value.receiver_id || !CAPABILITY_KEYS.has(value.capability_tag)) throw new Error('Некоректні сторони результату або здатність');
   return {
     giver_id: value.giver_id, receiver_id: value.receiver_id, capability_tag: value.capability_tag,
     target: boundedText(value.target, 'deliverable target'), acceptance_criteria: boundedText(value.acceptance_criteria, 'acceptance criteria'),
@@ -110,12 +110,12 @@ function normalizedDeliverable(value = {}) {
 }
 
 export function canonicalMaterialPayload(input = {}) {
-  if (!input || typeof input !== 'object' || Array.isArray(input) || !MATERIAL_MODES.has(input.mode)) throw new Error('Invalid material mode');
+  if (!input || typeof input !== 'object' || Array.isArray(input) || !MATERIAL_MODES.has(input.mode)) throw new Error('Некоректний матеріальний режим');
   const components = uniqueSorted(input.components, COMPONENTS);
-  if (input.mode === 'hybrid' ? components.length < 2 : components.length !== 1 || components[0] !== input.mode) throw new Error('Invalid material components');
+  if (input.mode === 'hybrid' ? components.length < 2 : components.length !== 1 || components[0] !== input.mode) throw new Error('Некоректні компоненти матеріалу');
   const outcomes = (Array.isArray(input.outcomes) ? input.outcomes : []).map(normalizedOutcome).sort((a, b) => a.receiver_id.localeCompare(b.receiver_id) || a.capability_tag.localeCompare(b.capability_tag) || a.target.localeCompare(b.target));
   const deliverables = (Array.isArray(input.trial?.deliverables) ? input.trial.deliverables : []).map(normalizedDeliverable).sort((a, b) => a.receiver_id.localeCompare(b.receiver_id) || a.giver_id.localeCompare(b.giver_id) || a.capability_tag.localeCompare(b.capability_tag) || a.target.localeCompare(b.target));
-  if (!outcomes.length || !deliverables.length || !validDay(input.trial?.starts_on) || !validDay(input.trial?.due_on) || input.trial.starts_on > input.trial.due_on) throw new Error('Invalid trial material');
+  if (!outcomes.length || !deliverables.length || !validDay(input.trial?.starts_on) || !validDay(input.trial?.due_on) || input.trial.starts_on > input.trial.due_on) throw new Error('Некоректний матеріал пробного періоду');
   const compensationStatus = enumValue(input.compensation?.status, COMPENSATION, 'unresolved');
   const money = compensationStatus === 'agreed_money';
   const amountMinor = money && Number.isSafeInteger(input.compensation?.amount_minor) && input.compensation.amount_minor > 0 ? input.compensation.amount_minor : null;
@@ -196,7 +196,7 @@ export function caseParticipantProblems(input, participants) {
 }
 
 function assertState(state) {
-  if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || new Set(state.participants).size !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || typeof state.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(state.termsHash) || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events) || !validInstant(state.createdAt) || !validInstant(state.updatedAt) || !validInstant(state.expiresAt)) throw new Error('Invalid case state');
+  if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || new Set(state.participants).size !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || typeof state.termsHash !== 'string' || !/^[a-f0-9]{64}$/.test(state.termsHash) || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events) || !validInstant(state.createdAt) || !validInstant(state.updatedAt) || !validInstant(state.expiresAt)) throw new Error('Некоректний стан кейсу');
 }
 
 async function stateIntegrityProblems(state) {
@@ -214,7 +214,7 @@ async function stateIntegrityProblems(state) {
 
 export async function createCaseState({ caseId, participants, material, now, expiresAt }) {
   const ids = [...new Set(Array.isArray(participants) ? participants : [])].sort();
-  if (!validId(caseId) || ids.length !== 2 || ids.some(id => !validId(id)) || !validInstant(now) || !validInstant(expiresAt) || expiresAt <= now) throw new Error('Invalid case identity, participants or time');
+  if (!validId(caseId) || ids.length !== 2 || ids.some(id => !validId(id)) || !validInstant(now) || !validInstant(expiresAt) || expiresAt <= now) throw new Error('Некоректна ідентичність кейсу, учасники або час');
   const canonical = canonicalMaterialPayload(material);
   const participantProblems = caseParticipantProblems(canonical, ids);
   if (participantProblems.length) throw new Error(`Invalid case participant material: ${participantProblems.join('; ')}`);
@@ -229,9 +229,9 @@ export async function createCaseState({ caseId, participants, material, now, exp
 
 export function approveCase(state, { partyId, termsHash, now }) {
   assertState(state);
-  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt) throw new Error('Invalid approval party or time');
-  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed or expired');
-  if (termsHash !== state.termsHash) throw new Error('Approval terms hash mismatch');
+  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt) throw new Error('Некоректна сторона погодження або час');
+  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Кейс закрито або прострочено');
+  if (termsHash !== state.termsHash) throw new Error('Неспівпадіння хешу умов погодження');
   const problems = caseMaterialProblems(state.material);
   if (problems.length) throw new Error(`Material terms incomplete: ${problems.join('; ')}`);
   const next = clone(state);
@@ -243,7 +243,7 @@ export function approveCase(state, { partyId, termsHash, now }) {
 
 export function withdrawApproval(state, { partyId, now }) {
   assertState(state);
-  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt || !state.approvals[partyId]) throw new Error('Invalid approval withdrawal');
+  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt || !state.approvals[partyId]) throw new Error('Некоректне відкликання погодження');
   const next = clone(state); delete next.approvals[partyId];
   next.status = Object.keys(next.approvals).length ? 'awaiting_approval' : 'draft'; next.updatedAt = now;
   next.events.push({ type: 'approval_withdrawn', by: partyId, at: now, version: next.version, termsHash: next.termsHash });
@@ -252,7 +252,7 @@ export function withdrawApproval(state, { partyId, now }) {
 
 export async function reviseCase(state, { material, now }) {
   assertState(state);
-  if (!validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed, expired or revision time is invalid');
+  if (!validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Кейс закрито, прострочено або час ревізії невалідний');
   const canonical = canonicalMaterialPayload(material), termsHash = await hashMaterialPayload(canonical);
   const participantProblems = caseParticipantProblems(canonical, state.participants);
   if (participantProblems.length) throw new Error(`Invalid case participant material: ${participantProblems.join('; ')}`);
@@ -265,7 +265,7 @@ export async function reviseCase(state, { material, now }) {
 
 function closeCase(state, { partyId, now }, status) {
   assertState(state);
-  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status)) throw new Error('Invalid case closure');
+  if (!state.participants.includes(partyId) || !validInstant(now) || now < state.updatedAt || ['revoked', 'abandoned'].includes(state.status)) throw new Error('Некоректне закриття кейсу');
   const next = clone(state); next.status = status; next.approvals = {}; next.closedBy = partyId; next.closedAt = now; next.closeReason = status; next.updatedAt = now;
   next.events.push({ type: status, by: partyId, at: now, version: next.version });
   return next;

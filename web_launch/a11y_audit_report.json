@@ -1,0 +1,30 @@
+[
+  {
+    "page": "index.html",
+    "url": "file://C:\\Users\\Andrii\\Desktop\\synera-clone\\web_launch/index.html",
+    "timestamp": "2026-09-21T23:22:26.712Z",
+    "violations": [],
+    "passes": 41,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  },
+  {
+    "page": "catalogue.html",
+    "url": "file://C:\\Users\\Andrii\\Desktop\\synera-clone\\web_launch/catalogue.html",
+    "timestamp": "2026-09-21T23:22:30.618Z",
+    "violations": [],
+    "passes": 41,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  }
+]

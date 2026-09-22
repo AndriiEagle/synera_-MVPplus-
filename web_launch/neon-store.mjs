@@ -7,7 +7,7 @@ export class NeonStore extends ProfileStore {
   #user = null;
   constructor(config, fetchImpl = fetch) {
     super();
-    if (config.backend !== 'neon') throw new Error('Neon configuration required');
+    if (config.backend !== 'neon') throw new Error('Потрібна конфігурація Neon');
     this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
@@ -52,7 +52,7 @@ export class NeonStore extends ProfileStore {
   }
   async _send(path, options = {}) {
     this.requireUser();
-    if (!path.startsWith('/rest/v1/')) throw new Error('Unsupported Neon data request');
+    if (!path.startsWith('/rest/v1/')) throw new Error('Непідтримуваний запит даних Neon');
     return this.#request('/api/neon/data/' + path.slice('/rest/v1/'.length), options);
   }
 }

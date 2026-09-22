@@ -116,7 +116,7 @@ function algorithmicDirection(receiver, supplier, direction, receiverLabel, supp
 // Safe for direct use with the public, normalized profile shape. It intentionally
 // receives no display names, contacts, journals, billing tier, free text or prompts.
 export function evaluateAlgorithmicMatch(left, right, { asOf = new Date().toISOString().slice(0, 10) } = {}) {
-  if (!validDay(asOf)) throw new Error('Invalid comparison date');
+  if (!validDay(asOf)) throw new Error('Некоректна дата порівняння');
   const parties = [normalizeProfile(left), normalizeProfile(right)].sort((a, b) => a.id.localeCompare(b.id));
   if (parties.some(p => !p.id) || parties[0].id === parties[1].id) return emptyAlgorithmicResult('rejected', ['INVALID_PAIR']);
   if (parties.some(p => !p.consent)) return emptyAlgorithmicResult('ineligible', ['CONSENT_DENIED']);
@@ -215,7 +215,7 @@ function evaluateModes(parties, directions, modes) {
 }
 
 export function compareProfiles(left, right, { asOf = new Date().toISOString().slice(0, 10) } = {}) {
-  if (!validDay(asOf)) throw new Error('Invalid comparison date');
+  if (!validDay(asOf)) throw new Error('Некоректна дата порівняння');
   const parties = [normalizeProfile(left), normalizeProfile(right)].sort((a, b) => a.id.localeCompare(b.id));
   const base = { version: 'synera-business-modes-1', legacyBaselineVersion: 'synera-baseline-1', businessModeVersion: 1, asOf, engine: 'deterministic-local', status: 'needs_information', reasons: [], score: null, directions: [], logistics: null, plan: [], modeCandidates: [], consentForIntroduction: false, binding: false, algorithmic: null };
   const stop = (status, reasons) => ({ ...base, status, reasons: [...new Set(reasons)].sort() });

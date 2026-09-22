@@ -33,7 +33,7 @@ const ACTIVITIES = [
 ];
 export function hourSlot(at = new Date()) {
   const ms = new Date(at).getTime();
-  if (!Number.isFinite(ms)) throw new Error('Invalid simulation clock');
+  if (!Number.isFinite(ms)) throw new Error('Некоректний годинник симуляції');
   return Math.floor(ms / 3600000);
 }
 export function simulationAt(at = new Date()) {
@@ -49,7 +49,7 @@ export function simulationAt(at = new Date()) {
   });
 }
 export function simulatedReply(sender, bot, at = new Date()) {
-  if (!bot?.is_bot || !BOT_PROFILES.some(p => p.id === bot.id)) throw new Error('Simulation recipient required');
+  if (!bot?.is_bot || !BOT_PROFILES.some(p => p.id === bot.id)) throw new Error('Потрібний отримувач симуляції');
   const hint = profileMatchHint(sender, bot);
   const accepted = hint.status === 'reciprocal';
   return { status: accepted ? 'accepted' : 'declined', simulated: true,

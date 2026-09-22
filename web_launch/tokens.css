@@ -1,0 +1,229 @@
+/* Synera Design Tokens — extracted from style.css
+   Single source of truth for all design values.
+   No raw hex colors allowed outside this file. */
+
+/* ===== COLORS ===== */
+:root {
+  /* Brand Greens */
+  --color-green-primary: #254f3b;      /* main brand green */
+  --color-green-primary-alt: #19513e;  /* real participant interface */
+  --color-green-hover: #21694c;        /* button hover */
+  --color-green-light: #287453;        /* brand span */
+  --color-green-lighter: #305b45;      /* badge text */
+  --color-green-border: #cfdfd3;       /* badge border */
+  --color-green-bg: #e8f0ea;           /* badge bg */
+  --color-green-focus: #31805a;        /* input focus */
+  --color-green-accent: #94ad66;       /* focus outline */
+
+  /* Muted / Neutral Greens */
+  --color-muted: #667467;              /* muted text */
+  --color-muted-alt: #53675d;          /* real participant muted */
+  --color-muted-darker: #425644;       /* fit span */
+  --color-muted-lighter: #78836a;      /* eyebrow */
+
+  /* Lines / Borders */
+  --color-line: #dbe0d4;               /* main line */
+  --color-line-alt: #dce4de;           /* real participant line */
+  --color-line-darker: #d3dcc9;        /* map grid */
+  --color-line-input: #becfc2;         /* input border */
+
+  /* Backgrounds */
+  --color-bg: #f6f5ef;                 /* main bg */
+  --color-bg-alt: #f5f7f4;             /* real participant bg */
+  --color-bg-panel: #fffefa;           /* panel bg */
+  --color-bg-panel-alt: #fff;          /* person/meeting bg */
+  --color-bg-welcome: #fff;            /* welcome card bg */
+  --color-bg-input: #f2f5f1;           /* readonly input */
+  --color-bg-choice: #fafcf9;          /* choice set */
+  --color-bg-visibility: #f0f5f1;      /* visibility */
+  --color-bg-simulation: #eef1e4;      /* simulation panel */
+  --color-bg-bot: #f4efdf;             /* bot label */
+  --color-bg-bot-activity: #f0f2e8;    /* bot activity */
+  --color-bg-map: #e8eddf;             /* map viewport */
+  --color-bg-map-grid: #cdd9bf55;      /* map grid lines */
+  --color-bg-map-marker: #254f3b;      /* map marker */
+  --color-bg-empty: #f0f5ef;           /* empty state */
+  --color-bg-transfer: #eaf3ed;        /* profile transfer */
+  --color-bg-chatgpt: #f2f7f2;         /* chatgpt guide */
+  --color-bg-transfer-summary: #f3f6f0; /* transfer summary */
+
+  /* Accent / Warning */
+  --color-warning-bg: #fff0e5;         /* notice error bg */
+  --color-warning-border: #bc6734;     /* notice error border */
+  --color-warning-text: #804024;       /* notice error text */
+  --color-warning-bg-alt: #fff2e9;     /* real participant error bg */
+  --color-warning-border-alt: #c16535; /* real participant error border */
+  --color-warning-text-alt: #893e1e;   /* real participant error text */
+  --color-notice-bg: #edf0e4;          /* notice bg */
+  --color-notice-border: #96a66b;      /* notice border */
+  --color-notice-text: #61704f;        /* notice text */
+  --color-notice-bg-alt: #e8f2e9;      /* real participant notice bg */
+  --color-notice-border-alt: #508365;  /* real participant notice border */
+  --color-notice-text-alt: #244e34;    /* real participant notice text */
+
+  /* Badge */
+  --color-badge-border: #d4dac7;       /* badge border */
+  --color-badge-text: #9caf61;         /* badge span */
+  --color-badge-border-alt: #cad8ce;   /* quiet button border */
+
+  /* Shadows */
+  --shadow-card: 0 3px 16px #1b3f2706;           /* person/meeting card */
+  --shadow-card-hover: 0 2px 6px #193c2814;      /* button hover */
+  --shadow-welcome: 0 10px 40px #193c2810;       /* welcome card */
+  --shadow-dialog: 0 24px 100px #0a241633;       /* dialog */
+  --shadow-map-marker: 0 2px 8px #1233;          /* map marker */
+  --shadow-focus: 0 0 0 3px #94ad66;             /* focus ring */
+  --shadow-tab-active: 0 2px 5px #18382512;      /* active tab */
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-family: Inter, "Segoe UI", Arial, sans-serif;
+  --font-family-alt: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: Consolas, monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 10px;      /* eyebrow, badge */
+  --font-size-sm: 11px;      /* real participant eyebrow */
+  --font-size-base: 12px;    /* fine, choice labels */
+  --font-size-md: 13px;      /* chat messages, bot activity */
+  --font-size-lg: 14px;      /* base UI text */
+  --font-size-xl: 16px;      /* lead, input text */
+  --font-size-2xl: 17px;     /* lead alt */
+  --font-size-3xl: 22px;     /* h3 */
+  --font-size-4xl: 25px;     /* h2, welcome h2 */
+  --font-size-5xl: 31px;     /* brand real participant */
+  --font-size-6xl: 32px;     /* brand */
+  --font-size-7xl: 34px;     /* h1 mobile */
+  --font-size-8xl: 38px;     /* h1 clamp min */
+  --font-size-9xl: 49px;     /* h1 real participant max */
+  --font-size-10xl: 62px;    /* h1 clamp max */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 550;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 650;
+  --font-weight-extrabold: 720;
+  --font-weight-brand: 750;
+
+  /* Line Heights */
+  --line-height-tight: 1.12;      /* h1 */
+  --line-height-tight-alt: 1.13;  /* h1 real participant */
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;     /* lead */
+  --line-height-relaxed-alt: 1.65; /* welcome text */
+  --line-height-loose: 1.7;       /* lead alt */
+  --line-height-loose-alt: 1.75;  /* lead real participant */
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -2.8px;   /* h1 */
+  --letter-spacing-tight-alt: -1.9px; /* h1 real participant */
+  --letter-spacing-heading: -1.6px; /* brand */
+  --letter-spacing-heading-alt: -1.8px; /* brand real participant */
+  --letter-spacing-h2: -0.8px;
+  --letter-spacing-h3: -0.6px;
+  --letter-spacing-eyebrow: 2px;
+  --letter-spacing-eyebrow-alt: 1.4px;
+  --letter-spacing-otp: 0.38em;
+
+  /* ===== SPACING ===== */
+  --space-xs: 4px;
+  --space-sm: 6px;
+  --space-md: 8px;
+  --space-lg: 10px;
+  --space-xl: 12px;
+  --space-2xl: 14px;
+  --space-3xl: 15px;
+  --space-4xl: 16px;
+  --space-5xl: 18px;
+  --space-6xl: 19px;
+  --space-7xl: 20px;
+  --space-8xl: 22px;
+  --space-9xl: 23px;
+  --space-10xl: 24px;
+  --space-11xl: 25px;
+  --space-12xl: 26px;
+  --space-13xl: 28px;
+  --space-14xl: 30px;
+  --space-15xl: 32px;
+  --space-16xl: 40px;
+  --space-17xl: 42px;
+  --space-18xl: 48px;
+  --space-19xl: 64px;
+
+  /* Container */
+  --container-max: 1150px;
+  --container-max-alt: 1160px;
+  --container-padding: 32px;
+  --container-padding-alt: 36px;
+  --container-padding-mobile: 20px;
+
+  /* Header */
+  --header-height: 94px;
+  --header-height-alt: 88px;
+  --header-height-mobile: 76px;
+
+  /* Border Radius */
+  --radius-sm: 6px;      /* bot label */
+  --radius-md: 8px;      /* choice set */
+  --radius-lg: 9px;      /* button */
+  --radius-lg-alt: 10px; /* real participant button, inputs */
+  --radius-xl: 10px;     /* notice, visibility */
+  --radius-2xl: 12px;    /* ai entry, map viewport */
+  --radius-3xl: 13px;    /* workspace bar nav */
+  --radius-4xl: 14px;    /* simulation panel */
+  --radius-5xl: 15px;    /* profile transfer */
+  --radius-6xl: 18px;    /* panel */
+  --radius-7xl: 20px;    /* dialog, welcome card */
+  --radius-8xl: 22px;    /* welcome card alt */
+  --radius-round: 24px;  /* badge */
+  --radius-round-full: 999px; /* tags */
+  --radius-circle: 50%;  /* map marker, OTP spinner */
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Z-index */
+  --z-sticky: 10;
+  --z-dialog: 100;
+  --z-map-marker: 3;
+  --z-map-credit: 5;
+  --z-backdrop: 50;
+
+  /* Breakpoints */
+  --bp-mobile: 650px;
+  --bp-tablet: 800px;
+  --bp-desktop: 920px;
+  --bp-wide: 1150px;
+
+  /* Map */
+  --map-tile-size: 256px;
+  --map-grid-size: 40px;
+  --map-marker-size: 40px;
+  --map-height: 360px;
+
+  /* OTP */
+  --otp-code-size: 26px;
+  --otp-spinner-size: 15px;
+
+  /* Focus */
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 3px;
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== FOCUS VISIBLE ===== */
+:focus-visible {
+  outline: var(--focus-outline-width) solid var(--color-green-accent);
+  outline-offset: var(--focus-outline-offset);
+}
