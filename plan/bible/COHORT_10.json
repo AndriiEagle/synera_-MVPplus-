@@ -1,0 +1,646 @@
+{
+ "schema_version": "synera.cohort.v1",
+ "created": "2026-09-09",
+ "count": 10,
+ "hard_rule": "Every profile carries synthetic:true. The cohort lives OUTSIDE web_launch as external clients driving the same UI. It is never seeded into a real store and never shown unlabelled. When a third real person joins the pilot, the cohort is removed from that person's pool. This is requirement P16: no fabricated participants.",
+ "vocabulary_source": {
+  "capabilities": "matching.mjs CAPABILITIES (7 keys)",
+  "cities": "matching.mjs CITIES (5 keys)",
+  "languages": "profile-brief.mjs LANGUAGES (4 keys)",
+  "modes": "matching.mjs COLLABORATION_MODES (5)",
+  "mode_details": "matching.mjs normalizeModeDetails shape"
+ },
+ "shape_note": "Each profile carries BOTH `needs` (array of {tag,priority} for matching.mjs normalizeProfile) and `brief.need_tags` (for profile-brief.mjs normalizeBrief). Do not merge or drop either.",
+ "behaviour_note": "`behaviour` drives the external agent, never the app. response_delay_hours makes the rehearsal realistic; ghosts:true and gives_delayed_feedback:false exist on purpose so `missing feedback` appears in the funnel denominator instead of being an always-clean simulation.",
+ "coverage": {
+  "accepted_paths": [
+   "exchange (iryna+noa)",
+   "paid_service (eva+tomas)",
+   "hybrid (lina+marko)",
+   "referral (hector+sofia, only after third-party consent)"
+  ],
+  "refusals": [
+   "expired / invalid availability -> needs_information",
+   "withdrawn consent -> consent_required",
+   "one-way value -> insufficient_mutual_value or incompatible"
+  ],
+  "funnel_realism": [
+   "2 profiles ghost",
+   "4 profiles never give delayed feedback"
+  ],
+  "backward_compatibility": [
+   "iryna and noa produce brief version 1 (no pilot modes)"
+  ],
+  "flagged_not_blocked": [
+   "referral with third party not_consulted -> eligible with THIRD_PARTY_NOT_CONSULTED; blocking it is an open human decision"
+  ]
+ },
+ "live_participants_note": "Andrii and Gilbert join as real profiles alongside these ten, giving 12 participants. Their profiles are NOT in this file and never carry synthetic:true.",
+ "profiles": [
+  {
+   "id": "syn-lina",
+   "synthetic": true,
+   "display_name": "Ліна Б. (синт.)",
+   "city": "zug",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "video",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Одне відео-представлення до 15 жовтня",
+    "offer_tags": [
+     "sales"
+    ],
+    "need_tags": [
+     "video"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "exchange",
+     "paid_service",
+     "hybrid"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": "buyer"
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": [
+       "exchange",
+       "paid_service"
+      ]
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zug",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-marko; exchange and hybrid both eligible; compensation stays unresolved until typed",
+   "behaviour": {
+    "response_delay_hours": 4,
+    "negotiates_price": true,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Пара №1. Перевіряє, що compensation_unknown не стає нулем."
+  },
+  {
+   "id": "syn-marko",
+   "synthetic": true,
+   "display_name": "Марко Д. (синт.)",
+   "city": "winterthur",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "sales",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Перші 10 кваліфікованих контактів",
+    "offer_tags": [
+     "video"
+    ],
+    "need_tags": [
+     "sales"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "exchange",
+     "hybrid"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": "supplier"
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": [
+       "exchange",
+       "paid_service"
+      ]
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "winterthur",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-lina; hybrid eligible (HYBRID_COMPONENTS_ELIGIBLE), each leg validated independently",
+   "behaviour": {
+    "response_delay_hours": 20,
+    "negotiates_price": true,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Пара №1. Новачок без track record: evidence лишається self_declared і це НЕ знижує його."
+  },
+  {
+   "id": "syn-eva",
+   "synthetic": true,
+   "display_name": "Ева Р. (синт.)",
+   "city": "zurich",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "automation",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Автоматизувати щомісячний звіт",
+    "offer_tags": [
+     "finance"
+    ],
+    "need_tags": [
+     "automation"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "paid_service"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": "buyer"
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zurich",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-tomas; pure paid_service, no reciprocal requirement",
+   "behaviour": {
+    "response_delay_hours": 2,
+    "negotiates_price": false,
+    "ghosts": false,
+    "gives_delayed_feedback": false
+   },
+   "note": "Пара №2. Дає missing feedback у знаменнику — вона не відповідає через 30 днів."
+  },
+  {
+   "id": "syn-tomas",
+   "synthetic": true,
+   "display_name": "Томас К. (синт.)",
+   "city": "basel",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "finance",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Продати два впровадження до кінця кварталу",
+    "offer_tags": [
+     "automation"
+    ],
+    "need_tags": [
+     "finance"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "paid_service"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": "supplier"
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "basel",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-eva",
+   "behaviour": {
+    "response_delay_hours": 8,
+    "negotiates_price": true,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Пара №2."
+  },
+  {
+   "id": "syn-iryna",
+   "synthetic": true,
+   "display_name": "Ірина С. (синт.)",
+   "city": "zurich",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "design",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Оновити вигляд звіту для клієнта",
+    "offer_tags": [
+     "research"
+    ],
+    "need_tags": [
+     "design"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "exchange"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zurich",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-noa; clean bilateral exchange, legacy version-1 shape",
+   "behaviour": {
+    "response_delay_hours": 12,
+    "negotiates_price": false,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Пара №3. Профіль БЕЗ pilot-режимів -> brief version 1. Доводить backward compatibility."
+  },
+  {
+   "id": "syn-noa",
+   "synthetic": true,
+   "display_name": "Ноа В. (синт.)",
+   "city": "zurich",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "research",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "П'ять інтерв'ю з клієнтами",
+    "offer_tags": [
+     "design"
+    ],
+    "need_tags": [
+     "research"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "exchange"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zurich",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-iryna",
+   "behaviour": {
+    "response_delay_hours": 30,
+    "negotiates_price": false,
+    "ghosts": false,
+    "gives_delayed_feedback": false
+   },
+   "note": "Пара №3. Другий missing feedback."
+  },
+  {
+   "id": "syn-hector",
+   "synthetic": true,
+   "display_name": "Гектор М. (синт.)",
+   "city": "bern",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "sales",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Звести двох людей зі своєї мережі",
+    "offer_tags": [
+     "events"
+    ],
+    "need_tags": [
+     "sales"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "referral"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "introducer",
+      "benefitTags": [
+       "events"
+      ],
+      "sourceDeclared": true,
+      "recipientScopeDeclared": true,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "bern",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "review_candidate with syn-sofia via referral; while not_consulted it carries THIRD_PARTY_NOT_CONSULTED and unresolved third_party_agreement; after consent THIRD_PARTY_CONSENT_SELF_DECLARED with third_party_consent_verification still unresolved",
+   "behaviour": {
+    "response_delay_hours": 6,
+    "negotiates_price": false,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Відмова №1 + прийнятий шлях. Головний тест: третю особу не можна пообіцяти."
+  },
+  {
+   "id": "syn-sofia",
+   "synthetic": true,
+   "display_name": "Софія Т. (синт.)",
+   "city": "zurich",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "events",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Знайти вихід на організатора події",
+    "offer_tags": [
+     "sales"
+    ],
+    "need_tags": [
+     "events"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "referral"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "seeker",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zurich",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "pairs with syn-hector via referral; the third-party question stays visible in the case as unresolved",
+   "behaviour": {
+    "response_delay_hours": 3,
+    "negotiates_price": false,
+    "ghosts": false,
+    "gives_delayed_feedback": true
+   },
+   "note": "Відмова №1, друга сторона."
+  },
+  {
+   "id": "syn-pierre",
+   "synthetic": true,
+   "display_name": "П'єр Л. (синт.)",
+   "city": "zug",
+   "consent": true,
+   "needs": [
+    {
+     "tag": "video",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Спільний продукт без описаного результату",
+    "offer_tags": [
+     "design"
+    ],
+    "need_tags": [
+     "video"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "joint_project",
+     "exchange"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-08-15",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "zug",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "needs_information with every partner: availability period is invalid (until before from); never a contract",
+   "behaviour": {
+    "response_delay_hours": 48,
+    "negotiates_price": false,
+    "ghosts": true,
+    "gives_delayed_feedback": false
+   },
+   "note": "Відмови №2 і №3. Протухла потреба + запаркований joint_project. Плюс ghosting."
+  },
+  {
+   "id": "syn-anita",
+   "synthetic": true,
+   "display_name": "Аніта Ф. (синт.)",
+   "city": "basel",
+   "consent": false,
+   "needs": [
+    {
+     "tag": "sales",
+     "priority": 1
+    }
+   ],
+   "brief": {
+    "goal": "Потрібні продажі, взамін пропоную організацію подій",
+    "offer_tags": [
+     "events"
+    ],
+    "need_tags": [
+     "sales"
+    ],
+    "languages": [
+     "de",
+     "en"
+    ],
+    "modes": [
+     "exchange"
+    ],
+    "mode_details": {
+     "paid_service": {
+      "role": ""
+     },
+     "referral": {
+      "role": "",
+      "benefitTags": [],
+      "sourceDeclared": false,
+      "recipientScopeDeclared": false,
+      "thirdPartyStatus": "not_consulted"
+     },
+     "hybrid": {
+      "components": []
+     }
+    },
+    "available_from": "2026-09-10",
+    "available_until": "2026-11-30",
+    "remote": true,
+    "max_km": 50,
+    "city_code": "basel",
+    "confidentiality": false,
+    "accepts_confidentiality": true
+   },
+   "expected_outcome": "as the other party with consent=false -> consent_required, no comparison; with consent -> insufficient_mutual_value or incompatible (one-way value)",
+   "behaviour": {
+    "response_delay_hours": 72,
+    "negotiates_price": false,
+    "ghosts": true,
+    "gives_delayed_feedback": false
+   },
+   "note": "Відмови №4 і №5. Відкликана згода + одностороння вигода."
+  }
+ ],
+ "revision": 2,
+ "revised": "2026-09-11",
+ "revision_note": "Checked against the live matcher (compareRealProfiles, asOf 2026-09-15) before loading as fixtures. Fixed: syn-hector benefitTags sales -> events (sofia needs events; the old tag was a referral that could never be relevant); syn-lina declares hybrid (exchange+paid_service) so the hybrid pair is actually exercised; coverage said 3 profiles give no delayed feedback, the data has 4. Corrected expectations to observed behaviour: a referral with thirdPartyStatus not_consulted is still eligible, flagged THIRD_PARTY_NOT_CONSULTED with unresolved third_party_agreement, and is NOT blocked (open human decision); syn-pierre is refused as needs_information because its availability period is invalid."
+}

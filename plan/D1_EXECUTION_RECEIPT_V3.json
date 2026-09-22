@@ -1,0 +1,130 @@
+{
+  "schema": "synera.d1-execution-receipt.v1",
+  "recorded_at": "2026-09-09",
+  "status": "D1_DOMAIN_CORE_VERIFIED_AFTER_ADVERSARIAL_REPAIR_WITH_LIMITS",
+  "source": {
+    "branch": "codex/synera-documentation-refresh",
+    "head": "e9d81e34c47f2b8f3daac80d82088dbb29ba4c59",
+    "dirty_worktree_preserved": true,
+    "ownership_limit": "matching.mjs, matching.test.mjs, profile-brief.mjs, real-pilot.test.mjs, business-case.mjs and business-case.test.mjs already contained uncommitted user work; this receipt claims only the bounded v3 additions, not every hunk in those files",
+    "preexisting_dirty_paths_preserved": [
+      "web_launch/app.mjs",
+      "web_launch/assets.mjs",
+      "web_launch/index.html",
+      "web_launch/sw.mjs",
+      "docs/ALGORITHMIC_MATCHING.uk.md"
+    ]
+  },
+  "implemented": [
+    "four candidate modes inside the existing deterministic matcher",
+    "expanded matcher output explicitly versioned as synera-business-modes-1 instead of claiming the old baseline contract",
+    "legacy version-one brief shape preserved unless an explicit pilot mode is present",
+    "paid-service role gate and unresolved compensation marker",
+    "referral source, recipient-scope, benefit and third-party-uncertainty gate",
+    "hybrid component-level eligibility",
+    "private non-binding business-case v2",
+    "closed material payload and compact sorted-key JSON canonicalization",
+    "UTF-8 SHA-256 terms hash",
+    "authorization-time material-hash recomputation rejects direct state tampering",
+    "outcome and deliverable owners are limited to the two case participants",
+    "two exact current approvals with non-contract attestation",
+    "monotonic caller-supplied D1 timestamps",
+    "expiry, revocation, abandonment, approval withdrawal and material-change invalidation",
+    "separate comparison, case-disclosure, terms-approval and introduction permissions",
+    "real_authorized versus synthetic_test pilot event separation, with caller-supplied D1 source labels explicitly unauthenticated",
+    "outcome decisions reference exact case version and hash",
+    "four positive and two refusal synthetic journeys"
+  ],
+  "verification": {
+    "focused_before_implementation": "FAIL as expected: missing exports and three new business-mode assertions",
+    "focused_after_implementation": "44/44 PASS before adversarial repair; 48/48 PASS after repair",
+    "mutation": {
+      "change": "temporarily removed caseDisclosure from the pure introduction gate",
+      "expected_failure": "independent permissions test returned allowed reasonCodes=[] instead of CASE_DISCLOSURE_CONSENT_MISSING",
+      "restored": true,
+      "post_restore": "PASS",
+      "adversarial_repairs": "direct material tampering and outsider participant tests both failed before their guards existed and passed after repair"
+    },
+    "full_suite": {
+      "test_files": 11,
+      "tests": 97,
+      "passed": 97,
+      "failed": 0
+    },
+    "offline_build": {
+      "directory": "web_launch/dist-real-offline",
+      "mode": "local-profile-draft",
+      "files": 26,
+      "published": false
+    }
+  },
+  "post_change_sha256": {
+    "web_launch/matching.mjs": "848FF01C407A883674DDD6F12AD20202AAA7BCA983BF15C406A9A1EE4E306F3C",
+    "web_launch/matching.test.mjs": "FE63DDCBD2E7E19D74FD7CB3B79EF7B6BEED2821B5487B9268DF10C3E3A8A90E",
+    "web_launch/profile-brief.mjs": "D8D0CED21B3F5C0E86E3F84B62154C09A8E44C3136513CF8F37E156ACC5917C3",
+    "web_launch/business-case.mjs": "4498B6433700C10C139CA8F1A90E864137A8A2ACA7579EDDE37AAE57A4365767",
+    "web_launch/business-case.test.mjs": "22DB0674997BD8BE873561909CFC660F01944668AA2D6B34B3C755CBF3C7C9F7",
+    "web_launch/business-pilot.test.mjs": "BAAC3D7FE05392B86BBAD90E3F3C94F16BEAC9482FDDD3BA5DA0D7F9CDD96F63",
+    "web_launch/economics.mjs": "1B57715441AF0B98341CB01DE47309963F3B4E6FF93A18BE48BE01B78AFBDE30",
+    "web_launch/economics.test.mjs": "2832F9D1AEAB781A23B5A41280EBD6D3A9C9FB04DD6922FA827BE96D0636688A",
+    "web_launch/real-pilot.test.mjs": "B0BB87D5B40A0C4A5AB02FD7547ED3E0C37E307FD57657BCA4B014256797B710"
+  },
+  "independent_review": {
+    "initial_verdict": "NEEDS_REWORK",
+    "material_findings": [
+      "P1 direct mutable-state hash bypass",
+      "P1 nonparticipant owner accepted in case material",
+      "P2 expanded matcher output retained old baseline version",
+      "P2 caller-labelled metric source could be mistaken for authenticated evidence",
+      "P3 hybrid brief completion omitted component-specific fields"
+    ],
+    "repair_status": "all five findings addressed locally; final tests and hashes reverified",
+    "final_verdict": "PASS: prior tamper and outsider attacks replayed as refused; focused suite 48/48; all nine receipt hashes matched; no remaining P0-P2 in the bounded files",
+    "transcript_alignment": "PASS_WITH_LIMITS after separating transcript decisions from v3 privacy and pricing governance additions"
+  },
+  "provider_review": {
+    "classification": "synthetic",
+    "provider_calls": 6,
+    "usd": 0.019122,
+    "accepted_outputs": [
+      {
+        "requested_model": "inclusionai/ling-3.0-flash-fin:free",
+        "actual_model": "inclusionai/ling-3.0-flash-fin:free",
+        "cost_usd": 0.0,
+        "truncated": false
+      },
+      {
+        "requested_model": "inclusionai/ling-3.0-flash-sante:free",
+        "actual_model": "inclusionai/ling-3.0-flash-sante:free",
+        "cost_usd": 0.0,
+        "truncated": false
+      },
+      {
+        "requested_model": "moonshotai/kimi-k3",
+        "actual_model": "moonshotai/kimi-k3",
+        "cost_usd": 0.019122,
+        "truncated": false,
+        "generation_id": "gen-1788909452-SGvNo29xB2BX0xoYOYeY"
+      }
+    ],
+    "rejected_outputs": [
+      {
+        "requested_model": "z-ai/glm-5.3-free",
+        "calls": 3,
+        "cost_usd": 0.0,
+        "reason": "output_truncated"
+      }
+    ],
+    "remaining_authorized_review_cap_usd": 0.0
+  },
+  "not_verified": [
+    "active UI for the three new business modes",
+    "pair-case persistence proposal and generated SQL",
+    "disposable-database RLS behavior",
+    "current remote deployment state",
+    "real two-person journey",
+    "market demand, willingness to pay, revenue or ROI",
+    "Swiss legal, tax, employment or payment compliance",
+    "human usability or commercial acceptance"
+  ]
+}

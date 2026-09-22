@@ -1,0 +1,31 @@
+You are an independent architecture and safety red-team reviewer. Treat the attached specification as the entire available evidence. Do not assume implementation details.
+
+Read the public synthetic review pack below, then attack these exact questions:
+
+1. Can any path disclose a case or contact before the right pair-specific approvals?
+2. Are visibility, comparison, case approval, terms approval, introduction, external-AI, recording, summary-use, and communications permissions improperly collapsed?
+3. Are mode semantics complete enough to implement without inventing hidden fields, especially paid_service, referral, and hybrid?
+4. Can stale versions, role swaps, expiry, revocation, retries, reloads, concurrent approvals, or a material edit preserve an invalid approval?
+5. Does D1 accidentally claim database, security, live, legal, or business acceptance?
+6. Does the DAG place durable persistence before domain behavior is proven or introduce duplicate authorities?
+7. Which three semantic mutations must be proven to fail?
+
+Return Markdown with exactly: `VERDICT`, `FINDINGS`, `REQUIRED TESTS`, `REJECTED OVERENGINEERING`, `STOP CONDITIONS`. Rank findings by P0-P3. A finding without a concrete failure scenario and proof test is invalid.
+
+--- BEGIN REVIEW PACK ---
+
+# Public synthetic review pack: Synera solo-business rebuild
+
+Synera compiles a non-binding candidate collaboration between two solo professionals. Flow: declared need and contribution -> explicit mutual interest -> pair case -> versioned material terms -> two approvals -> introduction request -> trial -> independently accepted outcome. It cannot decide trust, competence, price, agreement, law, human worth, or success probability. Sensitive traits, contacts, untrusted free text, and subscription tier cannot affect matching.
+
+Modes: exchange requires complementary two-way value; paid_service requires supplier coverage plus explicit paid-mode selection by both and unresolved compensation until approved terms; referral requires explicit source, recipient, intended benefit, third-party uncertainty, and compensation status; hybrid requires every named component to be independently eligible. joint_project is compatibility-only and parked. Legacy exchange profiles remain valid; missing new fields yields needs_information.
+
+Reuse one deterministic matcher, one minimal-profile bridge, one business-case compiler, one canonical SQL-source chain, and one provider router/ledger. Order: frozen synthetic oracle -> matcher modes -> profile bridge -> case v2 -> pure material terms/version/hash/two approvals/expiry/revocation/change invalidation -> canonical SQL proposal and generated outputs -> local synthetic pair workflow and event contract -> independent review/mutation/full tests/offline build. Generated SQL is not hand-edited.
+
+Evidence: D1 is offline semantic tests, mutation proof, synthetic journeys, complete local suite and offline build. D2 requires disposable-database adversarial RLS tests. D3 requires a fresh two-authorized-person remote journey. D4 requires a fixed real cohort. D5 is commercial launch. Overnight target is D1; no deploy, migration, signup opening, outreach, payment, recording, messaging, or live-user action.
+
+Permissions must remain distinct: visibility, comparison, pair-case disclosure, terms approval, introduction, external AI, recording, summary use, and communications. Material change invalidates both approvals. Unknown values remain unknown. No model accepts its own work.
+
+Execution: max three active workers including integrator; one writer per file; one bounded step per weak worker; explicit dependency, allowed files, invariant, negative cases, semantic validation, rollback, acceptance marker; independent reviewer gates. Paid fallback task ceiling USD 10 with fresh preview, exact identity/receipt, local acceptance, and unused funds unspent.
+
+--- END REVIEW PACK ---

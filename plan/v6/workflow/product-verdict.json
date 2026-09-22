@@ -1,0 +1,16 @@
+{
+  "status": "HOLD",
+  "current_revision": 1,
+  "covered_requirements": [],
+  "failures": [
+    {
+      "requirement_id": "APPROVAL-ISOLATION",
+      "reason": "outcome_mismatch",
+      "locators": [
+        "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\v6\\workflow\\approval-probe.tap"
+      ]
+    }
+  ],
+  "ignored_superseded_observations": 0,
+  "proof_boundary": "Checks supplied requirement/evidence records only; the operator must inspect the real outcome."
+}

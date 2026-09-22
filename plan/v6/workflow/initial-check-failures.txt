@@ -1,0 +1,37 @@
+{
+  "status": "HOLD",
+  "dispatch_allowed": false,
+  "product_accepted": false,
+  "errors": [
+    "INVALID_DURATION_MS"
+  ],
+  "topological_ids": []
+}
+
+FF..
+======================================================================
+FAIL: test_canonical_acceptance_rejects_receipt_self_review_stale_and_conflicting_outcomes (test_workflow.WorkflowChecks.test_canonical_acceptance_rejects_receipt_self_review_stale_and_conflicting_outcomes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Andrii\Documents\ChatGPT\DeskTopAugust\output\cnra-solo-rebuild-20260909\v6\workflow\test_workflow.py", line 29, in test_canonical_acceptance_rejects_receipt_self_review_stale_and_conflicting_outcomes
+    self.assertEqual(reconcile_acceptance(req,[good],current_revision=1)['status'],'PASS')
+AssertionError: 'HOLD' != 'PASS'
+- HOLD
++ PASS
+
+
+======================================================================
+FAIL: test_current_plan (test_workflow.WorkflowChecks.test_current_plan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Andrii\Documents\ChatGPT\DeskTopAugust\output\cnra-solo-rebuild-20260909\v6\workflow\test_workflow.py", line 14, in test_current_plan
+    self.assertEqual(result['status'],'PLAN_STRUCTURE_PASS',result)
+AssertionError: 'HOLD' != 'PLAN_STRUCTURE_PASS'
+- HOLD
++ PLAN_STRUCTURE_PASS
+ : {'status': 'HOLD', 'dispatch_allowed': False, 'product_accepted': False, 'errors': ['INVALID_DURATION_MS'], 'topological_ids': []}
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.139s
+
+FAILED (failures=2)

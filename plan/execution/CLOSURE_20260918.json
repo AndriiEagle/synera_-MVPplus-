@@ -1,0 +1,49 @@
+{
+ "created_at": "2026-09-18T22:15:57+02:00",
+ "note": "After Claude's three git am patches (fdce83d, 32d6c36, 4492172) + LF normalization of case-state sources and .gitattributes eol=lf pin (01c6d72). Verified: 149/149 tests, offline build 27 files, readiness 34%. SQL chain PASS+ROLLBACK on disposable DB not verified (needs H1).",
+ "files": {
+  "web_launch\\profile-store.mjs": {
+   "sha256": "ff9140eeea053de91307f3908126ecee399d7859e1073ef2f8f18dc611bfefcb",
+   "size": 16190
+  },
+  "web_launch\\profile-portability.test.mjs": {
+   "sha256": "353f380e507f41707e0edd3f486e1e6df55b0faa8f74f5c9b1f782e2fb9085af",
+   "size": 17872
+  },
+  "web_launch\\case-approval-guard.test.mjs": {
+   "sha256": "71d22460b1b53349560ce6c863d6e1fa37d581bec5d35aabf614734a8edf5c93",
+   "size": 8290
+  },
+  "supabase\\case-state.proposal.sql": {
+   "sha256": "07bc5b5bc813a4c44b9c1f4ba5f75b3ceb8c385845b31f963d67aae3d9ab1e87",
+   "size": 18440
+  },
+  "neon\\case-state.migration.sql": {
+   "sha256": "e2c7d5649098c3d4f2da9df176f7064043110f9154639dfb55d0ad334ea9bd8c",
+   "size": 19162
+  },
+  "neon\\case-state.acceptance.sql": {
+   "sha256": "715434272422526e6fb661118d549cae59f4b76c12923af7f4da8f9dc96e2dac",
+   "size": 13119
+  },
+  "neon\\worker.mjs": {
+   "sha256": "c07d7de46c2da610ba88c2203e5d6eb800fab66a2ff57f6876173b97bab85ba5",
+   "size": 13633
+  },
+  "neon\\worker.test.mjs": {
+   "sha256": "3c18d2cb5329c73b78cf8b01362a3c96090e1e91829cf2bbf310733729a58226",
+   "size": 20810
+  },
+  "neon\\generate-schema.mjs": {
+   "sha256": "9883dc6fa47e43a493c1566ed97e236703550e9b8ba696a5ad50b40b43e789c7",
+   "size": 12039
+  },
+  ".gitattributes": {
+   "sha256": "37b5dbaa8439669f1a594059b04ec3dd28a01960af02ae8eb905eb6f7f5627aa",
+   "size": 19
+  }
+ },
+ "provider_calls": 0,
+ "provider_usd": 0.0,
+ "boundary": ""
+}

@@ -1,0 +1,19 @@
+{
+  "producer": "inclusionai/ling-3.0-flash-fin:free",
+  "observer": "current_task_operator",
+  "whole_output_accepted": false,
+  "usable_directions_with_fixture_refinement": [
+    "material-version-race",
+    "forged-other-party-approval",
+    "expired-consent"
+  ],
+  "rejected": [
+    "missing-feedback-denominator",
+    "recursive-worker-budget-escape"
+  ],
+  "corrected_local_oracles": {
+    "missing-feedback-denominator": "10 eligible completed cases; 6 accepted outcomes; 4 missing: rate 6/10, missing=4. No cohort denominator shrink.",
+    "recursive-worker-budget-escape": "Child requests enlarged cap: reject; dispatch count and total reservation unchanged."
+  },
+  "limitation": "Test specifications reviewed only; not executed product regression tests."
+}

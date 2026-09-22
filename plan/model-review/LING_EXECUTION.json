@@ -1,0 +1,90 @@
+# Adversarial Execution-Plan Review
+
+## VERDICT
+
+**PLAN IS NOT EXECUTABLE AS WRITTEN.** The contract contains internal contradictions (dirty-work immutability vs. scoped rollback), under-specified oracle semantics, no hard stop rule for the USD 10 lane, and acceptance markers that can pass without user-visible behavior. P0 failures must be resolved before any worker starts.
+
+## FINDINGS (P0-P3)
+
+**P0 - F1: Dirty-work immutability contradicts scoped rollback.**
+- *Concrete failure:* "Dirty work is never reset, cleaned, stashed, or overwritten" makes "scoped rollback" physically impossible; a failed worker leaves partial artifacts with no defined compensating action.
+- *Smallest correction:* Replace rollback with *compensating transaction log*: every write appends an inverse op; on failure the integrator replays inverses against the dirty baseline hash.
+- *Deterministic check:* After any worker failure, `git diff --stat` against starting hash equals the complement of the worker's inverse log; no file content matches pre-failure dirty state.
+
+**P0 - F2: No hard stop rule for USD 10 fallback; budget can exhaust without useful output.**
+- *Concrete failure:* Per-stage call limits can sum past USD 10; "unused budget remains unused" is silent on failed-stage consumption; no minimum-output checkpoint before spend.
+- *Smallest correction:* Add: (a) cumulative spend ledger with hard stop at USD 10, (b) per-stage cap ≤ USD 2, (c) spend gated on prior-stage acceptance marker passing, (d) failed stage refunds unused portion to ledger.
+- *Deterministic check:* Ledger balance ≥ 0 at all times; total charged ≤ USD 10; any stage without a passing acceptance marker cannot debit next stage.
+
+**P0 - F3: Oracle is a single-point-of-fail with no fail-able oracle definition.**
+- *Concrete failure:* "Failed oracle stops the lane" but oracle failure vs. legitimate no-answer is undefined; no fallback, no retry, no timeout spec.
+- *Smallest correction:* Define oracle SLA (timeout ≤ 30s, 3 retries on transient transport only), and a *degraded mode* that proceeds with explicit oracle-unavailable marker rather than hard stop.
+- *Deterministic check:* Integrator verifies oracle response timestamp, retry count, and degradation flag; lane proceeds only with one of: valid oracle output or explicit degradation marker.
+
+**P1 - F4: Acceptance markers can pass without user-visible behavior.**
+- *Concrete failure:* "Dependency markers still pass" and "generated outputs match sources" are structural checks; a worker can satisfy them with no-op or tautological output.
+- *Smallest correction:* Each marker must include a *semantic oracle*: a second weak model (or deterministic checker) asserts the output changes observable behavior vs. baseline.
+- *Deterministic check:* Diff of behavior traces (not file contents) between pre/post worker run is non-empty and matches the worker's declared objective.
+
+**P1 - F5: Reviewer lacks true independence; integrator is both worker and reviewer.**
+- *Concrete failure:* Integrator is one of the 3 active workers; "reviewer sees actual diff" but integrator owns the merge.
+- *Smallest correction:* Split integrator into *merge-bot* (file ownership, sequencing) and *reviewer* (separate worker, cannot be merge-bot); reviewer's output is a signed attestation, not a merge decision.
+- *Deterministic check:* Reviewer's identity ≠ merge-bot identity; reviewer attestation is a detached signed artifact; merge requires both.
+
+**P1 - F6: Race on generated SQL regeneration.**
+- *Concrete failure:* "Generated SQL modified only through canonical source and regeneration" but two workers can trigger regeneration concurrently, producing divergent SQL.
+- *Smallest correction:* Regeneration is a single-writer operation guarded by a file-level lock on the canonical source; second request waits or fails with stale-input error.
+- *Deterministic check:* Only one regeneration process holds the lock at a time; lock file hash matches canonical source hash at acquisition time.
+
+**P2 - F7: Overlapping file sets undefined.**
+- *Concrete failure:* "Overlapping file sets force sequential work" but overlap is undefined (path prefix? content hash? directory?).
+- *Smallest correction:* Define overlap as any shared path prefix in allowed-files list; workers declare allowed files up front; integrator serializes declarations.
+- *Deterministic check:* Integrator's serialization order is total; no two writers hold overlapping prefixes concurrently.
+
+**P2 - F8: Fabricated provider receipts undetectable.**
+- *Concrete failure:* Receipt verification is not specified; a worker can forge a cost=0 receipt.
+- *Smallest correction:* Receipt must include provider-signed nonce, requested identity, actual identity, cost, and timestamp; integrator verifies signature against known provider key.
+- *Deterministic check:* Signature verification passes against provider's published key; nonce is unique and not replayed.
+
+**P3 - F9: "Denominator-preserving metrics" is ambiguous.**
+- *Concrete failure:* No definition of denominator or preservation invariant; worker can declare any metric denominator-preserving.
+- *Smallest correction:* Specify exact metric formula and denominator source; preservation means denominator unchanged after worker run.
+- *Deterministic check:* Metric denominator pre-run equals post-run, verified by integrator from raw data, not worker report.
+
+**P3 - F10: Overengineering to reject.**
+- *Reject:* "Dirty work never reset/cleaned/stashed/overwritten" as absolute rule — replace with compensating log (F1).
+- *Reject:* "One unique acceptance marker" per worker — markers must be semantic, not just unique; replace with behavioral diff check (F4).
+- *Reject:* Bundled "independent review/mutation/full suite/offline build" as one step — split into four sequential gates each with own marker.
+- *Reject:* "Frozen dependency chain" — chain must allow degraded-mode bypass at oracle (F3).
+
+## TASK_SPLITS
+
+| Worker | Objective | Allowed Files | Starting Hash | Acceptance Marker |
+|--------|-----------|---------------|---------------|-------------------|
+| W1 (Oracle) | Query oracle, return structured answer or degradation marker | oracle-input/, oracle-output/ | hash of input pack | oracle response signed + timestamped |
+| W2 (Matcher) | Apply matcher mode semantics to oracle output | matcher/, bridge/ | hash of matcher v2 | behavioral diff vs baseline non-empty |
+| W3 (Compiler) | Compile business case, generate SQL via canonical source | compiler/, sql-gen/ | hash of compiler v2 | generated SQL matches canonical source hash |
+| Integrator | Merge, verify, attest | all (read-only merge) | dirty baseline hash | signed attestation + compensating log empty |
+
+## INTEGRATOR CHECKLIST
+
+1. Verify branch/head/dirty baseline hashes match declared starting hashes.
+2. Confirm no edits outside allowed files (path-prefix check).
+3. Dependency markers pass *and* semantic oracle asserts behavioral change.
+4. Deliberate mutation of named semantic test fails; mutation restored; test passes.
+5. Generated SQL hash matches canonical source regeneration output.
+6. Provider receipt verified against provider key, nonce unique, cost ≤ stage cap.
+7. Offline proof not promoted to D2/D3/D4/D5 acceptance.
+8. Cumulative spend ≤ USD 10; ledger balance ≥ 0; failed stages refund unused.
+9. Compensating log empty after all workers succeed.
+10. Reviewer attestation signed and identity ≠ merge-bot identity.
+
+## BUDGET STOP RULES
+
+1. **Hard ceiling:** cumulative charged ≤ USD 10; any debit rejected if balance would go negative.
+2. **Per-stage cap:** ≤ USD 2 per stage; stage cannot start without prior stage's acceptance marker.
+3. **Refund rule:** failed stage refunds unused portion to ledger; charged-but-failed calls are audited, not retried.
+4. **Output gate:** next stage's spend is gated on previous stage's output passing semantic oracle (F4).
+5. **Exhaustion stop:** if ledger balance = 0 and no acceptance marker passed, lane halts and integrator emits budget-exhausted artifact; no further calls.
+6. **Transient retry limit:** max 3 retries on documented transient transport failure only; non-transient failure stops lane immediately.
+7. **Unused budget:** remains in ledger, never auto-allocated to other lanes; explicit reallocation requires integrator attestation.
