@@ -165,8 +165,8 @@
      "id": "C03.L2",
      "name": "Кейс у store",
      "gate": "shape matches SQL; client cannot write the other party's approval",
-     "status": "PARTIAL",
-     "evidence": "B2-rework частково: per-party approval rows тепер пишуться (клієнт V6-03 → /rest/v1/match_case_approvals, поля case_id/party_id/approved_version/approved_terms_hash; серверна таблиця + RLS + acceptance.sql уже в supabase/case-state.proposal.sql; case-approval-guard 10/10, E2E 1/1). Лишається: match_cases досі шле один JSON-blob state, тоді як SQL-таблиця очікує колонки participant_low/high, mode, material, terms_hash, expires_at"
+     "status": "DONE",
+     "evidence": "B2-rework завершено: match_cases пише КОЛОНКИ (case_id, participant_low/high, mode, material, terms_hash, expires_at; закриття через PATCH status), погодження — окремі рядки match_case_approvals (V6-03), читання реконструює стан з caseFromRows(row, approvalRows). Gate: web_launch/b2-case-store-shape.test.mjs SYN_CASE_STORE_MATCHES_SQL 1/1 + case-approval-guard 10/10 + E2E 1/1"
     },
     {
      "id": "C03.L3",
@@ -186,13 +186,15 @@
      "id": "C03.L5",
      "name": "Worker allowlist (C6)",
      "gate": "tables reachable only through gateway",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "neon/worker.mjs TABLES allowlist (profiles, pilot_consents, meeting_requests, meeting_messages, profile_blocks, profile_reports, match_cases, match_case_approvals); усе поза списком → 404 (/data/rpc, /data/synera_pilot_members). RLS+column grants — справжнє застосування. neon/worker.test.mjs 16/16"
     },
     {
      "id": "C03.L6",
      "name": "Апка синхронізує кейс через store (X6)",
      "gate": "two browsers see each other's approval",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "Двостороння синхронізація кейсу через store: party A і party B незалежно погоджують і доходять до approved_for_next_step. Gate: case-approval-guard.test.mjs «X6 / V6-06» + e2e-neon-flow.test.mjs (restore→approve→invalidate) 1/1"
     },
     {
      "id": "C03.L7",
@@ -231,7 +233,8 @@
      "id": "C04.L4",
      "name": "Приховати від конкретних людей і категорій (м'який блок)",
      "gate": "hidden person cannot see hidden fields; no notification to them",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "web_launch/soft-block.mjs: м'який блок за людиною (hiddenPeople) і категорією (hiddenCategories); прихований глядач не бачить жодного поля; filterDiscoverable виключає профілі власників, що приховали глядача; чисто, без сповіщень, fail-closed через C04.L3. 8/8 тестів"
     },
     {
      "id": "C04.L5",
@@ -619,7 +622,7 @@
      "name": "Автоматичний E2E у браузері проти мок-Neon",
      "gate": "restore, approve, invalidate scripted",
      "status": "PARTIAL",
-     "evidence": "web_launch/e2e-neon-flow.test.mjs: повний scripted lifecycle проти мок-Neon (restore сесії, discover, audience-фільтр, approval у match_case_approvals, двосторонній approved_for_next_step) — 1/1 PASS. Лишається: реальний браузер (Playwright), не лише fetch-мок"
+     "evidence": "e2e-neon-flow.test.mjs: повний scripted lifecycle проти мок-Neon (restore, discover, audience, двостороннє погодження, матеріальна ревізія з version+=1 і скиданням погоджень) — 1/1 PASS. Лишається: реальний браузер (Playwright), не лише fetch-мок"
     },
     {
      "id": "C13.L4",

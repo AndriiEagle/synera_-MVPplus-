@@ -125,25 +125,31 @@ test('SYN_STORE_CARRIES_MODE_DETAILS: brief v2 with mode_details round-trips byt
   await store.saveProfile(saveProfileInput({ ...legacy, future_field: 'x' }));
 });
 
-test('SYN_STORE_CARRIES_CASE_STATE: store persists exactly what createCaseState returns, hash never recomputed', async () => {
+test('SYN_CASE_STORE_MATCHES_SQL: store writes normalized columns and reconstructs the domain state', async () => {
   const state = await createCaseState({ caseId: 'case-a-b', participants: ['a', 'b'], material: material(), now: '2026-09-08T10:00:00.000Z', expiresAt: '2026-09-15T10:00:00.000Z' });
   const store = new ProfileStore();
   const calls = wireStore(store, () => []);
   await store.saveCaseState({ ...state, smuggled: 'extra' });
-  const posted = calls.find(call => call.options?.method === 'POST');
+  const posted = calls.find(call => call.options?.method === 'POST' && call.path.startsWith('/rest/v1/match_cases'));
   assert.equal(posted.path, '/rest/v1/match_cases?on_conflict=case_id');
   assert.equal(posted.options.method, 'POST');
   assert.equal(posted.options.body.case_id, 'case-a-b');
-  const clean = posted.options.body.state;
-  assert.equal(clean.schema, 'synera.case-state.v1');
-  assert.deepEqual(Object.keys(clean).sort(), ['approvalAttestation', 'approvals', 'binding', 'caseId', 'closeReason', 'closedAt', 'closedBy', 'createdAt', 'events', 'expiresAt', 'material', 'participants', 'schema', 'status', 'termsHash', 'timeAuthority', 'updatedAt', 'version']);
-  assert.equal('smuggled' in clean, false); // only what createCaseState returns
-  assert.equal(clean.termsHash, state.termsHash);
-  // read path returns the state untouched; the terms hash is never recomputed on read
+  assert.equal('state' in posted.options.body, false);
+  assert.deepEqual(Object.keys(posted.options.body).sort(), ['case_id', 'expires_at', 'material', 'mode', 'participant_high', 'participant_low', 'terms_hash']);
+  assert.equal('smuggled' in posted.options.body, false);
+  assert.equal(posted.options.body.terms_hash, state.termsHash);
+  // read path reconstructs the domain object without recomputing the stored hash
   const readStore = new ProfileStore();
-  wireStore(readStore, path => path.includes('case-a-b') ? [{ state: clean }] : []);
+  const caseRow = {
+    ...posted.options.body, version: 1, status: 'open', closed_at: null,
+    created_at: state.createdAt, updated_at: state.updatedAt,
+  };
+  wireStore(readStore, path => path.startsWith('/rest/v1/match_cases?case_id=') && path.includes('case-a-b') ? [caseRow] : []);
   const loaded = await readStore.caseState('case-a-b');
-  assert.equal(JSON.stringify(loaded), JSON.stringify(clean));
+  assert.equal(loaded.schema, 'synera.case-state.v1');
+  assert.deepEqual(loaded.participants, ['a', 'b']);
+  assert.equal(loaded.termsHash, state.termsHash);
+  assert.equal(loaded.status, 'draft');
   assert.equal(await readStore.caseState('case-none'), null);
   // fail closed on invalid shapes
   await assert.rejects(() => store.saveCaseState({ ...state, schema: 'other.v9' }));
@@ -178,9 +184,9 @@ test('SYN_REMOTE_STORE_SHAPE_MATCHES: Neon/Supabase inherit the store bodies and
   await neon.saveCaseState(state);
   // local _send receives the raw body object; remote transports serialize it — field names must match
   const localBrief = JSON.stringify(localCalls.find(call => call.path.startsWith('/rest/v1/profiles')).options.body.brief);
-  const localState = JSON.stringify(localCalls.find(call => call.path.startsWith('/rest/v1/match_cases?on_conflict')).options.body.state);
+  const localState = JSON.stringify(localCalls.find(call => call.path.startsWith('/rest/v1/match_cases?on_conflict')).options.body);
   const remoteBrief = calls => JSON.parse(calls.find(call => typeof call.options.body === 'string' && call.options.body.includes('"brief"')).options.body).brief;
-  const remoteState = calls => JSON.parse(calls.find(call => typeof call.options.body === 'string' && call.options.body.includes('"caseId"')).options.body).state;
+  const remoteState = calls => JSON.parse(calls.find(call => typeof call.options.body === 'string' && call.options.body.includes('"participant_low"')).options.body);
   assert.equal(JSON.stringify(remoteBrief(supaCalls)), localBrief);
   assert.equal(JSON.stringify(remoteBrief(neonCalls)), localBrief);
   assert.equal(JSON.stringify(remoteState(supaCalls)), localState);

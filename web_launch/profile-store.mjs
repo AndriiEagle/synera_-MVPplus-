@@ -1,6 +1,43 @@
 import { consentRecord, POLICY_VERSION } from './pilot-policy.mjs';
 import { normalizeBrief, briefProblems } from './profile-brief.mjs';
 import { profileSafetyFindings } from './profile-portability.mjs';
+
+const CASE_ATTESTATION = 'ACKNOWLEDGED_FOR_NEXT_STEP_NOT_A_CONTRACT';
+const CASE_SELECT = 'case_id,participant_low,participant_high,mode,material,terms_hash,version,status,expires_at,closed_at,created_at,updated_at';
+const APPROVAL_SELECT = 'party_id,approved_version,approved_terms_hash,approved_at,withdrawn_at';
+
+function latestInstant(...values) {
+  return values.filter(value => typeof value === 'string' && Number.isFinite(Date.parse(value)))
+    .sort((left, right) => Date.parse(right) - Date.parse(left))[0] ?? null;
+}
+
+function caseFromRows(row, approvalRows = []) {
+  if (!row) return null;
+  const participants = [row.participant_low, row.participant_high];
+  const closed = row.status === 'revoked' || row.status === 'abandoned';
+  const approvals = {};
+  for (const approval of closed ? [] : approvalRows) {
+    if (approval.withdrawn_at || !participants.includes(approval.party_id)) continue;
+    if (approval.approved_version !== row.version || approval.approved_terms_hash !== row.terms_hash) continue;
+    approvals[approval.party_id] = {
+      partyId: approval.party_id,
+      version: approval.approved_version,
+      termsHash: approval.approved_terms_hash,
+      approvedAt: approval.approved_at,
+      attestation: CASE_ATTESTATION,
+    };
+  }
+  const status = closed ? row.status : participants.every(id => approvals[id]) ? 'approved_for_next_step'
+    : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
+  const updatedAt = latestInstant(row.updated_at, ...Object.values(approvals).map(value => value.approvedAt)) ?? row.created_at;
+  return {
+    schema: 'synera.case-state.v1', caseId: row.case_id, participants, version: row.version,
+    material: row.material, termsHash: row.terms_hash, status, approvals, binding: false,
+    approvalAttestation: CASE_ATTESTATION, createdAt: row.created_at, updatedAt, expiresAt: row.expires_at,
+    closedBy: null, closedAt: row.closed_at, closeReason: closed ? row.status : null,
+    timeAuthority: 'server_assigned_c1', events: [],
+  };
+}
 export function validateProfile(p) {
   for (const [key, max] of [['display_name', 60], ['city', 80], ['offers', 300], ['seeks', 300]]) {
     if (typeof p[key] !== 'string' || p[key].trim().length > max) throw new Error('Некоректний профіль');
@@ -115,8 +152,9 @@ export class ProfileStore {
     const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
     if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
   }
-  // SYN_STORE_CARRIES_CASE_STATE: case state per pair, exactly what createCaseState returns.
-  // No free text, no contacts, no transcript; the stored hash is never recomputed on read.
+  // SYN_CASE_STORE_MATCHES_SQL: the client writes the normalized SQL columns, never a
+  // JSON state blob. caseState reconstructs the domain state from match_cases plus the
+  // caller-visible match_case_approvals rows; the server owns version and timestamps.
   // SYN_OWN_APPROVAL_ONLY: a caller writes only its own approval. Every other party's
   // approval is re-read from the stored row and kept only while it still matches the
   // version and terms hash being written; the status is derived here and never taken
@@ -154,11 +192,29 @@ export class ProfileStore {
         : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
     }
     clean.approvals = approvals;
-    await this._send('/rest/v1/match_cases?on_conflict=case_id', { method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: { case_id: clean.caseId, state: clean } });
+    const [participant_low, participant_high] = [...clean.participants].sort();
+    const caseBody = {
+      case_id: clean.caseId,
+      participant_low,
+      participant_high,
+      mode: clean.material.mode,
+      material: clean.material,
+      terms_hash: clean.termsHash,
+      expires_at: clean.expiresAt,
+    };
+    await this._send('/rest/v1/match_cases?on_conflict=case_id', {
+      method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: caseBody,
+    });
+    if (closed) {
+      await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(clean.caseId)}`, {
+        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { status: clean.status },
+      });
+    }
     // V6-03: власне погодження пишеться окремим рядком у match_case_approvals, щоб серверний
     // RLS міг заборонити запис чужого погодження. Клієнт пише лише власний рядок; порядок
     // (спершу match_cases) збережено, щоб один POST не змішувався з іншим у споживачів.
-    if (approvals[me]) {
+    const previousOwnApproval = stored?.approvals?.[me];
+    if (approvals[me] && (previousOwnApproval?.version !== approvals[me].version || previousOwnApproval?.termsHash !== approvals[me].termsHash)) {
       await this._send('/rest/v1/match_case_approvals', {
         method: 'POST',
         authenticated: true,
@@ -170,13 +226,19 @@ export class ProfileStore {
           approved_terms_hash: approvals[me].termsHash,
         },
       });
+    } else if (!approvals[me] && previousOwnApproval) {
+      await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(clean.caseId)}&party_id=eq.${encodeURIComponent(me)}&withdrawn_at=is.null`, {
+        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { withdrawn_at: clean.updatedAt },
+      });
     }
   }
   async caseState(caseId) {
     this.requireRealPilot();
     if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Некоректний ID кейсу');
-    const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=state&limit=1`, { authenticated: true });
-    return rows?.[0]?.state ?? null;
+    const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=${CASE_SELECT}&limit=1`, { authenticated: true });
+    if (!rows?.[0]) return null;
+    const approvalRows = await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(caseId)}&select=${APPROVAL_SELECT}&order=approved_at.asc&limit=100`, { authenticated: true });
+    return caseFromRows(rows[0], approvalRows);
   }
   async exportAccount() {
     this.requireRealPilot();

@@ -45,7 +45,11 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
     ]),
   };
 
-  // Mock fetch mimicking Neon gateway worker routing
+  // Mock fetch mimicking Neon gateway worker routing.
+  // Deterministic server clock: the real server sets created_at/updated_at/approved_at with now();
+  // this fixture pins them to the test's timeline (case created 2026-09-19T14:00Z) so the
+  // client-side approveCase guard (now >= state.updatedAt) stays deterministic.
+  const SERVER_NOW = '2026-09-19T14:00:00.000Z';
   let activeUser = userA;
   const mockFetch = async (path, init = {}) => {
     const url = new URL(path, 'http://localhost');
@@ -66,24 +70,60 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
     }
 
     if (pathname === '/api/neon/data/match_cases') {
-      if (method === 'POST') {
-        const body = JSON.parse(init.body);
-        db.cases.set(body.case_id, body.state);
-        return new Response(null, { status: 204 });
-      }
       const caseIdParam = url.searchParams.get('case_id');
       const caseId = caseIdParam?.replace('eq.', '');
+      if (method === 'POST') {
+        const body = JSON.parse(init.body);
+        const existing = db.cases.get(body.case_id);
+        // Replicate public.synera_case_guard(): server owns version; a material/mode/terms
+        // change raises it by one, an unchanged write keeps it.
+        const materialChanged = !existing
+          || JSON.stringify(existing.material) !== JSON.stringify(body.material)
+          || existing.mode !== body.mode
+          || existing.terms_hash !== body.terms_hash;
+        const version = existing ? (materialChanged ? existing.version + 1 : existing.version) : 1;
+        db.cases.set(body.case_id, {
+          ...existing, ...body,
+          version,
+          status: existing?.status || 'open',
+          created_at: existing?.created_at || SERVER_NOW,
+          updated_at: SERVER_NOW,
+          closed_at: existing?.closed_at ?? null,
+        });
+        return new Response(null, { status: 204 });
+      }
+      if (method === 'PATCH') {
+        const body = JSON.parse(init.body);
+        const existing = db.cases.get(caseId) || {};
+        db.cases.set(caseId, {
+          ...existing, ...body,
+          updated_at: SERVER_NOW,
+          closed_at: body.status && body.status !== 'open' ? SERVER_NOW : existing.closed_at ?? null,
+        });
+        return new Response(null, { status: 204 });
+      }
       const item = db.cases.get(caseId);
-      return new Response(JSON.stringify(item ? [{ state: item }] : []));
+      return new Response(JSON.stringify(item ? [item] : []));
     }
 
     if (pathname === '/api/neon/data/match_case_approvals') {
+      const caseId = url.searchParams.get('case_id')?.replace('eq.', '');
       if (method === 'POST') {
         const body = JSON.parse(init.body);
-        db.approvals.set(`${body.case_id}:${body.party_id}`, body);
+        db.approvals.set(`${body.case_id}:${body.party_id}`, {
+          ...body, approved_at: SERVER_NOW, withdrawn_at: null,
+        });
         return new Response(null, { status: 204 });
       }
-      return new Response(JSON.stringify(Array.from(db.approvals.values())));
+      if (method === 'PATCH') {
+        const partyId = url.searchParams.get('party_id')?.replace('eq.', '');
+        const key = `${caseId}:${partyId}`;
+        const existing = db.approvals.get(key);
+        if (existing) db.approvals.set(key, { ...existing, ...JSON.parse(init.body) });
+        return new Response(null, { status: 204 });
+      }
+      const rows = Array.from(db.approvals.values()).filter(a => !caseId || a.case_id === caseId);
+      return new Response(JSON.stringify(rows));
     }
 
     return new Response(JSON.stringify({ error: 'not_found' }), { status: 404 });
