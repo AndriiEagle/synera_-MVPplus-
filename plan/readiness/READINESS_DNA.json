@@ -703,43 +703,43 @@
      "id": "C15.L1",
      "name": "Token Forge: allowlisted tokens + WCAG AA guard + preview/reset",
      "gate": "token_forge.test.mjs passes; visual regression green",
-     "status": "NOT_STARTED",
-     "next": "extract tokens from style.css (C06.L2) first"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/token_forge.mjs + token_forge.test.mjs (12/12): allowlist з РЕАЛЬНИХ імен tokens.css (звірено тестом проти тексту файлу), суворий WCAG 2.x (еталонні 21.00 і 4.47 валідують реалізацію), guardAA з violations+ratio, canonical sha256 preview, frozen baseline reset; fail-closed українськими помилками; інваріант: нуль згадок consent у машині"
     },
     {
      "id": "C15.L2",
      "name": "Layout Recomposer: component registry + order permutations + regression gate",
      "gate": "layout_recomposer.test.mjs; 149/149 existing tests pass",
-     "status": "NOT_STARTED",
-     "next": "depends on C06.L3 components catalogue"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/layout_recomposer.mjs + test (12/12): реєстр 5 екранів звірено з id index.html, validateOrder/recomposeOrder (move/promote) fail-closed, toggleVisibility захищає settings-view інваріантом канону, regressionGate (набір екранів незмінний — лише порядок/видимість), describeLayout для audit"
     },
     {
      "id": "C15.L3",
      "name": "Map Style Switcher: tile layer abstraction + marker tokens + GEO-01 guard",
      "gate": "map_style.test.mjs; GEO-01 acceptance unchanged",
-     "status": "NOT_STARTED",
-     "next": "depends on web_launch/map.mjs + GEO-01"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/map_style.mjs + test (11/11): 3 шари підкладок (osm/satellite/schematic, schematic=local), превʼязаність user>event>cohort>osm, маркер-токени з tokens.css, GEO-01: без згоди radius=null, зі згодою clamp 15..25 км (точність <15 км недосяжна), geoGuard відкидає live GPS і торкання consent-гейтів"
     },
     {
      "id": "C15.L4",
      "name": "Event Theme Injector: calendar integration + pre-audited theme bundles",
      "gate": "event_theme.test.mjs; rollback < 1s; no consent gate modification",
-     "status": "NOT_STARTED",
-     "next": "depends on C06.L1 Brand DNA + C06.L2 tokens"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/event_theme.mjs + test (10/10): 3 pre-audited bundles (new-year wrap-around 12-20..01-06, startup-nights, summer-forum), календарний activeBundle з межами включно, validateBundleTokens + self-audit при завантаженні, applyTheme тільки identity зі списку, rollback = заморожена O(1) константа (<1s), consentInvariantCheck блокує всі 7 гейтів"
     },
     {
      "id": "C15.L5",
      "name": "Cascade Orchestrator: MA4 -> Template Selector -> Forge -> Preview -> Confirm -> Deploy -> Log",
      "gate": "cascade_orchestrator.test.mjs; cascade_log.jsonl immutable; rollback verified",
-     "status": "NOT_STARTED",
-     "next": "depends on C09.L6 MA4 + C15.L1-L4"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/cascade_orchestrator.mjs + test (13/13): Template Selector L1/L2/L3, fromHypothesis fail-closed (dropoff>0; L2 потребує когорти), preview A/B з WCAG AA гейтом (NaN-баг каналу R знайдено і виправлено циклом верифікації), confirm вимагає operatorId (немає тихих змін), deployAndLog → hash-chained iceberg/cascade_log.jsonl (prev_hash→entry_hash, genesis=GENESIS), verifyLog ловить тампірінг за індексом, rollbackLast з audit-записом; тести пишуть лише в os.tmpdir, реальний лог не чіпають"
     },
     {
      "id": "C15.L6",
      "name": "Operator Dashboard Integration: cohort targeting + preview UI + audit trail",
      "gate": "operator_dashboard.test.mjs extended; E2E scenario passes",
-     "status": "NOT_STARTED",
-     "next": "depends on C09.L3 cockpit + C15.L5"
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/operator_dashboard.mjs + test (11/11): 3 когорти канону §4.1, composePreview (permutation-гейт канонічного набору екранів, sha256, requiresOperatorConfirm), renderPreviewPanel з українськими лейблами, batchPreview max 3 (канон §8), auditLine канонічний + auditTrail hash-ланцюг з виявленням тампірінгу; самодостатній, без імпорту sibling-модулів"
     },
     {
      "id": "C15.L7",

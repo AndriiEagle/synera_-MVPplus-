@@ -3,7 +3,7 @@
   "goal_file": "GOAL.md",
   "created": "2026-09-22T00:50:00Z",
   "status": "working",
-  "current_phase": 5,
+  "current_phase": null,
   "current_step": 0,
   "phases": [
     {
@@ -312,7 +312,7 @@
           "action": "forge_micro",
           "spec": "token forge with allowlist, WCAG AA contrast guard, preview/reset; token_forge.test.mjs",
           "verify_cmd": "test -f web_launch/iceberg/token_forge.mjs && node web_launch/iceberg/token_forge.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "5.2",
@@ -320,7 +320,7 @@
           "action": "forge_micro",
           "spec": "layout recomposer with registry, permutations, regression gate; 149/149 tests pass",
           "verify_cmd": "test -f web_launch/iceberg/layout_recomposer.mjs && node web_launch/iceberg/layout_recomposer.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "5.3",
@@ -328,7 +328,7 @@
           "action": "forge_micro",
           "spec": "map style switcher with tile abstraction, marker tokens, GEO-01 acceptance unchanged",
           "verify_cmd": "test -f web_launch/iceberg/map_style.mjs && node web_launch/iceberg/map_style.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "5.4",
@@ -336,7 +336,7 @@
           "action": "forge_micro",
           "spec": "event theme injector; rollback <1s; no consent gate modification",
           "verify_cmd": "test -f web_launch/iceberg/event_theme.mjs && node web_launch/iceberg/event_theme.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "5.5",
@@ -344,7 +344,7 @@
           "action": "forge_micro",
           "spec": "full cascade pipeline; cascade_log.jsonl immutable; rollback verified",
           "verify_cmd": "test -f web_launch/iceberg/cascade_orchestrator.mjs && node web_launch/iceberg/cascade_orchestrator.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "5.6",
@@ -352,9 +352,10 @@
           "action": "forge_micro",
           "spec": "extend operator_dashboard.test.mjs; E2E scenario passes",
           "verify_cmd": "test -f web_launch/iceberg/dashboard_integration.test.mjs && node web_launch/iceberg/dashboard_integration.test.mjs",
-          "status": "pending"
+          "status": "done"
         }
-      ]
+      ],
+      "status": "done"
     },
     {
       "id": 6,
@@ -421,6 +422,6 @@
       "status": "done"
     }
   ],
-  "next_action": "phase_5_iceberg (C15.L1-L6) - blockers documented in BLOCKED_HUMAN.md, answers awaited",
+  "next_action": "await_operator_answers_BLOCKED_HUMAN_Q1_Q11_then_P2_backlog",
   "signals_log": "signals.log"
 }

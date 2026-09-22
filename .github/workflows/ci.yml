@@ -33,8 +33,8 @@ jobs:
       - run: npx puppeteer browsers install chrome
 
       # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
-      # Glob *.test.mjs розгортається bash'ем на ubuntu; другий аргумент — neon-воркер.
-      - run: node --test web_launch/*.test.mjs neon/worker.test.mjs
+      # Glob *.test.mjs розгортається bash'ем на ubuntu; другий і третій аргументи — neon-воркер і Iceberg-машини.
+      - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/worker.test.mjs
 
       # axe-core через puppeteer; exit 1 при critical/serious порушеннях.
       - run: node web_launch/a11y_audit.mjs
