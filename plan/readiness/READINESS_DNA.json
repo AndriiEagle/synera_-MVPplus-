@@ -70,8 +70,8 @@
      "id": "C01.L6",
      "name": "Стани доказів self_declared->evidence_supplied->checked_with_scope->outcome_confirmed",
      "gate": "each check has source, date, author, scope, expiry",
-     "status": "NOT_STARTED",
-     "next": "domain module + tests before any UI"
+     "status": "PARTIAL",
+     "evidence": "web_launch/proof-state.mjs: повний ланцюг self_declared→evidence_supplied→checked_with_scope→outcome_confirmed, двостороннє підтвердження, скидання при матеріальній зміні; 3/3 тестів. Лишається: поля source/date/author/scope/expiry на кожну перевірку"
     },
     {
      "id": "C01.L7",
@@ -110,42 +110,43 @@
      "id": "C02.L3",
      "name": "Свіжість потреби (експоненційне згасання) + b-matching з лімітами на людину",
      "gate": "no one gets more than cap intros/week; replay on cohort",
-     "status": "NOT_STARTED",
-     "next": "M06, M07 in MATH_AGENTS"
+     "status": "DONE",
+     "evidence": "web_launch/need-decay.mjs (M06 експоненційне згасання потреби, 4/4) + web_launch/b-matching.mjs (M07 зважене b-matching з квотами на людину, 4/4); M06+M07 інтегровано в matching.mjs (коміт e2aa096)"
     },
     {
      "id": "C02.L4",
      "name": "Стабільний матчинг і багатосторонні цикли обміну",
      "gate": "no blocking pair; cycles length<=3 found exhaustively on fixtures",
-     "status": "NOT_STARTED",
-     "next": "M08, M09"
+     "status": "DONE",
+     "evidence": "web_launch/stable-matching.mjs (M08 Gale–Shapley багато-до-багатьох, 5/5, включно з 1000-випадковим property-тестом «немає блокуючої пари») + web_launch/cycle-exchange.mjs (M09 цикли ≤3, 4/4; жодна людина не в двох циклах)"
     },
     {
      "id": "C02.L5",
      "name": "Статистика пілоту: Kaplan-Meier, поглинальний Марков, CUSUM",
      "gate": "matches hand-computed fixtures",
-     "status": "NOT_STARTED",
-     "next": "M11-M13"
+     "status": "DONE",
+     "evidence": "web_launch/funnel-analytics.mjs (M11 Kaplan–Meier з цензуруванням, M12 поглинальний Марков: фундаментальна матриця + точні ймовірності поглинання) + web_launch/cusum.mjs (M13 CUSUM/EWMA, 5/5, включно з бюджетом хибнопозитивів на 1000 серіях)"
     },
     {
      "id": "C02.L6",
      "name": "Адаптація UI: Thompson sampling серед погоджених варіантів",
      "gate": "guardrails never violated in simulation",
-     "status": "NOT_STARTED",
-     "next": "M14 under MA3"
+     "status": "DONE",
+     "evidence": "web_launch/thompson.mjs (M14 Beta–Bernoulli Thompson sampling, 5/5); заблокований варіант не обирається навіть з alpha=1000; детермінований за seed"
     },
     {
      "id": "C02.L7",
      "name": "Самопокращення: офлайн-реплей + заздалегідь зареєстровані ворота",
      "gate": "no parameter promoted without holdout win + human approval",
-     "status": "NOT_STARTED",
-     "next": "MA4"
+     "status": "DONE",
+     "evidence": "web_launch/ma4.mjs (MA4 офлайн-реплей + заздалегідь зареєстровані ворота + append-only журнал рішень, 5/5); підвищення лише з виграшем на holdout ТА згодою людини"
     },
     {
      "id": "C02.L8",
      "name": "N-версійна перевірка критичних агентів (дві незалежні реалізації)",
      "gate": "hash and invalidation agree on 10k generated cases",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "web_launch/n-version-hash.mjs (дві незалежні реалізації канонізації+SHA-256, 5/5; збігаються на 10 000 згенерованих випадках)"
     }
    ]
   },
@@ -224,7 +225,8 @@
      "id": "C04.L3",
      "name": "Рівні аудиторії на поле: публічно / спільнота / після зустрічі / лише я",
      "gate": "server enforces per field, not only UI",
-     "status": "NOT_STARTED"
+     "status": "PARTIAL",
+     "evidence": "web_launch/field-audience.mjs: рівні аудиторії (public/community/...), filterProfileForAudience, canViewField; тести проходять. Лишається: серверне застосування на кожне поле"
     },
     {
      "id": "C04.L4",
@@ -333,9 +335,8 @@
      "id": "C06.L6",
      "name": "Впізнавані артефакти: картка профілю, картка зустрічі, іконка, OG-зображення",
      "gate": "recognisable at 64px and in a chat preview",
-     "status": "PARTIAL",
-     "evidence": "share card + icons exist",
-     "next": "meeting card (C10.L3)"
+     "status": "DONE",
+     "evidence": "web_launch/meeting-card.mjs renderMeetingCardHTML + наявні share card, іконки; картка зустрічі як впізнаваний артефакт; тест C06.L6 у meeting-card.test.mjs"
     },
     {
      "id": "C06.L7",
@@ -469,13 +470,15 @@
      "id": "C09.L5",
      "name": "Статистичні агенти пілоту (M11-M13)",
      "gate": "fixture parity",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "web_launch/funnel-analytics.mjs + web_launch/cusum.mjs; fixture parity через node:test (M11 2/2, M12 2/2, M13 5/5)"
     },
     {
      "id": "C09.L6",
      "name": "Цикл самопокращення MA4 з журналом рішень",
      "gate": "every promoted change has hypothesis, metric, holdout, approval",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "web_launch/ma4.mjs журнал рішень: hypothesis, metric, holdout, approval, timestamp; append-only"
     }
    ]
   },
@@ -494,7 +497,8 @@
      "id": "C10.L2",
      "name": "Картка 'Ми зустрілися' (give ⇄ take), публічна лише за згоди обох",
      "gate": "each side can revoke; no terms, prices, contacts",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": "web_launch/meeting-card.mjs: картка «Ми зустрілися» публічна лише за двосторонньої згоди, кожна сторона може відкликати, терміни/ціни/контакти виключено; 4/4 тестів"
     },
     {
      "id": "C10.L3",
