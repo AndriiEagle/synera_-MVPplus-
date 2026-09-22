@@ -166,8 +166,7 @@
      "name": "Кейс у store",
      "gate": "shape matches SQL; client cannot write the other party's approval",
      "status": "PARTIAL",
-     "evidence": "B2 exists",
-     "next": "B2-rework: one JSON blob -> columns + per-party approval rows"
+     "evidence": "B2-rework частково: per-party approval rows тепер пишуться (клієнт V6-03 → /rest/v1/match_case_approvals, поля case_id/party_id/approved_version/approved_terms_hash; серверна таблиця + RLS + acceptance.sql уже в supabase/case-state.proposal.sql; case-approval-guard 10/10, E2E 1/1). Лишається: match_cases досі шле один JSON-blob state, тоді як SQL-таблиця очікує колонки participant_low/high, mode, material, terms_hash, expires_at"
     },
     {
      "id": "C03.L3",
@@ -620,8 +619,7 @@
      "name": "Автоматичний E2E у браузері проти мок-Neon",
      "gate": "restore, approve, invalidate scripted",
      "status": "PARTIAL",
-     "evidence": "manual browser run; mock in scratchpad",
-     "next": "move mock into tools/, script the flow"
+     "evidence": "web_launch/e2e-neon-flow.test.mjs: повний scripted lifecycle проти мок-Neon (restore сесії, discover, audience-фільтр, approval у match_case_approvals, двосторонній approved_for_next_step) — 1/1 PASS. Лишається: реальний браузер (Playwright), не лише fetch-мок"
     },
     {
      "id": "C13.L4",
