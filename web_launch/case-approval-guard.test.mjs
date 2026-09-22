@@ -132,13 +132,13 @@ test('version cannot move backwards and participants cannot be swapped', async (
   rollback.version = 2;
   const back = new ProfileStore();
   wire(back, stored);
-  await assert.rejects(() => back.saveCaseState(rollback), /version cannot move backwards/);
+  await assert.rejects(() => back.saveCaseState(rollback), /Версія кейсу не може йти назад/);
 
   const swapped = structuredClone(state);
   swapped.participants = [ME, 'u-3'];
   const swap = new ProfileStore();
   wire(swap, state);
-  await assert.rejects(() => swap.saveCaseState(swapped), /participants cannot change/);
+  await assert.rejects(() => swap.saveCaseState(swapped), /Учасники кейсу не можуть змінитися/);
 });
 
 test('a case is closed only by the party doing it, and closing clears approvals', async () => {
@@ -150,7 +150,7 @@ test('a case is closed only by the party doing it, and closing clears approvals'
   forgedClose.closedBy = OTHER;
   const bad = new ProfileStore();
   wire(bad, theirs);
-  await assert.rejects(() => bad.saveCaseState(forgedClose), /closed only by the party doing it/);
+  await assert.rejects(() => bad.saveCaseState(forgedClose), /Кейс закривається лише стороною, яка це робить/);
 
   const ownClose = structuredClone(state);
   ownClose.status = 'revoked';

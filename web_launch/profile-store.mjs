@@ -155,6 +155,22 @@ export class ProfileStore {
     }
     clean.approvals = approvals;
     await this._send('/rest/v1/match_cases?on_conflict=case_id', { method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: { case_id: clean.caseId, state: clean } });
+    // V6-03: власне погодження пишеться окремим рядком у match_case_approvals, щоб серверний
+    // RLS міг заборонити запис чужого погодження. Клієнт пише лише власний рядок; порядок
+    // (спершу match_cases) збережено, щоб один POST не змішувався з іншим у споживачів.
+    if (approvals[me]) {
+      await this._send('/rest/v1/match_case_approvals', {
+        method: 'POST',
+        authenticated: true,
+        prefer: 'resolution=merge-duplicates,return=minimal',
+        body: {
+          case_id: clean.caseId,
+          party_id: me,
+          approved_version: approvals[me].version,
+          approved_terms_hash: approvals[me].termsHash,
+        },
+      });
+    }
   }
   async caseState(caseId) {
     this.requireRealPilot();
