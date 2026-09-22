@@ -7,19 +7,33 @@
 import { filterProfileForAudience } from './field-audience.mjs';
 
 const MAX_LABEL = 64;
+const isValidLabel = value => typeof value === 'string' && value.length > 0 && value.length <= MAX_LABEL;
 const cleanLabels = list => Array.isArray(list)
-  ? [...new Set(list.filter(value => typeof value === 'string' && value.length > 0 && value.length <= MAX_LABEL))].sort()
+  ? [...new Set(list.filter(isValidLabel))].sort()
   : [];
+
+/** Скільки сирх міток було відкинуто (некоректні + дублікати). */
+const countDropped = list => Array.isArray(list) ? list.length - cleanLabels(list).length : 0;
+
+/** Єдиний fail-closed результат для некоректного підпису на межі allowlist. */
+const rejected = () => ({ valid: false, reason: 'INVALID_LABEL' });
 
 /**
  * Створює політику м'якого блоку. Вхід не мутується.
+ * Некоректні/дублікативні мітки відкидаються, але НЕ мовчки: коли щось
+ * відкинуто, у результаті з'являється поле `dropped: { people, categories }`
+ * з кількістю відкинутих сирх значень (fail-closed звітність).
  * @param {{ hiddenPeople?: string[], hiddenCategories?: string[] }} input
  */
 export function createSoftBlock(input = {}) {
-  return {
-    hiddenPeople: cleanLabels(input?.hiddenPeople),
-    hiddenCategories: cleanLabels(input?.hiddenCategories),
-  };
+  const hiddenPeople = cleanLabels(input?.hiddenPeople);
+  const hiddenCategories = cleanLabels(input?.hiddenCategories);
+  const droppedPeople = countDropped(input?.hiddenPeople);
+  const droppedCategories = countDropped(input?.hiddenCategories);
+  if (droppedPeople > 0 || droppedCategories > 0) {
+    return { hiddenPeople, hiddenCategories, dropped: { people: droppedPeople, categories: droppedCategories } };
+  }
+  return { hiddenPeople, hiddenCategories };
 }
 
 function normalizeBlock(block) {
@@ -27,22 +41,34 @@ function normalizeBlock(block) {
   return createSoftBlock(block);
 }
 
-/** Повертає НОВИЙ блок із доданою людиною (ідемпотентно). */
+/**
+ * Повертає НОВИЙ блок із доданою людиною (ідемпотентно).
+ * Fail-closed: некоректний підпис (не-рядок, порожній, >64 символів)
+ * НЕ мовчки ігнорується — повертається { valid: false, reason: 'INVALID_LABEL' },
+ * щоб власник знав, що людина НЕ прихована.
+ */
 export function addHiddenPerson(block, personId) {
+  if (!isValidLabel(personId)) return rejected();
   const current = normalizeBlock(block);
-  if (typeof personId !== 'string' || !personId || personId.length > MAX_LABEL) return current;
   return { hiddenPeople: cleanLabels([...current.hiddenPeople, personId]), hiddenCategories: current.hiddenCategories };
 }
 
-/** Повертає НОВИЙ блок із доданою категорією (ідемпотентно). */
+/**
+ * Повертає НОВИЙ блок із доданою категорією (ідемпотентно).
+ * Fail-closed: некоректний підпис → { valid: false, reason: 'INVALID_LABEL' }.
+ */
 export function addHiddenCategory(block, category) {
+  if (!isValidLabel(category)) return rejected();
   const current = normalizeBlock(block);
-  if (typeof category !== 'string' || !category || category.length > MAX_LABEL) return current;
   return { hiddenPeople: current.hiddenPeople, hiddenCategories: cleanLabels([...current.hiddenCategories, category]) };
 }
 
-/** Повертає НОВИЙ блок без вказаного підпису (і з людей, і з категорій). */
+/**
+ * Повертає НОВИЙ блок без вказаного підпису (і з людей, і з категорій).
+ * Fail-closed: некоректний підпис → { valid: false, reason: 'INVALID_LABEL' }.
+ */
 export function removeHidden(block, label) {
+  if (!isValidLabel(label)) return rejected();
   const current = normalizeBlock(block);
   return {
     hiddenPeople: current.hiddenPeople.filter(value => value !== label),

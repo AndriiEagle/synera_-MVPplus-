@@ -86,10 +86,32 @@ test('C04.L4: add/remove не мутують вхід і ідемпотентн�
   assert.deepEqual(withCategory, { hiddenPeople: ['u-2'], hiddenCategories: ['recruiter'] });
   const removed = removeHidden(withCategory, 'u-2');
   assert.deepEqual(removed, { hiddenPeople: [], hiddenCategories: ['recruiter'] });
-  // Некоректний вхід не ламає і не додає сміття.
-  assert.deepEqual(addHiddenPerson(original, 42).hiddenPeople, []);
-  assert.deepEqual(addHiddenCategory(original, '').hiddenCategories, []);
-  assert.deepEqual(createSoftBlock({ hiddenPeople: ['a', 'a', '', 7] }).hiddenPeople, ['a']);
+});
+
+test('C04.L4/P2: fail-closed — некоректний підпис НЕ мовчки відкидається, а повертає reason', () => {
+  const original = createSoftBlock();
+  const LONG = 'x'.repeat(65);
+  // Додавання некоректної людини/категорії повертає вердикт відмови, а не блок.
+  assert.deepEqual(addHiddenPerson(original, 42), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenPerson(original, ''), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenPerson(original, LONG), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenPerson(original, null), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenCategory(original, ''), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenCategory(original, 7), { valid: false, reason: 'INVALID_LABEL' });
+  assert.deepEqual(addHiddenCategory(original, LONG), { valid: false, reason: 'INVALID_LABEL' });
+  // Видалення некоректного підпису теж не мовчазний no-op.
+  assert.deepEqual(removeHidden(original, 42), { valid: false, reason: 'INVALID_LABEL' });
+  // Коректний вхід повертає звичайний блок без маркерів відмови.
+  const ok = addHiddenPerson(original, 'u-2');
+  assert.deepEqual(ok, { hiddenPeople: ['u-2'], hiddenCategories: [] });
+  assert.equal('valid' in ok, false);
+  // Некоректні сирі значення НЕ потрапляють у блок — власник бачить звіт dropped.
+  const cleaned = createSoftBlock({ hiddenPeople: ['a', 'a', '', 7], hiddenCategories: [null, 'ok'] });
+  assert.deepEqual(cleaned.hiddenPeople, ['a']);
+  assert.deepEqual(cleaned.hiddenCategories, ['ok']);
+  assert.deepEqual(cleaned.dropped, { people: 3, categories: 1 });
+  // Чистий вхід — без поля dropped (форма блоку не розростається).
+  assert.deepEqual(createSoftBlock({ hiddenPeople: ['u-2'] }), { hiddenPeople: ['u-2'], hiddenCategories: [] });
 });
 
 test('C04.L4: порожній блок не змінює нормальну поведінку аудиторії', () => {

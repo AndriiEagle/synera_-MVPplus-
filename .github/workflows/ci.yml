@@ -1,0 +1,53 @@
+# CI: детермінована перевірка Synera (unit-тести з кореня + a11y-аудит).
+# Жодних deploy/publish/secrets. Матрицю ОС/Node додамо пізніше — тут свідомо
+# зафіксовано ubuntu-latest + Node 22, щоб CI відповідав локальному еталону.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          # package-lock.json закомічений (перевірено git ls-files) — тому кеш npm безпечний.
+          cache: npm
+
+      # lockfile синхронізований з package.json (додано @playwright/test) — ci відтворюємо.
+      - run: npm ci
+
+      # Браузерні тести Playwright (@playwright/test) потребують chromium.
+      - run: npx playwright install --with-deps chromium
+
+      # a11y_audit.mjs використовує puppeteer — йому потрібен власний chrome.
+      - run: npx puppeteer browsers install chrome
+
+      # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
+      # Glob *.test.mjs розгортається bash'ем на ubuntu; другий аргумент — neon-воркер.
+      - run: node --test web_launch/*.test.mjs neon/worker.test.mjs
+
+      # axe-core через puppeteer; exit 1 при critical/serious порушеннях.
+      - run: node web_launch/a11y_audit.mjs
+
+      - name: Upload test artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-failure-artifacts
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # Тут пізніше з'явиться matrix (versions: [22, 24]) — поки зафіксовано один Node 22.

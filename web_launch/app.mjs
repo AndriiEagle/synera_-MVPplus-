@@ -602,7 +602,7 @@ function openShareDialog() {
     $('#share-status').textContent = 'Це ручна картка для знайомства. JSON переносить профіль назад у Synera; видимість після імпорту вимкнена.';
     $('#share-dialog').showModal();
   } catch (error) {
-    message(error.message === 'Ім'я профілю обов'язкове' ? 'Спочатку заповни ім’я профілю.' : 'Прибери приватні контакти або ключі перед поширенням.', true);
+    message(error.message === "Ім'я профілю обов'язкове" ? 'Спочатку заповни ім’я профілю.' : 'Прибери приватні контакти або ключі перед поширенням.', true);
   }
 }
 $('#export-profile').addEventListener('click', openShareDialog);

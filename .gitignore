@@ -48,3 +48,7 @@ node_modules/
 
 # Runtime cascade log (append-only, rewritten by tests)
 web_launch/cascade_log.jsonl
+
+# Playwright local run artifacts
+test-results/
+playwright-report/

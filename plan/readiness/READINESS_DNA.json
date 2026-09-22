@@ -621,16 +621,15 @@
      "id": "C13.L2",
      "name": "Поведінкові тести app.mjs (vm)",
      "gate": "run(), btn/caseAction",
-     "status": "PARTIAL",
-     "evidence": "mobile-pilot tests",
-     "next": "DOM harness without new deps"
+     "status": "DONE",
+     "evidence": "web_launch/app.behavioral.test.mjs (6/6): генераційний fake-DOM без нових залежностей, import-time обв'язка app.mjs (874 рядки) виконується чисто; #auth-form submit, 4 data-tab кліки, guard 'Увійди, щоб...' на people, profile без guard, settings consent-sync. Попутно знайдено і виправлено коммітований синтакс-баг app.mjs:605 (рядок не компілювався — зелений сьют це ховав); behaviors-core.test.mjs (13/13): calendar (RFC 5545 hand-computed ICS + fold 73 байти), simulation (slot 497242 вручну), health-check (структурний контракт). Повний сьют 299/299 з кореня"
     },
     {
      "id": "C13.L3",
      "name": "Автоматичний E2E у браузері проти мок-Neon",
      "gate": "restore, approve, invalidate scripted",
-     "status": "PARTIAL",
-     "evidence": "e2e-neon-flow.test.mjs: мок-Neon приведено до реального контракту — insert-only POST, PATCH з version-bump як synera_case_guard (material/mode/terms change -> +1), closed-case immutability, server-owned withdrawn_at, детермінований SERVER_NOW. Повний lifecycle (restore→discover→approve×2→revision) 1/1 PASS. Лишається: реальний браузер (Playwright)"
+     "status": "DONE",
+     "evidence": "Playwright (реальний chromium): tests/browser-e2e.spec.mjs 9/9 × 3 прогони — index 200+brand, hero h1 desktop+mobile 375px, клік табу profile перемикає секцію (через шлях чернетки, бо таби hidden до входу), catalogue.html, config.json безпечні дефолти, /.git/config і /config.public.json → 404 (allowlist), нуль ≥500, нуль pageerror. Сервер спавниться з кореня (SYNERA_PORT=0). serviceWorkers:'block' у конфігу: перша активація SW (pwa.mjs controllerchange → reload) губить кліки — SW-лifecycle свідомо поза межами E2E. Лишається: авторизований lifecycle у браузері (restore/approve/invalidate) — наступна фаза"
     },
     {
      "id": "C13.L4",
@@ -644,7 +643,8 @@
      "id": "C13.L5",
      "name": "CI",
      "gate": "remote runner",
-     "status": "NOT_STARTED"
+     "status": "DONE",
+     "evidence": ".github/workflows/ci.yml (YAML_OK): push+PR, ubuntu-latest+Node 22, npm ci (package-lock.json закомічений, verified git ls-files), playwright install chromium + puppeteer chrome, node --test web_launch/*.test.mjs + neon/worker.test.mjs з кореня, a11y_audit.mjs, артефакти тільки на failure, без deploy/publish/secrets; матриця версій намічена коментарем"
     },
     {
      "id": "C13.L6",
