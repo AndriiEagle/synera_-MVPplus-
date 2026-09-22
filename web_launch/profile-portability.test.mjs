@@ -131,7 +131,7 @@ test('SYN_CASE_STORE_MATCHES_SQL: store writes normalized columns and reconstruc
   const calls = wireStore(store, () => []);
   await store.saveCaseState({ ...state, smuggled: 'extra' });
   const posted = calls.find(call => call.options?.method === 'POST' && call.path.startsWith('/rest/v1/match_cases'));
-  assert.equal(posted.path, '/rest/v1/match_cases?on_conflict=case_id');
+  assert.equal(posted.path, '/rest/v1/match_cases');
   assert.equal(posted.options.method, 'POST');
   assert.equal(posted.options.body.case_id, 'case-a-b');
   assert.equal('state' in posted.options.body, false);
@@ -184,7 +184,7 @@ test('SYN_REMOTE_STORE_SHAPE_MATCHES: Neon/Supabase inherit the store bodies and
   await neon.saveCaseState(state);
   // local _send receives the raw body object; remote transports serialize it — field names must match
   const localBrief = JSON.stringify(localCalls.find(call => call.path.startsWith('/rest/v1/profiles')).options.body.brief);
-  const localState = JSON.stringify(localCalls.find(call => call.path.startsWith('/rest/v1/match_cases?on_conflict')).options.body);
+  const localState = JSON.stringify(localCalls.find(call => call.options?.method === 'POST' && call.path.startsWith('/rest/v1/match_cases')).options.body);
   const remoteBrief = calls => JSON.parse(calls.find(call => typeof call.options.body === 'string' && call.options.body.includes('"brief"')).options.body).brief;
   const remoteState = calls => JSON.parse(calls.find(call => typeof call.options.body === 'string' && call.options.body.includes('"participant_low"')).options.body);
   assert.equal(JSON.stringify(remoteBrief(supaCalls)), localBrief);

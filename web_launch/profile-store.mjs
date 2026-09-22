@@ -168,6 +168,12 @@ export class ProfileStore {
     const CASE_KEYS = ['schema', 'caseId', 'participants', 'version', 'material', 'termsHash', 'status', 'approvals', 'binding', 'approvalAttestation', 'createdAt', 'updatedAt', 'expiresAt', 'closedBy', 'closedAt', 'closeReason', 'timeAuthority', 'events'];
     const validId = value => typeof value === 'string' && value.length >= 1 && value.length <= 64 && /^[A-Za-z0-9_:-]+$/.test(value);
     if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Некоректний стан кейсу');
+    // P1-6: material і expiresAt раніше не валідувались — зіпсований вхід давав сирий
+    // TypeError на clean.material.mode або NOT NULL-відхилення SQL замість зрозумілої помилки.
+    if (!state.material || typeof state.material !== 'object' || Array.isArray(state.material)
+      || typeof state.material.mode !== 'string' || !['exchange', 'paid_service', 'referral', 'hybrid'].includes(state.material.mode)
+      || new TextEncoder().encode(JSON.stringify(state.material)).length > 16384) throw new Error('Некоректний матеріал кейсу');
+    if (typeof state.expiresAt !== 'string' || !Number.isFinite(Date.parse(state.expiresAt))) throw new Error('Некоректний термін кейсу');
     const clean = {};
     for (const key of CASE_KEYS) if (Object.hasOwn(state, key)) clean[key] = state[key];
     clean.schema = 'synera.case-state.v1';
@@ -192,22 +198,30 @@ export class ProfileStore {
         : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
     }
     clean.approvals = approvals;
-    const [participant_low, participant_high] = [...clean.participants].sort();
-    const caseBody = {
-      case_id: clean.caseId,
-      participant_low,
-      participant_high,
-      mode: clean.material.mode,
-      material: clean.material,
-      terms_hash: clean.termsHash,
-      expires_at: clean.expiresAt,
-    };
-    await this._send('/rest/v1/match_cases?on_conflict=case_id', {
-      method: 'POST', authenticated: true, prefer: 'resolution=merge-duplicates,return=minimal', body: caseBody,
-    });
-    if (closed) {
+    // B2/P0-2: розділення шляхів запису під реальні гранти SQL. INSERT-грант покриває
+    // (case_id, participant_low, participant_high, mode, material, terms_hash, expires_at),
+    // UPDATE-грант — лише (mode, material, terms_hash, status, expires_at). Уpsert
+    // merge-duplicates з participant_* на наявному рядку робив би UPDATE цих колонок
+    // і падав би 42501 insufficient_privilege на живій базі, тому:
+    //  - нового кейсу немає -> POST insert-only;
+    //  - кейс існує -> PATCH лише грантованих колонок; закриття шле тільки status
+    //    (тригер synera_case_guard сам заморожує mode/material/terms_hash/version).
+    if (stored) {
+      const updateBody = closed
+        ? { status: clean.status }
+        : { mode: clean.material.mode, material: clean.material, terms_hash: clean.termsHash, expires_at: clean.expiresAt };
       await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(clean.caseId)}`, {
-        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { status: clean.status },
+        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: updateBody,
+      });
+    } else {
+      const [participant_low, participant_high] = [...clean.participants].sort();
+      await this._send('/rest/v1/match_cases', {
+        method: 'POST', authenticated: true, prefer: 'return=minimal',
+        body: {
+          case_id: clean.caseId, participant_low, participant_high,
+          mode: clean.material.mode, material: clean.material,
+          terms_hash: clean.termsHash, expires_at: clean.expiresAt,
+        },
       });
     }
     // V6-03: власне погодження пишеться окремим рядком у match_case_approvals, щоб серверний
@@ -227,8 +241,10 @@ export class ProfileStore {
         },
       });
     } else if (!approvals[me] && previousOwnApproval) {
+      // P1-5: withdrawn_at — серверна власність (synera_approval_guard перезаписує через now());
+      // клієнт лише позначає намір, тому шле власний момент, а не похідний стан кейсу.
       await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(clean.caseId)}&party_id=eq.${encodeURIComponent(me)}&withdrawn_at=is.null`, {
-        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { withdrawn_at: clean.updatedAt },
+        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { withdrawn_at: new Date().toISOString() },
       });
     }
   }
@@ -237,7 +253,10 @@ export class ProfileStore {
     if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Некоректний ID кейсу');
     const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=${CASE_SELECT}&limit=1`, { authenticated: true });
     if (!rows?.[0]) return null;
-    const approvalRows = await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(caseId)}&select=${APPROVAL_SELECT}&order=approved_at.asc&limit=100`, { authenticated: true });
+    // P0-3: спершу найновіші й лише живі погодження. Asc+limit обрізав саме поточні
+    // погодження, щойно історія перевищувала 100 рядків (2 за ревізію), і кейс
+    // реконструювався як 'draft', хоча обидві сторони погодили.
+    const approvalRows = await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(caseId)}&withdrawn_at=is.null&select=${APPROVAL_SELECT}&order=approved_at.desc&limit=100`, { authenticated: true });
     return caseFromRows(rows[0], approvalRows);
   }
   async exportAccount() {

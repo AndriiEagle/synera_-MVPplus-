@@ -49,7 +49,8 @@ function fakeDatabase(storedState = null) {
   const handler = async (path, options = {}) => {
     if (path.startsWith('/rest/v1/match_cases?case_id=') && !options.method) return row ? [structuredClone(row)] : [];
     if (path.startsWith('/rest/v1/match_case_approvals?') && !options.method) return structuredClone(approvals);
-    if (path.startsWith('/rest/v1/match_cases?on_conflict=') && options.method === 'POST') {
+    if (path.startsWith('/rest/v1/match_cases') && options.method === 'POST') {
+      // Insert-only POST (B2/P0-2): a new case arrives without on_conflict; updates go through PATCH.
       const body = options.body;
       const changed = row && (row.terms_hash !== body.terms_hash || JSON.stringify(row.material) !== JSON.stringify(body.material));
       row = {
@@ -74,8 +75,22 @@ function fakeDatabase(storedState = null) {
       return [];
     }
     if (path.startsWith('/rest/v1/match_cases?case_id=') && options.method === 'PATCH') {
-      row.status = options.body.status;
-      row.closed_at = '2026-09-08T12:00:00.000Z';
+      // Mirror synera_case_guard: closed is immutable; a material/mode/terms change raises
+      // the version; a change without a new hash is refused; close freezes state.
+      if (!row || row.status !== 'open') throw new Error('Closed case is immutable');
+      const body = options.body;
+      if (body.status) {
+        row.status = body.status;
+        row.closed_at = '2026-09-08T12:00:00.000Z';
+        return [];
+      }
+      const changed = row.terms_hash !== body.terms_hash || JSON.stringify(row.material) !== JSON.stringify(body.material) || row.mode !== body.mode;
+      if (changed && row.terms_hash === body.terms_hash) throw new Error('Material changed without a new hash');
+      row = {
+        ...row, mode: body.mode, material: body.material, terms_hash: body.terms_hash,
+        expires_at: body.expires_at, version: changed ? row.version + 1 : row.version,
+        updated_at: '2026-09-08T12:00:00.000Z',
+      };
       return [];
     }
     return [];
@@ -247,7 +262,9 @@ test('a caller who is not a participant writes no approval at all', async () => 
   await store.saveCaseState(forged);
 
   assert.deepEqual(approvalWrites(calls), [], 'an outsider adds no approval row');
-  assert.equal(Object.hasOwn(caseWrite(calls), 'state'), false);
+  const write = calls.find(call => call.path.startsWith('/rest/v1/match_cases') && ['POST', 'PATCH'].includes(call.options?.method));
+  assert.ok(write, 'a case write must happen');
+  assert.equal(Object.hasOwn(write.options.body, 'state'), false);
 });
 
 test('V6-03: own approval is written separately to match_case_approvals for Neon RLS', async () => {

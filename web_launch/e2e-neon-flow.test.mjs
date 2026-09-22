@@ -94,9 +94,14 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
       }
       if (method === 'PATCH') {
         const body = JSON.parse(init.body);
-        const existing = db.cases.get(caseId) || {};
+        const existing = db.cases.get(caseId);
+        // Mirror synera_case_guard: closed is immutable, a material/mode/terms change raises the version.
+        if (!existing || existing.status !== 'open') return new Response(JSON.stringify({ error: 'closed_case_immutable' }), { status: 500 });
+        const materialChanged = JSON.stringify(existing.material) !== JSON.stringify(body.material)
+          || existing.mode !== body.mode || existing.terms_hash !== body.terms_hash;
         db.cases.set(caseId, {
           ...existing, ...body,
+          version: materialChanged ? existing.version + 1 : existing.version,
           updated_at: SERVER_NOW,
           closed_at: body.status && body.status !== 'open' ? SERVER_NOW : existing.closed_at ?? null,
         });
@@ -119,7 +124,8 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
         const partyId = url.searchParams.get('party_id')?.replace('eq.', '');
         const key = `${caseId}:${partyId}`;
         const existing = db.approvals.get(key);
-        if (existing) db.approvals.set(key, { ...existing, ...JSON.parse(init.body) });
+        // Mirror synera_approval_guard: withdrawn_at is server-owned, the client value is ignored.
+        if (existing) db.approvals.set(key, { ...existing, ...JSON.parse(init.body), withdrawn_at: SERVER_NOW });
         return new Response(null, { status: 204 });
       }
       const rows = Array.from(db.approvals.values()).filter(a => !caseId || a.case_id === caseId);

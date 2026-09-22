@@ -166,7 +166,7 @@
      "name": "Кейс у store",
      "gate": "shape matches SQL; client cannot write the other party's approval",
      "status": "DONE",
-     "evidence": "B2-rework завершено: match_cases пише КОЛОНКИ (case_id, participant_low/high, mode, material, terms_hash, expires_at; закриття через PATCH status), погодження — окремі рядки match_case_approvals (V6-03), читання реконструює стан з caseFromRows(row, approvalRows). Gate: web_launch/b2-case-store-shape.test.mjs SYN_CASE_STORE_MATCHES_SQL 1/1 + case-approval-guard 10/10 + E2E 1/1"
+     "evidence": "B2-rework + P0-2: match_cases пише КОЛОНКИ з розділенням грантів — новий кейс: POST insert-only (case_id, participant_low/high, mode, material, terms_hash, expires_at); оновлення: PATCH лише UPDATE-грантованих колонок (mode, material, terms_hash, expires_at), закриття: PATCH {status} (тригер заморожує решту). Погодження — окремі рядки match_case_approvals (V6-03, withdrawn_at = server-owned). Читання реконструює caseFromRows(row, approvalRows) + P0-3: approvals order=desc, withdrawn_at=is.null (усуває corruption при >100 рядках). P1-6: валідація material (об'єкт, mode з переліку, ≤16384 б) і expiresAt. Gate: b2-case-store-shape 1/1, case-approval-guard 10/10, portability 14/14, E2E 1/1"
     },
     {
      "id": "C03.L3",
@@ -234,7 +234,7 @@
      "name": "Приховати від конкретних людей і категорій (м'який блок)",
      "gate": "hidden person cannot see hidden fields; no notification to them",
      "status": "DONE",
-     "evidence": "web_launch/soft-block.mjs: м'який блок за людиною (hiddenPeople) і категорією (hiddenCategories); прихований глядач не бачить жодного поля; filterDiscoverable виключає профілі власників, що приховали глядача; чисто, без сповіщень, fail-closed через C04.L3. 8/8 тестів"
+     "evidence": "web_launch/soft-block.mjs: м'який блок за людиною (hiddenPeople) і категорією (hiddenCategories); прихований глядач не бачить жодного поля; filterDiscoverable виключає профілі власників, що приховали глядача; чисто, без сповіщень, fail-closed через C04.L3. 8/8 тестів. Відома межа (P2): фільтр клієнтський; server-ens enforcement потребуватиме column-level грантів, якщо колись додадуть чутливі колонки в profiles (зараз їх у схемі немає: schema.sql:6-14 — id/display_name/city/offers/seeks/is_discoverable/created_at/brief/map_visible)"
     },
     {
      "id": "C04.L5",
@@ -622,7 +622,7 @@
      "name": "Автоматичний E2E у браузері проти мок-Neon",
      "gate": "restore, approve, invalidate scripted",
      "status": "PARTIAL",
-     "evidence": "e2e-neon-flow.test.mjs: повний scripted lifecycle проти мок-Neon (restore, discover, audience, двостороннє погодження, матеріальна ревізія з version+=1 і скиданням погоджень) — 1/1 PASS. Лишається: реальний браузер (Playwright), не лише fetch-мок"
+     "evidence": "e2e-neon-flow.test.mjs: мок-Neon приведено до реального контракту — insert-only POST, PATCH з version-bump як synera_case_guard (material/mode/terms change -> +1), closed-case immutability, server-owned withdrawn_at, детермінований SERVER_NOW. Повний lifecycle (restore→discover→approve×2→revision) 1/1 PASS. Лишається: реальний браузер (Playwright)"
     },
     {
      "id": "C13.L4",
