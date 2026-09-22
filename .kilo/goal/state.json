@@ -3,7 +3,7 @@
   "goal_file": "GOAL.md",
   "created": "2026-09-22T00:50:00Z",
   "status": "working",
-  "current_phase": 7,
+  "current_phase": 5,
   "current_step": 0,
   "phases": [
     {
@@ -415,11 +415,12 @@
           "action": "forge_micro",
           "spec": "one file, each blocker: layer, gate, exact question, needed artifact, owner",
           "verify_cmd": "test -f BLOCKED_HUMAN.md && grep -c '^###' BLOCKED_HUMAN.md | grep -q '11'",
-          "status": "pending"
+          "status": "done"
         }
-      ]
+      ],
+      "status": "done"
     }
   ],
-  "next_action": "start_phase_5_iceberg_or_phase_7_blockers_doc",
+  "next_action": "phase_5_iceberg (C15.L1-L6) - blockers documented in BLOCKED_HUMAN.md, answers awaited",
   "signals_log": "signals.log"
 }
