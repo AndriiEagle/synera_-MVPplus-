@@ -45,3 +45,6 @@ web_launch/dist-neon/
 artifacts/*.response.txt
 
 node_modules/
+
+# Runtime cascade log (append-only, rewritten by tests)
+web_launch/cascade_log.jsonl

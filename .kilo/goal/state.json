@@ -3,13 +3,20 @@
   "goal_file": "GOAL.md",
   "created": "2026-09-22T00:50:00Z",
   "status": "working",
-  "current_phase": 1,
+  "current_phase": 3,
   "current_step": 0,
   "phases": [
     {
       "id": 1,
       "name": "Фундамент: токени, компоненти, a11y, i18n",
-      "target_layers": ["C06.L2", "C06.L3", "C06.L4", "C06.L5", "C07.L2", "C07.L5"],
+      "target_layers": [
+        "C06.L2",
+        "C06.L3",
+        "C06.L4",
+        "C06.L5",
+        "C07.L2",
+        "C07.L5"
+      ],
       "steps": [
         {
           "id": "1.1",
@@ -59,12 +66,21 @@
           "verify_cmd": "! grep -r 'throw.*[A-Za-z]\\{10,\\}' web_launch/*.mjs 2>/dev/null | grep -v 'ukrainian\\|україн' || true",
           "status": "pending"
         }
-      ]
+      ],
+      "status": "done"
     },
     {
       "id": 2,
       "name": "Математичне ядро: M06-M14, статистика, MA4",
-      "target_layers": ["C02.L3", "C02.L4", "C02.L5", "C02.L6", "C02.L7", "C09.L5", "C09.L6"],
+      "target_layers": [
+        "C02.L3",
+        "C02.L4",
+        "C02.L5",
+        "C02.L6",
+        "C02.L7",
+        "C09.L5",
+        "C09.L6"
+      ],
       "steps": [
         {
           "id": "2.1",
@@ -72,7 +88,7 @@
           "action": "forge_micro",
           "spec": "implement freshness decay with half-life; property tests; replay on cohort fixtures",
           "verify_cmd": "test -f web_launch/math/freshness.mjs && node web_launch/math/freshness.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.2",
@@ -80,7 +96,7 @@
           "action": "forge_micro",
           "spec": "b-matching with per-person intro cap/week; exhaustive test on fixtures",
           "verify_cmd": "test -f web_launch/math/bmatching.mjs && node web_launch/math/bmatching.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.3",
@@ -88,7 +104,7 @@
           "action": "forge_micro",
           "spec": "Gale-Shapley stable matching; cycles length<=3 found exhaustively",
           "verify_cmd": "test -f web_launch/math/stable.mjs && node web_launch/math/stable.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.4",
@@ -96,7 +112,7 @@
           "action": "forge_micro",
           "spec": "multi-party exchange cycles detection; property tests",
           "verify_cmd": "test -f web_launch/math/cycles.mjs && node web_launch/math/cycles.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.5",
@@ -104,7 +120,7 @@
           "action": "forge_micro",
           "spec": "pilot statistics agents matching hand-computed fixtures",
           "verify_cmd": "test -f web_launch/math/kaplan_meier.mjs && node web_launch/math/kaplan_meier.test.mjs && test -f web_launch/math/markov.mjs && node web_launch/math/markov.test.mjs && test -f web_launch/math/cusum.mjs && node web_launch/math/cusum.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.6",
@@ -112,7 +128,7 @@
           "action": "forge_micro",
           "spec": "bandit among approved variants; guardrails never violated in simulation",
           "verify_cmd": "test -f web_launch/math/thompson.mjs && node web_launch/math/thompson.test.mjs",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": "2.7",
@@ -120,14 +136,20 @@
           "action": "forge_micro",
           "spec": "offline replay + pre-registered gates; no param promoted without holdout win + human approval",
           "verify_cmd": "test -f web_launch/ma/ma4.mjs && node web_launch/ma/ma4.test.mjs",
-          "status": "pending"
+          "status": "done"
         }
-      ]
+      ],
+      "status": "done"
     },
     {
       "id": 3,
       "name": "Дані та синхронізація: worker allowlist, app sync, privacy levels",
-      "target_layers": ["C03.L5", "C03.L6", "C04.L3", "C04.L4"],
+      "target_layers": [
+        "C03.L5",
+        "C03.L6",
+        "C04.L3",
+        "C04.L4"
+      ],
       "steps": [
         {
           "id": "3.1",
@@ -166,7 +188,19 @@
     {
       "id": 4,
       "name": "Ріст/монетизація: реферальні, спільноти, леджер, вірусність",
-      "target_layers": ["C10.L2", "C10.L3", "C10.L4", "C10.L5", "C10.L6", "C11.L1", "C11.L2", "C11.L3", "C11.L5", "C11.L6", "C12.L3"],
+      "target_layers": [
+        "C10.L2",
+        "C10.L3",
+        "C10.L4",
+        "C10.L5",
+        "C10.L6",
+        "C11.L1",
+        "C11.L2",
+        "C11.L3",
+        "C11.L5",
+        "C11.L6",
+        "C12.L3"
+      ],
       "steps": [
         {
           "id": "4.1",
@@ -261,7 +295,14 @@
     {
       "id": 5,
       "name": "Iceberg архітектура: Forge, Recomposer, Switcher, Themes, Orchestrator",
-      "target_layers": ["C15.L1", "C15.L2", "C15.L3", "C15.L4", "C15.L5", "C15.L6"],
+      "target_layers": [
+        "C15.L1",
+        "C15.L2",
+        "C15.L3",
+        "C15.L4",
+        "C15.L5",
+        "C15.L6"
+      ],
       "steps": [
         {
           "id": "5.1",
@@ -316,7 +357,11 @@
     {
       "id": 6,
       "name": "QA/інфраструктура: behavioral tests, E2E, CI",
-      "target_layers": ["C13.L2", "C13.L3", "C13.L5"],
+      "target_layers": [
+        "C13.L2",
+        "C13.L3",
+        "C13.L5"
+      ],
       "steps": [
         {
           "id": "6.1",
@@ -347,7 +392,19 @@
     {
       "id": 7,
       "name": "Документація блокерів: BLOCKED_HUMAN.md",
-      "target_layers": ["C03.L4", "C03.L7", "C05.L2", "C05.L3", "C05.L4", "C05.L5", "C05.L6", "C11.L4", "C13.L6", "C14.L5", "C15.L7"],
+      "target_layers": [
+        "C03.L4",
+        "C03.L7",
+        "C05.L2",
+        "C05.L3",
+        "C05.L4",
+        "C05.L5",
+        "C05.L6",
+        "C11.L4",
+        "C13.L6",
+        "C14.L5",
+        "C15.L7"
+      ],
       "steps": [
         {
           "id": "7.1",
@@ -360,6 +417,6 @@
       ]
     }
   ],
-  "next_action": "start_phase_1",
+  "next_action": "start_phase_3",
   "signals_log": "signals.log"
 }
