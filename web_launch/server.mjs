@@ -6,6 +6,7 @@ import { loadConfig, securityHeaders } from './config.mjs';
 import { PUBLIC_ASSETS } from './assets.mjs';
 import { randomBytes } from 'node:crypto';
 import { createLocalProfileAI, readSmallBody } from './server/local-profile-ai.mjs';
+import { handleCascadeAPI } from './server_cascade_api.mjs';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const config = await loadConfig({ demo: process.argv.includes('--demo'), neon: process.argv.includes('--neon-preview') });
 const localAI = process.argv.includes('--local-ai') ? { enabled: true, nonce: randomBytes(24).toString('hex') } : null;
@@ -23,6 +24,11 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(result.status, { ...headers, 'Content-Type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(result.body));
     } catch { res.writeHead(413, { ...headers, 'Content-Type': 'application/json; charset=utf-8' }); res.end(JSON.stringify({ message: 'Запит завеликий або перерваний.' })); }
     return;
+  }
+  
+  if (requestPath.startsWith('/api/cascade/')) {
+    const handled = await handleCascadeAPI(req, res, headers);
+    if (handled) return;
   }
   if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405, headers); res.end(); return; }
   if (requestPath === '/config.json') { res.writeHead(200, { ...headers, 'Content-Type': 'application/json; charset=utf-8' }); res.end(req.method === 'HEAD' ? undefined : JSON.stringify({ ...config, ...(localAI ? { localAI } : {}) })); return; }

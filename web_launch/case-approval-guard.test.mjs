@@ -183,3 +183,59 @@ test('a caller who is not a participant writes no approval at all', async () => 
   const sent = written(calls);
   assert.deepEqual(Object.keys(sent.approvals), [OTHER], 'only the stored approval survives; an outsider adds none');
 });
+
+test('V6-03: own approval is written separately to match_case_approvals for Neon RLS', async () => {
+  const state = await freshCase();
+  const mine = approveCase(state, { partyId: ME, termsHash: state.termsHash, now: '2026-09-08T11:00:00.000Z' });
+
+  const store = new ProfileStore();
+  const calls = wire(store, null);
+  await store.saveCaseState(mine);
+
+  const approvalCall = calls.find(call => call.path === '/rest/v1/match_case_approvals');
+  assert.ok(approvalCall, 'must post to /rest/v1/match_case_approvals');
+  assert.deepEqual(approvalCall.options.body, {
+    case_id: 'case-guard',
+    party_id: ME,
+    approved_version: mine.version,
+    approved_terms_hash: mine.termsHash,
+  });
+});
+
+test('X6 / V6-06: bilateral store sync allows party A and party B to independently approve and reach approved_for_next_step', async () => {
+  const state = await freshCase();
+
+  // Party A approves
+  const mine = approveCase(state, { partyId: ME, termsHash: state.termsHash, now: '2026-09-08T11:00:00.000Z' });
+  const storeA = new ProfileStore();
+  const callsA = wire(storeA, null);
+  await storeA.saveCaseState(mine);
+  const stateAfterA = written(callsA);
+  assert.equal(stateAfterA.status, 'awaiting_approval');
+  assert.ok(stateAfterA.approvals[ME]);
+  assert.equal(stateAfterA.approvals[OTHER], undefined);
+
+  // Party B fetches and approves
+  const storeB = new ProfileStore();
+  storeB.user = { id: OTHER, email: 'other@example.invalid' };
+  storeB.pilotSafetyEnabled = true;
+  storeB.realPilotEnabled = true;
+  const callsB = [];
+  storeB._send = async (path, options = {}) => {
+    callsB.push({ path, options });
+    if (path.startsWith('/rest/v1/match_cases?case_id=')) return [{ state: stateAfterA }];
+    return [];
+  };
+
+  const loadedByB = await storeB.caseState('case-guard');
+  assert.ok(loadedByB.approvals[ME], 'party B sees party A approval');
+  const bApproved = approveCase(loadedByB, { partyId: OTHER, termsHash: loadedByB.termsHash, now: '2026-09-08T11:30:00.000Z' });
+  await storeB.saveCaseState(bApproved);
+
+  const stateAfterB = callsB.find(call => call.options?.method === 'POST' && call.path.startsWith('/rest/v1/match_cases'))?.options.body.state;
+  assert.equal(stateAfterB.status, 'approved_for_next_step');
+  assert.ok(stateAfterB.approvals[ME]);
+  assert.ok(stateAfterB.approvals[OTHER]);
+});
+
+

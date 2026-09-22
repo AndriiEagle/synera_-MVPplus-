@@ -165,3 +165,24 @@ export async function writeEventsLog(events, { path = 'events.jsonl' } = {}) {
   await fs.appendFile(path, lines, 'utf8');
   return events.length;
 }
+
+export function caseEconomics({
+  aiPrompts = 0,
+  aiCostPerPrompt = 0.015,
+  operatorMinutes = 0,
+  operatorHourlyRate = 45,
+  gatewayFees = 0.30
+} = {}) {
+  if (aiPrompts < 0 || aiCostPerPrompt < 0 || operatorMinutes < 0 || operatorHourlyRate < 0 || gatewayFees < 0) {
+    throw new Error('Invalid case economics input');
+  }
+  const aiCost = aiPrompts * aiCostPerPrompt;
+  const operatorCost = (operatorMinutes / 60) * operatorHourlyRate;
+  const totalCost = aiCost + operatorCost + gatewayFees;
+  return Object.freeze({
+    aiCost,
+    operatorCost,
+    gatewayFees,
+    totalCost
+  });
+}

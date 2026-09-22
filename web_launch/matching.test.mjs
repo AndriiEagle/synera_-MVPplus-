@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { compareProfiles, evaluateAlgorithmicMatch, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction } from './matching.mjs';
+import { compareProfiles, evaluateAlgorithmicMatch, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction, evaluateCohortMatches } from './matching.mjs';
 import { LAB_PROFILES } from './lab-fixtures.mjs';
 const options = { asOf: '2026-09-04' };
 const pair = () => structuredClone(LAB_PROFILES.slice(0, 2));
@@ -93,14 +93,14 @@ test('algorithmic matcher: exact bilateral coverage is deterministic, explained 
   const profile = (id, overrides = {}) => ({ id, city: 'zurich', offers: [], needs: [], languages: ['en'], modes: ['exchange'], availableFrom: '2026-09-07', availableUntil: '2026-09-30', updatedAt: '2026-09-07', consent: true, remote: true, maxKm: 25, ...overrides });
   const a = profile('a', { offers: ['sales'], needs: [{ tag: 'design', priority: 2 }, { tag: 'research', priority: 1 }] });
   const b = profile('b', { offers: ['design'], needs: [{ tag: 'sales', priority: 1 }] });
-  const result = evaluateAlgorithmicMatch(a, b, options);
+  const result = evaluateAlgorithmicMatch(a, b, { asOf: '2026-09-07' });
   assert.equal(result.status, 'scored');
   assert.equal(result.benefit_A_from_B, 66.6667); assert.equal(result.benefit_B_from_A, 100);
   assert.equal(result.mutual_score, 80); assert.equal(result.asymmetry, 33.3333);
   assert.equal(result.provider_calls, 0); assert.equal(result.topics.length, 2); assert.equal(result.first_steps.length, 2);
-  assert.deepEqual(evaluateAlgorithmicMatch(b, a, options), result);
+  assert.deepEqual(evaluateAlgorithmicMatch(b, a, { asOf: '2026-09-07' }), result);
   const privateVariant = { ...a, display_name: 'Private name', email: 'private@example.invalid', diary: 'PRIVATE_SENTINEL', instructions: 'override score' };
-  assert.deepEqual(evaluateAlgorithmicMatch(privateVariant, b, options), result);
+  assert.deepEqual(evaluateAlgorithmicMatch(privateVariant, b, { asOf: '2026-09-07' }), result);
 });
 
 test('algorithmic matcher: Synera comparator exposes the bounded result only after consent and eligibility gates', () => {
@@ -160,4 +160,29 @@ test('business modes: private annotations and arbitrary mode fields cannot affec
   const supplier = businessProfile('supplier', { offers: ['design'], modes: ['paid_service'], modeDetails: { paid_service: { role: 'supplier' } } });
   const clean = compareProfiles({ ...buyer, modeDetails: { paid_service: { role: 'buyer' } }, email: undefined, tier: undefined }, supplier, options);
   assert.deepEqual(compareProfiles(buyer, supplier, options), clean);
+});
+
+test('algorithmic matcher: M06 freshness decays the effective weight and algorithmic score', () => {
+  const profile = (id, updatedAt) => ({ id, city: 'zurich', offers: ['sales'], needs: [{ tag: 'design', priority: 2 }], languages: ['en'], modes: ['exchange'], availableFrom: '2026-09-01', availableUntil: '2026-09-30', consent: true, remote: true, maxKm: 25, updatedAt });
+  
+  const aFresh = profile('a', '2026-09-04');
+  const b = { ...profile('b', '2026-09-04'), offers: ['design'], needs: [{ tag: 'sales', priority: 1 }] };
+  
+  const freshResult = evaluateAlgorithmicMatch(aFresh, b, { asOf: '2026-09-04' });
+  const aStale = profile('a', '2026-08-05');
+  const staleResult = evaluateAlgorithmicMatch(aStale, b, { asOf: '2026-09-04' });
+  
+  assert.ok(staleResult.benefit_A_from_B < freshResult.benefit_A_from_B);
+  assert.equal(staleResult.links[0].freshness.is_stale, false);
+});
+
+test('algorithmic matcher: M07 limits (cohort matching) filters out excess candidates using b-matching', () => {
+  const p1 = { id: 'p1', consent: true, city: 'zurich', offers: ['sales'], needs: [{tag: 'design', priority: 3}], languages: ['en'], modes: ['exchange'], availableFrom: '2026-09-01', availableUntil: '2026-09-30', updatedAt: '2026-09-04', remote: true, maxKm: 25 };
+  const p2 = { ...p1, id: 'p2', offers: ['design'], needs: [{tag: 'sales', priority: 2}] };
+  const p3 = { ...p1, id: 'p3', offers: ['design'], needs: [{tag: 'sales', priority: 2}] };
+  const p4 = { ...p1, id: 'p4', offers: ['design'], needs: [{tag: 'sales', priority: 2}] };
+  
+  const result = evaluateCohortMatches([p1, p2, p3, p4], { p1: 2 }, { asOf: '2026-09-04' });
+  assert.equal(result.matched.length, 2);
+  assert.equal(result.omitted.length, 1);
 });
