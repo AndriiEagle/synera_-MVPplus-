@@ -1,0 +1,151 @@
+{
+  "capturedAt": "2026-09-23T15:20:32.613Z",
+  "rows": [
+    {
+      "phase": "before-e39",
+      "step": "01-landing",
+      "expected": "Landing loads and login remains gated",
+      "actual": "Вхід ще не підключено",
+      "screenshot": "before-e39\\01-landing.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "02-guest-draft",
+      "expected": "Guest draft opens without real login",
+      "actual": "workspace visible=true",
+      "screenshot": "before-e39\\02-guest-draft.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "03-profile",
+      "expected": "Click profile tab",
+      "actual": "notice=Підготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.; view=true",
+      "screenshot": "before-e39\\03-profile.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "04-people",
+      "expected": "Click people tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "before-e39\\04-people.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "05-meetings",
+      "expected": "Click meetings tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "before-e39\\05-meetings.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "06-settings",
+      "expected": "Click settings tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "before-e39\\06-settings.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "09-active-legal",
+      "expected": "Served legal version matches login policy",
+      "actual": "2026-09-05-pilot-3",
+      "screenshot": "before-e39\\09-active-legal.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "10-catalogue",
+      "expected": "Catalogue loads",
+      "actual": "Synera Component Catalogue",
+      "screenshot": "before-e39\\10-catalogue.png"
+    },
+    {
+      "phase": "before-e39",
+      "step": "11-mobile-landing",
+      "expected": "Landing remains readable at 375px",
+      "actual": "h1 visible=true",
+      "screenshot": "before-e39\\11-mobile-landing.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "01-landing",
+      "expected": "Landing loads and login remains gated",
+      "actual": "Вхід ще не підключено",
+      "screenshot": "after-integration\\01-landing.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "02-guest-draft",
+      "expected": "Guest draft opens without real login",
+      "actual": "workspace visible=true",
+      "screenshot": "after-integration\\02-guest-draft.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "03-profile",
+      "expected": "Click profile tab",
+      "actual": "notice=Підготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.; view=true",
+      "screenshot": "after-integration\\03-profile.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "04-people",
+      "expected": "Click people tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "after-integration\\04-people.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "05-meetings",
+      "expected": "Click meetings tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "after-integration\\05-meetings.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "06-settings",
+      "expected": "Click settings tab",
+      "actual": "notice=Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.; view=false",
+      "screenshot": "after-integration\\06-settings.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "07-original-toggle",
+      "expected": "Original style selected",
+      "actual": "original",
+      "screenshot": "after-integration\\07-original-toggle.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "08-atelier-toggle",
+      "expected": "Atelier style restored",
+      "actual": "atelier",
+      "screenshot": "after-integration\\08-atelier-toggle.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "09-active-legal",
+      "expected": "Served legal version matches login policy",
+      "actual": "2026-09-05-pilot-3",
+      "screenshot": "after-integration\\09-active-legal.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "10-catalogue",
+      "expected": "Catalogue loads",
+      "actual": "Synera Component Catalogue",
+      "screenshot": "after-integration\\10-catalogue.png"
+    },
+    {
+      "phase": "after-integration",
+      "step": "11-mobile-landing",
+      "expected": "Landing remains readable at 375px",
+      "actual": "h1 visible=true",
+      "screenshot": "after-integration\\11-mobile-landing.png"
+    }
+  ],
+  "unreachable": [
+    "real login without backend",
+    "live match without authorized participants",
+    "two-party terms without live acceptance",
+    "payment without agreed invoice and receipt"
+  ]
+}
