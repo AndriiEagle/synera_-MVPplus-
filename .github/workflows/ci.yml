@@ -29,14 +29,14 @@ jobs:
       # Браузерні тести Playwright (@playwright/test) потребують chromium.
       - run: npx playwright install --with-deps chromium
 
-      # a11y_audit.mjs використовує puppeteer — йому потрібен власний chrome.
-      - run: npx puppeteer browsers install chrome
-
       # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
       # Glob *.test.mjs розгортається bash'ем на ubuntu; другий і третій аргументи — neon-воркер і Iceberg-машини.
-      - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/worker.test.mjs
+      - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/worker.test.mjs plan/v6/workflow/approval-boundary.test.mjs
 
-      # axe-core через puppeteer; exit 1 при critical/serious порушеннях.
+      # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
+      - run: npx playwright test tests/browser-e2e.spec.mjs
+
+      # axe-core через Playwright; exit 1 при critical/serious порушеннях.
       - run: node web_launch/a11y_audit.mjs
 
       - name: Upload test artifacts on failure

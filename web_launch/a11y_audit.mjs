@@ -6,29 +6,30 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { AxePuppeteer } from '@axe-core/puppeteer';
-import puppeteer from 'puppeteer';
+import { fileURLToPath, pathToFileURL } from 'url';
+import AxeBuilder from '@axe-core/playwright';
+import { chromium } from 'playwright';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PAGES = [
-  { name: 'index.html', url: `file://${__dirname}/index.html` },
-  { name: 'catalogue.html', url: `file://${__dirname}/catalogue.html` },
+  { name: 'index.html', url: pathToFileURL(path.join(__dirname, 'index.html')).href },
+  { name: 'catalogue.html', url: pathToFileURL(path.join(__dirname, 'catalogue.html')).href },
 ];
 
 async function runAudit() {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  const context = await browser.newContext();
   const results = [];
 
   try {
     for (const page of PAGES) {
       console.log(`\n=== Auditing ${page.name} ===`);
-      const pageInstance = await browser.newPage();
-      await pageInstance.goto(page.url, { waitUntil: 'networkidle0', timeout: 30000 });
+      const pageInstance = await context.newPage();
+      await pageInstance.goto(page.url, { waitUntil: 'networkidle', timeout: 30000 });
 
-      const axe = new AxePuppeteer(pageInstance);
+      const axe = new AxeBuilder({ page: pageInstance });
       const result = await axe.analyze();
 
       const violations = result.violations.map(v => ({
