@@ -3,13 +3,13 @@ const installButton = document.querySelector('#install-app');
 const status = document.querySelector('#install-status');
 function installed() { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; }
 if (installButton) installButton.hidden = true;
-window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); installEvent = event; if (installButton) installButton.hidden = false; status.textContent = 'Synera можна встановити на домашній екран.'; });
+window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); installEvent = event; if (installButton) installButton.hidden = false; status.textContent = 'Synera можна встановити як PWA у цьому браузері.'; });
 window.addEventListener('appinstalled', () => { installEvent = null; status.textContent = 'Synera встановлена. Відкрий її з домашнього екрана.'; if (installButton) installButton.hidden = true; });
 if (installButton) {
   installButton.addEventListener('click', async () => {
     if (installEvent) { const pending = installEvent; installEvent = null; await pending.prompt(); return; }
     status.textContent = installed() ? 'Synera вже відкрита як застосунок.'
-      : 'Android: меню Chrome → Встановити застосунок / Додати на головний екран. iPhone: Safari → Поділитися → На початковий екран → Відкривати як вебпрограму. На телефоні потрібне опубліковане HTTPS-посилання.';
+      : 'Android: Chrome → Встановити застосунок / Додати на головний екран. iPhone: Safari → Поділитися → На початковий екран → Відкривати як вебпрограму. Windows: Edge або Chrome → меню → Встановити Synera. Це PWA, не APK, IPA чи EXE; для встановлення потрібне опубліковане HTTPS-посилання.';
   });
   if (installed()) installButton.hidden = true;
 }

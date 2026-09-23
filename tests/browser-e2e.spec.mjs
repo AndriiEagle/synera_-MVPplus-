@@ -49,6 +49,20 @@ test('hero h1 видимий на mobile viewport 375px', async ({ page }) => {
   await expect(page.locator('h1').first()).toBeVisible();
 });
 
+test('Atelier is the default and the original design remains an accessible reversible choice', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  const toggle = page.locator('#style-toggle');
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveText('Стиль: Atelier');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
+  await toggle.click();
+  await expect(toggle).toHaveText('Стиль: Original');
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
+  await toggle.click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
+});
+
 test('клік табу profile перемикає видиму секцію workspace', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   // Ініціалізація app.mjs (top-level await fetch config.json) триває після load —

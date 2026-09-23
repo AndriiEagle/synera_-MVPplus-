@@ -768,6 +768,54 @@ a:focus-visible {
 .person:target {
   outline: 3px solid var(--color-839f60);
 }
+
+/* Default Atelier view: calm, high-contrast and intentionally reversible.
+   The original token values remain intact behind data-synera-style="original". */
+html[data-synera-style="atelier"] {
+  --green: var(--atelier-forest);
+  --muted: var(--atelier-ink-soft);
+  --line: var(--atelier-line);
+  --color-f6f5ef: var(--atelier-paper);
+  --color-fffefa: var(--atelier-surface);
+  --color-fff: var(--atelier-surface);
+  --color-20352b: var(--atelier-ink);
+  --color-254f3b: var(--atelier-forest);
+  --color-21694c: var(--atelier-forest-hover);
+  --color-19513e: var(--atelier-forest);
+  --color-e5eadb: var(--atelier-sage);
+  --color-edf2e6: var(--atelier-sage);
+  --color-f4f5ef: var(--atelier-sage);
+  --color-94ad66: var(--atelier-accent);
+  --color-839f60: var(--atelier-focus);
+  --color-dbe0d4: var(--atelier-line);
+  --color-cdd5c7: var(--atelier-line);
+}
+html[data-synera-style="atelier"] body {
+  background: linear-gradient(135deg, var(--atelier-paper), var(--atelier-surface));
+}
+html[data-synera-style="atelier"] header { border-bottom-width: 2px; }
+html[data-synera-style="atelier"] .brand { letter-spacing: -2px; }
+html[data-synera-style="atelier"] .intro { max-width: 880px; }
+html[data-synera-style="atelier"] .intro h1 span {
+  color: var(--atelier-forest);
+  text-decoration: underline;
+  text-decoration-color: var(--atelier-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 10px;
+}
+html[data-synera-style="atelier"] .welcome,
+html[data-synera-style="atelier"] .panel,
+html[data-synera-style="atelier"] .person,
+html[data-synera-style="atelier"] .meeting {
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--atelier-ink) 8%, transparent);
+}
+html[data-synera-style="atelier"] .journey li { border-left: 2px solid var(--atelier-accent); padding-left: 12px; }
+html[data-synera-style="atelier"] .quiet,
+html[data-synera-style="atelier"] .style-toggle { border-color: var(--atelier-line); }
+html[data-synera-style="atelier"] .style-toggle { margin-left: auto; white-space: nowrap; }
+html[data-synera-style="atelier"] button:not(.quiet) { background: var(--atelier-forest); }
+html[data-synera-style="atelier"] .badge { background: var(--atelier-sage); border-color: var(--atelier-line); }
+@media (max-width: 650px) { html[data-synera-style="atelier"] .style-toggle { margin-left: 0; } }
 @media (max-width: 650px) {
   header {
     height: auto;
