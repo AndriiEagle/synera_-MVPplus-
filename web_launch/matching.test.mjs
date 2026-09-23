@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { compareProfiles, evaluateAlgorithmicMatch, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction, evaluateCohortMatches } from './matching.mjs';
+import { compareProfiles, compareProfilesSemantic, evaluateAlgorithmicMatch, normalizeProfile, nearbyProfiles, cityDistance, caseWithoutIdentity, reviewIntroduction, evaluateCohortMatches } from './matching.mjs';
 import { LAB_PROFILES } from './lab-fixtures.mjs';
 const options = { asOf: '2026-09-04' };
 const pair = () => structuredClone(LAB_PROFILES.slice(0, 2));
@@ -57,6 +57,25 @@ test('matching: no common language, time, mode or confidentiality agreement bloc
     const [a, b] = pair(); mutation(b); const r = compareProfiles(a, b, options); assert.equal(r.status, 'incompatible'); assert.equal(r.score, null); assert.deepEqual(r.plan, []);
   }
   const [a, b] = pair(); a.modes = ['exchange']; b.modes = ['joint_project']; assert.equal(compareProfiles(a, b, options).status, 'incompatible');
+});
+
+test('semantic similarity cannot promote a pair rejected by hard constraints or one-way benefit', async () => {
+  const originalFetch = globalThis.fetch;
+  let calls = 0;
+  try {
+    globalThis.fetch = async () => { calls++; return { ok: true, json: async () => ({ results: [{ id: 'example-b', score: 0.99 }] }) }; };
+    const [a, b] = pair();
+    b.languages = ['fr'];
+    const incompatible = await compareProfilesSemantic(a, b, options);
+    assert.equal(incompatible.status, 'incompatible');
+    assert.equal(reviewIntroduction(incompatible, { [a.id]: true, [b.id]: true }).allowed, false);
+    const [c, d] = pair();
+    d.offers = ['events'];
+    const oneWay = await compareProfilesSemantic(c, d, options);
+    assert.equal(oneWay.status, 'insufficient_mutual_value');
+    assert.equal(reviewIntroduction(oneWay, { [c.id]: true, [d.id]: true }).allowed, false);
+    assert.equal(calls, 0, 'an unproven semantic lane must not receive profile data');
+  } finally { globalThis.fetch = originalFetch; }
 });
 
 test('matching: stale, future, malformed and missing data abstain; no self match', () => {

@@ -307,35 +307,9 @@ export function evaluateCohortMatches(profiles, quotas = {}, options = {}) {
 }
 
 
-// C14.L5: Vector DB semantic matching wrapper
+// C14.L5: Reserved asynchronous seam. Similarity is not evidence that language,
+// consent, availability or reciprocal value constraints are satisfied. Until a
+// separately accepted semantic oracle exists, keep the deterministic verdict.
 export async function compareProfilesSemantic(left, right, options = {}) {
-  // 1. Run deterministic B-Matching baseline
-  const baseline = compareProfiles(left, right, options);
-  
-  if (baseline.status === 'incompatible' || baseline.status === 'insufficient_mutual_value') {
-    // 2. Try to salvage via Semantic Search (Iceberg Vector DB)
-    try {
-      const response = await fetch('http://127.0.0.1:8001/search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: `${left.offers?.join(' ')} ${left.needs?.map(n=>n.tag).join(' ')}`, top_k: 5 })
-      });
-      if (response.ok) {
-        const data = await response.json();
-        const isSemanticMatch = data.results.some(r => r.id === right.id && r.score > 0.4);
-        if (isSemanticMatch) {
-          return {
-            ...baseline,
-            status: 'review_candidate',
-            reasons: ['SEMANTIC_SALVAGE: Vector DB found hidden compatibility.', ...baseline.reasons],
-            algorithmic: { ...baseline.algorithmic, vector_salvaged: true }
-          };
-        }
-      }
-    } catch (err) {
-      // Silently fall back to deterministic if vector db is down
-    }
-  }
-  
-  return baseline;
+  return compareProfiles(left, right, options);
 }
