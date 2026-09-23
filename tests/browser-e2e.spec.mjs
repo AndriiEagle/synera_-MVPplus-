@@ -63,6 +63,23 @@ test('Atelier is the default and the original design remains an accessible rever
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
 });
 
+test('Atelier keeps the disabled login action on the readable disabled surface', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  const state = await page.locator('#auth-submit').evaluate(button => {
+    const style = getComputedStyle(button);
+    const token = getComputedStyle(document.documentElement).getPropertyValue('--synera-disabled-bg').trim();
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = token;
+    document.body.append(probe);
+    const expected = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return { disabled: button.matches(':disabled'), background: style.backgroundColor, expected };
+  });
+  expect(state.disabled).toBe(true);
+  expect(state.background).toBe(state.expected);
+});
+
 test('клік табу profile перемикає видиму секцію workspace', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   // Ініціалізація app.mjs (top-level await fetch config.json) триває після load —
@@ -132,16 +149,19 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
     const input = document.querySelector('#email');
     return {
       bodyBg: cs.backgroundColor,
+      bodyBgImage: cs.backgroundImage,
       rootColor254f3b: getComputedStyle(document.documentElement).getPropertyValue('--color-254f3b').trim(),
       inputBorderWidth: input ? getComputedStyle(input).borderTopWidth : '',
       inputBg: input ? getComputedStyle(input).backgroundColor : '',
     };
   });
-  // Бренд-токен розв'язується (не порожній рядок = tokens.css завантажений).
-  expect(computed.rootColor254f3b).toBe('#254f3b');
-  // Фон body — теплий бренд-тон, не browser-дефолт (transparent/white = зламаний ланцюжок var()).
-  expect(computed.bodyBg).not.toBe('rgba(0, 0, 0, 0)');
-  expect(computed.bodyBg).not.toBe('rgb(255, 255, 255)');
+  // Токен розв'язується у вибраному Atelier, а original повертає початковий бренд.
+  expect(computed.rootColor254f3b).toBe('#173f32');
+  await page.locator('#style-toggle').click();
+  const originalToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
+  expect(originalToken).toBe('#254f3b');
+  // Фон може бути кольором або Atelier-градієнтом, але не browser-дефолтом.
+  expect(computed.bodyBgImage !== 'none' || !['rgba(0, 0, 0, 0)', 'rgb(255, 255, 255)'].includes(computed.bodyBg)).toBe(true);
   // Інпут має видиму рамку (0px = невидимий контроль, який ловив vision-рев'ю).
   expect(parseFloat(computed.inputBorderWidth)).toBeGreaterThan(0);
 });

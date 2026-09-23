@@ -813,7 +813,7 @@ html[data-synera-style="atelier"] .journey li { border-left: 2px solid var(--ate
 html[data-synera-style="atelier"] .quiet,
 html[data-synera-style="atelier"] .style-toggle { border-color: var(--atelier-line); }
 html[data-synera-style="atelier"] .style-toggle { margin-left: auto; white-space: nowrap; }
-html[data-synera-style="atelier"] button:not(.quiet) { background: var(--atelier-forest); }
+html[data-synera-style="atelier"] button:not(.quiet):not(:disabled) { background: var(--atelier-forest); }
 html[data-synera-style="atelier"] .badge { background: var(--atelier-sage); border-color: var(--atelier-line); }
 @media (max-width: 650px) { html[data-synera-style="atelier"] .style-toggle { margin-left: 0; } }
 @media (max-width: 650px) {
