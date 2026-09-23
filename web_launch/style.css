@@ -1814,3 +1814,68 @@ footer {
   color: var(--color-244431);
   cursor: pointer;
 }
+
+/* SYN_PHASE9_POLISH (2026-09-23, audit cycle 5): N1–N6. Токени — tokens.css SYN_PHASE9_TOKENS. */
+/* N3/N6: рамки контролів ≥3:1 проти #fff і #f5f7f4 */
+input,
+textarea,
+select {
+  border-color: var(--synera-border-control);
+}
+.quiet {
+  border-color: var(--synera-border-control);
+}
+/* N5: піксельно видимий фокус для всіх інтерактивних елементів */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--synera-focus-ring);
+  outline-offset: 2px;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-31805a);
+  outline-offset: 1px;
+}
+/* N5: короткі (150мс) переходи ховера */
+button,
+.quiet,
+.tab {
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+/* N1/N2/N4: disabled більше НЕ гасить підписи через opacity 0.5;
+   контроли отримують єдину disabled-поверхню через токени */
+fieldset:disabled {
+  opacity: 1;
+}
+fieldset:disabled label,
+fieldset:disabled .fine,
+label:has(> input:disabled) {
+  color: var(--synera-disabled-text);
+}
+fieldset:disabled input,
+fieldset:disabled textarea,
+fieldset:disabled select,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background: var(--synera-disabled-bg);
+  border-color: var(--synera-disabled-border);
+  color: var(--synera-disabled-text);
+}
+fieldset:disabled button,
+button:disabled {
+  opacity: 1;
+  background: var(--synera-disabled-bg);
+  color: var(--synera-disabled-text);
+  border-color: var(--synera-disabled-border);
+  box-shadow: none;
+  cursor: default;
+}

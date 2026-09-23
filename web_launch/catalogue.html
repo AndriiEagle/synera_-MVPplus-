@@ -15,7 +15,7 @@
   .state-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
   .state-label { font-size: var(--font-size-sm); font-weight: 600; color: var(--color-muted); min-width: 100px; }
   .focus-ring:focus-visible { outline: var(--focus-outline-width) solid var(--color-green-accent); outline-offset: var(--focus-outline-offset); }
-  .disabled-demo { opacity: 0.5; pointer-events: none; }
+  .disabled-demo { pointer-events: none; } /* N4: disabled-стан єдиний — токени SYN_PHASE9, не opacity */
   .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #ffffff80; border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; vertical-align: middle; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .code-ref { font-size: var(--font-size-xs); color: var(--color-muted); font-family: var(--font-mono); margin-top: 8px; display: block; }

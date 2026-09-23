@@ -1,8 +1,8 @@
 // Local contract test against the actual store. No network or production writes.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ProfileStore } from '../../../../synera-docs-review-20260904/source/web_launch/profile-store.mjs';
-import { createCaseState, approveCase } from '../../../../synera-docs-review-20260904/source/web_launch/business-case.mjs';
+import { ProfileStore } from '../../../web_launch/profile-store.mjs';
+import { createCaseState, approveCase } from '../../../web_launch/business-case.mjs';
 
 async function fixture() {
   return createCaseState({caseId:'synthetic-boundary',participants:['a','b'],
@@ -22,7 +22,14 @@ function store() {
 }
 test('control: authenticated A can submit an unapproved draft to the store transport',async()=>{
   const {value,sent}=store();await value.saveCaseState(await fixture());
-  assert.equal(sent.length,1);assert.equal(sent[0].request.authenticated,true);
+  // Транспорт еволюціонував (SYN_OWN_APPROVAL_ONLY, P1-5): спершу GET stored-стану
+  // (re-read = defense-in-depth проти підміни чужих погоджень), потім РІВНО ОДИН write
+  // (POST insert-only для нового кейсу). Оновлено 2026-09-23 за profile-store.mjs:180,218.
+  const writes = sent.filter(row => row.request.method === 'POST' || row.request.method === 'PATCH');
+  assert.equal(writes.length,1);
+  assert.equal(writes[0].request.authenticated,true);
+  // Кожен транспортний виклик — автентифікований (GET-читання теж під RLS).
+  assert.equal(sent.every(row=>row.request.authenticated),true);
 });
 test('contract: A must not submit a newly forged B approval through bulk state persistence',async()=>{
   const {value,sent}=store();

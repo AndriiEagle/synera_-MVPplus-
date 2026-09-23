@@ -131,3 +131,62 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
   // Інпут має видиму рамку (0px = невидимий контроль, який ловив vision-рев'ю).
   expect(parseFloat(computed.inputBorderWidth)).toBeGreaterThan(0);
 });
+
+// SYN_PHASE9_A11Y_E2E (2026-09-23, audit cycle 5): поліш N1–N6. Пинить computed-стилі:
+// N3/N6 — --synera-border-control у рамці інпута (3.88:1 vs #fff, WCAG 1.4.11);
+// N1/N2/N4 — disabled без opacity-гасіння: підписи чіткі, єдина disabled-поверхня;
+// N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
+test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  const computed = await page.evaluate(() => {
+    const input = document.querySelector('#email');
+    const label = document.querySelector('#auth-fields label');
+    const submit = document.querySelector('#auth-submit');
+    const fs = document.querySelector('#auth-fields');
+    const style = (el) => getComputedStyle(el);
+    // Знімаємо показники DISABLED-стану ДО проби...
+    const result = {
+      controlToken: style(document.documentElement).getPropertyValue('--synera-border-control').trim(),
+      disabledBgToken: style(document.documentElement).getPropertyValue('--synera-disabled-bg').trim(),
+      disabledInputBorder: style(input).borderTopColor,
+      labelColor: style(label).color,
+      fieldsetOpacity: style(fs).opacity,
+      submitBg: style(submit).backgroundColor,
+      submitOpacity: style(submit).opacity,
+      submitCursor: style(submit).cursor,
+    };
+    // ...далі проба: тимчасово вмикаємо fieldset і читаємо ENABLED-рамку того ж інпута.
+    fs.disabled = false;
+    result.enabledInputBorder = style(input).borderTopColor;
+    fs.disabled = true;
+    return result;
+  });
+  // Токени фази 9 на місці.
+  expect(computed.controlToken).toBe('#6f8779');
+  expect(computed.disabledBgToken).toBe('#e6ebe7');
+  // N3: рамка інпута в ENABLED-стані = контрол-токен (3.88:1 vs #fff, WCAG 1.4.11).
+  expect(computed.enabledInputBorder).toBe('rgb(111, 135, 121)');
+  // N4: disabled-інпут показує єдину disabled-поверхню, не контрол-токен.
+  expect(computed.disabledInputBorder).toBe('rgb(179, 193, 182)');
+  // N1/N2: підписи в disabled fieldset читабельні, поле не гаситься.
+  expect(computed.labelColor).toBe('rgb(78, 95, 80)');
+  expect(computed.fieldsetOpacity).toBe('1');
+  // N4: єдина disabled-поверхня кнопки замість opacity 0.5.
+  expect(computed.submitBg).toBe('rgb(230, 235, 231)');
+  expect(computed.submitOpacity).toBe('1');
+  expect(computed.submitCursor).toBe('default');
+  // N5: клавіатурний Tab-фокус дає видиме кільце (перший фокусабельний елемент).
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press('Tab');
+    const isInteractive = await page.evaluate(() => {
+      const el = document.activeElement;
+      return el && el.matches('button, a, input, select, textarea, [tabindex]');
+    });
+    if (isInteractive) break;
+  }
+  const focusRing = await page.evaluate(() => {
+    const s = getComputedStyle(document.activeElement);
+    return `${s.outlineWidth}|${s.outlineStyle}|${s.outlineColor}`;
+  });
+  expect(focusRing).toBe('2px|solid|rgb(25, 81, 62)');
+});

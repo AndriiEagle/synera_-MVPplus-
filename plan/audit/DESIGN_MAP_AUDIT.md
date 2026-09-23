@@ -40,3 +40,23 @@ Evidence chain: числа з `py`-підрахунків 2026-09-23 11:10 (162/
 **Доказ:** піксель-скан після фіксу — бренд-зелень фізично в рендері (index 118, catalogue 681 семплів проти 0 до); vision-verify: B1 порожній пароль-бенд, B2 email без рамки, B3 інвертована ієрархія контролів, B4 невидима Primary Button в каталозі, B5 стайр-кейс квадратних quiet-кнопок, B9 нуль зелені — усі RESOLVED.
 
 **Known residuals (фаза-9 поліш, НЕ регресії фіксу; WCAG 1.4.3 exempt для disabled):** N1 «Забув пароль» label ~1.5:1 (disabled fieldset); N2 «Запам'ятати…» ~2.6:1; N3 рамки інпутів #DFE7E1 ~1.26:1 (non-text, нижче 3:1); N4 два різні disabled-токени (index vs catalogue); N5 hover/focus станів Primary піксельно нема; N6 quiet-pill межа на панелі #F5F7F4. TODO(C06): мігрувати style.css на семантичні токени і видалити compat-блок.
+
+## Cycle 5 (2026-09-23) — фаза-9 поліш N1–N6 виконано
+
+**Роутинг хвилі (режим 99):** батько-оркестратор рахує контраст-математика WCAG локально ($0, скрипт у task_log) → хвиля 1 паралельно: GLM-5.3-Flash сабагент (імплементація, append-only в style/tokens + рядок catalogue) ∥ DeepSeek V4 Flash 0731 сабагент (E2E-тест на дизʼюнктному файлі) → батьківський bash-verify якорів → гейти: unit 412+1/0, Playwright 11/11 → хвиля 2: DeepSeek V4 Flash Vision Exp піксель-ревʼю 7 скріншотів (playwright-знімальник у test-results/phase9/, gitignored) → N3 INCONCLUSIVE за насиченістю рамки → токен підсилений `#75907f→#6f8779` (3.88:1 vs #fff, 3.60:1 vs panel) + E2E-очікування оновлено → 11/11 повторно.
+
+**Застосовано:**
+- `tokens.css` `SYN_PHASE9_TOKENS`: 5 семантичних токенів — `--synera-border-control: #6f8779` (N3/N6), `--synera-disabled-bg: #e6ebe7`, `--synera-disabled-text: #4e5f50` (5.66:1 на поверхні, 6.34:1 на панелі), `--synera-disabled-border: #b3c1b6`, `--synera-focus-ring: #19513e` (8.52:1, N5).
+- `style.css` `SYN_PHASE9_POLISH` (64 рядки append-only, 1816 існуючих не рухались): рамки контролів ≥3:1; `focus-visible` 2px кільця для button/a/input/[tabindex] + input:focus кільце #31805a; 150мс переходи ховера (reduced-motion покриває transition: none існуючим блоком); N1/N2/N4 — `fieldset:disabled { opacity: 1 }`, підписи залишаються чіткими (`--synera-disabled-text` 6.34:1 на панелі), контроли отримують єдину disabled-поверхню замість opacity-гасіння.
+- `catalogue.html:18`: `.disabled-demo` без opacity 0.5 (N4: одна система disabled через токени).
+- E2E `SYN_PHASE9_A11Y_E2E` пинить computed-стилі ОБОХ станів (enabled-рамка + disabled-поверхня інпута/кнопки/fieldset + клавіатурне focus-кільце після Tab).
+
+**Vision-вердикт (7 скріншотів):** N1/N2/N5/N6 RESOLVED; wow 7/10 («довірливо і не мертво»); зауваження про «півпрозорість» disabled-submit — не дефект (E2E довів opacity=1; це читабельний disabled-text за дизайном), розбіжність 01-vs-05 — race знімка проти app-init, не CSS. Токен border-control підсилений після ревʼю (сінаптична петля: vision INCONCLUSIVE → детермінована EV дія).
+
+**Доказ:** 414 pass + 1 skipped / 0 fail (канон 412 + 2 approval-boundary), Playwright 11/11 (SYN_TOKEN_WIRED + SYN_PHASE9 обидва пинять computed-стилі), git-рівень — append-only, старі рядки style.css не рухались.
+
+**Бонус-фікси цієї хвилі (не дизайн):**
+- `plan/v6/workflow/approval-boundary.test.mjs` був мертвий: імпорти тікали за репо в неіснуючий `synera-docs-review-20260904/source` (FM-021-патерн абсолютизованого шляху) → відносні `../../../web_launch/…`; контрольний тест актуалізовано під транспорт SYN_OWN_APPROVAL_ONLY (GET re-read defense-in-depth + РІВНО один write) — безпековий інваріант «A не пише чужого погодження» зелений і далі.
+- or_catalog refresh: 455 моделей live (2026-09-23 15:07).
+
+**Лишається фаза-9 (не блокери запуску):** TODO(C06) міграція style.css на семантичні токени + видалення compat-блоку; мап-гапи (кластеризація маркерів, heat-оверлеї, dark-tiles); «disabled до валідності» для submit — рішення app-логіки, не CSS.

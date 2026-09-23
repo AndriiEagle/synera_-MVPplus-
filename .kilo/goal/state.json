@@ -469,8 +469,32 @@
         }
       ],
       "status": "done"
+    },
+    {
+      "id": 9,
+      "name": "Фаза-9 поліш: дизайн-рендер N1–N6 + portability тестів (cycle 5, 2026-09-23)",
+      "target_layers": ["C06.L4", "C13.L3"],
+      "steps": [
+        {
+          "id": "9.1",
+          "name": "N1–N6: контраст-токени (SYN_PHASE9_TOKENS), disabled-поверхня без opacity, focus/hover",
+          "action": "wave",
+          "spec": "vision loop: WCAG math local -> GLM-5.3-Flash impl + DS V4 Flash E2E parallel -> 11/11 -> DS Vision pixel review -> border token #75907f->#6f8779",
+          "verify_cmd": "npx playwright test --grep SYN_PHASE9",
+          "status": "done"
+        },
+        {
+          "id": "9.2",
+          "name": "Portability: approval-boundary.test.mjs (мертві absolute imports) -> відносні + транспорт актуалізовано",
+          "action": "forge_micro",
+          "spec": "fix FM-021-pattern imports; control test matches SYN_OWN_APPROVAL_ONLY transport (GET re-read + one write)",
+          "verify_cmd": "node --test plan/v6/workflow/approval-boundary.test.mjs",
+          "status": "done"
+        }
+      ],
+      "status": "done"
     }
   ],
-  "next_action": "await_4_operator_decisions_then_phase9",
+  "next_action": "await_4_operator_decisions_then_deploy (Q3 міграція+H1, Q5 юрист, Q6/Q7 рейка, Q8 деплой) — фаза-9 поліш закрита cycle 5",
   "signals_log": "signals.log"
 }
