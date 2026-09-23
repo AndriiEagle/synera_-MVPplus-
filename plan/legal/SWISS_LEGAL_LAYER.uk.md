@@ -1,85 +1,59 @@
-# Swiss legal layer — CNRA/Synera pilot (D1→D4)
+# Swiss legal layer — Synera private B2B pilot
 
-Статус: `LEGAL_ANALYSIS_DRAFT — needs qualified CH review before D3`
-Дата: 2026-09-10. Джерело: незалежний правовий аудит + план. Цей документ не є формальним legal opinion; фінальний підпис — оператор після локальної перевірки.
+Статус: `LEGAL_PREPARATION_DRAFT — EXPERT_REQUIRED before live registration`
+Перевірено: 2026-09-23. Це робочий комплаєнс-артефакт, не legal opinion, не сертифікація і не підпис Гілберта чи іншого юриста.
 
-## Ключовий висновок
+## Межа рішення
 
-D1/D2 юридично неблоковані (0 реальних осіб, 0 зовнішніх передач). Блокер починається з **D3**: без Privacy Notice + ToS + DPA запуск двох живих учасників = порушення nFADP (штраф до CHF 250'000, Art. 61) і кримінальний ризик при записі зустрічей (StGB Art. 179ter).
+**Підготовлено:** коротка чернетка notice/terms, вихідні джерела, локальний acceptance-check і перелік розривів.
+**Не доведено:** фактичний Neon/Cloudflare account, країни субпроцесорів і backup, DPA/SCC, підстава для кожної обробки, статус сторін, роль посередника, GDPR/AI Act scope для майбутніх EU-сценаріїв.
+**Висновок:** `HOLD` для реальних реєстрацій, зовнішнього AI, запису, авто-публікації та QR-bill activation. Поточний default `registrationEnabled: false` зберігається.
 
-## 1. Застосовне право
+## Виправлені правові межі
 
-| Закон (SR) | Застосування | Ризик |
-|---|---|---|
-| nFADP/revDSG (235.1) | профілі, матчинг, метрики, AI-виклики — з першої реальної особи | Art. 19 інформування; Art. 6(6)-(7) згода; Art. 16-17 трансфер; Art. 61 штраф |
-| GDPR | лише якщо цілеспрямована пропозиція в EU (Art. 3(2)) | зараз НЕ тригерований (CH-спільнота); умовний при відкритті ЄС |
-| OR/CO (220) | договори учасників; статус Synera (Art. 394 мандат, 412 маклерство) | без ToS — ризик кваліфікації як мандатар/маклер без обмежень; Art. 100 — не можна виключати умисел/грубу необережність |
-| UWG (241) | acquisition, синтетичні профілі, імпринт | Art. 3(1)(o) cold outreach; 3(1)(b) омана; 3(1)(s) імпринт |
-| ArG/AHVG | лише при Scheinselbstständigkeit | ретроактивні внески |
-| AVG (823.11) | якщо фактично працевлаштування | кантональний дозвіл; межа = учасник має UID/самозайнятість |
-| HReg (OR 931(2)) | Einzelfirma з обороту ≥ CHF 100k | відкладено до перших грошей |
-| MWSTG (641.20) | комісії/підписки ≥ CHF 100k | реєстрація, ставка 8.1%, UID у рахунках |
-| StGB 179ter | запис зустрічей | **кримінально** без згоди всіх |
-| PBV (942.211) | ціни для споживачів | B2B без ПДВ ок; B2C — з ПДВ |
-
-FMG не застосовний (email/in-app — не телеком).
-
-## 2. Матриця 7 дозволів (юридична проекція)
-
-| Дозвіл | Lawful basis | Відкликання | Ризик / примітка |
+| Claim | Офіційне джерело і locator | Зіставлення з кодом | Verdict |
 |---|---|---|---|
-| Visibility | згода (Art. 31 nFADP) | миттєве приховування з пулу | окремий чекбокс від comparison |
-| Comparison | згода + договір | так | матчинг = профілювання; тримати ALGORITHMIC_NOT_SCORED, інакше high-risk profiling |
-| Introduction | явна згода ОБОХ на конкретну пару+версію | revoke анулює | реалізація (2 approvals + hash) — зразкова; заборона «показів контакту» в логах |
-| External AI | явний opt-in + Art. 16(2)(c) | так | **найвищий**: Китай не в Annex 1 (адекватність) → SCC + DPA обов'язково; US — перевірити DPF-сертифікацію |
-| Recording | письмова згода всіх + StGB | так | **default = заборонено**; якщо потрібно — письмово до початку, локально, поза AI |
-| Summary | згода (чистіше за інтерес) | так | формулювати мету «анонімізовані підсумки», заборона ре-ідентифікації |
-| Communication | договір (операційні) / згода (промо) | так | промо без згоди = UWG 3(1)(o) |
+| Notice має бути доступним до/коли збираються дані, стислим і прозорим; має пояснювати одержувачів та країни передачі. | [FDPIC, Duty to provide information](https://www.edoeb.admin.ch/en/duty-to-provide-information): “in advance”, “concise, transparent, clear and readily accessible”; [FDPIC, Privacy statements](https://www.edoeb.admin.ch/en/privacy-statements-on-the-internet): Art. 19 FADP. | `web_launch/legal.html` §§1,3,4,6; login opens notice before `consentRecord`. | `PRESENT_IN_DRAFT`; юрист має звірити фінальний операторський notice з фактичною обробкою. |
+| FADP не дозволяє розкривати дані за кордон, якщо приватність серйозно ризикує; за відсутності adequate protection потрібні застосовні safeguards. | [FDPIC, Cross-border transfer](https://www.edoeb.admin.ch/en/cross-border-transfer-of-personal-data): Art. 16 FADP, SCC/BCR guidance; [FDPIC, Outsourcing](https://www.edoeb.admin.ch/en/outsourcing-of-data-processing). | `legal.html` §3 прямо маркує Neon/Cloudflare account, DPA, маршрути, retention як непідтверджені; зовнішній AI заборонений до цих gates. | `HOLD — provider/account evidence and contract review required`. |
+| GDPR scope не можна звести до “ми в CH”. Він охоплює, зокрема, пропозицію товарів/послуг людям у Union або моніторинг їхньої поведінки; Art. 13 визначає відомості при зборі; Art. 44 — transfers. | [GDPR consolidated text](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679), Arts. 3, 13, 44. | `legal.html` не заявляє, що GDPR “не тригерований”; вимагає expert scope-check перед EU expansion. | `NEEDS_REVIEW per actual targeting, people and processing`. |
+| EU AI Act має територіальний scope: Union market/use, Union deployer, або output, що використовується в Union; він не скасовує GDPR. | [AI Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689), Art. 2(1), 2(7), 2(8). | `legal.html` §2 зберігає AI вимкненим; UI consent сам по собі не дозволяє provider transfer. | `NEEDS_REVIEW before any embedded external AI or EU-facing use`. |
+| Neon пропонує DPA, але це не підтверджує, що конкретний оператор підписав/активував відповідний документ або регіон. | [Neon DPA](https://neon.com/pdf/DPA.pdf), opening + definition of Customer Data; [Neon Security](https://neon.com/security), DPA/cross-border support. | Source currently names US East 2; немає live account inspection у цій задачі. | `UNVERIFIED — do not call the pilot contract-ready`. |
+| Cloudflare data-localization controls є окремими конфігураціями; без account evidence не можна обіцяти Swiss/EU-only processing. | [Cloudflare DLS](https://developers.cloudflare.com/data-localization/), Features; [Region support](https://developers.cloudflare.com/data-localization/region-support/), default CMB boundary absent. | `legal.html` §3 замінює бездоказову гарантію на disclosure + hold. | `UNVERIFIED — account and product entitlement review required`. |
+| Existing Swiss QR-bill generator begins `SPD`, while the current SIX QR-bill specification requires the `SPC` header and other structured fields. The feature is flag-off. | [SIX QR-bill](https://www.six-group.com/en/products-services/banking-services/payment-standardization/standards/qr-bill.html), current implementation guidelines; source audit supplied for this task. | `web_launch/economics/qr_bill.mjs` is not modified by this legal scope; `legal.html` calls activation not-ready. | `HOLD — no activation claim; use a manually issued invoice only after real terms/payee review`. |
 
-Наскрізне: purpose limitation на кожен дозвіл (окреме речення мети в Privacy Notice); data minimization — поточний набір полів правильний, сенситивні виключені (тримати як інваріант); storage limitation — retention відсутній (LEGAL-P2-02); DPIA перед D4 (консервативно); automated decisions відсутні (людина вирішує) — зафіксувати в ToS.
+## Згода, а не blanket permission
 
-## 3. Кваліфікація режимів (OR)
+Базове прийняття Terms + Privacy Notice потрібне для admission і вже передається як `policy_version`, `terms_accepted`, `privacy_acknowledged` у `web_launch/pilot-policy.mjs` та `web_launch/neon-store.mjs`.
 
-- **exchange**: бартер; Synera — нейтральний майданчик, не сторона.
-- **paid_service**: договір безпосередньо між учасниками; «compensation unresolved until typed» юридично правильний (немає ціни — немає оплатної частини). Synera не агент (Art. 418a ff.), поки не діє постійно в інтересах принципала. Комісія за успішні пари після D4 = Mäklervertrag (Art. 412), винагорода лише за причинного зв'язку (Art. 413(1)); ліцензії немає, КРІМЫ трудового посередництва (AVG).
-- **referral**: referral fee = маклерська винагорода; `thirdPartyStatus=not_consulted → BLOCKED` — бездоганно. У ToS: виплата лише після укладення договору внаслідок рефералу; розкриття подвійного представництва (Art. 415).
-- **hybrid**: незалежна валідація ніг відповідає Art. 20 OR.
+| Операція | Статус у цій версії | Мінімальна умова до реального використання |
+|---|---|---|
+| Видимість профілю | private-by-default; окремий UI toggle | окремий відкличний вибір і перевірка фактичного persistence. |
+| Матчинг / введення | окремі UI toggles; двостороннє введення має власний flow | не називати UI-toggle повним журналом згод, поки збереження/revocation не перевірено. |
+| Зовнішній AI | `OFF/HOLD` | provider identity, data map, DPA/transfer mechanism, redaction, окремий informed opt-in, local acceptance. |
+| Запис зустрічей | вимкнений у UI й коді | окремий правовий review та усвідомлена згода всіх учасників; поза поточним пілотом. |
+| Авто-публікація | відсутня/`OFF` | окремий продуктовый flow, recipient/scope, consent, terms і contracts; поза поточним пілотом. |
+| QR-bill | `OFF/HOLD` | незалежна перевірка актуальної SIX-специфікації, payee, сум, currency та умов; поза поточним пілотом. |
 
-## 4. Обов'язковий мінімум ToS v1 (12 клаузул)
+## Версія та реальний login flow
 
-1. Партії: Synera не сторона/агент/гарант угод учасників.
-2. Non-binding matching: кандидат ≠ рекомендація ≠ підтвердження компетенції ≠ договір.
-3. Evidence: все self_declared, Synera не верифікує.
-4. Ніяких автоматизованих рішень (Art. 21 nFADP).
-5. Ніяких юридичних/податкових консультацій.
-6. Liability: виключення простої необережності в межах закону; ніколи — умисел/груба необережність (Art. 100 OR); нуль відповідальності за результати між учасниками.
-7. Відкликання згоди будь-коли + як.
-8. Права суб'єкта: доступ Art. 25, експорт Art. 32, видалення — SLA 30 днів.
-9. Юрисдикція: Цюрих; швейцарське право.
-10. Імпринт оператора на всіх формах (UWG 3(1)(s)).
-11. Заборона працевлаштування; учасники — незалежні підприємці (AVG-межа).
-12. Версійність ToS з хешем; матеріальна зміна → повторна згода (дзеркало terms guard).
+`POLICY_VERSION` дорівнює `2026-09-05-pilot-3`; `consentRecord()` включає її у login/signup payload, а Neon schema має `pilot_consents`. Це **підтверджує лише базовий version field**, не прийняття нової чернетки. Новий текст має ідентифікатор `2026-09-23-legal-draft`; реєстрація не може бути увімкнена, поки оператор не:
 
-## 5. ТОП-10 gaps
+1. затвердить остаточний текст з кваліфікованим CH/EU юристом;
+2. прив'яже незмінний текст/хеш до нової `POLICY_VERSION` і запише час прийняття;
+3. вимагатиме повторного прийняття при матеріальній зміні;
+4. локально перевірить відмову без обох базових acknowledgment і збереже доказ у дозволеному середовищі.
 
-| ID | Закон | Дія | Owner | Дедлайн |
-|---|---|---|---|---|
-| LEGAL-P0-01 | nFADP Art. 19 | Privacy Notice v1 (цілі 7 дозволів, поля, одержувачі+країни, retention, права, FDPIC) — показувати ДО профілю | Operator | до D3 |
-| LEGAL-P0-02 | OR Art. 1/100/394/412; nFADP Art. 21 | ToS v1 з 12 клаузул, версіонований, checkbox+timestamp при онбордингу | Operator | до D3 |
-| LEGAL-P0-03 | nFADP Art. 9/16-17 | DPA template + SCC (OpenRouter: DPF-перевірка; Moonshot/GLM: SCC + мінімізація + заборона training) — підписати ДО першого AI-виклику з реальними даними | Operator+providers | до першого AI-виклику |
-| LEGAL-P0-04 | StGB 179ter | «запис заборонено» в протоколі D3/D4; виняток = письмова згода всіх, локально, поза AI | Operator | до першої зустрічі |
-| LEGAL-P1-01 | OR 931(2) | поле «оборот YTD» у go/no-go scoreboard; тригер CHF 100k → Einzelfirma+UID | Operator | перед оплатою |
-| LEGAL-P1-02 | MWSTG 10(2)(a)/25 | ставка 8.1% + тригер CHF 100k у unit economics; UID у рахунках | Operator | перед оплатою |
-| LEGAL-P1-03 | OR 412-418; AVG 2/5 | referral clause + розкриття + заборона працевлаштування; eligibility = UID/самозайнятість | Operator | до D4 |
-| LEGAL-P1-04 | AHVG 12; ArG 1 | «учасники — підприємці; Synera не дає графіків/інструкцій; trial не є роботою» в ToS + organizer packet | Operator | до D4 |
-| LEGAL-P2-01 | nFADP 22 | DPIA (matching+AI+cross-border+мітигації) — зберегти в evidence/ | Operator | до D4 |
-| LEGAL-P2-02 | nFADP 6(4)/25/32 | retention: профілі — до відкликання+30д; логи згод — 5р; метрики — 12м; кейси — 6м після закриття; export/delete endpoint | Operator | профілі до D3, повністю до D4 |
-| LEGAL-P2-03 | UWG 3(1)(b)/(s) | synthetic-когорта ніколи без мітки; organizer disclosure про винагороду; імпринт | Operator | до D4 |
+Ці кроки не виконувались у цій задачі, бо власність обмежена `plan/legal/*` і `web_launch/legal.html`; `pilot-policy.mjs`, server, DB, QR-bill і deployment не змінювалися.
 
-## 6. Minimum viable legal по рівнях
+## Питання для кваліфікованого юриста
 
-- **D1**: нічого зовнішнього. Драфти трьох текстів + реєстр обробок (1 стор.).
-- **D2**: + privacy-by-design чекліст (консенти default off), синтетика only у міграціях.
-- **D3**: Privacy Notice прийнятий обома; 7 окремих згод + журнал (хто/коли/версія тексту/спосіб відкликання); ToS; протокол 1 стор.; запис заборонено; **нуль AI-викликів з реальними даними до DPA/SCC**; breach-план (Art. 24, FDPIC); робочий export/delete; письмова фіксація «пілот без оплати».
-- **D4**: + письмова угода з організатором (роль, винагорода→розкриття, заборона самостійного збору даних); DPIA; retention у Notice; synthetic-правило; WTP без публічних цін (PBV не тригерується); eligibility-чек самозайнятості; журнал інцидентів + stop-criteria юридично закріплені.
-- **Перед першою оплатою**: Einzelfirma/UID, MWST, PBV-ціни.
+1. Controller/processor roles, applicable lawful basis per purpose, retention and handling of rights requests.
+2. FADP transfer assessment for the actual Neon/Cloudflare account, subprocessor chain, US route/backups and AI provider; DPA/SCC/other safeguard where applicable.
+3. GDPR territorial scope for the concrete pilot audience and any EU-targeting or monitoring.
+4. EU AI Act applicability, operator role and any required controls if output is used in Union.
+5. Swiss contractual, referral, labour-intermediation, consumer/price, payment and recording implications of the selected business model.
+
+## Two independent passes
+
+- **Pass A — public-law/regulator, 2026-09-23:** FADP transparency/transfers via FDPIC; GDPR and AI Act consolidated texts via EUR-Lex. Result: earlier categorical “not triggered” language is unsafe; exact scope is fact-dependent.
+- **Pass B — service/configuration, 2026-09-23:** current official Neon DPA/security and Cloudflare DLS docs, then source inspection of `legal.html`, `app.mjs`, `pilot-policy.mjs`, `neon-store.mjs`; current SIX QR-bill condition was added as bounded audit evidence. Result: current code carries basic policy version at admission, separate in-memory UI controls exist, recording is locked off; live provider contracts/configuration, durable records for each granular consent, and QR-bill conformance remain unproven.
