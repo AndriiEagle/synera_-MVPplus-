@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-design="premium">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="referrer" content="no-referrer">
 <title>Synera — співпраця для солопідприємців</title><meta name="theme-color" content="#254f3b">
@@ -7,9 +7,9 @@
 <script type="module" src="/app.mjs"></script><script type="module" src="/pwa.mjs"></script>
 </head>
 <body>
-<header><a class="brand" href="/">synera<span>●</span></a><span id="mode" class="badge" data-i18n="header.check_access">Перевірка доступу</span><div id="lang-switcher" class="switcher"><button type="button" class="quiet lang-btn active" data-lang="uk">UA</button><button type="button" class="quiet lang-btn" data-lang="de">DE</button><button type="button" class="quiet lang-btn" data-lang="en">EN</button></div><button id="logout" class="quiet" hidden data-i18n="header.logout">Вийти</button><button id="back-login" class="quiet" hidden data-i18n="header.back_to_login">До входу</button></header>
+<header><a class="brand" href="/">synera<span>●</span></a><span id="mode" class="badge" data-i18n="header.check_access">Перевірка доступу</span><div id="lang-switcher" class="switcher"><button type="button" class="quiet lang-btn active" data-lang="uk">UA</button><button type="button" class="quiet lang-btn" data-lang="de">DE</button><button type="button" class="quiet lang-btn" data-lang="en">EN</button></div><div id="design-switch" class="design-switch" role="group" aria-label="Вигляд інтерфейсу"><span class="design-switch-label">Вигляд</span><button type="button" class="quiet" data-design-choice="premium" aria-pressed="true">Новий</button><button type="button" class="quiet" data-design-choice="classic" aria-pressed="false">Початковий</button></div><button id="logout" class="quiet" hidden data-i18n="header.logout">Вийти</button><button id="back-login" class="quiet" hidden data-i18n="header.back_to_login">До входу</button></header>
 <main>
-<div class="install-bar"><button id="install-app" class="quiet" type="button" data-i18n="install.button">Встановити Synera</button><p id="install-status" class="fine" role="status" data-i18n="install.status">Android та iPhone · з домашнього екрана</p></div>
+<div class="install-bar"><button id="install-app" class="quiet" type="button" data-i18n="install.button">Встановити Synera</button><p id="install-status" class="fine" role="status">Встановлення: Android — Chrome; iPhone — Safari; Windows — лише коли браузер запропонує PWA для опублікованого HTTPS-сайту.</p></div>
 <section class="intro"><p class="eyebrow" data-i18n="intro.eyebrow">СОЛОПІДПРИЄМЦІ · МАЛИЙ БІЗНЕС · ВЗАЄМНА КОРИСТЬ</p><h1 data-i18n="intro.title">Твоя майстерність.<br><span>Ваш спільний результат.</span></h1><p class="lead" data-i18n="intro.lead">Запропонуй те, що вмієш робити добре.<br>Знайди партнера, чия допомога потрібна твоєму бізнесу.</p><ol class="journey"><li><span>01</span><div><strong data-i18n="intro.step1.title">Даю й шукаю</strong><small data-i18n="intro.step1.desc">Твоя компетенція та конкретна потреба зараз.</small></div></li><li><span>02</span><div><strong data-i18n="intro.step2.title">Бізнес-кейс для двох</strong><small data-i18n="intro.step2.desc">Користь кожному, теми розмови й умови для узгодження.</small></div></li><li><span>03</span><div><strong data-i18n="intro.step3.title">Перевірте співпрацю</strong><small data-i18n="intro.step3.desc">Домовтеся про один невеликий результат для кожного.</small></div></li></ol></section>
 <p id="notice" class="notice" role="status" aria-live="polite"></p>
 <section id="welcome" class="panel welcome">

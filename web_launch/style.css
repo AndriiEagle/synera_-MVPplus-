@@ -1879,3 +1879,129 @@ button:disabled {
   box-shadow: none;
   cursor: default;
 }
+
+/* SYN_PREMIUM_VARIANT: base rules remain the classic design. This opt-in layer changes
+   visual hierarchy only; consent, matching, and PWA installation rules stay in modules. */
+.design-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-14);
+  background: var(--color-fffefa);
+}
+.design-switch-label {
+  padding: 0 6px 0 4px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+.design-switch button {
+  min-height: 32px;
+  padding: 5px 9px;
+  border-color: transparent;
+  font-size: 11px;
+}
+.design-switch button[aria-pressed="true"] {
+  color: var(--color-fff);
+  background: var(--green);
+  box-shadow: 0 1px 3px var(--color-193c2814);
+}
+html[data-design="premium"] {
+  --green: var(--synera-premium-ink);
+  --muted: var(--color-53675d);
+  --line: var(--synera-premium-line);
+  background: var(--synera-premium-canvas);
+}
+html[data-design="premium"] body {
+  background: linear-gradient(135deg, var(--synera-premium-canvas) 0%, var(--color-fffefa) 54%, var(--synera-premium-mist) 100%);
+}
+html[data-design="premium"] header {
+  height: 88px;
+  gap: 14px;
+}
+html[data-design="premium"] .brand {
+  color: var(--synera-premium-deep);
+  letter-spacing: -1.9px;
+}
+html[data-design="premium"] .badge {
+  color: var(--synera-premium-ink);
+  border-color: var(--synera-premium-line);
+  background: var(--color-fffefa);
+}
+html[data-design="premium"] .intro {
+  max-width: 820px;
+  padding-top: 20px;
+}
+html[data-design="premium"] h1 {
+  max-width: 760px;
+  letter-spacing: -2.2px;
+}
+html[data-design="premium"] h1 span {
+  color: var(--color-526858);
+}
+html[data-design="premium"] .lead {
+  max-width: 630px;
+  color: var(--color-53675d);
+}
+html[data-design="premium"] .journey {
+  gap: 12px;
+}
+html[data-design="premium"] .journey li,
+html[data-design="premium"] .panel,
+html[data-design="premium"] .person,
+html[data-design="premium"] .meeting {
+  border-color: var(--synera-premium-line);
+  box-shadow: 0 16px 42px var(--synera-premium-shadow);
+}
+html[data-design="premium"] .journey li {
+  background: color-mix(in srgb, var(--color-fffefa) 88%, var(--synera-premium-mist));
+}
+html[data-design="premium"] .journey li > span {
+  color: var(--synera-premium-ink);
+}
+html[data-design="premium"] .welcome {
+  background: var(--synera-premium-surface);
+  border-radius: var(--radius-8);
+}
+html[data-design="premium"] .install-bar {
+  border-color: var(--synera-premium-line);
+  background: var(--color-fffefa);
+}
+html[data-design="premium"] button:not(.quiet):not(.tab) {
+  background: var(--synera-premium-ink);
+}
+html[data-design="premium"] .quiet {
+  color: var(--synera-premium-ink);
+  border-color: var(--synera-premium-line);
+}
+html[data-design="premium"] .workspace-bar nav {
+  border-color: var(--synera-premium-line);
+  background: var(--color-fffefa);
+}
+html[data-design="premium"] .tab.active {
+  background: var(--synera-premium-ink);
+  color: var(--color-fff);
+}
+html[data-design="premium"] input,
+html[data-design="premium"] textarea,
+html[data-design="premium"] select {
+  border-color: var(--synera-border-control);
+  background: var(--color-fffefa);
+}
+html[data-design="premium"] .profile-transfer,
+html[data-design="premium"] .visibility {
+  border-color: var(--synera-premium-line);
+  background: color-mix(in srgb, var(--synera-premium-mist) 46%, var(--color-fffefa));
+}
+@media (max-width: 800px) {
+  .design-switch { order: 4; }
+  html[data-design="premium"] header { height: auto; min-height: 76px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+}
+@media (max-width: 650px) {
+  .design-switch-label { display: none; }
+  .design-switch button { min-height: 38px; padding: 6px 9px; }
+  html[data-design="premium"] .intro { padding-top: 12px; }
+  html[data-design="premium"] h1 { letter-spacing: -1.7px; }
+}
