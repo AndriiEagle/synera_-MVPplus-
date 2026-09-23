@@ -1,10 +1,5 @@
-// C11.L4 — Swiss QR-bill payload builder (REVERSIBLE_DEFAULT, flag OFF за замовчуванням).
-// Канон: BLOCKED_HUMAN.md Q6/Q7; plan/legal/SWISS_LEGAL_LAYER.uk.md (PBV 942.211: B2C з ПДВ,
-// B2B без); GENESIS_SPEC.uk.md:75 (H2: MWST, договір, QR-bill).
-// Дизайн: детермінована побудова QR-bill payload (Swiss QR standard: 6 блоків, поاتفільників
-// розділювачів), жодних мережевих викликів, жодного платіжного процесора. Активація
-// = config gate (enabled:false за замовчуванням) — перемикач після рішення Q6/Q7.
-import { createHash } from 'node:crypto';
+// C11.L4 — підготовка Swiss QR-bill, випуск payload тимчасово заблоковано.
+// Q6/Q7 і enabled flag не доводять відповідність формату SIX або готовність до оплати.
 
 export const DEFAULT_CONFIG = Object.freeze({
   enabled: false,            // перемикач монетизації: ON тільки після Q6/Q7 рішення оператора
@@ -39,8 +34,8 @@ export function toRappen(amount) {
 }
 
 /**
- * Побудова payload Swiss QR-bill (31 рядок, розділювач \n).
- * @param {{invoiceNumber, amount, currency?, payee:{name,street,houseNumber,zip,city}, iban, payer?:{name,street,city}, reference?, vat?:{registered,rate}}} invoice
+ * Guard для QR-bill: не видає платіжний payload, поки формат і реальні реквізити
+ * не пройшли незалежну перевірку. Для першого пілоту використовується рахунок банку.
  */
 export function buildQrBill(invoice, config = DEFAULT_CONFIG) {
   if (config.enabled !== true) throw new Error('Білінг вимкнений: потрібне рішення Q6/Q7 (flag enabled)');
@@ -49,37 +44,10 @@ export function buildQrBill(invoice, config = DEFAULT_CONFIG) {
   if (!invoice.payee || !invoice.payee.name || !invoice.payee.zip || !invoice.payee.city) {
     throw new Error('Некоректний отримувач платежу: name/zip/city обовʼязкові');
   }
-  const rappen = toRappen(invoice.amount);
+  toRappen(invoice.amount);
   const currency = invoice.currency ?? config.currency ?? 'CHF';
   if (!['CHF', 'EUR'].includes(currency)) throw new Error('Некоректна валюта: ' + currency);
-  const vat = invoice.vat ?? config.vat;
-  const vatText = vat?.registered
-    ? `VAT at ${((vat.rate ?? 0) * 100).toFixed(1)}% included` // PBV: ціна з ПДВ для B2C
-    : 'VAT not registered (below MWSTG threshold)';
-  const lines = [
-    'SPD',                                   // 1 QRType
-    `${rappen}`,                             // 2.1 amount (rappen)
-    currency,                                // 2.2 currency
-    // 2.3 ultimate debtor (порожній, якщо payer не заданий)
-    ['', '', '', '', '', '', ''],
-    // 3 ultimate creditor (payee) — S-блок: Name/AdrType/Street/HouseNo/Zip/City/Country
-    'S', invoice.payee.name, 'K', invoice.payee.street ?? '', String(invoice.payee.houseNumber ?? ''), invoice.payee.zip, invoice.payee.city, 'CH',
-    invoice.iban.replace(/\s/g, '').toUpperCase(),
-    // 5 payment reference
-    invoice.reference ?? '',
-    // 6 unstructured message (invoice number + VAT text)
-    `${invoice.invoiceNumber} · ${vatText}`,
-    'EPD',                                   // 7 trailer
-  ];
-  const payload = lines.flat().join('\n');
-  return {
-    payload,
-    sha256: createHash('sha256').update(payload, 'utf8').digest('hex'),
-    currency,
-    rappen,
-    vat_text: vatText,
-    rail: 'qr-bill',
-  };
+  throw new Error('QR-bill формат не перевірено: згенеруйте перший рахунок у банку та перевірте реквізити');
 }
 
 /** Детермінований номер рахунку за період (без стану, для відтворюваності). */

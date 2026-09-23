@@ -8,6 +8,14 @@ test('C11.L4: flag OFF за замовчуванням — жодного payloa
   assert.throws(() => buildQrBill({ invoiceNumber: 'x', amount: 1, iban: 'CH9300762011623852957', payee: { name: 'a', zip: '8001', city: 'Zürich' } }), /Білінг вимкнений/);
 });
 
+test('C11.L4: enabled flag сам по собі не дозволяє видавати невалідний Swiss QR payload', () => {
+  const invoice = {
+    invoiceNumber: 'PILOT-1', amount: 19.9, iban: 'CH9300762011623852957',
+    payee: { name: 'Synera Pilot', zip: '8001', city: 'Zürich' },
+  };
+  assert.throws(() => buildQrBill(invoice, { ...DEFAULT_CONFIG, enabled: true }), /QR-bill формат не перевірено/);
+});
+
 test('C11.L4: Swiss IBAN — відомий валідний валідується, кривий відкидається (мод-97)', () => {
   assert.equal(isValidSwissIban('CH9300762011623852957'), true);   // канонічний тест-IBAN
   assert.equal(isValidSwissIban('CH93 0076 2011 6238 5295 7'), true, 'пробіли допускаються');
@@ -26,33 +34,9 @@ test('C11.L4: toRappen — раппени без float-помилок, fail-clos
   assert.throws(() => toRappen(NaN), /Некоректна сума/);
 });
 
-test('C11.L4: buildQrBill з enabled конфігом — 31-подібний SPD payload, детермінований', () => {
+test('C11.L4: buildQrBill — навіть enabled відкидає криві реквізити', () => {
   const cfg = { ...DEFAULT_CONFIG, enabled: true };
-  const inv = {
-    invoiceNumber: 'QR-20260923-designers-0001',
-    amount: 19.9,
-    iban: 'CH9300762011623852957',
-    payee: { name: 'Synera Pilot', street: 'Musterstrasse', houseNumber: 1, zip: '8001', city: 'Zürich' },
-    payer: { name: 'Test Client', street: 'Weg', city: 'Winterthur' },
-  };
-  const a = buildQrBill(inv, cfg);
-  const b = buildQrBill(inv, cfg);
-  assert.equal(a.payload, b.payload);
-  assert.equal(a.sha256, b.sha256);
-  assert.ok(a.payload.startsWith('SPD\n'));
-  assert.ok(a.payload.endsWith('EPD'));
-  assert.ok(a.payload.includes('1990'));   // раппени
-  assert.ok(a.payload.includes('CHF'));
-  assert.ok(a.payload.includes('QR-20260923-designers-0001'));
-  assert.ok(a.payload.includes('VAT not registered'));
-});
-
-test('C11.L4: buildQrBill — ПДВ-режим B2C і fail-closed на кривих даних', () => {
-  const cfg = { ...DEFAULT_CONFIG, enabled: true, vat: { registered: true, rate: 0.081 } };
   const inv = { invoiceNumber: 'i-1', amount: 100, iban: 'CH9300762011623852957', payee: { name: 'S', zip: '8001', city: 'Zürich' } };
-  const bill = buildQrBill(inv, cfg);
-  assert.ok(bill.payload.includes('VAT at 8.1% included'));
-  assert.equal(bill.rappen, 10000);
   assert.throws(() => buildQrBill({ ...inv, iban: 'XX00' }, cfg), /Swiss IBAN/);
   assert.throws(() => buildQrBill({ ...inv, payee: { name: 'S' } }, cfg), /отримувач/);
   assert.throws(() => buildQrBill({ ...inv, amount: -5 }, cfg), /Некоректна сума/);

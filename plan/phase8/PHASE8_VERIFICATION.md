@@ -1,5 +1,7 @@
 # PHASE 8 VERIFICATION — audit trail (2026-09-23)
 
+> **Поточна корекція 2026-09-23:** наведені нижче 6 зелених тестів підтверджували стару реалізацію, але не формат SIX. Старий payload мав `SPD` замість `SPC`, неправильний порядок реквізитів і раппени замість десяткової суми. `web_launch/economics/qr_bill.mjs` тепер fail-closed навіть при `enabled:true`; перший QR-рахунок слід випускати через банк до окремої незалежної перевірки генератора. Історичні числа нижче залишено як audit trail, не як поточний gate платежів.
+
 Картка D оркестратора. Усі числа нижче — з реальних прогонів на диску (не з пам'яті). Команди виконані з кореня `C:\Users\Andrii\Desktop\synera-clone`.
 
 ## Хронологія
@@ -24,8 +26,8 @@
 ## Машина 3 — `web_launch/economics/qr_bill.mjs` (C11.L4)
 
 - Канон: BLOCKED_HUMAN Q6/Q7; `plan/legal/SWISS_LEGAL_LAYER.uk.md` (PBV 942.211: B2C з ПДВ, B2B без); `GENESIS_SPEC.uk.md:75` (H2: MWST, договір, QR-bill).
-- Гейт: flag **OFF** за замовчуванням (REVERSIBLE_DEFAULT); детермінований Swiss QR-bill payload (6 блоків).
-- Приймання: `node web_launch/economics/qr_bill.test.mjs` → **6 pass, 0 fail**.
+- Історичний гейт: flag **OFF** за замовчуванням; тодішній payload був детермінований, але не відповідав SIX.
+- Історичне приймання: `node web_launch/economics/qr_bill.test.mjs` → **6 pass, 0 fail** на тестах, які очікували саме дефектний `SPD`.
 
 ## Машина 4 — `web_launch/memory/vector_store.mjs` (C14.L5)
 
@@ -45,7 +47,7 @@
 |---|---|---|---|
 | local_acceptance (C03.L4) | `neon/local_acceptance.test.mjs` | 8+1 skipped (без Docker) / **9/9 з disposable PG** | disposable-only; receipt у bible/STATUS.md:18 |
 | migration_runner (C03.L7) | `neon/migration_runner.test.mjs` | 9/9 | dry-run default; SYNERA_MIGRATION_APPROVED |
-| qr_bill (C11.L4) | `web_launch/economics/qr_bill.test.mjs` | 6/6 | flag OFF |
+| qr_bill (C11.L4) | `web_launch/economics/qr_bill.test.mjs` | історично 6/6; поточний guard 6/6 | flag OFF; enabled теж fail-closed до валідації SIX |
 | vector_store (C14.L5) | `web_launch/memory/vector_store.test.mjs` | 7/7 | локальний дефолт; NVIDIA = env+approval |
 | privacy_audit (C15.L7) | `web_launch/iceberg/privacy_audit.test.mjs` | 6/6 | PRIVACY_AUDIT_PASS; оператор підтверджує |
 
