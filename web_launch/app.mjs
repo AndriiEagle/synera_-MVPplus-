@@ -134,8 +134,13 @@ function requireAccount() { if (!store?.user) throw knownError('Це черне�
 function tab(name) {
   if (name !== 'profile' && !store?.user) { message('Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.'); return; }
   currentTab = name;
-  for (const value of ['people','profile','meetings','settings']) $('#' + value + '-view').hidden = name !== value;
-  document.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('active', b.dataset.tab === name); b.setAttribute('aria-current', b.dataset.tab === name ? 'page' : 'false'); });
+  const swap = () => {
+    for (const value of ['people','profile','meetings','settings']) $('#' + value + '-view').hidden = name !== value;
+    document.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('active', b.dataset.tab === name); b.setAttribute('aria-current', b.dataset.tab === name ? 'page' : 'false'); });
+  };
+  // Premium only, motion allowed, browser capable: the gold pill glides to the new tab. Otherwise an instant switch.
+  const glide = typeof document.startViewTransition === 'function' && document.documentElement.dataset.design === 'premium' && !matchMedia('(prefers-reduced-motion: reduce)').matches && !$('#workspace').hidden;
+  if (glide) document.startViewTransition(swap); else swap();
   if (name === 'settings') run(renderBlocks);
 }
 function showWorkspace() { $('#welcome').hidden = true; $('#workspace').hidden = false; $('#logout').hidden = !store?.user; $('#back-login').hidden = Boolean(store?.user); document.body.classList.add('signed-in'); }
@@ -386,6 +391,15 @@ function renderPeople() {
       const mine = comparison.directions.find(d => d.receiver === own.id), theirs = comparison.directions.find(d => d.receiver !== own.id);
       const count = d => d ? d.matched.length + ' з ' + (d.matched.length + d.unmet.length) : '0 з 0';
       fit.append(el('p', `Твоїх заявлених потреб ця людина закриває: ${count(mine)}. Її заявлених потреб закриваєш ти: ${count(theirs)}. Рахуються лише заявлені навички й потреби, це не оцінка людини, довіри чи доходу.`, 'fine'));
+      // The same two counts drawn as dots: filled = a declared need that is covered. Text above carries the meaning.
+      const meter = el('div', undefined, 'coverage-meter'); meter.setAttribute('aria-hidden', 'true');
+      for (const [label, d] of [['Тобі', mine], ['Іншій стороні', theirs]]) {
+        const row = el('div', undefined, 'coverage-row'); row.append(el('span', label, 'coverage-label'));
+        const dots = el('span', undefined, 'coverage-dots');
+        for (let i = 0; i < (d ? d.matched.length + d.unmet.length : 0); i++) dots.append(el('i', undefined, i < d.matched.length ? 'is-met' : 'is-open'));
+        row.append(dots); meter.append(row);
+      }
+      fit.append(meter);
       const ownIsA = own.id.localeCompare(person.id) < 0;
       for (const topic of comparison.algorithmic.topics.slice(0, 3)) fit.append(el('p', topic.text.replace(/^(A_from_B|B_from_A): /, (m, d) => ((d === 'A_from_B') === ownIsA ? 'Тобі' : 'Іншій стороні') + ': '), 'fine'));
     }

@@ -2913,3 +2913,149 @@ html[data-design="premium"] #start-chatgpt-transfer {
   box-shadow: none;
 }
 html[data-design="premium"] #start-chatgpt-transfer:hover { background: #e7bd8712; border-color: var(--night-gold); }
+
+/* ==========================================================================
+   SYN_NIGHT_MOTION (2026-09-24): the "wow" layer, only where it carries meaning.
+   Every effect is progressive: without browser support or with reduced motion
+   the page is the same static composition.
+   ========================================================================== */
+@property --sweep {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Material: a fine film grain over the graphite, like the texture of printed paper at night. */
+html[data-design="premium"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+html[data-design="premium"] header,
+html[data-design="premium"] main,
+html[data-design="premium"] footer { position: relative; z-index: 1; }
+
+/* Typography that sets itself: no orphans in paragraphs, balanced headings. */
+html[data-design="premium"] p, html[data-design="premium"] li, html[data-design="premium"] figcaption { text-wrap: pretty; }
+html[data-design="premium"] h2, html[data-design="premium"] h3 { text-wrap: balance; }
+
+/* Cursor light on the surfaces where two sides meet. */
+html[data-design="premium"] .reciprocity,
+html[data-design="premium"] .trust-ledger { position: relative; }
+html[data-design="premium"] :is(.person, .reciprocity, .welcome, .profile-preview, .trust-ledger)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(360px circle at var(--light-x, 50%) var(--light-y, 0%), #e7bd871f, transparent 65%);
+}
+html[data-design="premium"] :is(.person, .reciprocity, .welcome, .profile-preview, .trust-ledger):hover::after { opacity: 1; }
+html[data-design="premium"] .welcome > *, html[data-design="premium"] .reciprocity > * { position: relative; z-index: 1; }
+
+/* Tabs: the gold pill glides to the chosen tab (View Transitions), the view cross-fades. */
+html[data-design="premium"] .workspace-bar .tab.active { view-transition-name: synera-tab; }
+html[data-design="premium"] #workspace > section:not([hidden]) { view-transition-name: synera-view; }
+::view-transition-group(synera-tab) { animation-duration: 0.42s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+::view-transition-old(synera-tab), ::view-transition-new(synera-tab) { animation: none; mix-blend-mode: normal; height: 100%; }
+::view-transition-old(synera-view) { animation: 0.18s ease-in both night-view-out; }
+::view-transition-new(synera-view) { animation: 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) 0.06s both night-view-in; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.2s; }
+@keyframes night-view-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes night-view-in { from { opacity: 0; transform: translateY(10px); } }
+
+/* Scroll tells the story: the two directions draw as the diagram enters the screen. */
+@supports (animation-timeline: view()) {
+  html[data-design="premium"] .reciprocity { view-timeline-name: --reciprocity; }
+  html[data-design="premium"] .seam-line {
+    animation: night-draw linear both;
+    animation-timeline: --reciprocity;
+    animation-range: entry 20% cover 45%;
+  }
+  html[data-design="premium"] .seam-b { animation-range: entry 35% cover 50%; }
+  html[data-design="premium"] :is(.spheres li, .journey li, .trust-col, .cards > *) {
+    animation: night-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+@keyframes night-rise { from { opacity: 0; transform: translateY(18px); } }
+
+/* Header: sticky on wide screens; it gains its own surface only once the page scrolls. */
+@media (min-width: 921px) {
+  html[data-design="premium"] { scroll-padding-top: 104px; }
+  html[data-design="premium"] header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin-bottom: 8px;
+  }
+  @supports (animation-timeline: scroll()) {
+    html[data-design="premium"] header {
+      animation: night-header linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 96px;
+    }
+  }
+}
+@keyframes night-header {
+  to { background: #15161df0; box-shadow: 0 0 0 100vmax #15161df0; clip-path: inset(0 -100vmax); backdrop-filter: blur(14px) saturate(1.2); border-bottom-color: var(--night-line); }
+}
+
+/* Coverage as dots: filled = a declared need that is covered, hollow = not covered. */
+html[data-design="premium"] .coverage-meter { display: grid; gap: 6px; margin: 10px 0 4px; }
+html[data-design="premium"] .coverage-row { display: grid; grid-template-columns: 124px 1fr; align-items: center; gap: 10px; }
+html[data-design="premium"] .coverage-label { color: var(--night-faint); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+html[data-design="premium"] .coverage-dots { display: flex; flex-wrap: wrap; gap: 6px; }
+html[data-design="premium"] .coverage-dots i { width: 12px; height: 12px; border-radius: 50%; }
+html[data-design="premium"] .coverage-dots .is-met { background: var(--night-gold); box-shadow: 0 0 0 3px #e7bd871f; }
+html[data-design="premium"] .coverage-dots .is-open { border: 1.5px solid var(--night-control); }
+html:not([data-design="premium"]) .coverage-meter { display: none; }
+
+/* Visibility switched on: a gold ring sweeps once around the user's own card. */
+html[data-design="premium"] .person-preview::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(from var(--sweep), transparent 0deg 250deg, var(--night-copper) 300deg, var(--night-gold) 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+html[data-design="premium"] #profile-form:has(input[name="is_discoverable"]:checked) .person-preview::before {
+  animation: night-sweep 1.6s cubic-bezier(0.4, 0, 0.2, 1) 1 both;
+}
+@keyframes night-sweep {
+  0% { --sweep: 0deg; opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { --sweep: 360deg; opacity: 0; }
+}
+
+/* Dialogs arrive instead of appearing. */
+html[data-design="premium"] dialog {
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), overlay 0.28s allow-discrete, display 0.28s allow-discrete;
+}
+html[data-design="premium"] dialog[open] { opacity: 1; transform: none; }
+@starting-style {
+  html[data-design="premium"] dialog[open] { opacity: 0; transform: translateY(14px) scale(0.985); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-design="premium"] :is(.seam-line, .spheres li, .journey li, .trust-col, .cards > *, header) { animation: none !important; }
+  html[data-design="premium"] .person-preview::before { animation: none !important; }
+  html[data-design="premium"] :is(.person, .reciprocity, .welcome, .profile-preview, .trust-ledger)::after { display: none; }
+  html[data-design="premium"] dialog { transition: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

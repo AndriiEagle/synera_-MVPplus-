@@ -185,10 +185,33 @@ export function initProfilePreview({ doc = document } = {}) {
   return { update };
 }
 
+// Cursor light: a soft gold light follows a fine pointer across the main surfaces (premium only).
+// Only two custom properties are written through the CSSOM, which the page CSP allows.
+export const LIGHT_SURFACES = '.person, .reciprocity, .welcome, .profile-preview, .trust-ledger';
+export function initCursorLight({ doc = document, win = window } = {}) {
+  if (!win.matchMedia?.('(pointer: fine)').matches) return false;
+  let frame = 0, last = null;
+  doc.addEventListener('pointermove', event => {
+    last = event;
+    if (frame) return;
+    frame = win.requestAnimationFrame(() => {
+      frame = 0;
+      if (doc.documentElement.dataset.design !== 'premium' || win.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const surface = last.target instanceof Element ? last.target.closest(LIGHT_SURFACES) : null;
+      if (!surface) return;
+      const box = surface.getBoundingClientRect();
+      surface.style.setProperty('--light-x', `${Math.round(last.clientX - box.left)}px`);
+      surface.style.setProperty('--light-y', `${Math.round(last.clientY - box.top)}px`);
+    });
+  }, { passive: true });
+  return true;
+}
+
 if (typeof document !== 'undefined' && typeof window !== 'undefined') {
   initDesignSwitch();
   initLocaleSwitch();
   initProfilePreview();
+  initCursorLight();
   let installEvent;
   const installButton = document.querySelector('#install-app');
   const status = document.querySelector('#install-status') || { textContent: '' };
