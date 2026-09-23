@@ -1,0 +1,128 @@
+[
+ {
+  "fg": "#f3f4f7",
+  "bg": "#15161d",
+  "use": "text on canvas",
+  "ratio": 16.4
+ },
+ {
+  "fg": "#f3f4f7",
+  "bg": "#24252f",
+  "use": "text on panel",
+  "ratio": 13.83
+ },
+ {
+  "fg": "#f3f4f7",
+  "bg": "#2b3138",
+  "use": "text on panel-2",
+  "ratio": 11.94
+ },
+ {
+  "fg": "#b7bbc5",
+  "bg": "#24252f",
+  "use": "muted on panel",
+  "ratio": 7.91
+ },
+ {
+  "fg": "#b7bbc5",
+  "bg": "#15161d",
+  "use": "muted on canvas",
+  "ratio": 9.39
+ },
+ {
+  "fg": "#9aa0ac",
+  "bg": "#24252f",
+  "use": "faint on panel",
+  "ratio": 5.79
+ },
+ {
+  "fg": "#9aa0ac",
+  "bg": "#2b3138",
+  "use": "faint on panel-2",
+  "ratio": 5.0
+ },
+ {
+  "fg": "#9aa0ac",
+  "bg": "#1c1e26",
+  "use": "faint on surface",
+  "ratio": 6.33
+ },
+ {
+  "fg": "#e7bd87",
+  "bg": "#15161d",
+  "use": "gold on canvas",
+  "ratio": 10.33
+ },
+ {
+  "fg": "#e7bd87",
+  "bg": "#24252f",
+  "use": "gold on panel",
+  "ratio": 8.71
+ },
+ {
+  "fg": "#e7bd87",
+  "bg": "#2b3138",
+  "use": "gold on panel-2",
+  "ratio": 7.52
+ },
+ {
+  "fg": "#15161d",
+  "bg": "#e7bd87",
+  "use": "ink on gold",
+  "ratio": 10.33
+ },
+ {
+  "fg": "#15161d",
+  "bg": "#dfa579",
+  "use": "ink on copper",
+  "ratio": 8.41
+ },
+ {
+  "fg": "#7e8594",
+  "bg": "#24252f",
+  "use": "control line on panel (non-text)",
+  "ratio": 4.11
+ },
+ {
+  "fg": "#7e8594",
+  "bg": "#1a1c23",
+  "use": "control line on field (non-text)",
+  "ratio": 4.59
+ },
+ {
+  "fg": "#a3a8b3",
+  "bg": "#22242c",
+  "use": "disabled text on disabled bg",
+  "ratio": 6.49
+ },
+ {
+  "fg": "#4a4f5b",
+  "bg": "#24252f",
+  "use": "disabled dashed line on panel",
+  "ratio": 1.85
+ },
+ {
+  "fg": "#8a909c",
+  "bg": "#1a1c23",
+  "use": "placeholder on field",
+  "ratio": 5.31
+ },
+ {
+  "fg": "#ff9a82",
+  "bg": "#1c1e26",
+  "use": "error accent on surface",
+  "ratio": 8.07
+ },
+ {
+  "fg": "#2dd2b7",
+  "bg": "#1c1e26",
+  "use": "teal bar on surface (non-text)",
+  "ratio": 8.72
+ },
+ {
+  "fg": "#e7bd87",
+  "bg": "#1c1e26",
+  "use": "focus ring gold on surface (non-text)",
+  "ratio": 9.52
+ }
+]

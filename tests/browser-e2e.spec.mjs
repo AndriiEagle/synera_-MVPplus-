@@ -136,8 +136,13 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
 // N3/N6 — --synera-border-control у рамці інпута (3.88:1 vs #fff, WCAG 1.4.11);
 // N1/N2/N4 — disabled без opacity-гасіння: підписи чіткі, єдина disabled-поверхня;
 // N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
+// Значення N1–N6 належать класичному вигляду (переможець за замовчуванням — «Новий», див. SYN_NIGHT_A11Y_E2E нижче).
 test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
+  await page.addInitScript(() => { try { localStorage.setItem('synera-design-preference', 'classic'); } catch {} });
+  // Без цього читання кольорів потрапляло в середину 0.3-с переходів кнопок (флейк і до редизайну).
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
   const computed = await page.evaluate(() => {
     const input = document.querySelector('#email');
     const label = document.querySelector('#auth-fields label');
@@ -189,4 +194,36 @@ test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-пов�
     return `${s.outlineWidth}|${s.outlineStyle}|${s.outlineColor}`;
   });
   expect(focusRing).toBe('2px|solid|rgb(25, 81, 62)');
+});
+// SYN_NIGHT_A11Y_E2E: вигляд «Новий» — рамки ≥3:1 на графіті, заблокований вхід видно як заблокований,
+// клавіатурний фокус — золоте кільце 2px; «Початковий» лишається робочим перемикачем.
+test('SYN_NIGHT_A11Y_E2E: premium night variant — control lines, blocked sign-in, gold focus, classic switch', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('html')).toHaveAttribute('data-design', 'premium');
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  const computed = await page.evaluate(() => {
+    const fs = document.querySelector('#auth-fields');
+    const input = document.querySelector('#email');
+    const submit = document.querySelector('#auth-submit');
+    const style = el => getComputedStyle(el);
+    const result = { disabledInputStyle: style(input).borderTopStyle, submitCursor: style(submit).cursor, submitStyle: style(submit).borderTopStyle, lockLabel: style(fs, '::before').content };
+    fs.disabled = false; result.enabledInputBorder = style(input).borderTopColor; fs.disabled = true;
+    return result;
+  });
+  expect(computed.enabledInputBorder).toBe('rgb(126, 133, 148)');
+  expect(computed.disabledInputStyle).toBe('dashed');
+  expect(computed.submitStyle).toBe('dashed');
+  expect(computed.submitCursor).toBe('not-allowed');
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press('Tab');
+    if (await page.evaluate(() => document.activeElement?.matches('button, a, input, select, textarea'))) break;
+  }
+  const ring = await page.evaluate(() => { const s = getComputedStyle(document.activeElement); return `${s.outlineWidth}|${s.outlineStyle}|${s.outlineColor}`; });
+  expect(ring).toBe('2px|solid|rgb(231, 189, 135)');
+  await page.click('[data-design-choice="classic"]');
+  await expect(page.locator('html')).toHaveAttribute('data-design', 'classic');
+  await expect(page.locator('.reciprocity')).toBeHidden();
+  await page.click('[data-design-choice="premium"]');
+  await expect(page.locator('.reciprocity')).toBeVisible();
 });

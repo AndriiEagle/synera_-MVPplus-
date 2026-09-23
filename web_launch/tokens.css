@@ -392,12 +392,45 @@
   --synera-disabled-text: #4e5f50;   /* 5.66:1 на disabled-bg, 6.34:1 на panel */
   --synera-disabled-border: #b3c1b6; /* видимий шов disabled-поверхні */
   --synera-focus-ring: #19513e;      /* 8.52:1 vs panel (N5) */
-  --synera-premium-ink: #173d2e;
-  --synera-premium-deep: #123426;
-  --synera-premium-surface: #fbfcf8;
-  --synera-premium-canvas: #f2f5ef;
-  --synera-premium-mist: #e3ece2;
-  --synera-premium-line: #c6d5c8;
-  --synera-premium-accent: #a3bd74;
-  --synera-premium-shadow: #173d2e14;
+}
+
+/* SYN_NIGHT_TOKENS (2026-09-23): "Нічна карта" — premium variant built from the original
+   Synera Flutter theme (crystallised_in/lib/flutter_flow/flutter_flow_theme.dart):
+   primaryBackground #15161D, secondaryBackground #2B3138, sheet gradient #24252F/#303240,
+   primary gold #E7BD87, secondary copper #DFA579, Montserrat (tertiary #2DD2B7 left out on purpose: gold alone carries meaning).
+   Contrast (WCAG, computed by tools in artifacts/design-20260923/contrast.json):
+   text #F3F4F7 on #15161D 16.4:1 · muted #B7BBC5 on #24252F 7.9:1 · faint #9AA0AC on #2B3138 5.0:1
+   gold #E7BD87 on #15161D 10.3:1 · ink #15161D on gold 10.3:1 · control line #7E8594 on #24252F 4.1:1 */
+:root {
+  --night-canvas: #15161d;
+  --night-deep: #111218;
+  --night-surface: #1c1e26;
+  --night-panel: #24252f;
+  --night-panel-2: #2b3138;
+  --night-raise: #303240;
+  --night-field: #1a1c23;
+  --night-line: #383d48;
+  --night-line-soft: #2d313b;
+  --night-control: #7e8594;
+  --night-text: #f3f4f7;
+  --night-muted: #b7bbc5;
+  --night-faint: #9aa0ac;
+  --night-gold: #e7bd87;
+  --night-copper: #dfa579;
+  --night-gold-soft: #e7bd8733;
+  --night-gold-line: #e7bd8766;
+  --night-ink: #15161d;
+  --night-error: #ff9a82;
+  --night-error-soft: #ff442322;
+  --night-disabled-bg: #22242c;
+  --night-disabled-text: #a3a8b3;
+  --night-disabled-line: #4a4f5b;
+  --night-font-display: "Montserrat", "Century Gothic", "Avenir Next", "Avenir", "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --night-font-text: "Montserrat", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --night-radius-sheet: 24px;
+  --night-radius-card: 16px;
+  --night-radius-field: 12px;
+  --night-radius-pill: 30px;
+  --night-pulse: 1010ms;
+  --night-ease: cubic-bezier(0.42, 0, 0.58, 1);
 }
