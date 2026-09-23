@@ -15,7 +15,7 @@ Date: 2026-09-11. Label: **`PRESENT_BUT_UNTESTED`**.
 ## What is proven, and what is not
 
 - Node tests (`neon/worker.test.mjs`) prove **generation only**: the Neon files are byte-reproducible from the Supabase sources, carry no `auth.users`/`auth.uid()` leftovers, add the members-only gate to both new tables, and leave the already-applied `neon/schema.proposal.sql` byte-identical.
-- Node tests **never** prove RLS behaviour, and no statement in these files has been run against any database. Not even the syntax has been parsed by Postgres.
+- `neon/case-state.acceptance.sql` HAS been run against a real database (2026-09-23): disposable local Docker `postgres:16-alpine` (`synera-rls-acceptance`), schema.proposal.sql + case-state.migration.sql applied first, full acceptance inside `begin…ROLLBACK` — PASS, RLS behaviour exercised via `set local role authenticated` + `request.jwt.claims`, fixture users fully rolled back (leftover=0). Runner: `neon/local_acceptance.mjs` (9/9 tests, integration gated by `SYNERA_ACCEPTANCE_PG` env). Label removal from item 1 below applies to the LIVE apply (C03.L7), not this disposable proof.
 - The server does not recompute the canonical SHA-256 of `material`. Clients check integrity (`stateIntegrityProblems` in `business-case.mjs`) before any next step.
 
 ## Why a separate migration

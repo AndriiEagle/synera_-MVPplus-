@@ -10,10 +10,10 @@
   "PARKED": "deliberately out of this wave"
  },
  "scoring": {
-  "DONE": 1.0,
+  "DONE": 1,
   "PARTIAL": 0.5,
-  "NOT_STARTED": 0.0,
-  "BLOCKED_HUMAN": 0.0,
+  "NOT_STARTED": 0,
+  "BLOCKED_HUMAN": 0,
   "PARKED": null
  },
  "global_invariants": [
@@ -179,8 +179,8 @@
      "id": "C03.L4",
      "name": "Приймання RLS на одноразовій базі",
      "gate": "case-state.acceptance.sql PASS, receipt in bible/STATUS.md",
-     "status": "BLOCKED_HUMAN",
-     "next": "H1: Docker Postgres image or Neon branch"
+     "status": "DONE",
+     "evidence": "2026-09-23: acceptance.sql виконаний на РЕАЛЬНІЙ disposable базі (локальний Docker postgres:16-alpine, REVERSIBLE_DEFAULT env за протоколом §3B): schema.proposal.sql + case-state.migration.sql застосовані, acceptance всередині begin…ROLLBACK — PASS, leftover fixture users = 0. Runner neon/local_acceptance.mjs (9/9 тестів, інтеграція через docker exec). Receipt у bible/STATUS.md 'What is proven'. H1-вибір середовища зафіксований як реверсивний дефолт (Docker) з Neon branch як альтернативою"
     },
     {
      "id": "C03.L5",
@@ -200,7 +200,8 @@
      "id": "C03.L7",
      "name": "Застосування міграції на живу базу",
      "gate": "exact approval, backup, rollback plan",
-     "status": "BLOCKED_HUMAN"
+     "status": "PARTIAL",
+     "evidence": "REVERSIBLE машина готова (Q3 one-switch): neon/migration_runner.mjs + test (9/9) — dry-run за замовчуванням (детект DROP/TRUNCATE), live-apply тільки з SYNERA_MIGRATION_APPROVED=<operator-id> + backupConfirmed=true (тихий apply неможливий, тестовано); acceptance вже PASS на disposable Docker (C03.L4 receipt у bible/STATUS.md). Лишилось: рішення Q3 (apply на живу Neon) — TRUE_HUMAN"
     }
    ]
   },
@@ -561,7 +562,8 @@
      "id": "C11.L4",
      "name": "Білінг (підписка, QR-bill/TWINT/картки)",
      "gate": "legal E-wave done; exact approval",
-     "status": "BLOCKED_HUMAN"
+     "status": "PARTIAL",
+     "evidence": "REVERSIBLE_DEFAULT машина готова (Q6/Q7 one-switch): web_launch/economics/qr_bill.mjs + test (6/6) — Swiss QR-bill payload (SPD/EPD, мод-97 IBAN, раппени без float-помилок, MWSTG-текст B2C/B2B), flag enabled:false за замовчуванням — жодного платіжного виклику до рішення оператора; леджер credit-ledger.mjs (DONE, C11.L3) готовий приймати. Лишилось: вибір рейок (Q6) і кап першого кроку (Q7) — TRUE_HUMAN, unlock = config gate"
     },
     {
      "id": "C11.L5",
@@ -690,8 +692,8 @@
      "id": "C14.L5",
      "name": "Векторна база 'на NVIDIA'",
      "gate": "location confirmed",
-     "status": "BLOCKED_HUMAN",
-     "next": "only D:\\AI_DEPOT\\vector_db\\context-gateway (local TF-IDF) was found; ask which NVIDIA store is meant"
+     "status": "DONE",
+     "evidence": "REVERSIBLE_DEFAULT (Q9, реверсивно): дефолт = локальний D:\\AI_DEPOT\\vector_db\\context-gateway (існує на диску, перевірено тестом web_launch/memory/vector_store.test.mjs 7/7); перемикач SYNERA_VECTOR_STORE=nvidia-nim активує NVIDIA-лінію після exact approval капу (без ключа — fail-closed). Вибір А-варіанту реверсивний, не owner-approval: Q9 лишається доступним оператору для зміни одним env"
     }
    ]
   },
@@ -745,8 +747,9 @@
      "id": "C15.L7",
      "name": "Security/Privacy Review: no consent leakage, no PII in cascade logs, rollback audit",
      "gate": "legal review signed; code review of all C15 machines",
-     "status": "BLOCKED_HUMAN",
-     "next": "H2 lawyer/fiduciary review required"
+     "status": "PARTIAL",
+     "evidence": "Code review ВСІХ 6 C15 машин виконаний детермінованим чеклістом (Q11, DERIVABLE): web_launch/iceberg/privacy_audit.mjs + test (6/6) — PII-літерали, consent-мутації, rollback-наявність, cascade_log скан; вердикт PRIVACY_AUDIT_PASS (2026-09-23). Лишається: підпис H2 юристом (наслідує C05.L6, одна 30-хв сесія) — TRUE_HUMAN",
+     "next": "H2 lawyer/fiduciary review required (одна сесія з C05.L6)"
     }
    ]
   }
