@@ -25,8 +25,8 @@ The live Neon project already runs `neon/schema.proposal.sql` (`docs/NEON_LAUNCH
 ## What must happen together before any apply
 
 1. `case-state.acceptance.sql` passes on a **disposable** database (Neon branch or local Docker Postgres). Needs a separate human approval (H1).
-2. The client writes cases and approvals in the new shape: `saveCaseState` still posts one JSON `state` blob, which would let a client write the other party's approval (step B2-rework).
-3. `neon/worker.mjs` allows `match_cases` and `match_case_approvals` (its `TABLES` set has six tables today).
+2. ~~The client writes cases and approvals in the new shape: `saveCaseState` still posts one JSON `state` blob, which would let a client write the other party's approval (step B2-rework).~~ **DONE (verified 2026-09-23, audit cycle 4)**: `saveCaseState` writes normalized SQL columns only (`profile-store.mjs:209-225`, POST/PATCH bodies carry no `state` blob) and a caller writes only its own approval row (`party_id: me`, `profile-store.mjs:232-241`; the other party's approval is re-read from the stored row, `:192`). Pinned by `case-approval-guard.test.mjs:121` (forged other-party approval → zero writes) and `b2-case-store-shape.test.mjs:41` (no `state` key ever reaches `match_cases`).
+3. ~~`neon/worker.mjs` allows `match_cases` and `match_case_approvals` (its `TABLES` set has six tables today).~~ **DONE**: `neon/worker.mjs:11-12` already lists eight tables including both new ones.
 4. The UI from wave A is deployed together with the migration. Without it the live database rejects brief v2 (pilot modes). And after it, `meetings_need_approved_case` refuses every invitation that has no case approved by both parties.
 
 The label is removed only after item 1, with the run receipt attached here. There is no production migration in this plan.

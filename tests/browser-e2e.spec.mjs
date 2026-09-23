@@ -106,3 +106,28 @@ test('нуль pageerror-подій під час навігації по таб
   }
   expect(pageErrors).toEqual([]);
 });
+
+// SYN_TOKEN_WIRED_E2E (2026-09-23, audit cycle 4): 146 var()-посилань style.css висіли
+// в повітрі після семантичного перезапису tokens.css (c4a4210) — рендер мовчки падав
+// у browser-дефолти (білий фон, невидимі інпути, нульові радіуси). Цей тест пінить
+// computed-стилі, а не DOM-видимість: токени мають РОЗВИНЯТИСЬ у значення.
+test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні розв'язуються в computed-стилях", async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  const computed = await page.evaluate(() => {
+    const cs = getComputedStyle(document.body);
+    const input = document.querySelector('#email');
+    return {
+      bodyBg: cs.backgroundColor,
+      rootColor254f3b: getComputedStyle(document.documentElement).getPropertyValue('--color-254f3b').trim(),
+      inputBorderWidth: input ? getComputedStyle(input).borderTopWidth : '',
+      inputBg: input ? getComputedStyle(input).backgroundColor : '',
+    };
+  });
+  // Бренд-токен розв'язується (не порожній рядок = tokens.css завантажений).
+  expect(computed.rootColor254f3b).toBe('#254f3b');
+  // Фон body — теплий бренд-тон, не browser-дефолт (transparent/white = зламаний ланцюжок var()).
+  expect(computed.bodyBg).not.toBe('rgba(0, 0, 0, 0)');
+  expect(computed.bodyBg).not.toBe('rgb(255, 255, 255)');
+  // Інпут має видиму рамку (0px = невидимий контроль, який ловив vision-рев'ю).
+  expect(parseFloat(computed.inputBorderWidth)).toBeGreaterThan(0);
+});
