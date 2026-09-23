@@ -2371,7 +2371,7 @@ html[data-design="premium"] .draft-entry button {
   font-size: 14px;
 }
 html[data-design="premium"] .draft-entry button:hover { background: #e7bd8712; border-color: var(--night-gold); }
-html[data-design="premium"] .draft-entry button span { float: none; font-size: 18px; }
+html[data-design="premium"] .draft-entry button span { float: none; font-size: 22px; line-height: 1; }
 html[data-design="premium"] .mode-actions button { color: var(--night-muted); background: transparent; border: 0; }
 html[data-design="premium"] .mode-actions button:hover { color: var(--night-gold); background: transparent; }
 

@@ -227,3 +227,29 @@ test('SYN_NIGHT_A11Y_E2E: premium night variant — control lines, blocked sign-
   await page.click('[data-design-choice="premium"]');
   await expect(page.locator('.reciprocity')).toBeVisible();
 });
+
+// SYN_LOCALE_E2E: UA/DE/EN switch translates interface copy (static and app-written), keeps user text,
+// and switching back restores the Ukrainian original exactly. Montserrat is served from this origin.
+test('SYN_LOCALE_E2E: DE/EN switch translates the interface and restores Ukrainian exactly', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  const ukTitle = await page.locator('h1').evaluate(el => el.innerHTML);
+  await page.click('[data-lang="de"]');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+  await expect(page.locator('#prepare-profile')).toContainText('Zuerst das Profil vorbereiten');
+  await expect(page.locator('#mode')).toHaveText('Anmeldung noch nicht verbunden');
+  await page.click('#prepare-profile');
+  await page.fill('textarea[name="offers"]', 'Зберегти профіль');
+  await expect(page.locator('#save-profile')).toHaveText('Profil speichern');
+  await expect(page.locator('textarea[name="offers"]')).toHaveValue('Зберегти профіль');
+  await page.click('[data-lang="en"]');
+  await expect(page.locator('#save-profile')).toHaveText('Save profile');
+  await page.click('[data-lang="uk"]');
+  await expect(page.locator('#save-profile')).toHaveText('Зберегти профіль');
+  await page.click('#back-login');
+  expect(await page.locator('h1').evaluate(el => el.innerHTML)).toBe(ukTitle);
+  const font = await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('500 16px "Synera Montserrat"'); });
+  expect(font).toBe(true);
+  const woff = await page.request.get(`${baseUrl}/montserrat-500.woff2`);
+  expect(woff.status()).toBe(200);
+});

@@ -382,8 +382,12 @@ function renderPeople() {
     const fit=el('div',undefined,'fit');
     fit.append(el('strong', comparison.status === 'review_candidate' ? 'Є користь для обох' : 'Що варто уточнити'));
     if (comparison.algorithmic?.status === 'scored' && comparison.algorithmic.mutual_score !== null) {
-      fit.append(el('p', `Двостороннє покриття заявлених потреб: ${comparison.algorithmic.mutual_score}/100. Різниця напрямків: ${comparison.algorithmic.asymmetry}/100. Це не оцінка людини, довіри чи доходу.`, 'fine'));
-      for (const topic of comparison.algorithmic.topics.slice(0, 3)) fit.append(el('p', topic.text, 'fine'));
+      // Two equal directions as plain counts of declared needs (no single compatibility number).
+      const mine = comparison.directions.find(d => d.receiver === own.id), theirs = comparison.directions.find(d => d.receiver !== own.id);
+      const count = d => d ? d.matched.length + ' з ' + (d.matched.length + d.unmet.length) : '0 з 0';
+      fit.append(el('p', `Твоїх заявлених потреб ця людина закриває: ${count(mine)}. Її заявлених потреб закриваєш ти: ${count(theirs)}. Рахуються лише заявлені навички й потреби, це не оцінка людини, довіри чи доходу.`, 'fine'));
+      const ownIsA = own.id.localeCompare(person.id) < 0;
+      for (const topic of comparison.algorithmic.topics.slice(0, 3)) fit.append(el('p', topic.text.replace(/^(A_from_B|B_from_A): /, (m, d) => ((d === 'A_from_B') === ownIsA ? 'Тобі' : 'Іншій стороні') + ': '), 'fine'));
     }
     for (const direction of comparison.directions) if (direction.matched.length) fit.append(el('p', (direction.receiver === own.id ? 'Тобі: ' : 'Іншій стороні: ') + direction.matched.map(m => CAPABILITIES[m.tag]).join(', '), 'fine'));
     for (const reason of comparison.reasons.slice(0,3)) fit.append(el('p',publicReason(reason,person),'fine'));

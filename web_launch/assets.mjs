@@ -8,5 +8,6 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'funnel-analytics.mjs': 'text/javascript',
   'manifest.webmanifest': 'application/manifest+json', 'pwa.mjs': 'text/javascript', 'sw.mjs': 'text/javascript',
   'legal.html': 'text/html', 'catalogue.html': 'text/html', 'icon-192.png': 'image/png', 'icon-512.png': 'image/png', 'apple-touch-icon.png': 'image/png',
-  'tokens.css': 'text/css', 'cascade.mjs': 'text/javascript', 'iceberg-client.mjs': 'text/javascript'
+  'tokens.css': 'text/css', 'cascade.mjs': 'text/javascript', 'iceberg-client.mjs': 'text/javascript',
+  'i18n-phrases.mjs': 'text/javascript', 'montserrat-400.woff2': 'font/woff2', 'montserrat-500.woff2': 'font/woff2'
 });

@@ -64,12 +64,74 @@ export function applyLocale(doc, locale, previous = DEFAULT_LOCALE, dictionary =
   return target;
 }
 
+// Interface copy written by index.html and app.mjs (Ukrainian source) is swapped text node by
+// text node; the Ukrainian original is kept so switching back restores it exactly. User-written
+// content (form fields, previews, chat, exported text) is never touched.
+const PHRASE_SKIP = 'script, style, textarea, pre, code, [data-no-translate], [data-preview], [data-de], [data-en], .chat-message, #ai-payload';
+const PHRASE_ATTRS = ['placeholder', 'aria-label', 'title'];
+const originals = new WeakMap();   // text node -> Ukrainian original
+const written = new WeakMap();     // text node -> value we wrote (to detect app rewrites)
+const attrOriginals = new WeakMap(); // element -> Map(attr -> Ukrainian original)
+
+export function translatePhrases(root, locale, translate) {
+  const doc = root.ownerDocument || root;
+  const walker = doc.createTreeWalker(root, 4 /* NodeFilter.SHOW_TEXT */);
+  let changed = 0;
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const parent = node.parentElement;
+    if (!parent || parent.closest(PHRASE_SKIP)) continue;
+    if (written.has(node) && written.get(node) !== node.nodeValue) { originals.delete(node); written.delete(node); }
+    const source = originals.get(node) ?? node.nodeValue;
+    if (!/[А-Яа-яІіЇїЄєҐґ]/.test(source)) continue;
+    const out = locale === DEFAULT_LOCALE ? null : translate(source, locale);
+    const lead = source.match(/^\s*/)[0], trail = source.match(/\s*$/)[0];
+    const next = out === null ? source : lead + out + trail;
+    if (next !== node.nodeValue) { node.nodeValue = next; changed++; }
+    if (next === source) { originals.delete(node); written.delete(node); } else { originals.set(node, source); written.set(node, next); }
+  }
+  const scope = root.querySelectorAll ? root : doc;
+  for (const el of scope.querySelectorAll(PHRASE_ATTRS.map(a => `[${a}]`).join(','))) {
+    if (el.closest('[data-no-translate], [data-i18n-placeholder]')) continue;
+    const store = attrOriginals.get(el) || new Map();
+    for (const attr of PHRASE_ATTRS) {
+      if (!el.hasAttribute(attr)) continue;
+      const current = el.getAttribute(attr);
+      const known = store.get(attr);
+      const source = known && known.written === current ? known.source : current;
+      if (!/[А-Яа-яІіЇїЄєҐґ]/.test(source)) continue;
+      const out = locale === DEFAULT_LOCALE ? null : translate(source, locale);
+      const next = out ?? source;
+      if (next !== current) { el.setAttribute(attr, next); changed++; }
+      store.set(attr, { source, written: next });
+    }
+    attrOriginals.set(el, store);
+  }
+  return changed;
+}
+
+let phraseModule = null;
+async function loadPhrases() { phraseModule ||= await import('./i18n-phrases.mjs'); return phraseModule; }
+
 export function initLocaleSwitch({ doc = document, storage = window.localStorage } = {}) {
   let current = DEFAULT_LOCALE;
+  let observer = null, queued = false;
+  const retranslate = async () => {
+    const locale = current;
+    if (locale === DEFAULT_LOCALE && !observer) return;
+    const { translatePhrase } = await loadPhrases();
+    if (locale !== current || !doc.body) return;
+    observer?.disconnect();
+    translatePhrases(doc.body, locale, translatePhrase);
+    if (locale === DEFAULT_LOCALE) { observer = null; return; }
+    if (typeof MutationObserver === 'undefined') return;
+    observer ||= new MutationObserver(() => { if (queued) return; queued = true; (globalThis.requestAnimationFrame || setTimeout)(() => { queued = false; retranslate(); }); });
+    observer.observe(doc.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: PHRASE_ATTRS });
+  };
   const choose = locale => {
     const previous = current;
     current = applyLocale(doc, locale, previous);
     try { storage.setItem(LOCALE_STORAGE_KEY, current); } catch { /* the language still switches for this tab */ }
+    if (current !== DEFAULT_LOCALE || previous !== DEFAULT_LOCALE) retranslate().catch(() => {});
   };
   doc.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => choose(button.dataset.lang)));
   let saved = null;

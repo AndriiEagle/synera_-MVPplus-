@@ -394,6 +394,24 @@
   --synera-focus-ring: #19513e;      /* 8.52:1 vs panel (N5) */
 }
 
+/* SYN_NIGHT_FONT: Montserrat, the typeface of the original Synera app, served from this origin
+   (subset Latin + Cyrillic, ~20 KB each; SIL Open Font License 1.1, notice kept in the font's name table).
+   Downloaded only when a rule uses it, i.e. only in the premium variant. */
+@font-face {
+  font-family: "Synera Montserrat";
+  src: url("/montserrat-400.woff2") format("woff2");
+  font-weight: 100 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Synera Montserrat";
+  src: url("/montserrat-500.woff2") format("woff2");
+  font-weight: 451 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* SYN_NIGHT_TOKENS (2026-09-23): "Нічна карта" — premium variant built from the original
    Synera Flutter theme (crystallised_in/lib/flutter_flow/flutter_flow_theme.dart):
    primaryBackground #15161D, secondaryBackground #2B3138, sheet gradient #24252F/#303240,
@@ -425,8 +443,8 @@
   --night-disabled-bg: #22242c;
   --night-disabled-text: #a3a8b3;
   --night-disabled-line: #4a4f5b;
-  --night-font-display: "Montserrat", "Century Gothic", "Avenir Next", "Avenir", "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --night-font-text: "Montserrat", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --night-font-display: "Synera Montserrat", "Montserrat", "Century Gothic", "Avenir Next", "Avenir", "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --night-font-text: "Synera Montserrat", "Montserrat", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --night-radius-sheet: 24px;
   --night-radius-card: 16px;
   --night-radius-field: 12px;

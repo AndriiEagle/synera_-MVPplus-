@@ -1,7 +1,8 @@
 // Cache only explicit public shell assets. Never cache API, tokens, profiles, map tiles or imports.
-const CACHE = 'synera-shell-20260920-v2';
+// Bumped with the "Night map" redesign so installed PWAs drop the old shell (activate deletes older synera-shell-* caches).
+const CACHE = 'synera-shell-20260923-v3';
 const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/online-store.mjs', '/profile-store.mjs', '/neon-store.mjs', '/profile-portability.mjs', '/profile-brief.mjs', '/profile-package.mjs', '/calendar.mjs', '/matching.mjs', '/map.mjs', '/pilot-policy.mjs', '/pwa.mjs', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/legal.html', '/catalogue.html', '/tokens.css', '/cascade.mjs', '/iceberg-client.mjs'];
-SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs');
+SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2', '/i18n-phrases.mjs');
 self.addEventListener('install', event => { 
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))); 
