@@ -420,8 +420,57 @@
         }
       ],
       "status": "done"
+    },
+    {
+      "id": 8,
+      "name": "Фініш фази 8: RLS acceptance, migration runner, qr-bill, vector store, privacy audit",
+      "target_layers": [
+        "C03.L4",
+        "C03.L7",
+        "C11.L4",
+        "C14.L5",
+        "C15.L7"
+      ],
+      "steps": [
+        {
+          "id": "8.1",
+          "name": "neon/local_acceptance.mjs — реальна RLS-акцептанса на disposable PG (9/9)",
+          "verify_cmd": "node neon/local_acceptance.test.mjs",
+          "status": "done"
+        },
+        {
+          "id": "8.2",
+          "name": "neon/migration_runner.mjs — dry-run за замовчуванням + SYNERA_MIGRATION_APPROVED гейт (9/9)",
+          "verify_cmd": "node neon/migration_runner.test.mjs",
+          "status": "done"
+        },
+        {
+          "id": "8.3",
+          "name": "web_launch/economics/qr_bill.mjs — Swiss QR-bill, flag OFF (6/6)",
+          "verify_cmd": "node web_launch/economics/qr_bill.test.mjs",
+          "status": "done"
+        },
+        {
+          "id": "8.4",
+          "name": "web_launch/memory/vector_store.mjs — локальний дефолт, NVIDIA через env+ключ (7/7)",
+          "verify_cmd": "node web_launch/memory/vector_store.test.mjs",
+          "status": "done"
+        },
+        {
+          "id": "8.5",
+          "name": "web_launch/iceberg/privacy_audit.mjs — PRIVACY_AUDIT_PASS по 6 C15 машинах (6/6)",
+          "verify_cmd": "node web_launch/iceberg/privacy_audit.test.mjs",
+          "status": "done"
+        },
+        {
+          "id": "8.6",
+          "name": "Коміт+push фази 8: 1e367f3 (14 файлів, readiness 75%)",
+          "status": "done"
+        }
+      ],
+      "status": "done"
     }
   ],
-  "next_action": "await_operator_answers_BLOCKED_HUMAN_Q1_Q11_then_P2_backlog",
+  "next_action": "await_4_operator_decisions_then_phase9",
   "signals_log": "signals.log"
 }
