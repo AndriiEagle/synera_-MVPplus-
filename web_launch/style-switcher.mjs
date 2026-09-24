@@ -1,15 +1,18 @@
 export const STYLE_STORAGE_KEY = 'synera.style';
+export const SYNERA_STYLE = 'synera';
 export const ATELIER_STYLE = 'atelier';
 export const ORIGINAL_STYLE = 'original';
 
 export function normalizeStyle(value) {
-  return value === ORIGINAL_STYLE ? ORIGINAL_STYLE : ATELIER_STYLE;
+  return [SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE].includes(value) ? value : SYNERA_STYLE;
 }
 
 export function styleToggleCopy(style) {
-  return normalizeStyle(style) === ORIGINAL_STYLE
-    ? { text: 'Стиль: Original', label: 'Актуальний оригінальний стиль. Увімкнути стиль Atelier.', pressed: 'true' }
-    : { text: 'Стиль: Atelier', label: 'Актуальний стиль Atelier. Увімкнути оригінальний стиль.', pressed: 'false' };
+  switch (normalizeStyle(style)) {
+    case ATELIER_STYLE: return { text: 'Стиль: Atelier', label: 'Актуальний стиль Atelier. Увімкнути попередній вебстиль.' };
+    case ORIGINAL_STYLE: return { text: 'Стиль: Web', label: 'Актуальний попередній вебстиль. Увімкнути стиль Synera.' };
+    default: return { text: 'Стиль: Synera', label: 'Актуальний стиль Synera з оригінального макета. Увімкнути стиль Atelier.' };
+  }
 }
 
 export function applyStyle(root, button, style) {
@@ -19,7 +22,6 @@ export function applyStyle(root, button, style) {
   if (button) {
     button.textContent = copy.text;
     button.setAttribute('aria-label', copy.label);
-    button.setAttribute('aria-pressed', copy.pressed);
   }
   return next;
 }
@@ -28,7 +30,7 @@ export function installStyleSwitcher({ root = document.documentElement, button =
   const current = applyStyle(root, button, storage?.getItem(STYLE_STORAGE_KEY));
   if (!button) return current;
   button.addEventListener('click', () => {
-    const next = root.dataset.syneraStyle === ATELIER_STYLE ? ORIGINAL_STYLE : ATELIER_STYLE;
+    const next = root.dataset.syneraStyle === SYNERA_STYLE ? ATELIER_STYLE : root.dataset.syneraStyle === ATELIER_STYLE ? ORIGINAL_STYLE : SYNERA_STYLE;
     applyStyle(root, button, next);
     try { storage?.setItem(STYLE_STORAGE_KEY, next); } catch { /* visual preference remains in this page */ }
   });

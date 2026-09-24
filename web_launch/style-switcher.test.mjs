@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
-import { ATELIER_STYLE, ORIGINAL_STYLE, applyStyle, normalizeStyle, styleToggleCopy } from './style-switcher.mjs';
+import { SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, applyStyle, normalizeStyle, styleToggleCopy } from './style-switcher.mjs';
 
-test('style switcher defaults malformed or absent preference to Atelier', () => {
-  assert.equal(normalizeStyle(undefined), ATELIER_STYLE);
-  assert.equal(normalizeStyle('unknown'), ATELIER_STYLE);
+test('style switcher defaults malformed or absent preference to the original Synera visual language', () => {
+  assert.equal(normalizeStyle(undefined), SYNERA_STYLE);
+  assert.equal(normalizeStyle('unknown'), SYNERA_STYLE);
+  assert.equal(normalizeStyle(ATELIER_STYLE), ATELIER_STYLE);
   assert.equal(normalizeStyle(ORIGINAL_STYLE), ORIGINAL_STYLE);
 });
 
@@ -16,11 +17,10 @@ test('style switcher changes only the visual preference and exposes the alternat
   const button = { textContent: '', setAttribute: (name, value) => attributes.set(name, value) };
   assert.equal(applyStyle(root, button, ORIGINAL_STYLE), ORIGINAL_STYLE);
   assert.equal(root.dataset.syneraStyle, ORIGINAL_STYLE);
-  assert.equal(button.textContent, 'Стиль: Original');
-  assert.equal(attributes.get('aria-pressed'), 'true');
-  assert.match(attributes.get('aria-label'), /Увімкнути стиль Atelier/);
+  assert.equal(button.textContent, 'Стиль: Web');
+  assert.match(attributes.get('aria-label'), /Увімкнути стиль Synera/);
   assert.deepEqual(styleToggleCopy(ATELIER_STYLE), {
-    text: 'Стиль: Atelier', label: 'Актуальний стиль Atelier. Увімкнути оригінальний стиль.', pressed: 'false'
+    text: 'Стиль: Atelier', label: 'Актуальний стиль Atelier. Увімкнути попередній вебстиль.'
   });
 });
 
@@ -41,6 +41,6 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   let installation;
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
-  assert.equal(cacheName, 'synera-shell-20260923-v3');
+  assert.equal(cacheName, 'synera-shell-20260924-v4');
   assert.ok(cachedShell.includes('/style-switcher.mjs'));
 });

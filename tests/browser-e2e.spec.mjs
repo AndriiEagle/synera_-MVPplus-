@@ -43,27 +43,30 @@ test('hero h1 видимий на desktop viewport', async ({ page }) => {
   await expect(page.locator('h1').first()).toBeVisible();
 });
 
-test('hero h1 видимий на mobile viewport 375px', async ({ page }) => {
+test('hero h1 видимий на mobile viewport 375px', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 375, height: 700 });
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('h1').first()).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('mobile-landing.png') });
 });
 
-test('Atelier is the default and the original design remains an accessible reversible choice', async ({ page }) => {
+test('Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   const toggle = page.locator('#style-toggle');
   await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveText('Стиль: Synera');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+  await toggle.click();
   await expect(toggle).toHaveText('Стиль: Atelier');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
   await toggle.click();
-  await expect(toggle).toHaveText('Стиль: Original');
-  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(toggle).toHaveText('Стиль: Web');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
   await toggle.click();
-  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
 });
 
-test('Atelier keeps the disabled login action on the readable disabled surface', async ({ page }) => {
+test('Synera keeps the disabled login action on the readable disabled surface', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
   const state = await page.locator('#auth-submit').evaluate(button => {
@@ -77,7 +80,7 @@ test('Atelier keeps the disabled login action on the readable disabled surface',
     return { disabled: button.matches(':disabled'), background: style.backgroundColor, expected };
   });
   expect(state.disabled).toBe(true);
-  expect(state.background).toBe(state.expected);
+  await expect.poll(() => page.locator('#auth-submit').evaluate(button => getComputedStyle(button).backgroundColor)).toBe(state.expected);
 });
 
 test('клік табу profile перемикає видиму секцію workspace', async ({ page }) => {
@@ -92,6 +95,40 @@ test('клік табу profile перемикає видиму секцію wor
   await expect(page.locator('#profile-view')).toBeVisible();
   // Welcome-екран поступається місцем workspace-контенту.
   await expect(page.locator('#welcome')).toBeHidden();
+});
+
+test('mobile profile presents its first action without scrolling past the first screen', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 412, height: 850 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  await page.evaluate(() => scrollTo(0, 0));
+  const action = await page.locator('#start-chatgpt-transfer').boundingBox();
+  expect(action).not.toBeNull();
+  expect(action.y + action.height).toBeLessThan(850);
+  await page.screenshot({ path: testInfo.outputPath('mobile-profile.png') });
+});
+
+test('small mobile view keeps the profile navigation and style control on screen', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  const geometry = await page.evaluate(() => {
+    const rect = selector => document.querySelector(selector).getBoundingClientRect();
+    return {
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: document.documentElement.clientWidth,
+      nav: { left: rect('.workspace-bar nav').left, right: rect('.workspace-bar nav').right, bottom: rect('.workspace-bar nav').bottom },
+      style: { left: rect('#style-toggle').left, right: rect('#style-toggle').right },
+    };
+  });
+  expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
+  expect(geometry.nav.left).toBeGreaterThanOrEqual(0);
+  expect(geometry.nav.right).toBeLessThanOrEqual(320);
+  expect(geometry.nav.bottom).toBeLessThanOrEqual(700);
+  expect(geometry.style.left).toBeGreaterThanOrEqual(0);
+  expect(geometry.style.right).toBeLessThanOrEqual(320);
 });
 
 test('catalogue.html віддає 200 і свій заголовок', async ({ page }) => {
@@ -155,12 +192,15 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
       inputBg: input ? getComputedStyle(input).backgroundColor : '',
     };
   });
-  // Токен розв'язується у вибраному Atelier, а original повертає початковий бренд.
-  expect(computed.rootColor254f3b).toBe('#173f32');
+  // Обрана Synera зберігає палітру оригінального Flutter, обидва вебстилі доступні окремо.
+  expect(computed.rootColor254f3b).toBe('#e7bd87');
+  await page.locator('#style-toggle').click();
+  const atelierToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
+  expect(atelierToken).toBe('#173f32');
   await page.locator('#style-toggle').click();
   const originalToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
   expect(originalToken).toBe('#254f3b');
-  // Фон може бути кольором або Atelier-градієнтом, але не browser-дефолтом.
+  // Фон має бути реальною поверхнею, а не browser-дефолтом.
   expect(computed.bodyBgImage !== 'none' || !['rgba(0, 0, 0, 0)', 'rgb(255, 255, 255)'].includes(computed.bodyBg)).toBe(true);
   // Інпут має видиму рамку (0px = невидимий контроль, який ловив vision-рев'ю).
   expect(parseFloat(computed.inputBorderWidth)).toBeGreaterThan(0);
@@ -172,6 +212,10 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
 // N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
 test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await page.locator('#style-toggle').click(); // Atelier
+  await page.locator('#style-toggle').click(); // Previous Web; the original Phase-9 tokens remain proven here.
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
+  await expect.poll(() => page.locator('#auth-submit').evaluate(button => getComputedStyle(button).backgroundColor)).toBe('rgb(230, 235, 231)');
   const computed = await page.evaluate(() => {
     const input = document.querySelector('#email');
     const label = document.querySelector('#auth-fields label');
