@@ -19,6 +19,11 @@ export function validateConfig(config) {
     if (typeof config.realPilotEnabled !== 'boolean') throw new Error('Некоректне налаштування реального пілоту');
     optional.realPilotEnabled = config.realPilotEnabled;
   }
+  if (config.googleOAuthEnabled !== undefined) {
+    if (typeof config.googleOAuthEnabled !== 'boolean') throw new Error('Некоректне налаштування Google входу');
+    if (config.googleOAuthEnabled && config.backend !== 'neon') throw new Error('Google-вхід доступний лише через Neon Auth');
+    optional.googleOAuthEnabled = config.googleOAuthEnabled;
+  }
   if (registrationEnabled && !config.realPilotEnabled) throw new Error('Реєстрація вимагає переглянуту схему real-pilot.');
   if (config.publicSiteUrl) {
     const url = new URL(config.publicSiteUrl);

@@ -101,6 +101,7 @@ function currentPublicUrl() { return config?.publicSiteUrl || (location.protocol
 function applyAuthState() {
   $('#auth-fields').disabled = busy || !onlineReady;
   $('#signup').hidden = config?.backend === 'neon' || !config?.registrationEnabled;
+  $('#google-signin').hidden = config?.backend !== 'neon' || config?.googleOAuthEnabled !== true || Boolean(otpEmail) || Boolean(store?.user);
   $('#otp-tools').hidden = config?.backend !== 'neon' || !otpEmail;
   $('#otp-code').required = config?.backend === 'neon' && Boolean(otpEmail);
   if (config?.backend === 'neon') {
@@ -477,6 +478,10 @@ function requestLoginCode() {
   requestPolicy(sendLoginCode);
 }
 $('#resend-otp').addEventListener('click', requestLoginCode);
+$('#google-signin').addEventListener('click', () => {
+  if (!config?.googleOAuthEnabled || !onlineReady) return;
+  requestPolicy(() => store.beginGoogleSignIn());
+});
 $('#change-otp-email').addEventListener('click', () => { otpEmail = ''; otpConsent = null; $('#email').readOnly = false; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#auth-submit').textContent = 'Надіслати код'; applyAuthState(); $('#email').focus(); });
 $('#auth-form').addEventListener('submit',event=>{event.preventDefault();
   if (config?.backend === 'neon') {

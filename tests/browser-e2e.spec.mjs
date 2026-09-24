@@ -66,6 +66,24 @@ test('Synera, Atelier and previous Web design remain reversible choices', async 
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
 });
 
+test('compact presets are visual-only choices alongside the preserved three-style switch', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await page.locator('#style-preset').selectOption('noir');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
+  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Noir');
+  await page.locator('#style-toggle').click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+});
+
+test('first-user tour highlights guidance without blocking the local profile draft', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await page.locator('#tour-start').click();
+  await expect(page.getByRole('heading', { name: 'Твій профіль — під твоїм контролем' })).toBeVisible();
+  await page.locator('#prepare-profile').click();
+  await expect(page.locator('#profile-view')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Далі' })).toBeVisible();
+});
+
 test('Synera keeps the disabled login action on the readable disabled surface', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });

@@ -11,6 +11,7 @@ export class NeonStore extends ProfileStore {
     this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
+    this.googleOAuthEnabled = config.googleOAuthEnabled === true;
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
   get user() { return this.#user; }
@@ -45,6 +46,12 @@ export class NeonStore extends ProfileStore {
     const data = await this.#request('/api/neon/otp/verify', { method: 'POST', body: { email, otp } });
     this.#user = data?.user || null;
     if (!this.#user?.id) throw new ServiceError(401);
+  }
+  // The provider owns Google code exchange, state and PKCE. This same-origin gateway
+  // only admits the configured Neon Auth handler; browser JS never receives a token.
+  beginGoogleSignIn() {
+    if (!this.googleOAuthEnabled) throw new ServiceError(503);
+    window.location.assign('/api/neon/oauth/google/start');
   }
   async signOut() {
     try { await this.#request('/api/neon/logout', { method: 'POST', body: {} }); }

@@ -39,6 +39,19 @@ test('closed backend, wrong origins, bad configuration and unsupported routes ma
   assert.equal(calls, 0); assert.throws(() => neonEndpoints({ ...env, SYNERA_NEON_AUTH_URL: env.SYNERA_NEON_AUTH_URL + '?password=secret' }));
 });
 
+test('Google sign-in is fail-closed and redirects only to the pinned Neon Auth handler', async () => {
+  let calls = 0;
+  const disabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), env, async () => { calls++; throw new Error('no upstream'); });
+  assert.equal(disabled.status, 404);
+  const enabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), { ...env, SYNERA_GOOGLE_OAUTH_ENABLED: 'true' }, async () => { calls++; throw new Error('no upstream'); });
+  assert.equal(enabled.status, 302);
+  const url = new URL(enabled.headers.get('location'));
+  assert.equal(url.origin, new URL(env.SYNERA_NEON_AUTH_URL).origin);
+  assert.equal(url.pathname, '/handler/sign-in');
+  assert.equal(url.searchParams.get('after_auth_return_to'), origin + '/?oauth=google');
+  assert.equal(calls, 0, 'Google authorization, state, PKCE and code exchange stay in Neon Auth');
+});
+
 test('the case-state tables are reachable through the gateway and the allowlist stays an allowlist', async () => {
   // STATUS.md item 3: neon/worker.mjs must allow match_cases and match_case_approvals.
   // The gateway forwards only; RLS on those tables is what refuses a forged approval.

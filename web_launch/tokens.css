@@ -404,4 +404,13 @@
   --atelier-line: #bdcbbf;
   --atelier-accent: #a97735;
   --atelier-focus: #0e5b43;
+
+  /* Compact presets alter these semantic slots only. They never segment people,
+     change matching, consent, or permissions. */
+  --preset-bg: #15161d;
+  --preset-surface: #2b3138;
+  --preset-text: #fcfcfd;
+  --preset-muted: #c5c7d0;
+  --preset-accent: #e7bd87;
+  --preset-line: #454952;
 }

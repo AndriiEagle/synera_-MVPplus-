@@ -120,6 +120,16 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       await authRequest(fetchImpl, endpoints, '/get-session');
       return answer({ authGateway: 'reachable', backend: 'neon', policyVersion: POLICY_VERSION });
     }
+    // Neon Auth (the managed Stack provider) owns Google's authorization code, state,
+    // PKCE verifier and token exchange. We deliberately redirect only to its own handler
+    // and only back to our pinned origin; neither a Google token nor an arbitrary callback
+    // can enter this worker or browser JavaScript.
+    if (path === '/oauth/google/start' && request.method === 'GET' && !url.search) {
+      if (env.SYNERA_GOOGLE_OAUTH_ENABLED !== 'true') throw new GatewayError(404);
+      const signIn = new URL('/handler/sign-in', endpoints.auth);
+      signIn.searchParams.set('after_auth_return_to', endpoints.origin + '/?oauth=google');
+      return Response.redirect(signIn.href, 302);
+    }
     if (path === '/otp/request' && request.method === 'POST' && !url.search) {
       if (env.SYNERA_REGISTRATION_ENABLED !== 'true') throw new GatewayError(403);
       const body = await readJson(request); checkKeys(body, ['email', 'consent']);
@@ -172,6 +182,7 @@ export function createNeonWorker(publicAssets) {
     else if (url.pathname === '/config.json' && request.method === 'GET') {
       const ready = env.SYNERA_PILOT_READY === 'true';
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
+        googleOAuthEnabled: ready && env.SYNERA_GOOGLE_OAUTH_ENABLED === 'true',
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);
