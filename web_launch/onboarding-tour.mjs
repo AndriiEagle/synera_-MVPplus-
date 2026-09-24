@@ -6,11 +6,13 @@ export const TOUR_STEPS = Object.freeze([
   { target: '[data-tour="need"]', title: 'Що шукаєш', body: 'Назви потрібний зараз результат. Synera показує лише пояснювані перетини «даю ↔ шукаю».' },
   { target: '[data-tour="conditions"]', title: 'Умови й запрошення', body: 'Ти керуєш видимістю та умовами. Контакт відкривається тільки після двох окремих «так», без автоматичних відправлень.' },
   { target: '[data-tour="result"]', title: 'Малий перший результат', body: 'Зафіксуй перевірюваний перший крок для обох сторін. Приклади в інтерфейсі синтетичні — вони не обіцяють збіг чи угоду.' },
+  { target: '[data-tour="demo"]', title: 'Пройди приклад без ризику', body: 'Натискай кроки нижче: вигадані люди → причина для обох → умови → чернетка. Demo не створює профіль, збіг чи запрошення.' },
 ]);
 
 function validStep(index) { return Number.isInteger(index) && index >= 0 && index < TOUR_STEPS.length; }
 export function nextTourStep(index, direction) { return Math.max(0, Math.min(TOUR_STEPS.length - 1, index + direction)); }
 export function shouldOfferTour(storage) { try { return storage?.getItem(TOUR_STORAGE_KEY) !== 'done'; } catch { return true; } }
+export function shouldStartIdleTour({ offered, interacted }) { return offered === true && interacted !== true; }
 
 export function installOnboardingTour({ document: doc = document, storage = window.localStorage } = {}) {
   const replay = doc.querySelector('#tour-start');
@@ -43,7 +45,14 @@ export function installOnboardingTour({ document: doc = document, storage = wind
   next.addEventListener('click', () => { if (index === TOUR_STEPS.length - 1) finish(true); else { index = nextTourStep(index, 1); render(); } });
   skip.addEventListener('click', () => finish(true));
   doc.addEventListener('keydown', event => { if (panel.hidden) return; if (event.key === 'Escape') { event.preventDefault(); finish(true); } if (event.key === 'ArrowRight') { event.preventDefault(); next.click(); } if (event.key === 'ArrowLeft' && index) { event.preventDefault(); back.click(); } });
-  if (shouldOfferTour(storage)) setTimeout(start, 250);
+  // An idle first visit may receive guidance. Once a person begins a real local action
+  // (for example the synthetic demo), do not dim that work; the explicit Tour control
+  // remains available for replay.
+  let interacted = false;
+  const markInteraction = () => { interacted = true; };
+  doc.addEventListener('pointerdown', markInteraction, { once: true, capture: true });
+  doc.addEventListener('keydown', markInteraction, { once: true, capture: true });
+  if (shouldOfferTour(storage)) setTimeout(() => { if (shouldStartIdleTour({ offered: true, interacted })) start(); }, 500);
   return { start, finish, get index() { return index; } };
 }
 

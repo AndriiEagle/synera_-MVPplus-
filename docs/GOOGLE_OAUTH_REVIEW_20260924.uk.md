@@ -8,9 +8,9 @@
 `https://<SYNERA_SITE_URL>/?oauth=google`.
 
 Важлива межа: цей локальний gateway відкриває керовану сторінку входу Neon Auth, але сам не
-викликає документований provider-specific метод `signInWithOAuth('google')`. Тому назва кнопки
-«Увійти з Google» прийнятна лише після live-перевірки, що налаштований Neon handler справді
-показує й запускає Google, а cancel/return відновлює очікувану серверну сесію. До цього прапорець
+викликає документований provider-specific метод `signInWithOAuth('google')`. Тому кнопка чесно
+названа «Відкрити Neon Auth», а не «Увійти з Google». До живого тесту не можна заявляти, що вона
+показує чи запускає Google, а cancel/return відновлює очікувану серверну сесію. До цього прапорець
 `SYNERA_GOOGLE_OAUTH_ENABLED` має залишатися вимкненим.
 
 Google authorization, `state`, PKCE verifier, code exchange, provider tokens і сесія належать
@@ -37,8 +37,12 @@ Neon Auth (managed Stack) і не передаються в browser JavaScript. 
 ## Межа доказу
 
 Локально перевірено fail-closed routing і те, що gateway не робить upstream-запит/не отримує
-токен. Це **не** доводить live Google login: provider configuration, Google redirect callback,
-provider-specific initiation, реальна сесія та приймання користувачем ще відсутні.
+токен. Це **не** доводить live Google login. Поточний Neon Auth контракт уже Better Auth і
+офіційно радить `@neondatabase/neon-js/auth`/Better Auth client; цей zero-dependency vanilla
+пакет має лише зафіксований legacy handler та OTP adapter. Без документованого URL/SDK-методу для
+provider-specific Google initiation не можна безпечно синтезувати endpoint, state або PKCE.
+Тому blocker: потрібен reviewable Neon SDK adapter або офіційний handler contract саме для цього
+branch, потім provider configuration, Google callback, реальна сесія й user acceptance.
 
 ## Джерело
 

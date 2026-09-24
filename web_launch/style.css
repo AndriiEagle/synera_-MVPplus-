@@ -2096,6 +2096,7 @@ html[data-synera-style="noir"] .panel,html[data-synera-style="alpine"] .panel,ht
 @media (max-width:650px) { .tour-panel { left:12px; right:12px; bottom:max(12px, env(safe-area-inset-bottom)); width:auto; padding:16px; }.tour-panel .actions { display:grid; grid-template-columns:1fr 1fr; }.tour-panel .actions .quiet { grid-column:1 / -1; } }
 .preset-picker select { max-width:128px; min-height:34px; padding:5px; font:inherit; color:inherit; background:transparent; border:1px solid var(--synera-border-control); border-radius:8px; }
 @media (max-width:650px) { .preset-picker select { max-width:102px; font-size:11px; } }
+.demo-journey { margin:0 auto 24px; max-width:760px; }.demo-journey h2,.demo-journey h3 { margin:0 0 10px; }.demo-journey > .fine { max-width:68ch; }.demo-journey-stage { display:grid; gap:12px; margin-top:16px; padding:18px; border:1px solid var(--synera-border-control); border-radius:14px; background:var(--color-bg-choice); }.demo-journey-stage p { margin:0; line-height:1.55; }.demo-journey-stage textarea { width:100%; resize:vertical; }.demo-unsent { color:var(--color-warning-text); font-weight:700; letter-spacing:.04em; }
 @media (max-width: 650px) {
   html[data-synera-style="synera"] .signed-in header {
     display: grid;

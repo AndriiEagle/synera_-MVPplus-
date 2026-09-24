@@ -75,6 +75,40 @@ test('compact presets are visual-only choices alongside the preserved three-styl
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
 });
 
+test('all ten compact presets visibly change the desktop surface without changing the document flow', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  const values = ['noir', 'alpine', 'copper', 'azure', 'orchid', 'terracotta', 'citrus', 'slate', 'ink', 'harvest'];
+  const backgrounds = [];
+  for (const value of values) {
+    await page.locator('#style-preset').selectOption(value);
+    backgrounds.push(await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor));
+    await expect(page.locator('#demo-journey')).toBeVisible();
+  }
+  expect(new Set(backgrounds).size).toBe(10);
+});
+
+test('a compact preset remains selectable and visibly distinct at a 375px mobile viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 844 });
+  await page.goto(`${baseUrl}/`);
+  const base = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
+  await page.locator('#style-preset').selectOption('noir');
+  const noir = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(noir).not.toBe(base);
+  await expect(page.locator('#style-preset')).toBeVisible();
+});
+
+test('synthetic demo walks people, mutual benefit, conditions and an unsent invitation draft', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.getByText('ДЕМОНСТРАЦІЯ · СИНТЕТИЧНИЙ ПРИКЛАД')).toBeVisible();
+  await page.getByRole('button', { name: 'Показати взаємну користь' }).click();
+  await expect(page.getByText('Причина для розмови в обидва боки')).toBeVisible();
+  await page.getByRole('button', { name: 'Перевірити умови' }).click();
+  await expect(page.getByText('Умови до контакту')).toBeVisible();
+  await page.getByRole('button', { name: 'Підготувати чернетку запрошення' }).click();
+  await expect(page.getByText('Чернетка — не відправлення')).toBeVisible();
+  await expect(page.getByText('НЕ ВІДПРАВЛЕНО · лише локальна демонстрація')).toBeVisible();
+});
+
 test('first-user tour highlights guidance without blocking the local profile draft', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await page.locator('#tour-start').click();

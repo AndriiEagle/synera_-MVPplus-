@@ -139,9 +139,9 @@ function tab(name) {
   document.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('active', b.dataset.tab === name); b.setAttribute('aria-current', b.dataset.tab === name ? 'page' : 'false'); });
   if (name === 'settings') run(renderBlocks);
 }
-function showWorkspace() { $('#welcome').hidden = true; $('#workspace').hidden = false; $('#logout').hidden = !store?.user; $('#back-login').hidden = Boolean(store?.user); document.body.classList.add('signed-in'); }
+function showWorkspace() { $('#welcome').hidden = true; $('#demo-journey').hidden = true; $('#workspace').hidden = false; $('#logout').hidden = !store?.user; $('#back-login').hidden = Boolean(store?.user); document.body.classList.add('signed-in'); }
 function showSignedOut() {
-  document.body.classList.remove('signed-in'); $('#workspace').hidden = true; $('#welcome').hidden = false; $('#logout').hidden = true; $('#back-login').hidden = true;
+  document.body.classList.remove('signed-in'); $('#workspace').hidden = true; $('#welcome').hidden = false; $('#demo-journey').hidden = false; $('#logout').hidden = true; $('#back-login').hidden = true;
   document.querySelectorAll('dialog').forEach(d => { if (d.open) d.close(); });
   form.reset(); $('#password').value = ''; $('#invite-note').value = ''; $('#people-search').value = '';
   otpEmail = ''; otpConsent = null; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#email').readOnly = false;
