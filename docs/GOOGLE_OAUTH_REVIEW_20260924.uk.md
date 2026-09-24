@@ -1,41 +1,21 @@
 # Synera Google-вхід через Neon Auth — reviewable local package
 
-## Реалізовано локально
+## Вердикт: Google OAuth вимкнено fail-closed
 
-`web_launch/neon-store.mjs` відкриває тільки same-origin
-`/api/neon/oauth/google/start`. Якщо і тільки якщо
-`SYNERA_GOOGLE_OAUTH_ENABLED === 'true'`, `neon/worker.mjs` робить
-server-to-server `POST` до pinned Neon Auth
-`/sign-in/social` з Better Auth body:
+Provider-specific `POST /sign-in/social` **не можна** безпечно запускати server-to-server через
+цей worker. Better Auth створює `state`, PKCE verifier та ставить OAuth state cookie у відповіді
+на старт; callback `/callback/google` потім перевіряє той cookie на домені Neon. Cloudflare
+gateway не може передати Set-Cookie з server fetch у browser jar Neon-домену. Попередній варіант
+відкидав цей cookie і міг відкрити Google flow, який неминуче зламає state validation.
 
-```json
-{
-  "provider": "google",
-  "callbackURL": "https://<SYNERA_SITE_URL>/?oauth=google",
-  "errorCallbackURL": "https://<SYNERA_SITE_URL>/?oauth=google-error",
-  "disableRedirect": true
-}
-```
+Тому `web_launch/neon-store.mjs` завжди відмовляє Google start, `/api/neon/oauth/google/start`
+повертає `404`, і `/config.json` завжди видає `googleOAuthEnabled: false` — навіть якщо legacy
+environment flag випадково встановлено. Немає upstream OAuth call, redirect, токена, code або
+cookie у browser JavaScript чи gateway.
 
-Gateway перенаправляє браузер лише після валідації відповіді Better Auth:
-точний Google authorization origin/path, `response_type=code`, nonempty client ID,
-точний Neon callback `/callback/google`, `state` і S256 PKCE challenge. Неповна,
-підроблена або open-redirect відповідь завершується `503 google_oauth_unavailable`.
-Ні verifier, ні OAuth code/token, ні provider cookie не потрапляють у JS або JSON-відповідь.
-
-Локальна acceptance-перевірка в `neon/worker.test.mjs` спочатку падала на старому generic
-`/handler/sign-in`, бо той не викликав `/sign-in/social`. Після зміни вона перевіряє exact
-provider body, upstream endpoint та відхилення неправильного callback/відсутнього PKCE.
-
-## Межа: initiation працює локально, сесія після callback ще не доведена
-
-Це provider-specific Google **initiation**, але не чесний доказ повного live login. Better Auth
-відправляє Google callback до Neon Auth. Звичайний browser cookie для домену Neon не може бути
-прочитаний чи перенесений Cloudflare gateway на домен Synera; наявний worker створює
-`__Host-synera-session` тільки у відповіді OTP verify. Тому після live callback він наразі не має
-підтвердженого механізму відновити server-side Synera session. Не вмикати flag для користувачів,
-доки Neon не надасть документований session-handoff/callback-bridge або не буде схвалено зміну
-архітектури auth SDK/cookie model.
+`neon/worker.test.mjs` спершу падала проти unsafe provider-start реалізації: вона вимагала 404 і
+нуль upstream calls при активному legacy flag. Після fail-closed зміни ця semantic regression
+перевірка проходить; клієнтський тест також доводить, що forged config flag не відкриває навігацію.
 
 ## Зовнішні блокери — не виконані
 
@@ -43,17 +23,17 @@ provider body, upstream endpoint та відхилення неправильн�
    не потрапляє в repo, чат або Cloudflare variables.
 2. У Google Cloud дозволити **рівно** callback, який покаже Neon Auth для цього branch, і
    trusted Synera origin. Не додавати wildcard, localhost або callback напряму в worker.
-3. Перевірити в Neon Auth, що фактичний callback дорівнює
-   `https://<neon-auth-endpoint>/.../auth/callback/google`, а Better Auth response проходить
-   локальну сувору валідацію.
-4. Знайти документований спосіб завершити Neon callback у server-owned Synera session без
-   передачі cookie/token через JavaScript. Лише після цього окремо review/approve flag і live
-   acceptance: initiation → Google consent/cancel → callback → `/api/neon/session` → policy → logout.
+3. Отримати від Neon документований browser-domain-safe спосіб запуску social sign-in, який
+   зберігає Better Auth state cookie, і окремий server-owned Synera session handoff без передачі
+   cookie/token через JavaScript.
+4. Лише після окремого review/approval реалізувати новий adapter і live acceptance:
+   initiation → Google consent/cancel → callback → `/api/neon/session` → policy → logout.
 
 ## Офіційні джерела
 
 - Better Auth Google: https://www.better-auth.com/docs/authentication/google
 - Better Auth social sign-in API: https://www.better-auth.com/docs/concepts/oauth
+- Better Auth state implementation: https://github.com/better-auth/better-auth/blob/main/packages/better-auth/src/state.ts
 - Neon Auth / Better Auth setup: https://neon.com/docs/auth/overview
 
 Жодного provider call, Console mutation, deploy, publish або secret access не виконано.

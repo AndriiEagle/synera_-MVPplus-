@@ -11,7 +11,8 @@ export class NeonStore extends ProfileStore {
     this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
-    this.googleOAuthEnabled = config.googleOAuthEnabled === true;
+    // A config flag alone cannot make Better Auth's Neon-domain state cookie safe to proxy.
+    this.googleOAuthEnabled = false;
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
   get user() { return this.#user; }
@@ -47,8 +48,8 @@ export class NeonStore extends ProfileStore {
     this.#user = data?.user || null;
     if (!this.#user?.id) throw new ServiceError(401);
   }
-  // The provider owns Google code exchange, state and PKCE. The same-origin gateway
-  // starts Better Auth's explicit Google provider flow; browser JS never receives a token.
+  // Better Auth binds OAuth state and PKCE to a Neon-domain browser cookie. Until Neon
+  // documents a safe bridge to this server-owned session, the feature stays unavailable.
   beginGoogleSignIn() {
     if (!this.googleOAuthEnabled) throw new ServiceError(503);
     window.location.assign('/api/neon/oauth/google/start');
