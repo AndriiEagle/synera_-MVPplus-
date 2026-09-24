@@ -30,6 +30,11 @@ test.afterAll(async () => {
   if (serverProcess && serverProcess.exitCode === null) serverProcess.kill();
 });
 
+async function openPreferences(page) {
+  await page.locator('.header-preferences summary').click();
+  await expect(page.locator('#style-toggle')).toBeVisible();
+}
+
 test('index віддає 200 і показує бренд synera', async ({ page }) => {
   const response = await page.goto(`${baseUrl}/`);
   expect(response.status()).toBe(200);
@@ -37,10 +42,14 @@ test('index віддає 200 і показує бренд synera', async ({ page
   await expect(page.locator('.brand')).toContainText('synera');
 });
 
-test('hero h1 видимий на desktop viewport', async ({ page }) => {
+test('hero h1 видимий на desktop viewport', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('h1').first()).toBeVisible();
+  const hero = await page.locator('h1').first().boundingBox();
+  const demo = await page.locator('#demo-journey').boundingBox();
+  expect(hero.y).toBeLessThan(demo.y);
+  await page.screenshot({ path: testInfo.outputPath('desktop-landing.png') });
 });
 
 test('hero h1 видимий на mobile viewport 375px', async ({ page }, testInfo) => {
@@ -50,8 +59,24 @@ test('hero h1 видимий на mobile viewport 375px', async ({ page }, testI
   await page.screenshot({ path: testInfo.outputPath('mobile-landing.png') });
 });
 
+test('mobile first visit gives one visible action and keeps appearance settings available on demand', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 700 });
+  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+  await page.goto(`${baseUrl}/`);
+  const action = page.locator('#prepare-profile');
+  await expect(action).toBeVisible();
+  expect((await action.boundingBox()).y).toBeLessThan(700);
+  await expect(page.locator('#style-toggle')).toBeHidden();
+  await page.locator('.header-preferences summary').click();
+  await expect(page.locator('#style-toggle')).toBeVisible();
+  await expect(page.locator('#style-preset')).toBeVisible();
+  await page.locator('#style-preset').selectOption('noir');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
+});
+
 test('Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   const toggle = page.locator('#style-toggle');
   await expect(toggle).toBeVisible();
   await expect(toggle).toHaveText('Стиль: Synera');
@@ -68,6 +93,7 @@ test('Synera, Atelier and previous Web design remain reversible choices', async 
 
 test('compact presets are visual-only choices alongside the preserved three-style switch', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   await page.locator('#style-preset').selectOption('noir');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
   await expect(page.locator('#style-toggle')).toHaveText('Стиль: Noir');
@@ -77,6 +103,7 @@ test('compact presets are visual-only choices alongside the preserved three-styl
 
 test('all ten compact presets visibly change the desktop surface without changing the document flow', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   const values = ['noir', 'alpine', 'copper', 'azure', 'orchid', 'terracotta', 'citrus', 'slate', 'ink', 'harvest'];
   const backgrounds = [];
   for (const value of values) {
@@ -90,6 +117,7 @@ test('all ten compact presets visibly change the desktop surface without changin
 test('a compact preset remains selectable and visibly distinct at a 375px mobile viewport', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 844 });
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   const base = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
   await page.locator('#style-preset').selectOption('noir');
   const noir = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
@@ -111,6 +139,7 @@ test('synthetic demo walks people, mutual benefit, conditions and an unsent invi
 
 test('first-user tour highlights guidance without blocking the local profile draft', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   await page.locator('#tour-start').click();
   await expect(page.getByRole('heading', { name: 'Твій профіль — під твоїм контролем' })).toBeVisible();
   await page.locator('#prepare-profile').click();
@@ -166,6 +195,7 @@ test('small mobile view keeps the profile navigation and style control on screen
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
   await page.locator('#prepare-profile').click();
+  await openPreferences(page);
   const geometry = await page.evaluate(() => {
     const rect = selector => document.querySelector(selector).getBoundingClientRect();
     return {
@@ -233,6 +263,7 @@ test('нуль pageerror-подій під час навігації по таб
 // computed-стилі, а не DOM-видимість: токени мають РОЗВИНЯТИСЬ у значення.
 test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні розв'язуються в computed-стилях", async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   const computed = await page.evaluate(() => {
     const cs = getComputedStyle(document.body);
     const input = document.querySelector('#email');
@@ -264,6 +295,7 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
 // N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
 test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
   await page.locator('#style-toggle').click(); // Atelier
   await page.locator('#style-toggle').click(); // Previous Web; the original Phase-9 tokens remain proven here.
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');

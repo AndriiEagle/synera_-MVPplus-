@@ -2158,3 +2158,35 @@ html[data-synera-style="noir"] .panel,html[data-synera-style="alpine"] .panel,ht
   html[data-synera-style="synera"] .signed-in .profile-transfer p:not(.eyebrow) { font-size: 13px; line-height: 1.4; }
   html[data-synera-style="synera"] .signed-in .profile-transfer button { min-height: 44px; }
 }
+
+/* Keep the first decision in the hero; language and reversible visual variants
+   stay one deliberate tap away on every screen size. */
+.header-preferences { position:relative; z-index:30; margin-left:auto; }
+.header-preferences summary { list-style:none; cursor:pointer; padding:10px 13px; border:1px solid var(--synera-border-control); border-radius:12px; color:var(--synera-text); font-size:13px; font-weight:650; white-space:nowrap; }
+.header-preferences summary::-webkit-details-marker { display:none; }
+.header-preferences summary::after { content:'⌄'; padding-left:10px; }
+.header-preferences[open] summary::after { content:'⌃'; }
+.header-preferences-content { position:absolute; right:0; top:calc(100% + 8px); display:grid; gap:12px; width:min(300px, calc(100vw - 40px)); padding:16px; border:1px solid var(--synera-border-control); border-radius:16px; background:var(--color-fffefa); box-shadow:var(--shadow-dialog); }
+.header-preferences-content #lang-switcher { margin:0; }
+.header-preferences-content #style-toggle,
+.header-preferences-content #tour-start,
+.header-preferences-content .preset-picker select { width:100%; max-width:none; }
+body:not(.signed-in) header #mode { display:none; }
+.intro .draft-entry { border:0; padding:0; margin-top:24px; max-width:360px; }
+.intro .draft-entry button { min-height:52px; padding:12px 18px; border:1px solid var(--synera-border-control); border-radius:12px; font-size:15px; font-weight:700; text-align:left; }
+.intro .draft-entry .fine { margin-top:9px; }
+html[data-synera-style="synera"] .journey strong { color:#f2d1a5; }
+body:not(.signed-in) .demo-journey { grid-column:1 / -1; grid-row:5; width:100%; }
+body:not(.signed-in) .install-bar { grid-column:1 / -1; grid-row:6; margin-top:24px; margin-bottom:24px; }
+@media (max-width:920px) {
+  body:not(.signed-in) .install-bar { margin:26px auto; }
+}
+@media (max-width:650px) {
+  body:not(.signed-in) header { min-height:68px; padding-top:10px; padding-bottom:10px; }
+  body:not(.signed-in) main { padding-top:24px; }
+  body:not(.signed-in) .intro { padding-bottom:18px; }
+  body:not(.signed-in) .intro .lead { margin-bottom:0; }
+  html[data-synera-style="synera"] .signed-in header .header-preferences { grid-column:2; grid-row:2; justify-self:end; }
+  html[data-synera-style="synera"] .signed-in header #logout,
+  html[data-synera-style="synera"] .signed-in header #back-login { grid-column:3; grid-row:1; }
+}
