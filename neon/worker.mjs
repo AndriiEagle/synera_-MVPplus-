@@ -91,6 +91,28 @@ async function authRequest(fetchImpl, endpoints, path, { method = 'GET', body, c
     'X-Neon-Auth-Middleware': 'true', ...(cookie ? { Cookie: `${NEON_COOKIE}=${cookie}` } : {}) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) },
     path === '/sign-in/email-otp' ? 'otp_verification_unavailable' : path === '/email-otp/send-verification-otp' ? 'otp_delivery_unavailable' : 'session_unavailable');
 }
+function googleAuthorizationUrl(data, endpoints) {
+  if (!data || typeof data.url !== 'string' || data.url.length > 8192 || data.redirect !== false) throw new GatewayError(503, 'google_oauth_unavailable');
+  let authorization;
+  try { authorization = new URL(data.url); } catch { throw new GatewayError(503, 'google_oauth_unavailable'); }
+  const callback = endpoints.auth + '/callback/google';
+  const challenge = authorization.searchParams.get('code_challenge') || '';
+  const state = authorization.searchParams.get('state') || '';
+  if (authorization.origin !== 'https://accounts.google.com' || authorization.pathname !== '/o/oauth2/v2/auth' ||
+    authorization.searchParams.get('response_type') !== 'code' || !authorization.searchParams.get('client_id') ||
+    authorization.searchParams.get('redirect_uri') !== callback || authorization.searchParams.get('code_challenge_method') !== 'S256' ||
+    !/^[A-Za-z0-9_-]{43,128}$/.test(challenge) || !/^[A-Za-z0-9_-]{16,1024}$/.test(state)) throw new GatewayError(503, 'google_oauth_unavailable');
+  return authorization;
+}
+async function startGoogleOAuth(fetchImpl, endpoints) {
+  const response = await checkedFetch(fetchImpl, endpoints.auth + '/sign-in/social', { method: 'POST', headers: {
+    'Content-Type': 'application/json', Origin: endpoints.origin, 'X-Neon-Auth-Middleware': 'true'
+  }, body: JSON.stringify({ provider: 'google', callbackURL: endpoints.origin + '/?oauth=google',
+    errorCallbackURL: endpoints.origin + '/?oauth=google-error', disableRedirect: true }) }, 'google_oauth_unavailable');
+  let data;
+  try { data = await response.json(); } catch { throw new GatewayError(503, 'google_oauth_unavailable'); }
+  return googleAuthorizationUrl(data, endpoints);
+}
 async function getSession(fetchImpl, endpoints, cookie, allowed) {
   if (!cookie) return null;
   const response = await authRequest(fetchImpl, endpoints, '/get-session', { cookie });
@@ -120,15 +142,12 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       await authRequest(fetchImpl, endpoints, '/get-session');
       return answer({ authGateway: 'reachable', backend: 'neon', policyVersion: POLICY_VERSION });
     }
-    // Neon Auth (the managed Stack provider) owns Google's authorization code, state,
-    // PKCE verifier and token exchange. We deliberately redirect only to its own handler
-    // and only back to our pinned origin; neither a Google token nor an arbitrary callback
-    // can enter this worker or browser JavaScript.
+    // Better Auth constructs the Google code flow. The gateway asks its explicit social
+    // endpoint for a non-redirecting authorization URL, then admits only Google's S256-PKCE
+    // URL with the exact Neon callback. Tokens and the verifier never enter browser JS.
     if (path === '/oauth/google/start' && request.method === 'GET' && !url.search) {
       if (env.SYNERA_GOOGLE_OAUTH_ENABLED !== 'true') throw new GatewayError(404);
-      const signIn = new URL('/handler/sign-in', endpoints.auth);
-      signIn.searchParams.set('after_auth_return_to', endpoints.origin + '/?oauth=google');
-      return Response.redirect(signIn.href, 302);
+      return Response.redirect((await startGoogleOAuth(fetchImpl, endpoints)).href, 302);
     }
     if (path === '/otp/request' && request.method === 'POST' && !url.search) {
       if (env.SYNERA_REGISTRATION_ENABLED !== 'true') throw new GatewayError(403);

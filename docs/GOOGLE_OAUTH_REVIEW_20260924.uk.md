@@ -2,49 +2,58 @@
 
 ## Реалізовано локально
 
-`web_launch/neon-store.mjs` відкриває лише same-origin `/api/neon/oauth/google/start`.
-`neon/worker.mjs` відкидає цей маршрут, доки `SYNERA_GOOGLE_OAUTH_ENABLED !== 'true'`, і тоді
-перенаправляє тільки на pinned Neon Auth `/handler/sign-in` з єдиним return URL
-`https://<SYNERA_SITE_URL>/?oauth=google`.
+`web_launch/neon-store.mjs` відкриває тільки same-origin
+`/api/neon/oauth/google/start`. Якщо і тільки якщо
+`SYNERA_GOOGLE_OAUTH_ENABLED === 'true'`, `neon/worker.mjs` робить
+server-to-server `POST` до pinned Neon Auth
+`/sign-in/social` з Better Auth body:
 
-Важлива межа: цей локальний gateway відкриває керовану сторінку входу Neon Auth, але сам не
-викликає документований provider-specific метод `signInWithOAuth('google')`. Тому кнопка чесно
-названа «Відкрити Neon Auth», а не «Увійти з Google». До живого тесту не можна заявляти, що вона
-показує чи запускає Google, а cancel/return відновлює очікувану серверну сесію. До цього прапорець
-`SYNERA_GOOGLE_OAUTH_ENABLED` має залишатися вимкненим.
+```json
+{
+  "provider": "google",
+  "callbackURL": "https://<SYNERA_SITE_URL>/?oauth=google",
+  "errorCallbackURL": "https://<SYNERA_SITE_URL>/?oauth=google-error",
+  "disableRedirect": true
+}
+```
 
-Google authorization, `state`, PKCE verifier, code exchange, provider tokens і сесія належать
-Neon Auth (managed Stack) і не передаються в browser JavaScript. Після повернення застосунок
-відновлює тільки HttpOnly server session через наявний `/api/neon/session`; правила пілота
-як і раніше вимагають окремого підтвердження перед першим збереженням профілю.
+Gateway перенаправляє браузер лише після валідації відповіді Better Auth:
+точний Google authorization origin/path, `response_type=code`, nonempty client ID,
+точний Neon callback `/callback/google`, `state` і S256 PKCE challenge. Неповна,
+підроблена або open-redirect відповідь завершується `503 google_oauth_unavailable`.
+Ні verifier, ні OAuth code/token, ні provider cookie не потрапляють у JS або JSON-відповідь.
 
-## Зовнішня дія оператора — ще не виконана
+Локальна acceptance-перевірка в `neon/worker.test.mjs` спочатку падала на старому generic
+`/handler/sign-in`, бо той не викликав `/sign-in/social`. Після зміни вона перевіряє exact
+provider body, upstream endpoint та відхилення неправильного callback/відсутнього PKCE.
 
-1. У Neon Console для **наявного production branch** `quiet-credit-94155104` увімкнути Google
-   як OAuth provider і внести Google OAuth client ID/secret у Neon Auth. Не передавати секрет у
-   репозиторій, чат або Cloudflare variables.
-2. У Google Cloud OAuth client додати **рівно callback, який покаже Neon Auth setup**, і trusted
-   Synera origin `https://synera-pilot.pages.dev`; не додавати wildcard, localhost або callback
-   напряму в Cloudflare worker.
-3. Перевірити в Neon Auth exact trusted domain / return URL для `https://synera-pilot.pages.dev`.
-4. Лише після review worker package поставити Cloudflare secret-free flag
-   `SYNERA_GOOGLE_OAUTH_ENABLED=true`; це не містить client secret. Інші чинні flags лишити без
-   змін. Публікація пакета й будь-яка production mutation потребують окремого дозволу.
-5. Приймання: новий дозволений тестовий учасник виконує initiation → Google consent/cancel →
-   exact return → session restore → policy acceptance → logout. Зафіксувати тільки timestamp,
-   фактичний provider, status і локальний результат; не логувати code/token/email.
+## Межа: initiation працює локально, сесія після callback ще не доведена
 
-## Межа доказу
+Це provider-specific Google **initiation**, але не чесний доказ повного live login. Better Auth
+відправляє Google callback до Neon Auth. Звичайний browser cookie для домену Neon не може бути
+прочитаний чи перенесений Cloudflare gateway на домен Synera; наявний worker створює
+`__Host-synera-session` тільки у відповіді OTP verify. Тому після live callback він наразі не має
+підтвердженого механізму відновити server-side Synera session. Не вмикати flag для користувачів,
+доки Neon не надасть документований session-handoff/callback-bridge або не буде схвалено зміну
+архітектури auth SDK/cookie model.
 
-Локально перевірено fail-closed routing і те, що gateway не робить upstream-запит/не отримує
-токен. Це **не** доводить live Google login. Поточний Neon Auth контракт уже Better Auth і
-офіційно радить `@neondatabase/neon-js/auth`/Better Auth client; цей zero-dependency vanilla
-пакет має лише зафіксований legacy handler та OTP adapter. Без документованого URL/SDK-методу для
-provider-specific Google initiation не можна безпечно синтезувати endpoint, state або PKCE.
-Тому blocker: потрібен reviewable Neon SDK adapter або офіційний handler contract саме для цього
-branch, потім provider configuration, Google callback, реальна сесія й user acceptance.
+## Зовнішні блокери — не виконані
 
-## Джерело
+1. У Neon Console для потрібного branch налаштувати Google provider з client ID/secret. Секрет
+   не потрапляє в repo, чат або Cloudflare variables.
+2. У Google Cloud дозволити **рівно** callback, який покаже Neon Auth для цього branch, і
+   trusted Synera origin. Не додавати wildcard, localhost або callback напряму в worker.
+3. Перевірити в Neon Auth, що фактичний callback дорівнює
+   `https://<neon-auth-endpoint>/.../auth/callback/google`, а Better Auth response проходить
+   локальну сувору валідацію.
+4. Знайти документований спосіб завершити Neon callback у server-owned Synera session без
+   передачі cookie/token через JavaScript. Лише після цього окремо review/approve flag і live
+   acceptance: initiation → Google consent/cancel → callback → `/api/neon/session` → policy → logout.
 
-Neon документує кастомну кнопку через `app.signInWithOAuth('google')`; Neon Auth використовує
-managed Stack Auth. Офіційна інструкція: https://neon.com/docs/auth/guides/setup-oauth
+## Офіційні джерела
+
+- Better Auth Google: https://www.better-auth.com/docs/authentication/google
+- Better Auth social sign-in API: https://www.better-auth.com/docs/concepts/oauth
+- Neon Auth / Better Auth setup: https://neon.com/docs/auth/overview
+
+Жодного provider call, Console mutation, deploy, publish або secret access не виконано.

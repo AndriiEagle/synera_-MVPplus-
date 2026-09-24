@@ -47,8 +47,8 @@ export class NeonStore extends ProfileStore {
     this.#user = data?.user || null;
     if (!this.#user?.id) throw new ServiceError(401);
   }
-  // The provider owns Google code exchange, state and PKCE. This same-origin gateway
-  // only admits the configured Neon Auth handler; browser JS never receives a token.
+  // The provider owns Google code exchange, state and PKCE. The same-origin gateway
+  // starts Better Auth's explicit Google provider flow; browser JS never receives a token.
   beginGoogleSignIn() {
     if (!this.googleOAuthEnabled) throw new ServiceError(503);
     window.location.assign('/api/neon/oauth/google/start');

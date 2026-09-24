@@ -39,17 +39,41 @@ test('closed backend, wrong origins, bad configuration and unsupported routes ma
   assert.equal(calls, 0); assert.throws(() => neonEndpoints({ ...env, SYNERA_NEON_AUTH_URL: env.SYNERA_NEON_AUTH_URL + '?password=secret' }));
 });
 
-test('Google sign-in is fail-closed and redirects only to the pinned Neon Auth handler', async () => {
-  let calls = 0;
-  const disabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), env, async () => { calls++; throw new Error('no upstream'); });
+test('Google start uses Better Auth social provider, not the generic handler', async () => {
+  const calls = [];
+  const disabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), env, async (...args) => { calls.push(args); throw new Error('no upstream'); });
   assert.equal(disabled.status, 404);
-  const enabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), { ...env, SYNERA_GOOGLE_OAUTH_ENABLED: 'true' }, async () => { calls++; throw new Error('no upstream'); });
+  assert.equal(calls.length, 0);
+  const authorization = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+  authorization.search = new URLSearchParams({ client_id: 'public-fixture', response_type: 'code', scope: 'openid email profile',
+    redirect_uri: env.SYNERA_NEON_AUTH_URL + '/callback/google', state: 'state-fixture-0123456789',
+    code_challenge: 'A'.repeat(43), code_challenge_method: 'S256' });
+  const enabled = await handleNeon(request('/oauth/google/start', { headers: { 'X-Synera-Client': '1' } }), { ...env, SYNERA_GOOGLE_OAUTH_ENABLED: 'true' }, async (url, init) => {
+    calls.push([url, init]);
+    return new Response(JSON.stringify({ url: authorization.href, redirect: false }));
+  });
   assert.equal(enabled.status, 302);
-  const url = new URL(enabled.headers.get('location'));
-  assert.equal(url.origin, new URL(env.SYNERA_NEON_AUTH_URL).origin);
-  assert.equal(url.pathname, '/handler/sign-in');
-  assert.equal(url.searchParams.get('after_auth_return_to'), origin + '/?oauth=google');
-  assert.equal(calls, 0, 'Google authorization, state, PKCE and code exchange stay in Neon Auth');
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0][0], env.SYNERA_NEON_AUTH_URL + '/sign-in/social');
+  assert.equal(calls[0][1].method, 'POST');
+  assert.equal(calls[0][1].headers['X-Neon-Auth-Middleware'], 'true');
+  assert.deepEqual(JSON.parse(calls[0][1].body), { provider: 'google', callbackURL: origin + '/?oauth=google',
+    errorCallbackURL: origin + '/?oauth=google-error', disableRedirect: true });
+  assert.equal(enabled.headers.get('location'), authorization.href);
+});
+
+test('Google start rejects a provider response that could bypass Google PKCE callback', async () => {
+  const invalid = [
+    { response_type: 'code', redirect_uri: 'https://evil.example/callback', state: 'state-fixture-0123456789', code_challenge: 'A'.repeat(43), code_challenge_method: 'S256' },
+    { response_type: 'code', redirect_uri: env.SYNERA_NEON_AUTH_URL + '/callback/google', state: 'state-fixture-0123456789' },
+  ];
+  for (const params of invalid) {
+    const unsafe = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+    unsafe.search = new URLSearchParams(params);
+    const response = await handleNeon(request('/oauth/google/start'), { ...env, SYNERA_GOOGLE_OAUTH_ENABLED: 'true' },
+      async () => new Response(JSON.stringify({ url: unsafe.href, redirect: false })));
+    assert.deepEqual(await response.json(), { error: 'google_oauth_unavailable', status: 503 });
+  }
 });
 
 test('the case-state tables are reachable through the gateway and the allowlist stays an allowlist', async () => {
