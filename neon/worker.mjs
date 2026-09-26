@@ -1,4 +1,5 @@
 import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';
+import { handleGoogleOAuth } from './google-oauth.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -105,6 +106,15 @@ async function getSession(fetchImpl, endpoints, cookie, allowed) {
 export async function handleNeon(request, env, fetchImpl = fetch) {
   try {
     const url = new URL(request.url), endpoints = neonEndpoints(env);
+    // OAuth returns by top-level navigation without the fetch-only client header.
+    // Its dedicated challenge + verifier are checked by the OAuth adapter.
+    if (url.origin === endpoints.origin && url.pathname === '/api/neon/oauth/google/callback' && request.method === 'GET') {
+      const result = await handleGoogleOAuth(request, env, endpoints, participants(env), fetchImpl);
+      if (result.status < 400) return result;
+      const headers = new Headers({ Location: endpoints.origin + '/?signin=google-error', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' });
+      for (const cookie of result.headers.getSetCookie()) headers.append('Set-Cookie', cookie);
+      return new Response(null, { status: 303, headers });
+    }
     if (url.origin !== endpoints.origin || request.headers.get('X-Synera-Client') !== '1' || request.headers.get('Sec-Fetch-Site') === 'cross-site') throw new GatewayError(403);
     const origin = request.headers.get('Origin');
     if ((request.method !== 'GET' && origin !== endpoints.origin) || (origin && origin !== endpoints.origin)) throw new GatewayError(403);
@@ -120,8 +130,10 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       await authRequest(fetchImpl, endpoints, '/get-session');
       return answer({ authGateway: 'reachable', backend: 'neon', policyVersion: POLICY_VERSION });
     }
-    // Do not proxy a Better Auth social start. Its response binds state/PKCE to a Neon-domain
-    // browser cookie; a server-side fetch would discard it before Google's callback.
+    if (path === '/oauth/google/start' && request.method === 'POST' && !url.search) {
+      return await handleGoogleOAuth(request, env, endpoints, allowed, fetchImpl);
+    }
+    // Starting authentication is a consent-bearing, same-origin POST.
     if (path === '/oauth/google/start' && request.method === 'GET' && !url.search) {
       throw new GatewayError(404, 'not_found');
     }
@@ -176,10 +188,11 @@ export function createNeonWorker(publicAssets) {
     if (url.pathname.startsWith('/api/neon/')) response = await handleNeon(request, env);
     else if (url.pathname === '/config.json' && request.method === 'GET') {
       const ready = env.SYNERA_PILOT_READY === 'true';
+      const googleOAuthEnabled = ready && env.SYNERA_REGISTRATION_ENABLED === 'true' && env.SYNERA_GOOGLE_OAUTH_READY === 'true';
+      const googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined;
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
-        // Keep this disabled until Neon documents a browser-domain-safe Google callback and
-        // server-session handoff for this proxy architecture.
-        googleOAuthEnabled: false,
+        // This new gate is set only after the documented challenge bridge is verified live.
+        googleOAuthEnabled, googleOAuthInitUrl,
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

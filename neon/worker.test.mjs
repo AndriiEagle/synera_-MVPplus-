@@ -49,6 +49,64 @@ test('Google start stays fail-closed even when a legacy flag is accidentally set
   assert.equal(calls.length, 0, 'Better Auth state cookies must originate in the browser on the Neon domain');
 });
 
+test('Google visibility requires the new rollout gate, registration and pilot readiness together', async () => {
+  const worker = createNeonWorker([]);
+  for (const [extra, expected] of [
+    [{ SYNERA_GOOGLE_OAUTH_ENABLED: 'true' }, false],
+    [{ SYNERA_GOOGLE_OAUTH_READY: 'true' }, true],
+    [{ SYNERA_GOOGLE_OAUTH_READY: 'true', SYNERA_REGISTRATION_ENABLED: 'false' }, false],
+    [{ SYNERA_GOOGLE_OAUTH_READY: 'true', SYNERA_PILOT_READY: 'false' }, false],
+  ]) {
+    const response = await worker.fetch(new Request(origin + '/config.json'), { ...env, ...extra });
+    const config = await response.json();
+    assert.equal(config.googleOAuthEnabled, expected);
+    assert.equal(config.googleOAuthInitUrl, expected ? env.SYNERA_NEON_AUTH_URL + '/sign-in/social/init' : undefined);
+  }
+});
+
+test('Google gateway completes browser navigation into the existing session and preserves write CSRF checks', async () => {
+  const settings = { ...env, SYNERA_GOOGLE_OAUTH_READY: 'true' };
+  const initUrl = env.SYNERA_NEON_AUTH_URL + '/sign-in/social/init?token=synthetic-init-0123456789';
+  const consent = consentRecord({ terms: true, privacy: true });
+  const start = await handleNeon(request('/oauth/google/start', { method: 'POST', body: { consent } }), settings,
+    async () => Response.json({ url: initUrl }, { headers: { 'Set-Cookie': '__Secure-neon-auth.session_challenge=challenge-value; Path=/; HttpOnly; Secure; Max-Age=600' } }));
+  assert.equal(start.status, 200);
+  assert.deepEqual(await start.json(), { url: initUrl });
+  const challenge = start.headers.getSetCookie().find(value => value.startsWith('__Host-synera-google-challenge='));
+  const callbackRequest = new Request(origin + '/api/neon/oauth/google/callback?neon_auth_session_verifier=synthetic-verifier-0123456789', {
+    headers: { Cookie: challenge.split(';')[0], 'Sec-Fetch-Site': 'cross-site' },
+  });
+  const callback = await handleNeon(callbackRequest, settings, async (url, init) => {
+    assert.match(url, /\/get-session\?neon_auth_session_verifier=/);
+    assert.equal(init.headers.Cookie, '__Secure-neon-auth.session_challenge=challenge-value');
+    return Response.json({ user, session: { id: 's' } }, { headers: { 'Set-Cookie': '__Secure-neon-auth.session_token=google-session; Path=/; Secure; HttpOnly' } });
+  });
+  assert.equal(callback.status, 303);
+  assert.equal(callback.headers.get('location'), origin + '/');
+  assert.equal(await callback.text(), '');
+  const localSession = callback.headers.getSetCookie().find(value => value.startsWith('__Host-synera-session='));
+  assert.ok(localSession);
+  const restored = await handleNeon(request('/session', { headers: { Cookie: localSession.split(';')[0] } }), settings, async () => upstreamSession());
+  assert.deepEqual(await restored.json(), { user: { id: user.id, email: user.email } });
+  let calls = 0;
+  for (const headers of [{ Origin: '' }, { Origin: 'https://evil.example' }, { 'X-Synera-Client': '' }, { 'Sec-Fetch-Site': 'cross-site' }]) {
+    const rejected = await handleNeon(request('/oauth/google/start', { method: 'POST', body: { consent }, headers }), settings, async () => { calls++; });
+    assert.equal(rejected.status, 403);
+  }
+  assert.equal(calls, 0);
+});
+
+test('failed Google callback cleans verifier URL and returns the user to a retryable login', async () => {
+  let calls = 0;
+  const response = await handleNeon(new Request(origin + '/api/neon/oauth/google/callback?neon_auth_session_verifier=synthetic-verifier-0123456789'),
+    { ...env, SYNERA_GOOGLE_OAUTH_READY: 'true' }, async () => { calls++; });
+  assert.equal(response.status, 303);
+  assert.equal(response.headers.get('location'), origin + '/?signin=google-error');
+  assert.equal(calls, 0);
+  assert.doesNotMatch(response.headers.get('location'), /verifier/);
+  assert.ok(response.headers.getSetCookie().every(value => /Max-Age=0/.test(value)));
+});
+
 test('the case-state tables are reachable through the gateway and the allowlist stays an allowlist', async () => {
   // STATUS.md item 3: neon/worker.mjs must allow match_cases and match_case_approvals.
   // The gateway forwards only; RLS on those tables is what refuses a forged approval.

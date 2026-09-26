@@ -17,7 +17,8 @@ const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
 const callbackUrl = new URL(location.href);
 const emailCallback = { hash: callbackUrl.searchParams.get('token_hash'), type: callbackUrl.searchParams.get('type') };
-if (emailCallback.hash || callbackUrl.hash || callbackUrl.searchParams.has('error')) history.replaceState(null, '', location.pathname);
+const googleSignInError = callbackUrl.searchParams.get('signin') === 'google-error';
+if (emailCallback.hash || callbackUrl.hash || callbackUrl.searchParams.has('error') || googleSignInError) history.replaceState(null, '', location.pathname);
 let store, config, onlineReady = false, own, people = [], meetings = [], recipient, currentTab = 'profile', busy = false, draft, policyAction;
 let importFormat = 'text', importedBrief, pageOffset = 0, morePeople = false, activeChat, safetyPerson, aiPayload, aiSource, aiDraft;
 let otpEmail = '', otpConsent = null;
@@ -480,7 +481,7 @@ function requestLoginCode() {
 $('#resend-otp').addEventListener('click', requestLoginCode);
 $('#google-signin').addEventListener('click', () => {
   if (!config?.googleOAuthEnabled || !onlineReady) return;
-  requestPolicy(() => store.beginGoogleSignIn());
+  requestPolicy(accepted => store.beginGoogleSignIn(accepted));
 });
 $('#change-otp-email').addEventListener('click', () => { otpEmail = ''; otpConsent = null; $('#email').readOnly = false; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#auth-submit').textContent = 'Надіслати код'; applyAuthState(); $('#email').focus(); });
 $('#auth-form').addEventListener('submit',event=>{event.preventDefault();
@@ -829,6 +830,9 @@ try {
     }
   });
 } catch { $('#mode').textContent = 'Немає з’єднання'; message('Налаштування входу недоступні. Можна підготувати профіль у вкладці й завантажити власний JSON.', true); }
+if (googleSignInError) {
+  message('Не вдалося завершити Google-вхід. Спробуй ще раз або отримай код на пошту.', true);
+}
 applyAuthState();renderProfileProgress();
 
 // SYN_CONSENT_PANEL_7: seven granular consents, all default OFF; revoke has an instant effect.

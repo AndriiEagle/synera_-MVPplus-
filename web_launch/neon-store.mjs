@@ -11,8 +11,8 @@ export class NeonStore extends ProfileStore {
     this.fetch = (...args) => fetchImpl(...args);
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
-    // A config flag alone cannot make Better Auth's Neon-domain state cookie safe to proxy.
-    this.googleOAuthEnabled = false;
+    this.googleOAuthEnabled = config.googleOAuthEnabled === true;
+    this.googleOAuthInitUrl = config.googleOAuthInitUrl || '';
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
   get user() { return this.#user; }
@@ -48,11 +48,18 @@ export class NeonStore extends ProfileStore {
     this.#user = data?.user || null;
     if (!this.#user?.id) throw new ServiceError(401);
   }
-  // Better Auth binds OAuth state and PKCE to a Neon-domain browser cookie. Until Neon
-  // documents a safe bridge to this server-owned session, the feature stays unavailable.
-  beginGoogleSignIn() {
-    if (!this.googleOAuthEnabled) throw new ServiceError(503);
-    window.location.assign('/api/neon/oauth/google/start');
+  async beginGoogleSignIn(accepted) {
+    if (!this.googleOAuthEnabled || !this.pilotSafetyEnabled || !this.realPilotEnabled) throw new ServiceError(503);
+    const consent = consentRecord(accepted);
+    const data = await this.#request('/api/neon/oauth/google/start', { method: 'POST', body: { consent } });
+    let destination, expected;
+    try { destination = new URL(data?.url); expected = new URL(this.googleOAuthInitUrl); } catch { throw new ServiceError(503); }
+    const token = destination.searchParams.getAll('token');
+    if (expected.protocol !== 'https:' || expected.username || expected.password || expected.search || expected.hash ||
+        destination.protocol !== 'https:' || destination.origin !== expected.origin || destination.pathname !== expected.pathname || destination.port ||
+        destination.username || destination.password || destination.hash || token.length !== 1 || !/^[A-Za-z0-9._~-]{16,2048}$/.test(token[0]) ||
+        [...destination.searchParams.keys()].some(key => key !== 'token')) throw new ServiceError(503);
+    window.location.assign(destination.href);
   }
   async signOut() {
     try { await this.#request('/api/neon/logout', { method: 'POST', body: {} }); }

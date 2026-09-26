@@ -1,5 +1,7 @@
 # Synera Google-вхід через Neon Auth — reviewable local package
 
+> Історичний стан 2026-09-24. Поточний адаптер і межі перевірки: [review 2026-09-26](GOOGLE_OAUTH_REVIEW_20260926.uk.md). Висновки нижче описують відкинуту попередню реалізацію.
+
 ## Вердикт: Google OAuth вимкнено fail-closed
 
 Provider-specific `POST /sign-in/social` **не можна** безпечно запускати server-to-server через

@@ -24,6 +24,13 @@ export function validateConfig(config) {
     if (config.googleOAuthEnabled && config.backend !== 'neon') throw new Error('Google-вхід доступний лише через Neon Auth');
     optional.googleOAuthEnabled = config.googleOAuthEnabled;
   }
+  if (config.googleOAuthInitUrl !== undefined) {
+    const url = new URL(config.googleOAuthInitUrl);
+    if (config.backend !== 'neon' || url.protocol !== 'https:' || url.username || url.password || url.search || url.hash ||
+        !/^https:\/\/[a-z0-9.-]+\.neonauth\.[a-z0-9.-]+\.aws\.neon\.tech\/[a-zA-Z0-9_-]+\/auth\/sign-in\/social\/init$/.test(url.href)) throw new Error('Некоректний Neon Auth URL для Google входу');
+    optional.googleOAuthInitUrl = url.href;
+  }
+  if (config.googleOAuthEnabled && !optional.googleOAuthInitUrl) throw new Error('Google-вхід вимагає точний Neon Auth init URL');
   if (registrationEnabled && !config.realPilotEnabled) throw new Error('Реєстрація вимагає переглянуту схему real-pilot.');
   if (config.publicSiteUrl) {
     const url = new URL(config.publicSiteUrl);
