@@ -461,7 +461,7 @@ async function finishOnlineSignIn(accepted) {
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
 $('#prepare-profile').addEventListener('click',()=>{showWorkspace();fillProfileForm(draft || {});tab('profile');$('#mode').textContent='Твоя чернетка · у цій вкладці';message('Підготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.');});
-$('#back-login').addEventListener('click',()=>{draft=readProfileForm();$('#workspace').hidden=true;$('#welcome').hidden=false;$('#back-login').hidden=true;document.body.classList.remove('signed-in');message('Чернетка залишається у вкладці. Після входу перевір її та збережи.');});
+$('#back-login').addEventListener('click',()=>{draft=readProfileForm();$('#workspace').hidden=true;$('#welcome').hidden=false;$('#demo-journey').hidden=false;$('#back-login').hidden=true;document.body.classList.remove('signed-in');message('Чернетка залишається у вкладці. Після входу перевір її та збережи.');});
 $('#check-online').addEventListener('click',()=>run(checkOnline));
 $('#policy-cancel').addEventListener('click',()=>{policyAction=null;$('#password').value='';$('#policy-dialog').close();});
 $('#policy-dialog').addEventListener('cancel',()=>{policyAction=null;$('#password').value='';});

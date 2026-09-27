@@ -34,6 +34,8 @@ export function installOnboardingTour({ document: doc = document, storage = wind
   const render = () => {
     const step = TOUR_STEPS[index], target = doc.querySelector(step.target);
     if (!target) { finish(false); return; }
+    // This public synthetic example remains reachable from a profile tour.
+    if (target.id === 'demo-journey') target.hidden = false;
     activeTarget?.classList.remove('tour-target'); activeTarget = target; activeTarget.classList.add('tour-target');
     doc.documentElement.classList.add('tour-active'); overlay.hidden = panel.hidden = false;
     eyebrow.textContent = `КРОК ${index + 1} / ${TOUR_STEPS.length}`; title.textContent = step.title; body.textContent = step.body;

@@ -189,6 +189,24 @@ test('first-user tour highlights guidance without blocking the local profile dra
   await expect(page.getByRole('button', { name: 'Далі' })).toBeVisible();
 });
 
+test('draft tour reaches the usable demo and preserves the profile when returning to login', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  await page.getByRole('textbox', { name: 'Ім’я для профілю', exact: true }).fill('Тестова чернетка');
+  await openPreferences(page);
+  await page.locator('#tour-start').click();
+  for (let step = 1; step < 6; step++) await page.getByRole('button', { name: 'Далі', exact: true }).click();
+  await expect(page.locator('#demo-journey')).toBeVisible();
+  await page.getByRole('button', { name: 'Завершити', exact: true }).click();
+  await page.getByRole('button', { name: 'Показати взаємну користь', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '2. Причина для розмови в обидва боки', exact: true })).toBeVisible();
+  await page.locator('#back-login').click();
+  await expect(page.locator('#demo-journey')).toBeVisible();
+  await page.locator('#prepare-profile').click();
+  await expect(page.getByRole('textbox', { name: 'Ім’я для профілю', exact: true })).toHaveValue('Тестова чернетка');
+});
+
 test('Synera keeps the disabled login action on the readable disabled surface', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
