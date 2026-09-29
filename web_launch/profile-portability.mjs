@@ -2,7 +2,7 @@ import { CAPABILITIES } from './matching.mjs';
 
 export const PORTABLE_PROFILE_FORMAT = 'synera-profile-1';
 
-const LIMITS = Object.freeze({ display_name: 60, city: 80, offers: 300, seeks: 300 });
+const LIMITS = Object.freeze({ display_name: 60, city: 80, offers: 300, seeks: 300, goal: 240 });
 const EMPTY_PROFILE = Object.freeze({ display_name: '', city: '', offers: '', seeks: '', is_discoverable: false });
 const FIELD_NAMES = Object.freeze({ display_name: 'ім’я', city: 'місто', offers: 'можу допомогти', seeks: 'шукаю' });
 const SENSITIVE = Object.freeze({
@@ -62,11 +62,12 @@ function keyForLabel(value) {
   if (/^(місто|city|location|локація|ort|standort)$/iu.test(label)) return 'city';
   if (/^(можу допомогти( з)?|пропоную|i can help( with)?|i offer|offers?|skills?|expertise|ich biete|ich kann helfen)$/iu.test(label)) return 'offers';
   if (/^(шукаю|потрібно|потреба|looking for|i need|needs?|seeks?|request|ich suche|suche)$/iu.test(label)) return 'seeks';
+  if (/^(перший результат|первый результат|ціль|цель|first result|first outcome|goal|collaboration goal|erster schritt|ziel)$/iu.test(label)) return 'goal';
   return '';
 }
 
 function parseLabeledText(input) {
-  const buckets = { display_name: [], city: [], offers: [], seeks: [] };
+  const buckets = { display_name: [], city: [], offers: [], seeks: [], goal: [] };
   let active = '';
   for (const raw of input.split(/\n/)) {
     const line = raw.trim();
@@ -81,7 +82,10 @@ function parseLabeledText(input) {
     }
     if (active) buckets[active].push(line);
   }
-  return cleanProfileFields(Object.fromEntries(Object.entries(buckets).map(([key, lines]) => [key, lines.join('\n')])));
+  const values = Object.fromEntries(Object.entries(buckets).map(([key, lines]) => [key, lines.join('\n')]));
+  const profile = cleanProfileFields(values);
+  const goal = compact(values.goal, LIMITS.goal, { multiline: true });
+  return goal ? { ...profile, brief: { goal } } : profile;
 }
 
 function parseJsonProfile(input) {

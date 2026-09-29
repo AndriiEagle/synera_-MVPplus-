@@ -43,6 +43,13 @@ test('profile import: labeled text is mapped into the existing profile fields', 
   assert.deepEqual(result.profile, { display_name: 'Анна', city: 'Zürich', offers: 'UX design', seeks: 'B2B sales', is_discoverable: false });
 });
 
+test('profile import: a first-result label fills the collaboration goal instead of contaminating seeks', () => {
+  const result = parseProfileImport('Name: Demo Gilbert\nCity: Zürich\nI can help with: AI product prototyping\nLooking for: pilot feedback\nFirst result: agree a 20-minute demo', { authorized: true });
+  assert.equal(result.status, 'ready');
+  assert.equal(result.profile.seeks, 'pilot feedback');
+  assert.equal(result.profile.brief.goal, 'agree a 20-minute demo');
+});
+
 test('profile import: generic pasted profile stays in review mode', () => {
   const result = parseProfileImport('Anna Keller\nFounder building AI matchmaking in Zurich', { authorized: true });
   assert.equal(result.status, 'needs_review');
