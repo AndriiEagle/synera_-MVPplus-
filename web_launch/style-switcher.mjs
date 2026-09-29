@@ -2,11 +2,14 @@ export const STYLE_STORAGE_KEY = 'synera.style';
 export const SYNERA_STYLE = 'synera';
 export const ATELIER_STYLE = 'atelier';
 export const ORIGINAL_STYLE = 'original';
+// Premium full design (dark graphite + gold, Montserrat) from the original Synera app; chosen from the
+// preset list, never forced into the Synera → Atelier → Web cycle users already know.
+export const NIGHT_STYLE = 'night';
 export const COMPACT_PRESETS = Object.freeze([
   ['noir', 'Noir'], ['alpine', 'Alpine'], ['copper', 'Copper'], ['azure', 'Azure'], ['orchid', 'Orchid'],
   ['terracotta', 'Terracotta'], ['citrus', 'Citrus'], ['slate', 'Slate'], ['ink', 'Ink'], ['harvest', 'Harvest'],
 ]);
-export const ALL_STYLES = Object.freeze([SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, ...COMPACT_PRESETS.map(([id]) => id)]);
+export const ALL_STYLES = Object.freeze([SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, NIGHT_STYLE, ...COMPACT_PRESETS.map(([id]) => id)]);
 
 export function normalizeStyle(value) {
   return ALL_STYLES.includes(value) ? value : SYNERA_STYLE;
@@ -18,6 +21,7 @@ export function styleToggleCopy(style) {
     // Keep the established visible Web label; Classic describes its compatibility role,
     // rather than silently replacing a working preference users already recognize.
     case ORIGINAL_STYLE: return { text: 'Стиль: Web', label: 'Актуальний попередній вебстиль Classic. Увімкнути стиль Synera.' };
+    case NIGHT_STYLE: return { text: 'Стиль: Нічна карта', label: 'Актуальний преміум-стиль «Нічна карта». Увімкнути стиль Synera.' };
     default: {
       const preset = COMPACT_PRESETS.find(([id]) => id === normalizeStyle(style));
       if (preset) return { text: 'Стиль: ' + preset[1], label: 'Актуальний компактний стиль ' + preset[1] + '. Увімкнути наступний стиль.' };
@@ -40,7 +44,7 @@ export function applyStyle(root, button, style) {
 export function installStyleSwitcher({ root = document.documentElement, button = document.querySelector('#style-toggle'), select = document.querySelector('#style-preset'), storage = window.localStorage } = {}) {
   const current = applyStyle(root, button, storage?.getItem(STYLE_STORAGE_KEY));
   if (select) {
-    select.value = COMPACT_PRESETS.some(([id]) => id === current) ? current : '';
+    select.value = current === NIGHT_STYLE || COMPACT_PRESETS.some(([id]) => id === current) ? current : '';
     select.addEventListener('change', () => {
       if (!select.value) return;
       applyStyle(root, button, select.value);

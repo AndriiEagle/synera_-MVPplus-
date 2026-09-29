@@ -11,7 +11,8 @@ test('style switcher defaults malformed or absent preference to the original Syn
   assert.equal(normalizeStyle(ORIGINAL_STYLE), ORIGINAL_STYLE);
   assert.equal(normalizeStyle('noir'), 'noir');
   assert.equal(COMPACT_PRESETS.length, 10);
-  assert.equal(ALL_STYLES.length, 13);
+  assert.equal(ALL_STYLES.length, 14);
+  assert.ok(ALL_STYLES.includes('night'), 'premium night design is a selectable style');
 });
 
 test('style switcher changes only the visual preference and exposes the alternate style', () => {

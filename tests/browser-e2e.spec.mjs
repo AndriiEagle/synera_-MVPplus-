@@ -445,3 +445,25 @@ test('GEO-01 meeting location: static map link, consent-gated grant for one reci
   const permission = await page.evaluate(async () => (await navigator.permissions.query({ name: 'geolocation' })).state);
   expect(permission).not.toBe('granted');
 });
+
+// Premium «Нічна карта» ported as an opt-in style: heading and first action stay first on mobile, motion respects reduced-motion.
+test('Night map premium style: selectable, keeps the first action above the fold, no motion under reduced-motion', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, reducedMotion: 'reduce', serviceWorkers: 'block' });
+  const page = await context.newPage();
+  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  await page.locator('#style-preset').selectOption('night');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'night');
+  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Нічна карта');
+  await page.locator('.header-preferences summary').click();
+  const h1 = await page.locator('.intro h1').boundingBox();
+  const cta = await page.locator('.draft-entry').boundingBox();
+  expect(h1.y).toBeLessThan(cta.y);
+  expect(cta.y + cta.height).toBeLessThan(812);
+  expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
+  await openPreferences(page);
+  await page.locator('#style-toggle').click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+  await context.close();
+});
