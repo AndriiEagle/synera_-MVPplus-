@@ -4,7 +4,7 @@ import { cleanProfileFields, createInvitationDraft, createShareCard, parseProfil
 import { completeProfileJson as createPortableProfileJson, importCompleteProfile as parseProfileImport } from './profile-package.mjs';
 import { normalizeBrief, briefProblems, compareRealProfiles, collaborationDraft, ALL_MODES, CAPABILITIES, CITIES, LANGUAGES, MODES, profileAIPayload, profileAIPrompt, validateAIDraft } from './profile-brief.mjs';
 // SYN_CASE_STATE_IMPORTED
-import { buildBusinessCase, businessCaseText, createCaseState, approveCase, withdrawApproval, reviseCase, reviewCaseAction, INVALIDATION_MATRIX, caseMaterialProblems, materialTermsFromInput } from './business-case.mjs';
+import { buildBusinessCase, businessCaseText, createCaseState, approveCase, withdrawApproval, reviseCase, reviewCaseAction, INVALIDATION_MATRIX, caseMaterialProblems, materialTermsFromInput, effortsFromInput, effortSummary, deliverableKey, EFFORT_UNITS } from './business-case.mjs';
 // SYN_INTRODUCTION_GATED
 import { reviewIntroduction } from './matching.mjs';
 import { createPeopleMap } from './map.mjs';
@@ -190,6 +190,8 @@ let caseStates = new Map(), caseNotices = new Map(), caseEpoch = 0;
 const caseTerms = new Map(), caseTermsOpen = new Set();
 const MATERIAL_PROBLEM_LABELS = { 'compensation unresolved': 'винагорода', 'paid service compensation must be explicit money terms': 'для платної послуги — грошова винагорода', 'money amount, currency and invoice choice required': 'сума, валюта і рішення щодо рахунку', 'revision limit unresolved': 'ліміт правок', 'confidentiality unresolved': 'конфіденційність', 'intellectual property unresolved': 'права на результат', 'cancellation unresolved': 'припинення співпраці' };
 const UNRESOLVED_LABELS = { amount: 'сума винагороди', currency: 'валюта', invoice: 'рахунок', acceptance: 'критерії прийняття', third_party_consent_verification: 'перевірка згоди третьої сторони', third_party_agreement: 'згода третьої сторони', referral_compensation: 'винагорода за рекомендацію' };
+const EFFORT_UNIT_LABELS = { hours: 'годин', items: 'одиниць результату', sessions: 'сесій' };
+const effortText = effort => effort ? effort.amount + ' ' + EFFORT_UNIT_LABELS[effort.unit] : 'не погоджено';
 const COMPENSATION_LABELS = { unresolved: 'не погоджено', agreed_exchange: 'обмін послугами', agreed_money: 'грошова оплата', agreed_none: 'без винагороди' };
 const TERMS_LABELS = { revision_limit: 'Ліміт правок', confidentiality: 'Конфіденційність', intellectual_property: 'Права на результат', cancellation: 'Припинення співпраці' };
 const TERM_VALUE_LABELS = { confidentiality: { unresolved: 'не погоджено', required: 'потрібна', not_required: 'не потрібна' }, intellectual_property: { unresolved: 'не погоджено', giver: 'у сторони, що надає роботу', receiver: 'у отримувача', shared: 'спільно' }, cancellation: { unresolved: 'не погоджено', mutual_written_notice: 'спільне письмове повідомлення', either_party_before_start: 'будь-яка сторона до початку' } };
@@ -213,11 +215,14 @@ function caseMaterialFor(person, comparison) {
   const dueOn = briefs.map(brief => day(brief.available_until)).filter(Boolean).sort()[0];
   if (!startsOn || !dueOn || dueOn < startsOn) return null;
   const target = leg => goalOf(leg.receiver) || 'Покриття потреби: ' + CAPABILITIES[leg.tag];
+  // SYN_EFFORT_FROM_HUMAN_INPUT (P05): a volume exists only when this person typed it; otherwise it stays unset.
+  const { compensation, terms, deliverable_effort: efforts = {} } = caseTerms.get(person.id) ?? {};
+  const effortFor = leg => efforts[deliverableKey({ giver_id: leg.giver, receiver_id: leg.receiver, capability_tag: leg.tag })];
   return {
     mode: candidate.mode, components: Array.isArray(candidate.components) ? candidate.components : [candidate.mode],
     outcomes: legs.map(leg => ({ receiver_id: leg.receiver, capability_tag: leg.tag, target: target(leg) })),
-    trial: { starts_on: startsOn, due_on: dueOn, deliverables: legs.map(leg => ({ giver_id: leg.giver, receiver_id: leg.receiver, capability_tag: leg.tag, target: target(leg), acceptance_criteria: 'Критерій прийняття формулює й підтверджує отримувач до початку проби.' })) },
-    ...caseTerms.get(person.id),
+    trial: { starts_on: startsOn, due_on: dueOn, deliverables: legs.map(leg => ({ giver_id: leg.giver, receiver_id: leg.receiver, capability_tag: leg.tag, target: target(leg), acceptance_criteria: 'Критерій прийняття формулює й підтверджує отримувач до початку проби.', effort: effortFor(leg) })) },
+    compensation, terms,
   };
 }
 const caseErrorText = error => {
@@ -255,7 +260,10 @@ function caseSection(person, comparison, businessCase, gate = {}) {
       facts.append(el('p', 'Формат: ' + (ALL_MODES[state.material.mode] || state.material.mode), 'fine'));
       for (const outcome of state.material.outcomes) facts.append(el('p', 'Очікуваний результат для ' + nameOf(outcome.receiver_id) + ': ' + CAPABILITIES[outcome.capability_tag] + ' — ' + outcome.target, 'fine'));
       facts.append(el('p', 'Проба: ' + state.material.trial.starts_on + ' → ' + state.material.trial.due_on, 'fine'));
-      for (const deliverable of state.material.trial.deliverables) facts.append(el('p', 'Пробний результат від ' + nameOf(deliverable.giver_id) + ' для ' + nameOf(deliverable.receiver_id) + ': ' + CAPABILITIES[deliverable.capability_tag] + ' — ' + deliverable.target, 'fine'));
+      for (const deliverable of state.material.trial.deliverables) facts.append(el('p', 'Пробний результат від ' + nameOf(deliverable.giver_id) + ' для ' + nameOf(deliverable.receiver_id) + ': ' + CAPABILITIES[deliverable.capability_tag] + ' — ' + deliverable.target + ' · обсяг: ' + effortText(deliverable.effort), 'fine'));
+      // SYN_EFFORT_NO_EQUIVALENCE: volumes are shown side by side; Synera never declares them equivalent.
+      const volumes = effortSummary(state.material);
+      if (volumes.differs) facts.append(el('p', 'Обсяги сторін різні: ' + Object.entries(volumes.totals).map(([id, units]) => nameOf(id) + ' — ' + Object.entries(units).map(([unit, amount]) => effortText({ unit, amount })).join(' + ')).join(' ↔ ') + '. Synera не рахує «рівноцінність»: чи підходить такий обмін, вирішуєте ви двоє в умовах.', 'fine effort-differs'));
       const compensation = state.material.compensation;
       facts.append(el('p', 'Винагорода: ' + COMPENSATION_LABELS[compensation.status] + (compensation.status === 'agreed_money' ? ' — ' + compensation.amount_minor + ' ' + compensation.currency + ' (дрібні одиниці), рахунок: ' + (compensation.invoice_required ? 'потрібен' : 'не потрібен') : ''), 'fine'));
       for (const [term, values] of Object.entries(TERM_VALUE_LABELS)) facts.append(el('p', TERMS_LABELS[term] + ': ' + values[state.material.terms[term]], 'fine'));
@@ -265,6 +273,7 @@ function caseSection(person, comparison, businessCase, gate = {}) {
       const unresolved = [];
       if (state.material.compensation.status === 'unresolved') unresolved.push('винагорода');
       if (state.material.terms.revision_limit === null) unresolved.push('ліміт правок');
+      if (state.material.trial.deliverables.some(deliverable => !deliverable.effort)) unresolved.push('обсяг пробного результату (години або кількість)');
       for (const [term] of Object.entries(TERM_VALUE_LABELS)) if (state.material.terms[term] === 'unresolved') unresolved.push(TERMS_LABELS[term].toLocaleLowerCase());
       for (const question of businessCase.unresolved) unresolved.push(UNRESOLVED_LABELS[question] || question);
       if (unresolved.length) {
@@ -290,7 +299,13 @@ function caseSection(person, comparison, businessCase, gate = {}) {
         input('revision_limit', TERMS_LABELS.revision_limit + ' (0–100)', current.terms.revision_limit === null ? '' : String(current.terms.revision_limit), 'numeric'),
         ...Object.entries(TERM_VALUE_LABELS).map(([term, values]) => select(term, TERMS_LABELS[term], Object.entries(values), current.terms[term])),
       ];
-      termsForm.append(btn('Оновити умови чернетки', () => caseAction(person.id, key => { caseTerms.set(key, materialTermsFromInput(Object.fromEntries(controls.map(control => [control.name, control.value])))); }, 'Умови чернетки оновлено. Якщо щось змінилося, версію піднято, а обидва підтвердження стерто.')));
+      // SYN_EFFORT_FROM_HUMAN_INPUT (P05): one volume per trial result, typed by a person.
+      for (const deliverable of current.trial.deliverables) {
+        const key = deliverableKey(deliverable), label = 'Обсяг: ' + nameOf(deliverable.giver_id) + ' → ' + nameOf(deliverable.receiver_id) + ' · ' + CAPABILITIES[deliverable.capability_tag];
+        controls.push(input('effort_amount:' + key, label + ' (число)', deliverable.effort ? String(deliverable.effort.amount) : '', 'numeric'));
+        controls.push(select('effort_unit:' + key, label + ' (одиниця)', [['', 'не погоджено'], ...EFFORT_UNITS.map(unit => [unit, EFFORT_UNIT_LABELS[unit]])], deliverable.effort?.unit ?? ''));
+      }
+      termsForm.append(btn('Оновити умови чернетки', () => caseAction(person.id, key => { const fields = Object.fromEntries(controls.map(control => [control.name, control.value])); caseTerms.set(key, { ...materialTermsFromInput(fields), deliverable_effort: effortsFromInput(fields) }); }, 'Умови чернетки оновлено. Якщо щось змінилося, версію піднято, а обидва підтвердження стерто.')));
       box.append(termsForm);
       const missingTerms = caseMaterialProblems(current).map(problem => MATERIAL_PROBLEM_LABELS[problem] || problem);
       const evidence = el('div', undefined, 'case-evidence');

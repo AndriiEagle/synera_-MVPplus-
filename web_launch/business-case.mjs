@@ -102,12 +102,24 @@ function normalizedOutcome(value = {}) {
   return { receiver_id: value.receiver_id, capability_tag: value.capability_tag, target: boundedText(value.target, 'outcome target') };
 }
 
+// P05: optional effort (volume) of one trial deliverable. Absent effort is omitted from the canonical
+// payload, so hashes of cases created before this field existed stay byte-identical.
+export const EFFORT_UNITS = Object.freeze(['hours', 'items', 'sessions']);
+function normalizedEffort(value) {
+  if (value === undefined || value === null) return undefined;
+  if (!value || typeof value !== 'object' || !EFFORT_UNITS.includes(value.unit) || !Number.isSafeInteger(value.amount) || value.amount < 1 || value.amount > 10000) throw new Error('Некоректний обсяг результату');
+  return { amount: value.amount, unit: value.unit };
+}
+
 function normalizedDeliverable(value = {}) {
   if (!validId(value.giver_id) || !validId(value.receiver_id) || value.giver_id === value.receiver_id || !CAPABILITY_KEYS.has(value.capability_tag)) throw new Error('Некоректні сторони результату або здатність');
-  return {
+  const deliverable = {
     giver_id: value.giver_id, receiver_id: value.receiver_id, capability_tag: value.capability_tag,
     target: boundedText(value.target, 'deliverable target'), acceptance_criteria: boundedText(value.acceptance_criteria, 'acceptance criteria'),
   };
+  const effort = normalizedEffort(value.effort);
+  if (effort) deliverable.effort = effort;
+  return deliverable;
 }
 
 export function canonicalMaterialPayload(input = {}) {
@@ -180,6 +192,40 @@ export function materialTermsFromInput(fields = {}) {
       intellectual_property: enumValue(text('intellectual_property'), INTELLECTUAL_PROPERTY, 'unresolved'),
       cancellation: enumValue(text('cancellation'), CANCELLATION, 'unresolved'),
     },
+  };
+}
+
+// P05: human-entered volume per deliverable. Keys are "effort_amount:<giver>|<receiver>|<tag>" and
+// "effort_unit:<same key>"; an empty or malformed pair stays unset (never guessed).
+export const deliverableKey = deliverable => deliverable.giver_id + '|' + deliverable.receiver_id + '|' + deliverable.capability_tag;
+export function effortsFromInput(fields = {}) {
+  const efforts = {};
+  for (const [name, raw] of Object.entries(fields ?? {})) {
+    if (!name.startsWith('effort_amount:')) continue;
+    const key = name.slice('effort_amount:'.length), amount = typeof raw === 'string' ? raw.trim() : '';
+    const unit = typeof fields['effort_unit:' + key] === 'string' ? fields['effort_unit:' + key].trim() : '';
+    if (/^\d{1,5}$/.test(amount) && Number(amount) >= 1 && Number(amount) <= 10000 && EFFORT_UNITS.includes(unit)) efforts[key] = { amount: Number(amount), unit };
+  }
+  return efforts;
+}
+
+// Shows volumes side by side. No fairness score, no exchange rate: 1 hour against 30 hours is reported
+// as a difference the parties must settle themselves, never as equivalent.
+export function effortSummary(input) {
+  const material = canonicalMaterialPayload(input);
+  const rows = material.trial.deliverables.map(deliverable => ({ key: deliverableKey(deliverable), giver_id: deliverable.giver_id, receiver_id: deliverable.receiver_id, capability_tag: deliverable.capability_tag, effort: deliverable.effort ?? null }));
+  const known = rows.filter(row => row.effort);
+  const givers = new Set(rows.map(row => row.giver_id));
+  const totals = {};
+  for (const row of known) { const bucket = totals[row.giver_id] ??= {}; bucket[row.effort.unit] = (bucket[row.effort.unit] ?? 0) + row.effort.amount; }
+  const signature = id => JSON.stringify(Object.entries(totals[id] ?? {}).sort());
+  const [first, second] = [...givers];
+  return {
+    rows,
+    missing: rows.filter(row => !row.effort).map(row => row.key),
+    totals,
+    differs: givers.size === 2 && known.length === rows.length && signature(first) !== signature(second),
+    equivalence_claimed: false,
   };
 }
 
@@ -417,3 +463,56 @@ export function acceptDeliverable(state, { deliverableIndex, partyId, now }) {
   return next;
 }
 
+
+// P08: the receiver may decline a submitted trial result. A decline opens a dispute record with a neutral
+// reason code; it assigns no guilt, does not erase evidence and can later be superseded by an acceptance.
+export const REJECTION_REASONS = Object.freeze(['not_delivered', 'outside_agreed_scope', 'below_acceptance_criteria', 'other']);
+export function rejectDeliverable(state, { deliverableIndex, partyId, reason, now }) {
+  assertState(state);
+  if (!validInstant(now) || now < state.updatedAt) throw new Error('Invalid rejection timestamp');
+  if (['revoked', 'abandoned'].includes(state.status) || now >= state.expiresAt) throw new Error('Case is closed or expired');
+  const deliverables = state.material?.trial?.deliverables || [];
+  if (!Number.isInteger(deliverableIndex) || deliverableIndex < 0 || deliverableIndex >= deliverables.length) throw new Error('Invalid deliverable index');
+  if (partyId !== deliverables[deliverableIndex].receiver_id) throw new Error('Only deliverable receiver can decline outcome');
+  if (!REJECTION_REASONS.includes(reason)) throw new Error('Rejection needs a known neutral reason code');
+  const next = clone(state);
+  next.updatedAt = now;
+  next.events.push({ type: 'deliverable_rejected', by: partyId, deliverableIndex, reason, at: now, version: next.version });
+  return next;
+}
+
+// P09: immediate and optional delayed feedback from the receiver about a decided outcome.
+// No reply is recorded as missing data — never as a negative signal about anyone's competence.
+export const FEEDBACK_VALUES = Object.freeze(['useful', 'partly_useful', 'not_useful']);
+export const FEEDBACK_TIMINGS = Object.freeze(['immediate', 'delayed']);
+export function recordOutcomeFeedback(state, { deliverableIndex, partyId, value, timing, now }) {
+  assertState(state);
+  if (!validInstant(now) || now < state.updatedAt) throw new Error('Invalid feedback timestamp');
+  const deliverables = state.material?.trial?.deliverables || [];
+  if (!Number.isInteger(deliverableIndex) || deliverableIndex < 0 || deliverableIndex >= deliverables.length) throw new Error('Invalid deliverable index');
+  if (partyId !== deliverables[deliverableIndex].receiver_id) throw new Error('Only deliverable receiver gives outcome feedback');
+  if (!FEEDBACK_VALUES.includes(value) || !FEEDBACK_TIMINGS.includes(timing)) throw new Error('Unknown feedback value or timing');
+  const outcome = deliverableOutcomes(state)[deliverableIndex];
+  if (outcome.decision === 'pending') throw new Error('Feedback follows an accepted or declined outcome');
+  if (outcome.feedback[timing] !== 'missing') throw new Error('Feedback for this timing is already recorded');
+  const next = clone(state);
+  next.updatedAt = now;
+  next.events.push({ type: 'outcome_feedback', by: partyId, deliverableIndex, value, timing, at: now, version: next.version });
+  return next;
+}
+
+export function deliverableOutcomes(state) {
+  assertState(state);
+  const deliverables = state.material?.trial?.deliverables || [];
+  const rows = deliverables.map(() => ({ decision: 'pending', reason: null, decided_at: null, feedback: { immediate: 'missing', delayed: 'missing' } }));
+  for (const event of state.events || []) {
+    const row = Number.isInteger(event.deliverableIndex) ? rows[event.deliverableIndex] : undefined;
+    if (!row) continue;
+    if (event.type === 'material_changed') continue;
+    if (event.type === 'deliverable_accepted') Object.assign(row, { decision: 'accepted', reason: null, decided_at: event.at });
+    if (event.type === 'deliverable_rejected') Object.assign(row, { decision: 'declined_dispute_open', reason: event.reason, decided_at: event.at });
+    if (event.type === 'outcome_feedback') row.feedback[event.timing] = event.value;
+  }
+  for (const event of state.events || []) if (event.type === 'material_changed') for (const row of rows) if (row.decided_at && row.decided_at < event.at) Object.assign(row, { decision: 'pending', reason: null, decided_at: null });
+  return rows;
+}
