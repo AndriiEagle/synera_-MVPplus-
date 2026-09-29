@@ -2190,3 +2190,11 @@ body:not(.signed-in) .install-bar { grid-column:1 / -1; grid-row:6; margin-top:2
   html[data-synera-style="synera"] .signed-in header #logout,
   html[data-synera-style="synera"] .signed-in header #back-login { grid-column:3; grid-row:1; }
 }
+
+/* SYN_GEO01_MEETING_LOCATION: meeting place + own location grant (base layout for every style). */
+.meeting-location { margin-top: 14px; }
+.meeting-location > summary { cursor: pointer; font-weight: 600; }
+.meeting-location .meeting-nav { margin: 12px 0 4px; }
+.location-grant { display: grid; gap: 10px; margin-top: 14px; }
+.location-grant h4 { margin: 0; }
+.location-grant > button { justify-self: start; }

@@ -4,7 +4,7 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'demo-journey.mjs': 'text/javascript',
   'profile-store.mjs': 'text/javascript', 'neon-store.mjs': 'text/javascript', 'chatgpt-transfer.mjs': 'text/javascript',
   'map.mjs': 'text/javascript', 'pilot-policy.mjs': 'text/javascript', 'profile-package.mjs': 'text/javascript', 'business-case.mjs': 'text/javascript', 'profile-import.mjs': 'text/javascript',
-  'i18n.mjs': 'text/javascript', 'proof-state.mjs': 'text/javascript', 'need-decay.mjs': 'text/javascript', 'meeting-card.mjs': 'text/javascript',
+  'i18n.mjs': 'text/javascript', 'proof-state.mjs': 'text/javascript', 'need-decay.mjs': 'text/javascript', 'meeting-card.mjs': 'text/javascript', 'live-location.mjs': 'text/javascript', 'meeting-location.mjs': 'text/javascript',
   'cycle-exchange.mjs': 'text/javascript', 'b-matching.mjs': 'text/javascript', 'field-audience.mjs': 'text/javascript',
   'swiss-compliance.mjs': 'text/javascript',
   'funnel-analytics.mjs': 'text/javascript',

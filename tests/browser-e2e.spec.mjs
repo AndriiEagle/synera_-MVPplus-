@@ -412,3 +412,36 @@ test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-пов�
   });
   expect(focusRing).toBe('2px|solid|rgb(25, 81, 62)');
 });
+
+// GEO-01: accepted in-person meeting — static navigation without GPS, own consent, one recipient, revoke.
+test('GEO-01 meeting location: static map link, consent-gated grant for one recipient, revocation, no geolocation opened', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  const response = await page.goto(baseUrl + '/index.html');
+  expect(response.headers()['permissions-policy'] ?? '').toContain('geolocation=()');
+  await page.evaluate(async () => {
+    const { meetingLocationSection } = await import('/meeting-location.mjs');
+    const start = new Date(Date.now() + 2 * 3600000).toISOString();
+    const meeting = { id: 'm-e2e', sender_id: 'u-anna', recipient_id: 'u-ben', status: 'accepted', proposed_at: start, duration_minutes: 30, meeting_place: 'Zürich' };
+    const host = document.createElement('section'); host.id = 'geo-host'; document.querySelector('main').prepend(host);
+    const render = grant => { host.replaceChildren(meetingLocationSection({ meeting, viewerId: 'u-anna', otherName: 'Ben', grant, onChange: next => { window.__grant = next; render(next); } })); host.querySelector('details').open = true; };
+    render(null);
+    const online = meetingLocationSection({ meeting: { ...meeting, meeting_place: 'Онлайн' }, viewerId: 'u-anna', otherName: 'Ben' });
+    window.__onlineSection = online === null;
+  });
+  expect(await page.evaluate(() => window.__onlineSection)).toBe(true);
+  const box = page.locator('#geo-host .meeting-location');
+  await expect(box.locator('a')).toHaveAttribute('href', /google\.com\/maps\/search\/\?api=1&query=Z%C3%BCrich/);
+  await expect(box.locator('a')).toHaveAttribute('rel', 'noopener noreferrer');
+  const grantButton = box.getByRole('button', { name: 'Дозволити на час зустрічі' });
+  await expect(grantButton).toBeDisabled();
+  await box.locator('input[name="location-consent"]').check();
+  await expect(grantButton).toBeEnabled();
+  await grantButton.click();
+  await expect(box.locator('.location-status')).toContainText('бачить лише Ben');
+  expect(await page.evaluate(() => ({ recipient: window.__grant.recipient_id, sample: window.__grant.sample }))).toEqual({ recipient: 'u-ben', sample: null });
+  await box.getByRole('button', { name: 'Відкликати дозвіл' }).click();
+  await expect(box).toContainText('відкликано');
+  expect(await page.evaluate(() => window.__grant.status)).toBe('revoked');
+  const permission = await page.evaluate(async () => (await navigator.permissions.query({ name: 'geolocation' })).state);
+  expect(permission).not.toBe('granted');
+});

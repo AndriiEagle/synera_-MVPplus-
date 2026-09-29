@@ -13,6 +13,8 @@ import { CHATGPT_PROFILE_PROMPT, summarizeTransfer } from './chatgpt-transfer.mj
 // SYN_IMPORT: export parsing stays local, deterministic, in-memory only.
 import { parseChatGptExport, parseClaudeExport, redactHints, mapHintsToProfileDraft } from './profile-import.mjs';
 import { meetingCalendar } from './calendar.mjs';
+import { closeLocationGrantForMeeting } from './live-location.mjs';
+import { meetingLocationSection } from './meeting-location.mjs';
 const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
 const callbackUrl = new URL(location.href);
@@ -152,7 +154,7 @@ function showSignedOut() {
   for (const selector of ['#people','#meetings','#blocked-people','#chat-messages','#ai-result','#ai-payload','#map-selected']) $(selector).replaceChildren();
   peopleMap.clear(); own = null; people = []; meetings = []; draft = null; aiDraft = aiPayload = aiSource = null; activeChat = safetyPerson = null;
   currentTab = 'profile'; importedBrief = null; pageOffset = 0; morePeople = false;
-  caseStates.clear(); caseNotices.clear(); caseTerms.clear();
+  caseStates.clear(); caseNotices.clear(); caseTerms.clear(); locationGrants.clear();
   $('#map-panel').hidden = true; $('#toggle-map').textContent = 'Показати карту'; $('#toggle-map').setAttribute('aria-expanded','false'); $('#map-roads').textContent = 'Увімкнути OpenStreetMap';
   form.dataset.dirty = ''; renderProfileProgress();
 }
@@ -186,6 +188,8 @@ function openInvite(person, comparison) {
 function openSafety(person) { safetyPerson = person.id; $('#safety-title').textContent = 'Спілкування: ' + person.display_name; $('#report-detail').value = ''; $('#safety-dialog').showModal(); }
 // SYN_CASE_V2_RENDERED
 let caseStates = new Map(), caseNotices = new Map(), caseEpoch = 0;
+// SYN_GEO01_MEETING_LOCATION: grants live only in this page; cancellation/decline closes them and drops the position.
+const locationGrants = new Map();
 // SYN_TERMS_FROM_HUMAN_INPUT: terms typed by this person for a pair; merged into the material, hashed by the domain.
 const caseTerms = new Map(), caseTermsOpen = new Set();
 const MATERIAL_PROBLEM_LABELS = { 'compensation unresolved': 'винагорода', 'paid service compensation must be explicit money terms': 'для платної послуги — грошова винагорода', 'money amount, currency and invoice choice required': 'сума, валюта і рішення щодо рахунку', 'revision limit unresolved': 'ліміт правок', 'confidentiality unresolved': 'конфіденційність', 'intellectual property unresolved': 'права на результат', 'cancellation unresolved': 'припинення співпраці' };
@@ -436,6 +440,8 @@ function renderPeople() {
 }
 const when = value => new Intl.DateTimeFormat('uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
 function renderMeetings() {
+  const nowIso = new Date().toISOString();
+  for (const [id, grant] of locationGrants) locationGrants.set(id, closeLocationGrantForMeeting(grant, meetings.find(m => m.id === id) ?? { id, status: 'cancelled' }, nowIso));
   const target=$('#meetings'); target.replaceChildren(); $('#meeting-count').textContent=meetings.filter(m=>m.status==='pending').length;
   if (!meetings.length) { target.append(el('p','Тут будуть реальні запрошення. Обери людину й запропонуй конкретний час та результат розмови.','empty')); return; }
   for(const meeting of meetings) {
@@ -451,7 +457,10 @@ function renderMeetings() {
       if(meeting.proposed_at) actions.append(btn('До календаря',()=>download(meetingCalendar(meeting),'synera-meeting.ics','text/calendar'),true));
     }
     actions.append(btn('Межі спілкування',()=>openSafety(person || {id:otherId,display_name:'учасник зустрічі'}),true));
-    card.append(actions); target.append(card);
+    card.append(actions);
+    const location = meetingLocationSection({ meeting, viewerId: store.user.id, otherName: person.display_name, grant: locationGrants.get(meeting.id) ?? null, now: nowIso, onChange: (grant, note) => { locationGrants.set(meeting.id, grant); renderMeetings(); message(note); } });
+    if (location) card.append(location);
+    target.append(card);
   }
 }
 async function renderChat() {
