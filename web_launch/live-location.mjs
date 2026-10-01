@@ -65,7 +65,8 @@ export function revokeLocationGrant(grant, { partyId, at }) {
 // Meeting cancelled/declined/over → the grant closes and the last position is dropped.
 export function closeLocationGrantForMeeting(grant, meeting, at) {
   if (grant?.schema !== LOCATION_SCHEMA || grant.status !== 'active') return grant;
-  if (meeting?.id === grant.meeting_id && meeting.status === 'accepted') return grant;
+  if (!validInstant(at)) throw new Error('Некоректний час');
+  if (meeting?.id === grant.meeting_id && meeting.status === 'accepted' && at < grant.closes_at) return grant;
   return Object.freeze({ ...grant, status: 'closed', closed_at: at, sample: null });
 }
 
@@ -90,6 +91,16 @@ export function viewLocation(grant, { viewerId, now }) {
 // Static navigation needs no GPS and no SDK: an external Google Maps search link for the agreed place,
 // opened only by the person's own click.
 export function staticNavigationUrl(place) {
-  if (!place || isOnline(place)) return null;
-  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(String(place).trim() + ', Switzerland');
+  const destination = String(place ?? '').trim();
+  if (!destination || isOnline(destination)) return null;
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(destination);
+}
+
+// Device location stays with Google Maps; Synera supplies only the agreed destination.
+export function meetingDirectionsUrl(place) {
+  const search = staticNavigationUrl(place);
+  if (!search) return null;
+  const url = new URL('https://www.google.com/maps/dir/');
+  url.search = new URLSearchParams({ api: '1', destination: new URL(search).searchParams.get('query'), travelmode: 'walking', dir_action: 'navigate' }).toString();
+  return url.href;
 }

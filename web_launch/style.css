@@ -3341,3 +3341,7 @@ html[data-synera-style="night"] dialog[open] { opacity: 1; transform: none; }
   html[data-synera-style="night"] dialog { transition: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+/* Presentation entry reuses the live application; signed-in work stays focused. */
+.summit-entry { padding: 16px 0; font-size: 13px; }
+.summit-entry a { display: inline-block; padding: 12px 16px; border: 1px solid currentColor; border-radius: 8px; }
+.signed-in .summit-entry { display: none; }

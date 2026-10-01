@@ -1,6 +1,6 @@
 // GEO-01 UI for an accepted meeting: static navigation (no GPS) + this person's own location grant.
 // DOM only; all rules live in live-location.mjs. Nothing here reads the device position.
-import { createLocationGrant, revokeLocationGrant, viewLocation, locationEligibility, staticNavigationUrl, LOCATION_PRECISIONS, LOCATION_LEAD_MINUTES } from './live-location.mjs';
+import { createLocationGrant, revokeLocationGrant, viewLocation, locationEligibility, staticNavigationUrl, meetingDirectionsUrl, LOCATION_PRECISIONS, LOCATION_LEAD_MINUTES } from './live-location.mjs';
 
 const REASON_TEXT = {
   REVOKED: 'Твій попередній дозвіл відкликано; позицію не збережено.',
@@ -24,6 +24,9 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
     const link = el('a', 'Відкрити «' + meeting.meeting_place + '» у Google Maps ↗');
     link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
     line.append(link);
+    const directions = el('a', 'Пішки до місця зустрічі в Google Maps ↗');
+    directions.href = meetingDirectionsUrl(meeting.meeting_place); directions.target = '_blank'; directions.rel = 'noopener noreferrer';
+    line.append(doc.createElement('br'), directions);
     box.append(line, el('p', 'Працює без GPS. Точну точку зустрічі узгодьте в «Уточнити деталі»; Google Maps відкривається лише твоїм кліком.', 'fine'));
   }
   if (!eligibility.eligible) { box.append(el('p', 'Показ місця стане доступним, коли в запрошенні буде час зустрічі.', 'fine')); return box; }
@@ -32,7 +35,7 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
   share.append(el('h4', 'Моє місце — лише для співрозмовника (' + otherName + ')'));
   const active = grant?.status === 'active' && viewLocation(grant, { viewerId, now }).reason !== 'EXPIRED';
   if (active) {
-    share.append(el('p', 'Дозвіл активний: бачить лише ' + otherName + ' · з ' + time(grant.opens_at) + ' до ' + time(grant.closes_at) + ' · ' + PRECISION_TEXT[grant.precision] + '. Зберігається лише остання позиція.', 'fine location-status'));
+    share.append(el('p', 'Згода лише в цій вкладці: адресат ' + otherName + ' · з ' + time(grant.opens_at) + ' до ' + time(grant.closes_at) + ' · ' + PRECISION_TEXT[grant.precision] + '. Координати не передаються.', 'fine location-status'));
     const revoke = el('button', 'Відкликати дозвіл', 'quiet'); revoke.type = 'button';
     revoke.addEventListener('click', () => onChange(revokeLocationGrant(grant, { partyId: viewerId, at: new Date().toISOString() }), 'Дозвіл відкликано; позицію не збережено.'));
     share.append(revoke);
@@ -56,7 +59,7 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
     consent.addEventListener('change', () => { grantButton.disabled = !consent.checked; });
     grantButton.addEventListener('click', () => {
       const next = createLocationGrant({ meeting, grantorId: viewerId, precision: precision.value, leadMinutes: Number(lead.value), consent: consent.checked, now: new Date().toISOString() });
-      onChange(next, 'Дозвіл збережено: бачить лише ' + otherName + ', до кінця зустрічі.');
+      onChange(next, 'Згоду зафіксовано лише в цій вкладці. Координати співрозмовнику не передаються.');
     });
     const pair = el('div', undefined, 'form-pair'); pair.append(precisionLabel, leadLabel);
     share.append(consentLabel, pair, grantButton);

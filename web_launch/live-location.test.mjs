@@ -12,6 +12,23 @@ const meeting = (overrides = {}) => ({ id: 'm-1', sender_id: A, recipient_id: B,
 const grantFromA = (overrides = {}) => createLocationGrant({ meeting: meeting(), grantorId: A, precision: 'approximate', leadMinutes: 30, consent: true, now: '2026-10-02T10:00:00.000Z', ...overrides });
 const inWindow = '2026-10-02T13:45:00.000Z';
 
+test('expiry cleanup drops the sample even when the meeting still says accepted', () => {
+  const grant = recordLocationSample(grantFromA(), { partyId: A, lat: 47.37, lon: 8.54, accuracyM: 20, at: inWindow });
+  assert.equal(closeLocationGrantForMeeting(grant, meeting(), inWindow), grant);
+  for (const at of [grant.closes_at, '2026-10-03T00:00:00.000Z']) {
+    const closed = closeLocationGrantForMeeting(grant, meeting(), at);
+    assert.equal(closed.sample, null, 'expired position must be purged');
+    assert.equal(closed.status, 'closed');
+    assert.equal(closed.closed_at, at);
+  }
+});
+
+test('navigation preserves an agreed address outside Switzerland', () => {
+  const place = 'Brandenburg Gate, Berlin, Germany';
+  assert.equal(new URL(staticNavigationUrl(place)).searchParams.get('query'), place);
+  assert.equal(staticNavigationUrl('   '), null);
+});
+
 test('GEO-01: grant needs own explicit consent, an accepted in-person meeting and a participant', () => {
   assert.throws(() => grantFromA({ consent: false }), /згода/);
   assert.throws(() => grantFromA({ grantorId: OUTSIDER }), /учасник/);
@@ -82,7 +99,7 @@ test('GEO-01: revocation and meeting cancellation drop the position immediately'
 });
 
 test('GEO-01: static navigation works without GPS; online meetings get no map link', () => {
-  assert.equal(staticNavigationUrl('Zürich'), 'https://www.google.com/maps/search/?api=1&query=Z%C3%BCrich%2C%20Switzerland');
+  assert.equal(new URL(staticNavigationUrl('Zürich')).searchParams.get('query'), 'Zürich');
   assert.equal(staticNavigationUrl('Онлайн'), null);
 });
 
