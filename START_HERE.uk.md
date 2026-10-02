@@ -19,6 +19,8 @@
 
 ## Що матеріалізовано
 
+**Поточна повторна перевірка:** [дозволи, решта робіт і ризики](docs/APPROVAL_AND_RISK_RECHECK.uk.md). У Neon/Cloudflare вже виконано вхід. Публічна **версія 5** ремонтує офлайн clean URL `/studio`; попередні режими й приймання v4 збережені. Зачеплені перевірки: 2 unit PASS, 7 Studio browser PASS. Recovery/migrations/KV/фізичний Android залишаються неперевіреними. Product push дозволений користувачем, але останню спробу заблокувала execution policy; GitHub поки на `cd6a05c0f6ca16d6dcd808760af74f9925d60808`.
+
 **Найновіше — Studio 04:** [відкрити встановлюваний локальний режим](https://synera-summit-20261001.andypokr911.chatgpt.site/studio.html). Окремі 4 етапи: opt-in пояснення взаємної користі на вигаданих профілях → нотатки сесії для 2–3 людей → поточні підтвердження та приватна соціальна чернетка/картка → власний архів і точні цитати. Збереження в IndexedDB лише власною дією й окремим дозволом. PWA має окремі manifest/start_url/scope; попередні режими збережені. Публічна версія 4, deployment `appgdep_6abfae3b5f948191a5fc61e9abfdf709`, Site source `62b074e019d7e53cf93a3f6684bf63a5b3a1d8d3`. Поточні перевірки: **479 PASS / 1 SKIP**, **36 browser PASS**, 5 станів Studio без axe-порушень, мутація unilateral social guard відхилена. Див. [реліз та наступний живий етап](docs/STUDIO_RELEASE_AND_NEXT.uk.md), [фактичні дані й matching](docs/DATA_AND_MATCHING_REALITY.uk.md), `artifacts/ecosystem-20261002/RELEASE_RECEIPT.json`.
 
 Нижчі результати RC2/RC3 — попередні прийняті докази; Studio не робить із локальних записів автентифікований груповий чат. Установлення на фізичному Android, нова production-міграція, голос/відео, Google SDK та social API ще не прийняті.
@@ -71,7 +73,7 @@ KV поширює оновлення між локаціями із затрим
 
 ## Конкретний наступний запуск
 
-1. Після входу власника у Neon/Cloudflare звір саме наявний проєкт та поточний Free plan. Без апгрейдів, нових оплат і читання/передачі ключів.
+1. Власник уже увійшов у Neon/Cloudflare. Звір фактичні застосовані міграції, recovery point і поточний тариф наявного проєкту; вхід у панель цього не доводить. Без апгрейдів, нових оплат і читання/передачі ключів.
 2. Підготуй перевірений backup/recovery point, звір фактично застосовані case migrations; не повторюй вже застосовану frozen `schema.proposal.sql`.
 3. За окремим дозволом застосуй лише відсутню additive case migration та `neon/meeting-location.migration.sql`, створи KV namespace/binding і опублікуй `web_launch/dist-neon-access-20261002` у наявний `synera-pilot`.
 4. Підтвердь live RPC, RLS, expiry/revoke й дві реальні сесії перед увімкненням location gate. Пройди профіль → узгоджені умови обох людей → запрошення → прийняття → адреса → одноосібна GPS-згода → перегляд іншою стороною → revoke/cancel. Повтори на фізичному Android.

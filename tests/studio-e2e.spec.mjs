@@ -1,6 +1,8 @@
 import {test,expect} from '@playwright/test';
 import {spawn} from 'node:child_process';
 import fs from 'node:fs/promises';
+import http from 'node:http';
+import {PUBLIC_ASSETS} from '../web_launch/assets.mjs';
 let server,base;
 test.beforeAll(async()=>{server=spawn(process.execPath,['web_launch/server.mjs','--demo'],{env:{...process.env,SYNERA_PORT:'0'},stdio:['ignore','pipe','pipe']});base=await new Promise((resolve,reject)=>{let out='';const timer=setTimeout(()=>reject(new Error('Server timeout')),10000);server.stdout.on('data',chunk=>{out+=chunk;const match=out.match(/http:\/\/127\.0\.0\.1:\d+/);if(match){clearTimeout(timer);resolve(match[0]);}});server.on('exit',()=>{clearTimeout(timer);reject(new Error('Server exit'));});});});
 test.afterAll(()=>server?.kill());
@@ -35,6 +37,12 @@ test('new logistics revision removes votes and silent deadline applies only expl
  await page.reload();await start(page);await page.locator('#logistics-place').fill('Перше місце');await page.locator('#logistics-form button').click();await page.locator('#logistics-votes .member-action').nth(0).getByRole('button',{name:'Так',exact:true}).click();await page.locator('#logistics-place').fill('Інше місце');await page.locator('#logistics-form button').click();await expect(page.locator('#logistics-state')).toContainText('Андрій: без відповіді');
 });
 test.describe('installed shell',()=>{test.use({serviceWorkers:'allow'});
+ test('public-host clean URL remains available after going offline',async({page,context})=>{
+  const canonical=http.createServer(async(req,res)=>{const pathname=new URL(req.url,'http://localhost').pathname;const name=pathname==='/studio'?'studio.html':pathname.slice(1);if(!Object.hasOwn(PUBLIC_ASSETS,name)){res.writeHead(404);res.end();return;}try{res.writeHead(200,{'Content-Type':PUBLIC_ASSETS[name]});res.end(await fs.readFile('web_launch/'+name));}catch{res.writeHead(500);res.end();}});
+  await new Promise(resolve=>canonical.listen(0,'127.0.0.1',resolve));
+  try{const clean='http://127.0.0.1:'+canonical.address().port+'/studio';await page.goto(clean);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller?.scriptURL.endsWith('/studio-sw.mjs'));await context.setOffline(true);await page.reload();await expect(page.locator('h1')).toContainText('Твоя сила');await page.locator('[data-step=memory]').click();await expect(page.locator('#memory-title')).toContainText('точними словами');}
+  finally{await context.setOffline(false);await new Promise(resolve=>canonical.close(resolve));}
+ });
  test('dedicated manifest opens Studio and offline reload restores public shell with explicit saved session',async({page,context})=>{
   await start(page);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller?.scriptURL.endsWith('/studio-sw.mjs'));const manifest=await(await page.request.get(base+'/studio.webmanifest')).json();expect(manifest.id).toBe('/studio.html');expect(manifest.start_url).toBe('/studio.html');expect(manifest.scope).toBe('/studio');
   await page.locator('[data-step=memory]').click();await page.locator('#device-consent').check();await page.locator('#save-device').click();await expect(page.locator('#value-status')).toContainText('збережено');page.on('dialog',dialog=>dialog.accept());await context.setOffline(true);await page.reload();await expect(page.locator('h1')).toContainText('Твоя сила');await page.locator('[data-step=memory]').click();await page.locator('#list-device').click();await page.locator('#device-sessions').getByRole('button',{name:'Відкрити',exact:true}).click();await expect(page.locator('#active-session-goal')).toContainText('Перевірити перший');

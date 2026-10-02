@@ -2,6 +2,8 @@
 
 Read [START_HERE.uk.md](START_HERE.uk.md) first. It identifies the current checkout, branch, canonical source paths, accepted tests and live launch gaps for Codex and Claude Code.
 
+Current recheck: `docs/APPROVAL_AND_RISK_RECHECK.uk.md`. Public Site version 5 fixes canonical `/studio` offline navigation (2 semantic unit tests and 7 affected Studio browser tests passed). Owner is now signed in to Neon/Cloudflare; backup/migrations/plan/live rollout are still unverified. Product push is already user-authorized but execution-policy blocked; verify remote SHA before using another checkout. Preserve version 4 evidence below as historical acceptance.
+
 Latest accepted addition: Studio 04, public Site version 4. Read `docs/STUDIO_RELEASE_AND_NEXT.uk.md` and `docs/DATA_AND_MATCHING_REALITY.uk.md`. Preserve the existing app, presentation and Triangle modes. Studio has same-device sessions, original-note archives, opt-in device storage, all-current-revision confirmed social drafts and a separate installable offline shell; it does not deploy a live group voice room, semantic psychology matcher, Google SDK or social publisher. Never confuse an archive integrity digest with author identity or verified achievements.
 
 Current product source is `web_launch/` with `neon/worker.mjs`; SQL is generated from the canonical additive sources in `supabase/`. Historical handoffs under `plan/` contain older checkout paths and obsolete pending defects.

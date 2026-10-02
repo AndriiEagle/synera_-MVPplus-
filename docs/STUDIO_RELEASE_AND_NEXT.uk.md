@@ -1,5 +1,7 @@
 # Synera Studio 04 — прийнятий результат і живий запуск
 
+**Оновлення v5:** [повторна перевірка й approval](APPROVAL_AND_RISK_RECHECK.uk.md). Виправлено офлайн `/studio` на публічному host; 2 unit і 7 зачеплених browser тестів PASS, native deployment `succeeded`. Джерело v5 `e3ceecca3d7ba0272577efce0cae5c16cae34edb`, deployment `appgdep_6abfc2d042cc8191883269a24ebd99ab`. Нижче — збережене приймання v4. Вхід у Neon/Cloudflare вже підтверджений; production recovery/migrations/rollout ще ні.
+
 ## NOW: окремий встановлюваний локальний режим
 
 [Studio 04](https://synera-summit-20261001.andypokr911.chatgpt.site/studio.html) опублікована у наявному Site, версія 4, deployment `appgdep_6abfae3b5f948191a5fc61e9abfdf709`, native `succeeded`. Site source: `62b074e019d7e53cf93a3f6684bf63a5b3a1d8d3`. Попередня презентація, Triangle L, Atlas та main workspace залишилися. Код лежить у `web_launch/studio*`, нові pure модулі зареєстровані в `assets.mjs`; серверний bilateral store не змінювався.
