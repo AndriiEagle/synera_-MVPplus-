@@ -2,6 +2,8 @@
 
 ## Актуальна презентація
 
+**Найновіша публікація — версія 4:** [Studio 04](https://synera-summit-20261001.andypokr911.chatgpt.site/studio.html), deployment `appgdep_6abfae3b5f948191a5fc61e9abfdf709`, status `succeeded`, source `62b074e019d7e53cf93a3f6684bf63a5b3a1d8d3`. Локальні сесії, соціальні чернетки, переносний архів та окрема Android/iPhone PWA. Старі режими нижче збережені. Межі й поточне приймання: [STUDIO_RELEASE_AND_NEXT.uk.md](STUDIO_RELEASE_AND_NEXT.uk.md).
+
 [Сайт Synera](https://synera-summit-20261001.andypokr911.chatgpt.site/) і [Android / iPhone](https://synera-summit-20261001.andypokr911.chatgpt.site/get.html): публічна версія 3, deployment `appgdep_6abfa5e1b9f081919a0039f8997f9e11`, native status `succeeded`, source `925c5ee44938b20d67137d60a1037098defa9e45`.
 
 Додано [окремий локальний режим L](https://synera-summit-20261001.andypokr911.chatgpt.site/triangle.html), схему можливостей і симулятор витрат. Три учасники — нотатки на одному пристрої, не синхронна кімната чи підключений AI. Власник обрав тимчасово безкоштовний Zürich-пілот. Повний новий задум, офіційне дослідження й відкриті серверні роботи: [L_DIRECTION_AND_ECONOMICS.uk.md](L_DIRECTION_AND_ECONOMICS.uk.md).

@@ -1,0 +1,11 @@
+{
+  "zip": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\ecosystem-20261002\\synera-studio-neon-20261002.zip",
+  "files": 67,
+  "sha256": "447d7a92a6533bc267475a3fdf73e0d76abba87cc945386cd5c8856fbb1fdc39",
+  "byte_readback": "PASS",
+  "neon_deployed": false,
+  "site_public_files": 68,
+  "site_source_readback": "PASS",
+  "site_registration_enabled": false,
+  "studio_start_url": "/studio.html"
+}

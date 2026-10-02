@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "surface": "isolated local Chromium",
+  "physicalAndroid": false,
+  "physicalIPhone": false,
+  "externalRequests": 0,
+  "audits": [
+    {
+      "mode": "fit",
+      "violations": []
+    },
+    {
+      "mode": "session",
+      "violations": []
+    },
+    {
+      "mode": "value",
+      "violations": []
+    },
+    {
+      "mode": "memory",
+      "violations": []
+    },
+    {
+      "mode": "active_value",
+      "violations": []
+    }
+  ],
+  "mutation": "UNILATERAL_DRAFT_GUARD_REMOVAL_REJECTED",
+  "screenshots": [
+    "studio-mobile.png",
+    "studio-result-mobile.png",
+    "studio-desktop.png"
+  ]
+}

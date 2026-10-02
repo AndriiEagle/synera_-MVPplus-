@@ -1,0 +1,10 @@
+{
+  "unit": {
+    "raw_sha256": "8f1331ce201f51fc13cb1490998626c13ea583838a6cbfd4607e3cb286f69cae",
+    "normalization": "trailing whitespace only"
+  },
+  "browser": {
+    "raw_sha256": "3375948a07632b49c7e25f397438ff1a1a6cbf1a34bb8ba6d26241d38f706471",
+    "normalization": "trailing whitespace only"
+  }
+}

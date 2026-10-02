@@ -34,7 +34,7 @@ jobs:
       - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
-      - run: npx playwright test tests/browser-e2e.spec.mjs
+      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs
       - run: node tools/location-browser-acceptance.mjs
 
       # axe-core через Playwright; exit 1 при critical/serious порушеннях.
