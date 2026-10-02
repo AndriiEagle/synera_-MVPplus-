@@ -200,6 +200,47 @@ insert into public.synera_pilot_members(email) values ('a@synera-acceptance.exam
   return '-- Generated location acceptance. DISPOSABLE ONLY; always ROLLBACK.\n' + adaptSql(source.slice(0,start) + fixtures + source.slice(source.indexOf('\n',end)+1));
 }
 
+const roomTables = ['group_rooms','group_room_members','group_room_messages','group_room_events'];
+const roomFunctions = ['synera_room_create(text,text,uuid[])','synera_room_list()','synera_room_get(uuid)','synera_room_accept(uuid)','synera_room_leave(uuid)','synera_room_start(uuid,integer)','synera_room_message(uuid,integer,uuid,text)','synera_room_advance(uuid,integer)','synera_room_close(uuid,integer)'];
+export function generateRoomMigration(source) {
+  const membershipClause='and c.terms_accepted and c.privacy_acknowledged and p.is_discoverable);';
+  if (!source.includes('create table public.group_rooms') || source.split(membershipClause).length !== 2 || !/commit;\s*$/.test(source)) throw new Error('Room canonical contract changed; inspect before generating');
+  // Owner SECURITY DEFINER bypasses RLS. Admission must be inside its private eligibility helper.
+  const verifiedClause=`and c.terms_accepted and c.privacy_acknowledged and p.is_discoverable
+      and exists(select 1 from neon_auth."user" u join public.synera_pilot_members a on a.email=lower(u.email)
+        where u.id=p_user_id and u."emailVerified"=true));`;
+  let sql=adaptSql(source.replace(membershipClause,verifiedClause)).replace(/,\s*anon\b/g,'');
+  const cleanup=`\ndo $$ declare r text; t text; f text; begin
+    foreach r in array array['anon','anonymous'] loop
+      if exists(select 1 from pg_roles where rolname=r) then
+        foreach t in array array['${roomTables.join("','")}'] loop execute format('revoke all on public.%I from %I',t,r); end loop;
+        foreach f in array array['${roomFunctions.join("','")}'] loop execute format('revoke all on function public.%s from %I',f,r); end loop;
+      end if;
+    end loop;
+  end $$;\ncommit;`;
+  sql=sql.replace(/commit;\s*$/,()=>cleanup);
+  return '-- Generated from supabase/group-room.proposal.sql; NOT APPLIED.\n-- Source SHA256='+createHash('sha256').update(source).digest('hex')+'\n'+sql;
+}
+export function generateRoomAcceptance(source) {
+  const start=source.indexOf('insert into auth.users(id)'),end=source.indexOf('insert into public.profiles(');
+  if(start<0||end<start||!/rollback;\s*$/.test(source))throw new Error('Room acceptance fixtures changed');
+  const ids=['11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333','44444444-4444-4444-8444-444444444444'];
+  const fixtures=`insert into neon_auth."user"(id,name,email,"emailVerified") values\n`+ids.map((id,i)=>`('${id}','Room ${i+1}','${String.fromCharCode(97+i)}@synera-room.example',true)`).join(',\n')+`;\ninsert into public.synera_pilot_members(email) values ('a@synera-room.example'),('b@synera-room.example'),('c@synera-room.example');\n`;
+  const sql=adaptSql(source.slice(0,start)+fixtures+source.slice(end));
+  const admission=`\n-- A verified Auth account with current consent/visible profile still needs operator admission.
+reset role;
+update public.profiles set is_discoverable=true where id='44444444-4444-4444-8444-444444444444';
+insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged) values ('44444444-4444-4444-8444-444444444444','2026-09-05-pilot-3',true,true);
+set local role authenticated;
+select set_config('request.jwt.claims','{"sub":"44444444-4444-4444-8444-444444444444","role":"authenticated"}',true);
+do $$ begin
+  begin perform public.synera_room_create('Unadmitted','Goal',array['11111111-1111-4111-8111-111111111111'::uuid]); raise exception 'Unadmitted verified account entered room'; exception when insufficient_privilege then null; end;
+end $$;
+reset role;
+rollback;`;
+  return '-- Generated Neon room acceptance; DISPOSABLE ONLY; always ROLLBACK.\n'+sql.replace(/rollback;\s*$/,()=>admission);
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [base, proposal, acceptance, caseProposal, caseAcceptance] = await Promise.all(['schema.sql', 'real-pilot.proposal.sql', 'real-pilot.acceptance.sql', 'case-state.proposal.sql', 'case-state.acceptance.sql'].map(file => fs.readFile(new URL('../supabase/' + file, import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./schema.proposal.sql', import.meta.url), generateSchema(base, proposal));
@@ -208,5 +249,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   await fs.writeFile(new URL('./case-state.acceptance.sql', import.meta.url), generateCaseAcceptance(caseAcceptance));
   await fs.writeFile(new URL('./meeting-location.migration.sql', import.meta.url), generateLocationMigration(await fs.readFile(new URL('../supabase/meeting-location.proposal.sql', import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./meeting-location.acceptance.sql', import.meta.url), generateLocationAcceptance(await fs.readFile(new URL('../supabase/meeting-location.acceptance.sql', import.meta.url), 'utf8')));
-  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql', 'neon/meeting-location.migration.sql', 'neon/meeting-location.acceptance.sql'], applied: false }));
+  await fs.writeFile(new URL('./group-room.migration.sql', import.meta.url), generateRoomMigration(await fs.readFile(new URL('../supabase/group-room.proposal.sql', import.meta.url), 'utf8')));
+  await fs.writeFile(new URL('./group-room.acceptance.sql', import.meta.url), generateRoomAcceptance(await fs.readFile(new URL('../supabase/group-room.acceptance.sql', import.meta.url), 'utf8')));
+  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql', 'neon/meeting-location.migration.sql', 'neon/meeting-location.acceptance.sql', 'neon/group-room.migration.sql', 'neon/group-room.acceptance.sql'], applied: false }));
 }

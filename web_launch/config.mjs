@@ -10,6 +10,10 @@ export function validateConfig(config) {
   if (typeof registrationEnabled !== 'boolean') throw new Error('Некоректна налаштування реєстрації');
   if (registrationEnabled && (!config.pilotSafetyEnabled || !config.publicSiteUrl)) throw new Error('Реєстрація вимагає перевірену схему безпеки пілоту та публічний HTTPS сайт.');
   const optional = {};
+  if (config.groupRoomsEnabled !== undefined) {
+    if (typeof config.groupRoomsEnabled !== 'boolean' || (config.groupRoomsEnabled && (config.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true))) throw new Error('Некоректне налаштування спільного залу');
+    optional.groupRoomsEnabled = config.groupRoomsEnabled;
+  }
   if (config.liveLocationEnabled !== undefined) {
     if (typeof config.liveLocationEnabled !== 'boolean' || (config.liveLocationEnabled && config.backend !== 'neon')) throw new Error('Некоректне налаштування локації');
     optional.liveLocationEnabled = config.liveLocationEnabled;

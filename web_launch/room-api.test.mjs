@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { RoomApi, assertRoomGate } from './room-api.mjs';
+import { ServiceError } from './profile-store.mjs';
+
+const me = '11111111-1111-4111-8111-111111111111';
+const other = '22222222-2222-4222-8222-222222222222';
+const room = '33333333-3333-4333-8333-333333333333';
+const config = { backend:'neon', pilotSafetyEnabled:true, realPilotEnabled:true, groupRoomsEnabled:true };
+function fixture({ user = me, response = Response.json({ room: { id: room } }) } = {}) { const calls = []; const store = { requireUser() { if (!user) throw new Error('Потрібен вхід'); return user; } }; return { calls, api:new RoomApi(store, config, async (...args) => { calls.push(args); return response; }) }; }
+test('room gate requires exact Neon and every pilot flag', () => { for (const change of [{ backend:'supabase' }, { pilotSafetyEnabled:false }, { realPilotEnabled:false }, { groupRoomsEnabled:false }]) assert.throws(() => assertRoomGate({ ...config, ...change })); });
+test('transport uses only same-origin room URLs and HttpOnly-session fetch options', async () => { const { api, calls } = fixture(); await api.get(room); assert.equal(calls[0][0], `/api/neon/rooms/${room}/get`); const options = calls[0][1]; assert.equal(options.method, 'POST'); assert.equal(options.credentials, 'same-origin'); assert.equal(options.cache, 'no-store'); assert.equal(options.headers['X-Synera-Client'], '1'); assert.deepEqual(JSON.parse(options.body), {}); });
+test('create validates invitees and never sends client actor identity', async () => { const { api, calls } = fixture(); await api.create({ title:'Один крок', goal:'Уточнити наступну дію', invitee_ids:[other] }); const body = JSON.parse(calls[0][1].body); assert.deepEqual(body, { title:'Один крок', goal:'Уточнити наступну дію', invitee_ids:[other] }); assert.equal('actor' in body, false); assert.throws(() => api.create({ title:'x', goal:'y', invitee_ids:[me] })); assert.throws(() => api.create({ title:'x', goal:'y', invitee_ids:[] })); });
+test('message and revision actions reject malformed payloads before transport', () => { const { api, calls } = fixture(); assert.throws(() => api.message(room, { expected_revision:-1, message_id:other, body:'ok' })); assert.throws(() => api.advance(room, 0)); assert.throws(() => api.message(room, { expected_revision:1, message_id:other, body:' ' })); assert.throws(() => api.advance('https://attacker.invalid', 1)); assert.equal(calls.length, 0); });
+test('request requires an authenticated store and preserves server authorization status', async () => { const signedOut = fixture({ user:null }); await assert.rejects(signedOut.api.list(), /Потрібен вхід/); const denied = fixture({ response:Response.json({ error:'forbidden' }, { status:403 }) }); await assert.rejects(denied.api.list(), error => error instanceof ServiceError && error.status === 403); });
+test('requests avoid PII logging surfaces', async () => { const prior = console.log; let logs = 0; console.log = () => { logs++; }; try { const { api } = fixture(); await api.message(room, { expected_revision:1, message_id:other, body:'private text@example.invalid' }); assert.equal(logs, 0); } finally { console.log = prior; } });

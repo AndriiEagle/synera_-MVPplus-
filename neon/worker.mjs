@@ -1,6 +1,7 @@
 import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';
 import { handleGoogleOAuth } from './google-oauth.mjs';
 import { handleMeetingLocation, locationReady } from './meeting-location.mjs';
+import { handleGroupRoom, groupRoomsReady } from './group-room.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -160,6 +161,15 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path.startsWith('/rooms/')) {
+      if (!groupRoomsReady(env)) throw new GatewayError(503, 'rooms_unavailable');
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const rpc = async (name, body) => (await checkedFetch(fetchImpl, endpoints.data + '/rpc/' + name, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt }, body: JSON.stringify(body),
+      }, 'rooms_unavailable')).json();
+      return await handleGroupRoom(request, env, session, rpc);
+    }
     if (path.startsWith('/location/')) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       if (!session) throw new GatewayError(401);
@@ -201,7 +211,7 @@ export function createNeonWorker(publicAssets) {
       const googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined;
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
         // This new gate is set only after the documented challenge bridge is verified live.
-        googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env),
+        googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

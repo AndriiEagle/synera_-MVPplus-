@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Real Chromium at 390x844 through handleNeon with local Auth/Data/RPC fixtures; not SQL/RLS, live Neon, deploy or physical Android proof",
+  "checks": [
+    "create",
+    "visible-goal explicit accept",
+    "invited transcript hidden",
+    "all accepted start",
+    "text",
+    "out-of-turn request denial",
+    "expired deadline accepted-member advance",
+    "409 draft preserved",
+    "same-room reselection preserves draft",
+    "different room clears previous draft",
+    "returning does not restore discarded draft",
+    "401 clears private transcript DOM",
+    "old room response cannot overwrite new selection",
+    "explicit leave pauses room and clears own access",
+    "mobile no overflow",
+    "axe WCAG2AA zero violations",
+    "no browser storage/cache/private database"
+  ],
+  "requests": 65,
+  "provider_calls": 0
+}

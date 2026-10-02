@@ -16,7 +16,7 @@ if ((await fs.readdir(directory)).some(name => ![...assets, ...generated].includ
 const policy = await fs.readFile(path.join(root, 'pilot-policy.mjs'), 'utf8');
 const workerSource = await fs.readFile(new URL('./worker.mjs', import.meta.url), 'utf8');
 const policyImport = "import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';";
-const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';";
+const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';";
 const googleSource = await fs.readFile(new URL('./google-oauth.mjs', import.meta.url), 'utf8');
 if (!workerSource.startsWith(expectedImports) || /\bimport\s/.test(workerSource.slice(expectedImports.length)) ||
     !googleSource.startsWith(policyImport) || /\bimport\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');
@@ -28,7 +28,10 @@ const liveSource = await fs.readFile(path.join(root, 'live-location.mjs'), 'utf8
 const locationImport = "import { recordLocationSample, LOCATION_SCHEMA } from '../web_launch/live-location.mjs';";
 if (!locationSource.startsWith(locationImport) || /\bimport\s/.test(locationSource.slice(locationImport.length)) || /\bimport\s/.test(liveSource)) throw new Error('Location dependencies changed; review build');
 const location = '\nconst { handleMeetingLocation, locationReady } = (() => {\n' + liveSource.replace(/^export /gm, '') + '\n' + locationSource.slice(locationImport.length).replace(/^export /gm, '') + '\nreturn {handleMeetingLocation,locationReady};\n})();\n';
-const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
+const groupSource = await fs.readFile(new URL('./group-room.mjs', import.meta.url), 'utf8');
+if (/\bimport\s/.test(groupSource)) throw new Error('Room dependencies changed; review build');
+const group = '\nconst {handleGroupRoom,groupRoomsReady}=(()=>{\n' + groupSource.replace(/^export /gm, '') + '\nreturn {handleGroupRoom,groupRoomsReady};\n})();\n';
+const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
 const receipt = { built_at: new Date().toISOString(), backend: 'neon', cloudflare_pages_advanced_mode: true, files: [], published: false, live_auth_verified: false, live_rls_verified: false, automatic_public_ai: false };
 for (const name of assets) await fs.copyFile(path.join(root, name), path.join(directory, name));
 await fs.writeFile(path.join(directory, '_worker.js'), worker);
