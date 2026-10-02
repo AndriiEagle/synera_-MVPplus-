@@ -55,6 +55,9 @@ test('GPT JSON fences are parsed, import visibility is always off, archive JSON 
 test('map uses a bounded visible tile area and never invents precise real-user locations', () => {
   assert.ok(visibleTiles({ lat: 47.376, lon: 8.536 }, 390, 360, 13).length <= 9);
   assert.equal(cityLocation({ city: 'Zürich', lat: 1, lon: 2 }), null);
+  for (const flags of [{ map_visible: true }, { is_discoverable: true }, { map_visible: true, is_discoverable: false }, { map_visible: false, is_discoverable: true }]) {
+    assert.equal(cityLocation({ city: 'Zürich', ...flags }), null);
+  }
   const located = cityLocation({ city: 'Zürich', lat: 1, lon: 2, map_visible: true, is_discoverable: true });
   assert.equal(located.location_kind, 'city'); assert.notEqual(located.lat, 1);
   assert.equal(cityLocation({ city: 'Unknown' }), null);

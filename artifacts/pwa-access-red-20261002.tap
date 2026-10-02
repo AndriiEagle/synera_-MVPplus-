@@ -1,0 +1,33 @@
+✖ cache-only presentation remains usable through browser lifecycle events without install controls (15.478ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 269.4967
+
+✖ failing tests:
+
+test at web_launch\pwa.test.mjs:6:1
+✖ cache-only presentation remains usable through browser lifecycle events without install controls (15.478ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Cannot set properties of null (setting 'textContent')"
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa.test.mjs:12:69)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: Cannot set properties of null (setting 'textContent')
+        at Object.appinstalled (evalmachine.<anonymous>:7:89)
+        at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa.test.mjs:12:104
+        at getActual (node:assert:611:5)
+        at strict.doesNotThrow (node:assert:779:32)
+        at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa.test.mjs:12:69)
+        at async Test.run (node:internal/test_runner/test:1313:7)
+        at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }

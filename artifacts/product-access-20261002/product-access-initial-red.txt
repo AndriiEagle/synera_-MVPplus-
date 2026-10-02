@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+(node:43572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available (7.2s)
+
+
+  1) tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-platform]')
+    Expected: 2
+    Received: 0
+    Timeout:  4000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-platform]') with timeout 4000ms
+      - waiting for locator('[data-platform]')
+        11 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      480 |   await page.goto(`${baseUrl}/summit.html`);
+      481 |   await page.locator('.closing > a.primary').click();
+    > 482 |   await expect(page.locator('[data-platform]')).toHaveCount(2, { timeout: 4000 });
+          |                                                 ^
+      483 |   await page.locator('[data-platform="ios"] summary').click();
+      484 |   await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+      485 |   await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+        at C:\Users\Andrii\Desktop\synera-premium-pwa-variant\tests\browser-e2e.spec.mjs:482:49
+
+    Error Context: test-results\browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available\error-context.md
+
+    Error Context: test-results\browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available\error-context.md
+
+  1 failed
+    tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available

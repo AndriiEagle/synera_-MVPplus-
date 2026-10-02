@@ -1,0 +1,30 @@
+
+Running 1 test using 1 worker
+
+(node:51884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available (1.8s)
+
+
+  1) tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "https://synera-pilot.pages.dev"
+    Received: "https://wrong-app.example.invalid"
+
+      494 |   await expect(page.locator('[data-platform="android"]')).toContainText('Chrome');
+      495 |   const app = page.locator('#open-live-app');
+    > 496 |   expect(new URL(await app.getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+          |                                                          ^
+      497 |   await expect(page.locator('#payment-availability')).toHaveAttribute('data-state', 'not-configured');
+      498 |   expect(await page.locator('a[href*="checkout.stripe.com"], a[href*="buy.stripe.com"], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').count()).toBe(0);
+      499 |   expect(privateRequests).toEqual([]);
+        at C:\Users\Andrii\Desktop\synera-premium-pwa-variant\tests\browser-e2e.spec.mjs:496:58
+
+    Error Context: test-results\browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available\error-context.md
+
+    Error Context: test-results\browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available\error-context.md
+
+  1 failed
+    tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available

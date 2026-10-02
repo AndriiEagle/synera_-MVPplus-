@@ -2,6 +2,8 @@
 
 > Current state (2026-10-02): [shared product entry point and verified release state](START_HERE.uk.md). Runtime: Neon + Cloudflare Pages. Historical Supabase-specific steps below are parked. Claude Code reads the same entry through `CLAUDE.md`.
 
+[Published product presentation and Android/iPhone access](https://synera-summit-20261001.andypokr911.chatgpt.site/) · [Sales, matching and Maps capability boundaries](docs/PRODUCT_VALUE_AND_SALES.uk.md). Paid checkout is not configured; native store releases and semantic deep matching are open requirements.
+
 Synera turns an owned professional profile into a concrete, mutually useful introduction: profile → bilateral fit → proposed time → accepted conversation.
 
 **Current launch state: local RC accepted; live rollout pending.** The existing HTTPS pilot gateway answers, and the separately published Summit presentation is available. The new two-user location/address release passed local Chromium and PostgreSQL acceptance; production migration, binding and physical Android acceptance remain open. See the exact proof limits in [START_HERE.uk.md](START_HERE.uk.md).

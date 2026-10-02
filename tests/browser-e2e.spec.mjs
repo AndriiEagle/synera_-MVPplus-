@@ -472,3 +472,52 @@ test('Night map premium style: selectable, keeps the first action above the fold
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
   await context.close();
 });
+
+test('Presentation leads to real app access and both phone guides without pretending checkout is available', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const pageErrors = [];
+  page.on('pageerror', error => pageErrors.push(error.message));
+  const privateRequests = [];
+  page.on('request', request => { if (/\/api\/|\/auth\/|\/rest\//.test(request.url())) privateRequests.push(request.url()); });
+  if (process.env.SYNERA_ACCESS_MUTATION === 'wrong-origin') {
+    await page.route('**/product-access.mjs', async route => {
+      const response = await route.fetch();
+      await route.fulfill({ response, body: (await response.text()).replace('https://synera-pilot.pages.dev/', 'https://wrong-app.example.invalid/') });
+    });
+  }
+  await page.goto(`${baseUrl}/summit.html`);
+  await page.locator('.closing > a.primary').click();
+  await expect(page.locator('[data-platform]')).toHaveCount(2, { timeout: 4000 });
+  await page.locator('[data-platform="ios"] summary').click();
+  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  await expect(page.locator('[data-platform="android"]')).toContainText('Chrome');
+  const app = page.locator('#open-live-app');
+  expect(new URL(await app.getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await expect(page.locator('#payment-availability')).toHaveAttribute('data-state', 'not-configured');
+  expect(await page.locator('a[href*="checkout.stripe.com"], a[href*="buy.stripe.com"], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').count()).toBe(0);
+  expect(privateRequests).toEqual([]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('#access-language').selectOption('uk');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'uk');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  await expect(page.locator('#open-live-app')).toHaveText('Відкрити Synera ↗');
+  const { default: AxeBuilder } = await import('@axe-core/playwright');
+  const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+  expect(audit.violations.filter(item => ['critical', 'serious'].includes(item.impact))).toEqual([]);
+  expect(pageErrors).toEqual([]);
+  await page.screenshot({ path: testInfo.outputPath('product-access-mobile.png'), fullPage: true });
+});
+
+test('Phone access stays functional without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, serviceWorkers: 'block', viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto(`${baseUrl}/summit.html`);
+  await page.locator('.closing > a.primary').click();
+  await expect(page.locator('[data-platform]')).toHaveCount(2);
+  await page.locator('[data-platform="ios"] summary').click();
+  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  expect(new URL(await page.locator('#open-live-app').getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await context.close();
+});

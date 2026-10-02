@@ -1,5 +1,6 @@
 import { buildBusinessCase } from './business-case.mjs';
 import { meetingDirectionsUrl } from './live-location.mjs';
+import { PRODUCT_COPY } from './product-access.mjs';
 
 // Fictional fixtures only; no auth, storage, telemetry, GPS or provider requests.
 export function summitExample({ need = 'design', asOf = new Date().toISOString().slice(0, 10) } = {}) {
@@ -29,7 +30,7 @@ const COPY = {
 export function installSummit(doc = document) {
   const stage = doc.querySelector('#stage'); if (!stage) return;
   let language = 'en', step = 0, need = 'design', hours = 2, place = 'Zürich Hauptbahnhof, Zürich, Switzerland';
-  const t = key => COPY[language][key];
+  const t = key => PRODUCT_COPY[language][key] ?? COPY[language][key];
   const el = (tag, text, className) => { const n = doc.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; };
   const action = (text, next) => { const b = el('button', text, 'text-button'); b.type = 'button'; b.onclick = () => { step = next; render(); stage.focus(); }; return b; };
   function render() {
