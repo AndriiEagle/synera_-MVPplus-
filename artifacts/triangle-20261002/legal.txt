@@ -1,0 +1,10 @@
+✔ legal draft gives a truthful, source-linked pre-launch boundary (445.5919ms)
+✔ adversarial mutation: deleting the external-AI hold fails local acceptance (6.5055ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3005.2878

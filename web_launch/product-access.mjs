@@ -11,7 +11,7 @@ export const PRODUCT_COPY = {
     openApp: 'Open Synera ↗', pilotNote: 'The current pilot is a web app. Physical-phone installation and the new meeting-location release still need live acceptance.',
     androidSteps: 'Open Synera in Chrome. Tap the browser menu → Add to Home screen → Install. If Install is unavailable, use the browser shortcut option. Install from the pilot page, after opening the link above.',
     iphoneSteps: 'Open Synera in Safari. Tap Share (or the page menu → Share) → Add to Home Screen. Enable Open as Web App when offered, then tap Add. Add the pilot page after opening the link above.',
-    paidTitle: 'Paid access is not open yet.', paidBody: 'The price, payment method and cancellation terms will be shown before any purchase. There is currently no checkout or App Store / Google Play purchase.',
+    paidTitle: 'The Zürich pilot is temporarily free.', paidBody: 'Build the first useful connections without a bank card. A future paid plan will require a separate choice with its price and terms shown first. There is no automatic upgrade or purchase through app stores.',
     webNote: 'One web app for both phones. Store downloads are not available.', back: 'Explore the product ↗', policy: 'Privacy & terms ↗',
   },
   de: {
@@ -25,7 +25,7 @@ export const PRODUCT_COPY = {
     openApp: 'Synera öffnen ↗', pilotNote: 'Der aktuelle Pilot ist eine Web-App. Die Installation auf echten Telefonen und die neue Standortfreigabe brauchen noch Live-Abnahme.',
     androidSteps: 'Synera in Chrome öffnen. Browsermenü → Zum Startbildschirm hinzufügen → Installieren. Falls Installieren fehlt, die Verknüpfung im Browser nutzen. Zuerst den Pilot über den Link oben öffnen.',
     iphoneSteps: 'Synera in Safari öffnen. Teilen (oder Seitenmenü → Teilen) → Zum Home-Bildschirm. Als Web-App öffnen aktivieren, falls angeboten, dann Hinzufügen. Zuerst den Pilot über den Link oben öffnen.',
-    paidTitle: 'Bezahlter Zugang ist noch nicht geöffnet.', paidBody: 'Preis, Zahlungsmethode und Kündigungsbedingungen werden vor einem Kauf angezeigt. Aktuell gibt es keinen Checkout und keinen Kauf im App Store oder bei Google Play.',
+    paidTitle: 'Der Zürich-Pilot ist vorübergehend kostenlos.', paidBody: 'Erste nützliche Kontakte ohne Bankkarte. Ein künftiger kostenpflichtiger Plan braucht eine eigene Entscheidung; Preis und Bedingungen werden vorher angezeigt. Kein automatisches Upgrade und kein Kauf über App-Stores.',
     webNote: 'Eine Web-App für beide Telefone. Store-Downloads sind nicht verfügbar.', back: 'Produkt entdecken ↗', policy: 'Datenschutz & Bedingungen ↗',
   },
   uk: {
@@ -39,7 +39,7 @@ export const PRODUCT_COPY = {
     openApp: 'Відкрити Synera ↗', pilotNote: 'Поточний пілот — вебзастосунок. Встановлення на фізичних телефонах і новий сценарій локації ще потребують живого приймання.',
     androidSteps: 'Відкрий Synera у Chrome. Меню браузера → Додати на головний екран → Встановити. Якщо цього пункту немає, скористайся ярликом браузера. Спочатку відкрий сторінку пілоту за посиланням вище.',
     iphoneSteps: 'Відкрий Synera у Safari. Поділитися (або меню сторінки → Поділитися) → На початковий екран. Увімкни Відкривати як вебпрограму, якщо доступно, потім Додати. Спочатку відкрий пілот за посиланням вище.',
-    paidTitle: 'Платний доступ ще не відкритий.', paidBody: 'Ціну, спосіб оплати й умови скасування покажемо до купівлі. Зараз немає checkout або купівлі через App Store / Google Play.',
+    paidTitle: 'Пілот у Цюриху тимчасово безкоштовний.', paidBody: 'Перші корисні знайомства без банківської картки. Майбутній платний план потребуватиме окремого вибору після показу ціни й умов. Автоматичного переходу на оплату та купівлі через магазини застосунків немає.',
     webNote: 'Один вебзастосунок для обох телефонів. Завантаження з магазинів ще недоступні.', back: 'Подивитись продукт ↗', policy: 'Приватність та умови ↗',
   },
 };

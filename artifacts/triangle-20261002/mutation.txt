@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+(node:52132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\browser-e2e.spec.mjs:525:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns (18.2s)
+
+
+  1) tests\browser-e2e.spec.mjs:525:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('#budget-state')
+    Expected: "awaiting_responses"
+    Received: "unanimous_local_notes"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('#budget-state') with timeout 5000ms
+      - waiting for locator('#budget-state')
+        14 × locator resolved to <p role="status" id="budget-state" class="budget-state" data-state="unanimous_local_notes">Три «так» записані локально. Це не перевірена уго…</p>
+           - unexpected value "unanimous_local_notes"
+
+
+      556 |   await vote(2,'yes');await expect(page.locator('#budget-state')).toHaveAttribute('data-state','unanimous_local_notes');
+      557 |   const first=page.locator('#contributions form').first();await first.locator('textarea').fill('Змінив обсяг роботи');await first.locator('button').click();
+    > 558 |   await expect(page.locator('#budget-state')).toHaveAttribute('data-state','awaiting_responses');
+          |                                               ^
+      559 |   await expect(page.locator('.budget-vote').first()).toContainText('Відповіді ще немає');
+      560 |   await page.locator('#round-seconds').fill('15');await page.locator('#round-agreed').check();await page.locator('#round-form button').click();await page.locator('#round-start').click();
+      561 |   await page.clock.fastForward(16000);await expect(page.locator('#round-clock')).toHaveText('0:00');
+        at C:\Users\Andrii\Desktop\synera-premium-pwa-variant\tests\browser-e2e.spec.mjs:558:47
+
+    Error Context: test-results\browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns\error-context.md
+
+    Error Context: test-results\browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns\error-context.md
+
+  1 failed
+    tests\browser-e2e.spec.mjs:525:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns

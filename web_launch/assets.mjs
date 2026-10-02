@@ -5,6 +5,8 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'demo-journey.mjs': 'text/javascript',
   'summit.html': 'text/html', 'summit.css': 'text/css', 'summit.mjs': 'text/javascript',
   'get.html': 'text/html', 'product-access.mjs': 'text/javascript',
+  'triangle.html': 'text/html', 'triangle.css': 'text/css', 'triangle.mjs': 'text/javascript',
+  'triangle-room.mjs': 'text/javascript', 'explore-planner.mjs': 'text/javascript',
   'profile-store.mjs': 'text/javascript', 'neon-store.mjs': 'text/javascript', 'chatgpt-transfer.mjs': 'text/javascript',
   'map.mjs': 'text/javascript', 'pilot-policy.mjs': 'text/javascript', 'profile-package.mjs': 'text/javascript', 'business-case.mjs': 'text/javascript', 'profile-import.mjs': 'text/javascript',
   'i18n.mjs': 'text/javascript', 'proof-state.mjs': 'text/javascript', 'need-decay.mjs': 'text/javascript', 'meeting-card.mjs': 'text/javascript', 'live-location.mjs': 'text/javascript', 'meeting-location.mjs': 'text/javascript',
