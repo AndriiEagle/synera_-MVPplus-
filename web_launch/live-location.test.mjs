@@ -2,6 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { securityHeaders } from './config.mjs';
+import { createNeonWorker } from '../neon/worker.mjs';
 import {
   createLocationGrant, recordLocationSample, revokeLocationGrant, closeLocationGrantForMeeting,
   viewLocation, locationEligibility, staticNavigationUrl, STALE_AFTER_SECONDS,
@@ -103,8 +105,11 @@ test('GEO-01: static navigation works without GPS; online meetings get no map li
   assert.equal(staticNavigationUrl('Онлайн'), null);
 });
 
-test('GEO-01: this release does not open browser geolocation (header stays geolocation=())', () => {
-  for (const file of ['web_launch/config.mjs', 'neon/worker.mjs']) assert.match(readFileSync(file, 'utf8'), /geolocation=\(\)/);
-  const source = readFileSync('web_launch/live-location.mjs', 'utf8') + readFileSync('web_launch/app.mjs', 'utf8');
+test('GEO-01: static and unconfigured Neon releases keep geolocation closed; the pure contract never captures GPS', async () => {
+  assert.match(securityHeaders({})['Permissions-Policy'], /geolocation=\(\)/);
+  const response = await createNeonWorker([]).fetch(new Request('https://synera-test.pages.dev/config.json'), {});
+  assert.match(response.headers.get('Permissions-Policy'), /geolocation=\(\)/);
+  assert.equal((await response.json()).liveLocationEnabled, false);
+  const source = readFileSync('web_launch/live-location.mjs', 'utf8');
   assert.equal(/navigator\.geolocation|watchPosition|getCurrentPosition/.test(source), false);
 });

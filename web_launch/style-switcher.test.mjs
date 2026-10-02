@@ -45,7 +45,7 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   let installation;
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
-  assert.equal(cacheName, 'synera-shell-20261001-summit-v8');
+  assert.equal(cacheName, 'synera-shell-20261002-location-v9');
   assert.ok(cachedShell.includes('/style-switcher.mjs'));
   assert.ok(cachedShell.includes('/onboarding-tour.mjs'));
   assert.ok(cachedShell.includes('/demo-journey.mjs'));

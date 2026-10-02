@@ -1,14 +1,14 @@
 # Synera — real-user PWA pilot
 
-> Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](docs/NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.
+> Current state (2026-10-02): [shared product entry point and verified release state](START_HERE.uk.md). Runtime: Neon + Cloudflare Pages. Historical Supabase-specific steps below are parked. Claude Code reads the same entry through `CLAUDE.md`.
 
 Synera turns an owned professional profile into a concrete, mutually useful introduction: profile → bilateral fit → proposed time → accepted conversation.
 
-**Current launch state: blocked.** The UI and adapters have been rebuilt for real profiles. Supabase Auth still returns HTTP 402 (verified 2026-09-05). No public HTTPS release or real-account browser acceptance is claimed.
+**Current launch state: local RC accepted; live rollout pending.** The existing HTTPS pilot gateway answers, and the separately published Summit presentation is available. The new two-user location/address release passed local Chromium and PostgreSQL acceptance; production migration, binding and physical Android acceptance remain open. See the exact proof limits in [START_HERE.uk.md](START_HERE.uk.md).
 
 ## Start here
 
-[Current scope and launch gates — Ukrainian](docs/REAL_PILOT.uk.md) is the current source of truth. It supersedes the earlier demo/bot/native-app plans.
+[Current code, launch gates and shared agent context — Ukrainian](START_HERE.uk.md). [Original real-pilot product scope](docs/REAL_PILOT.uk.md) remains useful background.
 
     node web_launch/server.mjs --local-ai
 

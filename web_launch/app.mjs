@@ -15,6 +15,7 @@ import { parseChatGptExport, parseClaudeExport, redactHints, mapHintsToProfileDr
 import { meetingCalendar } from './calendar.mjs';
 import { closeLocationGrantForMeeting } from './live-location.mjs';
 import { meetingLocationSection } from './meeting-location.mjs';
+import { LocationSession } from './location-session.mjs';
 const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
 const callbackUrl = new URL(location.href);
@@ -22,6 +23,20 @@ const emailCallback = { hash: callbackUrl.searchParams.get('token_hash'), type: 
 const googleSignInError = callbackUrl.searchParams.get('signin') === 'google-error';
 if (emailCallback.hash || callbackUrl.hash || callbackUrl.searchParams.has('error') || googleSignInError) history.replaceState(null, '', location.pathname);
 let store, config, onlineReady = false, own, people = [], meetings = [], recipient, currentTab = 'profile', busy = false, draft, policyAction;
+let locationSession, locationPoll;
+const locationLoading = new Set();
+async function refreshMeetingLocation(id) {
+  if (!locationSession || locationLoading.has(id) || document.hidden) return;
+  locationLoading.add(id);
+  try { await locationSession.refresh(id); } finally { locationLoading.delete(id); }
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) locationSession?.pauseAll(); });
+globalThis.addEventListener?.('pagehide', () => locationSession?.pauseAll());
+function pollLocation() {
+  if (document.hidden || !store?.user || !locationSession || locationSession.closed) return;
+  const ids = new Set([...locationSession.watches.keys(), ...[...document.querySelectorAll('.meeting-location[open]')].map(node => node.dataset.meetingId)]);
+  for (const id of ids) refreshMeetingLocation(id).catch(() => {});
+}
 let importFormat = 'text', importedBrief, pageOffset = 0, morePeople = false, activeChat, safetyPerson, aiPayload, aiSource, aiDraft;
 let otpEmail = '', otpConsent = null;
 let importSnapshot = '', importRevision = 0;
@@ -155,6 +170,8 @@ function showSignedOut() {
   peopleMap.clear(); own = null; people = []; meetings = []; draft = null; aiDraft = aiPayload = aiSource = null; activeChat = safetyPerson = null;
   currentTab = 'profile'; importedBrief = null; pageOffset = 0; morePeople = false;
   caseStates.clear(); caseNotices.clear(); caseTerms.clear(); locationGrants.clear();
+  locationSession?.clear(); locationLoading.clear();
+  clearInterval(locationPoll); locationPoll = null;
   $('#map-panel').hidden = true; $('#toggle-map').textContent = 'Показати карту'; $('#toggle-map').setAttribute('aria-expanded','false'); $('#map-roads').textContent = 'Увімкнути OpenStreetMap';
   form.dataset.dirty = ''; renderProfileProgress();
 }
@@ -174,6 +191,15 @@ async function load({ profile = false } = {}) {
   requireAccount();
   const [saved, found, requests] = await Promise.all([store.ownProfile(), store.discover(), store.meetings()]);
   own = saved; people = found; meetings = requests; pageOffset = found.length; morePeople = found.length === 50;
+  if (store.liveLocationEnabled) {
+    if (!locationSession || locationSession.closed) locationSession = new LocationSession({ store, geolocation: navigator.geolocation, onUpdate: id => {
+      const snapshot = locationSession.state(id).meeting, meeting = meetings.find(m => m.id === id);
+      if (snapshot?.id === id && meeting) Object.assign(meeting, snapshot);
+      renderMeetings();
+    } });
+    if (!locationPoll) locationPoll = setInterval(pollLocation, 20000);
+    locationSession.retain(meetings);
+  }
   showWorkspace();
   if (profile) { fillProfileForm(!saved.display_name && draft ? { ...draft, is_discoverable: false, map_visible: false } : saved); form.dataset.dirty = ''; draft = null; }
   renderPeople(); renderMeetings(); tab(currentTab);
@@ -440,7 +466,10 @@ function renderPeople() {
 }
 const when = value => new Intl.DateTimeFormat('uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
 function renderMeetings() {
-  const nowIso = new Date().toISOString();
+  const nowIso = locationSession && !locationSession.closed ? locationSession.instant() : new Date().toISOString();
+  const previous = new Map([...document.querySelectorAll('.meeting-location')].map(node => [node.dataset.meetingId, { open: node.open, address: node.dataset.savedAddress,
+    fields: [...node.querySelectorAll('input,select')].map(field => ({ name: field.name, value: field.value, checked: field.checked })) }]));
+  const focused = document.activeElement?.closest('.meeting-location') ? { id: document.activeElement.closest('.meeting-location').dataset.meetingId, name: document.activeElement.name } : null;
   for (const [id, grant] of locationGrants) locationGrants.set(id, closeLocationGrantForMeeting(grant, meetings.find(m => m.id === id) ?? { id, status: 'cancelled' }, nowIso));
   const target=$('#meetings'); target.replaceChildren(); $('#meeting-count').textContent=meetings.filter(m=>m.status==='pending').length;
   if (!meetings.length) { target.append(el('p','Тут будуть реальні запрошення. Обери людину й запропонуй конкретний час та результат розмови.','empty')); return; }
@@ -458,10 +487,30 @@ function renderMeetings() {
     }
     actions.append(btn('Межі спілкування',()=>openSafety(person || {id:otherId,display_name:'учасник зустрічі'}),true));
     card.append(actions);
-    const location = meetingLocationSection({ meeting, viewerId: store.user.id, otherName: person.display_name, grant: locationGrants.get(meeting.id) ?? null, now: nowIso, onChange: (grant, note) => { locationGrants.set(meeting.id, grant); renderMeetings(); message(note); } });
-    if (location) card.append(location);
+    const live = store.liveLocationEnabled && locationSession ? {
+      state: locationSession.state(meeting.id),
+      grant: options => run(() => locationSession.grant(meeting.id, options)),
+      revoke: () => run(async () => { await locationSession.revoke(meeting.id); message('Доступ до твоєї позиції відкликано.'); }),
+      start: () => run(() => locationSession.start(meeting.id)), pause: () => locationSession.stop(meeting.id),
+      refresh: () => run(() => refreshMeetingLocation(meeting.id)),
+      address: address => run(async () => { await store.setMeetingAddress(meeting.id, address); await load(); await refreshMeetingLocation(meeting.id); message('Адресу збережено. Попередні GPS-дозволи закрито.'); }),
+    } : null;
+    const location = meetingLocationSection({ meeting, viewerId: store.user.id, otherName: person.display_name, grant: locationGrants.get(meeting.id) ?? null, now: nowIso, live, onChange: (grant, note) => { locationGrants.set(meeting.id, grant); renderMeetings(); message(note); } });
+    if (location) {
+      const old = previous.get(meeting.id);
+      if (old) {
+        location.open = old.open;
+        for (const saved of old.fields) {
+          const field = location.querySelector('[name="' + saved.name + '"]');
+          if (field) { if (saved.name !== 'meeting-address' || saved.value !== old.address) field.value = saved.value; if (field.type === 'checkbox') { field.checked = saved.checked; const action = location.querySelector('[data-location-consent-action]'); if (action) action.disabled = !saved.checked; } }
+        }
+      }
+      if (live) location.addEventListener('toggle', () => { if (location.open && !locationSession.state(meeting.id).server_now) refreshMeetingLocation(meeting.id).catch(() => {}); });
+      card.append(location);
+    }
     target.append(card);
   }
+  if (focused?.name) $('#meetings').querySelector('[data-meeting-id="' + focused.id + '"] [name="' + focused.name + '"]')?.focus();
 }
 async function renderChat() {
   const rows=await store.messages(activeChat); const target=$('#chat-messages'); target.replaceChildren();
@@ -516,7 +565,7 @@ $('#auth-form').addEventListener('submit',event=>{event.preventDefault();
   }
   run(async()=>{store.remember($('#remember-session').checked?safeStorage():null);try{await store.signIn($('#email').value.trim(),$('#password').value);}finally{$('#password').value='';}await finishOnlineSignIn();});});
 $('#signup').addEventListener('click',()=>{if(!$('#auth-form').reportValidity())return;if($('#password').value.length<12){message('Для нового акаунта потрібен пароль від 12 до 128 символів.',true);return;}requestPolicy(async consent=>{let ready;try{ready=await store.signUp($('#email').value.trim(),$('#password').value,consent);}finally{$('#password').value='';}if(ready){await store.acceptPolicy(consent);await load({profile:true});tab('profile');}message(ready?'Акаунт створено. Перевір профіль і збережи.':'Перевір пошту, підтвердь email і увійди. На першому вході підтвердження правил буде записано з акаунтом.');});});
-$('#logout').addEventListener('click',()=>run(async()=>{try{await store.signOut();}finally{showSignedOut();message('Ти вийшов. Дані сесії та форми очищено.');}}));
+$('#logout').addEventListener('click',()=>run(async()=>{locationSession?.clear();try{await store.signOut();}finally{showSignedOut();message('Ти вийшов. Дані сесії та форми очищено.');}}));
 $('#refresh').addEventListener('click',()=>run(load));
 $('#refresh-meetings').addEventListener('click',()=>run(load));
 $('#more-people').addEventListener('click',()=>run(async()=>{const next=await store.discover({offset:pageOffset});pageOffset+=next.length;morePeople=next.length===50;people=[...new Map([...people,...next].map(p=>[p.id,p])).values()];renderPeople();}));

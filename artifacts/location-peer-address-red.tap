@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: peer must receive the saved meeting address with the refreshed state
++ actual - expected
+
++ 'Zürich'
+- 'Bahnhofplatz 15, Zürich'
+
+    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/location-browser-acceptance.mjs:89:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'Zürich',
+  expected: 'Bahnhofplatz 15, Zürich',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

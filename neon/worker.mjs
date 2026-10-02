@@ -1,5 +1,6 @@
 import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';
 import { handleGoogleOAuth } from './google-oauth.mjs';
+import { handleMeetingLocation, locationReady } from './meeting-location.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -159,6 +160,14 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path.startsWith('/location/')) {
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const rpc = async (name, body) => (await checkedFetch(fetchImpl, endpoints.data + '/rpc/' + name, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt }, body: JSON.stringify(body),
+      }, 'location_unavailable')).json();
+      return await handleMeetingLocation(request, env, session, rpc);
+    }
     const match = path.match(/^\/data\/([a-z_]+)$/);
     if (!match || !TABLES.has(match[1]) || url.search.length > 4096) throw new GatewayError(404);
     const session = await getSession(fetchImpl, endpoints, cookie, allowed);
@@ -192,13 +201,13 @@ export function createNeonWorker(publicAssets) {
       const googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined;
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
         // This new gate is set only after the documented challenge bridge is verified live.
-        googleOAuthEnabled, googleOAuthInitUrl,
+        googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);
     const headers = new Headers(response.headers);
     headers.set('Cache-Control', 'no-store'); headers.set('Strict-Transport-Security', 'max-age=31536000'); headers.set('X-Content-Type-Options', 'nosniff'); headers.set('Referrer-Policy', 'no-referrer');
-    headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=' + (locationReady(env) ? '(self)' : '()'));
     headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; worker-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'");
     return new Response(response.body, { status: response.status, headers });
   } };

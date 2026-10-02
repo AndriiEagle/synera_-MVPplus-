@@ -105,7 +105,7 @@ export class ProfileStore {
   }
   async meetings() {
     this.requireUser();
-    return this._send('/rest/v1/meeting_requests?select=id,sender_id,recipient_id,note,status,created_at' + (this.realPilotEnabled ? ',proposed_at,duration_minutes,meeting_place,sender_name,recipient_name' : '') + '&order=created_at.desc&limit=100', { authenticated: true });
+    return this._send('/rest/v1/meeting_requests?select=id,sender_id,recipient_id,note,status,created_at' + (this.realPilotEnabled ? ',proposed_at,duration_minutes,meeting_place,sender_name,recipient_name' : '') + (this.liveLocationEnabled ? ',meeting_address' : '') + '&order=created_at.desc&limit=100', { authenticated: true });
   }
   async invite(recipient, note, plan = {}) {
     if (!note.trim() || note.length > 500 || recipient === this.requireUser()) throw new Error('Некоректний запит');

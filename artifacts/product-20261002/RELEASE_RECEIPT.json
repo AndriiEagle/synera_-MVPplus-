@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-02T09:52:19.227476+00:00",
+  "state": "LOCAL_ACCEPTED_LIVE_ROLLOUT_PENDING",
+  "branch": "codex/synera-product-20261002",
+  "source_base_before_owned_commit": "e523f0c22982a3156bb63849a27a2fc7fd679906",
+  "archive": "artifacts/product-20261002/synera-neon-product-20261002-rc1.zip",
+  "archive_bytes": 242836,
+  "archive_sha256": "94c2072c30da2bd8ce7c27bee31786d7b7f846a857da5ba235618237f6004cfe",
+  "release_manifest_sha256": "7162697ac7e230297a0dc6f934384e887f251e3fec90fa50e6ba378cea0a440b",
+  "archive_entries": 50,
+  "archive_readback": "all entry bytes equal the accepted build; CRC and manifest hash checks passed",
+  "proofs": [
+    {
+      "path": "artifacts/product-20261002-tests.tap",
+      "sha256": "d10b572f38f25637d4320cc0299254909002e2a04d88e420b2363172e06fc443"
+    },
+    {
+      "path": "artifacts/location-browser-20261002.json",
+      "sha256": "fc8d6989a11448f4c65de5653f115aa7bad4778260318c855353ff5e920cd43e"
+    },
+    {
+      "path": "artifacts/location-mobile-20261002.png",
+      "sha256": "fa6cfe46db0159fc295584560c80782acea5ea20bafa440917574ff48c12af3a"
+    },
+    {
+      "path": "artifacts/location-sql.json",
+      "sha256": "ceef2dda8b2bfb6f344009507ac4b42fe7cb4d546ae5f1ed07d216812cc59cda"
+    }
+  ],
+  "migrations_and_oracle": [
+    {
+      "path": "neon/case-state.migration.sql",
+      "sha256": "e2c7d5649098c3d4f2da9df176f7064043110f9154639dfb55d0ad334ea9bd8c"
+    },
+    {
+      "path": "neon/meeting-location.migration.sql",
+      "sha256": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b"
+    },
+    {
+      "path": "neon/meeting-location.acceptance.sql",
+      "sha256": "9f8b533a612419c9df6771de4f8aa8303af92c2fcb80e56f68a165e499faef55"
+    }
+  ],
+  "validation": {
+    "node": {
+      "pass": 464,
+      "skip": 1,
+      "fail": 0
+    },
+    "legacy_browser": {
+      "pass": 25
+    },
+    "location_browser": "PASS; two fixture accounts; 390px Chromium; no critical/serious location UI WCAG violations",
+    "sql": "PASS; disposable PostgreSQL 16; identity shim; deliberate privacy mutation rejected; 0 fixture users retained"
+  },
+  "live_target": "https://synera-pilot.pages.dev",
+  "new_release_deployed": false,
+  "source_pushed": false,
+  "live_flags": {
+    "location": "requires SYNERA_PILOT_READY=true, SYNERA_LOCATION_READY=true, SYNERA_LOCATION_EPHEMERAL binding after acceptance",
+    "google_oauth": "separate gate; not implied by Maps URLs"
+  },
+  "pending": [
+    "owner dashboard login",
+    "verify existing account plans and recovery point",
+    "exact approval for additive existing-pilot migration/KV/deploy and GitHub branch push",
+    "live two-account provider acceptance",
+    "physical Android acceptance"
+  ],
+  "limits": [
+    "KV eventual consistency can temporarily suppress a point",
+    "physical deletion after SQL invalidation may wait until original closes_at TTL",
+    "foreground GPS only; no native Android APK",
+    "local fixtures do not establish live JWT/Data API behavior"
+  ],
+  "external_ai_provider_calls": 0,
+  "external_ai_usd": 0,
+  "subscription_savings": "unmeasured"
+}

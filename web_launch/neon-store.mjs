@@ -12,6 +12,7 @@ export class NeonStore extends ProfileStore {
     this.pilotSafetyEnabled = config.pilotSafetyEnabled === true;
     this.realPilotEnabled = config.realPilotEnabled === true;
     this.googleOAuthEnabled = config.googleOAuthEnabled === true;
+    this.liveLocationEnabled = config.liveLocationEnabled === true;
     this.googleOAuthInitUrl = config.googleOAuthInitUrl || '';
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
@@ -32,6 +33,23 @@ export class NeonStore extends ProfileStore {
     return text ? JSON.parse(text) : null;
   }
   async availability() { return this.#request('/api/neon/health'); }
+  async #location(id, action, body = {}) {
+    this.requireUser();
+    if (!this.liveLocationEnabled || typeof id !== 'string' || !/^[0-9a-f-]{36}$/i.test(id)) throw new ServiceError(400);
+    return this.#request('/api/neon/location/' + id + '/' + action, { method: 'POST', body });
+  }
+  locationState(id) { return this.#location(id, 'view'); }
+  grantLocation(id, options) { return this.#location(id, 'grant', options); }
+  publishLocation(id, sample) { return this.#location(id, 'sample', sample); }
+  revokeLocation(id) { return this.#location(id, 'revoke'); }
+  async setMeetingAddress(id, address) {
+    this.requireUser();
+    if (!this.liveLocationEnabled || typeof address !== 'string' || address.length > 200) throw new ServiceError(400);
+    const rows = await this._send('/rest/v1/meeting_requests?id=eq.' + encodeURIComponent(id) + '&status=eq.accepted', {
+      method: 'PATCH', prefer: 'return=representation', body: { meeting_address: address.trim() },
+    });
+    if (rows.length !== 1) throw new ServiceError(403);
+  }
   async restore() {
     const data = await this.#request('/api/neon/session');
     this.#user = data?.user || null;

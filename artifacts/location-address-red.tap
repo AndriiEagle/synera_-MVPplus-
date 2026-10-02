@@ -1,0 +1,10 @@
+file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/location-sql-acceptance.mjs:19
+    throw new Error(name + ': ' + result.stderr);
+          ^
+
+Error: meeting-location.acceptance.sql: ERROR:  Acceptance injected address
+CONTEXT:  PL/pgSQL function inline_code_block line 4 at RAISE
+
+    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/location-sql-acceptance.mjs:19:11
+
+Node.js v24.16.0

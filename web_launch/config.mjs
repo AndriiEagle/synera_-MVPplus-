@@ -10,6 +10,10 @@ export function validateConfig(config) {
   if (typeof registrationEnabled !== 'boolean') throw new Error('Некоректна налаштування реєстрації');
   if (registrationEnabled && (!config.pilotSafetyEnabled || !config.publicSiteUrl)) throw new Error('Реєстрація вимагає перевірену схему безпеки пілоту та публічний HTTPS сайт.');
   const optional = {};
+  if (config.liveLocationEnabled !== undefined) {
+    if (typeof config.liveLocationEnabled !== 'boolean' || (config.liveLocationEnabled && config.backend !== 'neon')) throw new Error('Некоректне налаштування локації');
+    optional.liveLocationEnabled = config.liveLocationEnabled;
+  }
   if (config.backend === 'neon') optional.backend = 'neon';
   if (config.pilotSafetyEnabled !== undefined) {
     if (typeof config.pilotSafetyEnabled !== 'boolean') throw new Error('Некоректне налаштування безпеки пілоту');

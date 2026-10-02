@@ -172,11 +172,41 @@ end $$;
   return '-- NOT RUN. Neon-only transactional case acceptance on a DISPOSABLE branch. Requires exact approval. Always ROLLBACK.\n' + sql;
 }
 
+export function generateLocationMigration(source) {
+  if (!source.includes('create table public.meeting_location_grants')) throw new Error('Location source changed');
+  const sql = adaptSql(source);
+  const extra = `\ndo $$ declare r text; f text; begin
+    foreach r in array array['anon','anonymous'] loop
+      if exists(select 1 from pg_roles where rolname=r) then
+        execute format('revoke all on public.meeting_location_grants,public.location_consent_intents from %I',r);
+        foreach f in array array['synera_location_grant(uuid,text,integer,boolean,uuid)','synera_location_access(uuid)','synera_location_revoke(uuid)','synera_location_sample(uuid)'] loop
+          execute format('revoke all on function public.%s from %I',f,r);
+        end loop;
+      end if;
+    end loop;
+  end $$;\ncommit;`;
+  return '-- Generated from supabase/meeting-location.proposal.sql. NOT APPLIED.\n-- Source SHA256=' +
+    createHash('sha256').update(source).digest('hex') + '\n' + sql.replace(/commit;\s*$/, () => extra);
+}
+
+export function generateLocationAcceptance(source) {
+  const start = source.indexOf('-- FIXTURE-USERS-BEGIN'), end = source.indexOf('-- FIXTURE-USERS-END');
+  if (start < 0 || end < start || !/rollback;\s*$/i.test(source)) throw new Error('Location acceptance fixture changed');
+  const fixtures = `insert into neon_auth."user"(id,name,email,"emailVerified") values
+('11111111-1111-4111-8111-111111111111','Acceptance A','a@synera-acceptance.example',true),
+('22222222-2222-4222-8222-222222222222','Acceptance B','b@synera-acceptance.example',true),
+('33333333-3333-4333-8333-333333333333','Acceptance C','c@synera-acceptance.example',true);
+insert into public.synera_pilot_members(email) values ('a@synera-acceptance.example'),('b@synera-acceptance.example'),('c@synera-acceptance.example');\n`;
+  return '-- Generated location acceptance. DISPOSABLE ONLY; always ROLLBACK.\n' + adaptSql(source.slice(0,start) + fixtures + source.slice(source.indexOf('\n',end)+1));
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [base, proposal, acceptance, caseProposal, caseAcceptance] = await Promise.all(['schema.sql', 'real-pilot.proposal.sql', 'real-pilot.acceptance.sql', 'case-state.proposal.sql', 'case-state.acceptance.sql'].map(file => fs.readFile(new URL('../supabase/' + file, import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./schema.proposal.sql', import.meta.url), generateSchema(base, proposal));
   await fs.writeFile(new URL('./acceptance.sql', import.meta.url), generateAcceptance(acceptance));
   await fs.writeFile(new URL('./case-state.migration.sql', import.meta.url), generateCaseMigration(caseProposal));
   await fs.writeFile(new URL('./case-state.acceptance.sql', import.meta.url), generateCaseAcceptance(caseAcceptance));
-  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql'], applied: false }));
+  await fs.writeFile(new URL('./meeting-location.migration.sql', import.meta.url), generateLocationMigration(await fs.readFile(new URL('../supabase/meeting-location.proposal.sql', import.meta.url), 'utf8')));
+  await fs.writeFile(new URL('./meeting-location.acceptance.sql', import.meta.url), generateLocationAcceptance(await fs.readFile(new URL('../supabase/meeting-location.acceptance.sql', import.meta.url), 'utf8')));
+  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql', 'neon/meeting-location.migration.sql', 'neon/meeting-location.acceptance.sql'], applied: false }));
 }

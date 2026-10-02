@@ -1,5 +1,7 @@
 # Synera wave C status — PRESENT_BUT_UNTESTED
 
+**2026-10-02 current readback:** base, case-state and additive meeting-location acceptance passed on disposable PostgreSQL 16; fixture users rolled back to zero and the raw-grant disclosure mutation was rejected. New two-session Chromium location/address acceptance passed with local Auth/Data API/KV/GPS fixtures. Live Neon migration/binding, two real users and physical Android remain unverified. [Current shared product state](../START_HERE.uk.md). The older labels below describe the earlier/live apply boundary, not the new local acceptance.
+
 <!-- SYN_SQL_LABELLED_UNTESTED -->
 
 Date: 2026-09-11. Label: **`PRESENT_BUT_UNTESTED`**.
