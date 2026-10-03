@@ -1,0 +1,27 @@
+{
+  "scope": "Read-only public pilot HTTP; not new deployment",
+  "observations": [
+    {
+      "url": "https://synera-pilot.pages.dev/config.json",
+      "status": 200,
+      "configuration": {
+        "backend": "neon",
+        "pilot": true,
+        "journey": "ABSENT",
+        "rooms": "ABSENT",
+        "location": "ABSENT"
+      }
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/api/neon/health",
+      "status": 200
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/real-journey.html",
+      "status": 404
+    }
+  ],
+  "deployed_candidate": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

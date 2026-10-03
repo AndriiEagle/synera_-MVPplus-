@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-03T21:26:05.2145885Z",
+  "runtime": "C:\\Users\\Andrii\\.codex\\tmp\\synera-pg16-20261003",
+  "pg_ctl_status_exit": 3,
+  "status": "STOPPED",
+  "listeners": 0,
+  "data_files_preserved": true,
+  "archive_preserved": true,
+  "services_created": 0,
+  "system_path_changed": false,
+  "docker_changed": false,
+  "production_access": false
+}

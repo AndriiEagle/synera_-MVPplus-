@@ -132,6 +132,32 @@ do $$ begin
   exception when insufficient_privilege then null; end;
 end $$;
 
+-- An expired open case must be closable without renewing it or trapping its pair.
+insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)
+select 'case-expiring',participant_low,participant_high,mode,material,repeat('e',64),now()+interval '1 hour'
+from public.match_cases where case_id='case-ab';
+reset role;
+update public.match_cases set expires_at=now()-interval '1 second' where case_id='case-expiring';
+set local role authenticated;
+select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
+do $$ declare denied boolean:=false; begin
+  begin
+    update public.match_cases set expires_at=now()+interval '7 days' where case_id='case-expiring';
+  exception when raise_exception then
+    if sqlerrm not in ('Case expired','Case identity is immutable') then raise; end if;
+    denied:=true;
+  end;
+  if not denied then raise exception 'Expired case renewed'; end if;
+  update public.match_cases set status='abandoned' where case_id='case-expiring';
+  if not exists(select 1 from public.match_cases where case_id='case-expiring' and status='abandoned'
+    and closed_at is not null and terms_hash=repeat('e',64)) then raise exception 'Expired case did not close with preserved material'; end if;
+  insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)
+  select 'case-ab-reopened',participant_low,participant_high,mode,material,repeat('f',64),now()+interval '14 days'
+  from public.match_cases where case_id='case-expiring';
+  if not exists(select 1 from public.match_cases where case_id='case-ab-reopened' and status='open' and version=1)
+    or exists(select 1 from public.match_case_approvals where case_id='case-ab-reopened') then raise exception 'New pair cycle inherited prior consent'; end if;
+end $$;
+
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
 insert into public.profile_blocks(blocker_id,blocked_id) values (auth.uid(),'11111111-1111-4111-8111-111111111111');
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);

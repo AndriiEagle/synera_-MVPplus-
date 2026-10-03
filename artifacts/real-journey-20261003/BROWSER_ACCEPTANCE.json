@@ -24,7 +24,8 @@
       "databases": []
     },
     "page_errors": [],
+    "expired_case_closes_and_new_cycle_requires_fresh_consent": true,
     "logout_interrupts_pending_read_without_private_reappearance": true
   },
-  "requests": 212
+  "requests": 248
 }

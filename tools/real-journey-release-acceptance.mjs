@@ -44,13 +44,19 @@ try {
 const sourceNames = ['neon/worker.mjs', 'neon/worker.test.mjs', 'web_launch/assets.mjs', 'web_launch/config.mjs', 'web_launch/profile-store.mjs',
   'web_launch/case-approval-guard.test.mjs', 'web_launch/e2e-neon-flow.test.mjs', 'web_launch/index.html', 'web_launch/studio-journey.html',
   'web_launch/real-journey.html', 'web_launch/real-journey.css', 'web_launch/real-journey.mjs', 'web_launch/real-journey-client.mjs', 'web_launch/real-journey-client.test.mjs',
-  'tools/fixtures/real-journey-fixture.mjs', 'tools/real-journey-browser-acceptance.mjs', 'tools/real-journey-release-acceptance.mjs'];
+  'tools/fixtures/real-journey-fixture.mjs', 'tools/real-journey-browser-acceptance.mjs', 'tools/real-journey-release-acceptance.mjs',
+  'tools/real-journey-sql-acceptance.mjs', 'neon/generate-schema.mjs', 'neon/case-expiry-repair.migration.sql',
+  'supabase/case-state.proposal.sql', 'supabase/case-state.acceptance.sql'];
 const hashes = {};
 for (const name of [...sourceNames, 'neon/schema.proposal.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql', 'neon/group-room.migration.sql', 'neon/group-room.acceptance.sql']) hashes[name] = sha(await fs.readFile(path.join(root, name)));
-const receipt = { status: 'LOCAL_ACCEPTED_RUNTIME_HOLD', generated_at: new Date().toISOString(), base_commit: base,
+const sqlReceipt = JSON.parse(await fs.readFile(path.join(proof, 'SQL_ACCEPTANCE.json'), 'utf8'));
+assert.equal(sqlReceipt.status, 'LOCAL_SQL_ACCEPTED_LIVE_HOLD');
+for (const [name, digest] of Object.entries(sqlReceipt.source_sha256)) assert.equal(sha(await fs.readFile(path.join(root, name))), digest, 'SQL proof no longer matches ' + name);
+const receipt = { status: 'LOCAL_ACCEPTED_LIVE_HOLD', generated_at: new Date().toISOString(), base_commit: base,
   candidate_directory: directory, public_files: files.length, byte_readback: 'PASS', closed_bundled_worker: 'PASS', network_calls: upstreamCalls,
   source_sha256: hashes, unowned_work_preserved: ['web_launch/journey-ui.mjs'],
-  sql_runtime: 'NOT_RUN', neon_auth_two_sessions: 'NOT_RUN', live_rls_jwt: 'NOT_RUN', production_migrations: 'NOT_APPLIED',
+  sql_runtime: 'PASS_POSTGRESQL_16_15_ICU_UND_PROVIDER_SHIM', sql_acceptance: 'artifacts/real-journey-20261003/SQL_ACCEPTANCE.json',
+  neon_auth_two_sessions: 'NOT_RUN', live_rls_jwt: 'NOT_RUN', production_migrations: 'NOT_APPLIED',
   deployed: false, physical_android: 'NOT_RUN', provider_calls: 0, provider_usd: 0,
 };
 await fs.mkdir(proof, { recursive: true });

@@ -69,8 +69,10 @@ export function createFixture() {
         if (controls.beforeCasePatch) { const hook = controls.beforeCasePatch; controls.beforeCasePatch = null; await hook(); }
         const found = cases.filter(row => owns(row, id) && row.status === 'open' && matches(row, url.searchParams));
         for (const row of found) {
-          const changed = row.terms_hash !== body.terms_hash;
-          Object.assign(row, body, { version: row.version + Number(changed), updated_at: instant() });
+          const closing = body.status === 'abandoned' || body.status === 'revoked';
+          if (!closing && Date.parse(row.expires_at) <= Date.now()) return Response.json({}, { status: 400 });
+          const changed = !closing && body.terms_hash !== undefined && row.terms_hash !== body.terms_hash;
+          Object.assign(row, closing ? { status: body.status, closed_at: instant() } : body, { version: row.version + Number(changed), updated_at: instant() });
         }
         return response(found);
       }

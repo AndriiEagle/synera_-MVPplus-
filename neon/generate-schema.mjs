@@ -241,15 +241,24 @@ rollback;`;
   return '-- Generated Neon room acceptance; DISPOSABLE ONLY; always ROLLBACK.\n'+sql.replace(/rollback;\s*$/,()=>admission);
 }
 
+export function generateCaseExpiryRepair(source) {
+  const guard = source.match(/^create function public\.synera_case_guard\(\)[\s\S]*?\$\$;/m)?.[0];
+  if (!guard || !source.includes("old.expires_at <= now() and new.status = 'open'")) throw new Error('Reviewed case expiry guard missing');
+  return '-- Generated from supabase/case-state.proposal.sql; NOT APPLIED TO LIVE.\n-- Source SHA256=' + createHash('sha256').update(source).digest('hex') + '\nbegin;\n' +
+    "do $$ begin if to_regclass('public.match_cases') is null or to_regprocedure('public.synera_case_guard()') is null then raise exception 'Existing case-state migration required'; end if; end $$;\n" +
+    adaptSql(guard).replace('create function', 'create or replace function') + '\ncommit;\n';
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [base, proposal, acceptance, caseProposal, caseAcceptance] = await Promise.all(['schema.sql', 'real-pilot.proposal.sql', 'real-pilot.acceptance.sql', 'case-state.proposal.sql', 'case-state.acceptance.sql'].map(file => fs.readFile(new URL('../supabase/' + file, import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./schema.proposal.sql', import.meta.url), generateSchema(base, proposal));
   await fs.writeFile(new URL('./acceptance.sql', import.meta.url), generateAcceptance(acceptance));
   await fs.writeFile(new URL('./case-state.migration.sql', import.meta.url), generateCaseMigration(caseProposal));
+  await fs.writeFile(new URL('./case-expiry-repair.migration.sql', import.meta.url), generateCaseExpiryRepair(caseProposal));
   await fs.writeFile(new URL('./case-state.acceptance.sql', import.meta.url), generateCaseAcceptance(caseAcceptance));
   await fs.writeFile(new URL('./meeting-location.migration.sql', import.meta.url), generateLocationMigration(await fs.readFile(new URL('../supabase/meeting-location.proposal.sql', import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./meeting-location.acceptance.sql', import.meta.url), generateLocationAcceptance(await fs.readFile(new URL('../supabase/meeting-location.acceptance.sql', import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./group-room.migration.sql', import.meta.url), generateRoomMigration(await fs.readFile(new URL('../supabase/group-room.proposal.sql', import.meta.url), 'utf8')));
   await fs.writeFile(new URL('./group-room.acceptance.sql', import.meta.url), generateRoomAcceptance(await fs.readFile(new URL('../supabase/group-room.acceptance.sql', import.meta.url), 'utf8')));
-  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-state.acceptance.sql', 'neon/meeting-location.migration.sql', 'neon/meeting-location.acceptance.sql', 'neon/group-room.migration.sql', 'neon/group-room.acceptance.sql'], applied: false }));
+  console.log(JSON.stringify({ generated: ['neon/schema.proposal.sql', 'neon/acceptance.sql', 'neon/case-state.migration.sql', 'neon/case-expiry-repair.migration.sql', 'neon/case-state.acceptance.sql', 'neon/meeting-location.migration.sql', 'neon/meeting-location.acceptance.sql', 'neon/group-room.migration.sql', 'neon/group-room.acceptance.sql'], applied: false }));
 }

@@ -1,0 +1,11 @@
+{
+  "status": "REJECTED_BEFORE_EXECUTION",
+  "commit": "aae19861625fef9b7a30f41e400fcfbeb5081aa7",
+  "branch": "codex/synera-product-20261002",
+  "verified_remote_commit": "08b584c787e9f2f6334b64d59ee65d6485a080fb",
+  "verified_at": "2026-10-03T20:39:51Z",
+  "command": "git -C \"C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\" push origin HEAD:refs/heads/codex/synera-product-20261002",
+  "rejection": "approval required by policy, but AskForApproval is set to Never",
+  "source_readback_chunk": "f6186b",
+  "retry_or_bypass": false
+}

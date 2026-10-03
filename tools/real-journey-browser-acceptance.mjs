@@ -123,6 +123,18 @@ try {
   assert.ok(storage.local.every(key => /synera.*(atelier|theme|style)/i.test(key)), JSON.stringify(storage));
   assert.deepEqual({ ...storage, local: [] }, { local: [], session: [], caches: [], databases: [] }); checks.no_private_storage = storage;
   assert.deepEqual(errors, []); checks.page_errors = errors;
+  const expiredCase = db.cases[0];
+  Object.assign(expiredCase, { created_at: new Date(Date.now() - 3600000).toISOString(), expires_at: new Date(Date.now() - 1000).toISOString() });
+  await refresh(a); await selectPeer(a, 'Тест Марія');
+  assert.equal(await a.locator('#real-approve').isEnabled(), false);
+  await a.locator('#real-close').click(); await ready(a);
+  assert.equal(expiredCase.status, 'abandoned'); assert.ok(expiredCase.closed_at);
+  await fillTerms(a, fields({ take_target: 'Новий незалежний обмін' }));
+  await a.locator('#real-terms-form button[type=submit]').click(); await ready(a);
+  assert.equal(db.cases.length, 2); assert.equal(db.cases[1].version, 1);
+  assert.equal(db.approvals.filter(row => row.case_id === db.cases[1].case_id).length, 0);
+  assert.equal(await a.locator('#real-approve-check').isChecked(), false);
+  checks.expired_case_closes_and_new_cycle_requires_fresh_consent = true;
   await openPanel(a, 'real-meetings-panel');
   await a.locator('#real-meetings article').filter({ hasText: accepted.note }).getByRole('button', { name: 'Відкрити розмову' }).click(); await ready(a);
   let finishOld; db.controls.delayMessages = { id: accepted.id, wait: new Promise(resolve => { finishOld = resolve; }) };

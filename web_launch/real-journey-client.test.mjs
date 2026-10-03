@@ -14,6 +14,29 @@ async function setup() {
   await Promise.all([a.dashboard(), b.dashboard(), o.dashboard()]);
   return { db, a, b, o, material: exchangeMaterial(A, B, fields()) };
 }
+
+test('an expired pair can explicitly close its reviewed case and start fresh without carrying either approval', async () => {
+  const { db, a, b, material } = await setup();
+  let reviewed = await a.saveTerms(B, material);
+  await a.approveTerms(B, reviewed); await b.approveTerms(A, reviewed);
+  Object.assign(db.cases[0], { created_at: new Date(Date.now() - 3600000).toISOString(), expires_at: new Date(Date.now() - 1000).toISOString() });
+  reviewed = await a.pairState(B);
+  await assert.rejects(() => a.approveTerms(B, reviewed), /прострочено/);
+  await a.closeTerms(B, reviewed);
+  assert.equal(db.cases[0].status, 'abandoned'); assert.ok(db.cases[0].closed_at);
+  const fresh = await a.saveTerms(B, material, null);
+  assert.notEqual(fresh.caseId, reviewed.caseId); assert.equal(fresh.version, 1);
+  assert.deepEqual(fresh.approvals, {}); assert.equal(db.cases[0].terms_hash, reviewed.termsHash);
+});
+
+test('a stale participant or outsider cannot close a newer reviewed case', async () => {
+  const { a, b, o, material } = await setup();
+  const prior = await a.saveTerms(B, material);
+  const newer = await b.saveTerms(A, exchangeMaterial(A, B, fields({ take_target: 'Нова редакція результату' })), prior);
+  await assert.rejects(() => a.closeTerms(B, prior), JourneyConflict);
+  await assert.rejects(() => o.closeTerms(B, newer), JourneyConflict);
+  assert.equal((await a.pairState(B)).termsHash, newer.termsHash);
+});
 test('real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration', async () => {
   for (const candidate of [{}, { ...config, realJourneyEnabled: false }, { ...config, realPilotEnabled: false }]) assert.throws(() => assertRealJourneyGate(candidate));
   assert.deepEqual(validateConfig(config).realJourneyEnabled, true);

@@ -1,7 +1,7 @@
 import { NeonStore } from './neon-store.mjs';
 import { ServiceError } from './profile-store.mjs';
 import { compareRealProfiles } from './profile-brief.mjs';
-import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, caseParticipantProblems, materialTermsFromInput, approveCase } from './business-case.mjs';
+import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, caseParticipantProblems, materialTermsFromInput, approveCase, abandonCase } from './business-case.mjs';
 
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const CASE_QUERY = '/rest/v1/match_cases';
@@ -107,6 +107,15 @@ export class RealJourneyStore extends NeonStore {
     const saved = await this.pairState(peerId);
     if (saved?.approvals[me]) throw new JourneyConflict();
     return saved;
+  }
+  async closeTerms(peerId, reviewed) {
+    const me = await this.#actor(peerId), current = await this.pairState(peerId);
+    this.#expect(current, reviewed);
+    await this.saveCaseState(abandonCase(current, { partyId: me, now: new Date().toISOString() }));
+    const closed = await this.caseState(current.caseId);
+    this.#expect(closed, reviewed);
+    if (closed.status !== 'abandoned' || !closed.closedAt) throw new JourneyConflict();
+    return this.dashboard();
   }
   async sendInvitation(peerId, note, plan) {
     await this.#actor(peerId);

@@ -124,7 +124,7 @@ begin
     return new;
   end if;
   if old.status <> 'open' then raise exception 'Closed case is immutable'; end if;
-  if old.expires_at <= now() then raise exception 'Case expired'; end if;
+  if old.expires_at <= now() and new.status = 'open' then raise exception 'Case expired'; end if;
   if new.case_id <> old.case_id or new.participant_low <> old.participant_low or new.participant_high <> old.participant_high
     or new.created_at <> old.created_at or new.expires_at > old.expires_at then raise exception 'Case identity is immutable'; end if;
   new.updated_at := now();
