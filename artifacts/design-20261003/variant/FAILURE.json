@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "error": "Returning to current restores real original styles\n+ actual - expected\n\n  {\n    body: 'rgb(21, 22, 29)',\n+   border: 'rgb(119, 125, 137)',\n-   border: 'rgb(85, 91, 100)',\n    card: 'rgb(43, 49, 56)',\n    family: 'ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif',\n    padding: '22px',\n+   text: '11px'\n-   text: '16px'\n  }\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Returning to current restores real original styles\n+ actual - expected\n\n  {\n    body: 'rgb(21, 22, 29)',\n+   border: 'rgb(119, 125, 137)',\n-   border: 'rgb(85, 91, 100)',\n    card: 'rgb(43, 49, 56)',\n    family: 'ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif',\n    padding: '22px',\n+   text: '11px'\n-   text: '16px'\n  }\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/atelier-acceptance.mjs:128:16",
+  "records": [],
+  "errors": []
+}

@@ -1,0 +1,126 @@
+{
+  "variant": "atelier",
+  "mp4": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\synera-atelier.mp4",
+  "raw": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\page@8adc044ccfbbf97ef567dd7a6cd28e3d.webm",
+  "mp4_sha256": "08b859f434c8a8a069c926b63d3f31ae8540229ab9844ae33f820d9632b37a24",
+  "duration_s": 83.92,
+  "width": 390,
+  "height": 844,
+  "frames": 2098,
+  "full_decode": "PASS",
+  "page_errors": [],
+  "external_requests": [],
+  "actions": [
+    {
+      "at_s": 5.253,
+      "chapter": "Opening",
+      "detail": "Visible Atelier switch, no AI control"
+    },
+    {
+      "at_s": 15.523,
+      "chapter": "Give / Take",
+      "detail": "Fictional Mara; local consent and separate visibility selection"
+    },
+    {
+      "at_s": 36.087,
+      "chapter": "Local session",
+      "detail": "Two typed labels on this device; not independent people"
+    },
+    {
+      "at_s": 45.371,
+      "chapter": "Proposal / replies",
+      "detail": "Two local yes clicks; no real booking, invitation or payment"
+    },
+    {
+      "at_s": 65.113,
+      "chapter": "Local confirmations / draft",
+      "detail": "Current result confirmed twice locally; private text only, no LinkedIn API"
+    },
+    {
+      "at_s": 71.496,
+      "chapter": "Archive",
+      "detail": "Real local file download; GZIP is not encryption"
+    },
+    {
+      "at_s": 83.81,
+      "chapter": "Atlas",
+      "detail": "Schematic fictional opportunity map; not Google SDK or live people"
+    }
+  ],
+  "sampled": [
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\01.png",
+      "time_s": 5.253,
+      "chapter": "Opening"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\02.png",
+      "time_s": 15.523,
+      "chapter": "Give / Take"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\03.png",
+      "time_s": 36.087,
+      "chapter": "Local session"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\04.png",
+      "time_s": 45.371,
+      "chapter": "Proposal / replies"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\05.png",
+      "time_s": 65.113,
+      "chapter": "Local confirmations / draft"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\06.png",
+      "time_s": 71.496,
+      "chapter": "Archive"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\07.png",
+      "time_s": 83.42,
+      "chapter": "Atlas"
+    }
+  ],
+  "framing_checks": [
+    {
+      "target": {
+        "selector": "ARTICLE",
+        "top": 259.96875,
+        "bottom": 583.78125,
+        "width": 346,
+        "fits": true
+      },
+      "negative_control": {
+        "selector": "fit-results",
+        "top": 259.96875,
+        "bottom": 1238.40625,
+        "width": 346,
+        "fits": false
+      },
+      "pass": true
+    },
+    {
+      "target": {
+        "selector": "opportunity-map",
+        "top": 162.109375,
+        "bottom": 682.109375,
+        "width": 346,
+        "fits": true
+      },
+      "negative_control": {
+        "selector": "pane-atlas",
+        "top": -291.046875,
+        "bottom": 3119.578125,
+        "width": 346,
+        "fits": false
+      },
+      "pass": true
+    }
+  ],
+  "visual_frame_review": "PENDING",
+  "human_review": "PENDING",
+  "scope": "Local real Chromium clicks, computer emulation, synthetic data; no production feature proof"
+}

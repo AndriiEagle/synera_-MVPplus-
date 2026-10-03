@@ -1,0 +1,60 @@
+{
+  "status": "ready",
+  "privacy_level": "public",
+  "secret_scan": "pass",
+  "payload_secret_scan_status": "pass",
+  "included_path_sensitivity_status": "pass",
+  "external_call": true,
+  "objective": "Independent screenshot-only critique of mobile entrepreneur collaboration UI",
+  "metadata": {
+    "data": "Only local fictional demo profiles and interface copy. No accounts, chats, secrets or user personal data.",
+    "images": [
+      {
+        "source": "audit/04-studio-fit.png",
+        "source_sha256": "d0b4b310655748869b123cfb0721244eebaed5b56bf95690f4dfb93388145762",
+        "crop_rect": [
+          0,
+          500,
+          390,
+          2100
+        ],
+        "file": "crop-04-studio-fit.png",
+        "sha256": "ec74df96490bb9c3fa50d6c29832862b129497a13d42077a1f244d6b6930b661",
+        "private_data": false,
+        "origin": "synthetic local demo screenshot"
+      },
+      {
+        "source": "audit/10-triangle-workspace.png",
+        "source_sha256": "0d532bf9c9cf45b58d91de8d8b494322be97fc67e38cfde75cc8a24ccdbcb504",
+        "crop_rect": [
+          0,
+          500,
+          390,
+          2100
+        ],
+        "file": "crop-10-triangle-workspace.png",
+        "sha256": "a6418f7f9107488f90ce8de8e3c51d27db85849cd7b02199190f1d0c054197de",
+        "private_data": false,
+        "origin": "synthetic local demo screenshot"
+      },
+      {
+        "source": "audit/11-atlas-map.png",
+        "source_sha256": "08798d0552f9faaa9586986711b6b1de7ff904208f58d7670bd78cfc3187a96b",
+        "crop_rect": [
+          0,
+          300,
+          390,
+          1900
+        ],
+        "file": "crop-11-atlas-map.png",
+        "sha256": "99c3367df492cc11683630c6274dc3a72948f04fdc007be321891d23a483f93e",
+        "private_data": false,
+        "origin": "synthetic local demo screenshot"
+      }
+    ],
+    "limits": [
+      "Cropped UI screenshots, no inferred live features or measured UX performance.",
+      "Design scores are subjective."
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "synera.recording-source.v1",
+  "status": "DRAFT_VARIANT_PENDING",
+  "source": {
+    "web_launch/studio.html": "aa4e0f94be2054a89378d631a347481e6b734c381cafc7bc05c979e77cffec80",
+    "web_launch/studio.mjs": "73bdfebcda5cea45c62207abb380e61745a171d0f574a2d1284443320d60aebf",
+    "web_launch/studio.css": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0",
+    "web_launch/studio-install.mjs": "8c93c476d005d8212a7e2a9611008c216464a9f3fa6b555e920a0084e1013417",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/group-logistics.mjs": "9c0ca8bc0de57963fe28d46b0231d0d2ce0fd9e333858094aaa8c2777e859adf",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/declared-fit.mjs": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5",
+    "web_launch/triangle.html": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d",
+    "web_launch/triangle.mjs": "84be2b8181f4cf37dbb0ea188ba9c9cc2dde15c6dea098b87ecd91b817d7d9fc",
+    "web_launch/triangle.css": "140115bdf62bebaaee8a529ed0c2c8ff46aad02b8bb6aee2ac1dcd8fcc405128",
+    "web_launch/triangle-room.mjs": "c9aa019bc70271e278995b6980cea74d5dd6dfc389ba20e7aab7c7e1b1af89aa",
+    "web_launch/explore-planner.mjs": "f6411a7ebf569efbd1161ecf3781dee839da3cc839a23714519d4d3eba9b064c",
+    "web_launch/summit.css": "509cba79412ad9d40c3ea97e128accaa8eabff0dc36104b174b871b401e26dfd",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/assets.mjs": "b9b61b277938c56125cf6ff1bf12d6c6460bbb07b7afe4e532f9d9d25eddcddc",
+    "web_launch/config.mjs": "e10b22c1d42fbd0bb54af42ba2baff8c71ce50136c6a6c3bdcc82f51095eaaf9",
+    "web_launch/server.mjs": "f6cadfaf24683a68dc8a9d8d55cef0db636646e024d868a01ae40bc14a6f6aff"
+  },
+  "scope": "Parent must verify UI/source and change status to LOCAL_UI_ACCEPTED after acceptance, never merely because this template exists."
+}

@@ -1,0 +1,50 @@
+{
+  "status": "READY_TO_CAPTURE_WITH_VARIANT_PENDING",
+  "date": "2026-10-03",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "script": "tools/design-recording-20261003.mjs",
+  "script_sha256": "004dd5857464c3075ec0a5540ff9ce950f9e75f670d627ee2580441d327dad28",
+  "audit_manifest_sha256": "a7f2ff0848ae0788e903108bfe25e0331e89c05fb74d0a9a07beb789df3d55c7",
+  "storyboard_frames": [
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\04-studio-fit.png",
+      "sha256": "d0b4b310655748869b123cfb0721244eebaed5b56bf95690f4dfb93388145762"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\05-studio-fit-result.png",
+      "sha256": "3bc58fa302a3de78d4dbebf1836f1a0ac0e5820e9e99546574e9f1ce8a799c6f"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\06-studio-session.png",
+      "sha256": "d7c5c16c4069de26dc2db5b92c608b4b27634b992aef10cb71915b0fc18fbc02"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\07-studio-result.png",
+      "sha256": "51588561ab1bdfed60b2549940afcba6b484fa2f57667ed5aeb0735e99ca09b3"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\08-studio-memory.png",
+      "sha256": "5350fd59603407c7a5add187124ec983309be63dac473bf2e6f46ad812eb3697"
+    },
+    {
+      "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\audit\\11-atlas-map.png",
+      "sha256": "08798d0552f9faaa9586986711b6b1de7ff904208f58d7670bd78cfc3187a96b"
+    }
+  ],
+  "tools": {
+    "ffmpeg": "ffmpeg version 8.1.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers\r",
+    "ffprobe": "ffprobe version 8.1.1-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers\r"
+  },
+  "capture_started": false,
+  "provider_calls": 0,
+  "usd": 0,
+  "limits": [
+    "Atelier source/browser acceptance required before recording.",
+    "Only local synthetic data; no account or production meeting.",
+    "No voice, live Maps SDK, independent-person proof or social posting.",
+    "Human video review remains required after technical QA."
+  ]
+}

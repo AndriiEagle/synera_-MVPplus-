@@ -69,8 +69,11 @@ html[data-synera-atelier=on] :is(.primary,#auth-submit,#prepare-profile,#fit-for
 html[data-synera-atelier=on] :is(.tabs button,.studio-modes button,.studio-tabs button)[aria-pressed=true],
 html[data-synera-atelier=on] :is(.tabs button,.studio-modes button,.studio-tabs button)[aria-selected=true] { background:var(--atelier-surface); color:var(--atelier-accent); border-bottom:2px solid var(--atelier-accent); box-shadow:none; }
 html[data-synera-atelier=on] :is(input,textarea,select) { background:var(--atelier-field); border-color:var(--atelier-border); color:var(--atelier-text); }
+html[data-synera-atelier=on] :is(fieldset:disabled input,fieldset:disabled textarea,fieldset:disabled select,input:disabled,textarea:disabled,select:disabled) { border-color:var(--atelier-border); }
 html[data-synera-atelier=on] input[type=checkbox] { width:20px; height:20px; min-height:20px; accent-color:var(--atelier-accent); }
 html[data-synera-atelier=on] .check { min-height:44px; align-items:center; }
+html[data-synera-atelier=on] .studio-check { min-height:44px; align-items:center; }
+html[data-synera-atelier=on] .small-link { display:inline-flex; min-height:44px; align-items:center; }
 html[data-synera-atelier=on] :is(a,button,input,textarea,select,summary):focus-visible { outline:3px solid var(--atelier-accent); outline-offset:4px; }
 html[data-synera-atelier=on] :is(button,.primary) { transition:background-color 140ms ease,border-color 140ms ease; }
 html[data-synera-atelier=on] :is(.notice,.badge,.choice-set,.visibility-choice,.simulation-panel,.empty) { background:var(--atelier-surface); color:var(--atelier-secondary); border-color:var(--atelier-border); }

@@ -1,0 +1,17 @@
+{
+  "activeTag": "BUTTON",
+  "activeId": "",
+  "skipFocus": false,
+  "skipTop": "-100px",
+  "rect": {
+    "x": 20,
+    "y": -100,
+    "width": 193.96875,
+    "height": 51
+  },
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "documentWidth": 390
+}

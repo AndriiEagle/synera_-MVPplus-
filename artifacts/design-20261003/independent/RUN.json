@@ -1,0 +1,73 @@
+{
+  "run": "synera-design-vision-20261003",
+  "jobs": 1,
+  "ok": 1,
+  "errors": 0,
+  "skipped": 0,
+  "spent_usd": 0.0,
+  "known_spent_usd": 0.0,
+  "budget_usd": 0.0,
+  "spend_preview": {
+    "hosted_calls": 1,
+    "input_tokens_est": 3844,
+    "input_tokens_high": 101343,
+    "output_tokens_low": 2500,
+    "output_tokens_high": 8000,
+    "modelled_low_usd": 0.0,
+    "modelled_high_usd": 0.0,
+    "known_high_usd": 0.0,
+    "proposed_cap_usd": 0.0,
+    "unknown_price_models": [],
+    "uncertainties": [],
+    "assumptions": [
+      "vision reserve: 1024-32768 input tokens/image"
+    ],
+    "jobs": [
+      {
+        "job": "synera-design-vision-20261003",
+        "model": "qwen/qwen3.8-27b:free",
+        "input_tokens_est": 3844,
+        "input_tokens_high": 101343,
+        "output_tokens_low": 2500,
+        "output_tokens_high": 8000,
+        "low_usd": 0.0,
+        "high_usd": 0.0
+      }
+    ],
+    "stop_condition": "no provider call before append probe; stop before dispatch if priced high exceeds approved cap",
+    "catalog_fetched_at": "2026-10-03T09:53:22",
+    "catalog_stale": false
+  },
+  "halted": false,
+  "halted_on_budget": false,
+  "free_only": true,
+  "unresolved_prior_receipts_today": 0,
+  "stopped_on_error": false,
+  "elapsed_s": 46.6,
+  "chain_oracle_snapshot_errors": {},
+  "results": [
+    {
+      "id": "synera-design-vision-20261003",
+      "status": "ok",
+      "model": "qwen/qwen3.8-27b:free",
+      "out": "artifacts/design-20261003/independent/MODEL_RESULT.json",
+      "chars": 5375,
+      "cost": 0.0,
+      "actual_model": "qwen/qwen3.8-27b:free",
+      "generation_id": "gen-1791014584-VsgbY0FnhBuPtQT8rDfq",
+      "provider": "ModelRun",
+      "provider_request_id": "",
+      "backend": "openrouter",
+      "requested_model": "qwen/qwen3.8-27b:free",
+      "route_identity_verified": true,
+      "cost_evidence_type": "provider_usage_cost",
+      "pricing_source": "",
+      "pricing_sha256": "",
+      "prompt_tokens": 2787,
+      "completion_tokens": 3996,
+      "truncated": false,
+      "latency_s": 46.54,
+      "preview": ""
+    }
+  ]
+}

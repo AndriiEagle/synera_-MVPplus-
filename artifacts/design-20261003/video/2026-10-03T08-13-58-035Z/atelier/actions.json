@@ -1,0 +1,37 @@
+[
+  {
+    "at_s": 5.253,
+    "chapter": "Opening",
+    "detail": "Visible Atelier switch, no AI control"
+  },
+  {
+    "at_s": 15.523,
+    "chapter": "Give / Take",
+    "detail": "Fictional Mara; local consent and separate visibility selection"
+  },
+  {
+    "at_s": 36.087,
+    "chapter": "Local session",
+    "detail": "Two typed labels on this device; not independent people"
+  },
+  {
+    "at_s": 45.371,
+    "chapter": "Proposal / replies",
+    "detail": "Two local yes clicks; no real booking, invitation or payment"
+  },
+  {
+    "at_s": 65.113,
+    "chapter": "Local confirmations / draft",
+    "detail": "Current result confirmed twice locally; private text only, no LinkedIn API"
+  },
+  {
+    "at_s": 71.496,
+    "chapter": "Archive",
+    "detail": "Real local file download; GZIP is not encryption"
+  },
+  {
+    "at_s": 83.81,
+    "chapter": "Atlas",
+    "detail": "Schematic fictional opportunity map; not Google SDK or live people"
+  }
+]
