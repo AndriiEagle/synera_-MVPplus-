@@ -1,0 +1,99 @@
+@import url('tokens.css');
+
+/* Only the new preference control exists outside the opt-in selector. */
+.atelier-controls { position:relative; font:inherit; min-width:0; }
+details.atelier-controls { margin-left:auto; flex:0 0 auto; }
+.atelier-main-controls { width:max-content; margin-block:0 20px; }
+.atelier-controls>summary { display:flex; align-items:center; justify-content:center; min-height:44px; padding:8px 12px; border:1px solid var(--line); border-radius:8px; cursor:pointer; font-size:12px; list-style:none; }
+.atelier-controls>summary::-webkit-details-marker { display:none; }
+.atelier-settings { display:grid; gap:14px; width:288px; max-width:calc(100vw - 32px); padding:20px; border:1px solid var(--line); border-radius:12px; background:var(--panel,var(--color-bg-panel)); color:var(--text,var(--color-20352b)); }
+details.atelier-controls>.atelier-settings { position:absolute; right:0; top:calc(100% + 8px); z-index:80; box-shadow:0 16px 48px #0004; }
+.header-preferences-content .atelier-controls { padding-top:14px; border-top:1px solid var(--line); }
+.header-preferences-content .atelier-settings { width:100%; border:0; padding:0; background:transparent; }
+.atelier-settings-title { margin:0; font-size:15px; font-weight:500; letter-spacing:-.025em; line-height:1.5; }
+.atelier-settings :is(label,legend) { font-size:12px; line-height:1.6; color:inherit; }
+.atelier-settings label { display:grid; gap:7px; margin:0; }
+.atelier-settings button,.atelier-settings select { min-height:44px; margin:0; padding:10px 12px; border:1px solid var(--line); background:transparent; color:inherit; border-radius:7px; font:inherit; font-size:12px; box-shadow:none; }
+.atelier-settings select { width:100%; }
+.atelier-mode-choice { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.atelier-settings button[aria-pressed=true] { background:var(--gold,var(--green)); color:var(--bg,var(--color-bg-panel)); border-color:var(--gold,var(--green)); }
+.atelier-accent-choice { display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0; border:0; min-width:0; }
+.atelier-accent-choice legend { margin-bottom:7px; }
+.atelier-accent-choice button { flex:1 1 68px; padding-inline:6px; }
+.atelier-settings .atelier-checkbox { display:flex; align-items:center; gap:10px; min-height:44px; cursor:pointer; }
+.atelier-settings input[type=checkbox] { width:20px; height:20px; min-height:20px; margin:0; accent-color:var(--gold,var(--green)); }
+.atelier-settings-note,.atelier-settings-status { margin:0; font-size:11px; line-height:1.7; color:var(--muted); }
+.atelier-settings-status:empty { display:none; }
+.atelier-settings :disabled { opacity:.5; cursor:default; }
+.atelier-controls :focus-visible { outline:3px solid var(--gold,var(--green)); outline-offset:3px; }
+
+/* An independent layer: old Synera, old light Atelier, Web and Night remain unchanged. */
+html[data-synera-atelier=on] {
+  --atelier-canvas:#111315; --atelier-surface:#191c1f; --atelier-field:#131619;
+  --atelier-text:#f2f2ed; --atelier-secondary:#bfc4c6; --atelier-border:#535b60;
+  --atelier-accent:#e7bd87; --atelier-ink:#17191b; --atelier-space:28px; --atelier-body-size:14px;
+  --bg:var(--atelier-canvas); --panel:var(--atelier-surface); --text:var(--atelier-text);
+  --gold:var(--atelier-accent); --green:var(--atelier-accent); --muted:var(--atelier-secondary); --line:var(--atelier-border);
+  --color-f6f5ef:var(--atelier-canvas); --color-f5f7f4:var(--atelier-canvas);
+  --color-fffefa:var(--atelier-surface); --color-fff:var(--atelier-field);
+  --color-20352b:var(--atelier-text); --color-243c2b:var(--atelier-text); --color-254f3b:var(--atelier-accent);
+  --color-19513e:var(--atelier-accent); --color-21694c:var(--atelier-accent); --color-287453:var(--atelier-accent);
+  --color-667467:var(--atelier-secondary); --color-53675d:var(--atelier-secondary); --color-4e5f50:var(--atelier-secondary);
+  --color-78836a:var(--atelier-secondary); --color-85906d:var(--atelier-accent);
+  --color-dbe0d4:var(--atelier-border); --color-dce4de:var(--atelier-border); --color-cdd5c7:var(--atelier-border);
+  --night-canvas:var(--atelier-canvas); --night-surface:var(--atelier-surface); --night-text:var(--atelier-text);
+  --night-muted:var(--atelier-secondary); --night-gold:var(--atelier-accent);
+  color:var(--atelier-text); background:var(--atelier-canvas); color-scheme:dark;
+  font-family:var(--night-font-text); font-synthesis:none;
+}
+html[data-synera-atelier=on][data-atelier-accent=red] { --atelier-accent:#f4a1a7; }
+html[data-synera-atelier=on][data-atelier-accent=plum] { --atelier-accent:#c7b5ed; }
+html[data-synera-atelier=on][data-atelier-density=compact] { --atelier-space:20px; }
+html[data-synera-atelier=on][data-atelier-type=large] { --atelier-body-size:16px; }
+html[data-synera-atelier=on][data-atelier-contrast=strong] { --atelier-secondary:#eceeec; --atelier-border:#a6adb0; }
+html[data-synera-atelier=on] body { background:var(--atelier-canvas); color:var(--atelier-text); font-family:var(--night-font-text); }
+html[data-synera-atelier=on] :is(header,main,footer) { max-width:1160px; }
+html[data-synera-atelier=on] :is(h1,h2,h3) { font-family:var(--night-font-display); font-weight:500; text-wrap:balance; }
+html[data-synera-atelier=on] h1 { line-height:1.13; letter-spacing:-.045em; }
+html[data-synera-atelier=on] :is(.intro,.studio-heading,.section-heading) { max-width:790px; }
+html[data-synera-atelier=on] :is(.brand,.wordmark) { color:var(--atelier-text); font-weight:500; letter-spacing:-.065em; }
+html[data-synera-atelier=on] :is(.brand span,.wordmark span,.intro h1 span) { color:var(--atelier-accent); text-decoration:none; }
+html[data-synera-atelier=on] :is(.panel,.studio-card,.triangle-card,.demo-panel,.person,.meeting,.contribution-grid form) { background:var(--atelier-surface); border:1px solid var(--atelier-border); border-radius:12px; box-shadow:none; padding:var(--atelier-space); }
+html[data-synera-atelier=on] :is(.lead,.hero-description,.fine,.subtle,.micro,.studio-card>p,.principle-grid p,.value-grid p,.section-heading>p,.person small,.meeting small) { color:var(--atelier-secondary); font-size:var(--atelier-body-size); line-height:1.8; }
+html[data-synera-atelier=on] :is(.studio-card,.triangle-card) p { font-size:var(--atelier-body-size); }
+html[data-synera-atelier=on] :is(label,legend) { color:var(--atelier-secondary); font-size:var(--atelier-body-size); }
+html[data-synera-atelier=on] :is(button,input,textarea,select) { font-family:var(--night-font-text); font-size:var(--atelier-body-size); min-height:44px; border-radius:8px; }
+html[data-synera-atelier=on] button { background:var(--atelier-field); border-color:var(--atelier-border); color:var(--atelier-text); box-shadow:none; }
+html[data-synera-atelier=on] :is(.quiet,.studio button,.tabs button,.studio-modes button) { background:var(--atelier-field); border-color:var(--atelier-border); color:var(--atelier-text); }
+html[data-synera-atelier=on] :is(.primary,#auth-submit,#prepare-profile,#fit-form>button,#session-setup>button,#room-setup>button) { background:var(--atelier-accent); border-color:var(--atelier-accent); color:var(--atelier-ink); }
+html[data-synera-atelier=on] :is(.tabs button,.studio-modes button,.studio-tabs button)[aria-pressed=true],
+html[data-synera-atelier=on] :is(.tabs button,.studio-modes button,.studio-tabs button)[aria-selected=true] { background:var(--atelier-surface); color:var(--atelier-accent); border-bottom:2px solid var(--atelier-accent); box-shadow:none; }
+html[data-synera-atelier=on] :is(input,textarea,select) { background:var(--atelier-field); border-color:var(--atelier-border); color:var(--atelier-text); }
+html[data-synera-atelier=on] input[type=checkbox] { width:20px; height:20px; min-height:20px; accent-color:var(--atelier-accent); }
+html[data-synera-atelier=on] .check { min-height:44px; align-items:center; }
+html[data-synera-atelier=on] :is(a,button,input,textarea,select,summary):focus-visible { outline:3px solid var(--atelier-accent); outline-offset:4px; }
+html[data-synera-atelier=on] :is(button,.primary) { transition:background-color 140ms ease,border-color 140ms ease; }
+html[data-synera-atelier=on] :is(.notice,.badge,.choice-set,.visibility-choice,.simulation-panel,.empty) { background:var(--atelier-surface); color:var(--atelier-secondary); border-color:var(--atelier-border); }
+html[data-synera-atelier=on] .notice.error { color:var(--night-error); border-color:var(--night-error); }
+html[data-synera-atelier=on] :is(.central-l,.studio .central-l) { background:var(--atelier-accent); color:var(--atelier-ink); border-color:var(--atelier-accent); box-shadow:none; }
+html[data-synera-atelier=on] :is(.orbit,.glow) { display:none; }
+html[data-synera-atelier=on] :is(.thread,.signal,.atlas-marker,.connection-art *) { animation:none; }
+html[data-synera-atelier=on] #pane-room .triangle-card { border-top:2px solid var(--atelier-accent); }
+html[data-synera-atelier=on] #pane-room .contribution-grid form { background:var(--atelier-field); }
+html[data-synera-atelier=on] #pane-atlas .opportunity-map { height:min(66svh,520px); background:var(--atelier-field); border-color:var(--atelier-border); border-radius:12px; }
+html[data-synera-atelier=on] #pane-atlas .section-heading h2 { font-size:clamp(29px,4vw,42px); }
+html[data-synera-atelier=on] #step-memory .room-grid>.studio-card:first-child { border-top:2px solid var(--atelier-accent); }
+html[data-synera-atelier=on] #step-memory :is(#archive-summary,#quote-results blockquote) { color:var(--atelier-text); font-size:18px; line-height:1.65; }
+html[data-synera-atelier=on] #step-memory .subtle { font-size:12px; line-height:1.8; }
+html[data-synera-atelier=on] .atelier-settings button[aria-pressed=true] { background:var(--atelier-accent); color:var(--atelier-ink); border-color:var(--atelier-accent); }
+html[data-synera-atelier=on] .atelier-settings :is(label,legend,button,select) { font-size:12px; }
+@media(max-width:700px) {
+  html[data-synera-atelier=on] :is(main.studio,.hero,.experience,.principles,.product-value,.closing) { padding-inline:22px; }
+  html[data-synera-atelier=on] :is(.hero,.experience,.principles,.product-value,.closing) { padding-block:48px; }
+  html[data-synera-atelier=on] :is(.panel,.studio-card,.triangle-card,.demo-panel,.person,.meeting,.contribution-grid form) { padding:calc(var(--atelier-space) - 4px); }
+  html[data-synera-atelier=on] .mast { height:auto; min-height:76px; gap:10px; flex-wrap:wrap; padding-block:14px; }
+  .atelier-settings { width:274px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-synera-atelier=on] *,html[data-synera-atelier=on] *::before,html[data-synera-atelier=on] *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+}

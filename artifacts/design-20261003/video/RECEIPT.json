@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "source": "real local Synera Studio",
+  "viewport": "390x844",
+  "clips": [
+    "artifacts/design-20261003/video/01-current-studio.webm",
+    "artifacts/design-20261003/video/02-atelier-studio.webm"
+  ],
+  "externalRequests": 0,
+  "notes": [
+    "local demo data only",
+    "no voice, map SDK, live people, video call, or external AI shown"
+  ]
+}
