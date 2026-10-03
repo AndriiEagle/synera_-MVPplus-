@@ -1,6 +1,8 @@
 # Synera — real-user PWA pilot
 
-> Current state (2026-10-02): [shared product entry point and verified release state](START_HERE.uk.md). Runtime: Neon + Cloudflare Pages. Historical Supabase-specific steps below are parked. Claude Code reads the same entry through `CLAUDE.md`.
+> Current state (2026-10-03): [shared product entry point and verified release state](START_HERE.uk.md). Runtime: Neon + Cloudflare Pages. Historical Supabase-specific steps below are parked. Claude Code reads the same entry through `CLAUDE.md`.
+
+Latest addition: [separate two-account journey and exact acceptance limits](artifacts/real-journey-20261003/REPORT.uk.md). The local client now joins shared terms, each participant's approval, invitation acceptance and private messaging. 107 local checks passed; Chromium used isolated provider fixtures. The new server gate remains closed, and this candidate is not a deployed two-account product.
 
 [Published product presentation and Android/iPhone access](https://synera-summit-20261001.andypokr911.chatgpt.site/) · [Sales, matching and Maps capability boundaries](docs/PRODUCT_VALUE_AND_SALES.uk.md). Paid checkout is not configured; native store releases and semantic deep matching are open requirements.
 

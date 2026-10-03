@@ -1,5 +1,7 @@
 # Synera wave C status — PRESENT_BUT_UNTESTED
 
+**2026-10-03 latest readback:** the separate real-account journey joins existing matching, shared material, independent approval, recipient invitation acceptance and private messages. Gateway and both store paths now reject stale material writes using the reviewed case/version/hash; pure approval does not rewrite material. 107 local tests and actual Chromium acceptance passed with isolated Auth/Data fixtures. The 94-file candidate is locally accepted; `SYNERA_REAL_JOURNEY_READY` remains off. SQL runtime, live RLS/JWT, two real Neon accounts, this deployment and physical Android are still unverified for this checkpoint. [Bounded report and evidence](../artifacts/real-journey-20261003/REPORT.uk.md). Preserve the earlier real PostgreSQL acceptance below as historical proof.
+
 **2026-10-02 current readback:** base, case-state and additive meeting-location acceptance passed on disposable PostgreSQL 16; fixture users rolled back to zero and the raw-grant disclosure mutation was rejected. New two-session Chromium location/address acceptance passed with local Auth/Data API/KV/GPS fixtures. Live Neon migration/binding, two real users and physical Android remain unverified. [Current shared product state](../START_HERE.uk.md). The older labels below describe the earlier/live apply boundary, not the new local acceptance.
 
 <!-- SYN_SQL_LABELLED_UNTESTED -->

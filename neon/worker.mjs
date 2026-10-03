@@ -180,6 +180,11 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     }
     const match = path.match(/^\/data\/([a-z_]+)$/);
     if (!match || !TABLES.has(match[1]) || url.search.length > 4096) throw new GatewayError(404);
+    if (['match_cases', 'match_case_approvals'].includes(match[1]) && env.SYNERA_REAL_JOURNEY_READY !== 'true') throw new GatewayError(503, 'real_journey_not_ready');
+    if (match[1] === 'match_cases' && request.method === 'PATCH') {
+      const filters = [['case_id', /^eq\.[A-Za-z0-9_:-]{1,64}$/], ['version', /^eq\.[1-9][0-9]{0,8}$/], ['terms_hash', /^eq\.[a-f0-9]{64}$/], ['status', /^eq\.open$/]];
+      if (filters.some(([key, pattern]) => url.searchParams.getAll(key).length !== 1 || !pattern.test(url.searchParams.get(key)))) throw new GatewayError(400, 'reviewed_case_required');
+    }
     const session = await getSession(fetchImpl, endpoints, cookie, allowed);
     if (!session) throw new GatewayError(401);
     const body = ['POST', 'PATCH'].includes(request.method) ? await readJson(request) : undefined;
@@ -212,6 +217,8 @@ export function createNeonWorker(publicAssets) {
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
         // This new gate is set only after the documented challenge bridge is verified live.
         googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
+        // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
+        realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

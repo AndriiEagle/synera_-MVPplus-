@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "Actual local Chromium 390x844; actual client and handleNeon; Auth/Data persistence are isolated fixtures. Not live Neon, SQL/RLS/JWT, deployed product or physical Android evidence.",
+  "checks": {
+    "closed_gate": true,
+    "material_visible_before_approval": true,
+    "two_independent_approvals": true,
+    "outsider_no_case": true,
+    "recipient_acceptance_before_chat": true,
+    "unicode_text_and_no_html_execution": true,
+    "different_conversation_discards_draft_and_old_response": true,
+    "expired_session_clears_private_state": true,
+    "revision_clears_both_approvals": true,
+    "existing_paid_case_shows_amount_currency_invoice_and_outcomes": true,
+    "axe_violations": 0,
+    "no_mobile_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "no_private_storage": {
+      "local": [],
+      "session": [],
+      "caches": [],
+      "databases": []
+    },
+    "page_errors": [],
+    "logout_interrupts_pending_read_without_private_reappearance": true
+  },
+  "requests": 212
+}

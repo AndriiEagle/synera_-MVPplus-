@@ -12,7 +12,7 @@ import { PUBLIC_ASSETS } from '../web_launch/assets.mjs';
 const origin = 'https://synera-test.pages.dev';
 const env = { SYNERA_SITE_URL: origin, SYNERA_NEON_AUTH_URL: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth',
   SYNERA_NEON_DATA_URL: 'https://ep-fixture.apirest.us-east-2.aws.neon.tech/neondb/rest/v1', SYNERA_PILOT_EMAILS: 'pilot@example.com',
-  SYNERA_PILOT_READY: 'true', SYNERA_REGISTRATION_ENABLED: 'true' };
+  SYNERA_PILOT_READY: 'true', SYNERA_REGISTRATION_ENABLED: 'true', SYNERA_REAL_JOURNEY_READY: 'true' };
 const user = { id: '11111111-1111-4111-8111-111111111111', email: 'pilot@example.com', emailVerified: true };
 const jwt = 'eyJhbGciOiJub25lIn0.eyJzdWIiOiJmaXh0dXJlIn0.signature'; // Shape-only public fixture. Never sent to a provider.
 const request = (path, { method = 'GET', body, headers = {} } = {}) => new Request(origin + '/api/neon' + path, { method,

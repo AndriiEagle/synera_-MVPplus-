@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="referrer" content="no-referrer"><meta name="color-scheme" content="dark">
+  <title>Synera · реальна домовленість</title>
+  <link rel="stylesheet" href="/summit.css"><link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/real-journey.css">
+  <script type="module" src="/atelier.mjs"></script><script type="module" src="/real-journey.mjs"></script>
+</head>
+<body class="real-journey">
+  <a class="skip" href="#real-content">Перейти до вмісту</a>
+  <header class="mast real-mast"><a class="wordmark" href="/summit.html">synera<span>·</span></a><nav aria-label="Навігація"><a href="/index.html">Вхід і профіль</a><a href="/studio-journey.html">Демо</a></nav></header>
+  <main id="real-content" class="real-shell">
+    <section class="real-heading"><p class="eyebrow">SYNERA / РЕАЛЬНИЙ ПІЛОТ</p><h1>Домовленість між двома людьми</h1><p>Умови стають наступним кроком лише після окремого підтвердження кожного. Це не контракт і не завершена зустріч.</p></section>
+    <p id="real-status" role="status" aria-live="polite">Перевіряємо доступ…</p>
+    <section id="real-blocked" hidden aria-labelledby="real-blocked-title"><h2 id="real-blocked-title">Реальний шлях недоступний</h2><p>Пілот або захищений бекенд не увімкнено. Тут немає демо-замінника.</p><a href="/index.html">Відкрити вхід і профіль</a></section>
+    <section id="real-auth" hidden><h2>Потрібен активний сеанс</h2><p>Увійди та заповни профіль у головному застосунку.</p><a class="primary" href="/index.html">Відкрити вхід і профіль</a></section>
+    <section id="real-content-panel" hidden>
+      <div class="real-actions"><button id="real-refresh" type="button">Оновити</button><button id="real-logout" type="button">Вийти</button></div>
+      <ol class="real-steps" aria-label="Шлях домовленості"><li>Люди</li><li>Спільні умови</li><li>Запрошення</li><li>Розмова</li></ol>
+      <details id="real-people-panel" class="real-section" open><summary>Люди</summary><p class="real-note">Показані лише профілі, доступні твоєму обліковому запису.</p><div id="real-people"></div></details>
+      <details id="real-cases-panel" class="real-section" open><summary>Домовленості</summary><div id="real-cases"></div></details>
+      <details id="real-meetings-panel" class="real-section" open><summary>Зустрічі</summary><div id="real-meetings"></div></details>
+      <section id="real-peer" class="real-section" hidden aria-live="polite"></section>
+      <section id="real-terms" class="real-section" hidden>
+        <h2>Умови взаємного обміну</h2><p class="real-note">Заповни руками обидві сторони. Нова редакція скидає підтвердження.</p>
+        <details id="real-editor" open><summary>Запропонувати умови / змінити редакцію</summary><form id="real-terms-form" class="real-form">
+          <fieldset><legend>Ти даєш іншій людині</legend><label>Навичка <select name="give_tag" required><option value="">Обери</option></select></label><label>Результат <textarea name="give_target" maxlength="2000" required></textarea></label><label>Критерій прийняття <textarea name="give_criteria" maxlength="2000" required></textarea></label><label>Обсяг (необов'язково) <input name="give_amount" inputmode="numeric" pattern="[0-9]{1,5}"></label><label>Одиниця <select name="give_unit"><option value="">Обери</option><option value="hours">Години</option><option value="items">Результати</option><option value="sessions">Сесії</option></select></label></fieldset>
+          <fieldset><legend>Інша людина дає тобі</legend><label>Навичка <select name="take_tag" required><option value="">Обери</option></select></label><label>Результат <textarea name="take_target" maxlength="2000" required></textarea></label><label>Критерій прийняття <textarea name="take_criteria" maxlength="2000" required></textarea></label><label>Обсяг (необов'язково) <input name="take_amount" inputmode="numeric" pattern="[0-9]{1,5}"></label><label>Одиниця <select name="take_unit"><option value="">Обери</option><option value="hours">Години</option><option value="items">Результати</option><option value="sessions">Сесії</option></select></label></fieldset>
+          <fieldset><legend>Строк і умови</legend><label>Початок <input name="starts_on" type="date" required></label><label>Строк завершення <input name="due_on" type="date" required></label><label>Компенсація <select name="compensation_status" required><option value="">Обери</option><option value="agreed_exchange">Взаємний обмін без грошової оплати</option></select></label><label>Кількість редакцій <input name="revision_limit" type="number" min="0" max="100" required></label><label>Конфіденційність <select name="confidentiality" required><option value="">Обери</option><option value="required">Потрібна</option><option value="not_required">Не потрібна</option></select></label><label>Інтелектуальна власність <select name="intellectual_property" required><option value="">Обери</option><option value="giver">У того, хто дає</option><option value="receiver">У того, хто отримує</option><option value="shared">Спільна</option></select></label><label>Скасування <select name="cancellation" required><option value="">Обери</option><option value="mutual_written_notice">Взаємне письмове повідомлення</option><option value="either_party_before_start">Будь-хто до початку</option></select></label></fieldset>
+          <button type="submit" class="primary">Зберегти нову редакцію</button>
+        </form></details>
+        <div id="real-terms-review" class="real-review"></div>
+        <label class="real-check"><input id="real-approve-check" type="checkbox"> Я прочитала/прочитав саме цю редакцію умов.</label>
+        <div class="real-actions"><button id="real-approve" type="button">Підтвердити свою сторону</button><button id="real-withdraw" type="button">Відкликати своє підтвердження</button></div>
+      </section>
+      <section id="real-invite" class="real-section" hidden><h2>Запросити на розмову</h2><form id="real-invite-form" class="real-form"><label>Коротка нотатка <textarea name="note" maxlength="500" required></textarea></label><label>Час <input name="proposed_at" type="datetime-local" required></label><label>Тривалість <select name="duration_minutes" required><option value="20">20 хв</option><option value="30">30 хв</option><option value="60">60 хв</option></select></label><label>Місце <select name="meeting_place" required><option value="Онлайн">Онлайн</option><option value="Zürich">Zürich</option><option value="Winterthur">Winterthur</option><option value="Zug">Zug</option><option value="Basel">Basel</option><option value="Bern">Bern</option></select></label><button class="primary" type="submit">Надіслати запрошення</button></form></section>
+      <section id="real-conversation" class="real-section" hidden><h2>Приватна розмова після прийняття</h2><div id="real-transcript" class="real-transcript" aria-live="polite"></div><form id="real-message-form" class="real-form"><label>Повідомлення <textarea id="real-message" maxlength="1000" required></textarea></label><button class="primary" type="submit">Надіслати</button></form></section>
+    </section>
+  </main>
+</body></html>

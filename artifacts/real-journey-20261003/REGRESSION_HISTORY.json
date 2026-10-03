@@ -1,0 +1,31 @@
+{
+  "scope": "Local semantic regressions observed failing before fixes; all transport accounts/data are fixtures.",
+  "server_gate": {
+    "chunk_id": "904609",
+    "wall_time_seconds": 1.8494025,
+    "exit_code": 1,
+    "original_token_count": 229,
+    "output": "✖ closed agreement rollout also denies direct table calls before any Auth/Data request (107.9339ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 507.3898\n\n✖ failing tests:\n\ntest at web_launch\\real-journey-client.test.mjs:26:1\n✖ closed agreement rollout also denies direct table calls before any Auth/Data request (107.9339ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  200 !== 503\n  \n      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.test.mjs:31:12)\n      at async Test.run (node:internal/test_runner/test:1313:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 200,\n    expected: 503,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+  },
+  "cas_gate_and_legacy": {
+    "chunk_id": "7a3d15",
+    "wall_time_seconds": 2.1829276,
+    "exit_code": 1,
+    "original_token_count": 425,
+    "output": "✖ gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding (104.486ms)\n✖ existing ProfileStore save path also rejects a write-time race and preserves the newer material (163.3951ms)\nℹ tests 2\nℹ suites 0\nℹ pass 0\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 681.9406\n\n✖ failing tests:\n\ntest at web_launch\\real-journey-client.test.mjs:37:1\n✖ gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding (104.486ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  200 !== 400\n  \n      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.test.mjs:42:10)\n      at async Test.run (node:internal/test_runner/test:1313:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 200,\n    expected: 400,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at web_launch\\real-journey-client.test.mjs:86:1\n✖ existing ProfileStore save path also rejects a write-time race and preserves the newer material (163.3951ms)\n  AssertionError [ERR_ASSERTION]: Missing expected rejection.\n      at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.test.mjs:93:3)\n      at async Test.run (node:internal/test_runner/test:1313:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    operator: 'rejects',\n    diff: 'simple'\n  }\n"
+  },
+  "postgrest_timestamps": {
+    "chunk_id": "b72625",
+    "wall_time_seconds": 2.0600149,
+    "exit_code": 1,
+    "original_token_count": 289,
+    "output": "✖ PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material (264.6309ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 640.6113\n\n✖ failing tests:\n\ntest at web_launch\\real-journey-client.test.mjs:117:1\n✖ PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material (264.6309ms)\n  Error: Некоректний стан кейсу\n      at assertState (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/business-case.mjs:246:622)\n      at approveCase (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/business-case.mjs:278:3)\n      at RealJourneyStore.approveTerms (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.mjs:86:5)\n      at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.test.mjs:122:17)\n      at async Test.run (node:internal/test_runner/test:1313:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)\n"
+  },
+  "same_ordinal": {
+    "chunk_id": "e0e273",
+    "wall_time_seconds": 1.2880957,
+    "exit_code": 1,
+    "original_token_count": 230,
+    "output": "✖ existing store rejects a competing revision already committed before its read, even with the same ordinal (143.9632ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 383.7039\n\n✖ failing tests:\n\ntest at web_launch\\real-journey-client.test.mjs:97:1\n✖ existing store rejects a competing revision already committed before its read, even with the same ordinal (143.9632ms)\n  AssertionError [ERR_ASSERTION]: Missing expected rejection.\n      at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.test.mjs:103:3)\n      at async Test.run (node:internal/test_runner/test:1313:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    operator: 'rejects',\n    diff: 'simple'\n  }\n"
+  }
+}

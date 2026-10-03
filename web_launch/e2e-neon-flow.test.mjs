@@ -97,6 +97,7 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
         const existing = db.cases.get(caseId);
         // Mirror synera_case_guard: closed is immutable, a material/mode/terms change raises the version.
         if (!existing || existing.status !== 'open') return new Response(JSON.stringify({ error: 'closed_case_immutable' }), { status: 500 });
+        if (url.searchParams.get('version') !== 'eq.' + existing.version || url.searchParams.get('terms_hash') !== 'eq.' + existing.terms_hash) return Response.json([]);
         const materialChanged = JSON.stringify(existing.material) !== JSON.stringify(body.material)
           || existing.mode !== body.mode || existing.terms_hash !== body.terms_hash;
         db.cases.set(caseId, {
@@ -105,7 +106,7 @@ test('C13.L3: complete scripted E2E lifecycle against mock Neon backend', async 
           updated_at: SERVER_NOW,
           closed_at: body.status && body.status !== 'open' ? SERVER_NOW : existing.closed_at ?? null,
         });
-        return new Response(null, { status: 204 });
+        return Response.json([db.cases.get(caseId)]);
       }
       const item = db.cases.get(caseId);
       return new Response(JSON.stringify(item ? [item] : []));

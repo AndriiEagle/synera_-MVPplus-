@@ -78,11 +78,13 @@ function fakeDatabase(storedState = null) {
       // Mirror synera_case_guard: closed is immutable; a material/mode/terms change raises
       // the version; a change without a new hash is refused; close freezes state.
       if (!row || row.status !== 'open') throw new Error('Closed case is immutable');
+      const query = new URL(path, 'https://fixture.invalid').searchParams;
+      if (query.get('version') !== 'eq.' + row.version || query.get('terms_hash') !== 'eq.' + row.terms_hash) return [];
       const body = options.body;
       if (body.status) {
         row.status = body.status;
         row.closed_at = '2026-09-08T12:00:00.000Z';
-        return [];
+        return [structuredClone(row)];
       }
       const changed = row.terms_hash !== body.terms_hash || JSON.stringify(row.material) !== JSON.stringify(body.material) || row.mode !== body.mode;
       if (changed && row.terms_hash === body.terms_hash) throw new Error('Material changed without a new hash');
@@ -91,7 +93,7 @@ function fakeDatabase(storedState = null) {
         expires_at: body.expires_at, version: changed ? row.version + 1 : row.version,
         updated_at: '2026-09-08T12:00:00.000Z',
       };
-      return [];
+      return [structuredClone(row)];
     }
     return [];
   };

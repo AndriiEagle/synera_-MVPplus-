@@ -5,6 +5,7 @@ import { profileSafetyFindings } from './profile-portability.mjs';
 const CASE_ATTESTATION = 'ACKNOWLEDGED_FOR_NEXT_STEP_NOT_A_CONTRACT';
 const CASE_SELECT = 'case_id,participant_low,participant_high,mode,material,terms_hash,version,status,expires_at,closed_at,created_at,updated_at';
 const APPROVAL_SELECT = 'party_id,approved_version,approved_terms_hash,approved_at,withdrawn_at';
+const canonicalInstant = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) ? new Date(value).toISOString() : null;
 
 function latestInstant(...values) {
   return values.filter(value => typeof value === 'string' && Number.isFinite(Date.parse(value)))
@@ -23,18 +24,18 @@ function caseFromRows(row, approvalRows = []) {
       partyId: approval.party_id,
       version: approval.approved_version,
       termsHash: approval.approved_terms_hash,
-      approvedAt: approval.approved_at,
+      approvedAt: canonicalInstant(approval.approved_at),
       attestation: CASE_ATTESTATION,
     };
   }
   const status = closed ? row.status : participants.every(id => approvals[id]) ? 'approved_for_next_step'
     : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
-  const updatedAt = latestInstant(row.updated_at, ...Object.values(approvals).map(value => value.approvedAt)) ?? row.created_at;
+  const updatedAt = canonicalInstant(latestInstant(row.updated_at, ...Object.values(approvals).map(value => value.approvedAt)) ?? row.created_at);
   return {
     schema: 'synera.case-state.v1', caseId: row.case_id, participants, version: row.version,
     material: row.material, termsHash: row.terms_hash, status, approvals, binding: false,
-    approvalAttestation: CASE_ATTESTATION, createdAt: row.created_at, updatedAt, expiresAt: row.expires_at,
-    closedBy: null, closedAt: row.closed_at, closeReason: closed ? row.status : null,
+    approvalAttestation: CASE_ATTESTATION, createdAt: canonicalInstant(row.created_at), updatedAt, expiresAt: canonicalInstant(row.expires_at),
+    closedBy: null, closedAt: canonicalInstant(row.closed_at), closeReason: closed ? row.status : null,
     timeAuthority: 'server_assigned_c1', events: [],
   };
 }
@@ -183,6 +184,10 @@ export class ProfileStore {
         && stored.participants.every((id, index) => id === clean.participants[index]);
       if (!same) throw new Error('Учасники кейсу не можуть змінитися');
       if (Number.isSafeInteger(stored.version) && clean.version < stored.version) throw new Error('Версія кейсу не може йти назад');
+      if (clean.termsHash !== stored.termsHash && clean.version !== stored.version + 1) {
+        const error = new Error('Ця редакція вже змінилася. Онови умови перед новою правкою.');
+        error.status = 409; error.code = 'STALE_CASE_RELOAD_REQUIRED'; throw error;
+      }
     }
     const closed = ['revoked', 'abandoned'].includes(clean.status);
     if (closed && clean.closedBy !== me) throw new Error('Кейс закривається лише стороною, яка це робить');
@@ -210,9 +215,13 @@ export class ProfileStore {
       const updateBody = closed
         ? { status: clean.status }
         : { mode: clean.material.mode, material: clean.material, terms_hash: clean.termsHash, expires_at: clean.expiresAt };
-      await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(clean.caseId)}`, {
-        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: updateBody,
+      const written = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(clean.caseId)}&version=eq.${stored.version}&terms_hash=eq.${stored.termsHash}&status=eq.open`, {
+        method: 'PATCH', authenticated: true, prefer: 'return=representation', body: updateBody,
       });
+      if (!Array.isArray(written) || written.length !== 1) {
+        const error = new Error('Умови змінилися під час запису. Онови й перечитай поточну версію.');
+        error.status = 409; error.code = 'STALE_CASE_RELOAD_REQUIRED'; throw error;
+      }
     } else {
       const [participant_low, participant_high] = [...clean.participants].sort();
       await this._send('/rest/v1/match_cases', {

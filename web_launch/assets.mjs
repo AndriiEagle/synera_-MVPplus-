@@ -10,6 +10,7 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'studio.html': 'text/html', 'studio.css': 'text/css', 'studio.mjs': 'text/javascript',
   'studio-journey.html': 'text/html', 'journey.css': 'text/css', 'journey-ui.mjs': 'text/javascript',
   'journey-core.mjs': 'text/javascript', 'journey-ai-client.mjs': 'text/javascript', 'journey-handoff.mjs': 'text/javascript',
+  'real-journey.html': 'text/html', 'real-journey.css': 'text/css', 'real-journey.mjs': 'text/javascript', 'real-journey-client.mjs': 'text/javascript',
   'portrait-mara.webp': 'image/webp', 'portrait-noor.webp': 'image/webp', 'portrait-leo.webp': 'image/webp',
   'icon-map-pin.svg': 'image/svg+xml', 'icon-message-circle.svg': 'image/svg+xml', 'icon-handshake.svg': 'image/svg+xml', 'icon-archive.svg': 'image/svg+xml',
   'icon-code-xml.svg': 'image/svg+xml', 'icon-pen-tool.svg': 'image/svg+xml', 'icon-megaphone.svg': 'image/svg+xml', 'asset-licenses.txt': 'text/plain',
