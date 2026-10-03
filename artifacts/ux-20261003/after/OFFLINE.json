@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "physicalAndroid": false,
+  "cachePaths": [
+    "/studio.webmanifest",
+    "/icon-512.png",
+    "/apple-touch-icon.png",
+    "/portrait-mara.webp",
+    "/icon-map-pin.svg",
+    "/portrait-noor.webp",
+    "/icon-pen-tool.svg",
+    "/icon-code-xml.svg",
+    "/portrait-leo.webp",
+    "/icon-megaphone.svg",
+    "/icon-message-circle.svg",
+    "/icon-handshake.svg",
+    "/icon-archive.svg",
+    "/studio.html",
+    "/studio.css",
+    "/studio.mjs",
+    "/group-logistics.mjs",
+    "/studio-journey.html",
+    "/summit.css",
+    "/triangle.css",
+    "/journey.css",
+    "/atelier.css",
+    "/atelier.mjs",
+    "/studio-install.mjs",
+    "/journey-ui.mjs",
+    "/tokens.css",
+    "/journey-core.mjs",
+    "/archive-codec.mjs",
+    "/journey-ai-client.mjs",
+    "/journey-handoff.mjs",
+    "/montserrat-400.woff2",
+    "/montserrat-500.woff2",
+    "/declared-fit.mjs",
+    "/session-value.mjs",
+    "/icon-192.png"
+  ],
+  "privateResponsesCached": false,
+  "consentsRestored": false,
+  "assets": [
+    {
+      "path": "/icon-map-pin.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/icon-map-pin.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/icon-map-pin.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/portrait-mara.webp",
+      "loaded": true,
+      "filter": "none"
+    },
+    {
+      "path": "/icon-pen-tool.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/portrait-noor.webp",
+      "loaded": true,
+      "filter": "none"
+    },
+    {
+      "path": "/icon-code-xml.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/portrait-leo.webp",
+      "loaded": true,
+      "filter": "none"
+    },
+    {
+      "path": "/icon-megaphone.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/icon-message-circle.svg",
+      "loaded": true,
+      "filter": "none"
+    },
+    {
+      "path": "/icon-handshake.svg",
+      "loaded": true,
+      "filter": "invert(1)"
+    },
+    {
+      "path": "/icon-archive.svg",
+      "loaded": true,
+      "filter": "none"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "EXPECTED_REJECTION",
+  "mutation": "toggle listener reset #journey-fit-consent",
+  "cause": "Expected values to be strictly equal:\n\nfalse !== true\n",
+  "checks": [
+    "existing consents, typed message, and current approvals survive baseline flow",
+    "mutation reset consent and guard rejected the changed checkbox"
+  ]
+}

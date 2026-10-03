@@ -1,0 +1,12 @@
+✔ published clean Studio URLs retrieve the original cached shell offline (129.443ms)
+✔ query URLs and non-shell paths never read a private response from cache (30.5616ms)
+✔ connected public journey works at clean and selected-person URLs offline (37.5379ms)
+✔ reviewed decorative portraits and icons still render from their exact public cache when offline (63.4002ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 609.4587

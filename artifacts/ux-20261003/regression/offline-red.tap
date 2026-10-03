@@ -1,0 +1,28 @@
+✔ published clean Studio URLs retrieve the original cached shell offline (118.2451ms)
+✔ query URLs and non-shell paths never read a private response from cache (23.5299ms)
+✔ connected public journey works at clean and selected-person URLs offline (27.8403ms)
+✖ reviewed decorative portraits and icons still render from their exact public cache when offline (7.3819ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 489.5196
+
+✖ failing tests:
+
+test at web_launch\studio-sw.test.mjs:12:1
+✖ reviewed decorative portraits and icons still render from their exact public cache when offline (7.3819ms)
+  AssertionError [ERR_ASSERTION]: public image not intercepted: /portrait-mara.webp
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/studio-sw.test.mjs:12:200)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

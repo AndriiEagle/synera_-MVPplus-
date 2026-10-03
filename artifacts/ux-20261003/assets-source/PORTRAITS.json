@@ -1,0 +1,31 @@
+{
+  "revision": "100262732989e77f38cd831d70a376a93735006a",
+  "source": "retowyss/Syn-Vis-v0",
+  "licenseLocator": "Dataset card License section, images CC0; not compilation",
+  "files": [
+    {
+      "file": "artifacts\\ux-20261003\\assets-source\\portrait-1.png",
+      "url": "https://huggingface.co/datasets/retowyss/Syn-Vis-v0/resolve/100262732989e77f38cd831d70a376a93735006a/images/headshot/001-0001.png",
+      "sha256": "8b59550e67054550bc0398b5ee1ba3e9008aaff733671ab526ced38992a7500a",
+      "bytes": 851668,
+      "license": "Individual image CC0 1.0; not dataset metadata",
+      "synthetic": true
+    },
+    {
+      "file": "artifacts\\ux-20261003\\assets-source\\portrait-2.png",
+      "url": "https://huggingface.co/datasets/retowyss/Syn-Vis-v0/resolve/100262732989e77f38cd831d70a376a93735006a/images/headshot/001-0002.png",
+      "sha256": "158c4467b820e39490474369433d55f0bd9f5701f12e9776e4f8bbbbbdf0d264",
+      "bytes": 1067376,
+      "license": "Individual image CC0 1.0; not dataset metadata",
+      "synthetic": true
+    },
+    {
+      "file": "artifacts\\ux-20261003\\assets-source\\portrait-3.png",
+      "url": "https://huggingface.co/datasets/retowyss/Syn-Vis-v0/resolve/100262732989e77f38cd831d70a376a93735006a/images/headshot/001-0003.png",
+      "sha256": "31938e783365f99cecfd6cebb7088336f110bee4b955b900a6bcc42ae8325abb",
+      "bytes": 887734,
+      "license": "Individual image CC0 1.0; not dataset metadata",
+      "synthetic": true
+    }
+  ]
+}

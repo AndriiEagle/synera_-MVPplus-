@@ -1,0 +1,7 @@
+{
+  "status": "EXPECTED_RED",
+  "checks": [
+    "existing consents, typed message, and current approvals survive baseline flow"
+  ],
+  "missing": "Спокійний режим accessible toggle"
+}

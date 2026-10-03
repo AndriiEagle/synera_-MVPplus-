@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "phase": "before",
+  "source": "local current checkout",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "physicalAndroid": false,
+  "steps": [
+    {
+      "name": "01-landing",
+      "visibleWords": 455,
+      "pageHeight": 4616,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "02-brief",
+      "visibleWords": 129,
+      "pageHeight": 1935,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "03-map",
+      "visibleWords": 241,
+      "pageHeight": 3489,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "04-chat",
+      "visibleWords": 123,
+      "pageHeight": 1911,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "05-proposal",
+      "visibleWords": 126,
+      "pageHeight": 1877,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "06-result",
+      "visibleWords": 222,
+      "pageHeight": 2540,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "07-install",
+      "visibleWords": 194,
+      "pageHeight": 1970,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "08-atlas",
+      "visibleWords": 300,
+      "pageHeight": 3834,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "name": "09-studio",
+      "visibleWords": 177,
+      "pageHeight": 2303,
+      "noOverflow": true,
+      "axeViolations": 0
+    }
+  ],
+  "pageErrors": []
+}

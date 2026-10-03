@@ -1,0 +1,115 @@
+{
+  "status": "LOCAL_UX_ACCEPTED_WITH_PRODUCT_LIMITS",
+  "checkedAt": "2026-10-03T15:40:23.845588+00:00",
+  "parentProductCommit": "c703d78220dd767a3d21893f585f97d9c14ce9b6",
+  "browser": "installed Google Chrome, Chromium engine, isolated temporary context",
+  "browserFallbackCause": "Playwright cache junction points to currently unavailable D:/Moved; no browser installed",
+  "physicalAndroid": false,
+  "unitTests": 39,
+  "screens": 9,
+  "axeViolations": 0,
+  "humanUsabilityAccepted": false,
+  "neurochemicalEffectsMeasured": false,
+  "realUserCycleAccepted": false,
+  "publicAiEnabled": false,
+  "registrationEnabled": false,
+  "providerCalls": 0,
+  "providerUsd": 0,
+  "comparison": [
+    {
+      "screen": "01-landing",
+      "beforeWords": 455,
+      "afterWords": 455,
+      "beforeHeight": 4616,
+      "afterHeight": 4616
+    },
+    {
+      "screen": "02-brief",
+      "beforeWords": 129,
+      "afterWords": 137,
+      "beforeHeight": 1935,
+      "afterHeight": 1825
+    },
+    {
+      "screen": "03-map",
+      "beforeWords": 241,
+      "afterWords": 214,
+      "beforeHeight": 3489,
+      "afterHeight": 3211
+    },
+    {
+      "screen": "04-chat",
+      "beforeWords": 123,
+      "afterWords": 125,
+      "beforeHeight": 1911,
+      "afterHeight": 1910
+    },
+    {
+      "screen": "05-proposal",
+      "beforeWords": 126,
+      "afterWords": 128,
+      "beforeHeight": 1877,
+      "afterHeight": 1896
+    },
+    {
+      "screen": "06-result",
+      "beforeWords": 222,
+      "afterWords": 224,
+      "beforeHeight": 2540,
+      "afterHeight": 2559
+    },
+    {
+      "screen": "07-install",
+      "beforeWords": 194,
+      "afterWords": 194,
+      "beforeHeight": 1970,
+      "afterHeight": 1970
+    },
+    {
+      "screen": "08-atlas",
+      "beforeWords": 300,
+      "afterWords": 300,
+      "beforeHeight": 3834,
+      "afterHeight": 3834
+    },
+    {
+      "screen": "09-studio",
+      "beforeWords": 177,
+      "afterWords": 177,
+      "beforeHeight": 2303,
+      "afterHeight": 2303
+    }
+  ],
+  "hashes": {
+    "web_launch/assets.mjs": "6e4d55949ebea23480648efdadb36e72c94864ab062dfef97d366a21509e7e61",
+    "web_launch/journey-ui.mjs": "b06bd3f95a2de9c61bac4c5582362fd6b2757e04cb93a7a1643bbc03524c338e",
+    "web_launch/journey.css": "d84c012dd63e2a310d8b1d2aa11d94553328087e4d43d1a1442cccb692c951ec",
+    "web_launch/studio-journey.html": "d785ef30501d7daa4df01a4e79c7f324b1a11d47b50e3cf1dbce50f3f5765e7b",
+    "web_launch/studio-sw.mjs": "df7917d66d91f1d72c89f6b27eaf9f40c002fae34413d94f4ef138d533b290f0",
+    "web_launch/studio-sw.test.mjs": "0cb45e682f32a29336c11b6092312225772ef9c13221e7c3e06549a07eda6c5e",
+    "tools/ux-flow-acceptance.mjs": "26819034bb60d131cde0ec1854eaba21a472d4ead872fb9a07e35e0bb13c41e7",
+    "tools/ux-quiet-regression.mjs": "f340877ab2b8c1195bce219f02ceddb08880caf5cb699fba9eec264882d97081",
+    "web_launch/portrait-leo.webp": "a3accb4a89db6e67ca069941dc63efb5ecd46ab286e035cdaad89dc0f276d22f",
+    "web_launch/portrait-mara.webp": "947dfdb6e8346fb7fb976a08508daa10506d16db336926f6ed8df1ae9c14e455",
+    "web_launch/portrait-noor.webp": "be525165286f44471bae3097a61a2cd17f4b0b317d4e068958b10aad6aca0309",
+    "web_launch/icon-archive.svg": "78c732e34e232db63af06a2330b4448045cfdf49b48b59f2d31922df54c7bb17",
+    "web_launch/icon-code-xml.svg": "a6d2110227be375be21da7324d3c09262c1bf019d06bdeab356d515342ab7cce",
+    "web_launch/icon-handshake.svg": "f58638064a1884e256895720c9a665d9e98cfc6935c52e14782ce0e84ecdad02",
+    "web_launch/icon-map-pin.svg": "16f1042a62f1bda20ebab8bfc1cb79c0be285c980dea6c2c733a17902631405b",
+    "web_launch/icon-megaphone.svg": "279096a06626ec84f76a6358cf25b919d77d6fa53e82892397c0f2a907602850",
+    "web_launch/icon-message-circle.svg": "146f39740fe50844394d56ae1f8821937655bcfff3842bf6fe8ffc0bcd324076",
+    "web_launch/icon-pen-tool.svg": "a31b434a7b7e379bd37b05fe7ae4b632c0cf38baf7463a726961ce65dd0cb089",
+    "web_launch/asset-licenses.txt": "b18960003033fb2f270b7936d53f25455e011d5de4136e88b03c82b42c3fb444",
+    "artifacts/ux-20261003/after/ACCEPTANCE.json": "64f15d2cb6d6eb8b7d0c503077b6619a922361e70cff2f581e6e111b4eb6d4a5",
+    "artifacts/ux-20261003/after/OFFLINE.json": "8acf95c39d8cc03613db25fe63b8330f80fa9d13363094ba3454a7822b823a72",
+    "artifacts/ux-20261003/regression/ACCEPTANCE.json": "66da8b7fa3947135cb44e90489f57e7189ee27d1bc8deb28b55907e290042c7b",
+    "artifacts/ux-20261003/regression/MUTATION.json": "615cfa47e4f39affdab059ba36a455312743dbd61223adb2ec56c1016ec606e4",
+    "artifacts/ux-20261003/regression/unit-green.tap": "3c2933a8624ac778f624d696ef4482cbd10741821628736b9dc1e7e880eaf888",
+    "artifacts/ux-20261003/REPORT.uk.md": "61e74fbb57d1b388890163122c354f2d1cb3f4fe213bac28aeed2d2cce3ecfbc",
+    "artifacts/ux-20261003/release/SITE_RECEIPT.json": "c406d7c42f0de32c7a805b4d9572009a46a864712fa4637a99a31b8bcae374d8",
+    "artifacts/ux-20261003/release/PUBLIC_READBACK.json": "d5643cfc5ee4853f1bc3d2cc932c1a99150df5b16791d302317f53590f54cb22"
+  },
+  "deploymentStatus": "succeeded",
+  "deployedSourceReadbackAccepted": false,
+  "publicReadbackLimit": "Cloudflare 403 / 1010"
+}
