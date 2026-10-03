@@ -15,6 +15,11 @@ async function setup() {
   return { db, a, b, o, material: exchangeMaterial(A, B, fields()) };
 }
 
+test('the legacy exchange entrypoint keeps its explicit no-money exchange contract', () => {
+  assert.throws(() => exchangeMaterial(A, B, fields({ compensation_status: 'agreed_money', amount: '25', currency: 'CHF', invoice: 'yes' })), /обмін/);
+  assert.throws(() => exchangeMaterial(A, B, fields({ compensation_status: 'agreed_none' })), /обмін/);
+});
+
 test('an expired pair can explicitly close its reviewed case and start fresh without carrying either approval', async () => {
   const { db, a, b, material } = await setup();
   let reviewed = await a.saveTerms(B, material);

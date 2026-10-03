@@ -79,7 +79,7 @@ export const INVALIDATION_MATRIX = Object.freeze({
   introduction_consent_withdrawn: Object.freeze({ approvals: 'preserve_as_history', next_action: 'block', history: 'preserve', version: 'preserve' }),
 });
 
-const MATERIAL_MODES = new Set(['exchange', 'paid_service', 'referral', 'hybrid']);
+const MATERIAL_MODES = new Set(['exchange', 'paid_service', 'referral', 'hybrid', 'joint_project']);
 const COMPONENTS = new Set(['exchange', 'paid_service', 'referral']);
 const CAPABILITY_KEYS = new Set(Object.keys(CAPABILITIES));
 const COMPENSATION = new Set(['unresolved', 'agreed_exchange', 'agreed_money', 'agreed_none']);
@@ -124,7 +124,7 @@ function normalizedDeliverable(value = {}) {
 
 export function canonicalMaterialPayload(input = {}) {
   if (!input || typeof input !== 'object' || Array.isArray(input) || !MATERIAL_MODES.has(input.mode)) throw new Error('Некоректний матеріальний режим');
-  const components = uniqueSorted(input.components, COMPONENTS);
+  const components = uniqueSorted(input.components, input.mode === 'joint_project' ? new Set(['joint_project']) : COMPONENTS);
   if (input.mode === 'hybrid' ? components.length < 2 : components.length !== 1 || components[0] !== input.mode) throw new Error('Некоректні компоненти матеріалу');
   const outcomes = (Array.isArray(input.outcomes) ? input.outcomes : []).map(normalizedOutcome).sort((a, b) => a.receiver_id.localeCompare(b.receiver_id) || a.capability_tag.localeCompare(b.capability_tag) || a.target.localeCompare(b.target));
   const deliverables = (Array.isArray(input.trial?.deliverables) ? input.trial.deliverables : []).map(normalizedDeliverable).sort((a, b) => a.receiver_id.localeCompare(b.receiver_id) || a.giver_id.localeCompare(b.giver_id) || a.capability_tag.localeCompare(b.capability_tag) || a.target.localeCompare(b.target));
@@ -238,6 +238,10 @@ export function caseParticipantProblems(input, participants) {
   for (const deliverable of material.trial.deliverables) {
     if (!ids.has(deliverable.giver_id)) problems.push(`deliverable giver ${deliverable.giver_id} is not a case participant`);
     if (!ids.has(deliverable.receiver_id)) problems.push(`deliverable receiver ${deliverable.receiver_id} is not a case participant`);
+  }
+  if (material.mode === 'joint_project') for (const id of ids) {
+    if (!material.trial.deliverables.some(deliverable => deliverable.giver_id === id)) problems.push(`joint project contribution missing for ${id}`);
+    if (!material.outcomes.some(outcome => outcome.receiver_id === id)) problems.push(`joint project outcome missing for ${id}`);
   }
   return [...new Set(problems)];
 }

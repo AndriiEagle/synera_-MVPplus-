@@ -158,7 +158,44 @@ do $$ declare denied boolean:=false; begin
     or exists(select 1 from public.match_case_approvals where case_id='case-ab-reopened') then raise exception 'New pair cycle inherited prior consent'; end if;
 end $$;
 
+-- A trial project needs an explicit contribution and result for each participant.
+-- One approval never supplies the other participant's consent.
+do $$ declare m jsonb; denied boolean:=false; begin
+  update public.meeting_requests set status='cancelled' where sender_id=auth.uid() and status='pending';
+  update public.match_cases set status='abandoned' where case_id='case-ab-reopened';
+  select jsonb_set(jsonb_set(material,'{mode}','"joint_project"'),'{components}','["joint_project"]') into m
+    from public.match_cases where case_id='case-ab';
+  begin
+    insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)
+      values ('project-missing-contribution','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','joint_project',m,repeat('1',64),now()+interval '14 days');
+  exception when raise_exception then
+    if sqlerrm <> 'Joint project requires each contribution and result' then raise; end if;
+    denied:=true;
+  end;
+  if not denied then raise exception 'One-sided project accepted'; end if;
+  m:=jsonb_set(m,'{outcomes}',m->'outcomes' || '[{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"design","target":"Agreed prototype"}]'::jsonb);
+  m:=jsonb_set(m,'{trial,deliverables}',m#>'{trial,deliverables}' || '[{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"design","target":"Agreed prototype","acceptance_criteria":"Both participants review the prototype"}]'::jsonb);
+  insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)
+    values ('case-project','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','joint_project',m,repeat('2',64),now()+interval '14 days');
+  insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash)
+    values ('case-project',auth.uid(),1,repeat('2',64));
+  begin
+    insert into public.meeting_requests(sender_id,recipient_id,note,proposed_at,duration_minutes,meeting_place)
+      values (auth.uid(),'22222222-2222-4222-8222-222222222222','One-sided project',now()+interval '1 day',20,'Онлайн');
+    raise exception 'One project approval opened invitation';
+  exception when insufficient_privilege then null; end;
+end $$;
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash)
+  values ('case-project',auth.uid(),1,repeat('2',64));
+insert into public.meeting_requests(sender_id,recipient_id,note,proposed_at,duration_minutes,meeting_place)
+  values (auth.uid(),'11111111-1111-4111-8111-111111111111','Bilateral project',now()+interval '1 day',20,'Онлайн');
+update public.match_cases set terms_hash=repeat('3',64),material=jsonb_set(material,'{terms,revision_limit}','4') where case_id='case-project';
+do $$ begin
+  if exists(select 1 from public.match_case_approvals a join public.match_cases c using(case_id)
+    where c.case_id='case-project' and a.withdrawn_at is null and a.approved_version=c.version) then raise exception 'Project revision inherited consent'; end if;
+end $$;
+update public.match_cases set status='abandoned' where case_id='case-project';
 insert into public.profile_blocks(blocker_id,blocked_id) values (auth.uid(),'11111111-1111-4111-8111-111111111111');
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
 do $$ begin

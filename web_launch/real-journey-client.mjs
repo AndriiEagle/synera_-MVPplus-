@@ -150,9 +150,15 @@ export class RealJourneyStore extends NeonStore {
   }
 }
 
-export function exchangeMaterial(me, peer, fields) {
+export const REAL_MATERIAL_MODES = Object.freeze(['exchange', 'joint_project', 'paid_service', 'referral', 'hybrid']);
+
+export function materialFromEditor(me, peer, fields = {}) {
   if (!UUID.test(me) || !UUID.test(peer) || me === peer) throw new ServiceError(403);
-  if (fields.compensation_status !== 'agreed_exchange') throw new Error('Обери взаємний обмін без грошової оплати.');
+  const mode = typeof fields.mode === 'string' ? fields.mode : '';
+  if (!REAL_MATERIAL_MODES.includes(mode)) throw new Error('Обери підтриманий режим умов.');
+  const components = mode === 'hybrid' ? [...new Set(Array.isArray(fields.components) ? fields.components : [])].sort() : [mode];
+  if (mode === 'hybrid' && components.length < 2) throw new Error('Поєднання потребує щонайменше двох явних компонентів.');
+  if (mode === 'paid_service' && fields.compensation_status !== 'agreed_money') throw new Error('Оплачувана послуга вимагає явної грошової винагороди, валюти й рахунку.');
   const leg = (prefix, giver, receiver) => {
     const value = { giver_id: giver, receiver_id: receiver, capability_tag: fields[prefix + '_tag'], target: fields[prefix + '_target'], acceptance_criteria: fields[prefix + '_criteria'] };
     const amount = fields[prefix + '_amount'], unit = fields[prefix + '_unit'];
@@ -160,10 +166,16 @@ export function exchangeMaterial(me, peer, fields) {
     return value;
   };
   const deliverables = [leg('give', me, peer), leg('take', peer, me)];
-  const material = canonicalMaterialPayload({ mode: 'exchange', components: ['exchange'],
+  const material = canonicalMaterialPayload({ mode, components,
     outcomes: deliverables.map(leg => ({ receiver_id: leg.receiver_id, capability_tag: leg.capability_tag, target: leg.target })),
     trial: { starts_on: fields.starts_on, due_on: fields.due_on, deliverables }, ...materialTermsFromInput(fields),
   });
-  if (caseMaterialProblems(material).length) throw new Error('Потрібно явно обрати всі умови обміну.');
+  if (caseMaterialProblems(material).length) throw new Error('Потрібно явно обрати всі матеріальні умови.');
   return material;
+}
+
+// Compatibility entrypoint for callers that intentionally offer only exchange.
+export function exchangeMaterial(me, peer, fields) {
+  if (fields.compensation_status !== 'agreed_exchange') throw new Error('Обери взаємний обмін без грошової оплати.');
+  return materialFromEditor(me, peer, { ...fields, mode: 'exchange', components: ['exchange'] });
 }

@@ -1,5 +1,5 @@
 -- Generated from supabase/case-state.proposal.sql; NOT APPLIED TO LIVE.
--- Source SHA256=a8e245546a741b35a1c82647a904e9910744a07f0e23c79418987e56e457b6c0
+-- Source SHA256=12522ecc32d2d0c3766b3afe98e45921c77790111e5f7958028d95b2170f6777
 begin;
 do $$ begin if to_regclass('public.match_cases') is null or to_regprocedure('public.synera_case_guard()') is null then raise exception 'Existing case-state migration required'; end if; end $$;
 create or replace function public.synera_case_guard() returns trigger language plpgsql security invoker set search_path = '' as $$

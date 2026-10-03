@@ -27,5 +27,5 @@
     "expired_case_closes_and_new_cycle_requires_fresh_consent": true,
     "logout_interrupts_pending_read_without_private_reappearance": true
   },
-  "requests": 248
+  "requests": 251
 }

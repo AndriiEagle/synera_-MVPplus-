@@ -11,9 +11,9 @@ select id,'Room fixture','Design','Sales',id <> '44444444-4444-4444-8444-4444444
   jsonb_build_object('version',1,'goal','Review','offer_tags',jsonb_build_array('design'),'need_tags',jsonb_build_array('sales'),
   'languages',jsonb_build_array('en'),'modes',jsonb_build_array('joint_project'),'available_from',current_date::text,
   'available_until',(current_date+14)::text,'city_code','zurich','max_km',25,'remote',true,'confidentiality',false,'accepts_confidentiality',false)
-from auth.users;
+from auth.users where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333','44444444-4444-4444-8444-444444444444');
 insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
-select id,'2026-09-05-pilot-3',true,true from auth.users where id <> '44444444-4444-4444-8444-444444444444';
+select id,'2026-09-05-pilot-3',true,true from auth.users where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');
 
 set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);

@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scope": "Actual local Chromium 390x844 against isolated handleNeon fixtures. This is not live Neon, SQL/RLS/JWT, deployed product, public endpoint, or physical Android evidence.",
+  "modes": {
+    "exchange": {
+      "viewport": "390x844",
+      "profile_capability": "fixture profiles declare reciprocal exchange capabilities",
+      "saved": true,
+      "reviewed": true,
+      "independently_approved": true,
+      "invitation_accepted": true,
+      "private_message": true,
+      "review_text": "Редакція 1 · Чернетка\n\nВзаємний обмін\n\nПеревірити версію\nТест Марія дає: Дизайн продукту\nРезультат: Один перевірений екран\nКритерій: Обидва переглянули екран на телефоні\nТи даєш: Автоматизація процесів\nРезультат: Один працюючий прототип\nКритерій: Відкривається й виконує узгоджений сценарій\nСтрок і умови\nПочаток: 2026-10-04\nСтрок: 2026-10-10\nКомпенсація: Взаємний обмін без грошової оплати\nРедакції: 1\nКонфіденційність: Потрібна\nІнтелектуальна власність: Спільна\nСкасування: Взаємне письмове повідомлення\n\nТест Андрій: ще не підтвердив(ла)\n\nТест Марія: ще не підтвердив(ла)",
+      "message": "Режим exchange: конкретний крок 💛 <script>literal</script>",
+      "axe_violations": 0,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "private_storage": "empty",
+      "status": "PASS"
+    },
+    "paid_service": {
+      "viewport": "390x844",
+      "profile_capability": "fixture profiles declare exchange only; no mode-specific match score was invented",
+      "saved": true,
+      "reviewed": true,
+      "independently_approved": true,
+      "invitation_accepted": true,
+      "private_message": true,
+      "review_text": "Редакція 1 · Чернетка\n\nОплачувана послуга\n\nПеревірити версію\nТест Марія дає: Дизайн продукту\nРезультат: Один перевірений екран\nКритерій: Обидва переглянули екран на телефоні\nТи даєш: Автоматизація процесів\nРезультат: Один працюючий прототип\nКритерій: Відкривається й виконує узгоджений сценарій\n\nВинагорода: 125.50 CHF\n\nРахунок: так\n\nСтрок і умови\nПочаток: 2026-10-04\nСтрок: 2026-10-10\nКомпенсація: Грошова винагорода\nРедакції: 1\nКонфіденційність: Потрібна\nІнтелектуальна власність: Спільна\nСкасування: Взаємне письмове повідомлення\n\nТест Андрій: ще не підтвердив(ла)\n\nТест Марія: ще не підтвердив(ла)",
+      "message": "Режим paid_service: конкретний крок 💛 <script>literal</script>",
+      "axe_violations": 0,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "private_storage": "empty",
+      "status": "PASS"
+    },
+    "referral": {
+      "viewport": "390x844",
+      "profile_capability": "fixture profiles declare exchange only; no mode-specific match score was invented",
+      "saved": true,
+      "reviewed": true,
+      "independently_approved": true,
+      "invitation_accepted": true,
+      "private_message": true,
+      "review_text": "Редакція 1 · Чернетка\n\nРекомендація\n\nПеревірити версію\nТест Марія дає: Дизайн продукту\nРезультат: Один перевірений екран\nКритерій: Обидва переглянули екран на телефоні\nТи даєш: Автоматизація процесів\nРезультат: Один працюючий прототип\nКритерій: Відкривається й виконує узгоджений сценарій\nСтрок і умови\nПочаток: 2026-10-04\nСтрок: 2026-10-10\nКомпенсація: Без винагороди\nРедакції: 1\nКонфіденційність: Потрібна\nІнтелектуальна власність: Спільна\nСкасування: Взаємне письмове повідомлення\n\nТест Андрій: ще не підтвердив(ла)\n\nТест Марія: ще не підтвердив(ла)",
+      "message": "Режим referral: конкретний крок 💛 <script>literal</script>",
+      "axe_violations": 0,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "private_storage": "empty",
+      "status": "PASS"
+    },
+    "hybrid": {
+      "viewport": "390x844",
+      "profile_capability": "fixture profiles declare exchange only; no mode-specific match score was invented",
+      "saved": true,
+      "reviewed": true,
+      "independently_approved": true,
+      "invitation_accepted": true,
+      "private_message": true,
+      "review_text": "Редакція 1 · Чернетка\n\nВзаємний обмін + Рекомендація\n\nПеревірити версію\nТест Марія дає: Дизайн продукту\nРезультат: Один перевірений екран\nКритерій: Обидва переглянули екран на телефоні\nТи даєш: Автоматизація процесів\nРезультат: Один працюючий прототип\nКритерій: Відкривається й виконує узгоджений сценарій\nСтрок і умови\nПочаток: 2026-10-04\nСтрок: 2026-10-10\nКомпенсація: Взаємний обмін без грошової оплати\nРедакції: 1\nКонфіденційність: Потрібна\nІнтелектуальна власність: Спільна\nСкасування: Взаємне письмове повідомлення\n\nТест Андрій: ще не підтвердив(ла)\n\nТест Марія: ще не підтвердив(ла)",
+      "message": "Режим hybrid: конкретний крок 💛 <script>literal</script>",
+      "axe_violations": 0,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "private_storage": "empty",
+      "status": "PASS"
+    },
+    "joint_project": {
+      "viewport": "390x844",
+      "profile_capability": "fixture profiles declare exchange only; no mode-specific match score was invented",
+      "saved": true,
+      "reviewed": true,
+      "independently_approved": true,
+      "invitation_accepted": true,
+      "private_message": true,
+      "review_text": "Редакція 1 · Чернетка\n\nСпільний проєкт\n\nПеревірити версію\nТест Марія дає: Дизайн продукту\nРезультат: Один перевірений екран\nКритерій: Обидва переглянули екран на телефоні\nТи даєш: Автоматизація процесів\nРезультат: Один працюючий прототип\nКритерій: Відкривається й виконує узгоджений сценарій\nСтрок і умови\nПочаток: 2026-10-04\nСтрок: 2026-10-10\nКомпенсація: Без винагороди\nРедакції: 1\nКонфіденційність: Потрібна\nІнтелектуальна власність: Спільна\nСкасування: Взаємне письмове повідомлення\n\nТест Андрій: ще не підтвердив(ла)\n\nТест Марія: ще не підтвердив(ла)",
+      "message": "Режим joint_project: конкретний крок 💛 <script>literal</script>",
+      "revision_clears_old_consent_and_blocks_invitation": true,
+      "axe_violations": 0,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "private_storage": "empty",
+      "status": "PASS"
+    }
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "page_errors": []
+}

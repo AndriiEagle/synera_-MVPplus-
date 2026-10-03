@@ -99,7 +99,7 @@ create table public.match_cases (
   case_id text primary key check (case_id ~ '^[A-Za-z0-9_:-]{1,64}$'),
   participant_low uuid not null references public.profiles(id) on delete cascade,
   participant_high uuid not null references public.profiles(id) on delete cascade,
-  mode text not null check (mode in ('exchange','paid_service','referral','hybrid')),
+  mode text not null check (mode in ('exchange','paid_service','referral','hybrid','joint_project')),
   material jsonb not null check (jsonb_typeof(material) = 'object'
     and material ?& array['mode','components','outcomes','trial','compensation','terms']
     and material - array['mode','components','outcomes','trial','compensation','terms'] = '{}'::jsonb
@@ -143,6 +143,35 @@ begin
 end $$;
 revoke all on function public.synera_case_guard() from public, anon, authenticated;
 create trigger match_case_guard before insert or update on public.match_cases for each row execute function public.synera_case_guard();
+-- The bilateral project is a distinct material mode. Keep legacy/hybrid shapes intact.
+-- Run after match_case_guard, so terminal closures preserve their original material.
+create function public.synera_case_project_guard() returns trigger language plpgsql security invoker set search_path = '' as $$
+declare party uuid;
+begin
+  if new.mode <> 'joint_project' or new.status <> 'open' then return new; end if;
+  if new.material->'components' is distinct from '["joint_project"]'::jsonb
+    or jsonb_typeof(new.material->'outcomes') is distinct from 'array'
+    or jsonb_typeof(new.material#>'{trial,deliverables}') is distinct from 'array' then
+    raise exception 'Invalid joint project material';
+  end if;
+  if exists(select 1 from jsonb_array_elements(new.material->'outcomes') o
+      where coalesce(o->>'receiver_id','') not in (new.participant_low::text,new.participant_high::text))
+    or exists(select 1 from jsonb_array_elements(new.material#>'{trial,deliverables}') d
+      where coalesce(d->>'giver_id','') not in (new.participant_low::text,new.participant_high::text)
+        or coalesce(d->>'receiver_id','') not in (new.participant_low::text,new.participant_high::text)
+        or d->>'giver_id'=d->>'receiver_id') then
+    raise exception 'Joint project material must belong to its participants';
+  end if;
+  foreach party in array array[new.participant_low,new.participant_high] loop
+    if not exists(select 1 from jsonb_array_elements(new.material->'outcomes') o where o->>'receiver_id'=party::text)
+      or not exists(select 1 from jsonb_array_elements(new.material#>'{trial,deliverables}') d where d->>'giver_id'=party::text) then
+      raise exception 'Joint project requires each contribution and result';
+    end if;
+  end loop;
+  return new;
+end $$;
+revoke all on function public.synera_case_project_guard() from public, anon, authenticated;
+create trigger match_case_project_guard before insert or update on public.match_cases for each row execute function public.synera_case_project_guard();
 alter table public.match_cases enable row level security;
 revoke all on public.match_cases from public, anon, authenticated;
 grant select on public.match_cases to authenticated;

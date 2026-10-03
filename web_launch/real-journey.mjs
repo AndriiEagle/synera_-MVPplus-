@@ -1,8 +1,8 @@
-import { RealJourneyStore, assertRealJourneyGate, exchangeMaterial } from './real-journey-client.mjs';
+import { RealJourneyStore, assertRealJourneyGate, materialFromEditor } from './real-journey-client.mjs';
 import { CAPABILITIES } from './profile-brief.mjs';
 
 const $ = id => document.getElementById(id);
-const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'), auth: $('real-auth'), content: $('real-content-panel'), people: $('real-people'), cases: $('real-cases'), meetings: $('real-meetings'), peer: $('real-peer'), terms: $('real-terms'), termsForm: $('real-terms-form'), review: $('real-terms-review'), approveCheck: $('real-approve-check'), approve: $('real-approve'), withdraw: $('real-withdraw'), invite: $('real-invite'), inviteForm: $('real-invite-form'), conversation: $('real-conversation'), transcript: $('real-transcript'), messageForm: $('real-message-form'), message: $('real-message'), refresh: $('real-refresh'), logout: $('real-logout') });
+const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'), auth: $('real-auth'), content: $('real-content-panel'), people: $('real-people'), cases: $('real-cases'), meetings: $('real-meetings'), peer: $('real-peer'), terms: $('real-terms'), termsForm: $('real-terms-form'), mode: $('real-mode'), hybrid: $('real-hybrid-components'), modeBoundary: $('real-mode-boundary'), money: $('real-money-terms'), paidBoundary: $('real-paid-boundary'), review: $('real-terms-review'), approveCheck: $('real-approve-check'), approve: $('real-approve'), withdraw: $('real-withdraw'), invite: $('real-invite'), inviteForm: $('real-invite-form'), conversation: $('real-conversation'), transcript: $('real-transcript'), messageForm: $('real-message-form'), message: $('real-message'), refresh: $('real-refresh'), logout: $('real-logout') });
 const state = { store: null, dashboard: null, peerId: null, caseState: null, meetingId: null, busy: false, epoch: 0, termsDirty: false, messageDraftMeeting: null, reviewKey: null };
 const el = (tag, text = '', attrs = {}) => { const node = document.createElement(tag); if (text) node.textContent = text; for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value); return node; };
 const setStatus = text => { ui.status.textContent = text; };
@@ -38,6 +38,12 @@ async function run(action, { keepDraft = false } = {}) {
 function makeButton(text, fn) { const button = el('button', text, { type: 'button' }); button.addEventListener('click', () => run(fn)); return button; }
 function appendEmpty(host, text) { host.append(el('p', text, { class: 'real-empty' })); }
 function populateTags() { for (const select of ui.termsForm.querySelectorAll('select[name="give_tag"],select[name="take_tag"]')) for (const [id, label] of Object.entries(CAPABILITIES)) select.append(el('option', label, { value: id })); }
+function syncModeEditor() {
+  const mode = ui.mode.value, money = ui.termsForm.elements.namedItem('compensation_status').value === 'agreed_money';
+  ui.hybrid.hidden = mode !== 'hybrid'; ui.money.hidden = !money;
+  ui.paidBoundary.hidden = mode !== 'paid_service';
+  ui.modeBoundary.textContent = mode === 'joint_project' ? 'Це двосторонній пробний спільний проєкт: кожна людина вручну описує свій конкретний внесок, результат і критерій. Це не автоматичний набір команди.' : mode === 'referral' ? 'Рекомендація не створює контакту чи згоди третьої особи: підтвердь їх окремо перед дією.' : mode === 'hybrid' ? 'Поєднання зберігає лише явно вибрані компоненти; вони не замінюють окремих погоджень.' : '';
+}
 function renderPeople() {
   clear(ui.people); const people = state.dashboard?.people || [];
   if (!people.length) return appendEmpty(ui.people, 'Наразі немає доступних профілів.');
@@ -81,7 +87,7 @@ function renderMeetings() {
     list.append(card);
   } ui.meetings.append(list);
 }
-const termLabels = { exchange: 'Взаємний обмін', paid_service: 'Оплачувана послуга', referral: 'Рекомендація', hybrid: 'Поєднання способів співпраці', agreed_money: 'Грошова винагорода', agreed_none: 'Без винагороди', agreed_exchange: 'Взаємний обмін без грошової оплати', required: 'Потрібна', not_required: 'Не потрібна', giver: 'У того, хто надає', receiver: 'У того, хто отримує', shared: 'Спільна', mutual_written_notice: 'Взаємне письмове повідомлення', either_party_before_start: 'Будь-хто до початку' };
+const termLabels = { exchange: 'Взаємний обмін', joint_project: 'Спільний проєкт', paid_service: 'Оплачувана послуга', referral: 'Рекомендація', hybrid: 'Поєднання способів співпраці', agreed_money: 'Грошова винагорода', agreed_none: 'Без винагороди', agreed_exchange: 'Взаємний обмін без грошової оплати', required: 'Потрібна', not_required: 'Не потрібна', giver: 'У того, хто надає', receiver: 'У того, хто отримує', shared: 'Спільна', mutual_written_notice: 'Взаємне письмове повідомлення', either_party_before_start: 'Будь-хто до початку' };
 function renderReview(current) {
   clear(ui.review);
   const key = current ? `${current.caseId}/${current.version}/${current.termsHash}` : null;
@@ -132,14 +138,17 @@ function updateApprovalControls() {
 }
 function fillCurrentTerms(current) {
   ui.termsForm.reset();
-  if (!current) return;
-  const values = { ...current.material.trial, compensation_status: current.material.compensation.status, ...current.material.terms };
+  if (!current) { syncModeEditor(); return; }
+  const values = { ...current.material.trial, mode: current.material.mode, compensation_status: current.material.compensation.status, ...current.material.terms };
+  if (current.material.compensation.status === 'agreed_money') Object.assign(values, { amount: (current.material.compensation.amount_minor / 100).toFixed(2), currency: current.material.compensation.currency, invoice: current.material.compensation.invoice_required ? 'yes' : 'no' });
   for (const [prefix, giver] of [['give', state.dashboard.own.id], ['take', state.peerId]]) {
     const leg = current.material.trial.deliverables.find(row => row.giver_id === giver);
     if (!leg) continue;
     Object.assign(values, { [prefix + '_tag']: leg.capability_tag, [prefix + '_target']: leg.target, [prefix + '_criteria']: leg.acceptance_criteria, [prefix + '_amount']: leg.effort?.amount || '', [prefix + '_unit']: leg.effort?.unit || '' });
   }
   for (const [key, value] of Object.entries(values)) { const input = ui.termsForm.elements.namedItem(key); if (input) input.value = String(value); }
+  for (const input of ui.termsForm.querySelectorAll('input[name="components"]')) input.checked = current.material.components.includes(input.value);
+  syncModeEditor();
 }
 async function selectPeer(peerId) {
   const peerChanged = state.peerId !== peerId;
@@ -150,8 +159,8 @@ async function selectPeer(peerId) {
   const current = await state.store.pairState(peerId); if (epoch !== state.epoch) return;
   state.caseState = current; fillCurrentTerms(current); state.termsDirty = false; renderPeer(); setStatus(current ? 'Показано поточну редакцію. Прочитай її перед підтвердженням.' : 'Нові умови порожні: заповни їх вручну.');
 }
-function formFields(form) { return Object.fromEntries(new FormData(form).entries()); }
-async function saveTerms(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.termsForm); const material = exchangeMaterial(state.dashboard.own.id, state.peerId, fields); const saved = await state.store.saveTerms(state.peerId, material, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; state.termsDirty = false; renderPeer(); setStatus('Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.'); }
+function formFields(form) { const data = new FormData(form), fields = Object.fromEntries(data.entries()); fields.components = data.getAll('components'); return fields; }
+async function saveTerms(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.termsForm); const material = materialFromEditor(state.dashboard.own.id, state.peerId, fields); const saved = await state.store.saveTerms(state.peerId, material, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; state.termsDirty = false; renderPeer(); setStatus('Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.'); }
 async function approve() { if (!state.peerId || !ui.approveCheck.checked || !state.caseState) return setStatus('Постав позначку лише після читання поточної редакції.'); const epoch = state.epoch; const saved = await state.store.approveTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus('Твоє підтвердження збережено.'); }
 async function withdraw() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const saved = await state.store.withdrawTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus('Твоє підтвердження відкликано.'); }
 async function closeTerms() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const dashboard = await state.store.closeTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.dashboard = dashboard; state.caseState = null; state.termsDirty = false; fillCurrentTerms(null); ui.inviteForm.reset(); renderAll(); setStatus('Умови закрито, історію збережено. Новий обмін потребує нових підтверджень.'); }
@@ -172,7 +181,7 @@ async function boot() {
   try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.store = new RealJourneyStore(config); await refresh(); }
   catch (error) { if (error?.status === 401) requiresLogin(); else unavailable(); }
 }
-ui.termsForm.addEventListener('input', () => { state.termsDirty = true; }); ui.termsForm.addEventListener('submit', event => { event.preventDefault(); run(() => saveTerms(event)); });
+ui.termsForm.addEventListener('input', () => { state.termsDirty = true; syncModeEditor(); }); ui.termsForm.addEventListener('change', syncModeEditor); ui.termsForm.addEventListener('submit', event => { event.preventDefault(); run(() => saveTerms(event)); });
 ui.approveCheck.addEventListener('change', updateApprovalControls); ui.approve.addEventListener('click', () => run(approve)); ui.withdraw.addEventListener('click', () => run(withdraw)); ui.inviteForm.addEventListener('submit', event => { event.preventDefault(); run(() => invite(event)); }); ui.messageForm.addEventListener('submit', event => { event.preventDefault(); run(() => sendMessage(event), { keepDraft: true }); });
 ui.refresh.addEventListener('click', () => run(() => refresh()));
 $('real-close').addEventListener('click', () => run(closeTerms));

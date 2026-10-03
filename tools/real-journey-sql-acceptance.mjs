@@ -45,6 +45,12 @@ try {
   const files = ['schema.proposal.sql','acceptance.sql','case-state.migration.sql','case-state.acceptance.sql',
     'meeting-location.migration.sql','meeting-location.acceptance.sql','group-room.migration.sql','group-room.acceptance.sql'];
   for (const name of files) {
+    if (name === 'group-room.acceptance.sql') run('existing_account_sentinel', `
+      insert into neon_auth."user"(id,name,email,"emailVerified") values ('55555555-5555-4555-8555-555555555555','Existing local sentinel','sentinel@synera-acceptance.example',true);
+      insert into public.profiles(id,display_name,brief) values ('55555555-5555-4555-8555-555555555555','Existing local sentinel',
+        jsonb_build_object('version',1,'goal','Preserve existing account','offer_tags',jsonb_build_array('design'),'need_tags',jsonb_build_array('sales'),
+          'languages',jsonb_build_array('en'),'modes',jsonb_build_array('exchange'),'available_from',current_date::text,'available_until',(current_date+14)::text,
+          'city_code','zurich','max_km',25,'remote',true,'confidentiality',false,'accepts_confidentiality',false));`);
     const bytes = await fs.readFile(path.join(root, 'neon', name)); receipt.source_sha256['neon/' + name] = sha(bytes);
     const contents = bytes.toString('utf8');
     if (name.endsWith('.acceptance.sql') || name === 'acceptance.sql') {
@@ -53,7 +59,9 @@ try {
     run(name, contents);
   }
   const fixtureCount = run('fixture_rollback', 'select count(*) from neon_auth."user";');
-  assert.equal(fixtureCount.stdout.trim(), '0'); receipt.fixture_users_left = 0;
+  assert.equal(fixtureCount.stdout.trim(), '1'); receipt.fixture_users_left = 0;
+  assert.equal(run('existing_account_preserved', "select count(*) from public.profiles where id='55555555-5555-4555-8555-555555555555' and display_name='Existing local sentinel';").stdout.trim(), '1');
+  receipt.existing_account_preserved = true;
   const caseMigration = await fs.readFile(path.join(root, 'neon/case-state.migration.sql'), 'utf8');
   const definition = caseMigration.match(/^create function public\.synera_case_guard\(\)[\s\S]*?\$\$;/m)?.[0];
   assert.ok(definition, 'Canonical case guard not found');
@@ -70,13 +78,21 @@ try {
     run('apply_additive_expiry_repair_locally', repair.toString('utf8'));
   }
   run('case_acceptance_after_restore', await fs.readFile(path.join(root, 'neon/case-state.acceptance.sql'), 'utf8'));
+  const projectGuard = caseMigration.match(/^create function public\.synera_case_project_guard\(\)[\s\S]*?\$\$;/m)?.[0];
+  assert.ok(projectGuard, 'Canonical project guard not found');
+  run('project_contribution_mutation', "create or replace function public.synera_case_project_guard() returns trigger language plpgsql security invoker set search_path='' as $$ begin return new; end $$;");
+  try {
+    const rejected = run('project_contribution_expected_red', await fs.readFile(path.join(root, 'neon/case-state.acceptance.sql'), 'utf8'), false);
+    assert.notEqual(rejected.status, 0); assert.match(rejected.stderr, /One-sided project accepted/); receipt.project_contribution_mutation_rejected = true;
+  } finally { run('restore_project_guard', projectGuard.replace('create function', 'create or replace function')); }
+  run('project_acceptance_after_restore', await fs.readFile(path.join(root, 'neon/case-state.acceptance.sql'), 'utf8'));
   // The established privacy oracle must reject a deliberate raw-table grant.
   run('grant_privacy_mutation', 'grant select on public.meeting_location_grants to authenticated;');
   try {
     const rejected = run('privacy_mutation_expected_red', await fs.readFile(path.join(root, 'neon/meeting-location.acceptance.sql'), 'utf8'), false);
     assert.notEqual(rejected.status, 0); assert.match(rejected.stderr, /Raw grant read allowed/); receipt.privacy_mutation_rejected = true;
   } finally { run('restore_private_grants', 'revoke all on public.meeting_location_grants from authenticated;'); }
-  assert.equal(run('final_fixture_rollback', 'select count(*) from neon_auth."user";').stdout.trim(), '0');
+  assert.equal(run('final_fixture_rollback', 'select count(*) from neon_auth."user";').stdout.trim(), '1');
   receipt.status = 'LOCAL_SQL_ACCEPTED_LIVE_HOLD';
 } catch (error) { receipt.failure = error.message; throw error;
 } finally {

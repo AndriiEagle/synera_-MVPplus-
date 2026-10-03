@@ -1,0 +1,12 @@
+{
+  "scope": "Prepared only; not executed",
+  "source_sha256": {
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/meeting-location.acceptance.sql": "9f8b533a612419c9df6771de4f8aa8303af92c2fcb80e56f68a165e499faef55",
+    "neon/group-room.acceptance.sql": "243f532336db120f86df3316a0cac33b43e0f0231d93acd01904ae9dabbc8b8d"
+  },
+  "sql_sha256": "25599a6b48a5e62576641337aa5dbede032c2c0fdf6272bb9e3c972f9f2d2199"
+}
