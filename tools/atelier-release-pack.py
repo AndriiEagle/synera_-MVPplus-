@@ -14,6 +14,7 @@ config = json.loads((source / "config.json").read_text(encoding="utf-8"))
 assert config["registrationEnabled"] is False
 assert not config.get("supabaseUrl") and not config.get("neonDataApiUrl")
 assert not config.get("googleMapsApiKey") and not config.get("groupRoomsEnabled")
+assert not config.get("localAI") and not config.get("journeyAI", {}).get("enabled")
 release = json.loads((source / "release.json").read_text(encoding="utf-8"))
 for entry in release["files"]:
     assert Path(entry["name"]).name == entry["name"]
@@ -32,8 +33,9 @@ assert (target / "index.html").read_bytes() == (source / "summit.html").read_byt
 assert all((target / name).read_bytes() == (source / name).read_bytes() for name in names - {"index.html"})
 receipt = dict(status="PASS", scope="Closed public demo only", site_id=hosting["project_id"], files=len(names),
                registration_enabled=False, group_rooms_enabled=False, embedded_maps=False, embedded_ai=False,
-               byte_readback="PASS", published=False, source_files=release["files"])
-out = root / "artifacts" / "design-20261003" / "release"
+               connected_journey="studio-journey.html" in names, byte_readback="PASS", published=False, source_files=release["files"])
+out = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else root / "artifacts" / "design-20261003" / "release"
+out.relative_to((root / "artifacts").resolve())
 out.mkdir(parents=True, exist_ok=True)
 (out / "PACKAGE.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
 print(json.dumps({k: v for k, v in receipt.items() if k != "source_files"}))

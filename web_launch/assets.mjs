@@ -8,6 +8,8 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'triangle.html': 'text/html', 'triangle.css': 'text/css', 'triangle.mjs': 'text/javascript',
   'triangle-room.mjs': 'text/javascript', 'explore-planner.mjs': 'text/javascript',
   'studio.html': 'text/html', 'studio.css': 'text/css', 'studio.mjs': 'text/javascript',
+  'studio-journey.html': 'text/html', 'journey.css': 'text/css', 'journey-ui.mjs': 'text/javascript',
+  'journey-core.mjs': 'text/javascript', 'journey-ai-client.mjs': 'text/javascript', 'journey-handoff.mjs': 'text/javascript',
   'rooms.html': 'text/html', 'rooms.css': 'text/css', 'rooms.mjs': 'text/javascript', 'room-api.mjs': 'text/javascript',
   'studio-install.mjs': 'text/javascript', 'studio-sw.mjs': 'text/javascript', 'studio.webmanifest': 'application/manifest+json',
   'session-value.mjs': 'text/javascript', 'declared-fit.mjs': 'text/javascript', 'group-logistics.mjs': 'text/javascript', 'archive-codec.mjs': 'text/javascript',

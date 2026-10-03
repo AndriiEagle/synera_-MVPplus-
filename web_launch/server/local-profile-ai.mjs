@@ -42,6 +42,20 @@ export function validLocalReceipt(receipt, prompt, output) {
     receipt.provider?.called === false && receipt.provider?.calls === 0 && receipt.provider?.actual_or_reserved_usd === 0 &&
     receipt.prompt_sha256 === hash(prompt) && receipt.output_sha256 === hash(output);
 }
+export async function runLocalConversationModel(prompt) {
+  const schema = fileURLToPath(new URL('./journey-ai.schema.json', import.meta.url));
+  // The canonical structured CLI owns its JSON system role; dialogue instructions
+  // live in the source-bound prompt rather than an ignored --system override.
+  const result = await python(['run', '--task-class', 'synthesis', '--stdin', '--start', '--schema', schema, '--max-tokens', '1200', '--temperature', '0.3'], prompt);
+  if(result.code===2&&result.value?.status?.reasons?.some(reason=>['cpu_or_ram_pressure','media_or_fullscreen_active'].includes(reason)))throw Object.assign(new Error('Локальні ресурси зараз зайняті.'),{code:'LOCAL_RESOURCE_BUSY'});
+  if (result.code !== 0 || !result.value?.result?.content || !result.value.receipt) throw new Error('Локальна модель не відповіла.');
+  const receipt = JSON.parse(await fs.readFile(result.value.receipt, 'utf8'));
+  if (!validLocalReceipt(receipt, prompt, result.value.result.content) || receipt.finish_reason !== 'stop' || receipt.schema_valid !== true || !receipt.model || !receipt.model_sha256) throw new Error('Відповідь не має повного перевіреного локального походження.');
+  return { content: result.value.result.content, receipt: { engine: 'local-domovyk', actualModel: receipt.model, modelSha256: receipt.model_sha256, finishReason: receipt.finish_reason, providerCalls: 0, actualUsd: 0, promptSha256: receipt.prompt_sha256, outputSha256: receipt.output_sha256, requestId: receipt.run_id, usage: receipt.usage, elapsedS: receipt.elapsed_s }, review: async () => {
+    const reviewed = await python(['accept', '--receipt', result.value.receipt, '--verdict', 'needs_review', '--evidence', 'Synera conversation JSON and local receipt hashes verified. Reply is advisory and cannot approve terms or publish facts; human review remains required.']);
+    if (![0, 2].includes(reviewed.code)) throw new Error('Локальний чек не зафіксований.');
+  } };
+}
 export function createLocalProfileAI({ nonce, runModel = runLocalProfileModel, maxCalls = 3 } = {}) {
   let running = false, calls = 0;
   return async function handle({ method, origin, expectedOrigin, host, access, contentType, body }) {

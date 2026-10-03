@@ -1,0 +1,24 @@
+{
+  "status": "transport_verified_needs_content_review",
+  "content": "{\n  \"reply\": \"Який стиль дизайну ви плануєте для першого екрана?\"\n}",
+  "receipt": {
+    "engine": "local-domovyk",
+    "actualModel": "gemma-4-e2b-qlty.gguf",
+    "modelSha256": "30f91a24f491f8aad18534dafe6c499fa753c7293b8df1e0b58cb81801e3bdc6",
+    "finishReason": "stop",
+    "providerCalls": 0,
+    "actualUsd": 0,
+    "promptSha256": "ee3144eb4b6da10f0b6d467824fdfedde0bf40637ecef20db78871a998bbd2a3",
+    "outputSha256": "6c4fe8927f2dab8390f1a69cc5b13e4e5c5fb442de222a72c756709a089c2e8c",
+    "requestId": "20261003T140803-51bf3b96",
+    "usage": {
+      "completion_tokens": 30,
+      "prompt_tokens": 137,
+      "total_tokens": 167,
+      "prompt_tokens_details": {
+        "cached_tokens": 46
+      }
+    },
+    "elapsedS": 7.829
+  }
+}

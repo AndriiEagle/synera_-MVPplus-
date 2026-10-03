@@ -1,0 +1,8 @@
+{
+  "status": "NEEDS_REVIEW_ROLE_QUALITY_AND_RESOURCE_HOLD",
+  "transportReceipt": "local-ai/ACCEPTANCE.json",
+  "finding": "Initial AI reply confused user need for design with other participant role. The neutral-L prompt was corrected; post-correction inference blocked by canonical CPU/RAM policy.",
+  "passed": "Exact local identity, hashes, full stop completion, UI advisory separation, no AI consent, transcript/archive binding.",
+  "latestRuntime": "local-ai/HTTP_FAILURE.json",
+  "publicAI": false
+}

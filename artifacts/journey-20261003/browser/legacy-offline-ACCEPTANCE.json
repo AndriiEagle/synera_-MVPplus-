@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "records": [
+    {
+      "route": "/studio",
+      "check": "explicit Atelier preference survives actual offline clean-URL reload",
+      "pass": true,
+      "cache_paths": [
+        "/studio.html",
+        "/studio.css",
+        "/studio.mjs",
+        "/studio-journey.html",
+        "/journey.css",
+        "/journey-ui.mjs",
+        "/journey-core.mjs",
+        "/journey-ai-client.mjs",
+        "/journey-handoff.mjs",
+        "/studio-install.mjs",
+        "/studio.webmanifest",
+        "/session-value.mjs",
+        "/declared-fit.mjs",
+        "/group-logistics.mjs",
+        "/archive-codec.mjs",
+        "/summit.css",
+        "/triangle.css",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/apple-touch-icon.png",
+        "/montserrat-400.woff2",
+        "/montserrat-500.woff2",
+        "/atelier.css",
+        "/atelier.mjs",
+        "/tokens.css"
+      ]
+    }
+  ],
+  "source": {
+    "atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "index.html": "26454b1db775bcca19ed0ccf541ed92d9a90f6140524e37ab5800e0df4afdff9",
+    "studio.html": "1eb2b03f33fe9dab8214992be94f610a10b83ca1bec25c75bc1f2ba5cc001699",
+    "triangle.html": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d",
+    "summit.html": "30f32bf65bd06fabce0ab0e4d08df018c02ca80e39e5d741cfb7ed9a9cca9340",
+    "assets.mjs": "8f237019e0c7693aca43ae7465afb7a8c242a2a0a218ea846c8e2ac5471e979f",
+    "studio-sw.mjs": "2a9c56b313e12a5b1f920140fc556b6f5a7ba83ffa5f270453fa1acfe021d626"
+  },
+  "provider_calls": 0,
+  "scope": "Local real Chromium; public/demo states only, not physical Android or deployed/live account proof"
+}

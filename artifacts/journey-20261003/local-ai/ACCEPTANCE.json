@@ -1,0 +1,39 @@
+{
+  "status": "PASS_LOCAL_RUNTIME_REQUIRES_HUMAN_CONTENT_REVIEW",
+  "physicalAndroid": false,
+  "publicAI": false,
+  "localInferenceCalls": 1,
+  "providerCalls": 0,
+  "actualUsd": 0,
+  "elapsedMs": 27177,
+  "syntheticInput": "Я можу автоматизувати бронювання кавових зустрічей для підприємців. Мені потрібен дизайн першого екрана. Який один конкретний результат нам варто погодити на 30 хвилин?",
+  "reply": "Чудово! Оскільки ти можеш автоматизувати бронювання зустрічей, а мені потрібен дизайн, пропоную зосередитися на дизайні першого екрана системи бронювання. Ми можемо обговорити структуру та ключові елементи, які мають бути на цьому екрані. Це дасть нам чітке завдання для початку роботи над дизайном. Як ти вважаєш, який функціонал має бути пріоритетним на цьому екрані?",
+  "receipt": {
+    "engine": "local-domovyk",
+    "actualModel": "gemma-4-e2b-qlty.gguf",
+    "modelSha256": "30f91a24f491f8aad18534dafe6c499fa753c7293b8df1e0b58cb81801e3bdc6",
+    "promptSha256": "9dbbce8ab8c27b2d62452ece47cd6afaf3c097c727ca94f72dd36beafb3b76c2",
+    "outputSha256": "7471b67b11b994dff11029291ddffe17e7fe350ddd0cfe1cec2c309ed0f81050",
+    "replySha256": "b3156b79c9f5f703da7dd6304f6b8ed1d1208f08fe0453c6eea56d857ff8b81c",
+    "turnId": "message-2",
+    "finishReason": "stop",
+    "providerCalls": 0,
+    "actualUsd": 0,
+    "requestId": "20261003T140845-ec973177",
+    "elapsedS": 18.66,
+    "usage": {
+      "inputTokens": 228,
+      "outputTokens": 120,
+      "totalTokens": 348
+    }
+  },
+  "checks": [
+    "explicit separate local AI consent",
+    "actual canonical DOMOVYK inference",
+    "reply SHA-256 bound to displayed text and last turn",
+    "exact model and stop completion",
+    "no AI approval or completed meeting",
+    "receipt and exact reply survive downloaded archive"
+  ],
+  "pageErrors": []
+}

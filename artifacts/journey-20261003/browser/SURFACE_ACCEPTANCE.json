@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": [
+    "discover current",
+    "map current",
+    "map Atelier",
+    "conversation current",
+    "proposal current",
+    "public shell offline, no cached consent or AI"
+  ],
+  "pageErrors": [],
+  "physicalAndroid": false
+}
