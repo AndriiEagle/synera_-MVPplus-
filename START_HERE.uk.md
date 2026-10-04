@@ -1,8 +1,14 @@
-# Synera: актуальний код і стан — 2026-10-03
+# Synera: актуальний код і стан — 2026-10-04
 
 Це спільна точка входу для Codex, Claude Code та іншого ноутбука. Копія чату не є копією коду або доказом запуску.
 
-## Найновіше приймання — реальний двосторонній шлях, 03.10.2026
+## Актуальне приймання — 04.10.2026
+
+**LOCAL_ACCEPTED_LIVE_HOLD.** [Актуальна таблиця всіх систем і досвіду користувача](artifacts/product-status-20261004/STATUS.uk.md) — перша точка читання; [точний rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) відокремлює локальний кандидат від production. Код `564fa9aad1c764ac0480e70bd7ee60ab0e5c8ab0`: збереження наступної чернетки, 15 груп Chromium, semantic RED/mutation. Нічна доробка додала receiver acceptance, двосторонню адресу, приватний export/viewer/social draft та recovery/session guards. Current/default/Atelier і чужа journey-ui збережені.
+
+Candidate `web_launch/dist-neon-draft-continuity-20261004`: 97 файлів, release SHA256 `b63391269c3c66625fb994e9b97514a05d1bd3da1837ee129b28f8486bd46a40`, unpublished. [Свіжий HTTP readback](artifacts/product-status-20261004/PUBLIC_READBACK.json): презентація200/config registration=false; окремий Neon pilot config200/registration=true; новий journey URL404 на обох hosts. Два живі акаунти/HTTP JWT/physical Android не прийняті. Push історично policy-blocked, без нової спроби/обходу. Production/schema/recovery approval pending; `synera-10` залишається paused. Відчуття в таблиці — UX-гіпотези, не виміряні емоції.
+
+## Історичне приймання — реальний двосторонній шлях, 03.10.2026
 
 **LOCAL_ACCEPTED_LIVE_HOLD.** Додано окремий `/real-journey.html`: наявний акаунт і профіль → взаємна відповідність → спільна версія умов → власне підтвердження кожного учасника → запрошення → прийняття адресатом → приватна переписка. Чинне SQL-правило вимагає обох підтверджень **до** запрошення; ця версія його зберігає. Старі демо, Current/Atelier та інші режими збережені. Прострочені умови можна явно закрити й почати новий обмін без успадкування згод.
 

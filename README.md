@@ -1,8 +1,10 @@
 # Synera — real-user PWA pilot
 
-> Current state (2026-10-03): [shared product entry point and verified release state](START_HERE.uk.md). Runtime: Neon + Cloudflare Pages. Historical Supabase-specific steps below are parked. Claude Code reads the same entry through `CLAUDE.md`.
+> Current state (2026-10-04): [systems and intended user experience](artifacts/product-status-20261004/STATUS.uk.md), [shared entry point](START_HERE.uk.md), [bounded rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Local candidate accepted; the new live journey is not deployed. Claude Code reads the same entry through `CLAUDE.md`.
 
-Latest addition: [separate two-account journey and exact acceptance limits](artifacts/real-journey-20261003/REPORT.uk.md). Shared terms, each participant's approval, invitation acceptance, private messaging and a fresh cycle after explicit closure are connected. 109 local checks and Chromium passed; real PostgreSQL16.15/RLS passed with a provider identity shim. The new gate remains closed, and this candidate is not a deployed two-account product.
+Latest code (`564fa9a`): a prior send/readback cannot erase the next unsent draft; 15 Chromium groups and a semantic mutation passed. Receiver outcome acceptance, bilateral address, private archive/viewer/social draft have [local evidence](artifacts/overnight-20261004/REPORT.uk.md). New journey routes remain absent from the public presentation and existing Neon pilot; live HTTP JWT, two accounts and physical Android are open gates.
+
+Historical foundation: [two-account journey and acceptance limits](artifacts/real-journey-20261003/REPORT.uk.md), including its earlier 109-test and isolated SQL receipts. These describe that version, not a finished deployed product.
 
 [Published product presentation and Android/iPhone access](https://synera-summit-20261001.andypokr911.chatgpt.site/) · [Sales, matching and Maps capability boundaries](docs/PRODUCT_VALUE_AND_SALES.uk.md). Paid checkout is not configured; native store releases and semantic deep matching are open requirements.
 
