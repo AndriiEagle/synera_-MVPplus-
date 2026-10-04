@@ -3,6 +3,7 @@ import { handleGoogleOAuth } from './google-oauth.mjs';
 import { handleMeetingLocation, locationReady } from './meeting-location.mjs';
 import { handleGroupRoom, groupRoomsReady } from './group-room.mjs';
 import { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';
+import { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -162,6 +163,19 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path.startsWith('/meeting-address/')) {
+      if (!meetingAddressReady(env)) throw new GatewayError(503, 'meeting_address_unavailable');
+      const route = path.match(/^\/meeting-address\/([a-f0-9-]{36})\/([A-Za-z0-9_:-]{1,64})$/);
+      if (!route || request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
+      const body = await readJson(request); let args;
+      try { args = meetingAddressRPCArgs(route[1], route[2], body); } catch { throw new GatewayError(400, 'meeting_address_invalid'); }
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_meeting_address', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt }, body: JSON.stringify(args),
+      }, 'meeting_address_unavailable');
+      return answer(await response.json());
+    }
     if (path.startsWith('/outcomes/')) {
       if (!outcomeReady(env)) throw new GatewayError(503, 'outcomes_unavailable');
       const route = path.match(/^\/outcomes\/([A-Za-z0-9_:-]{1,64})$/);
@@ -234,6 +248,7 @@ export function createNeonWorker(publicAssets) {
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
         realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
         caseOutcomesEnabled: outcomeReady(env),
+        meetingAddressEnabled: meetingAddressReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);
