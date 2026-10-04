@@ -1,0 +1,40 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_UI_RELEASE",
+  "generated_at": "2026-10-04T02:45:31.347Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local browser/UI and reviewable package with synthetic accounts; no production or physical Android proof",
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/studio.mjs": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+    "web_launch/dist-neon-real-journey-20261003/release.json": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc",
+    "web_launch/dist-neon-outcomes-api-20261004/release.json": "e71b53046222964167792e1896be4628a4ac7fbbb0a60be1b4505f2091145acf",
+    "artifacts/overnight-20261004/CASE_OUTCOME_BROWSER.json": "2fbb4cd43b3ff8ba4cc2643a3a5469b45a6b90bf596f9241ee27e320b8e1bc6b",
+    "artifacts/overnight-20261004/outcome-current-390x844.png": "c057e1306eaa9288be6e7171e8769680270b0ca6be6cb877989162493c6ef512",
+    "artifacts/overnight-20261004/outcome-confirmed-panel.png": "262bf20afb4a3e19554f8f01adc276e6f2d206c43db26bcf80b9fec385830c5a",
+    "artifacts/overnight-20261004/outcome-atelier-390x844.png": "144dff409ca2ad682b6f5c8ed4e7591fbac2e6475366e2853bf003723b89d8a2"
+  },
+  "base_commit": "ad944701defa0c969edd4e75003389e930b31f37",
+  "reused_proof": "Exact source hashes matched SQL, API, client and canonical Chromium receipts; unchanged full suites not rerun",
+  "dom_purge_mutation_rejected": true,
+  "mutation_scope": "Chromium route serves an isolated source variant without outcome purge on logout; canonical files and screenshots preserved",
+  "mode_editor_regression_tests": 2,
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-ui-20261004",
+    "files": 94,
+    "published": false
+  },
+  "worker_proof": "Bundled Worker bytes exactly match the prior gated API candidate; new UI assets match Chromium-accepted source",
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-ui-20261004",
+  "public_files": 94,
+  "release_sha256": "78407842a606f1eef96305585693d0c70c5c06caabdab928d91364309e760135",
+  "source_sha256": {
+    "tools/case-outcome-ui-release-acceptance.mjs": "a822fda6370b679047dd0c95d2d17e4601f5126edddcd306fd1ba5e0b07eea39"
+  },
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}
