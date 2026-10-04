@@ -2,7 +2,7 @@
 
 ## Поточний стан
 
-**RUN_01_ACCEPTED_LOCAL_SQL:** перший heartbeat виконав новий серверний крок підтвердження результату на ізольованій локальній PostgreSQL. `synera-10` залишається ACTIVE, цей чат `01a0a673-47c0-74d1-a768-7867f3dca2bc`, інтервал 30 хвилин, максимум 20 запусків. Кінцевий час робіт — 2026-10-04 12:28:45 Europe/Zurich (10:28:45 UTC). Нічна робота вже почалася; це не приймання всього продукту.
+**RUN_02_ACCEPTED_LOCAL_API:** серверний SQL та окремий захищений API підтвердження результату перевірені локально. `synera-10` залишається ACTIVE, цей чат `01a0a673-47c0-74d1-a768-7867f3dca2bc`, інтервал 30 хвилин, максимум 20 запусків. Кінцевий час робіт — 2026-10-04 12:28:45 Europe/Zurich (10:28:45 UTC). Frontend і живий продукт ще не прийняті.
 
 Для виконання потрібні відкритий Codex, доступний комп'ютер без сну, інтернет і доступна квота. Налаштування Windows не змінені. Майбутні проходи використовуватимуть підписку Codex; її витрати й економія не виміряні.
 
@@ -37,5 +37,23 @@
 **Межі:** це збережені підтвердження учасників (`proof_scope=participant_attestation`), не незалежна перевірка якості чи фізичної зустрічі. Підписаний JWT, живі акаунти, Android, frontend, API route, production deploy і відновлення не перевірені цим проходом. Ця нова міграція не входить до попереднього кандидата з трьома міграціями; попереднє питання про їх застосування не охоплює її.
 
 **NEXT — 15 хвилин:** підключити окремий вимкнений за замовчуванням Neon API route до цього RPC і перевірити session/origin/body gates; потім приєднати client/UI окремим кроком. Не застосовувати міграцію до production без нового точного погодження.
+
+## Прохід 02 — захищений API та зібраний Worker
+
+Локальний SQL із проходу 01 збережений у commit `c8818f2ba347613d5dc60d33bc5243bbd19b22ab`.
+
+Додано POST `/api/neon/outcomes/<caseId>` у чинний Neon gateway, без загального RPC proxy чи доступу до `match_outcome_events`. Новий маршрут закритий за замовчуванням і потребує одночасно pilot, real journey та окремого `SYNERA_CASE_OUTCOMES_READY=true`. Публічна конфігурація має типізований `caseOutcomesEnabled`; він не активує сервер сам по собі.
+
+- Успадковані origin/client-header/session gates збережені. До бази йде тільки фіксований RPC та поточний JWT з перевіреної Neon session; caller Authorization/cookies/actor/timestamps не передаються.
+- Дозволені лише поля потрібної дії: state, submit, check, accept, decline. Пропущені intent, некоректна редакція/hash, нейтральна причина поза контрактом, сторонні поля, некоректний JSON/Content-Type та oversized UTF-8 body відхиляються.
+- **79/79 цільових тестів PASS**, FAIL/SKIP=0: `node --test neon/case-outcome.test.mjs neon/worker.test.mjs neon/group-room.test.mjs neon/meeting-location.test.mjs web_launch/real-journey-client.test.mjs web_launch/data.test.mjs web_launch/mobile-pilot.test.mjs`. Це перевірки локального транспорту, не підписаного JWT у провайдера.
+- Перед зміною чинного Worker пройшла окрема семантична перевірка origin boundary. Та сама перевірка зловила навмисне вимкнення cross-site guard в ізольованому модулі; канонічні файли для mutation не змінювалися. Diff review не виявив потреби в додатковому розширенні scope.
+- [CASE_OUTCOME_GATEWAY.json](CASE_OUTCOME_GATEWAY.json): PASS_LOCAL_BUNDLED_GATEWAY. Окремий локальний пакет `web_launch/dist-neon-outcomes-api-20261004`, 94 дозволені файли, bytes/hashes перевірені. Закритий bundled Worker зробив 0 upstream calls; увімкнений зробив лише 2 synthetic fixture calls (Auth + RPC), без мережі.
+- Старий candidate `dist-neon-real-journey-20261003` і незакомічена journey-ui збережені за hash. Новий пакет бере accepted committed journey-ui, без публікації чужої правки. Новий generated dist не додається до commit; owned source/receipts зберігаються окремо.
+- SQL-доказ проходу 01 повторно використаний тільки після звірки всіх записаних source hashes. Незмінені SQL suites не запускалися повторно. PostgreSQL залишилася зупиненою.
+
+**Межі:** API/bundled Worker перевірені з fixtures. Frontend, живі provider sessions/JWT, production SQL/deploy і фізичний Android не перевірені. Новий flag, secrets чи production не змінювалися.
+
+**NEXT — 15 хвилин:** додати client-адаптер із перевіркою редакції/відповіді та явних дій; потім підключити компактний екран результатів і пройти реальні Chromium-кліки локально. Старі режими й цикл переписки зберегти.
 
 Models used: none (provider calls=0, USD=$0.00). Витрати основної підписки не виміряні.

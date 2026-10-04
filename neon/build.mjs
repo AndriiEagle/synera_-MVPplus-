@@ -16,7 +16,7 @@ if ((await fs.readdir(directory)).some(name => ![...assets, ...generated].includ
 const policy = await fs.readFile(path.join(root, 'pilot-policy.mjs'), 'utf8');
 const workerSource = await fs.readFile(new URL('./worker.mjs', import.meta.url), 'utf8');
 const policyImport = "import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';";
-const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';";
+const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';\nimport { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';";
 const googleSource = await fs.readFile(new URL('./google-oauth.mjs', import.meta.url), 'utf8');
 if (!workerSource.startsWith(expectedImports) || /\bimport\s/.test(workerSource.slice(expectedImports.length)) ||
     !googleSource.startsWith(policyImport) || /\bimport\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');
@@ -31,7 +31,10 @@ const location = '\nconst { handleMeetingLocation, locationReady } = (() => {\n'
 const groupSource = await fs.readFile(new URL('./group-room.mjs', import.meta.url), 'utf8');
 if (/\bimport\s/.test(groupSource)) throw new Error('Room dependencies changed; review build');
 const group = '\nconst {handleGroupRoom,groupRoomsReady}=(()=>{\n' + groupSource.replace(/^export /gm, '') + '\nreturn {handleGroupRoom,groupRoomsReady};\n})();\n';
-const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
+const outcomeSource = await fs.readFile(new URL('./case-outcome.mjs', import.meta.url), 'utf8');
+if (/\bimport\s/.test(outcomeSource)) throw new Error('Outcome dependencies changed; review build');
+const outcome = '\nconst {outcomeReady,outcomeRPCArgs}=(()=>{\n' + outcomeSource.replace(/^export /gm, '') + '\nreturn {outcomeReady,outcomeRPCArgs};\n})();\n';
+const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
 const receipt = { built_at: new Date().toISOString(), backend: 'neon', cloudflare_pages_advanced_mode: true, files: [], published: false, live_auth_verified: false, live_rls_verified: false, automatic_public_ai: false };
 for (const name of assets) await fs.copyFile(path.join(root, name), path.join(directory, name));
 await fs.writeFile(path.join(directory, '_worker.js'), worker);

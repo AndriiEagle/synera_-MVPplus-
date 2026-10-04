@@ -2,6 +2,7 @@ import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';
 import { handleGoogleOAuth } from './google-oauth.mjs';
 import { handleMeetingLocation, locationReady } from './meeting-location.mjs';
 import { handleGroupRoom, groupRoomsReady } from './group-room.mjs';
+import { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -161,6 +162,19 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path.startsWith('/outcomes/')) {
+      if (!outcomeReady(env)) throw new GatewayError(503, 'outcomes_unavailable');
+      const route = path.match(/^\/outcomes\/([A-Za-z0-9_:-]{1,64})$/);
+      if (!route || request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
+      const body = await readJson(request); let args;
+      try { args = outcomeRPCArgs(route[1], body); } catch { throw new GatewayError(400, 'outcome_invalid'); }
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_case_outcome', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt }, body: JSON.stringify(args),
+      }, 'outcomes_unavailable');
+      return answer(await response.json());
+    }
     if (path.startsWith('/rooms/')) {
       if (!groupRoomsReady(env)) throw new GatewayError(503, 'rooms_unavailable');
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
@@ -219,6 +233,7 @@ export function createNeonWorker(publicAssets) {
         googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
         realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
+        caseOutcomesEnabled: outcomeReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

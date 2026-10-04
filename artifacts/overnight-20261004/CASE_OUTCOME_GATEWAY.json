@@ -1,0 +1,41 @@
+{
+  "status": "PASS_LOCAL_BUNDLED_GATEWAY",
+  "generated_at": "2026-10-04T01:40:31.632Z",
+  "scope": "Local bundled Worker and synthetic Auth/Data API transport; not signed HTTP JWT, deployed feature or physical Android",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "source_sha256": {
+    "neon/worker.mjs": "6e9885c9bd60ca52782b096288962fd52ac5d49f396e8d0fdd1fcaf7fd5e5d0d",
+    "neon/case-outcome.mjs": "84e19ab78520c143a4e1622b783afa77ea15d82b82cd9bde2ec0ca560419820e",
+    "neon/case-outcome.test.mjs": "45308aea505898da2e826af11cb4bb506a614f810bab64335b977e579c8037b9",
+    "neon/build.mjs": "395484b69db543baca2d38d16c9c2f382ac10cd24bb783ee6d75131c1faf2c4b",
+    "web_launch/config.mjs": "1cde0aad09fc2daeddf4ee2cdf716a773ab6545b72cd2a41c2426d9b671604ee",
+    "web_launch/pilot-policy.mjs": "2448fccaa949df9066d93d604c9670700db06e20b476866b43a7a46063194ac1",
+    "neon/google-oauth.mjs": "0e8839c19aa5b427df821a505189f237de23b4d109a5742a262b376faf6678ca",
+    "neon/meeting-location.mjs": "73de7d89f33b028aaf464aed9e6ef9827b9a786ef7cd631087e961bfa4c790a6",
+    "neon/group-room.mjs": "e66e0224256c13a9d4c6eac1fcf335c3774e278d710070a552ddd8a0843197ae",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "web_launch/assets.mjs": "e85cb003b9423094cb7b7e00717bd1cdd0e4cf77a4ef8be762558b1cd47c009b",
+    "tools/case-outcome-gateway-acceptance.mjs": "24e9de041af1ec4f0e97b8a6900ebf21a86d2ea64627f0a3ee4399e67e575234"
+  },
+  "base_commit": "c8818f2ba347613d5dc60d33bc5243bbd19b22ab",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-api-20261004",
+    "files": 94,
+    "published": false
+  },
+  "closed_worker_upstream_calls": 0,
+  "enabled_worker_synthetic_calls": 2,
+  "reused_sql": "CASE_OUTCOME_SQL.json, exact recorded source hashes still match; no SQL rerun",
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/dist-neon-real-journey-20261003/release.json": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc"
+  },
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-api-20261004",
+  "public_files": 94,
+  "release_sha256": "e71b53046222964167792e1896be4628a4ac7fbbb0a60be1b4505f2091145acf",
+  "published": false,
+  "live_accounts": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "physical_android": "NOT_RUN"
+}

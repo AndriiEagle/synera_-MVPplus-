@@ -10,6 +10,10 @@ export function validateConfig(config) {
   if (typeof registrationEnabled !== 'boolean') throw new Error('Некоректна налаштування реєстрації');
   if (registrationEnabled && (!config.pilotSafetyEnabled || !config.publicSiteUrl)) throw new Error('Реєстрація вимагає перевірену схему безпеки пілоту та публічний HTTPS сайт.');
   const optional = {};
+  if (config.caseOutcomesEnabled !== undefined) {
+    if (typeof config.caseOutcomesEnabled !== 'boolean' || (config.caseOutcomesEnabled && (config.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true || config.realJourneyEnabled !== true))) throw new Error('Некоректне налаштування підтвердження результатів');
+    optional.caseOutcomesEnabled = config.caseOutcomesEnabled;
+  }
   if (config.realJourneyEnabled !== undefined) {
     if (typeof config.realJourneyEnabled !== 'boolean' || (config.realJourneyEnabled && (config.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true))) throw new Error('Некоректне налаштування спільного маршруту');
     optional.realJourneyEnabled = config.realJourneyEnabled;
