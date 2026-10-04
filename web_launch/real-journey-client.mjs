@@ -2,6 +2,7 @@ import { NeonStore } from './neon-store.mjs';
 import { ServiceError } from './profile-store.mjs';
 import { compareRealProfiles } from './profile-brief.mjs';
 import { packArchive } from './archive-codec.mjs';
+import { createSession, confirmOutcome, createSocialDraft } from './session-value.mjs';
 import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, caseParticipantProblems, materialTermsFromInput, approveCase, abandonCase } from './business-case.mjs';
 
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
@@ -120,6 +121,34 @@ export class RealJourneyStore extends NeonStore {
     const packed = await packArchive(JSON.stringify(archive), compress); guard();
     const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
     return { ...packed, fileName: `synera-outcome-${current.caseId.replace(/[^A-Za-z0-9_-]/g, '-')}-v${current.version}.json` };
+  }
+  async socialDraft(peerId, reviewed, { wording = 'general' } = {}) {
+    if (!this.#outcomesEnabled) throw new ServiceError(503, 'case_outcomes_not_ready');
+    const socialEpoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
+    const guard = () => { if (!actor || this.user?.id !== actor || socialEpoch !== this.#outcomeEpoch) throw new ServiceError(401, 'outcome_session_changed'); };
+    guard(); if (!['general', 'linkedin'].includes(wording)) throw new ServiceError(400);
+    const eligible = value => value?.status === 'approved_for_next_step' && Date.parse(value.expiresAt) > Date.now();
+    const current = await this.pairState(peerId); guard(); this.#expect(current, expected);
+    if (!eligible(current)) throw new JourneyConflict();
+    const result = await this.outcomeState(peerId, current); guard();
+    if (!result.outcome_confirmed) throw new Error('Чернетка досягнення доступна після приймання всіх результатів їхніми одержувачами.');
+    const own = result.deliverables.filter(row => row.giver_id === actor);
+    if (!own.length) throw new ServiceError(403);
+    // Adapt existing attestation events to the conservative local draft contract.
+    // These pure confirmations never submit votes or claim verified identities.
+    let session = createSession({ sessionId: current.caseId, participantIds: current.participants,
+      outcome: { revision: current.version, facts: own.map(row => ({ sourceId: `result-${row.index}`, text: row.target })) } });
+    for (const id of current.participants) {
+      const accepted = result.events.filter(event => event.kind === 'accept' && event.actor_id === id).at(-1);
+      session = confirmOutcome(session, { participantId: id, revision: current.version, at: Date.parse(accepted?.created_at) });
+    }
+    const draft = createSocialDraft(session, { wording });
+    draft.text += '\n\nЦе мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.';
+    const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
+    if (!eligible(latest)) throw new JourneyConflict();
+    return { ...draft, proof_scope: result.proof_scope,
+      case: { caseId: current.caseId, version: current.version, termsHash: current.termsHash },
+      attestationReferences: own.map(row => ({ sourceId: `result-${row.index}`, eventId: result.events.find(event => event.kind === 'accept' && event.index === row.index).id })) };
   }
   async #actor(peerId) {
     this.requireRealPilot();

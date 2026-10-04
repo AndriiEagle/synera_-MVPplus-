@@ -1,0 +1,31 @@
+{
+  "status": "PASS_LOCAL_CASE_SOCIAL_BROWSER",
+  "generated_at": "2026-10-04T04:10:29.349Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard",
+  "checks": [
+    "one accepted leg exposes no social achievement",
+    "explicit checkbox creates only actor contribution; no evidence, identity or outcome write",
+    "LinkedIn format requires new choice; edited text selected without OS clipboard or publication",
+    "withdrawing local draft consent cancels pending generation",
+    "withdrawn case approval hides and clears draft",
+    "logout purges social draft and permission"
+  ],
+  "source_sha256": {
+    "web_launch/real-journey-client.mjs": "d5dcca643e2ae02100cbad5f03537205cd1775a4c05b9d8c32b70688b5900976",
+    "web_launch/real-journey.mjs": "dc082b2d1631de3aa65406d7daca360e233778f259ab9ff870952ddd83bd472c",
+    "web_launch/real-journey.html": "ad8567446dc2d6d045c01b84567958937a4545e6897d0b4e59e9da8413c55356",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "tools/case-social-draft-browser.mjs": "13410f361cc1667a5907cd82077941639bd314f8cce90ed2b65ebcb5aa29ce32"
+  },
+  "axe_current": 0,
+  "axe_atelier": 0,
+  "no_overflow": {
+    "width": 390,
+    "viewport": 390
+  },
+  "no_private_storage": true,
+  "page_errors": [],
+  "external_requests": 0
+}

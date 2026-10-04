@@ -7,6 +7,7 @@ const state = { store: null, dashboard: null, peerId: null, caseState: null, mee
 Object.assign(state, { outcomesEnabled: false, conversationPeer: null, outcomeContext: null, outcomeData: null });
 const outcomeUI = { panel: $('real-outcomes'), refresh: $('real-outcome-refresh'), status: $('real-outcome-status'), cards: $('real-outcome-cards'), history: $('real-outcome-history'), events: $('real-outcome-events') };
 Object.assign(outcomeUI, { exportControls: $('real-outcome-export-controls'), export: $('real-outcome-export'), compress: $('real-outcome-compress') });
+Object.assign(outcomeUI, { socialControls: $('real-social-controls'), socialWording: $('real-social-wording'), socialConsent: $('real-social-consent'), socialCreate: $('real-social-create'), socialOutput: $('real-social-output'), socialText: $('real-social-text'), socialSelect: $('real-social-select') });
 const el = (tag, text = '', attrs = {}) => { const node = document.createElement(tag); if (text) node.textContent = text; for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value); return node; };
 const setStatus = text => { ui.status.textContent = text; };
 const clear = node => node.replaceChildren();
@@ -95,7 +96,8 @@ const termLabels = { exchange: 'Взаємний обмін', joint_project: 'С
 const outcomeLabels = { pending: 'Очікує доказу', evidence_supplied: 'Доказ подано', checked_with_scope: 'Перевірено за критерієм', accepted: 'Прийнято одержувачем', declined_dispute_open: 'Є відкритий спір' };
 const reasonLabels = { not_delivered: 'Результат не надано', outside_agreed_scope: 'Поза погодженим обсягом', below_acceptance_criteria: 'Критерій ще не виконано', other: 'Інша причина' };
 const caseKey = current => current && `${current.caseId}/${current.version}/${current.termsHash}`;
-function clearOutcomes() { state.outcomeContext = null; state.outcomeData = null; clear(outcomeUI.cards); clear(outcomeUI.events); outcomeUI.status.textContent = ''; outcomeUI.history.hidden = true; outcomeUI.exportControls.hidden = true; }
+function clearSocialDraft() { state.socialGeneration = (state.socialGeneration || 0) + 1; state.socialDraft = null; outcomeUI.socialText.value = ''; outcomeUI.socialOutput.hidden = true; outcomeUI.socialConsent.checked = false; outcomeUI.socialCreate.disabled = true; }
+function clearOutcomes() { state.outcomeContext = null; state.outcomeData = null; clear(outcomeUI.cards); clear(outcomeUI.events); outcomeUI.status.textContent = ''; outcomeUI.history.hidden = true; outcomeUI.exportControls.hidden = true; clearSocialDraft(); outcomeUI.socialControls.hidden = true; }
 function syncOutcomesEntry() {
   const peerId = state.peerId || state.conversationPeer;
   outcomeUI.panel.hidden = !state.outcomesEnabled || !state.dashboard || !peerId;
@@ -141,6 +143,8 @@ function outcomeForm(card, context, index, action, label, field, options = null)
 }
 function renderOutcomes() {
   const context = state.outcomeContext, result = state.outcomeData; if (!context || !result) return;
+  clearSocialDraft();
+  outcomeUI.socialControls.hidden = !result.outcome_confirmed || context.reviewed.status !== 'approved_for_next_step' || Date.parse(context.reviewed.expiresAt) <= Date.now();
   clear(outcomeUI.cards); clear(outcomeUI.events);
   const accepted = result.deliverables.filter(row => row.phase === 'accepted').length;
   outcomeUI.status.textContent = `Редакція ${result.version} · ${result.outcome_confirmed ? 'Усі результати прийняті одержувачами' : `Прийнято ${accepted} з ${result.deliverables.length} результатів`}`;
@@ -185,6 +189,18 @@ async function exportOutcome() {
   try { const link = el('a', '', { href: url, download: packed.fileName }); link.click(); }
   finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
   setStatus(`Приватну копію створено. Вихідний UTF-8: ${packed.originalBytes} байт; файл: ${packed.envelopeBytes} байт.`);
+}
+async function createOutcomeSocialDraft() {
+  const context = state.outcomeContext, epoch = state.epoch;
+  if (!context || !outcomeUI.socialConsent.checked) return;
+  clearSocialDraft(); outcomeUI.socialConsent.checked = true; outcomeUI.socialCreate.disabled = false;
+  const generation = state.socialGeneration;
+  try {
+    const draft = await state.store.socialDraft(context.peerId, context.reviewed, { wording: outcomeUI.socialWording.value });
+    if (epoch !== state.epoch || state.outcomeContext !== context || generation !== state.socialGeneration || !outcomeUI.socialConsent.checked) return;
+    state.socialDraft = draft; outcomeUI.socialText.value = draft.text; outcomeUI.socialOutput.hidden = false;
+    setStatus('Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.');
+  } catch (error) { if (epoch === state.epoch && error.status === 409) { clearSocialDraft(); outcomeUI.socialControls.hidden = true; } throw error; }
 }
 function renderReview(current) {
   clear(ui.review);
@@ -286,6 +302,10 @@ ui.approveCheck.addEventListener('change', updateApprovalControls); ui.approve.a
 ui.refresh.addEventListener('click', () => run(() => refresh()));
 outcomeUI.refresh.addEventListener('click', () => run(openOutcomes));
 outcomeUI.export.addEventListener('click', () => run(exportOutcome));
+outcomeUI.socialConsent.addEventListener('change', () => { outcomeUI.socialCreate.disabled = !outcomeUI.socialConsent.checked; if (!outcomeUI.socialConsent.checked) clearSocialDraft(); });
+outcomeUI.socialWording.addEventListener('change', clearSocialDraft);
+outcomeUI.socialCreate.addEventListener('click', () => run(createOutcomeSocialDraft));
+outcomeUI.socialSelect.addEventListener('click', () => { outcomeUI.socialText.focus(); outcomeUI.socialText.select(); setStatus('Текст виділено. Скопіюй його вручну після перевірки; Synera нічого не публікує.'); });
 if (typeof CompressionStream !== 'function') { outcomeUI.compress.checked = false; outcomeUI.compress.disabled = true; }
 $('real-close').addEventListener('click', () => run(closeTerms));
 ui.logout.addEventListener('click', async () => { const store = state.store; requiresLogin(); try { await store.signOut(); setStatus('Ти вийшов/вийшла з Synera.'); } catch { setStatus('Локальні дані прибрано. Серверний вихід потребує повторної спроби.'); } });
