@@ -172,6 +172,8 @@ Models used: none (provider calls=0, USD=$0.00). Витрати основної
 
 **Результат:** знайдений реальний дефект старого location SQL: учасник міг одноосібно PATCH-нути `meeting_address` вже прийнятої зустрічі. Старий trigger лише скасовував GPS. Додана окрема review-міграція [meeting-address-agreement.migration.sql](../../neon/meeting-address-agreement.migration.sql); старі generated migrations та чинний frontend збережені.
 
+**Коміт реалізації та SQL-доказів:** `9f27338d2a8eb0c3e7c94bd0628eebb8d937efce`, локально на `codex/synera-product-20261002`. Push не виконаний; єдина tracked dirty після commit — незмінена чужа journey-ui.
+
 **Інваріант:** адреса зустрічі змінюється лише після явної згоди іншого учасника на конкретну останню пропозицію, поточну редакцію кейсу та той самий час/місто. Мовчання не є згодою. Нова пропозиція не переносить старе приймання; відмова й запізніла відповідь не змінюють встановлену адресу. Історія пропозицій/рішень залишається приватною.
 
 - [MEETING_ADDRESS_RED.json](MEETING_ADDRESS_RED.json): той самий [semantic direct-patch guard](../../neon/meeting-address-direct-patch.regression.sql) до продуктової зміни впав на `One participant changed the address without peer approval`. Це справжній UPDATE під authenticated/RLS, а не пошук literals. Фікстуру прийнятої зустрічі зі сталим UUID створила локальна owner-роль; цей seed не доводить клієнтське запрошення.
