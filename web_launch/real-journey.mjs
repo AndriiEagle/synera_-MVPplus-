@@ -6,6 +6,7 @@ const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'),
 const state = { store: null, dashboard: null, peerId: null, caseState: null, meetingId: null, busy: false, epoch: 0, termsDirty: false, messageDraftMeeting: null, reviewKey: null };
 Object.assign(state, { outcomesEnabled: false, conversationPeer: null, outcomeContext: null, outcomeData: null });
 const outcomeUI = { panel: $('real-outcomes'), refresh: $('real-outcome-refresh'), status: $('real-outcome-status'), cards: $('real-outcome-cards'), history: $('real-outcome-history'), events: $('real-outcome-events') };
+Object.assign(outcomeUI, { exportControls: $('real-outcome-export-controls'), export: $('real-outcome-export'), compress: $('real-outcome-compress') });
 const el = (tag, text = '', attrs = {}) => { const node = document.createElement(tag); if (text) node.textContent = text; for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value); return node; };
 const setStatus = text => { ui.status.textContent = text; };
 const clear = node => node.replaceChildren();
@@ -94,7 +95,7 @@ const termLabels = { exchange: 'Взаємний обмін', joint_project: 'С
 const outcomeLabels = { pending: 'Очікує доказу', evidence_supplied: 'Доказ подано', checked_with_scope: 'Перевірено за критерієм', accepted: 'Прийнято одержувачем', declined_dispute_open: 'Є відкритий спір' };
 const reasonLabels = { not_delivered: 'Результат не надано', outside_agreed_scope: 'Поза погодженим обсягом', below_acceptance_criteria: 'Критерій ще не виконано', other: 'Інша причина' };
 const caseKey = current => current && `${current.caseId}/${current.version}/${current.termsHash}`;
-function clearOutcomes() { state.outcomeContext = null; state.outcomeData = null; clear(outcomeUI.cards); clear(outcomeUI.events); outcomeUI.status.textContent = ''; outcomeUI.history.hidden = true; }
+function clearOutcomes() { state.outcomeContext = null; state.outcomeData = null; clear(outcomeUI.cards); clear(outcomeUI.events); outcomeUI.status.textContent = ''; outcomeUI.history.hidden = true; outcomeUI.exportControls.hidden = true; }
 function syncOutcomesEntry() {
   const peerId = state.peerId || state.conversationPeer;
   outcomeUI.panel.hidden = !state.outcomesEnabled || !state.dashboard || !peerId;
@@ -173,6 +174,17 @@ function renderOutcomes() {
   const names = { submit: 'подано доказ', check: 'перевірено критерій', accept: 'прийнято результат', decline: 'відкрито спір' };
   for (const event of result.events) outcomeUI.events.append(el('li', `${nameFor(event.actor_id)} · ${names[event.kind]} · ${dateTime(event.created_at)}${event.kind === 'decline' ? ' · ' + reasonLabels[event.payload.reason] : ''}`));
   outcomeUI.history.hidden = result.events.length === 0;
+  outcomeUI.exportControls.hidden = false;
+}
+async function exportOutcome() {
+  const context = state.outcomeContext, epoch = state.epoch;
+  if (!context || !state.outcomeData) return;
+  const packed = await state.store.exportOutcome(context.peerId, context.reviewed, { compress: outcomeUI.compress.checked });
+  if (epoch !== state.epoch || state.outcomeContext !== context) return;
+  const url = URL.createObjectURL(new Blob([packed.json], { type: 'application/json' }));
+  try { const link = el('a', '', { href: url, download: packed.fileName }); link.click(); }
+  finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  setStatus(`Приватну копію створено. Вихідний UTF-8: ${packed.originalBytes} байт; файл: ${packed.envelopeBytes} байт.`);
 }
 function renderReview(current) {
   clear(ui.review);
@@ -273,6 +285,8 @@ ui.termsForm.addEventListener('input', () => { state.termsDirty = true; syncMode
 ui.approveCheck.addEventListener('change', updateApprovalControls); ui.approve.addEventListener('click', () => run(approve)); ui.withdraw.addEventListener('click', () => run(withdraw)); ui.inviteForm.addEventListener('submit', event => { event.preventDefault(); run(() => invite(event)); }); ui.messageForm.addEventListener('submit', event => { event.preventDefault(); run(() => sendMessage(event), { keepDraft: true }); });
 ui.refresh.addEventListener('click', () => run(() => refresh()));
 outcomeUI.refresh.addEventListener('click', () => run(openOutcomes));
+outcomeUI.export.addEventListener('click', () => run(exportOutcome));
+if (typeof CompressionStream !== 'function') { outcomeUI.compress.checked = false; outcomeUI.compress.disabled = true; }
 $('real-close').addEventListener('click', () => run(closeTerms));
 ui.logout.addEventListener('click', async () => { const store = state.store; requiresLogin(); try { await store.signOut(); setStatus('Ти вийшов/вийшла з Synera.'); } catch { setStatus('Локальні дані прибрано. Серверний вихід потребує повторної спроби.'); } });
 let conversationRequest = 0, polling = false;

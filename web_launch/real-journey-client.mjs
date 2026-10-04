@@ -1,6 +1,7 @@
 import { NeonStore } from './neon-store.mjs';
 import { ServiceError } from './profile-store.mjs';
 import { compareRealProfiles } from './profile-brief.mjs';
+import { packArchive } from './archive-codec.mjs';
 import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, caseParticipantProblems, materialTermsFromInput, approveCase, abandonCase } from './business-case.mjs';
 
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
@@ -101,6 +102,24 @@ export class RealJourneyStore extends NeonStore {
   recordOutcome(peerId, reviewed, intent) {
     if (intent?.action === 'state') return Promise.reject(new ServiceError(400));
     return this.#outcome(peerId, reviewed, intent);
+  }
+  async exportOutcome(peerId, reviewed, { compress = false } = {}) {
+    if (!this.#outcomesEnabled) throw new ServiceError(503, 'case_outcomes_not_ready');
+    const epoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
+    const guard = () => { if (!actor || this.user?.id !== actor || epoch !== this.#outcomeEpoch) throw new ServiceError(401, 'outcome_session_changed'); };
+    guard();
+    if (typeof compress !== 'boolean') throw new ServiceError(400);
+    const current = await this.pairState(peerId); guard(); this.#expect(current, expected);
+    const outcome = await this.outcomeState(peerId, current); guard();
+    // A portable observation, never an import command or server authority.
+    // Material comes from the server, not the caller's editable review object.
+    const archive = { format: 'synera.case-outcome.archive.v1', archiveVersion: 1,
+      authority: 'local_copy_not_live_server_state', proof_scope: outcome.proof_scope, exported_by: actor,
+      case: { case_id: current.caseId, version: current.version, terms_hash: current.termsHash,
+        participants: current.participants, material: current.material }, outcome };
+    const packed = await packArchive(JSON.stringify(archive), compress); guard();
+    const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
+    return { ...packed, fileName: `synera-outcome-${current.caseId.replace(/[^A-Za-z0-9_-]/g, '-')}-v${current.version}.json` };
   }
   async #actor(peerId) {
     this.requireRealPilot();
