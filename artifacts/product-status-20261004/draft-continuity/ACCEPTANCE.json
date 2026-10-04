@@ -1,0 +1,56 @@
+{
+  "status": "PASS_LOCAL_PRIVATE_MESSAGE_DRAFT_CONTINUITY_CLOSURE",
+  "generated_at": "2026-10-04T15:30:52.220Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual desktop Chromium 390x844 synthetic two-account handler fixture. No live HTTP JWT, PostgreSQL execution, physical Android, deployment or user-emotion measurement.",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "b3c390b53515c3a079d11da28bf57201fb9fe753c1851ff3f00bd5f384443146",
+    "tools/message-draft-continuity-browser.mjs": "ca8e172b8dc6a699382609f4ef97a06f30b4ede30b6031b1363ba66b41d32cd7",
+    "tools/message-draft-continuity-acceptance.mjs": "c36128ec96b11338385177c9ea39136aa92eb836ef224343a603de868db08bfa"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/profile-store.mjs": "798623e2828ddb16efbb786af81525d656890351a18ca14240fb39b811cdda49",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "artifacts/overnight-20261004/message-recovery/ACCEPTANCE.json": "8c321c2307c9203576aa31f6e89bac0b47f9486fdbe01cabf3cc00bfa0bdede0",
+    "web_launch/dist-neon-message-recovery-20261004/release.json": "2ba6345d489ba5c1a8df6c8bd9dc6cdc5fd216fb541b3fc06ac56f90922b9f3a"
+  },
+  "base_commit": "30ae571173ab1f0f3791e915dc508a7fe1a301fd",
+  "browser_check_groups": 15,
+  "browser_engine": {
+    "version": "154.0.8037.97",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "mutation": "REJECTED: served copy unconditionally resets the form. Pending first send erases second unsent draft; canonical source unchanged.",
+  "unchanged_controller_outside_send_sha256": "be74e7864e7931a8f3da2c6666a6daf322ac167e0063ce079ab3fe1b45c4b108",
+  "reused_proof": "Exact unchanged SQL/current gateway maps verified; no SQL or full unit rerun. All affected private-message UI recovery checks rerun in the 15-group browser oracle. Earlier controller-bound browser proofs historical.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-draft-continuity-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "message-current-390x844.png": "b0a00fa66d690c7a843e73524767a68b7991da3df9e784bff5bfbe5e937e9561",
+    "next-draft-current-390x844.png": "66d0850c09d9172dbb2671cd5a2e32c38a289ea151a977bdc6ac2e340fe289ef"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-draft-continuity-20261004",
+  "release_sha256": "b63391269c3c66625fb994e9b97514a05d1bd3da1837ee129b28f8486bd46a40",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN",
+  "residual_risk": "Manual resend after ambiguous delivery can duplicate because persistent message idempotency is not implemented. Browser UI review does not measure emotions or product demand."
+}

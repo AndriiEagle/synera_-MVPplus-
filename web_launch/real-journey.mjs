@@ -436,11 +436,13 @@ function renderTranscript(conversation) { clear(ui.transcript); for (const messa
 async function selectConversation(id) { clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
 async function sendMessage(event) {
   event.preventDefault(); if (!state.meetingId) return;
-  const epoch = state.epoch, request = ++conversationRequest, text = ui.message.value.trim(); if (!text) return;
+  const epoch = state.epoch, request = ++conversationRequest, draft = ui.message.value, text = draft.trim(); if (!text) return;
   try {
     const result = await state.store.sendConversation(state.meetingId, text);
     if (epoch !== state.epoch || request !== conversationRequest) return;
-    ui.messageForm.reset(); renderTranscript(result); setStatus('Повідомлення надіслано й прочитано з сервера.');
+    const draftChanged = ui.message.value !== draft;
+    if (!draftChanged) ui.messageForm.reset();
+    renderTranscript(result); setStatus('Повідомлення надіслано й прочитано з сервера.' + (draftChanged ? ' Новий текст лишився чернеткою.' : ''));
   } catch (error) {
     if (epoch !== state.epoch || request !== conversationRequest) return;
     if (error?.status === 401 || error?.status === 403) throw error;
