@@ -406,9 +406,28 @@ async function refresh({ quiet = false } = {}) {
   if (state.meetingId) { const request = ++conversationRequest; const result = await state.store.conversation(state.meetingId); if (epoch !== state.epoch || request !== conversationRequest) return; renderTranscript(result); }
   if (!quiet) setStatus('Дані оновлено з сервера.');
 }
+function consumeMeetingHint() {
+  const params = new URLSearchParams(location.hash.slice(1));
+  if (!params.has('meeting')) return null;
+  // A disposable hint, never consent or permission. Clear before any API read.
+  history.replaceState(history.state, '', location.pathname + location.search);
+  const id = params.get('meeting');
+  return [...params].length === 1 && /^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(id) ? id.toLowerCase() : '';
+}
+async function openMeetingHint(id) {
+  const meeting = state.dashboard?.meetings.find(row => row.id === id);
+  if (!meeting || meeting.status !== 'accepted' || ![meeting.sender_id, meeting.recipient_id].includes(state.dashboard.own.id)) {
+    setStatus('Ця розмова недоступна. Вибери прийняту зустріч зі свого списку.'); return;
+  }
+  const selection = selectConversation(id), epoch = state.epoch;
+  await selection;
+  if (epoch !== state.epoch || state.meetingId !== id || !state.dashboard) return;
+  if (!addressUI.panel.hidden) { addressUI.panel.open = true; await openAddress(); }
+}
 async function boot() {
+  const meetingHint = consumeMeetingHint();
   populateTags();
-  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.addressEnabled = config.meetingAddressEnabled === true; state.store = new RealJourneyStore(config); await refresh(); }
+  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.addressEnabled = config.meetingAddressEnabled === true; state.store = new RealJourneyStore(config); await refresh(); if (meetingHint !== null) await openMeetingHint(meetingHint); }
   catch (error) { if (error?.status === 401) requiresLogin(); else unavailable(); }
 }
 ui.termsForm.addEventListener('input', () => { state.termsDirty = true; syncModeEditor(); }); ui.termsForm.addEventListener('change', syncModeEditor); ui.termsForm.addEventListener('submit', event => { event.preventDefault(); run(() => saveTerms(event)); });

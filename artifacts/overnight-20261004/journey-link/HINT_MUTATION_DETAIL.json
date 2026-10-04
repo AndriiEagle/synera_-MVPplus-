@@ -1,0 +1,13 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T07:55:28.585Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "exact_main_app_to_selected_conversation": true,
+    "recipient_and_normalized_uuid_hint": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Rejected hint started an extra conversation lookup\n\n2 !== 1\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Rejected hint started an extra conversation lookup\n\n2 !== 1\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/journey-link/mutation-runner.mjs:138:12"
+}

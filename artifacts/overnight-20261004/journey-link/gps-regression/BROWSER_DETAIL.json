@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "scope": "Real Chromium at 390px; real client/store/worker; simulated two-account Auth/Data API/KV and browser GPS; not physical Android or live providers",
+  "checks": [
+    "no capture before consent",
+    "saved address reaches Google Maps",
+    "remote address sync",
+    "coarsening before peer display",
+    "independent sharing",
+    "revocation hides peer link",
+    "cancellation stops GPS",
+    "remote cancellation sync",
+    "no mobile overflow",
+    "no page errors",
+    "no critical or serious WCAG violations in location UI"
+  ],
+  "provider_calls": 0,
+  "external_requests": 0,
+  "extra_checks": [
+    "actual app flag removes unilateral editor and venue navigation without GPS consent",
+    "Current default and optional Atelier, reduced motion, no overflow and Axe zero",
+    "GPS remains independent and explicit; revocation erases peer route",
+    "explicit internal link reaches existing real journey"
+  ]
+}

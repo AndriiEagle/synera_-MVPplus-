@@ -20,8 +20,8 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
   box.dataset.savedAddress = meeting.meeting_address || '';
   box.append(el('summary', 'Місце і навігація перед зустріччю'));
   if (addressAgreementRequired) {
-    const link = el('a', 'Погодити адресу в приватній розмові'); link.href = '/real-journey.html';
-    box.append(link, el('p', 'Місце й маршрут доступні після окремого погодження обох. У розмові відкрий потрібну зустріч і картку адреси.', 'fine'));
+    const link = el('a', 'Погодити адресу в приватній розмові'); link.href = '/real-journey.html#meeting=' + encodeURIComponent(meeting.id);
+    box.append(link, el('p', 'Відкриється розмова цієї зустрічі. Місце й маршрут доступні після окремого погодження обох.', 'fine'));
   }
   if (live && !addressAgreementRequired) {
     const addressForm = el('form'), addressLabel = el('label', 'Узгоджена адреса зустрічі');
