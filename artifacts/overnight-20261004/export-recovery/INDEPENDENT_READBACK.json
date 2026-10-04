@@ -1,0 +1,10 @@
+{
+  "status": "PASS_INDEPENDENT_POWERSHELL_READBACK",
+  "verified_source_screenshot_download_hashes": 36,
+  "accepted_downloads": 7,
+  "isolated_mutant_downloads": 7,
+  "manifest_entries": 96,
+  "public_files": 97,
+  "release_sha256": "f86e541273d64ca83fb44084d8150adcc149cd614f5d7876b1ab2dfe054a41ed",
+  "published": false
+}

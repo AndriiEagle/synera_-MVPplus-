@@ -1,0 +1,102 @@
+{
+  "status": "PASS_LOCAL_PRIVATE_EXPORT_RECOVERY",
+  "generated_at": "2026-10-04T09:10:32.434Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium private export and decoded readback; seeded synthetic participants and RPC, not live JWT/SQL/Android or deployment.",
+  "exit_code": 0,
+  "signal": null,
+  "runner_sha256": "c585129ec6162dd10201565db0485162678884e40a55577c68c8027015418b6d",
+  "browser": {
+    "status": "PASS_LOCAL_EXPORT_RECOVERY_BROWSER",
+    "generated_at": "2026-10-04T09:10:35.428Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual Chromium 390x844 downloads and decoded readback; case/meeting/outcomes are seeded synthetic transport, not SQL/JWT/live accounts",
+    "downloads": [
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/outcome-export-gzip.json",
+        "encoding": "gzip-base64",
+        "file_bytes": 1967,
+        "original_utf8_bytes": 5231,
+        "sha256": "108fec4ad2fbd1247d1def1606f40fb7c1d4fce838da3a698277b44aac8f4859"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/outcome-export-plain.json",
+        "encoding": "utf8-base64",
+        "file_bytes": 7139,
+        "original_utf8_bytes": 5231,
+        "sha256": "f1ee375c94d62decae32d5267af17ea56f68fc2788de2301ae7d302f1d5b12e9"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/recovered-503.json",
+        "sha256": "f744408335355e669271415965ce8af467ec58c826bf562d47c343cb2e81c69f",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/recovered-409.json",
+        "sha256": "753a84ff26c44dae9c22786604d360b5935540bce4ec8073a56cf00fde1c3a49",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/recovered-429.json",
+        "sha256": "952103ede7dc4ce35dfcb274e754861ae6e93f71930a709c261349a887668818",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/recovered-500.json",
+        "sha256": "d12f06a80e627bbef7304cad14bbaadec0d967cfe8326507a7852eaeffba1f7c",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/recovered-network.json",
+        "sha256": "dba19ec1267875c00657cc12641aff130ef78ea653b3dc57c62384fe4c53b0b6",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      }
+    ],
+    "checks": {
+      "transient_failure_keeps_chat_and_explicit_retry": [
+        503,
+        429,
+        500,
+        "network"
+      ],
+      "changed_agreement_clears_stale_export": true,
+      "manual_retry_preserves_format_and_decodes_fresh_source": true,
+      "export_has_no_automatic_retry_or_writes": true,
+      "auth_failure_purges_private_data_without_file": [
+        401,
+        403
+      ],
+      "late_failure_after_logout_does_not_change_state_or_download": true
+    },
+    "explicit_plain_and_gzip_downloads": true,
+    "axe_violations": 0,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "logout_cancels_pending_download": true,
+    "no_private_storage": true,
+    "page_errors": [],
+    "source_sha256": {
+      "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+      "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+      "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+      "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+      "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+      "tools/case-outcome-export-browser.mjs": "0124071de3f8584493f37aa2713b1ce0b201238f095734f06dd1344cc8822423",
+      "tools/outcome-export-recovery-browser.mjs": "009cb77edca8a0e5621c5d97457393957d25a1876a48d6985f2c7d56f5423ee4"
+    },
+    "external_requests": 0
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+    "tools/outcome-export-recovery-browser.mjs": "009cb77edca8a0e5621c5d97457393957d25a1876a48d6985f2c7d56f5423ee4"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T09:13:20.407Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium downloads against seeded synthetic participants/RPC. No live JWT, SQL execution, Android, provider activation or deployment.",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+    "tools/outcome-export-recovery-browser.mjs": "009cb77edca8a0e5621c5d97457393957d25a1876a48d6985f2c7d56f5423ee4",
+    "tools/outcome-export-recovery-acceptance.mjs": "15032767afbec3ff17827f23d661c0d4cca723d99b138c4957561cd1b7e3616a"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/case-outcome-export-browser.mjs": "0124071de3f8584493f37aa2713b1ce0b201238f095734f06dd1344cc8822423",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/case-outcome-export.test.mjs": "c694d8436b132926000f42b82456300dde0782246df9a7ccaa091dec55bb27b3",
+    "web_launch/outcome-archive.mjs": "d9257b5c8fbdaa1e4ff67fc5df2c1b02c00f5fae56e6ebfce8e4f2a5f181f09d",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/dist-neon-outcome-read-20261004/release.json": "b6bcc0bb6db2ae1b0a3b55f3d946636a47148668dcb3d913f252c7fc0493b028",
+    "artifacts/overnight-20261004/outcome-read/ACCEPTANCE.json": "3e0591263b2fb7b267f4d955680456337730e443eed06958ee06fa5b811589df"
+  },
+  "base_commit": "39f10c993cf5f0c6b8b7f834253f4c234b611c92",
+  "red": "Pre-patch optional export failure removed accepted chat; actual semantic RED retained.",
+  "recovery_check_groups": 6,
+  "downloads": [
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/outcome-export-gzip.json",
+      "encoding": "gzip-base64",
+      "file_bytes": 1967,
+      "original_utf8_bytes": 5231,
+      "sha256": "108fec4ad2fbd1247d1def1606f40fb7c1d4fce838da3a698277b44aac8f4859"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/outcome-export-plain.json",
+      "encoding": "utf8-base64",
+      "file_bytes": 7139,
+      "original_utf8_bytes": 5231,
+      "sha256": "f1ee375c94d62decae32d5267af17ea56f68fc2788de2301ae7d302f1d5b12e9"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/recovered-503.json",
+      "sha256": "f744408335355e669271415965ce8af467ec58c826bf562d47c343cb2e81c69f",
+      "file_bytes": 7139,
+      "encoding": "utf8-base64"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/recovered-409.json",
+      "sha256": "753a84ff26c44dae9c22786604d360b5935540bce4ec8073a56cf00fde1c3a49",
+      "file_bytes": 7139,
+      "encoding": "utf8-base64"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/recovered-429.json",
+      "sha256": "952103ede7dc4ce35dfcb274e754861ae6e93f71930a709c261349a887668818",
+      "file_bytes": 7139,
+      "encoding": "utf8-base64"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/recovered-500.json",
+      "sha256": "d12f06a80e627bbef7304cad14bbaadec0d967cfe8326507a7852eaeffba1f7c",
+      "file_bytes": 7139,
+      "encoding": "utf8-base64"
+    },
+    {
+      "file": "artifacts/overnight-20261004/export-recovery/recovered-network.json",
+      "sha256": "dba19ec1267875c00657cc12641aff130ef78ea653b3dc57c62384fe4c53b0b6",
+      "file_bytes": 7139,
+      "encoding": "utf8-base64"
+    }
+  ],
+  "mutation": "REJECTED: only export catch continuation guard removed in served copy. Mutant downloads isolated from accepted files; canonical controller unchanged.",
+  "unchanged_controller_outside_export_sha256": "23ce9834c2ae41ee59abb4cd13367699992d026fcf292ff10218991605cffdc6",
+  "error": "The input did not match the regular expression /# pass 2\\b/. Input:\n\n'✔ logout and restore of the same account during compression discard the private export (193.4681ms)\\n' +\n  '✔ a material revision during compression cannot return a stale archive as the current reviewed result (85.2548ms)\\n' +\n  'ℹ tests 2\\n' +\n  'ℹ suites 0\\n' +\n  'ℹ pass 2\\n' +\n  'ℹ fail 0\\n' +\n  'ℹ cancelled 0\\n' +\n  'ℹ skipped 0\\n' +\n  'ℹ todo 0\\n' +\n  'ℹ duration_ms 484.2815\\n'\n"
+}

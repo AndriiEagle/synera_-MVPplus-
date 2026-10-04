@@ -315,12 +315,21 @@ function renderOutcomes() {
 async function exportOutcome() {
   const context = state.outcomeContext, epoch = state.epoch;
   if (!context || !state.outcomeData) return;
-  const packed = await state.store.exportOutcome(context.peerId, context.reviewed, { compress: outcomeUI.compress.checked });
-  if (epoch !== state.epoch || state.outcomeContext !== context) return;
-  const url = URL.createObjectURL(new Blob([packed.json], { type: 'application/json' }));
-  try { const link = el('a', '', { href: url, download: packed.fileName }); link.click(); }
-  finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
-  setStatus(`Приватну копію створено. Вихідний UTF-8: ${packed.originalBytes} байт; файл: ${packed.envelopeBytes} байт.`);
+  try {
+    const packed = await state.store.exportOutcome(context.peerId, context.reviewed, { compress: outcomeUI.compress.checked });
+    if (epoch !== state.epoch || state.outcomeContext !== context) return;
+    const url = URL.createObjectURL(new Blob([packed.json], { type: 'application/json' }));
+    try { const link = el('a', '', { href: url, download: packed.fileName }); link.click(); }
+    finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
+    setStatus(`Приватну копію створено. Вихідний UTF-8: ${packed.originalBytes} байт; файл: ${packed.envelopeBytes} байт.`);
+  } catch (error) {
+    if (epoch !== state.epoch || state.outcomeContext !== context) return;
+    if (error?.status === 409) { clearOutcomes(); setStatus('Домовленість змінилася. Перевір результати перед експортом.'); return; }
+    if (error?.status === 429 || error?.status >= 500 || !error?.status) {
+      setStatus('Не вдалося створити приватний архів. Чат і твій текст збережені; повтори завантаження пізніше.'); return;
+    }
+    throw error;
+  }
 }
 async function createOutcomeSocialDraft() {
   const context = state.outcomeContext, epoch = state.epoch;

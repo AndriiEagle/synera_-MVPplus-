@@ -1,0 +1,40 @@
+{
+  "status": "RED_CONFIRMED_EXPORT_CHAT_REMOVAL",
+  "generated_at": "2026-10-04T09:05:18.393Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium private export and decoded readback; seeded synthetic participants and RPC, not live JWT/SQL/Android or deployment.",
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "cb2047fbf826f1e903635b9ad0374938c528b74c4ff41e22854281034e0c73d2",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T09:05:19.252Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual Chromium 390x844 downloads and decoded readback; case/meeting/outcomes are seeded synthetic transport, not SQL/JWT/live accounts",
+    "downloads": [
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/outcome-export-gzip.json",
+        "encoding": "gzip-base64",
+        "file_bytes": 1967,
+        "original_utf8_bytes": 5231,
+        "sha256": "54195c5aec0a129db72eb3214f414b57fda621d052310ea01b2e72b8c81073b3"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/outcome-export-plain.json",
+        "encoding": "utf8-base64",
+        "file_bytes": 7139,
+        "original_utf8_bytes": 5231,
+        "sha256": "01f56c4dc73bb0cb930bf9c3a64756854f6fc6f64264fc8e5fa4343d937c1a9e"
+      }
+    ],
+    "checks": {},
+    "explicit_plain_and_gzip_downloads": true,
+    "error": "Export failure removed accepted private chat\n\nfalse !== true\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "a9963de371a1fb26382653f3b29b8b1dc85ef5388d717d429c05f566a3f41c18",
+    "tools/outcome-export-recovery-browser.mjs": "1ff3e070127bbac91a0475d607a61ef62dd154159aeeba82e6f00afc6e885930"
+  }
+}
