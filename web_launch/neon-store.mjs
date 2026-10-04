@@ -33,6 +33,11 @@ export class NeonStore extends ProfileStore {
     return text ? JSON.parse(text) : null;
   }
   async availability() { return this.#request('/api/neon/health'); }
+  async _caseOutcome(caseId, payload) {
+    this.requireUser();
+    if (typeof caseId !== 'string' || !/^[A-Za-z0-9_:-]{1,64}$/.test(caseId)) throw new ServiceError(400);
+    return this.#request('/api/neon/outcomes/' + caseId, { method: 'POST', body: payload });
+  }
   async #location(id, action, body = {}) {
     this.requireUser();
     if (!this.liveLocationEnabled || typeof id !== 'string' || !/^[0-9a-f-]{36}$/i.test(id)) throw new ServiceError(400);

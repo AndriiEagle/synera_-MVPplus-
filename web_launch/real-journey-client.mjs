@@ -6,6 +6,55 @@ import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, ca
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const CASE_QUERY = '/rest/v1/match_cases';
 const encode = encodeURIComponent;
+const OUTCOME_KEYS = Object.freeze({ state: [], submit: ['index', 'intentId', 'evidenceUri'], check: ['index', 'intentId', 'scopeNotes'], accept: ['index', 'intentId'], decline: ['index', 'intentId', 'reason'] });
+const OUTCOME_REASONS = ['not_delivered', 'outside_agreed_scope', 'below_acceptance_criteria', 'other'];
+const INTENT = /^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
+const outcomeText = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 1000;
+function assertOutcomePayload(body) {
+  const extra = body && Object.hasOwn(OUTCOME_KEYS, body.action) ? OUTCOME_KEYS[body.action] : null;
+  const keys = ['action', 'version', 'termsHash', ...(extra || [])];
+  if (!extra || Object.keys(body).length !== keys.length || keys.some(key => !Object.hasOwn(body, key)) ||
+      !Number.isInteger(body.version) || body.version < 1 || body.version > 999999999 || !/^[a-f0-9]{64}$/.test(body.termsHash) ||
+      (body.action !== 'state' && (!Number.isInteger(body.index) || body.index < 0 || body.index > 9999 || !INTENT.test(body.intentId))) ||
+      (body.action === 'submit' && !outcomeText(body.evidenceUri)) || (body.action === 'check' && !outcomeText(body.scopeNotes)) ||
+      (body.action === 'decline' && !OUTCOME_REASONS.includes(body.reason))) throw new ServiceError(400);
+}
+function validateOutcome(data, current) {
+  const invalid = () => { throw new ServiceError(502, 'invalid_outcome_response'); };
+  const legs = current.material.trial.deliverables;
+  if (!data || data.schema !== 'synera.case-outcome.v1' || data.proof_scope !== 'participant_attestation' ||
+      data.case_id !== current.caseId || data.version !== current.version || data.terms_hash !== current.termsHash ||
+      typeof data.server_now !== 'string' || !Number.isFinite(Date.parse(data.server_now)) || !Array.isArray(data.events) ||
+      !Array.isArray(data.deliverables) || data.deliverables.length !== legs.length || !legs.length) invalid();
+  // Check the server's projection against its actor-bound, current-revision history.
+  // This is response validation, never an independent proof of delivery or quality.
+  const projected = legs.map(() => ({ evidence_uri: null, scope_notes: null, reason: null, phase: 'pending' }));
+  const intents = new Set(); let lastId = 0;
+  for (const event of data.events) {
+    if (!event || !Number.isSafeInteger(event.id) || event.id <= lastId || !Number.isInteger(event.index) || !legs[event.index] ||
+        !['submit', 'check', 'accept', 'decline'].includes(event.kind) || typeof event.created_at !== 'string' ||
+        !Number.isFinite(Date.parse(event.created_at))) invalid();
+    lastId = event.id;
+    try { assertOutcomePayload(event.payload); } catch { invalid(); }
+    const body = event.payload, leg = legs[event.index], row = projected[event.index];
+    const key = event.actor_id + ':' + body.intentId;
+    if (body.action !== event.kind || body.index !== event.index || body.version !== current.version || body.termsHash !== current.termsHash ||
+        event.actor_id !== (event.kind === 'submit' ? leg.giver_id : leg.receiver_id) || intents.has(key) || row.phase === 'accepted') invalid();
+    intents.add(key);
+    if (event.kind === 'submit') { if (row.evidence_uri !== null) invalid(); row.evidence_uri = body.evidenceUri; }
+    if (event.kind === 'check') { if (row.evidence_uri === null || row.scope_notes !== null) invalid(); row.scope_notes = body.scopeNotes; }
+    if (event.kind === 'accept') { if (row.scope_notes === null) invalid(); row.phase = 'accepted'; row.reason = null; }
+    else if (event.kind === 'decline') { if (row.phase === 'declined_dispute_open') invalid(); row.phase = 'declined_dispute_open'; row.reason = body.reason; }
+    else if (row.phase !== 'declined_dispute_open') row.phase = row.scope_notes !== null ? 'checked_with_scope' : 'evidence_supplied';
+  }
+  data.deliverables.forEach((row, index) => {
+    const leg = legs[index];
+    if (!row || row.index !== index || ['giver_id', 'receiver_id', 'target', 'acceptance_criteria'].some(key => row[key] !== leg[key]) ||
+        Object.keys(projected[index]).some(key => row[key] !== projected[index][key])) invalid();
+  });
+  if (data.outcome_confirmed !== projected.every(row => row.phase === 'accepted')) invalid();
+  return structuredClone(data);
+}
 export class JourneyConflict extends Error {
   constructor() { super('Умови змінилися. Онови їх, перечитай і підтвердь нову версію.'); this.status = 409; this.code = 'STALE_CASE_RELOAD_REQUIRED'; }
 }
@@ -18,7 +67,41 @@ export function assertRealJourneyGate(config) {
 // This adapter uses the existing account, profile, case and meeting tables. No
 // browser token, fictional participant, second matching engine or private cache.
 export class RealJourneyStore extends NeonStore {
-  constructor(config, fetchImpl = fetch) { assertRealJourneyGate(config); super(config, fetchImpl); }
+  #outcomesEnabled;
+  #outcomeEpoch = 0;
+  constructor(config, fetchImpl = fetch) { assertRealJourneyGate(config); super(config, fetchImpl); this.#outcomesEnabled = config.caseOutcomesEnabled === true; }
+  // Invalidate outcome work as soon as authentication changes, including logging
+  // out and restoring the SAME account. Existing auth operations stay unchanged.
+  restore() { this.#outcomeEpoch++; return super.restore(); }
+  verifyOtp(email, otp) { this.#outcomeEpoch++; return super.verifyOtp(email, otp); }
+  signOut() { this.#outcomeEpoch++; return super.signOut(); }
+  async #outcome(peerId, reviewed, input) {
+    if (!this.#outcomesEnabled) throw new ServiceError(503, 'case_outcomes_not_ready');
+    const epoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
+    const guard = () => { if (!actor || this.user?.id !== actor || this.#outcomeEpoch !== epoch) throw new ServiceError(401, 'outcome_session_changed'); };
+    guard();
+    const payload = { ...structuredClone(input), version: expected?.version, termsHash: expected?.termsHash };
+    assertOutcomePayload(payload);
+    await this.#actor(peerId); guard();
+    const current = await this.pairState(peerId); guard(); this.#expect(current, expected);
+    if (payload.action !== 'state') {
+      const leg = current.material.trial.deliverables[payload.index];
+      if (!leg || actor !== (payload.action === 'submit' ? leg.giver_id : leg.receiver_id)) throw new ServiceError(403);
+      if (current.status !== 'approved_for_next_step' || Date.parse(current.expiresAt) <= Date.now()) throw new JourneyConflict();
+    }
+    const data = await this._caseOutcome(current.caseId, payload); guard();
+    const result = validateOutcome(data, current);
+    if (payload.action !== 'state' && !result.events.some(event => event.actor_id === actor &&
+        Object.keys(payload).every(key => event.payload[key] === payload[key]))) throw new ServiceError(502, 'outcome_not_acknowledged');
+    // Do not show an old attestation after the other participant revised terms.
+    const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
+    return result;
+  }
+  outcomeState(peerId, reviewed) { return this.#outcome(peerId, reviewed, { action: 'state' }); }
+  recordOutcome(peerId, reviewed, intent) {
+    if (intent?.action === 'state') return Promise.reject(new ServiceError(400));
+    return this.#outcome(peerId, reviewed, intent);
+  }
   async #actor(peerId) {
     this.requireRealPilot();
     const me = this.requireUser();
