@@ -1,0 +1,42 @@
+{
+  "status": "PASS_LOCAL_LEGACY_LOCATION_AGREEMENT",
+  "generated_at": "2026-10-04T07:09:21.967Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local Chromium with synthetic Auth/Data API/KV and browser-emulated GPS; not Google, physical Android, live people or SQL/JWT",
+  "oracle_sha256": "06b289cc0fdef30484b2d26d7cfdff1f8a22372134b0d8450eddc733d1a57211",
+  "extended_runner_sha256": "2cb6d125f6c9fd52cdacddac8703c90e4d196a2f68935d080a160b80dfde5f38",
+  "process_exit": 0,
+  "browser": {
+    "pass": true,
+    "scope": "Real Chromium at 390px; real client/store/worker; simulated two-account Auth/Data API/KV and browser GPS; not physical Android or live providers",
+    "checks": [
+      "no capture before consent",
+      "saved address reaches Google Maps",
+      "remote address sync",
+      "coarsening before peer display",
+      "independent sharing",
+      "revocation hides peer link",
+      "cancellation stops GPS",
+      "remote cancellation sync",
+      "no mobile overflow",
+      "no page errors",
+      "no critical or serious WCAG violations in location UI"
+    ],
+    "provider_calls": 0,
+    "external_requests": 0,
+    "extra_checks": [
+      "actual app flag removes unilateral editor and venue navigation without GPS consent",
+      "Current default and optional Atelier, reduced motion, no overflow and Axe zero",
+      "GPS remains independent and explicit; revocation erases peer route",
+      "explicit internal link reaches existing real journey"
+    ]
+  },
+  "source_sha256": {
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/meeting-location.mjs": "1247b12b7f0a0bef693d426010aa079fda57e86b2e329121a405d2403adb6b96",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "tools/location-browser-acceptance.mjs": "06b289cc0fdef30484b2d26d7cfdff1f8a22372134b0d8450eddc733d1a57211",
+    "tools/meeting-location-agreement-browser.mjs": "20eb7f0ffe0b7c58969f6c2767c6e754c0740492fd8f1950701f9d7a0d99d409"
+  }
+}

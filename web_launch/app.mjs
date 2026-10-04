@@ -495,7 +495,7 @@ function renderMeetings() {
       refresh: () => run(() => refreshMeetingLocation(meeting.id)),
       address: address => run(async () => { await store.setMeetingAddress(meeting.id, address); await load(); await refreshMeetingLocation(meeting.id); message('Адресу збережено. Попередні GPS-дозволи закрито.'); }),
     } : null;
-    const location = meetingLocationSection({ meeting, viewerId: store.user.id, otherName: person.display_name, grant: locationGrants.get(meeting.id) ?? null, now: nowIso, live, onChange: (grant, note) => { locationGrants.set(meeting.id, grant); renderMeetings(); message(note); } });
+    const location = meetingLocationSection({ meeting, viewerId: store.user.id, otherName: person.display_name, grant: locationGrants.get(meeting.id) ?? null, now: nowIso, live, addressAgreementRequired: store.meetingAddressEnabled === true, onChange: (grant, note) => { locationGrants.set(meeting.id, grant); renderMeetings(); message(note); } });
     if (location) {
       const old = previous.get(meeting.id);
       if (old) {

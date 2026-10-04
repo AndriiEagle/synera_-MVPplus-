@@ -13,6 +13,7 @@ export class NeonStore extends ProfileStore {
     this.realPilotEnabled = config.realPilotEnabled === true;
     this.googleOAuthEnabled = config.googleOAuthEnabled === true;
     this.liveLocationEnabled = config.liveLocationEnabled === true;
+    this.meetingAddressEnabled = config.meetingAddressEnabled === true;
     this.googleOAuthInitUrl = config.googleOAuthInitUrl || '';
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
@@ -55,6 +56,7 @@ export class NeonStore extends ProfileStore {
   revokeLocation(id) { return this.#location(id, 'revoke'); }
   async setMeetingAddress(id, address) {
     this.requireUser();
+    if (this.meetingAddressEnabled) throw new ServiceError(409);
     if (!this.liveLocationEnabled || typeof address !== 'string' || address.length > 200) throw new ServiceError(400);
     const rows = await this._send('/rest/v1/meeting_requests?id=eq.' + encodeURIComponent(id) + '&status=eq.accepted', {
       method: 'PATCH', prefer: 'return=representation', body: { meeting_address: address.trim() },

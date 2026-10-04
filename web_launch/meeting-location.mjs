@@ -9,7 +9,7 @@ const REASON_TEXT = {
 };
 const PRECISION_TEXT = { approximate: 'приблизно (~500 м)', exact: 'точніше (~50 м)' };
 
-export function meetingLocationSection({ doc = document, meeting, viewerId, otherName, grant = null, now = new Date().toISOString(), onChange = () => {}, live = null }) {
+export function meetingLocationSection({ doc = document, meeting, viewerId, otherName, grant = null, now = new Date().toISOString(), onChange = () => {}, live = null, addressAgreementRequired = false }) {
   if (live) grant = live.state.own;
   const eligibility = locationEligibility(meeting);
   if (meeting?.status !== 'accepted' || eligibility.reason === 'ONLINE_MEETING') return null;
@@ -19,7 +19,11 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
   box.dataset.meetingId = meeting.id;
   box.dataset.savedAddress = meeting.meeting_address || '';
   box.append(el('summary', 'Місце і навігація перед зустріччю'));
-  if (live) {
+  if (addressAgreementRequired) {
+    const link = el('a', 'Погодити адресу в приватній розмові'); link.href = '/real-journey.html';
+    box.append(link, el('p', 'Місце й маршрут доступні після окремого погодження обох. У розмові відкрий потрібну зустріч і картку адреси.', 'fine'));
+  }
+  if (live && !addressAgreementRequired) {
     const addressForm = el('form'), addressLabel = el('label', 'Узгоджена адреса зустрічі');
     const address = el('input'); address.name = 'meeting-address'; address.maxLength = 200; address.value = meeting.meeting_address || '';
     address.placeholder = 'Наприклад: Bahnhofplatz 15, Zürich'; addressLabel.append(address);
@@ -32,7 +36,7 @@ export function meetingLocationSection({ doc = document, meeting, viewerId, othe
 
   const destination = meeting.meeting_address || meeting.meeting_place;
   const url = staticNavigationUrl(destination);
-  if (url) {
+  if (url && !addressAgreementRequired) {
     const line = el('p', undefined, 'meeting-nav');
     const link = el('a', 'Відкрити «' + destination + '» у Google Maps ↗');
     link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
