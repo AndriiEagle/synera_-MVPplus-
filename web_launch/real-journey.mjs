@@ -118,10 +118,18 @@ async function openAddress() {
   if (!state.addressEnabled || !peerId || !meetingId) return;
   clearAddress(); const generation = state.addressGeneration;
   const active = () => epoch === state.epoch && generation === state.addressGeneration && meetingId === state.meetingId;
-  const reviewed = await state.store.pairState(peerId); if (!active()) return;
-  if (!reviewed) return setStatus('Для погодження адреси потрібна відкрита домовленість.');
-  const result = await state.store.meetingAddressState(peerId, meetingId, reviewed); if (!active()) return;
-  state.addressContext = { peerId, meetingId, reviewed, selected: result }; state.addressData = result; renderAddress();
+  try {
+    const reviewed = await state.store.pairState(peerId); if (!active()) return;
+    if (!reviewed) return setStatus('Для погодження адреси потрібна відкрита домовленість.');
+    const result = await state.store.meetingAddressState(peerId, meetingId, reviewed); if (!active()) return;
+    state.addressContext = { peerId, meetingId, reviewed, selected: result }; state.addressData = result; renderAddress();
+    setStatus('Актуальний стан адреси прочитано з сервера.');
+  } catch (error) {
+    if (!active()) return;
+    if (error.status === 409) { clearAddress(); setStatus('Умови або зустріч змінились. Перевір адресу знову.'); return; }
+    if (error.status === 429 || error.status >= 500 || !error.status) { setStatus('Не вдалося прочитати адресу. Приватна розмова доступна; перевір адресу пізніше.'); return; }
+    throw error;
+  }
 }
 async function recordAddress(context, intent) {
   const epoch = state.epoch, generation = state.addressGeneration;
@@ -427,7 +435,7 @@ async function openMeetingHint(id) {
 async function boot() {
   const meetingHint = consumeMeetingHint();
   populateTags();
-  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.addressEnabled = config.meetingAddressEnabled === true; state.store = new RealJourneyStore(config); await refresh(); if (meetingHint !== null) await openMeetingHint(meetingHint); }
+  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.addressEnabled = config.meetingAddressEnabled === true; state.store = new RealJourneyStore(config); await refresh(); if (meetingHint !== null) await run(() => openMeetingHint(meetingHint)); }
   catch (error) { if (error?.status === 401) requiresLogin(); else unavailable(); }
 }
 ui.termsForm.addEventListener('input', () => { state.termsDirty = true; syncModeEditor(); }); ui.termsForm.addEventListener('change', syncModeEditor); ui.termsForm.addEventListener('submit', event => { event.preventDefault(); run(() => saveTerms(event)); });

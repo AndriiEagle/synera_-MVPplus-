@@ -1,0 +1,53 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:09:08.502Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium selected-room/manual address reads against synthetic transport. No HTTP JWT, live accounts, Android or providers.",
+  "process_exit": 1,
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T08:09:08.625Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual local Chromium, same synthetic account fixture across main app and private journey; not SQL/JWT, real accounts, Android or providers",
+    "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "extended_runner_sha256": "58e0470a4537670af2a68c756f29681ad0bc6dd73d02488e92868c7dec4e95b4",
+    "process_exit": 1,
+    "browser": {
+      "status": "NOT_ACCEPTED",
+      "generated_at": "2026-10-04T08:09:09.557Z",
+      "provider_calls": 0,
+      "provider_usd": 0,
+      "checks": {
+        "exact_main_app_to_selected_conversation": true,
+        "recipient_and_normalized_uuid_hint": true,
+        "foreign_cancelled_pending_unknown_and_malformed_hints_rejected": true,
+        "selected_room_logout_purges": true,
+        "signed_out_hint_cleared_without_private_chat": true,
+        "default_and_existing_anchor_preserved": true,
+        "hint_cleared_before_api_and_no_automatic_write": true
+      },
+      "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+      "error": "Expected values to be strictly equal:\n\n3 !== 2\n",
+      "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n3 !== 2\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/address-read/runner.mjs:187:12"
+    },
+    "error": "Expected values to be strictly equal:\n\n3 !== 2\n\n\n1 !== 0\n",
+    "source_sha256": {
+      "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+      "web_launch/real-journey.mjs": "e378197058cc5045f8d1cef5385b1303e345112143a062c1356a7f82ef4417a4",
+      "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+      "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+      "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+      "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+      "tools/meeting-address-read-browser.mjs": "bd844a6716a1967e5ff6f4c9371fa607b0223c53a11cd5fb3661dffea73f5268"
+    }
+  },
+  "error": "Expected values to be strictly equal:\n\n3 !== 2\n\n\n1 !== 0\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "e378197058cc5045f8d1cef5385b1303e345112143a062c1356a7f82ef4417a4",
+    "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+    "tools/meeting-address-read-browser.mjs": "bd844a6716a1967e5ff6f4c9371fa607b0223c53a11cd5fb3661dffea73f5268"
+  },
+  "extended_wrapper_sha256": "a8c7811cde3950254f5a5c188862c35121704d9cf91ffc4590c38b45347c41ae"
+}

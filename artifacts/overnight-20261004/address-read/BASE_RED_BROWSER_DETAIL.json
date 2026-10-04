@@ -1,0 +1,18 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:08:10.999Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "exact_main_app_to_selected_conversation": true,
+    "recipient_and_normalized_uuid_hint": true,
+    "foreign_cancelled_pending_unknown_and_malformed_hints_rejected": true,
+    "selected_room_logout_purges": true,
+    "signed_out_hint_cleared_without_private_chat": true,
+    "default_and_existing_anchor_preserved": true,
+    "hint_cleared_before_api_and_no_automatic_write": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Address read failure removed accepted private chat\n\nfalse !== true\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Address read failure removed accepted private chat\n\nfalse !== true\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/address-read/runner.mjs:178:12"
+}

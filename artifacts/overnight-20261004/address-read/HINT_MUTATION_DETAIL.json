@@ -1,0 +1,20 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:17:32.281Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "exact_main_app_to_selected_conversation": true,
+    "recipient_and_normalized_uuid_hint": true,
+    "foreign_cancelled_pending_unknown_and_malformed_hints_rejected": true,
+    "selected_room_logout_purges": true,
+    "signed_out_hint_cleared_without_private_chat": true,
+    "default_and_existing_anchor_preserved": true,
+    "hint_cleared_before_api_and_no_automatic_write": true,
+    "entry_and_manual_409_429_500_503_network_preserve_chat_and_explicit_retry": true,
+    "entry_and_manual_auth_denial_purge": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Late failed read changed logout status\n+ actual - expected\n\n+ 'Не вдалося прочитати адресу. Приватна розмова доступна; перевір адресу пізніше.'\n- 'Ти вийшов/вийшла з Synera.'\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Late failed read changed logout status\n+ actual - expected\n\n+ 'Не вдалося прочитати адресу. Приватна розмова доступна; перевір адресу пізніше.'\n- 'Ти вийшов/вийшла з Synera.'\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/address-read/mutation-runner.mjs:225:10"
+}
