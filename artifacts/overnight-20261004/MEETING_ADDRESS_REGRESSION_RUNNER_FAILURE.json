@@ -1,0 +1,9 @@
+{
+  "status": "NOT_ACCEPTED",
+  "phase": "preserved_outcome_runner_module_resolution",
+  "observed_code": "ERR_UNSUPPORTED_RESOLVE_REQUEST",
+  "cause": "Bare playwright import cannot resolve from data: module; use installed package file URL in isolated adapted runner",
+  "product_source_changed_for_repair": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

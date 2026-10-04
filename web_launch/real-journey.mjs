@@ -8,6 +8,8 @@ Object.assign(state, { outcomesEnabled: false, conversationPeer: null, outcomeCo
 const outcomeUI = { panel: $('real-outcomes'), refresh: $('real-outcome-refresh'), status: $('real-outcome-status'), cards: $('real-outcome-cards'), history: $('real-outcome-history'), events: $('real-outcome-events') };
 Object.assign(outcomeUI, { exportControls: $('real-outcome-export-controls'), export: $('real-outcome-export'), compress: $('real-outcome-compress') });
 Object.assign(outcomeUI, { socialControls: $('real-social-controls'), socialWording: $('real-social-wording'), socialConsent: $('real-social-consent'), socialCreate: $('real-social-create'), socialOutput: $('real-social-output'), socialText: $('real-social-text'), socialSelect: $('real-social-select') });
+Object.assign(state, { addressEnabled: false, addressContext: null, addressData: null, addressGeneration: 0 });
+const addressUI = { panel: $('real-address'), refresh: $('real-address-refresh'), status: $('real-address-status'), cards: $('real-address-cards'), history: $('real-address-history'), events: $('real-address-events') };
 const el = (tag, text = '', attrs = {}) => { const node = document.createElement(tag); if (text) node.textContent = text; for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value); return node; };
 const setStatus = text => { ui.status.textContent = text; };
 const clear = node => node.replaceChildren();
@@ -19,6 +21,7 @@ const statusLabels = { draft: 'Чернетка', awaiting_approval: 'Очіку
 const dateTime = value => Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat('uk', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : 'Час не вказано';
 
 function clearPrivate() {
+  clearAddress(); addressUI.panel.hidden = true;
   clearOutcomes(); outcomeUI.panel.hidden = true; state.conversationPeer = null;
   state.dashboard = null; state.peerId = null; state.caseState = null; state.meetingId = null; state.epoch++;
   ui.content.hidden = true; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = true;
@@ -96,6 +99,89 @@ const termLabels = { exchange: 'Взаємний обмін', joint_project: 'С
 const outcomeLabels = { pending: 'Очікує доказу', evidence_supplied: 'Доказ подано', checked_with_scope: 'Перевірено за критерієм', accepted: 'Прийнято одержувачем', declined_dispute_open: 'Є відкритий спір' };
 const reasonLabels = { not_delivered: 'Результат не надано', outside_agreed_scope: 'Поза погодженим обсягом', below_acceptance_criteria: 'Критерій ще не виконано', other: 'Інша причина' };
 const caseKey = current => current && `${current.caseId}/${current.version}/${current.termsHash}`;
+function clearAddress() {
+  state.addressGeneration++; state.addressContext = null; state.addressData = null;
+  clear(addressUI.cards); clear(addressUI.events); addressUI.status.textContent = ''; addressUI.history.hidden = true;
+}
+const meetingKey = m => m && JSON.stringify([Date.parse(m.proposed_at), m.duration_minutes, m.meeting_place, m.status]);
+function syncAddressEntry() {
+  const meeting = state.dashboard?.meetings?.find(m => m.id === state.meetingId), current = caseFor(state.conversationPeer);
+  addressUI.panel.hidden = !state.addressEnabled || !state.conversationPeer || !meeting || meeting.status !== 'accepted' ||
+    !meeting.meeting_place || ['online', 'онлайн'].includes(meeting.meeting_place.trim().toLowerCase());
+  const context = state.addressContext;
+  if (addressUI.panel.hidden || (context && (context.meetingId !== state.meetingId || context.peerId !== state.conversationPeer ||
+      caseKey(current) !== caseKey(context.reviewed) || current?.status !== context.reviewed.status || meetingKey(meeting) !== meetingKey(context.selected.meeting)))) clearAddress();
+}
+async function openAddress() {
+  const peerId = state.conversationPeer, meetingId = state.meetingId, epoch = state.epoch;
+  if (!state.addressEnabled || !peerId || !meetingId) return;
+  clearAddress(); const generation = state.addressGeneration;
+  const active = () => epoch === state.epoch && generation === state.addressGeneration && meetingId === state.meetingId;
+  const reviewed = await state.store.pairState(peerId); if (!active()) return;
+  if (!reviewed) return setStatus('Для погодження адреси потрібна відкрита домовленість.');
+  const result = await state.store.meetingAddressState(peerId, meetingId, reviewed); if (!active()) return;
+  state.addressContext = { peerId, meetingId, reviewed, selected: result }; state.addressData = result; renderAddress();
+}
+async function recordAddress(context, intent) {
+  const epoch = state.epoch, generation = state.addressGeneration;
+  try {
+    const result = await state.store.recordMeetingAddress(context.peerId, context.meetingId, context.reviewed, context.selected, intent);
+    if (epoch !== state.epoch || generation !== state.addressGeneration || state.addressContext !== context) return;
+    state.addressContext = { ...context, selected: result }; state.addressData = result; renderAddress();
+    setStatus(intent.action === 'propose' ? 'Адресу запропоновано. Чекаємо окремого вибору другої людини.' : 'Твій вибір адреси збережено на сервері.');
+  } catch (error) {
+    if (epoch !== state.epoch || generation !== state.addressGeneration) return;
+    if (error.status === 409) { clearAddress(); setStatus('Пропозиція або умови змінилися. Перевір адресу й підтвердь новий вибір окремо.'); return; }
+    if (error.status === 429 || error.status >= 500 || !error.status) { setStatus('Не вдалося зберегти адресу. Твій вибір лишився у картці; повтори цю дію пізніше.'); return; }
+    throw error;
+  }
+}
+function renderAddress() {
+  const context = state.addressContext, result = state.addressData; if (!context || !result) return;
+  clear(addressUI.cards); clear(addressUI.events);
+  const p = result.proposal, me = state.dashboard.own.id;
+  const writable = context.reviewed.status === 'approved_for_next_step' && Date.parse(context.reviewed.expiresAt) > Date.now() &&
+    Date.parse(result.meeting.proposed_at) > Date.now() && result.meeting.duration_minutes !== null;
+  addressUI.status.textContent = result.agreed ? 'Погоджено обома' : !p ? 'Адресу ще не погоджено' : !p.current ? 'Пропозиція застаріла' :
+    p.decision === 'decline' ? 'Пропозицію відхилено' : p.decision === 'accept' ? 'Потрібне актуальне погодження умов' : 'Очікує вибору другої людини';
+  addressUI.status.className = result.agreed ? 'real-approval-ok' : 'real-approval-pending';
+  addressUI.cards.append(el('p', `${dateTime(result.meeting.proposed_at)} · ${result.meeting.duration_minutes || '—'} хв · ${result.meeting.meeting_place}`));
+  if (result.meeting.meeting_address && !result.agreed) addressUI.cards.append(el('p', 'Попередня адреса: ' + result.meeting.meeting_address));
+  if (p) {
+    const card = el('article', '', { class: 'real-card' }); card.append(el('strong', p.address), el('small', 'Пропонує: ' + nameFor(p.proposer_id)));
+    if (p.current && !p.decision && p.proposer_id !== me) {
+      const check = el('input', '', { type: 'checkbox', name: 'accept-consent' }), label = el('label', '', { class: 'real-check' });
+      label.append(check, document.createTextNode('Я погоджую саме цю адресу й час.'));
+      const accept = el('button', 'Погодити адресу', { type: 'button' }), decline = el('button', 'Відхилити адресу', { type: 'button' });
+      check.disabled = !writable; accept.disabled = true; decline.disabled = !writable;
+      const acceptId = crypto.randomUUID(), declineId = crypto.randomUUID();
+      check.addEventListener('change', () => { accept.disabled = !writable || !check.checked; });
+      accept.addEventListener('click', () => { if (check.checked && writable) run(() => recordAddress(context, { action: 'accept', intentId: acceptId, consent: true })); });
+      decline.addEventListener('click', () => run(() => recordAddress(context, { action: 'decline', intentId: declineId })));
+      const actions = el('div', '', { class: 'real-actions' }); actions.append(accept, decline); card.append(label, actions);
+    }
+    addressUI.cards.append(card);
+  }
+  if (writable) {
+    const host = p ? el('details', '', { id: 'real-address-editor' }) : el('div');
+    if (p) host.append(el('summary', 'Запропонувати іншу адресу'));
+    const form = el('form', '', { class: 'real-form' }), input = el('textarea', '', { name: 'address', required: '', maxlength: '200', rows: '2' });
+    const label = el('label', 'Точна адреса або точка зустрічі'); label.append(input);
+    const check = el('input', '', { type: 'checkbox', name: 'consent', required: '' }), consent = el('label', '', { class: 'real-check' });
+    consent.append(check, document.createTextNode('Я пропоную це місце другій людині.'));
+    const button = el('button', 'Запропонувати адресу', { type: 'submit' }); button.disabled = true;
+    const changed = () => { button.disabled = !check.checked || !input.value.trim(); }; input.addEventListener('input', changed); check.addEventListener('change', changed);
+    let pending = null;
+    form.addEventListener('submit', event => { event.preventDefault(); if (!check.checked || !input.value.trim()) return;
+      const address = input.value.trim(); if (!pending || pending.address !== address) pending = { action: 'propose', intentId: crypto.randomUUID(), address, consent: true };
+      run(() => recordAddress(context, pending));
+    });
+    form.append(label, consent, button); host.append(form); addressUI.cards.append(host);
+  } else addressUI.cards.append(el('p', 'Для нового вибору потрібні актуальні підтвердження обох і майбутній час зустрічі.', { class: 'real-note' }));
+  const labels = { propose: 'запропоновано', accept: 'погоджено', decline: 'відхилено' };
+  for (const event of result.events) addressUI.events.append(el('li', `${nameFor(event.actor_id)} · ${labels[event.kind]} · ${dateTime(event.created_at)}${event.address ? ' · ' + event.address : ''}`));
+  addressUI.history.hidden = result.events.length === 0;
+}
 function clearSocialDraft() { state.socialGeneration = (state.socialGeneration || 0) + 1; state.socialDraft = null; outcomeUI.socialText.value = ''; outcomeUI.socialOutput.hidden = true; outcomeUI.socialConsent.checked = false; outcomeUI.socialCreate.disabled = true; }
 function clearOutcomes() { state.outcomeContext = null; state.outcomeData = null; clear(outcomeUI.cards); clear(outcomeUI.events); outcomeUI.status.textContent = ''; outcomeUI.history.hidden = true; outcomeUI.exportControls.hidden = true; clearSocialDraft(); outcomeUI.socialControls.hidden = true; }
 function syncOutcomesEntry() {
@@ -266,7 +352,7 @@ function fillCurrentTerms(current) {
   syncModeEditor();
 }
 async function selectPeer(peerId) {
-  clearOutcomes(); state.conversationPeer = null;
+  clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null;
   const peerChanged = state.peerId !== peerId;
   state.peerId = peerId; state.meetingId = null; state.epoch++; const epoch = state.epoch;
   if (peerChanged) { ui.termsForm.reset(); state.termsDirty = false; }
@@ -283,9 +369,9 @@ async function closeTerms() { if (!state.peerId || !state.caseState) return; con
 async function invite(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.inviteForm); const proposedAt = new Date(fields.proposed_at); if (!Number.isFinite(proposedAt.valueOf())) throw new Error('Вкажи коректний час.'); const dash = await state.store.sendInvitation(state.peerId, fields.note, { proposed_at: proposedAt.toISOString(), duration_minutes: Number(fields.duration_minutes), meeting_place: fields.meeting_place }); if (epoch !== state.epoch) return; state.dashboard = dash; renderAll(); setStatus('Запрошення надіслано. Воно ще не є прийнятою зустріччю.'); }
 async function respond(id, status) { const epoch = state.epoch; const dashboard = await state.store.respondInvitation(id, status); if (epoch !== state.epoch) return; state.dashboard = dashboard; renderAll(); setStatus(status === 'accepted' ? 'Запрошення прийнято. Розмова доступна обом.' : 'Запрошення відхилено.'); }
 function renderTranscript(conversation) { clear(ui.transcript); for (const message of conversation.messages || []) { const card = el('article', '', { class: 'real-message' }); card.append(el('small', `${nameFor(message.sender_id)} · ${dateTime(message.created_at)}`), el('p', asText(message.body || message.text))); ui.transcript.append(card); } if (!ui.transcript.childElementCount) appendEmpty(ui.transcript, 'Повідомлень ще немає.'); }
-async function selectConversation(id) { clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
+async function selectConversation(id) { clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
 async function sendMessage(event) { event.preventDefault(); if (!state.meetingId) return; const epoch = state.epoch; const request = ++conversationRequest; const text = ui.message.value.trim(); if (!text) return; const result = await state.store.sendConversation(state.meetingId, text); if (epoch !== state.epoch || request !== conversationRequest) return; ui.messageForm.reset(); renderTranscript(result); setStatus('Повідомлення надіслано й прочитано з сервера.'); }
-function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); }
+function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); syncAddressEntry(); }
 async function refresh({ quiet = false } = {}) {
   const epoch = state.epoch, dashboard = await state.store.dashboard(); if (epoch !== state.epoch) return;
   state.dashboard = dashboard; ui.blocked.hidden = true; ui.auth.hidden = true; ui.content.hidden = false; renderAll();
@@ -294,12 +380,13 @@ async function refresh({ quiet = false } = {}) {
 }
 async function boot() {
   populateTags();
-  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.store = new RealJourneyStore(config); await refresh(); }
+  try { const response = await fetch('/config.json', { cache: 'no-store' }); if (!response.ok) throw new Error('config'); const config = await response.json(); assertRealJourneyGate(config); state.outcomesEnabled = config.caseOutcomesEnabled === true; state.addressEnabled = config.meetingAddressEnabled === true; state.store = new RealJourneyStore(config); await refresh(); }
   catch (error) { if (error?.status === 401) requiresLogin(); else unavailable(); }
 }
 ui.termsForm.addEventListener('input', () => { state.termsDirty = true; syncModeEditor(); }); ui.termsForm.addEventListener('change', syncModeEditor); ui.termsForm.addEventListener('submit', event => { event.preventDefault(); run(() => saveTerms(event)); });
 ui.approveCheck.addEventListener('change', updateApprovalControls); ui.approve.addEventListener('click', () => run(approve)); ui.withdraw.addEventListener('click', () => run(withdraw)); ui.inviteForm.addEventListener('submit', event => { event.preventDefault(); run(() => invite(event)); }); ui.messageForm.addEventListener('submit', event => { event.preventDefault(); run(() => sendMessage(event), { keepDraft: true }); });
 ui.refresh.addEventListener('click', () => run(() => refresh()));
+addressUI.refresh.addEventListener('click', () => run(openAddress));
 outcomeUI.refresh.addEventListener('click', () => run(openOutcomes));
 outcomeUI.export.addEventListener('click', () => run(exportOutcome));
 outcomeUI.socialConsent.addEventListener('change', () => { outcomeUI.socialCreate.disabled = !outcomeUI.socialConsent.checked; if (!outcomeUI.socialConsent.checked) clearSocialDraft(); });

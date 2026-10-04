@@ -1,0 +1,93 @@
+{
+  "status": "PASS_LOCAL_MEETING_ADDRESS_UI",
+  "generated_at": "2026-10-04T06:19:13.135Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local Chromium address flow and preserved outcome UI; synthetic accounts/RPC, not SQL via HTTP, signed JWT, live people, Maps or Android hardware",
+  "source_sha256": {
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.mjs": "fbab2cd1832e48b8d11ec0a7638837891eb83c6306a867931f4e2b3ecbe8c7ef",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-address-ui-acceptance.mjs": "235648e08df21351bf64643ee0fd7cc1cf0065f95fedfa196f2fec6076ba84bf"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "8421f9c4227d0bb09af678cb328f8df6ad1ec861977835f7bf8598e11aac739b",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "artifacts/overnight-20261004/CASE_OUTCOME_BROWSER.json": "2fbb4cd43b3ff8ba4cc2643a3a5469b45a6b90bf596f9241ee27e320b8e1bc6b",
+    "artifacts/overnight-20261004/CASE_SOCIAL_BROWSER.json": "04ba6f870f29623262da629961e803db457f9ef2b01928646e8802dbde631fb5",
+    "web_launch/dist-neon-address-client-20261004/release.json": "ccd7ce19dc83c83fca36f8f8c617c1317e8ae97937905af58cb9f5f15c6cbd0c",
+    "web_launch/dist-neon-address-api-20261004/release.json": "1dda8b49832e0c124f8bf77080d7970bee1182f038e47ca70d481c37b6854258"
+  },
+  "base_commit": "eb15dfdf324660919033dbacc8a8386f88c02459",
+  "logout_purge_mutation_rejected": true,
+  "mutation_scope": "Only clearAddress call removed from clearPrivate in browser-delivered source; canonical source untouched",
+  "reused_browser_by_exact_source_hashes": false,
+  "browser_checks": {
+    "preserved_accepted_chat": true,
+    "read_does_not_vote": true,
+    "retry_and_proposer_role": true,
+    "explicit_decline": true,
+    "stale_selection_requires_reload": true,
+    "bilateral_selected_address_and_literal_history": true,
+    "current_default": true,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "axe_current_atelier_zero_and_opt_in_reversible": true,
+    "closed_flag_keeps_chat": true,
+    "no_private_storage": true,
+    "logout_purges_private_address": true,
+    "late_read_cannot_restore_private_address": true,
+    "preserved_chat_logout": true
+  },
+  "address_checks": 14,
+  "regression_runner_sha256": "1edc6f0f59640afa1fbfdc3b102674ae34f9768cd9f3b8637fdedc1c547abba5",
+  "preserved_outcome_checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true,
+    "retry_keeps_text_and_intent": true,
+    "giver_cannot_self_accept": true,
+    "dispute_resolves_without_erasing_history": true,
+    "withdrawal_disables_outcome_actions": true,
+    "both_receiver_acceptances_confirm_all_results": true,
+    "current_default": true,
+    "axe_violations": 0,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "no_private_storage": true,
+    "atelier_opt_in_reversible_and_reduced_motion": true,
+    "flag_closed_ui": true,
+    "late_read_does_not_restore_private_dom": true,
+    "logout_purges_result_and_history": true,
+    "logout_clears_old_private_chat": true
+  },
+  "regression_checks": 17,
+  "reused_proof": "SQL/API/client source_sha256 maps match; their historical preserved UI hashes are not claimed current. PG and unchanged unit suites not rerun.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-ui-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "meeting-address-current-390x844.png": "cc45ed3bf0229edd2af790f4da7d347de824d958ff6c4ef528e4cbae5cba5daa",
+    "meeting-address-atelier-390x844.png": "8ad8d79fa291ba99a1f2c3c9607be0e4e21b4b72a7c060446ba9123c2c28f813"
+  },
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-ui-20261004",
+  "public_files": 97,
+  "release_sha256": "6901a00118af26312ba8294b9914f9f27ab6261847fd09bad35253a5b6be99b4",
+  "published": false,
+  "google_maps": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

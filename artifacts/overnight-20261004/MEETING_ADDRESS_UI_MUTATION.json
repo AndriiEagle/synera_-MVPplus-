@@ -1,0 +1,24 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:11:50.327Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "preserved_accepted_chat": true,
+    "read_does_not_vote": true,
+    "retry_and_proposer_role": true,
+    "explicit_decline": true,
+    "stale_selection_requires_reload": true,
+    "bilateral_selected_address_and_literal_history": true,
+    "current_default": true,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "axe_current_atelier_zero_and_opt_in_reversible": true,
+    "closed_flag_keeps_chat": true,
+    "no_private_storage": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Private address DOM survived logout\n+ actual - expected\n\n+ '4 жовт. 2026 р., 10:11 · 30 хв · ZürichТретій варіант — Zürich 💛Пропонує: Тест АндрійЗапропонувати іншу адресуТочна адреса або точка зустрічіЯ пропоную це місце другій людині.Запропонувати адресу'\n- ''\n"
+}
