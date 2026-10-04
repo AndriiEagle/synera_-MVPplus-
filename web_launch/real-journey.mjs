@@ -341,7 +341,16 @@ async function createOutcomeSocialDraft() {
     if (epoch !== state.epoch || state.outcomeContext !== context || generation !== state.socialGeneration || !outcomeUI.socialConsent.checked) return;
     state.socialDraft = draft; outcomeUI.socialText.value = draft.text; outcomeUI.socialOutput.hidden = false;
     setStatus('Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.');
-  } catch (error) { if (epoch === state.epoch && error.status === 409) { clearSocialDraft(); outcomeUI.socialControls.hidden = true; } throw error; }
+  } catch (error) {
+    if (epoch !== state.epoch || state.outcomeContext !== context) return;
+    if (error?.status === 401 || error?.status === 403) throw error;
+    if (generation !== state.socialGeneration || !outcomeUI.socialConsent.checked) return;
+    if (error?.status === 409) { clearSocialDraft(); outcomeUI.socialControls.hidden = true; setStatus('Домовленість змінилася. Перевір результати перед створенням чернетки.'); return; }
+    if (error?.status === 429 || error?.status >= 500 || !error?.status) {
+      setStatus('Не вдалося створити приватну чернетку. Чат доступний; повтори створення пізніше.'); return;
+    }
+    throw error;
+  }
 }
 function renderReview(current) {
   clear(ui.review);

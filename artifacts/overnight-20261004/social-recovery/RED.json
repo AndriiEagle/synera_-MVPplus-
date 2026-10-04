@@ -1,0 +1,35 @@
+{
+  "status": "RED_CONFIRMED_DRAFT_CHAT_REMOVAL",
+  "generated_at": "2026-10-04T09:34:57.877Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium private social draft recovery; seeded synthetic accounts and RPC. No live JWT, SQL execution, OAuth, OS clipboard or publication.",
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "90c89d86b908349edc1f61eab33850545c71969b92abb783201776d144cc5707",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T09:34:58.732Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard",
+    "checks": [
+      "one accepted leg exposes no social achievement",
+      "explicit checkbox creates only actor contribution; no evidence, identity or outcome write",
+      "LinkedIn format requires new choice; edited text selected without OS clipboard or publication"
+    ],
+    "source_sha256": {
+      "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+      "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+      "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+      "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+      "tools/case-social-draft-browser.mjs": "13410f361cc1667a5907cd82077941639bd314f8cce90ed2b65ebcb5aa29ce32",
+      "tools/social-draft-recovery-browser.mjs": "44bf30bbd6bd4ea04c6575db01bd82077b08c39833007009cc0875911cb69cc0"
+    },
+    "error": "Draft failure removed accepted private chat\n\nfalse !== true\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+    "tools/social-draft-recovery-browser.mjs": "44bf30bbd6bd4ea04c6575db01bd82077b08c39833007009cc0875911cb69cc0"
+  }
+}
