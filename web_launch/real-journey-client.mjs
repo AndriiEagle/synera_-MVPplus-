@@ -57,6 +57,58 @@ export function validateOutcome(data, current) {
   if (data.outcome_confirmed !== projected.every(row => row.phase === 'accepted')) invalid();
   return structuredClone(data);
 }
+const ADDRESS_KEYS = Object.freeze({ propose: ['address', 'consent'], accept: ['consent'], decline: [] });
+const addressText = value => typeof value === 'string' && [...value.trim()].length >= 1 && [...value.trim()].length <= 200;
+const instant = value => value === null ? null : Date.parse(value);
+const meetingSelection = meeting => [instant(meeting.proposed_at), meeting.duration_minutes, meeting.meeting_place, meeting.status];
+const addressSelection = data => JSON.stringify([data.meeting_id, data.case_id, data.version, data.terms_hash,
+  ...meetingSelection(data.meeting), data.meeting.meeting_address, data.proposal, data.agreed, data.events.at(-1)?.id ?? null]);
+function assertAddressIntent(intent) {
+  const extra = intent && Object.hasOwn(ADDRESS_KEYS, intent.action) ? ADDRESS_KEYS[intent.action] : null;
+  const keys = ['action', 'intentId', ...(extra || [])];
+  if (!extra || Object.keys(intent).length !== keys.length || keys.some(key => !Object.hasOwn(intent, key)) ||
+      !INTENT.test(intent.intentId) || (intent.action !== 'decline' && intent.consent !== true) ||
+      (intent.action === 'propose' && !addressText(intent.address)) || new TextEncoder().encode(JSON.stringify(intent)).length > 1800) throw new ServiceError(400);
+}
+function validateMeetingAddress(data, current, meeting) {
+  const invalid = () => { throw new ServiceError(502, 'invalid_address_response'); };
+  if (!data || data.schema !== 'synera.meeting-address.v1' || data.meeting_id !== meeting.id || data.case_id !== current.caseId ||
+      data.version !== current.version || data.terms_hash !== current.termsHash || !Number.isFinite(Date.parse(data.server_now)) ||
+      typeof data.agreed !== 'boolean' || !Array.isArray(data.events) || !data.meeting) invalid();
+  const m = data.meeting;
+  if ((m.proposed_at !== null && (typeof m.proposed_at !== 'string' || !Number.isFinite(instant(m.proposed_at)))) ||
+      (m.duration_minutes !== null && ![20, 30, 60].includes(m.duration_minutes)) ||
+      (m.meeting_place !== null && typeof m.meeting_place !== 'string') || typeof m.meeting_address !== 'string' ||
+      m.status !== 'accepted' || JSON.stringify(meetingSelection(m)) !== JSON.stringify(meetingSelection(meeting)) ||
+      (typeof meeting.meeting_address === 'string' && m.meeting_address !== meeting.meeting_address)) invalid();
+  let latest = null, decision = null, lastId = 0; const proposals = new Set();
+  for (const e of data.events) {
+    if (!e || !Number.isSafeInteger(e.id) || e.id <= lastId || !/^[A-Za-z0-9_:-]{1,64}$/.test(e.case_id) ||
+        !Number.isInteger(e.version) || e.version < 1 || e.version > 999999999 || !/^[a-f0-9]{64}$/.test(e.terms_hash) ||
+        !current.participants.includes(e.actor_id) || !INTENT.test(e.proposal_id) || typeof e.created_at !== 'string' ||
+        !Number.isFinite(Date.parse(e.created_at))) invalid();
+    lastId = e.id;
+    if (e.kind === 'propose') {
+      if (!addressText(e.address) || e.address !== e.address.trim() || proposals.has(e.proposal_id)) invalid();
+      proposals.add(e.proposal_id); latest = e; decision = null;
+    } else if (['accept', 'decline'].includes(e.kind)) {
+      if (!latest || decision || e.proposal_id !== latest.proposal_id || e.actor_id === latest.actor_id || e.address !== null ||
+          e.case_id !== latest.case_id || e.version !== latest.version || e.terms_hash !== latest.terms_hash) invalid();
+      decision = e.kind;
+    } else invalid();
+  }
+  const p = data.proposal;
+  if (latest) {
+    if (!p || typeof p.current !== 'boolean' || p.proposal_id !== latest.proposal_id || p.proposer_id !== latest.actor_id ||
+        p.address !== latest.address || p.decision !== decision || (p.current &&
+          (latest.case_id !== current.caseId || latest.version !== current.version || latest.terms_hash !== current.termsHash))) invalid();
+  } else if (p !== null) invalid();
+  const approved = current.status === 'approved_for_next_step' && Date.parse(current.expiresAt) > Date.parse(data.server_now);
+  if (data.agreed !== Boolean(p?.current && decision === 'accept' && m.meeting_address === p.address && approved)) invalid();
+  // Cross-check the response and fresh meeting row, not address truth or identity.
+  // Historical proposals lack their original snapshot; `current` remains server authority.
+  return structuredClone(data);
+}
 export class JourneyConflict extends Error {
   constructor() { super('Умови змінилися. Онови їх, перечитай і підтвердь нову версію.'); this.status = 409; this.code = 'STALE_CASE_RELOAD_REQUIRED'; }
 }
@@ -70,13 +122,72 @@ export function assertRealJourneyGate(config) {
 // browser token, fictional participant, second matching engine or private cache.
 export class RealJourneyStore extends NeonStore {
   #outcomesEnabled;
+  #meetingAddressEnabled;
   #outcomeEpoch = 0;
-  constructor(config, fetchImpl = fetch) { assertRealJourneyGate(config); super(config, fetchImpl); this.#outcomesEnabled = config.caseOutcomesEnabled === true; }
+  constructor(config, fetchImpl = fetch) {
+    assertRealJourneyGate(config); super(config, fetchImpl);
+    this.#outcomesEnabled = config.caseOutcomesEnabled === true;
+    this.#meetingAddressEnabled = config.meetingAddressEnabled === true;
+  }
   // Invalidate outcome work as soon as authentication changes, including logging
   // out and restoring the SAME account. Existing auth operations stay unchanged.
   restore() { this.#outcomeEpoch++; return super.restore(); }
   verifyOtp(email, otp) { this.#outcomeEpoch++; return super.verifyOtp(email, otp); }
   signOut() { this.#outcomeEpoch++; return super.signOut(); }
+  async #address(peerId, meetingId, reviewed, selected, input) {
+    if (!this.#meetingAddressEnabled) throw new ServiceError(503, 'meeting_address_not_ready');
+    const addressEpoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
+    const choice = structuredClone(selected), intent = input === null ? null : structuredClone(input);
+    const guard = () => { if (!actor || this.user?.id !== actor || addressEpoch !== this.#outcomeEpoch) throw new ServiceError(401, 'address_session_changed'); };
+    guard(); if (intent) assertAddressIntent(intent);
+    if (intent && (!choice || choice.meeting_id !== meetingId || choice.case_id !== expected?.caseId ||
+        choice.version !== expected?.version || choice.terms_hash !== expected?.termsHash)) throw new ServiceError(400);
+    await this.#actor(peerId); guard();
+    const current = await this.pairState(peerId); guard(); this.#expect(current, expected);
+    if (!current) throw new JourneyConflict();
+    const payload = { action: 'state', version: current.version, termsHash: current.termsHash };
+    const read = async (body, caseState = current) => {
+      const data = await this._meetingAddress(meetingId, current.caseId, body); guard();
+      const meeting = await this.#meeting(meetingId); guard();
+      if ([meeting.sender_id, meeting.recipient_id].sort().join(':') !== [...current.participants].sort().join(':')) throw new ServiceError(403);
+      return validateMeetingAddress(data, caseState, meeting);
+    };
+    let result = await read(payload);
+    if (intent) {
+      const eligible = current.status === 'approved_for_next_step' && Date.parse(current.expiresAt) > Date.now() &&
+        Date.parse(result.meeting.proposed_at) > Date.now() && result.meeting.duration_minutes !== null &&
+        typeof result.meeting.meeting_place === 'string' && result.meeting.meeting_place.trim() && !['online', 'онлайн'].includes(result.meeting.meeting_place.trim().toLowerCase());
+      if (!eligible) throw new JourneyConflict();
+      const p = choice.proposal;
+      if (intent.action !== 'propose' && (!p?.current || p.proposer_id === actor)) throw new ServiceError(403);
+      const sameMeeting = JSON.stringify(meetingSelection(choice.meeting)) === JSON.stringify(meetingSelection(result.meeting));
+      // A lost response may be retried with its ORIGINAL intent, never a newer proposal.
+      // SQL checks intent identity; projection does not echo decision intent IDs.
+      const retry = intent.action === 'propose' ? result.proposal?.current && result.proposal.proposal_id === intent.intentId &&
+        result.proposal.proposer_id === actor && result.proposal.address === intent.address.trim() :
+        result.proposal?.current && result.proposal.proposal_id === p.proposal_id && result.proposal.decision === intent.action &&
+        result.events.some(e => e.kind === intent.action && e.actor_id === actor && e.proposal_id === p.proposal_id);
+      if (!sameMeeting || (addressSelection(choice) !== addressSelection(result) && !retry)) throw new JourneyConflict();
+      const body = { ...intent, proposalId: p?.proposal_id ?? null, version: expected.version, termsHash: expected.termsHash };
+      result = await read(body);
+      const proposalId = intent.action === 'propose' ? intent.intentId : p.proposal_id;
+      if (result.proposal?.proposal_id !== proposalId || !result.events.some(e => e.kind === intent.action && e.actor_id === actor &&
+          e.proposal_id === proposalId && e.case_id === expected.caseId && e.version === expected.version && e.terms_hash === expected.termsHash &&
+          (intent.action !== 'propose' || e.address === intent.address.trim()))) throw new ServiceError(502, 'address_not_acknowledged');
+    }
+    const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
+    if (intent && (latest.status !== 'approved_for_next_step' || Date.parse(latest.expiresAt) <= Date.now())) throw new JourneyConflict();
+    const final = await read(payload, latest);
+    if (addressSelection(final) !== addressSelection(result)) throw new JourneyConflict();
+    const settled = await this.pairState(peerId); guard(); this.#expect(settled, expected);
+    if (intent && (settled.status !== 'approved_for_next_step' || Date.parse(settled.expiresAt) <= Date.now())) throw new JourneyConflict();
+    return validateMeetingAddress(final, settled, { ...final.meeting, id: meetingId });
+  }
+  meetingAddressState(peerId, meetingId, reviewed) { return this.#address(peerId, meetingId, reviewed, null, null); }
+  recordMeetingAddress(peerId, meetingId, reviewed, selected, intent) {
+    if (!intent) return Promise.reject(new ServiceError(400));
+    return this.#address(peerId, meetingId, reviewed, selected, intent);
+  }
   async #outcome(peerId, reviewed, input) {
     if (!this.#outcomesEnabled) throw new ServiceError(503, 'case_outcomes_not_ready');
     const epoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);

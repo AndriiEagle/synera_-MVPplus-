@@ -38,6 +38,12 @@ export class NeonStore extends ProfileStore {
     if (typeof caseId !== 'string' || !/^[A-Za-z0-9_:-]{1,64}$/.test(caseId)) throw new ServiceError(400);
     return this.#request('/api/neon/outcomes/' + caseId, { method: 'POST', body: payload });
   }
+  async _meetingAddress(meetingId, caseId, payload) {
+    this.requireUser();
+    if (typeof meetingId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(meetingId) ||
+        typeof caseId !== 'string' || !/^[A-Za-z0-9_:-]{1,64}$/.test(caseId)) throw new ServiceError(400);
+    return this.#request('/api/neon/meeting-address/' + meetingId + '/' + caseId, { method: 'POST', body: payload });
+  }
   async #location(id, action, body = {}) {
     this.requireUser();
     if (!this.liveLocationEnabled || typeof id !== 'string' || !/^[0-9a-f-]{36}$/i.test(id)) throw new ServiceError(400);
