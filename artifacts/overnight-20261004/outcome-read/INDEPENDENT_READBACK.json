@@ -1,0 +1,8 @@
+{
+  "status": "PASS_INDEPENDENT_POWERSHELL_READBACK",
+  "verified_source_and_screenshot_hashes": 24,
+  "manifest_entries": 96,
+  "public_files": 97,
+  "release_sha256": "b6bcc0bb6db2ae1b0a3b55f3d946636a47148668dcb3d913f252c7fc0493b028",
+  "published": false
+}

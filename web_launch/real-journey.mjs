@@ -231,10 +231,20 @@ async function openOutcomes() {
   const peerId = state.peerId || state.conversationPeer, epoch = state.epoch;
   if (!state.outcomesEnabled || !peerId) return;
   clearOutcomes();
-  const reviewed = await state.store.pairState(peerId); if (epoch !== state.epoch) return;
-  if (!reviewed) return setStatus('Відкритої домовленості для цієї пари немає.');
-  const result = await state.store.outcomeState(peerId, reviewed); if (epoch !== state.epoch) return;
-  state.outcomeContext = { peerId, reviewed }; state.outcomeData = result; renderOutcomes();
+  try {
+    const reviewed = await state.store.pairState(peerId); if (epoch !== state.epoch) return;
+    if (!reviewed) return setStatus('Відкритої домовленості для цієї пари немає.');
+    const result = await state.store.outcomeState(peerId, reviewed); if (epoch !== state.epoch) return;
+    state.outcomeContext = { peerId, reviewed }; state.outcomeData = result; renderOutcomes();
+    setStatus('Результати домовленості прочитано з сервера.');
+  } catch (error) {
+    if (epoch !== state.epoch) return;
+    if (error?.status === 409) { setStatus('Домовленість змінилася. Перевір результати знову.'); return; }
+    if (error?.status === 429 || error?.status >= 500 || !error?.status) {
+      setStatus('Не вдалося прочитати результати. Чат доступний; повтори перевірку пізніше.'); return;
+    }
+    throw error;
+  }
 }
 async function recordOutcome(context, intent) {
   const epoch = state.epoch;

@@ -1,0 +1,56 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_READ_RECOVERY_CLOSURE",
+  "generated_at": "2026-10-04T08:47:13.385Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local outcome read recovery in actual Chromium with synthetic accounts/RPC. No live HTTP JWT, Android, provider activation or deployment.",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "a9963de371a1fb26382653f3b29b8b1dc85ef5388d717d429c05f566a3f41c18",
+    "tools/outcome-read-browser.mjs": "e1781319309ebfbe0d7f6f33bab8ca316629138f72db5b083ac68415331ea250",
+    "tools/outcome-read-acceptance.mjs": "d00fa874d1ee9cfe85ef25f9c36250f8cdeecb98bfdc60aa039d9727a9590338"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/outcome-archive.mjs": "d9257b5c8fbdaa1e4ff67fc5df2c1b02c00f5fae56e6ebfce8e4f2a5f181f09d",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/dist-neon-address-read-20261004/release.json": "4e56b24c25095bf005ce78faa5fc7f488d487af3cc55e79964d1b9b6eec023e1",
+    "artifacts/overnight-20261004/address-read/ACCEPTANCE.json": "f2448fdd53e0164823c6d8e8f3fbc38b6e38c041269521feea3f87a465eff375"
+  },
+  "base_commit": "7f27a5597ac8df949a9b54f5755ca923a26db6c8",
+  "red": "Current pre-patch controller removed accepted chat on failed optional outcome read; original semantic RED retained.",
+  "browser_checks": 22,
+  "mutation": "REJECTED: only outcome catch epoch guard removed in served copy; late failure changes logged-out status, canonical controller unchanged.",
+  "unchanged_controller_outside_outcome_read_sha256": "24971dda7a98dd64b942b12a953a3f1c52b5e29653d3e7cd4fc660eb6fc9fdfa",
+  "reused_proof": "Exact unchanged outcome/address SQL and current gateway dependency maps, including existing outcome API tests. Client/store unchanged; prior controller-bound address/navigation/export/social browser proofs remain historical and are not counted as fresh checks.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcome-read-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "read-recovered-390x844.png": "8b10a59fe575b8dd6edeb9f3f4d98ed1c3db40d0c128a279c8a773627146f9e1",
+    "outcome-current-390x844.png": "18a620c760bd9635ad62c1085379b84f2a0e16e925d00a226899ea753838fba8",
+    "outcome-confirmed-panel.png": "d7fb370e256bd3d7fe22c80d8d2128d9ed4d29f38b6f31b8a6b802a6c0de62f3",
+    "outcome-atelier-390x844.png": "4a6c7f14b35b09c4289a65cbe8aea47d3b7d70a4062b10981d3f464969bd01b5"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcome-read-20261004",
+  "release_sha256": "b6bcc0bb6db2ae1b0a3b55f3d946636a47148668dcb3d913f252c7fc0493b028",
+  "published": false,
+  "google_maps": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

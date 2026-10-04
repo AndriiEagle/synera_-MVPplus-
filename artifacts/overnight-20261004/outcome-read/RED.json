@@ -1,0 +1,32 @@
+{
+  "status": "RED_CONFIRMED_CHAT_REMOVAL",
+  "generated_at": "2026-10-04T08:39:09.954Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium outcome cycle/read recovery; synthetic same-origin accounts and RPC. No live JWT, Android, providers or deployment.",
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "3753d26c8208cfcefe1a79623e95f13c5cb9e5e73dd79c5bbbe077818f3dd871",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T08:39:10.854Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "pending_does_not_auto_accept": true,
+      "retry_keeps_text_and_intent": true,
+      "giver_cannot_self_accept": true,
+      "dispute_resolves_without_erasing_history": true,
+      "withdrawal_disables_outcome_actions": true,
+      "both_receiver_acceptances_confirm_all_results": true
+    },
+    "error": "Outcome read failure removed accepted private chat\n\nfalse !== true\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "546f2cdb48171601fc3ecb0e017bea92d18499f8deb8bee5496eb014882238fa",
+    "tools/outcome-read-browser.mjs": "db9ed09d1be26889219985ee1246c154406c1b4c60509a86e068c96d8b9f6a88"
+  }
+}
