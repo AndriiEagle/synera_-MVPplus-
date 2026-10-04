@@ -1,0 +1,16 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:39:40.425Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "preserved_accepted_chat": true,
+    "read_does_not_vote": true,
+    "retry_and_proposer_role": true,
+    "explicit_decline": true,
+    "stale_selection_requires_reload": true,
+    "bilateral_selected_address_and_literal_history": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Agreed address route missing\n\n0 !== 1\n"
+}

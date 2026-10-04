@@ -1,0 +1,36 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:43:47.878Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium clicks, synthetic account/RPC; navigation fulfilled locally without Google, JWT or Android hardware",
+  "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+  "extended_runner_sha256": "d1700aa65095a59ccd4c0bc1527b459535dcc28d8a89a22252563b67a5d4198a",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T06:43:48.699Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "preserved_accepted_chat": true,
+      "read_does_not_vote": true,
+      "retry_and_proposer_role": true,
+      "explicit_decline": true,
+      "stale_selection_requires_reload": true,
+      "bilateral_selected_address_and_literal_history": true,
+      "navigation_requires_explicit_click": true,
+      "failed_read_does_not_navigate": true
+    },
+    "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+    "error": "Unagreed address navigated\n\n1 !== 0\n"
+  },
+  "process_exit": 1,
+  "error": "Unagreed address navigated\n\n1 !== 0\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-address-navigation-browser.mjs": "b7cc2928e2921e23e0edbef0b64e97d4a18dd5fe8d3df87b2c47f0d9861f1f36"
+  }
+}

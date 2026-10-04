@@ -1,5 +1,6 @@
 import { RealJourneyStore, assertRealJourneyGate, materialFromEditor } from './real-journey-client.mjs';
 import { CAPABILITIES } from './profile-brief.mjs';
+import { meetingDirectionsUrl } from './live-location.mjs';
 
 const $ = id => document.getElementById(id);
 const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'), auth: $('real-auth'), content: $('real-content-panel'), people: $('real-people'), cases: $('real-cases'), meetings: $('real-meetings'), peer: $('real-peer'), terms: $('real-terms'), termsForm: $('real-terms-form'), mode: $('real-mode'), hybrid: $('real-hybrid-components'), modeBoundary: $('real-mode-boundary'), money: $('real-money-terms'), paidBoundary: $('real-paid-boundary'), review: $('real-terms-review'), approveCheck: $('real-approve-check'), approve: $('real-approve'), withdraw: $('real-withdraw'), invite: $('real-invite'), inviteForm: $('real-invite-form'), conversation: $('real-conversation'), transcript: $('real-transcript'), messageForm: $('real-message-form'), message: $('real-message'), refresh: $('real-refresh'), logout: $('real-logout') });
@@ -136,6 +137,29 @@ async function recordAddress(context, intent) {
     throw error;
   }
 }
+async function navigateAddress(context) {
+  const epoch = state.epoch, generation = state.addressGeneration;
+  const active = () => epoch === state.epoch && generation === state.addressGeneration && state.addressContext === context;
+  if (!active() || !context.selected.agreed) return;
+  try {
+    const result = await state.store.meetingAddressState(context.peerId, context.meetingId, context.reviewed);
+    if (!active()) return;
+    const same = result.agreed && context.reviewed.status === 'approved_for_next_step' && Date.parse(context.reviewed.expiresAt) > Date.now() &&
+      result.proposal?.proposal_id === context.selected.proposal?.proposal_id &&
+      result.meeting.meeting_address === context.selected.meeting.meeting_address && meetingKey(result.meeting) === meetingKey(context.selected.meeting);
+    if (!same) {
+      state.addressContext = { ...context, selected: result }; state.addressData = result; renderAddress();
+      setStatus('Адреса або погодження змінились. Переглянь актуальний стан перед маршрутом.'); return;
+    }
+    const url = meetingDirectionsUrl(result.meeting.meeting_address);
+    if (url) window.location.assign(url);
+  } catch (error) {
+    if (!active()) return;
+    if (error.status === 409) { clearAddress(); setStatus('Умови або зустріч змінились. Перевір адресу знову.'); return; }
+    if (error.status === 429 || error.status >= 500 || !error.status) { setStatus('Не вдалося перевірити маршрут. Повтори свій вибір пізніше.'); return; }
+    throw error;
+  }
+}
 function renderAddress() {
   const context = state.addressContext, result = state.addressData; if (!context || !result) return;
   clear(addressUI.cards); clear(addressUI.events);
@@ -161,6 +185,10 @@ function renderAddress() {
       const actions = el('div', '', { class: 'real-actions' }); actions.append(accept, decline); card.append(label, actions);
     }
     addressUI.cards.append(card);
+  }
+  if (result.agreed && context.reviewed.status === 'approved_for_next_step' && Date.parse(context.reviewed.expiresAt) > Date.now() && meetingDirectionsUrl(result.meeting.meeting_address)) {
+    const route = makeButton('Маршрут у Google Maps ↗', () => navigateAddress(context)); route.id = 'real-address-route';
+    addressUI.cards.append(route, el('small', 'Відкриє Google Maps у цьому вікні й передасть адресу. Перевір точку на карті.'));
   }
   if (writable) {
     const host = p ? el('details', '', { id: 'real-address-editor' }) : el('div');
