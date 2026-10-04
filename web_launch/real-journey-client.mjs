@@ -20,7 +20,7 @@ function assertOutcomePayload(body) {
       (body.action === 'submit' && !outcomeText(body.evidenceUri)) || (body.action === 'check' && !outcomeText(body.scopeNotes)) ||
       (body.action === 'decline' && !OUTCOME_REASONS.includes(body.reason))) throw new ServiceError(400);
 }
-function validateOutcome(data, current) {
+export function validateOutcome(data, current) {
   const invalid = () => { throw new ServiceError(502, 'invalid_outcome_response'); };
   const legs = current.material.trial.deliverables;
   if (!data || data.schema !== 'synera.case-outcome.v1' || data.proof_scope !== 'participant_attestation' ||

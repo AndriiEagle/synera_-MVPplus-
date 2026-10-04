@@ -2,7 +2,7 @@
 
 ## Поточний стан
 
-**RUN_05_ACCEPTED_LOCAL_OUTCOME_EXPORT:** серверний SQL, захищений API, клієнтський адаптер, екран результатів та приватний експорт перевірені локально. Повний fixture цикл і завантаження двох форматів прийняті у Chromium 390×844. `synera-10` залишається ACTIVE, цей чат `01a0a673-47c0-74d1-a768-7867f3dca2bc`, інтервал 30 хвилин, максимум 20 запусків. Кінцевий час робіт — 2026-10-04 12:28:45 Europe/Zurich (10:28:45 UTC). Живий продукт ще не прийнятий.
+**RUN_06_ACCEPTED_LOCAL_OUTCOME_ARCHIVE:** серверний SQL, захищений API, клієнтський адаптер, екран результатів, приватний експорт та локальний перегляд копії перевірені в окремих локальних проходах. Повний fixture цикл, завантаження й читання двох форматів прийняті у Chromium 390×844. `synera-10` залишається ACTIVE, цей чат `01a0a673-47c0-74d1-a768-7867f3dca2bc`, інтервал 30 хвилин, максимум 20 запусків. Кінцевий час робіт — 2026-10-04 12:28:45 Europe/Zurich (10:28:45 UTC). Живий продукт ще не прийнятий.
 
 Для виконання потрібні відкритий Codex, доступний комп'ютер без сну, інтернет і доступна квота. Налаштування Windows не змінені. Майбутні проходи використовуватимуть підписку Codex; її витрати й економія не виміряні.
 
@@ -118,5 +118,28 @@ Models used: none (provider calls=0, USD=$0.00). Витрати основної
 **Межі:** файл містить приватні умови й підтвердження; gzip не шифрує, SHA256 не засвідчує особу автора. `authority=local_copy_not_live_server_state`, `proof_scope=participant_attestation`. Це не незалежна перевірка якості, повний backup акаунта чи відновлення бази. Поточний Studio importer має інший session archive format; viewer/import цього outcome payload ще не підключений. Підписаний HTTP JWT, два живі акаунти, фізичний Android та production не прийняті. Пакет не опублікований, secrets/readiness не активовані, push не повторювався.
 
 **NEXT — 15–20 хвилин:** додати локальний read-only перегляд цього outcome archive через чинний codec із точними умовами/історією та явним позначенням неперевіреної копії. Відкриття файлу не має створювати серверні погодження, змінювати результат чи відновлювати акаунт.
+
+Models used: none (provider calls=0, USD=$0.00). Витрати основної підписки не виміряні.
+
+## Прохід 06 — локальний перегляд приватної копії
+
+Експорт проходу 05 збережений у commit `5a385caa8adac3ace3f41a9a3d976e9365f843d3`. Цей прохід розпочато о 03:30:32 UTC до погодженого deadline.
+
+Додано окремий `outcome-archive.html` з file picker, картками результатів, історією та згорнутими точними даними. Посилання доступне з приватного експорту. Читання не створює акаунт/store, не звертається до API й не записує погодження. File input очищується після вибору; кнопка очищення прибирає копію з DOM та скасовує незавершене читання. Сам файл на пристрої не видаляється.
+
+- Збережений інваріант: копія показує точні умови й історію, але завжди позначена як неперевірена сервером. Незавершений обмін залишається незавершеним. Це не import/restore command та не доказ походження автора.
+- До змін пройшли 13 чинних semantic tests codec/outcome client; новий тест спочатку впав на відсутньому reader. Чинний `validateOutcome` лише експортований як pure seam, без зміни його перевірок; новий reader повторно використовує ту саму перевірку ролей, послідовності та проєкції історії. Material hash і учасники перевіряються чинними business-case функціями.
+- [OUTCOME_ARCHIVE.json](OUTCOME_ARCHIVE.json): **38/38 PASS**, FAIL/SKIP=0: reader, export, codec, outcome client, real journey та NeonStore. Ще **3/3 targeted allowlist/extensionless tests PASS**. Підміна умов, hash, редакції, actor ролі, вигадане приймання, чужий exported_by, інша authority/proof scope, зайві commands, пошкодження/oversize та інший archive format відхиляються. Перерахований digest не обходить перевірку внутрішньої узгодженості.
+- [OUTCOME_ARCHIVE_BROWSER.json](OUTCOME_ARCHIVE_BROWSER.json): **PASS_LOCAL_OUTCOME_ARCHIVE_BROWSER**. Справжній Chromium 390×844 вибрав два файли, завантажені проходом 05, і звірив усі дані після читання. Шість подій та точний багатомовний текст збережені; `<script>` показано текстом. Копія не містить controls приймання чи серверного запису. Неправильний наступний файл відразу очищає попередню копію; pending історія не стає підтвердженою.
+- Два скінченні self-review: фактичний diff додає тільки окремий reader, три public assets, посилання та export чинного validator; немає нового persistence/authority. Async selection/clear використовує generation guard та textContent. [OUTCOME_ARCHIVE_MUTATION.json](OUTCOME_ARCHIVE_MUTATION.json) прибирає тільки цей guard через локальний browser route. Перевірка ловить `Cleared archive returned after pending decode`; прийняті джерела не змінювалися.
+- Current лишився default; Atelier добровільно увімкнуто й повернуто. Axe: 0 у двох режимах; ширина 390/390. [Реальний скриншот](outcome-archive-390x844.png) переглянутий. Browser зберіг тільки явно вибраний ключ вигляду; приватних local/session storage, Cache Storage та IndexedDB немає. **0 API/external requests**, 0 page errors.
+- Окремий кандидат `web_launch/dist-neon-outcomes-viewer-20261004`: **97 файлів**, release SHA256 `66d460a755c4d756e1f8c9d41f938ff92a38f627fe2c23791a17df2ad9d69505`. Реальний bundled Worker локально обслужив чотири нові public paths, включно з extensionless HTML, відмовив tests/SQL/release.json і зберіг closed outcome gate 503. Старий gateway receipt має попередній assets hash і не видається за перевірку цього нового пакета. Незмінений SQL proof повторно використано за source hashes; PostgreSQL не запускалася.
+- Чужа dirty journey-ui, чинні codec/Studio/Atelier, експортний UI-handler, два accepted download files та чотири попередні release manifests збережені за hash. Generated dist не додається до commit. Browser/server завершені. Owned source, proofs, screenshot та report зберігаються локальним комітом.
+
+**Виправлення перевірок:** plain і gzip були окремими серверними readbacks, тому їхні server_now різні; кожен файл звіряється зі своїм точним payload. CSS selector `#archive-result button,input` помилково рахував також file/Atelier inputs поза результатом; область виправлена. Pause oracle спочатку затримував обидва digest calls; тепер затримує лише перший і чекає завершення обох, а mutation доводить реальне повторне заповнення DOM без guard. Targeted worker filter фактично вибрав три тести, а не два; кількість у closure gate виправлена. Це помилки test harness, не нові продуктові зміни чи послаблення acceptance.
+
+**Межі:** локальна перевірка узгодженості не доводить справжнього автора, незалежну якість або актуальний серверний стан. Навіть повністю узгоджену копію можна створити вручну; попередження залишається завжди. Gzip не шифрує. Viewer не відновлює сервер/акаунт і не імпортує до Studio session archive. Фізичний Android, offline PWA path, два живі акаунти та підписаний HTTP JWT не перевірені. Новий пакет не опублікований; secrets, readiness, production та пам'ять не змінені, push не повторювався.
+
+**NEXT — 15–20 хвилин:** перевірити чинний генератор соціальних чернеток і приєднати одну приватну чернетку до актуального двостороннього приймання результатів. Незавершений/спірний обмін не має перетворюватися на вигадане досягнення; публікації та зовнішніх повідомлень не виконувати.
 
 Models used: none (provider calls=0, USD=$0.00). Витрати основної підписки не виміряні.
