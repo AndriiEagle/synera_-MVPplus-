@@ -1,0 +1,80 @@
+{
+  "status": "RED_REPRODUCED_UNILATERAL_ADDRESS_CHANGE",
+  "generated_at": "2026-10-04T04:40:21.690Z",
+  "database": "synera_address_acceptance_1791088821054",
+  "server": {
+    "version": "16.15",
+    "data": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "scope": "Isolated PG16 with identity shim, not signed HTTP JWT/live accounts/production",
+  "stages": [
+    {
+      "name": "local_identity_shim",
+      "exit_code": 0,
+      "stdout": "CREATE SCHEMA\r\nCREATE TABLE\r\nCREATE SCHEMA\r\nCREATE FUNCTION\r\nDO\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "schema.proposal.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nALTER TABLE\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE INDEX\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "case-state.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nDO\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nALTER TABLE\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "group-room.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nALTER TABLE\r\nALTER TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "meeting-location.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nALTER TABLE\r\nGRANT\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nREVOKE\r\nGRANT\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "unilateral_patch_expected_red",
+      "exit_code": 3,
+      "stdout": "BEGIN\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nINSERT 0 1\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nRESET\r\nINSERT 0 1\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\n",
+      "stderr": "ERROR:  One participant changed the address without peer approval\r\nCONTEXT:  PL/pgSQL function inline_code_block line 4 at RAISE\r\n",
+      "error": null
+    },
+    {
+      "name": "rollback_readback",
+      "exit_code": 0,
+      "stdout": "{\"address_events_absent\" : true, \"fixture_users_left\" : 0, \"cases_left\" : 0, \"meetings_left\" : 0}\r\n",
+      "stderr": "",
+      "error": null
+    }
+  ],
+  "source_sha256": {
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "tools/meeting-address-sql-acceptance.mjs": "be37049701b952563b784587de18180d76b6fd13f5a8303be696ac84aac2d304",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/meeting-address-direct-patch.regression.sql": "c9db71e3ce71cb7aac0848c2e5e7498f11e1a348c9ff890a5088f02bfb14d30e"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "rollback": {
+    "address_events_absent": true,
+    "fixture_users_left": 0,
+    "cases_left": 0,
+    "meetings_left": 0
+  }
+}

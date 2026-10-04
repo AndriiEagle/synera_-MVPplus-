@@ -1,0 +1,12 @@
+{
+  "status": "LOCAL_PG_STOPPED",
+  "checked_at": "2026-10-04T04:49:40.639Z",
+  "data_directory": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+  "pg_ctl_readback": "no server running",
+  "listen_port_55331": false,
+  "databases_preserved": true,
+  "source_readback": "PASS",
+  "unowned_journey_ui_preserved": true,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

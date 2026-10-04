@@ -1,0 +1,70 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T04:47:16.781Z",
+  "database": "synera_address_acceptance_1791089236341",
+  "server": {
+    "version": "16.15",
+    "data": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "scope": "Isolated PG16 with identity shim, not signed HTTP JWT/live accounts/production",
+  "stages": [
+    {
+      "name": "local_identity_shim",
+      "exit_code": 0,
+      "stdout": "CREATE SCHEMA\r\nCREATE TABLE\r\nCREATE SCHEMA\r\nCREATE FUNCTION\r\nDO\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "schema.proposal.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nALTER TABLE\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE INDEX\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "case-state.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nDO\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nALTER TABLE\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "group-room.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nALTER TABLE\r\nALTER TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "meeting-location.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nALTER TABLE\r\nGRANT\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE FUNCTION\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nREVOKE\r\nGRANT\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "bilateral_address_semantics",
+      "exit_code": 3,
+      "stdout": "BEGIN\r\nDO\r\nREVOKE\r\nDO\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nINSERT 0 1\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nRESET\r\nINSERT 0 1\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\nRESET\r\nc28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\r\nCREATE FUNCTION\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\n{\"id\": \"1ff51868-db01-4044-90ad-0a845f5dff38\", \"schema\": \"synera.location-grant.v1\", \"status\": \"active\", \"opens_at\": \"2026-10-04T08:32:17.888192+02:00\", \"radius_m\": 500, \"closes_at\": \"2026-10-04T09:17:17.888192+02:00\", \"precision\": \"approximate\", \"granted_at\": \"2026-10-04T06:47:17.888192+02:00\", \"grantor_id\": \"11111111-1111-4111-8111-111111111111\", \"meeting_id\": \"44444444-4444-4444-8444-444444444444\", \"sample_seq\": 0, \"lead_minutes\": 15, \"recipient_id\": \"22222222-2222-4222-8222-222222222222\"}\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\n{\"id\": \"d57a42ce-07dc-4bf0-aa55-82048805a6e4\", \"schema\": \"synera.location-grant.v1\", \"status\": \"active\", \"opens_at\": \"2026-10-04T08:32:17.888192+02:00\", \"radius_m\": 500, \"closes_at\": \"2026-10-04T09:17:17.888192+02:00\", \"precision\": \"approximate\", \"granted_at\": \"2026-10-04T06:47:17.888192+02:00\", \"grantor_id\": \"22222222-2222-4222-8222-222222222222\", \"meeting_id\": \"44444444-4444-4444-8444-444444444444\", \"sample_seq\": 0, \"lead_minutes\": 15, \"recipient_id\": \"11111111-1111-4111-8111-111111111111\"}\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\nRESET\r\nDO\r\nSET\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nDO\r\nRESET\r\nDO\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\n{\"agreed\": false, \"events\": [{\"id\": 1, \"kind\": \"propose\", \"address\": \"Café Zürich — first choice\", \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"11111111-1111-4111-8111-111111111111\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000001\"}, {\"id\": 2, \"kind\": \"accept\", \"address\": null, \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"22222222-2222-4222-8222-222222222222\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000001\"}, {\"id\": 3, \"kind\": \"propose\", \"address\": \"Second choice\", \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"11111111-1111-4111-8111-111111111111\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000004\"}], \"schema\": \"synera.meeting-address.v1\", \"case_id\": \"case-address-ab\", \"meeting\": {\"status\": \"accepted\", \"proposed_at\": \"2026-10-04T08:47:17.888192+02:00\", \"meeting_place\": \"Zürich\", \"meeting_address\": \"Café Zürich — first choice\", \"duration_minutes\": 30}, \"version\": 1, \"proposal\": {\"address\": \"Second choice\", \"current\": true, \"decision\": null, \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000004\", \"proposer_id\": \"11111111-1111-4111-8111-111111111111\"}, \"meeting_id\": \"44444444-4444-4444-8444-444444444444\", \"server_now\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\"}\r\n{\"agreed\": false, \"events\": [{\"id\": 1, \"kind\": \"propose\", \"address\": \"Café Zürich — first choice\", \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"11111111-1111-4111-8111-111111111111\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000001\"}, {\"id\": 2, \"kind\": \"accept\", \"address\": null, \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"22222222-2222-4222-8222-222222222222\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000001\"}, {\"id\": 3, \"kind\": \"propose\", \"address\": \"Second choice\", \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"11111111-1111-4111-8111-111111111111\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000004\"}, {\"id\": 4, \"kind\": \"propose\", \"address\": \"Third choice\", \"case_id\": \"case-address-ab\", \"version\": 1, \"actor_id\": \"11111111-1111-4111-8111-111111111111\", \"created_at\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\", \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000005\"}], \"schema\": \"synera.meeting-address.v1\", \"case_id\": \"case-address-ab\", \"meeting\": {\"status\": \"accepted\", \"proposed_at\": \"2026-10-04T08:47:17.888192+02:00\", \"meeting_place\": \"Zürich\", \"meeting_address\": \"Café Zürich — first choice\", \"duration_minutes\": 30}, \"version\": 1, \"proposal\": {\"address\": \"Third choice\", \"current\": true, \"decision\": null, \"proposal_id\": \"aaaaaaaa-aaaa-4aaa-8aaa-000000000005\", \"proposer_id\": \"11111111-1111-4111-8111-111111111111\"}, \"meeting_id\": \"44444444-4444-4444-8444-444444444444\", \"server_now\": \"2026-10-04T06:47:17.888192+02:00\", \"terms_hash\": \"c28f02f34bbe2bffc04a881d5ecbddcadb99f5a3932ba6dffcc4d410dc98fcab\"}\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nDO\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\n{\"sub\":\"33333333-3333-4333-8333-333333333333\",\"role\":\"authenticated\"}\r\nDO\r\n{}\r\nDO\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nSAVEPOINT\r\nRESET\r\nUPDATE 1\r\nSET\r\nDO\r\nROLLBACK\r\nSAVEPOINT\r\nRESET\r\nUPDATE 1\r\nSET\r\nDO\r\nROLLBACK\r\nSAVEPOINT\r\nRESET\r\nUPDATE 1\r\nSET\r\nDO\r\nROLLBACK\r\nSAVEPOINT\r\nRESET\r\nUPDATE 1\r\nSET\r\n",
+      "stderr": "ERROR:  Missing place accepted address proposal\r\nCONTEXT:  PL/pgSQL function inline_code_block line 1 at RAISE\r\n",
+      "error": null
+    }
+  ],
+  "source_sha256": {
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "tools/meeting-address-sql-acceptance.mjs": "be37049701b952563b784587de18180d76b6fd13f5a8303be696ac84aac2d304",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/meeting-address-direct-patch.regression.sql": "c9db71e3ce71cb7aac0848c2e5e7498f11e1a348c9ff890a5088f02bfb14d30e",
+    "neon/meeting-address-agreement.migration.sql": "3e940408f1925ef7ded4c5007e0b9e27e49673ed23c879cf4184eb8e373315e4",
+    "neon/meeting-address-agreement.acceptance.sql": "d4e8351a9aff318d4dcc05e7333e82561151c25ffebe5b336553ba0e3432da4a"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "error": "bilateral_address_semantics: ERROR:  Missing place accepted address proposal\r\nCONTEXT:  PL/pgSQL function inline_code_block line 1 at RAISE\r\n\n\n3 !== 0\n"
+}
