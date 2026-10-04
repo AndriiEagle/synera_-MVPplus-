@@ -1,0 +1,15 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T10:11:30.448Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "rejected_send_keeps_chat_and_draft_manual_retry_once": true,
+    "ambiguous_delivery_keeps_draft_readback_without_resend": true,
+    "auth_failure_purges_private_state": true
+  },
+  "error": "Late failed send changed completed logout state\n+ actual - expected\n\n+ 'Доставку не підтверджено. Текст збережено; онови чат перед повторним надсиланням — повідомлення могло вже дійти.'\n- 'Ти вийшов/вийшла з Synera.'\n"
+}

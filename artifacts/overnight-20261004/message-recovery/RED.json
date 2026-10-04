@@ -1,0 +1,25 @@
+{
+  "status": "RED_CONFIRMED_SEND_CHAT_REMOVAL",
+  "generated_at": "2026-10-04T10:07:25.618Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "9650e99c58b2e0f40e9efae26146672378397b112e38a5b31cd2021ae46a5f97",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T10:07:18.671Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true
+    },
+    "error": "Send failure removed accepted private chat\n\nfalse !== true\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "8af24e7031766b56682c238d1471796cc1b55d616e5c293591c8688cba492c85",
+    "tools/message-recovery-browser.mjs": "5f270578df7b699d7d3a4e517af612be5841bf6933af4ccef40deab986b4b5f4"
+  }
+}

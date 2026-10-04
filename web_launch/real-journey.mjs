@@ -434,7 +434,22 @@ async function invite(event) { event.preventDefault(); if (!state.peerId) return
 async function respond(id, status) { const epoch = state.epoch; const dashboard = await state.store.respondInvitation(id, status); if (epoch !== state.epoch) return; state.dashboard = dashboard; renderAll(); setStatus(status === 'accepted' ? 'Запрошення прийнято. Розмова доступна обом.' : 'Запрошення відхилено.'); }
 function renderTranscript(conversation) { clear(ui.transcript); for (const message of conversation.messages || []) { const card = el('article', '', { class: 'real-message' }); card.append(el('small', `${nameFor(message.sender_id)} · ${dateTime(message.created_at)}`), el('p', asText(message.body || message.text))); ui.transcript.append(card); } if (!ui.transcript.childElementCount) appendEmpty(ui.transcript, 'Повідомлень ще немає.'); }
 async function selectConversation(id) { clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
-async function sendMessage(event) { event.preventDefault(); if (!state.meetingId) return; const epoch = state.epoch; const request = ++conversationRequest; const text = ui.message.value.trim(); if (!text) return; const result = await state.store.sendConversation(state.meetingId, text); if (epoch !== state.epoch || request !== conversationRequest) return; ui.messageForm.reset(); renderTranscript(result); setStatus('Повідомлення надіслано й прочитано з сервера.'); }
+async function sendMessage(event) {
+  event.preventDefault(); if (!state.meetingId) return;
+  const epoch = state.epoch, request = ++conversationRequest, text = ui.message.value.trim(); if (!text) return;
+  try {
+    const result = await state.store.sendConversation(state.meetingId, text);
+    if (epoch !== state.epoch || request !== conversationRequest) return;
+    ui.messageForm.reset(); renderTranscript(result); setStatus('Повідомлення надіслано й прочитано з сервера.');
+  } catch (error) {
+    if (epoch !== state.epoch || request !== conversationRequest) return;
+    if (error?.status === 401 || error?.status === 403) throw error;
+    if (error?.status === 409 || error?.status === 429 || error?.status >= 500 || !error?.status) {
+      setStatus('Доставку не підтверджено. Текст збережено; онови чат перед повторним надсиланням — повідомлення могло вже дійти.'); return;
+    }
+    throw error;
+  }
+}
 function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); syncAddressEntry(); }
 async function refresh({ quiet = false } = {}) {
   const epoch = state.epoch, dashboard = await state.store.dashboard(); if (epoch !== state.epoch) return;
