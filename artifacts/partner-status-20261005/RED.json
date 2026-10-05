@@ -1,0 +1,19 @@
+{
+  "status": "RED_PARTNER_STATUS_REQUIRES_REFRESH",
+  "generated_at": "2026-10-05T12:17:12.144Z",
+  "phase": "red",
+  "checks": {},
+  "external_requests": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Desktop Chromium 390x844, synthetic accounts through handleNeon; no live JWT/account/Android/production acceptance",
+  "error": "Partner state did not update automatically: Погоджено обома",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "2839ea374172456b2562e14c935a5b1c6390114664520b1f03f35ab3d51d1210",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "neon/worker.mjs": "0a0c1c03f08b04ccd9a00fa9c5c4853693848ae059c725f74f30bb992847be25",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/partner-status-browser.mjs": "271a4a40ae5e725cffecf11a002a50b455f4ea512fa1af7388cb40202ac467dd"
+  }
+}

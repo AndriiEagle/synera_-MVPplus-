@@ -1,0 +1,56 @@
+{
+  "status": "PASS_LOCAL_PARTNER_STATUS_CLOSURE",
+  "generated_at": "2026-10-05T12:37:51.628Z",
+  "base_commit": "442a602e7e7502038be17f17cb3bb2238ef7deef",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060",
+    "tools/partner-status-browser.mjs": "c32dff00b7c88ad503da97e1c6ed395c0fb974d402249ca73a770f4d3055ba71",
+    "tools/partner-status-chat-regression.mjs": "117b9d35cc9244ce5a26813b5af91e4d6807e5017ce0c5081fb08bd9c9deeb0b",
+    "tools/partner-status-acceptance.mjs": "168ec464819e7f4b036ed858161ee8f7fea919e2a4523336c86e78b544c8cb61"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/profile-store.mjs": "798623e2828ddb16efbb786af81525d656890351a18ca14240fb39b811cdda49",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "artifacts/overnight-20261004/message-recovery/ACCEPTANCE.json": "8c321c2307c9203576aa31f6e89bac0b47f9486fdbe01cabf3cc00bfa0bdede0",
+    "web_launch/dist-neon-message-recovery-20261004/release.json": "2ba6345d489ba5c1a8df6c8bd9dc6cdc5fd216fb541b3fc06ac56f90922b9f3a",
+    "neon/worker.mjs": "0a0c1c03f08b04ccd9a00fa9c5c4853693848ae059c725f74f30bb992847be25"
+  },
+  "screenshot_sha256": {
+    "01-partner-approved.png": "60747b524b8da85a62a707303eafde991a706d65fc77ae9ec8b0210d141a5d46",
+    "02-revision-keeps-draft.png": "aadd9a0fdb6c9eb3d70df6c5707da834f03617c1294948bbca3cd125db670363",
+    "03-accepted-invitation.png": "89b469c79100d03a28b14b35ddbebb258b1b887dcb71daaabd5db6780a81a0f7"
+  },
+  "partner_browser_groups": 11,
+  "chat_browser_groups": 18,
+  "counts_overlap": true,
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-partner-status-20261005",
+    "files": 97,
+    "published": false
+  },
+  "public_files": 97,
+  "manifest_rows": 96,
+  "candidate": "web_launch/dist-neon-partner-status-20261005",
+  "release_sha256": "0c98d08483b04dba1dedb66f5e581dc7628821ad3df99ca3cbd03ef4294e13fd",
+  "published": false,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "limits": [
+    "Selected peer before chat only; visible page at existing five-second interval; no new provider calls",
+    "Synthetic transport; live JWT/two accounts/physical Android NOT_RUN",
+    "SQL/gateway unchanged; previous SQL proofs not rerun",
+    "Manual resend may duplicate; changed review/history can rebuild; no emotion measurements"
+  ]
+}

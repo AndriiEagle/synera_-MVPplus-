@@ -1,0 +1,23 @@
+{
+  "status": "RED_HINT_CONTRADICTS_ACCEPTED_INVITATION",
+  "generated_at": "2026-10-05T12:29:05.040Z",
+  "phase": "status-red",
+  "checks": {
+    "scheduled_partner_approval_updates_without_refresh_or_write": true,
+    "unchanged_read_keeps_focus_selection_and_editor": true,
+    "partner_revision_resets_consent_keeps_draft_and_compare_swap": true
+  },
+  "external_requests": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Desktop Chromium 390x844, synthetic accounts through handleNeon; no live JWT/account/Android/production acceptance",
+  "error": "Live hint contradicts the accepted invitation card",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "cf3257a37ceccb5cd7db7ca2c8ca69f27a4ab65d8a88335a21545f9e6fb80049",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "neon/worker.mjs": "0a0c1c03f08b04ccd9a00fa9c5c4853693848ae059c725f74f30bb992847be25",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/partner-status-browser.mjs": "2d9f44ee839951bae884824989b05ff85b87832e58105ef31425abcdabf7b8e1"
+  }
+}

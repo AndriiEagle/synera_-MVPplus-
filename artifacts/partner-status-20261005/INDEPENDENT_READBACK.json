@@ -1,0 +1,10 @@
+{
+  "status": "PASS_NATIVE_HASH_READBACK",
+  "generated_at": "2026-10-05T12:38:51.2736020Z",
+  "source_image_hashes": 24,
+  "manifest_rows": 96,
+  "public_files": 97,
+  "release_sha256": "0c98d08483b04dba1dedb66f5e581dc7628821ad3df99ca3cbd03ef4294e13fd",
+  "provider_calls": 0,
+  "provider_usd": 0
+}

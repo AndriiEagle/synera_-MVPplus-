@@ -1,0 +1,337 @@
+{
+  "status": "PASS_LOCAL_DYNAMIC_CHAT_AUDIT",
+  "generated_at": "2026-10-05T12:37:21.880Z",
+  "phase": "green",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 0,
+  "reused_oracle_sha256": "c0a554649f691909d922cdb354d41067bc32d5985efc2801c62e3b64b2446c5b",
+  "runner_sha256": "305fc534790c945b312b67544f02a9cb45e631d120ae33446ceb48e6e52c267e",
+  "browser": {
+    "status": "PASS_LOCAL_MESSAGE_RECOVERY_BROWSER",
+    "generated_at": "2026-10-05T12:36:38.452Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "manual_read_preserves_selected_text": true,
+      "scheduled_read_keeps_selection_and_draft_without_writes": true,
+      "changed_body_and_author_still_render": true,
+      "rejected_send_keeps_chat_and_draft_manual_retry_once": true,
+      "next_draft_survives_previous_post_and_readback": true,
+      "next_draft_only_sent_by_second_explicit_click": true,
+      "ambiguous_delivery_keeps_draft_readback_without_resend": true,
+      "auth_failure_purges_private_state": true,
+      "late_error_does_not_replace_logout_or_restore_chat": true,
+      "current_default": true,
+      "axe_violations": 0,
+      "keyboard_scrolls_private_history": true,
+      "atelier_reversible_quiet_motion": true,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "no_private_storage": true,
+      "logout_clears_old_private_chat": true
+    },
+    "browser_engine": {
+      "version": "154.0.8037.97",
+      "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+    },
+    "external_requests": [],
+    "messages": 12,
+    "message_requests": [
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      }
+    ],
+    "source_sha256": {
+      "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+      "web_launch/real-journey.mjs": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060",
+      "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+      "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+      "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+      "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+      "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+      "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+      "tools/message-draft-continuity-browser.mjs": "ca8e172b8dc6a699382609f4ef97a06f30b4ede30b6031b1363ba66b41d32cd7",
+      "tools/journey-dynamic-audit.mjs": "2fb0a43161045dc2439b6714d616f2b4f88565ea000ee71a4bdf2ca6ad79861c"
+    }
+  },
+  "source_sha256": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060"
+}

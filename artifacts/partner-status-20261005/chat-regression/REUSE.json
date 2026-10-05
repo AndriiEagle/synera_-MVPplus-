@@ -1,0 +1,10 @@
+{
+  "status": "PASS_LOCAL_CHAT_REGRESSION",
+  "input_oracle_sha256": "2fb0a43161045dc2439b6714d616f2b4f88565ea000ee71a4bdf2ca6ad79861c",
+  "wrapper_sha256": "631472cc746cd6f43c514ae0b2708fb3195d2fa1be66453d86a3fdfe7b635419",
+  "exit_code": 0,
+  "output": "{\"status\":\"PASS_LOCAL_DYNAMIC_CHAT_AUDIT\",\"checks\":18,\"external_requests\":[]}\n",
+  "stderr": "",
+  "provider_calls": 0,
+  "provider_usd": 0
+}
