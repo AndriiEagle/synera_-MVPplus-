@@ -2,7 +2,11 @@
 
 Це спільна точка входу для Codex, Claude Code та іншого ноутбука. Копія чату не є копією коду або доказом запуску.
 
-## Актуальний динамічний аудит — 05.10.2026
+## Актуальні автоматичні статуси — 05.10.2026
+
+[Прийнятий пакет і свіжі екрани](artifacts/partner-status-20261005/REPORT.uk.md), code `49764c10ad8e899b797b4e3589f20aa0a3a198c6`: активна вибрана пара до чату сама показує нову згоду, ревізію та відповідь на запрошення. Верхня підказка й картка узгоджені; чернетки, consent, compare-and-swap і late-read/logout guards збережені. 11 нових груп + 18 груп чату перетинаються; два RED, mutation та незалежні 24 hashes/97 files прийняті. Candidate `dist-neon-partner-status-20261005` unpublished. Push не оновить наявний Cloudflare **No Git connection**. Neon production/neondb доступний, але snapshot немає, лише 6 годин history; applied schema/recovery/дві live sessions/Android ще не прийняті. [Rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) оновлено до цього exact candidate. Нижче — історичні checkpoints: їхнє refresh-тертя прибране для відкритої пари, а довгі умови лишаються UX-тертям.
+
+## Попередній динамічний аудит — 05.10.2026
 
 [Повторний аудит із реальними екранами](artifacts/dynamic-audit-20261005/REPORT.uk.md), код `f01cdf1ed11896667736409525a363415e0dd94a`: незмінні reads чату не стирають виділення; змінені текст/автор оновлюються. 18 груп чатового Chromium та окремі 17 outcome groups (перетинаються), RED/mutation, 28 незалежно перевірених hashes. Candidate97 files unpublished; physical Android/live JWT/two accounts не прийняті. HTTP readback05Oct: новий journey404 на презентації й пілоті. До чату партнерські статуси потребують refresh; довгі умови — UX-тертя. Current/Atelier і чужа journey-ui збережені. Попередня таблиця 27 систем нижче залишається inventory з чесними межами; цей аудит не означає готовність усіх систем.
 
