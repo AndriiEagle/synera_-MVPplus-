@@ -1,0 +1,15 @@
+{
+  "status": "MUTANT_REJECTED_ALLOWLIST",
+  "scope": "Local gateway/client with injected transport; not SQL, signed JWT, live sessions or capacity",
+  "checks": [],
+  "source_sha256": {
+    "neon/worker.mjs": "2df549d9683e49f0e07f1d95844472fd06ca48888fb2ef4bfdfa9fb476d2f125",
+    "web_launch/real-journey-client.mjs": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+    "tools/fixtures/message-intent-fixture.mjs": "22a2d3699e30ff3d6f1399c0e57f5e9fadf22608b052b0b50ed471beae5b87f7",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/pilot-hardening-transport.mjs": "4bb67fe288e236cc098ba935add19433b79afacdbbcd379b35cabdba42b24836"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "error": "Non-allowlisted session reached data\n\n200 !== 401\n"
+}

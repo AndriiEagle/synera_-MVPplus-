@@ -1,0 +1,50 @@
+{
+  "schema": "synera.zurich-scenario.v1",
+  "evidence": "ALL behavioral rates, composition, prices and quotas are adjustable assumptions; no observed demand or provider quote",
+  "seed": 20261005,
+  "replications": 400,
+  "months": 3,
+  "cohort_cap": 10,
+  "hypothetical_expansion": false,
+  "contacts_per_month": [12, 8, 8],
+  "operator_meetings_per_month": 4,
+  "archetypes": [
+    {"id": "product_design", "weight": 1, "offers": ["design"], "needs": ["sales", "research"]},
+    {"id": "b2b_sales", "weight": 1, "offers": ["sales"], "needs": ["design", "video"]},
+    {"id": "automation", "weight": 1, "offers": ["automation"], "needs": ["finance", "research"]},
+    {"id": "finance_ops", "weight": 1, "offers": ["finance"], "needs": ["automation"]},
+    {"id": "video", "weight": 1, "offers": ["video"], "needs": ["sales"]},
+    {"id": "research", "weight": 1, "offers": ["research"], "needs": ["design", "automation"]}
+  ],
+  "scenarios": {
+    "conservative": {"join": 0.2, "activate": 0.6, "context_fit": 0.45, "time_overlap": 0.45, "consent_each": 0.6, "show_each": 0.8, "accept_each": 0.55, "retain_without_value": 0.35, "retain_with_value": 0.65, "donate": 0.05, "paid_opt_in": 0.05, "advanced_share": 0.15},
+    "base": {"join": 0.35, "activate": 0.8, "context_fit": 0.65, "time_overlap": 0.65, "consent_each": 0.8, "show_each": 0.9, "accept_each": 0.75, "retain_without_value": 0.55, "retain_with_value": 0.8, "donate": 0.12, "paid_opt_in": 0.15, "advanced_share": 0.3},
+    "strong": {"join": 0.55, "activate": 0.9, "context_fit": 0.85, "time_overlap": 0.85, "consent_each": 0.92, "show_each": 0.95, "accept_each": 0.9, "retain_without_value": 0.7, "retain_with_value": 0.92, "donate": 0.25, "paid_opt_in": 0.3, "advanced_share": 0.4}
+  },
+  "modes": {
+    "free_launch": {"support_from_month": null, "basic_from_month": null, "advanced_from_month": null},
+    "optional_support_hypothesis": {"support_from_month": 2, "basic_from_month": null, "advanced_from_month": null},
+    "optional_tiers_hypothesis": {"support_from_month": 2, "basic_from_month": 2, "advanced_from_month": 3}
+  },
+  "economics": {
+    "currency": "CHF",
+    "basic_price_month": 12,
+    "advanced_price_month": 29,
+    "donation_once": 10,
+    "fee_fraction": 0.035,
+    "fee_fixed_transaction": 0.3,
+    "tax_fraction_reserve": 0,
+    "infrastructure_month": 25,
+    "acquisition_month": 0,
+    "fixed_operator_hours_month": 2,
+    "support_minutes_active_month": 8,
+    "minutes_scheduled_meeting": 10,
+    "operator_hour_value": 40,
+    "free_user_ai_requests_month": 2,
+    "basic_extra_ai_requests_month": 8,
+    "advanced_extra_ai_requests_month": 28,
+    "provider_free_requests_month": 0,
+    "assumed_chf_per_ai_request": 0.02,
+    "retry_multiplier": 1.1
+  }
+}

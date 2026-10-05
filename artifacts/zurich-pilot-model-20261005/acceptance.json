@@ -1,0 +1,26 @@
+{
+  "status": "LOCAL_SCENARIO_CHECKS_PASS_PARENT_REVIEW_PENDING",
+  "unit_tests": 11,
+  "mutation": "in-memory activation bypass rejected by free-launch invariant",
+  "csv_rows_checked": 10800,
+  "byte_identical_rebuild": true,
+  "protected_journey_ui_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "limitations": [
+    "No observed demand, live product, user retention or payment verified",
+    "Official anchor checks are not individual legal clearance"
+  ],
+  "sha256": {
+    "tools/zurich-pilot-model.py": "fe3e0c42efb0d493e9d4e5b3fd5402f4d6dea416502ca663cc1909ee95bdf0ce",
+    "tools/zurich-pilot-test.py": "ad51f2d9bf289efdcd0aa5c56c6ace1fbf3d0c633b23f7d4304d5c9495b02216",
+    "tools/zurich-pilot-verify.py": "e42899bfd910218d36f1d602dd16a4f7b6290f1473a7537a061ec9fa07144466",
+    "tools/zurich-pilot-source-check.py": "a268affccee29b71090e4d3cbca7dc8750eaa875e133ee734ade85fa889f8c67",
+    "artifacts/zurich-pilot-model-20261005/inputs.json": "c6a19e04a05ad3676f07e0998b89c472e727d2e984795af064ac9cf4674eadd8",
+    "artifacts/zurich-pilot-model-20261005/sources.json": "32469fe02baa35e3ef27f69413e5f0387798dd3a0ecd87314106397eff445201",
+    "artifacts/zurich-pilot-model-20261005/source-checks.json": "32d3b38a7140da243ed7a203b7cf0db842ad3745010e5e5e0cee8d53e802b231",
+    "artifacts/zurich-pilot-model-20261005/results.json": "cb6b5b17095fcdaaac3abb5cb2efedc4a555e2c6caba9078a83db1033b849b27",
+    "artifacts/zurich-pilot-model-20261005/runs.csv": "013d17d724a69394baf77d45b57edc2f3dcf5462cdfb2cc3eb3c6b94c75e45ab",
+    "artifacts/zurich-pilot-model-20261005/sensitivity.csv": "e570c692c873164138eab2e925f26870dc15a97cfb38468d0fef07d8c4192947"
+  }
+}

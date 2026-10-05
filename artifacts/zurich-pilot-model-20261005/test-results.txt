@@ -1,0 +1,16 @@
+test_break_even_boundary_and_sensitivity (__main__.ModelTests.test_break_even_boundary_and_sensitivity) ... ok
+test_cash_arithmetic_and_quota (__main__.ModelTests.test_cash_arithmetic_and_quota) ... ok
+test_consent_zero_and_coupled_edge_monotonicity (__main__.ModelTests.test_consent_zero_and_coupled_edge_monotonicity) ... ok
+test_invalid_inputs (__main__.ModelTests.test_invalid_inputs) ... ok
+test_mutation_oracle_catches_gate_bypass (__main__.ModelTests.test_mutation_oracle_catches_gate_bypass) ... ok
+test_no_revenue_before_activation_and_donations_separate (__main__.ModelTests.test_no_revenue_before_activation_and_donations_separate) ... ok
+test_one_way_no_meetings (__main__.ModelTests.test_one_way_no_meetings) ... ok
+test_people_capacity_and_funnel_conservation (__main__.ModelTests.test_people_capacity_and_funnel_conservation) ... ok
+test_repeatability (__main__.ModelTests.test_repeatability) ... ok
+test_sensitivity_rows_recalculate (__main__.ModelTests.test_sensitivity_rows_recalculate) ... ok
+test_zero_funnel (__main__.ModelTests.test_zero_funnel) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.598s
+
+OK
