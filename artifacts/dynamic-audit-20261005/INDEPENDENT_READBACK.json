@@ -1,0 +1,8 @@
+{
+  "status": "PASS_INDEPENDENT_POWERSHELL_READBACK",
+  "generated_at": "2026-10-05T08:15:36.6642605Z",
+  "verified_source_and_image_hashes": 28,
+  "manifest_rows": 96,
+  "public_files": 97,
+  "published": false
+}

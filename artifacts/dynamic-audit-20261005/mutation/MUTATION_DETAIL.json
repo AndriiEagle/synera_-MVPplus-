@@ -1,0 +1,16 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-05T08:11:49.231Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true
+  },
+  "browser_engine": {
+    "version": "154.0.8037.97",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "error": "Unchanged refresh destroyed selected private text\n+ actual - expected\n\n+ ''\n- 'Конкретний результат × Zürich 💛 <script>literal</script>'\n"
+}
