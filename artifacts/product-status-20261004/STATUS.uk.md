@@ -1,12 +1,14 @@
 # Synera — актуальні системи й досвід користувача
 
-Оновлено 05.10.2026, Europe/Zurich. Код `49764c10ad8e899b797b4e3589f20aa0a3a198c6`, гілка `codex/synera-product-20261002`.
+Оновлено 05.10.2026, Europe/Zurich. Код `e8eb6ac5402b20f654fd506102dbdb85c876110b`, гілка `codex/synera-product-20261002`.
 
 **Локальний цикл з'єднаний:** профіль → взаємний Give–Take → умови → дві згоди → прийняте запрошення → чат → погоджена адреса → evidence/check/receiver acceptance → приватна копія / соціальна чернетка. **Цей новий цикл ще не опублікований і не прийнятий двома живими користувачами.**
 
-Нова доробка: вибрана пара до чату сама оновлює згоду партнера, ревізії та відповіді на запрошення. Чернетки/фокус/згоди збережені; стара чернетка не переноситься мовчки на чужу нову редакцію. [11 груп статусів + 18 груп чату, два RED/mutation та 97-file acceptance](../partner-status-20261005/REPORT.uk.md) перетинаються; це не 29 незалежних тестів. Current/default/Atelier збережені. Попередні доробки збереження наступної думки та незмінного виділення також пройшли цю регресію.
+Нова доробка: у відкритій сесії ручний повтор після невідомої доставки не створює дубль; dashboard refresh зберігає ключ. Після підтвердженого send/read новий явний send має новий ключ. Reload втрачає RAM-key; legacy lane без нового flag зберігає старе обмеження. [66 Node tests, 6 Chromium groups, 16 overlapping PG16 retries, client/SQL mutations і 97-file acceptance](../message-intent-20261005/REPORT.uk.md). Це не RPS benchmark або два живі акаунти. Current/default/Atelier і чужа journey-ui збережені. [Попередній автоматичний статус вибраного партнера](../partner-status-20261005/REPORT.uk.md) лишається прийнятим для свого контракту; counts різних пакетів не сумуються.
 
-[Свіжий read-only console check](../partner-status-20261005/LIVE_TARGET_READBACK.json): наявні Neon production/neondb і Cloudflare synera-pilot доступні. У Neon snapshot немає (лише 6 годин history); у Pages **No Git connection** — push сам не публікує candidate. Applied schema/recovery/live JWT/два акаунти/Android лишаються gates. Стани незмінених систем нижче спираються на попередні докази; цей пакет не переперевіряє весь продукт.
+[Свіжий read-only schema catalog](../message-intent-20261005/LIVE_SCHEMA_READBACK.json): Neon production/neondb має base profiles/consents/meetings/messages з RLS, але всі дев'ять перевірених нових case/location/group/outcome/address таблиць і send RPC відсутні. Live PG18.6, AWS Ohio, Free UI/0.25–2 CU; local SQL proof PG16.15. Повні columns/grants/policy bodies, recovery/restore/live JWT/два акаунти/Android лишаються gates. [Попередній console check](../partner-status-20261005/LIVE_TARGET_READBACK.json): snapshot немає (6 годин history); Pages **No Git connection** — push не публікує candidate. Свіжий catalog не доводить ціну чи масову потужність. Стани незмінених систем нижче спираються на попередні докази; цей пакет не переперевіряє весь продукт.
+
+**Підсумок 27 систем:** 7 готові локально у заявленому контракті, 16 часткові, 4 не завершені. Це не 7 готових production-систем: живе наскрізне приймання відкрите.
 
 ## Що доступно публічно зараз
 
@@ -33,7 +35,7 @@
 | Google Maps / маршрут | Частково | Явний URL-перехід після fresh readback. Embedded SDK/Places/Routes і physical Android handoff не прийняті. |
 | Адреса / GPS / справедлива дорога | Частково | Двостороння адреса, історія, revision/session guards; окремі GPS дозволи. Жива GPS/ETA/погода/оптимізація дороги не прийняті. |
 | П'ять форматів домовленості | Готово локально | Обмін, paid service, referral, hybrid, двосторонній проєкт; критерії, дві згоди, автоматичний стан вибраної пари та захист старої чернетки/CAS. Paid terms не здійснюють платіж. |
-| Приватний чат | Готово локально з обмеженням | Accepted invitation, server text, next-draft/recovery/logout guards; незмінні reads зберігають виділення. Manual resend після втрати відповіді може дублювати запис. |
+| Приватний чат | Готово локально з обмеженням | Accepted invitation, next-draft/logout/selection guards; новий gated RPC не дублює same-session manual retry, включно з dashboard refresh. Reload втрачає RAM-key; flag=false має legacy поведінку. Live JWT/дві сесії ще не прийняті. |
 | Результат / evidence / перевірка / спір | Готово локально | Виконавець подає, одержувач перевіряє/приймає; append-only history. Attestation учасників, не незалежна гарантія якості. |
 | Приватний архів / viewer | Готово локально для копії | Explicit plain/gzip export, точний UTF-8 round-trip, viewer. Production backup/restore та міжпристроєва пам'ять не прийняті; gzip не шифрує. |
 | Соціальний пакет | Готово локально для чернетки | Власний прийнятий внесок, згода, формат, редагування/ручне копіювання. Детермінований шаблон, не активна AI-публікація. |
@@ -63,7 +65,7 @@
 | Карта | Приблизна точка — не точний GPS | «Можу досліджувати й вибирати без втрати приватності» | Значення точок, список поруч, зрозумілі шари й власна локаційна згода. |
 | Умови | Форма ще довга; конфлікт чернетки потребує ручного звіряння | «Ми однаково розуміємо обмін і контролюємо зміни» | Нову редакцію й згоди видно автоматично у відкритій парі; draft не стирається, нова згода окрема, стара чернетка не переписує партнера. |
 | Запрошення / очікування | У відкритій парі статус і верхня підказка оновлюються самі; idle/background не охоплені | «Бачу рух і наступний крок; можу відмовитися» | Pending/accepted/declined; мовчання не означає «так», відкрити чат треба вручну. |
-| Чат | Серверні затримки можуть перервати думку | «Моя думка не губиться; просто говорю про справу» | Одне поле, один send, збереження наступної чернетки й чесної невідомої доставки. |
+| Чат | Unknown delivery потребує явного повтору; reload втрачає retry key | «Моя думка не губиться; відновлююсь без дублю» | Одне поле/один send; наступна чернетка збережена, same-session refresh/retry повертає один запис. Новий свідомий клік після success — нова дія; жодного auto send. |
 | Адреса / дорога | Дві згоди, маршрут поза Synera | «Місце погоджене, дорога передбачувана й справедлива» | Двостороння адреса є; ETA/погода/баланс дороги/embedded map ще потрібні. |
 | Дія / Triangle | Немає прийнятого живого асистованого групового досвіду | «Мене чують; AI допомагає тримати фокус» | Прозора черговість, короткі нейтральні втручання, контроль учасників, voice/video. |
 | Приймання результату | Перевірка потребує уваги; можливий спір | «Мою роботу бачать; можу чесно погодитися чи ні» | Evidence → criteria check → receiver acceptance; history, без self-accept. |
@@ -87,8 +89,12 @@
 
 Незмінені SQL/current gateway maps звірені за exact hashes, broad suites/PG не повторювалися. [19 нічних проходів](../overnight-20261004/REPORT.uk.md) та [старий completion пакет](../product-completion-20261003/REPORT.uk.md) — докази власних шарів/версій; їхні counts не сумуються як нові унікальні тести. Preflight metadata мав NEEDS_SCOPE/global wiring review; hosted dispatch не застосовувався, локальне приймання спиралося на прямий source/git/hash readback. Missing Chromium cache діагностовано й використано наявний Chrome через process-local env, нічого не встановлено. Перший неприйнятий запуск не названий semantic RED.
 
-Manual resend після ambiguous delivery може створити дубль: persistent message idempotency ще відсутня. Attestations не доводять незалежно якість або фізичну зустріч. Живі HTTP JWT, два акаунти, physical Android, Google/voice/OAuth/payment не прийняті. Чужа dirty journey-ui збережена за SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`; release використовує committed HEAD copy. Пам'ять/production/secrets/Windows settings не змінені; `synera-10` не поновлювався. Push policy hold не обходився.
+Manual same-session replay тепер локально прийнятий; durable offline/cross-reload intent recovery відсутній, legacy flag=false лишається старою поведінкою. Attestations не доводять незалежно якість або фізичну зустріч. Живі HTTP JWT, два акаунти, physical Android, Google/voice/OAuth/payment не прийняті. Чужа dirty journey-ui збережена за SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`; release використовує committed HEAD copy. Пам'ять/production/secrets/Windows settings не змінені; `synera-10` не поновлювався. Push policy hold не обходився.
 
-**NEXT — 15–20 хвилин:** [точний rollout review](ROLLOUT_REVIEW.uk.md): звірити target/schema/recovery, відсутні міграції й release manifest. Після погодження/rollout — дві живі сесії та physical Android. До цього стан не переводиться в «готово наживо».
+## Закритий пілот і майбутнє навантаження
+
+Наявна серверна allowlist обмежена 10 emails; 100 messages/actor/day та bounded 100-history read — admission для пілота. Existing visible-page polling раз на 5 секунд може множити requests; cloud latency/cost/saturation не виміряні. 16 одночасних retries доводять один race guard, а не сотні людей за секунду. Не піднімати ліміти і не переписувати архітектуру навмання: після живого двостороннього приймання — distinct-user workload, latency/recovery/cost; тоді вузько змінювати наявні gateway/store/DB owners за виміряним bottleneck. AI/voice/paid tiers потребують своїх provider/privacy/receipt/quality gates. [Повний актуальний review](../message-intent-20261005/REPORT.uk.md).
+
+**NEXT — 15–20 хвилин після exact approval:** [rollout review](ROLLOUT_REVIEW.uk.md): exact base/grants/PG18/recovery/cost gates → лише missing SQL 1–6 → exact current candidate у наявний Pages. Якщо gate не пройшов — HOLD живої зміни. Потім дві signed sessions та physical Android; mass-capacity claim до цього не приймається.
 
 Models used: none (provider calls=0, USD=$0.00). Read-only HTTP до публічних сторінок виконано окремо; subscription savings не виміряні.

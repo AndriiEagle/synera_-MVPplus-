@@ -2,6 +2,14 @@
 
 Це спільна точка входу для Codex, Claude Code та іншого ноутбука. Копія чату не є копією коду або доказом запуску.
 
+## Актуальна доробка й перевірка живої схеми — 05.10.2026
+
+Код `e8eb6ac5402b20f654fd506102dbdb85c876110b`, [докази й фактичний екран](artifacts/message-intent-20261005/REPORT.uk.md). У відкритій сесії повтор після unknown delivery повертає той самий запис, звичайне dashboard «Оновити» не губить ключ; після acknowledged send новий клік може повторити той самий текст свідомо. Reload/закриття сторінки втрачає RAM-key, offline outbox немає. Legacy flag=false лишається попередньою поведінкою. Збережені чернетка, auth/logout, consent/RLS/admission, Current/Atelier та чужа journey-ui.
+
+66 targeted Node tests, 6 actual Chromium groups, 16 overlapping real PG16 transactions; SQL/client mutations відхилені. [Новий read-only Neon catalog](artifacts/message-intent-20261005/LIVE_SCHEMA_READBACK.json): production/neondb має base, але всі дев'ять перевірених нових case/location/group/outcome/address таблиць і send RPC відсутні. Live PG18.6/Ohio/Free UI не є локальним PG16 proof, cost receipt або mass-capacity acceptance. Full columns/grants/restore, signed JWT, дві живі сесії та Android — відкриті gates.
+
+Candidate `web_launch/dist-neon-message-intent-20261005`, 97 files / 96 manifest rows, SHA256 `efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb`, unpublished. [Rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) включає нові SQL/flag і точний пакет; старе unanswered питання цього scope не покривало. Production/deploy approval pending; push policy hold не обходився. [27 систем / 15 етапів і відчуття користувача](artifacts/product-status-20261004/STATUS.uk.md) оновлені. Нижче — історичні checkpoints.
+
 ## Актуальні автоматичні статуси — 05.10.2026
 
 [Прийнятий пакет і свіжі екрани](artifacts/partner-status-20261005/REPORT.uk.md), code `49764c10ad8e899b797b4e3589f20aa0a3a198c6`: активна вибрана пара до чату сама показує нову згоду, ревізію та відповідь на запрошення. Верхня підказка й картка узгоджені; чернетки, consent, compare-and-swap і late-read/logout guards збережені. 11 нових груп + 18 груп чату перетинаються; два RED, mutation та незалежні 24 hashes/97 files прийняті. Candidate `dist-neon-partner-status-20261005` unpublished. Push не оновить наявний Cloudflare **No Git connection**. Neon production/neondb доступний, але snapshot немає, лише 6 годин history; applied schema/recovery/дві live sessions/Android ще не прийняті. [Rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) оновлено до цього exact candidate. Нижче — історичні checkpoints: їхнє refresh-тертя прибране для відкритої пари, а довгі умови лишаються UX-тертям.
