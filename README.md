@@ -1,6 +1,8 @@
 # Synera — real-user PWA pilot
 
-> Current state (2026-10-04): [systems and intended user experience](artifacts/product-status-20261004/STATUS.uk.md), [shared entry point](START_HERE.uk.md), [bounded rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Local candidate accepted; the new live journey is not deployed. Claude Code reads the same entry through `CLAUDE.md`.
+> Current state (2026-10-05): [dynamic UX audit with actual screens](artifacts/dynamic-audit-20261005/REPORT.uk.md), [systems inventory](artifacts/product-status-20261004/STATUS.uk.md), [shared entry point](START_HERE.uk.md), [bounded rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Local candidate accepted; the new live journey is not deployed. Claude Code reads the same entry through `CLAUDE.md`.
+
+Latest code (`f01cdf1`): unchanged private-chat reads preserve text selection; changed messages/authors still render. 18 message browser groups, separate 17 outcome groups (overlap), semantic RED/mutation and independent package readback passed. Partner status before chat still needs explicit refresh; physical Android/live-account acceptance remains open. The checkpoint below is historical.
 
 Latest code (`564fa9a`): a prior send/readback cannot erase the next unsent draft; 15 Chromium groups and a semantic mutation passed. Receiver outcome acceptance, bilateral address, private archive/viewer/social draft have [local evidence](artifacts/overnight-20261004/REPORT.uk.md). New journey routes remain absent from the public presentation and existing Neon pilot; live HTTP JWT, two accounts and physical Android are open gates.
 
