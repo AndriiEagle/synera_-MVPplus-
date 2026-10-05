@@ -1,0 +1,9 @@
+BEGIN
+UPDATE 1
+{"id":"4915c20e-2cf7-443a-b6c4-9289982d2025","meeting_id":"a5ebfd5f-5944-4cb7-bfe5-fc753308c973","sender_id":"11111111-1111-4111-8111-111111111111","body":"Точний Unicode 💛 <script>literal</script>","created_at":"2026-10-05T19:01:23.739856+02:00"}
+INSERT 0 1
+UPDATE 1
+SET
+{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}
+DO
+ROLLBACK

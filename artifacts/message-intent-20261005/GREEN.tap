@@ -1,0 +1,13 @@
+✔ lost POST response and explicit retry produce exactly one stored message (102.7919ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (20.1936ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (49.3892ms)
+✔ authentication reset forgets pending intent and late acknowledgement cannot mutate the next session (5.2207ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (3.1992ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 639.5034

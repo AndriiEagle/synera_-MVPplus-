@@ -10,6 +10,10 @@ export function validateConfig(config) {
   if (typeof registrationEnabled !== 'boolean') throw new Error('Некоректна налаштування реєстрації');
   if (registrationEnabled && (!config.pilotSafetyEnabled || !config.publicSiteUrl)) throw new Error('Реєстрація вимагає перевірену схему безпеки пілоту та публічний HTTPS сайт.');
   const optional = {};
+  if (config.messageIntentsEnabled !== undefined) {
+    if (typeof config.messageIntentsEnabled !== 'boolean' || (config.messageIntentsEnabled && (config.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true || config.realJourneyEnabled !== true))) throw new Error('Некоректне налаштування повторного надсилання');
+    optional.messageIntentsEnabled = config.messageIntentsEnabled;
+  }
   if (config.meetingAddressEnabled !== undefined) {
     if (typeof config.meetingAddressEnabled !== 'boolean' || (config.meetingAddressEnabled && (config.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true || config.realJourneyEnabled !== true))) throw new Error('Некоректне налаштування погодження адреси');
     optional.meetingAddressEnabled = config.meetingAddressEnabled;

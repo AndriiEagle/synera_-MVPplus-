@@ -163,6 +163,20 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path.startsWith('/messages/')) {
+      if (env.SYNERA_REAL_JOURNEY_READY !== 'true' || env.SYNERA_MESSAGE_INTENTS_READY !== 'true') throw new GatewayError(503, 'message_intents_not_ready');
+      const route = path.match(/^\/messages\/([a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12})$/);
+      if (!route || request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
+      const body = await readJson(request); checkKeys(body, ['intentId', 'text']);
+      if (typeof body.intentId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(body.intentId) || typeof body.text !== 'string' || !body.text.trim() || body.text.length > 1000 || body.text !== body.text.trim()) throw new GatewayError(400, 'message_invalid');
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_send_message', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.jwt },
+        body: JSON.stringify({ p_meeting_id: route[1], p_intent_id: body.intentId, p_body: body.text }),
+      }, 'message_unavailable');
+      return new Response(response.body, { status: response.status, headers: jsonHeaders });
+    }
     if (path.startsWith('/meeting-address/')) {
       if (!meetingAddressReady(env)) throw new GatewayError(503, 'meeting_address_unavailable');
       const route = path.match(/^\/meeting-address\/([a-f0-9-]{36})\/([A-Za-z0-9_:-]{1,64})$/);
@@ -247,6 +261,7 @@ export function createNeonWorker(publicAssets) {
         googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
         realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
+        messageIntentsEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true' && env.SYNERA_MESSAGE_INTENTS_READY === 'true',
         caseOutcomesEnabled: outcomeReady(env),
         meetingAddressEnabled: meetingAddressReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });

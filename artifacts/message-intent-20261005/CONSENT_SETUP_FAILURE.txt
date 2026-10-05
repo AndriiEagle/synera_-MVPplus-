@@ -1,0 +1,4 @@
+BEGIN
+UPDATE 1
+psql:neon/message-intent-consent.acceptance.sql:5: ERROR:  new row for relation "pilot_consents" violates check constraint "pilot_consents_policy_version_check"
+DETAIL:  Failing row contains (11111111-1111-4111-8111-111111111111, prior-policy, t, t, 2026-10-05 19:01:23.185164+02).

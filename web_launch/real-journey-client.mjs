@@ -123,17 +123,25 @@ export function assertRealJourneyGate(config) {
 export class RealJourneyStore extends NeonStore {
   #outcomesEnabled;
   #meetingAddressEnabled;
+  #messageIntentsEnabled;
+  #pendingMessages = new Map();
   #outcomeEpoch = 0;
   constructor(config, fetchImpl = fetch) {
     assertRealJourneyGate(config); super(config, fetchImpl);
     this.#outcomesEnabled = config.caseOutcomesEnabled === true;
     this.#meetingAddressEnabled = config.meetingAddressEnabled === true;
+    this.#messageIntentsEnabled = config.messageIntentsEnabled === true;
   }
   // Invalidate outcome work as soon as authentication changes, including logging
   // out and restoring the SAME account. Existing auth operations stay unchanged.
-  restore() { this.#outcomeEpoch++; return super.restore(); }
-  verifyOtp(email, otp) { this.#outcomeEpoch++; return super.verifyOtp(email, otp); }
-  signOut() { this.#outcomeEpoch++; return super.signOut(); }
+  async restore() {
+    this.#outcomeEpoch++; const actor = this.user?.id;
+    const restored = await super.restore();
+    if (!restored || this.user?.id !== actor) this.#pendingMessages.clear();
+    return restored;
+  }
+  verifyOtp(email, otp) { this.#outcomeEpoch++; this.#pendingMessages.clear(); return super.verifyOtp(email, otp); }
+  signOut() { this.#outcomeEpoch++; this.#pendingMessages.clear(); return super.signOut(); }
   async #address(peerId, meetingId, reviewed, selected, input) {
     if (!this.#meetingAddressEnabled) throw new ServiceError(503, 'meeting_address_not_ready');
     const addressEpoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
@@ -386,9 +394,24 @@ export class RealJourneyStore extends NeonStore {
     return { meeting, messages: [...messages].sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)) };
   }
   async sendConversation(id, text) {
+    if (!this.#messageIntentsEnabled) {
+      await this.#meeting(id);
+      await this.sendMessage(id, text);
+      return this.conversation(id);
+    }
+    const actor = this.requireUser(), epoch = this.#outcomeEpoch;
+    const guard = () => { if (this.user?.id !== actor || epoch !== this.#outcomeEpoch) throw new ServiceError(401, 'message_session_changed'); };
+    if (!UUID.test(id) || typeof text !== 'string' || !text.trim() || text.length > 1000) throw new ServiceError(400, 'message_invalid');
+    const body = text.trim(), key = JSON.stringify([actor, id, body]);
+    // Transient retry state in the existing client. No localStorage, background send or auto-retry.
+    const intent = this.#pendingMessages.get(key) || crypto.randomUUID(); this.#pendingMessages.set(key, intent);
     await this.#meeting(id);
-    await this.sendMessage(id, text);
-    return this.conversation(id);
+    guard();
+    const ack = await this._messageIntent(id, intent, body); guard();
+    if (!ack || ack.id !== intent || ack.meeting_id !== id || ack.sender_id !== actor || ack.body !== body || typeof ack.created_at !== 'string' || !Number.isFinite(Date.parse(ack.created_at))) throw new ServiceError(502, 'message_ack_invalid');
+    const result = await this.conversation(id); guard();
+    this.#pendingMessages.delete(key);
+    return result;
   }
 }
 

@@ -45,6 +45,10 @@ export class NeonStore extends ProfileStore {
         typeof caseId !== 'string' || !/^[A-Za-z0-9_:-]{1,64}$/.test(caseId)) throw new ServiceError(400);
     return this.#request('/api/neon/meeting-address/' + meetingId + '/' + caseId, { method: 'POST', body: payload });
   }
+  async _messageIntent(meetingId, intentId, text) {
+    this.requireRealPilot();
+    return this.#request('/api/neon/messages/' + meetingId, { method: 'POST', body: { intentId, text } });
+  }
   async #location(id, action, body = {}) {
     this.requireUser();
     if (!this.liveLocationEnabled || typeof id !== 'string' || !/^[0-9a-f-]{36}$/i.test(id)) throw new ServiceError(400);

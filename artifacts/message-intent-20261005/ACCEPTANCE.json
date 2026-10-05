@@ -1,0 +1,31 @@
+{
+  "status": "PASS_LOCAL_MESSAGE_INTENT_RELEASE_CLOSURE",
+  "generated_at": "2026-10-05T17:18:33.287Z",
+  "candidate": "web_launch\\dist-neon-message-intent-20261005",
+  "files": 97,
+  "manifest_rows": 96,
+  "release_sha256": "efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb",
+  "source_sha256": {
+    "neon/worker.mjs": "2df549d9683e49f0e07f1d95844472fd06ca48888fb2ef4bfdfa9fb476d2f125",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+    "neon/message-intent-consent.acceptance.sql": "454059b65ed16ef6d3c27ae4fca3b748644719230bf64a300d4d380bfde3cb50",
+    "web_launch/config.mjs": "195e9838b819a9bfbec3974195b42d92cb19a8d3970e933fb38ba60d0c995427",
+    "web_launch/neon-store.mjs": "8cef986fc96b10b2db3ff574eb20a6239ea4014456748e22a5679b969e4fba78",
+    "web_launch/real-journey-client.mjs": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+    "web_launch/real-journey.mjs": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060",
+    "web_launch/message-intent.test.mjs": "9cdb6d3fb4db8730b02b33ffa61de48d1bd47102efcaeeea366f994fec65e5ec",
+    "neon/message-intent.test.mjs": "eba3928ad91363b236410dfd5c5ee1e84c734d96e881a7ef5faa01ec5f6db7c6",
+    "tools/fixtures/message-intent-fixture.mjs": "22a2d3699e30ff3d6f1399c0e57f5e9fadf22608b052b0b50ed471beae5b87f7",
+    "tools/message-intent-browser.mjs": "768a763abc6cc2467616f838e2778ee4baeccfc2d71ca8dac828e7919c44c3b3",
+    "tools/message-intent-sql-acceptance.mjs": "63db2fbcc93ef260c378ced11779b88e419aaf915b807ae9474231ee25854266",
+    "tools/message-intent-release-acceptance.mjs": "42baedfa8fa21c486d83f53192ef403e8866e951659fc7d03e47a2a7a14bc716",
+    "artifacts/message-intent-20261005/browser/chat-390x844.png": "bf3afb92e9ebe30109f74682b1a64eda92f31d0af9388a44de25cdd38184749d"
+  },
+  "preserved_journey_ui_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "packaged_gateway_synthetic_requests": 2,
+  "published": false,
+  "live_jwt": false,
+  "capacity_verified": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

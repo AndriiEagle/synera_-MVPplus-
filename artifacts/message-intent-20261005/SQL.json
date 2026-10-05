@@ -1,0 +1,122 @@
+{
+  "status": "PASS_LOCAL_SQL_CONCURRENT_MESSAGE_INTENTS",
+  "generated_at": "2026-10-05T17:01:22.670Z",
+  "database": "synera_message_intent_1791219682189",
+  "server": {
+    "version": "16.15",
+    "data": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "proof_scope": "Local PostgreSQL with identity shim; no signed HTTP JWT, live Neon, human accounts, phone or capacity guarantee",
+  "checks": [
+    {
+      "name": "exact_replay_immutable_row_and_single_rate_charge",
+      "pass": true
+    },
+    {
+      "name": "changed_text_other_actor_outsider_empty_rejected",
+      "pass": true
+    },
+    {
+      "name": "replay_at_exhausted_daily_quota_and_new_write_denied",
+      "pass": true
+    },
+    {
+      "name": "green",
+      "overlapping_retries": 16,
+      "leader_transaction_barrier": true,
+      "all_waited": true,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected_success": true
+    },
+    {
+      "name": "mutation_expected_red",
+      "overlapping_retries": 16,
+      "leader_transaction_barrier": true,
+      "all_waited": true,
+      "exit_codes": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "expected_success": false
+    },
+    {
+      "name": "green_after_restoration",
+      "overlapping_retries": 16,
+      "leader_transaction_barrier": true,
+      "all_waited": true,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected_success": true
+    },
+    {
+      "name": "block_revokes_replay_anonymous_denied_no_elevation_or_time_forgery",
+      "pass": true
+    }
+  ],
+  "source_sha256": {
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "privileges": {
+    "invoker": true,
+    "settings": [
+      "search_path=\"\"",
+      "lock_timeout=5s"
+    ],
+    "body_update": false,
+    "created_insert": false
+  }
+}
