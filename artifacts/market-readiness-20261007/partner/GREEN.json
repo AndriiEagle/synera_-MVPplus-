@@ -1,0 +1,37 @@
+{
+  "status": "PASS_LOCAL_PARTNER_STATUS_BROWSER",
+  "generated_at": "2026-10-07T08:31:10.546Z",
+  "phase": "green",
+  "checks": {
+    "scheduled_partner_approval_updates_without_refresh_or_write": true,
+    "unchanged_read_keeps_focus_selection_and_editor": true,
+    "partner_revision_resets_consent_keeps_draft_and_compare_swap": true,
+    "invitation_arrives_and_acceptance_updates_without_auto_actions": true,
+    "withdrawal_removes_invitation_action": true,
+    "late_read_cannot_restore_withdrawn_approval": true,
+    "transient_read_failure_preserves_private_drafts": true,
+    "hidden_page_does_not_read": true,
+    "late_read_cannot_restore_another_peer": true,
+    "current_default_mobile_accessibility": true,
+    "logout_purges_private_ui_and_late_reads": true
+  },
+  "external_requests": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Desktop Chromium 390x844, synthetic accounts through handleNeon; no live JWT/account/Android/production acceptance",
+  "browser": {
+    "version": "153.0.8010.12",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "de7c8891753dfafa522feb8a50ae5eae57520edb622a30f9f81461e7670cc197",
+    "web_launch/real-journey-client.mjs": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "neon/worker.mjs": "2df549d9683e49f0e07f1d95844472fd06ca48888fb2ef4bfdfa9fb476d2f125",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/partner-status-browser.mjs": "c32dff00b7c88ad503da97e1c6ed395c0fb974d402249ca73a770f4d3055ba71"
+  }
+}

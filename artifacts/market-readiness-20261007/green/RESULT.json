@@ -1,0 +1,36 @@
+{
+  "status": "PASS_LOCAL_REFRESH_RECOVERY",
+  "scope": "Chromium 390x844 synthetic transport; no physical Android/live users",
+  "checks": [
+    {
+      "name": "draft_survives_503_without_send",
+      "pass": true
+    },
+    {
+      "name": "draft_survives_network_without_send",
+      "pass": true
+    },
+    {
+      "name": "terms_draft_survives_later_dashboard_failure",
+      "pass": true
+    },
+    {
+      "name": "late_failure_does_not_resurrect_logout",
+      "pass": true
+    },
+    {
+      "name": "access_401_purges_draft",
+      "pass": true
+    },
+    {
+      "name": "access_403_purges_draft",
+      "pass": true
+    },
+    {
+      "name": "cold_start_still_fails_closed",
+      "pass": true
+    }
+  ],
+  "external": [],
+  "source_sha256": "de7c8891753dfafa522feb8a50ae5eae57520edb622a30f9f81461e7670cc197"
+}

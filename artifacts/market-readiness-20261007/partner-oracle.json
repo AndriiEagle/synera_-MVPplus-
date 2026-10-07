@@ -1,0 +1,5 @@
+{
+  "source": "/C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/partner-status-browser.mjs",
+  "sha256": "c32dff00b7c88ad503da97e1c6ed395c0fb974d402249ca73a770f4d3055ba71",
+  "changes": "Artifact destination and waitUntil domcontentloaded only; assertions unchanged"
+}

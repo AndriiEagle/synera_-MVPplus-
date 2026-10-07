@@ -464,10 +464,23 @@ async function sendMessage(event) {
 }
 function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); syncAddressEntry(); }
 async function refresh({ quiet = false } = {}) {
-  const epoch = state.epoch, dashboard = await state.store.dashboard(); if (epoch !== state.epoch) return;
-  state.dashboard = dashboard; ui.blocked.hidden = true; ui.auth.hidden = true; ui.content.hidden = false; renderAll();
-  if (state.meetingId) { const request = ++conversationRequest; const result = await state.store.conversation(state.meetingId); if (epoch !== state.epoch || request !== conversationRequest) return; renderTranscript(result); }
-  if (!quiet) setStatus('Дані оновлено з сервера.');
+  const epoch = state.epoch, actor = state.dashboard?.own?.id;
+  try {
+    const dashboard = await state.store.dashboard(); if (epoch !== state.epoch) return;
+    state.dashboard = dashboard; ui.blocked.hidden = true; ui.auth.hidden = true; ui.content.hidden = false; renderAll();
+    if (state.meetingId) { const request = ++conversationRequest; const result = await state.store.conversation(state.meetingId); if (epoch !== state.epoch || request !== conversationRequest) return; renderTranscript(result); }
+    if (!quiet) setStatus('Дані оновлено з сервера.');
+  } catch (error) {
+    if (epoch !== state.epoch) return;
+    const temporary = error?.status >= 500 || ['TypeError', 'TimeoutError', 'AbortError'].includes(error?.name);
+    // A failed read is not logout. Keep only this still-current actor's in-memory
+    // work; authorization failures and cold start retain their existing gates.
+    if (temporary && actor && state.dashboard?.own?.id === actor && state.store.user?.id === actor) {
+      setStatus('Дані не вдалося оновити. Показані попередні дані; твій незбережений текст лишився тут. Спробуй «Оновити» ще раз.');
+      return;
+    }
+    throw error;
+  }
 }
 function consumeMeetingHint() {
   const params = new URLSearchParams(location.hash.slice(1));
