@@ -1,3 +1,7 @@
+## Android після перезапуску — 07.10.2026
+
+[Фактичний SDK/AVD результат](artifacts/android-emulator-20261007/REPORT.uk.md): ZIP hashes перевірені; Studio/SDK встановлені; WHPX usable. Перший Android boot перерваний USB/NTFS write failure на D:, образ AVD не прийнятий, повторний запуск заблокований до стабілізації накопичувача. Жодного Android/PWA runtime PASS. Product code 6724682 вже pushed; цей checkpoint — інфраструктура й докази, не deployment.
+
 # Synera: актуальний код і стан — 2026-10-05
 
 ## Мобільний checkpoint — 07.10.2026

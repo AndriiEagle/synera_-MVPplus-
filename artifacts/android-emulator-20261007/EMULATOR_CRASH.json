@@ -1,0 +1,5 @@
+{
+  "TimeCreated": "2026-10-07T15:26:09.1881712+02:00",
+  "Id": 1000,
+  "Message": "Fehlerhafter Anwendungsname: qemu-system-x86_64-headless.exe, Version: 0.0.0.0, Zeitstempel: 0x6ab43b80\r\nFehlerhafter Modulname: VCRUNTIME140.dll, Version: 0.0.0.0, Zeitstempel: 0x98c03cc5\r\nAusnahmecode: 0xc0000006\r\nFehleroffset: 0x0000000000010547\r\nFehlerhafte Prozess-ID: 0x4344\r\nFehlerhafte Anwendungsstartzeit: 0x1DD565F0BCCCC8E\r\nFehlerhafter Anwendungspfad: D:\\SyneraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe\r\nFehlerhafter Modulpfad: D:\\SyneraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\VCRUNTIME140.dll\r\nBerichts-ID: e13f109c-e502-4f86-8b84-ca237c2fd25b\r\nVollständiger Name des fehlerhaften Pakets: \r\nFehlerhafte paketbezogene Anwendungs-ID: "
+}
