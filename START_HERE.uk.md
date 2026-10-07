@@ -1,5 +1,9 @@
 # Synera: актуальний код і стан — 2026-10-05
 
+## Мобільний checkpoint — 07.10.2026
+
+[Android/iPhone PWA, responsive та ціновий сценарій](artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
+
 ## Локальна перевірка та модель пілота — 05.10.2026
 
 [Пакет двох чатів, installed skill і сценарії Цюриха](artifacts/pilot-wave-20261005/REPORT.uk.md). Продуктовий код не змінено; transport/SQL перевірки посилені. 11 модельних тестів, незалежні крайові сценарії й source hashes прийняті. Це не живе приймання, попит або capacity. Таблиця 7/16/4 і точний rollout gate нижче чинні.

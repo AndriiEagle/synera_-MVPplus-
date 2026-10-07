@@ -1,0 +1,70 @@
+✖ iPhone without beforeinstallprompt has a reachable installation guide (15.2179ms)
+✔ installed app hides installation action (5.2172ms)
+✔ Chrome prompt is explicit and consumed once; cancellation keeps manual help (6.2409ms)
+✖ rejected native install prompt leaves usable manual instructions (4.1639ms)
+✖ service worker update never discards an in-progress draft (5.5393ms)
+✔ cache-only presentation remains usable through browser lifecycle events without install controls (24.3172ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 3
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 634.9759
+
+✖ failing tests:
+
+test at web_launch\pwa-mobile.test.mjs:20:1
+✖ iPhone without beforeinstallprompt has a reachable installation guide (15.2179ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa-mobile.test.mjs:21:34)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\pwa-mobile.test.mjs:29:1
+✖ rejected native install prompt leaves usable manual instructions (4.1639ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted rejection.
+  Actual message: "browser declined"
+      at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa-mobile.test.mjs:30:128)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: Error: browser declined
+        at Object.prompt (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa-mobile.test.mjs:30:98)
+        at Object.click (evalmachine.<anonymous>:11:90)
+        at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa-mobile.test.mjs:30:164)
+        at async Test.run (node:internal/test_runner/test:1313:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:897:7),
+    expected: undefined,
+    operator: 'doesNotReject',
+    diff: 'simple'
+  }
+
+test at web_launch\pwa-mobile.test.mjs:32:1
+✖ service worker update never discards an in-progress draft (5.5393ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/pwa-mobile.test.mjs:33:145)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

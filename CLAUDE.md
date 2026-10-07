@@ -1,5 +1,9 @@
 # Synera shared entry point
 
+## Мобільний checkpoint — 07.10.2026
+
+[Android/iPhone PWA, responsive та ціновий сценарій](artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
+
 Latest local planning/acceptance, 2026-10-05: read `artifacts/pilot-wave-20261005/REPORT.uk.md` for the two-chat technical checks, installed `synera-pilot-operator` skill and Zurich scenario model. Source behavior and current rollout candidate unchanged. Simulated rates/prices are assumptions; no live demand, throughput, payments or permission established. Shared journal remains `task_log.jsonl`; no extra router/ledger.
 
 Read [START_HERE.uk.md](START_HERE.uk.md) first. It identifies the current checkout, branch, canonical source paths, accepted tests and live launch gaps for Codex and Claude Code.

@@ -3345,3 +3345,6 @@ html[data-synera-style="night"] dialog[open] { opacity: 1; transform: none; }
 .summit-entry { padding: 16px 0; font-size: 13px; }
 .summit-entry a { display: inline-block; padding: 12px 16px; border: 1px solid currentColor; border-radius: 8px; }
 .signed-in .summit-entry { display: none; }
+
+/* Preserve the full introduction when user text sizing exceeds a word's width. */
+.intro h1 { overflow-wrap:anywhere; }

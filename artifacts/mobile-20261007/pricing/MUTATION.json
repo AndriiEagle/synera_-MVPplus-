@@ -1,0 +1,5 @@
+{
+  "status": "REJECTED",
+  "results": [],
+  "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('main a.primary')\nExpected: 1\nReceived: 2\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('main a.primary') with timeout 5000ms\n  - waiting for locator('main a.primary')\n    14 × locator resolved to 2 elements\n       - unexpected value \"2\"\n"
+}

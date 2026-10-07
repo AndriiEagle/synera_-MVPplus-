@@ -1,0 +1,14 @@
+Synera real-user pilot: http://127.0.0.1:58867
+expect(locator).toHaveCount(expected) failed
+
+Locator:  locator('main a.primary')
+Expected: 1
+Received: 2
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveCount" locator('main a.primary') with timeout 5000ms
+  - waiting for locator('main a.primary')
+    14 × locator resolved to 2 elements
+       - unexpected value "2"
+

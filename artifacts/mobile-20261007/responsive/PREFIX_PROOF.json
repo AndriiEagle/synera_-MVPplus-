@@ -1,0 +1,7 @@
+{
+  "status": "EXACT_PRICING_PREFIX_RESTORED",
+  "before_sha256": "0faeea806da58ad193a883ff4869ea5c90c415575d8925d209faa25918d03a99",
+  "previous_source_sha256": "e91eed353e919b8befc12c0e913302ad8a298e2a29ca2643768ed0a57424354c",
+  "final_source_sha256": "e584c375af0779a6090753a6778864200469af2f0fc73ca5f59d1a17024dfe1f",
+  "normalized_css_unchanged": true
+}

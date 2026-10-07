@@ -1,0 +1,14 @@
+✔ iPhone without beforeinstallprompt has a reachable installation guide (18.6983ms)
+✔ installed app hides installation action (3.9604ms)
+✔ Chrome prompt is explicit and consumed once; cancellation keeps manual help (5.26ms)
+✔ rejected native install prompt leaves usable manual instructions (6.832ms)
+✔ service worker update never discards an in-progress draft (4.3297ms)
+✔ cache-only presentation remains usable through browser lifecycle events without install controls (37.2587ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 499.5723

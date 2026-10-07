@@ -1,5 +1,9 @@
 # Synera — real-user PWA pilot
 
+## Мобільний checkpoint — 07.10.2026
+
+[Android/iPhone PWA, responsive та ціновий сценарій](artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
+
 > Latest local planning/acceptance, 2026-10-05: [two-chat results, installed skill and Zurich cohort model](artifacts/pilot-wave-20261005/REPORT.uk.md). No app behavior or live rollout change; simulations are assumptions, not observed demand or throughput.
 
 > Latest checkpoint, 2026-10-05, code `e8eb6ac`: [manual message recovery and live schema audit](artifacts/message-intent-20261005/REPORT.uk.md), [27 systems / 15 user stages](artifacts/product-status-20261004/STATUS.uk.md), [exact rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Same-session manual retry after ambiguous delivery preserves one message ID, including dashboard refresh; a new acknowledged send remains a new action. 66 targeted tests, 6 actual Chromium groups, 16 overlapping local PG16 retries and two mutation guards accepted. Reload loses the in-memory retry key. Fresh read-only Neon catalog: base exists, nine new journey tables and send RPC absent; live PG18.6/Ohio differs from local PG16 proof. New 97-file candidate unpublished. No live JWT/two-account/physical Android/capacity acceptance. Older checkpoints below are historical; push is not Pages deployment.

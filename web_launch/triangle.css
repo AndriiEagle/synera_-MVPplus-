@@ -2,3 +2,12 @@
 @keyframes marker-glow{50%{box-shadow:0 4px 24px #d5b58544}}
 @media(max-width:850px){.room-grid,.atlas-grid{grid-template-columns:1fr}.contribution-grid,.launch-cards{grid-template-columns:1fr}.studio-card,.triangle-card{padding:22px}.triangle-art{max-width:500px;margin-inline:auto}.studio{padding:38px 22px 70px}.studio-modes{gap:8px}.studio-modes button{flex:1 1 100px;font-size:11px;padding:12px 7px}.opportunity-map{height:410px}.studio .section-heading h2{font-size:35px}.studio .section-heading{padding:0}.seat-b{left:5px}.seat-c{right:5px}.name-fields{grid-template-columns:1fr}.weight-fields{gap:8px}.weight-fields label{font-size:10px}.weight-fields input{padding:10px 8px}.studio .mast{flex-wrap:wrap}.studio button{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.studio *{animation:none!important;transition:none!important}}
+
+/* Studio headings precede their forms; the Summit side-column sticky rule
+   must not cover controls in this stacked layout. */
+.studio .section-heading { position:static; }
+.studio { overflow-wrap:anywhere; }
+/* These app pages share a mast that must grow when text or navigation wraps. */
+.mast { height:auto; min-height:98px; flex-wrap:wrap; gap:12px; padding-block:16px; }
+.mast > a { max-width:100%; overflow-wrap:anywhere; }
+@media(max-width:700px) { .mast { min-height:76px; } }

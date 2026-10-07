@@ -1,5 +1,9 @@
 # Synera — актуальні системи й досвід користувача
 
+## Мобільний checkpoint — 07.10.2026
+
+[Android/iPhone PWA, responsive та ціновий сценарій](../../artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
+
 ## Додаткова локальна перевірка — 05.10.2026
 
 [Два чати, skill і математична модель пілота](../pilot-wave-20261005/REPORT.uk.md): 7 transport груп; реальні локальні PG16 конкурентні intent/денні ліміти; 11 тестів сценарної моделі та незалежне приймання. Це не змінює статусів 27 продуктових систем або публікацію. Попит і відчуття користувачів не вимірювалися.
