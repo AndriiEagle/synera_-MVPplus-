@@ -1,5 +1,11 @@
 # Synera — актуальні системи й досвід користувача
 
+## Android recovery — 07.10.2026, 19:42 Europe/Zurich
+
+[SDK/AVD та Windows докази](../android-emulator-20261007/REPORT.uk.md): ZIP hashes уже перевірені, Studio/SDK встановлені, WHPX usable. Попередня примітка нижче про неперевірені hashes/SDK застаріла. Android boot не прийнятий: о 15:26 USB D: зник під час запису, тестові writable images мають повідомлення про втрачені записи. О 19:42 нові disk/NTFS errors за останні дві години не знайдені; це не навантажувальна перевірка стабільності.
+
+[План альтернативи на C:](../android-emulator-20261007/C_RECOVERY_PLAN.json): 431 файл, 3.34 GiB runtime/image; свіжий data partition 2 GiB; загальний ліміт 7 GiB, мінімум 8 GiB вільного місця. Наявно 15.39 GiB на момент підготовки. Копіювання й запуск **не виконані**, потрібне точне підтвердження зміни місця встановлення з D: на C:. Старий AVD не використовувати як прийнятий. Інші продуктові статуси нижче не підвищені.
+
 ## Мобільний checkpoint — 07.10.2026
 
 [Android/iPhone PWA, responsive та ціновий сценарій](../../artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
