@@ -1,0 +1,22 @@
+{
+  "emulatorAccepted": false,
+  "extractionRepeated": false,
+  "rows": [
+    {
+      "match": true,
+      "bytes": 1526567345,
+      "expected": "6e83e7ce3e0a76c4e8e78d98eb5ef538cbc9fb386c745bda425fc0bacb9de6d4",
+      "file": "D:/SyneraAndroid/studio.zip",
+      "actual": "6e83e7ce3e0a76c4e8e78d98eb5ef538cbc9fb386c745bda425fc0bacb9de6d4"
+    },
+    {
+      "match": true,
+      "bytes": 155655386,
+      "expected": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+      "file": "D:/SyneraAndroid/tools.zip",
+      "actual": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a"
+    }
+  ],
+  "elapsedSeconds": 44.745388,
+  "status": "ARCHIVES_HASH_VERIFIED"
+}
