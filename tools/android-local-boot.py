@@ -3,9 +3,11 @@ from pathlib import Path
 import json, os, shutil, subprocess, time
 
 root=Path('C:/Users/Andrii/.codex/tmp/synera-android-local')
-proof=Path(__file__).resolve().parents[1]/'artifacts/android-emulator-20261007'
-assert json.loads((proof/'C_SETUP.json').read_text())['status']=='COPIED_HASH_VERIFIED_NOT_BOOTED'
+repo=Path(__file__).resolve().parents[1]
+proof=repo/'artifacts/android-emulator-20261008'
+assert json.loads((repo/'artifacts/android-emulator-20261007/C_SETUP.json').read_text())['status']=='COPIED_HASH_VERIFIED_NOT_BOOTED'
 assert shutil.disk_usage(root).free > 10*1024**3
+proof.mkdir(exist_ok=True)
 env=os.environ.copy()
 env.update(ANDROID_HOME=str(root/'sdk'),ANDROID_SDK_ROOT=str(root/'sdk'),
            ANDROID_USER_HOME=str(root/'user'),ANDROID_AVD_HOME=str(root/'avd'),
@@ -21,7 +23,8 @@ accel=run([emulator,'-accel-check'])
 assert accel.returncode==0 and 'usable' in accel.stdout,accel.stdout+accel.stderr
 (proof/'C_ACCEL.txt').write_text(accel.stdout)
 args=[emulator,'-avd','Synera_Local_API36','-port','5580','-no-window','-no-audio',
-      '-no-snapshot','-no-boot-anim','-no-metrics','-gpu','auto',
+      '-no-snapshot','-no-snapstorage','-feature','-QuickbootFileBacked',
+      '-no-boot-anim','-no-metrics','-gpu','auto',
       '-camera-back','none','-camera-front','none','-cores','4','-memory','2048']
 with (proof/'C_RUNTIME.txt').open('w',encoding='utf8') as log:
     p=subprocess.Popen(args,env=env,stdout=log,stderr=subprocess.STDOUT,creationflags=subprocess.CREATE_NO_WINDOW)

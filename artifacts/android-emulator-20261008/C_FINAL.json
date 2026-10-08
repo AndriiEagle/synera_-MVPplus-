@@ -1,0 +1,12 @@
+{
+  "freeBytes": 5023182848,
+  "pagefile": {
+    "Name": "C:\\pagefile.sys",
+    "AllocatedBaseSize": 13794,
+    "CurrentUsage": 4322
+  },
+  "runtimeBytes": 5083532379.0,
+  "emulatorProcesses": [],
+  "status": "STOPPED_RESERVE_HOLD_UI_ANR",
+  "ramCacheExists": false
+}
