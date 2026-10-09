@@ -4,6 +4,8 @@ Read `docs/REVIEW_HANDOFF.uk.md` first, then `docs/PRODUCT_DNA.uk.md` and `docs/
 
 Preserve Current default, opt-in Atelier, bilateral consent/revisions, drafts and private-data guards. Local/browser/synthetic PASS is not live-account/device/deployment acceptance. Legacy Flutter/Firebase is a separate artifact. Do not bypass push or ADB policy blocks. Keep unrelated dirty files. Review and repair one independently reproduced local defect before expanding scope.
 
+Independent review 2026-10-09: `artifacts/opus-review-20261009/REPORT.uk.md`. Rollout order now includes `neon/meeting-status-guard.migration.sql` after case-state and BEFORE meeting-location; without it the sender can accept their own invitation. Consent and ownership claims count only when reproduced on real PostgreSQL as `authenticated`; the JS fixture is not that proof.
+
 The chronological notes below are preserved history. Their old NEXT items, paths, counts and runtime limitations may be superseded. They do not authorize deployment or override the current source-linked handoff.
 
 ---

@@ -1,5 +1,9 @@
 # Synera — конкретний review наступного закритого пілота
 
+## Зміна набору міграцій — Opus review, 09.10.2026
+
+[Звіт і докази](../opus-review-20261009/REPORT.uk.md). **Точний дозвіл «SQL 1–6» нижче більше не описує безпечний набір.** Після кроку 2 (`meeting-location`) відправник може прийняти власне запрошення: відтворено на PG16.15. Додано крок **1a** — `neon/meeting-status-guard.migration.sql`, SHA256 `a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33`. Він не застосований ніде й потребує того самого review: PG18, справжній JWT, preconditions. Перед apply порахувати `pending`-запрошення старого потоку (metadata only): після 1a їх можна прийняти лише за погодженої домовленості. Клієнт, що відповідає guard, — у source після `378c461`; candidate `153b1eba…` його не містить.
+
 ## Актуальний мобільний кандидат — 09.10.2026
 
 [WebKit acceptance](../mobile-webkit-20261009/REPORT.uk.md), code `976d225`: `web_launch/dist-neon-webkit-20261009`, **97 public files / 96 manifest rows**, release SHA256 `153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488`. Add-only копія прийнятого `dist-neon-mobile-final-20261007`; змінено лише CSS форми й release metadata. 8 WebKit і 3 Chromium fixture-шляхи до чату, семантичне повернення старого дефекту та fresh candidate runtime прийняті. Це не фізичні телефони, PWA install або дві live sessions. Candidate unpublished; попередні пакети збережені. Якщо погоджується наступний upload, review має називати саме цей hash; старі candidate hashes нижче історичні й не є дозволом на нову публікацію.
@@ -26,6 +30,7 @@ Live target — **PG18.6, AWS Ohio, Free plan UI, compute 0.25–2 CU**, history
 |---|---|---|
 | 0 | Наявний base | `schema.proposal.sql` не повторювати на існуючій базі. Зберегти справжню provider identity. |
 | 1 | `neon/case-state.migration.sql` | Case tables відсутні за свіжим catalog. Звірити preconditions перед apply; expiry repair зараз не потрібний. Якщо стан змінився — новий review, не rerun. |
+| 1a | `neon/meeting-status-guard.migration.sql` | **Нове, 09.10.** Після case-state, до meeting-location. Один trigger-guard на перехід статусу запрошення; SECURITY INVOKER, зв'язує тих самих викликачів, що й RLS. Працює і поверх уже наявного стеку. |
 | 2 | `neon/meeting-location.migration.sql` | Після case-state. SQL — лише consent/час/точність; GPS activation потребує окремого ephemeral KV binding. |
 | 3 | `neon/group-room.migration.sql` | Після base/case; admission helper потрібний для наступних RPC. Voice/video цим не вмикається. |
 | 4 | `neon/case-outcome.migration.sql` | Після case/group. Append-only attestations, receiver acceptance; виходить за старе питання лише про три міграції. |

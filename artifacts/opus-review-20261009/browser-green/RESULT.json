@@ -1,0 +1,105 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-final-20261009",
+  "releaseHash": "bbb4795825840a074d38982fa57a6e9bacf576479b5f67dfb1bf20975e53696f",
+  "engine": {
+    "name": "chromium",
+    "version": "141.0.7390.37"
+  },
+  "runs": [
+    {
+      "size": "standard",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "steps": [
+        {
+          "step": "current_agreement_offers_acceptance",
+          "screenshot": "standard-1-current.png"
+        },
+        {
+          "step": "stale_click_refused_with_next_action",
+          "screenshot": "standard-2-stale-refused.png"
+        },
+        {
+          "step": "next_action_opens_current_revision",
+          "screenshot": "standard-3-reapprove.png"
+        },
+        {
+          "step": "same_invitation_accepted_after_both_reapproved",
+          "screenshot": "standard-4-accepted.png"
+        },
+        {
+          "step": "sender_card_names_the_missing_approvals",
+          "screenshot": "standard-5-sender.png"
+        }
+      ],
+      "status_writes": 1
+    },
+    {
+      "size": "small",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "steps": [
+        {
+          "step": "current_agreement_offers_acceptance",
+          "screenshot": "small-1-current.png"
+        },
+        {
+          "step": "stale_click_refused_with_next_action",
+          "screenshot": "small-2-stale-refused.png"
+        },
+        {
+          "step": "next_action_opens_current_revision",
+          "screenshot": "small-3-reapprove.png"
+        },
+        {
+          "step": "same_invitation_accepted_after_both_reapproved",
+          "screenshot": "small-4-accepted.png"
+        },
+        {
+          "step": "sender_card_names_the_missing_approvals",
+          "screenshot": "small-5-sender.png"
+        }
+      ],
+      "status_writes": 1
+    },
+    {
+      "size": "desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "steps": [
+        {
+          "step": "current_agreement_offers_acceptance",
+          "screenshot": "desktop-1-current.png"
+        },
+        {
+          "step": "stale_click_refused_with_next_action",
+          "screenshot": "desktop-2-stale-refused.png"
+        },
+        {
+          "step": "next_action_opens_current_revision",
+          "screenshot": "desktop-3-reapprove.png"
+        },
+        {
+          "step": "same_invitation_accepted_after_both_reapproved",
+          "screenshot": "desktop-4-accepted.png"
+        },
+        {
+          "step": "sender_card_names_the_missing_approvals",
+          "screenshot": "desktop-5-sender.png"
+        }
+      ],
+      "status_writes": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "PASS_DESKTOP_CHROMIUM_SYNTHETIC"
+}

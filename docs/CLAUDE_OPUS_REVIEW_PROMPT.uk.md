@@ -1,50 +1,80 @@
-# Готовий промпт для Claude Opus
+# Готовий промпт для наступного незалежного review — v2
 
-Скопіюй текст між роздільниками. Перед запуском перевір, що пакет уже на product branch GitHub; сам факт наявності цього файлу в локальній папці не є push.
+Скопіюй текст між роздільниками. v1 (09.10) збережено в Git-історії цього файлу. v2 додає три уроки першого проходу ([звіт](../artifacts/opus-review-20261009/REPORT.uk.md)): рев'юер із чистого clone оцінював би застарілий GitHub; два обходи згоди пройшли крізь усі JS- і browser-тести, бо їх ловить лише справжній PostgreSQL; oracle згоди треба повторювати після кожної пізнішої міграції. Межі безпеки v1 збережені без послаблень.
 
 ---
 
-Ти — незалежний senior product engineer, UX/design lead і security reviewer. Перевір і продовж доробку **Synera**, а не лише переказуй звіти попереднього агента.
+Ти — незалежний senior product engineer, UX/design lead і security reviewer. Перевір і продовж доробку **Synera**, а не переказуй звіти попередніх агентів.
 
 **Репозиторій:** https://github.com/AndriiEagle/synera_-MVPplus-
-**Потрібна гілка:** `codex/synera-product-20261002`, НЕ default `main`.
+**Гілка:** `codex/synera-product-20261002`, НЕ default `main`.
 
-Мета Synera: допомогти підприємцям і незалежним спеціалістам Zürich/Швейцарії знайти взаємодоповнення, незалежно погодити невелику співпрацю і отримати підтверджений результат. Повний шлях: сайт/встановлення → профіль/дозволи → пояснений Give–Take / карта → умови → дві згоди → invitation acceptance → приватний чат → місце/час → дія → докази/критерії → receiver acceptance → приватний архів/добровільний social draft → наступний цикл.
+Мета, шлях користувача, еталон дизайну й інваріанти — у `docs/PRODUCT_DNA.uk.md` та `docs/REVIEW_HANDOFF.uk.md`. Не переказуй їх: перевіряй код проти них.
 
-Еталон: дорогий мінімалізм, чиста ієрархія, повітря, кінематографічний ритм, людська точність; одна впізнавана ідея — люди навколо нейтрального L. Без зайвих ефектів і walls of text. Current має лишитися default; Atelier/спокійний режим — добровільними. Зберігай попередні версії; новий дизайн додавай перемикачем. Голосова персоналізація має управляти підготовленими, перевіреними параметрами, не рухати controls під пальцем. Ніякого hidden manipulation або вигаданих гормональних вимірювань.
+## 0. Стоп-умова: чи це справжній зріз
 
-## Спочатку віднови реальний стан
+1. `git ls-remote origin refs/heads/codex/synera-product-20261002`, `git rev-parse HEAD`, `git status --short`, `git log -5 --oneline`.
+2. Зріз правильний, лише якщо `git merge-base --is-ancestor 378c461 HEAD` успішний і є `artifacts/opus-review-20261009/REPORT.uk.md`.
+3. Якщо ні — **зупинись**: назви точний remote SHA й відсутні файли, попроси git bundle або доступ до локального checkout. Не оцінюй старий зріз і не домислюй новий.
+4. Збережи чужу роботу. Не reset/clean/force checkout.
+5. Старі `plan/`, README-checkpoints, числа тестів і відсотки готовності — історія, не вимоги. Не відновлюй уже виправлені дефекти зі старих текстів.
 
-1. Перевір branch, HEAD, dirty/staged state і історію; збережи чужу роботу. Не reset/clean/force checkout. Якщо product branch або `docs/REVIEW_HANDOFF.uk.md` недоступні, скажи точний remote SHA й відсутні файли; не уявляй, що остання доробка вже на GitHub.
-2. Прочитай `docs/REVIEW_HANDOFF.uk.md`, `docs/PRODUCT_DNA.uk.md`, `START_HERE.uk.md`, `artifacts/mobile-webkit-20261009/REPORT.uk.md`, `artifacts/product-status-20261004/STATUS.uk.md`, `artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md`.
-3. Відокрем поточні requirements від історичних `plan/`/старих README checkpoints. Не вимагай старого числа тестів чи готовності 33%; не відновлюй старі вже виправлені дефекти лише зі старого промпта.
-4. Прочитай фактичні owners у `web_launch/`, `neon/`, `supabase/`, відповідні тести/генератори. Всі авторські claims — гіпотези до незалежного приймання, навіть якщо report має PASS.
+## 1. Назви середовище до вибору перевірок
 
-## Проведи незалежний аудит і зроби корисну доробку
+Одним рядком: OS, Node, чи є PostgreSQL, які браузерні рушії, чи є мережа. Відсутній рушій чи база — це «не перевірено». Не product bug і не PASS.
 
-- Простеж два незалежні actor identities через профіль → зміна редакції → дві згоди → запрошення → чат → місце → evidence → receiver acceptance. Знайди unsupported live gates, dead controls, privilege/consent bypass, stale-response leakage, draft loss, duplicate delivery, unclear state і broken recovery.
-- Перевір дизайн фактичними screenshots і кліками, якщо browser tool доступний: вузькі/звичайні/великі екрани, landscape, enlarged text, Current/Atelier, loading/error/empty, keyboard/focus. Не оцінюй сторінку, яку не бачив. Експертний score 1–100 можливий лише з явною рубрикою; це не виміряний user satisfaction.
-- Перевір джерело canonical SQL, migration preconditions, grants/RLS, JWT/session/admission/readiness flags, public-asset packaging та архівну приватність. Не читаючи приватних production rows.
-- Дай короткий ранжований P0/P1/P2 список із `claim → file/locator → independent check → verdict`. Відразу виправ одну найціннішу локальну проблему, яку можеш відтворити й перевірити; не зупиняйся на плані, якщо ремонт уже дозволений і безпечний. Після її приймання можеш взяти наступну незалежну вузьку задачу, а не безкінечно полірувати ту саму.
-- Перед зміною чинної поведінки сформулюй збережений інваріант. Семантичний regression guard має зловити реальний дефект, пройти після fix і знову впасти на mutation/revert. Literal/snapshot/wording checks не замінюють поведінковий доказ. Документації не потрібні штучні тести.
-- На стабільному diff зроби два скінченні review: реальна зміна проти інваріанта; один adversarial/mutation case. Перевір artifact/actual render після зміни. Не повторюй незмінені full suites лише заради counts; вибирай gates за dependency surface.
+## 2. Ієрархія доказів
 
-## Критичні межі, які не можна підміняти
+1. Справжній PostgreSQL з RLS: два різні актори як `authenticated`, і перехід виконує сам актор, а не owner-seed.
+2. Реальні кліки в браузері по кандидату, зібраному з source. Не оцінюй екран, якого не бачив.
+3. JS-fixture / transport oracle — гіпотеза про сервер, не доказ. Якщо fixture і SQL розходяться, правий SQL, а fixture виправляється.
+4. Literal, snapshot і wording checks не доводять поведінку.
 
-- Наявний новий release локально accepted, unpublished. Desktop WebKit/Chromium і fixtures не є фізичними Android/iPhone, встановленням PWA, двома live акаунтами, справжнім HTTP JWT/RLS чи підтвердженим результатом клієнта.
-- Збережи дві незалежні згоди, revision invalidation, receiver-only acceptance, CAS, private purge, late-read/logout guards, наступну чернетку та same-session explicit retry semantics. Мовчання не означає згоду на гроші/зустріч/публікацію.
-- У локальному Windows checkout чужий dirty `web_launch/journey-ui.mjs` мав SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`; не захоплюй його в свій commit. У чистому clone dirty payload відсутній.
-- Історичний FlutterFlow/Firebase не є current PWA backend. Embedded Maps, live AI voice/video/Triangle, OAuth/social posting, checkout і сотні users/sec не прийняті. Не маскуй stub/скриптову відповідь під живий AI або ботів під користувачів.
-- Google QA `synera-qa-20261009` створений; no billing підтверджено власником, API Console мала load failure. Chrome launch через ADB відхилений інструментом `blocked by policy`. Не повторюй і не обходь це іншим shell, transport, reservation чи новим проєктом без доказу зміни обмеження.
-- Push історично відхилений через approval policy; не обходь його GitHub API/іншим checkout/upload. Новий точний дозвіл користувача не є доказом зміни platform policy. GitHub HEAD перевіряй read-only.
-- Локальна реалізація, docs, regressions і owned commits — scope цієї роботи. Production SQL, recovery apply, deploy/publish, secret changes, install, deletion, paid provider calls, legal terms acceptance, повідомлення людям і розширення live registration потребують чинного точного дозволу відповідного середовища. Не вигадуй його з цього промпта. Зовнішній spend cap за замовчуванням $0.
+Будь-який claim про згоду, власність чи приватність приймається лише на рівні 1. Усі авторські claims, включно з моїми з 09.10, — гіпотези до твого відтворення.
 
-## Відтворення й результат
+## 3. Класи дефектів, які тут уже знаходили — шукай родичів
 
-Команди, portable build path, browser prerequisites та відомі Windows-only обмеження — у `docs/REVIEW_HANDOFF.uk.md`. Датовані `dist-neon-*` не входять до Git; побудуй новий окремий review candidate з source. Новий `built_at` означає новий release hash; перевір assets, а не підганяй hash до старої квитанції. Не послаблюй oracle, consent або readiness, щоб отримати зелений тест.
+- **Union політик.** PostgreSQL об'єднує `USING` усіх permissive-політик окремо від їхніх `WITH CHECK`. Для кожної таблиці з кількома permissive-політиками на одну команду перебери пари «чужий USING + чужий WITH CHECK».
+- **Gate лише на створенні.** Умова, перевірена на INSERT, може зникнути до наступного переходу: прийняття, адреса, результат, публікація, гроші.
+- **Oracle не повторено вище.** Acceptance міграції N має проходити після N+1…K: пізніша міграція може відкрити закрите.
+- **Fixture оминає перехід.** Стан, посіяний owner'ом, нічого не каже про те, хто міг до нього дійти.
+- **403 «ресурс недоступний» як втрата сесії**, зі стертою чернеткою.
+- **Результат дії поза екраном**; control без пояснення поруч.
 
-Залиш один компактний source-linked звіт у власному `artifacts/opus-review-<date>/`: що перевірив незалежно, відтворені дефекти, що виправив, actual tests/command exits, diff/source hashes, unresolved gates та один конкретний NEXT. Commit лише власні перевірені файли, якщо current environment/user authorization це дозволяє. Онови наявні shared entrypoints і `task_log.jsonl`; не додавай router/queue/ledger/daemon або іншу систему управління.
+## 4. Робота
 
-Відповідай українською прямо: **що реально стало краще; який доказ; що ще не працює; що потрібно від Андрія**. Не називай весь продукт market-ready без живого двостороннього циклу, phone acceptance, recovery і точного rollout acceptance. Якщо є тільки зовнішній blocker, заверши незалежну локальну роботу й опиши саме його.
+- Простеж двох незалежних акторів: профіль → редакція → дві згоди → запрошення → прийняття → чат → місце → evidence → receiver acceptance. Шукай unsupported live gates, dead controls, privilege/consent bypass, stale-response leakage, draft loss, duplicate delivery, unclear state, broken recovery.
+- Перевір canonical SQL і генератор, migration preconditions, grants/RLS, JWT/session/admission/readiness flags, public-asset packaging, архівну приватність. Приватних production rows не читай.
+- Дизайн — фактичними screenshots і кліками: вузький, звичайний, великий, landscape, enlarged text, Current/Atelier, loading/error/empty, keyboard/focus. Оцінка 1–100 лише з явною рубрикою; це не виміряне задоволення користувачів.
+- Дай ранжований P0/P1/P2: `claim → file/locator → independent check → verdict`.
+- Виправ **одну** найціннішу відтворену локальну проблему: інваріант словами → RED на незмінному коді → fix → GREEN → mutation знову RED → чинні набори з фіксом у стеку. Окремий коміт. Після приймання — щонайбільше ще одна незалежна вузька. Не полірувати.
+- Зміна default-вигляду чи продуктової семантики — не фікс, а питання Андрієві з двома варіантами й доказом.
+- Не повторюй незмінені full suites заради counts; вибирай перевірки за dependency surface. Не послаблюй oracle, consent чи readiness заради зеленого тесту.
+
+## 5. Фронт робіт на 09.10 — не перевідкривай закрите
+
+Закрито локально, не застосовано ніде: відправник не приймає власне запрошення; прийняття потребує двох чинних згод; скасована зустріч не виглядає втратою сесії й не стирає текст; SQL-harness читає результат на `close`.
+
+Відкрито: статус дії поза екраном у 23 з 28 виміряних випадків; статичний індикатор кроків; розбіжності JS-fixture із SQL; мапінг `PTxxx` → HTTP на Neon Data API; форма умов 1930 px на телефоні; `index.html` в іншій візуальній системі; DE/EN шлях. Найцінніше без live: правило «oracle згоди на кожному рівні стеку, перехід як `authenticated`» у чинних acceptance.
+
+## 6. Критичні межі, які не можна підміняти
+
+- Локальний кандидат accepted, unpublished. Desktop WebKit/Chromium і fixtures не є фізичними Android/iPhone, встановленням PWA, двома live акаунтами, справжнім HTTP JWT/RLS чи підтвердженим результатом клієнта.
+- Збережи дві незалежні згоди, revision invalidation, receiver-only acceptance, CAS, private purge, late-read/logout guards, наступну чернетку та same-session explicit retry. Мовчання не означає згоду на гроші, зустріч чи публікацію.
+- Current лишається default; Atelier і спокійний режим — добровільні. Попередні версії зберігай; новий дизайн додавай перемикачем. Жодної hidden manipulation чи вигаданих гормональних вимірювань.
+- У локальному Windows checkout чужий dirty `web_launch/journey-ui.mjs` мав SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`; не захоплюй його у свій commit. У чистому clone його немає.
+- Історичний FlutterFlow/Firebase не є current PWA backend. Embedded Maps, live AI voice/video/Triangle, OAuth/social posting, checkout і сотні users/sec не прийняті. Не маскуй stub під живий AI або ботів під користувачів.
+- Google QA `synera-qa-20261009` створений; no billing підтверджено власником, API Console мала load failure. Chrome launch через ADB відхилений `blocked by policy`. Не повторюй і не обходь це іншим shell, transport, reservation чи новим проєктом без доказу зміни обмеження.
+- Push історично відхилений через approval policy; не обходь його GitHub API, іншим checkout чи upload. Новий дозвіл користувача не доводить зміну platform policy. GitHub HEAD перевіряй read-only.
+- Rollout order тепер: case-state → **meeting-status-guard** → meeting-location → group-room → case-outcome → meeting-address-agreement → message-intent. Без guard крок meeting-location відкриває прийняття запрошення відправником.
+- Scope — локальна реалізація, docs, regressions і власні commits. Production SQL, recovery apply, deploy/publish, secret changes, install, deletion, paid provider calls, legal terms acceptance, повідомлення людям і розширення live registration потребують чинного точного дозволу відповідного середовища. Не вигадуй його з цього промпта. Зовнішній spend cap — $0.
+
+## 7. Результат
+
+Команди, build path і browser prerequisites — у `docs/REVIEW_HANDOFF.uk.md`. Датовані `dist-neon-*` не входять до Git: збери новий окремий кандидат; новий `built_at` означає новий release hash.
+
+Залиш один компактний source-linked звіт у власному `artifacts/<model>-review-<date>/`: середовище; що перевірив незалежно; відтворені дефекти; що виправив; фактичні команди й exit codes; diff/source hashes; unresolved gates; один конкретний NEXT. Commit лише власні перевірені файли. Онови чинні entrypoints і `task_log.jsonl`; не додавай router, queue, ledger, daemon чи іншу систему управління.
+
+Відповідай українською прямо: **що реально стало краще; який доказ; що ще не працює; що потрібно від Андрія**. Щонайбільше три дії для нього, і кожну дію на його комп'ютері дай готовим файлом для запуску, а не командою для вставки. Не називай продукт market-ready без живого двостороннього циклу, phone acceptance, recovery і точного rollout acceptance. Якщо лишився тільки зовнішній blocker, заверши незалежну локальну роботу й опиши саме його.
 
 ---

@@ -16,6 +16,10 @@
 -- It binds exactly the callers that row-level security binds (row_security_active): the table owner and
 -- SECURITY DEFINER maintenance already bypass every policy and keep their own responsibility. The reviewed
 -- acceptance fixtures rely on that owner path, so the guard must not be stricter than the policies there.
+--
+-- Before a live apply, count (metadata only, no private rows) invitations still 'pending' from the older
+-- flow: after this migration they can be accepted only once their pair holds an approved agreement,
+-- exactly as a new invitation can be sent only then. Declining and cancelling them stay available.
 begin;
 do $$ begin
   if to_regclass('public.meeting_requests') is null or to_regclass('public.match_cases') is null

@@ -1,0 +1,408 @@
+{
+  "scope": "Desktop Chromium, synthetic fixture; captures of the visible first screen",
+  "captures": [
+    {
+      "name": "summit-phone.png",
+      "title": "Synera — Make room for each other.",
+      "h1": "Great work.\nStarts with\neach other.",
+      "pageHeight": 4617,
+      "buttonsAboveFold": 3
+    },
+    {
+      "name": "summit-desktop.png",
+      "title": "Synera — Make room for each other.",
+      "h1": "Great work.\nStarts with\neach other.",
+      "pageHeight": 3920,
+      "buttonsAboveFold": 3
+    },
+    {
+      "name": "index-phone.png",
+      "title": "Synera — співпраця для солопідприємців",
+      "h1": "Твоя майстерність.\nВаш спільний результат.",
+      "pageHeight": 2153,
+      "buttonsAboveFold": 5
+    },
+    {
+      "name": "index-desktop.png",
+      "title": "Synera — співпраця для солопідприємців",
+      "h1": "Твоя майстерність.\nВаш спільний результат.",
+      "pageHeight": 1611,
+      "buttonsAboveFold": 10
+    },
+    {
+      "name": "get-phone.png",
+      "title": "Get Synera — Android & iPhone",
+      "h1": "Synera on your phone.",
+      "pageHeight": 3307,
+      "buttonsAboveFold": 2
+    },
+    {
+      "name": "get-desktop.png",
+      "title": "Get Synera — Android & iPhone",
+      "h1": "Synera on your phone.",
+      "pageHeight": 2441,
+      "buttonsAboveFold": 2
+    },
+    {
+      "name": "studio-journey-phone.png",
+      "title": "Synera — від знайомства до результату",
+      "h1": "Знайти людину.\nДійти до результату.",
+      "pageHeight": 2007,
+      "buttonsAboveFold": 6
+    },
+    {
+      "name": "studio-journey-desktop.png",
+      "title": "Synera — від знайомства до результату",
+      "h1": "Знайти людину.\nДійти до результату.",
+      "pageHeight": 1851,
+      "buttonsAboveFold": 6
+    },
+    {
+      "name": "triangle-phone.png",
+      "title": "Synera — Triangle L",
+      "h1": "Сила в єдності.",
+      "pageHeight": 2310,
+      "buttonsAboveFold": 7
+    },
+    {
+      "name": "triangle-desktop.png",
+      "title": "Synera — Triangle L",
+      "h1": "Сила в єдності.",
+      "pageHeight": 1441,
+      "buttonsAboveFold": 8
+    },
+    {
+      "name": "studio-phone.png",
+      "title": "Synera Studio — від розмови до результату",
+      "h1": "Твоя сила.\nНаш наступний крок.",
+      "pageHeight": 2303,
+      "buttonsAboveFold": 9
+    },
+    {
+      "name": "studio-desktop.png",
+      "title": "Synera Studio — від розмови до результату",
+      "h1": "Твоя сила.\nНаш наступний крок.",
+      "pageHeight": 1921,
+      "buttonsAboveFold": 9
+    },
+    {
+      "name": "journey-phone-1-dashboard.png"
+    },
+    {
+      "name": "journey-phone-2-terms-top.png"
+    },
+    {
+      "name": "journey-phone-3-terms-submit.png",
+      "formHeight": 1930,
+      "viewportHeight": 844
+    },
+    {
+      "name": "journey-phone-4-approved-own.png"
+    },
+    {
+      "name": "journey-phone-5-invite.png"
+    },
+    {
+      "name": "journey-phone-6-pending-invitation.png"
+    },
+    {
+      "name": "journey-phone-7-chat.png"
+    },
+    {
+      "name": "journey-phone-atelier-1-dashboard.png"
+    },
+    {
+      "name": "journey-phone-atelier-2-terms-top.png"
+    },
+    {
+      "name": "journey-phone-atelier-3-terms-submit.png",
+      "formHeight": 1780,
+      "viewportHeight": 844
+    },
+    {
+      "name": "journey-phone-atelier-4-approved-own.png"
+    },
+    {
+      "name": "journey-phone-atelier-5-invite.png"
+    },
+    {
+      "name": "journey-phone-atelier-6-pending-invitation.png"
+    },
+    {
+      "name": "journey-phone-atelier-7-chat.png"
+    },
+    {
+      "name": "journey-landscape-1-dashboard.png"
+    },
+    {
+      "name": "journey-landscape-2-terms-top.png"
+    },
+    {
+      "name": "journey-landscape-3-terms-submit.png",
+      "formHeight": 1930,
+      "viewportHeight": 390
+    },
+    {
+      "name": "journey-landscape-4-approved-own.png"
+    },
+    {
+      "name": "journey-landscape-5-invite.png"
+    },
+    {
+      "name": "journey-landscape-6-pending-invitation.png"
+    },
+    {
+      "name": "journey-landscape-7-chat.png"
+    },
+    {
+      "name": "journey-desktop-1-dashboard.png"
+    },
+    {
+      "name": "journey-desktop-2-terms-top.png"
+    },
+    {
+      "name": "journey-desktop-3-terms-submit.png",
+      "formHeight": 1930,
+      "viewportHeight": 900
+    },
+    {
+      "name": "journey-desktop-4-approved-own.png"
+    },
+    {
+      "name": "journey-desktop-5-invite.png"
+    },
+    {
+      "name": "journey-desktop-6-pending-invitation.png"
+    },
+    {
+      "name": "journey-desktop-7-chat.png"
+    }
+  ],
+  "statusVisibility": [
+    {
+      "view": "phone",
+      "action": "open terms",
+      "inViewport": true,
+      "statusTop": 323,
+      "scrollY": 55,
+      "text": "Нові умови порожні: заповни їх вручну."
+    },
+    {
+      "view": "phone",
+      "action": "save terms",
+      "inViewport": false,
+      "statusTop": -1135,
+      "scrollY": 1513,
+      "text": "Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо."
+    },
+    {
+      "view": "phone",
+      "action": "approve",
+      "inViewport": false,
+      "statusTop": -1121,
+      "scrollY": 1499,
+      "text": "Твоє підтвердження збережено."
+    },
+    {
+      "view": "phone",
+      "action": "send invitation",
+      "inViewport": false,
+      "statusTop": -1632,
+      "scrollY": 2010,
+      "text": "Запрошення надіслано. Воно ще не є прийнятою зустріччю."
+    },
+    {
+      "view": "phone",
+      "action": "accept invitation",
+      "inViewport": false,
+      "statusTop": -679,
+      "scrollY": 1057,
+      "text": "Запрошення прийнято. Розмова доступна обом."
+    },
+    {
+      "view": "phone",
+      "action": "open conversation",
+      "inViewport": false,
+      "statusTop": -77,
+      "scrollY": 455,
+      "text": "Показано приватну розмову після прийнятого запрошення."
+    },
+    {
+      "view": "phone",
+      "action": "send message",
+      "inViewport": false,
+      "statusTop": -77,
+      "scrollY": 455,
+      "text": "Повідомлення надіслано й прочитано з сервера."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "open terms",
+      "inViewport": true,
+      "statusTop": 323,
+      "scrollY": 62,
+      "text": "Нові умови порожні: заповни їх вручну."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "save terms",
+      "inViewport": false,
+      "statusTop": -1133,
+      "scrollY": 1518,
+      "text": "Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "approve",
+      "inViewport": false,
+      "statusTop": -1119,
+      "scrollY": 1504,
+      "text": "Твоє підтвердження збережено."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "send invitation",
+      "inViewport": false,
+      "statusTop": -1629,
+      "scrollY": 2014,
+      "text": "Запрошення надіслано. Воно ще не є прийнятою зустріччю."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "accept invitation",
+      "inViewport": false,
+      "statusTop": -679,
+      "scrollY": 1064,
+      "text": "Запрошення прийнято. Розмова доступна обом."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "open conversation",
+      "inViewport": false,
+      "statusTop": -44,
+      "scrollY": 429,
+      "text": "Показано приватну розмову після прийнятого запрошення."
+    },
+    {
+      "view": "phone-atelier",
+      "action": "send message",
+      "inViewport": false,
+      "statusTop": -44,
+      "scrollY": 429,
+      "text": "Повідомлення надіслано й прочитано з сервера."
+    },
+    {
+      "view": "landscape",
+      "action": "open terms",
+      "inViewport": false,
+      "statusTop": -143,
+      "scrollY": 600,
+      "text": "Нові умови порожні: заповни їх вручну."
+    },
+    {
+      "view": "landscape",
+      "action": "save terms",
+      "inViewport": false,
+      "statusTop": -1312,
+      "scrollY": 1769,
+      "text": "Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо."
+    },
+    {
+      "view": "landscape",
+      "action": "approve",
+      "inViewport": false,
+      "statusTop": -1312,
+      "scrollY": 1769,
+      "text": "Твоє підтвердження збережено."
+    },
+    {
+      "view": "landscape",
+      "action": "send invitation",
+      "inViewport": false,
+      "statusTop": -1869,
+      "scrollY": 2326,
+      "text": "Запрошення надіслано. Воно ще не є прийнятою зустріччю."
+    },
+    {
+      "view": "landscape",
+      "action": "accept invitation",
+      "inViewport": false,
+      "statusTop": -1032,
+      "scrollY": 1489,
+      "text": "Запрошення прийнято. Розмова доступна обом."
+    },
+    {
+      "view": "landscape",
+      "action": "open conversation",
+      "inViewport": false,
+      "statusTop": -431,
+      "scrollY": 888,
+      "text": "Показано приватну розмову після прийнятого запрошення."
+    },
+    {
+      "view": "landscape",
+      "action": "send message",
+      "inViewport": false,
+      "statusTop": -431,
+      "scrollY": 888,
+      "text": "Повідомлення надіслано й прочитано з сервера."
+    },
+    {
+      "view": "desktop",
+      "action": "open terms",
+      "inViewport": true,
+      "statusTop": 457,
+      "scrollY": 0,
+      "text": "Нові умови порожні: заповни їх вручну."
+    },
+    {
+      "view": "desktop",
+      "action": "save terms",
+      "inViewport": false,
+      "statusTop": -802,
+      "scrollY": 1259,
+      "text": "Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо."
+    },
+    {
+      "view": "desktop",
+      "action": "approve",
+      "inViewport": false,
+      "statusTop": -802,
+      "scrollY": 1259,
+      "text": "Твоє підтвердження збережено."
+    },
+    {
+      "view": "desktop",
+      "action": "send invitation",
+      "inViewport": false,
+      "statusTop": -1315,
+      "scrollY": 1772,
+      "text": "Запрошення надіслано. Воно ще не є прийнятою зустріччю."
+    },
+    {
+      "view": "desktop",
+      "action": "accept invitation",
+      "inViewport": false,
+      "statusTop": -522,
+      "scrollY": 979,
+      "text": "Запрошення прийнято. Розмова доступна обом."
+    },
+    {
+      "view": "desktop",
+      "action": "open conversation",
+      "inViewport": true,
+      "statusTop": -2,
+      "scrollY": 459,
+      "text": "Показано приватну розмову після прийнятого запрошення."
+    },
+    {
+      "view": "desktop",
+      "action": "send message",
+      "inViewport": true,
+      "statusTop": -2,
+      "scrollY": 459,
+      "text": "Повідомлення надіслано й прочитано з сервера."
+    }
+  ],
+  "consoleErrors": []
+}

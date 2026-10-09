@@ -1,0 +1,23 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-baseline",
+  "releaseHash": "9b0b57932e530629d878109e94ab442660c56511517b82b04ce48edc86f3e734",
+  "engine": {
+    "name": "chromium",
+    "version": "141.0.7390.37"
+  },
+  "runs": [],
+  "failures": [
+    {
+      "size": "standard",
+      "error": "page.waitForFunction: Timeout 12000ms exceeded.",
+      "screenshot": "standard-failure.png",
+      "completed": [
+        "current_agreement_offers_acceptance"
+      ]
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "NEEDS_REVIEW"
+}

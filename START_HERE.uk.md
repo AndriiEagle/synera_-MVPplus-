@@ -1,3 +1,7 @@
+## Результат незалежного Opus review — 09.10.2026
+
+[Звіт](artifacts/opus-review-20261009/REPORT.uk.md): два серверні обходи згоди відтворено на PostgreSQL 16.15 й закрито локальною адитивною міграцією `neon/meeting-status-guard.migration.sql` (крок 1a rollout, до meeting-location); скасована зустріч більше не виглядає втратою сесії. Нічого не застосовано й не deployed. WebKit, PG18, справжній JWT, два живі акаунти й телефони не перевірені.
+
 ## Незалежний Claude Opus review — 09.10.2026
 
 [Продуктова ДНК / еталон](docs/PRODUCT_DNA.uk.md) → [handoff, пріоритети, команди й GitHub scope](docs/REVIEW_HANDOFF.uk.md) → [готовий промпт](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md). Це поточний порядок читання для іншої моделі. Звір remote product branch перед початком; dated build directories не входять до Git, відтворення описано в handoff. Поточні докази нижче збережені, старі checkpoints історичні.

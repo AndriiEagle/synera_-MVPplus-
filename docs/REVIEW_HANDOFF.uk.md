@@ -2,6 +2,15 @@
 
 Зріз 09.10.2026. Цей файл дозволяє працювати з GitHub clone без приватної історії чату. [ДНК / еталон](PRODUCT_DNA.uk.md) · [готовий промпт Claude Opus](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
 
+## 0. Незалежний Opus review — 09.10.2026, після цього зрізу
+
+[Звіт](../artifacts/opus-review-20261009/REPORT.uk.md). На момент review GitHub був на `6724682` без цього файлу; перевірку зроблено з локального checkout. Відтворено на PostgreSQL 16.15 й виправлено локально: відправник міг прийняти власне запрошення після `meeting-location.migration.sql` (union permissive-політик); запрошення переживало згоди. У Chromium: скасована зустріч виглядала втратою сесії й стирала чернетку. Нічого не застосовано, не pushed, не deployed.
+
+- Нова адитивна [`neon/meeting-status-guard.migration.sql`](../neon/meeting-status-guard.migration.sql) стає кроком **1a** rollout: після case-state, до meeting-location.
+- Переносний SQL-runner без Windows-шляхів: `SYNERA_ACCEPTANCE_PGPORT=<port> node tools/meeting-status-guard-sql-acceptance.mjs`. Лише disposable loopback PostgreSQL.
+- Урок: JS-fixture моделює задуману політику й не виконує RLS. Claim про згоду чи власність приймається лише на справжньому PostgreSQL, двома акторами, з переходом від імені `authenticated`, і повторюється після кожної пізнішої міграції.
+- Відкриті UX-знахідки з вимірами — розділ 3 звіту. Оновлений [промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+
 ## 1. Репозиторій і порядок читання
 
 - GitHub: `https://github.com/AndriiEagle/synera_-MVPplus-`, **public** за read-only GitHub API 09.10.
@@ -59,6 +68,7 @@
 6. Public visibility, fit, AI, GPS, recording і social sharing — окремі дозволи. API/private payloads не кешувати як public shell.
 7. Не обіцяти lie detection, психодіагностику, приховану «перепрошивку» людей, guaranteed chemistry або автоматичну грошову згоду.
 8. У Windows checkout чужий dirty `web_launch/journey-ui.mjs` мав SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`. Не комітити/повертати його без ownership reconciliation. У чистому GitHub clone цього dirty payload немає.
+9. Запрошення приймає лише отримувач і лише поки обидва мають чинну згоду на поточну редакцію відкритої непростроченої домовленості; скасовує лише відправник; закрите запрошення остаточне. Скасована зустріч чи змінене запрошення — не втрата сесії: людина лишається в сесії, ненадісланий текст зберігається.
 
 ## 5. Черга незалежної доробки
 
