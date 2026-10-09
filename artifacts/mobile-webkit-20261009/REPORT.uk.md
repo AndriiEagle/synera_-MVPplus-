@@ -1,6 +1,6 @@
 # Synera: WebKit-виправлення та окреме QA-середовище — 09.10.2026
 
-**LOCAL_MOBILE_PATCH_ACCEPTED / LIVE_LAUNCH_HOLD.** Знайдено й виправлено переповнення форми домовленості у WebKit. Новий Google Cloud проєкт створений; його billing ще не підтверджений. Це не приймання всього продукту чи дозвіл запускати production.
+**LOCAL_MOBILE_PATCH_ACCEPTED / LIVE_LAUNCH_HOLD.** Знайдено й виправлено переповнення форми домовленості у WebKit. Новий Google Cloud проєкт створений; користувач підтвердив відсутність прив'язаного платіжного акаунта. API Console не завантажується, активація не виконана. Це не приймання всього продукту чи дозвіл запускати production. Продуктовий код і докази збережені в локальному commit `976d225c1f247d0ee4b5c164ebde64c5f6747a18`.
 
 Checkout: `C:/Users/Andrii/Desktop/synera-premium-pwa-variant`, гілка `codex/synera-product-20261002`, вихідний commit `b16b672`.
 
@@ -54,7 +54,9 @@ Receipts: `RELEASE.json`, окремі `RESULT.json` у названих кат�
 
 Створено **Synera QA 20261009**, ID `synera-qa-20261009`, number `32625214908`; успіх звірений у project picker і welcome screen. Старі проєкти збережені. Для нового проєкту API не активовано, reservations не створено, ключі/compute/БД не створювались.
 
-Billing-сторінка нового проєкту не завантажується. Redirect до billing-account URL не доводить стан прив'язки; **billing UNKNOWN**. Я не натискала attach/change billing, але автоматичну прив'язку під час створення не можна виключити без readback. Через це активація й хмарне резервування зупинені до перевірки $0-умов. Приватні account IDs та Console/auth screenshots не входять до Git.
+Спочатку billing-сторінка нового проєкту не завантажувалась; redirect до billing-account URL не був доказом прив'язки. Потім користувач відкрив billing у звичайному Chrome й підтвердив: **платіжний акаунт не прив'язаний**. Джерело цього readback — користувач; незалежного Console-readback інструментом немає. Я не натискала attach/change billing. Приватні account IDs та Console/auth screenshots не входять до Git.
+
+Після відповіді користувача відкрито точну сторінку Device Streaming API для нового QA. Вона також показує `Fehler beim Laden`; активація не виконана. Офіційний наявний Android CLI `--help` не містить команди активації Google Cloud API; gcloud не встановлений. Ще один CLI/SDK заради резервування, яке все одно має відкритий Chrome policy gate, не встановлювався. Приватний screenshot помилки збережений у local temp і показаний користувачеві.
 
 Старий MapTesting приймає read-only `device remote ... list`: `No reservations found`. Отже, ні вік проєкту, ні помилка UI не довели, що він зламаний. Нова Firebase Console також не змогла завантажити статус terms; Neon Console показала loader без підтвердженого плану/проєктів. Нові Firebase/Neon resources та terms acceptance не виконувались.
 
@@ -72,6 +74,6 @@ Billing-сторінка нового проєкту не завантажуєт
 
 Наявні таблиця 27 систем / 15 етапів і попередній rollout review збережені. Цей checkpoint підвищує локальну браузерну сумісність; він не переводить часткові системи в готові.
 
-**NEXT, 5 хв:** прочитати billing нового `synera-qa-20261009` у звичайному Chrome й підтвердити, чи є прив'язаний платіжний акаунт. Питання користувачеві вже надіслане; мовчання не є підтвердженням. Новий device launch до усунення попереднього policy blocker не починати.
+**NEXT, 5 хв:** у звичайному Chrome відкрити `https://console.cloud.google.com/apis/library/devicestreaming.googleapis.com?project=synera-qa-20261009` і завершити лише активацію Device Streaming API без billing. Це підготовка QA; новий device launch до усунення попереднього policy blocker не починати. Exact candidate і відкриті production gates зв'язані в актуальному rollout review.
 
 Models used: none (provider calls=0, USD=$0.00).

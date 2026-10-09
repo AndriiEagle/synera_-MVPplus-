@@ -1,5 +1,11 @@
 # Synera — конкретний review наступного закритого пілота
 
+## Актуальний мобільний кандидат — 09.10.2026
+
+[WebKit acceptance](../mobile-webkit-20261009/REPORT.uk.md), code `976d225`: `web_launch/dist-neon-webkit-20261009`, **97 public files / 96 manifest rows**, release SHA256 `153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488`. Add-only копія прийнятого `dist-neon-mobile-final-20261007`; змінено лише CSS форми й release metadata. 8 WebKit і 3 Chromium fixture-шляхи до чату, семантичне повернення старого дефекту та fresh candidate runtime прийняті. Це не фізичні телефони, PWA install або дві live sessions. Candidate unpublished; попередні пакети збережені. Якщо погоджується наступний upload, review має називати саме цей hash; старі candidate hashes нижче історичні й не є дозволом на нову публікацію.
+
+Новий Google Cloud `synera-qa-20261009` створений лише для device QA, зі збереженням старих проєктів. Користувач підтвердив відсутність billing account; API Console має load failure, API activation/reservations не виконані. Це не новий Neon/Cloudflare target і не обходить відкритий ADB Chrome policy gate. Production target, recovery/schema/flags, дві живі сесії та точний дозвіл нижче лишаються відкритими; metadata 05.10 не видаються за свіжий readback 09.10. Старі rollout details збережені для review, без SQL/deployment цього проходу.
+
 ## Актуальний пакет — 05.10.2026
 
 [Message-intent acceptance](../message-intent-20261005/REPORT.uk.md): `web_launch/dist-neon-message-intent-20261005`, **97 public files / 96 manifest rows**, release SHA256 `efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb`. Ручний resend після unknown delivery зберігає один UUID у відкритій сесії, включно зі звичайним dashboard refresh. Після підтвердженого send/read нова явна дія має новий UUID. 66 targeted Node tests, 6 actual Chromium groups, 16 overlapping SQL retries на PG16.15; client/SQL mutations відхилені, незалежний hash readback. Це не RPS benchmark. Reload втрачає RAM-key; legacy lane з flag=false зберігає старе обмеження. Candidate unpublished, build gitignored; старий partner-status candidate збережений як історичний.
