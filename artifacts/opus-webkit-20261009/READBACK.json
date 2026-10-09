@@ -1,0 +1,81 @@
+{
+  "status": "PASS_SOURCE_RECEIPT_AND_HANDOFF_READBACK",
+  "generated_at": "2026-10-09T19:40:36.811Z",
+  "source_head": "e46ce95e37e1f2f528bc91d46098ea4967f72dff",
+  "remote_head": "6724682f5f43172e5732fa41b8a46e4baa6384e2",
+  "commits_ahead_at_source": 20,
+  "release_sha256": "4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297",
+  "sql_stages": 18,
+  "sql_source_pins": {
+    "neon/meeting-status-guard.migration.sql": {
+      "receipt_sha256": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+      "committed_blob_sha256": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33"
+    },
+    "neon/meeting-status-guard.acceptance.sql": {
+      "receipt_sha256": "fb9a2e05ca1c144ea43834eef1d77ca543b9b3d4296a6dfda52dd6e11a630369",
+      "committed_blob_sha256": "fb9a2e05ca1c144ea43834eef1d77ca543b9b3d4296a6dfda52dd6e11a630369"
+    },
+    "neon/case-state.acceptance.sql": {
+      "receipt_sha256": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+      "committed_blob_sha256": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27"
+    },
+    "neon/stack-invariants.acceptance.sql": {
+      "receipt_sha256": "4d75a593b9ba241abc6a38395c5fa8089db9ba7bbf5680f6e5c53d3d16591cd5",
+      "committed_blob_sha256": "4d75a593b9ba241abc6a38395c5fa8089db9ba7bbf5680f6e5c53d3d16591cd5"
+    },
+    "tools/meeting-status-guard-sql-acceptance.mjs": {
+      "receipt_sha256": "9146504335f823124802e1d406f31df65027e487fe99224da2c62dccc96dd1b8",
+      "committed_blob_sha256": "9146504335f823124802e1d406f31df65027e487fe99224da2c62dccc96dd1b8"
+    },
+    "neon/schema.proposal.sql": {
+      "receipt_sha256": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+      "committed_blob_sha256": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a"
+    },
+    "neon/case-state.migration.sql": {
+      "receipt_sha256": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+      "committed_blob_sha256": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4"
+    },
+    "neon/meeting-location.migration.sql": {
+      "receipt_sha256": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+      "committed_blob_sha256": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b"
+    },
+    "neon/group-room.migration.sql": {
+      "receipt_sha256": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+      "committed_blob_sha256": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da"
+    },
+    "neon/case-outcome.migration.sql": {
+      "receipt_sha256": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+      "committed_blob_sha256": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6"
+    },
+    "neon/meeting-address-agreement.migration.sql": {
+      "receipt_sha256": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+      "committed_blob_sha256": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a"
+    },
+    "neon/message-intent.migration.sql": {
+      "receipt_sha256": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+      "committed_blob_sha256": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e"
+    }
+  },
+  "invitation_runs": 3,
+  "unavailable_scenarios": 4,
+  "feedback": {
+    "observations": 55,
+    "actions": 50,
+    "feedbackOffScreen": 0,
+    "problems": 0,
+    "failures": 0
+  },
+  "mobile_matrix": {
+    "observations": 56,
+    "issues": 0,
+    "failures": 0,
+    "journeys": 8
+  },
+  "local_markdown_links_checked": 68,
+  "foreign_dirty_unchanged": true,
+  "provider_calls": 0,
+  "usd": 0,
+  "pushed": false,
+  "production_applied": false,
+  "published": false
+}

@@ -7,6 +7,7 @@
 - [Готовий промпт для Claude Opus: незалежний аудит + вузька доробка](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md)
 - [Останній WebKit fix і справжні screenshots](artifacts/mobile-webkit-20261009/REPORT.uk.md)
 - [Результат незалежного Opus review 09.10: два обходи згоди закрито локально, rollout order змінено](artifacts/opus-review-20261009/REPORT.uk.md)
+- [Повторна перевірка Opus: PostgreSQL + WebKit, новий кандидат із точного HEAD](artifacts/opus-webkit-20261009/REPORT.uk.md)
 
 **Local candidate accepted; live launch не прийнятий.** Перед review звір remote HEAD. Push не є deployment. Нижче збережені історичні checkpoints; старі «latest», шляхи, дефекти, числа тестів і Supabase/Android описи не перевизначають поточний handoff.
 

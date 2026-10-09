@@ -13,6 +13,10 @@
 - Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
 - Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
+### 0.1. Повторна перевірка у Windows/WebKit — 09.10.2026
+
+[Поточний звіт і source/candidate pins](../artifacts/opus-webkit-20261009/REPORT.uk.md). Source `e46ce95`: 18 стадій PG16.15, full-stack 70 oracle у двох apply orders і 6 mutations; WebKit 26.6 — invitation 3 розміри, unavailable 4 сценарії, feedback 50 дій, mobile matrix 8 профілів / 56 спостережень. Усе локально; JWT/PG18/фізичні телефони й production не прийняті. Коміти Opus не змінено. Новий candidate з точних Git-блобів, release `4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297`, виключає чужий dirty asset. На момент повторної перевірки GitHub досі `6724682`, на 20 комітів позаду source; proof commit додається окремо. Повтор push через інший транспорт не робився.
+
 ## 1. Репозиторій і порядок читання
 
 - GitHub: `https://github.com/AndriiEagle/synera_-MVPplus-`, **public** за read-only GitHub API 09.10.
@@ -21,7 +25,7 @@
 - Вихідний локальний HEAD цього handoff: `7f2f217`; продуктовий WebKit fix: `976d225`.
 - Перед підготовкою handoff remote branch був `6724682f5f43172e5732fa41b8a46e4baa6384e2`: **10 локальних комітів ще не були на GitHub**. Остаточний remote стан треба звірити `git ls-remote`, а не вірити цьому зрізу.
 
-Читати в порядку: цей файл → `PRODUCT_DNA.uk.md` → [останній WebKit report](../artifacts/mobile-webkit-20261009/REPORT.uk.md) → [таблиця систем і досвіду](../artifacts/product-status-20261004/STATUS.uk.md) → [точний rollout review](../artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) → код потрібного контракту. Старі розділи README/CLAUDE/START_HERE та `plan/` — історія. Старий `140/140`, `33%` або старий NEXT не є сьогоднішнім acceptance gate.
+Читати в порядку: цей файл → `PRODUCT_DNA.uk.md` → [повторна перевірка Opus/WebKit і новий candidate](../artifacts/opus-webkit-20261009/REPORT.uk.md) → [таблиця систем і досвіду](../artifacts/product-status-20261004/STATUS.uk.md) → [точний rollout review](../artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) → код потрібного контракту. [Попередній WebKit CSS report](../artifacts/mobile-webkit-20261009/REPORT.uk.md) збережений як окремий доказ. Старі розділи README/CLAUDE/START_HERE та `plan/` — історія. Старий `140/140`, `33%` або старий NEXT не є сьогоднішнім acceptance gate.
 
 Локальний Windows checkout автора: `C:/Users/Andrii/Desktop/synera-premium-pwa-variant`. У зовнішньому середовищі працюй з власного кореня clone; цей шлях не є залежністю продукту. Якщо ти бачиш тільки main або старий remote SHA, нова доробка ще не синхронізована: повідом це й не домислюй її наявність.
 
@@ -49,7 +53,7 @@
 |---|---|
 | Наскрізний локальний цикл | Profile → fit → редакція → дві згоди → invitation acceptance → чат → адреса → evidence/check/receiver acceptance → приватний export/social draft. Частини мають окремі fixtures/SQL/browser receipts; не всі пройдені одним живим HTTP/JWT шляхом |
 | WebKit, остання вузька правка | 8 WebKit конфігурацій + 3 Chromium, synthetic Auth/Data, форма/запрошення/чат; старий CSS відтворює overflow. [Report](../artifacts/mobile-webkit-20261009/REPORT.uk.md) і RESULTS — докази цієї версії |
-| Поточний локальний кандидат | `web_launch/dist-neon-webkit-20261009`, 97 files / 96 manifest rows; SHA256 release `153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488`; unpublished |
+| Поточний локальний кандидат | `web_launch/dist-neon-opus-head-webkit-20261009`, source `e46ce95`, 97 files / 96 manifest rows; SHA256 release `4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297`; unpublished. [Повторний WebKit/SQL proof](../artifacts/opus-webkit-20261009/REPORT.uk.md) |
 | Архів і повідомлення | Receiver acceptance, приватний viewer/social draft та recovery guards мають локальні докази. Same-session manual unknown-delivery retry тримає message UUID; reload втрачає RAM-key, offline outbox не завершений |
 | Production catalog | Останній конкретний readback 05.10: Neon base є; 9 нових case/location/group/outcome/address tables і send RPC відсутні. Це історичний readback, який треба освіжити перед apply |
 | Deployment | Остання Pages metadata: `synera-pilot`, No Git connection. Новий candidate не deployed. Git push не оновлює цю публікацію автоматично |

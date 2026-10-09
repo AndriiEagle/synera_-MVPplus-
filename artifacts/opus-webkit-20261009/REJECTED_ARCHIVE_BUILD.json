@@ -1,0 +1,11 @@
+{
+  "status": "NOT_ACCEPTED_EXACT_BYTES",
+  "candidate": "web_launch/dist-neon-opus-webkit-20261009",
+  "reason": "First public asset index.html differs from committed blob by CRLF export conversion",
+  "candidate_release_sha256": "d838f1e78d12354fe197c5080a6aba67746f545b703383d4f2904163dbb0f12a",
+  "index_actual_bytes": 30962,
+  "index_committed_bytes": 30901,
+  "normalized_index_matches": true,
+  "used_for_browser_acceptance": false,
+  "preserved": true
+}
