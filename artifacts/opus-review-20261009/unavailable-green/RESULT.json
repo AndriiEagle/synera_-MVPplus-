@@ -1,7 +1,7 @@
 {
   "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
-  "candidate": "dist-neon-opus-final-20261009",
-  "releaseHash": "bbb4795825840a074d38982fa57a6e9bacf576479b5f67dfb1bf20975e53696f",
+  "candidate": "dist-neon-opus-final2-20261009",
+  "releaseHash": "7463268b386e719b427d714c92fc079d99b98e51607002012fe40e25e7d211ae",
   "engine": {
     "name": "chromium",
     "version": "141.0.7390.37"

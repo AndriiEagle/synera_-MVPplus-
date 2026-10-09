@@ -9,7 +9,9 @@
 - Нова адитивна [`neon/meeting-status-guard.migration.sql`](../neon/meeting-status-guard.migration.sql) стає кроком **1a** rollout: після case-state, до meeting-location.
 - Переносний SQL-runner без Windows-шляхів: `SYNERA_ACCEPTANCE_PGPORT=<port> node tools/meeting-status-guard-sql-acceptance.mjs`. Лише disposable loopback PostgreSQL.
 - Урок: JS-fixture моделює задуману політику й не виконує RLS. Claim про згоду чи власність приймається лише на справжньому PostgreSQL, двома акторами, з переходом від імені `authenticated`, і повторюється після кожної пізнішої міграції.
-- Відкриті UX-знахідки з вимірами — розділ 3 звіту. Оновлений [промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+- Другий прохід того ж дня (розділ 0 звіту): [`neon/stack-invariants.acceptance.sql`](../neon/stack-invariants.acceptance.sql) повторює 70 ownership/consent oracle на повному стеку, де кожен стан досягає сама людина як `authenticated`; нового серверного дефекту не знайдено. Статус дії тепер лишається на екрані, поточний крок виділено, pending-запрошення не пропонують надіслати вдруге, спір і відмова сервера називають наступну дію. Перевірено лише в Chromium.
+- Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
+- Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
 ## 1. Репозиторій і порядок читання
 
