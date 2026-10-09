@@ -90,8 +90,13 @@ function renderMeetings() {
     card.append(el('h3', `${asText(meeting.meeting_place) || 'Онлайн'} · ${statusLabels[meeting.status] || 'Недоступно'}`));
     card.append(el('small', dateTime(meeting.proposed_at)));
     if (meeting.note) card.append(el('p', meeting.note));
-    if (meeting.status === 'pending' && meeting.recipient_id === state.dashboard.own?.id) {
-      card.append(makeButton('Прийняти', () => respond(meeting.id, 'accepted')), makeButton('Відхилити', () => respond(meeting.id, 'declined')));
+    if (meeting.status === 'pending') {
+      // Accepting needs the same live agreement that sending needed; the server refuses it otherwise.
+      const mine = meeting.recipient_id === state.dashboard.own?.id, peer = mine ? meeting.sender_id : meeting.recipient_id;
+      const current = caseFor(peer), agreed = current?.status === 'approved_for_next_step' && Date.parse(current.expiresAt) > Date.now();
+      if (!agreed) card.append(el('p', mine ? 'Умови змінилися після цього запрошення. Прийняти його можна, коли обидва підтвердять поточну редакцію.' : 'Запрошення чекає: спершу обидва мають підтвердити поточну редакцію умов.', { class: 'real-note' }), makeButton('Переглянути умови', () => selectPeer(peer)));
+      if (mine && agreed) card.append(makeButton('Прийняти', () => respond(meeting.id, 'accepted')));
+      if (mine) card.append(makeButton('Відхилити', () => respond(meeting.id, 'declined')));
     }
     if (meeting.status === 'accepted') card.append(makeButton('Відкрити розмову', () => selectConversation(meeting.id)));
     list.append(card);
@@ -432,7 +437,16 @@ async function approve() { if (!state.peerId || !ui.approveCheck.checked || !sta
 async function withdraw() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const saved = await state.store.withdrawTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus('Твоє підтвердження відкликано.'); }
 async function closeTerms() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const dashboard = await state.store.closeTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.dashboard = dashboard; state.caseState = null; state.termsDirty = false; fillCurrentTerms(null); ui.inviteForm.reset(); renderAll(); setStatus('Умови закрито, історію збережено. Новий обмін потребує нових підтверджень.'); }
 async function invite(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.inviteForm); const proposedAt = new Date(fields.proposed_at); if (!Number.isFinite(proposedAt.valueOf())) throw new Error('Вкажи коректний час.'); const dash = await state.store.sendInvitation(state.peerId, fields.note, { proposed_at: proposedAt.toISOString(), duration_minutes: Number(fields.duration_minutes), meeting_place: fields.meeting_place }); if (epoch !== state.epoch) return; state.dashboard = dash; renderAll(); setStatus('Запрошення надіслано. Воно ще не є прийнятою зустріччю.'); }
-async function respond(id, status) { const epoch = state.epoch; const dashboard = await state.store.respondInvitation(id, status); if (epoch !== state.epoch) return; state.dashboard = dashboard; renderAll(); setStatus(status === 'accepted' ? 'Запрошення прийнято. Розмова доступна обом.' : 'Запрошення відхилено.'); }
+async function respond(id, status) {
+  const epoch = state.epoch; let dashboard;
+  try { dashboard = await state.store.respondInvitation(id, status); }
+  catch (error) {
+    if (error?.code !== 'INVITATION_NEEDS_CURRENT_APPROVALS') throw error;
+    // Show the server's current agreement so the card offers the real next action, then explain.
+    await refresh({ quiet: true }); if (epoch === state.epoch) setStatus(error.message); return;
+  }
+  if (epoch !== state.epoch) return; state.dashboard = dashboard; renderAll(); setStatus(status === 'accepted' ? 'Запрошення прийнято. Розмова доступна обом.' : 'Запрошення відхилено.');
+}
 function renderTranscript(conversation) {
   const messages = conversation.messages || [], cards = Array.from(ui.transcript.children);
   // An unchanged read must not disturb the text the person is reading/selecting.
@@ -534,7 +548,7 @@ function renderPartnerRead(current, meetings) {
   if (revised && !state.termsDirty) fillCurrentTerms(current);
   if (changed) renderReview(current);
   if (!same(previous.cases, cases)) renderCases();
-  if (!same(previous.meetings, meetings)) renderMeetings();
+  if (!same(previous.meetings, meetings) || !same(previous.cases, cases)) renderMeetings();
   updateApprovalControls(); syncOutcomesEntry(); syncAddressEntry();
   const reply = meetings.find(meeting => [meeting.sender_id, meeting.recipient_id].includes(state.peerId) &&
     previous.meetings.find(row => row.id === meeting.id)?.status !== meeting.status);

@@ -37,7 +37,7 @@ export function createFixture() {
     } }));
   const cases = [], approvals = [], meetings = [], messages = [], requests = [];
   const revoked = new Set(), noConsent = new Set();
-  const controls = { beforeCasePatch: null, beforeApproval: null, delayMessages: null };
+  const controls = { beforeCasePatch: null, beforeApproval: null, beforeMeetingPatch: null, delayMessages: null };
   const env = { SYNERA_SITE_URL: origin, SYNERA_NEON_AUTH_URL: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth',
     SYNERA_NEON_DATA_URL: 'https://ep-fixture.apirest.us-east-2.aws.neon.tech/neondb/rest/v1',
     SYNERA_PILOT_EMAILS: ids.map(id => id + '@example.com').join(','), SYNERA_PILOT_READY: 'true', SYNERA_REAL_JOURNEY_READY: 'true' };
@@ -101,7 +101,17 @@ export function createFixture() {
         meetings.push(row); return response([row]);
       }
       if (method === 'PATCH') {
+        if (controls.beforeMeetingPatch) { const hook = controls.beforeMeetingPatch; controls.beforeMeetingPatch = null; await hook(); }
         const found = meetings.filter(row => row.recipient_id === id && row.status === 'pending' && matches(row, url.searchParams));
+        // Mirrors neon/meeting-status-guard.migration.sql (PT409): accepting needs the same live agreement
+        // as sending. This hand-written oracle is NOT the proof; PostgreSQL acceptance is.
+        const agreed = row => {
+          const [low, high] = [row.sender_id, row.recipient_id].sort();
+          const current = cases.find(c => c.status === 'open' && Date.parse(c.expires_at) > Date.now() && c.participant_low === low && c.participant_high === high);
+          return Boolean(current) && [low, high].every(party => approvals.some(a => a.case_id === current.case_id && a.party_id === party &&
+            a.approved_version === current.version && a.approved_terms_hash === current.terms_hash && !a.withdrawn_at));
+        };
+        if (body.status === 'accepted' && found.some(row => !agreed(row))) return Response.json({}, { status: 409 });
         for (const row of found) row.status = body.status; return response(found);
       }
     }

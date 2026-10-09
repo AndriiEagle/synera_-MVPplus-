@@ -112,6 +112,13 @@ function validateMeetingAddress(data, current, meeting) {
 export class JourneyConflict extends Error {
   constructor() { super('Умови змінилися. Онови їх, перечитай і підтвердь нову версію.'); this.status = 409; this.code = 'STALE_CASE_RELOAD_REQUIRED'; }
 }
+// Not an authorization failure and not a lost session: the person can re-approve and accept again.
+export class InvitationConflict extends Error {
+  constructor() {
+    super('Умови змінилися після цього запрошення. Прийняти його можна, коли обидва підтвердять поточну редакцію. Відхилити можна будь-коли.');
+    this.status = 409; this.code = 'INVITATION_NEEDS_CURRENT_APPROVALS';
+  }
+}
 export function assertRealJourneyGate(config) {
   if (config?.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true || config.realJourneyEnabled !== true) {
     throw new ServiceError(503, 'real_journey_not_ready');
@@ -378,7 +385,17 @@ export class RealJourneyStore extends NeonStore {
     const me = await this.#actor();
     const meeting = (await this.meetings()).find(row => row.id === id && row.recipient_id === me && row.status === 'pending');
     if (!meeting) throw new ServiceError(403);
-    await this.respond(id, status);
+    if (status === 'accepted') {
+      // Accepting needs the same live agreement that sending needed. Declining never does.
+      const current = await this.pairState(meeting.sender_id);
+      if (!current || current.status !== 'approved_for_next_step' || Date.parse(current.expiresAt) <= Date.now()) throw new InvitationConflict();
+    }
+    try { await this.respond(id, status); }
+    catch (error) {
+      // The database decides a race between this read and the write (meeting-status-guard, PT409).
+      if (status === 'accepted' && error?.status === 409) throw new InvitationConflict();
+      throw error;
+    }
     return this.dashboard();
   }
   async #meeting(id) {
