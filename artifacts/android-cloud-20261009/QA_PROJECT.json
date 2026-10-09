@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-09",
+  "status": "QA_PROJECT_CREATED_BILLING_UNKNOWN",
+  "project_name": "Synera QA 20261009",
+  "project_id": "synera-qa-20261009",
+  "project_number": "32625214908",
+  "creation_verified": ["project_picker", "welcome_screen"],
+  "old_projects_preserved": true,
+  "billing_status": "UNKNOWN_CONSOLE_LOAD_FAILURE",
+  "billing_change_requested": false,
+  "automatic_billing_linkage_excluded": false,
+  "api_activation_performed": false,
+  "reservations_created": 0,
+  "paid_resources_launched": false,
+  "old_project_readonly_check": {"project_id": "map-testing-ti7epp", "result": "No reservations found."},
+  "android_chrome_policy_blocker": "UNRESOLVED_NO_RETRY_OR_BYPASS",
+  "firebase_terms_status": "CONSOLE_LOAD_FAILURE_NO_ACCEPTANCE",
+  "neon_new_environment": "NOT_CREATED_UNVERIFIED_CONSOLE_LOADER",
+  "private_console_screenshots_in_git": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

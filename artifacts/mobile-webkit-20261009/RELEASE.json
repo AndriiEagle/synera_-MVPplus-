@@ -1,0 +1,32 @@
+{
+  "status": "PASS_LOCAL_WEBKIT_PATCH_CANDIDATE",
+  "candidate": "web_launch/dist-neon-webkit-20261009",
+  "release_sha256": "153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488",
+  "files": 97,
+  "manifest_files": 96,
+  "changed": [
+    "real-journey.css",
+    "release.json"
+  ],
+  "css_sha256": "e21d4d4b91bdc551da292519f588a7af9d01569cd4623fa0cbe0217f1f0c3118",
+  "preserved_original_css_sha256": "d5590b6e11236c279436825dd9f2f33cf3293843c11e08604498751ff94a1298",
+  "foreign_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "webkit_profiles": [
+    "atelier",
+    "compact",
+    "landscape",
+    "large",
+    "large-text",
+    "small",
+    "standard",
+    "tablet"
+  ],
+  "chromium_profiles": 3,
+  "semantic_mutation": "OLD_CSS_REINTRODUCES_OVERFLOW",
+  "published": false,
+  "physical_android": false,
+  "physical_iphone": false,
+  "live_accounts": false,
+  "provider_calls": 0,
+  "usd": 0
+}
