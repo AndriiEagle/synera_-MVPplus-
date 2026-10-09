@@ -255,10 +255,11 @@ export function createNeonWorker(publicAssets) {
     else if (url.pathname === '/config.json' && request.method === 'GET') {
       const ready = env.SYNERA_PILOT_READY === 'true';
       const googleOAuthEnabled = ready && env.SYNERA_REGISTRATION_ENABLED === 'true' && env.SYNERA_GOOGLE_OAUTH_READY === 'true';
-      const googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined;
+      // A misconfigured provider URL must close the optional sign-in, not crash the public configuration.
+      let googleOAuthInitUrl; try { googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined; } catch { googleOAuthInitUrl = undefined; }
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
         // This new gate is set only after the documented challenge bridge is verified live.
-        googleOAuthEnabled, googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
+        googleOAuthEnabled: googleOAuthEnabled && Boolean(googleOAuthInitUrl), googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
         realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
         messageIntentsEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true' && env.SYNERA_MESSAGE_INTENTS_READY === 'true',
