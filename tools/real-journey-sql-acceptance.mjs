@@ -37,7 +37,7 @@ const run = (name, input, requireSuccess = true) => {
 const proof = path.join(root, 'artifacts/real-journey-20261003');
 await fs.mkdir(proof, { recursive: true });
 try {
-  const locale = run('unicode_locale', "select json_build_object('provider',datlocprovider,'icu_locale',daticulocale,'client_encoding',current_setting('client_encoding'),'cyrillic_lower',lower('Онлайн')) from pg_database where datname=current_database();");
+  const locale = run('unicode_locale', "select json_build_object('provider',datlocprovider,'icu_locale',coalesce(to_jsonb(d)->>'datlocale',to_jsonb(d)->>'daticulocale'),'client_encoding',current_setting('client_encoding'),'cyrillic_lower',lower('Онлайн')) from pg_database d where datname=current_database();");
   receipt.locale = JSON.parse(locale.stdout.trim());
   assert.equal(receipt.locale.provider, 'i'); assert.equal(receipt.locale.icu_locale, 'und');
   assert.equal(receipt.locale.client_encoding, 'UTF8'); assert.equal(receipt.locale.cyrillic_lower, 'онлайн');
