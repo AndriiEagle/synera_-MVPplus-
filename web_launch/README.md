@@ -1,3 +1,5 @@
+> **Current product context (2026-10-09):** read [REVIEW_HANDOFF](../docs/REVIEW_HANDOFF.uk.md) and [PRODUCT_DNA](../docs/PRODUCT_DNA.uk.md) first. Product branch is `codex/synera-product-20261002`; Neon is the current gateway owner. The Supabase-only runtime/SQL notes below are historical, not current live readiness. Build/fixtures do not prove deployment, two live accounts or physical phones. Original notes preserved.
+
 # Synera real-user browser pilot
 
 > Current route (2026-09-05): Neon Free + Cloudflare Pages. [Live setup state and release instructions](../docs/NEON_LAUNCH.uk.md). The Supabase-specific launch steps below are parked.

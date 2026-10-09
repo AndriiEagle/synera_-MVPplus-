@@ -1,0 +1,14 @@
+{
+  "status": "PASS_CLEAN_COMMITTED_SOURCE_BUILD",
+  "source_commit": "7f2f217",
+  "source_export": "git archive HEAD web_launch neon tools package.json",
+  "tests": 59,
+  "tests_failed": 0,
+  "manifest_rows": 96,
+  "files": 97,
+  "release_sha256": "64125680e2269d25c6b3ae293b1b331e111ab40ba4d73bb82da723e55ec1bd04",
+  "published": false,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Node-only source reconstruction; no external node_modules, browsers, secrets, Auth or database"
+}

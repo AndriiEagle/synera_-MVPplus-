@@ -1,3 +1,7 @@
+## Незалежний Claude Opus review — 09.10.2026
+
+[Продуктова ДНК / еталон](docs/PRODUCT_DNA.uk.md) → [handoff, пріоритети, команди й GitHub scope](docs/REVIEW_HANDOFF.uk.md) → [готовий промпт](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md). Це поточний порядок читання для іншої моделі. Звір remote product branch перед початком; dated build directories не входять до Git, відтворення описано в handoff. Поточні докази нижче збережені, старі checkpoints історичні.
+
 ## WebKit / новий Google QA — 09.10.2026
 
 [Фактичне виправлення, screenshots та межі запуску](artifacts/mobile-webkit-20261009/REPORT.uk.md), code `976d225`: форма домовленості більше не розтягує вузькі екрани у WebKit. Дві CSS-властивості, 8 WebKit + 3 Chromium fixture-шляхи до чату без overflow; повернення старого CSS відтворює дефект. Окремий 97-file candidate `dist-neon-webkit-20261009` перевірений, unpublished; старий пакет, Current/default/Atelier і чужа journey-ui збережені. Це desktop engines із синтетичними акаунтами, не встановлення на фізичних телефонах. Створений Google QA `synera-qa-20261009`; користувач підтвердив відсутність billing account, але API Console не завантажується, активація/reservations не виконані. Android Chrome policy blocker, фізичний iPhone, live JWT/two accounts/result і production rollout відкриті. Нижче — історичні checkpoints.

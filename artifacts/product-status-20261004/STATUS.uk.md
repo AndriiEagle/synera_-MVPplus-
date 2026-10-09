@@ -1,3 +1,7 @@
+## Актуальний checkpoint — 09.10.2026
+
+[WebKit fix і screenshots](../mobile-webkit-20261009/REPORT.uk.md): форма на вузьких екранах виправлена; 8 WebKit + 3 Chromium synthetic шляхи до чату, original-CSS mutation та окремий candidate прийняті. Google QA створений, no billing підтверджено користувачем, API Console load failure. Це не phone/live acceptance й не зміна 27-system inventory нижче. [ДНК, еталон, пріоритети й GitHub handoff](../../docs/REVIEW_HANDOFF.uk.md) є поточною точкою входу; старі Android/USB/runtime описи нижче датовані.
+
 ## Android на C: — прийняте встановлення, відкритий UI gate
 
 [Результат перенесення й запуску](../android-emulator-20261007/C_RESULT.uk.md): лише погоджений ZIP PostgreSQL (356 MiB) перенесено на D:, двічі перевірено SHA256, видалено з C: з readback. 431 файл Android встановлений на C:, Android16 boot_completed=1. Фактичний екран має System UI ANR; Chrome launch відхилений policy. Емулятор зупинений; близько7GiB environment і8.7GiB вільного C:. Synera/PWA на Android ще не прийняті. Старі D: та продуктові версії збережені.

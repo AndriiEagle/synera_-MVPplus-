@@ -1,3 +1,13 @@
+# Current Claude / external-model entry — 2026-10-09
+
+Read `docs/REVIEW_HANDOFF.uk.md` first, then `docs/PRODUCT_DNA.uk.md` and `docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md`. Product branch: `codex/synera-product-20261002`, not default main or historical merged PR #1. Reconcile Git HEAD/dirty state, source, acceptance evidence and current permissions before edits.
+
+Preserve Current default, opt-in Atelier, bilateral consent/revisions, drafts and private-data guards. Local/browser/synthetic PASS is not live-account/device/deployment acceptance. Legacy Flutter/Firebase is a separate artifact. Do not bypass push or ADB policy blocks. Keep unrelated dirty files. Review and repair one independently reproduced local defect before expanding scope.
+
+The chronological notes below are preserved history. Their old NEXT items, paths, counts and runtime limitations may be superseded. They do not authorize deployment or override the current source-linked handoff.
+
+---
+
 # Synera shared entry point
 
 ## Мобільний checkpoint — 07.10.2026

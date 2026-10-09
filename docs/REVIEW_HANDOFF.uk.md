@@ -1,0 +1,113 @@
+# Synera: handoff для незалежного аудиту й доробки
+
+Зріз 09.10.2026. Цей файл дозволяє працювати з GitHub clone без приватної історії чату. [ДНК / еталон](PRODUCT_DNA.uk.md) · [готовий промпт Claude Opus](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+
+## 1. Репозиторій і порядок читання
+
+- GitHub: `https://github.com/AndriiEagle/synera_-MVPplus-`, **public** за read-only GitHub API 09.10.
+- Поточна продуктова гілка: **`codex/synera-product-20261002`**. Default `main` не є цією гілкою.
+- PR #1 — історичний **MERGED** multihost-plan PR іншої гілки; не вважати його поточним product PR.
+- Вихідний локальний HEAD цього handoff: `7f2f217`; продуктовий WebKit fix: `976d225`.
+- Перед підготовкою handoff remote branch був `6724682f5f43172e5732fa41b8a46e4baa6384e2`: **10 локальних комітів ще не були на GitHub**. Остаточний remote стан треба звірити `git ls-remote`, а не вірити цьому зрізу.
+
+Читати в порядку: цей файл → `PRODUCT_DNA.uk.md` → [останній WebKit report](../artifacts/mobile-webkit-20261009/REPORT.uk.md) → [таблиця систем і досвіду](../artifacts/product-status-20261004/STATUS.uk.md) → [точний rollout review](../artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) → код потрібного контракту. Старі розділи README/CLAUDE/START_HERE та `plan/` — історія. Старий `140/140`, `33%` або старий NEXT не є сьогоднішнім acceptance gate.
+
+Локальний Windows checkout автора: `C:/Users/Andrii/Desktop/synera-premium-pwa-variant`. У зовнішньому середовищі працюй з власного кореня clone; цей шлях не є залежністю продукту. Якщо ти бачиш тільки main або старий remote SHA, нова доробка ще не синхронізована: повідом це й не домислюй її наявність.
+
+## 2. Архітектура й власники
+
+| Шар | Джерела / контракт |
+|---|---|
+| Поточний браузерний продукт | `web_launch/`; public assets allowlist — `web_launch/assets.mjs` |
+| Живий шлях двох людей | `real-journey.html`, `real-journey.mjs`, `real-journey.css`; business case / profile store / Neon store поруч |
+| Підбір | `matching.mjs`, `profile-brief.mjs`; `declared-fit.mjs` — окреме пояснення opt-in декларацій, не другий live matcher |
+| Базовий backend | `neon/worker.mjs`, `web_launch/neon-store.mjs`; Auth/Data API same-origin gateway, server readiness gates |
+| SQL | Canonical proposals у `supabase/`, generated/additive migrations у `neon/`; звірити генератор і preconditions до змін |
+| Карта й місце | `map.mjs`, `live-location.mjs`, `neon/meeting-location.mjs`, meeting-address modules |
+| Група / результат | `neon/group-room.mjs`, `neon/case-outcome.mjs`, відповідні client/store/UI modules і тести |
+| Дизайн | `style.css`, `summit.css`, `triangle.css`; opt-in `atelier.css` / `atelier.mjs`; нові global style systems не потрібні |
+| Studio / архів | `studio.mjs`, `session-value.mjs`, `archive-codec.mjs`; memory/opt-in device archive, не хмарна база користувачів |
+| Build | `neon/build.mjs`, `web_launch/build.mjs`; build не є deployment |
+| Історичний FlutterFlow/Firebase | `crystallised_in/`; окремий артефакт із legacy security risks, не сучасний PWA runtime |
+
+Не створювати другий matcher/store/router/queue/ledger, не переписувати продукт на Flutter лише через наявність старого FlutterFlow. Repository source і public deployment assets мають різний scope: не публікувати весь repo як сайт.
+
+## 3. Що прийняте, а що ні
+
+| Межа | Доказ / актуальний статус |
+|---|---|
+| Наскрізний локальний цикл | Profile → fit → редакція → дві згоди → invitation acceptance → чат → адреса → evidence/check/receiver acceptance → приватний export/social draft. Частини мають окремі fixtures/SQL/browser receipts; не всі пройдені одним живим HTTP/JWT шляхом |
+| WebKit, остання вузька правка | 8 WebKit конфігурацій + 3 Chromium, synthetic Auth/Data, форма/запрошення/чат; старий CSS відтворює overflow. [Report](../artifacts/mobile-webkit-20261009/REPORT.uk.md) і RESULTS — докази цієї версії |
+| Поточний локальний кандидат | `web_launch/dist-neon-webkit-20261009`, 97 files / 96 manifest rows; SHA256 release `153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488`; unpublished |
+| Архів і повідомлення | Receiver acceptance, приватний viewer/social draft та recovery guards мають локальні докази. Same-session manual unknown-delivery retry тримає message UUID; reload втрачає RAM-key, offline outbox не завершений |
+| Production catalog | Останній конкретний readback 05.10: Neon base є; 9 нових case/location/group/outcome/address tables і send RPC відсутні. Це історичний readback, який треба освіжити перед apply |
+| Deployment | Остання Pages metadata: `synera-pilot`, No Git connection. Новий candidate не deployed. Git push не оновлює цю публікацію автоматично |
+| Google QA | `synera-qa-20261009` створений; користувач підтвердив no linked billing account. API Console load failure, активація не виконана; нових reservations немає |
+| Android cloud | Старий MapTesting підключив Pixel 8 й повернув reservation. Це доказ підключення/домашнього екрана; Chrome/PWA не прийняті |
+| Пристрої | Desktop Chromium/WebKit ≠ фізичні Android/iPhone, iOS Safari, OS keyboard або PWA installation. Physical gates відкриті |
+| Інші live capabilities | Embedded Google SDK, advanced voice/video, public AI, OAuth posting, платежі й sustained capacity не прийняті |
+
+Не сумувати counts різних overlapping test suites. `STATUS.uk.md` містить 27 систем / 15 етапів і UX-гіпотези; його початковий 7/16/4 розподіл не означає 7 production-ready систем. Реальні емоції, гормони, попит, WTP і 10× token savings не виміряні.
+
+## 4. Обов'язкові інваріанти
+
+1. Current default, Atelier/спокійний режим opt-in; попередні designs/assets не стирати.
+2. Редакція умов має дві незалежні згоди; матеріальна зміна скидає обидві. Invitation після погоджень; повідомлення після acceptance, з consent/block/admission guards.
+3. Збереження старого запиту не стирає наступну чернетку. CAS/stale response/revoke/logout guards зберігаються; невідоме delivery не стає автоматичним send.
+4. Одна людина не приймає результат замість отримувача; приватні evidence/source IDs не потрапляють у share без згоди.
+5. Demo data лишаються явно синтетичними; auth/RLS не підміняти mock-ами у live acceptance.
+6. Public visibility, fit, AI, GPS, recording і social sharing — окремі дозволи. API/private payloads не кешувати як public shell.
+7. Не обіцяти lie detection, психодіагностику, приховану «перепрошивку» людей, guaranteed chemistry або автоматичну грошову згоду.
+8. У Windows checkout чужий dirty `web_launch/journey-ui.mjs` мав SHA256 `68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b`. Не комітити/повертати його без ownership reconciliation. У чистому GitHub clone цього dirty payload немає.
+
+## 5. Черга незалежної доробки
+
+| Пріоритет | Задача | Приймання |
+|---|---|---|
+| P0 | Незалежно звірити Auth/JWT/RLS, consent, revision, admission, source evidence та live rollout preconditions | Відтворюваний дефект або точний evidence gap; secrets/private rows не логуються |
+| P0 | Підготувати безпечний шлях до двох живих акаунтів і accepted result | Exact schema/recovery/flags review; live apply тільки з окремим точним дозволом; потім два авторизовані учасники, жодної підміни ботами |
+| P0 | Повний Android + iPhone цикл | Встановлення, клавіатура, поворот, safe areas, foreground/background, offline/update, consent→result; окремо назвати device/OS/browser |
+| P1 | Простіша форма умов і навігація без втрати змісту | Реальні кліки, прогресивне розкриття, збереження всіх обов'язкових полів/ревізій/двох згод; narrow/large-text, Current/Atelier |
+| P1 | DE/EN шлях для першої швейцарської когорти | Увесь обраний критичний сценарій однією мовою; значення умов не змінене, fallback/overflow перевірені |
+| P1 | Чесні error/empty/loading/expiry/recovery стани | Новачок бачить наступну дію; немає dead buttons, втрати тексту або неправдивого success |
+| P1 | Вартість/підтримка/приватність пілота | Declared free-період, feedback, scope/retention/delete/support/recovery; без активації платежів |
+| P2 | Live map/voice/L room/проєкти/радари/social | По одному capability з permissions, provider identity/cost/limits, independent acceptance; не імітувати готовність решти |
+| P2 | Масштаб | Distinct-user sustained workload, p95/p99, saturation, recovery, abuse/admission і реальна cloud cost; фіксований pilot allowlist не розширювати мовчки |
+
+Бери одну найціннішу локальну задачу за раз. Зовнішній blocker не є приводом до безкінечного косметичного polishing. Детальні відкладені можливості збережені в [ДНК](PRODUCT_DNA.uk.md) і попередніх source-linked документах: [L/economics](L_DIRECTION_AND_ECONOMICS.uk.md), [data/matching](DATA_AND_MATCHING_REALITY.uk.md), [mobile](MOBILE_PILOT.uk.md), [pilot wave](../artifacts/pilot-wave-20261005/REPORT.uk.md).
+
+## 6. Відтворення у чистому clone
+
+Спочатку `git status --short`, `git branch --show-current`, `git log -5 --oneline`. Не checkout/reset поверх dirty work. Відкрий `package.json`: браузерні dependencies описані, але їхня наявність і браузерні binaries не гарантовані в зовнішньому середовищі. Немає доступу до локальних Windows CLI, skill paths, D: runtime чи БД автора.
+
+Базовий bounded Node gate, без БД, browser install і provider calls:
+
+```sh
+node --test web_launch/matching.test.mjs web_launch/real-journey-client.test.mjs web_launch/message-intent.test.mjs web_launch/mobile-pilot.test.mjs
+```
+
+Цю команду 09.10 виконано в окремому `git archive` закоміченого source без локальних node_modules: **59/59 PASS**. Новий review build дав 97 файлів / 96 independently rehashed manifest rows. [Portable receipt](../artifacts/opus-handoff-20261009/PORTABLE_BUILD.json). Це доказ відтворюваності Node/source, не browser/live gate.
+
+Для review build у **новому, ще неіснуючому** output directory:
+
+```sh
+node neon/build.mjs dist-neon-opus-review-20261009
+```
+
+Перевір output path перед запуском: builder може повторно писати в наявний каталог. Це новий локальний review build, а не точна репліка dated release SHA: `built_at` змінюється. Старі `dist-neon-*` gitignored; GitHub clone їх не містить. [RELEASE receipt](../artifacts/mobile-webkit-20261009/RELEASE.json) і screenshots відстежуються в Git, source доступний, але старий exact candidate не можна «відновити» лише за його hash.
+
+Якщо Playwright та WebKit уже доступні, обчисли SHA256 **нового** `release.json` і передай існуючому runner:
+
+```sh
+node tools/mobile-webkit-acceptance-20261009.mjs --candidate=web_launch/dist-neon-opus-review-20261009 --release-sha=ACTUAL_SHA256 --phase=opus-independent --sizes=small,large-text,atelier --pages=journey
+```
+
+Runner за замовчуванням використовує WebKit. Chromium lane має Windows Chrome path; SQL/browser tools теж можуть мати локальні prerequisites. Не видавай missing runtime за product bug і не змінюй oracle тільки для зеленого результату. Дату/каталог `opus-independent` не перезаписувати, якщо він уже є. Додаткові install/provider/live дії — лише в межах чинного явного дозволу відповідного середовища.
+
+## 7. Безпека передачі й GitHub sync
+
+Public handoff містить продукт, код, синтетичні fixtures, redacted receipts і backlog. Не включати cookies, токени, browser profiles, Console/auth screenshots, приватні розмови, персональний фінансовий/міграційний стан, бізнес-ідеї сторонніх людей або production rows. Legacy Flutter/Firebase security risks потребують окремого read-only redacted аудиту; не копіювати знайдені ключі у звіт і не робити rotation/history rewrite без точного дозволу.
+
+Push був відхилений до виконання: `approval required by policy, but AskForApproval is set to Never`. У цій підготовці push не повторюється і не обходиться іншим transport/checkout/API/upload. Поточний user authorization на push є; зміна permission policy не доведена. User-run стандартний push і подальший read-only SHA readback — допустимий handoff, а не твердження про вже виконану синхронізацію.
+
+Claude не треба запускати до появи цього пакета на потрібній GitHub branch. Після push перевір `git ls-remote origin refs/heads/codex/synera-product-20261002` проти локального `git rev-parse HEAD`; потім починай незалежний review. No force push, no main merge, no automatic deploy.

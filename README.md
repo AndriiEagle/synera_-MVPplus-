@@ -1,3 +1,16 @@
+# Synera — початок незалежного review, 09.10.2026
+
+**Продуктова гілка: `codex/synera-product-20261002`; default `main` та merged PR #1 — інший, історичний зріз.**
+
+- [Що це, для кого, дизайн і продуктова ДНК](docs/PRODUCT_DNA.uk.md)
+- [Поточний стан, owners, задачі, докази та відтворення](docs/REVIEW_HANDOFF.uk.md)
+- [Готовий промпт для Claude Opus: незалежний аудит + вузька доробка](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md)
+- [Останній WebKit fix і справжні screenshots](artifacts/mobile-webkit-20261009/REPORT.uk.md)
+
+**Local candidate accepted; live launch не прийнятий.** Перед review звір remote HEAD. Push не є deployment. Нижче збережені історичні checkpoints; старі «latest», шляхи, дефекти, числа тестів і Supabase/Android описи не перевизначають поточний handoff.
+
+---
+
 # Synera — real-user PWA pilot
 
 ## Мобільний checkpoint — 07.10.2026

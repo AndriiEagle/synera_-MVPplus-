@@ -1,3 +1,5 @@
+> **Історичний planning package.** Поточний продукт, branch, ДНК, статус і задачі незалежного review: [REVIEW_HANDOFF](../docs/REVIEW_HANDOFF.uk.md), [PRODUCT_DNA](../docs/PRODUCT_DNA.uk.md). Числа, paths, NEXT і статуси нижче належать датованому плану; не вважати їх актуальним runtime або дозволом. Оригінал збережений.
+
 # CNRA / Synera: overnight rebuild plan for solo entrepreneurs — v4 (GENESIS)
 
 ## Доповнення V6 — 15.09.2026
