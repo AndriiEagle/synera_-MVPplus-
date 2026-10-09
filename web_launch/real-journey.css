@@ -11,3 +11,13 @@
 
 /* Keep native select text within narrow WebKit grid labels. */
 .real-form select{white-space:normal;text-overflow:ellipsis}
+
+/* The status line is this page's only action feedback: keep it on screen while the person works below it.
+   Same text, colour and place at the top of the page; it only stops scrolling away. */
+#real-status{position:sticky;top:0;z-index:5;margin:14px 0;padding:10px 0;background:#101110;box-shadow:0 10px 10px -10px #101110}
+.real-journey{scroll-padding-top:7rem}
+html:has(.real-journey){scroll-padding-top:7rem}
+html[data-synera-atelier=on] #real-status{background:var(--atelier-canvas);box-shadow:0 10px 10px -10px var(--atelier-canvas)}
+@media(max-height:480px){#real-status{padding:6px 0;font-size:.82rem;line-height:1.3}}
+/* Where am I in the four steps. */
+.real-steps li[aria-current="step"]{border-color:#e7bd87;background:#24231f;color:#f3f0e8;font-weight:600}

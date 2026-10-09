@@ -17,7 +17,7 @@ const clear = node => node.replaceChildren();
 const nameFor = id => (id === state.dashboard?.own?.id ? state.dashboard.own.display_name : state.dashboard?.people?.find(person => person.id === id)?.display_name) || 'Учасник домовленості';
 const caseFor = peerId => state.dashboard?.cases?.find(row => row.participants?.includes(peerId)) || null;
 const asText = value => typeof value === 'string' ? value : '';
-const errorText = error => error?.status === 401 ? 'Сеанс завершився. Увійди знову.' : error?.status === 403 ? 'Ця дія недоступна для поточного облікового запису.' : error?.status === 503 ? 'Реальний шлях тимчасово недоступний.' : (error?.message || 'Не вдалося завершити дію.');
+const errorText = error => error?.status === 401 ? 'Сеанс завершився. Увійди знову.' : error?.status === 403 ? 'Ця дія недоступна для поточного облікового запису.' : error?.status === 503 ? 'Реальний шлях тимчасово недоступний.' : error?.status === 400 ? 'Сервер не прийняв цю дію: можливий денний ліміт дій або застарілі дані. Натисни «Оновити» й перевір поля; якщо повториться, спробуй пізніше.' : (error?.message || 'Не вдалося завершити дію.');
 const statusLabels = { draft: 'Чернетка', awaiting_approval: 'Очікує підтвердження', approved_for_next_step: 'Погоджено обома', pending: 'Чекає відповіді', accepted: 'Прийнято', declined: 'Відхилено', cancelled: 'Скасовано' };
 const dateTime = value => Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat('uk', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : 'Час не вказано';
 
@@ -28,11 +28,18 @@ function clearPrivate() {
   ui.content.hidden = true; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = true;
   clear(ui.people); clear(ui.cases); clear(ui.meetings); clear(ui.peer); clear(ui.review); clear(ui.transcript);
   ui.termsForm.reset(); ui.inviteForm.reset(); ui.messageForm.reset(); ui.approveCheck.checked = false; state.termsDirty = false; state.messageDraftMeeting = null;
-  state.reviewKey = null; state.termsBase = null; composer(true);
+  state.reviewKey = null; state.termsBase = null; composer(true); inviteWait.remove(); syncSteps();
 }
 const closedNote = el('p', 'Розмову закрито: зустріч скасовано або її стан змінився. Текст у полі лишився тобі, але надіслати його сюди вже не можна.', { class: 'real-note', id: 'real-conversation-closed' });
 // The reason sits next to the disabled control, not only in the status line at the top of the page.
 const composer = open => { ui.message.readOnly = !open; ui.messageForm.querySelector('button').disabled = !open; if (open) closedNote.remove(); else ui.messageForm.before(closedNote); };
+const inviteWait = el('p', 'Запрошення для цієї пари вже надіслано й чекає відповіді. Його видно в розділі «Зустрічі».', { class: 'real-note', id: 'real-invite-wait' });
+// Where am I: people → shared terms → invitation → conversation. Derived from the same state the page renders.
+function syncSteps() {
+  const both = state.caseState?.status === 'approved_for_next_step' && Date.parse(state.caseState.expiresAt) > Date.now();
+  const step = !state.dashboard ? -1 : !ui.conversation.hidden ? 3 : state.peerId ? (both ? 2 : 1) : 0;
+  document.querySelectorAll('.real-steps li').forEach((item, index) => { if (index === step) item.setAttribute('aria-current', 'step'); else item.removeAttribute('aria-current'); });
+}
 // A cancelled meeting or an answered invitation is not a lost session: the person stays signed in,
 // the transcript and any unsent text stay on screen, and only writing into the closed conversation stops.
 async function resourceGone(error) {
@@ -43,7 +50,7 @@ async function resourceGone(error) {
     if (failure?.status === 401 || failure?.status === 403) { requiresLogin(); return; }
     if (failure?.status === 503) { unavailable(); return; }
   }
-  $('real-meetings-panel').open = true; // the list now shows the real state of that meeting
+  $('real-meetings-panel').open = true; syncSteps(); // the list now shows the real state of that meeting
   setStatus(error.message + (!conversation ? ' Список зустрічей оновлено.' : ui.message.value.trim() ? ' Твій ненадісланий текст лишився у полі: скопіюй його, якщо він потрібен.' : ''));
 }
 function unavailable() { clearPrivate(); ui.blocked.hidden = false; ui.auth.hidden = true; setStatus('Реальний шлях закритий.'); }
@@ -311,6 +318,9 @@ function renderOutcomes() {
     if (row.evidence_uri) card.append(el('p', `Доказ: ${row.evidence_uri}`));
     if (row.scope_notes) card.append(el('p', `Перевірка: ${row.scope_notes}`));
     if (row.reason) card.append(el('p', reasonLabels[row.reason]));
+    if (row.phase === 'declined_dispute_open') card.append(el('p', row.giver_id === state.dashboard.own.id
+      ? 'Одержувач відкрив спір. У цій редакції новий доказ подати не можна: обговоріть у розмові й збережіть нову редакцію умов, яку окремо підтвердять обоє, або одержувач може прийняти результат після перевірки.'
+      : 'Спір відкрито тобою. Ти можеш прийняти результат пізніше; для нового доказу потрібна нова редакція умов, яку окремо підтвердять обоє.', { class: 'real-note' }));
     if (row.phase !== 'accepted') {
       if (row.giver_id === state.dashboard.own.id && !row.evidence_uri) outcomeForm(card, context, row.index, 'submit', 'Посилання або опис доказу', 'evidenceUri');
       if (row.receiver_id === state.dashboard.own.id && row.evidence_uri) {
@@ -416,13 +426,16 @@ function updateApprovalControls() {
   const ownId = state.dashboard?.own?.id; const approved = state.caseState?.approvals || {};
   const expired = Boolean(state.caseState && Date.parse(state.caseState.expiresAt) <= Date.now());
   const both = state.caseState?.status === 'approved_for_next_step' && Date.parse(state.caseState.expiresAt) > Date.now();
-  ui.invite.hidden = !both;
+  const waiting = Boolean(state.peerId && state.dashboard?.meetings?.some(meeting => meeting.status === 'pending' && [meeting.sender_id, meeting.recipient_id].includes(state.peerId)));
+  ui.invite.hidden = !both || waiting;
+  if (both && waiting) ui.invite.before(inviteWait); else inviteWait.remove();
   ui.approve.disabled = expired || !state.caseState || !ui.approveCheck.checked || Boolean(approved[ownId]);
   ui.approveCheck.disabled = expired;
   ui.termsForm.querySelector('button[type=submit]').disabled = expired;
   $('real-close').hidden = !state.caseState;
   $('real-close').disabled = !state.caseState;
   ui.withdraw.disabled = !state.caseState || !approved[ownId];
+  syncSteps();
 }
 function fillCurrentTerms(current) {
   ui.termsForm.reset();
@@ -444,7 +457,7 @@ async function selectPeer(peerId) {
   state.peerId = peerId; state.meetingId = null; state.epoch++; const epoch = state.epoch;
   if (peerChanged) { ui.termsForm.reset(); state.termsDirty = false; }
   for (const id of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(id).open = false;
-  ui.conversation.hidden = true; clear(ui.transcript); ui.messageForm.reset(); state.messageDraftMeeting = null; setStatus('Завантажуємо поточну редакцію умов…');
+  ui.conversation.hidden = true; clear(ui.transcript); ui.messageForm.reset(); state.messageDraftMeeting = null; syncSteps(); setStatus('Завантажуємо поточну редакцію умов…');
   const current = await state.store.pairState(peerId); if (epoch !== state.epoch) return;
   state.caseState = current; fillCurrentTerms(current); state.termsDirty = false; state.termsBase = null; renderPeer(); setStatus(current ? 'Показано поточну редакцію. Прочитай її перед підтвердженням.' : 'Нові умови порожні: заповни їх вручну.');
 }
@@ -453,7 +466,7 @@ async function saveTerms(event) { event.preventDefault(); if (!state.peerId) ret
 async function approve() { if (!state.peerId || !ui.approveCheck.checked || !state.caseState) return setStatus('Постав позначку лише після читання поточної редакції.'); const epoch = state.epoch; const saved = await state.store.approveTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus('Твоє підтвердження збережено.'); }
 async function withdraw() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const saved = await state.store.withdrawTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus('Твоє підтвердження відкликано.'); }
 async function closeTerms() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const dashboard = await state.store.closeTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.dashboard = dashboard; state.caseState = null; state.termsDirty = false; fillCurrentTerms(null); ui.inviteForm.reset(); renderAll(); setStatus('Умови закрито, історію збережено. Новий обмін потребує нових підтверджень.'); }
-async function invite(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.inviteForm); const proposedAt = new Date(fields.proposed_at); if (!Number.isFinite(proposedAt.valueOf())) throw new Error('Вкажи коректний час.'); const dash = await state.store.sendInvitation(state.peerId, fields.note, { proposed_at: proposedAt.toISOString(), duration_minutes: Number(fields.duration_minutes), meeting_place: fields.meeting_place }); if (epoch !== state.epoch) return; state.dashboard = dash; renderAll(); setStatus('Запрошення надіслано. Воно ще не є прийнятою зустріччю.'); }
+async function invite(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.inviteForm); const proposedAt = new Date(fields.proposed_at); if (!Number.isFinite(proposedAt.valueOf())) throw new Error('Вкажи коректний час.'); const dash = await state.store.sendInvitation(state.peerId, fields.note, { proposed_at: proposedAt.toISOString(), duration_minutes: Number(fields.duration_minutes), meeting_place: fields.meeting_place }); if (epoch !== state.epoch) return; state.dashboard = dash; ui.inviteForm.reset(); renderAll(); setStatus('Запрошення надіслано. Воно ще не є прийнятою зустріччю.'); }
 async function respond(id, status) {
   const epoch = state.epoch; let dashboard;
   try { dashboard = await state.store.respondInvitation(id, status); }
@@ -474,7 +487,7 @@ function renderTranscript(conversation) {
   if (unchanged) return;
   clear(ui.transcript); for (const message of messages) { const card = el('article', '', { class: 'real-message' }); card.append(el('small', `${nameFor(message.sender_id)} · ${dateTime(message.created_at)}`), el('p', asText(message.body || message.text))); ui.transcript.append(card); } if (!ui.transcript.childElementCount) appendEmpty(ui.transcript, 'Повідомлень ще немає.');
 }
-async function selectConversation(id) { composer(true); clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
+async function selectConversation(id) { composer(true); clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; inviteWait.remove(); ui.conversation.hidden = false; syncSteps(); renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
 async function sendMessage(event) {
   event.preventDefault(); if (!state.meetingId) return;
   const epoch = state.epoch, request = ++conversationRequest, draft = ui.message.value, text = draft.trim(); if (!text) return;
@@ -493,7 +506,7 @@ async function sendMessage(event) {
     throw error;
   }
 }
-function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); syncAddressEntry(); }
+function renderAll() { renderPeople(); renderCases(); renderMeetings(); if (state.peerId && !state.meetingId && !state.termsDirty) { state.caseState = caseFor(state.peerId); renderPeer(); } syncOutcomesEntry(); syncAddressEntry(); syncSteps(); }
 async function refresh({ quiet = false } = {}) {
   const epoch = state.epoch, actor = state.dashboard?.own?.id;
   try {
