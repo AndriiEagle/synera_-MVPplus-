@@ -13,6 +13,17 @@
 - Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
 - Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
+### 0.2. Третій прохід Opus — 10.10.2026, поверх `914d44c`
+
+[Розділ 00 звіту](../artifacts/opus-review-20261009/REPORT.uk.md). Усе локально, не опубліковано, у WebKit не перевірено.
+
+- **PostgreSQL 18.4:** 18 стадій guard-runner і п'ять авторських SQL-наборів зелені; production — 18.6. Identity shim, не JWT.
+- **Німецька й англійська на шляху двох людей:** [`web_launch/real-journey-i18n.mjs`](../web_launch/real-journey-i18n.mjs), перемикач у шапці, `?lang=de|en`. Українська — default і джерело: ключ таблиці — український текст. Мова не змінює умов, hash, згод чи запитів.
+- **Правило:** новий український рядок у `real-journey.html`, `real-journey.mjs`, `real-journey-client.mjs`, списку навичок чи `atelier.mjs` додається до `TABLE` з німецьким і англійським текстом — інакше падає `web_launch/real-journey-i18n.test.mjs`. Текст у коді сторінки, що залежить від мови, передається як `t('…')`, а не готовим рядком: тоді перемикання мови не перемальовує картки.
+- **Browser gate:** `node tools/journey-language-browser.mjs --candidate=web_launch/dist-neon-<name> --out=<dir>` — повний шлях у DE/EN, 0 українських рядків, той самий hash, чернетки на місці.
+- **Не зроблено:** `index.html` / `app.mjs` (вхід, профіль), демо й перегляд архіву — українською. Питання default-мови за браузером — рішення Андрія.
+- Поточний кандидат цього проходу: `web_launch/dist-neon-opus-pass3-20261010`, release `4980634db88c7fa1eb7648604f9087b1d85e1fbc70a40130282ae3448d451bd7`, 98 файлів. Попередній `4b265ab8…` (нижче) відповідає source `e46ce95`.
+
 ### 0.1. Повторна перевірка у Windows/WebKit — 09.10.2026
 
 [Поточний звіт і source/candidate pins](../artifacts/opus-webkit-20261009/REPORT.uk.md). Source `e46ce95`: 18 стадій PG16.15, full-stack 70 oracle у двох apply orders і 6 mutations; WebKit 26.6 — invitation 3 розміри, unavailable 4 сценарії, feedback 50 дій, mobile matrix 8 профілів / 56 спостережень. Усе локально; JWT/PG18/фізичні телефони й production не прийняті. Коміти Opus не змінено. Новий candidate з точних Git-блобів, release `4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297`, виключає чужий dirty asset. На момент повторної перевірки GitHub досі `6724682`, на 20 комітів позаду source; proof commit додається окремо. Повтор push через інший транспорт не робився.

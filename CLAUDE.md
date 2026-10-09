@@ -6,6 +6,8 @@ Preserve Current default, opt-in Atelier, bilateral consent/revisions, drafts an
 
 Independent review 2026-10-09: `artifacts/opus-review-20261009/REPORT.uk.md`. Rollout order now includes `neon/meeting-status-guard.migration.sql` after case-state and BEFORE meeting-location; without it the sender can accept their own invitation. Consent and ownership claims count only when reproduced on real PostgreSQL as `authenticated`; the JS fixture is not that proof.
 
+Third pass 2026-10-10 (report section 00): the two-person path is available in German and English through `web_launch/real-journey-i18n.mjs`; Ukrainian stays the default and the source. Any new Ukrainian string on that path needs a row in its TABLE (the unit test enforces it), and language-dependent text is passed as `t('…')`. `index.html`/`app.mjs` are still Ukrainian only. Guard and stack invariants also pass on PostgreSQL 18.4.
+
 The chronological notes below are preserved history. Their old NEXT items, paths, counts and runtime limitations may be superseded. They do not authorize deployment or override the current source-linked handoff.
 
 ---
