@@ -1,4 +1,5 @@
-// Portable local SQL acceptance for neon/meeting-status-guard.migration.sql.
+// Portable local SQL acceptance for neon/meeting-status-guard.migration.sql and for the top-of-stack
+// invariants in neon/stack-invariants.acceptance.sql (earlier guarantees re-asserted on the complete stack).
 // DISPOSABLE loopback PostgreSQL only: identity shim, no provider, no signed HTTP JWT, no production.
 // Usage (psql on PATH or SYNERA_ACCEPTANCE_PSQL; the server must already run on loopback):
 //   SYNERA_ACCEPTANCE_PGPORT=55432 node tools/meeting-status-guard-sql-acceptance.mjs [--receipt=path.json]
@@ -39,6 +40,7 @@ const report = { status: 'NOT_ACCEPTED', generated_at: new Date().toISOString(),
 const read = async name => { const bytes = await fs.readFile(path.join(root, name)); report.source_sha256[name] = hash(bytes); return bytes.toString('utf8'); };
 const run = Date.now().toString(36); let counter = 0; const created = [];
 const GUARD = 'neon/meeting-status-guard.migration.sql', ACCEPTANCE = 'neon/meeting-status-guard.acceptance.sql';
+const STACK = 'neon/stack-invariants.acceptance.sql', STACK_PASS = 'STACK_INVARIANTS_ACCEPTANCE_PASS';
 const CASE = ['neon/schema.proposal.sql', 'neon/case-state.migration.sql'];
 const LATER = ['neon/meeting-location.migration.sql', 'neon/group-room.migration.sql', 'neon/case-outcome.migration.sql', 'neon/meeting-address-agreement.migration.sql', 'neon/message-intent.migration.sql'];
 
@@ -75,19 +77,23 @@ function accept(name, database, text, expect = null, marker = 'MEETING_STATUS_GU
 }
 
 try {
-  const guard = await read(GUARD), acceptance = await read(ACCEPTANCE), caseAcceptance = await read('neon/case-state.acceptance.sql');
+  const guard = await read(GUARD), acceptance = await read(ACCEPTANCE), caseAcceptance = await read('neon/case-state.acceptance.sql'), stack = await read(STACK);
   report.source_sha256['tools/meeting-status-guard-sql-acceptance.mjs'] = hash(await fs.readFile(fileURLToPath(import.meta.url)));
   assert.match(guard, /^begin;/m); assert.match(guard.trim(), /commit;$/); assert.match(acceptance.trim(), /rollback;$/);
 
   // RED: the oracle fails on the unchanged sources, on the stack where each defect lives.
   accept('baseline_case_stack_stale_acceptance', await build('baseline-case', CASE), acceptance, 'Recipient accepted after the agreement changed');
   accept('baseline_location_stack_sender_self_accept', await build('baseline-location', [...CASE, LATER[0]]), acceptance, 'Sender accepted their own invitation');
-  accept('baseline_full_stack_sender_self_accept', await build('baseline-full', [...CASE, ...LATER]), acceptance, 'Sender accepted their own invitation');
+  const baselineFull = await build('baseline-full', [...CASE, ...LATER]);
+  accept('baseline_full_stack_sender_self_accept', baselineFull, acceptance, 'Sender accepted their own invitation');
+  // The same defect seen by the top-of-stack walk: it fails on today's complete stack without the guard.
+  accept('baseline_stack_invariants_without_guard', baselineFull, stack, 'Sender accepted their own invitation');
 
   // GREEN: guard before the later migrations, guard last on an existing full stack, and guard alone.
   const guardedCase = await build('guard-case', [...CASE, GUARD]);
   accept('guard_case_stack', guardedCase, acceptance);
-  accept('guard_then_full_stack', await build('guard-then-full', [...CASE, GUARD, ...LATER]), acceptance);
+  const guardFirst = await build('guard-then-full', [...CASE, GUARD, ...LATER]);
+  accept('guard_then_full_stack', guardFirst, acceptance);
   const guardLast = await build('full-then-guard', [...CASE, ...LATER, GUARD]);
   accept('full_stack_then_guard', guardLast, acceptance);
   // The previously reviewed case acceptance keeps passing with the guard installed.
@@ -109,6 +115,20 @@ try {
     accept(name, await build(name, [...CASE, ...LATER, { name: name + '.sql', sql: mutant }]), acceptance, expected);
   }
   accept('acceptance_after_mutations', guardLast, acceptance);
+
+  // TOP OF STACK: earlier ownership, consent and isolation oracles hold on the complete stack, in both
+  // apply orders, with every state reached by the acting person as `authenticated`.
+  accept('stack_invariants_guard_first', guardFirst, stack, null, STACK_PASS);
+  accept('stack_invariants_guard_last', guardLast, stack, null, STACK_PASS);
+  // The walk is not vacuous: opening one boundary on an otherwise complete stack fails the matching oracle.
+  const openings = [
+    ['stack_mutation_attestations_readable', 'grant select on public.match_outcome_events to authenticated;', 'A consent or attestation table is readable directly'],
+    ['stack_mutation_block_policy_dropped', 'drop policy cases_unblocked on public.match_cases;', 'New terms written across a block'],
+    ['stack_mutation_messages_rls_off', 'alter table public.meeting_messages disable row level security;', 'Direct message passed before acceptance'],
+  ];
+  for (const [name, opening, expected] of openings) {
+    accept(name, await build(name, [...CASE, GUARD, ...LATER, { name: name + '.sql', sql: opening }]), stack, expected);
+  }
   report.status = 'PASS_LOCAL_MEETING_STATUS_GUARD_SQL';
 } catch (error) { report.error = error.message; throw error; }
 finally {
