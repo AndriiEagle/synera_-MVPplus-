@@ -28,7 +28,23 @@ function clearPrivate() {
   ui.content.hidden = true; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = true;
   clear(ui.people); clear(ui.cases); clear(ui.meetings); clear(ui.peer); clear(ui.review); clear(ui.transcript);
   ui.termsForm.reset(); ui.inviteForm.reset(); ui.messageForm.reset(); ui.approveCheck.checked = false; state.termsDirty = false; state.messageDraftMeeting = null;
-  state.reviewKey = null; state.termsBase = null;
+  state.reviewKey = null; state.termsBase = null; composer(true);
+}
+const closedNote = el('p', 'Розмову закрито: зустріч скасовано або її стан змінився. Текст у полі лишився тобі, але надіслати його сюди вже не можна.', { class: 'real-note', id: 'real-conversation-closed' });
+// The reason sits next to the disabled control, not only in the status line at the top of the page.
+const composer = open => { ui.message.readOnly = !open; ui.messageForm.querySelector('button').disabled = !open; if (open) closedNote.remove(); else ui.messageForm.before(closedNote); };
+// A cancelled meeting or an answered invitation is not a lost session: the person stays signed in,
+// the transcript and any unsent text stay on screen, and only writing into the closed conversation stops.
+async function resourceGone(error) {
+  const conversation = error.code === 'CONVERSATION_UNAVAILABLE';
+  if (conversation) { state.meetingId = null; state.epoch++; conversationRequest++; composer(false); }
+  try { await refresh({ quiet: true }); }
+  catch (failure) {
+    if (failure?.status === 401 || failure?.status === 403) { requiresLogin(); return; }
+    if (failure?.status === 503) { unavailable(); return; }
+  }
+  $('real-meetings-panel').open = true; // the list now shows the real state of that meeting
+  setStatus(error.message + (!conversation ? ' Список зустрічей оновлено.' : ui.message.value.trim() ? ' Твій ненадісланий текст лишився у полі: скопіюй його, якщо він потрібен.' : ''));
 }
 function unavailable() { clearPrivate(); ui.blocked.hidden = false; ui.auth.hidden = true; setStatus('Реальний шлях закритий.'); }
 function requiresLogin() { clearPrivate(); ui.blocked.hidden = true; ui.auth.hidden = false; setStatus('Потрібен активний сеанс.'); }
@@ -40,6 +56,7 @@ async function run(action, { keepDraft = false } = {}) {
   try { return await action(); }
   catch (error) {
     if (epoch !== state.epoch && !state.dashboard) return;
+    if (error?.name === 'ResourceUnavailable') { await resourceGone(error); return; }
     if (error?.status === 401 || error?.status === 403) { requiresLogin(); return; }
     if (error?.status === 503) { unavailable(); return; }
     if (!keepDraft) setStatus(errorText(error)); else setStatus(errorText(error) + ' Твій текст лишився у полі.');
@@ -457,7 +474,7 @@ function renderTranscript(conversation) {
   if (unchanged) return;
   clear(ui.transcript); for (const message of messages) { const card = el('article', '', { class: 'real-message' }); card.append(el('small', `${nameFor(message.sender_id)} · ${dateTime(message.created_at)}`), el('p', asText(message.body || message.text))); ui.transcript.append(card); } if (!ui.transcript.childElementCount) appendEmpty(ui.transcript, 'Повідомлень ще немає.');
 }
-async function selectConversation(id) { clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
+async function selectConversation(id) { composer(true); clearAddress(); addressUI.panel.hidden = true; clearOutcomes(); state.conversationPeer = null; const changed = state.meetingId !== id; state.meetingId = id; state.epoch++; const epoch = state.epoch; const request = ++conversationRequest; if (changed) { clear(ui.transcript); clear(ui.review); clear(ui.peer); ui.termsForm.reset(); ui.inviteForm.reset(); ui.approveCheck.checked = false; state.peerId = null; state.caseState = null; state.termsDirty = false; state.reviewKey = null; ui.messageForm.reset(); state.messageDraftMeeting = id; } const result = await state.store.conversation(id); if (epoch !== state.epoch || request !== conversationRequest) return; for (const panel of ['real-people-panel', 'real-cases-panel', 'real-meetings-panel']) $(panel).open = false; ui.peer.hidden = true; ui.terms.hidden = true; ui.invite.hidden = true; ui.conversation.hidden = false; renderTranscript(result); state.conversationPeer = [result.meeting.sender_id, result.meeting.recipient_id].find(id => id !== state.dashboard.own.id); syncOutcomesEntry(); syncAddressEntry(); setStatus('Показано приватну розмову після прийнятого запрошення.'); }
 async function sendMessage(event) {
   event.preventDefault(); if (!state.meetingId) return;
   const epoch = state.epoch, request = ++conversationRequest, draft = ui.message.value, text = draft.trim(); if (!text) return;
@@ -568,7 +585,12 @@ async function pollConversation() {
       const result = await state.store.conversation(id); if (active()) renderTranscript(result);
     }
   }
-  catch (error) { if (active() && (error.status === 401 || error.status === 403)) requiresLogin(); }
+  catch (error) {
+    if (!active()) return;
+    // run() skips while another action is busy; the next poll then reports the closure again.
+    if (error?.name === 'ResourceUnavailable') await run(() => resourceGone(error));
+    else if (error.status === 401 || error.status === 403) requiresLogin();
+  }
   finally { polling = false; }
 }
 document.addEventListener('visibilitychange', pollConversation);

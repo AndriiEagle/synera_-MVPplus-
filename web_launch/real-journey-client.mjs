@@ -119,6 +119,14 @@ export class InvitationConflict extends Error {
     this.status = 409; this.code = 'INVITATION_NEEDS_CURRENT_APPROVALS';
   }
 }
+// A meeting or invitation that stopped being available (cancelled, answered, never accepted) is not a
+// lost session. Status stays 403 for existing callers; the code lets the page keep the person signed in.
+export class ResourceUnavailable extends Error {
+  constructor(code) {
+    super(code === 'INVITATION_UNAVAILABLE' ? 'Це запрошення вже змінилося або скасоване.' : 'Ця розмова більше недоступна: зустріч скасовано або її стан змінився.');
+    this.name = 'ResourceUnavailable'; this.status = 403; this.code = code;
+  }
+}
 export function assertRealJourneyGate(config) {
   if (config?.backend !== 'neon' || config.pilotSafetyEnabled !== true || config.realPilotEnabled !== true || config.realJourneyEnabled !== true) {
     throw new ServiceError(503, 'real_journey_not_ready');
@@ -384,7 +392,7 @@ export class RealJourneyStore extends NeonStore {
   async respondInvitation(id, status) {
     const me = await this.#actor();
     const meeting = (await this.meetings()).find(row => row.id === id && row.recipient_id === me && row.status === 'pending');
-    if (!meeting) throw new ServiceError(403);
+    if (!meeting) throw new ResourceUnavailable('INVITATION_UNAVAILABLE');
     if (status === 'accepted') {
       // Accepting needs the same live agreement that sending needed. Declining never does.
       const current = await this.pairState(meeting.sender_id);
@@ -402,7 +410,7 @@ export class RealJourneyStore extends NeonStore {
     const me = await this.#actor();
     if (!UUID.test(id)) throw new ServiceError(403);
     const meeting = (await this.meetings()).find(row => row.id === id && row.status === 'accepted' && [row.sender_id, row.recipient_id].includes(me));
-    if (!meeting) throw new ServiceError(403);
+    if (!meeting) throw new ResourceUnavailable('CONVERSATION_UNAVAILABLE');
     return meeting;
   }
   async conversation(id) {
