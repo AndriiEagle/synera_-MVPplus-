@@ -24,7 +24,7 @@ const load=async file=>{const b=await fs.readFile(file);report.source_sha256[fil
 const session=actor=>`set role authenticated;${claims(actor)}`;
 let meeting;
 const rpc=(id,body='Concurrent intent',m=meeting)=>`select public.synera_send_message('${m}','${id}',${lit(body)});`;
-const done=p=>new Promise(resolve=>{let stdout='',stderr='';p.stdout.on('data',b=>stdout+=b);p.stderr.on('data',b=>stderr+=b);p.on('error',error=>resolve({code:null,stdout,stderr,error:error.message}));p.on('exit',code=>resolve({code,stdout,stderr}));});
+const done=p=>new Promise(resolve=>{let stdout='',stderr='';p.stdout.on('data',b=>stdout+=b);p.stderr.on('data',b=>stderr+=b);p.on('error',error=>resolve({code:null,stdout,stderr,error:error.message}));p.on('close',code=>resolve({code,stdout,stderr}));});
 async function concurrency(label,success) {
   const intent=randomUUID(), tag='synera_intent_'+label+'_'+Date.now();
   const leader=spawn(path.join(bin,'psql.exe'),[...args,'-d',database],{env:{...env,PGAPPNAME:tag+'_leader'},stdio:['pipe','pipe','pipe']});const leadResult=done(leader);
