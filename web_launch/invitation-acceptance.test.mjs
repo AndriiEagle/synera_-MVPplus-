@@ -87,3 +87,21 @@ test('the transport oracle mirrors the database guard for callers that bypass th
   assert.equal(declined.status, 200);
   assert.equal(db.meetings[0].status, 'declined');
 });
+
+test('one pending invitation per pair, and none on an expired agreement, as the database enforces', async () => {
+  const { db, a, b, meeting } = await invited();
+  // meetings_pending_pair: a second invitation, from either side, is refused as already existing.
+  await assert.rejects(a.sendInvitation(B, 'Ще раз', plan()), error => error.status === 409);
+  await assert.rejects(b.sendInvitation(A, 'Зустрічне', plan()), error => error.status === 409);
+  assert.equal(db.meetings.length, 1);
+  await b.respondInvitation(meeting.id, 'declined');
+  // meetings_need_approved_case requires an unexpired agreement; the client says so before any write.
+  Object.assign(db.cases[0], { created_at: new Date(Date.now() - 3600000).toISOString(), expires_at: new Date(Date.now() - 1000).toISOString() });
+  const from = db.requests.length;
+  await assert.rejects(a.sendInvitation(B, 'Після строку', plan()), /обидва/);
+  assert.equal(db.requests.slice(from).some(row => row.method === 'POST' && row.path.endsWith('/meeting_requests')), false);
+  const direct = await db.fetchFor(A)('/api/neon/data/meeting_requests', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Synera-Client': '1' },
+    body: JSON.stringify({ sender_id: A, recipient_id: B, note: 'Напряму', ...plan() }) });
+  assert.equal(direct.status, 403);
+  assert.equal(db.meetings.length, 1);
+});

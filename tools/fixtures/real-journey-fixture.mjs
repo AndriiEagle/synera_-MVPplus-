@@ -95,7 +95,9 @@ export function createFixture() {
       if (method === 'GET') return response(meetings.filter(row => members(row, id) && matches(row, url.searchParams)));
       if (method === 'POST') {
         const [low, high] = [body.sender_id, body.recipient_id].sort();
-        const current = cases.find(row => row.status === 'open' && row.participant_low === low && row.participant_high === high);
+        // Mirrors meetings_need_approved_case (open, unexpired, both approvals) and the meetings_pending_pair unique index.
+        const current = cases.find(row => row.status === 'open' && Date.parse(row.expires_at) > Date.now() && row.participant_low === low && row.participant_high === high);
+        if (body.sender_id === id && meetings.some(row => row.status === 'pending' && [row.sender_id, row.recipient_id].sort().join() === [low, high].join())) return Response.json({}, { status: 409 });
         if (body.sender_id !== id || !current || ![low, high].every(party => approvals.some(row => row.case_id === current.case_id && row.party_id === party && row.approved_version === current.version && row.approved_terms_hash === current.terms_hash && !row.withdrawn_at))) return Response.json({}, { status: 403 });
         const row = { ...body, id: randomUUID(), status: 'pending', created_at: instant(), sender_name: names[body.sender_id], recipient_name: names[body.recipient_id] };
         meetings.push(row); return response([row]);
