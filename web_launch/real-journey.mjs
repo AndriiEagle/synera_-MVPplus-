@@ -478,7 +478,26 @@ async function selectPeer(peerId) {
   state.caseState = current; fillCurrentTerms(current); state.termsDirty = false; state.termsBase = null; renderPeer(); setStatus(t(current ? 'Показано поточну редакцію. Прочитай її перед підтвердженням.' : 'Нові умови порожні: заповни їх вручну.'));
 }
 function formFields(form) { const data = new FormData(form), fields = Object.fromEntries(data.entries()); fields.components = data.getAll('components'); return fields; }
-async function saveTerms(event) { event.preventDefault(); if (!state.peerId) return; const epoch = state.epoch; const fields = formFields(ui.termsForm); const material = materialFromEditor(state.dashboard.own.id, state.peerId, fields); const saved = await state.store.saveTerms(state.peerId, material, state.termsDirty ? state.termsBase : state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; state.termsDirty = false; state.termsBase = null; renderPeer(); setStatus(t('Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.')); }
+async function saveTerms(event) {
+  event.preventDefault(); if (!state.peerId) return;
+  const epoch = state.epoch, actor = state.dashboard.own.id;
+  const fields = formFields(ui.termsForm), material = materialFromEditor(actor, state.peerId, fields);
+  let saved;
+  try { saved = await state.store.saveTerms(state.peerId, material, state.termsDirty ? state.termsBase : state.caseState); }
+  catch (error) {
+    if (epoch !== state.epoch) return;
+    // A transient write failure does not prove logout, or even that the write failed.
+    // Keep only this actor's in-memory draft and its original CAS base; never auto-retry or approve.
+    if (error?.status === 503 && error?.code === 'data_unavailable' && state.dashboard?.own?.id === actor && state.store.user?.id === actor) {
+      setStatus(t('Збереження умов не підтверджено. Текст лишився у формі. Натисни «Оновити» й перевір домовленість перед повтором: зміни могли вже зберегтися.'));
+      return;
+    }
+    throw error;
+  }
+  if (epoch !== state.epoch) return;
+  state.caseState = saved; state.termsDirty = false; state.termsBase = null; renderPeer();
+  setStatus(t('Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.'));
+}
 async function approve() { if (!state.peerId || !ui.approveCheck.checked || !state.caseState) return setStatus(t('Постав позначку лише після читання поточної редакції.')); const epoch = state.epoch; const saved = await state.store.approveTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus(t('Твоє підтвердження збережено.')); }
 async function withdraw() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const saved = await state.store.withdrawTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus(t('Твоє підтвердження відкликано.')); }
 async function closeTerms() { if (!state.peerId || !state.caseState) return; const epoch = state.epoch; const dashboard = await state.store.closeTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.dashboard = dashboard; state.caseState = null; state.termsDirty = false; fillCurrentTerms(null); ui.inviteForm.reset(); renderAll(); setStatus(t('Умови закрито, історію збережено. Новий обмін потребує нових підтверджень.')); }

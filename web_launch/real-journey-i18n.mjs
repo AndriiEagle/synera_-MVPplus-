@@ -254,6 +254,7 @@ export const TABLE = Object.freeze([
   ['Список зустрічей оновлено.', 'Die Liste der Treffen wurde aktualisiert.', 'The meeting list has been updated.'],
   ['Твій ненадісланий текст лишився у полі: скопіюй його, якщо він потрібен.', 'Dein nicht gesendeter Text ist im Feld geblieben: Kopiere ihn, wenn du ihn brauchst.', 'Your unsent text is still in the field: copy it if you need it.'],
   ['Твій текст лишився у полі.', 'Dein Text ist im Feld geblieben.', 'Your text is still in the field.'],
+  ['Збереження умов не підтверджено. Текст лишився у формі. Натисни «Оновити» й перевір домовленість перед повтором: зміни могли вже зберегтися.', 'Ob die Bedingungen gespeichert wurden, ist nicht bestätigt. Dein Text ist im Formular geblieben. Tippe auf «Aktualisieren» und prüfe die Vereinbarung vor einem erneuten Versuch: Die Änderungen könnten bereits gespeichert sein.', 'Saving the terms has not been confirmed. Your text is still in the form. Press “Refresh” and check the agreement before retrying: the changes may already have been saved.'],
   ['Завантажуємо поточну редакцію умов…', 'Die aktuelle Fassung der Bedingungen wird geladen…', 'Loading the current revision of the terms…'],
   ['Показано поточну редакцію. Прочитай її перед підтвердженням.', 'Die aktuelle Fassung wird angezeigt. Lies sie, bevor du bestätigst.', 'The current revision is shown. Read it before confirming.'],
   ['Нові умови порожні: заповни їх вручну.', 'Die neuen Bedingungen sind leer: Fülle sie von Hand aus.', 'The new terms are empty: fill them in by hand.'],
