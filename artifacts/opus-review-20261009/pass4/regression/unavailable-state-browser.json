@@ -1,0 +1,31 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-pass5-20261011",
+  "releaseHash": "149fa1d5cf629873ac3b88c9ce33b97ec81118aaf77af1f734f694e4e77b03e5",
+  "engine": {
+    "name": "chromium",
+    "version": "141.0.7390.37"
+  },
+  "scenarios": [
+    {
+      "name": "send_after_sender_cancelled",
+      "pass": true
+    },
+    {
+      "name": "background_read_after_sender_cancelled",
+      "pass": true
+    },
+    {
+      "name": "stale_invitation_card_after_sender_cancelled",
+      "pass": true
+    },
+    {
+      "name": "real_session_loss_still_signs_out_and_purges",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "PASS_DESKTOP_CHROMIUM_SYNTHETIC"
+}

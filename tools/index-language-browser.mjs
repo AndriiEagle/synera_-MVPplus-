@@ -46,7 +46,7 @@ const names = { [A]: 'Andrii Test', [B]: 'Maria Test', [C]: 'Oleh Test', [O]: 'O
 const LANGUAGE_FILES = ['/index-i18n.mjs', '/index-i18n-table.mjs', '/real-journey-i18n.mjs', '/legal-i18n.mjs'];
 const result = { scope: 'Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.',
   candidate: path.basename(root), releaseHash, engine: null, runs: [], problems: [], failures: [], provider_calls: 0, usd: 0,
-  notWalked: ['Google sign-in and e-mail code delivery', 'AI profile draft and ChatGPT/Claude import (answers come from a provider or are switched off)', 'live location sharing', 'map tiles', 'text placed into fields, files or the clipboard (business case text, share card, invitation draft) — by design it is not translated'] };
+  notWalked: ['Google sign-in and e-mail code delivery', 'AI profile draft and ChatGPT/Claude import (answers come from a provider or are switched off)', 'live location sharing', 'map tiles', 'the invitation dialog of the main page (its button cannot open there: tools/people-gate-browser.mjs)', 'text placed into editable fields, files or the clipboard (share card, invitation draft, prompt for an AI) — by design it is not translated'] };
 
 async function world() {
   const db = createFixture();
