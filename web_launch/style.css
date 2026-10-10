@@ -3348,3 +3348,7 @@ html[data-synera-style="night"] dialog[open] { opacity: 1; transform: none; }
 
 /* Preserve the full introduction when user text sizing exceeds a word's width. */
 .intro h1 { overflow-wrap:anywhere; }
+
+/* German and English labels are longer. Let a section heading and its button wrap instead of pushing a
+   320 px screen sideways. Scoped to those two languages: the Ukrainian layout is unchanged. */
+html:is([lang="de"], [lang="en"]) .section-heading { flex-wrap: wrap; }

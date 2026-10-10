@@ -464,7 +464,8 @@ function renderPeople() {
     target.append(card);
   }
 }
-const when = value => new Intl.DateTimeFormat('uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
+// Dates follow the language the person chose for the page; Ukrainian is the default.
+const when = value => new Intl.DateTimeFormat(({de:'de-CH',en:'en-GB'})[document.documentElement.lang]||'uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
 function renderMeetings() {
   const nowIso = locationSession && !locationSession.closed ? locationSession.instant() : new Date().toISOString();
   const previous = new Map([...document.querySelectorAll('.meeting-location')].map(node => [node.dataset.meetingId, { open: node.open, address: node.dataset.savedAddress,
@@ -586,7 +587,7 @@ $('#block-person').addEventListener('click',()=>run(async()=>{await store.block(
 $('#export-account').addEventListener('click',()=>run(async()=>{const data=await store.exportAccount();download(JSON.stringify(data,null,2),'synera-my-data.private.json','application/json');message('Підготовлено приватний файл твоїх даних. Збережи його на власному пристрої.');}));
 $('#delete-profile').addEventListener('click',()=>{$('#delete-confirmation').value='';$('#delete-dialog').showModal();});
 $('#delete-cancel').addEventListener('click',()=>$('#delete-dialog').close());
-$('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if($('#delete-confirmation').value!=='ВИДАЛИТИ')return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
+$('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!['ВИДАЛИТИ','DELETE','LÖSCHEN'].includes($('#delete-confirmation').value))return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
 function resetAI() { aiDraft=null;$('#ai-result').replaceChildren();$('#apply-ai').hidden=true;applyAuthState(); }
 $('#prepare-ai').addEventListener('click',()=>{
   try {

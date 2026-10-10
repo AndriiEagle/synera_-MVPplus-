@@ -12,8 +12,8 @@ export const TABLE = Object.freeze([
   ['Synera · реальна домовленість', 'Synera · echte Vereinbarung', 'Synera · real agreement'],
   ['Перейти до вмісту', 'Zum Inhalt springen', 'Skip to content'],
   ['Навігація', 'Navigation', 'Navigation'],
-  // These three links lead to pages that exist only in Ukrainian so far; the label says so before the click.
-  ['Вхід і профіль', 'Anmeldung und Profil (auf Ukrainisch)', 'Sign-in and profile (in Ukrainian)'],
+  ['Вхід і профіль', 'Anmeldung und Profil', 'Sign-in and profile'],
+  // The demo and the archive viewer exist only in Ukrainian so far; the label says so before the click.
   ['Демо', 'Demo (auf Ukrainisch)', 'Demo (in Ukrainian)'],
   ['SYNERA / РЕАЛЬНИЙ ПІЛОТ', 'SYNERA / ECHTER PILOT', 'SYNERA / REAL PILOT'],
   ['Домовленість між двома людьми', 'Vereinbarung zwischen zwei Menschen', 'An agreement between two people'],
@@ -21,7 +21,7 @@ export const TABLE = Object.freeze([
   ['Перевіряємо доступ…', 'Zugang wird geprüft…', 'Checking access…'],
   ['Реальний шлях недоступний', 'Der echte Ablauf ist nicht verfügbar', 'The real path is unavailable'],
   ['Пілот або захищений бекенд не увімкнено. Тут немає демо-замінника.', 'Der Pilot oder das geschützte Backend ist nicht aktiviert. Hier gibt es keinen Demo-Ersatz.', 'The pilot or the protected backend is not enabled. There is no demo substitute here.'],
-  ['Відкрити вхід і профіль', 'Anmeldung und Profil öffnen (auf Ukrainisch)', 'Open sign-in and profile (in Ukrainian)'],
+  ['Відкрити вхід і профіль', 'Anmeldung und Profil öffnen', 'Open sign-in and profile'],
   ['Потрібен активний сеанс', 'Aktive Sitzung erforderlich', 'An active session is required'],
   ['Увійди та заповни профіль у головному застосунку.', 'Melde dich an und fülle dein Profil in der Haupt-App aus.', 'Sign in and complete your profile in the main app.'],
   ['Оновити', 'Aktualisieren', 'Refresh'],

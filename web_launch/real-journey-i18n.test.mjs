@@ -12,34 +12,13 @@ import { PUBLIC_ASSETS } from './assets.mjs';
 import { materialFromEditor } from './real-journey-client.mjs';
 import { hashMaterialPayload } from './business-case.mjs';
 import { A, B, fields } from '../tools/fixtures/real-journey-fixture.mjs';
+import { sourceStrings } from './source-strings.mjs';
 
 const CYRILLIC = /[Ѐ-ӿ]/;
 const read = name => fs.readFile(new URL(name, import.meta.url), 'utf8');
 const placeholders = text => [...text.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort().join(',');
 
-// Splits JavaScript source into string literals and template text, skipping comments. Enough for these
-// modules (no regular expression in them contains a quote or a double slash); the count check below
-// fails loudly if that ever stops being true.
-function literals(source) {
-  const found = [], stack = []; let i = 0;
-  const string = quote => { let value = ''; i++; while (i < source.length && source[i] !== quote) { if (source[i] === '\\') { value += source[i] + source[i + 1]; i += 2; } else value += source[i++]; } i++; return value; };
-  const template = () => { let chunk = ''; while (i < source.length) {
-    if (source[i] === '\\') { chunk += source[i] + source[i + 1]; i += 2; continue; }
-    if (source[i] === '`') { i++; found.push({ quote: '`', value: chunk }); return; }
-    if (source[i] === '$' && source[i + 1] === '{') { i += 2; found.push({ quote: '`', value: chunk }); stack.push(0); return; }
-    chunk += source[i++]; } };
-  while (i < source.length) {
-    const c = source[i], next = source[i + 1];
-    if (c === '/' && next === '/') { while (i < source.length && source[i] !== '\n') i++; continue; }
-    if (c === '/' && next === '*') { i = source.indexOf('*/', i) + 2; continue; }
-    if (c === '\'' || c === '"') { found.push({ quote: c, value: string(c) }); continue; }
-    if (c === '`') { i++; template(); continue; }
-    if (stack.length && c === '{') stack[stack.length - 1]++;
-    if (stack.length && c === '}') { if (stack[stack.length - 1] === 0) { stack.pop(); i++; template(); continue; } stack[stack.length - 1]--; }
-    i++;
-  }
-  return found;
-}
+const literals = source => sourceStrings(source).map(item => ({ quote: item.quote, value: item.raw }));
 
 test('the table is complete and well-formed in German and English', () => {
   assert.deepEqual(Object.keys(LANGUAGES), ['uk', 'de', 'en']);
