@@ -1,3 +1,7 @@
+## Поточний стан — 10.10.2026
+
+[Карта 15 пакетів і досвід людини](../opus-pass3-webkit-20261010/REPORT.uk.md) · [фінальний код/кандидат і межі](../message-reload-20261010/REPORT.uk.md). Code `d29bee3`: EN/DE journey у WebKit (144 кроки), 8 mobile profiles / 56 observations; manual message retry після same-tab reload не дублює unknown delivery, 40 affected tests + WebKit/Chrome/mutations. Українська default, Current default, Atelier добровільний. EN/DE entry/profile з іншої копії Opus ще не інтегровано. Candidate `dist-neon-message-reload-20261010` unpublished; живий JWT/два акаунти, production/recovery, фізичні телефони, sustained capacity та provider capabilities неприйняті. GitHub досі `6724682`, push policy hold без обходу. Нижче — датована історія, а не зняття живих gates.
+
 ## Актуальний checkpoint — 09.10.2026
 
 [WebKit fix і screenshots](../mobile-webkit-20261009/REPORT.uk.md): форма на вузьких екранах виправлена; 8 WebKit + 3 Chromium synthetic шляхи до чату, original-CSS mutation та окремий candidate прийняті. Google QA створений, no billing підтверджено користувачем, API Console load failure. Це не phone/live acceptance й не зміна 27-system inventory нижче. [ДНК, еталон, пріоритети й GitHub handoff](../../docs/REVIEW_HANDOFF.uk.md) є поточною точкою входу; старі Android/USB/runtime описи нижче датовані.
@@ -57,7 +61,7 @@
 | Google Maps / маршрут | Частково | Явний URL-перехід після fresh readback. Embedded SDK/Places/Routes і physical Android handoff не прийняті. |
 | Адреса / GPS / справедлива дорога | Частково | Двостороння адреса, історія, revision/session guards; окремі GPS дозволи. Жива GPS/ETA/погода/оптимізація дороги не прийняті. |
 | П'ять форматів домовленості | Готово локально | Обмін, paid service, referral, hybrid, двосторонній проєкт; критерії, дві згоди, автоматичний стан вибраної пари та захист старої чернетки/CAS. Paid terms не здійснюють платіж. |
-| Приватний чат | Готово локально з обмеженням | Accepted invitation, next-draft/logout/selection guards; новий gated RPC не дублює same-session manual retry, включно з dashboard refresh. Reload втрачає RAM-key; flag=false має legacy поведінку. Live JWT/дві сесії ще не прийняті. |
+| Приватний чат | Готово локально з обмеженням | Accepted invitation, next-draft/logout/selection guards; gated RPC і metadata-only sessionStorage захищають явний retry після same-tab reload. 40 affected tests, WebKit/Chrome proof. Denied storage — RAM-only; flag=false — legacy; durable outbox/cross-device/live JWT/дві сесії не прийняті. |
 | Результат / evidence / перевірка / спір | Готово локально | Виконавець подає, одержувач перевіряє/приймає; append-only history. Attestation учасників, не незалежна гарантія якості. |
 | Приватний архів / viewer | Готово локально для копії | Explicit plain/gzip export, точний UTF-8 round-trip, viewer. Production backup/restore та міжпристроєва пам'ять не прийняті; gzip не шифрує. |
 | Соціальний пакет | Готово локально для чернетки | Власний прийнятий внесок, згода, формат, редагування/ручне копіювання. Детермінований шаблон, не активна AI-публікація. |

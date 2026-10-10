@@ -1,6 +1,10 @@
 # Synera — конкретний review наступного закритого пілота
 
-## Актуальний кандидат після повторної перевірки Opus — 09.10.2026
+## Поточний кандидат — 10.10.2026
+
+[Фінальне приймання](../message-reload-20261010/REPORT.uk.md), source `d29bee34cf57cf805ccb6ac4ff6d66946a5a06ee`: **`web_launch/dist-neon-message-reload-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71`**. Точні Git-блоби без чужого dirty asset. EN/DE journey, PG18.4 source receipt, WebKit 144 кроки / 8 профілів, 40 affected tests і browser reload у WebKit/Chrome прийняті локально. PG18.4 не є production 18.6/JWT; OS телефони й recovery відкриті. Current default/Atelier добровільний збережені. Candidate unpublished. Live scope: ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**; metadata retry не додає SQL/provider/billing або auto-send. Старі hashes не є дозволом upload нового пакета. Push policy hold не обходити; commit/push permission не є production approval.
+
+## Історичний кандидат після повторної перевірки Opus — 09.10.2026
 
 [Незалежний PostgreSQL/WebKit readback](../opus-webkit-20261009/REPORT.uk.md), source `e46ce95e37e1f2f528bc91d46098ea4967f72dff`: **`web_launch/dist-neon-opus-head-webkit-20261009`**, 97 public files / 96 manifest rows, release SHA256 **`4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297`**. Побудовано з точних Git-блобів; чужий dirty `journey-ui.mjs` виключено. Новий guard пройшов PG16.15 full-stack oracle та mutations; три змінені UI-набори й 8-профільна матриця пройшли WebKit 26.6. Старий `153b1eba…` не є поточним candidate. Пакет unpublished; PG18, HTTP JWT/два живі акаунти, фізичні телефони, recovery і точний rollout approval відкриті. Звичайний push не є deploy. Перша архівна копія `dist-neon-opus-webkit-20261009` відхилена перевіркою точних байтів і не є rollout target.
 

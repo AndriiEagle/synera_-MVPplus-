@@ -1,0 +1,28 @@
+{
+  "status": "PASS_DESKTOP_CHROMIUM_SYNTHETIC",
+  "scope": "Desktop browser with synthetic Auth/Data fixture, real same-tab reload and explicit clicks. Not SQL/JWT/live accounts/physical phones.",
+  "candidate": "dist-neon-message-reload-20261010",
+  "release_sha256": "7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71",
+  "engine": "chromium",
+  "mutation": false,
+  "checks": [
+    {
+      "name": "post_reload_manual_retry_one_row_then_new_explicit_send",
+      "pass": true
+    },
+    {
+      "name": "read_reload_manual_retry_one_row_then_new_explicit_send",
+      "pass": true
+    },
+    {
+      "name": "logout_clears_pending_identity",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "engine_version": "154.0.8037.98",
+  "messages_stored": 6,
+  "explicit_posts": 8
+}

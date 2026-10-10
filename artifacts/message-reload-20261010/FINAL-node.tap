@@ -1,0 +1,48 @@
+✔ readiness gates keep new route and advertised capability closed without upstream calls (80.7176ms)
+✔ untrusted sender, unknown keys, query injection and wrong origin never reach message RPC (12.4115ms)
+✔ RPC forwards server session identity and preserves rejection with sanitized errors (22.7127ms)
+✔ lost POST response and explicit retry produce exactly one stored message (138.9355ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (40.8423ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (65.406ms)
+✔ same-tab reload retries a committed unknown delivery once without storing message text (19.8769ms)
+✔ logout while retry metadata hashes cannot restore a stale intent (5.6113ms)
+✔ concurrent unknown first sends retain both reload retry UUIDs (25.6497ms)
+✔ blocked or corrupt storage falls back to the existing RAM retry path (28.2567ms)
+✔ persisted metadata cannot merge a different authenticated actor (12.1847ms)
+✔ persisted metadata cannot merge the same text across meetings (27.6713ms)
+✔ untrusted retry metadata is copied without extra fields (9.2217ms)
+✔ metadata churn settles before POST instead of retrying forever (3.4649ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (100.1855ms)
+✔ authentication reset forgets pending intent (12.8383ms)
+✔ late committed acknowledgement is rejected after same-account restore (10.5496ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (10.7266ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (8.7574ms)
+✔ the legacy exchange entrypoint keeps its explicit no-money exchange contract (6.302ms)
+✔ an expired pair can explicitly close its reviewed case and start fresh without carrying either approval (301.9711ms)
+✔ a stale participant or outsider cannot close a newer reviewed case (62.3776ms)
+✔ real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration (3.4016ms)
+✔ closed agreement rollout also denies direct table calls before any Auth/Data request (3.0917ms)
+✔ gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding (2.2886ms)
+✔ two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text (159.1192ms)
+✔ a stale screen cannot edit or approve a revision another account already changed (54.5129ms)
+✔ CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact (23.7697ms)
+✔ existing ProfileStore save path also rejects a write-time race and preserves the newer material (22.8514ms)
+✔ existing store rejects a competing revision already committed before its read, even with the same ordinal (23.1778ms)
+✔ approval never writes material and a revision at POST is denied by the transport oracle (20.184ms)
+✔ withdrawing affects only self; incomplete input and revoked session/consent cannot progress (55.6685ms)
+✔ PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material (33.4246ms)
+✔ the table is complete and well-formed in German and English (9.8225ms)
+✔ every Ukrainian string of the page module is a translated source (28.8275ms)
+✔ every Ukrainian string of the page markup is a translated source (9.3496ms)
+✔ messages raised by the client, the skill list and the view switcher are translated sources (12.9094ms)
+✔ Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser (2.2195ms)
+✔ placeholders are filled once; unknown text is left alone (1.0411ms)
+✔ the same form gives the same terms and the same hash in every language (63.6036ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1067.5088

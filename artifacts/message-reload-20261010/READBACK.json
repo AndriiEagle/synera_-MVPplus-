@@ -1,0 +1,21 @@
+{
+  "status": "PASS_MANIFEST_AND_CHANGED_SURFACE",
+  "source_head": "d29bee34cf57cf805ccb6ac4ff6d66946a5a06ee",
+  "release_sha256": "7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71",
+  "manifest_rows_verified": 97,
+  "changed_from_pass3": [
+    "legal.html",
+    "real-journey-client.mjs"
+  ],
+  "unchanged_manifest_rows": 95,
+  "inherited_proof": {
+    "language": "artifacts/opus-pass3-webkit-20261010/language-webkit-accepted/RESULT.json",
+    "mobile": "artifacts/mobile-webkit-20261009/opus-pass3/RESULT.json",
+    "rationale": "All UI, CSS, translation and Worker bytes unchanged; client delta independently tested in Node and fresh reload browser gates."
+  },
+  "foreign_dirty_preserved": true,
+  "published": false,
+  "live_accounts_accepted": false,
+  "provider_calls": 0,
+  "usd": 0
+}

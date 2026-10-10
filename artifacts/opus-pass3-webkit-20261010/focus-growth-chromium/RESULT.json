@@ -1,0 +1,13 @@
+{
+  "status": "NOT_ACCEPTED",
+  "candidate": "dist-neon-opus-pass3-webkit-20261010",
+  "release_sha256": "a80d403432041784e5ea868d055f127e91eb32565923de9b90dd3d2833a9d740",
+  "engine": "chromium",
+  "scope": "Actual desktop browser geometry, fixture accounts, 320x568, German/English, Current/Atelier; not physical keyboard or live server.",
+  "observations": [],
+  "failures": [
+    {
+      "message": "browserType.launch: Executable doesn't exist at D:\\SyneraQA\\playwright-1.63.0\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    }
+  ]
+}

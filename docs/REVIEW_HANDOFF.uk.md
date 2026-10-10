@@ -13,6 +13,12 @@
 - Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
 - Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
+### 0.3. Приймання pass3 у Windows — 10.10.2026
+
+**Фінальний increment:** [same-tab message retry recovery](../artifacts/message-reload-20261010/REPORT.uk.md), code `d29bee3`, 40 affected tests, WebKit/Chrome reload і browser/actor-epoch mutation. Останній candidate `dist-neon-message-reload-20261010`, release `7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71`. Лише client та legal відрізняються від WebKit pass3; 95 assets і Worker збігаються. RAM-only reload limitation нижче історична для gated lane; denied storage, legacy flag=false, outbox/cross-device лишаються окремими межами. Локальне приймання не є live acceptance.
+
+[Фактичні receipts, screenshots і межі](../artifacts/opus-pass3-webkit-20261010/REPORT.uk.md). Bundle застосовано fast-forward до `815c47f`. WebKit 26.6: 144 UK/DE/EN кроки, 8 mobile profiles / 56 observations / 8 шляхів до чату, 50 action-feedback дій; 0 issues у прийнятих прогонах. Current/Atelier та consent/drafts/hash збережені. Adversarial pending send→новий текст→довга DE-відмова не накрила focus у WebKit/Chrome. PG18.4 receipt має 12 перевірених source hashes; production PG18.6/JWT не прийняті. Entry/profile EN/DE з іншої копії Opus не входить у цей bundle: не дублювати ці правки без ownership reconciliation. Для фінального message-reload increment читати окремий report, а не старе обмеження RAM-only нижче. Усі dated checkpoints нижче збережені як історія.
+
 ### 0.2. Третій прохід Opus — 10.10.2026, поверх `914d44c`
 
 [Розділ 00 звіту](../artifacts/opus-review-20261009/REPORT.uk.md). Усе локально, не опубліковано, у WebKit не перевірено.

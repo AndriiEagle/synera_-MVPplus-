@@ -1,3 +1,7 @@
+## Поточне приймання — 10.10.2026
+
+[Opus pass3 прийнятий у Windows/WebKit](artifacts/opus-pass3-webkit-20261010/REPORT.uk.md): 144 UK/DE/EN кроки, 8 мобільних профілів / 56 перевірок, окремий adversarial focus test. PG18.4 receipt звірено з 12 source hashes; це не live PG18.6/JWT. Вхід/профіль у цій копії ще українською. Доробка повтору повідомлення після reload має окреме приймання; актуальний rollout hash завжди у верхньому розділі [ROLLOUT_REVIEW](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Нічого не deployed; GitHub readback `6724682`, policy push hold не обходити. Нижче — датована історія, не поточні обмеження WebKit/PG18.
+
 ## Результат незалежного Opus review — 09.10.2026
 
 **10.10, третій прохід** ([розділ 00 звіту](artifacts/opus-review-20261009/REPORT.uk.md)): шлях двох людей тепер є німецькою й англійською (перемикач у шапці, українська — default); guard і 70 oracle пройдено на PostgreSQL 18.4. Вхід і профіль (`index.html`) ще лише українською. Не опубліковано, у WebKit не перевірено.
