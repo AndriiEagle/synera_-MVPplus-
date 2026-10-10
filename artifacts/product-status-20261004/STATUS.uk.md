@@ -1,5 +1,7 @@
 ## Поточний стан — 10.10.2026
 
+[Остання доробка: terms recovery](../terms-recovery-20261010/REPORT.uk.md), code `557a09f`: тимчасова відмова запису не стирає заповнені умови; read/explicit retry не створює дубль і не ставить згоду автоматично. 9 різних WebKit + 9 Chrome сценаріїв, 21 targeted Node test, mutation та exact manifest readback. Поточний candidate `dist-neon-terms-recovery-20261010` unpublished. Етап користувача: «мою працю збережено; я бачу невизначеність і наступну дію». Це ціль досвіду, не вимір емоцій. Нижче — карта незмінених систем та історичний message-reload checkpoint; live/phone/production/provider gates лишаються відкритими.
+
 [Карта 15 пакетів і досвід людини](../opus-pass3-webkit-20261010/REPORT.uk.md) · [фінальний код/кандидат і межі](../message-reload-20261010/REPORT.uk.md). Code `d29bee3`: EN/DE journey у WebKit (144 кроки), 8 mobile profiles / 56 observations; manual message retry після same-tab reload не дублює unknown delivery, 40 affected tests + WebKit/Chrome/mutations. Українська default, Current default, Atelier добровільний. EN/DE entry/profile з іншої копії Opus ще не інтегровано. Candidate `dist-neon-message-reload-20261010` unpublished; живий JWT/два акаунти, production/recovery, фізичні телефони, sustained capacity та provider capabilities неприйняті. GitHub досі `6724682`, push policy hold без обходу. Нижче — датована історія, а не зняття живих gates.
 
 ## Актуальний checkpoint — 09.10.2026

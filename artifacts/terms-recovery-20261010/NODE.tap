@@ -1,0 +1,29 @@
+✔ the legacy exchange entrypoint keeps its explicit no-money exchange contract (10.7976ms)
+✔ an expired pair can explicitly close its reviewed case and start fresh without carrying either approval (435.9173ms)
+✔ a stale participant or outsider cannot close a newer reviewed case (114.9816ms)
+✔ real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration (8.895ms)
+✔ closed agreement rollout also denies direct table calls before any Auth/Data request (2.3112ms)
+✔ gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding (2.7413ms)
+✔ two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text (231.6292ms)
+✔ a stale screen cannot edit or approve a revision another account already changed (80.6044ms)
+✔ CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact (35.5765ms)
+✔ existing ProfileStore save path also rejects a write-time race and preserves the newer material (42.5035ms)
+✔ existing store rejects a competing revision already committed before its read, even with the same ordinal (34.0613ms)
+✔ approval never writes material and a revision at POST is denied by the transport oracle (43.3622ms)
+✔ withdrawing affects only self; incomplete input and revoked session/consent cannot progress (85.2699ms)
+✔ PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material (63.0261ms)
+✔ the table is complete and well-formed in German and English (13.3045ms)
+✔ every Ukrainian string of the page module is a translated source (38.6655ms)
+✔ every Ukrainian string of the page markup is a translated source (18.1237ms)
+✔ messages raised by the client, the skill list and the view switcher are translated sources (8.6225ms)
+✔ Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser (2.3241ms)
+✔ placeholders are filled once; unknown text is left alone (1.2789ms)
+✔ the same form gives the same terms and the same hash in every language (84.7646ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1596.5984

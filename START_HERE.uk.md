@@ -1,5 +1,7 @@
 ## Поточне приймання — 10.10.2026
 
+[Terms recovery прийнятий у WebKit/Chrome](artifacts/terms-recovery-20261010/REPORT.uk.md), code `557a09f`: тимчасова відмова запису більше не стирає форму умов; 9 різних сценаріїв у кожному engine, 21 targeted Node test і mutation. Новий current candidate `dist-neon-terms-recovery-20261010` unpublished; exact release hash у rollout review. Попереднє message-reload приймання нижче збережено, live/phone/production gates лишаються відкритими.
+
 [Opus pass3 прийнятий у Windows/WebKit](artifacts/opus-pass3-webkit-20261010/REPORT.uk.md): 144 UK/DE/EN кроки, 8 мобільних профілів / 56 перевірок, окремий adversarial focus test. PG18.4 receipt звірено з 12 source hashes; це не live PG18.6/JWT. Вхід/профіль у цій копії ще українською. Доробка повтору повідомлення після reload має окреме приймання; актуальний rollout hash завжди у верхньому розділі [ROLLOUT_REVIEW](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Нічого не deployed; GitHub readback `6724682`, policy push hold не обходити. Нижче — датована історія, не поточні обмеження WebKit/PG18.
 
 ## Результат незалежного Opus review — 09.10.2026

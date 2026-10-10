@@ -14,13 +14,14 @@ assert.ok(option('candidate') && option('out'), 'Pass --candidate=<build> --out=
 const root = path.resolve(option('candidate')), out = path.resolve(option('out'));
 const source = option('source-root') && path.resolve(option('source-root'));
 const engine = option('engine') || 'webkit'; assert.ok(['webkit', 'chromium'].includes(engine));
+const requestedScenario = option('scenario');
 const mutation = option('mutate') === 'purge-terms';
 const overrides = new Set(['real-journey.mjs', 'real-journey-i18n.mjs']);
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 await fs.mkdir(out, { recursive: true });
 const report = { status: 'NOT_ACCEPTED', scope: 'Desktop engine with synthetic gateway fixture, no live JWT/RLS/phones',
   candidate: path.basename(root), release_sha256: sha(await fs.readFile(path.join(root, 'release.json'))),
-  source_overrides: {}, engine, mutation, checks: [], failures: [], provider_calls: 0, usd: 0 };
+  runner_sha256: sha(await fs.readFile(new URL(import.meta.url))), source_overrides: {}, engine, requested_scenario: requestedScenario || null, mutation, checks: [], failures: [], provider_calls: 0, usd: 0 };
 const mime = { '.html': 'text/html', '.mjs': 'text/javascript', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
 const server = http.createServer(async (request, response) => {
   try {
@@ -50,9 +51,12 @@ try {
     { name: 'denied-en', lang: 'en', failure: 'forbidden' },
     { name: 'expired-en', lang: 'en', failure: 'expired' },
     { name: 'warm-disabled-en', lang: 'en', failure: 'feature-off' },
+    { name: 'auth-unavailable-en', lang: 'en', failure: 'auth-unavailable' },
     { name: 'cold-disabled', lang: 'de', failure: 'cold' },
   ];
-  for (const scenario of scenarios) {
+  const selected = requestedScenario ? scenarios.filter(row => row.name === requestedScenario) : scenarios;
+  assert.ok(selected.length, 'Unknown scenario');
+  for (const scenario of selected) {
     const db = createFixture(); let inject = scenario.failure, posts = 0, release, entered;
     const gate = new Promise(resolve => { release = resolve; }), barrier = new Promise(resolve => { entered = resolve; });
     if (scenario.revision) {
@@ -81,6 +85,7 @@ try {
             return route.fulfill({ status, json: { error: 'data_unavailable', status } });
           }
           if (inject === 'feature-off') { inject = null; return route.fulfill({ status: 503, json: { error: 'real_journey_not_ready', status: 503 } }); }
+          if (inject === 'auth-unavailable') { inject = null; return route.fulfill({ status: 503, json: { error: 'session_unavailable', status: 503 } }); }
         }
         const response = await db.fetchFor(A)(url.pathname + url.search, { method: request.method(), headers: request.headers(), ...(request.method() === 'GET' ? {} : { body: request.postData() }) });
         if (write && inject === 'after') { assert.equal(response.ok, true); inject = null; return route.fulfill({ status: 503, json: { error: 'data_unavailable', status: 503 } }); }
@@ -94,6 +99,7 @@ try {
         report.checks.push({ name: scenario.name, status: 'PASS', posts }); continue;
       }
       await page.locator('#real-content-panel').waitFor({ state: 'visible' }); await ready();
+      await page.waitForFunction(expected => (document.documentElement.dataset.syneraAtelier === 'on') === expected, Boolean(scenario.atelier));
       if (!await page.locator('#real-people-panel').evaluate(node => node.open)) await page.locator('#real-people-panel summary').click();
       await page.locator('#real-people article').filter({ hasText: 'Тест Марія' }).getByRole('button').click(); await ready();
       if (!await page.locator('#real-editor').evaluate(node => node.open)) await page.locator('#real-editor summary').click();
@@ -102,7 +108,7 @@ try {
         if (await input.evaluate(node => node.tagName === 'SELECT')) await input.selectOption(value); else await input.fill(value);
       }
       const snapshot = () => page.locator('#real-terms-form').evaluate(form => [...new FormData(form).entries()]);
-      const draft = await snapshot();
+      const draft = await snapshot(), priorCases = structuredClone(db.cases);
       await page.locator('#real-terms-form button[type=submit]').click();
       if (scenario.failure === 'late') {
         await barrier; await page.locator('#real-logout').click();
@@ -115,8 +121,8 @@ try {
         report.checks.push({ name: scenario.name, status: 'PASS', posts }); continue;
       }
       await ready();
-      if (['forbidden', 'expired', 'feature-off'].includes(scenario.failure)) {
-        assert.equal(await page.locator(scenario.failure === 'feature-off' ? '#real-blocked' : '#real-auth').isVisible(), true);
+      if (['forbidden', 'expired', 'feature-off', 'auth-unavailable'].includes(scenario.failure)) {
+        assert.equal(await page.locator(['feature-off', 'auth-unavailable'].includes(scenario.failure) ? '#real-blocked' : '#real-auth').isVisible(), true);
         assert.equal(await page.locator('#real-content-panel').isVisible(), false);
         assert.equal(await page.locator('[name=give_target]').inputValue(), '', 'private text must be purged on denied access');
         report.checks.push({ name: scenario.name, status: 'PASS', posts, cases: db.cases.length }); continue;
@@ -125,6 +131,7 @@ try {
       assert.equal(await page.locator('#real-content-panel').isVisible(), true, 'transient terms write hid the active workspace');
       assert.equal(await page.locator('#real-auth').isVisible(), false, 'temporary write failure became logout');
       assert.deepEqual(await snapshot(), draft, 'temporary save failure destroyed the unsent terms');
+      if (scenario.failure !== 'after') assert.deepEqual(db.cases, priorCases, 'uncommitted failure changed server terms');
       const note = await page.locator('#real-status').textContent();
       assert.equal(await page.locator('#real-status').getAttribute('role'), 'status');
       assert.equal(/[\u0400-\u04ff]/.test(note), scenario.lang === 'uk', 'recovery text is not translated');
@@ -138,7 +145,7 @@ try {
       assert.equal(db.approvals.length, 0, 'a retry silently approved terms');
       if (scenario.failure === 'after') assert.deepEqual(await snapshot(), draft, 'conflict destroyed the draft');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'narrow recovery view overflows');
-      report.checks.push({ name: scenario.name, status: 'PASS', posts, cases: db.cases.length, preserved_fields: draft.length, note });
+      report.checks.push({ name: scenario.name, status: 'PASS', atelier: Boolean(scenario.atelier), posts, cases: db.cases.length, preserved_fields: draft.length, note });
     } catch (error) {
       await page?.screenshot({ path: path.join(out, scenario.name + '-error.png') }).catch(() => {});
       const view = await page?.evaluate(() => ({ people: document.getElementById('real-people-panel')?.open, content: !document.getElementById('real-content-panel')?.hidden, atelier: document.body.getAttribute('data-atelier'), status: document.getElementById('real-status')?.textContent })).catch(() => null);

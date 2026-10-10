@@ -2,6 +2,10 @@
 
 ## Поточний кандидат — 10.10.2026
 
+[Terms recovery acceptance](../terms-recovery-20261010/REPORT.uk.md), source `557a09f9cd9df6c1ea43a61330a4e47de0d8607a`: **`web_launch/dist-neon-terms-recovery-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227`**. Точні Git blobs, чужий dirty asset виключено. 9 різних сценаріїв у кожному WebKit/Chrome engine, 21 targeted Node test і mutation; тимчасова data-write відмова зберігає форму, auth/consent/feature gates закриті. Із попереднього candidate змінено лише `real-journey.mjs` і один translation row; інші 95 assets і SQL receipt hashes незмінні. Unpublished; live scope — ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**. Немає SQL/provider/billing activation або auto-retry. Exact approval має називати цей поточний package; старі hashes не є дозволом upload. Push policy hold не обходити.
+
+## Історичний кандидат: message replay — 10.10.2026
+
 [Фінальне приймання](../message-reload-20261010/REPORT.uk.md), source `d29bee34cf57cf805ccb6ac4ff6d66946a5a06ee`: **`web_launch/dist-neon-message-reload-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71`**. Точні Git-блоби без чужого dirty asset. EN/DE journey, PG18.4 source receipt, WebKit 144 кроки / 8 профілів, 40 affected tests і browser reload у WebKit/Chrome прийняті локально. PG18.4 не є production 18.6/JWT; OS телефони й recovery відкриті. Current default/Atelier добровільний збережені. Candidate unpublished. Live scope: ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**; metadata retry не додає SQL/provider/billing або auto-send. Старі hashes не є дозволом upload нового пакета. Push policy hold не обходити; commit/push permission не є production approval.
 
 ## Історичний кандидат після повторної перевірки Opus — 09.10.2026

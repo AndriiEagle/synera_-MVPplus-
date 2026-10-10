@@ -1,0 +1,22 @@
+{
+  "status": "PASS_COMMITTED_HEAD_BUILD_AND_COPY",
+  "source_head": "557a09f9cd9df6c1ea43a61330a4e47de0d8607a",
+  "generated_at": "2026-10-10T18:27:03.245Z",
+  "candidate": "web_launch\\dist-neon-terms-recovery-20261010",
+  "release_sha256": "003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227",
+  "public_files": 98,
+  "manifest_files_verified": 97,
+  "committed_public_assets_verified": 95,
+  "exported_source_files": 277,
+  "pg18_receipt_source_hashes_verified": 12,
+  "pg18_receipt_version": "18.4",
+  "pg18_reexecuted_here": false,
+  "pg18_production_version": "18.6 (previous metadata, not this local runtime)",
+  "foreign_worktree_journey_ui_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "candidate_journey_ui_sha256": "3725f354fe08cce2486e14fd2a73b4b4e0749426160b8afa5bcbace833380e31",
+  "foreign_dirty_excluded": true,
+  "published": false,
+  "production_applied": false,
+  "provider_calls": 0,
+  "usd": 0
+}

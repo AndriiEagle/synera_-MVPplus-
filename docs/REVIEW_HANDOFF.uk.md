@@ -13,6 +13,10 @@
 - Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
 - Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
+### 0.4. Актуальна вузька доробка — 10.10.2026
+
+[Terms recovery](../artifacts/terms-recovery-20261010/REPORT.uk.md), code `557a09f`: форма умов не стирається після `503/data_unavailable` у того самого actor/epoch. Старий CAS не перебазується; автоматичного retry/approval немає. `401/403`, auth-unavailable, вимкнений пілот і logout лишаються закритими. 9 різних сценаріїв у WebKit та Chrome; 21 targeted Node test; mutation повертає loss. Candidate **`dist-neon-terms-recovery-20261010`**, release **`003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227`**; лише UI recovery та один translation row відрізняються від message-reload, інші 95 manifest assets збігаються. Це останній candidate, unpublished; exact rollout/readiness/production approval не замінено локальним прийманням. GitHub readback `6724682`; policy hold збережений. Старі dated checkpoints нижче не є поточними release hashes.
+
 ### 0.3. Приймання pass3 у Windows — 10.10.2026
 
 **Фінальний increment:** [same-tab message retry recovery](../artifacts/message-reload-20261010/REPORT.uk.md), code `d29bee3`, 40 affected tests, WebKit/Chrome reload і browser/actor-epoch mutation. Останній candidate `dist-neon-message-reload-20261010`, release `7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71`. Лише client та legal відрізняються від WebKit pass3; 95 assets і Worker збігаються. RAM-only reload limitation нижче історична для gated lane; denied storage, legacy flag=false, outbox/cross-device лишаються окремими межами. Локальне приймання не є live acceptance.
