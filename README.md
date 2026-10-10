@@ -8,7 +8,7 @@
 - [Останній WebKit fix і справжні screenshots](artifacts/mobile-webkit-20261009/REPORT.uk.md)
 - [Результат незалежного Opus review 09.10: два обходи згоди закрито локально, rollout order змінено](artifacts/opus-review-20261009/REPORT.uk.md)
 - [Повторна перевірка Opus: PostgreSQL + WebKit, новий кандидат із точного HEAD](artifacts/opus-webkit-20261009/REPORT.uk.md)
-- [Третій прохід Opus 10.10: шлях двох людей німецькою й англійською, PostgreSQL 18](artifacts/opus-review-20261009/REPORT.uk.md) — розділ 00
+- [Третій прохід Opus 10.10: вхід, профіль і шлях двох людей німецькою й англійською; PostgreSQL 18](artifacts/opus-review-20261009/REPORT.uk.md) — розділ 00
 - [Незалежне приймання pass3: WebKit, 144 мовні кроки, 8 мобільних профілів](artifacts/opus-pass3-webkit-20261010/REPORT.uk.md)
 - [Фінальний increment 10.10: message reload recovery, 40 tests, WebKit/Chrome і точний rollout candidate](artifacts/message-reload-20261010/REPORT.uk.md)
 

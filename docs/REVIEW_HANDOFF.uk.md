@@ -13,6 +13,14 @@
 - Правило для кожної нової міграції: після неї має проходити `stack-invariants` на повному стеку, а нова гарантія додається туди ж.
 - Решта відкритого — розділи 3 і 7 звіту. [Промпт v2](CLAUDE_OPUS_REVIEW_PROMPT.uk.md) з оновленим фронтом робіт.
 
+### 0.5. Вхід і профіль німецькою й англійською — 10.10.2026, поверх `ced88b6`
+
+[Розділ 00 звіту, пп. 16–18](../artifacts/opus-review-20261009/REPORT.uk.md). Кандидат `web_launch/dist-neon-opus-pass4-20261010`, release `77f0fcc39d38ac6aba19112fb2b6f67cd39673304da4a1ae839721603e8e46d6`, 101 файл; локально, не опубліковано, у WebKit не перевірено.
+
+- **Вхід і профіль німецькою й англійською:** кнопки UA / DE / EN у шапці `index.html` були мертві; тепер [`index-language.mjs`](../web_launch/index-language.mjs) (1,5 KB, завжди) вмикає [`index-i18n.mjs`](../web_launch/index-i18n.mjs) з [таблицею](../web_launch/index-i18n-table.mjs) лише після вибору DE/EN. Це накладка: `app.mjs` і його модулі не змінено, вони пишуть українською. Вибір спільний зі шляхом двох.
+- **Правило для `index.html` і його 25 модулів:** новий український рядок потребує рядка в `ROWS`, шаблону в `PATTERNS` або запису з причиною в `index-i18n.coverage.mjs` — інакше падає `web_launch/index-i18n.test.mjs`. Gate: `node tools/index-language-browser.mjs --candidate=… --out=…`.
+- **Не зроблено:** `legal.html`, демо, перегляд архіву, презентація, Трикутник, кімнати — українською. Переклади політики, згод і видалення не читав юрист чи носій мови. Вхід Google, лист із кодом, AI-чернетка, імпорт і показ місця кліками не пройдено. Default-мова за браузером і перегляд юридичних текстів — рішення Андрія.
+
 ### 0.4. Актуальна вузька доробка — 10.10.2026
 
 [Terms recovery](../artifacts/terms-recovery-20261010/REPORT.uk.md), code `557a09f`: форма умов не стирається після `503/data_unavailable` у того самого actor/epoch. Старий CAS не перебазується; автоматичного retry/approval немає. `401/403`, auth-unavailable, вимкнений пілот і logout лишаються закритими. 9 різних сценаріїв у WebKit та Chrome; 21 targeted Node test; mutation повертає loss. Candidate **`dist-neon-terms-recovery-20261010`**, release **`003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227`**; лише UI recovery та один translation row відрізняються від message-reload, інші 95 manifest assets збігаються. Це останній candidate, unpublished; exact rollout/readiness/production approval не замінено локальним прийманням. GitHub readback `6724682`; policy hold збережений. Старі dated checkpoints нижче не є поточними release hashes.
@@ -31,7 +39,7 @@
 - **Німецька й англійська на шляху двох людей:** [`web_launch/real-journey-i18n.mjs`](../web_launch/real-journey-i18n.mjs), перемикач у шапці, `?lang=de|en`. Українська — default і джерело: ключ таблиці — український текст. Мова не змінює умов, hash, згод чи запитів.
 - **Правило:** новий український рядок у `real-journey.html`, `real-journey.mjs`, `real-journey-client.mjs`, списку навичок чи `atelier.mjs` додається до `TABLE` з німецьким і англійським текстом — інакше падає `web_launch/real-journey-i18n.test.mjs`. Текст у коді сторінки, що залежить від мови, передається як `t('…')`, а не готовим рядком: тоді перемикання мови не перемальовує картки.
 - **Browser gate:** `node tools/journey-language-browser.mjs --candidate=web_launch/dist-neon-<name> --out=<dir>` — повний шлях у DE/EN, 0 українських рядків, той самий hash, чернетки на місці.
-- **Не зроблено:** `index.html` / `app.mjs` (вхід, профіль), демо й перегляд архіву — українською. Питання default-мови за браузером — рішення Андрія.
+- Вхід і профіль німецькою й англійською зроблено пізніше того ж дня — розділ 0.5 вище.
 - Поточний кандидат цього проходу: `web_launch/dist-neon-opus-pass3-20261010`, release `4980634db88c7fa1eb7648604f9087b1d85e1fbc70a40130282ae3448d451bd7`, 98 файлів. Попередній `4b265ab8…` (нижче) відповідає source `e46ce95`.
 
 ### 0.1. Повторна перевірка у Windows/WebKit — 09.10.2026
