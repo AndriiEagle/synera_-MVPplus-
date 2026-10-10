@@ -201,7 +201,16 @@ async function journey(browser, { language, width, height }) {
     assert.equal(writes(), before.writes, 'switching language sent a write');
     await scan('after switching away and back');
     // A real session loss still signs out, in the chosen language, and the choice survives it.
-    db.revoked.add(A); await page.locator('#real-refresh').click(); await page.locator('#real-auth').waitFor({ state: 'visible' }); await scan('session lost');
+    db.revoked.add(A);
+    // Existing background polling may observe revocation while Playwright scrolls to Refresh.
+    // Both paths must show the same signed-out state; don't fail a correct automatic closure
+    // merely because it removed the button before the manual click became actionable.
+    const refresh = page.locator('#real-refresh').click().then(() => 'manual refresh', async error => {
+      if (await page.locator('#real-auth').isVisible()) return 'existing background poll';
+      throw error;
+    });
+    await page.locator('#real-auth').waitFor({ state: 'visible' });
+    await scan('session lost via ' + await refresh);
     assert.equal(await page.locator('#real-content-panel').isHidden(), true);
     run.pass = true;
   } catch (error) { run.pass = false; result.failures.push({ run: label, error: error.message.replace(/\u001b\[\d+m/g, '').split('\n').slice(0, 8).join(' | ') }); await shot('failure').catch(() => {}); }

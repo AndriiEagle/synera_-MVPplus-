@@ -11,6 +11,20 @@ const encode = encodeURIComponent;
 const OUTCOME_KEYS = Object.freeze({ state: [], submit: ['index', 'intentId', 'evidenceUri'], check: ['index', 'intentId', 'scopeNotes'], accept: ['index', 'intentId'], decline: ['index', 'intentId', 'reason'] });
 const OUTCOME_REASONS = ['not_delivered', 'outside_agreed_scope', 'below_acceptance_criteria', 'other'];
 const INTENT = /^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
+const MESSAGE_RETRY_STORAGE_KEY = 'synera.message-intent-retry.v1';
+const SHA256 = /^[a-f0-9]{64}$/;
+function captureSessionStorage() {
+  try {
+    const storage = globalThis.sessionStorage;
+    return storage && ['getItem', 'setItem', 'removeItem'].every(method => typeof storage[method] === 'function') ? storage : null;
+  } catch { return null; }
+}
+async function messageFingerprint(salt, body) {
+  if (!globalThis.crypto?.subtle || !globalThis.TextEncoder) return null;
+  const bytes = new TextEncoder().encode(`${salt}\u0000${body}`);
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
 const outcomeText = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 1000;
 function assertOutcomePayload(body) {
   const extra = body && Object.hasOwn(OUTCOME_KEYS, body.action) ? OUTCOME_KEYS[body.action] : null;
@@ -140,23 +154,102 @@ export class RealJourneyStore extends NeonStore {
   #meetingAddressEnabled;
   #messageIntentsEnabled;
   #pendingMessages = new Map();
+  #messageStorage;
   #outcomeEpoch = 0;
-  constructor(config, fetchImpl = fetch) {
+  constructor(config, fetchImpl = fetch, { storage = captureSessionStorage() } = {}) {
     assertRealJourneyGate(config); super(config, fetchImpl);
     this.#outcomesEnabled = config.caseOutcomesEnabled === true;
     this.#meetingAddressEnabled = config.meetingAddressEnabled === true;
     this.#messageIntentsEnabled = config.messageIntentsEnabled === true;
+    this.#messageStorage = storage && ['getItem', 'setItem', 'removeItem'].every(method => typeof storage[method] === 'function') ? storage : null;
+  }
+  #clearMessageIntents() {
+    this.#pendingMessages.clear();
+    try { this.#messageStorage?.removeItem(MESSAGE_RETRY_STORAGE_KEY); } catch {}
+  }
+  #metadata() {
+    try {
+      const raw = this.#messageStorage?.getItem(MESSAGE_RETRY_STORAGE_KEY);
+      if (!raw) return null;
+      const value = JSON.parse(raw);
+      if (!value || value.version !== 1 || !INTENT.test(value.salt) || !Array.isArray(value.entries)) return null;
+      const entries = value.entries.filter(entry => entry && typeof entry.actor === 'string' && typeof entry.meeting === 'string' &&
+        UUID.test(entry.meeting) && SHA256.test(entry.fingerprint) && INTENT.test(entry.intent)).map(entry =>
+        ({ actor: entry.actor, meeting: entry.meeting, fingerprint: entry.fingerprint, intent: entry.intent }));
+      return { salt: value.salt, entries };
+    } catch { return null; }
+  }
+  #saveMetadata(metadata) {
+    try {
+      if (!metadata.entries.length) this.#messageStorage?.removeItem(MESSAGE_RETRY_STORAGE_KEY);
+      else this.#messageStorage?.setItem(MESSAGE_RETRY_STORAGE_KEY, JSON.stringify({ version: 1, salt: metadata.salt, entries: metadata.entries }));
+      return true;
+    } catch { return false; }
+  }
+  #retainActorMetadata(actor) {
+    const metadata = this.#metadata();
+    if (!metadata) return;
+    const entries = metadata.entries.filter(entry => entry.actor === actor);
+    if (entries.length !== metadata.entries.length) { metadata.entries = entries; this.#saveMetadata(metadata); }
+  }
+  #messageGuard(actor, epoch) {
+    if (!actor || this.user?.id !== actor || this.#outcomeEpoch !== epoch) throw new ServiceError(401, 'message_session_changed');
+  }
+  async #resolveMessageIntent(actor, meeting, body, epoch) {
+    const proposed = crypto.randomUUID();
+    for (let attempts = 0; attempts < 3; attempts++) {
+      this.#messageGuard(actor, epoch);
+      const snapshot = this.#metadata();
+      if (!snapshot) {
+        const salt = crypto.randomUUID(), fingerprint = await messageFingerprint(salt, body); this.#messageGuard(actor, epoch);
+        if (!fingerprint) return proposed;
+        if (this.#metadata()) continue;
+        this.#saveMetadata({ salt, entries: [{ actor, meeting, fingerprint, intent: proposed }] });
+        return proposed;
+      }
+      const fingerprint = await messageFingerprint(snapshot.salt, body); this.#messageGuard(actor, epoch);
+      if (!fingerprint) return proposed;
+      const current = this.#metadata();
+      if (!current || current.salt !== snapshot.salt) continue;
+      const existing = current.entries.find(entry => entry.actor === actor && entry.meeting === meeting && entry.fingerprint === fingerprint);
+      if (existing) return existing.intent;
+      current.entries = current.entries.filter(entry => entry.actor === actor);
+      current.entries.push({ actor, meeting, fingerprint, intent: proposed }); this.#saveMetadata(current);
+      return proposed;
+    }
+    throw new ServiceError(503, 'message_retry_metadata_busy');
+  }
+  async #messageIntent(actor, meeting, body, key, epoch) {
+    const remembered = this.#pendingMessages.get(key);
+    if (remembered) return remembered;
+    const resolving = this.#resolveMessageIntent(actor, meeting, body, epoch);
+    this.#pendingMessages.set(key, resolving);
+    try { return await resolving; }
+    catch (error) { if (this.#pendingMessages.get(key) === resolving) this.#pendingMessages.delete(key); throw error; }
+  }
+  async #forgetMessageIntent(actor, meeting, body, key, intent, epoch) {
+    this.#messageGuard(actor, epoch);
+    const snapshot = this.#metadata();
+    if (!snapshot) { this.#pendingMessages.delete(key); return; }
+    const fingerprint = await messageFingerprint(snapshot.salt, body); this.#messageGuard(actor, epoch);
+    const current = this.#metadata();
+    if (fingerprint && current?.salt === snapshot.salt) {
+      current.entries = current.entries.filter(entry => !(entry.actor === actor && entry.meeting === meeting && entry.fingerprint === fingerprint && entry.intent === intent));
+      this.#saveMetadata(current);
+    }
+    this.#pendingMessages.delete(key);
   }
   // Invalidate outcome work as soon as authentication changes, including logging
   // out and restoring the SAME account. Existing auth operations stay unchanged.
   async restore() {
     this.#outcomeEpoch++; const actor = this.user?.id;
     const restored = await super.restore();
-    if (!restored || this.user?.id !== actor) this.#pendingMessages.clear();
+    if (!restored || (actor && this.user?.id !== actor)) this.#clearMessageIntents();
+    else this.#retainActorMetadata(this.user.id);
     return restored;
   }
-  verifyOtp(email, otp) { this.#outcomeEpoch++; this.#pendingMessages.clear(); return super.verifyOtp(email, otp); }
-  signOut() { this.#outcomeEpoch++; this.#pendingMessages.clear(); return super.signOut(); }
+  verifyOtp(email, otp) { this.#outcomeEpoch++; this.#clearMessageIntents(); return super.verifyOtp(email, otp); }
+  signOut() { this.#outcomeEpoch++; this.#clearMessageIntents(); return super.signOut(); }
   async #address(peerId, meetingId, reviewed, selected, input) {
     if (!this.#meetingAddressEnabled) throw new ServiceError(503, 'meeting_address_not_ready');
     const addressEpoch = this.#outcomeEpoch, actor = this.user?.id, expected = structuredClone(reviewed);
@@ -428,14 +521,14 @@ export class RealJourneyStore extends NeonStore {
     const guard = () => { if (this.user?.id !== actor || epoch !== this.#outcomeEpoch) throw new ServiceError(401, 'message_session_changed'); };
     if (!UUID.test(id) || typeof text !== 'string' || !text.trim() || text.length > 1000) throw new ServiceError(400, 'message_invalid');
     const body = text.trim(), key = JSON.stringify([actor, id, body]);
-    // Transient retry state in the existing client. No localStorage, background send or auto-retry.
-    const intent = this.#pendingMessages.get(key) || crypto.randomUUID(); this.#pendingMessages.set(key, intent);
+    // The retry UUID is metadata-only and can survive a same-tab reload. It never sends itself.
+    const intent = await this.#messageIntent(actor, id, body, key, epoch);
     await this.#meeting(id);
     guard();
     const ack = await this._messageIntent(id, intent, body); guard();
     if (!ack || ack.id !== intent || ack.meeting_id !== id || ack.sender_id !== actor || ack.body !== body || typeof ack.created_at !== 'string' || !Number.isFinite(Date.parse(ack.created_at))) throw new ServiceError(502, 'message_ack_invalid');
     const result = await this.conversation(id); guard();
-    this.#pendingMessages.delete(key);
+    await this.#forgetMessageIntent(actor, id, body, key, intent, epoch);
     return result;
   }
 }
