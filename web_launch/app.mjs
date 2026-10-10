@@ -47,6 +47,17 @@ const peopleMap = createPeopleMap($('#people-map'), person => {
 });
 function message(text, error = false) { $('#notice').textContent = text; $('#notice').classList.toggle('error', error); if (error) $('#notice').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
 function el(tag, text, className) { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; }
+// Text a person wrote — a name, a city, an offer, a note, a message — is theirs. Mark it so that nothing rewrites it:
+// neither this page's language overlay nor a browser's own translator.
+function said(tag, text, className) { const node = el(tag, text, className); node.setAttribute('translate', 'no'); return node; }
+// The matching engine and the stored confirmation use neutral codes. A person is shown what they mean; a
+// code this page does not know is shown as it is, so nothing is hidden.
+const ATTESTATION_LABELS = { ACKNOWLEDGED_FOR_NEXT_STEP_NOT_A_CONTRACT: 'це не договір, а підтвердження наступного кроку' };
+// In the engine «A» is the person with the smaller id and «A_from_B» means A receives from B.
+const forWhom = (text, ownId, otherId) => text.replace(/^([AB])_from_[AB]: /, (whole, receiver) => (receiver === 'A') === (ownId.localeCompare(otherId) < 0) ? 'Для тебе: ' : 'Для іншої сторони: ');
+// Deleting a profile is confirmed by typing the word shown on screen, in the language of the screen. German is
+// accepted in any letter case and as LOESCHEN: a capital Ö is awkward to type on a Swiss keyboard.
+const deletionConfirmed = typed => typed === 'ВИДАЛИТИ' || typed === 'DELETE' || /^l(ö|oe)schen$/i.test(typed);
 function btn(text, action, quiet = false) { const node = el('button', text, quiet ? 'quiet' : ''); node.type = 'button'; node.addEventListener('click', () => run(action)); return node; }
 function closeDialog(selector) { const dialog = $(selector); if (dialog.open) dialog.close(); }
 function download(value, name, type) { const url = URL.createObjectURL(new Blob([value], { type })); const link = el('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
@@ -298,7 +309,7 @@ function caseSection(person, comparison, businessCase, gate = {}) {
       facts.append(el('p', 'Винагорода: ' + COMPENSATION_LABELS[compensation.status] + (compensation.status === 'agreed_money' ? ' — ' + compensation.amount_minor + ' ' + compensation.currency + ' (дрібні одиниці), рахунок: ' + (compensation.invoice_required ? 'потрібен' : 'не потрібен') : ''), 'fine'));
       for (const [term, values] of Object.entries(TERM_VALUE_LABELS)) facts.append(el('p', TERMS_LABELS[term] + ': ' + values[state.material.terms[term]], 'fine'));
       facts.append(el('p', TERMS_LABELS.revision_limit + ': ' + (state.material.terms.revision_limit === null ? 'не погоджено' : state.material.terms.revision_limit), 'fine'));
-      facts.append(el('p', 'Статус: ' + (CASE_STATUS_LABELS[state.status] || state.status) + ' · ' + state.approvalAttestation, 'fine'));
+      facts.append(el('p', 'Статус: ' + (CASE_STATUS_LABELS[state.status] || state.status) + ' · ' + (ATTESTATION_LABELS[state.approvalAttestation] || state.approvalAttestation), 'fine'));
       box.append(facts);
       const unresolved = [];
       if (state.material.compensation.status === 'unresolved') unresolved.push('винагорода');
@@ -379,7 +390,7 @@ function caseSection(person, comparison, businessCase, gate = {}) {
         // This async render finishes after renderPeople applied the consent gate, so both conditions are decided here.
         const open = gateResult.allowed && consentState.introduction === true;
         gate.inviteButton.disabled = !open;
-        gate.inviteButton.title = open ? '' : gateResult.allowed ? 'Увімкни дозвіл «Введення в розмову» у розділі «Приватність».' : 'Стане активною після підтвердження чернетки умов обома сторонами у власних входах.';
+        gate.inviteButton.title = open ? '' : gateResult.allowed ? 'Увімкни дозвіл «Введення в розмову» у розділі «Приватність».' : 'Запрошення надсилається зі сторінки спільних умов після двох підтверджень.';
         if (gate.gateNote && open) gate.gateNote.textContent = '';
       }
       box.hidden = false;
@@ -424,13 +435,13 @@ function renderPeople() {
   }
   for (const {person,comparison} of ranked) {
     const card = el('article', undefined, 'person'); card.id = 'person-' + person.id;
-    card.append(el('div', person.display_name.slice(0,1), 'avatar'), el('h3', person.display_name), el('p', person.city || 'Онлайн', 'city'));
-    for (const [title,value] of [['МОЖУ ДАТИ',person.offers],['ЗАРАЗ ШУКАЮ',person.seeks],['ПЕРШИЙ РЕЗУЛЬТАТ',person.brief?.goal]]) { const fact=el('div',undefined,'fact'); fact.append(el('small',title),el('span',value || 'Не вказано')); card.append(fact); }
+    card.append(said('div', person.display_name.slice(0,1), 'avatar'), said('h3', person.display_name), person.city ? said('p', person.city, 'city') : el('p', 'Онлайн', 'city'));
+    for (const [title,value] of [['МОЖУ ДАТИ',person.offers],['ЗАРАЗ ШУКАЮ',person.seeks],['ПЕРШИЙ РЕЗУЛЬТАТ',person.brief?.goal]]) { const fact=el('div',undefined,'fact'); fact.append(el('small',title),value ? said('span',value) : el('span','Не вказано')); card.append(fact); }
     const fit=el('div',undefined,'fit');
     fit.append(el('strong', comparison.status === 'review_candidate' ? 'Є користь для обох' : 'Що варто уточнити'));
     if (comparison.algorithmic?.status === 'scored' && comparison.algorithmic.mutual_score !== null) {
       fit.append(el('p', `Двостороннє покриття заявлених потреб: ${comparison.algorithmic.mutual_score}/100. Різниця напрямків: ${comparison.algorithmic.asymmetry}/100. Це не оцінка людини, довіри чи доходу.`, 'fine'));
-      for (const topic of comparison.algorithmic.topics.slice(0, 3)) fit.append(el('p', topic.text, 'fine'));
+      for (const topic of comparison.algorithmic.topics.slice(0, 3)) fit.append(el('p', forWhom(topic.text, own.id, person.id), 'fine'));
     }
     for (const direction of comparison.directions) if (direction.matched.length) fit.append(el('p', (direction.receiver === own.id ? 'Тобі: ' : 'Іншій стороні: ') + direction.matched.map(m => CAPABILITIES[m.tag]).join(', '), 'fine'));
     for (const reason of comparison.reasons.slice(0,3)) fit.append(el('p',publicReason(reason,person),'fine'));
@@ -439,7 +450,10 @@ function renderPeople() {
     // SYN_INTRODUCTION_GATED
     const inviteButton = btn('Обговорити співпрацю ↗', () => openInvite(person, comparison));
     inviteButton.disabled = true;
-    const gateNote = el('p', 'Чому кнопка вимкнена: введення в розмову відкривається після того, як обидві сторони підтвердять чернетку умов у власних входах. Контакти до двох підтверджень не передаються; автоматичних надсилань немає.', 'fine');
+    // SYN_GATE_NEXT_STEP: this draft and its confirmation live only in this tab, so the other person's confirmation
+    // can never arrive here. Say so, and name the page where the two confirmations and the invitation really happen.
+    const gateNote = el('p', 'Чому кнопка вимкнена: ця чернетка й твоя відмітка живуть лише в цій вкладці й не передаються іншій людині. Спільні умови, два окремі підтвердження й запрошення — на сторінці спільних умов. Контакти до двох підтверджень не передаються; автоматичних надсилань немає.', 'fine');
+    const gateLink = el('a', 'Відкрити спільні умови ↗'); gateLink.href = '/real-journey.html'; gateNote.append(' ', gateLink);
     if (comparison.status === 'review_candidate' && !consentState.comparison) {
       // SYN_CONSENT_PANEL_7: revoke comparison -> case output hidden instantly
       const hidden = el('details', undefined, 'brief-details');
@@ -464,8 +478,7 @@ function renderPeople() {
     target.append(card);
   }
 }
-// Dates follow the language the person chose for the page; Ukrainian is the default.
-const when = value => new Intl.DateTimeFormat(({de:'de-CH',en:'en-GB'})[document.documentElement.lang]||'uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
+const when = value => new Intl.DateTimeFormat('uk-UA',{dateStyle:'medium',timeStyle:'short',timeZoneName:undefined}).format(new Date(value));
 function renderMeetings() {
   const nowIso = locationSession && !locationSession.closed ? locationSession.instant() : new Date().toISOString();
   const previous = new Map([...document.querySelectorAll('.meeting-location')].map(node => [node.dataset.meetingId, { open: node.open, address: node.dataset.savedAddress,
@@ -477,7 +490,7 @@ function renderMeetings() {
   for(const meeting of meetings) {
     const incoming=meeting.recipient_id===store.user.id, otherId=incoming?meeting.sender_id:meeting.recipient_id;
     const person=people.find(p=>p.id===otherId) || { id:otherId, display_name:(incoming?meeting.sender_name:meeting.recipient_name) || 'Учасник зустрічі' }, card=el('article',undefined,'meeting');
-    card.append(el('p',(incoming?'Вхідний запит':'Твоя пропозиція')+(person?' · '+person.display_name:''),'eyebrow'),el('h3',labels[meeting.status]),el('p',meeting.note));
+    card.append(el('p',(incoming?'Вхідний запит':'Твоя пропозиція')+(person?' · '+person.display_name:''),'eyebrow'),el('h3',labels[meeting.status]),said('p',meeting.note));
     if(meeting.proposed_at) card.append(el('p',when(meeting.proposed_at)+' · '+meeting.duration_minutes+' хв · '+meeting.meeting_place+' · '+Intl.DateTimeFormat().resolvedOptions().timeZone,'fine'));
     const actions=el('div',undefined,'actions');
     if(incoming && meeting.status==='pending') for(const [status,title] of [['accepted','Прийняти час і пропозицію'],['declined','Відхилити']]) actions.append(btn(title,async()=>{await store.respond(meeting.id,status);await load();message('Відповідь збережено.');},status==='declined'));
@@ -517,7 +530,7 @@ async function renderChat() {
   const rows=await store.messages(activeChat); const target=$('#chat-messages'); target.replaceChildren();
   if(!rows.length) target.append(el('p','Уточніть посилання або місце й один очікуваний результат.','fine'));
   if(rows.length===100) target.append(el('p','Показано останні 100 повідомлень. Повну копію можна завантажити у розділі «Приватність».','fine'));
-  for(const row of rows.toReversed()) { const message=el('article',undefined,'chat-message'); message.append(el('small',(row.sender_id===store.user.id?'Ти':'Співрозмовник')+' · '+when(row.created_at)),el('p',row.body)); target.append(message); }
+  for(const row of rows.toReversed()) { const message=el('article',undefined,'chat-message'); message.append(el('small',(row.sender_id===store.user.id?'Ти':'Співрозмовник')+' · '+when(row.created_at)),said('p',row.body)); target.append(message); }
 }
 async function renderBlocks() {
   const rows=await store.blocks(), target=$('#blocked-people'); target.replaceChildren();
@@ -587,7 +600,7 @@ $('#block-person').addEventListener('click',()=>run(async()=>{await store.block(
 $('#export-account').addEventListener('click',()=>run(async()=>{const data=await store.exportAccount();download(JSON.stringify(data,null,2),'synera-my-data.private.json','application/json');message('Підготовлено приватний файл твоїх даних. Збережи його на власному пристрої.');}));
 $('#delete-profile').addEventListener('click',()=>{$('#delete-confirmation').value='';$('#delete-dialog').showModal();});
 $('#delete-cancel').addEventListener('click',()=>$('#delete-dialog').close());
-$('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!['ВИДАЛИТИ','DELETE','LÖSCHEN'].includes($('#delete-confirmation').value))return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
+$('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!deletionConfirmed($('#delete-confirmation').value))return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
 function resetAI() { aiDraft=null;$('#ai-result').replaceChildren();$('#apply-ai').hidden=true;applyAuthState(); }
 $('#prepare-ai').addEventListener('click',()=>{
   try {
