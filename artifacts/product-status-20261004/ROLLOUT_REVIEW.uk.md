@@ -1,6 +1,12 @@
 # Synera — конкретний review наступного закритого пілота
 
-## Поточний кандидат — 10.10.2026
+## Поточний кандидат — 11.10.2026
+
+[Opus pass4 + незалежне приймання](../opus-pass4-webkit-20261011/REPORT.uk.md), source **`0f109afbdf502e4733bd13d469f78f655e74818c`**: **`web_launch/dist-neon-opus-pass4-storage-20261011`**, **103 public files / 102 manifest rows**, release SHA-256 **`c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062`**. 100 public assets звірені з source Git blobs, generated Worker/routes незмінні проти exact Opus build; foreign dirty asset виключено. Вхід/профіль: 195 кінцевих WebKit-кроків; denied-storage: 20 WebKit + 20 Chrome checks; 27 affected Node tests і mutation. Journey 144 WebKit-кроки — на первинному Opus пакеті; journey/SQL source незмінні. 12 hashes попереднього PG18.4 receipt збігаються, нового SQL запуску тут немає.
+
+**UNPUBLISHED, production approval/recovery/live acceptance OPEN.** Набір міграцій той самий **1 → 1a → 2–6**, target/schema/recovery/flags нижче не змінено. Цей прохід не активує billing, provider або production. Старі SQL 1–6 approval/candidate hashes не є дозволом на новий пакет. GitHub досі `6724682`; runtime відхилив push dry-run попри явну згоду, alternate transport не застосовано. First live HTTP JWT gate має відхилити sender self-accept і зафіксувати фактичний HTTP-статус `PT409`. Телефони, юридичні DE/EN, provider/voice/OAuth та sustained capacity лишаються окремими gates.
+
+## Історичний кандидат — 10.10.2026
 
 [Terms recovery acceptance](../terms-recovery-20261010/REPORT.uk.md), source `557a09f9cd9df6c1ea43a61330a4e47de0d8607a`: **`web_launch/dist-neon-terms-recovery-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227`**. Точні Git blobs, чужий dirty asset виключено. 9 різних сценаріїв у кожному WebKit/Chrome engine, 21 targeted Node test і mutation; тимчасова data-write відмова зберігає форму, auth/consent/feature gates закриті. Із попереднього candidate змінено лише `real-journey.mjs` і один translation row; інші 95 assets і SQL receipt hashes незмінні. Unpublished; live scope — ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**. Немає SQL/provider/billing activation або auto-retry. Exact approval має називати цей поточний package; старі hashes не є дозволом upload. Push policy hold не обходити.
 

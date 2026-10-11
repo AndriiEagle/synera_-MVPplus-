@@ -1,4 +1,8 @@
-# Synera — початок незалежного review, 09.10.2026
+# Synera — початок незалежного review, 11.10.2026
+
+**Поточне локальне приймання:** [Opus pass4 + три відтворені виправлення](artifacts/opus-pass4-webkit-20261011/REPORT.uk.md), source **`0f109af`**. Вхід/профіль UK/DE/EN — 195 WebKit-кроків; за забороненого сховища мова переходу, тур і перемикач дизайну працюють у WebKit/Chrome. 27 targeted Node tests і негативна mutation прийняті. [Точний кандидат і rollout](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md), 103 public files, unpublished. Це не live JWT, два живі акаунти чи phone acceptance.
+
+**Remote handoff ще заблокований:** свіжий GitHub SHA `6724682`; runtime відхиляє push dry-run попри явний дозвіл. [Receipt і один NEXT](artifacts/opus-pass4-webkit-20261011/REPORT.uk.md#github-rollout-і-наступний-крок). Локальна наявність цих документів не означає їх наявності на GitHub. Старі checkpoints нижче — історія; починай із [START_HERE](START_HERE.uk.md) та верхнього розділу [handoff](docs/REVIEW_HANDOFF.uk.md).
 
 **Продуктова гілка: `codex/synera-product-20261002`; default `main` та merged PR #1 — інший, історичний зріз.**
 

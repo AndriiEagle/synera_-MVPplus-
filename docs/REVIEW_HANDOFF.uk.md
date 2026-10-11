@@ -1,6 +1,19 @@
 # Synera: handoff для незалежного аудиту й доробки
 
-Зріз 09.10.2026. Цей файл дозволяє працювати з GitHub clone без приватної історії чату. [ДНК / еталон](PRODUCT_DNA.uk.md) · [готовий промпт Claude Opus](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+Зріз оновлено 11.10.2026. Цей файл дозволяє працювати з GitHub clone без приватної історії чату, **лише після підтвердження remote SHA та файлів**. [ДНК / еталон](PRODUCT_DNA.uk.md) · [готовий промпт Claude Opus](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+
+## Поточний стан: приймання Opus pass4 — 11.10.2026
+
+[Повний звіт, RED/green/mutation, source/candidate readback](../artifacts/opus-pass4-webkit-20261011/REPORT.uk.md), code **`0f109afbdf502e4733bd13d469f78f655e74818c`** поверх `d3d85b0`. Opus-код прийнято у WebKit; додатково виправлено втрату мови при переході без localStorage та падіння встановлення перемикача дизайну/туру. Current/default, наявні згоди й власні слова людини збережені. Блок локальних умов на головній лишається поясненим переходом до серверного шляху; рішення про його видалення ще немає.
+
+- Кінцевий WebKit: **9/9, 195 кроків** входу/профілю, 0 мовних залишків/проблем oracle. 5 позначок пропуску й окремий список `notWalked` не стають PASS.
+- Кінцевий denied-storage scenario: **20/20 у WebKit і Chrome**, реальні кліки туру/стилю/мови/наступної сторінки, 0 JavaScript errors, 0 нових записів. Node **27/27**. Mutation пропуску мови ловить 6 семантичних відмов без runtime errors.
+- Journey: **144 WebKit-кроки на вихідному exact Opus HEAD**; journey/SQL source незмінні в кінцевому пакеті. Попередній PG18.4 доказ має 12 відповідних hashes; PG18.6/live JWT не прийняті.
+- Candidate **`dist-neon-opus-pass4-storage-20261011`**, release **`c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062`**, 103 public / 102 manifest; чужий dirty journey-ui виключено. [Rollout review](../artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) називає саме цей пакет. Build directories ignored; відтворення з clean checkout: `node neon/build.mjs dist-neon-opus-pass4-reproduction`. Новий built_at дасть новий release hash — звірити manifest заново.
+- **GitHub readback `6724682` — старий код.** Push явно дозволений, але runtime блокує навіть dry-run; no alternate transport. Немає published handoff/fresh-clone acceptance. Продовжувати зовнішній review зі старого remote як із нового заборонено. Після дозволеного push звірити `HEAD`, remote SHA й потрібні файли у fresh clone.
+- Невдалий перший WebKit click timeout і діагностика збережені у звіті. Не називай його root cause встановленою або дефект виправленим без відтворення.
+
+**NEXT для пілота після GitHub readback:** точний погоджений recovery/production rollout **1 → 1a → 2–6**, перший HTTP JWT цикл двох живих акаунтів (включно з відмовою sender self-accept і фактичним HTTP-статусом `PT409`), фізичне PWA встановлення Android/iPhone. Google/email sign-in delivery, provider AI/voice/OAuth, map tiles, юридичні DE/EN, офлайн DE/EN та sustained capacity — відкриті перевірки. Попередні розділи нижче є датованими checkpoints, а не скасуванням цих меж.
 
 ## 0. Незалежний Opus review — 09.10.2026, після цього зрізу
 

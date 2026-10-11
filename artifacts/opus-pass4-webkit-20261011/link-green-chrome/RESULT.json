@@ -1,0 +1,86 @@
+{
+  "scope": "Desktop browser, actual navigation with denied localStorage, synthetic Auth/Data. No live JWT, physical device or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-final-20261011",
+  "releaseHash": "81265d06447063f62ce61ecdf0cd787c078d7513e21606f9b549bb7309346a0e",
+  "engine": {
+    "name": "chromium",
+    "version": "154.0.8037.98"
+  },
+  "facts": {},
+  "checks": [
+    {
+      "name": "de: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "de: newly drawn next link carries the explicit choice",
+      "pass": true,
+      "detail": "/real-journey.html?lang=de"
+    },
+    {
+      "name": "de: returning to Ukrainian removes the old language from the link",
+      "pass": true
+    },
+    {
+      "name": "de: query and fragment survive on newly added internal links",
+      "pass": true,
+      "detail": "/real-journey.html?entry=test&lang=de#next"
+    },
+    {
+      "name": "de: external links are unchanged",
+      "pass": true,
+      "detail": "https://example.com/real-journey.html?entry=test#next"
+    },
+    {
+      "name": "de: real next page keeps the choice without storage",
+      "pass": true,
+      "detail": {
+        "actual": "de",
+        "url": "http://127.0.0.1:57111/real-journey.html?lang=de"
+      }
+    },
+    {
+      "name": "de: language and navigation did not write data",
+      "pass": true
+    },
+    {
+      "name": "en: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "en: newly drawn next link carries the explicit choice",
+      "pass": true,
+      "detail": "/real-journey.html?lang=en"
+    },
+    {
+      "name": "en: returning to Ukrainian removes the old language from the link",
+      "pass": true
+    },
+    {
+      "name": "en: query and fragment survive on newly added internal links",
+      "pass": true,
+      "detail": "/real-journey.html?entry=test&lang=en#next"
+    },
+    {
+      "name": "en: external links are unchanged",
+      "pass": true,
+      "detail": "https://example.com/real-journey.html?entry=test#next"
+    },
+    {
+      "name": "en: real next page keeps the choice without storage",
+      "pass": true,
+      "detail": {
+        "actual": "en",
+        "url": "http://127.0.0.1:57111/real-journey.html?lang=en"
+      }
+    },
+    {
+      "name": "en: language and navigation did not write data",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "PASS_DESKTOP_CHROMIUM_SYNTHETIC"
+}

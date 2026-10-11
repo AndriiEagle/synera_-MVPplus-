@@ -1,0 +1,281 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-webkit-20261011",
+  "releaseHash": "b34eb7426ab8a2f910eccb466ef7d8739ad17d941a5ee3e0b7392bbc0b72ca1e",
+  "engine": {
+    "name": "webkit",
+    "version": "26.6"
+  },
+  "runs": [
+    {
+      "run": "uk-390",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Сесію завершено. Увійди ще раз."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти»."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "refusedNotice": "Сесію завершено. Увійди ще раз.",
+      "demoDraft": "Чернетка для синтетичного прикладу: Марія робить короткий аудит воронк",
+      "blockedLine": "Учасник 1 · 7 жовт. 2026 р., 11:05 Розблокувати",
+      "controls": {
+        "meetings": [
+          "Оновити",
+          "Скасувати зустріч",
+          "Уточнити деталі",
+          "До календаря",
+          "Межі спілкування",
+          "(off) Дозволити на час зустрічі"
+        ],
+        "people": [
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга"
+        ]
+      },
+      "beforeChat": {
+        "rect": {
+          "x": 41,
+          "y": 439.03125,
+          "width": 145.96875,
+          "height": 48.296875,
+          "top": 439.03125,
+          "right": 186.96875,
+          "bottom": 487.328125,
+          "left": 41
+        },
+        "disabled": false,
+        "animations": [],
+        "scrollY": 728
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "languageFilesBeforeSwitch": "checked separately",
+      "pass": true
+    }
+  ],
+  "problems": [],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "notWalked": [
+    "Google sign-in and e-mail code delivery",
+    "AI profile draft and ChatGPT/Claude import (answers come from a provider or are switched off)",
+    "live location sharing",
+    "map tiles",
+    "the invitation dialog of the main page (its button cannot open there: tools/people-gate-browser.mjs)",
+    "text placed into editable fields, files or the clipboard (share card, invitation draft, prompt for an AI) — by design it is not translated"
+  ],
+  "summary": {
+    "runs": 1,
+    "passed": 1,
+    "steps": 30,
+    "skipped": 1,
+    "ukrainianVisible": 0,
+    "ukrainianHidden": 0,
+    "problems": 0,
+    "failures": 0
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

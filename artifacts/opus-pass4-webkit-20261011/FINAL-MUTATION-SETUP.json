@@ -1,0 +1,12 @@
+{
+  "intentional_mutation": true,
+  "candidate": "web_launch\\dist-neon-opus-pass4-final-mutant-20261011",
+  "accepted_source_candidate": "web_launch\\dist-neon-opus-pass4-storage-20261011",
+  "changed": [
+    "index-i18n.mjs"
+  ],
+  "defect": "skip language on real-journey links only",
+  "mutated_asset_sha256": "6282022a82df16e29fa75e68e1d58172ce09b0fe0cfe25b2c38db4079db7b7bf",
+  "release_metadata_is_not_valid_for_this_mutant": true,
+  "published": false
+}

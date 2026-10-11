@@ -1,4 +1,6 @@
-# Готовий промпт для наступного незалежного review — v3
+# Готовий промпт для наступного незалежного review — v4, 11.10.2026
+
+v4 додає [незалежне приймання WebKit і storage/navigation fixes](../artifacts/opus-pass4-webkit-20261011/REPORT.uk.md), source `0f109af`. v3 та попередні версії збережені в Git. Не повторюй уже прийняті перевірки без зачепленої залежності або нового дефекту; зосередься на відкритому live/phone gate. Remote publication ще заблокована: файли в локальному checkout не доводять їх наявності на GitHub.
 
 Скопіюй текст між роздільниками. v1 (09.10) і v2 (10.10) збережено в Git-історії цього файлу. Межі безпеки v1 збережені без послаблень.
 
@@ -18,11 +20,15 @@
 
 Мета, шлях користувача, еталон дизайну й інваріанти — у `docs/PRODUCT_DNA.uk.md` та `docs/REVIEW_HANDOFF.uk.md`. Не переказуй їх: перевіряй код проти них.
 
+**Спочатку прочитай поточний верхній розділ handoff та `artifacts/opus-pass4-webkit-20261011/REPORT.uk.md`.** Останній code commit `0f109afbdf502e4733bd13d469f78f655e74818c`, candidate `dist-neon-opus-pass4-storage-20261011`, release `c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062` (103/102), unpublished. У WebKit прийняті 195 кроків входу/профілю; 20+20 WebKit/Chrome storage checks, 27 Node tests і mutation. 144 кроки journey — на вихідному Opus HEAD; його source/SQL незмінні. Не називай desktop fixture доказом phone install, HTTP JWT, живих акаунтів або production. Provider calls цього проходу 0.
+
+Збережи три виправлення: явна мова у нових внутрішніх navigation links без сховища; працездатний добровільний дизайн-перемикач та тур за getter/read denial. Головний локальний блок умов пояснений і веде на серверний шлях; видалення — невирішене рішення власника, не дозвіл на довільний redesign.
+
 ## 0. Стоп-умова: чи це справжній зріз
 
 1. `git ls-remote origin refs/heads/codex/synera-product-20261002`, `git rev-parse HEAD`, `git status --short`, `git log -5 --oneline`.
-2. Зріз правильний, лише якщо `git merge-base --is-ancestor 7819bf6 HEAD` успішний і є `neon/stack-invariants.acceptance.sql`, `web_launch/real-journey-i18n.mjs`, `web_launch/index-i18n.mjs`, `web_launch/legal-i18n.mjs` та `tools/people-gate-browser.mjs`.
-3. Якщо ні — **зупинись**: назви точний remote SHA й відсутні файли, попроси git bundle або доступ до локального checkout. Не оцінюй старий зріз і не домислюй новий.
+2. Зріз правильний, лише якщо `git merge-base --is-ancestor 0f109afbdf502e4733bd13d469f78f655e74818c HEAD` успішний і є `neon/stack-invariants.acceptance.sql`, `web_launch/real-journey-i18n.mjs`, `web_launch/index-i18n.mjs`, `web_launch/legal-i18n.mjs`, `tools/language-link-browser.mjs` та `artifacts/opus-pass4-webkit-20261011/REPORT.uk.md`.
+3. Якщо ні — **зупинись**: назви точний remote SHA й відсутні файли; потрібне дозволене опублікування актуальної гілки або явно погоджений локальний доступ. GitHub — default handoff; не пропонуй архів мовчазною заміною й не обходь runtime push hold іншим транспортом. Не оцінюй старий зріз і не домислюй новий.
 4. Збережи чужу роботу. Не reset/clean/force checkout.
 5. Старі `plan/`, README-checkpoints, числа тестів і відсотки готовності — історія, не вимоги. Не відновлюй уже виправлені дефекти зі старих текстів.
 

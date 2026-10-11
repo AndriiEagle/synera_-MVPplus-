@@ -1,0 +1,22 @@
+{
+  "status": "PASS_REVIEWED_LOCAL_OVERLAY_BUILD",
+  "source_base": "d3d85b0ea8705282a808fa8fb2c5cb77fcd4ab1b",
+  "source_overrides": {
+    "web_launch/index-i18n.mjs": "c8ce7f5f16dfac48401ab45f6b6235b44dc15ef8f12afd3a8b7b88bd46aafb31",
+    "web_launch/style-switcher.mjs": "898aff4aa14e8767cf04a837b5cc8caaf3d91945371a4610ce0ab40c327d4680",
+    "web_launch/onboarding-tour.mjs": "81064b9cc756a3fbf17b5ef159acdab8f1feef3af4dedbd9575595f280e41853"
+  },
+  "candidate": "web_launch\\dist-neon-opus-pass4-storage-20261011",
+  "release_sha256": "c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062",
+  "public_files": 103,
+  "manifest_files_verified": 102,
+  "changed_from_opus_head": [
+    "index-i18n.mjs",
+    "onboarding-tour.mjs",
+    "style-switcher.mjs"
+  ],
+  "foreign_dirty_preserved": true,
+  "published": false,
+  "provider_calls": 0,
+  "usd": 0
+}

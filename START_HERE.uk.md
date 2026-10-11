@@ -1,4 +1,10 @@
-## Поточне приймання — 10.10.2026
+## Поточне приймання — 11.10.2026
+
+[Opus pass4 прийнятий і доправлений](artifacts/opus-pass4-webkit-20261011/REPORT.uk.md), code **`0f109af`**: 195 кроків входу/профілю у WebKit; мова переходу, дизайн і тур працюють без localStorage (20 перевірок у WebKit і 20 у Chrome), 27 targeted Node tests, негативна mutation. Кінцевий candidate `dist-neon-opus-pass4-storage-20261011`, release **`c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062`**, 103/102 файли. 144 кроки незміненого journey прийняті у WebKit на вихідному Opus HEAD; 12 SQL hashes звірено з попереднім PG18.4 receipt, без нового SQL запуску. Current/default і чужа journey-ui збережені.
+
+**Локально прийнято, запуск людей не прийнято.** GitHub readback `6724682`; runtime блокує навіть push dry-run попри дозвіл користувача — [receipt](artifacts/opus-pass4-webkit-20261011/PUSH_RECEIPT.json). Нічого не опубліковано/deployed. Живий JWT/два акаунти, recovery/точний rollout, фізичні телефони та provider-функції лишаються gates. [Таблиця систем і досвіду](artifacts/product-status-20261004/STATUS.uk.md) · [поточний rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Нижче — датована історія; старі «WebKit не перевірено» та release hashes не є поточним станом.
+
+## Попереднє приймання — 10.10.2026
 
 [Terms recovery прийнятий у WebKit/Chrome](artifacts/terms-recovery-20261010/REPORT.uk.md), code `557a09f`: тимчасова відмова запису більше не стирає форму умов; 9 різних сценаріїв у кожному engine, 21 targeted Node test і mutation. Новий current candidate `dist-neon-terms-recovery-20261010` unpublished; exact release hash у rollout review. Попереднє message-reload приймання нижче збережено, live/phone/production gates лишаються відкритими.
 

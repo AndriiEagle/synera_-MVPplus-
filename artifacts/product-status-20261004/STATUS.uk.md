@@ -1,4 +1,8 @@
-## Поточний стан — 10.10.2026
+## Поточний стан — 11.10.2026
+
+[Приймання Opus pass4 і три вузькі виправлення](../opus-pass4-webkit-20261011/REPORT.uk.md), code **`0f109af`**: вхід/профіль UK/DE/EN пройшли 195 WebKit-кроків; явна мова не губиться на наступній сторінці, дизайн і тур працюють за забороненого сховища (20 перевірок у кожному WebKit/Chrome), 27 targeted Node tests та semantic mutation. Ціль відчуття: «мене розуміють, мої слова не підміняють, моє керування працює». Це UX-намір, не вимір емоцій. 144-кроковий journey receipt належить вихідному Opus HEAD із незмінним journey source. Кінцевий candidate `dist-neon-opus-pass4-storage-20261011` (103/102) unpublished. Current/default, Atelier добровільний і чужий dirty asset збережені. GitHub `6724682`, runtime push hold; живі акаунти/JWT, phone install, production/recovery, provider features та capacity не прийняті. Нижче — карта незмінених систем і датована історія, не твердження про 100% готовність.
+
+## Попередній стан — 10.10.2026
 
 [Остання доробка: terms recovery](../terms-recovery-20261010/REPORT.uk.md), code `557a09f`: тимчасова відмова запису не стирає заповнені умови; read/explicit retry не створює дубль і не ставить згоду автоматично. 9 різних WebKit + 9 Chrome сценаріїв, 21 targeted Node test, mutation та exact manifest readback. Поточний candidate `dist-neon-terms-recovery-20261010` unpublished. Етап користувача: «мою працю збережено; я бачу невизначеність і наступну дію». Це ціль досвіду, не вимір емоцій. Нижче — карта незмінених систем та історичний message-reload checkpoint; live/phone/production/provider gates лишаються відкритими.
 
