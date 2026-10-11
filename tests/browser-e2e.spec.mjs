@@ -116,6 +116,33 @@ test('mobile first visit gives one visible action and keeps appearance settings 
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
 });
 
+for (const width of [320, 375]) {
+  test(`mobile ${width}px keeps the complete first action and expanded preferences within the viewport`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width, height: 700 });
+    await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+    await page.goto(`${baseUrl}/`);
+    await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено');
+    const action = await page.locator('#prepare-profile').boundingBox();
+    expect(action.y).toBeGreaterThanOrEqual(0);
+    expect(action.y + action.height).toBeLessThanOrEqual(700);
+    await page.screenshot({ path: testInfo.outputPath('first-action.png') });
+    await page.locator('#prepare-profile').click();
+    await openPreferences(page);
+    const geometry = await page.evaluate(() => ({
+      width: document.documentElement.scrollWidth,
+      bounds: [...document.querySelectorAll('.header-preferences-content, .header-preferences-content *')]
+        .map(el => el.getBoundingClientRect()).filter(rect => rect.width && rect.height)
+        .map(rect => ({ left: rect.left, right: rect.right })),
+    }));
+    expect(geometry.width).toBeLessThanOrEqual(width);
+    for (const bounds of geometry.bounds) {
+      expect(bounds.left).toBeGreaterThanOrEqual(0);
+      expect(bounds.right).toBeLessThanOrEqual(width);
+    }
+    await page.screenshot({ path: testInfo.outputPath('profile-preferences.png') });
+  });
+}
+
 test('Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
