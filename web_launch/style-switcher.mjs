@@ -41,8 +41,10 @@ export function applyStyle(root, button, style) {
   return next;
 }
 
-export function installStyleSwitcher({ root = document.documentElement, button = document.querySelector('#style-toggle'), select = document.querySelector('#style-preset'), storage = window.localStorage } = {}) {
-  const current = applyStyle(root, button, storage?.getItem(STYLE_STORAGE_KEY));
+export function installStyleSwitcher({ root = document.documentElement, button = document.querySelector('#style-toggle'), select = document.querySelector('#style-preset'), storage } = {}) {
+  if (storage === undefined) { try { storage = window.localStorage; } catch { storage = null; } }
+  let saved = null; try { saved = storage?.getItem(STYLE_STORAGE_KEY); } catch { /* visual preference remains in this page */ }
+  const current = applyStyle(root, button, saved);
   if (select) {
     select.value = current === NIGHT_STYLE || COMPACT_PRESETS.some(([id]) => id === current) ? current : '';
     select.addEventListener('change', () => {

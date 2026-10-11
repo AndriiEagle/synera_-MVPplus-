@@ -63,7 +63,7 @@ try {
   const read = (page, peer) => card(page, peer).evaluate(node => {
     const invite = [...node.querySelectorAll('button')].find(button => button.textContent.includes('↗'));
     const hash = (node.textContent.match(/SHA-256: ([a-f0-9]{8})/g) || []);
-    const link = node.querySelector('a[href="/real-journey.html"]');
+    const link = node.querySelector('a:is([href="/real-journey.html"],[href^="/real-journey.html?"])');
     return { inviteDisabled: invite ? invite.disabled : null, confirmations: (node.textContent.match(/умови підтверджені · версія/g) || []).length, hashes: [...new Set(hash)], link: link ? { text: link.textContent.trim(), visible: link.checkVisibility() } : null,
       text: node.innerText.slice(0, 4000) };
   });
@@ -93,14 +93,14 @@ try {
   // The invariant: the card names the page where this really happens and links there.
   check('the card links to the two-person page', afterA.link?.visible === true, afterA.link);
   check('the card does not promise that this button opens after both confirm here', !/підтвердять чернетку умов у власних входах/.test(afterA.text), null);
-  await card(a, C).locator('a[href="/real-journey.html"]').first().scrollIntoViewIfNeeded().catch(() => {}); await a.screenshot({ path: path.join(out, 'uk-card.png') });
-  if (afterA.link) { await card(a, C).locator('a[href="/real-journey.html"]').first().click(); await a.locator('#real-content-panel').waitFor({ state: 'visible' }).then(() => check('the link opens the two-person page, signed in', true), () => check('the link opens the two-person page, signed in', false)); }
+  await card(a, C).locator('a:is([href="/real-journey.html"],[href^="/real-journey.html?"])').first().scrollIntoViewIfNeeded().catch(() => {}); await a.screenshot({ path: path.join(out, 'uk-card.png') });
+  if (afterA.link) { await card(a, C).locator('a:is([href="/real-journey.html"],[href^="/real-journey.html?"])').first().click(); await a.locator('#real-content-panel').waitFor({ state: 'visible' }).then(() => check('the link opens the two-person page, signed in', true), () => check('the link opens the two-person page, signed in', false)); }
   // The same in German: the explanation and the link are readable.
   const german = await signIn(A, 'de'); await german.waitForFunction(() => document.documentElement.lang === 'de'); await german.waitForTimeout(400);
   const de = await read(german, C);
   check('German: the card links to the two-person page with a German label', de.link?.visible === true && !/[Ѐ-ӿ]/.test(de.link.text), de.link);
   check('German: no Ukrainian text in the card', !/[Ѐ-ӿ]/.test(de.text), (de.text.match(/[^\n]*[Ѐ-ӿ][^\n]*/) || [null])[0]);
-  await card(german, C).locator('a[href="/real-journey.html"]').first().scrollIntoViewIfNeeded().catch(() => {}); await german.screenshot({ path: path.join(out, 'de-card.png') });
+  await card(german, C).locator('a:is([href="/real-journey.html"],[href^="/real-journey.html?"])').first().scrollIntoViewIfNeeded().catch(() => {}); await german.screenshot({ path: path.join(out, 'de-card.png') });
 } catch (error) { result.failures.push({ error: error.message.replace(/\u001b\[\d+m/g, '').split('\n').slice(0, 5).join(' | ') }); }
 finally {
   if (browser) await browser.close(); await new Promise(resolve => server.close(resolve));

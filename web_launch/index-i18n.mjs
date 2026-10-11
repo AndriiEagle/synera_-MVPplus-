@@ -85,6 +85,15 @@ export function startOverlay(document) {
     const out = getLanguage() === 'uk' ? source : source.split('\n').map(line => translate(line) ?? line).join('\n');
     generated.set(element, { source, out }); if (now !== out) element.value = out;
   }
+  // Carry the explicit choice through real navigation even when storage is denied. Newly drawn cards
+  // need the same treatment as existing links. External links and unrelated routes are left untouched.
+  function link(element) {
+    let url; try { url = new URL(element.getAttribute('href'), document.baseURI); } catch { return; }
+    if (url.origin !== new URL(document.baseURI).origin || !['/legal.html', '/real-journey.html'].includes(url.pathname)) return;
+    if (getLanguage() === 'uk') url.searchParams.delete('lang'); else url.searchParams.set('lang', getLanguage());
+    const href = url.pathname + url.search + url.hash;
+    if (element.getAttribute('href') !== href) element.setAttribute('href', href);
+  }
   function sweep(root) {
     if (root.nodeType === 3) { text(root); return; }
     if (root.nodeType !== 1) return;
@@ -92,6 +101,7 @@ export function startOverlay(document) {
     for (let node = walker.nextNode(); node; node = walker.nextNode()) text(node);
     for (const name of NAMES) { if (root.hasAttribute(name)) attribute(root, name); for (const element of root.querySelectorAll(`[${name}]`)) attribute(element, name); }
     if (root.matches(GENERATED)) field(root); for (const element of root.querySelectorAll(GENERATED)) field(element);
+    if (root.matches('a[href]')) link(root); for (const element of root.querySelectorAll('a[href]')) link(element);
   }
   // Text the page writes later is handled as it arrives; our own writes are recognised and left alone.
   new MutationObserver(records => {
@@ -103,7 +113,5 @@ export function startOverlay(document) {
   }).observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: NAMES });
   return { apply() {
     document.documentElement.lang = getLanguage(); sweep(document.documentElement);
-    // The rules page reads the same saved choice; the link also carries it for browsers that keep no storage.
-    for (const link of document.querySelectorAll('a[href^="/legal.html"]')) link.setAttribute('href', getLanguage() === 'uk' ? '/legal.html' : '/legal.html?lang=' + getLanguage());
   } };
 }

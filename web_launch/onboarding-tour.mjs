@@ -14,7 +14,8 @@ export function nextTourStep(index, direction) { return Math.max(0, Math.min(TOU
 export function shouldOfferTour(storage) { try { return storage?.getItem(TOUR_STORAGE_KEY) !== 'done'; } catch { return true; } }
 export function shouldStartIdleTour({ offered, interacted }) { return offered === true && interacted !== true; }
 
-export function installOnboardingTour({ document: doc = document, storage = window.localStorage } = {}) {
+export function installOnboardingTour({ document: doc = document, storage } = {}) {
+  if (storage === undefined) { try { storage = window.localStorage; } catch { storage = null; } }
   const replay = doc.querySelector('#tour-start');
   let index = 0, activeTarget;
   const overlay = doc.createElement('div'); overlay.className = 'tour-overlay'; overlay.hidden = true;
