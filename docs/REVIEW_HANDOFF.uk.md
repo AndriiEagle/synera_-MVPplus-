@@ -1,3 +1,7 @@
+## Поточний source candidate — 15.10.2026
+
+Гілка `codex/synera-reviewed-mobile-20261013`: мобільна шапка, офлайн-запуск і recovery після відмови видалення інтегровані; 668 Node + 39 browser PASS. [Перевірка, відтворення та відкриті live/provider gates](quality/reviewed-release-20261015.uk.md). Нижче збережена датована історія; старі SHA й push-hold не є актуальним remote readback.
+
 # Synera: handoff для незалежного аудиту й доробки
 
 Зріз оновлено 11.10.2026. Цей файл дозволяє працювати з GitHub clone без приватної історії чату, **лише після підтвердження remote SHA та файлів**. [ДНК / еталон](PRODUCT_DNA.uk.md) · [готовий промпт Claude Opus](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).

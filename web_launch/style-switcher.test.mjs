@@ -65,8 +65,48 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   let installation;
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
-  assert.equal(cacheName, 'synera-shell-20261002-triangle-v11');
+  assert.match(cacheName, /^synera-shell-/);
+  assert.notEqual(cacheName, 'synera-shell-20261002-triangle-v11', 'changed shell dependencies invalidate the previous cache');
   assert.ok(cachedShell.includes('/style-switcher.mjs'));
   assert.ok(cachedShell.includes('/onboarding-tour.mjs'));
   assert.ok(cachedShell.includes('/demo-journey.mjs'));
+});
+
+
+test('the PWA cache remains public and never answers offline account writes', async () => {
+  const listeners = {}, matched = [], writes = [], network = [];
+  let precached = [];
+  const context = {
+    URL, Response,
+    fetch: async request => { network.push(new URL(request.url).pathname); throw new Error('synthetic offline'); },
+    self: { location: { origin: 'https://synera.example' }, skipWaiting() {}, addEventListener: (name, fn) => { listeners[name] = fn; } },
+    caches: {
+      open: async () => ({ addAll: async shell => { precached = shell; }, put: async request => { writes.push(request.url); } }),
+      match: async request => { matched.push(request.url); return new Response('public shell'); }
+    }
+  };
+  vm.runInNewContext(await fs.readFile(new URL('./sw.mjs', import.meta.url), 'utf8'), context);
+  let installation; listeners.install({ waitUntil: value => { installation = value; } }); await installation;
+  assert.ok(precached.every(value => !value.includes('?') && !value.startsWith('/api/') && value !== '/config.json'));
+  for (const module of ['/profile-import.mjs', '/index-language.mjs', '/atelier.mjs', '/atelier.css', '/index-i18n.mjs', '/index-i18n-table.mjs', '/real-journey-i18n.mjs', '/legal-language.mjs', '/legal-i18n.mjs']) assert.ok(precached.includes(module), module);
+  async function dispatch(path, method = 'GET') {
+    let response;
+    const url = path.startsWith('https:') ? path : 'https://synera.example' + path;
+    listeners.fetch({ request: { url, method }, respondWith: value => { response = value; } });
+    return response === undefined ? undefined : await response;
+  }
+  assert.equal(await (await dispatch('/app.mjs')).text(), 'public shell');
+  const before = matched.length;
+  const config = await dispatch('/config.json');
+  assert.equal(config.status, 503); assert.deepEqual(await config.json(), { offline: true });
+  assert.equal(config.headers.get('cache-control'), 'no-store');
+  assert.equal(matched.length, before, 'config never consults public shell cache');
+  for (const [url, method] of [
+    ['/api/neon/data/profiles', 'GET'], ['/app.mjs?draft=synthetic-local', 'GET'],
+    ['https://other.example/app.mjs', 'GET'], ['/api/neon/data/profiles', 'POST'],
+    ['/api/neon/data/profiles', 'PUT'], ['/api/neon/data/profiles', 'PATCH'],
+    ['/api/neon/data/profiles', 'DELETE'], ['/app.mjs', 'POST']
+  ]) assert.equal(await dispatch(url, method), undefined, `${method} ${url} is not answered by SW`);
+  assert.equal(matched.length, before, 'private queries/API/writes never enter CacheStorage');
+  assert.deepEqual(writes, []); assert.deepEqual(network, ['/app.mjs', '/config.json']);
 });

@@ -64,9 +64,10 @@ export class ServiceError extends Error {
       session_cookie_unavailable: 'Email підтверджено, але зберегти вхід не вдалося. Потрібен новий код. Якщо помилка повториться, повідом оператору: AUTH-COOKIE.',
       session_token_unavailable: 'Вхід підтверджено, але доступ до профілю ще не отримано. Спробуй продовжити вхід. Код помилки: AUTH-TOKEN.',
       session_unavailable: 'Не вдалося відновити з’єднання з акаунтом. Спробуй ще раз.',
+      profile_delete_conflict: "Профіль не видалено: сервер відхилив видалення. Збережи приватний експорт у «Приватність» і звернися до оператора через «Правила та приватність».",
       data_unavailable: 'Не вдалося завантажити або зберегти дані. Повтори дію; введені поля залишаються у формі.',
     };
-    super((code === 'otp_invalid' || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    super((code === 'otp_invalid' || (status === 409 && code === 'profile_delete_conflict') || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
     this.name = 'ServiceError'; this.status = status; this.code = Object.hasOwn(authMessages, code) ? code : undefined;
   }
 }
@@ -150,7 +151,15 @@ export class ProfileStore {
   }
   async deleteProfile() {
     this.requireRealPilot();
-    const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
+    let rows;
+    try {
+      rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
+    } catch (error) {
+      // A profile deletion conflict must not look like a duplicate meeting invitation.
+      // Preserve all data and the session; only the operator can resolve retention.
+      if (error instanceof ServiceError && error.status === 409) throw new ServiceError(409, 'profile_delete_conflict');
+      throw error;
+    }
     if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
   }
   // SYN_CASE_STORE_MATCHES_SQL: the client writes the normalized SQL columns, never a

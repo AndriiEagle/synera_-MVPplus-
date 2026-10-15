@@ -2151,7 +2151,7 @@ html[data-synera-style="noir"] .panel,html[data-synera-style="alpine"] .panel,ht
   }
   html[data-synera-style="synera"] .signed-in .profile-head h2 { font-size: 22px; line-height: 1.2; margin: 0; }
   html[data-synera-style="synera"] .signed-in #profile-progress { font-size: 10px; margin: 0 0 5px; }
-  html[data-synera-style="synera"] .signed-in .profile-tools { width: auto; flex-wrap: nowrap; }
+  html[data-synera-style="synera"] .signed-in .profile-tools { width: auto; flex-wrap: wrap; }
   html[data-synera-style="synera"] .signed-in .profile-tools button { width: auto; padding: 8px 9px; font-size: 12px; }
   html[data-synera-style="synera"] .signed-in .profile-transfer { gap: 10px; padding: 15px; margin: 0 0 18px; }
   html[data-synera-style="synera"] .signed-in .profile-transfer h3 { font-size: 18px; line-height: 1.25; }
@@ -2189,6 +2189,10 @@ body:not(.signed-in) .install-bar { grid-column:1 / -1; grid-row:6; margin-top:2
   html[data-synera-style="synera"] .signed-in header .header-preferences { grid-column:1 / -1; grid-row:2; justify-self:end; }
   html[data-synera-style="synera"] .signed-in header #logout,
   html[data-synera-style="synera"] .signed-in header #back-login { grid-column:3; grid-row:1; }
+}
+@media (max-width:360px) {
+  html[data-synera-style="synera"] .signed-in header .badge { grid-column:1 / -1; grid-row:2; max-width:100%; }
+  html[data-synera-style="synera"] .signed-in header .header-preferences { grid-row:3; }
 }
 
 /* SYN_GEO01_MEETING_LOCATION: meeting place + own location grant (base layout for every style). */

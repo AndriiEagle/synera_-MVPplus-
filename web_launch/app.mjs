@@ -154,6 +154,7 @@ async function run(action) {
   busy = true; $('#auth-form').setAttribute('aria-busy', 'true'); previous.forEach((_, b) => { b.disabled = true; });
   try { await action(); }
   catch (error) {
+    if (error instanceof ServiceError && error.code === 'profile_delete_conflict') $('#delete-dialog').close();
     message(error instanceof ServiceError ? error.message : (error?.userMessage || 'Не вдалося завершити дію. Перевір дані та з’єднання. Незбережені поля залишаються у формі.'), true);
     if (error?.status === 402) { onlineReady = false; $('#mode').textContent = 'Вхід тимчасово недоступний'; }
     if (!store?.user && own?.id) showSignedOut();

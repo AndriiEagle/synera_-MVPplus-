@@ -3,6 +3,7 @@
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ["Профіль не видалено: сервер відхилив видалення. Збережи приватний експорт у «Приватність» і звернися до оператора через «Правила та приватність».", "Der Server hat die Profillöschung abgelehnt. Speichere den privaten Export unter «Datenschutz» und kontaktiere den Betreiber über «Regeln und Datenschutz».", "The server refused to delete the profile. Save the private export under “Privacy” and contact the operator through “Rules and privacy”."],
   ["Synera — співпраця для солопідприємців", "Synera – Zusammenarbeit für Solo-Selbstständige", "Synera — collaboration for solo entrepreneurs"],
   ["Перевірка доступу", "Zugangsprüfung", "Access check"],
   ["Мова і вигляд", "Sprache und Ansicht", "Language and appearance"],

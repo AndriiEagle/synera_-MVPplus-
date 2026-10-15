@@ -1,0 +1,888 @@
+{
+  "variant": "baseline",
+  "engine": "153.0.8010.12",
+  "runs": [
+    {
+      "language": "uk",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 20.5,
+            "bottom": 62.5
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 193.484375,
+            "top": 12,
+            "bottom": 71
+          },
+          {
+            "id": "header-preferences",
+            "left": 166.265625,
+            "right": 302,
+            "top": 79,
+            "bottom": 120.5
+          },
+          {
+            "id": "back-login",
+            "left": 201.484375,
+            "right": 302,
+            "top": 17.34375,
+            "bottom": 65.640625
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "uk-current-320.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 15.140625,
+            "bottom": 57.140625
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 263.484375,
+            "top": 14.140625,
+            "bottom": 58.140625
+          },
+          {
+            "id": "header-preferences",
+            "left": 236.265625,
+            "right": 372,
+            "top": 68.296875,
+            "bottom": 109.796875
+          },
+          {
+            "id": "back-login",
+            "left": 271.484375,
+            "right": 372,
+            "top": 12,
+            "bottom": 60.296875
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "uk-current-390.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 28,
+            "bottom": 70
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 188.03125,
+            "top": 12,
+            "bottom": 86
+          },
+          {
+            "id": "header-preferences",
+            "left": 161,
+            "right": 302,
+            "top": 94,
+            "bottom": 135.5
+          },
+          {
+            "id": "back-login",
+            "left": 196.03125,
+            "right": 302,
+            "top": 24.84375,
+            "bottom": 73.140625
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "uk-atelier-320.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 15.140625,
+            "bottom": 57.140625
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 258.03125,
+            "top": 14.140625,
+            "bottom": 58.140625
+          },
+          {
+            "id": "header-preferences",
+            "left": 231,
+            "right": 372,
+            "top": 68.296875,
+            "bottom": 109.796875
+          },
+          {
+            "id": "back-login",
+            "left": 266.03125,
+            "right": 372,
+            "top": 12,
+            "bottom": 60.296875
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "uk-atelier-390.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": false
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 35.5,
+            "bottom": 77.5
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 167.046875,
+            "top": 12,
+            "bottom": 101
+          },
+          {
+            "id": "header-preferences",
+            "left": 130.875,
+            "right": 302,
+            "top": 109,
+            "bottom": 150.5
+          },
+          {
+            "id": "back-login",
+            "left": 162.296875,
+            "right": 302,
+            "top": 32.34375,
+            "bottom": 80.640625
+          }
+        ],
+        "overlap": [
+          [
+            "mode",
+            "back-login"
+          ]
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "de-current-320.png",
+      "pass": false
+    },
+    {
+      "language": "de",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 15.140625,
+            "bottom": 57.140625
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 224.296875,
+            "top": 14.140625,
+            "bottom": 58.140625
+          },
+          {
+            "id": "header-preferences",
+            "left": 200.875,
+            "right": 372,
+            "top": 68.296875,
+            "bottom": 109.796875
+          },
+          {
+            "id": "back-login",
+            "left": 232.296875,
+            "right": 372,
+            "top": 12,
+            "bottom": 60.296875
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "de-current-390.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": false
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 35.5,
+            "bottom": 77.5
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 179.3125,
+            "top": 12,
+            "bottom": 101
+          },
+          {
+            "id": "header-preferences",
+            "left": 118.8125,
+            "right": 302,
+            "top": 109,
+            "bottom": 150.5
+          },
+          {
+            "id": "back-login",
+            "left": 148.640625,
+            "right": 302,
+            "top": 32.34375,
+            "bottom": 80.640625
+          }
+        ],
+        "overlap": [
+          [
+            "mode",
+            "back-login"
+          ]
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "de-atelier-320.png",
+      "pass": false
+    },
+    {
+      "language": "de",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 20.5,
+            "bottom": 62.5
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 210.640625,
+            "top": 12,
+            "bottom": 71
+          },
+          {
+            "id": "header-preferences",
+            "left": 188.8125,
+            "right": 372,
+            "top": 79,
+            "bottom": 120.5
+          },
+          {
+            "id": "back-login",
+            "left": 218.640625,
+            "right": 372,
+            "top": 17.34375,
+            "bottom": 65.640625
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "de-atelier-390.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 28,
+            "bottom": 70
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 159.515625,
+            "top": 12,
+            "bottom": 86
+          },
+          {
+            "id": "header-preferences",
+            "left": 95.96875,
+            "right": 302,
+            "top": 94,
+            "bottom": 135.5
+          },
+          {
+            "id": "back-login",
+            "left": 167.515625,
+            "right": 302,
+            "top": 24.84375,
+            "bottom": 73.140625
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "en-current-320.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 102.953125,
+            "top": 15.140625,
+            "bottom": 57.140625
+          },
+          {
+            "id": "mode",
+            "left": 110.953125,
+            "right": 229.515625,
+            "top": 14.140625,
+            "bottom": 58.140625
+          },
+          {
+            "id": "header-preferences",
+            "left": 165.96875,
+            "right": 372,
+            "top": 68.296875,
+            "bottom": 109.796875
+          },
+          {
+            "id": "back-login",
+            "left": 237.515625,
+            "right": 372,
+            "top": 12,
+            "bottom": 60.296875
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "en-current-390.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": false
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 35.5,
+            "bottom": 77.5
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 162.28125,
+            "top": 12,
+            "bottom": 101
+          },
+          {
+            "id": "header-preferences",
+            "left": 79.015625,
+            "right": 302,
+            "top": 109,
+            "bottom": 150.5
+          },
+          {
+            "id": "back-login",
+            "left": 155.625,
+            "right": 302,
+            "top": 32.34375,
+            "bottom": 80.640625
+          }
+        ],
+        "overlap": [
+          [
+            "mode",
+            "back-login"
+          ]
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "screenshot": "en-atelier-320.png",
+      "pass": false
+    },
+    {
+      "language": "en",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "geometry": {
+        "boxes": [
+          {
+            "id": "brand",
+            "left": 18,
+            "right": 109.671875,
+            "top": 15.140625,
+            "bottom": 57.140625
+          },
+          {
+            "id": "mode",
+            "left": 117.671875,
+            "right": 217.625,
+            "top": 14.140625,
+            "bottom": 58.140625
+          },
+          {
+            "id": "header-preferences",
+            "left": 149.015625,
+            "right": 372,
+            "top": 68.296875,
+            "bottom": 109.796875
+          },
+          {
+            "id": "back-login",
+            "left": 225.625,
+            "right": 372,
+            "top": 12,
+            "bottom": 60.296875
+          }
+        ],
+        "overlap": [],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "screenshot": "en-atelier-390.png",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "scope": "Synthetic local draft; no backend, production, physical-device or human-usability proof",
+  "status": "FAIL"
+}

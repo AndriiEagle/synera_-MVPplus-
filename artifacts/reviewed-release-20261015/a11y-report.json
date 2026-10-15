@@ -1,0 +1,30 @@
+[
+  {
+    "page": "index.html",
+    "url": "file:///C:/Users/Andrii/Desktop/synera-reviewed-mobile-20261013/web_launch/index.html",
+    "timestamp": "2026-10-15T17:48:17.600Z",
+    "violations": [],
+    "passes": 42,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  },
+  {
+    "page": "catalogue.html",
+    "url": "file:///C:/Users/Andrii/Desktop/synera-reviewed-mobile-20261013/web_launch/catalogue.html",
+    "timestamp": "2026-10-15T17:48:20.618Z",
+    "violations": [],
+    "passes": 41,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  }
+]

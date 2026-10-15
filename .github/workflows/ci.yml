@@ -35,6 +35,9 @@ jobs:
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
       - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs
+      - run: node tools/header-layout-acceptance-20261013.mjs
+      - run: node neon/build.mjs dist-neon-ci
+      - run: node tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-ci
       - run: node tools/location-browser-acceptance.mjs
 
       # axe-core через Playwright; exit 1 при critical/serious порушеннях.
@@ -48,6 +51,8 @@ jobs:
           path: |
             test-results/
             playwright-report/
+            artifacts/header-layout-20261015/
+            artifacts/offline-shell-acceptance/
           if-no-files-found: ignore
           retention-days: 7
 
