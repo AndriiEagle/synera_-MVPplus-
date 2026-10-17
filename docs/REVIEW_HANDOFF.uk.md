@@ -23,7 +23,8 @@
 | Частина | Вхід у source |
 |---|---|
 | Головна, вхід, профіль, мови | `web_launch/index.html`, `app.mjs`, `profile-store.mjs`, `index-i18n.mjs`, `index-i18n-table.mjs` |
-| Шлях двох людей | `web_launch/real-journey.html`, `journey-ui.mjs`, `real-journey-i18n.mjs` |
+| Реальний шлях двох людей | `web_launch/real-journey.html`, `real-journey.mjs`, `real-journey-client.mjs`, `real-journey-i18n.mjs` |
+| Синтетичний Studio-сценарій | `web_launch/studio-journey.html`, `journey-ui.mjs`, `journey-core.mjs`; demo-згоди не є живою парою |
 | Стиль і PWA | `web_launch/style.css`, `style-switcher.mjs`, `pwa.mjs`, `sw.mjs` |
 | Сервер | `neon/worker.mjs` та модулі в `neon/` |
 | Згоди / власність | `neon/meeting-status-guard.migration.sql`, `neon/stack-invariants.acceptance.sql` |
