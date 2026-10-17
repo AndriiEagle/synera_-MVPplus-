@@ -1,0 +1,18 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const source='web_launch/summit.css';
+const before=await fs.readFile('artifacts/mobile-20261007/responsive/red-extra/summit.css');
+const current=await fs.readFile(source);
+const normalize=b=>b.toString('utf8').replaceAll('\r\n','\n');
+const b=normalize(before),c=normalize(current);
+assert.ok(c.startsWith(b),'Stop: preceding pricing source differs beyond CRLF');
+const suffix=c.slice(b.length);
+assert.ok(suffix.trimStart().startsWith('/* The presentation mast grows with text.'),'Unexpected appended source');
+const restored=Buffer.concat([before,Buffer.from(suffix)]);
+assert.equal(normalize(restored),c);
+await fs.writeFile(source,restored);
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const proof={status:'EXACT_PRICING_PREFIX_RESTORED',before_sha256:sha(before),previous_source_sha256:sha(current),final_source_sha256:sha(restored),normalized_css_unchanged:true};
+await fs.writeFile('artifacts/mobile-20261007/responsive/PREFIX_PROOF.json',JSON.stringify(proof,null,2));
+console.log(JSON.stringify(proof));

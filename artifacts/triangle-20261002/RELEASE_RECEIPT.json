@@ -1,0 +1,61 @@
+{
+  "status": "LOCAL_PROTOTYPE_ACCEPTED_AND_PUBLIC_DEMO_DEPLOYED",
+  "scope": "same-device in-memory Triangle L; fictional opportunity map; manual meeting-time planner; free-pilot copy; map-cost scenario",
+  "product_source_base": "0682f5c9c7196656a28b64a6727a5052dd4d80e5",
+  "source_commit_at_packaging": "pending; verify PUSH_RECEIPT.json after owned commit",
+  "tests": {
+    "canonical_node": {
+      "pass": 460,
+      "skip": 1,
+      "fail": 0
+    },
+    "legal": {
+      "pass": 2,
+      "fail": 0
+    },
+    "browser": {
+      "pass": 30,
+      "fail": 0
+    },
+    "final_privacy_copy_atlas": {
+      "pass": 1
+    },
+    "new_mode_axe_violations": 0,
+    "mutation": "real production reset bypassed; old yes copied to new revision; browser guard rejected",
+    "mutation_raw_sha256": "80b87caeeb96c793eca9193c361112e1f5b1ac4f1744dab95db80bd4c8e2fb39"
+  },
+  "neon": {
+    "archive": "synera-triangle-neon-20261002-rc2.zip",
+    "files": 57,
+    "sha256": "e5b57ada1c7678bcdd0581b3c59ca6036d2ee72dee12b9603f8f4bc1ed6c3dde",
+    "byte_readback": "PASS",
+    "deployed": false
+  },
+  "public_demo": {
+    "version": 3,
+    "version_id": "appgprj_6abe5c4d86988191821437cf779b4e9e~appgver_95fe70e51e0c8191816968dcc0434418",
+    "deployment_id": "appgdep_6abfa5e1b9f081919a0039f8997f9e11",
+    "status": "succeeded",
+    "url": "https://synera-summit-20261001.andypokr911.chatgpt.site",
+    "source_commit": "925c5ee44938b20d67137d60a1037098defa9e45",
+    "files": 59,
+    "archive": "synera-triangle-site-20261002.tar.gz",
+    "archive_sha256": "1a389c01bf486c9ed797dcaff52cad18cd2a0decbb1c4d58f83f810942ee8d34",
+    "native_content_hash": "sha256:bf33389496eecd59b7e81896999d93cb6d97c23f4397b756a97e6fb0cce0c157",
+    "registration_enabled": false,
+    "api_calls_from_new_mode": 0
+  },
+  "unverified": [
+    "embedded Google Maps and live travel estimates",
+    "remote room identities/sync/own votes/server clock",
+    "media/translation/AI",
+    "radar and social OAuth approvals",
+    "physical Android/iPhone",
+    "new existing-pilot Neon rollout",
+    "commercial outcome and future price"
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "subscription_savings": "unmeasured",
+  "next": "10 minutes: Android local L walkthrough and export"
+}

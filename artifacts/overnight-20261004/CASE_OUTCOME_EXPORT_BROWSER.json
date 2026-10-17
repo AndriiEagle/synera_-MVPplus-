@@ -1,0 +1,40 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_EXPORT_BROWSER",
+  "generated_at": "2026-10-04T03:10:12.665Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium 390x844 downloads and decoded readback; case/meeting/outcomes are seeded synthetic transport, not SQL/JWT/live accounts",
+  "downloads": [
+    {
+      "file": "artifacts/overnight-20261004/outcome-export-gzip.json",
+      "encoding": "gzip-base64",
+      "file_bytes": 1971,
+      "original_utf8_bytes": 5231,
+      "sha256": "f028b526d09b71d598f703361a64843cfabd4ee752f1906336ba0ad866f477a3"
+    },
+    {
+      "file": "artifacts/overnight-20261004/outcome-export-plain.json",
+      "encoding": "utf8-base64",
+      "file_bytes": 7139,
+      "original_utf8_bytes": 5231,
+      "sha256": "56313707d3c4cd0b47e616788806bd42ecfce427ff1fd78a0b706add972c988a"
+    }
+  ],
+  "explicit_plain_and_gzip_downloads": true,
+  "axe_violations": 0,
+  "no_overflow": {
+    "viewport": 390,
+    "width": 390
+  },
+  "logout_cancels_pending_download": true,
+  "no_private_storage": true,
+  "page_errors": [],
+  "source_sha256": {
+    "web_launch/real-journey-client.mjs": "46f96f85f23c7c1b043b80e4d62b20f084e781a2cf9a9d08851c7347d0f18ada",
+    "web_launch/real-journey.mjs": "6aca90513c55a68a7ee3d86fa9fbdb3dfa5fd85a9e040da0e319bdab7b56e0d2",
+    "web_launch/real-journey.html": "54366120a799b81629e245d35b1ccfa89d8423cbe992befaffb62129fe2989dc",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/case-outcome-export-browser.mjs": "0124071de3f8584493f37aa2713b1ce0b201238f095734f06dd1344cc8822423"
+  }
+}

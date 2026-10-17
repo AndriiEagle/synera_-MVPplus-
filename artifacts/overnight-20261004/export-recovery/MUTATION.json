@@ -1,0 +1,84 @@
+{
+  "status": "MUTANT_REJECTED_LATE_EXPORT_FAILURE",
+  "generated_at": "2026-10-04T09:11:25.347Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium private export and decoded readback; seeded synthetic participants and RPC, not live JWT/SQL/Android or deployment.",
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "686580b9616bec8aa3b3b6efd8528fc9a8e88643f30680791239d57cc86eebcb",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T09:11:26.290Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual Chromium 390x844 downloads and decoded readback; case/meeting/outcomes are seeded synthetic transport, not SQL/JWT/live accounts",
+    "downloads": [
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/outcome-export-gzip.json",
+        "encoding": "gzip-base64",
+        "file_bytes": 1971,
+        "original_utf8_bytes": 5231,
+        "sha256": "648d244bde898485ed0ca34ceb09e4739d51cd83d7e2fe9fc0e3e9cbdc5a6cae"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/outcome-export-plain.json",
+        "encoding": "utf8-base64",
+        "file_bytes": 7139,
+        "original_utf8_bytes": 5231,
+        "sha256": "b5ca51cac3e91ff20bcd2953639f099d705da1baf27854fd858164d5720a4a36"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/recovered-503.json",
+        "sha256": "058b6cc3a3004e67e8632a62755ff5b09d5aabc7a72f464f65f910a361169d83",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/recovered-409.json",
+        "sha256": "2e68425af8487d679b01fe798740ab4fd2b2523378d9d64958aa241532c4b9d8",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/recovered-429.json",
+        "sha256": "b66fa117a158651de46e9b5fedd7d2ce44f31675b42839c74250488e41e05468",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/recovered-500.json",
+        "sha256": "fcb5c38ebc2b2906a2e5c972127fe7f0d70b157b4454057e8f235863ee6068b7",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      },
+      {
+        "file": "artifacts/overnight-20261004/export-recovery/mutation/recovered-network.json",
+        "sha256": "e35eae4cb091b5021e6f9467c872d19490e3bc83ab11385f67f1a700f8c6dacb",
+        "file_bytes": 7139,
+        "encoding": "utf8-base64"
+      }
+    ],
+    "checks": {
+      "transient_failure_keeps_chat_and_explicit_retry": [
+        503,
+        429,
+        500,
+        "network"
+      ],
+      "changed_agreement_clears_stale_export": true,
+      "manual_retry_preserves_format_and_decodes_fresh_source": true,
+      "export_has_no_automatic_retry_or_writes": true,
+      "auth_failure_purges_private_data_without_file": [
+        401,
+        403
+      ]
+    },
+    "explicit_plain_and_gzip_downloads": true,
+    "error": "Late failed export changed logout status\n+ actual - expected\n\n+ 'Не вдалося створити приватний архів. Чат і твій текст збережені; повтори завантаження пізніше.'\n- 'Ти вийшов/вийшла з Synera.'\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "031b973252efa05dfa8a5ae7594d6aa2243d5b96785e1b6adecd875b14040d65",
+    "tools/outcome-export-recovery-browser.mjs": "009cb77edca8a0e5621c5d97457393957d25a1876a48d6985f2c7d56f5423ee4"
+  }
+}

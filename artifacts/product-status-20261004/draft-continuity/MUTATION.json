@@ -1,0 +1,31 @@
+{
+  "status": "MUTANT_REJECTED_NEXT_DRAFT_LOSS",
+  "generated_at": "2026-10-04T15:28:51.218Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "42db023cbc7db665972af4c624372e31d7f53a36d5689a40134ddea420f0ac5c",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T15:28:44.065Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "rejected_send_keeps_chat_and_draft_manual_retry_once": true
+    },
+    "browser_engine": {
+      "version": "154.0.8037.97",
+      "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+    },
+    "error": "Previous send erased the next draft\n+ actual - expected\n\n+ ''\n- 'Наступна думка × POST 💛 <script>literal</script>  '\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "b3c390b53515c3a079d11da28bf57201fb9fe753c1851ff3f00bd5f384443146",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/message-draft-continuity-browser.mjs": "ca8e172b8dc6a699382609f4ef97a06f30b4ede30b6031b1363ba66b41d32cd7"
+  }
+}

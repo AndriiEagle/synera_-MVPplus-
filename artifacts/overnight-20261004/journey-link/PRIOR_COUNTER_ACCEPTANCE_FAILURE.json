@@ -1,0 +1,58 @@
+{
+  "status": "PASS_LOCAL_MEETING_JOURNEY_LINK_CLOSURE",
+  "generated_at": "2026-10-04T07:56:51.158Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium bridge, synthetic two-account transport; not HTTP JWT, real users, Maps service, deployment or physical Android",
+  "source_sha256": {
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.mjs": "2285e7d1a7b3d1939debe8897ffa5654e0376c926d34d670ef206f86c54c01b1",
+    "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+    "tools/meeting-journey-link-acceptance.mjs": "1c74fc70bc715200bfb259c1e5e4f1d1085a9ec5b678eecff015f5c2f9ed3357"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/meeting-address-navigation-browser.mjs": "b7cc2928e2921e23e0edbef0b64e97d4a18dd5fe8d3df87b2c47f0d9861f1f36",
+    "tools/meeting-location-agreement-browser.mjs": "20eb7f0ffe0b7c58969f6c2767c6e754c0740492fd8f1950701f9d7a0d99d409",
+    "tools/location-browser-acceptance.mjs": "06b289cc0fdef30484b2d26d7cfdff1f8a22372134b0d8450eddc733d1a57211",
+    "web_launch/dist-neon-location-agreement-20261004/release.json": "f7fcb93e7ee09661a468433b973c53f16ada4acba5737f401fdfc8ff8ecaaf62",
+    "artifacts/overnight-20261004/location-agreement/ACCEPTANCE.json": "c60984f00082c811d6de5a629fcdc9281701403143cbdd203f3ae42757c7e3bf"
+  },
+  "base_commit": "4c6b0e238ae4513da4d40e4ec001b65117432b12",
+  "mutation": "REJECTED: removing only hint acceptance/ownership guard starts a second lookup for cancelled meeting; downstream client still rejects",
+  "bridge_checks": 21,
+  "navigation_checks": 21,
+  "navigation_runner_sha256": "1b266cd027397d48d4eea1d9211c66c245445bfb44a2d00b0adeda0e42dae8be",
+  "gps_checks": 15,
+  "gps_runner_sha256": "4bff4249da9c3b2d20d5cdd69f8ce5a66a0bd75b72ff5a54009cf89bf8f621cf",
+  "reused_proof": "Exact SQL/API source maps. Store/client code and unit dependency suite unchanged; prior 41 tests historical, not rerun. Address/chat, navigation and GPS UI rerun after controller/component changes.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-journey-link-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "selected-conversation-390x844.png": "b433f753f8f6e0bdba5e474ab9659525e0649a8e559f45d7fc60d799dc0bd6be",
+    "meeting-address-current-390x844.png": "b8b57d6d272f13118d05d73e8b0d762b914f90a8187fc099132cf6a5997296dc",
+    "meeting-address-atelier-390x844.png": "14901df929200b4444724fea12e5c583a983555ae5705d5c6a82349859fb3d87"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-journey-link-20261004",
+  "release_sha256": "5896f2b45e2c22cc2ba4cf598851a5f229a3ed876a6aeb638fef8d8dc9debde0",
+  "published": false,
+  "google_maps": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

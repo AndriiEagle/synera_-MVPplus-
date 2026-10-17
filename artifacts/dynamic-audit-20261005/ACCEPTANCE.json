@@ -1,0 +1,59 @@
+{
+  "status": "PASS_LOCAL_DYNAMIC_AUDIT_CLOSURE",
+  "generated_at": "2026-10-05T08:14:37.520Z",
+  "base_commit": "78b1594ca0324b13c0873c5b21d9cc55dbdcfdbb",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "2839ea374172456b2562e14c935a5b1c6390114664520b1f03f35ab3d51d1210",
+    "tools/journey-dynamic-audit.mjs": "2fb0a43161045dc2439b6714d616f2b4f88565ea000ee71a4bdf2ca6ad79861c",
+    "tools/journey-dynamic-audit-acceptance.mjs": "c031ceb28e34bcbb94eb2dddc3fc101d44eb02688926570af6019bcce9d4b8a8"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/profile-store.mjs": "798623e2828ddb16efbb786af81525d656890351a18ca14240fb39b811cdda49",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "artifacts/overnight-20261004/message-recovery/ACCEPTANCE.json": "8c321c2307c9203576aa31f6e89bac0b47f9486fdbe01cabf3cc00bfa0bdede0",
+    "web_launch/dist-neon-message-recovery-20261004/release.json": "2ba6345d489ba5c1a8df6c8bd9dc6cdc5fd216fb541b3fc06ac56f90922b9f3a"
+  },
+  "unchanged_outside_renderer_sha256": "12d9d124f878b530e4f242f0ce5d79c3432925d605ce856f8f03b9144e398719",
+  "message_browser_groups": 18,
+  "outcome_browser_groups": 17,
+  "counts_overlap": true,
+  "screenshot_sha256": {
+    "01-public-entry.jpg": "7c72aa54968646817f180e41afe4e39934f828eacfe36716520c59ee4cda313a",
+    "green/03-local-start.png": "fd77267d83520180aa4115c9c19a40cd290848e6af971924569e2ea8dda91d84",
+    "green/04-terms-reviewed.png": "16fcce63246d59e447c1dda5c4eb97457bc9a204de7b9441ed859389ab172266",
+    "green/05-private-chat.png": "c8896d591626f74b0b927d51eff6e4dfaf6fd0633bc32caea8a9513d7b508c1c",
+    "green/06-reading-preserved.png": "5f4fbc4678511599691c5a509d1f72a4cc5983195cd8c25fa6cfee1478cc6f39",
+    "green/07-current-after-atelier.png": "b9aedc70c3a2768320021bf450abf0d3a1711882279e219b3b7e1333fd2bd3ba",
+    "outcome/outcome-current-390x844.png": "aff03dd398cf96b3dd454a4e93b761b8440567308d9c261b15f6c86de24d6629",
+    "outcome/outcome-confirmed-panel.png": "d7fb370e256bd3d7fe22c80d8d2128d9ed4d29f38b6f31b8a6b802a6c0de62f3",
+    "outcome/outcome-atelier-390x844.png": "ac34097f1a02f345ff658044f459ac2efcb486cd5da29682b7d901614b44533f"
+  },
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-dynamic-audit-20261005",
+    "files": 97,
+    "published": false
+  },
+  "public_files": 97,
+  "manifest_rows": 96,
+  "candidate": "dist-neon-dynamic-audit-20261005",
+  "release_sha256": "b2faaeae1ed075afbb0f5ba7314d9fc547d315ff1cef9930c57690ac51bd643e",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "limits": "Unchanged visible transcript only. Incoming/changed history may still rebuild. Synthetic transports; no live user/product/emotion acceptance. Manual resend may duplicate. SQL/gateway unchanged; no SQL/full-unit rerun."
+}

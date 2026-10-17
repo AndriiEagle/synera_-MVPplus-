@@ -1,0 +1,22 @@
+{
+  "scope": "Local Chromium fixtures only; individual checks do not establish full acceptance",
+  "checks": {
+    "same_room_409_and_reselection_preserve_draft": true,
+    "room_switch_clears_draft_and_ignores_old_response": true,
+    "return_does_not_restore_draft_and_leave_clears_access": true,
+    "axe_violations": 0,
+    "layout": {
+      "viewport": 390,
+      "documentWidth": 390,
+      "overflowing": []
+    },
+    "browser_storage": {
+      "local": [],
+      "session": [],
+      "caches": [],
+      "databases": []
+    },
+    "session_401_clears_private_dom": true,
+    "page_errors": []
+  }
+}

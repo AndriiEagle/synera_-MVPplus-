@@ -1,0 +1,28 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T02:45:32.558Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true,
+    "retry_keeps_text_and_intent": true,
+    "giver_cannot_self_accept": true,
+    "dispute_resolves_without_erasing_history": true,
+    "withdrawal_disables_outcome_actions": true,
+    "both_receiver_acceptances_confirm_all_results": true,
+    "current_default": true,
+    "axe_violations": 0,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "no_private_storage": true,
+    "atelier_opt_in_reversible_and_reduced_motion": true,
+    "flag_closed_ui": true,
+    "late_read_does_not_restore_private_dom": true
+  },
+  "error": "Private outcome DOM survived logout\n+ actual - expected\n\n+ 'Ти даєшОдин перевірений екранКритерій: Обидва переглянули екран на телефоніПрийнято одержувачемДоказ: Другий фактичний тестовий результатПеревірка: Перевірено саме погоджений критерій × Zürich 💛Тест Андрій дає тобіОдин працюючий прототипКритерій: Відкривається й виконує узгоджений сценарійПрийнято одержувачемДоказ: https://example.com/доказ × Zürich 💛 <script>literal</script>Перевірка: Перевірено саме погоджений критерій × Zürich 💛'\n- ''\n"
+}

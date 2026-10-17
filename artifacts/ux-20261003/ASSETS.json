@@ -1,0 +1,87 @@
+{
+  "sourceIconsRevision": "500620a2e8123f8d1db191538886dc0c223f69a9",
+  "portraitLicense": "Individual images CC0 at dataset License section; compilation metadata not ingested",
+  "assets": [
+    {
+      "file": "web_launch\\icon-map-pin.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/map-pin.svg",
+      "sha256": "16f1042a62f1bda20ebab8bfc1cb79c0be285c980dea6c2c733a17902631405b",
+      "bytes": 359,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-message-circle.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/message-circle.svg",
+      "sha256": "146f39740fe50844394d56ae1f8821937655bcfff3842bf6fe8ffc0bcd324076",
+      "bytes": 347,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-handshake.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/handshake.svg",
+      "sha256": "f58638064a1884e256895720c9a665d9e98cfc6935c52e14782ce0e84ecdad02",
+      "bytes": 505,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-archive.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/archive.svg",
+      "sha256": "78c732e34e232db63af06a2330b4448045cfdf49b48b59f2d31922df54c7bb17",
+      "bytes": 340,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-code-xml.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/code-xml.svg",
+      "sha256": "a6d2110227be375be21da7324d3c09262c1bf019d06bdeab356d515342ab7cce",
+      "bytes": 294,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-pen-tool.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/pen-tool.svg",
+      "sha256": "a31b434a7b7e379bd37b05fe7ae4b632c0cf38baf7463a726961ce65dd0cb089",
+      "bytes": 544,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\icon-megaphone.svg",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/500620a2e8123f8d1db191538886dc0c223f69a9/icons/megaphone.svg",
+      "sha256": "279096a06626ec84f76a6358cf25b919d77d6fa53e82892397c0f2a907602850",
+      "bytes": 431,
+      "license": "Lucide ISC/MIT source license"
+    },
+    {
+      "file": "web_launch\\portrait-mara.webp",
+      "sourceFile": "artifacts\\ux-20261003\\assets-source\\portrait-1.png",
+      "sourceSha256": "8b59550e67054550bc0398b5ee1ba3e9008aaff733671ab526ced38992a7500a",
+      "sha256": "947dfdb6e8346fb7fb976a08508daa10506d16db336926f6ed8df1ae9c14e455",
+      "bytes": 5036,
+      "license": "CC0 1.0 individual image",
+      "synthetic": true,
+      "use": "Illustration of fictional profile; no appearance or demographic matching"
+    },
+    {
+      "file": "web_launch\\portrait-noor.webp",
+      "sourceFile": "artifacts\\ux-20261003\\assets-source\\portrait-2.png",
+      "sourceSha256": "158c4467b820e39490474369433d55f0bd9f5701f12e9776e4f8bbbbbdf0d264",
+      "sha256": "be525165286f44471bae3097a61a2cd17f4b0b317d4e068958b10aad6aca0309",
+      "bytes": 8714,
+      "license": "CC0 1.0 individual image",
+      "synthetic": true,
+      "use": "Illustration of fictional profile; no appearance or demographic matching"
+    },
+    {
+      "file": "web_launch\\portrait-leo.webp",
+      "sourceFile": "artifacts\\ux-20261003\\assets-source\\portrait-3.png",
+      "sourceSha256": "31938e783365f99cecfd6cebb7088336f110bee4b955b900a6bcc42ae8325abb",
+      "sha256": "a3accb4a89db6e67ca069941dc63efb5ecd46ab286e035cdaad89dc0f276d22f",
+      "bytes": 5452,
+      "license": "CC0 1.0 individual image",
+      "synthetic": true,
+      "use": "Illustration of fictional profile; no appearance or demographic matching"
+    }
+  ],
+  "newModelGenerationCalls": 0,
+  "providerUsd": 0
+}

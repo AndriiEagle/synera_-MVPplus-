@@ -1,0 +1,32 @@
+{
+  "status": "PASS_LOCAL_MOBILE_CANDIDATE",
+  "candidate": "web_launch/dist-neon-mobile-final-20261007",
+  "files": 97,
+  "manifest_rows": 96,
+  "release_sha256": "a80d283892665eaf3800060f5154e3f37eae545ff5f9186fcbb35efd18b7315c",
+  "source_selection": {
+    "base": "a284a1eda34a85b658cf03ec2dd3a1fbfcb2cad8",
+    "journey_ui": "committed HEAD bytes; foreign dirty work excluded",
+    "changed_sources": {
+      "get.html": "446e548d72692927f8d44dba27391b9f1afe8ebf3afa7689cdec514c7da885a5",
+      "product-access.mjs": "07ac6e3dec6c1ac449e8437070965d5b598e8afe8e417fb3c04a94efa36eef86",
+      "pwa.mjs": "1a8ed6b707a37521ae6b8bcd980a5e257f95c289a8742ecd1419ef2e7edad296",
+      "real-journey.css": "d5590b6e11236c279436825dd9f2f33cf3293843c11e08604498751ff94a1298",
+      "style.css": "71969391de4b29c88c097b47caf6e44a6a38d7362accd5a4aeecaaf7c1d7cb3c",
+      "summit.css": "e584c375af0779a6090753a6778864200469af2f0fc73ca5f59d1a17024dfe1f",
+      "triangle.css": "33757c558fe7cec6dcca6976636926791da6c7961bda66cc8b653c7ddc76a15a"
+    }
+  },
+  "published": false,
+  "physical_android": false,
+  "physical_iphone": false,
+  "native_emulator": false,
+  "pricing_runner_limits": {
+    "tests_passed": 5,
+    "command_exit": 1,
+    "non_test_errors": 2,
+    "cause": "suite/teardown timeout after all five passed",
+    "cta_text_and_center_hit_target": "PASS before each screenshot"
+  },
+  "scope": "Final hashes; unchanged assets byte-identical to previous candidate. Catalogue excluded from user-flow acceptance; see responsive report."
+}

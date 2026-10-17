@@ -1,0 +1,57 @@
+{
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC",
+  "candidate": "dist-neon-opus-pass3-webkit-20261010",
+  "release_sha256": "a80d403432041784e5ea868d055f127e91eb32565923de9b90dd3d2833a9d740",
+  "engine": "webkit",
+  "scope": "Actual desktop browser geometry, fixture accounts, 320x568, German/English, Current/Atelier; not physical keyboard or live server.",
+  "observations": [
+    {
+      "atelier": false,
+      "before": {
+        "status_top": 0,
+        "status_bottom": 77,
+        "status_height": 77,
+        "field_top": 315.453125,
+        "field_bottom": 403.453125,
+        "focused": "real-message",
+        "draft": "My next unsent thought",
+        "viewport": 568
+      },
+      "after": {
+        "status_top": 0,
+        "status_bottom": 172,
+        "status_height": 172,
+        "field_top": 410.453125,
+        "field_bottom": 498.453125,
+        "focused": "real-message",
+        "draft": "My next unsent thought",
+        "viewport": 568
+      }
+    },
+    {
+      "atelier": true,
+      "before": {
+        "status_top": 0,
+        "status_bottom": 77,
+        "status_height": 77,
+        "field_top": 347.046875,
+        "field_bottom": 403.046875,
+        "focused": "real-message",
+        "draft": "My next unsent thought",
+        "viewport": 568
+      },
+      "after": {
+        "status_top": 0,
+        "status_bottom": 172,
+        "status_height": 172,
+        "field_top": 442.046875,
+        "field_bottom": 498.046875,
+        "focused": "real-message",
+        "draft": "My next unsent thought",
+        "viewport": 568
+      }
+    }
+  ],
+  "failures": [],
+  "engine_version": "26.6"
+}

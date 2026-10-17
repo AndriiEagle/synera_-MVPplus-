@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-08T17:59:45.7304919+02:00",
+  "status": "ANDROID_UI_AND_CHROME_NOT_ACCEPTED",
+  "userObservation": "Chrome click followed by black screen and unresponsive Back",
+  "emulatorProcessCount": 0,
+  "adbDeviceState": "No attached devices in adb devices -l",
+  "graphicsErrors": {
+    "glPixelStorei0x501": 59,
+    "glReadPixels0x506": 43
+  },
+  "windowsEvidence": {
+    "matchingEvents": 1,
+    "radarPreLeak64": 1,
+    "crashEvent1000": 0,
+    "meaning": "Process exit observed; no crash cause established. RADAR pre-leak event is not crash acceptance."
+  },
+  "freeCBytes": 9616445440,
+  "hypothesis": "Chrome Vulkan/GPU compatibility, unconfirmed",
+  "officialSource": "https://developer.android.com/studio/run/emulator-troubleshooting#cannot-open-webpage-correctly",
+  "proposedCounterfactual": "Same initialized C AVD, host GPU and resource guards; explicitly disable Vulkan only. Not executed.",
+  "limits": [
+    "Synera Android flow not executed",
+    "Physical Android and iPhone not accepted",
+    "No browser-launch policy bypass",
+    "No install or data deletion"
+  ],
+  "sourceHashes": {
+    "stdout": "75307D3FC6A6E854DA1ECA1E134EC7C0E3FD58E47921A10BE71FCC819168250C",
+    "stderr": "5DBC7AA269FC8065DF2F0907B9934D00C2A6878CA20732D2FB834E430DED331B"
+  },
+  "foreignJourneyHash": "68D8498139426050E54CD85C3347092701BAC990CCBD9FB31205A5878BD4D33B",
+  "externalProviderCalls": 0,
+  "externalProviderUsd": 0
+}

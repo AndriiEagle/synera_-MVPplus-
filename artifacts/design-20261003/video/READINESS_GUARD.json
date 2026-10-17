@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "rejected_status": "DRAFT_VARIANT_PENDING",
+  "capture_started": false,
+  "new_capture_outputs": 0,
+  "provider_calls": 0,
+  "scope": "Deterministic readiness rejection before browser creation"
+}

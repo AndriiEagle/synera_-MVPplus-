@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-10-04T15:32:38.014Z",
+  "scope": "Read-only unauthenticated public pages/config; no account, write, deployment or model-provider call",
+  "urls": [
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/config.json",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/config.json",
+      "status": 200,
+      "bytes": 66,
+      "sha256": "77787367a429c262f06142ed862e818462eb8d9808ae31812d8170336d820ae7",
+      "public_flags": {
+        "registrationEnabled": false
+      },
+      "journey_ai_enabled": false
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey.html",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey.html",
+      "status": 404,
+      "bytes": 1148,
+      "sha256": "b760ac13d36e46b90f3205fbbcd442bc29517815f9e7a23319d7b0e159d7e75c"
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/get.html",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/get",
+      "status": 200,
+      "bytes": 5797,
+      "sha256": "395a21bbfa57c196d6c2994a1822e0ff29591caa708221ade3064b9f8c1806ed"
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/",
+      "status": 200,
+      "bytes": 8969,
+      "sha256": "32fe7f675a0377b0c4d891f4359f1d76df902ea50b7861d8a1c4e75eaf7dbbfc",
+      "title": "Synera — Make room for each other."
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey",
+      "status": 404,
+      "bytes": 1148,
+      "sha256": "e32d0a25d8e8337435a4a9aa668342d7ed04737148cf2ea1184d0282c21fc9c3",
+      "title": "Synera — сторінку не знайдено"
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/config.json",
+      "final_url": "https://synera-pilot.pages.dev/config.json",
+      "status": 200,
+      "bytes": 181,
+      "sha256": "32defd13ad01ed3ba2d2bfeaa02027985aafe6faeec726ab76425f89d16eadf4",
+      "public_flags": {
+        "backend": "neon",
+        "registrationEnabled": true,
+        "pilotSafetyEnabled": true,
+        "realPilotEnabled": true
+      },
+      "journey_ai_enabled": false
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/real-journey.html",
+      "final_url": "https://synera-pilot.pages.dev/real-journey.html",
+      "status": 404,
+      "bytes": 21,
+      "sha256": "d2dfdc9511fbeaa0701d1f8730f4989313b062ca1b61a2bd8bed8f4f5d654b5d"
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/real-journey",
+      "final_url": "https://synera-pilot.pages.dev/real-journey",
+      "status": 404,
+      "bytes": 21,
+      "sha256": "d2dfdc9511fbeaa0701d1f8730f4989313b062ca1b61a2bd8bed8f4f5d654b5d"
+    }
+  ],
+  "finished_at": "2026-10-04T15:36:39.890Z"
+}

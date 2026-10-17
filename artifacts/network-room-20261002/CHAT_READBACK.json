@@ -1,0 +1,50 @@
+{
+  "checked_at_utc": "2026-10-02 20:50:53 UTC",
+  "scope": "Fresh supported read_thread API readback; no chat restarted; no new provider dispatch",
+  "threads": [
+    {
+      "id": "01a0fda9-b77a-7c72-8b65-0656f1a51094",
+      "title": "64. Synera — візуальний аудит Android — 02.10.2026",
+      "status": {
+        "type": "notLoaded"
+      },
+      "latest_turn": "01a0fdb0-8e9a-7a03-9602-664a020bc36a",
+      "turn_status": "interrupted",
+      "completion": "NOT_ACCEPTED",
+      "note": "New turn interrupted; no accepted task artifact"
+    },
+    {
+      "id": "01a0fdaa-1837-7120-b6cc-ef209e9d868a",
+      "title": "65. Synera — преміальний дизайн і перемикач — 02.10.2026",
+      "status": {
+        "type": "notLoaded"
+      },
+      "latest_turn": "01a0fd83-7bae-76a0-83dd-2552e9415f59",
+      "turn_status": "interrupted",
+      "completion": "NOT_ACCEPTED",
+      "note": "Latest turn is inherited parent history; no completed task-specific artifact"
+    },
+    {
+      "id": "01a0fdaa-410b-72d2-822a-7bdadb1f4cd2",
+      "title": "66. Synera — два реальні відео інтерфейсу — 02.10.2026",
+      "status": {
+        "type": "notLoaded"
+      },
+      "latest_turn": "01a0fd83-7bae-76a0-83dd-2552e9415f59",
+      "turn_status": "interrupted",
+      "completion": "NOT_ACCEPTED",
+      "note": "Latest turn is inherited parent history; no completed task-specific artifact"
+    },
+    {
+      "id": "01a0fdab-a0f0-7bf1-9e15-6e298ac1e909",
+      "title": "67. Synera — незалежний Vision-аудит до USD2 — 02.10.2026",
+      "status": {
+        "type": "notLoaded"
+      },
+      "latest_turn": "01a0fdb0-9203-7a52-a0b3-e4ac277b27b4",
+      "turn_status": "interrupted",
+      "completion": "NOT_ACCEPTED",
+      "note": "New turn interrupted; no accepted task artifact"
+    }
+  ]
+}

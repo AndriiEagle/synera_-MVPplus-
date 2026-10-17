@@ -1,0 +1,10 @@
+{
+  "status": "NOT_ACCEPTED",
+  "scope": "Actual desktop Chromium 390x844; same-origin gateway with synthetic accounts/persistence. Not SQL or signed JWT/physical Android/live proof",
+  "checks": [],
+  "external": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "client_sha256": "c35ad5a1ac73eb00f1393d4e0e57c29a0b03b8ec707ff1777038bf9f2867d277",
+  "error": "locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-meetings').getByRole('button', { name: 'Відкрити розмову', exact: true })\u001b[22m\n"
+}

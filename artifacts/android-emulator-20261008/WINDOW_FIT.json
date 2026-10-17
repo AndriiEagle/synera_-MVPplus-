@@ -1,0 +1,39 @@
+{
+  "workingArea": {
+    "Location": {
+      "IsEmpty": true,
+      "X": 0,
+      "Y": 0
+    },
+    "Size": {
+      "IsEmpty": false,
+      "Width": 1536,
+      "Height": 816
+    },
+    "X": 0,
+    "Y": 0,
+    "Width": 1536,
+    "Height": 816,
+    "Left": 0,
+    "Top": 0,
+    "Right": 1536,
+    "Bottom": 816,
+    "IsEmpty": false
+  },
+  "status": "WINDOW_BOUNDS_CONTAINED",
+  "after": {
+    "Left": 180,
+    "Top": 16,
+    "Right": 518,
+    "Bottom": 774
+  },
+  "pid": 29996,
+  "androidRestarted": false,
+  "before": {
+    "Left": 413,
+    "Top": -661,
+    "Right": 815,
+    "Bottom": 240
+  },
+  "userReadback": "PENDING"
+}

@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-10-03T08:30:28.863622+00:00",
+  "status": "ACCEPTED_LOCAL_RECORDINGS_WITH_LIMITS",
+  "source_pins_verified": 19,
+  "mp4_hashes_verified": 2,
+  "worker_decoded_frames_reviewed": 14,
+  "root_decoded_frames_reviewed": [
+    {
+      "file": "current/decoded-frames/02.png",
+      "sha256": "5d773a66ed462d297254304965a6ae34dbb6509a9e8de1272f9921f6a94fa904",
+      "verdict": "Coherent actual UI, readable synthetic-data labels and no false live feature claim"
+    },
+    {
+      "file": "atelier/decoded-frames/02.png",
+      "sha256": "2d800edff78d52df9b22e844589db6fd2008ea95ada7517a8d95c10c71f782e0",
+      "verdict": "Coherent actual UI, readable synthetic-data labels and no false live feature claim"
+    },
+    {
+      "file": "atelier/decoded-frames/05.png",
+      "sha256": "bb651a17d8933c7cb17e4804dd24999a0a912fe402733f561f09096191544b79",
+      "verdict": "Coherent actual UI, readable synthetic-data labels and no false live feature claim"
+    },
+    {
+      "file": "atelier/decoded-frames/07.png",
+      "sha256": "1d22872e1fa442c1f97ba9a733ac8384cb34d3c650de940478693c57ea7111a9",
+      "verdict": "Coherent actual UI, readable synthetic-data labels and no false live feature claim"
+    }
+  ],
+  "technical_qa": "FINAL_QA.json: ffprobe, H264/25fps/390x844 and full decode PASS",
+  "human_artistic_acceptance": "PENDING",
+  "limits": [
+    "Chromium computer emulation, not physical Android",
+    "Local demo clicks and synthetic people, not production meeting or LinkedIn publication",
+    "Atlas is a schematic, not live Google Maps; no generated voice"
+  ]
+}

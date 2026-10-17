@@ -1,0 +1,13 @@
+
+=== Auditing index.html ===
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 42, Incomplete: 1
+
+=== Auditing catalogue.html ===
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 41, Incomplete: 1
+
+Detailed report written to: C:\Users\Andrii\Desktop\synera-premium-pwa-variant\web_launch\a11y_audit_report.json
+Summary written to: C:\Users\Andrii\Desktop\synera-premium-pwa-variant\web_launch\a11y_audit.md
+
+✅ No critical or serious violations

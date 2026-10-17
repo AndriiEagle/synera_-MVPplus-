@@ -1,0 +1,1740 @@
+{
+  "status": "PREPARED_AWAITING_C_SCOPE_APPROVAL",
+  "source": "D:/SyneraAndroid/sdk",
+  "destination": "C:/Users/Andrii/.codex/tmp/synera-android-local",
+  "sourceFiles": 431,
+  "sourceBytes": 3590379927.0,
+  "maxTotalBytes": 7516192768,
+  "minimumFreeBytes": 8589934592,
+  "freeBytesObserved": 16527286272,
+  "newDataPartitionBytes": 2147483648,
+  "sourceMutation": false,
+  "copyExecuted": false,
+  "oldAvdReused": false,
+  "files": [
+    {
+      "relative": "emulator\\concrt140.dll",
+      "bytes": 312472
+    },
+    {
+      "relative": "emulator\\crashpad_handler.exe",
+      "bytes": 877720
+    },
+    {
+      "relative": "emulator\\crashreport.exe",
+      "bytes": 1741464
+    },
+    {
+      "relative": "emulator\\emulator-check.exe",
+      "bytes": 15760024
+    },
+    {
+      "relative": "emulator\\emulator.exe",
+      "bytes": 23458968
+    },
+    {
+      "relative": "emulator\\libabseil_dll.dll",
+      "bytes": 832664
+    },
+    {
+      "relative": "emulator\\libandroid-emu-agents.dll",
+      "bytes": 30360
+    },
+    {
+      "relative": "emulator\\libandroid-emu-base-logging.dll",
+      "bytes": 65688
+    },
+    {
+      "relative": "emulator\\libandroid-emu-curl.dll",
+      "bytes": 463512
+    },
+    {
+      "relative": "emulator\\libandroid-emu-metrics.dll",
+      "bytes": 12210328
+    },
+    {
+      "relative": "emulator\\libandroid-emu-protos.dll",
+      "bytes": 1437848
+    },
+    {
+      "relative": "emulator\\libglib2_windows_msvc-x86_64.dll",
+      "bytes": 1193112
+    },
+    {
+      "relative": "emulator\\liblibprotobuf.dll",
+      "bytes": 3743384
+    },
+    {
+      "relative": "emulator\\LICENSE",
+      "bytes": 524
+    },
+    {
+      "relative": "emulator\\mksdcard.exe",
+      "bytes": 26776
+    },
+    {
+      "relative": "emulator\\msvcp140_1.dll",
+      "bytes": 25752
+    },
+    {
+      "relative": "emulator\\msvcp140_2.dll",
+      "bytes": 257688
+    },
+    {
+      "relative": "emulator\\msvcp140_atomic_wait.dll",
+      "bytes": 40088
+    },
+    {
+      "relative": "emulator\\msvcp140_codecvt_ids.dll",
+      "bytes": 21656
+    },
+    {
+      "relative": "emulator\\msvcp140.dll",
+      "bytes": 565400
+    },
+    {
+      "relative": "emulator\\netsimd.exe",
+      "bytes": 23328920
+    },
+    {
+      "relative": "emulator\\nimble_bridge.exe",
+      "bytes": 15903384
+    },
+    {
+      "relative": "emulator\\NOTICE.csv",
+      "bytes": 45855
+    },
+    {
+      "relative": "emulator\\NOTICE.txt",
+      "bytes": 241466
+    },
+    {
+      "relative": "emulator\\package.xml",
+      "bytes": 18597
+    },
+    {
+      "relative": "emulator\\qemu-img.exe",
+      "bytes": 1584280
+    },
+    {
+      "relative": "emulator\\qsn.exe",
+      "bytes": 34746008
+    },
+    {
+      "relative": "emulator\\source.properties",
+      "bytes": 103
+    },
+    {
+      "relative": "emulator\\vccorlib140.dll",
+      "bytes": 341656
+    },
+    {
+      "relative": "emulator\\vcruntime140_1.dll",
+      "bytes": 39576
+    },
+    {
+      "relative": "emulator\\vcruntime140_threads.dll",
+      "bytes": 28312
+    },
+    {
+      "relative": "emulator\\vcruntime140.dll",
+      "bytes": 110232
+    },
+    {
+      "relative": "emulator\\bin64\\cygblkid-1.dll",
+      "bytes": 213696
+    },
+    {
+      "relative": "emulator\\bin64\\cygcom_err-2.dll",
+      "bytes": 23224
+    },
+    {
+      "relative": "emulator\\bin64\\cyge2p-2.dll",
+      "bytes": 39096
+    },
+    {
+      "relative": "emulator\\bin64\\cygext2fs-2.dll",
+      "bytes": 267960
+    },
+    {
+      "relative": "emulator\\bin64\\cyggcc_s-1.dll",
+      "bytes": 120504
+    },
+    {
+      "relative": "emulator\\bin64\\cygiconv-2.dll",
+      "bytes": 1044664
+    },
+    {
+      "relative": "emulator\\bin64\\cygintl-8.dll",
+      "bytes": 52408
+    },
+    {
+      "relative": "emulator\\bin64\\cyguuid-1.dll",
+      "bytes": 26808
+    },
+    {
+      "relative": "emulator\\bin64\\cygwin1.dll",
+      "bytes": 3380584
+    },
+    {
+      "relative": "emulator\\bin64\\e2fsck.exe",
+      "bytes": 260280
+    },
+    {
+      "relative": "emulator\\bin64\\resize2fs.exe",
+      "bytes": 58040
+    },
+    {
+      "relative": "emulator\\bin64\\tune2fs.exe",
+      "bytes": 78520
+    },
+    {
+      "relative": "emulator\\drivers\\Android_USB_Assistant_Install.bat",
+      "bytes": 269
+    },
+    {
+      "relative": "emulator\\drivers\\Android_USB_Assistant.cat",
+      "bytes": 14932
+    },
+    {
+      "relative": "emulator\\drivers\\Android_USB_Assistant.inf",
+      "bytes": 1553
+    },
+    {
+      "relative": "emulator\\drivers\\Install_Drivers.bat",
+      "bytes": 178
+    },
+    {
+      "relative": "emulator\\drivers\\UsbAssist_Install.bat",
+      "bytes": 1183
+    },
+    {
+      "relative": "emulator\\drivers\\usbassist.cat",
+      "bytes": 11698
+    },
+    {
+      "relative": "emulator\\drivers\\UsbAssist.inf",
+      "bytes": 1542
+    },
+    {
+      "relative": "emulator\\drivers\\UsbAssist.sys",
+      "bytes": 39176
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\allocator.h",
+      "bytes": 2656
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\array.h",
+      "bytes": 9457
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\base.h",
+      "bytes": 17949
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\buffer_ref.h",
+      "bytes": 1564
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\buffer.h",
+      "bytes": 7575
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\code_generator.h",
+      "bytes": 3075
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\code_generators.h",
+      "bytes": 8526
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\default_allocator.h",
+      "bytes": 2445
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\detached_buffer.h",
+      "bytes": 3375
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\file_manager.h",
+      "bytes": 1447
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\flatbuffer_builder.h",
+      "bytes": 64211
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\flatbuffers.h",
+      "bytes": 11282
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\flatc.h",
+      "bytes": 4169
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\flex_flat_util.h",
+      "bytes": 1256
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\flexbuffers.h",
+      "bytes": 68927
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\grpc.h",
+      "bytes": 10231
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\hash.h",
+      "bytes": 3754
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\idl.h",
+      "bytes": 48604
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\minireflect.h",
+      "bytes": 14078
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\reflection_generated.h",
+      "bytes": 60098
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\reflection.h",
+      "bytes": 22609
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\registry.h",
+      "bytes": 4650
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\stl_emulation.h",
+      "bytes": 19621
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\string.h",
+      "bytes": 2267
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\struct.h",
+      "bytes": 1630
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\table.h",
+      "bytes": 6944
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\util.h",
+      "bytes": 27330
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\vector_downward.h",
+      "bytes": 8955
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\vector.h",
+      "bytes": 13905
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\verifier.h",
+      "bytes": 13858
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\pch\\flatc_pch.h",
+      "bytes": 1158
+    },
+    {
+      "relative": "emulator\\include\\flatbuffers\\pch\\pch.h",
+      "bytes": 1033
+    },
+    {
+      "relative": "emulator\\lib\\adb_service.proto",
+      "bytes": 3291
+    },
+    {
+      "relative": "emulator\\lib\\advancedFeatures.ini",
+      "bytes": 28490
+    },
+    {
+      "relative": "emulator\\lib\\ca-bundle.pem",
+      "bytes": 258424
+    },
+    {
+      "relative": "emulator\\lib\\emu-original-feature-flags.protobuf",
+      "bytes": 23491
+    },
+    {
+      "relative": "emulator\\lib\\emulated_bluetooth_device.proto",
+      "bytes": 14655
+    },
+    {
+      "relative": "emulator\\lib\\emulated_bluetooth.proto",
+      "bytes": 2073
+    },
+    {
+      "relative": "emulator\\lib\\emulator_access.json",
+      "bytes": 6499
+    },
+    {
+      "relative": "emulator\\lib\\emulator_controller.proto",
+      "bytes": 82399
+    },
+    {
+      "relative": "emulator\\lib\\emulator_stats.proto",
+      "bytes": 1840
+    },
+    {
+      "relative": "emulator\\lib\\flatbuffers.lib",
+      "bytes": 9489852
+    },
+    {
+      "relative": "emulator\\lib\\grpc_endpoint_description.proto",
+      "bytes": 2408
+    },
+    {
+      "relative": "emulator\\lib\\hardware-properties.ini",
+      "bytes": 31318
+    },
+    {
+      "relative": "emulator\\lib\\hostapd.conf",
+      "bytes": 72186
+    },
+    {
+      "relative": "emulator\\lib\\snapshot_service.proto",
+      "bytes": 14107
+    },
+    {
+      "relative": "emulator\\lib\\snapshot.proto",
+      "bytes": 5555
+    },
+    {
+      "relative": "emulator\\lib\\ui_controller_service.proto",
+      "bytes": 5092
+    },
+    {
+      "relative": "emulator\\lib\\cmake\\flatbuffers\\BuildFlatBuffers.cmake",
+      "bytes": 17531
+    },
+    {
+      "relative": "emulator\\lib\\cmake\\flatbuffers\\flatbuffers-config-version.cmake",
+      "bytes": 380
+    },
+    {
+      "relative": "emulator\\lib\\cmake\\flatbuffers\\flatbuffers-config.cmake",
+      "bytes": 284
+    },
+    {
+      "relative": "emulator\\lib\\cmake\\flatbuffers\\FlatBuffersTargets-release.cmake",
+      "bytes": 920
+    },
+    {
+      "relative": "emulator\\lib\\cmake\\flatbuffers\\FlatBuffersTargets.cmake",
+      "bytes": 4316
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\bios-256k.bin",
+      "bytes": 262144
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\bios.bin",
+      "bytes": 131072
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\efi-e1000.rom",
+      "bytes": 240128
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\efi-e1000e.rom",
+      "bytes": 240128
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\efi-virtio.rom",
+      "bytes": 242176
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\kvmvapic.bin",
+      "bytes": 9216
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\linuxboot_dma.bin",
+      "bytes": 1536
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\linuxboot.bin",
+      "bytes": 1024
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\multiboot.bin",
+      "bytes": 1024
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\vgabios-cirrus.bin",
+      "bytes": 38400
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\vgabios-stdvga.bin",
+      "bytes": 38912
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\vgabios-virtio.bin",
+      "bytes": 38912
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\ar",
+      "bytes": 18962
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\bepo",
+      "bytes": 18975
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\common",
+      "bytes": 2077
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\cz",
+      "bytes": 20375
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\da",
+      "bytes": 20396
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\de",
+      "bytes": 20497
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\de-ch",
+      "bytes": 20380
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\en-gb",
+      "bytes": 20385
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\en-us",
+      "bytes": 18252
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\es",
+      "bytes": 20369
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\et",
+      "bytes": 18457
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fi",
+      "bytes": 19770
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fo",
+      "bytes": 20383
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fr",
+      "bytes": 20399
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fr-be",
+      "bytes": 20377
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fr-ca",
+      "bytes": 18730
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\fr-ch",
+      "bytes": 20381
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\hr",
+      "bytes": 20421
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\hu",
+      "bytes": 20373
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\is",
+      "bytes": 20420
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\it",
+      "bytes": 20478
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\ja",
+      "bytes": 18329
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\lt",
+      "bytes": 20332
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\lv",
+      "bytes": 19784
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\Makefile",
+      "bytes": 1194
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\mk",
+      "bytes": 18851
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\modifiers",
+      "bytes": 293
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\nl",
+      "bytes": 20434
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\nl-be",
+      "bytes": 43
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\no",
+      "bytes": 20729
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\pl",
+      "bytes": 20493
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\pt",
+      "bytes": 20361
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\pt-br",
+      "bytes": 20341
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\ru",
+      "bytes": 18870
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\sl",
+      "bytes": 2293
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\sv",
+      "bytes": 1008
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\th",
+      "bytes": 18995
+    },
+    {
+      "relative": "emulator\\lib\\pc-bios\\keymaps\\tr",
+      "bytes": 20308
+    },
+    {
+      "relative": "emulator\\lib\\pkgconfig\\flatbuffers.pc",
+      "bytes": 268
+    },
+    {
+      "relative": "emulator\\lib64\\libabseil_dll.dll",
+      "bytes": 832664
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-agents.dll",
+      "bytes": 30360
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-base-logging.dll",
+      "bytes": 65688
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-curl.dll",
+      "bytes": 463512
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-metrics.dll",
+      "bytes": 12210328
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-protos.dll",
+      "bytes": 1437848
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-shared.dll",
+      "bytes": 2703000
+    },
+    {
+      "relative": "emulator\\lib64\\libandroid-emu-tracing.dll",
+      "bytes": 80024
+    },
+    {
+      "relative": "emulator\\lib64\\libemugl_common.dll",
+      "bytes": 158360
+    },
+    {
+      "relative": "emulator\\lib64\\libgfxstream_backend.dll",
+      "bytes": 22858904
+    },
+    {
+      "relative": "emulator\\lib64\\libglib2_windows_msvc-x86_64.dll",
+      "bytes": 1193112
+    },
+    {
+      "relative": "emulator\\lib64\\libimage_converter.dll",
+      "bytes": 19096
+    },
+    {
+      "relative": "emulator\\lib64\\liblibprotobuf.dll",
+      "bytes": 3743384
+    },
+    {
+      "relative": "emulator\\lib64\\libshadertranslator.dll",
+      "bytes": 1525912
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\d3dcompiler_47.dll",
+      "bytes": 4917400
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\libEGL.dll",
+      "bytes": 470168
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\libGLESv2.dll",
+      "bytes": 12488856
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\vk_swiftshader_icd.json",
+      "bytes": 106
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\vk_swiftshader.dll",
+      "bytes": 4323992
+    },
+    {
+      "relative": "emulator\\lib64\\gles_angle\\vulkan-1.dll",
+      "bytes": 934040
+    },
+    {
+      "relative": "emulator\\lib64\\gles_swiftshader\\libEGL.dll",
+      "bytes": 188056
+    },
+    {
+      "relative": "emulator\\lib64\\gles_swiftshader\\libGLES_CM.dll",
+      "bytes": 6519448
+    },
+    {
+      "relative": "emulator\\lib64\\gles_swiftshader\\libGLESv2.dll",
+      "bytes": 7254680
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\icudtl.dat",
+      "bytes": 10462432
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_devtools_resources.pak",
+      "bytes": 8556411
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_resources_100p.pak",
+      "bytes": 123370
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_resources_200p.pak",
+      "bytes": 154401
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_resources.pak",
+      "bytes": 1913641
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\QtWebEngineProcess.exe",
+      "bytes": 679064
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\am.pak",
+      "bytes": 556852
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ar.pak",
+      "bytes": 608347
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\bg.pak",
+      "bytes": 635744
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\bn.pak",
+      "bytes": 822291
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ca.pak",
+      "bytes": 386979
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\cs.pak",
+      "bytes": 397768
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\da.pak",
+      "bytes": 358263
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\de.pak",
+      "bytes": 384126
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\el.pak",
+      "bytes": 697417
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\en-GB.pak",
+      "bytes": 312335
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\en-US.pak",
+      "bytes": 315798
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\es-419.pak",
+      "bytes": 382210
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\es.pak",
+      "bytes": 382409
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\et.pak",
+      "bytes": 344426
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\fa.pak",
+      "bytes": 565495
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\fi.pak",
+      "bytes": 353547
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\fil.pak",
+      "bytes": 399222
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\fr.pak",
+      "bytes": 413965
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\gu.pak",
+      "bytes": 797630
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\he.pak",
+      "bytes": 493586
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\hi.pak",
+      "bytes": 835350
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\hr.pak",
+      "bytes": 384295
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\hu.pak",
+      "bytes": 413919
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\id.pak",
+      "bytes": 339006
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\it.pak",
+      "bytes": 376354
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ja.pak",
+      "bytes": 461430
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\kn.pak",
+      "bytes": 922065
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ko.pak",
+      "bytes": 388312
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\lt.pak",
+      "bytes": 417883
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\lv.pak",
+      "bytes": 415035
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ml.pak",
+      "bytes": 957643
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\mr.pak",
+      "bytes": 781940
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ms.pak",
+      "bytes": 355383
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\nb.pak",
+      "bytes": 346774
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\nl.pak",
+      "bytes": 358651
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\pl.pak",
+      "bytes": 399417
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\pt-BR.pak",
+      "bytes": 378008
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\pt-PT.pak",
+      "bytes": 379447
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ro.pak",
+      "bytes": 390689
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ru.pak",
+      "bytes": 638845
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\sk.pak",
+      "bytes": 404314
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\sl.pak",
+      "bytes": 387866
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\sr.pak",
+      "bytes": 600934
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\sv.pak",
+      "bytes": 349077
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\sw.pak",
+      "bytes": 366920
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\ta.pak",
+      "bytes": 946482
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\te.pak",
+      "bytes": 875896
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\th.pak",
+      "bytes": 739027
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\tr.pak",
+      "bytes": 374059
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\uk.pak",
+      "bytes": 639909
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\vi.pak",
+      "bytes": 445316
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\zh-CN.pak",
+      "bytes": 322027
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\bin\\qtwebengine_locales\\zh-TW.pak",
+      "bytes": 319566
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6CoreAndroidEmu.dll",
+      "bytes": 5682328
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6GuiAndroidEmu.dll",
+      "bytes": 7543448
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6NetworkAndroidEmu.dll",
+      "bytes": 1353880
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6OpenGLAndroidEmu.dll",
+      "bytes": 1916056
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6PositioningAndroidEmu.dll",
+      "bytes": 471704
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6QmlAndroidEmu.dll",
+      "bytes": 4609176
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6QmlModelsAndroidEmu.dll",
+      "bytes": 674968
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6QuickAndroidEmu.dll",
+      "bytes": 5184664
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6QuickWidgetsAndroidEmu.dll",
+      "bytes": 112792
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6SvgAndroidEmu.dll",
+      "bytes": 357528
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6SvgWidgetsAndroidEmu.dll",
+      "bytes": 55448
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6WebChannelAndroidEmu.dll",
+      "bytes": 249496
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6WebEngineCoreAndroidEmu.dll",
+      "bytes": 121830552
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6WebEngineWidgetsAndroidEmu.dll",
+      "bytes": 168088
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6WebSocketsAndroidEmu.dll",
+      "bytes": 192664
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\lib\\Qt6WidgetsAndroidEmu.dll",
+      "bytes": 5962904
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\iconengines\\qsvgiconAndroidEmu.dll",
+      "bytes": 60056
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qgifAndroidEmu.dll",
+      "bytes": 45720
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qicnsAndroidEmu.dll",
+      "bytes": 52888
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qicoAndroidEmu.dll",
+      "bytes": 44696
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qjpegAndroidEmu.dll",
+      "bytes": 620696
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qsvgAndroidEmu.dll",
+      "bytes": 38040
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qtgaAndroidEmu.dll",
+      "bytes": 36504
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qtiffAndroidEmu.dll",
+      "bytes": 419992
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qwbmpAndroidEmu.dll",
+      "bytes": 34456
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\imageformats\\qwebpAndroidEmu.dll",
+      "bytes": 536216
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\plugins\\platforms\\qwindowsAndroidEmu.dll",
+      "bytes": 836248
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\resources\\icudtl.dat",
+      "bytes": 10462432
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\resources\\qtwebengine_devtools_resources.pak",
+      "bytes": 8556411
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\resources\\qtwebengine_resources_100p.pak",
+      "bytes": 123370
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\resources\\qtwebengine_resources_200p.pak",
+      "bytes": 154401
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\resources\\qtwebengine_resources.pak",
+      "bytes": 1913641
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\am.pak",
+      "bytes": 556852
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ar.pak",
+      "bytes": 608347
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\bg.pak",
+      "bytes": 635744
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\bn.pak",
+      "bytes": 822291
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ca.pak",
+      "bytes": 386979
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\cs.pak",
+      "bytes": 397768
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\da.pak",
+      "bytes": 358263
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\de.pak",
+      "bytes": 384126
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\el.pak",
+      "bytes": 697417
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\en-GB.pak",
+      "bytes": 312335
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\en-US.pak",
+      "bytes": 315798
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\es-419.pak",
+      "bytes": 382210
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\es.pak",
+      "bytes": 382409
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\et.pak",
+      "bytes": 344426
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\fa.pak",
+      "bytes": 565495
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\fi.pak",
+      "bytes": 353547
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\fil.pak",
+      "bytes": 399222
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\fr.pak",
+      "bytes": 413965
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\gu.pak",
+      "bytes": 797630
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\he.pak",
+      "bytes": 493586
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\hi.pak",
+      "bytes": 835350
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\hr.pak",
+      "bytes": 384295
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\hu.pak",
+      "bytes": 413919
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\id.pak",
+      "bytes": 339006
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\it.pak",
+      "bytes": 376354
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ja.pak",
+      "bytes": 461430
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\kn.pak",
+      "bytes": 922065
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ko.pak",
+      "bytes": 388312
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\lt.pak",
+      "bytes": 417883
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\lv.pak",
+      "bytes": 415035
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ml.pak",
+      "bytes": 957643
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\mr.pak",
+      "bytes": 781940
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ms.pak",
+      "bytes": 355383
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\nb.pak",
+      "bytes": 346774
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\nl.pak",
+      "bytes": 358651
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\pl.pak",
+      "bytes": 399417
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\pt-BR.pak",
+      "bytes": 378008
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\pt-PT.pak",
+      "bytes": 379447
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ro.pak",
+      "bytes": 390689
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ru.pak",
+      "bytes": 638845
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\sk.pak",
+      "bytes": 404314
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\sl.pak",
+      "bytes": 387866
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\sr.pak",
+      "bytes": 600934
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\sv.pak",
+      "bytes": 349077
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\sw.pak",
+      "bytes": 366920
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\ta.pak",
+      "bytes": 946482
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\te.pak",
+      "bytes": 875896
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\th.pak",
+      "bytes": 739027
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\tr.pak",
+      "bytes": 374059
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\uk.pak",
+      "bytes": 639909
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\vi.pak",
+      "bytes": 445316
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\zh-CN.pak",
+      "bytes": 322027
+    },
+    {
+      "relative": "emulator\\lib64\\qt\\translations\\qtwebengine_locales\\zh-TW.pak",
+      "bytes": 319566
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\glslangValidator.exe",
+      "bytes": 7543448
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\libvulkan_lvp.dll",
+      "bytes": 50707096
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\lvp_icd.json",
+      "bytes": 136
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\vk_swiftshader_icd.json",
+      "bytes": 132
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\vk_swiftshader.dll",
+      "bytes": 23806104
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\vulkan-1.dll",
+      "bytes": 780952
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\layers\\VkLayer_khronos_validation.dll",
+      "bytes": 20812952
+    },
+    {
+      "relative": "emulator\\lib64\\vulkan\\layers\\VkLayer_khronos_validation.json",
+      "bytes": 117475
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\concrt140.dll",
+      "bytes": 312472
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\msvcp140_1.dll",
+      "bytes": 25752
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\msvcp140_2.dll",
+      "bytes": 257688
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\msvcp140_atomic_wait.dll",
+      "bytes": 40088
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\msvcp140_codecvt_ids.dll",
+      "bytes": 21656
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\msvcp140.dll",
+      "bytes": 565400
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-aarch64-headless.exe",
+      "bytes": 58526360
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-aarch64.exe",
+      "bytes": 68225176
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-armel-headless.exe",
+      "bytes": 58279064
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-armel.exe",
+      "bytes": 67977880
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-i386-headless.exe",
+      "bytes": 57179800
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-i386.exe",
+      "bytes": 66875032
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "bytes": 57215128
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\qemu-system-x86_64.exe",
+      "bytes": 66910360
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\vccorlib140.dll",
+      "bytes": 341656
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\vcruntime140_1.dll",
+      "bytes": 39576
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\vcruntime140_threads.dll",
+      "bytes": 28312
+    },
+    {
+      "relative": "emulator\\qemu\\windows-x86_64\\vcruntime140.dll",
+      "bytes": 110232
+    },
+    {
+      "relative": "emulator\\resources\\default.jpg",
+      "bytes": 289695
+    },
+    {
+      "relative": "emulator\\resources\\default.mp4",
+      "bytes": 500254
+    },
+    {
+      "relative": "emulator\\resources\\default360.jpg",
+      "bytes": 474640
+    },
+    {
+      "relative": "emulator\\resources\\default360.mp4",
+      "bytes": 2452815
+    },
+    {
+      "relative": "emulator\\resources\\poster.png",
+      "bytes": 164254
+    },
+    {
+      "relative": "emulator\\resources\\Toren1BD_Decor.png",
+      "bytes": 3669905
+    },
+    {
+      "relative": "emulator\\resources\\Toren1BD_Main.png",
+      "bytes": 3845619
+    },
+    {
+      "relative": "emulator\\resources\\Toren1BD.mtl",
+      "bytes": 345
+    },
+    {
+      "relative": "emulator\\resources\\Toren1BD.obj",
+      "bytes": 3609412
+    },
+    {
+      "relative": "emulator\\resources\\Toren1BD.posters",
+      "bytes": 157
+    },
+    {
+      "relative": "emulator\\resources\\macroPreviews\\Reset_position.mp4",
+      "bytes": 240740
+    },
+    {
+      "relative": "emulator\\resources\\macroPreviews\\Track_horizontal_plane.mp4",
+      "bytes": 972478
+    },
+    {
+      "relative": "emulator\\resources\\macroPreviews\\Track_vertical_plane.mp4",
+      "bytes": 631994
+    },
+    {
+      "relative": "emulator\\resources\\macroPreviews\\Walk_to_image_room.mp4",
+      "bytes": 950115
+    },
+    {
+      "relative": "emulator\\resources\\macros\\Reset_position",
+      "bytes": 28
+    },
+    {
+      "relative": "emulator\\resources\\macros\\Track_horizontal_plane",
+      "bytes": 52928
+    },
+    {
+      "relative": "emulator\\resources\\macros\\Track_vertical_plane",
+      "bytes": 28373
+    },
+    {
+      "relative": "emulator\\resources\\macros\\Walk_to_image_room",
+      "bytes": 37137
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\data\\misc\\pixel_10_pro_fold\\display_settings.xml",
+      "bytes": 303
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\data\\misc\\pixel_10_pro_fold\\extra_feature.xml",
+      "bytes": 829
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\data\\misc\\pixel_10_pro_fold\\devicestate\\device_state_configuration.xml",
+      "bytes": 3290
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\data\\misc\\pixel_10_pro_fold\\displayconfig\\display_layout_configuration.xml",
+      "bytes": 1311
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10\\EmulationPixel10Overlay.apk",
+      "bytes": 16797
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10\\SystemUIEmulationPixel10Overlay.apk",
+      "bytes": 16962
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro\\EmulationPixel10ProOverlay.apk",
+      "bytes": 16797
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro\\SystemUIEmulationPixel10ProOverlay.apk",
+      "bytes": 16962
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro_fold\\EmulationPixel10ProFoldOverlay.apk",
+      "bytes": 20893
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro_fold\\SystemUIEmulationPixel10ProFoldOverlay.apk",
+      "bytes": 12701
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro_xl\\EmulationPixel10ProXLOverlay.apk",
+      "bytes": 16797
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\user\\pixel_10_pro_xl\\SystemUIEmulationPixel10ProXLOverlay.apk",
+      "bytes": 16962
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10\\EmulationPixel10Overlay.apk",
+      "bytes": 8542
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10\\SystemUIEmulationPixel10Overlay.apk",
+      "bytes": 12803
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro\\EmulationPixel10ProOverlay.apk",
+      "bytes": 8542
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro\\SystemUIEmulationPixel10ProOverlay.apk",
+      "bytes": 12803
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro_fold\\EmulationPixel10ProFoldOverlay.apk",
+      "bytes": 16734
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro_fold\\SystemUIEmulationPixel10ProFoldOverlay.apk",
+      "bytes": 8542
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro_xl\\EmulationPixel10ProXLOverlay.apk",
+      "bytes": 8542
+    },
+    {
+      "relative": "emulator\\resources\\skins\\android-36\\userdebug\\pixel_10_pro_xl\\SystemUIEmulationPixel10ProXLOverlay.apk",
+      "bytes": 12803
+    },
+    {
+      "relative": "platform-tools\\adb.exe",
+      "bytes": 8273560
+    },
+    {
+      "relative": "platform-tools\\AdbWinApi.dll",
+      "bytes": 108184
+    },
+    {
+      "relative": "platform-tools\\AdbWinUsbApi.dll",
+      "bytes": 73368
+    },
+    {
+      "relative": "platform-tools\\etc1tool.exe",
+      "bytes": 451224
+    },
+    {
+      "relative": "platform-tools\\fastboot.exe",
+      "bytes": 2429080
+    },
+    {
+      "relative": "platform-tools\\hprof-conv.exe",
+      "bytes": 52888
+    },
+    {
+      "relative": "platform-tools\\libwinpthread-1.dll",
+      "bytes": 243016
+    },
+    {
+      "relative": "platform-tools\\make_f2fs_casefold.exe",
+      "bytes": 473752
+    },
+    {
+      "relative": "platform-tools\\make_f2fs.exe",
+      "bytes": 473752
+    },
+    {
+      "relative": "platform-tools\\mke2fs.conf",
+      "bytes": 1157
+    },
+    {
+      "relative": "platform-tools\\mke2fs.exe",
+      "bytes": 763544
+    },
+    {
+      "relative": "platform-tools\\NOTICE.txt",
+      "bytes": 1154131
+    },
+    {
+      "relative": "platform-tools\\package.xml",
+      "bytes": 18714
+    },
+    {
+      "relative": "platform-tools\\source.properties",
+      "bytes": 38
+    },
+    {
+      "relative": "platform-tools\\sqlite3.exe",
+      "bytes": 3031704
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\advancedFeatures.ini",
+      "bytes": 811
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\build.prop",
+      "bytes": 5423
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\encryptionkey.img",
+      "bytes": 18874368
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\kernel_cmdline.txt",
+      "bytes": 32
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\kernel-ranchu",
+      "bytes": 20489216
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\NOTICE.txt",
+      "bytes": 20157414
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\package.xml",
+      "bytes": 19530
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\ramdisk.img",
+      "bytes": 1906408
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\source.properties",
+      "bytes": 365
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\system.img",
+      "bytes": 2333081600
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\vendor.img",
+      "bytes": 56623104
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\VerifiedBootParams.textproto",
+      "bytes": 356
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\empty_data_disk",
+      "bytes": 107
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\local.prop",
+      "bytes": 46
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\GoldfishSkinConfig",
+      "bytes": 783
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\emulator\\version.txt",
+      "bytes": 112
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\emulator\\config\\radioconfig.xml",
+      "bytes": 1433
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\modem_simulator\\iccprofile_for_carrierapitests.xml",
+      "bytes": 16537
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\modem_simulator\\iccprofile_for_sim_tel_alaska.xml",
+      "bytes": 14474
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\modem_simulator\\iccprofile_for_sim0.xml",
+      "bytes": 14647
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\modem_simulator\\etc\\modem_simulator\\files\\numeric_operator.xml",
+      "bytes": 297
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_9_pro_fold\\display_settings.xml",
+      "bytes": 303
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_9_pro_fold\\extra_feature.xml",
+      "bytes": 829
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_9_pro_fold\\devicestate\\device_state_configuration.xml",
+      "bytes": 3290
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_9_pro_fold\\displayconfig\\display_layout_configuration.xml",
+      "bytes": 1311
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_fold\\display_settings.xml",
+      "bytes": 303
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_fold\\extra_feature.xml",
+      "bytes": 829
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_fold\\devicestate\\device_state_configuration.xml",
+      "bytes": 3290
+    },
+    {
+      "relative": "system-images\\android-36\\google_apis_playstore\\x86_64\\data\\misc\\pixel_fold\\displayconfig\\display_layout_configuration.xml",
+      "bytes": 1311
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "status": "PASS_PUBLIC_HTTP_APP_SOURCE_READBACK",
+  "files": [
+    {
+      "name": "studio-journey.html",
+      "http": 200,
+      "sha256": "511dd8dd1d05d215be3f90894e47b3e734b4466cd20bec839a59c74d83334973",
+      "exact_bytes_match": false,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": true
+    },
+    {
+      "name": "journey-ui.mjs",
+      "http": 200,
+      "sha256": "47640946a381a44941efab5a855c853d7a83938654250d5416afed5dea7cc677",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "journey-core.mjs",
+      "http": 200,
+      "sha256": "ea7e1d3d6a5540073501f43cec3a15b21f76574fafb0dbd1594112ddd731ee45",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "journey-ai-client.mjs",
+      "http": 200,
+      "sha256": "1bae62d2115d75706ce5f35be6b3d1cfb9da0d90abd51b4373aa575893f4c363",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "journey-handoff.mjs",
+      "http": 200,
+      "sha256": "e6292f432487c89eeca87314fffb868d7bcb52117132ff44c2d3908644f12533",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "studio.mjs",
+      "http": 200,
+      "sha256": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "studio-sw.mjs",
+      "http": 200,
+      "sha256": "2a9c56b313e12a5b1f920140fc556b6f5a7ba83ffa5f270453fa1acfe021d626",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "triangle.mjs",
+      "http": 200,
+      "sha256": "36874acc896829d6b2f5af205a9754d1eb267101fb4020a0fe108002148b0add",
+      "exact_bytes_match": true,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": false
+    },
+    {
+      "name": "get.html",
+      "http": 200,
+      "sha256": "590bd912f738a0e9ba10431e6e3e2bf5ff92292f77fd6986b1a16464950fb7d3",
+      "exact_bytes_match": false,
+      "app_content_matches": true,
+      "native_cloudflare_script_appended": true
+    }
+  ],
+  "htmlNormalization": "Only CRLF/LF and verified trailing native Cloudflare JSD injection; all application script bytes exact",
+  "registrationEnabled": false,
+  "publicAI": false,
+  "nativeSitesVersion": 7,
+  "browserCodexReadback": "IAB network ERR_FAILED; local Chromium runtime passed"
+}

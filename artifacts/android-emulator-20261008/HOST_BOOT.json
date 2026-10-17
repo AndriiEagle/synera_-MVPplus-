@@ -1,0 +1,32 @@
+{
+    "args":  [
+                 "-avd",
+                 "Synera_Local_API36",
+                 "-port",
+                 "5580",
+                 "-no-audio",
+                 "-no-snapshot",
+                 "-no-snapstorage",
+                 "-feature",
+                 "-QuickbootFileBacked",
+                 "-no-boot-anim",
+                 "-no-metrics",
+                 "-gpu",
+                 "host",
+                 "-camera-back",
+                 "none",
+                 "-camera-front",
+                 "none",
+                 "-cores",
+                 "4",
+                 "-memory",
+                 "2048"
+             ],
+    "ramCacheExists":  false,
+    "freeAfter":  10801201152,
+    "freeBefore":  10801172480,
+    "timestamp":  "2026-10-08T17:21:12.5954010+02:00",
+    "pid":  12500,
+    "status":  "BOOTED_UI_UNVERIFIED",
+    "serial":  "emulator-5580"
+}

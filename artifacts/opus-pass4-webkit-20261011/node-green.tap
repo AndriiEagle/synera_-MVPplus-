@@ -1,0 +1,29 @@
+✔ rows are well-formed and do not shadow the shared table (9.567ms)
+✔ patterns compile, are anchored and only refer to groups they have (8.5258ms)
+✔ every pattern matches its own example and changes it (193.4698ms)
+✔ every Ukrainian string of the page markup and its modules is accounted for (458.8043ms)
+✔ a long text is never run through the patterns, and near-matches stay cheap (261.0499ms)
+✔ a Ukrainian visit loads only the button module; the rest ships but is fetched on demand (3.0187ms)
+✔ the rules page: every Ukrainian text has an unofficial translation, loaded only on demand (3.7096ms)
+✔ translate: whole labels, assembled text, lists; a person's own text is left alone (0.9303ms)
+✔ profile deletion: the form and the code accept the same words, one per language (3.4331ms)
+✔ a choice in a list is sent by a fixed value, never by its translated label (3.4352ms)
+✔ what a person wrote is marked and is never translated, even when it equals a label (3.4797ms)
+✔ dates follow the chosen language and lists of labels are translated item by item (37.9695ms)
+✔ the coverage lists hold nothing stale, doubled or contradictory (132.0068ms)
+✔ the card says who a hint is for and what a confirmation means, not the internal codes (13.0536ms)
+✔ the table is complete and well-formed in German and English (7.7738ms)
+✔ every Ukrainian string of the page module is a translated source (45.4489ms)
+✔ every Ukrainian string of the page markup is a translated source (4.7138ms)
+✔ messages raised by the client, the skill list and the view switcher are translated sources (53.275ms)
+✔ Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser (4.4754ms)
+✔ placeholders are filled once; unknown text is left alone (1.7219ms)
+✔ the same form gives the same terms and the same hash in every language (61.3319ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1361.4588

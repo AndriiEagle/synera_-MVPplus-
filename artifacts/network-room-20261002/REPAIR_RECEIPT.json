@@ -1,0 +1,703 @@
+{
+  "schema": "synera.center99.local-repair.v2",
+  "checked_at_utc": "2026-10-02T20:24:18.669923+00:00",
+  "source_task": {
+    "id": "01a0a673-47c0-74d1-a768-7867f3dca2bc",
+    "title": "27. Synera — GitHub і рої — 15.09.2026",
+    "cwd": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust"
+  },
+  "scope": "bounded local room draft-isolation repair; one authorized mobile-overflow CSS fix; semantic browser acceptance and current local package closure",
+  "verdict": "LOCAL_REPAIR_ACCEPTED_WITH_LIMITS; FULL_PRODUCT_HOLD_SQL_LIVE_DESIGN_VIDEO",
+  "local_repair_close_allowed": true,
+  "product_phase_close_allowed": false,
+  "repo": {
+    "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant",
+    "branch": "codex/synera-product-20261002",
+    "local_head": "0ab2a754addd7f4e72ed3e0d72e0a5993b6d406d",
+    "owned_room_source_uncommitted": true,
+    "pushed": false,
+    "deployed": false
+  },
+  "changes": [
+    {
+      "file": "web_launch/rooms.mjs",
+      "change": "openRoom clears private draft/transcript DOM and pendingMessage only for a different room ID; same-room refresh/reselection/409 keeps the draft"
+    },
+    {
+      "file": "web_launch/rooms.css",
+      "change": "at max-width390px exclude L from the 100%-width action-button rule; no overflow clipping"
+    },
+    {
+      "file": "tools/group-room-browser-acceptance.mjs",
+      "change": "same-room/return semantic assertions; isolated in-memory guard counterexample; correct hidden-state wait; diagnostic readback completes remaining privacy checks before final overflow assertion"
+    }
+  ],
+  "fail_before": {
+    "exit": 1,
+    "artifact": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-browser-failure.json",
+    "actual": "draft survives conflict",
+    "expected": "",
+    "source_pins": [
+      {
+        "path": "web_launch\\rooms.mjs",
+        "sha256": "7d87cccb1899060b50976b3f8a2535fbe63d15ad49973b338fd66bd7612e0230",
+        "bytes": 14808
+      },
+      {
+        "path": "tools\\group-room-browser-acceptance.mjs",
+        "sha256": "c30ecaca4bee8dde4cd232739a8fdddc7338e14cb2020105baabd607dc24e29d",
+        "bytes": 13814
+      },
+      {
+        "path": "artifacts\\network-room-20261002\\FAILURE.json",
+        "sha256": "5afa2c5a52319bbc46d0f9dd636eaf7b6d55e613c12e0f8b3bcd01db22922c8c",
+        "bytes": 8162
+      }
+    ],
+    "css_before": {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\rooms.before.css",
+      "bytes": 5880,
+      "sha256": "1604c4a9d4b5aa2b1b5ffdc86dce2de167c55bed845d95714f63bcdd4eec8aa2"
+    },
+    "mobile": {
+      "viewport": 390,
+      "documentWidth": 495,
+      "selector": "#room-l",
+      "right": 495,
+      "artifact": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-layout-failure.json"
+    }
+  },
+  "self_review_joins": {
+    "first": "actual source diff readback: one identity guard; no unrelated UI changes",
+    "adversarial": "single in-memory guard removal fails the semantic room-switch oracle after same-room409/reselection passes; final CSS is exactly one selector change"
+  },
+  "browser": {
+    "command": "node tools/group-room-browser-acceptance.mjs",
+    "exit": 0,
+    "acceptance": {
+      "status": "PASS",
+      "scope": "Real Chromium at 390x844 through handleNeon with local Auth/Data/RPC fixtures; not SQL/RLS, live Neon, deploy or physical Android proof",
+      "checks": [
+        "create",
+        "visible-goal explicit accept",
+        "invited transcript hidden",
+        "all accepted start",
+        "text",
+        "out-of-turn request denial",
+        "expired deadline accepted-member advance",
+        "409 draft preserved",
+        "same-room reselection preserves draft",
+        "different room clears previous draft",
+        "returning does not restore discarded draft",
+        "401 clears private transcript DOM",
+        "old room response cannot overwrite new selection",
+        "explicit leave pauses room and clears own access",
+        "mobile no overflow",
+        "axe WCAG2AA zero violations",
+        "no browser storage/cache/private database"
+      ],
+      "requests": 65,
+      "provider_calls": 0
+    },
+    "observations": {
+      "scope": "Local Chromium fixtures only; individual checks do not establish full acceptance",
+      "checks": {
+        "same_room_409_and_reselection_preserve_draft": true,
+        "room_switch_clears_draft_and_ignores_old_response": true,
+        "return_does_not_restore_draft_and_leave_clears_access": true,
+        "axe_violations": 0,
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390,
+          "overflowing": []
+        },
+        "browser_storage": {
+          "local": [],
+          "session": [],
+          "caches": [],
+          "databases": []
+        },
+        "session_401_clears_private_dom": true,
+        "page_errors": []
+      }
+    },
+    "receipt": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\browser-acceptance.json",
+    "screenshot": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\after-mobile.png",
+    "visual_readback": "before/after full-page screenshots inspected; L no longer extends outside390px; paused fixture room only, not full product/design acceptance"
+  },
+  "guard_counterexample": {
+    "command": "node tools/group-room-browser-acceptance.mjs --draft-guard-counterexample",
+    "expected_exit": 1,
+    "observed_exit": 1,
+    "detection": "PASS",
+    "failure": "Selecting a different room clears the previous draft\n+ actual - expected\n\n+ 'draft survives conflict'\n- ''\n",
+    "prior_success": {
+      "same_room_409_and_reselection_preserve_draft": true
+    },
+    "artifact": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\draft-counterexample-failure.json",
+    "source": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\draft-counterexample.mjs"
+  },
+  "package": {
+    "command": "node tools/group-room-package-acceptance.mjs",
+    "exit": 0,
+    "public_files": 68,
+    "manifest_files": 70,
+    "directory_files": 71,
+    "current_source_matches": [
+      {
+        "name": "index.html",
+        "bytes": 30681,
+        "sha256": "9fb38ea0546838ca9a5df6ec0aaee0becbb1942b53252fccfb6cd578bde349bb"
+      },
+      {
+        "name": "app.mjs",
+        "bytes": 102035,
+        "sha256": "501db0a2ae309cf56841c7fd2a6d32a5b42356db1be703d687293a8725e12a3c"
+      },
+      {
+        "name": "style-switcher.mjs",
+        "bytes": 3695,
+        "sha256": "4c3acf60015953d542c48a81e7eee55f4138e1779fc00ec621ce9df0e39b1bfa"
+      },
+      {
+        "name": "online-store.mjs",
+        "bytes": 6033,
+        "sha256": "764d4cacfb510a4112b1a87f0fce3dff1d02a14a779f23668456f3cd558a3264"
+      },
+      {
+        "name": "profile-portability.mjs",
+        "bytes": 14063,
+        "sha256": "f4a84d6b04d644dbe95fb5cd629a7ad18bcc692c698fee9a175dc2b0d882f6fb"
+      },
+      {
+        "name": "profile-brief.mjs",
+        "bytes": 10615,
+        "sha256": "8e0f7e78438e05df0aa0cedd3190ef192128253adc60ac1ba8b1f902cedddd77"
+      },
+      {
+        "name": "calendar.mjs",
+        "bytes": 1602,
+        "sha256": "1600cd51fa5513404d010db26c66e89794d3d89fdcea9e83ae8032fd6b19f120"
+      },
+      {
+        "name": "style.css",
+        "bytes": 113136,
+        "sha256": "0d0abac7fba7d67c2c555c62053b369fe1951be45b870a21aabde6bcab579fd8"
+      },
+      {
+        "name": "matching.mjs",
+        "bytes": 22878,
+        "sha256": "ec88c16ddc1372853025d9aa1efc8b5c51f7c3135f1f0539272759470d866c89"
+      },
+      {
+        "name": "onboarding-tour.mjs",
+        "bytes": 6088,
+        "sha256": "96460fa8ce1653a30c68b5e3e04925d74a9b10d4dc5fbdbeba60e65fbb2691ec"
+      },
+      {
+        "name": "location-session.mjs",
+        "bytes": 5764,
+        "sha256": "1e0f2ba007705abe1e7615e3778759c853e9989091b58d5ab1dba308658e5e20"
+      },
+      {
+        "name": "demo-journey.mjs",
+        "bytes": 3402,
+        "sha256": "18ff0a9ca72e273cf9421eebb90449dd351b44df0386790bba4df401a5fc234c"
+      },
+      {
+        "name": "summit.html",
+        "bytes": 7937,
+        "sha256": "5d3ebaaafecf64df540b654ea83d904ded7efeba6258ffbd3fb28d5f8cafd363"
+      },
+      {
+        "name": "summit.css",
+        "bytes": 14524,
+        "sha256": "509cba79412ad9d40c3ea97e128accaa8eabff0dc36104b174b871b401e26dfd"
+      },
+      {
+        "name": "summit.mjs",
+        "bytes": 19204,
+        "sha256": "17a7050ed230969383d8962e50136c192ac3597ca39a519fd074692bdc2e53c6"
+      },
+      {
+        "name": "get.html",
+        "bytes": 4732,
+        "sha256": "5e092ab323a92a80433ed392df9c49cb9714f7d527aba92af15a3dbac1227e34"
+      },
+      {
+        "name": "product-access.mjs",
+        "bytes": 8786,
+        "sha256": "db1277975ef475eff14437a6df267fc7093fe31993bde9eb60dfd99b7f3eb600"
+      },
+      {
+        "name": "triangle.html",
+        "bytes": 18403,
+        "sha256": "5f5cd51b58edd8814f2375f02d23edf9ec7526febabfe02f5717fe47f884908b"
+      },
+      {
+        "name": "triangle.css",
+        "bytes": 7827,
+        "sha256": "140115bdf62bebaaee8a529ed0c2c8ff46aad02b8bb6aee2ac1dcd8fcc405128"
+      },
+      {
+        "name": "triangle.mjs",
+        "bytes": 15815,
+        "sha256": "84be2b8181f4cf37dbb0ea188ba9c9cc2dde15c6dea098b87ecd91b817d7d9fc"
+      },
+      {
+        "name": "triangle-room.mjs",
+        "bytes": 8238,
+        "sha256": "c9aa019bc70271e278995b6980cea74d5dd6dfc389ba20e7aab7c7e1b1af89aa"
+      },
+      {
+        "name": "explore-planner.mjs",
+        "bytes": 2395,
+        "sha256": "f6411a7ebf569efbd1161ecf3781dee839da3cc839a23714519d4d3eba9b064c"
+      },
+      {
+        "name": "studio.html",
+        "bytes": 14483,
+        "sha256": "1e194d856b4741e1f584849a1efb67ffe3ef8af8450e4acb6fe49e16501653d5"
+      },
+      {
+        "name": "studio.css",
+        "bytes": 2121,
+        "sha256": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0"
+      },
+      {
+        "name": "studio.mjs",
+        "bytes": 20880,
+        "sha256": "73bdfebcda5cea45c62207abb380e61745a171d0f574a2d1284443320d60aebf"
+      },
+      {
+        "name": "rooms.html",
+        "bytes": 4954,
+        "sha256": "5eeab62ae84a238a0f73e65b0cf8f548d0fb168d03b637b773399985e96be587"
+      },
+      {
+        "name": "rooms.css",
+        "bytes": 5893,
+        "sha256": "951e93289f5d8f3e0cf4632e5eabb64d3ab6164e7aff2b8c15d2009adeaad487"
+      },
+      {
+        "name": "rooms.mjs",
+        "bytes": 14852,
+        "sha256": "c54f0cb52c5aca06356579f35f939d80e09f42f944d65c81272a815ff5733dae"
+      },
+      {
+        "name": "room-api.mjs",
+        "bytes": 3615,
+        "sha256": "0f78337d4d41be22aa19f9e5e88ee5db15b3189e68a341f8c74b3ac514c4022e"
+      },
+      {
+        "name": "studio-install.mjs",
+        "bytes": 1640,
+        "sha256": "8c93c476d005d8212a7e2a9611008c216464a9f3fa6b555e920a0084e1013417"
+      },
+      {
+        "name": "studio-sw.mjs",
+        "bytes": 1364,
+        "sha256": "2f9674668170cfe9dbd094023ddaad64992b63b52c7a15be428b083971f42614"
+      },
+      {
+        "name": "studio.webmanifest",
+        "bytes": 590,
+        "sha256": "ca57716da9672e25815500d2255473c7958a1732f3434b4f355244b2d80119b1"
+      },
+      {
+        "name": "session-value.mjs",
+        "bytes": 13681,
+        "sha256": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62"
+      },
+      {
+        "name": "declared-fit.mjs",
+        "bytes": 5025,
+        "sha256": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5"
+      },
+      {
+        "name": "group-logistics.mjs",
+        "bytes": 2909,
+        "sha256": "9c0ca8bc0de57963fe28d46b0231d0d2ce0fd9e333858094aaa8c2777e859adf"
+      },
+      {
+        "name": "archive-codec.mjs",
+        "bytes": 2736,
+        "sha256": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04"
+      },
+      {
+        "name": "profile-store.mjs",
+        "bytes": 23095,
+        "sha256": "59b50fab910ad408f2c484716cd6bb0d431bed18d1aadd93b9bd8cb655113c47"
+      },
+      {
+        "name": "neon-store.mjs",
+        "bytes": 5058,
+        "sha256": "3e6e01c3117087da9a8c50971930393da0eae4942a49b684d4a71dcd27962cc7"
+      },
+      {
+        "name": "chatgpt-transfer.mjs",
+        "bytes": 4554,
+        "sha256": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40"
+      },
+      {
+        "name": "map.mjs",
+        "bytes": 5356,
+        "sha256": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5"
+      },
+      {
+        "name": "pilot-policy.mjs",
+        "bytes": 1854,
+        "sha256": "2448fccaa949df9066d93d604c9670700db06e20b476866b43a7a46063194ac1"
+      },
+      {
+        "name": "profile-package.mjs",
+        "bytes": 1703,
+        "sha256": "792588575f310600b69735ede80219d187cf002a45f6157bff4630fa3ede7a15"
+      },
+      {
+        "name": "business-case.mjs",
+        "bytes": 36058,
+        "sha256": "dbe8a9294a4f897a847bbf5aa1471e737ce7cab9c7be8a4f2b625812e4cb43a5"
+      },
+      {
+        "name": "profile-import.mjs",
+        "bytes": 13629,
+        "sha256": "a9c034adad45f97eb2b92ea66528a5d0e4dcc808a7732d012a938d9afeb39e4b"
+      },
+      {
+        "name": "i18n.mjs",
+        "bytes": 9677,
+        "sha256": "cb67ac71cc7d3ca619965a713f8655ef03a504987e74c911396ad6d17597da3e"
+      },
+      {
+        "name": "proof-state.mjs",
+        "bytes": 3362,
+        "sha256": "479b14de89262249c90afc3153721123d7aab6fc75680ccb2410cfa5b6f5d3de"
+      },
+      {
+        "name": "need-decay.mjs",
+        "bytes": 2419,
+        "sha256": "d9ffc6a2d8cd720938c18c686b2600e2191c7ee57d5b4b93954df0c6ae29afb8"
+      },
+      {
+        "name": "meeting-card.mjs",
+        "bytes": 5427,
+        "sha256": "516b5f474990e23ba5b1b1e1aed7fe80aeac30d96bd02e08f558e7e3c210b4a5"
+      },
+      {
+        "name": "live-location.mjs",
+        "bytes": 7546,
+        "sha256": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741"
+      },
+      {
+        "name": "meeting-location.mjs",
+        "bytes": 10415,
+        "sha256": "82c2b7081e7b551f8a9f57f047188f45def0b71dedba4d6c165c500bfd33aa12"
+      },
+      {
+        "name": "cycle-exchange.mjs",
+        "bytes": 6699,
+        "sha256": "6a5a1499e764e3e15068f05f554e89bfa0ffa8b23d672e0508f1a08ca4a06237"
+      },
+      {
+        "name": "b-matching.mjs",
+        "bytes": 5280,
+        "sha256": "14039c77a85f4ac55bdbecf7fefb806d0c47e6066d3dd6b89c2e85fd4a6f5acd"
+      },
+      {
+        "name": "field-audience.mjs",
+        "bytes": 3629,
+        "sha256": "fb861cdacb3f3ba86b56d71fe395747ca00970be95c38f5f924e8ec5e01154e3"
+      },
+      {
+        "name": "swiss-compliance.mjs",
+        "bytes": 6988,
+        "sha256": "4b66c0ebaf4b1df1ec97ac8eb198a7f24b68893363ff0515098a6ff0a519a169"
+      },
+      {
+        "name": "funnel-analytics.mjs",
+        "bytes": 7919,
+        "sha256": "cedb1b4056d4a568402876335a7092ce81fbe0213dd466c8c8373785d1fa13d7"
+      },
+      {
+        "name": "manifest.webmanifest",
+        "bytes": 670,
+        "sha256": "77cdc6cf98be346af9473c1090749e41437ca18c93f68536fbef6e55995eb177"
+      },
+      {
+        "name": "pwa.mjs",
+        "bytes": 3004,
+        "sha256": "5cb3b6c0f98bda9a207adbd192d8ad78957467afd9aa4cdffd8625051179a1b0"
+      },
+      {
+        "name": "sw.mjs",
+        "bytes": 3630,
+        "sha256": "2dc95cd3874a5c1ca824a891d8c34a752692b404745b305adb44dd06a11569f7"
+      },
+      {
+        "name": "legal.html",
+        "bytes": 14726,
+        "sha256": "75cdd02f3f5bffc79028b10035b53f606d682a822948d88c584a002bcf8c0b54"
+      },
+      {
+        "name": "catalogue.html",
+        "bytes": 36945,
+        "sha256": "b294c45a5267bb02216252f1bc34085228778a26ec7c3724ea5ccb0214fb96a7"
+      },
+      {
+        "name": "icon-192.png",
+        "bytes": 1454,
+        "sha256": "9046dd1aa8ea969113df88a1c0ea247860b8bdf17c8c582d79287296e87b7a2e"
+      },
+      {
+        "name": "icon-512.png",
+        "bytes": 4416,
+        "sha256": "387a4ff069a57080b2b4221e7bc2f249c0b5bd10db2229e115fd5116b606eed4"
+      },
+      {
+        "name": "apple-touch-icon.png",
+        "bytes": 1393,
+        "sha256": "92631ba395566bec05e5856754cfca942f2c5b94cdf5e3e5c2ff16045ecc907d"
+      },
+      {
+        "name": "tokens.css",
+        "bytes": 17082,
+        "sha256": "013045fc7a918fd41ce191945f0b34861156e754eab214f4a3306e904ff68902"
+      },
+      {
+        "name": "montserrat-400.woff2",
+        "bytes": 20004,
+        "sha256": "50ac5a90ad03dedb851962d7685a32275b7c9b4c1624869d727b0c7f28f94c31"
+      },
+      {
+        "name": "montserrat-500.woff2",
+        "bytes": 20184,
+        "sha256": "0551b789dba2587de3d0aeb52ffeee4c42579fc40e58226a0670c26e4d799f94"
+      },
+      {
+        "name": "cascade.mjs",
+        "bytes": 2134,
+        "sha256": "b03ec2d2f310ad15615843eee82e4d6631e9c9c01e4c66deef7053a73da4e10d"
+      },
+      {
+        "name": "iceberg-client.mjs",
+        "bytes": 1748,
+        "sha256": "16c6fefdbe4dd9cc71e35638908e877c88e9b15d17b8f5bae28c0ac2c18bdc41"
+      }
+    ],
+    "manifest_integrity": "PASS",
+    "current_source_byte_equality": "PASS_ALL_68_PUBLIC_FILES",
+    "worker_closed_rollout": "PASS",
+    "sql_public_path": 404,
+    "published": false,
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-network-20261002",
+    "receipt": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\package-acceptance.json"
+  },
+  "preserved_prior_evidence": {
+    "receipt": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-pinned-receipt.json",
+    "closeout": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-closeout.uk.md",
+    "previous_failure_retained": true,
+    "prior32_node_tests_reused_without_rerun": "gateway4/generation2/worker20/location6; no affected API/SQL source behavior change",
+    "room_api_transport6_prior_evidence_reused": true
+  },
+  "hold": [
+    {
+      "gate": "SQL/JWT/grants/RLS",
+      "status": "NOT_RUN_NOT_APPLIED",
+      "risk": "browser fixtures do not execute PostgreSQL or establish live row isolation"
+    },
+    {
+      "gate": "live/public release",
+      "status": "NOT_PUSHED_NOT_DEPLOYED",
+      "risk": "existing public site is not this repaired local package; no physical Android acceptance"
+    },
+    {
+      "gate": "design/video/independent Vision",
+      "status": "NO_NEW_ACCEPTED_ARTIFACTS",
+      "risk": "four existing design chats untouched; their earlier readback is historical; this screenshot is neither requested walkthrough video"
+    },
+    {
+      "gate": "paid/provider/media",
+      "status": "NOT_DISPATCHED",
+      "risk": "previous USD2 design cap not used by this repair wave"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\rooms.mjs",
+      "bytes": 14852,
+      "sha256": "c54f0cb52c5aca06356579f35f939d80e09f42f944d65c81272a815ff5733dae"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\rooms.css",
+      "bytes": 5893,
+      "sha256": "951e93289f5d8f3e0cf4632e5eabb64d3ab6164e7aff2b8c15d2009adeaad487"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\room-api.mjs",
+      "bytes": 3615,
+      "sha256": "0f78337d4d41be22aa19f9e5e88ee5db15b3189e68a341f8c74b3ac514c4022e"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\tools\\group-room-browser-acceptance.mjs",
+      "bytes": 16107,
+      "sha256": "c678c5ddcac2343b5f8fb7d7f3ecb70676e098227aeef4d778c888f3a08a0bbb"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\neon\\group-room.migration.sql",
+      "bytes": 25087,
+      "sha256": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\neon\\group-room.acceptance.sql",
+      "bytes": 18413,
+      "sha256": "2ba43771be2fbddfdddb5913d53691b1bbc70e8c8fd4557e4fe0bec6fa96a432"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\neon\\worker.mjs",
+      "bytes": 16433,
+      "sha256": "da96a4bc685eaf1be704ed1ac41a90af999ee41f35ff4ebd1d90bd7d5263004f"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\neon\\build.mjs",
+      "bytes": 4418,
+      "sha256": "abfb7ab0fdf43d81c45a148b285c79a2921a39ca7b8df39d4e235bd67c7201ab"
+    }
+  ],
+  "retained_evidence_pins": [
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\after-draft-fix-harness-failure.json",
+      "bytes": 11268,
+      "sha256": "a91474544313a7eea497e9204d066b48d475c9f73777003dd0dbfbcc57542d93"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\after-draft-fix-overflow-failure.json",
+      "bytes": 9394,
+      "sha256": "a0707ba0b53f267f1cb218b1c2e94fb2578c0ecc91dbcfdc1fd60a39d410f8ee"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\after-mobile.png",
+      "bytes": 131392,
+      "sha256": "a8a77499b4e97f2b32dd07bbf46f8b2b55a9c5df147c89c253e910e181ce021f"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-browser-failure.json",
+      "bytes": 8162,
+      "sha256": "9897e18f4447227c0aee966a8aaa3ed93347cbf96f95aaa5c19afaa8ab95f49a"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-hashes.json",
+      "bytes": 504,
+      "sha256": "9e87f87607cc4a4f15b1c96131dee5599c0c672167045f9bed1b39185bedba6b"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-layout-failure.json",
+      "bytes": 10160,
+      "sha256": "42c59110a0e7b281403435d17efed069bc908a6deb4e299abb5623816d744b5c"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-layout-mobile.png",
+      "bytes": 134402,
+      "sha256": "813c25b827cbc018308af9479ca02074cbe098423eea7e5b903cb5b2db06bac3"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\before-layout-observations.json",
+      "bytes": 713,
+      "sha256": "5833eab0529858cbb38c41a0bb36478bdff9265e49a3c40ee5fa4fa4523ea178"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\browser-acceptance.after.mjs",
+      "bytes": 16107,
+      "sha256": "c678c5ddcac2343b5f8fb7d7f3ecb70676e098227aeef4d778c888f3a08a0bbb"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\browser-acceptance.json",
+      "bytes": 863,
+      "sha256": "b8d62fffdb82b384817d72552e65a13466de78563e4db289095c4c675ea2ddfb"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\browser-observations.json",
+      "bytes": 607,
+      "sha256": "c4c6496e3e5cc860a773b25f7937355980cdd1fc8a21dab18ebf53cfbc686457"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\draft-counterexample-failure.json",
+      "bytes": 8436,
+      "sha256": "7a4d2a277f74e0278e6166f9bef06b9f4ccc52d1f38753c5518701a1f9020567"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\draft-counterexample.mjs",
+      "bytes": 14863,
+      "sha256": "77a6c5b99008ebc32e2e487f2b361d35ed87f6f93ede568e8ce4a47d8351550c"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\package-acceptance.json",
+      "bytes": 10825,
+      "sha256": "35ec07a883a75eb80cacc030509e02c650b8d7f5cc0f3e7816015844ef423341"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\package-release.json",
+      "bytes": 10719,
+      "sha256": "708142461a0ac03f8fcdd0e460b67308853100a50a2a44a7be504153d3f229f7"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-closeout.uk.md",
+      "bytes": 6976,
+      "sha256": "7892d73132d111153ec6f7dfc1a0d8d66b2c692ac8ca7fdd1611b87732b59ae2"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-package-acceptance.json",
+      "bytes": 10825,
+      "sha256": "351acefde42698b85311765195533dbdaea95415ac88b2c8f3fda8e0ede94f70"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-package-release.json",
+      "bytes": 10719,
+      "sha256": "43f6fd6324d7f47869bf8cde5a9662eb44b1b9d8ce23e0488eb10792faaabd4d"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\previous-pinned-receipt.json",
+      "bytes": 14756,
+      "sha256": "3298affe7a070a16cae1105510deb9ebf83a3084bf8ae3559b18732861114997"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\prior-failure.json",
+      "bytes": 8162,
+      "sha256": "5afa2c5a52319bbc46d0f9dd636eaf7b6d55e613c12e0f8b3bcd01db22922c8c"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\record-repair.py",
+      "bytes": 13522,
+      "sha256": "49a7434d4aa9a650fbffee5ad3a4658d00259b364fd1bfbaeb04b0faa6529b66"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\rooms.after.css",
+      "bytes": 5893,
+      "sha256": "951e93289f5d8f3e0cf4632e5eabb64d3ab6164e7aff2b8c15d2009adeaad487"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\rooms.after.mjs",
+      "bytes": 14852,
+      "sha256": "c54f0cb52c5aca06356579f35f939d80e09f42f944d65c81272a815ff5733dae"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\rooms.before.css",
+      "bytes": 5880,
+      "sha256": "1604c4a9d4b5aa2b1b5ffdc86dce2de167c55bed845d95714f63bcdd4eec8aa2"
+    },
+    {
+      "path": "C:\\Users\\Andrii\\.codex\\worktrees\\43ca\\DeskTopAugust\\reports\\synera-center99-closeout-20261002\\draft-repair\\rooms.before.mjs",
+      "bytes": 14808,
+      "sha256": "7d87cccb1899060b50976b3f8a2535fbe63d15ad49973b338fd66bd7612e0230"
+    }
+  ],
+  "next": {
+    "minutes": 10,
+    "action": "prepare one disposable PostgreSQL runtime in a separate technical wave, then run existing room SQL acceptance; keep live activation closed until PASS"
+  },
+  "external_provider_calls": 0,
+  "external_provider_usd": 0.0,
+  "subscription_usage_or_savings": "NOT_MEASURED",
+  "forbidden_actions_performed": [],
+  "readback_complete": true
+}

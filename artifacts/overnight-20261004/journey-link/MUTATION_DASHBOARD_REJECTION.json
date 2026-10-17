@@ -1,0 +1,32 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T07:51:48.089Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium, same synthetic account fixture across main app and private journey; not SQL/JWT, real accounts, Android or providers",
+  "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+  "extended_runner_sha256": "415cfde3c3e93584c5d137c47902f16e05558d9f79a7fdce24db34e099c881ec",
+  "process_exit": 1,
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T07:51:48.987Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "exact_main_app_to_selected_conversation": true,
+      "recipient_and_normalized_uuid_hint": true
+    },
+    "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+    "error": "Rejected hint hid ordinary dashboard\n\nfalse !== true\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Rejected hint hid ordinary dashboard\n\nfalse !== true\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/journey-link/mutation-runner.mjs:139:12"
+  },
+  "error": "Rejected hint hid ordinary dashboard\n\nfalse !== true\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.mjs": "2285e7d1a7b3d1939debe8897ffa5654e0376c926d34d670ef206f86c54c01b1",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-journey-link-browser.mjs": "de204828f76cc17cb6a5454ecd73f35b322787f790d9b66743e44fcca6ea152f"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_ARCHIVE_BROWSER",
+  "generated_at": "2026-10-04T03:39:14.665Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local Chromium 390x844 file viewer; existing downloads contain synthetic participant attestations, not live server proof",
+  "checks": [
+    "gzip: exact private file readback, six events, literal text, no approval controls",
+    "plain: exact private file readback, six events, literal text, no approval controls",
+    "invalid next file clears earlier private copy",
+    "pending outcome stays pending",
+    "clear cancels delayed decode"
+  ],
+  "source_sha256": {
+    "web_launch/outcome-archive.html": "d62d588d4b7b6a267f7a623d19cfbde9eb177575a665931c9c539aa823f56856",
+    "web_launch/outcome-archive.mjs": "d9257b5c8fbdaa1e4ff67fc5df2c1b02c00f5fae56e6ebfce8e4f2a5f181f09d",
+    "web_launch/outcome-archive-ui.mjs": "3230a93f35d0ca78749bdd8ca260b6fbd91bea6d75293efc620dcaa02c24841e",
+    "web_launch/real-journey-client.mjs": "4312e886d2a1e055c022c07a2b42f684b27be24215c9e470fbdbe8cbdf3c1837",
+    "web_launch/real-journey.html": "c514f2c50d76f8ec71e525dc21afb88cf1bb9a415047d549699323d6ab506565",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "tools/outcome-archive-browser.mjs": "bb414b4554d1d76d12e11d42c2fb8c52d59fc896f902a5509983525e785764a0"
+  },
+  "axe_current": 0,
+  "axe_atelier": 0,
+  "no_overflow": {
+    "viewport": 390,
+    "width": 390
+  },
+  "no_private_storage": true,
+  "stored_design_preferences_only": true,
+  "api_or_external_requests": 0,
+  "page_errors": []
+}

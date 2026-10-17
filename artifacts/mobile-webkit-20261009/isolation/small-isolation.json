@@ -1,0 +1,33 @@
+{
+  "baseline": 389,
+  "rows": [
+    {
+      "rule": ".real-form select{display:none!important}",
+      "width": 320
+    },
+    {
+      "rule": ".real-form option{display:none!important}",
+      "width": 389
+    },
+    {
+      "rule": ".real-form label{display:block!important}",
+      "width": 320
+    },
+    {
+      "rule": ".real-form fieldset{display:block!important}",
+      "width": 389
+    },
+    {
+      "rule": ".real-form{display:block!important}",
+      "width": 389
+    },
+    {
+      "rule": ".real-form select{appearance:none!important;-webkit-appearance:none!important;overflow:hidden!important}",
+      "width": 320
+    },
+    {
+      "rule": ".real-form select{text-overflow:ellipsis!important;white-space:normal!important}",
+      "width": 320
+    }
+  ]
+}

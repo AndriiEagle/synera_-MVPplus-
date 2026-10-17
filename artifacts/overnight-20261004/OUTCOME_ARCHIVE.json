@@ -1,0 +1,69 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_ARCHIVE",
+  "generated_at": "2026-10-04T03:48:40.225Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local read-only viewer and synthetic archived attestations; no restore, live authentication or production publication",
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/studio.mjs": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+    "web_launch/real-journey.mjs": "6aca90513c55a68a7ee3d86fa9fbdb3dfa5fd85a9e040da0e319bdab7b56e0d2",
+    "artifacts/overnight-20261004/outcome-export-plain.json": "56313707d3c4cd0b47e616788806bd42ecfce427ff1fd78a0b706add972c988a",
+    "artifacts/overnight-20261004/outcome-export-gzip.json": "f028b526d09b71d598f703361a64843cfabd4ee752f1906336ba0ad866f477a3",
+    "web_launch/dist-neon-real-journey-20261003/release.json": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc",
+    "web_launch/dist-neon-outcomes-api-20261004/release.json": "e71b53046222964167792e1896be4628a4ac7fbbb0a60be1b4505f2091145acf",
+    "web_launch/dist-neon-outcomes-ui-20261004/release.json": "78407842a606f1eef96305585693d0c70c5c06caabdab928d91364309e760135",
+    "web_launch/dist-neon-outcomes-export-20261004/release.json": "c1f84433277643fc5ad5f2be1699b7f0b627f897f6bd22f9836e8071b3aa2132"
+  },
+  "source_sha256": {
+    "web_launch/outcome-archive.html": "d62d588d4b7b6a267f7a623d19cfbde9eb177575a665931c9c539aa823f56856",
+    "web_launch/outcome-archive.mjs": "d9257b5c8fbdaa1e4ff67fc5df2c1b02c00f5fae56e6ebfce8e4f2a5f181f09d",
+    "web_launch/outcome-archive-ui.mjs": "3230a93f35d0ca78749bdd8ca260b6fbd91bea6d75293efc620dcaa02c24841e",
+    "web_launch/outcome-archive.test.mjs": "3c28e248df65e94515ea5568762d4ab5d1c8226dc3a6fe6747ec294b503d6ce9",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/real-journey-client.mjs": "4312e886d2a1e055c022c07a2b42f684b27be24215c9e470fbdbe8cbdf3c1837",
+    "web_launch/real-journey.html": "c514f2c50d76f8ec71e525dc21afb88cf1bb9a415047d549699323d6ab506565",
+    "tools/outcome-archive-browser.mjs": "bb414b4554d1d76d12e11d42c2fb8c52d59fc896f902a5509983525e785764a0",
+    "tools/outcome-archive-acceptance.mjs": "ab3b6e88e0e8fa7294a3d0b3a52d35c7cfb6b0575441da5aa7d22fe23c9aee40"
+  },
+  "base_commit": "5a385caa8adac3ace3f41a9a3d976e9365f843d3",
+  "tests": {
+    "command": "node --test web_launch/outcome-archive.test.mjs web_launch/case-outcome-export.test.mjs web_launch/archive-codec.test.mjs web_launch/case-outcome-client.test.mjs web_launch/real-journey-client.test.mjs web_launch/neon-store.test.mjs",
+    "pass": 38,
+    "fail": 0,
+    "skipped": 0
+  },
+  "allowlist_tests": {
+    "command": "node --test --test-reporter=tap --test-name-pattern=allowlist|extensionless neon/worker.test.mjs",
+    "pass": 3,
+    "fail": 0,
+    "skipped": 0
+  },
+  "browser_checks": [
+    "gzip: exact private file readback, six events, literal text, no approval controls",
+    "plain: exact private file readback, six events, literal text, no approval controls",
+    "invalid next file clears earlier private copy",
+    "pending outcome stays pending",
+    "clear cancels delayed decode"
+  ],
+  "clear_generation_mutation_rejected": true,
+  "mutation_scope": "Only stale-decode generation guard removed by local browser route; accepted sources unchanged",
+  "sql_reused": "SQL source hashes match; PostgreSQL unchanged and stopped",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-viewer-20261004",
+    "files": 97,
+    "published": false
+  },
+  "bundled_public_routes": 4,
+  "private_assets_denied": 3,
+  "closed_outcome_gate": 503,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-viewer-20261004",
+  "public_files": 97,
+  "release_sha256": "66d460a755c4d756e1f8c9d41f938ff92a38f627fe2c23791a17df2ad9d69505",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

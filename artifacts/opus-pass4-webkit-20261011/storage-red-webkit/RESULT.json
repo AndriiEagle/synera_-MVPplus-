@@ -1,0 +1,125 @@
+{
+  "scope": "Desktop browser, actual navigation with denied localStorage, synthetic Auth/Data. No live JWT, physical device or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-final-20261011",
+  "releaseHash": "81265d06447063f62ce61ecdf0cd787c078d7513e21606f9b549bb7309346a0e",
+  "engine": {
+    "name": "webkit",
+    "version": "26.6"
+  },
+  "facts": {},
+  "checks": [
+    {
+      "name": "de: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "de: design cycle works locally and returns to Current",
+      "pass": false,
+      "detail": [
+        "synera",
+        "synera",
+        "synera"
+      ]
+    },
+    {
+      "name": "de: explicit tour works without storage",
+      "pass": false
+    },
+    {
+      "name": "de: newly drawn next link carries the explicit choice",
+      "pass": true,
+      "detail": "/real-journey.html?lang=de"
+    },
+    {
+      "name": "de: returning to Ukrainian removes the old language from the link",
+      "pass": true
+    },
+    {
+      "name": "de: query and fragment survive on newly added internal links",
+      "pass": true,
+      "detail": "/real-journey.html?entry=test&lang=de#next"
+    },
+    {
+      "name": "de: external links are unchanged",
+      "pass": true,
+      "detail": "https://example.com/real-journey.html?entry=test#next"
+    },
+    {
+      "name": "de: real next page keeps the choice without storage",
+      "pass": true,
+      "detail": {
+        "actual": "de",
+        "url": "http://127.0.0.1:57177/real-journey.html?lang=de"
+      }
+    },
+    {
+      "name": "de: language and navigation did not write data",
+      "pass": true
+    },
+    {
+      "name": "en: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "en: design cycle works locally and returns to Current",
+      "pass": false,
+      "detail": [
+        "synera",
+        "synera",
+        "synera"
+      ]
+    },
+    {
+      "name": "en: explicit tour works without storage",
+      "pass": false
+    },
+    {
+      "name": "en: newly drawn next link carries the explicit choice",
+      "pass": true,
+      "detail": "/real-journey.html?lang=en"
+    },
+    {
+      "name": "en: returning to Ukrainian removes the old language from the link",
+      "pass": true
+    },
+    {
+      "name": "en: query and fragment survive on newly added internal links",
+      "pass": true,
+      "detail": "/real-journey.html?entry=test&lang=en#next"
+    },
+    {
+      "name": "en: external links are unchanged",
+      "pass": true,
+      "detail": "https://example.com/real-journey.html?entry=test#next"
+    },
+    {
+      "name": "en: real next page keeps the choice without storage",
+      "pass": true,
+      "detail": {
+        "actual": "en",
+        "url": "http://127.0.0.1:57177/real-journey.html?lang=en"
+      }
+    },
+    {
+      "name": "en: language and navigation did not write data",
+      "pass": true
+    }
+  ],
+  "failures": [
+    {
+      "language": "de",
+      "error": "Storage denied for regression test",
+      "stack": "SecurityError: Storage denied for regression test\n    at unknown (web-inspector://bootstrap.js:23:93)",
+      "url": "http://127.0.0.1:57177/?lang=de"
+    },
+    {
+      "language": "en",
+      "error": "Storage denied for regression test",
+      "stack": "SecurityError: Storage denied for regression test\n    at unknown (web-inspector://bootstrap.js:23:93)",
+      "url": "http://127.0.0.1:57177/?lang=en"
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "NEEDS_REVIEW"
+}

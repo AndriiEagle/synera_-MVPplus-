@@ -1,0 +1,28 @@
+✖ logout while retry metadata hashes cannot restore a stale intent (71.4744ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 285.141
+
+✖ failing tests:
+
+test at web_launch\message-intent.test.mjs:76:1
+✖ logout while retry metadata hashes cannot restore a stale intent (71.4744ms)
+  AssertionError [ERR_ASSERTION]: Late digest restored metadata after logout
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:82:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,91 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_READ_BROWSER",
+  "generated_at": "2026-10-04T08:45:58.557Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true,
+    "retry_keeps_text_and_intent": true,
+    "giver_cannot_self_accept": true,
+    "dispute_resolves_without_erasing_history": true,
+    "withdrawal_disables_outcome_actions": true,
+    "both_receiver_acceptances_confirm_all_results": true,
+    "optional_read_errors_keep_chat_and_clear_stale_private_results": [
+      503,
+      409,
+      429,
+      500,
+      "network"
+    ],
+    "manual_retry_restores_only_fresh_read_and_replaces_error_status": true,
+    "reads_do_not_write_or_auto_accept": true,
+    "auth_failures_purge_chat_draft_and_outcomes": [
+      401,
+      403
+    ],
+    "late_failed_read_does_not_change_logged_out_state": true,
+    "current_default": true,
+    "axe_violations": 0,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "no_private_storage": true,
+    "atelier_opt_in_reversible_and_reduced_motion": true,
+    "flag_closed_ui": true,
+    "late_read_does_not_restore_private_dom": true,
+    "logout_purges_result_and_history": true,
+    "logout_clears_old_private_chat": true
+  },
+  "events": [
+    {
+      "index": 1,
+      "kind": "submit",
+      "actor_id": "11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "index": 1,
+      "kind": "check",
+      "actor_id": "22222222-2222-4222-8222-222222222222"
+    },
+    {
+      "index": 1,
+      "kind": "decline",
+      "actor_id": "22222222-2222-4222-8222-222222222222"
+    },
+    {
+      "index": 1,
+      "kind": "accept",
+      "actor_id": "22222222-2222-4222-8222-222222222222"
+    },
+    {
+      "index": 0,
+      "kind": "submit",
+      "actor_id": "22222222-2222-4222-8222-222222222222"
+    },
+    {
+      "index": 0,
+      "kind": "check",
+      "actor_id": "11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "index": 0,
+      "kind": "accept",
+      "actor_id": "11111111-1111-4111-8111-111111111111"
+    }
+  ],
+  "external_requests": 0,
+  "source_sha256": {
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.mjs": "a9963de371a1fb26382653f3b29b8b1dc85ef5388d717d429c05f566a3f41c18",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/outcome-read-browser.mjs": "e1781319309ebfbe0d7f6f33bab8ca316629138f72db5b083ac68415331ea250"
+  }
+}

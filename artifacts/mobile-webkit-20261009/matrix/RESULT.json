@@ -1,0 +1,625 @@
+{
+  "phase": "matrix",
+  "mutation": false,
+  "scope": "Desktop WebKit, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "releaseHash": "a80d283892665eaf3800060f5154e3f37eae545ff5f9186fcbb35efd18b7315c",
+  "manifestFilesVerified": 96,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "small",
+      "page": "get",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "small-get.png"
+    },
+    {
+      "profile": "small",
+      "page": "studio",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 320,
+        "document": 389
+      },
+      "actions": 30,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 320,
+          "document": 389
+        }
+      ],
+      "screenshot": "small-journey-editor.png"
+    },
+    {
+      "profile": "small",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 320,
+        "document": 320
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "small-journey-chat.png"
+    },
+    {
+      "profile": "compact",
+      "page": "get",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "compact-get.png"
+    },
+    {
+      "profile": "compact",
+      "page": "studio",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 375,
+        "document": 389
+      },
+      "actions": 30,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 375,
+          "document": 389
+        }
+      ],
+      "screenshot": "compact-journey-editor.png"
+    },
+    {
+      "profile": "compact",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 375,
+        "document": 375
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "compact-journey-chat.png"
+    },
+    {
+      "profile": "large",
+      "page": "get",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-get.png"
+    },
+    {
+      "profile": "large",
+      "page": "studio",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 430,
+        "document": 430
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-journey-chat.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "get",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "landscape-get.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "studio",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 844,
+        "document": 844
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "landscape-journey-chat.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "get",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "tablet-get.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "studio",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 768,
+        "document": 768
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "tablet-journey-chat.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-text-get.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 705
+      },
+      "actions": 30,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 390,
+          "document": 705
+        }
+      ],
+      "screenshot": "large-text-journey-editor.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-text-journey-chat.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "atelier-get.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "atelier-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "small",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "compact",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "large",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "landscape",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "tablet",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "large-text",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "atelier",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 49,
+    "issues": 3,
+    "failures": 0,
+    "journeys": 7
+  },
+  "status": "NEEDS_REVIEW"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "RED_CONFIRMED_NEXT_DRAFT_LOSS",
+  "generated_at": "2026-10-04T15:25:12.311Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "1b3c05d9e2c32a0e1d9c53b02ad625fdec3a8ae19f93cb9ab4ce24d37865ffc4",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T15:25:04.540Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "rejected_send_keeps_chat_and_draft_manual_retry_once": true
+    },
+    "error": "Previous send erased the next draft\n+ actual - expected\n\n+ ''\n- 'Наступна думка × POST 💛 <script>literal</script>  '\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "125cef34d4c0c77f92ccccbac80b9ecd71fa3bfd48e5746d8f101c54b2886434",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/message-draft-continuity-browser.mjs": "cb9ac34ca1b0b5135d76b0434fa8b3cd50d89906c6979795ddf1f1cf88501926"
+  }
+}

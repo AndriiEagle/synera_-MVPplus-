@@ -1,0 +1,28 @@
+{
+  "current_revision": 1,
+  "requirements": [
+    {
+      "id": "APPROVAL-ISOLATION",
+      "revision": 1,
+      "expected": {
+        "op": "equals",
+        "value": {
+          "forged_peer_approval_sent": false
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "requirement_id": "APPROVAL-ISOLATION",
+      "revision": 1,
+      "kind": "outcome",
+      "producer": "synera.ProfileStore at current git source",
+      "observer": "local Node contract probe against actual exported class",
+      "locator": "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\v6\\workflow\\approval-probe.tap",
+      "actual": {
+        "forged_peer_approval_sent": true
+      }
+    }
+  ]
+}

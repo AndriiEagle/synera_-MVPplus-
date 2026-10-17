@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "scope": "Desktop engine with synthetic gateway fixture, no live JWT/RLS/phones",
+  "candidate": "dist-neon-message-reload-20261010",
+  "release_sha256": "7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71",
+  "source_overrides": {
+    "real-journey.mjs": "ec203b6b60e50935df71dc169ad6acac3a935a5b899a8789f9047304d3276d1e",
+    "real-journey-i18n.mjs": "127e6101e6531a9886645eee46591710ad22ea3505c066d624b535a3a61a7c2d"
+  },
+  "engine": "webkit",
+  "mutation": false,
+  "checks": [
+    {
+      "name": "uncommitted-uk",
+      "status": "PASS",
+      "posts": 2,
+      "cases": 1,
+      "preserved_fields": 21,
+      "note": "Збереження умов не підтверджено. Текст лишився у формі. Натисни «Оновити» й перевір домовленість перед повтором: зміни могли вже зберегтися."
+    },
+    {
+      "name": "committed-de",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 1,
+      "preserved_fields": 21,
+      "note": "Ob die Bedingungen gespeichert wurden, ist nicht bestätigt. Dein Text ist im Formular geblieben. Tippe auf «Aktualisieren» und prüfe die Vereinbarung vor einem erneuten Versuch: Die Änderungen könnten bereits gespeichert sein."
+    },
+    {
+      "name": "revision-de",
+      "status": "PASS",
+      "posts": 2,
+      "cases": 1,
+      "preserved_fields": 22,
+      "note": "Ob die Bedingungen gespeichert wurden, ist nicht bestätigt. Dein Text ist im Formular geblieben. Tippe auf «Aktualisieren» und prüfe die Vereinbarung vor einem erneuten Versuch: Die Änderungen könnten bereits gespeichert sein."
+    },
+    {
+      "name": "late-logout-en",
+      "status": "PASS",
+      "posts": 1
+    },
+    {
+      "name": "denied-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "expired-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "cold-disabled",
+      "status": "PASS",
+      "posts": 0
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "browser_version": "26.6"
+}

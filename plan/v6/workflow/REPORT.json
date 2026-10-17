@@ -1,0 +1,51 @@
+{
+  "status": "WORKFLOW_VERIFIED_DEFECT_REPRODUCED",
+  "product_accepted": false,
+  "defect_fixed": false,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "baseline_tests": 140,
+  "probe_pass": 1,
+  "probe_fail": 1,
+  "workflow_test_methods": 4,
+  "results": [
+    {
+      "file": "structure.json",
+      "exit_code": 0
+    },
+    {
+      "file": "workflow-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "file": "product-verdict.json",
+      "exit_code": 1
+    }
+  ],
+  "limitations": [
+    "Static workflow checks do not authorize dispatch or prove future model compliance",
+    "No production code changed; no live DB exploit verified",
+    "No new build/deploy/UI acceptance in this turn"
+  ],
+  "hashes": {
+    "approval-boundary.test.mjs": "26c6d79155430201d6252f17cdc9b5adebdc0a2bb0106c7e76c26043de824e04",
+    "approval-probe.tap": "384aa90d843684adb9aa3c82cfca3bcb4ff209c607f15c9c2b9c87da869bfe23",
+    "check_workflow.py": "0b1bdf35183ed9f31ffe2fa9e7fdc977bc817d8f1fbab77e1e756bc98575b7f6",
+    "initial-check-failures.txt": "7c26d987a741d793372bfb866199a3e9bce0dc7ab4270153874b4321da7b764c",
+    "product-acceptance.json": "bf08553f5e8e9e7d1e5995db1faa9aba9543302dac3100b4d40a67b159e3d2c9",
+    "product-verdict.json": "04b6f5724fb840153dda7683431e8f1c300ab1202096afd56b61bbc8e5528638",
+    "structure.json": "70794a815815500b62135e2eb0664e36ed2e3ee9ea18d4bc911514c65c301726",
+    "test_workflow.py": "43622427e32b786882c4706a7207919b563ff71a855c10179d267f88079e1f7c",
+    "workflow-tests.txt": "6eb54f62f5b675ee8e792eace9407b11a191fa171c0c3ae4233827c534624511",
+    "WORKFLOW.uk.md": "32635ee1deb4f475c7635952f4e873b2560dc82740c63b2473af64a0a77dcc21"
+  },
+  "parent_artifacts": {
+    "TASKS.json": "9bfe7d44029b16e18c43d1b2e1d7aaddf680ec7ea57f343ea02581a75a5de564",
+    "HANDOFF.uk.md": "9f62a56394983f7e76ba940c3afa250ecf42ccdc76dc867ca2ce522d6bb966b4",
+    "EXECUTION_PLAN.uk.md": "d88bf015f7d4ceeba3604efa96aae7e45fe871dd1767f17620faf5dbdbc3a56b"
+  },
+  "source_hashes": {
+    "profile-store.mjs": "64308ea8bda66059a4dcff517dfd855f5c4ef8426842094d53d270579db441d6",
+    "business-case.mjs": "963cf8be61750b48841c46be77efa361423b4d081ebbd299725b1de9186c4e40"
+  }
+}

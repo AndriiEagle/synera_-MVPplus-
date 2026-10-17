@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-03T12:41:32.877579+00:00",
+  "checkpoint_id": "synera-connected-journey-20261003",
+  "scope": "Connected public demo; real local AI prototype; live product HOLD",
+  "artifact": "artifacts/journey-20261003/STATUS.uk.md",
+  "unit_tests": 51,
+  "browser_cycle": "PASS real Chromium 390x844, current proposal approvals, downloaded archive and Studio handoff",
+  "mobile_surfaces": 6,
+  "preservation": "Current/Atelier and old screens retained; legacy design evidence restored",
+  "public_site": {
+    "version": 7,
+    "source": "c0cd34da860682e4c242fe1d133918bd03b448e2",
+    "deployment": "appgdep_6ac0f239340081919f5fe9784bdc57eb",
+    "status": "succeeded",
+    "app_http_source_readback": "PASS nine files; exact JS plus normalized HTML/native CF append",
+    "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/studio-journey"
+  },
+  "local_ai": {
+    "model": "gemma-4-e2b-qlty.gguf",
+    "model_sha256": "30f91a24f491f8aad18534dafe6c499fa753c7293b8df1e0b58cb81801e3bdc6",
+    "prior_transport": "PASS with explicit content-review limit",
+    "current_quality": "NEEDS_REVIEW after role prompt correction; CPU/RAM pressure prevented final live acceptance"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "production_mutations": 0,
+  "subscription_savings": "unmeasured",
+  "product_push": "ordinary attempt after commit; prior policy rejection remains unresolved",
+  "next": "10 minutes: one physical Android Chrome/PWA cycle, archive handoff and offline reopen",
+  "source_sha256": {
+    "web_launch/journey-core.mjs": "ea7e1d3d6a5540073501f43cec3a15b21f76574fafb0dbd1594112ddd731ee45",
+    "web_launch/journey-ui.mjs": "47640946a381a44941efab5a855c853d7a83938654250d5416afed5dea7cc677",
+    "web_launch/journey-ai-client.mjs": "1bae62d2115d75706ce5f35be6b3d1cfb9da0d90abd51b4373aa575893f4c363",
+    "web_launch/journey-handoff.mjs": "e6292f432487c89eeca87314fffb868d7bcb52117132ff44c2d3908644f12533",
+    "web_launch/server/local-journey-ai.mjs": "dd9f779bcdde8ee6978a92b6e040a452c44bcebc33e1d9f27d20a33220eb3cc7",
+    "web_launch/server/local-profile-ai.mjs": "f20ca51b83560bb8ad7c43bab605ff936b2ea3a27d7d05f4f4d04c50cb258728",
+    "web_launch/studio-journey.html": "678556daa66a9d8ff1d17344bebdc73e1375785f3d6c14f3a0c86470f1403105",
+    "web_launch/journey.css": "c887cb3068e2bb6b0f923cbf9e705704beb0e1fc26e86fed1ba28f6dce3936fa",
+    "web_launch/studio.mjs": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+    "web_launch/triangle.mjs": "36874acc896829d6b2f5af205a9754d1eb267101fb4020a0fe108002148b0add",
+    "web_launch/studio-sw.mjs": "2a9c56b313e12a5b1f920140fc556b6f5a7ba83ffa5f270453fa1acfe021d626",
+    "web_launch/assets.mjs": "8f237019e0c7693aca43ae7465afb7a8c242a2a0a218ea846c8e2ac5471e979f"
+  },
+  "review_joins": {
+    "first": "Reviewed changed source against preservation and consent invariant",
+    "adversarial": "Forged AI text against valid reply hash failed baseline, then rejected after fix; stale revision also rejects"
+  },
+  "release_holds": [
+    "public server AI",
+    "two real account integration",
+    "Google Maps SDK",
+    "Neon SQL/RLS runtime",
+    "voice/video",
+    "payments",
+    "native Android APK",
+    "physical phone acceptance"
+  ]
+}

@@ -1,0 +1,24 @@
+✔ lost POST response and explicit retry produce exactly one stored message (115.428ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (37.6511ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (60.6989ms)
+✔ same-tab reload retries a committed unknown delivery once without storing message text (17.5437ms)
+✔ logout while retry metadata hashes cannot restore a stale intent (4.5325ms)
+✔ concurrent unknown first sends retain both reload retry UUIDs (23.8281ms)
+✔ blocked or corrupt storage falls back to the existing RAM retry path (21.145ms)
+✔ persisted metadata cannot merge a different authenticated actor (13.9748ms)
+✔ persisted metadata cannot merge the same text across meetings (22.6871ms)
+✔ untrusted retry metadata is copied without extra fields (7.7485ms)
+✔ metadata churn settles before POST instead of retrying forever (2.1799ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (138.9396ms)
+✔ authentication reset forgets pending intent (14.3201ms)
+✔ late committed acknowledgement is rejected after same-account restore (6.4682ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (16.4855ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (11.6634ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 756.7683

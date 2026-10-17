@@ -1,0 +1,45 @@
+{
+  "scope": "Desktop browser, actual navigation with denied localStorage, synthetic Auth/Data. No live JWT, physical device or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-final-20261011",
+  "releaseHash": "81265d06447063f62ce61ecdf0cd787c078d7513e21606f9b549bb7309346a0e",
+  "engine": {
+    "name": "chromium",
+    "version": "154.0.8037.98"
+  },
+  "facts": {},
+  "checks": [
+    {
+      "name": "de: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "de: design cycle works locally and returns to Current",
+      "pass": false,
+      "detail": [
+        "synera",
+        "synera",
+        "synera"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "language": "de",
+      "error": "Storage denied for regression test",
+      "stack": "",
+      "url": "http://127.0.0.1:58812/?lang=de"
+    },
+    {
+      "language": "de",
+      "error": "Storage denied for regression test",
+      "stack": "",
+      "url": "http://127.0.0.1:58812/?lang=de"
+    },
+    {
+      "error": "locator.click: Timeout 12000ms exceeded. | Call log: |   - waiting for locator('#tour-start') |     - locator resolved to <button class=\"quiet\" type=\"button\" id=\"tour-start\">Tour</button> |   - attempting click action"
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "NEEDS_REVIEW"
+}

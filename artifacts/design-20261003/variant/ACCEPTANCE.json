@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "records": [
+    {
+      "route": "/",
+      "check": "current → Atelier → current, unchanged fields/consent/panes, visible knobs, persisted preference, 390px and axe",
+      "pass": true
+    },
+    {
+      "route": "/studio.html",
+      "check": "current → Atelier → current, unchanged fields/consent/panes, visible knobs, persisted preference, 390px and axe",
+      "pass": true
+    },
+    {
+      "route": "/triangle.html",
+      "check": "current → Atelier → current, unchanged fields/consent/panes, visible knobs, persisted preference, 390px and axe",
+      "pass": true
+    },
+    {
+      "route": "/summit.html",
+      "check": "current → Atelier → current, unchanged fields/consent/panes, visible knobs, persisted preference, 390px and axe",
+      "pass": true
+    },
+    {
+      "check": "real local fit, fit result, Triangle workspace and Atlas states; axe and overflow",
+      "pass": true
+    },
+    {
+      "route": "/studio",
+      "check": "explicit Atelier preference survives actual offline clean-URL reload",
+      "pass": true,
+      "cache_paths": [
+        "/studio.html",
+        "/studio.css",
+        "/studio.mjs",
+        "/studio-install.mjs",
+        "/studio.webmanifest",
+        "/session-value.mjs",
+        "/declared-fit.mjs",
+        "/group-logistics.mjs",
+        "/archive-codec.mjs",
+        "/summit.css",
+        "/triangle.css",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/apple-touch-icon.png",
+        "/montserrat-400.woff2",
+        "/montserrat-500.woff2",
+        "/atelier.css",
+        "/atelier.mjs",
+        "/tokens.css"
+      ]
+    }
+  ],
+  "source": {
+    "atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "index.html": "26454b1db775bcca19ed0ccf541ed92d9a90f6140524e37ab5800e0df4afdff9",
+    "studio.html": "aa4e0f94be2054a89378d631a347481e6b734c381cafc7bc05c979e77cffec80",
+    "triangle.html": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d",
+    "summit.html": "30f32bf65bd06fabce0ab0e4d08df018c02ca80e39e5d741cfb7ed9a9cca9340",
+    "assets.mjs": "b9b61b277938c56125cf6ff1bf12d6c6460bbb07b7afe4e532f9d9d25eddcddc",
+    "studio-sw.mjs": "aec524bde033ba102a767411ea539655b0b0884c5a3109ff6e000a7c561a8d8a"
+  },
+  "provider_calls": 0,
+  "scope": "Local real Chromium; public/demo states only, not physical Android or deployed/live account proof"
+}

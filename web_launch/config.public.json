@@ -1,0 +1,7 @@
+{
+  "backend": "neon",
+  "pilotSafetyEnabled": false,
+  "realPilotEnabled": false,
+  "registrationEnabled": false,
+  "googleOAuthEnabled": false
+}

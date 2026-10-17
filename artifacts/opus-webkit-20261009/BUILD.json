@@ -1,0 +1,18 @@
+{
+  "status": "PASS_COMMITTED_HEAD_BUILD_AND_COPY",
+  "source_head": "e46ce95e37e1f2f528bc91d46098ea4967f72dff",
+  "generated_at": "2026-10-09T19:33:29.362Z",
+  "candidate": "web_launch\\dist-neon-opus-head-webkit-20261009",
+  "release_sha256": "4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297",
+  "public_files": 97,
+  "manifest_files_verified": 96,
+  "committed_public_assets_verified": 94,
+  "exported_source_files": 275,
+  "foreign_worktree_journey_ui_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "candidate_journey_ui_sha256": "3725f354fe08cce2486e14fd2a73b4b4e0749426160b8afa5bcbace833380e31",
+  "foreign_dirty_excluded": true,
+  "published": false,
+  "production_applied": false,
+  "provider_calls": 0,
+  "usd": 0
+}

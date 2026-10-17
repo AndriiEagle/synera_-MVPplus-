@@ -1,0 +1,139 @@
+{
+  "status": "VERIFIED_READ_ONLY_SCHEMA_CATALOG",
+  "checked_at_utc": "2026-10-05 17:38:37 UTC",
+  "target": {
+    "project": "synera",
+    "project_id": "quiet-credit-94155104",
+    "branch": "production",
+    "branch_id": "br-dawn-field-axoxc3c4",
+    "database": "neondb",
+    "role": "neondb_owner"
+  },
+  "url": "https://console.neon.tech/app/projects/quiet-credit-94155104/branches/br-dawn-field-axoxc3c4/sql-editor?database=neondb",
+  "sql_source": "artifacts/message-intent-20261005/pilot-schema-audit.readonly.sql",
+  "read_only_transaction": true,
+  "rollback_ui_verified": true,
+  "user_rows_read": false,
+  "mutations_applied": false,
+  "query_history_entry": true,
+  "result": {
+    "database": "neondb",
+    "role": "neondb_owner",
+    "server_version": "18.6 (4e955f5)",
+    "identity_type": "uuid",
+    "provider_uid_present": true,
+    "tables": [
+      {
+        "name": "group_room_events",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "group_room_members",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "group_room_messages",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "group_rooms",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "match_case_approvals",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "match_cases",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "match_outcome_events",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "meeting_address_events",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "meeting_location_grants",
+        "present": false,
+        "rls": null
+      },
+      {
+        "name": "meeting_messages",
+        "present": true,
+        "rls": true
+      },
+      {
+        "name": "meeting_requests",
+        "present": true,
+        "rls": true
+      },
+      {
+        "name": "pilot_consents",
+        "present": true,
+        "rls": true
+      },
+      {
+        "name": "profiles",
+        "present": true,
+        "rls": true
+      }
+    ],
+    "functions": [
+      {
+        "name": "synera_pilot_member",
+        "args": "",
+        "definer": true,
+        "body_md5": "ce26e8d9886fa561e33cbccde209952f"
+      },
+      {
+        "name": "synera_user_id",
+        "args": "",
+        "definer": false,
+        "body_md5": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "message_policies": [
+      {
+        "name": "messages_create",
+        "command": "INSERT",
+        "permissive": "PERMISSIVE"
+      },
+      {
+        "name": "messages_read",
+        "command": "SELECT",
+        "permissive": "PERMISSIVE"
+      },
+      {
+        "name": "synera_members_only",
+        "command": "ALL",
+        "permissive": "RESTRICTIVE"
+      }
+    ]
+  },
+  "console_overview": {
+    "region": "AWS US East 2 (Ohio)",
+    "plan_label": "Free plan",
+    "compute_range_label": "0.25 ↔ 2 CU",
+    "history_retention_label": "6 hours",
+    "cost_receipt_verified": false
+  },
+  "limits": [
+    "Catalog presence/RLS flags do not prove exact base column/grant equality or signed application HTTP JWT.",
+    "Local PG16.15 acceptance is not PG18.6 live acceptance.",
+    "No migrations/recovery/deployment/readiness flags changed.",
+    "No capacity/AI/voice/payment/OAuth/physical Android acceptance."
+  ],
+  "model_provider_calls": 0,
+  "model_provider_usd": 0
+}

@@ -1,0 +1,238 @@
+{
+  "phase": "mutation-original",
+  "mutation": false,
+  "scope": "Desktop browser, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "releaseHash": "a80d283892665eaf3800060f5154e3f37eae545ff5f9186fcbb35efd18b7315c",
+  "cssOverride": null,
+  "manifestFilesVerified": 96,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "small",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 320,
+        "document": 389,
+        "overflow": [
+          {
+            "tag": "SECTION",
+            "id": "real-content-panel",
+            "name": null,
+            "class": "",
+            "right": 308,
+            "width": 296,
+            "scrollWidth": 377,
+            "grid": "none"
+          },
+          {
+            "tag": "SECTION",
+            "id": "real-terms",
+            "name": null,
+            "class": "real-section",
+            "right": 308,
+            "width": 296,
+            "scrollWidth": 376,
+            "grid": "none"
+          },
+          {
+            "tag": "DETAILS",
+            "id": "real-editor",
+            "name": null,
+            "class": "",
+            "right": 293,
+            "width": 266,
+            "scrollWidth": 361,
+            "grid": "none"
+          },
+          {
+            "tag": "FORM",
+            "id": "real-terms-form",
+            "name": null,
+            "class": "real-form",
+            "right": 278,
+            "width": 236,
+            "scrollWidth": 347,
+            "grid": "236px"
+          },
+          {
+            "tag": "LABEL",
+            "id": "",
+            "name": null,
+            "class": "",
+            "right": 261,
+            "width": 202,
+            "scrollWidth": 217,
+            "grid": "202px"
+          },
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "name": null,
+            "class": "",
+            "right": 276,
+            "width": 232,
+            "scrollWidth": 344,
+            "grid": "202px"
+          },
+          {
+            "tag": "LABEL",
+            "id": "",
+            "name": null,
+            "class": "",
+            "right": 261,
+            "width": 202,
+            "scrollWidth": 330,
+            "grid": "202px"
+          },
+          {
+            "tag": "LABEL",
+            "id": "",
+            "name": null,
+            "class": "",
+            "right": 261,
+            "width": 202,
+            "scrollWidth": 298,
+            "grid": "202px"
+          }
+        ]
+      },
+      "actions": 30,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 320,
+          "document": 389,
+          "overflow": [
+            {
+              "tag": "SECTION",
+              "id": "real-content-panel",
+              "name": null,
+              "class": "",
+              "right": 308,
+              "width": 296,
+              "scrollWidth": 377,
+              "grid": "none"
+            },
+            {
+              "tag": "SECTION",
+              "id": "real-terms",
+              "name": null,
+              "class": "real-section",
+              "right": 308,
+              "width": 296,
+              "scrollWidth": 376,
+              "grid": "none"
+            },
+            {
+              "tag": "DETAILS",
+              "id": "real-editor",
+              "name": null,
+              "class": "",
+              "right": 293,
+              "width": 266,
+              "scrollWidth": 361,
+              "grid": "none"
+            },
+            {
+              "tag": "FORM",
+              "id": "real-terms-form",
+              "name": null,
+              "class": "real-form",
+              "right": 278,
+              "width": 236,
+              "scrollWidth": 347,
+              "grid": "236px"
+            },
+            {
+              "tag": "LABEL",
+              "id": "",
+              "name": null,
+              "class": "",
+              "right": 261,
+              "width": 202,
+              "scrollWidth": 217,
+              "grid": "202px"
+            },
+            {
+              "tag": "FIELDSET",
+              "id": "",
+              "name": null,
+              "class": "",
+              "right": 276,
+              "width": 232,
+              "scrollWidth": 344,
+              "grid": "202px"
+            },
+            {
+              "tag": "LABEL",
+              "id": "",
+              "name": null,
+              "class": "",
+              "right": 261,
+              "width": 202,
+              "scrollWidth": 330,
+              "grid": "202px"
+            },
+            {
+              "tag": "LABEL",
+              "id": "",
+              "name": null,
+              "class": "",
+              "right": 261,
+              "width": 202,
+              "scrollWidth": 298,
+              "grid": "202px"
+            }
+          ]
+        }
+      ],
+      "screenshot": "small-journey-editor.png"
+    },
+    {
+      "profile": "small",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "small-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "small",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 3,
+    "issues": 1,
+    "failures": 0,
+    "journeys": 1
+  },
+  "status": "NEEDS_REVIEW"
+}

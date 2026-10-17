@@ -1,0 +1,427 @@
+{
+  "schema": "synera.real-recordings-qa.v1",
+  "status": "LOCAL_RECORDINGS_VERIFIED_WITH_LIMITS",
+  "date": "2026-10-03",
+  "recordings_manifest": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\RECORDINGS.json",
+  "accepted_source_sha256": "8156fd20760a97a2391355762dcf3ddf21fe0aef79acd19202d4c352d51eeec2",
+  "source": {
+    "web_launch/studio.html": "aa4e0f94be2054a89378d631a347481e6b734c381cafc7bc05c979e77cffec80",
+    "web_launch/studio.mjs": "73bdfebcda5cea45c62207abb380e61745a171d0f574a2d1284443320d60aebf",
+    "web_launch/studio.css": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0",
+    "web_launch/studio-install.mjs": "8c93c476d005d8212a7e2a9611008c216464a9f3fa6b555e920a0084e1013417",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/group-logistics.mjs": "9c0ca8bc0de57963fe28d46b0231d0d2ce0fd9e333858094aaa8c2777e859adf",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/declared-fit.mjs": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5",
+    "web_launch/triangle.html": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d",
+    "web_launch/triangle.mjs": "84be2b8181f4cf37dbb0ea188ba9c9cc2dde15c6dea098b87ecd91b817d7d9fc",
+    "web_launch/triangle.css": "140115bdf62bebaaee8a529ed0c2c8ff46aad02b8bb6aee2ac1dcd8fcc405128",
+    "web_launch/triangle-room.mjs": "c9aa019bc70271e278995b6980cea74d5dd6dfc389ba20e7aab7c7e1b1af89aa",
+    "web_launch/explore-planner.mjs": "f6411a7ebf569efbd1161ecf3781dee839da3cc839a23714519d4d3eba9b064c",
+    "web_launch/summit.css": "509cba79412ad9d40c3ea97e128accaa8eabff0dc36104b174b871b401e26dfd",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/assets.mjs": "b9b61b277938c56125cf6ff1bf12d6c6460bbb07b7afe4e532f9d9d25eddcddc",
+    "web_launch/config.mjs": "e10b22c1d42fbd0bb54af42ba2baff8c71ce50136c6a6c3bdcc82f51095eaaf9",
+    "web_launch/server.mjs": "f6cadfaf24683a68dc8a9d8d55cef0db636646e024d868a01ae40bc14a6f6aff"
+  },
+  "recording_script": "tools/design-recording-20261003.mjs",
+  "recording_script_sha256": "eedf61cf62f62a51feeae28ab7a11befac9a350da92cb1e1e6b7784291e9cf17",
+  "source_readback": "PASS_UNCHANGED",
+  "same_material_route": "PASS",
+  "full_decode": "PASS",
+  "representative_decoded_frames_reviewed": 14,
+  "human_artistic_acceptance": "PENDING",
+  "results": [
+    {
+      "variant": "current",
+      "mp4": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\synera-current.mp4",
+      "raw": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\page@355a982f13d646aa966287dfc76055fa.webm",
+      "mp4_sha256": "4fa1a7050251b9c79209e169334614f1abd557ad9a53e78e206b8de2dd73dcbe",
+      "duration_s": 82.2,
+      "width": 390,
+      "height": 844,
+      "frames": 2055,
+      "full_decode": "PASS",
+      "page_errors": [],
+      "external_requests": [],
+      "actions": [
+        {
+          "at_s": 2.87,
+          "chapter": "Opening",
+          "detail": "Current visual mode in the accepted local build"
+        },
+        {
+          "at_s": 13.195,
+          "chapter": "Give / Take",
+          "detail": "Fictional Mara; local consent and separate visibility selection"
+        },
+        {
+          "at_s": 33.999,
+          "chapter": "Local session",
+          "detail": "Two typed labels on this device; not independent people"
+        },
+        {
+          "at_s": 43.183,
+          "chapter": "Proposal / replies",
+          "detail": "Two local yes clicks; no real booking, invitation or payment"
+        },
+        {
+          "at_s": 62.414,
+          "chapter": "Local confirmations / draft",
+          "detail": "Current result confirmed twice locally; private text only, no LinkedIn API"
+        },
+        {
+          "at_s": 68.714,
+          "chapter": "Archive",
+          "detail": "Real local file download; GZIP is not encryption"
+        },
+        {
+          "at_s": 80.99,
+          "chapter": "Atlas",
+          "detail": "Schematic fictional opportunity map; not Google SDK or live people"
+        }
+      ],
+      "sampled": [
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\01.png",
+          "time_s": 2.87,
+          "chapter": "Opening"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\02.png",
+          "time_s": 13.195,
+          "chapter": "Give / Take"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\03.png",
+          "time_s": 33.999,
+          "chapter": "Local session"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\04.png",
+          "time_s": 43.183,
+          "chapter": "Proposal / replies"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\05.png",
+          "time_s": 62.414,
+          "chapter": "Local confirmations / draft"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\06.png",
+          "time_s": 68.714,
+          "chapter": "Archive"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\07.png",
+          "time_s": 80.99,
+          "chapter": "Atlas"
+        }
+      ],
+      "framing_checks": [
+        {
+          "target": {
+            "selector": "ARTICLE",
+            "top": 265.28125,
+            "bottom": 578.09375,
+            "width": 346,
+            "fits": true
+          },
+          "negative_control": {
+            "selector": "fit-results",
+            "top": 265.28125,
+            "bottom": 1210.71875,
+            "width": 346,
+            "fits": false
+          },
+          "pass": true
+        },
+        {
+          "target": {
+            "selector": "opportunity-map",
+            "top": 217,
+            "bottom": 627,
+            "width": 346,
+            "fits": true
+          },
+          "negative_control": {
+            "selector": "pane-atlas",
+            "top": -202.34375,
+            "bottom": 2853.296875,
+            "width": 346,
+            "fits": false
+          },
+          "pass": true
+        }
+      ],
+      "visual_frame_review": "PASS_REPRESENTATIVE_FRAMES",
+      "human_review": "PENDING",
+      "scope": "Local real Chromium clicks, computer emulation, synthetic data; no production feature proof",
+      "codec": "h264",
+      "profile": "High",
+      "pixel_format": "yuv420p",
+      "fps": 25,
+      "reviewed": [
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\01.png",
+          "time_s": 2.87,
+          "chapter": "Opening",
+          "sha256": "85417186e95d7e324514da8981ff4ba39687e35fd92e72e1f9ecba23f2da49a2",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\02.png",
+          "time_s": 13.195,
+          "chapter": "Give / Take",
+          "sha256": "5d773a66ed462d297254304965a6ae34dbb6509a9e8de1272f9921f6a94fa904",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\03.png",
+          "time_s": 33.999,
+          "chapter": "Local session",
+          "sha256": "fa18313d6fc2c2d90a8aebc258101aec50724ec618a75fb1bd859f3f5a359055",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\04.png",
+          "time_s": 43.183,
+          "chapter": "Proposal / replies",
+          "sha256": "f7a8714f0e230a945136c9c6033b6b7e59cff6c44ece9eb9495eb46f2a324fc2",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\05.png",
+          "time_s": 62.414,
+          "chapter": "Local confirmations / draft",
+          "sha256": "58fec02243d09044c766353e16efc2001688f76117cb75d6f77349caada529bc",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\06.png",
+          "time_s": 68.714,
+          "chapter": "Archive",
+          "sha256": "28c8e7a9c8c9ef792f9159f71372314e9f98cc8d0cee1619bf06d5f805925f2a",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\current\\decoded-frames\\07.png",
+          "time_s": 80.99,
+          "chapter": "Atlas",
+          "sha256": "3337753480a30fe29c706655b5cba361ca2e45c4b5c597534d08e7c740307878",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        }
+      ],
+      "timing_scope": "Chapter offsets are browser wall-clock markers; not frame-exact editing timecodes"
+    },
+    {
+      "variant": "atelier",
+      "mp4": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\synera-atelier.mp4",
+      "raw": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\page@8adc044ccfbbf97ef567dd7a6cd28e3d.webm",
+      "mp4_sha256": "08b859f434c8a8a069c926b63d3f31ae8540229ab9844ae33f820d9632b37a24",
+      "duration_s": 83.92,
+      "width": 390,
+      "height": 844,
+      "frames": 2098,
+      "full_decode": "PASS",
+      "page_errors": [],
+      "external_requests": [],
+      "actions": [
+        {
+          "at_s": 5.253,
+          "chapter": "Opening",
+          "detail": "Visible Atelier switch, no AI control"
+        },
+        {
+          "at_s": 15.523,
+          "chapter": "Give / Take",
+          "detail": "Fictional Mara; local consent and separate visibility selection"
+        },
+        {
+          "at_s": 36.087,
+          "chapter": "Local session",
+          "detail": "Two typed labels on this device; not independent people"
+        },
+        {
+          "at_s": 45.371,
+          "chapter": "Proposal / replies",
+          "detail": "Two local yes clicks; no real booking, invitation or payment"
+        },
+        {
+          "at_s": 65.113,
+          "chapter": "Local confirmations / draft",
+          "detail": "Current result confirmed twice locally; private text only, no LinkedIn API"
+        },
+        {
+          "at_s": 71.496,
+          "chapter": "Archive",
+          "detail": "Real local file download; GZIP is not encryption"
+        },
+        {
+          "at_s": 83.81,
+          "chapter": "Atlas",
+          "detail": "Schematic fictional opportunity map; not Google SDK or live people"
+        }
+      ],
+      "sampled": [
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\01.png",
+          "time_s": 5.253,
+          "chapter": "Opening"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\02.png",
+          "time_s": 15.523,
+          "chapter": "Give / Take"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\03.png",
+          "time_s": 36.087,
+          "chapter": "Local session"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\04.png",
+          "time_s": 45.371,
+          "chapter": "Proposal / replies"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\05.png",
+          "time_s": 65.113,
+          "chapter": "Local confirmations / draft"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\06.png",
+          "time_s": 71.496,
+          "chapter": "Archive"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\07.png",
+          "time_s": 83.42,
+          "chapter": "Atlas"
+        }
+      ],
+      "framing_checks": [
+        {
+          "target": {
+            "selector": "ARTICLE",
+            "top": 259.96875,
+            "bottom": 583.78125,
+            "width": 346,
+            "fits": true
+          },
+          "negative_control": {
+            "selector": "fit-results",
+            "top": 259.96875,
+            "bottom": 1238.40625,
+            "width": 346,
+            "fits": false
+          },
+          "pass": true
+        },
+        {
+          "target": {
+            "selector": "opportunity-map",
+            "top": 162.109375,
+            "bottom": 682.109375,
+            "width": 346,
+            "fits": true
+          },
+          "negative_control": {
+            "selector": "pane-atlas",
+            "top": -291.046875,
+            "bottom": 3119.578125,
+            "width": 346,
+            "fits": false
+          },
+          "pass": true
+        }
+      ],
+      "visual_frame_review": "PASS_REPRESENTATIVE_FRAMES",
+      "human_review": "PENDING",
+      "scope": "Local real Chromium clicks, computer emulation, synthetic data; no production feature proof",
+      "codec": "h264",
+      "profile": "High",
+      "pixel_format": "yuv420p",
+      "fps": 25,
+      "reviewed": [
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\01.png",
+          "time_s": 5.253,
+          "chapter": "Opening",
+          "sha256": "fdc599a6175aca81a5247b5cd874764ec26475ccc5c3954276c53632a4137cc4",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\02.png",
+          "time_s": 15.523,
+          "chapter": "Give / Take",
+          "sha256": "2d800edff78d52df9b22e844589db6fd2008ea95ada7517a8d95c10c71f782e0",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\03.png",
+          "time_s": 36.087,
+          "chapter": "Local session",
+          "sha256": "c4efbcc8f03c1d8b0095820490505d023e2cd41c74dc880238a8029a93715b48",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\04.png",
+          "time_s": 45.371,
+          "chapter": "Proposal / replies",
+          "sha256": "8a3470b7b5ea1f20b319ed7654af231a4f6d9ddd966e8d7045a073ee8f925ad4",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\05.png",
+          "time_s": 65.113,
+          "chapter": "Local confirmations / draft",
+          "sha256": "bb651a17d8933c7cb17e4804dd24999a0a912fe402733f561f09096191544b79",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\06.png",
+          "time_s": 71.496,
+          "chapter": "Archive",
+          "sha256": "bc88e63f7804b0d262770aff2ad713fd629d1f2f2b33ec351ce342f5afd2a6cf",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        },
+        {
+          "file": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\design-20261003\\video\\2026-10-03T08-13-58-035Z\\atelier\\decoded-frames\\07.png",
+          "time_s": 83.42,
+          "chapter": "Atlas",
+          "sha256": "1d22872e1fa442c1f97ba9a733ac8384cb34d3c650de940478693c57ea7111a9",
+          "review": "PASS",
+          "method": "Assistant visually inspected decoded MP4 image through view_image"
+        }
+      ],
+      "timing_scope": "Chapter offsets are browser wall-clock markers; not frame-exact editing timecodes"
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "published": false,
+  "limits": [
+    "Computer Chromium emulation at 390x844, not a physical Android capture or APK test.",
+    "Synthetic profiles and two local participant labels; no real meeting, independent-person attendance, invitation or booking.",
+    "Private social draft; no LinkedIn publication or API.",
+    "Schematic Atlas; no Google Maps SDK or live GPS.",
+    "Silent real UI recording; no AI voice assistant or generated voice.",
+    "Representative-frame visual review and full decode do not establish human artistic acceptance.",
+    "Covers the stated seven-chapter local journey, not every screen, failure state or backend."
+  ]
+}

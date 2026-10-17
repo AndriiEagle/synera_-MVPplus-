@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+(node:98316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\product-access.spec.mjs:23:3 › Access journey en at 320 (6.8s)
+
+
+  1) tests\product-access.spec.mjs:23:3 › Access journey en at 320 ─────────────────────────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('main a.primary')
+    Expected: 1
+    Received: 3
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('main a.primary') with timeout 5000ms
+      - waiting for locator('main a.primary')
+        14 × locator resolved to 3 elements
+           - unexpected value "3"
+
+
+      40 |     await expect(page.locator('html')).toHaveAttribute('lang', language);
+      41 |     // One visual primary entry, encountered before demos in reading/tab order.
+    > 42 |     await expect(page.locator('main a.primary')).toHaveCount(1);
+         |                                                  ^
+      43 |     await expect(page.locator('main a').first()).toHaveAttribute('href', 'https://synera-pilot.pages.dev/');
+      44 |     await expect(page.locator('main a.primary')).toHaveAttribute('id', 'open-live-app');
+      45 |     await expect(page.locator('#payment-availability')).toContainText('CHF 0');
+        at C:\Users\Andrii\Desktop\synera-premium-pwa-variant\tests\product-access.spec.mjs:42:50
+
+    Error Context: artifacts\mobile-20261007\pricing\red\product-access-Access-journey-en-at-320\error-context.md
+
+    Error Context: artifacts\mobile-20261007\pricing\red\product-access-Access-journey-en-at-320\error-context.md
+
+  1 failed
+    tests\product-access.spec.mjs:23:3 › Access journey en at 320 ──────────────────────────────────

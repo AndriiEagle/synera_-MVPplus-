@@ -1,0 +1,35 @@
+{
+  "status": "PASS_LOCAL_SOURCE_CANDIDATE_AND_RECEIPTS",
+  "source_commit": "0f109afbdf502e4733bd13d469f78f655e74818c",
+  "checked_head": "0f109afbdf502e4733bd13d469f78f655e74818c",
+  "candidate": "web_launch\\dist-neon-opus-pass4-storage-20261011",
+  "release_sha256": "c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062",
+  "public_files": 103,
+  "manifest_files_verified": 102,
+  "committed_public_assets_verified": 100,
+  "changed_from_opus": [
+    "index-i18n.mjs",
+    "onboarding-tour.mjs",
+    "style-switcher.mjs"
+  ],
+  "foreign_dirty_preserved": true,
+  "foreign_dirty_excluded": true,
+  "pg18_receipt_source_hashes_verified": 12,
+  "pg18_version": "18.4",
+  "pg18_reexecuted": false,
+  "accepted_receipt_hashes": {
+    "accepted-index-webkit": "4762aa35b62e17989d2dabddf24737ebadb2adc2f68bb556b299c34a99f5450e",
+    "accepted-people-chrome": "528dc356e6999853029a7c8ce49492c42cfb4c431365fca863d1c654ef17ccb0",
+    "storage-green-webkit": "353e07ff7bc3c63f0db3868b406118839e110db25aa3a00a3bb33b1acd50839b",
+    "storage-green-chrome": "1e2c329ddbbea2cf9159c3c3cfc0d218f30a25077806c9bef800d73cde38e844"
+  },
+  "target_node_tests": 27,
+  "final_mutation_failed_checks": 6,
+  "final_mutation_runtime_errors": 0,
+  "reused_journey_webkit_steps": 144,
+  "reused_journey_candidate": "web_launch\\dist-neon-opus-pass4-webkit-20261011",
+  "published": false,
+  "production_changed": false,
+  "provider_calls": 0,
+  "usd": 0
+}

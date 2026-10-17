@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-03T08:30:28.863622+00:00",
+  "status": "DESIGN_COMPARISON_WAVE_ACCEPTED_WITH_PRODUCT_LIMITS",
+  "accepted_previous_commit": "0cc8aaf2c256fb9ad2140a52fb8e4746770585d7",
+  "branch": "codex/synera-product-20261002",
+  "baseline_audit": {
+    "screens": 12,
+    "manifest": "audit/MANIFEST.json",
+    "scope": "Key actual demo states, subjective 1-100 design scores; not exhaustive or psychological measurement"
+  },
+  "atelier": {
+    "browser_semantic_groups": 6,
+    "node_tests": 7,
+    "existing_studio_browser_tests": 7,
+    "axe_reports": 12,
+    "axe_violations_in_checked_states": 0,
+    "source_pins": 8,
+    "mutation": "CSS-disabled negative control rejected; offline regression red before repair",
+    "receipt": "variant/ACCEPTANCE.json",
+    "preservation": "Original modes and field/consent state preserved; historical screenshots restored byte-for-byte; new prefs isolated"
+  },
+  "videos": {
+    "root_acceptance": "video/2026-10-03T08-13-58-035Z/ROOT_ACCEPTANCE.json",
+    "durations_s": [
+      82.2,
+      83.92
+    ],
+    "format": "390x844 H264/25fps, real Chromium interactions",
+    "source_pins": 19,
+    "human_artistic_acceptance": "PENDING"
+  },
+  "external_review": {
+    "model": "qwen/qwen3.8-27b:free",
+    "provider_calls": 1,
+    "usd": 0.0,
+    "authoritative_cost": "provider_usage_cost",
+    "prompt_tokens": 2787,
+    "completion_tokens": 3996,
+    "latency_s": 46.54,
+    "screens": 3,
+    "receipt": "independent/RUN.json",
+    "adjudication": "independent/LOCAL_REVIEW.uk.md; recommendations not auto-applied"
+  },
+  "deployment": "release/DEPLOY_RECEIPT.json",
+  "existing_design_chats": "64-67 completed new task turns and are idle; provider review actually completed by root",
+  "git_push": "PENDING ordinary user-authorized attempt after this checkpoint commit; no remote acceptance claimed",
+  "production_status": "HOLD",
+  "material_gaps": [
+    "Disposable Postgres SQL/RLS and Neon JWT/grants/invitation access not runtime accepted; room SQL NOT_RUN/NOT_APPLIED",
+    "Embedded Google Maps/live people and fair-route APIs not integrated",
+    "Voice AI/Jeff, multiuser voice/video/translation/microphone control not live",
+    "OAuth/social autopost absent; current social package is private/manual export",
+    "Payment/native Android APK/App Store absent",
+    "Physical Android PWA acceptance pending"
+  ],
+  "next_action": "10 minutes: open live Studio on physical Android, compare Current/Atelier, complete local Give/Take/session/export and reload offline",
+  "subscription_savings": "unmeasured"
+}

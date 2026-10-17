@@ -1,0 +1,5 @@
+{
+  "source": "/C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/message-intent-browser.mjs",
+  "sha256": "768a763abc6cc2467616f838e2778ee4baeccfc2d71ca8dac828e7919c44c3b3",
+  "changes": "New artifact destination, DOMContentLoaded navigation; message loss targets a read started after the tested write; assertions unchanged"
+}

@@ -1,0 +1,45 @@
+{
+  "status": "PASS_LOCAL_MEETING_ADDRESS_BROWSER",
+  "generated_at": "2026-10-04T07:12:36.787Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "preserved_accepted_chat": true,
+    "read_does_not_vote": true,
+    "retry_and_proposer_role": true,
+    "explicit_decline": true,
+    "stale_selection_requires_reload": true,
+    "bilateral_selected_address_and_literal_history": true,
+    "navigation_requires_explicit_click": true,
+    "failed_read_does_not_navigate": true,
+    "superseded_selection_stops_navigation": true,
+    "withdrawal_stops_navigation": true,
+    "logout_during_route_read_stops_navigation": true,
+    "exact_destination_after_fresh_reads_without_vote_or_GPS": true,
+    "navigation_after_success_is_current_tab": true,
+    "current_default": true,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "axe_current_atelier_zero_and_opt_in_reversible": true,
+    "closed_flag_keeps_chat": true,
+    "no_private_storage": true,
+    "logout_purges_private_address": true,
+    "late_read_cannot_restore_private_address": true,
+    "preserved_chat_logout": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "intercepted_navigation_attempts": 1,
+  "google_requests_transmitted": 0,
+  "external_requests": 0,
+  "source_sha256": {
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b"
+  }
+}

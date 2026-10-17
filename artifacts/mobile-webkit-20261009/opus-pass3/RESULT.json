@@ -1,0 +1,836 @@
+{
+  "phase": "opus-pass3",
+  "mutation": false,
+  "scope": "Desktop browser, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "candidate": "web_launch\\dist-neon-opus-pass3-webkit-20261010",
+  "releaseHash": "a80d403432041784e5ea868d055f127e91eb32565923de9b90dd3d2833a9d740",
+  "cssOverride": null,
+  "manifestFilesVerified": 97,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "small",
+      "page": "get",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "small-get.png"
+    },
+    {
+      "profile": "small",
+      "page": "studio",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "small-journey-editor.png"
+    },
+    {
+      "profile": "small",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "small-journey-chat.png"
+    },
+    {
+      "profile": "compact",
+      "page": "get",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "compact-get.png"
+    },
+    {
+      "profile": "compact",
+      "page": "studio",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "compact-journey-editor.png"
+    },
+    {
+      "profile": "compact",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "compact",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 375,
+        "document": 375,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "compact-journey-chat.png"
+    },
+    {
+      "profile": "standard",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "standard-get.png"
+    },
+    {
+      "profile": "standard",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "standard-journey-editor.png"
+    },
+    {
+      "profile": "standard",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "standard-journey-chat.png"
+    },
+    {
+      "profile": "large",
+      "page": "get",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-get.png"
+    },
+    {
+      "profile": "large",
+      "page": "studio",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "large-journey-editor.png"
+    },
+    {
+      "profile": "large",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "large-journey-chat.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "get",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "landscape-get.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "studio",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 18,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "landscape-journey-editor.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "landscape-journey-chat.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "get",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "tablet-get.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "studio",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "tablet-journey-editor.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "tablet-journey-chat.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-text-get.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 31,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "large-text-journey-editor.png"
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large-text",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "large-text-journey-chat.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "atelier-get.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": [
+          {
+            "tag": "H2",
+            "id": "room-title",
+            "name": null,
+            "class": "sr-only",
+            "right": 23,
+            "width": 1,
+            "scrollWidth": 16,
+            "grid": "none"
+          }
+        ]
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 31,
+      "issues": [],
+      "screenshot": "atelier-journey-editor.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 12,
+      "issues": [],
+      "screenshot": "atelier-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "small",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "compact",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "standard",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "large",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "landscape",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "tablet",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "large-text",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "atelier",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 56,
+    "issues": 0,
+    "failures": 0,
+    "journeys": 8
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

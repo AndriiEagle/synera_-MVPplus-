@@ -1,0 +1,11 @@
+## License
+
+This project is released under a dual-license structure:
+
+- **Images**: All individual images in this dataset are dedicated to the public domain via the **Creative Commons CC0 1.0 Universal Public Domain Dedication**. You are free to copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.
+- **Dataset & Documentation**: The specific compilation of this dataset, its metadata, and all associated documentation (the "Curation") are licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License (CC-BY-SA 4.0)**.
+
+Interpretation of the License:
+
+- You can use the images for any project (commercial or non-commercial) with no attribution and no restrictions.
+- You can use and share the entire dataset/documentation, but you must give credit to us (BY) and share any modifications to the curation itself under the same (SA) license.

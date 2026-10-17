@@ -1,0 +1,16 @@
+{
+  "tool": "tools/journey-language-browser.mjs",
+  "engine": "Chromium 141, desktop, synthetic fixture",
+  "meaning": "Each row removes one piece of the change from a copy of the candidate; the same tool must fail. All rows did.",
+  "green": "language-green/RESULT.json",
+  "rows": [
+    { "name": "baseline", "change": "candidate built before this pass (dist-neon-opus-pass2-20261009)", "result": "NEEDS_REVIEW", "evidence": "no language selector; 525 Ukrainian strings on the first German/English screen" },
+    { "name": "m1", "change": "one button label not passed through the translator", "result": "NEEDS_REVIEW", "evidence": "'Прийняти' left on the page in de-390, en-390, de-320" },
+    { "name": "m2", "change": "the choice is not stored", "result": "NEEDS_REVIEW", "evidence": "second person's load without ?lang= is Ukrainian again" },
+    { "name": "m3", "change": "switching language re-renders the result cards", "result": "NEEDS_REVIEW", "evidence": "'switching to … disturbed unfinished work' in all four runs" },
+    { "name": "m4", "change": "the view switcher's own status is not mirrored", "result": "NEEDS_REVIEW", "evidence": "'Atelier увімкнено. Вигляд збережено.' left on the page" },
+    { "name": "m5", "change": "generated social draft is not localised", "result": "NEEDS_REVIEW", "evidence": "Ukrainian heading and honesty note inside the draft text" },
+    { "name": "m6", "change": "an untranslated refusal is shown as is", "result": "NEEDS_REVIEW", "evidence": "'Некоректний матеріал пробного періоду' shown to a German/English reader" },
+    { "name": "m7", "change": "the pinned status line does not report its height", "result": "NEEDS_REVIEW", "evidence": "status 115 px (uk), 134 px (de), 172 px (de, 320 px wide) against 112 px reserved" }
+  ]
+}

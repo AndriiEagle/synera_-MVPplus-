@@ -1,0 +1,6 @@
+{
+  "status": "EXPECTED_RED_FINAL_REPLY_AFTER_CASE_CHANGE",
+  "generated_at": "2026-10-04T05:46:39.1466994Z",
+  "exit_code": 1,
+  "stdout": "TAP version 13\n# Subtest: the final reply cannot attest agreement after a last-moment revision or withdrawal\nnot ok 1 - the final reply cannot attest agreement after a last-moment revision or withdrawal\n  ---\n  duration_ms: 184.2762\n  type: 'test'\n  location: 'C:\\\\Users\\\\Andrii\\\\Desktop\\\\synera-premium-pwa-variant\\\\web_launch\\\\meeting-address-client.test.mjs:154:1'\n  failureType: 'testCodeFailure'\n  error: 'Missing expected rejection.'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  stack: |-\n    async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/meeting-address-client.test.mjs:164:5)\n    async Test.run (node:internal/test_runner/test:1313:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 393.7102"
+}

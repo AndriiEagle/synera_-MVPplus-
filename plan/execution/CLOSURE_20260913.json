@@ -1,0 +1,125 @@
+{
+ "created_at": "2026-09-13T20:05:13+02:00",
+ "note": "CNRA/Synera 2026-09-13. source commits 9feca26 + 2aa7fae; plan commits 537bfb0 + f269da3. Suite 140/140 over 13 files, offline build 27, readiness computed by readiness_report.py.",
+ "files": {
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\bible\\SYNERA_BIBLE.json": {
+   "sha256": "4ca1a79c52745c125aaa4858626fa32e6af9acff338475f6afe048fb17690501",
+   "size": 56997
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\bible\\SYNERA_BIBLE.md": {
+   "sha256": "4773787addaa1dc42b7b49e9a992f9165c7d2b902580e6d98571eb9524b03903",
+   "size": 19977
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\bible\\COHORT_10.json": {
+   "sha256": "e14a3ef95e8ad903e07de9aa90d7997cc3b75ffe17cf14fe5e103d8196509e10",
+   "size": 17499
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\bible\\MASTER_PLAN_ADDENDUM_V5.json": {
+   "sha256": "c613fa559c4f3fe91f64ace1b9611f6ac517418be2d64ce6e2e54b35d07b3ccb",
+   "size": 26734
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\READINESS_DNA.json": {
+   "sha256": "79113ea2dba1778eab6fb7f9fbfc30324e2e530f839d69bf0c2bffdf3c7180ba",
+   "size": 23944
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\READINESS_SCORE.md": {
+   "sha256": "f26a5730fa58c168b2debeae948e2b2313f5f5843da4688799a67ffb8733ffbe",
+   "size": 5127
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\MATH_AGENTS.uk.md": {
+   "sha256": "f5cb06deb09f36c5417cfac5c20564f666d088f4fdf9168432b51a1ccc11694f",
+   "size": 11282
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\MARKET_ASSIMILATION.uk.md": {
+   "sha256": "18555758fb6cdf19c5c85f8b8d8e24d8f0506ab5c6afb630608393f55e2260e5",
+   "size": 8968
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\READINESS_DNA.uk.md": {
+   "sha256": "bb1e1103862cf76d4037fd3b2756c5a22b61de4c516feb7373a4970095834a73",
+   "size": 17638
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\readiness\\readiness_report.py": {
+   "sha256": "e84b2a943767d5ec1e6532616beac1adbe36525e6c89001c680341be0c81a566",
+   "size": 3865
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\HANDOFF_PROMPT_NEXT_CHAT.uk.md": {
+   "sha256": "592dcafac4fdb89a1f1ced23af8bf11e94ecf1ed808276470c6c27785f95cd5f",
+   "size": 11400
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\app.mjs": {
+   "sha256": "88701c022c07ecd4406a8ca4ce06bafefc861214d54133d633eb6691e1b039d3",
+   "size": 94305
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\index.html": {
+   "sha256": "cd3f7350d60b1d503e0bbb9a004577e3308c160caed0cf62fbb26a63218f43e4",
+   "size": 26933
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\business-case.mjs": {
+   "sha256": "963cf8be61750b48841c46be77efa361423b4d081ebbd299725b1de9186c4e40",
+   "size": 22950
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\mobile-pilot.test.mjs": {
+   "sha256": "50cdecc34ec51a09291d5ee51e79900ee8fd923f6efdfb71a9b4fc7f3ea2495c",
+   "size": 17565
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\business-pilot.test.mjs": {
+   "sha256": "0d175501c1512a9a56f4fd5dd2a0cf6421e60b96a08c49b11c3a7b9ef11f16a7",
+   "size": 11094
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\lab-fixtures.mjs": {
+   "sha256": "42688ebcbe8aa57921389a229a9271bbde047eb4a1c3d4899d75c744d9577ae3",
+   "size": 12203
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\web_launch\\profile-store.mjs": {
+   "sha256": "64308ea8bda66059a4dcff517dfd855f5c4ef8426842094d53d270579db441d6",
+   "size": 14082
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\operator_dashboard.mjs": {
+   "sha256": "81e30264a9f74ca2570991a745bc984c1b1fb8e55744b4d4eefd298836b3f944",
+   "size": 12138
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\operator_dashboard.test.mjs": {
+   "sha256": "78b9e24667a59ebe9cc1289fc16a935eb981aa07aba2fd776d9452aa661a4817",
+   "size": 5509
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\supabase\\case-state.proposal.sql": {
+   "sha256": "8dda78ce69e2b16d8ef8a3a17afe10e0c67fb72ac577f9e0281e8ffb7a636220",
+   "size": 18432
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\supabase\\case-state.acceptance.sql": {
+   "sha256": "2ef97047c0aa5c500e3ec70f95a13bc80af4edfe364fc379b01a6a8f356e3531",
+   "size": 12988
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\neon\\case-state.migration.sql": {
+   "sha256": "4d9eb257aaba0fa9423226447f4b34c93fb35c4754d6f26b4e7ebfd026d1b360",
+   "size": 19154
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\neon\\case-state.acceptance.sql": {
+   "sha256": "715434272422526e6fb661118d549cae59f4b76c12923af7f4da8f9dc96e2dac",
+   "size": 13119
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\neon\\generate-schema.mjs": {
+   "sha256": "9883dc6fa47e43a493c1566ed97e236703550e9b8ba696a5ad50b40b43e789c7",
+   "size": 12039
+  },
+  "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\synera-docs-review-20260904\\source\\bible\\STATUS.md": {
+   "sha256": "a6b1847128f17e8ea6b097d18b33bb2eb08e9796d56f3276569ecdbfd7d5bf5b",
+   "size": 2463
+  },
+  "C:\\Users\\Andrii\\.claude\\tools\\kilo_watch.py": {
+   "sha256": "5d7b63ce7e6801bcbbd0456daad95234bb7504fd09caee89d985dbaa42fd171e",
+   "size": 3108
+  },
+  "C:\\Users\\Andrii\\.claude\\tools\\closure.py": {
+   "sha256": "10fbdc3e0cf07554630ea25ffa5053cf7459822423dd8c009ba10889501c039b",
+   "size": 2857
+  },
+  "C:\\Users\\Andrii\\.claude\\tools\\session_preflight.py": {
+   "sha256": "dcdad1dd5675fd84162a358c30b9548ca716b7df2e83dd3e1b130664a9c4ee45",
+   "size": 3716
+  }
+ },
+ "provider_calls": 0,
+ "provider_usd": 0.0,
+ "boundary": "RLS never executed against any database. Deploy, live migration, billing and the H1/H2 decisions wait for Andrii. The ledger BLOCK reported by tm_status (46 calls without a receipt) belongs to other sessions: this one made zero provider calls."
+}

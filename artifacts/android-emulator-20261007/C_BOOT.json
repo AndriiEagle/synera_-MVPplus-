@@ -1,0 +1,27 @@
+{
+  "pid": 26116,
+  "serial": "emulator-5580",
+  "root": "C:\\Users\\Andrii\\.codex\\tmp\\synera-android-local",
+  "booted": true,
+  "args": [
+    "C:\\Users\\Andrii\\.codex\\tmp\\synera-android-local\\sdk\\emulator\\emulator.exe",
+    "-avd",
+    "Synera_Local_API36",
+    "-port",
+    "5580",
+    "-no-window",
+    "-no-audio",
+    "-no-snapshot",
+    "-camera-back",
+    "none",
+    "-camera-front",
+    "none",
+    "-cores",
+    "2",
+    "-memory",
+    "2048"
+  ],
+  "android": "16",
+  "display": "Physical size: 1080x2400",
+  "freeBytes": 9490014208
+}

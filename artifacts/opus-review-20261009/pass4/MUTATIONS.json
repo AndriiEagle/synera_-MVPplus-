@@ -1,0 +1,325 @@
+{
+  "what": "Every protection added in this pass was removed once, on purpose. A removed protection must make a unit test fail (source mutations) or make a browser tool stop with a problem (mutations of a copy of the built candidate). Sources were restored after each run; the candidate itself was never changed.",
+  "rejected": 27,
+  "of": 27,
+  "unit": {
+    "what": "Each mutation removes one protection from the source; the unit tests of web_launch/index-i18n.test.mjs must fail. Sources restored after each run.",
+    "cleanRunFails": 0,
+    "rejected": 14,
+    "of": 14,
+    "results": [
+      {
+        "name": "a Ukrainian choice loses its value attribute",
+        "file": "index.html",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "a choice in a list is sent by a fixed value, never by its translated label"
+        ]
+      },
+      {
+        "name": "a person's name is shown without the mark",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "what a person wrote is marked and is never translated, even when it equals a label"
+        ]
+      },
+      {
+        "name": "the overlay ignores the mark",
+        "file": "index-i18n.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "what a person wrote is marked and is never translated, even when it equals a label"
+        ]
+      },
+      {
+        "name": "deletion accepts a near-miss word",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "profile deletion: the form and the code accept the same words, one per language"
+        ]
+      },
+      {
+        "name": "the form accepts a word the code refuses",
+        "file": "index.html",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "profile deletion: the form and the code accept the same words, one per language"
+        ]
+      },
+      {
+        "name": "the hint is attributed to the wrong person",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "the card says who a hint is for and what a confirmation means, not the internal codes"
+        ]
+      },
+      {
+        "name": "the card shows the raw engine text again",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "the card says who a hint is for and what a confirmation means, not the internal codes"
+        ]
+      },
+      {
+        "name": "the card shows the raw confirmation code again",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "the card says who a hint is for and what a confirmation means, not the internal codes"
+        ]
+      },
+      {
+        "name": "one month is not recognised",
+        "file": "index-i18n.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "dates follow the chosen language and lists of labels are translated item by item"
+        ]
+      },
+      {
+        "name": "a long text is run through the patterns",
+        "file": "index-i18n.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "a long text is never run through the patterns, and near-matches stay cheap"
+        ]
+      },
+      {
+        "name": "a stale «not page text» entry",
+        "file": "index-i18n.coverage.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "the coverage lists hold nothing stale, doubled or contradictory"
+        ]
+      },
+      {
+        "name": "the language text is referenced by the page up front",
+        "file": "index.html",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "a Ukrainian visit loads only the button module; the rest ships but is fetched on demand"
+        ]
+      },
+      {
+        "name": "a new Ukrainian string without German and English",
+        "file": "app.mjs",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "every Ukrainian string of the page markup and its modules is accounted for"
+        ]
+      },
+      {
+        "name": "a rules heading changes without its translation",
+        "file": "legal.html",
+        "outcome": "REJECTED",
+        "failedTests": [
+          "the rules page: every Ukrainian text has an unofficial translation, loaded only on demand"
+        ]
+      }
+    ]
+  },
+  "browser": {
+    "what": "Each mutation removes one protection in a copy of the built candidate; the named browser tool must then stop with a problem. The candidate itself is unchanged.",
+    "candidate": "dist-neon-opus-pass5-20261011",
+    "engine": "chromium",
+    "rejected": 13,
+    "of": 13,
+    "results": [
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the overlay ignores the mark on a person's words",
+        "edits": [
+          "index-i18n.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "own-words-labels-de after switching: every place still shows the words as written: a person's own words were changed or lost",
+          "own-words-labels-de after switching: the card: a person's own words were changed or lost",
+          "own-words-labels-de after switching: the message: a person's own words were changed or lost"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the page shows a person's words without the mark",
+        "edits": [
+          "app.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "own-words-labels-de the fixture reached the page in Ukrainian: a person's own words were changed or lost",
+          "own-words-labels-de after switching: the card: a person's own words were changed or lost",
+          "own-words-labels-de after switching: the message: a person's own words were changed or lost"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the meeting place «online» has no fixed value and the overlay does not pin one",
+        "edits": [
+          "index.html",
+          "index-i18n.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "uk-390: choices that would be sent by their label | + actual - expected |  | + [ | +   'Онлайн' | + ]",
+          "de-390: the first meeting place would be sent as «Online» |  | 'Online' !== 'Онлайн' | ",
+          "en-390: the first meeting place would be sent as «Online» |  | 'Online' !== 'Онлайн' | "
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "an older, slower language choice overwrites the newer one",
+        "edits": [
+          "index-language.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "default : German then Ukrainian, quickly: the page did not end in Ukrainian"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the card shows the engine's internal code",
+        "edits": [
+          "app.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "uk-390 tab: people: an internal name is shown to the person",
+          "uk-390 people list with map: an internal name is shown to the person",
+          "uk-390 people: business case open: an internal name is shown to the person"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the card shows the raw confirmation code",
+        "edits": [
+          "app.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "uk-390 people list with map: an internal name is shown to the person",
+          "uk-390 people: business case open: an internal name is shown to the person",
+          "de-390 people list with map: an internal name is shown to the person"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "dates are left in the Ukrainian form",
+        "edits": [
+          "index-i18n.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "de-390 tab: meetings: Ukrainian text left on screen",
+          "de-390 tab: settings: Ukrainian text left on screen",
+          "en-390 tab: meetings: Ukrainian text left on screen"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "dates are drawn in the language on screen, so going back does not restore them",
+        "edits": [
+          "app.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "de-390 restored against a fresh Ukrainian draw: the Ukrainian page was not restored exactly",
+          "de-320 restored against a fresh Ukrainian draw: the Ukrainian page was not restored exactly",
+          "en-390: the blocked-people line: Participant 1 · 07.10.2026, 11:05 Unblock"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the demonstration draft is not shown in the chosen language",
+        "edits": [
+          "index-i18n.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "de-390 demonstration step 4: Ukrainian text left on screen",
+          "en-390 demonstration step 4: Ukrainian text left on screen",
+          "de-320 demonstration step 4: Ukrainian text left on screen"
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "German is not accepted when deleting a profile",
+        "edits": [
+          "index.html"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "de-390: delete confirmation «LÖSCHEN» |  | false !== true | ",
+          "de-320: delete confirmation «LÖSCHEN» |  | false !== true | "
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "the rules page shows the translation without saying it is unofficial",
+        "edits": [
+          "legal-i18n.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "de-390: locator.waitFor: Timeout 12000ms exceeded. | Call log: |   - waiting for locator('#translation-notice') to be visible | ",
+          "en-390: locator.waitFor: Timeout 12000ms exceeded. | Call log: |   - waiting for locator('#translation-notice') to be visible | ",
+          "de-320: locator.waitFor: Timeout 12000ms exceeded. | Call log: |   - waiting for locator('#translation-notice') to be visible | "
+        ]
+      },
+      {
+        "tool": "index-language-browser.mjs",
+        "name": "a default visit follows the browser language",
+        "edits": [
+          "index-language.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "default : the default visit is not Ukrainian",
+          "default : a Ukrainian visit loaded language text"
+        ]
+      },
+      {
+        "tool": "people-gate-browser.mjs",
+        "name": "the card no longer links to the page where the two confirmations happen",
+        "edits": [
+          "app.mjs"
+        ],
+        "exit": 1,
+        "status": "NEEDS_REVIEW",
+        "outcome": "REJECTED",
+        "firstSeen": [
+          "check failed: the card links to the two-person page",
+          "check failed: German: the card links to the two-person page with a German label"
+        ]
+      }
+    ]
+  }
+}

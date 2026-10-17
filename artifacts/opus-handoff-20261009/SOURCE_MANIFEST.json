@@ -1,0 +1,187 @@
+{
+  "scope": "Selected context, owners and acceptance oracles; not a full repository security manifest",
+  "code_base_commit": "7f2f217dc00df69342dd3291d3ab7d6ab6f7d8ab",
+  "encoding": "Git index blob bytes, before commit; no working-tree CRLF substitution",
+  "files": [
+    {
+      "path": "CLAUDE.md",
+      "sha256": "46468f80f600dc3ffe6d61c2939c2c55c6548f4d0f0d5e41e08b26be767d9cdf",
+      "bytes": 9123
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebcabca059c12f508e6f79d4d6817a18417a5bfc3abd62c73e4059c2150c75c6",
+      "bytes": 9269
+    },
+    {
+      "path": "START_HERE.uk.md",
+      "sha256": "70265d18a9cbe1360286f030b1d3122bf7faced3c31c09e62d2198ee044214cf",
+      "bytes": 31565
+    },
+    {
+      "path": "artifacts/mobile-webkit-20261009/RELEASE.json",
+      "sha256": "145fa3063dc4513e08600ffcd6512d950fec45f0b980d3acb12ed43d8cb33e91",
+      "bytes": 942
+    },
+    {
+      "path": "artifacts/mobile-webkit-20261009/REPORT.uk.md",
+      "sha256": "a3366bb3ad6ee6e70646b6669cebd15fba3cd4da15bafb598c826cac45e7fc4c",
+      "bytes": 13330
+    },
+    {
+      "path": "artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md",
+      "sha256": "70fcaa7f91e4815d3346f812bcc02df7b311313bca2708a7d0acbc08e37b5ed1",
+      "bytes": 11010
+    },
+    {
+      "path": "artifacts/product-status-20261004/STATUS.uk.md",
+      "sha256": "ea1768b60c6401ece18568776e12a06ba1c9cbe77bf3f0ebcadb3049da66fb1f",
+      "bytes": 27456
+    },
+    {
+      "path": "docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md",
+      "sha256": "3323367626031b4208bbe75f00c692720ff2aa5fe1be505f6113130f59d08ec5",
+      "bytes": 10563
+    },
+    {
+      "path": "docs/PRODUCT_DNA.uk.md",
+      "sha256": "6608d6f8fefa64eb65e0cf23c05b1d96a5258c5fc8d5f78731312808322a45c3",
+      "bytes": 18115
+    },
+    {
+      "path": "docs/REVIEW_HANDOFF.uk.md",
+      "sha256": "2a7152bb7a3b6093c22fa4f466ea49ea47e087edd7a9897f92bee2391552dc2f",
+      "bytes": 16412
+    },
+    {
+      "path": "neon/build.mjs",
+      "sha256": "fa6bf891d5aa38cc9ea13f356e280ec800a1daaf718f4aa51bab19621c1ef0ad",
+      "bytes": 5340
+    },
+    {
+      "path": "neon/case-outcome.mjs",
+      "sha256": "84e19ab78520c143a4e1622b783afa77ea15d82b82cd9bde2ec0ca560419820e",
+      "bytes": 1956
+    },
+    {
+      "path": "neon/group-room.mjs",
+      "sha256": "e66e0224256c13a9d4c6eac1fcf335c3774e278d710070a552ddd8a0843197ae",
+      "bytes": 3288
+    },
+    {
+      "path": "neon/meeting-address.mjs",
+      "sha256": "602ac92501e937c93feca1edaeb980c1768541d5b5635009d8e3957f92cbafb0",
+      "bytes": 2024
+    },
+    {
+      "path": "neon/meeting-location.mjs",
+      "sha256": "73de7d89f33b028aaf464aed9e6ef9827b9a786ef7cd631087e961bfa4c790a6",
+      "bytes": 5733
+    },
+    {
+      "path": "neon/worker.mjs",
+      "sha256": "2df549d9683e49f0e07f1d95844472fd06ca48888fb2ef4bfdfa9fb476d2f125",
+      "bytes": 20889
+    },
+    {
+      "path": "plan/HANDOFF_PROMPT_NEXT_CHAT.uk.md",
+      "sha256": "d2cd1d6ede8383d82e52b6998628dd88a9e7b3f8f663cac05782239b83a629d6",
+      "bytes": 11928
+    },
+    {
+      "path": "plan/README.uk.md",
+      "sha256": "781f1dbf62d196d91854d9e2c13ab4bc9dc4577f62778587b54c685d7c8ca92b",
+      "bytes": 30834
+    },
+    {
+      "path": "plan/bible/SYNERA_BIBLE.md",
+      "sha256": "e895a287f4a48856fe31d53c9cd4bbcea6af1f92c1d734877907d7b077b4c104",
+      "bytes": 20505
+    },
+    {
+      "path": "plan/readiness/READINESS_DNA.uk.md",
+      "sha256": "81bb46df69a52a6acfb341a7511bce666cda75e6d7f6facdbb813d5e8bbb213b",
+      "bytes": 18781
+    },
+    {
+      "path": "tools/fixtures/real-journey-fixture.mjs",
+      "sha256": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+      "bytes": 9973
+    },
+    {
+      "path": "tools/mobile-webkit-acceptance-20261009.mjs",
+      "sha256": "fce95f12ff47b2653e4de4c1ac86e7060e1e4b6c8116d6216b2a5ef6db93274d",
+      "bytes": 13554
+    },
+    {
+      "path": "web_launch/README.md",
+      "sha256": "fd3b0dd6f268a9785ee56cf9bf484ac010f84f5d63722b06bd5db225a59ee036",
+      "bytes": 5584
+    },
+    {
+      "path": "web_launch/assets.mjs",
+      "sha256": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+      "bytes": 3614
+    },
+    {
+      "path": "web_launch/atelier.css",
+      "sha256": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+      "bytes": 11104
+    },
+    {
+      "path": "web_launch/atelier.mjs",
+      "sha256": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+      "bytes": 6787
+    },
+    {
+      "path": "web_launch/declared-fit.mjs",
+      "sha256": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5",
+      "bytes": 5025
+    },
+    {
+      "path": "web_launch/matching.mjs",
+      "sha256": "ec88c16ddc1372853025d9aa1efc8b5c51f7c3135f1f0539272759470d866c89",
+      "bytes": 22878
+    },
+    {
+      "path": "web_launch/matching.test.mjs",
+      "sha256": "6a74a5f133d38718a61e61c12011da14e6ee8ab630cfbca2e3f335d3bd1ae44f",
+      "bytes": 15279
+    },
+    {
+      "path": "web_launch/message-intent.test.mjs",
+      "sha256": "9cdb6d3fb4db8730b02b33ffa61de48d1bd47102efcaeeea366f994fec65e5ec",
+      "bytes": 6082
+    },
+    {
+      "path": "web_launch/mobile-pilot.test.mjs",
+      "sha256": "10ac684ea18f81c29dd74e21234c9b30d9852d0bcfe409c5db3df132e0f56538",
+      "bytes": 17808
+    },
+    {
+      "path": "web_launch/profile-brief.mjs",
+      "sha256": "8e0f7e78438e05df0aa0cedd3190ef192128253adc60ac1ba8b1f902cedddd77",
+      "bytes": 10615
+    },
+    {
+      "path": "web_launch/real-journey-client.mjs",
+      "sha256": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+      "bytes": 33169
+    },
+    {
+      "path": "web_launch/real-journey-client.test.mjs",
+      "sha256": "afa26315529f26a9e8a9e705d8f2cb65b2d3c21045effebbedf3233cf026d597",
+      "bytes": 11682
+    },
+    {
+      "path": "web_launch/real-journey.css",
+      "sha256": "4666b9469905de58239c1dd8702d4961cf9ba2cfa0a13835f983aec649a8ed93",
+      "bytes": 3913
+    },
+    {
+      "path": "web_launch/real-journey.mjs",
+      "sha256": "de7c8891753dfafa522feb8a50ae5eae57520edb622a30f9f81461e7670cc197",
+      "bytes": 55625
+    }
+  ]
+}

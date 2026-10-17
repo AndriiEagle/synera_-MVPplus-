@@ -1,0 +1,9 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T07:47:19.965Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {},
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Selected GPS link did not open the conversation\n\nfalse !== true\n"
+}

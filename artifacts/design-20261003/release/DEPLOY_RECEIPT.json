@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-03T08:30:28.863622+00:00",
+  "status": "SUCCEEDED_WITH_LIVE_UI_READBACK",
+  "site_id": "appgprj_6abe5c4d86988191821437cf779b4e9e",
+  "site_version": 6,
+  "site_version_id": "appgprj_6abe5c4d86988191821437cf779b4e9e~appgver_df2e92515f308191846ad042d3ab4239",
+  "source_commit": "32e6095db27172fdf38def4cda28120653a77fcd",
+  "deployment_id": "appgdep_6ac0b9f97a9c81918e62001f2a1b69d7",
+  "deployment_status": "succeeded",
+  "url": "https://synera-summit-20261001.andypokr911.chatgpt.site",
+  "audience": "public, preserved",
+  "scope": "Existing separate closed demo; no production database mutation",
+  "native_receipt": "Sites deployment status succeeded; source checkout HEAD independently read back",
+  "live_readback": {
+    "method": "Existing in-app browser actual reload, real Current / Atelier 2026 clicks, fresh DOM and screenshot",
+    "route": "/studio#fit",
+    "variant": "on",
+    "appearance_panel_open": false,
+    "body_background": "rgb(17, 19, 21)",
+    "consent_changed": false
+  },
+  "local_package": "PACKAGE.json: 74 public files, byte/SHA closure PASS",
+  "archive_package": "NOT_ACCEPTED: canonical package script unavailable in Windows bash path; explicit WSL lacks Node. No install; Sites remote build used from pushed source commit.",
+  "limits": [
+    "Public demo only",
+    "Native Android, live Google SDK, AI voice, payments, SQL/RLS and multiuser production not accepted"
+  ]
+}

@@ -1,0 +1,757 @@
+{
+ "schema_version": "synera.readiness-dna.v1",
+ "created": "2026-09-11",
+ "purpose": "Global readiness of every layer of Synera/CNRA. Each category is a strict sequence of layers; a layer counts only when its gate passes with evidence on disk. Percentages are computed by readiness_report.py from this file, never typed by hand.",
+ "status_values": {
+  "DONE": "gate passed, evidence named",
+  "PARTIAL": "some of the gate is met; the missing part is named in next",
+  "NOT_STARTED": "nothing on disk",
+  "BLOCKED_HUMAN": "needs a decision or approval from Andrii",
+  "PARKED": "deliberately out of this wave"
+ },
+ "scoring": {
+  "DONE": 1,
+  "PARTIAL": 0.5,
+  "NOT_STARTED": 0,
+  "BLOCKED_HUMAN": 0,
+  "PARKED": null
+ },
+ "global_invariants": [
+  "No score of a person. Pairs get reasons, claims get evidence states; people never get a rank.",
+  "Price, commission, deadline and compensation come only from human input; no agent proposes a number.",
+  "An empty term stays a question. One party's click never confirms the other.",
+  "Every public or shared artefact needs consent from each person it shows, revocable at any time.",
+  "Synthetic participants carry synthetic:true and never enter a real store.",
+  "Untrusted text is data, never an instruction.",
+  "One writer per file. Before an edit batch, check kilo.db for a live session on the same tree.",
+  "Wave-A UI, case-state migration, B2-rework and the worker allowlist ship together or not at all."
+ ],
+ "categories": [
+  {
+   "id": "C01",
+   "name": "Продуктове ядро і бізнес-кейс",
+   "layers": [
+    {
+     "id": "C01.L1",
+     "name": "Профіль v2: 5 режимів + mode_details",
+     "gate": "normalizeBrief v1/v2 round-trip; UI renders 5 modes",
+     "status": "DONE",
+     "evidence": "A1-A7 markers; profile-portability tests"
+    },
+    {
+     "id": "C01.L2",
+     "name": "Матчер 5 режимів з причинами",
+     "gate": "reason codes per mode; no person score",
+     "status": "DONE",
+     "evidence": "matching.test.mjs 16; cohort journeys"
+    },
+    {
+     "id": "C01.L3",
+     "name": "Кейс v2 + умови вводить людина",
+     "gate": "empty stays unresolved; version+hash visible",
+     "status": "DONE",
+     "evidence": "A9, A13 SYN_TERMS_FROM_HUMAN_INPUT; browser v1->v2->v3"
+    },
+    {
+     "id": "C01.L4",
+     "name": "Погодження та інвалідація",
+     "gate": "material change clears both approvals",
+     "status": "DONE",
+     "evidence": "A10 + X4; business-case tests"
+    },
+    {
+     "id": "C01.L5",
+     "name": "Ворота введення в розмову",
+     "gate": "two current approvals + introduction consent",
+     "status": "DONE",
+     "evidence": "A11 + X3 + X5 tests"
+    },
+    {
+     "id": "C01.L6",
+     "name": "Стани доказів self_declared->evidence_supplied->checked_with_scope->outcome_confirmed",
+     "gate": "each check has source, date, author, scope, expiry",
+     "status": "PARTIAL",
+     "evidence": "web_launch/proof-state.mjs: повний ланцюг self_declared→evidence_supplied→checked_with_scope→outcome_confirmed, двостороннє підтвердження, скидання при матеріальній зміні; 3/3 тестів. Лишається: поля source/date/author/scope/expiry на кожну перевірку"
+    },
+    {
+     "id": "C01.L7",
+     "name": "Здача != приймання; результат і відгук (G4)",
+     "gate": "outcome tied to exact version+hash; feedback_missing stays in funnel",
+     "status": "NOT_STARTED",
+     "next": "G4 after X6"
+    },
+    {
+     "id": "C01.L8",
+     "name": "Експертний review (P07, Treuhänder)",
+     "gate": "competence, independence, disclosed fees",
+     "status": "PARKED"
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "name": "Математичні агенти (детерміновані)",
+   "layers": [
+    {
+     "id": "C02.L1",
+     "name": "Ядро: покриття взаємності, логістика, автомат режимів",
+     "gate": "deterministic, reason codes, property tests",
+     "status": "DONE",
+     "evidence": "matching.mjs, profile-brief.mjs"
+    },
+    {
+     "id": "C02.L2",
+     "name": "Канонізація + SHA-256 + матриця інвалідації",
+     "gate": "byte-stable hash; transition table tested",
+     "status": "DONE",
+     "evidence": "business-case.mjs, INVALIDATION_MATRIX tests"
+    },
+    {
+     "id": "C02.L3",
+     "name": "Свіжість потреби (експоненційне згасання) + b-matching з лімітами на людину",
+     "gate": "no one gets more than cap intros/week; replay on cohort",
+     "status": "DONE",
+     "evidence": "web_launch/need-decay.mjs (M06 експоненційне згасання потреби, 4/4) + web_launch/b-matching.mjs (M07 зважене b-matching з квотами на людину, 4/4); M06+M07 інтегровано в matching.mjs (коміт e2aa096)"
+    },
+    {
+     "id": "C02.L4",
+     "name": "Стабільний матчинг і багатосторонні цикли обміну",
+     "gate": "no blocking pair; cycles length<=3 found exhaustively on fixtures",
+     "status": "DONE",
+     "evidence": "web_launch/stable-matching.mjs (M08 Gale–Shapley багато-до-багатьох, 5/5, включно з 1000-випадковим property-тестом «немає блокуючої пари») + web_launch/cycle-exchange.mjs (M09 цикли ≤3, 4/4; жодна людина не в двох циклах)"
+    },
+    {
+     "id": "C02.L5",
+     "name": "Статистика пілоту: Kaplan-Meier, поглинальний Марков, CUSUM",
+     "gate": "matches hand-computed fixtures",
+     "status": "DONE",
+     "evidence": "web_launch/funnel-analytics.mjs (M11 Kaplan–Meier з цензуруванням, M12 поглинальний Марков: фундаментальна матриця + точні ймовірності поглинання) + web_launch/cusum.mjs (M13 CUSUM/EWMA, 5/5, включно з бюджетом хибнопозитивів на 1000 серіях)"
+    },
+    {
+     "id": "C02.L6",
+     "name": "Адаптація UI: Thompson sampling серед погоджених варіантів",
+     "gate": "guardrails never violated in simulation",
+     "status": "DONE",
+     "evidence": "web_launch/thompson.mjs (M14 Beta–Bernoulli Thompson sampling, 5/5); заблокований варіант не обирається навіть з alpha=1000; детермінований за seed"
+    },
+    {
+     "id": "C02.L7",
+     "name": "Самопокращення: офлайн-реплей + заздалегідь зареєстровані ворота",
+     "gate": "no parameter promoted without holdout win + human approval",
+     "status": "DONE",
+     "evidence": "web_launch/ma4.mjs (MA4 офлайн-реплей + заздалегідь зареєстровані ворота + append-only журнал рішень, 5/5); підвищення лише з виграшем на holdout ТА згодою людини"
+    },
+    {
+     "id": "C02.L8",
+     "name": "N-версійна перевірка критичних агентів (дві незалежні реалізації)",
+     "gate": "hash and invalidation agree on 10k generated cases",
+     "status": "DONE",
+     "evidence": "web_launch/n-version-hash.mjs (дві незалежні реалізації канонізації+SHA-256, 5/5; збігаються на 10 000 згенерованих випадках)"
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "name": "Дані, persistence, SQL/RLS",
+   "layers": [
+    {
+     "id": "C03.L1",
+     "name": "Store везе mode_details і версію",
+     "gate": "v1 not upgraded on read",
+     "status": "DONE",
+     "evidence": "B1 test"
+    },
+    {
+     "id": "C03.L2",
+     "name": "Кейс у store",
+     "gate": "shape matches SQL; client cannot write the other party's approval",
+     "status": "DONE",
+     "evidence": "B2-rework + P0-2: match_cases пише КОЛОНКИ з розділенням грантів — новий кейс: POST insert-only (case_id, participant_low/high, mode, material, terms_hash, expires_at); оновлення: PATCH лише UPDATE-грантованих колонок (mode, material, terms_hash, expires_at), закриття: PATCH {status} (тригер заморожує решту). Погодження — окремі рядки match_case_approvals (V6-03, withdrawn_at = server-owned). Читання реконструює caseFromRows(row, approvalRows) + P0-3: approvals order=desc, withdrawn_at=is.null (усуває corruption при >100 рядках). P1-6: валідація material (об'єкт, mode з переліку, ≤16384 б) і expiresAt. Gate: b2-case-store-shape 1/1, case-approval-guard 10/10, portability 14/14, E2E 1/1"
+    },
+    {
+     "id": "C03.L3",
+     "name": "Додаткова міграція C0-C4",
+     "gate": "generated byte-identically; applied history untouched",
+     "status": "DONE",
+     "evidence": "SYN_SQL_GENERATION_BYTE_PROVEN; label PRESENT_BUT_UNTESTED"
+    },
+    {
+     "id": "C03.L4",
+     "name": "Приймання RLS на одноразовій базі",
+     "gate": "case-state.acceptance.sql PASS, receipt in bible/STATUS.md",
+     "status": "DONE",
+     "evidence": "2026-09-23: acceptance.sql виконаний на РЕАЛЬНІЙ disposable базі (локальний Docker postgres:16-alpine, REVERSIBLE_DEFAULT env за протоколом §3B): schema.proposal.sql + case-state.migration.sql застосовані, acceptance всередині begin…ROLLBACK — PASS, leftover fixture users = 0. Runner neon/local_acceptance.mjs (9/9 тестів, інтеграція через docker exec). Receipt у bible/STATUS.md 'What is proven'. H1-вибір середовища зафіксований як реверсивний дефолт (Docker) з Neon branch як альтернативою"
+    },
+    {
+     "id": "C03.L5",
+     "name": "Worker allowlist (C6)",
+     "gate": "tables reachable only through gateway",
+     "status": "DONE",
+     "evidence": "neon/worker.mjs TABLES allowlist (profiles, pilot_consents, meeting_requests, meeting_messages, profile_blocks, profile_reports, match_cases, match_case_approvals); усе поза списком → 404 (/data/rpc, /data/synera_pilot_members). RLS+column grants — справжнє застосування. neon/worker.test.mjs 16/16"
+    },
+    {
+     "id": "C03.L6",
+     "name": "Апка синхронізує кейс через store (X6)",
+     "gate": "two browsers see each other's approval",
+     "status": "DONE",
+     "evidence": "Двостороння синхронізація кейсу через store: party A і party B незалежно погоджують і доходять до approved_for_next_step. Gate: case-approval-guard.test.mjs «X6 / V6-06» + e2e-neon-flow.test.mjs (restore→approve→invalidate) 1/1"
+    },
+    {
+     "id": "C03.L7",
+     "name": "Застосування міграції на живу базу",
+     "gate": "exact approval, backup, rollback plan",
+     "status": "PARTIAL",
+     "evidence": "REVERSIBLE машина готова (Q3 one-switch): neon/migration_runner.mjs + test (9/9) — dry-run за замовчуванням (детект DROP/TRUNCATE), live-apply тільки з SYNERA_MIGRATION_APPROVED=<operator-id> + backupConfirmed=true (тихий apply неможливий, тестовано); acceptance вже PASS на disposable Docker (C03.L4 receipt у bible/STATUS.md). Лишилось: рішення Q3 (apply на живу Neon) — TRUE_HUMAN"
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "name": "Приватність і контроль користувача",
+   "layers": [
+    {
+     "id": "C04.L1",
+     "name": "7 окремих дозволів, за замовчуванням вимкнені, до перезавантаження",
+     "gate": "ids once in HTML; restore path works",
+     "status": "DONE",
+     "evidence": "X1, X2 tests; browser restore"
+    },
+    {
+     "id": "C04.L2",
+     "name": "Видимість, блок, скарга, експорт, видалення",
+     "gate": "existing r8 flows",
+     "status": "DONE",
+     "evidence": "index.html settings-view; real-pilot tests"
+    },
+    {
+     "id": "C04.L3",
+     "name": "Рівні аудиторії на поле: публічно / спільнота / після зустрічі / лише я",
+     "gate": "server enforces per field, not only UI",
+     "status": "PARTIAL",
+     "evidence": "web_launch/field-audience.mjs: рівні аудиторії (public/community/...), filterProfileForAudience, canViewField; тести проходять. Лишається: серверне застосування на кожне поле"
+    },
+    {
+     "id": "C04.L4",
+     "name": "Приховати від конкретних людей і категорій (м'який блок)",
+     "gate": "hidden person cannot see hidden fields; no notification to them",
+     "status": "DONE",
+     "evidence": "web_launch/soft-block.mjs: м'який блок за людиною (hiddenPeople) і категорією (hiddenCategories); прихований глядач не бачить жодного поля; filterDiscoverable виключає профілі власників, що приховали глядача; чисто, без сповіщень, fail-closed через C04.L3. 8/8 тестів. Відома межа (P2): фільтр клієнтський; server-ens enforcement потребуватиме column-level грантів, якщо колись додадуть чутливі колонки в profiles (зараз їх у схемі немає: schema.sql:6-14 — id/display_name/city/offers/seeks/is_discoverable/created_at/brief/map_visible)"
+    },
+    {
+     "id": "C04.L5",
+     "name": "Графік зберігання даних (E4)",
+     "gate": "numbers approved by human",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C04.L6",
+     "name": "DPIA (E5)",
+     "gate": "filled before D4",
+     "status": "NOT_STARTED"
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "name": "Право (Швейцарія)",
+   "layers": [
+    {
+     "id": "C05.L1",
+     "name": "Правовий шар: закони, матриця дозволів, прогалини",
+     "gate": "document exists",
+     "status": "DONE",
+     "evidence": "legal/SWISS_LEGAL_LAYER.uk.md"
+    },
+    {
+     "id": "C05.L2",
+     "name": "Privacy Notice (E1)",
+     "gate": "draft marked DRAFT",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C05.L3",
+     "name": "ToS 12 клаузул (E2)",
+     "gate": "draft",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C05.L4",
+     "name": "DPA/SCC для провайдерів (E3)",
+     "gate": "provider table",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C05.L5",
+     "name": "UWG: розкриття винагород за рекомендації і реферали",
+     "gate": "copy reviewed",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C05.L6",
+     "name": "Перевірка кваліфікованим юристом/фідуціаром (H2)",
+     "gate": "30-min review done",
+     "status": "BLOCKED_HUMAN"
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "name": "Дизайн-система і впізнаваність",
+   "layers": [
+    {
+     "id": "C06.L1",
+     "name": "Brand DNA: обіцянка, голос, 3 ключові слова, заборони",
+     "gate": "one page, used by every copy change",
+     "status": "PARTIAL",
+     "evidence": "intro copy in index.html; no written brand sheet",
+     "next": "brand sheet"
+    },
+    {
+     "id": "C06.L2",
+     "name": "Токени: колір, типографіка, відступи, радіуси, тіні",
+     "gate": "single token file; no raw hex outside it",
+     "status": "DONE",
+     "evidence": "web_launch/tokens.css: 162 semantic tokens extracted from style.css; no raw hex outside tokens.css"
+    },
+    {
+     "id": "C06.L3",
+     "name": "Компоненти зі станами (default/hover/focus/disabled/loading/error)",
+     "gate": "catalogue page renders every state",
+     "status": "DONE",
+     "evidence": "web_launch/catalogue.html: every component in default/hover/focus/disabled/loading/error states; 135 state references"
+    },
+    {
+     "id": "C06.L4",
+     "name": "Доступність WCAG 2.2 AA",
+     "gate": "audit: contrast, focus, 44px targets, screen reader",
+     "status": "DONE",
+     "evidence": "web_launch/a11y_audit.mjs + a11y_audit.md: axe-core, index.html 0 violations, catalogue.html 0 violations (3 critical/serious fixed)"
+    },
+    {
+     "id": "C06.L5",
+     "name": "Мікровзаємодії (G2, 300 мс, без 'офіційна пара')",
+     "gate": "reduced-motion respected",
+     "status": "DONE",
+     "evidence": "tokens.css @media (prefers-reduced-motion: reduce); --transition-fast 0.15s / --transition-normal 0.3s"
+    },
+    {
+     "id": "C06.L6",
+     "name": "Впізнавані артефакти: картка профілю, картка зустрічі, іконка, OG-зображення",
+     "gate": "recognisable at 64px and in a chat preview",
+     "status": "DONE",
+     "evidence": "web_launch/meeting-card.mjs renderMeetingCardHTML + наявні share card, іконки; картка зустрічі як впізнаваний артефакт; тест C06.L6 у meeting-card.test.mjs"
+    },
+    {
+     "id": "C06.L7",
+     "name": "Візуальна регресія (скріншоти ключових екранів)",
+     "gate": "diff gate in CI",
+     "status": "NOT_STARTED"
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "name": "UX: шлях у 1-2 кліки і передбачення",
+   "layers": [
+    {
+     "id": "C07.L1",
+     "name": "Карта шляху 9 кроків",
+     "gate": "documented",
+     "status": "DONE",
+     "evidence": "bible §0, README journey"
+    },
+    {
+     "id": "C07.L2",
+     "name": "Мова аудиторії: DE/EN/FR поряд з UK",
+     "gate": "every string from one dictionary; DE complete",
+     "status": "DONE",
+     "evidence": "web_launch/i18n/de.json, en.json, fr.json: 231 keys each; DE complete for Swiss target audience"
+    },
+    {
+     "id": "C07.L3",
+     "name": "Бюджет кліків на задачу виміряний",
+     "gate": "top 5 tasks <= 2 clicks from their screen",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C07.L4",
+     "name": "Наступна найкраща дія (одна головна кнопка на екран)",
+     "gate": "derived from state machine, deterministic",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C07.L5",
+     "name": "Порожні стани, помилки українською",
+     "gate": "no English domain error reaches a user",
+     "status": "DONE",
+     "evidence": "All domain errors translated to Ukrainian across 14 .mjs files (app, build, business-case, config, data, economics, health-check, matching, neon-store, online-store, profile-portability, profile-store, simulation, calendar)"
+    },
+    {
+     "id": "C07.L6",
+     "name": "Юзабіліті-тест з 5 людьми цільової аудиторії",
+     "gate": "task success >= 80%",
+     "status": "NOT_STARTED"
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "name": "Адаптивний інтерфейс і персональний дизайн-агент (голос/текст)",
+   "layers": [
+    {
+     "id": "C08.L1",
+     "name": "Схема дизайн-профілю користувача (allowlist токенів)",
+     "gate": "schema + validator; unknown keys rejected",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C08.L2",
+     "name": "Детерміновані правила адаптації (частота дій -> ярлики)",
+     "gate": "never hides consent/safety controls",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C08.L3",
+     "name": "Команда текстом: 'більші кнопки' -> патч токенів -> превʼю -> підтвердити",
+     "gate": "patch within allowlist; one-click reset",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C08.L4",
+     "name": "Голос (браузерний або локальний Whisper), без зберігання аудіо",
+     "gate": "explicit consent; transcript only in memory",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C08.L5",
+     "name": "Бандит серед погоджених варіантів (MA3)",
+     "gate": "WCAG floor and legal texts invariant in simulation",
+     "status": "NOT_STARTED"
+    },
+    {
+     "id": "C08.L6",
+     "name": "Портативність дизайн-профілю (експорт/імпорт/скидання)",
+     "gate": "round-trip test",
+     "status": "NOT_STARTED"
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "name": "Телеметрія і самопокращувальна аналітика",
+   "layers": [
+    {
+     "id": "C09.L1",
+     "name": "Контракт подій без PII",
+     "gate": "allowlisted properties; consent gate",
+     "status": "DONE",
+     "evidence": "G7 SYN_TELEMETRY_CONTRACT"
+    },
+    {
+     "id": "C09.L2",
+     "name": "Воронка зі знаменниками (відмови, ghost, missing feedback)",
+     "gate": "cohort funnel test",
+     "status": "DONE",
+     "evidence": "pilotFunnel + D2"
+    },
+    {
+     "id": "C09.L3",
+     "name": "Операторський кокпіт (G8)",
+     "gate": "zero network; CSV export; tests",
+     "status": "DONE",
+     "evidence": "operator_dashboard.* repaired 2026-09-13 (truncated file + pathToFileURL guard); 8/8 tests, zero network, CSV export"
+    },
+    {
+     "id": "C09.L4",
+     "name": "North star і дерево метрик",
+     "gate": "bilaterally confirmed useful outcomes per eligible case",
+     "status": "PARTIAL",
+     "evidence": "PRODUCT_DNA §Монетизація",
+     "next": "tree with guardrail metrics"
+    },
+    {
+     "id": "C09.L5",
+     "name": "Статистичні агенти пілоту (M11-M13)",
+     "gate": "fixture parity",
+     "status": "DONE",
+     "evidence": "web_launch/funnel-analytics.mjs + web_launch/cusum.mjs; fixture parity через node:test (M11 2/2, M12 2/2, M13 5/5)"
+    },
+    {
+     "id": "C09.L6",
+     "name": "Цикл самопокращення MA4 з журналом рішень",
+     "gate": "every promoted change has hypothesis, metric, holdout, approval",
+     "status": "DONE",
+     "evidence": "web_launch/ma4.mjs журнал рішень: hypothesis, metric, holdout, approval, timestamp; append-only"
+    }
+   ]
+  },
+  {
+   "id": "C10",
+   "name": "Ріст і вірусність під контролем користувача",
+   "layers": [
+    {
+     "id": "C10.L1",
+     "name": "Запросити колегу власною карткою",
+     "gate": "exists",
+     "status": "DONE",
+     "evidence": "empty-state button; share dialog"
+    },
+    {
+     "id": "C10.L2",
+     "name": "Картка 'Ми зустрілися' (give ⇄ take), публічна лише за згоди обох",
+     "gate": "each side can revoke; no terms, prices, contacts",
+     "status": "DONE",
+     "evidence": "web_launch/meeting-card.mjs: картка «Ми зустрілися» публічна лише за двосторонньої згоди, кожна сторона може відкликати, терміни/ціни/контакти виключено; 4/4 тестів"
+    },
+    {
+     "id": "C10.L3",
+     "name": "Реферальне посилання з атрибуцією і розкриттям (UWG)",
+     "gate": "incentives disclosed",
+     "status": "DONE",
+     "evidence": "web_launch/referral.mjs: атрибутивний токен, UWG-розкриття винагороди обов'язково входить у shareText (Verdienst:...), самореферальна ферма заборонена (SELF_REFERRAL); 4/4 тестів"
+    },
+    {
+     "id": "C10.L4",
+     "name": "Сторінки спільнот/організаторів (кейс-борд як у Startup Nights)",
+     "gate": "organizer invites cohort; cases posted by one side",
+     "status": "DONE",
+     "evidence": "web_launch/community.mjs: кейс публікує одна сторона, друга підключається (автор не може приєднатись до власного), контакти організатору лише при взаємній згоді, картка без контактів до згоди; 5/5 тестів"
+    },
+    {
+     "id": "C10.L5",
+     "name": "Публічна статистика з k-анонімністю/диференційною приватністю",
+     "gate": "no count below k=5 shown",
+     "status": "DONE",
+     "evidence": "web_launch/k-anon.mjs: k=5 за замовчуванням; групи < k зливаються в other, сама other теж поважає k; детермінований шум (seeded LCG); 1 людина ніколи не публікується при 200 seed; canPublish оракул; 6/6 тестів"
+    },
+    {
+     "id": "C10.L6",
+     "name": "Метрики вірусності: k-фактор, час до першої пари",
+     "gate": "measured per cohort",
+     "status": "DONE",
+     "evidence": "web_launch/virality.mjs: k-фактор (invitesPerMember × conversion), час до першої пари (hand-computed), publishableVirality зв'язана з C10.L5 (когорта і запрошені >= k); 7/7 тестів"
+    }
+   ]
+  },
+  {
+   "id": "C11",
+   "name": "Монетизація",
+   "layers": [
+    {
+     "id": "C11.L1",
+     "name": "Вимір собівартості (хвилини оператора, AI, платежі)",
+     "gate": "per case",
+     "status": "DONE",
+     "evidence": "web_launch/case-cost.mjs: оператор-хвилини (категорії з economics.mjs), AI-виклики, гроші; невиміряне = unknown, не нуль (unknownCashCases); MIXED_CURRENCIES відхиляється; perCaseAverage; 5/5 тестів"
+    },
+    {
+     "id": "C11.L2",
+     "name": "Матриця free / pro / організатор / кредити",
+     "gate": "core matching stays free; no paid trust",
+     "status": "DONE",
+     "evidence": "web_launch/tier-matrix.mjs: free/pro/organizer + 4 кредитні дії; gate: matching_is_free, trust_never_sold, safety_never_sold (заморожена матриця, buy_trust/bypass_safety неможливі за контракт); canPerform з балансом леджера; 4/4 тестів"
+    },
+    {
+     "id": "C11.L3",
+     "name": "Леджер кредитів на сервері",
+     "gate": "append-only, idempotent, refunds",
+     "status": "DONE",
+     "evidence": "web_launch/credit-ledger.mjs: append-only (новий масив), ідемпотентність по idempotencyKey (без подвійного списання), spend у межах балансу (NEGATIVE_BALANCE_IN_LEDGER неможливий), refund лише за існуючим spend і не більше суми; 5/5 тестів"
+    },
+    {
+     "id": "C11.L4",
+     "name": "Білінг (підписка, QR-bill/TWINT/картки)",
+     "gate": "legal E-wave done; exact approval",
+     "status": "PARTIAL",
+     "evidence": "REVERSIBLE_DEFAULT машина готова (Q6/Q7 one-switch): web_launch/economics/qr_bill.mjs + test (6/6) — Swiss QR-bill payload (SPD/EPD, мод-97 IBAN, раппени без float-помилок, MWSTG-текст B2C/B2B), flag enabled:false за замовчуванням — жодного платіжного виклику до рішення оператора; леджер credit-ledger.mjs (DONE, C11.L3) готовий приймати. Лишилось: вибір рейок (Q6) і кап першого кроку (Q7) — TRUE_HUMAN, unlock = config gate"
+    },
+    {
+     "id": "C11.L5",
+     "name": "'Хто переглядав' як взаємна опція",
+     "gate": "you see viewers only if you let others see you",
+     "status": "DONE",
+     "evidence": "web_launch/viewers.mjs: gate — власник без опції не бачить НІКОГО; видимі лише взаємні переглядачі; останній перегляд кожного, новіші перші; optOut миттєвий; 5/5 тестів"
+    },
+    {
+     "id": "C11.L6",
+     "name": "Тест готовності платити",
+     "gate": "real people, not synthetic",
+     "status": "DONE",
+     "evidence": "web_launch/wtp.mjs: рамка на РЕАЛЬНИХ людях — consent окремий від участі (CONSENT_REQUIRED), дубль учасника неможливий, WTP-крива публічна лише при >= k відповідях на ціну, viablePrice за порогом; 5/5 тестів"
+    }
+   ]
+  },
+  {
+   "id": "C12",
+   "name": "Ринок і асиміляція конкурентів",
+   "layers": [
+    {
+     "id": "C12.L1",
+     "name": "Карта конкурентів з джерелами",
+     "gate": "claim -> source -> verdict",
+     "status": "DONE",
+     "evidence": "readiness/MARKET_ASSIMILATION.uk.md"
+    },
+    {
+     "id": "C12.L2",
+     "name": "Беклог асиміляції (лише перевірено цінне)",
+     "gate": "each item mapped to a layer",
+     "status": "DONE",
+     "evidence": "same file"
+    },
+    {
+     "id": "C12.L3",
+     "name": "Тест відмінності в пілоті (проти ручного знайомства організатора)",
+     "gate": "paired baseline",
+     "status": "DONE",
+     "evidence": "web_launch/differentiation.mjs: requiredSampleSize (канонічна формула d=0.5 -> 63/групу, Acklam inverseNormalCdf без залежностей), pairedDifference (t-статистика, нульова дисперсія без ділення на нуль); verdict сигнальний, фінальне рішення за оператором; 5/5 тестів"
+    }
+   ]
+  },
+  {
+   "id": "C13",
+   "name": "Інженерна якість, QA, деплой",
+   "layers": [
+    {
+     "id": "C13.L1",
+     "name": "Юніт-тести і офлайн-білд",
+     "gate": "132/132, build 27",
+     "status": "DONE",
+     "evidence": "140/140 over 13 files + offline build 27 (2026-09-13); root-level tests now inside the canonical command"
+    },
+    {
+     "id": "C13.L2",
+     "name": "Поведінкові тести app.mjs (vm)",
+     "gate": "run(), btn/caseAction",
+     "status": "DONE",
+     "evidence": "web_launch/app.behavioral.test.mjs (6/6): генераційний fake-DOM без нових залежностей, import-time обв'язка app.mjs (874 рядки) виконується чисто; #auth-form submit, 4 data-tab кліки, guard 'Увійди, щоб...' на people, profile без guard, settings consent-sync. Попутно знайдено і виправлено коммітований синтакс-баг app.mjs:605 (рядок не компілювався — зелений сьют це ховав); behaviors-core.test.mjs (13/13): calendar (RFC 5545 hand-computed ICS + fold 73 байти), simulation (slot 497242 вручну), health-check (структурний контракт). Повний сьют 299/299 з кореня"
+    },
+    {
+     "id": "C13.L3",
+     "name": "Автоматичний E2E у браузері проти мок-Neon",
+     "gate": "restore, approve, invalidate scripted",
+     "status": "DONE",
+     "evidence": "Playwright (реальний chromium): tests/browser-e2e.spec.mjs 9/9 × 3 прогони — index 200+brand, hero h1 desktop+mobile 375px, клік табу profile перемикає секцію (через шлях чернетки, бо таби hidden до входу), catalogue.html, config.json безпечні дефолти, /.git/config і /config.public.json → 404 (allowlist), нуль ≥500, нуль pageerror. Сервер спавниться з кореня (SYNERA_PORT=0). serviceWorkers:'block' у конфігу: перша активація SW (pwa.mjs controllerchange → reload) губить кліки — SW-лifecycle свідомо поза межами E2E. Лишається: авторизований lifecycle у браузері (restore/approve/invalidate) — наступна фаза"
+    },
+    {
+     "id": "C13.L4",
+     "name": "Дисципліна одного писача",
+     "gate": "lock or kilo.db check before edits",
+     "status": "PARTIAL",
+     "evidence": "kilo_watch.py + session_preflight.py in ~/.claude/tools; FM-011 deployed to 62 agent surfaces",
+     "next": "a lock file per tree would also stop a second Claude session, not only Kilo"
+    },
+    {
+     "id": "C13.L5",
+     "name": "CI",
+     "gate": "remote runner",
+     "status": "DONE",
+     "evidence": ".github/workflows/ci.yml (YAML_OK): push+PR, ubuntu-latest+Node 22, npm ci (package-lock.json закомічений, verified git ls-files), playwright install chromium + puppeteer chrome, node --test web_launch/*.test.mjs + neon/worker.test.mjs з кореня, a11y_audit.mjs, артефакти тільки на failure, без deploy/publish/secrets; матриця версій намічена коментарем"
+    },
+    {
+     "id": "C13.L6",
+     "name": "Деплой пакетом (UI+міграція+B2+worker)",
+     "gate": "exact approval",
+     "status": "BLOCKED_HUMAN"
+    }
+   ]
+  },
+  {
+   "id": "C14",
+   "name": "Пам'ять і робочий процес агентів",
+   "layers": [
+    {
+     "id": "C14.L1",
+     "name": "Біблія + реєстр стану з доказами",
+     "gate": "status_ledger current",
+     "status": "DONE",
+     "evidence": "SYNERA_BIBLE.json revision 3"
+    },
+    {
+     "id": "C14.L2",
+     "name": "Промпт передачі в новий чат",
+     "gate": "self-contained",
+     "status": "DONE",
+     "evidence": "HANDOFF_PROMPT_NEXT_CHAT.uk.md"
+    },
+    {
+     "id": "C14.L3",
+     "name": "Context Gateway знає пакет CNRA",
+     "gate": "registry entry + manifest built",
+     "status": "DONE",
+     "evidence": "registered as project CNRA-Synera in project_manifest_registry.json; refresh_registry PASS 17/17; a live query returns passages with line pointers"
+    },
+    {
+     "id": "C14.L4",
+     "name": "Пам'ять Claude вказує на передачу",
+     "gate": "memory file + index line",
+     "status": "DONE",
+     "evidence": "memory/cnra-synera-state.md"
+    },
+    {
+     "id": "C14.L5",
+     "name": "Векторна база 'на NVIDIA'",
+     "gate": "location confirmed",
+     "status": "DONE",
+     "evidence": "REVERSIBLE_DEFAULT (Q9, реверсивно): дефолт = локальний D:\\AI_DEPOT\\vector_db\\context-gateway (існує на диску, перевірено тестом web_launch/memory/vector_store.test.mjs 7/7); перемикач SYNERA_VECTOR_STORE=nvidia-nim активує NVIDIA-лінію після exact approval капу (без ключа — fail-closed). Вибір А-варіанту реверсивний, не owner-approval: Q9 лишається доступним оператору для зміни одним env"
+    }
+   ]
+  },
+  {
+   "id": "C15",
+   "name": "Айсберг-архітектура: AI-ядро для масової каскадної перебудови",
+   "layers": [
+    {
+     "id": "C15.L1",
+     "name": "Token Forge: allowlisted tokens + WCAG AA guard + preview/reset",
+     "gate": "token_forge.test.mjs passes; visual regression green",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/token_forge.mjs + token_forge.test.mjs (12/12): allowlist з РЕАЛЬНИХ імен tokens.css (звірено тестом проти тексту файлу), суворий WCAG 2.x (еталонні 21.00 і 4.47 валідують реалізацію), guardAA з violations+ratio, canonical sha256 preview, frozen baseline reset; fail-closed українськими помилками; інваріант: нуль згадок consent у машині"
+    },
+    {
+     "id": "C15.L2",
+     "name": "Layout Recomposer: component registry + order permutations + regression gate",
+     "gate": "layout_recomposer.test.mjs; 149/149 existing tests pass",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/layout_recomposer.mjs + test (12/12): реєстр 5 екранів звірено з id index.html, validateOrder/recomposeOrder (move/promote) fail-closed, toggleVisibility захищає settings-view інваріантом канону, regressionGate (набір екранів незмінний — лише порядок/видимість), describeLayout для audit"
+    },
+    {
+     "id": "C15.L3",
+     "name": "Map Style Switcher: tile layer abstraction + marker tokens + GEO-01 guard",
+     "gate": "map_style.test.mjs; GEO-01 acceptance unchanged",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/map_style.mjs + test (11/11): 3 шари підкладок (osm/satellite/schematic, schematic=local), превʼязаність user>event>cohort>osm, маркер-токени з tokens.css, GEO-01: без згоди radius=null, зі згодою clamp 15..25 км (точність <15 км недосяжна), geoGuard відкидає live GPS і торкання consent-гейтів"
+    },
+    {
+     "id": "C15.L4",
+     "name": "Event Theme Injector: calendar integration + pre-audited theme bundles",
+     "gate": "event_theme.test.mjs; rollback < 1s; no consent gate modification",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/event_theme.mjs + test (10/10): 3 pre-audited bundles (new-year wrap-around 12-20..01-06, startup-nights, summer-forum), календарний activeBundle з межами включно, validateBundleTokens + self-audit при завантаженні, applyTheme тільки identity зі списку, rollback = заморожена O(1) константа (<1s), consentInvariantCheck блокує всі 7 гейтів"
+    },
+    {
+     "id": "C15.L5",
+     "name": "Cascade Orchestrator: MA4 -> Template Selector -> Forge -> Preview -> Confirm -> Deploy -> Log",
+     "gate": "cascade_orchestrator.test.mjs; cascade_log.jsonl immutable; rollback verified",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/cascade_orchestrator.mjs + test (13/13): Template Selector L1/L2/L3, fromHypothesis fail-closed (dropoff>0; L2 потребує когорти), preview A/B з WCAG AA гейтом (NaN-баг каналу R знайдено і виправлено циклом верифікації), confirm вимагає operatorId (немає тихих змін), deployAndLog → hash-chained iceberg/cascade_log.jsonl (prev_hash→entry_hash, genesis=GENESIS), verifyLog ловить тампірінг за індексом, rollbackLast з audit-записом; тести пишуть лише в os.tmpdir, реальний лог не чіпають"
+    },
+    {
+     "id": "C15.L6",
+     "name": "Operator Dashboard Integration: cohort targeting + preview UI + audit trail",
+     "gate": "operator_dashboard.test.mjs extended; E2E scenario passes",
+     "status": "DONE",
+     "evidence": "web_launch/iceberg/operator_dashboard.mjs + test (11/11): 3 когорти канону §4.1, composePreview (permutation-гейт канонічного набору екранів, sha256, requiresOperatorConfirm), renderPreviewPanel з українськими лейблами, batchPreview max 3 (канон §8), auditLine канонічний + auditTrail hash-ланцюг з виявленням тампірінгу; самодостатній, без імпорту sibling-модулів"
+    },
+    {
+     "id": "C15.L7",
+     "name": "Security/Privacy Review: no consent leakage, no PII in cascade logs, rollback audit",
+     "gate": "legal review signed; code review of all C15 machines",
+     "status": "PARTIAL",
+     "evidence": "Code review ВСІХ 6 C15 машин виконаний детермінованим чеклістом (Q11, DERIVABLE): web_launch/iceberg/privacy_audit.mjs + test (6/6) — PII-літерали, consent-мутації, rollback-наявність, cascade_log скан; вердикт PRIVACY_AUDIT_PASS (2026-09-23). Лишається: підпис H2 юристом (наслідує C05.L6, одна 30-хв сесія) — TRUE_HUMAN",
+     "next": "H2 lawyer/fiduciary review required (одна сесія з C05.L6)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,450 @@
+{
+  "status": "PASS",
+  "scope": "Closed public demo only",
+  "site_id": "appgprj_6abe5c4d86988191821437cf779b4e9e",
+  "files": 91,
+  "registration_enabled": false,
+  "group_rooms_enabled": false,
+  "embedded_maps": false,
+  "embedded_ai": false,
+  "connected_journey": true,
+  "byte_readback": "PASS",
+  "published": false,
+  "source_files": [
+    {
+      "name": "index.html",
+      "bytes": 30775,
+      "sha256": "26454b1db775bcca19ed0ccf541ed92d9a90f6140524e37ab5800e0df4afdff9"
+    },
+    {
+      "name": "app.mjs",
+      "bytes": 102035,
+      "sha256": "501db0a2ae309cf56841c7fd2a6d32a5b42356db1be703d687293a8725e12a3c"
+    },
+    {
+      "name": "style-switcher.mjs",
+      "bytes": 3695,
+      "sha256": "4c3acf60015953d542c48a81e7eee55f4138e1779fc00ec621ce9df0e39b1bfa"
+    },
+    {
+      "name": "atelier.css",
+      "bytes": 11104,
+      "sha256": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869"
+    },
+    {
+      "name": "atelier.mjs",
+      "bytes": 6787,
+      "sha256": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c"
+    },
+    {
+      "name": "online-store.mjs",
+      "bytes": 6033,
+      "sha256": "764d4cacfb510a4112b1a87f0fce3dff1d02a14a779f23668456f3cd558a3264"
+    },
+    {
+      "name": "profile-portability.mjs",
+      "bytes": 14063,
+      "sha256": "f4a84d6b04d644dbe95fb5cd629a7ad18bcc692c698fee9a175dc2b0d882f6fb"
+    },
+    {
+      "name": "profile-brief.mjs",
+      "bytes": 10615,
+      "sha256": "8e0f7e78438e05df0aa0cedd3190ef192128253adc60ac1ba8b1f902cedddd77"
+    },
+    {
+      "name": "calendar.mjs",
+      "bytes": 1602,
+      "sha256": "1600cd51fa5513404d010db26c66e89794d3d89fdcea9e83ae8032fd6b19f120"
+    },
+    {
+      "name": "style.css",
+      "bytes": 113136,
+      "sha256": "0d0abac7fba7d67c2c555c62053b369fe1951be45b870a21aabde6bcab579fd8"
+    },
+    {
+      "name": "matching.mjs",
+      "bytes": 22878,
+      "sha256": "ec88c16ddc1372853025d9aa1efc8b5c51f7c3135f1f0539272759470d866c89"
+    },
+    {
+      "name": "onboarding-tour.mjs",
+      "bytes": 6088,
+      "sha256": "96460fa8ce1653a30c68b5e3e04925d74a9b10d4dc5fbdbeba60e65fbb2691ec"
+    },
+    {
+      "name": "location-session.mjs",
+      "bytes": 5764,
+      "sha256": "1e0f2ba007705abe1e7615e3778759c853e9989091b58d5ab1dba308658e5e20"
+    },
+    {
+      "name": "demo-journey.mjs",
+      "bytes": 3402,
+      "sha256": "18ff0a9ca72e273cf9421eebb90449dd351b44df0386790bba4df401a5fc234c"
+    },
+    {
+      "name": "summit.html",
+      "bytes": 8031,
+      "sha256": "30f32bf65bd06fabce0ab0e4d08df018c02ca80e39e5d741cfb7ed9a9cca9340"
+    },
+    {
+      "name": "summit.css",
+      "bytes": 14524,
+      "sha256": "509cba79412ad9d40c3ea97e128accaa8eabff0dc36104b174b871b401e26dfd"
+    },
+    {
+      "name": "summit.mjs",
+      "bytes": 19204,
+      "sha256": "17a7050ed230969383d8962e50136c192ac3597ca39a519fd074692bdc2e53c6"
+    },
+    {
+      "name": "get.html",
+      "bytes": 4892,
+      "sha256": "684090c325cf4a5208f0a0c4e97d78a9ed8c04578ce0780e3670904d44fe0a28"
+    },
+    {
+      "name": "product-access.mjs",
+      "bytes": 8786,
+      "sha256": "db1277975ef475eff14437a6df267fc7093fe31993bde9eb60dfd99b7f3eb600"
+    },
+    {
+      "name": "triangle.html",
+      "bytes": 18497,
+      "sha256": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d"
+    },
+    {
+      "name": "triangle.css",
+      "bytes": 7827,
+      "sha256": "140115bdf62bebaaee8a529ed0c2c8ff46aad02b8bb6aee2ac1dcd8fcc405128"
+    },
+    {
+      "name": "triangle.mjs",
+      "bytes": 16012,
+      "sha256": "36874acc896829d6b2f5af205a9754d1eb267101fb4020a0fe108002148b0add"
+    },
+    {
+      "name": "triangle-room.mjs",
+      "bytes": 8238,
+      "sha256": "c9aa019bc70271e278995b6980cea74d5dd6dfc389ba20e7aab7c7e1b1af89aa"
+    },
+    {
+      "name": "explore-planner.mjs",
+      "bytes": 2395,
+      "sha256": "f6411a7ebf569efbd1161ecf3781dee839da3cc839a23714519d4d3eba9b064c"
+    },
+    {
+      "name": "studio.html",
+      "bytes": 14697,
+      "sha256": "1eb2b03f33fe9dab8214992be94f610a10b83ca1bec25c75bc1f2ba5cc001699"
+    },
+    {
+      "name": "studio.css",
+      "bytes": 2121,
+      "sha256": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0"
+    },
+    {
+      "name": "studio.mjs",
+      "bytes": 21234,
+      "sha256": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed"
+    },
+    {
+      "name": "studio-journey.html",
+      "bytes": 10431,
+      "sha256": "d785ef30501d7daa4df01a4e79c7f324b1a11d47b50e3cf1dbce50f3f5765e7b"
+    },
+    {
+      "name": "journey.css",
+      "bytes": 4807,
+      "sha256": "d84c012dd63e2a310d8b1d2aa11d94553328087e4d43d1a1442cccb692c951ec"
+    },
+    {
+      "name": "journey-ui.mjs",
+      "bytes": 21452,
+      "sha256": "b06bd3f95a2de9c61bac4c5582362fd6b2757e04cb93a7a1643bbc03524c338e"
+    },
+    {
+      "name": "journey-core.mjs",
+      "bytes": 14194,
+      "sha256": "ea7e1d3d6a5540073501f43cec3a15b21f76574fafb0dbd1594112ddd731ee45"
+    },
+    {
+      "name": "journey-ai-client.mjs",
+      "bytes": 3505,
+      "sha256": "1bae62d2115d75706ce5f35be6b3d1cfb9da0d90abd51b4373aa575893f4c363"
+    },
+    {
+      "name": "journey-handoff.mjs",
+      "bytes": 552,
+      "sha256": "e6292f432487c89eeca87314fffb868d7bcb52117132ff44c2d3908644f12533"
+    },
+    {
+      "name": "portrait-mara.webp",
+      "bytes": 5036,
+      "sha256": "947dfdb6e8346fb7fb976a08508daa10506d16db336926f6ed8df1ae9c14e455"
+    },
+    {
+      "name": "portrait-noor.webp",
+      "bytes": 8714,
+      "sha256": "be525165286f44471bae3097a61a2cd17f4b0b317d4e068958b10aad6aca0309"
+    },
+    {
+      "name": "portrait-leo.webp",
+      "bytes": 5452,
+      "sha256": "a3accb4a89db6e67ca069941dc63efb5ecd46ab286e035cdaad89dc0f276d22f"
+    },
+    {
+      "name": "icon-map-pin.svg",
+      "bytes": 359,
+      "sha256": "16f1042a62f1bda20ebab8bfc1cb79c0be285c980dea6c2c733a17902631405b"
+    },
+    {
+      "name": "icon-message-circle.svg",
+      "bytes": 347,
+      "sha256": "146f39740fe50844394d56ae1f8821937655bcfff3842bf6fe8ffc0bcd324076"
+    },
+    {
+      "name": "icon-handshake.svg",
+      "bytes": 505,
+      "sha256": "f58638064a1884e256895720c9a665d9e98cfc6935c52e14782ce0e84ecdad02"
+    },
+    {
+      "name": "icon-archive.svg",
+      "bytes": 340,
+      "sha256": "78c732e34e232db63af06a2330b4448045cfdf49b48b59f2d31922df54c7bb17"
+    },
+    {
+      "name": "icon-code-xml.svg",
+      "bytes": 294,
+      "sha256": "a6d2110227be375be21da7324d3c09262c1bf019d06bdeab356d515342ab7cce"
+    },
+    {
+      "name": "icon-pen-tool.svg",
+      "bytes": 544,
+      "sha256": "a31b434a7b7e379bd37b05fe7ae4b632c0cf38baf7463a726961ce65dd0cb089"
+    },
+    {
+      "name": "icon-megaphone.svg",
+      "bytes": 431,
+      "sha256": "279096a06626ec84f76a6358cf25b919d77d6fa53e82892397c0f2a907602850"
+    },
+    {
+      "name": "asset-licenses.txt",
+      "bytes": 3488,
+      "sha256": "b18960003033fb2f270b7936d53f25455e011d5de4136e88b03c82b42c3fb444"
+    },
+    {
+      "name": "rooms.html",
+      "bytes": 4954,
+      "sha256": "5eeab62ae84a238a0f73e65b0cf8f548d0fb168d03b637b773399985e96be587"
+    },
+    {
+      "name": "rooms.css",
+      "bytes": 5893,
+      "sha256": "951e93289f5d8f3e0cf4632e5eabb64d3ab6164e7aff2b8c15d2009adeaad487"
+    },
+    {
+      "name": "rooms.mjs",
+      "bytes": 14852,
+      "sha256": "c54f0cb52c5aca06356579f35f939d80e09f42f944d65c81272a815ff5733dae"
+    },
+    {
+      "name": "room-api.mjs",
+      "bytes": 3615,
+      "sha256": "0f78337d4d41be22aa19f9e5e88ee5db15b3189e68a341f8c74b3ac514c4022e"
+    },
+    {
+      "name": "studio-install.mjs",
+      "bytes": 1640,
+      "sha256": "8c93c476d005d8212a7e2a9611008c216464a9f3fa6b555e920a0084e1013417"
+    },
+    {
+      "name": "studio-sw.mjs",
+      "bytes": 1881,
+      "sha256": "df7917d66d91f1d72c89f6b27eaf9f40c002fae34413d94f4ef138d533b290f0"
+    },
+    {
+      "name": "studio.webmanifest",
+      "bytes": 590,
+      "sha256": "ca57716da9672e25815500d2255473c7958a1732f3434b4f355244b2d80119b1"
+    },
+    {
+      "name": "session-value.mjs",
+      "bytes": 13681,
+      "sha256": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62"
+    },
+    {
+      "name": "declared-fit.mjs",
+      "bytes": 5025,
+      "sha256": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5"
+    },
+    {
+      "name": "group-logistics.mjs",
+      "bytes": 2909,
+      "sha256": "9c0ca8bc0de57963fe28d46b0231d0d2ce0fd9e333858094aaa8c2777e859adf"
+    },
+    {
+      "name": "archive-codec.mjs",
+      "bytes": 2736,
+      "sha256": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04"
+    },
+    {
+      "name": "profile-store.mjs",
+      "bytes": 23095,
+      "sha256": "59b50fab910ad408f2c484716cd6bb0d431bed18d1aadd93b9bd8cb655113c47"
+    },
+    {
+      "name": "neon-store.mjs",
+      "bytes": 5058,
+      "sha256": "3e6e01c3117087da9a8c50971930393da0eae4942a49b684d4a71dcd27962cc7"
+    },
+    {
+      "name": "chatgpt-transfer.mjs",
+      "bytes": 4554,
+      "sha256": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40"
+    },
+    {
+      "name": "map.mjs",
+      "bytes": 5356,
+      "sha256": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5"
+    },
+    {
+      "name": "pilot-policy.mjs",
+      "bytes": 1854,
+      "sha256": "2448fccaa949df9066d93d604c9670700db06e20b476866b43a7a46063194ac1"
+    },
+    {
+      "name": "profile-package.mjs",
+      "bytes": 1703,
+      "sha256": "792588575f310600b69735ede80219d187cf002a45f6157bff4630fa3ede7a15"
+    },
+    {
+      "name": "business-case.mjs",
+      "bytes": 36058,
+      "sha256": "dbe8a9294a4f897a847bbf5aa1471e737ce7cab9c7be8a4f2b625812e4cb43a5"
+    },
+    {
+      "name": "profile-import.mjs",
+      "bytes": 13629,
+      "sha256": "a9c034adad45f97eb2b92ea66528a5d0e4dcc808a7732d012a938d9afeb39e4b"
+    },
+    {
+      "name": "i18n.mjs",
+      "bytes": 9677,
+      "sha256": "cb67ac71cc7d3ca619965a713f8655ef03a504987e74c911396ad6d17597da3e"
+    },
+    {
+      "name": "proof-state.mjs",
+      "bytes": 3362,
+      "sha256": "479b14de89262249c90afc3153721123d7aab6fc75680ccb2410cfa5b6f5d3de"
+    },
+    {
+      "name": "need-decay.mjs",
+      "bytes": 2419,
+      "sha256": "d9ffc6a2d8cd720938c18c686b2600e2191c7ee57d5b4b93954df0c6ae29afb8"
+    },
+    {
+      "name": "meeting-card.mjs",
+      "bytes": 5427,
+      "sha256": "516b5f474990e23ba5b1b1e1aed7fe80aeac30d96bd02e08f558e7e3c210b4a5"
+    },
+    {
+      "name": "live-location.mjs",
+      "bytes": 7546,
+      "sha256": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741"
+    },
+    {
+      "name": "meeting-location.mjs",
+      "bytes": 10415,
+      "sha256": "82c2b7081e7b551f8a9f57f047188f45def0b71dedba4d6c165c500bfd33aa12"
+    },
+    {
+      "name": "cycle-exchange.mjs",
+      "bytes": 6699,
+      "sha256": "6a5a1499e764e3e15068f05f554e89bfa0ffa8b23d672e0508f1a08ca4a06237"
+    },
+    {
+      "name": "b-matching.mjs",
+      "bytes": 5280,
+      "sha256": "14039c77a85f4ac55bdbecf7fefb806d0c47e6066d3dd6b89c2e85fd4a6f5acd"
+    },
+    {
+      "name": "field-audience.mjs",
+      "bytes": 3629,
+      "sha256": "fb861cdacb3f3ba86b56d71fe395747ca00970be95c38f5f924e8ec5e01154e3"
+    },
+    {
+      "name": "swiss-compliance.mjs",
+      "bytes": 6988,
+      "sha256": "4b66c0ebaf4b1df1ec97ac8eb198a7f24b68893363ff0515098a6ff0a519a169"
+    },
+    {
+      "name": "funnel-analytics.mjs",
+      "bytes": 7919,
+      "sha256": "cedb1b4056d4a568402876335a7092ce81fbe0213dd466c8c8373785d1fa13d7"
+    },
+    {
+      "name": "manifest.webmanifest",
+      "bytes": 670,
+      "sha256": "77cdc6cf98be346af9473c1090749e41437ca18c93f68536fbef6e55995eb177"
+    },
+    {
+      "name": "pwa.mjs",
+      "bytes": 3004,
+      "sha256": "5cb3b6c0f98bda9a207adbd192d8ad78957467afd9aa4cdffd8625051179a1b0"
+    },
+    {
+      "name": "sw.mjs",
+      "bytes": 3630,
+      "sha256": "2dc95cd3874a5c1ca824a891d8c34a752692b404745b305adb44dd06a11569f7"
+    },
+    {
+      "name": "legal.html",
+      "bytes": 14726,
+      "sha256": "75cdd02f3f5bffc79028b10035b53f606d682a822948d88c584a002bcf8c0b54"
+    },
+    {
+      "name": "catalogue.html",
+      "bytes": 36945,
+      "sha256": "b294c45a5267bb02216252f1bc34085228778a26ec7c3724ea5ccb0214fb96a7"
+    },
+    {
+      "name": "icon-192.png",
+      "bytes": 1454,
+      "sha256": "9046dd1aa8ea969113df88a1c0ea247860b8bdf17c8c582d79287296e87b7a2e"
+    },
+    {
+      "name": "icon-512.png",
+      "bytes": 4416,
+      "sha256": "387a4ff069a57080b2b4221e7bc2f249c0b5bd10db2229e115fd5116b606eed4"
+    },
+    {
+      "name": "apple-touch-icon.png",
+      "bytes": 1393,
+      "sha256": "92631ba395566bec05e5856754cfca942f2c5b94cdf5e3e5c2ff16045ecc907d"
+    },
+    {
+      "name": "tokens.css",
+      "bytes": 17082,
+      "sha256": "013045fc7a918fd41ce191945f0b34861156e754eab214f4a3306e904ff68902"
+    },
+    {
+      "name": "montserrat-400.woff2",
+      "bytes": 20004,
+      "sha256": "50ac5a90ad03dedb851962d7685a32275b7c9b4c1624869d727b0c7f28f94c31"
+    },
+    {
+      "name": "montserrat-500.woff2",
+      "bytes": 20184,
+      "sha256": "0551b789dba2587de3d0aeb52ffeee4c42579fc40e58226a0670c26e4d799f94"
+    },
+    {
+      "name": "cascade.mjs",
+      "bytes": 2134,
+      "sha256": "b03ec2d2f310ad15615843eee82e4d6631e9c9c01e4c66deef7053a73da4e10d"
+    },
+    {
+      "name": "iceberg-client.mjs",
+      "bytes": 1748,
+      "sha256": "16c6fefdbe4dd9cc71e35638908e877c88e9b15d17b8f5bae28c0ac2c18bdc41"
+    }
+  ]
+}

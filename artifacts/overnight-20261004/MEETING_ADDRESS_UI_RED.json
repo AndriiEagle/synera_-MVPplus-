@@ -1,0 +1,11 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:06:56.849Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "preserved_accepted_chat": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "error": "Address UI missing\n\n0 !== 1\n"
+}

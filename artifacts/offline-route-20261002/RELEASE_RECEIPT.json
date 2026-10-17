@@ -1,0 +1,72 @@
+{
+  "checked_at_utc": "2026-10-02T14:42:38.376214+00:00",
+  "status": "PUBLIC_REPAIR_DEPLOYED; LIVE_PRODUCT_INTEGRATIONS_PENDING",
+  "product_parent_commit": "6cec2119bce7d5f171cbfc60d9d12cd0ae5377c8",
+  "public_site": {
+    "project_id": "appgprj_6abe5c4d86988191821437cf779b4e9e",
+    "version": 5,
+    "version_id": "appgprj_6abe5c4d86988191821437cf779b4e9e~appgver_6689bc0a22ec8191b39653a02917d3be",
+    "source_commit": "e3ceecca3d7ba0272577efce0cae5c16cae34edb",
+    "deployment_id": "appgdep_6abfc2d042cc8191883269a24ebd99ab",
+    "deployment_status": "succeeded",
+    "url": "https://synera-summit-20261001.andypokr911.chatgpt.site",
+    "archive": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000bc708210bee2b1bdeb32f154",
+      "content_hash": "sha256:5fceaeb267a339b3be16b431bd3c312ba757fb3e5fa84ecb8f8423deebc0c35f",
+      "size_bytes": 829440,
+      "file_count": 69
+    },
+    "native_source_archive_deployment_readback": "PASS"
+  },
+  "change": {
+    "file": "web_launch/studio-sw.mjs",
+    "sha256": "2f9674668170cfe9dbd094023ddaad64992b63b52c7a15be428b083971f42614",
+    "invariant": "Preserve existing modes, public-only cache, private-data exclusions and unsaved session state; clean Studio URL must work offline",
+    "regression_red": "Old worker failed published clean /studio interception",
+    "targeted_unit": {
+      "passed": 2,
+      "failed": 0,
+      "command": "node --test web_launch/studio-sw.test.mjs"
+    },
+    "affected_browser": {
+      "passed": 7,
+      "command": "node node_modules/@playwright/test/cli.js test tests/studio-e2e.spec.mjs"
+    },
+    "proof_boundary": "Observed tool outputs and test source; unchanged full-suite v4 proof reused, not rerun",
+    "bounded_review": "Actual diff reviewed; prior worker rejected by semantic regression before repair"
+  },
+  "live_observation": {
+    "neon_console": "SIGNED_IN_EXISTING_SYNERA_PROJECT",
+    "region": "AWS US East 2 (Ohio)",
+    "cloudflare_console": "SIGNED_IN",
+    "pilot_config": {
+      "status": 200,
+      "backend": "neon",
+      "registrationEnabled": true,
+      "realPilotEnabled": true,
+      "liveLocationEnabled": null
+    },
+    "migrations_backup_acl_kv_plan": "NOT_VERIFIED",
+    "prod_database_mutated": false
+  },
+  "git": {
+    "branch": "codex/synera-product-20261002",
+    "remote_head": "cd6a05c0f6ca16d6dcd808760af74f9925d60808",
+    "push_user_authorized": true,
+    "push_execution": "BLOCKED_BY_EXISTING_AUTOMATIC_POLICY_REJECTION",
+    "rejection": "approval required by policy, but AskForApproval is set to Never",
+    "ci_for_unpushed_head": "NOT_RUN"
+  },
+  "remaining": [
+    "live rollout and two independent accounts",
+    "Google SDK",
+    "remote L identity/ACL and media",
+    "AI provider/cap and semantic acceptance",
+    "official social scopes/publisher/radar",
+    "physical Android/iPhone acceptance"
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "subscription_savings": "unmeasured"
+}

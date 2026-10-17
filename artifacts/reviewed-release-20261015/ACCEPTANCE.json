@@ -1,0 +1,49 @@
+{
+  "status": "PASS_LOCAL_RELEASE_LIVE_AND_PROVIDER_WAVE_HOLD",
+  "base_commit": "68ee2869eb678563198d3f8fba5c5ed31ea664f2",
+  "source_sha256": {
+    ".github/workflows/ci.yml": "9dc9fd324c3ef8cb465f50736fdab93786b7c4c059087fc9f9e49e949820d9c8",
+    "web_launch/app.mjs": "65ee6daafe0cc377224bfa70616edb0ce7240e8ab3219e4774e1c2a7c818ea85",
+    "web_launch/index-i18n-table.mjs": "959fec957b9f621c18ae6450adcb41867fe8d80f1fce6ec65e8a41af4698dbd3",
+    "web_launch/profile-store.mjs": "1232b25bbc3433c41fe68dda80b36d29a3c6208beb1333562e7661185b08e26f",
+    "web_launch/style-switcher.test.mjs": "85a4b5376532b7d43e58aa8c52e74ef7c6b6ec46a149ea45bcf2df18b9b2a85f",
+    "web_launch/style.css": "4846decf2ca80318a621363914cd544c6085c0a59b9e5d0d057d4731726d75f7",
+    "web_launch/sw.mjs": "a5a78fb3f78a9e22e1c9aeed6cecb20ed1bf33cb7cd3b847616da289f05ecee1",
+    "neon/profile-delete.test.mjs": "71ad9ef05086b06ec1b6ad4f0283db0a244605aaa8bc5e96e195069a660a179e",
+    "tools/header-layout-acceptance-20261013.mjs": "7c1ce51d15c2fefa2e9fe152f28d72149275107442384a798bb62252dafcb533",
+    "tools/offline-shell-acceptance.mjs": "949129a73e8f160e67ef6a62d30856043d62d7abd9506d7338357dab3641eb06",
+    "tools/fixtures/profile-delete-fixture.mjs": "4e0a93ce8d0a0c5b70bd76b42096c9a9be70f98c289cbfcd395efe9014a46d62"
+  },
+  "release_sha256": "f4ccbd81a7e9f61bf409112f4d546324c190f3f81abbf4ad1d079e9aafd470d9",
+  "release_assets_verified": 102,
+  "node": {
+    "tests": 669,
+    "passed": 668,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "SYNERA_ACCEPTANCE_PG not configured; disposable Postgres integration gate skipped"
+  },
+  "browser_e2e": {
+    "passed": 39,
+    "failed": 0
+  },
+  "header": {
+    "cases": 12,
+    "checks": 84,
+    "pass": "PASS",
+    "negative_control": "old CSS: 3 failures"
+  },
+  "offline": {
+    "checks": 14,
+    "pass": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+    "origin_server_closed": true,
+    "negative_control": "missing profile-import module rejected; process exit nonzero"
+  },
+  "a11y": "No critical/serious violations in existing audit",
+  "location": "existing simulated Chromium location workflow PASS",
+  "webkit": "NOT_RUN: expected webkit-2359 executable unavailable in current configured Playwright installation",
+  "physical_phones": "NOT_RUN",
+  "production": "UNCHANGED_NOT_ACCEPTED",
+  "provider_wave": "HOLD; see PROVIDER_READBACK.json",
+  "foreign_journey_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b"
+}

@@ -1,0 +1,31 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:44:20.312Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true,
+    "retry_keeps_text_and_intent": true,
+    "giver_cannot_self_accept": true,
+    "dispute_resolves_without_erasing_history": true,
+    "withdrawal_disables_outcome_actions": true,
+    "both_receiver_acceptances_confirm_all_results": true,
+    "optional_read_errors_keep_chat_and_clear_stale_private_results": [
+      503,
+      409,
+      429,
+      500,
+      "network"
+    ],
+    "manual_retry_restores_only_fresh_read_and_replaces_error_status": true,
+    "reads_do_not_write_or_auto_accept": true,
+    "auth_failures_purge_chat_draft_and_outcomes": [
+      401,
+      403
+    ]
+  },
+  "error": "Late failed read changed logout status\n+ actual - expected\n\n+ 'Ти вийшов/вийшла з Synera.'\n- 'Потрібен активний сеанс.'\n"
+}

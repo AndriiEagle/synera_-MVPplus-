@@ -1,0 +1,207 @@
+# Synera Pilot Red-Team Review
+
+---
+
+## VERDICT
+
+**CONDITIONAL STOP — REPAIR REQUIRED BEFORE COHORT 1 RECRUITMENT.**
+
+The spec correctly identifies feasibility learning as the goal and refuses to conflate synthetic work with business evidence. However, the gate is gameable at the pair level, the organizer baseline is undefined, and the failure/dispute taxonomy is absent. The plan currently cannot distinguish "10 pairs matched" from "10 real independent feasibility signals." Until the denominator architecture and state machine are hardened, recruiting the cohort risks generating polished-but-untrustworthy metrics.
+
+---
+
+## FINDINGS
+
+### P0 — Critical: Gate Can Be Gamed by Duplicate Pairs and Hidden Missing Feedback
+
+**Bias/Failure Scenario:** Two people who already know each other (or who the operator pairs repeatedly across different declared needs) could satisfy the "10 unique pairs" requirement without representing 10 independent market signals. Simultaneously, if a pair drops out after agreeing to a brief but never provides feedback, the operator could classify them as "missing feedback" — a reported denominator — while the headline metric (3 accepted outcomes) still looks met by the remaining pairs. The result: 10 pairs logged, 5 briefs agreed, 3 outcomes accepted — but only 4 genuinely independent pairs contributed, and 3 of those 5 briefs came from one repeated relationship.
+
+**Smallest Correction:** Define "unique pair" as a unique unordered pair of verified participant IDs with a unique declared need ID, enforced by a dedup check at pair-creation time. Require that "missing feedback" pairs are reported in a separate column and explicitly excluded from the "accepted outcome" numerator — the gate requires 3 accepted outcomes *from distinct pairs that also submitted feedback*, not 3 outcomes from any subset.
+
+**Observable Evidence:** Pair-ID dedup log with timestamps; a feedback-completion table showing which pairs submitted feedback and which did not; the gate report must show both "accepted outcomes" and "accepted outcomes with feedback" as separate rows.
+
+---
+
+### P0 — Critical: D1 Synthetic Evidence Must Be Firewalled from Business Metrics
+
+**Bias/Failure Scenario:** The overnight D1 build produces synthetic workflows, mutation proofs, and offline tests. A well-intentioned team member (or an external stakeholder) could present "10 synthetic pairs completed their journey" as evidence of product viability, especially if the synthetic flows mirror the real UI. This is explicitly prohibited in the spec, but the prohibition lives in prose — not in a metric-definition guardrail. If the dashboard or report template has a "pairs completed" column without a source tag, synthetic data can accidentally (or deliberately) populate it.
+
+**Smallest Correction:** Every business metric in any report or dashboard must carry a `source` tag: `real_authorized`, `synthetic_test`, or `model_output`. Any metric with `synthetic_test` or `model_output` source must be visually and structurally separated from real metrics — different table, different section, different color. A single invariant rule: no business metric may be computed from a row where `source != real_authorized`.
+
+**Observable Evidence:** A sample report showing the `source` column on every row; a dashboard screenshot with synthetic and real metrics in separate panels; a commit or config file enforcing the source-tag invariant.
+
+---
+
+### P0 — Critical: "Accepted Outcome" Definition Is Vague Enough to Include Non-Events
+
+**Bias/Failure Scenario:** A pair agrees to a trial, the trial is "completed" (or partially completed), and the recipient says "the outcome was fine" or "I got what I needed" — but this is not the same as accepting a specific, versioned outcome against the declared terms. If "accepted outcome" is recorded based on a vague satisfaction signal rather than explicit acceptance of the versioned terms, the 3-outcome gate could be met by 3 pairs who were loosely satisfied but never formally accepted anything. This inflates feasibility signals.
+
+**Smallest Correction:** Define "accepted outcome" as: recipient explicitly confirms acceptance of a specific versioned-term document (or its digital equivalent) within the 14-day window. This requires a binary action — accept or not accept — not a satisfaction rating or narrative response. The system must record a timestamped accept/reject event per trial.
+
+**Observable Evidence:** A trial-outcome record schema showing `versioned_terms_id`, `recipient_accept_timestamp`, `accept_boolean`. A sample of 3 records showing explicit accept events.
+
+---
+
+### P1 — High: Organizer Manual-Introduction Baseline Is Undefined
+
+**Bias/Failure Scenario:** The spec requires reporting a "manual organizer-introduction baseline" but never defines what it is. Is it: the organizer personally introduces two people they know? Is it: the organizer sends a cold outreach to two people? Without a defined baseline, the comparison "our platform matched X pairs vs. the organizer manually introduced Y pairs" is meaningless. The team could set an artificially low baseline (e.g., "the organizer made 1 introduction") to make the platform look superior, or an artificially high one to appear conservative. Either way, the baseline doesn't measure anything comparable.
+
+**Smallest Correction:** Define the baseline as: the organizer manually introduces exactly one pair using their own network and method, records whether both parties expressed bilateral interest, whether a meeting occurred, and whether a trial was agreed — using the same state-tracking form as the platform-matched pairs. This is one manual pair, run in parallel, with identical state definitions. The baseline is N=1, but it is a usable comparison point because the states are identical.
+
+**Observable Evidence:** A baseline tracking form identical to the platform form, filled out for one manually introduced pair. A comparison row in the funnel report showing manual vs. platform-matched states side by side.
+
+---
+
+### P1 — High: Missing Dispute and Failure-State Taxonomy
+
+**Bias/Failure Scenario:** The spec mentions "dispute" as a stop condition and "failure outcome" implicitly, but neither is defined. A pair completes a trial, the receiver is unhappy, and the sender believes they delivered. Without a defined dispute state, the operator either (a) records it as "completed" to keep numbers clean, or (b) drops it entirely. Similarly, a trial that starts but never finishes — maybe one party goes silent — has no defined state. It could be counted as "completed" or "missing feedback" depending on operator convenience. The funnel silently loses signal.
+
+**Smallest Correction:** Add explicit states to the funnel: `trial_started`, `trial_in_progress`, `trial_completed`, `trial_partially_completed`, `trial_abandoned`, `dispute_open`, `dispute_resolved`, `dispute_unresolved`. Define what triggers each transition (e.g., `trial_abandoned` = no feedback from either party for 5 consecutive days). Define `dispute_open` as any explicit objection from either party to the trial outcome, and `dispute_unresolved` as a dispute still open at day 14. All disputes must be reported; unresolved disputes block expansion.
+
+**Observable Evidence:** A state-transition diagram with all defined states and triggers. A sample funnel report showing at least one row in each non-terminal state. A dispute log with timestamps and resolution status.
+
+---
+
+### P1 — High: Selection Bias in "One Trusted Professional Community"
+
+**Bias/Failure Scenario:** The spec says "one trusted professional community supplies people." If that community is the organizer's own network, the recruited pairs are not representative of any market — they are representative of one person's relationships. If the community is an online group, the self-selection bias is severe: people who respond to a pilot invitation are more likely to be eager, available, or already seeking exactly this kind of exchange. The 10 pairs may all look "feasible" not because the model works, but because the sample is pre-filtered by enthusiasm. This makes the feasibility signal unreliable for segment/mode decisions.
+
+**Smallest Correction:** Recruit from at least two distinct channels (e.g., one community-based and one public posting) and report recruitment channel per pair. If all 10 pairs come from one channel, flag this as a recruitment-bias finding, not a product finding. The learning gate must be met *and* the recruitment-channel distribution must be reported.
+
+**Observable Evidence:** A recruitment log showing channel per participant. A pair-level report showing which channel each pair came from. If >80% of pairs come from one channel, this is a flagged finding.
+
+---
+
+### P2 — Medium: Support Actions and Operator Minutes Are Unbounded
+
+**Bias/Failure Scenario:** The spec says "support remains manual for the first cohort" and requires reporting "operator minutes." But there is no defined support protocol. An operator might spend 2 hours rescuing a struggling pair (bringing them to trial) and log 15 minutes because they only counted the time spent in the matching tool. Alternatively, the operator might not log minutes at all, making the cost column empty. The "operator minutes" denominator becomes useless, and the cost-per-pair metric cannot be computed. This undermines the pricing exploration prerequisite (support-cost record).
+
+**Smallest Correction:** Define operator minutes as: total time from pair creation to trial-outcome acceptance (or day 14 cutoff), logged in 15-minute increments, with an activity category (e.g., `matching`, `facilitation`, `conflict_resolution`, `admin`). Require a daily log, not a retrospective estimate. The support-cost record is the sum of operator minutes × a stated hourly rate (even if hypothetical for feasibility) plus direct cash costs.
+
+**Observable Evidence:** A daily operator log template with time categories. A sample 14-day log for one pair showing incremental entries. A cost summary computing operator minutes × rate + direct costs.
+
+---
+
+### P2 — Medium: WTP Question Methodology Is Undefined
+
+**Bias/Failure Scenario:** The spec says WTP is asked "after delivered value" but doesn't specify how. If the question is "How much would you pay for this?" participants anchor to the value they received and may overstate. If it's "Would you pay $X?" it's leading. Without a defined methodology, the WTP data collected during pricing exploration is unusable — it either inflates willingness or introduces demand bias. The spec correctly delays WTP until after real outcomes, but the question design itself is a gap.
+
+**Smallest Correction:** Use a Becker-DeGroot-Marschak (BDM)-style or open-ended contingent valuation question: "What is the maximum you would be willing to pay for this specific outcome, knowing you would actually pay that amount if it were randomly selected?" Frame it as a hypothetical purchase for the specific delivered outcome, not a general product. Report the question wording verbatim in the pilot documentation.
+
+**Observable Evidence:** The exact WTP question wording in the pilot playbook. A sample WTP response from a pilot participant (anonymized). A note explaining why the chosen format avoids leading.
+
+---
+
+### P2 — Medium: "Change Segment/Mode" Criteria Are Unclear
+
+**Bias/Failure Scenario:** The spec says "change segment/mode if eligible profiles lack real fit." But "lack real fit" is undefined. If 3 of 10 pairs have no bilateral interest, is that a segment problem or just bad luck? If the operator changes the segment after 5 pairs based on early results, they've introduced a stopping rule that biases the remaining sample. Without a pre-registered criterion, the team can retroactively justify any segment change.
+
+**Smallest Correction:** Pre-register a decision rule: if fewer than 3 of the first 5 pairs achieve bilateral interest, pause recruitment and review the segment definition before continuing. This is a fixed rule set before cohort start, not a post-hoc judgment. Any segment/mode change must be documented with the pre-registered trigger that caused it.
+
+**Observable Evidence:** A pre-registered decision document signed before recruitment begins. A log showing whether the trigger was hit and what action was taken.
+
+---
+
+### P3 — Low: Operator Rescue Is Not Bounded
+
+**Bias/Failure Scenario:** The operator notices a pair is struggling — one party is slow to respond, the brief is vague. The operator sends nudges, clarifies terms, suggests meeting times, and essentially coaches the pair through to trial. This pair now counts as a "completed trial" but the feasibility signal is contaminated: the platform didn't facilitate the match; the operator did. If multiple pairs receive rescue, the gate is met but the product's self-service feasibility is unproven.
+
+**Smallest Correction:** Define a "rescue action" as any operator message beyond the initial pair introduction and one clarification prompt. Log each rescue action with timestamp and category. Pairs receiving more than 2 rescue actions are flagged in the report as "operator-assisted" and reported separately from "self-facilitated." The gate requires 3 accepted outcomes, but the report must show the split.
+
+**Observable Evidence:** A rescue-action log per pair. A funnel report with a "self-facilitated vs. operator-assisted" breakdown. A sample showing at least one flagged pair.
+
+---
+
+### P3 — Low: "Trusted Professional Community" Is an Unverified Input
+
+**Bias/Failure Scenario:** The entire pilot depends on "one trusted professional community." If this community doesn't exist, or exists but isn't accessible, the recruitment plan fails silently — the team recruits from elsewhere without flagging the deviation. The spec says "no organizer, event, demand, willingness-to-pay, legal conclusion, or retention period is confirmed," which means the community itself is unconfirmed. Building a pilot on an unconfirmed input means all downstream evidence is built on sand.
+
+**Smallest Correction:** Before recruiting, document the community source: name, access method, estimated size, and one confirmed contact who can vouch for the community's existence and willingness to participate. This is a pre-requisite checkpoint, not a parallel activity. If this checkpoint fails, the pilot does not start.
+
+**Observable Evidence:** A one-page community verification document with name, access method, contact, and estimated size. A dated confirmation that recruitment began only after this document was approved.
+
+---
+
+### P3 — Low: Pricing Exploration Threshold Is Ambiguous
+
+**Bias/Failure Scenario:** The spec says pricing exploration is allowed "after at least three accepted real outcomes and a support-cost record." But "three accepted real outcomes" could include outcomes from operator-rescued pairs, duplicate pairs, or pairs from a single biased channel. If the three outcomes are all from one relationship or one rescue-heavy pair, the pricing exploration is built on a non-representative sample. The threshold is met numerically but not substantively.
+
+**Smallest Correction:** Add constraints to the pricing gate: the 3 accepted outcomes must come from at least 2 distinct pairs, at least 1 must be self-facilitated (≤2 rescue actions), and at least 1 must come from a participant recruited through a channel other than the organizer's personal network. These constraints are checked before pricing exploration begins.
+
+**Observable Evidence:** A pricing-gate checklist showing all three constraints verified. A table of the 3 outcomes with pair IDs, rescue counts, and recruitment channels.
+
+---
+
+## MINIMUM PILOT CONTRACT
+
+The following must be true before Cohort 1 recruitment begins. Each item is verifiable, not aspirational.
+
+| # | Requirement | Verification Artifact |
+|---|------------|----------------------|
+| 1 | Unique pair definition enforced by dedup check on (participant_A_id, participant_B_id, need_id) | Code or spreadsheet with dedup logic demonstrated |
+| 2 | "Accepted outcome" = explicit binary accept of versioned terms with timestamp | Schema definition + sample record |
+| 3 | All business metrics carry `source` tag; synthetic/model rows excluded from real metrics | Dashboard or report template showing source column |
+| 4 | Dispute and failure states defined with triggers; state machine documented | State-transition diagram with trigger definitions |
+| 5 | Organizer baseline = 1 manually introduced pair tracked with identical states | Baseline form + one completed example |
+| 6 | Operator minutes logged daily in 15-min increments with activity categories | Daily log template + sample entry |
+| 7 | Recruitment channel recorded per participant; >80% single-channel flagged | Recruitment log with channel field |
+| 8 | Pre-registered segment-change rule: pause if <3/5 pairs achieve bilateral interest | Signed pre-registration document |
+| 9 | Rescue actions defined and logged; pairs with >2 rescues flagged separately | Rescue log + flagging rule |
+| 10 | Community verification checkpoint completed before recruitment starts | Community verification document with date |
+| 11 | WTP question wording fixed and non-leading; BDM or equivalent format | Verbatim question text |
+| 12 | Pricing gate requires 3 outcomes from ≥2 pairs, ≥1 self-facilitated, ≥1 non-organizer-channel | Pricing-gate checklist template |
+
+---
+
+## CUT OR PARK
+
+### Cut from D1 Overnight Build (Cannot Create Credible Business Evidence)
+
+- **Synthetic workflows and model outputs** — These must never populate any business metric. They are useful for technical validation but must be firewalled. If they appear in any report, they must carry `source: synthetic_test` and be in a separate section.
+- **Offline build demonstrations** — A working offline prototype is not evidence of feasibility. It proves the code compiles, not that people will match, agree, or accept outcomes.
+- **Mutation proofs** — Technical proof that the system can mutate state is not business evidence. It belongs in engineering QA, not the pilot report.
+- **Any projected funnel numbers** — Projected conversion rates, estimated pair counts, or modeled costs are not evidence. They are guesses. Park them as assumptions, not findings.
+
+### Park (Not Cut, But Not Usable Yet)
+
+- **Pricing exploration** — Parked until the pricing gate is met with real outcomes. Do not design pricing surveys now.
+- **Retention period analysis** — Parked; no retention period is confirmed and no cohort has been observed long enough.
+- **Legal conclusions about mode agreements** — Parked; the spec explicitly states no legal conclusion is confirmed. Do not draft terms-of-service or legal opinions during D1.
+- **Demand estimation or market sizing** — Parked; the spec explicitly rejects invented market sizes. Any market-size figure is fiction.
+
+---
+
+## GO_REPAIR_PIVOT_STOP
+
+### GO (Proceed After Repair)
+
+If all 12 Minimum Pilot Contract items are satisfied and verified, proceed to recruitment. The pilot is a feasibility learning exercise — not a revenue experiment, not a product launch, not a statistical study.
+
+### REPAIR (Fix Before Proceeding)
+
+The following require immediate repair:
+- Vague "accepted outcome" definition → replace with binary accept of versioned terms
+- Missing dispute/failure state taxonomy → add explicit states and triggers
+- Undefined organizer baseline → define as 1 manual pair with identical states
+- Unbounded operator support → implement daily minute logging with categories
+- No source-tag invariant → enforce `source` column on all business metrics
+
+### PIVOT (Change Direction If)
+
+Pivot the segment or mode if:
+- Fewer than 3 of the first 5 pairs achieve bilateral interest (pre-registered rule)
+- All recruited pairs come from a single channel and show no diversity of need
+- Operator rescue actions exceed 2 per pair for more than 50% of matched pairs (indicating the product isn't self-facilitating)
+
+### STOP (Halt Entirely If)
+
+Stop expansion and halt the pilot if:
+- Any P0 privacy or consent failure occurs (contact leak, unauthorized data use)
+- More than 2 disputes remain unresolved at day 14
+- Synthetic or model outputs are found populating any business metric
+- Missing feedback exceeds 50% of completed trials (indicates the feedback mechanism is broken, not the market)
+- The community verification checkpoint fails (the trusted community doesn't exist or won't participate)
+
+---
+
+*This review is based solely on the provided specification. No external market data, pricing benchmarks, conversion rates, legal opinions, or demand estimates have been introduced. All findings are derived from internal consistency, gate-gameability analysis, and state-machine completeness checks.*

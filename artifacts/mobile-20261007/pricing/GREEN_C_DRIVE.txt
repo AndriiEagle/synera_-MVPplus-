@@ -1,0 +1,19 @@
+
+Running 12 tests using 1 worker
+
+  ok  1 tests\browser-e2e.spec.mjs:476:1 › Presentation leads to real app access and both phone guides without pretending checkout is available (5.8s)
+  ok  2 tests\browser-e2e.spec.mjs:512:1 › Phone access stays functional without JavaScript (1.7s)
+  ok  3 tests\product-access.spec.mjs:23:3 › Access journey en at 320 (4.6s)
+  ok  4 tests\product-access.spec.mjs:23:3 › Access journey de at 320 (4.8s)
+  ok  5 tests\product-access.spec.mjs:23:3 › Access journey uk at 320 (4.5s)
+  ok  6 tests\product-access.spec.mjs:23:3 › Access journey en at 390 (4.2s)
+  ok  7 tests\product-access.spec.mjs:23:3 › Access journey de at 390 (4.3s)
+  ok  8 tests\product-access.spec.mjs:23:3 › Access journey uk at 390 (4.3s)
+  ok  9 tests\product-access.spec.mjs:23:3 › Access journey en at 1440 (5.7s)
+  ok 10 tests\product-access.spec.mjs:23:3 › Access journey de at 1440 (4.2s)
+  ok 11 tests\product-access.spec.mjs:23:3 › Access journey uk at 1440 (4.1s)
+  ok 12 tests\product-access.spec.mjs:28:1 › Access and scenario remain readable without JavaScript (974ms)
+
+  12 passed (57.3s)
+(node:77296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,50 @@
+[
+  {
+    "TimeCreated": "2026-10-07T15:26:05.8509299+02:00",
+    "ProviderName": "Ntfs",
+    "Id": 50,
+    "Message": "{Fehler beim verzögerten Schreibvorgang} Nicht alle Daten für Datei \"\\Device\\HarddiskVolume6\\SyneraAndroid\\avd\\Synera_API36.avd\\userdata-qemu.img.qcow2\" wurden gespeichert. Die Daten gingen verloren. Mögliche Ursachen sind Fehler bei der Computerhardware oder bei der Netzwerkverbindung. Versuchen Sie, die Datei woanders zu speichern."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:05.145754+02:00",
+    "ProviderName": "Microsoft-Windows-Ntfs",
+    "Id": 140,
+    "Message": "Die Daten konnten nicht in das Transaktionsprotokoll verschoben werden. Die Daten sind möglicherweise beschädigt: Volume-ID: D:, Gerätename: \\Device\\HarddiskVolume6.\r\n\r\n           Fehlerstatus: Ein nicht vorhandenes Gerät wurde angegeben."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.5223796+02:00",
+    "ProviderName": "Ntfs",
+    "Id": 50,
+    "Message": "{Fehler beim verzögerten Schreibvorgang} Nicht alle Daten für Datei \"D:\\SyneraAndroid\\avd\\Synera_API36.avd\\userdata-qemu.img.qcow2\" wurden gespeichert. Die Daten gingen verloren. Mögliche Ursachen sind Fehler bei der Computerhardware oder bei der Netzwerkverbindung. Versuchen Sie, die Datei woanders zu speichern."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.519371+02:00",
+    "ProviderName": "Ntfs",
+    "Id": 50,
+    "Message": "{Fehler beim verzögerten Schreibvorgang} Nicht alle Daten für Datei \"D:\\SyneraAndroid\\avd\\Synera_API36.avd\\encryptionkey.img.qcow2\" wurden gespeichert. Die Daten gingen verloren. Mögliche Ursachen sind Fehler bei der Computerhardware oder bei der Netzwerkverbindung. Versuchen Sie, die Datei woanders zu speichern."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.5183788+02:00",
+    "ProviderName": "disk",
+    "Id": 51,
+    "Message": "Bei einem Auslagerungsvorgang wurde ein Fehler festgestellt. Betroffen ist Gerät \\Device\\Harddisk1\\DR1."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.5183788+02:00",
+    "ProviderName": "disk",
+    "Id": 51,
+    "Message": "Bei einem Auslagerungsvorgang wurde ein Fehler festgestellt. Betroffen ist Gerät \\Device\\Harddisk1\\DR1."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.5183788+02:00",
+    "ProviderName": "disk",
+    "Id": 51,
+    "Message": "Bei einem Auslagerungsvorgang wurde ein Fehler festgestellt. Betroffen ist Gerät \\Device\\Harddisk1\\DR1."
+  },
+  {
+    "TimeCreated": "2026-10-07T15:26:04.5183788+02:00",
+    "ProviderName": "disk",
+    "Id": 51,
+    "Message": "Bei einem Auslagerungsvorgang wurde ein Fehler festgestellt. Betroffen ist Gerät \\Device\\Harddisk1\\DR1."
+  }
+]

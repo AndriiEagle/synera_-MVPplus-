@@ -1,0 +1,36 @@
+{
+  "status": "PASS_LOCAL_SOCIAL_RECOVERY_BROWSER",
+  "generated_at": "2026-10-04T09:38:21.963Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard",
+  "checks": [
+    "one accepted leg exposes no social achievement",
+    "explicit checkbox creates only actor contribution; no evidence, identity or outcome write",
+    "LinkedIn format requires new choice; edited text selected without OS clipboard or publication",
+    "503/409/429/500/network preserve chat and clear stale draft; explicit retry reads once, excludes private partner data, no writes",
+    "401/403 purge private chat, outcomes, social text and permission",
+    "401/403 still purge the active session after draft consent is revoked",
+    "late failed draft cannot change revoked consent, changed format or completed logout state",
+    "withdrawing local draft consent cancels pending generation",
+    "withdrawn case approval hides and clears draft",
+    "logout purges social draft and permission"
+  ],
+  "source_sha256": {
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/real-journey.mjs": "8af24e7031766b56682c238d1471796cc1b55d616e5c293591c8688cba492c85",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "tools/case-social-draft-browser.mjs": "13410f361cc1667a5907cd82077941639bd314f8cce90ed2b65ebcb5aa29ce32",
+    "tools/social-draft-recovery-browser.mjs": "91fa0791b3edab6a80ae8d55cf6e37b67662771e6c250a27da4d16e2e3150bc5"
+  },
+  "axe_current": 0,
+  "axe_atelier": 0,
+  "no_overflow": {
+    "width": 390,
+    "viewport": 390
+  },
+  "no_private_storage": true,
+  "page_errors": [],
+  "external_requests": 0
+}

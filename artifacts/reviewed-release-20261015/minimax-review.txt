@@ -1,0 +1,29 @@
+```json
+{
+  "status": "OBSERVED",
+  "transcriptions": {
+    "brand_upper_left": "synera.",
+    "main_button_upper_right": "Zur Anmeldung",
+    "install_button": "Synera installieren",
+    "profile_tools": ["Import", "Profilkarte"]
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "evidence": "At 320px the 'Dein Entwurf in diesem Tab' badge sits behind the 'Zur Anmeldung' button; only fragments 'Dein Entw…', 'in dies…', 'Tab' are legible. At 390px the same badge reads in full as 'Dein Entwurf in diesem Tab' with clear separation from the button.",
+      "trigger": "Header row at 320px has no horizontal room for both the draft badge and the primary button, so they occupy overlapping coordinates.",
+      "consequence": "Draft-state indicator is partially hidden on narrow viewports; users cannot read the full label.",
+      "smallest_fix": "Hide the badge below ~360px, or move it to a second header line, or shrink/wrap it so it does not collide with the primary button.",
+      "negative_check": "After the fix, the badge must not overlap the 'Zur Anmeldung' button at any width, and the button must remain fully visible and tappable."
+    },
+    {
+      "id": "F2",
+      "evidence": "At 320px the 'Sprache und Ansicht' control extends to the right edge of the viewport with its dropdown chevron flush against / clipped by the screen border. At 390px the same control has visible right-side gutter.",
+      "trigger": "Header container at 320px lacks right padding/gutter for the language/appearance control.",
+      "consequence": "The dropdown affordance (chevron) is visually cut off, making the control appear broken on narrow screens.",
+      "smallest_fix": "Add right padding to the header at ≤360px, or allow the control to wrap to a new line below the brand/button row.",
+      "negative_check": "After the fix, the chevron must be fully visible at 320px and the control must not overflow the viewport horizontally."
+    }
+  ]
+}
+```

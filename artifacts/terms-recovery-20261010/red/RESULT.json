@@ -1,0 +1,41 @@
+{
+  "status": "NOT_ACCEPTED",
+  "scope": "Desktop engine with synthetic gateway fixture, no live JWT/RLS/phones",
+  "candidate": "dist-neon-message-reload-20261010",
+  "release_sha256": "7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71",
+  "source_overrides": {},
+  "engine": "webkit",
+  "mutation": false,
+  "checks": [
+    {
+      "name": "cold-disabled",
+      "status": "PASS",
+      "posts": 0
+    }
+  ],
+  "failures": [
+    {
+      "name": "uncommitted-uk",
+      "message": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\u001b[22m\n"
+    },
+    {
+      "name": "committed-de",
+      "message": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\u001b[22m\n"
+    },
+    {
+      "name": "denied-en",
+      "message": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\u001b[22m\n"
+    },
+    {
+      "name": "expired-en",
+      "message": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\u001b[22m\n"
+    },
+    {
+      "name": "runner",
+      "message": "[{\"name\":\"uncommitted-uk\",\"message\":\"locator.click: Timeout 10000ms exceeded.\\nCall log:\\n\\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\\u001b[22m\\n\"},{\"name\":\"committed-de\",\"message\":\"locator.click: Timeout 10000ms exceeded.\\nCall log:\\n\\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\\u001b[22m\\n\"},{\"name\":\"denied-en\",\"message\":\"locator.click: Timeout 10000ms exceeded.\\nCall log:\\n\\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\\u001b[22m\\n\"},{\"name\":\"expired-en\",\"message\":\"locator.click: Timeout 10000ms exceeded.\\nCall log:\\n\\u001b[2m  - waiting for locator('#real-people article').filter({ hasText: '22222222-2222-4222-8222-222222222222' }).getByRole('button')\\u001b[22m\\n\"}]\n\n4 !== 0\n"
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "browser_version": "26.6"
+}

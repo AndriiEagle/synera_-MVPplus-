@@ -1,0 +1,44 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-baseline",
+  "releaseHash": "9b0b57932e530629d878109e94ab442660c56511517b82b04ce48edc86f3e734",
+  "engine": {
+    "name": "chromium",
+    "version": "141.0.7390.37"
+  },
+  "scenarios": [
+    {
+      "name": "send_after_sender_cancelled",
+      "pass": false
+    },
+    {
+      "name": "background_read_after_sender_cancelled",
+      "pass": false
+    },
+    {
+      "name": "stale_invitation_card_after_sender_cancelled",
+      "pass": false
+    },
+    {
+      "name": "real_session_loss_still_signs_out_and_purges",
+      "pass": true
+    }
+  ],
+  "failures": [
+    {
+      "scenario": "send_after_sender_cancelled",
+      "error": "must not be sent to sign-in"
+    },
+    {
+      "scenario": "background_read_after_sender_cancelled",
+      "error": "page.waitForFunction: Timeout 12000ms exceeded."
+    },
+    {
+      "scenario": "stale_invitation_card_after_sender_cancelled",
+      "error": "must not be sent to sign-in"
+    }
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "NEEDS_REVIEW"
+}

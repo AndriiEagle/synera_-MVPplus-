@@ -1,0 +1,67 @@
+✔ lost POST response and explicit retry produce exactly one stored message (48.1056ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (13.9805ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (25.596ms)
+✔ same-tab reload retries a committed unknown delivery once without storing message text (19.481ms)
+✖ logout while retry metadata hashes cannot restore a stale intent (3.9676ms)
+✖ concurrent unknown first sends retain both reload retry UUIDs (16.0744ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (42.2306ms)
+✔ authentication reset forgets pending intent (11.6743ms)
+✔ late committed acknowledgement is rejected after same-account restore (2.59ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (4.5039ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (2.993ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 348.7223
+
+✖ failing tests:
+
+test at web_launch\message-intent.test.mjs:71:1
+✖ logout while retry metadata hashes cannot restore a stale intent (3.9676ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Потрібен вхід
+      at async file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:75:50
+      at async delayDigests (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:24:16)
+      at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:73:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Потрібен вхід
+        at RealJourneyStore.requireUser (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/profile-store.mjs:76:41)
+        at RealJourneyStore.requireRealPilot (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/profile-store.mjs:128:29)
+        at #actor (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.mjs:359:10)
+        at #meeting (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.mjs:481:33)
+        at RealJourneyStore.sendConversation (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/real-journey-client.mjs:504:24)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:75:50
+        at async delayDigests (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:24:16)
+        at async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:73:3),
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at web_launch\message-intent.test.mjs:79:1
+✖ concurrent unknown first sends retain both reload retry UUIDs (16.0744ms)
+  AssertionError [ERR_ASSERTION]: Concurrent initial metadata lost one retry UUID
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:95:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

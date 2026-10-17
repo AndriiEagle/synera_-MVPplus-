@@ -1,0 +1,35 @@
+{
+  "status": "PASS_LOCAL_MESSAGE_INTENT_BROWSER",
+  "scope": "Actual desktop Chromium 390x844; same-origin gateway with synthetic accounts/persistence. Not SQL or signed JWT/physical Android/live proof",
+  "checks": [
+    {
+      "name": "post_ambiguous_delivery_manual_recovery",
+      "pass": true
+    },
+    {
+      "name": "read_ambiguous_delivery_manual_recovery",
+      "pass": true
+    },
+    {
+      "name": "next_unsent_draft_kept_and_sent_only_on_next_click",
+      "pass": true
+    },
+    {
+      "name": "acknowledged_identical_text_can_be_new_message",
+      "pass": true
+    },
+    {
+      "name": "current_default_layout_private_storage_and_axe",
+      "pass": true,
+      "axe_violations": 0
+    },
+    {
+      "name": "logout_purges_private_draft_and_transcript",
+      "pass": true
+    }
+  ],
+  "external": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "client_sha256": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f"
+}

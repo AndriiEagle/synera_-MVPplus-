@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "scope": "Chromium 390x844 synthetic transport; no physical Android/live users",
+  "checks": [],
+  "external": [],
+  "source_sha256": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060",
+  "error": "page.goto: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:59461/real-journey.html\", waiting until \"load\"\u001b[22m\n"
+}

@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "scope": "Desktop engine with synthetic gateway fixture, no live JWT/RLS/phones",
+  "candidate": "dist-neon-opus-pass5-20261011",
+  "release_sha256": "149fa1d5cf629873ac3b88c9ce33b97ec81118aaf77af1f734f694e4e77b03e5",
+  "runner_sha256": "b52063ff9f1a481059abab91179ec566d47275eaf9ed51bbe85b7bf33e710771",
+  "source_overrides": {},
+  "engine": "chromium",
+  "requested_scenario": null,
+  "mutation": false,
+  "checks": [
+    {
+      "name": "uncommitted-uk",
+      "status": "PASS",
+      "atelier": false,
+      "posts": 2,
+      "cases": 1,
+      "preserved_fields": 21,
+      "note": "Збереження умов не підтверджено. Текст лишився у формі. Натисни «Оновити» й перевір домовленість перед повтором: зміни могли вже зберегтися."
+    },
+    {
+      "name": "committed-de",
+      "status": "PASS",
+      "atelier": true,
+      "posts": 1,
+      "cases": 1,
+      "preserved_fields": 21,
+      "note": "Ob die Bedingungen gespeichert wurden, ist nicht bestätigt. Dein Text ist im Formular geblieben. Tippe auf «Aktualisieren» und prüfe die Vereinbarung vor einem erneuten Versuch: Die Änderungen könnten bereits gespeichert sein."
+    },
+    {
+      "name": "revision-de",
+      "status": "PASS",
+      "atelier": false,
+      "posts": 2,
+      "cases": 1,
+      "preserved_fields": 22,
+      "note": "Ob die Bedingungen gespeichert wurden, ist nicht bestätigt. Dein Text ist im Formular geblieben. Tippe auf «Aktualisieren» und prüfe die Vereinbarung vor einem erneuten Versuch: Die Änderungen könnten bereits gespeichert sein."
+    },
+    {
+      "name": "late-logout-en",
+      "status": "PASS",
+      "posts": 1
+    },
+    {
+      "name": "denied-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "expired-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "warm-disabled-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "auth-unavailable-en",
+      "status": "PASS",
+      "posts": 1,
+      "cases": 0
+    },
+    {
+      "name": "cold-disabled",
+      "status": "PASS",
+      "posts": 0
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "browser_version": "141.0.7390.37"
+}

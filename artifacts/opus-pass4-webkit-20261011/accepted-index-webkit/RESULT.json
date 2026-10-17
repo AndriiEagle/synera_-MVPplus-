@@ -1,0 +1,1520 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-storage-20261011",
+  "releaseHash": "c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062",
+  "engine": {
+    "name": "webkit",
+    "version": "26.6"
+  },
+  "runs": [
+    {
+      "run": "uk-390",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Сесію завершено. Увійди ще раз."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти»."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "refusedNotice": "Сесію завершено. Увійди ще раз.",
+      "demoDraft": "Чернетка для синтетичного прикладу: Марія робить короткий аудит воронк",
+      "blockedLine": "Учасник 1 · 7 жовт. 2026 р., 11:05 Розблокувати",
+      "controls": {
+        "meetings": [
+          "Оновити",
+          "Скасувати зустріч",
+          "Уточнити деталі",
+          "До календаря",
+          "Межі спілкування",
+          "(off) Дозволити на час зустрічі"
+        ],
+        "people": [
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга"
+        ]
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "languageFilesBeforeSwitch": "checked separately",
+      "pass": true
+    },
+    {
+      "run": "de-390",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "Die Sitzung wurde beendet. Melde dich noch einmal an."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "Du hast dich angemeldet. Profiländerungen werden nur über die Schaltfläche «Speichern» gespeichert."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "rules page",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/legal-i18n.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "",
+      "refusedNotice": "Die Sitzung wurde beendet. Melde dich noch einmal an.",
+      "demoDraft": "Entwurf für das synthetische Beispiel: Maria macht ein kurzes Audit de",
+      "blockedLine": "Person 1 · 07.10.2026, 11:05 Blockierung aufheben",
+      "controls": {
+        "meetings": [
+          "Aktualisieren",
+          "Treffen absagen",
+          "Details klären",
+          "In den Kalender",
+          "Grenzen der Kommunikation",
+          "(off) Für die Dauer des Treffens erlauben"
+        ],
+        "people": [
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde",
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde",
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde"
+        ]
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "pass": true
+    },
+    {
+      "run": "en-390",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "The session has ended. Sign in again."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "You have signed in. Profile changes are saved only with the “Save” button."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "rules page",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/legal-i18n.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "",
+      "refusedNotice": "The session has ended. Sign in again.",
+      "demoDraft": "Draft for the synthetic example: Maria does a short funnel audit, Olek",
+      "blockedLine": "Participant 1 · 7 Oct 2026, 11:05 Unblock",
+      "controls": {
+        "meetings": [
+          "Refresh",
+          "Cancel meeting",
+          "Clarify details",
+          "Add to calendar",
+          "Communication boundaries",
+          "(off) Allow for the duration of the meeting"
+        ],
+        "people": [
+          "Update the draft terms",
+          "(off) Confirm terms",
+          "(off) Will confirm in their own sign-in",
+          "(off) Discuss collaboration ↗",
+          "Communication boundaries / complaint",
+          "Update the draft terms",
+          "(off) Confirm terms",
+          "(off) Will confirm in their own sign-in",
+          "(off) Discuss collaboration ↗",
+          "Communication boundaries / complaint",
+          "Update the draft terms",
+          "(off) Confirm terms",
+          "(off) Will confirm in their own sign-in",
+          "(off) Discuss collaboration ↗",
+          "Communication boundaries / complaint"
+        ]
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "pass": true
+    },
+    {
+      "run": "de-320",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "Die Sitzung wurde beendet. Melde dich noch einmal an."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0,
+          "notice": "Du hast dich angemeldet. Profiländerungen werden nur über die Schaltfläche «Speichern» gespeichert."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        },
+        {
+          "step": "rules page",
+          "ukrainianVisible": 0,
+          "ukrainianHidden": 0,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/real-journey-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/legal-i18n.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "",
+      "refusedNotice": "Die Sitzung wurde beendet. Melde dich noch einmal an.",
+      "demoDraft": "Entwurf für das synthetische Beispiel: Maria macht ein kurzes Audit de",
+      "blockedLine": "Person 1 · 07.10.2026, 11:05 Blockierung aufheben",
+      "controls": {
+        "meetings": [
+          "Aktualisieren",
+          "Treffen absagen",
+          "Details klären",
+          "In den Kalender",
+          "Grenzen der Kommunikation",
+          "(off) Für die Dauer des Treffens erlauben"
+        ],
+        "people": [
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde",
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde",
+          "Bedingungen des Entwurfs aktualisieren",
+          "(off) Bedingungen bestätigen",
+          "(off) Bestätigt in der eigenen Anmeldung",
+          "(off) Zusammenarbeit besprechen ↗",
+          "Grenzen der Kommunikation / Beschwerde"
+        ]
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "pass": true
+    },
+    {
+      "run": "uk-320",
+      "steps": [
+        {
+          "step": "sign-in screen",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Сесію завершено. Увійди ще раз."
+        },
+        {
+          "step": "sign-in refused",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "language and appearance panel",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 1",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0,
+          "notice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти»."
+        },
+        {
+          "step": "tour step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 5",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tour step 6",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 2",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 3",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "demonstration step 4",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "workspace after sign-in",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: people",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: meetings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "tab: settings",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "profile: collaboration details",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: share card",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: import profile, text parsed",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: AI draft",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: delete profile",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "meetings with one accepted",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: conversation",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: boundaries and complaint",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "permissions switched on",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people list with map",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "people: business case open",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        },
+        {
+          "step": "dialog: invitation",
+          "skipped": "the invitation button stayed off"
+        },
+        {
+          "step": "lists redrawn in this language",
+          "ukrainianVisible": null,
+          "ukrainianHidden": null,
+          "sideways": 0
+        }
+      ],
+      "languageFilesLoaded": [
+        "/real-journey-i18n.mjs",
+        "/index-i18n.mjs",
+        "/index-i18n-table.mjs",
+        "/real-journey-i18n.mjs"
+      ],
+      "lastNotice": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "refusedNotice": "Сесію завершено. Увійди ще раз.",
+      "demoDraft": "Чернетка для синтетичного прикладу: Марія робить короткий аудит воронк",
+      "blockedLine": "Учасник 1 · 7 жовт. 2026 р., 11:05 Розблокувати",
+      "controls": {
+        "meetings": [
+          "Оновити",
+          "Скасувати зустріч",
+          "Уточнити деталі",
+          "До календаря",
+          "Межі спілкування",
+          "(off) Дозволити на час зустрічі"
+        ],
+        "people": [
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга",
+          "Оновити умови чернетки",
+          "(off) Підтвердити умови",
+          "(off) Підтвердить у власному вході",
+          "(off) Обговорити співпрацю ↗",
+          "Межі спілкування / скарга"
+        ]
+      },
+      "choices": [],
+      "noticeBeforeRedraw": "Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».",
+      "languageFilesBeforeSwitch": "checked separately",
+      "pass": true
+    },
+    {
+      "run": "own-words-labels-de",
+      "steps": [
+        {
+          "step": "the fixture reached the page in Ukrainian",
+          "pass": true
+        },
+        {
+          "step": "Ukrainian card",
+          "pass": true
+        },
+        {
+          "step": "after switching: every place still shows the words as written",
+          "pass": true
+        },
+        {
+          "step": "after switching: the card",
+          "pass": true
+        },
+        {
+          "step": "after switching: the message",
+          "pass": true
+        },
+        {
+          "step": "after switching: the page itself is in the chosen language",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the message",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the meeting note",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the card",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: every value is still on the page as written",
+          "pass": true
+        }
+      ],
+      "own": {
+        "placesInUkrainian": 7,
+        "placesAfterSwitch": 7,
+        "pageLabelsNextToThem": [
+          "Process automation for small teams",
+          "A reviewed product screen",
+          "Check one concrete result for the business"
+        ],
+        "placesAfterRedraw": 7,
+        "assembledAround": []
+      },
+      "pass": true
+    },
+    {
+      "run": "own-words-labels-en",
+      "steps": [
+        {
+          "step": "the fixture reached the page in Ukrainian",
+          "pass": true
+        },
+        {
+          "step": "Ukrainian card",
+          "pass": true
+        },
+        {
+          "step": "after switching: every place still shows the words as written",
+          "pass": true
+        },
+        {
+          "step": "after switching: the card",
+          "pass": true
+        },
+        {
+          "step": "after switching: the message",
+          "pass": true
+        },
+        {
+          "step": "after switching: the page itself is in the chosen language",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the message",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the meeting note",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the card",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: every value is still on the page as written",
+          "pass": true
+        }
+      ],
+      "own": {
+        "placesInUkrainian": 7,
+        "placesAfterSwitch": 7,
+        "pageLabelsNextToThem": [
+          "Process automation for small teams",
+          "A reviewed product screen",
+          "Check one concrete result for the business"
+        ],
+        "placesAfterRedraw": 7,
+        "assembledAround": []
+      },
+      "pass": true
+    },
+    {
+      "run": "own-words-lookalikes-de",
+      "steps": [
+        {
+          "step": "the fixture reached the page in Ukrainian",
+          "pass": true
+        },
+        {
+          "step": "Ukrainian card",
+          "pass": true
+        },
+        {
+          "step": "after switching: every place still shows the words as written",
+          "pass": true
+        },
+        {
+          "step": "after switching: the card",
+          "pass": true
+        },
+        {
+          "step": "after switching: the message",
+          "pass": true
+        },
+        {
+          "step": "after switching: the page itself is in the chosen language",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the message",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the meeting note",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the card",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: nothing the person wrote stands alone without the mark",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: every value is still on the page as written",
+          "pass": true
+        }
+      ],
+      "own": {
+        "placesInUkrainian": 23,
+        "placesAfterSwitch": 23,
+        "pageLabelsNextToThem": [
+          "Process automation for small teams",
+          "A reviewed product screen",
+          "Check one concrete result for the business"
+        ],
+        "placesAfterRedraw": 23,
+        "assembledAround": [
+          "name: Erwartetes Ergebnis für Місто: Київ: Автоматизація процесів – Крок 2 / 6: один перевірений",
+          "goal: Erwartetes Ergebnis für Місто: Київ: Автоматизація процесів – Крок 2 / 6: один перевірений",
+          "name: Probeergebnis von Місто: Київ für dich: Produktdesign – Check one concrete result for the ",
+          "name: Probeergebnis von dir für Місто: Київ: Автоматизація процесів – Крок 2 / 6: один перевірен",
+          "goal: Probeergebnis von dir für Місто: Київ: Автоматизація процесів – Крок 2 / 6: один перевірен",
+          "name: Umfang: Місто: Київ → Du · Produktdesign (Zahl)",
+          "name: Umfang: Місто: Київ → Du · Produktdesign (Einheit)",
+          "name: Umfang: Du → Місто: Київ · Prozessautomatisierung (Zahl)",
+          "name: Umfang: Du → Місто: Київ · Prozessautomatisierung (Einheit)",
+          "name: Місто: Київ: Fähigkeiten: von der Seite selbst angegeben, noch nicht bestätigt · Bedarf: n",
+          "name: Місто: Київ: Bedingungen noch nicht bestätigt",
+          "name: Dein Vorschlag · Місто: Київ",
+          "name: Mein Standort – nur für die andere Person (Місто: Київ)",
+          "name: Ich selbst erlaube, meinen Standort nur der anderen Person (Місто: Київ) für die Dauer die",
+          "name: Live-GPS ist in dieser Version noch durch die Browser-Richtlinie ausgeschaltet. Die Freiga",
+          "name: Gespräch: Місто: Київ"
+        ],
+        "unmarked": []
+      },
+      "pass": true
+    },
+    {
+      "run": "own-words-lookalikes-en",
+      "steps": [
+        {
+          "step": "the fixture reached the page in Ukrainian",
+          "pass": true
+        },
+        {
+          "step": "Ukrainian card",
+          "pass": true
+        },
+        {
+          "step": "after switching: every place still shows the words as written",
+          "pass": true
+        },
+        {
+          "step": "after switching: the card",
+          "pass": true
+        },
+        {
+          "step": "after switching: the message",
+          "pass": true
+        },
+        {
+          "step": "after switching: the page itself is in the chosen language",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the message",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the meeting note",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: the card",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: nothing the person wrote stands alone without the mark",
+          "pass": true
+        },
+        {
+          "step": "after a redraw: every value is still on the page as written",
+          "pass": true
+        }
+      ],
+      "own": {
+        "placesInUkrainian": 23,
+        "placesAfterSwitch": 23,
+        "pageLabelsNextToThem": [
+          "Process automation for small teams",
+          "A reviewed product screen",
+          "Check one concrete result for the business"
+        ],
+        "placesAfterRedraw": 23,
+        "assembledAround": [
+          "name: Expected result for Місто: Київ: Автоматизація процесів — Крок 2 / 6: один перевірений екр",
+          "goal: Expected result for Місто: Київ: Автоматизація процесів — Крок 2 / 6: один перевірений екр",
+          "name: Trial result from Місто: Київ for you: Product design — Check one concrete result for the ",
+          "name: Trial result from you for Місто: Київ: Автоматизація процесів — Крок 2 / 6: один перевірен",
+          "goal: Trial result from you for Місто: Київ: Автоматизація процесів — Крок 2 / 6: один перевірен",
+          "name: Amount: Місто: Київ → You · Product design (number)",
+          "name: Amount: Місто: Київ → You · Product design (unit)",
+          "name: Amount: You → Місто: Київ · Process automation (number)",
+          "name: Amount: You → Місто: Київ · Process automation (unit)",
+          "name: Місто: Київ: skills: declared by the party itself, not yet confirmed · need: not confirmed",
+          "name: Місто: Київ: terms not yet confirmed",
+          "name: Your proposal · Місто: Київ",
+          "name: My location — only for the other person (Місто: Київ)",
+          "name: I myself allow my location to be shown only to the other person (Місто: Київ) for the dura",
+          "name: Live GPS is still turned off in this release by the browser policy. The permission records",
+          "name: Conversation: Місто: Київ"
+        ],
+        "unmarked": []
+      },
+      "pass": true
+    }
+  ],
+  "problems": [],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "notWalked": [
+    "Google sign-in and e-mail code delivery",
+    "AI profile draft and ChatGPT/Claude import (answers come from a provider or are switched off)",
+    "live location sharing",
+    "map tiles",
+    "the invitation dialog of the main page (its button cannot open there: tools/people-gate-browser.mjs)",
+    "text placed into editable fields, files or the clipboard (share card, invitation draft, prompt for an AI) — by design it is not translated"
+  ],
+  "defaultVisit": {
+    "browserLocale": "de-CH",
+    "lang": "uk",
+    "pressed": "uk",
+    "languageFilesLoaded": [],
+    "quickChoices": {
+      "de then uk": {
+        "lang": "uk",
+        "pressed": "uk",
+        "stored": "uk",
+        "ukrainian": true
+      },
+      "en then de": {
+        "lang": "de",
+        "pressed": "de",
+        "stored": "de",
+        "ukrainian": false
+      }
+    }
+  },
+  "summary": {
+    "runs": 9,
+    "passed": 9,
+    "steps": 195,
+    "skipped": 5,
+    "ukrainianVisible": 0,
+    "ukrainianHidden": 0,
+    "problems": 0,
+    "failures": 0
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

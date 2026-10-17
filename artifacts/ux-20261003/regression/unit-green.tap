@@ -1,0 +1,47 @@
+✔ gzip and plain envelope preserve exact multilingual quotes including spacing (117.2823ms)
+✔ tampered checksum, unknown envelope fields and unsupported version fail closed (30.6934ms)
+✔ oversized compressed expansion is rejected before returning archive (156.4497ms)
+✔ invalid preferences cannot activate a new visual layer or carry unknown data (5.9005ms)
+✔ returning to current removes the overlay without changing the established theme or consent state (0.9548ms)
+✔ client sends canonical exact message IDs and verifies a bound Unicode reply (67.3934ms)
+✔ client rejects old identical historical text before any request (2.5171ms)
+✔ client rejects forged reply binding, missing stop reason and forged receipts without fallback (14.234ms)
+✔ full Unicode input is sent whole; client does not trim or silently truncate it (4.7287ms)
+✔ archive provenance cannot be reused with a substituted AI reply (61.9391ms)
+✔ mutual declared value comes before incomplete matches for a different give and need (2.7896ms)
+✔ verified AI provenance survives completed archive next to its exact message (23.4066ms)
+✔ archive preserves the entire accepted maximum-length user message without prefix overflow (4.6236ms)
+✔ fixture is a consented three-person reciprocal cycle without people discovery (12.779ms)
+✔ chat preserves exact source-labelled transcript and scenario reply uses actual user context (13.0319ms)
+✔ a proposal is isolated to its chosen person, revisions reset approval, and stale approval is rejected (2.7575ms)
+✔ decline and withdrawal do not silently retain approval (3.5282ms)
+✔ AI text is advisory and cannot grant approval or complete a fictional meeting (8.256ms)
+✔ completed demo creates truthful roundtrippable archive and retains synthetic label in private social draft (5.5822ms)
+✔ counterexample guard: changing the current-revision equality would allow a stale consent to complete (1.5375ms)
+✔ one explicit handoff preserves exact transcript and consumes only its own ephemeral item (12.6406ms)
+✔ malformed handoff cannot be treated as a session or remove unrelated data (1.0989ms)
+✔ HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible (1055.0555ms)
+✔ local conversation needs exact origin, nonce and explicit consent before inference (11.8557ms)
+✔ accepted answer binds exact turn IDs, Unicode transcript and authoritative local receipt (5.7081ms)
+✔ missing or forged receipt and malformed model output are rejected without scripted fallback (6.1617ms)
+✔ rejects an old identical historical text, missing stop reason, oversized Unicode and duplicate IDs (2.9744ms)
+✔ one in-flight call is preserved and a second request cannot run another model (1.7811ms)
+✔ resource pressure is explained and never disguised as an AI or scenario response (1.8988ms)
+✔ session value preserves exact notes and exposes only same-device unverified labels (8.9009ms)
+✔ social draft requires unanimous current-revision confirmation and never publishes (11.3845ms)
+✔ a material replacement clears confirmations; a stale participant cannot restore them (3.0056ms)
+✔ one participant may revoke only their own confirmation; unilateral approval remains blocked (2.892ms)
+✔ archive roundtrip retains original text, history and consent scopes exactly (8.2284ms)
+✔ archive rejects unknown fields, malformed confirmations, and structurally invalid tampering (2.5541ms)
+✔ published clean Studio URLs retrieve the original cached shell offline (139.1429ms)
+✔ query URLs and non-shell paths never read a private response from cache (26.7075ms)
+✔ connected public journey works at clean and selected-person URLs offline (34.2029ms)
+✔ reviewed decorative portraits and icons still render from their exact public cache when offline (64.2651ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1646.6362

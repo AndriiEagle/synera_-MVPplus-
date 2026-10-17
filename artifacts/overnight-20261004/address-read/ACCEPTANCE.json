@@ -1,0 +1,62 @@
+{
+  "status": "PASS_LOCAL_ADDRESS_READ_RECOVERY_CLOSURE",
+  "generated_at": "2026-10-04T08:18:47.712Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local Chromium read-error/recovery and navigation; synthetic accounts/RPC. No live HTTP JWT, Android, providers or deployment.",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "546f2cdb48171601fc3ecb0e017bea92d18499f8deb8bee5496eb014882238fa",
+    "tools/meeting-address-read-browser.mjs": "19d0b0ed1401265455c8fd89e88a255597ecda0b5ac6fd11b25d1181e0c9285d",
+    "tools/meeting-address-read-acceptance.mjs": "dcfa3dd001b01e402728ea4e56c0c6e3d62a5b792347ec9b745e31d22df03345"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/meeting-address-navigation-browser.mjs": "b7cc2928e2921e23e0edbef0b64e97d4a18dd5fe8d3df87b2c47f0d9861f1f36",
+    "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+    "tools/meeting-location-agreement-browser.mjs": "20eb7f0ffe0b7c58969f6c2767c6e754c0740492fd8f1950701f9d7a0d99d409",
+    "web_launch/dist-neon-journey-link-20261004/release.json": "5896f2b45e2c22cc2ba4cf598851a5f229a3ed876a6aeb638fef8d8dc9debde0",
+    "artifacts/overnight-20261004/journey-link/ACCEPTANCE.json": "7b050acc042687ea493df90eab648258c76d694084dc3b247d97e7f01e517631"
+  },
+  "base_commit": "2d9ec4917ff2c9552b1e42003c11a8354d3a04b1",
+  "red": [
+    "Accepted chat lost after address RPC failure before patch",
+    "Successful read kept stale error text before bounded review fix"
+  ],
+  "mutation": "REJECTED: only catch continuation guard removed; delayed failure overwrites logged-out state, canonical files unchanged",
+  "browser_checks": 24,
+  "navigation_checks": 21,
+  "navigation_wrapper_sha256": "b0499598b3b8a049323668de68e03c43e1d3baa29c9a448651bbd94da000eb7d",
+  "gps_checks_reused": 15,
+  "reused_proof": "Exact SQL/API and legacy GPS maps unchanged. Client/store and historical 41 units not changed or rerun. Address/chat/bridge 24 and navigation 21 rerun; prior controller-bound UI proofs remain historical.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-read-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "read-recovered-390x844.png": "2efe5b2f0165bd94f3f71227f61a5c10813cce5b71660494341b1beb03f8201a",
+    "selected-conversation-390x844.png": "5c5b02dc22b0fda975a38a24851faa448b4c7cc9bb84eec9f74fd668edd53de9",
+    "meeting-address-current-390x844.png": "42c5465ecbfd323cc3fc253b9038687a7c9459d710a166bcf4bb7047cc6c3559",
+    "meeting-address-atelier-390x844.png": "92bf4e0ea7b64914893754885de164d884ef6874275e1a054e7fb5d097f47dac"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-read-20261004",
+  "release_sha256": "4e56b24c25095bf005ce78faa5fc7f488d487af3cc55e79964d1b9b6eec023e1",
+  "published": false,
+  "google_maps": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

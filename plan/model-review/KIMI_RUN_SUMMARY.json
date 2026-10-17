@@ -1,0 +1,69 @@
+{
+  "run": "cnra-kimi-red-team",
+  "jobs": 1,
+  "ok": 1,
+  "errors": 0,
+  "skipped": 0,
+  "spent_usd": 0.019122,
+  "known_spent_usd": 0.019122,
+  "budget_usd": 0.13,
+  "spend_preview": {
+    "hosted_calls": 1,
+    "input_tokens_est": 739,
+    "input_tokens_high": 2906,
+    "output_tokens_low": 2400,
+    "output_tokens_high": 8000,
+    "modelled_low_usd": 0.038217,
+    "modelled_high_usd": 0.128718,
+    "known_high_usd": 0.128718,
+    "proposed_cap_usd": 0.13,
+    "unknown_price_models": [],
+    "uncertainties": [],
+    "assumptions": [],
+    "jobs": [
+      {
+        "job": "cnra-kimi-architecture-red-team",
+        "model": "moonshotai/kimi-k3",
+        "input_tokens_est": 739,
+        "input_tokens_high": 2906,
+        "output_tokens_low": 2400,
+        "output_tokens_high": 8000,
+        "low_usd": 0.038217,
+        "high_usd": 0.128718
+      }
+    ],
+    "stop_condition": "no provider call before append probe; stop before dispatch if priced high exceeds approved cap",
+    "catalog_fetched_at": "2026-09-08T14:47:00",
+    "catalog_stale": false
+  },
+  "halted": false,
+  "halted_on_budget": false,
+  "free_only": false,
+  "unresolved_prior_receipts_today": 0,
+  "stopped_on_error": false,
+  "elapsed_s": 47.6,
+  "results": [
+    {
+      "id": "cnra-kimi-architecture-red-team",
+      "status": "ok",
+      "model": "moonshotai/kimi-k3",
+      "out": "model-review/KIMI_ARCHITECTURE.md",
+      "chars": 5622,
+      "cost": 0.019122,
+      "actual_model": "moonshotai/kimi-k3",
+      "generation_id": "gen-1788909452-SGvNo29xB2BX0xoYOYeY",
+      "provider": "Moonshot AI",
+      "backend": "openrouter",
+      "requested_model": "moonshotai/kimi-k3",
+      "route_identity_verified": true,
+      "cost_evidence_type": "provider_usage_cost",
+      "pricing_source": "",
+      "pricing_sha256": "",
+      "prompt_tokens": 609,
+      "completion_tokens": 1153,
+      "truncated": false,
+      "latency_s": 47.49,
+      "preview": ""
+    }
+  ]
+}

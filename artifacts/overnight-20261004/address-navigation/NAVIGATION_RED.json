@@ -1,0 +1,34 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:39:39.601Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium clicks, synthetic account/RPC; navigation fulfilled locally without Google, JWT or Android hardware",
+  "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+  "extended_runner_sha256": "900b97c3d52311f5fc901ec33105879032333168f530ac0e14cffff4b8458bb2",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T06:39:40.425Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "preserved_accepted_chat": true,
+      "read_does_not_vote": true,
+      "retry_and_proposer_role": true,
+      "explicit_decline": true,
+      "stale_selection_requires_reload": true,
+      "bilateral_selected_address_and_literal_history": true
+    },
+    "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+    "error": "Agreed address route missing\n\n0 !== 1\n"
+  },
+  "process_exit": 1,
+  "error": "Agreed address route missing\n\n0 !== 1\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "fbab2cd1832e48b8d11ec0a7638837891eb83c6306a867931f4e2b3ecbe8c7ef",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-address-navigation-browser.mjs": "3e2433e72e14c897e09ff9c72f8c6de64b0a98e4537d9c9453c2a005063976bd"
+  }
+}

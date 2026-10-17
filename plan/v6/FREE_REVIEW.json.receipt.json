@@ -1,0 +1,70 @@
+{
+  "run": "free-compute-market",
+  "jobs": 1,
+  "ok": 1,
+  "errors": 0,
+  "skipped": 0,
+  "spent_usd": 0.0,
+  "known_spent_usd": 0.0,
+  "budget_usd": 0.0,
+  "spend_preview": {
+    "hosted_calls": 1,
+    "input_tokens_est": 315,
+    "input_tokens_high": 1212,
+    "output_tokens_low": 2000,
+    "output_tokens_high": 10000,
+    "modelled_low_usd": 0.0,
+    "modelled_high_usd": 0.0,
+    "known_high_usd": 0.0,
+    "proposed_cap_usd": 0.0,
+    "unknown_price_models": [],
+    "uncertainties": [],
+    "assumptions": [],
+    "jobs": [
+      {
+        "job": "free-compute-40b8a11fb3f3",
+        "model": "inclusionai/ling-3.0-flash-fin:free",
+        "input_tokens_est": 315,
+        "input_tokens_high": 1212,
+        "output_tokens_low": 2000,
+        "output_tokens_high": 10000,
+        "low_usd": 0.0,
+        "high_usd": 0.0
+      }
+    ],
+    "stop_condition": "no provider call before append probe; stop before dispatch if priced high exceeds approved cap",
+    "catalog_fetched_at": "2026-09-15T00:54:21",
+    "catalog_stale": false
+  },
+  "halted": false,
+  "halted_on_budget": false,
+  "free_only": true,
+  "unresolved_prior_receipts_today": 2,
+  "stopped_on_error": false,
+  "elapsed_s": 15.1,
+  "results": [
+    {
+      "id": "free-compute-40b8a11fb3f3",
+      "status": "ok",
+      "model": "inclusionai/ling-3.0-flash-fin:free",
+      "out": "C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\v6\\FREE_REVIEW.json",
+      "chars": 2058,
+      "cost": 0.0,
+      "actual_model": "inclusionai/ling-3.0-flash-fin:free",
+      "generation_id": "gen-1789439772-6BpvNNIvfnfhzLs50HrT",
+      "provider": "Novita",
+      "provider_request_id": "",
+      "backend": "openrouter",
+      "requested_model": "inclusionai/ling-3.0-flash-fin:free",
+      "route_identity_verified": true,
+      "cost_evidence_type": "provider_usage_cost",
+      "pricing_source": "",
+      "pricing_sha256": "",
+      "prompt_tokens": 228,
+      "completion_tokens": 2714,
+      "truncated": false,
+      "latency_s": 15.08,
+      "preview": ""
+    }
+  ]
+}

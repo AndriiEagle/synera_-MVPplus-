@@ -431,6 +431,20 @@ class ApiManager {
           cache: cache,
           isStreamingApi: isStreamingApi,
         );
+    // Legacy direct AI calls are disabled until an authenticated server adapter
+    // with explicit consent and a spending limit is implemented.
+    final requestedUrl = apiUrl;
+    final requestedHost = Uri.tryParse(requestedUrl.startsWith('http')
+            ? requestedUrl
+            : 'https://$requestedUrl')
+        ?.host;
+    if (requestedHost == 'api.openai.com') {
+      return const ApiCallResponse(
+        {'error': 'legacy_client_ai_disabled'},
+        {},
+        503,
+      );
+    }
     // Modify for your specific needs if this differs from your API.
     if (_accessToken != null) {
       headers[HttpHeaders.authorizationHeader] = 'Bearer $_accessToken';

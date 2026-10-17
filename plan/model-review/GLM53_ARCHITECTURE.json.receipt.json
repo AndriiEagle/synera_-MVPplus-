@@ -1,0 +1,54 @@
+{
+  "run": "free-compute-market-a1",
+  "jobs": 1,
+  "ok": 0,
+  "errors": 1,
+  "skipped": 0,
+  "spent_usd": 0.0,
+  "known_spent_usd": 0.0,
+  "budget_usd": 0.0,
+  "spend_preview": {
+    "hosted_calls": 1,
+    "input_tokens_est": 1026,
+    "input_tokens_high": 4053,
+    "output_tokens_low": 2000,
+    "output_tokens_high": 10000,
+    "modelled_low_usd": 0.0,
+    "modelled_high_usd": 0.0,
+    "known_high_usd": 0.0,
+    "proposed_cap_usd": 0.0,
+    "unknown_price_models": [],
+    "uncertainties": [],
+    "assumptions": [],
+    "jobs": [
+      {
+        "job": "free-compute-0a49992250df-a1",
+        "model": "z-ai/glm-5.3-free",
+        "input_tokens_est": 1026,
+        "input_tokens_high": 4053,
+        "output_tokens_low": 2000,
+        "output_tokens_high": 10000,
+        "low_usd": 0.0,
+        "high_usd": 0.0
+      }
+    ],
+    "stop_condition": "no provider call before append probe; stop before dispatch if priced high exceeds approved cap",
+    "catalog_fetched_at": "2026-09-08T14:47:00",
+    "catalog_stale": false
+  },
+  "halted": true,
+  "halted_on_budget": false,
+  "free_only": true,
+  "unresolved_prior_receipts_today": 0,
+  "stopped_on_error": true,
+  "elapsed_s": 217.9,
+  "results": [
+    {
+      "id": "free-compute-0a49992250df-a1",
+      "status": "error",
+      "reason": "output_truncated",
+      "cost": 0.0,
+      "unknown_cost": false
+    }
+  ]
+}

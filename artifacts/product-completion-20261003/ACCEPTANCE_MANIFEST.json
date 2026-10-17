@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-10-03T22:32:47.391Z",
+  "base_commit": "1fa9293eece9cf7fc66f54adf1f696725c133e54",
+  "branch": "codex/synera-product-20261002",
+  "source_sha256": {
+    "web_launch/business-case.mjs": "1e6e2642a01ad434ef1cb6e182eccebb6d4c1dd92d590c8b51356a5a50b3bd47",
+    "web_launch/joint-project.test.mjs": "e2c922d8524c9088d60d3b80f097509eba6b5782aec8f12126a5f6dcd70110e8",
+    "web_launch/real-journey-client.mjs": "a1268027305e2af132e7a894c158ce4cb19ad8dc1528b5fd52b280ca0df0ae3a",
+    "web_launch/real-journey-client.test.mjs": "afa26315529f26a9e8a9e705d8f2cb65b2d3c21045effebbedf3233cf026d597",
+    "web_launch/real-journey-mode-editor.test.mjs": "e47fee35154a617edeff45ccb58f085d02ab7df57148b9fc23d10b217b8af4d6",
+    "web_launch/real-journey.html": "34bd634bb1ff8e080d8d6b11ab7e580ed4cf96d7a43c1d76fa0b33d236c4501a",
+    "web_launch/real-journey.mjs": "ee0039264630c506bb4abb6be30a9ec2f593427d25b5611e787ee1d9957d6d34",
+    "supabase/case-state.proposal.sql": "12522ecc32d2d0c3766b3afe98e45921c77790111e5f7958028d95b2170f6777",
+    "supabase/case-state.acceptance.sql": "24a909a13ca1a0915f1d6d8a36a5e5c73a24ca2b092ea1473223c7d22de8b487",
+    "supabase/group-room.acceptance.sql": "faaeefed5c85d09f199cb800b87f02cbbb23a0a2eca6fb718c1877f19b7fbfd5",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/case-expiry-repair.migration.sql": "d31d9f08d552024c294a893e8003a1b84b8fa0210b49355751f56ae631c7a20a",
+    "neon/group-room.acceptance.sql": "243f532336db120f86df3316a0cac33b43e0f0231d93acd01904ae9dabbc8b8d",
+    "tools/real-journey-sql-acceptance.mjs": "96fe633ff57c9b6f5e817514143e8348a115fad074c64907fa3afb0468603be4",
+    "tools/neon-review-transaction.mjs": "8ccfa16646ce63c920e35ce9a2d98bc9bb07a323c6628d15215be507801db0ef",
+    "tools/real-journey-modes-browser-acceptance.mjs": "ca072a576e53dda14e7825da036c1d83ca91ef533eac295e11f3bad2338f8ef0"
+  },
+  "release_sha256": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc",
+  "unowned_journey_ui_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+  "unit_tests": 114,
+  "fixture_ui_modes": 5,
+  "neon_sql": "PASS_ROLLED_BACK",
+  "production_deployment": "NOT_PERFORMED",
+  "physical_android": "NOT_RUN",
+  "provider_calls": 0,
+  "provider_usd": 0
+}

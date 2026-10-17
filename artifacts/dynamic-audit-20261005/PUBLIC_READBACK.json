@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-10-05T08:05:43.692Z",
+  "finished_at": "2026-10-05T08:05:45.718Z",
+  "scope": "Read-only public HTTP; no credentials, private data, mutation or provider generation",
+  "rows": [
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/",
+      "status": 200,
+      "bytes": 8969,
+      "sha256": "9424486e29593c5aa9e29d80ec9eceba64c9a2eefb7081393c41d97c8aceeb7d"
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/get.html",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/get",
+      "status": 200,
+      "bytes": 5797,
+      "sha256": "b2382a503c88d4235b4036062c7927625324c5ecb72ad19b3405107cf499cd69"
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/config.json",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/config.json",
+      "status": 200,
+      "bytes": 66,
+      "sha256": "77787367a429c262f06142ed862e818462eb8d9808ae31812d8170336d820ae7",
+      "public_flags": {
+        "registrationEnabled": false
+      }
+    },
+    {
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey.html",
+      "final_url": "https://synera-summit-20261001.andypokr911.chatgpt.site/real-journey.html",
+      "status": 404,
+      "bytes": 1148,
+      "sha256": "1ffe2cfe258e8bb33cdb76b7d146f2c6fc026c92c301b489a0593c2b7f2e4c13"
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/config.json",
+      "final_url": "https://synera-pilot.pages.dev/config.json",
+      "status": 200,
+      "bytes": 181,
+      "sha256": "32defd13ad01ed3ba2d2bfeaa02027985aafe6faeec726ab76425f89d16eadf4",
+      "public_flags": {
+        "backend": "neon",
+        "registrationEnabled": true,
+        "pilotSafetyEnabled": true,
+        "realPilotEnabled": true
+      }
+    },
+    {
+      "url": "https://synera-pilot.pages.dev/real-journey.html",
+      "final_url": "https://synera-pilot.pages.dev/real-journey.html",
+      "status": 404,
+      "bytes": 21,
+      "sha256": "d2dfdc9511fbeaa0701d1f8730f4989313b062ca1b61a2bd8bed8f4f5d654b5d"
+    }
+  ]
+}

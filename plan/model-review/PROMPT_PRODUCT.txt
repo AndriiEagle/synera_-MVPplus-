@@ -1,0 +1,27 @@
+You are an independent product, pilot-design, and unit-economics red-team reviewer. Treat the specification below as the entire evidence; there are no known customers or confirmed partnerships.
+
+Attack these exact questions:
+
+1. Is the initial customer and job narrow enough to recruit and evaluate, or does the plan hide multiple businesses?
+2. Can the proposed 10-pair/14-day, 5-brief, 3-outcome gate be gamed by duplicate pairs, selection bias, missing feedback, operator rescue, or vague acceptance?
+3. Is the organizer's manual introduction a usable baseline, and what must be held constant?
+4. Which funnel states, costs, support actions, disputes, and failure outcomes are missing?
+5. What evidence is required before any pricing test, and how can willingness-to-pay questions avoid leading participants?
+6. Which parts should be cut from the overnight D1 because they cannot create credible business evidence?
+7. What is the smallest real pilot decision packet that prevents synthetic evidence from being sold as traction?
+
+Return Markdown with exactly: `VERDICT`, `FINDINGS`, `MINIMUM PILOT CONTRACT`, `CUT OR PARK`, `GO_REPAIR_PIVOT_STOP`. Rank findings P0-P3. Every finding requires a concrete bias/failure scenario, smallest correction, and observable evidence. Reject invented market sizes, prices, conversion, legal claims, or demand.
+
+--- BEGIN REVIEW PACK ---
+
+Synera's smallest product unit is a non-binding business case for two solo professionals or small service businesses: declared current need -> complementary contribution -> explicit mutual interest -> versioned terms -> both approve -> small trial -> receiver accepts outcome. Modes are exchange, paid_service, referral, and hybrid; no mode is itself an agreement.
+
+Initial hypothesis: one trusted professional community supplies people with one current commercial need, one concrete contribution, and capacity for a small trial. The pilot is assisted and allowlisted. No organizer, event, demand, willingness-to-pay, legal conclusion, or retention period is confirmed.
+
+Proposed learning gate: 10 unique pairs in a fixed 14-day window; at least 5 mutually agreed briefs; at least 3 recipient-accepted trial outcomes. This is feasibility learning, not statistical proof, revenue, or ROI. Report all denominators: eligible pairs, cases shown, bilateral interest, accepted meeting, agreed trial, completed trial, accepted outcome, missing feedback, dispute, repeat request, operator minutes, direct cash cost, and a manual organizer-introduction baseline. Unknown cost stays unknown. Support remains manual for the first cohort. No billing during feasibility.
+
+Continue only if the learning gate is met, there is no P0 privacy/consent failure, and operator effort/cost are measured. Repair workflow if people understand the match but fail between approval and trial. Change segment/mode if eligible profiles lack real fit. Stop expansion on consent/contact leak, unverifiable outcomes, hidden missing feedback, or unresolved incidents. Pricing exploration is allowed only after at least three accepted real outcomes and a support-cost record, and WTP is asked after delivered value.
+
+D1 overnight evidence is offline tests, mutation proof, synthetic workflows, and an offline build. It is not a customer, business, database, legal, or live-platform result. D3 is a real authorized two-person journey; D4 is the fixed cohort. Synthetic or model outputs must never populate business metrics.
+
+--- END REVIEW PACK ---

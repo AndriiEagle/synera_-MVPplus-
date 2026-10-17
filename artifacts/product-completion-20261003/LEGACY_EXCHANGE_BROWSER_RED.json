@@ -1,0 +1,7 @@
+{
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-terms-review').filter({ hasText: 'Один працюючий прототип' }) to be visible\u001b[22m\n",
+  "checks": {
+    "closed_gate": true
+  },
+  "page_errors": []
+}

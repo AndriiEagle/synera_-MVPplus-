@@ -1,0 +1,17 @@
+[
+  {
+    "id": "cnra-kimi-architecture-red-team",
+    "role": "specialist",
+    "model": "moonshotai/kimi-k3",
+    "effort": "low",
+    "prompt": "Review the attached synthetic architecture contract. Return only the requested adversarial findings. Do not infer any private implementation or external fact.",
+    "files": [
+      "model-review/PROMPT_ARCHITECTURE_COMPACT.txt"
+    ],
+    "out": "model-review/KIMI_ARCHITECTURE.md",
+    "max_tokens": 8000,
+    "visible_output_tokens": 2400,
+    "hard_max_tokens": 12000,
+    "retries": 1
+  }
+]

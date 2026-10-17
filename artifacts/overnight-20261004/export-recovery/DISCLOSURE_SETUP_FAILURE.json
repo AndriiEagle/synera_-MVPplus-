@@ -1,0 +1,9 @@
+{
+  "status": "REJECTED_HARNESS_SETUP",
+  "error": "page.waitForEvent: Timeout 8000ms exceeded while waiting for event download",
+  "evidence": "The actual plain/gzip and recovered-503 files existed. The 409 branch unconditionally clicked the retained open details summary, closing it before the download button click.",
+  "correction": "Open the existing disclosure only when closed. Attach an early rejection handler to the pending download event while preserving its later awaited rejection.",
+  "product_changed_for_this_failure": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

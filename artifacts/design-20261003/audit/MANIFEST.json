@@ -1,0 +1,118 @@
+{
+  "captured_at": "2026-10-03T07:41:10.878Z",
+  "base": "http://127.0.0.1:51818",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "source": {
+    "web_launch/index.html": "9fb38ea0546838ca9a5df6ec0aaee0becbb1942b53252fccfb6cd578bde349bb",
+    "web_launch/app.mjs": "501db0a2ae309cf56841c7fd2a6d32a5b42356db1be703d687293a8725e12a3c",
+    "web_launch/style.css": "0d0abac7fba7d67c2c555c62053b369fe1951be45b870a21aabde6bcab579fd8",
+    "web_launch/summit.html": "5d3ebaaafecf64df540b654ea83d904ded7efeba6258ffbd3fb28d5f8cafd363",
+    "web_launch/summit.mjs": "17a7050ed230969383d8962e50136c192ac3597ca39a519fd074692bdc2e53c6",
+    "web_launch/summit.css": "509cba79412ad9d40c3ea97e128accaa8eabff0dc36104b174b871b401e26dfd",
+    "web_launch/studio.html": "1e194d856b4741e1f584849a1efb67ffe3ef8af8450e4acb6fe49e16501653d5",
+    "web_launch/studio.mjs": "73bdfebcda5cea45c62207abb380e61745a171d0f574a2d1284443320d60aebf",
+    "web_launch/studio.css": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0",
+    "web_launch/triangle.html": "5f5cd51b58edd8814f2375f02d23edf9ec7526febabfe02f5717fe47f884908b",
+    "web_launch/triangle.mjs": "84be2b8181f4cf37dbb0ea188ba9c9cc2dde15c6dea098b87ecd91b817d7d9fc",
+    "web_launch/triangle.css": "140115bdf62bebaaee8a529ed0c2c8ff46aad02b8bb6aee2ac1dcd8fcc405128",
+    "web_launch/map.mjs": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5",
+    "web_launch/config.mjs": "e10b22c1d42fbd0bb54af42ba2baff8c71ce50136c6a6c3bdcc82f51095eaaf9"
+  },
+  "entries": [
+    {
+      "file": "01-main-welcome.png",
+      "route": "/",
+      "state": "Unauthenticated local demo entry; no profile or map data is asserted.",
+      "bytes": 123421,
+      "sha256": "bc07a4398fa46721304fb3f5d7f06c6aca6a37cbacf9aceefad4767752cb7436"
+    },
+    {
+      "file": "02-summit-hero.png",
+      "route": "/summit.html",
+      "state": "Public product-preview hero; fictional profiles.",
+      "bytes": 406831,
+      "sha256": "0b3045b2ad54e4865b01d5f066f7fec928aa0ae5c39dcbe37b58806cfe361bae"
+    },
+    {
+      "file": "03-summit-discover.png",
+      "route": "/summit.html#experience",
+      "state": "Public synthetic Discover demo; nothing is sent or saved.",
+      "bytes": 407902,
+      "sha256": "d4814d291fc91949df489b0003d8fda0adfe1595fd7ac122cc11411832b626f9"
+    },
+    {
+      "file": "04-studio-fit.png",
+      "route": "/studio.html",
+      "state": "Studio 04 initial give-and-take form; fictional/local only.",
+      "bytes": 202631,
+      "sha256": "d0b4b310655748869b123cfb0721244eebaed5b56bf95690f4dfb93388145762"
+    },
+    {
+      "file": "05-studio-fit-result.png",
+      "route": "/studio.html",
+      "state": "Studio 04 local fit explanation after explicit consented synthetic input.",
+      "bytes": 334125,
+      "sha256": "3bc58fa302a3de78d4dbebf1836f1a0ac0e5820e9e99546574e9f1ce8a799c6f"
+    },
+    {
+      "file": "06-studio-session.png",
+      "route": "/studio.html",
+      "state": "Studio local shared-screen session setup, before any saved notes.",
+      "bytes": 138040,
+      "sha256": "d7c5c16c4069de26dc2db5b92c608b4b27634b992aef10cb71915b0fc18fbc02"
+    },
+    {
+      "file": "07-studio-result.png",
+      "route": "/studio.html",
+      "state": "Studio result screen; social package is disabled before current-result confirmation.",
+      "bytes": 251858,
+      "sha256": "51588561ab1bdfed60b2549940afcba6b484fa2f57667ed5aeb0735e99ca09b3"
+    },
+    {
+      "file": "08-studio-memory.png",
+      "route": "/studio.html",
+      "state": "Studio archive/device consent screen; plaintext/local limitations are visibly stated.",
+      "bytes": 245016,
+      "sha256": "5350fd59603407c7a5add187124ec983309be63dac473bf2e6f46ad812eb3697"
+    },
+    {
+      "file": "09-triangle-intro.png",
+      "route": "/triangle.html",
+      "state": "Triangle L initial local-room setup; explicit shared-screen acknowledgement.",
+      "bytes": 244496,
+      "sha256": "289aa9c0a2787c7ce76ceecad3e4aee0f08805af7d3ed6c39ae2f28dcc850f61"
+    },
+    {
+      "file": "10-triangle-workspace.png",
+      "route": "/triangle.html",
+      "state": "Triangle L after locally creating one workspace; no remote participants.",
+      "bytes": 734437,
+      "sha256": "0d532bf9c9cf45b58d91de8d8b494322be97fc67e38cfde75cc8a24ccdbcb504"
+    },
+    {
+      "file": "11-atlas-map.png",
+      "route": "/triangle.html",
+      "state": "Atlas opportunity map with fictional cards and filters; not a live people map.",
+      "bytes": 460622,
+      "sha256": "08798d0552f9faaa9586986711b6b1de7ff904208f58d7670bd78cfc3187a96b"
+    },
+    {
+      "file": "12-launch-permissions.png",
+      "route": "/triangle.html",
+      "state": "Launch/economics and five-context trust model; future permission model is labelled as such.",
+      "bytes": 471417,
+      "sha256": "cd8b1d7355585a295f2deaac588e659e177158dbd4e1fea8921f600e9d41cbbb"
+    }
+  ],
+  "limits": [
+    "Chromium computer emulation only; not a physical Android device.",
+    "All captured states use local --demo server and no authenticated production account.",
+    "Studio/Triangle data shown is local or fictional; no independent participant, meeting or result was created.",
+    "Screenshot review cannot prove accessibility compliance, live RLS, Maps SDK, voice/video, AI assistant or social publishing."
+  ],
+  "provider_calls": 0,
+  "media_generation_calls": 0
+}
