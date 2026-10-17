@@ -1,0 +1,17 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T15:28:44.065Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "rejected_send_keeps_chat_and_draft_manual_retry_once": true
+  },
+  "browser_engine": {
+    "version": "154.0.8037.97",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "error": "Previous send erased the next draft\n+ actual - expected\n\n+ ''\n- 'Наступна думка × POST 💛 <script>literal</script>  '\n"
+}

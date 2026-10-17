@@ -1,0 +1,224 @@
+{
+  "status": "PASS_LOCAL_PRIVATE_MESSAGE_RECOVERY",
+  "generated_at": "2026-10-04T10:13:24.722Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 0,
+  "signal": null,
+  "runner_sha256": "b337dd53366d553491bebbc6f0cb3051b1a9d65c950a8162c7bbe79566cb2001",
+  "browser": {
+    "status": "PASS_LOCAL_MESSAGE_RECOVERY_BROWSER",
+    "generated_at": "2026-10-04T10:13:09.836Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "rejected_send_keeps_chat_and_draft_manual_retry_once": true,
+      "ambiguous_delivery_keeps_draft_readback_without_resend": true,
+      "auth_failure_purges_private_state": true,
+      "late_error_does_not_replace_logout_or_restore_chat": true,
+      "current_default": true,
+      "axe_violations": 0,
+      "keyboard_scrolls_private_history": true,
+      "atelier_reversible_quiet_motion": true,
+      "no_overflow": {
+        "viewport": 390,
+        "width": 390
+      },
+      "no_private_storage": true,
+      "logout_clears_old_private_chat": true
+    },
+    "external_requests": [],
+    "messages": 8,
+    "message_requests": [
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "GET"
+      },
+      {
+        "actor": "22222222-2222-4222-8222-222222222222",
+        "method": "GET"
+      },
+      {
+        "actor": "11111111-1111-4111-8111-111111111111",
+        "method": "POST"
+      }
+    ],
+    "source_sha256": {
+      "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+      "web_launch/real-journey.mjs": "125cef34d4c0c77f92ccccbac80b9ecd71fa3bfd48e5746d8f101c54b2886434",
+      "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+      "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+      "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+      "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+      "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+      "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b"
+    }
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "125cef34d4c0c77f92ccccbac80b9ecd71fa3bfd48e5746d8f101c54b2886434",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b"
+  }
+}

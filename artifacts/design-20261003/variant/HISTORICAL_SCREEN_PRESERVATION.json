@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "scope": "Restore historical evidence bytes overwritten by this wave test rerun; retain new captures separately",
+  "files": [
+    {
+      "path": "artifacts/ecosystem-20261002/studio-desktop.png",
+      "historical_sha256": "be3e67c7c0faafb852fe718ed8a281ab8b9b2ce16f72f29957109a8765889d45",
+      "retained_rerun": "variant/rerun-studio-desktop.png",
+      "rerun_sha256": "1e14b40cb35dec027aaa2813dbc32d6214e9c65fde469fd03ef22f7307c5d9bd"
+    },
+    {
+      "path": "artifacts/ecosystem-20261002/studio-mobile.png",
+      "historical_sha256": "2d76e56b29b28ce6b407fb01c91b950f4e7dadd7ccff647c7e3a1dc3982b540f",
+      "retained_rerun": "variant/rerun-studio-mobile.png",
+      "rerun_sha256": "0aa1a660f0d066a3e900bc8e44028337b055cc656a4774b539afb4638f034b6c"
+    },
+    {
+      "path": "artifacts/ecosystem-20261002/studio-result-mobile.png",
+      "historical_sha256": "1c5b92e14d984bc6a68e284e0e58111f9e307d246553c44931e0097d622d59f2",
+      "retained_rerun": "variant/rerun-studio-result-mobile.png",
+      "rerun_sha256": "93eff4acad67e2fd8bca2201c303d745bb29019ef30349f281f80f9cc4d25dc4"
+    }
+  ]
+}

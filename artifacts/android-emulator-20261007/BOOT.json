@@ -1,0 +1,23 @@
+{
+  "pid": 11424,
+  "serial": "emulator-5580",
+  "args": [
+    "D:\\SyneraAndroid\\sdk\\emulator\\emulator.exe",
+    "-avd",
+    "Synera_API36",
+    "-port",
+    "5580",
+    "-no-window",
+    "-no-audio",
+    "-no-snapshot",
+    "-camera-back",
+    "none",
+    "-camera-front",
+    "none",
+    "-cores",
+    "2",
+    "-memory",
+    "2048"
+  ],
+  "booted": false
+}

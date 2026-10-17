@@ -1,0 +1,18 @@
+{
+  "status": "PASS_REVIEWED_LOCAL_OVERLAY_BUILD",
+  "source_base": "d3d85b0ea8705282a808fa8fb2c5cb77fcd4ab1b",
+  "source_overrides": {
+    "web_launch/index-i18n.mjs": "c8ce7f5f16dfac48401ab45f6b6235b44dc15ef8f12afd3a8b7b88bd46aafb31"
+  },
+  "candidate": "web_launch\\dist-neon-opus-pass4-final-20261011",
+  "release_sha256": "81265d06447063f62ce61ecdf0cd787c078d7513e21606f9b549bb7309346a0e",
+  "public_files": 103,
+  "manifest_files_verified": 102,
+  "changed_from_opus_head": [
+    "index-i18n.mjs"
+  ],
+  "foreign_dirty_preserved": true,
+  "published": false,
+  "provider_calls": 0,
+  "usd": 0
+}

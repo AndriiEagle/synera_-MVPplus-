@@ -1,0 +1,624 @@
+// C13.L3 — браузерний E2E реального сервера (web_launch/server.mjs --demo).
+// Сервер спавниться з КОРЕНЯ репо (root-відносні шляхи, як у server.test.mjs),
+// порт 0 → ОС дає вільний порт, URL парситься зі stdout сервера.
+// Покриття: статична поверхня + конфіг-гейт + помилки сторінки. Без auth/backend.
+import { test, expect } from '@playwright/test';
+import { spawn } from 'node:child_process';
+
+let serverProcess;
+let baseUrl;
+
+test.beforeAll(async () => {
+  serverProcess = spawn(process.execPath, ['web_launch/server.mjs', '--demo'], {
+    env: { ...process.env, SYNERA_PORT: '0' },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  baseUrl = await new Promise((resolve, reject) => {
+    let output = '';
+    const timer = setTimeout(() => reject(new Error('server did not print URL. output: ' + output)), 30000);
+    serverProcess.stdout.on('data', chunk => {
+      output += chunk.toString();
+      const match = output.match(/http:\/\/127\.0\.0\.1:(\d+)/);
+      if (match) { clearTimeout(timer); resolve(`http://127.0.0.1:${match[1]}`); }
+    });
+    serverProcess.stderr.on('data', chunk => { output += chunk.toString(); });
+    serverProcess.on('exit', code => { clearTimeout(timer); reject(new Error(`server exited early (code ${code}). output: ${output}`)); });
+  });
+});
+
+test.afterAll(async () => {
+  if (serverProcess && serverProcess.exitCode === null) serverProcess.kill();
+});
+
+async function openPreferences(page) {
+  await page.locator('.header-preferences summary').click();
+  await expect(page.locator('#style-toggle')).toBeVisible();
+}
+
+test('Google entry explains consent, sends no request before acceptance, and shows recoverable failure', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+  await page.route('**/config.json', route => route.fulfill({ json: {
+    backend: 'neon', pilotSafetyEnabled: true, realPilotEnabled: true,
+    registrationEnabled: true, googleOAuthEnabled: true,
+    googleOAuthInitUrl: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth/sign-in/social/init',
+    googleOAuthInitUrl: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth/sign-in/social/init',
+  } }));
+  let starts = 0;
+  await page.route('**/api/neon/**', async route => {
+    const path = new URL(route.request().url()).pathname;
+    if (path.endsWith('/oauth/google/start')) {
+      starts++;
+      expect(route.request().method()).toBe('POST');
+      expect(route.request().postDataJSON().consent.terms_accepted).toBe(true);
+      expect(route.request().postDataJSON().consent.privacy_acknowledged).toBe(true);
+      await route.fulfill({ status: 503, json: { error: 'service_unavailable' } });
+    } else await route.fulfill({ json: path.endsWith('/session') ? { user: null } : {} });
+  });
+  await page.goto(`${baseUrl}/?signin=google-error`);
+  await expect(page).toHaveURL(`${baseUrl}/`);
+  await expect(page.locator('#notice')).toContainText('Не вдалося завершити Google-вхід');
+  await expect(page.locator('#google-signin')).toBeEnabled();
+  await expect(page.locator('#google-signin')).toHaveText('Продовжити з Google');
+  await page.locator('#google-signin').click();
+  await expect(page.locator('#policy-dialog')).toBeVisible();
+  expect(starts).toBe(0);
+  await page.locator('#policy-cancel').click();
+  expect(starts).toBe(0);
+  await page.locator('#google-signin').click();
+  await page.locator('#accept-terms').check();
+  await page.locator('#accept-privacy').check();
+  await page.locator('#policy-form button[type="submit"]').click();
+  await expect.poll(() => starts).toBe(1);
+  await expect(page.locator('#google-signin')).toBeEnabled();
+  await expect(page.locator('#policy-dialog')).not.toBeVisible();
+  await expect(page.locator('#auth-submit')).toBeEnabled();
+  await page.screenshot({ path: testInfo.outputPath('google-entry-mobile.png') });
+  await page.locator('#auth-form').screenshot({ path: testInfo.outputPath('google-auth-mobile.png') });
+});
+
+test('index віддає 200 і показує бренд synera', async ({ page }) => {
+  const response = await page.goto(`${baseUrl}/`);
+  expect(response.status()).toBe(200);
+  await expect(page.locator('.brand')).toBeVisible();
+  await expect(page.locator('.brand')).toContainText('synera');
+});
+
+test('hero h1 видимий на desktop viewport', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('h1').first()).toBeVisible();
+  const hero = await page.locator('h1').first().boundingBox();
+  const demo = await page.locator('#demo-journey').boundingBox();
+  expect(hero.y).toBeLessThan(demo.y);
+  await page.screenshot({ path: testInfo.outputPath('desktop-landing.png') });
+});
+
+test('hero h1 видимий на mobile viewport 375px', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 375, height: 700 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('h1').first()).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('mobile-landing.png') });
+});
+
+test('mobile first visit gives one visible action and keeps appearance settings available on demand', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 700 });
+  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+  await page.goto(`${baseUrl}/`);
+  const action = page.locator('#prepare-profile');
+  await expect(action).toBeVisible();
+  expect((await action.boundingBox()).y).toBeLessThan(700);
+  await expect(page.locator('#style-toggle')).toBeHidden();
+  await page.locator('.header-preferences summary').click();
+  await expect(page.locator('#style-toggle')).toBeVisible();
+  await expect(page.locator('#style-preset')).toBeVisible();
+  await page.locator('#style-preset').selectOption('noir');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
+});
+
+for (const width of [320, 375]) {
+  test(`mobile ${width}px keeps the complete first action and expanded preferences within the viewport`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width, height: 700 });
+    await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+    await page.goto(`${baseUrl}/`);
+    await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено');
+    const action = await page.locator('#prepare-profile').boundingBox();
+    expect(action.y).toBeGreaterThanOrEqual(0);
+    expect(action.y + action.height).toBeLessThanOrEqual(700);
+    await page.screenshot({ path: testInfo.outputPath('first-action.png') });
+    await page.locator('#prepare-profile').click();
+    await openPreferences(page);
+    const geometry = await page.evaluate(() => ({
+      width: document.documentElement.scrollWidth,
+      bounds: [...document.querySelectorAll('.header-preferences-content, .header-preferences-content *')]
+        .map(el => el.getBoundingClientRect()).filter(rect => rect.width && rect.height)
+        .map(rect => ({ left: rect.left, right: rect.right })),
+    }));
+    expect(geometry.width).toBeLessThanOrEqual(width);
+    for (const bounds of geometry.bounds) {
+      expect(bounds.left).toBeGreaterThanOrEqual(0);
+      expect(bounds.right).toBeLessThanOrEqual(width);
+    }
+    await page.screenshot({ path: testInfo.outputPath('profile-preferences.png') });
+  });
+}
+
+test('Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  const toggle = page.locator('#style-toggle');
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveText('Стиль: Synera');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+  await toggle.click();
+  await expect(toggle).toHaveText('Стиль: Atelier');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
+  await toggle.click();
+  await expect(toggle).toHaveText('Стиль: Web');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
+  await toggle.click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+});
+
+test('compact presets are visual-only choices alongside the preserved three-style switch', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  await page.locator('#style-preset').selectOption('noir');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
+  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Noir');
+  await page.locator('#style-toggle').click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+});
+
+test('all ten compact presets visibly change the desktop surface without changing the document flow', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  const values = ['noir', 'alpine', 'copper', 'azure', 'orchid', 'terracotta', 'citrus', 'slate', 'ink', 'harvest'];
+  const backgrounds = [];
+  for (const value of values) {
+    await page.locator('#style-preset').selectOption(value);
+    backgrounds.push(await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor));
+    await expect(page.locator('#demo-journey')).toBeVisible();
+  }
+  expect(new Set(backgrounds).size).toBe(10);
+});
+
+test('a compact preset remains selectable and visibly distinct at a 375px mobile viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 844 });
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  const base = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
+  await page.locator('#style-preset').selectOption('noir');
+  const noir = await page.locator('body').evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(noir).not.toBe(base);
+  await expect(page.locator('#style-preset')).toBeVisible();
+});
+
+test('synthetic demo walks people, mutual benefit, conditions and an unsent invitation draft', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.getByText('ДЕМОНСТРАЦІЯ · СИНТЕТИЧНИЙ ПРИКЛАД')).toBeVisible();
+  await page.getByRole('button', { name: 'Показати взаємну користь' }).click();
+  await expect(page.getByText('Причина для розмови в обидва боки')).toBeVisible();
+  await page.getByRole('button', { name: 'Перевірити умови' }).click();
+  await expect(page.getByText('Умови до контакту')).toBeVisible();
+  await page.getByRole('button', { name: 'Підготувати чернетку запрошення' }).click();
+  await expect(page.getByText('Чернетка — не відправлення')).toBeVisible();
+  await expect(page.getByText('НЕ ВІДПРАВЛЕНО · лише локальна демонстрація')).toBeVisible();
+});
+
+test('first-user tour highlights guidance without blocking the local profile draft', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  await page.locator('#tour-start').click();
+  await expect(page.getByRole('heading', { name: 'Твій профіль — під твоїм контролем' })).toBeVisible();
+  await page.locator('#prepare-profile').click();
+  await expect(page.locator('#profile-view')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Далі' })).toBeVisible();
+});
+
+test('draft tour reaches the usable demo and preserves the profile when returning to login', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  await page.getByRole('textbox', { name: 'Ім’я для профілю', exact: true }).fill('Тестова чернетка');
+  await openPreferences(page);
+  await page.locator('#tour-start').click();
+  for (let step = 1; step < 6; step++) await page.getByRole('button', { name: 'Далі', exact: true }).click();
+  await expect(page.locator('#demo-journey')).toBeVisible();
+  await page.getByRole('button', { name: 'Завершити', exact: true }).click();
+  await page.getByRole('button', { name: 'Показати взаємну користь', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '2. Причина для розмови в обидва боки', exact: true })).toBeVisible();
+  await page.locator('#back-login').click();
+  await expect(page.locator('#demo-journey')).toBeVisible();
+  await page.locator('#prepare-profile').click();
+  await expect(page.getByRole('textbox', { name: 'Ім’я для профілю', exact: true })).toHaveValue('Тестова чернетка');
+});
+
+test('Synera keeps the disabled login action on the readable disabled surface', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  const state = await page.locator('#auth-submit').evaluate(button => {
+    const style = getComputedStyle(button);
+    const token = getComputedStyle(document.documentElement).getPropertyValue('--synera-disabled-bg').trim();
+    const probe = document.createElement('div');
+    probe.style.backgroundColor = token;
+    document.body.append(probe);
+    const expected = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return { disabled: button.matches(':disabled'), background: style.backgroundColor, expected };
+  });
+  expect(state.disabled).toBe(true);
+  await expect.poll(() => page.locator('#auth-submit').evaluate(button => getComputedStyle(button).backgroundColor)).toBe(state.expected);
+});
+
+test('клік табу profile перемикає видиму секцію workspace', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  // Ініціалізація app.mjs (top-level await fetch config.json) триває після load —
+  // чекаємо маркер ініціалізації, інакше клік потрапляє в кнопку без обробника.
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await expect(page.locator('#profile-view')).toBeHidden();
+  // Таби живуть у #workspace, який hidden до входу/чернетки — входимо через шлях чернетки.
+  await page.click('#prepare-profile');
+  await page.click('button[data-tab="profile"]');
+  await expect(page.locator('#profile-view')).toBeVisible();
+  // Welcome-екран поступається місцем workspace-контенту.
+  await expect(page.locator('#welcome')).toBeHidden();
+});
+
+test('mobile profile presents its first action without scrolling past the first screen', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 412, height: 850 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  await page.evaluate(() => scrollTo(0, 0));
+  const action = await page.locator('#start-chatgpt-transfer').boundingBox();
+  expect(action).not.toBeNull();
+  expect(action.y + action.height).toBeLessThan(850);
+  await page.screenshot({ path: testInfo.outputPath('mobile-profile.png') });
+});
+
+test('small mobile view keeps the profile navigation and style control on screen', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  await page.locator('#prepare-profile').click();
+  await openPreferences(page);
+  const geometry = await page.evaluate(() => {
+    const rect = selector => document.querySelector(selector).getBoundingClientRect();
+    return {
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: document.documentElement.clientWidth,
+      nav: { left: rect('.workspace-bar nav').left, right: rect('.workspace-bar nav').right, bottom: rect('.workspace-bar nav').bottom },
+      style: { left: rect('#style-toggle').left, right: rect('#style-toggle').right },
+    };
+  });
+  expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
+  expect(geometry.nav.left).toBeGreaterThanOrEqual(0);
+  expect(geometry.nav.right).toBeLessThanOrEqual(320);
+  expect(geometry.nav.bottom).toBeLessThanOrEqual(700);
+  expect(geometry.style.left).toBeGreaterThanOrEqual(0);
+  expect(geometry.style.right).toBeLessThanOrEqual(320);
+});
+
+test('catalogue.html віддає 200 і свій заголовок', async ({ page }) => {
+  const response = await page.goto(`${baseUrl}/catalogue.html`);
+  expect(response.status()).toBe(200);
+  await expect(page).toHaveTitle(/Catalogue/);
+});
+
+test('config.json парситься з безпечними дефолтами демо-режиму', async ({ request }) => {
+  const response = await request.get(`${baseUrl}/config.json`);
+  expect(response.status()).toBe(200);
+  const config = await response.json();
+  expect(config.supabaseUrl).toBe('');
+  expect(config.registrationEnabled).toBe(false);
+});
+
+test('/.git/config і /config.public.json відкидаються 404 (allowlist-сервер)', async ({ request }) => {
+  expect((await request.get(`${baseUrl}/.git/config`)).status()).toBe(404);
+  expect((await request.get(`${baseUrl}/config.public.json`)).status()).toBe(404);
+});
+
+test('жодна same-origin відповідь на index не має статусу ≥ 500', async ({ page }) => {
+  const serverErrors = [];
+  page.on('response', response => {
+    if (response.status() >= 500) serverErrors.push(`${response.status()} ${response.url()}`);
+  });
+  await page.goto(`${baseUrl}/`);
+  await page.waitForLoadState('networkidle');
+  expect(serverErrors).toEqual([]);
+});
+
+test('нуль pageerror-подій під час навігації по табах', async ({ page }) => {
+  const pageErrors = [];
+  page.on('pageerror', error => pageErrors.push(String(error)));
+  await page.goto(`${baseUrl}/`);
+  // Чекаємо завершення ініціалізації app.mjs — інакше кліки губляться до навішування обробників.
+  await expect(page.locator('#mode')).toHaveText('Вхід ще не підключено', { timeout: 15000 });
+  // Таби невидимі до showWorkspace() — відкриваємо через шлях чернетки (без входу).
+  await page.click('#prepare-profile');
+  for (const tab of ['profile', 'people', 'meetings', 'settings']) {
+    await page.click(`button[data-tab="${tab}"]`);
+    await page.waitForTimeout(100);
+  }
+  expect(pageErrors).toEqual([]);
+});
+
+// SYN_TOKEN_WIRED_E2E (2026-09-23, audit cycle 4): 146 var()-посилань style.css висіли
+// в повітрі після семантичного перезапису tokens.css (c4a4210) — рендер мовчки падав
+// у browser-дефолти (білий фон, невидимі інпути, нульові радіуси). Цей тест пінить
+// computed-стилі, а не DOM-видимість: токени мають РОЗВИНЯТИСЬ у значення.
+test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні розв'язуються в computed-стилях", async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  const computed = await page.evaluate(() => {
+    const cs = getComputedStyle(document.body);
+    const input = document.querySelector('#email');
+    return {
+      bodyBg: cs.backgroundColor,
+      bodyBgImage: cs.backgroundImage,
+      rootColor254f3b: getComputedStyle(document.documentElement).getPropertyValue('--color-254f3b').trim(),
+      inputBorderWidth: input ? getComputedStyle(input).borderTopWidth : '',
+      inputBg: input ? getComputedStyle(input).backgroundColor : '',
+    };
+  });
+  // Обрана Synera зберігає палітру оригінального Flutter, обидва вебстилі доступні окремо.
+  expect(computed.rootColor254f3b).toBe('#e7bd87');
+  await page.locator('#style-toggle').click();
+  const atelierToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
+  expect(atelierToken).toBe('#173f32');
+  await page.locator('#style-toggle').click();
+  const originalToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
+  expect(originalToken).toBe('#254f3b');
+  // Фон має бути реальною поверхнею, а не browser-дефолтом.
+  expect(computed.bodyBgImage !== 'none' || !['rgba(0, 0, 0, 0)', 'rgb(255, 255, 255)'].includes(computed.bodyBg)).toBe(true);
+  // Інпут має видиму рамку (0px = невидимий контроль, який ловив vision-рев'ю).
+  expect(parseFloat(computed.inputBorderWidth)).toBeGreaterThan(0);
+});
+
+// SYN_PHASE9_A11Y_E2E (2026-09-23, audit cycle 5): поліш N1–N6. Пинить computed-стилі:
+// N3/N6 — --synera-border-control у рамці інпута (3.88:1 vs #fff, WCAG 1.4.11);
+// N1/N2/N4 — disabled без opacity-гасіння: підписи чіткі, єдина disabled-поверхня;
+// N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
+test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  await page.locator('#style-toggle').click(); // Atelier
+  await page.locator('#style-toggle').click(); // Previous Web; the original Phase-9 tokens remain proven here.
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
+  await expect.poll(() => page.locator('#auth-submit').evaluate(button => getComputedStyle(button).backgroundColor)).toBe('rgb(230, 235, 231)');
+  const computed = await page.evaluate(() => {
+    const input = document.querySelector('#email');
+    const label = document.querySelector('#auth-fields label');
+    const submit = document.querySelector('#auth-submit');
+    const fs = document.querySelector('#auth-fields');
+    const style = (el) => getComputedStyle(el);
+    // Знімаємо показники DISABLED-стану ДО проби...
+    const result = {
+      controlToken: style(document.documentElement).getPropertyValue('--synera-border-control').trim(),
+      disabledBgToken: style(document.documentElement).getPropertyValue('--synera-disabled-bg').trim(),
+      disabledInputBorder: style(input).borderTopColor,
+      labelColor: style(label).color,
+      fieldsetOpacity: style(fs).opacity,
+      submitBg: style(submit).backgroundColor,
+      submitOpacity: style(submit).opacity,
+      submitCursor: style(submit).cursor,
+    };
+    // ...далі проба: тимчасово вмикаємо fieldset і читаємо ENABLED-рамку того ж інпута.
+    fs.disabled = false;
+    result.enabledInputBorder = style(input).borderTopColor;
+    fs.disabled = true;
+    return result;
+  });
+  // Токени фази 9 на місці.
+  expect(computed.controlToken).toBe('#6f8779');
+  expect(computed.disabledBgToken).toBe('#e6ebe7');
+  // N3: рамка інпута в ENABLED-стані = контрол-токен (3.88:1 vs #fff, WCAG 1.4.11).
+  expect(computed.enabledInputBorder).toBe('rgb(111, 135, 121)');
+  // N4: disabled-інпут показує єдину disabled-поверхню, не контрол-токен.
+  expect(computed.disabledInputBorder).toBe('rgb(179, 193, 182)');
+  // N1/N2: підписи в disabled fieldset читабельні, поле не гаситься.
+  expect(computed.labelColor).toBe('rgb(78, 95, 80)');
+  expect(computed.fieldsetOpacity).toBe('1');
+  // N4: єдина disabled-поверхня кнопки замість opacity 0.5.
+  expect(computed.submitBg).toBe('rgb(230, 235, 231)');
+  expect(computed.submitOpacity).toBe('1');
+  expect(computed.submitCursor).toBe('default');
+  // N5: клавіатурний Tab-фокус дає видиме кільце (перший фокусабельний елемент).
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press('Tab');
+    const isInteractive = await page.evaluate(() => {
+      const el = document.activeElement;
+      return el && el.matches('button, a, input, select, textarea, [tabindex]');
+    });
+    if (isInteractive) break;
+  }
+  const focusRing = await page.evaluate(() => {
+    const s = getComputedStyle(document.activeElement);
+    return `${s.outlineWidth}|${s.outlineStyle}|${s.outlineColor}`;
+  });
+  expect(focusRing).toBe('2px|solid|rgb(25, 81, 62)');
+});
+
+// GEO-01: accepted in-person meeting — static navigation without GPS, own consent, one recipient, revoke.
+test('GEO-01 meeting location: static map link, consent-gated grant for one recipient, revocation, no geolocation opened', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  const response = await page.goto(baseUrl + '/index.html');
+  expect(response.headers()['permissions-policy'] ?? '').toContain('geolocation=()');
+  await page.evaluate(async () => {
+    const { meetingLocationSection } = await import('/meeting-location.mjs');
+    const start = new Date(Date.now() + 2 * 3600000).toISOString();
+    const meeting = { id: 'm-e2e', sender_id: 'u-anna', recipient_id: 'u-ben', status: 'accepted', proposed_at: start, duration_minutes: 30, meeting_place: 'Zürich' };
+    const host = document.createElement('section'); host.id = 'geo-host'; document.querySelector('main').prepend(host);
+    const render = grant => { host.replaceChildren(meetingLocationSection({ meeting, viewerId: 'u-anna', otherName: 'Ben', grant, onChange: next => { window.__grant = next; render(next); } })); host.querySelector('details').open = true; };
+    render(null);
+    const online = meetingLocationSection({ meeting: { ...meeting, meeting_place: 'Онлайн' }, viewerId: 'u-anna', otherName: 'Ben' });
+    window.__onlineSection = online === null;
+    const missing = meetingLocationSection({ meeting: { ...meeting, meeting_place: '' }, viewerId: 'u-anna', otherName: 'Ben' });
+    window.__missingPlaceHasLink = Boolean(missing?.querySelector('a'));
+  });
+  expect(await page.evaluate(() => window.__onlineSection)).toBe(true);
+  expect(await page.evaluate(() => window.__missingPlaceHasLink)).toBe(false);
+  const box = page.locator('#geo-host .meeting-location');
+  await expect(box.locator('a[href*="/maps/search/"]')).toHaveAttribute('href', /google\.com\/maps\/search\/\?api=1&query=Z%C3%BCrich/);
+  await expect(box.locator('a[href*="/maps/dir/"]')).toHaveAttribute('href', /destination=Z%C3%BCrich&travelmode=walking/);
+  for (const link of await box.locator('a').all()) await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  const grantButton = box.getByRole('button', { name: 'Дозволити на час зустрічі' });
+  await expect(grantButton).toBeDisabled();
+  await box.locator('input[name="location-consent"]').check();
+  await expect(grantButton).toBeEnabled();
+  await grantButton.click();
+  await expect(box.locator('.location-status')).toContainText('адресат Ben');
+  await expect(box.locator('.location-status')).toContainText('Координати не передаються');
+  expect(await page.evaluate(() => ({ recipient: window.__grant.recipient_id, sample: window.__grant.sample }))).toEqual({ recipient: 'u-ben', sample: null });
+  await box.getByRole('button', { name: 'Відкликати дозвіл' }).click();
+  await expect(box).toContainText('відкликано');
+  expect(await page.evaluate(() => window.__grant.status)).toBe('revoked');
+  const permission = await page.evaluate(async () => (await navigator.permissions.query({ name: 'geolocation' })).state);
+  expect(permission).not.toBe('granted');
+});
+
+// Premium «Нічна карта» ported as an opt-in style: heading and first action stay first on mobile, motion respects reduced-motion.
+test('Night map premium style: selectable, keeps the first action above the fold, no motion under reduced-motion', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 375, height: 812 }, reducedMotion: 'reduce', serviceWorkers: 'block' });
+  const page = await context.newPage();
+  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
+  await page.goto(`${baseUrl}/`);
+  await openPreferences(page);
+  await page.locator('#style-preset').selectOption('night');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'night');
+  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Нічна карта');
+  await page.locator('.header-preferences summary').click();
+  const h1 = await page.locator('.intro h1').boundingBox();
+  const cta = await page.locator('.draft-entry').boundingBox();
+  expect(h1.y).toBeLessThan(cta.y);
+  expect(cta.y + cta.height).toBeLessThan(812);
+  expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
+  await openPreferences(page);
+  await page.locator('#style-toggle').click();
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+  await context.close();
+});
+
+test('Presentation leads to real app access and both phone guides without pretending checkout is available', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const pageErrors = [];
+  page.on('pageerror', error => pageErrors.push(error.message));
+  const privateRequests = [];
+  page.on('request', request => { if (/\/api\/|\/auth\/|\/rest\//.test(request.url())) privateRequests.push(request.url()); });
+  if (process.env.SYNERA_ACCESS_MUTATION === 'wrong-origin') {
+    await page.route('**/product-access.mjs', async route => {
+      const response = await route.fetch();
+      await route.fulfill({ response, body: (await response.text()).replace('https://synera-pilot.pages.dev/', 'https://wrong-app.example.invalid/') });
+    });
+  }
+  await page.goto(`${baseUrl}/summit.html`);
+  await page.locator('.closing > a.primary').click();
+  await expect(page.locator('[data-platform]')).toHaveCount(2, { timeout: 4000 });
+  await page.locator('[data-platform="ios"] summary').click();
+  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  await expect(page.locator('[data-platform="android"]')).toContainText('Chrome');
+  const app = page.locator('#open-live-app');
+  expect(new URL(await app.getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await expect(page.locator('#payment-availability')).toHaveAttribute('data-state', 'free-pilot');
+  expect(await page.locator('a[href*="checkout.stripe.com"], a[href*="buy.stripe.com"], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').count()).toBe(0);
+  expect(privateRequests).toEqual([]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('#access-language').selectOption('uk');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'uk');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  await expect(page.locator('#open-live-app')).toHaveText('Відкрити Synera ↗');
+  const { default: AxeBuilder } = await import('@axe-core/playwright');
+  const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+  expect(audit.violations.filter(item => ['critical', 'serious'].includes(item.impact))).toEqual([]);
+  expect(pageErrors).toEqual([]);
+  await page.screenshot({ path: testInfo.outputPath('product-access-mobile.png'), fullPage: true });
+});
+
+test('Phone access stays functional without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, serviceWorkers: 'block', viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto(`${baseUrl}/summit.html`);
+  await page.locator('.closing > a.primary').click();
+  await expect(page.locator('[data-platform]')).toHaveCount(2);
+  await page.locator('[data-platform="ios"] summary').click();
+  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  expect(new URL(await page.locator('#open-live-app').getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await context.close();
+});
+
+test('Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns', async ({ page }, testInfo) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.clock.install({time:new Date('2026-10-02T14:00:00Z')});
+  const errors=[],privateRequests=[];
+  page.on('pageerror',error=>errors.push(error.message));
+  page.on('request',request=>{if(/\/api\/|\/auth\/|googleapis|facebook|linkedin/.test(request.url()))privateRequests.push(request.url());});
+  if(process.env.SYNERA_TRIANGLE_MUTATION==='keep-votes')await page.route('**/triangle-room.mjs',async route=>{
+    const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace('next.proposal.votes = {};','for (const vote of Object.values(next.proposal.votes)) vote.revision = next.proposal.revision; /* mutation: old answers falsely copied to new scope */')});
+  });
+  await page.goto(`${baseUrl}/triangle.html`);
+  await page.locator('#room-goal').fill('Перший прототип для трьох');
+  for(const [id,name]of [['a','Mara'],['b','Leo'],['c','Noor']])await page.locator(`#name-${id}`).fill(name);
+  await page.locator('#local-understood').check();
+  await page.locator('#room-setup button').click();
+  for(const form of await page.locator('#contributions form').all()){
+    await form.locator('textarea').fill('Зроблю свою частину'); await form.locator('button').click();
+  }
+  await page.locator('#message-body').fill('<img src=x onerror="window.__bad=true"> Приватна ідея');
+  await page.locator('#message-form button').click();
+  await expect(page.locator('#room-messages')).toContainText('<img src=x');
+  expect(await page.locator('#room-messages img').count()).toBe(0);
+  await page.locator('#task-title').fill('Перевірити прототип із клієнтом');
+  await page.locator('#task-form button').click();
+  await page.locator('#ask-l').click();
+  await expect(page.locator('#l-note')).toContainText('відкритий крок');
+  await page.locator('#budget-purpose').fill('Прототип: погодити витрати й права');
+  await page.locator('#budget-form button').click();
+  const vote=async(index,choice)=>{const form=page.locator('.budget-vote').nth(index);await form.locator('select').selectOption(choice);await form.locator('button').click();};
+  await vote(0,'yes'); await vote(1,'yes');
+  await expect(page.locator('#budget-state')).toHaveAttribute('data-state','awaiting_responses');
+  await vote(2,'no');await expect(page.locator('#budget-state')).toHaveAttribute('data-state','declined');
+  await vote(2,'yes');await expect(page.locator('#budget-state')).toHaveAttribute('data-state','unanimous_local_notes');
+  const first=page.locator('#contributions form').first();await first.locator('textarea').fill('Змінив обсяг роботи');await first.locator('button').click();
+  await expect(page.locator('#budget-state')).toHaveAttribute('data-state','awaiting_responses');
+  await expect(page.locator('.budget-vote').first()).toContainText('Відповіді ще немає');
+  await page.locator('#round-seconds').fill('15');await page.locator('#round-agreed').check();await page.locator('#round-form button').click();await page.locator('#round-start').click();
+  await page.clock.fastForward(16000);await expect(page.locator('#round-clock')).toHaveText('0:00');
+  await expect(page.locator('#round-person')).toContainText('Mara');
+  await page.locator('#round-next').click();await expect(page.locator('#round-person')).toContainText('Leo');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#export-room').click();const download=await downloadPromise;
+  const fs=await import('node:fs/promises');const exported=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(exported.goal).toBe('Перший прототип для трьох');expect(exported.binding).toBe(false);expect(exported.messages).toEqual([]);
+  expect(exported.tasks[0].title).toBe('Перевірити прототип із клієнтом');
+  expect(privateRequests).toEqual([]);expect(errors).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
+  await page.screenshot({path:testInfo.outputPath('triangle-mobile.png'),fullPage:true});
+});
+
+test('Opportunity map layers explain complementarity and fair-place proposal uses entered limits, with no provider request', async ({page},testInfo)=>{
+  await page.setViewportSize({width:390,height:844});await page.goto(`${baseUrl}/triangle.html#atlas`);
+  await expect(page.locator('.atlas-marker')).toHaveCount(5);
+  await page.locator('[data-layer="events"]').uncheck();await expect(page.locator('.atlas-marker')).toHaveCount(4);
+  await page.locator('.atlas-marker').filter({hasText:'Noor'}).click();await expect(page.locator('#atlas-detail')).toContainText('Mara');await expect(page.locator('#atlas-detail')).toContainText('Leo');
+  for(const [i,name,times]of [[0,'Місце A Zürich',[2,40,30]],[1,'Місце B Zürich',[20,20,20]],[2,'Місце C Zürich',[15,18,16]]]){
+    await page.locator(`#place-${i}`).fill(name);for(let j=0;j<3;j++)await page.locator(`#minutes-${i}-${j}`).fill(String(times[j]));await page.locator(`#acceptable-${i}`).check();
+  }
+  await page.locator('#place-form button').click();await expect(page.locator('#place-result')).toContainText('Місце C Zürich');
+  const route=new URL(await page.locator('#place-result a').getAttribute('href'));expect(route.searchParams.get('destination')).toBe('Місце C Zürich');expect(route.searchParams.has('origin')).toBe(false);
+  await page.locator('#limit-a').fill('1');await page.locator('#place-form button').click();await expect(page.locator('#place-result')).toHaveAttribute('data-state','no_feasible_place');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
+  await page.screenshot({path:testInfo.outputPath('atlas-mobile.png'),fullPage:true});
+});
+
+test('Free launch displays a hypothetical usage-based map cost and restores existing presentation',async({page},testInfo)=>{
+  await page.goto(`${baseUrl}/triangle.html#launch`);
+  await page.locator('#scenario-members').fill('600');await expect(page.locator('#map-cost')).toContainText('$144.00 USD');
+  await page.locator('#scenario-members').fill('0');await expect(page.locator('#map-cost')).toContainText('$0.00 USD');
+  const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
+  await page.screenshot({path:testInfo.outputPath('launch-desktop.png'),fullPage:true});
+  await page.locator('.studio-heading a').click();await expect(page.locator('#hero-title')).toBeVisible();
+});

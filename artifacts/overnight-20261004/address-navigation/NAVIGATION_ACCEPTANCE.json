@@ -1,0 +1,81 @@
+{
+  "status": "PASS_LOCAL_ADDRESS_NAVIGATION_CLOSURE",
+  "generated_at": "2026-10-04T06:45:22.818Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local private journey to independently agreed address; Chromium plus intercepted Maps navigation, not Google service, SQL/JWT, live people or physical Android",
+  "base_commit": "7d25b0bff0f82359aeb67afe61ec9aa9dfc53461",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "web_launch/summit.test.mjs": "8334f27f483aed97c0f8ea56c0da3e2a8bf78b08575d5ab35701edf11df4c847",
+    "tools/meeting-address-navigation-browser.mjs": "b7cc2928e2921e23e0edbef0b64e97d4a18dd5fe8d3df87b2c47f0d9861f1f36",
+    "tools/meeting-address-navigation-acceptance.mjs": "688de720d3c4c3a0bf465e8bd5df369edea01a7ce8757cd84d47a44ab9e25b02"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "8421f9c4227d0bb09af678cb328f8df6ad1ec861977835f7bf8598e11aac739b",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "artifacts/overnight-20261004/MEETING_ADDRESS_UI.json": "9bab9a8da9b140c2cd308f2a07a82195e3154b10db938d7282ecbc0956f08304",
+    "artifacts/overnight-20261004/MEETING_ADDRESS_BROWSER.json": "49138cfd538d757e19ecb329852ed06a6de32125674f230efe3cd539bda85cf3",
+    "web_launch/dist-neon-address-ui-20261004/release.json": "6901a00118af26312ba8294b9914f9f27ab6261847fd09bad35253a5b6be99b4",
+    "web_launch/dist-neon-address-ui-20261004/_worker.js": "f758979c228ac7d3f139bce09f6d8f77aeeec441fbc8a9756735d7e8d96ca1bb"
+  },
+  "mutation_rejected": true,
+  "mutation_scope": "Only fresh-state comparison branch disabled in browser copy; canonical file unchanged",
+  "reused_browser_by_exact_hashes": false,
+  "checks": {
+    "preserved_accepted_chat": true,
+    "read_does_not_vote": true,
+    "retry_and_proposer_role": true,
+    "explicit_decline": true,
+    "stale_selection_requires_reload": true,
+    "bilateral_selected_address_and_literal_history": true,
+    "navigation_requires_explicit_click": true,
+    "failed_read_does_not_navigate": true,
+    "superseded_selection_stops_navigation": true,
+    "withdrawal_stops_navigation": true,
+    "logout_during_route_read_stops_navigation": true,
+    "exact_destination_after_fresh_reads_without_vote_or_GPS": true,
+    "navigation_after_success_is_current_tab": true,
+    "current_default": true,
+    "no_overflow": {
+      "viewport": 390,
+      "width": 390
+    },
+    "axe_current_atelier_zero_and_opt_in_reversible": true,
+    "closed_flag_keeps_chat": true,
+    "no_private_storage": true,
+    "logout_purges_private_address": true,
+    "late_read_cannot_restore_private_address": true,
+    "preserved_chat_logout": true
+  },
+  "chromium_checks": 21,
+  "intercepted_navigation_attempts": 1,
+  "google_requests_transmitted": 0,
+  "reused_proof": "Exact SQL/API/client source maps; historical UI full-source proofs not claimed current. No PG/unchanged broad tests rerun.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-navigation-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "meeting-address-current-390x844.png": "60b0d844e24d6c4f119430f4b36de1ac9af96975106f7f1b51929ab94f7e00de",
+    "meeting-address-atelier-390x844.png": "3f85307352d40e323e8efd56e3aaea0eaf974a594320f1c2d73158220c8e662d"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-address-navigation-20261004",
+  "release_sha256": "01044381558aa5ba11bff5c28d0ecc18be126676642d3bc24e88f997b531f016",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "live_accounts": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "maps_provider": "NOT_RUN"
+}

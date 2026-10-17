@@ -1,0 +1,27 @@
+{
+  "status": "MUTANT_REJECTED_UNCHANGED_REFRESH_SELECTION_LOSS",
+  "generated_at": "2026-10-05T08:11:56.112Z",
+  "phase": "mutation",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 1,
+  "reused_oracle_sha256": "c0a554649f691909d922cdb354d41067bc32d5985efc2801c62e3b64b2446c5b",
+  "runner_sha256": "f094aaf68af7e78328f8286279aa7a6be7afe668fe08377f2495c8ae575d5ca7",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-05T08:11:49.231Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true
+    },
+    "browser_engine": {
+      "version": "154.0.8037.97",
+      "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+    },
+    "error": "Unchanged refresh destroyed selected private text\n+ actual - expected\n\n+ ''\n- 'Конкретний результат × Zürich 💛 <script>literal</script>'\n"
+  },
+  "source_sha256": "2839ea374172456b2562e14c935a5b1c6390114664520b1f03f35ab3d51d1210"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS_LOCAL_CLIENT",
+  "generated_at": "2026-10-04T02:18:35.554Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local client and synthetic transport; no UI, signed HTTP JWT, live accounts, physical Android or deployed outcome feature",
+  "base_commit": "0e2df438ac59a6d88ff930fe983638d27a4ea2b7",
+  "source_sha256": {
+    "web_launch/neon-store.mjs": "d6545dfb8549c07d02d96457980f126bea0de48ce2c6ac314fc749d91d5190b1",
+    "web_launch/real-journey-client.mjs": "17965366c35e7277e9825df14a202212f48453d3618a327cf8d02246e351fcf3",
+    "web_launch/case-outcome-client.test.mjs": "73cbb7b9306c15a44d3688fb7c0c9acd319f6de12ae60c21bdea90397a72b6be",
+    "web_launch/real-journey-client.test.mjs": "afa26315529f26a9e8a9e705d8f2cb65b2d3c21045effebbedf3233cf026d597",
+    "web_launch/neon-store.test.mjs": "4c9a35504ad9d7cec189b619ad66167a3f34165ef81c241ec9b5f740243c2a07",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/case-outcome-client-acceptance.mjs": "bf1c869bc25017a976a0d7d925a85e81d71fea88c256c784953b22a11069d923"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/dist-neon-real-journey-20261003/release.json": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc",
+    "web_launch/dist-neon-outcomes-api-20261004/release.json": "e71b53046222964167792e1896be4628a4ac7fbbb0a60be1b4505f2091145acf"
+  },
+  "tests": {
+    "command": "node --test web_launch/case-outcome-client.test.mjs web_launch/real-journey-client.test.mjs web_launch/neon-store.test.mjs",
+    "pass": 26,
+    "fail": 0,
+    "skipped": 0
+  },
+  "session_epoch_mutation_rejected": true,
+  "mutation_scope": "Isolated imported source removes epoch comparison only; canonical source files unchanged",
+  "reused_proof": "SQL and API receipts have exact matching recorded source hashes; unchanged suites not rerun",
+  "published": false,
+  "browser_ui": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

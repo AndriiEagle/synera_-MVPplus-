@@ -1,0 +1,13 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T02:39:23.391Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true
+  },
+  "error": "locator.inputValue: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-outcome-cards [data-outcome-index=\"1\"]').locator('[name=evidenceUri]')\u001b[22m\n"
+}

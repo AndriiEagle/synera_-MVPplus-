@@ -1,0 +1,77 @@
+{
+  "status": "PLAN_VALIDATED_WITH_LIMITS",
+  "date": "2026-09-15",
+  "tasks": 19,
+  "dag_check": true,
+  "source_path_check": true,
+  "mutation_rejections": [
+    "cycle",
+    "budget_escape",
+    "missing_dependency"
+  ],
+  "code_baseline": {
+    "commit": "2aa7fae",
+    "node_tests": 140,
+    "exit_code": 0,
+    "new_build_run": false,
+    "browser_run": false,
+    "production_probe": false
+  },
+  "provider": {
+    "calls": 1,
+    "model": "inclusionai/ling-3.0-flash-fin:free",
+    "usd": 0.0,
+    "prompt_tokens": 228,
+    "completion_tokens": 2714,
+    "latency_s": 15.08,
+    "generation_id": "gen-1789439772-6BpvNNIvfnfhzLs50HrT"
+  },
+  "paid": {
+    "authorized_cap_usd": 0.5,
+    "spent_usd": 0,
+    "status": "HOLD_PREFLIGHT_PLAN_SCHEMA_ERRORS"
+  },
+  "artifact_hashes": {
+    "EXECUTION_PLAN.uk.md": "d37d29774b3b8d0a2791c4507d68712f33159ab29b20cfdf42e789b49bed7e01",
+    "TASKS.json": "98f7f009ab0a925511a5a07492bfb924585ea5ff1793f608f75b598c77f5a1b5",
+    "HANDOFF.uk.md": "816f8abc74800932bde31db499c2d88714bd5bcd3aa3f1f27ab9f5cc7e339915",
+    "SYNTHETIC_REVIEW.txt": "40b8a11fb3f3164d2645fca976a302eacc358959cc417e2f9449c118999b54d6",
+    "FREE_REVIEW.json": "11c11073159a33722053bbdbaefec9acaa7c3d71a1e5cd4d2801602657f7c3ef",
+    "FREE_REVIEW.json.receipt.json": "1b5a22ad6f2f1a1ed958cdbc765edec67cd13f3459f94d740db56ed15ff1b337",
+    "LOCAL_REVIEW.json": "2077b17cc7df0b58e6cf817fd5cc008b761a8a89c87b40943dbdebafa5e8fbd3"
+  },
+  "source_hashes": {
+    "neon/case-state.acceptance.sql": "715434272422526e6fb661118d549cae59f4b76c12923af7f4da8f9dc96e2dac",
+    "neon/case-state.migration.sql": "4d9eb257aaba0fa9423226447f4b34c93fb35c4754d6f26b4e7ebfd026d1b360",
+    "neon/worker.mjs": "9099b041022a08e82860760abb723b312d57ff899708ae930b4fc16c4bdd154d",
+    "supabase/case-state.acceptance.sql": "2ef97047c0aa5c500e3ec70f95a13bc80af4edfe364fc379b01a6a8f356e3531",
+    "supabase/case-state.proposal.sql": "8dda78ce69e2b16d8ef8a3a17afe10e0c67fb72ac577f9e0281e8ffb7a636220",
+    "web_launch/app.mjs": "88701c022c07ecd4406a8ca4ce06bafefc861214d54133d633eb6691e1b039d3",
+    "web_launch/build.mjs": "4f9145ddcb85ed1bd33acae671bd62eab5b980f1285ca7536f75205f29f1c097",
+    "web_launch/business-case.mjs": "963cf8be61750b48841c46be77efa361423b4d081ebbd299725b1de9186c4e40",
+    "web_launch/business-case.test.mjs": "5e7f5031007ee738e3c18eddfa96e916e55b7feee42b59fc3c0b61f78a6eec64",
+    "web_launch/calendar.mjs": "1600cd51fa5513404d010db26c66e89794d3d89fdcea9e83ae8032fd6b19f120",
+    "web_launch/chatgpt-transfer.mjs": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40",
+    "web_launch/data.mjs": "52e735b9f12cf21ec31263153c18e0052785cf8947fab9ffad0eb69eefc9406c",
+    "web_launch/economics.mjs": "adaa81bd0d219d1fc9d0435773020bcf5c676157c2d655ae01fb7923d30b1c16",
+    "web_launch/economics.test.mjs": "2b4bc30a599ede62af90c039673ec6b7c8e275a21ca3f9ee6d6666632f774a4d",
+    "web_launch/index.html": "cd3f7350d60b1d503e0bbb9a004577e3308c160caed0cf62fbb26a63218f43e4",
+    "web_launch/legal.html": "9f957770ef73a821ac9593200718c1ec246d10713b21d8df3fda155696e3cb6c",
+    "web_launch/matching.mjs": "848ff01c407a883674ddd6f12ad20202aaa7bca983bf15c406a9a1ee4e306f3c",
+    "web_launch/matching.test.mjs": "fe63ddcbd2e7e19d74fd7cb3b79ef7b6beed2821b5487b9268df10c3e3a8a90e",
+    "web_launch/mobile-pilot.test.mjs": "50cdecc34ec51a09291d5ee51e79900ee8fd923f6efdfb71a9b4fc7f3ea2495c",
+    "web_launch/profile-import.mjs": "a9c034adad45f97eb2b92ea66528a5d0e4dcc808a7732d012a938d9afeb39e4b",
+    "web_launch/profile-import.test.mjs": "0273060ca60c5be54fb113cbae465f3857be9487fc735a92f0971c176e1b9319",
+    "web_launch/profile-portability.mjs": "75bbc8c5c7825e7f6d014facf7ae602c534e99b838e9d892f9363b02a0521c2d",
+    "web_launch/profile-store.mjs": "64308ea8bda66059a4dcff517dfd855f5c4ef8426842094d53d270579db441d6",
+    "web_launch/real-pilot.test.mjs": "2ebc182a02ca1201985b27e38a2cbd6c1d7d31c3cb96c33a0e6ff8b6570bb917",
+    "web_launch/style.css": "0cabe0f1edccbce837e7589ef096801b214f7829f3304a0e88ef36b86844860f"
+  },
+  "limitations": [
+    "Original transcript not re-read; prior extracted specification used",
+    "Provider test proposals partially rejected",
+    "No implementation, new build, browser acceptance, DB migration, deployment or human pilot in this turn",
+    "No measured subscription savings",
+    "Old model plans remain unchanged; paid gate not repaired"
+  ]
+}

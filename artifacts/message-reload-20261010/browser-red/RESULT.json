@@ -1,0 +1,18 @@
+{
+  "status": "NOT_ACCEPTED",
+  "scope": "Desktop browser with synthetic Auth/Data fixture, real same-tab reload and explicit clicks. Not SQL/JWT/live accounts/physical phones.",
+  "candidate": "dist-neon-opus-pass3-webkit-20261010",
+  "release_sha256": "a80d403432041784e5ea868d055f127e91eb32565923de9b90dd3d2833a9d740",
+  "engine": "webkit",
+  "checks": [],
+  "errors": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "engine_version": "26.6",
+  "failure": {
+    "message": "Reload + manual retry duplicated an already committed message\n\n2 !== 1\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Reload + manual retry duplicated an already committed message\n\n2 !== 1\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/message-reload-browser.mjs:68:30"
+  },
+  "messages_stored": 2,
+  "explicit_posts": 2
+}

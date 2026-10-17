@@ -1,0 +1,78 @@
+{
+  "scope": "Desktop browser, two sign-ins, synthetic Auth/Data fixture through the real gateway code. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-final-20261011",
+  "releaseHash": "81265d06447063f62ce61ecdf0cd787c078d7513e21606f9b549bb7309346a0e",
+  "engine": {
+    "name": "chromium",
+    "version": "154.0.8037.98"
+  },
+  "facts": {
+    "sameTermsHashInBothSignIns": true,
+    "hash": "SHA-256: 6f532035",
+    "confirmationsSeenByEach": [
+      1,
+      1
+    ],
+    "inviteStillOff": true,
+    "serverCases": 0,
+    "serverApprovals": 0,
+    "serverWrites": 0
+  },
+  "checks": [
+    {
+      "name": "both people confirmed the same terms, each in their own sign-in",
+      "pass": true,
+      "detail": "SHA-256: 6f532035"
+    },
+    {
+      "name": "neither sees the other's confirmation; nothing reached the server; the button stays off",
+      "pass": true,
+      "detail": {
+        "sameTermsHashInBothSignIns": true,
+        "hash": "SHA-256: 6f532035",
+        "confirmationsSeenByEach": [
+          1,
+          1
+        ],
+        "inviteStillOff": true,
+        "serverCases": 0,
+        "serverApprovals": 0,
+        "serverWrites": 0
+      }
+    },
+    {
+      "name": "the card links to the two-person page",
+      "pass": true,
+      "detail": {
+        "text": "Відкрити спільні умови ↗",
+        "visible": true
+      }
+    },
+    {
+      "name": "the card does not promise that this button opens after both confirm here",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "the link opens the two-person page, signed in",
+      "pass": true
+    },
+    {
+      "name": "German: the card links to the two-person page with a German label",
+      "pass": true,
+      "detail": {
+        "text": "Gemeinsame Bedingungen öffnen ↗",
+        "visible": true
+      }
+    },
+    {
+      "name": "German: no Ukrainian text in the card",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "PASS_DESKTOP_CHROMIUM_SYNTHETIC"
+}

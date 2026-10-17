@@ -1,0 +1,9 @@
+{
+  "intentional_mutation": true,
+  "candidate": "web_launch\\dist-neon-opus-pass4-link-mutant-20261011",
+  "base_candidate": "web_launch\\dist-neon-opus-pass4-final-20261011",
+  "defect": "omit explicit language from real-journey links; retain legal link handling",
+  "mutated_asset_sha256": "6282022a82df16e29fa75e68e1d58172ce09b0fe0cfe25b2c38db4079db7b7bf",
+  "base_release_metadata_is_not_acceptance": true,
+  "published": false
+}

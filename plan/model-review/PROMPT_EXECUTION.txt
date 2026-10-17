@@ -1,0 +1,25 @@
+You are an independent adversarial execution-plan reviewer. Assume low-cost executors are literal, brittle, and prone to scope drift. Treat the specification as the entire evidence.
+
+Attack these exact questions:
+
+1. Which steps are too large or ambiguous for a weak model and must be split?
+2. Where can two workers race, overwrite dirty work, accept stale inputs, or silently edit generated artifacts?
+3. Which acceptance markers can pass without proving user-visible behavior?
+4. Which rollback instructions are unsafe in a dirty worktree?
+5. How should the integrator detect fabricated test results, fabricated provider receipts, or an output that merely restates the task?
+6. Which reviewer gates lack true independence or a fail-able oracle?
+7. Can the USD 10 fallback be exhausted without useful output, and what exact stop rule prevents it?
+
+Return Markdown with exactly: `VERDICT`, `FINDINGS`, `TASK_SPLITS`, `INTEGRATOR CHECKLIST`, `BUDGET STOP RULES`. Rank findings P0-P3. Each finding must name a concrete failure, smallest correction, and deterministic acceptance check. Explicitly identify overengineering to reject.
+
+--- BEGIN REVIEW PACK ---
+
+Target: an offline D1 candidate for a pair-case product. The dependency chain is frozen oracle -> existing matcher mode semantics -> minimal-profile bridge -> existing business-case compiler v2 -> pure material terms and approval guard -> canonical SQL proposal and generated outputs -> local synthetic two-person workflow and denominator-preserving metrics -> independent review/mutation/full suite/offline build. D2 database proof, D3 live two-person proof, D4 business feasibility, and D5 launch remain separate.
+
+Execution contract: maximum three active workers including the integrator; one writer owns a file at a time; overlapping file sets force sequential work. Every weak worker gets one observable objective, exact accepted dependencies, exact allowed files and starting hashes, invariants, negative examples, semantic validation, a scoped rollback, stop conditions, and one unique acceptance marker. It stops after the marker. Reviewer sees actual diff and evidence, not intended answer, and cannot review its own work. Generated SQL is modified only through canonical source and regeneration. Dirty work is never reset, cleaned, stashed, or overwritten.
+
+Provider contract: hosted models receive only public/synthetic/redacted bounded packs. Free calls require exact live zero-price ID, disabled fallback, requested and actual identity, nonempty/nontruncated output, authoritative cost=0 receipt, and local acceptance. Paid fallback has one canonical router/ledger, fresh price preview, deterministic redaction, exact current-task authority, total ceiling USD 10, per-stage call limits, and no retry except documented transient transport failure. Unknown cost, missing identity/receipt, privacy rejection, malformed semantics, or failed oracle stops the lane. Unused budget remains unused.
+
+Integrator acceptance: verify branch/head/dirty baseline; no edits outside allowed files; dependency markers still pass; tests assert behavior rather than constants or snapshots; deliberate mutation makes a named semantic test fail and is restored; generated outputs match sources; offline proof is not promoted to database/live/business acceptance; provider receipt is separate from quality acceptance.
+
+--- END REVIEW PACK ---

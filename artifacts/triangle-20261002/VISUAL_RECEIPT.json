@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "surface": "local Chromium",
+  "physicalAndroid": false,
+  "physicalIPhone": false,
+  "screenshots": [
+    "triangle-mobile-top.png",
+    "atlas-mobile-view.png",
+    "triangle-desktop.png"
+  ],
+  "reducedMotion": true
+}

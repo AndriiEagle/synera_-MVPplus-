@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED_HARNESS_ARTIFACT_COLLISION",
+  "mismatched_download_receipts": 7,
+  "cause": "Mutation reused the successful run download paths",
+  "correction": "Keep mutant downloads in a separate owned subdirectory and repeat affected gates",
+  "product_changed": false
+}

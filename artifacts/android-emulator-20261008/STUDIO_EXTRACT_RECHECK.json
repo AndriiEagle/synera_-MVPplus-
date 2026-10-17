@@ -1,0 +1,18 @@
+{
+  "status": "SELECTED_EXTRACTED_FILES_MATCH_ARCHIVE",
+  "fullTreeChecked": false,
+  "rows": [
+    {
+      "relative": "android-studio/bin/studio64.exe",
+      "bytes": 710296,
+      "sha256": "41a55f234732de38edf9729e5bb451331a6509798a9b8c27bf304aeda87977dd",
+      "matchesArchive": true
+    },
+    {
+      "relative": "android-studio/jbr/bin/java.exe",
+      "bytes": 33432,
+      "sha256": "6c9f6c4cccc653385f592b8e44d910f75b8c6a55b79f72780f011128a8c5c7d3",
+      "matchesArchive": true
+    }
+  ]
+}

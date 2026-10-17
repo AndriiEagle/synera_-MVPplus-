@@ -11,7 +11,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class TextToTextJsonProfileCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? userRecordingTranscript =
         'Having spent a year in Zurich, I still feel new to the city. I\'m interested in discovering dynamic groups or communities where I can engage with locals and expatriates alike. What are some recommended ways to connect with people in Zurich, and how do Swiss people typically enjoy their leisure time',
     String? twelveSphereExplanation =
@@ -71,7 +71,7 @@ class TextToTextJsonProfileCall {
 
 class SpeeechToTextCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     FFUploadedFile? audioFile,
   }) async {
     return ApiManager.instance.makeApiCall(
@@ -98,7 +98,7 @@ class SpeeechToTextCall {
 
 class TextToTextJsonDiaryCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? transkript =
         'I\'ve been dedicating a lot of time to my career lately, working on a big project that could lead to a promotion. It\'s been challenging to maintain a good work-life balance, and I haven\'t had much time for leisure activities like going to the gym or hanging out with friends. I\'m starting to feel the effects on my emotional well-being, as I\'m more stressed and anxious than usual. I know I need to make some changes to prioritize my mental health, even if it means scaling back on work a bit.',
   }) async {
@@ -216,7 +216,7 @@ class FuncForDiariesForLoggedUserCall {
 
 class AiMatchBetaCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? user1About = 'I\'m dino and I love programming. I love AI.',
     String? user2About =
         'I\'m Andray and I\'m AI addicted. And I love sturtapps, one day I wont to have my own',
@@ -274,7 +274,7 @@ class AiMatchBetaCall {
 
 class AiMatchBetaOriginalCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? user1About = 'I\'m dino and I love programming. I love AI.',
     String? user2About =
         'I\'m Andray and I\'m AI addicted. And I love sturtapps, one day I wont to have my own',
@@ -335,7 +335,7 @@ class AiMatchBetaOriginalCall {
 
 class DiaryNoteGeneratorJsonCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? context =
         'Today was a mix of productivity and challenges. I started my morning with a team meeting at work where we discussed the upcoming project deadlines. I\'m feeling a bit overwhelmed with the workload, but I\'m determined to meet our goals. After work, I went to the gym for a quick workout. I\'ve been trying to stick to my fitness routine, but it\'s been tough with the busy schedule. In the evening, I helped my daughter with her math homework. She\'s struggling with fractions, so we spent extra time on that. It\'s rewarding to see her progress, even if it\'s slow. I\'ve been thinking about taking an online course in digital marketing. It\'s not directly related to my current job, but I feel it could open up new opportunities in the future. I need to research some options this weekend. I\'m also a bit worried about my finances. I\'ve been meaning to set up a meeting with a financial advisor to discuss saving for retirement and possibly investing in stocks. It\'s something I\'ve been putting off, but I know it\'s important. Before bed, I spent some time meditating. It helps me unwind and clear my mind after a busy day. I\'m still new to it, but I can already feel the benefits in terms of reduced stress and better sleep.',
   }) async {
@@ -389,7 +389,7 @@ class DiaryNoteGeneratorJsonCall {
 
 class TextToTextAboutMeCall {
   static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
+    String? apiKeyAuth = 'REMOVED_USE_SERVER_SIDE_AUTH',
     String? userRecording =
         'Hello, I\'m Dino, a student from Switzerland with a growing passion for artificial intelligence and machine learning. My journey began with self-taught web development, which has evolved into an enthusiasm for AI technologies. Currently, I\'m pursuing a degree in Applied Artificial Intelligence at IU University of Applied Sciences to deepen my knowledge in this exciting field.  Skills & Interests:  💻 Web Development: Django, React, HTML, CSS, Bootstrap, Git 👨‍💻 Programming Languages: Python, JavaScript 🤖 AI/ML: Basic understanding of machine learning concepts, algorithms, and frameworks like scikit-learn 📊 Data: Fundamentals of SQL and data manipulation with Python (NumPy, Pandas, Matplotlib) 🛠 Low-Code Tools: FlutterFlow for rapid app development, Firebase for backend services  Current Focus:  I\'m in the early stages of my AI/ML journey, actively learning:  - Core machine learning algorithms and their applications - Python libraries for data analysis, machine learning and deep learning - Exploring the potential of agentic workflow with Large Language Models (LLMs)   I\'m open for collaboration and always on the lookout for new learning opportunities. Let\'s connect!',
   }) async {

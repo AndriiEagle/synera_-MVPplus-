@@ -1,0 +1,300 @@
+import { consentRecord, POLICY_VERSION } from './pilot-policy.mjs';
+import { normalizeBrief, briefProblems } from './profile-brief.mjs';
+import { profileSafetyFindings } from './profile-portability.mjs';
+
+const CASE_ATTESTATION = 'ACKNOWLEDGED_FOR_NEXT_STEP_NOT_A_CONTRACT';
+const CASE_SELECT = 'case_id,participant_low,participant_high,mode,material,terms_hash,version,status,expires_at,closed_at,created_at,updated_at';
+const APPROVAL_SELECT = 'party_id,approved_version,approved_terms_hash,approved_at,withdrawn_at';
+const canonicalInstant = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) ? new Date(value).toISOString() : null;
+
+function latestInstant(...values) {
+  return values.filter(value => typeof value === 'string' && Number.isFinite(Date.parse(value)))
+    .sort((left, right) => Date.parse(right) - Date.parse(left))[0] ?? null;
+}
+
+function caseFromRows(row, approvalRows = []) {
+  if (!row) return null;
+  const participants = [row.participant_low, row.participant_high];
+  const closed = row.status === 'revoked' || row.status === 'abandoned';
+  const approvals = {};
+  for (const approval of closed ? [] : approvalRows) {
+    if (approval.withdrawn_at || !participants.includes(approval.party_id)) continue;
+    if (approval.approved_version !== row.version || approval.approved_terms_hash !== row.terms_hash) continue;
+    approvals[approval.party_id] = {
+      partyId: approval.party_id,
+      version: approval.approved_version,
+      termsHash: approval.approved_terms_hash,
+      approvedAt: canonicalInstant(approval.approved_at),
+      attestation: CASE_ATTESTATION,
+    };
+  }
+  const status = closed ? row.status : participants.every(id => approvals[id]) ? 'approved_for_next_step'
+    : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
+  const updatedAt = canonicalInstant(latestInstant(row.updated_at, ...Object.values(approvals).map(value => value.approvedAt)) ?? row.created_at);
+  return {
+    schema: 'synera.case-state.v1', caseId: row.case_id, participants, version: row.version,
+    material: row.material, termsHash: row.terms_hash, status, approvals, binding: false,
+    approvalAttestation: CASE_ATTESTATION, createdAt: canonicalInstant(row.created_at), updatedAt, expiresAt: canonicalInstant(row.expires_at),
+    closedBy: null, closedAt: canonicalInstant(row.closed_at), closeReason: closed ? row.status : null,
+    timeAuthority: 'server_assigned_c1', events: [],
+  };
+}
+export function validateProfile(p) {
+  for (const [key, max] of [['display_name', 60], ['city', 80], ['offers', 300], ['seeks', 300]]) {
+    if (typeof p[key] !== 'string' || p[key].trim().length > max) throw new Error('Некоректний профіль');
+  }
+  if (!p.display_name.trim() || typeof p.is_discoverable !== 'boolean') throw new Error('Некоректний профіль');
+}
+
+export class ServiceError extends Error {
+  constructor(status, code) {
+    const messages = {
+      400: 'Перевір email і дані входу. Код або посилання підтвердження могли застаріти.',
+      401: 'Сесію завершено. Увійди ще раз.',
+      402: 'Онлайн-сервіс тимчасово недоступний через обмеження хостингу. Власник уже має інформацію для відновлення.',
+      403: 'Недостатньо прав для цієї дії.',
+      409: 'Такий запит уже існує. Відкрий розділ «Зустрічі».',
+      422: 'Перевір введені дані.',
+      429: 'Забагато спроб. Зачекай кілька хвилин перед наступною.',
+    };
+    const authMessages = {
+      otp_invalid: 'Код неправильний або вже використаний. Перевір останній лист або натисни «Надіслати код знову».',
+      otp_verification_unavailable: 'Не вдалося перевірити код через з’єднання. Спробуй підтвердити ще раз.',
+      otp_delivery_unavailable: 'Не вдалося надіслати лист. Зачекай хвилину й повтори спробу.',
+      session_cookie_unavailable: 'Email підтверджено, але зберегти вхід не вдалося. Потрібен новий код. Якщо помилка повториться, повідом оператору: AUTH-COOKIE.',
+      session_token_unavailable: 'Вхід підтверджено, але доступ до профілю ще не отримано. Спробуй продовжити вхід. Код помилки: AUTH-TOKEN.',
+      session_unavailable: 'Не вдалося відновити з’єднання з акаунтом. Спробуй ще раз.',
+      profile_delete_conflict: "Профіль не видалено: сервер відхилив видалення. Збережи приватний експорт у «Приватність» і звернися до оператора через «Правила та приватність».",
+      data_unavailable: 'Не вдалося завантажити або зберегти дані. Повтори дію; введені поля залишаються у формі.',
+    };
+    super((code === 'otp_invalid' || (status === 409 && code === 'profile_delete_conflict') || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    this.name = 'ServiceError'; this.status = status; this.code = Object.hasOwn(authMessages, code) ? code : undefined;
+  }
+}
+
+// Shared profile and meeting contract; providers implement authentication and _send.
+export class ProfileStore {
+  requireUser() { if (!this.user) throw new Error('Потрібен вхід'); return this.user.id; }
+  async hasPolicy() {
+    if (!this.pilotSafetyEnabled) return false;
+    const rows = await this._send(`/rest/v1/pilot_consents?user_id=eq.${encodeURIComponent(this.requireUser())}&policy_version=eq.${POLICY_VERSION}&select=policy_version&limit=1`, { authenticated: true });
+    return rows.length === 1;
+  }
+  async acceptPolicy(value) {
+    if (!this.pilotSafetyEnabled) throw new Error('Серверне підтвердження правил ще не підключене.');
+    const accepted = consentRecord(value);
+    await this._send('/rest/v1/pilot_consents', { method: 'POST', authenticated: true, prefer: 'return=minimal',
+      body: { user_id: this.requireUser(), policy_version: accepted.policy_version, terms_accepted: true, privacy_acknowledged: true } });
+  }
+  async ownProfile() {
+    const id = this.requireUser();
+    const rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(id)}&select=${this.profileColumns}`, { authenticated: true });
+    return rows[0] ?? { id, display_name: '', city: '', offers: '', seeks: '', is_discoverable: false, brief: normalizeBrief(), map_visible: false };
+  }
+  get profileColumns() { return 'id,display_name,city,offers,seeks,is_discoverable' + (this.realPilotEnabled ? ',brief,map_visible,updated_at' : ''); }
+  async saveProfile(profile) {
+    validateProfile(profile);
+    if (profileSafetyFindings(profile).length || profileSafetyFindings({ offers: profile.brief?.goal }).length) throw new Error('Прибери контакти, ключі та приватні дані з картки профілю.');
+    const { display_name, city, offers, seeks, is_discoverable } = profile;
+    const extra = this.realPilotEnabled ? { brief: normalizeBrief(profile.brief), map_visible: profile.map_visible === true && is_discoverable } : {};
+    if (this.realPilotEnabled && is_discoverable && briefProblems(extra.brief).length) throw new Error('Перед публікацією заповни умови співпраці: ' + briefProblems(extra.brief).join('; '));
+    await this._send('/rest/v1/profiles?on_conflict=id', { method: 'POST', authenticated: true,
+      prefer: 'resolution=merge-duplicates,return=minimal', body: { id: this.requireUser(), display_name, city, offers, seeks, is_discoverable, ...extra } });
+  }
+  async discover({ offset = 0 } = {}) {
+    if (!Number.isInteger(offset) || offset < 0 || offset > 10000) throw new Error('Некоректна сторінка');
+    return this._send(`/rest/v1/profiles?is_discoverable=eq.true&id=neq.${encodeURIComponent(this.requireUser())}&select=${this.profileColumns}&order=id.asc&limit=50&offset=${offset}`, { authenticated: true });
+  }
+  async meetings() {
+    this.requireUser();
+    return this._send('/rest/v1/meeting_requests?select=id,sender_id,recipient_id,note,status,created_at' + (this.realPilotEnabled ? ',proposed_at,duration_minutes,meeting_place,sender_name,recipient_name' : '') + (this.liveLocationEnabled ? ',meeting_address' : '') + '&order=created_at.desc&limit=100', { authenticated: true });
+  }
+  async invite(recipient, note, plan = {}) {
+    if (!note.trim() || note.length > 500 || recipient === this.requireUser()) throw new Error('Некоректний запит');
+    const extra = {};
+    if (this.realPilotEnabled) {
+      if (!Number.isFinite(Date.parse(plan.proposed_at)) || Date.parse(plan.proposed_at) <= Date.now() || Date.parse(plan.proposed_at) > Date.now() + 90 * 86400000) throw new Error('Обери час у наступні 90 днів.');
+      if (![20, 30, 60].includes(plan.duration_minutes) || !['Онлайн', 'Zürich', 'Winterthur', 'Zug', 'Basel', 'Bern'].includes(plan.meeting_place)) throw new Error('Обери тривалість і місце.');
+      Object.assign(extra, { proposed_at: new Date(plan.proposed_at).toISOString(), duration_minutes: plan.duration_minutes, meeting_place: plan.meeting_place });
+    }
+    await this._send('/rest/v1/meeting_requests', { method: 'POST', authenticated: true, prefer: 'return=minimal',
+      body: { sender_id: this.requireUser(), recipient_id: recipient, note: note.trim(), ...extra } });
+  }
+  async respond(id, status) {
+    if (!['accepted', 'declined'].includes(status)) throw new Error('Некоректний статус');
+    const rows = await this._send(`/rest/v1/meeting_requests?id=eq.${encodeURIComponent(id)}&status=eq.pending`, {
+      method: 'PATCH', authenticated: true, prefer: 'return=representation', body: { status } });
+    if (rows.length !== 1) throw new Error('Запит недоступний');
+  }
+  requireRealPilot() { this.requireUser(); if (!this.realPilotEnabled) throw new Error('Ця дія стане доступною після оновлення сервера пілоту.'); }
+  async cancelMeeting(id) {
+    this.requireRealPilot();
+    const rows = await this._send(`/rest/v1/meeting_requests?id=eq.${encodeURIComponent(id)}&sender_id=eq.${encodeURIComponent(this.requireUser())}&status=in.(pending,accepted)`, { method: 'PATCH', authenticated: true, prefer: 'return=representation', body: { status: 'cancelled' } });
+    if (rows.length !== 1) throw new Error('Запит уже змінено або недоступний.');
+  }
+  async messages(meetingId) {
+    this.requireRealPilot();
+    return this._send(`/rest/v1/meeting_messages?meeting_id=eq.${encodeURIComponent(meetingId)}&select=id,sender_id,body,created_at&order=created_at.desc&limit=100`, { authenticated: true });
+  }
+  async sendMessage(meetingId, body) {
+    this.requireRealPilot();
+    if (typeof body !== 'string' || !body.trim() || body.length > 1000) throw new Error('Повідомлення має містити 1–1000 символів.');
+    await this._send('/rest/v1/meeting_messages', { method: 'POST', authenticated: true, body: { meeting_id: meetingId, sender_id: this.requireUser(), body: body.trim() } });
+  }
+  async blocks() { this.requireRealPilot(); return this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&select=blocked_id,created_at&order=created_at.desc`, { authenticated: true }); }
+  async block(id) { this.requireRealPilot(); if (id === this.requireUser()) throw new Error('Некоректне блокування'); await this._send('/rest/v1/profile_blocks', { method: 'POST', authenticated: true, body: { blocker_id: this.requireUser(), blocked_id: id }, prefer: 'resolution=ignore-duplicates,return=minimal' }); }
+  async unblock(id) { this.requireRealPilot(); await this._send(`/rest/v1/profile_blocks?blocker_id=eq.${encodeURIComponent(this.requireUser())}&blocked_id=eq.${encodeURIComponent(id)}`, { method: 'DELETE', authenticated: true }); }
+  async report(id, reason, detail) {
+    this.requireRealPilot();
+    if (!['spam', 'impersonation', 'harassment', 'other'].includes(reason) || typeof detail !== 'string' || detail.length > 500 || id === this.requireUser()) throw new Error('Некоректна скарга');
+    await this._send('/rest/v1/profile_reports', { method: 'POST', authenticated: true, body: { reporter_id: this.requireUser(), reported_id: id, reason, detail: detail.trim() } });
+  }
+  async deleteProfile() {
+    this.requireRealPilot();
+    let rows;
+    try {
+      rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
+    } catch (error) {
+      // A profile deletion conflict must not look like a duplicate meeting invitation.
+      // Preserve all data and the session; only the operator can resolve retention.
+      if (error instanceof ServiceError && error.status === 409) throw new ServiceError(409, 'profile_delete_conflict');
+      throw error;
+    }
+    if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
+  }
+  // SYN_CASE_STORE_MATCHES_SQL: the client writes the normalized SQL columns, never a
+  // JSON state blob. caseState reconstructs the domain state from match_cases plus the
+  // caller-visible match_case_approvals rows; the server owns version and timestamps.
+  // SYN_OWN_APPROVAL_ONLY: a caller writes only its own approval. Every other party's
+  // approval is re-read from the stored row and kept only while it still matches the
+  // version and terms hash being written; the status is derived here and never taken
+  // from the payload. This removes the client-side path that let one party record the
+  // other party's approval. It is defence in depth, not the authority: the server-side
+  // gate (match_case_approvals + RLS in supabase/case-state.proposal.sql) is still
+  // labelled PRESENT_BUT_UNTESTED in bible/STATUS.md and remains the real enforcement.
+  async saveCaseState(state) {
+    this.requireRealPilot();
+    const me = this.requireUser();
+    const CASE_KEYS = ['schema', 'caseId', 'participants', 'version', 'material', 'termsHash', 'status', 'approvals', 'binding', 'approvalAttestation', 'createdAt', 'updatedAt', 'expiresAt', 'closedBy', 'closedAt', 'closeReason', 'timeAuthority', 'events'];
+    const validId = value => typeof value === 'string' && value.length >= 1 && value.length <= 64 && /^[A-Za-z0-9_:-]+$/.test(value);
+    if (!state || state.schema !== 'synera.case-state.v1' || !validId(state.caseId) || !Array.isArray(state.participants) || state.participants.length !== 2 || state.participants.some(id => !validId(id)) || !Number.isSafeInteger(state.version) || state.version < 1 || !/^[a-f0-9]{64}$/.test(state.termsHash ?? '') || !state.approvals || typeof state.approvals !== 'object' || Array.isArray(state.approvals) || !Array.isArray(state.events)) throw new Error('Некоректний стан кейсу');
+    // P1-6: material і expiresAt раніше не валідувались — зіпсований вхід давав сирий
+    // TypeError на clean.material.mode або NOT NULL-відхилення SQL замість зрозумілої помилки.
+    if (!state.material || typeof state.material !== 'object' || Array.isArray(state.material)
+      || typeof state.material.mode !== 'string' || !['exchange', 'paid_service', 'referral', 'hybrid'].includes(state.material.mode)
+      || new TextEncoder().encode(JSON.stringify(state.material)).length > 16384) throw new Error('Некоректний матеріал кейсу');
+    if (typeof state.expiresAt !== 'string' || !Number.isFinite(Date.parse(state.expiresAt))) throw new Error('Некоректний термін кейсу');
+    const clean = {};
+    for (const key of CASE_KEYS) if (Object.hasOwn(state, key)) clean[key] = state[key];
+    clean.schema = 'synera.case-state.v1';
+    const stored = await this.caseState(clean.caseId);
+    if (stored) {
+      const same = Array.isArray(stored.participants) && stored.participants.length === clean.participants.length
+        && stored.participants.every((id, index) => id === clean.participants[index]);
+      if (!same) throw new Error('Учасники кейсу не можуть змінитися');
+      if (Number.isSafeInteger(stored.version) && clean.version < stored.version) throw new Error('Версія кейсу не може йти назад');
+      if (clean.termsHash !== stored.termsHash && clean.version !== stored.version + 1) {
+        const error = new Error('Ця редакція вже змінилася. Онови умови перед новою правкою.');
+        error.status = 409; error.code = 'STALE_CASE_RELOAD_REQUIRED'; throw error;
+      }
+    }
+    const closed = ['revoked', 'abandoned'].includes(clean.status);
+    if (closed && clean.closedBy !== me) throw new Error('Кейс закривається лише стороною, яка це робить');
+    const approvals = {};
+    if (!closed) {
+      for (const id of clean.participants) {
+        const candidate = id === me ? clean.approvals?.[id] : stored?.approvals?.[id];
+        if (!candidate || typeof candidate !== 'object' || candidate.partyId !== id) continue;
+        if (candidate.version !== clean.version || candidate.termsHash !== clean.termsHash) continue;
+        approvals[id] = candidate;
+      }
+      clean.status = clean.participants.every(id => approvals[id]) ? 'approved_for_next_step'
+        : Object.keys(approvals).length ? 'awaiting_approval' : 'draft';
+    }
+    clean.approvals = approvals;
+    // B2/P0-2: розділення шляхів запису під реальні гранти SQL. INSERT-грант покриває
+    // (case_id, participant_low, participant_high, mode, material, terms_hash, expires_at),
+    // UPDATE-грант — лише (mode, material, terms_hash, status, expires_at). Уpsert
+    // merge-duplicates з participant_* на наявному рядку робив би UPDATE цих колонок
+    // і падав би 42501 insufficient_privilege на живій базі, тому:
+    //  - нового кейсу немає -> POST insert-only;
+    //  - кейс існує -> PATCH лише грантованих колонок; закриття шле тільки status
+    //    (тригер synera_case_guard сам заморожує mode/material/terms_hash/version).
+    if (stored) {
+      const updateBody = closed
+        ? { status: clean.status }
+        : { mode: clean.material.mode, material: clean.material, terms_hash: clean.termsHash, expires_at: clean.expiresAt };
+      const written = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(clean.caseId)}&version=eq.${stored.version}&terms_hash=eq.${stored.termsHash}&status=eq.open`, {
+        method: 'PATCH', authenticated: true, prefer: 'return=representation', body: updateBody,
+      });
+      if (!Array.isArray(written) || written.length !== 1) {
+        const error = new Error('Умови змінилися під час запису. Онови й перечитай поточну версію.');
+        error.status = 409; error.code = 'STALE_CASE_RELOAD_REQUIRED'; throw error;
+      }
+    } else {
+      const [participant_low, participant_high] = [...clean.participants].sort();
+      await this._send('/rest/v1/match_cases', {
+        method: 'POST', authenticated: true, prefer: 'return=minimal',
+        body: {
+          case_id: clean.caseId, participant_low, participant_high,
+          mode: clean.material.mode, material: clean.material,
+          terms_hash: clean.termsHash, expires_at: clean.expiresAt,
+        },
+      });
+    }
+    // V6-03: власне погодження пишеться окремим рядком у match_case_approvals, щоб серверний
+    // RLS міг заборонити запис чужого погодження. Клієнт пише лише власний рядок; порядок
+    // (спершу match_cases) збережено, щоб один POST не змішувався з іншим у споживачів.
+    const previousOwnApproval = stored?.approvals?.[me];
+    if (approvals[me] && (previousOwnApproval?.version !== approvals[me].version || previousOwnApproval?.termsHash !== approvals[me].termsHash)) {
+      await this._send('/rest/v1/match_case_approvals', {
+        method: 'POST',
+        authenticated: true,
+        prefer: 'resolution=merge-duplicates,return=minimal',
+        body: {
+          case_id: clean.caseId,
+          party_id: me,
+          approved_version: approvals[me].version,
+          approved_terms_hash: approvals[me].termsHash,
+        },
+      });
+    } else if (!approvals[me] && previousOwnApproval) {
+      // P1-5: withdrawn_at — серверна власність (synera_approval_guard перезаписує через now());
+      // клієнт лише позначає намір, тому шле власний момент, а не похідний стан кейсу.
+      await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(clean.caseId)}&party_id=eq.${encodeURIComponent(me)}&withdrawn_at=is.null`, {
+        method: 'PATCH', authenticated: true, prefer: 'return=minimal', body: { withdrawn_at: new Date().toISOString() },
+      });
+    }
+  }
+  async caseState(caseId) {
+    this.requireRealPilot();
+    if (typeof caseId !== 'string' || !caseId || caseId.length > 64 || !/^[A-Za-z0-9_:-]+$/.test(caseId)) throw new Error('Некоректний ID кейсу');
+    const rows = await this._send(`/rest/v1/match_cases?case_id=eq.${encodeURIComponent(caseId)}&select=${CASE_SELECT}&limit=1`, { authenticated: true });
+    if (!rows?.[0]) return null;
+    // P0-3: спершу найновіші й лише живі погодження. Asc+limit обрізав саме поточні
+    // погодження, щойно історія перевищувала 100 рядків (2 за ревізію), і кейс
+    // реконструювався як 'draft', хоча обидві сторони погодили.
+    const approvalRows = await this._send(`/rest/v1/match_case_approvals?case_id=eq.${encodeURIComponent(caseId)}&withdrawn_at=is.null&select=${APPROVAL_SELECT}&order=approved_at.desc&limit=100`, { authenticated: true });
+    return caseFromRows(rows[0], approvalRows);
+  }
+  async exportAccount() {
+    this.requireRealPilot();
+    const collect = async (table, columns, filter = '') => {
+      const all = [];
+      for (let offset = 0; offset < 100000; offset += 500) {
+        const rows = await this._send('/rest/v1/' + table + '?select=' + columns + filter + '&order=' + (table === 'pilot_consents' ? 'accepted_at' : 'created_at') + '.asc&limit=500&offset=' + offset, { authenticated: true });
+        all.push(...rows);
+        if (rows.length < 500) return all;
+      }
+      throw new Error('Експорт перевищує межу файлу. Звернися до оператора за повною копією.');
+    };
+    const [profile, consents, invitations, messages, blocks, reports] = await Promise.all([
+      this.ownProfile(), collect('pilot_consents','policy_version,terms_accepted,privacy_acknowledged,accepted_at'),
+      collect('meeting_requests','id,sender_id,recipient_id,note,status,created_at,proposed_at,duration_minutes,meeting_place,sender_name,recipient_name'),
+      collect('meeting_messages','id,meeting_id,sender_id,body,created_at'),
+      collect('profile_blocks','blocked_id,created_at','&blocker_id=eq.' + encodeURIComponent(this.requireUser())),
+      collect('profile_reports','reported_id,reason,detail,created_at'),
+    ]);
+    return { format: 'synera-account-export-1', private: true, exported_at: new Date().toISOString(), account: { id: this.user.id, email: this.user.email }, profile, consents, invitations, messages, blocks, reports };
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS_NATIVE_MESSAGE_RELEASE_READBACK",
+  "checked_at": "2026-10-05T17:27:16.0114980Z",
+  "source_hashes": 14,
+  "manifest_rows": 96,
+  "candidate_files": 97,
+  "release_sha256": "efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb",
+  "foreign_journey_ui_preserved": true,
+  "provider_calls": 0,
+  "provider_usd": 0
+}

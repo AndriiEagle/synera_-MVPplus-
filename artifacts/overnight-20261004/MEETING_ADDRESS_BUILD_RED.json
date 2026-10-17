@@ -1,0 +1,17 @@
+{
+  "status": "RED_REPRODUCED_UNJOINED_ADDRESS_DEPENDENCY",
+  "recorded_at": "2026-10-04T05:12:53.128Z",
+  "command": [
+    "neon/build.mjs",
+    "dist-neon-address-api-20261004"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/neon/build.mjs:22\r\n    !googleSource.startsWith(policyImport) || /\\bimport\\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');\r\n                                                                                                                ^\r\n\r\nError: Worker dependency changed; review build\r\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/neon/build.mjs:22:113\r\n\r\nNode.js v24.16.0\r\n",
+  "source_sha256": {
+    "neon/build.mjs": "395484b69db543baca2d38d16c9c2f382ac10cd24bb783ee6d75131c1faf2c4b",
+    "neon/worker.mjs": "0a0c1c03f08b04ccd9a00fa9c5c4853693848ae059c725f74f30bb992847be25"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0
+}

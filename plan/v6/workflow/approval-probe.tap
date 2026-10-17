@@ -1,0 +1,38 @@
+TAP version 13
+# Subtest: control: authenticated A can submit an unapproved draft to the store transport
+ok 1 - control: authenticated A can submit an unapproved draft to the store transport
+  ---
+  duration_ms: 11.0946
+  type: 'test'
+  ...
+# Subtest: contract: A must not submit a newly forged B approval through bulk state persistence
+not ok 2 - contract: A must not submit a newly forged B approval through bulk state persistence
+  ---
+  duration_ms: 2.7755
+  type: 'test'
+  location: 'C:\\Users\\Andrii\\Documents\\ChatGPT\\DeskTopAugust\\output\\cnra-solo-rebuild-20260909\\v6\\workflow\\approval-boundary.test.mjs:27:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Authenticated A submitted newly supplied approval B. Client contract is not isolated per actor; live server exploit remains untested.
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Andrii/Documents/ChatGPT/DeskTopAugust/output/cnra-solo-rebuild-20260909/v6/workflow/approval-boundary.test.mjs:35:10)
+    async Test.run (node:internal/test_runner/test:1313:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 129.2495

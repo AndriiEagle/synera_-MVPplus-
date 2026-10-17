@@ -1,0 +1,12 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:18:30.160Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true
+  },
+  "error": "Outcome cards unavailable: Повідомлення надіслано й прочитано з сервера.\n\n0 !== 2\n"
+}

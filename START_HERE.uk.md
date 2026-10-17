@@ -1,0 +1,174 @@
+# Synera: точка входу та історичний журнал
+
+**Актуальна версія для review — `main`, інтеграція 17.10.2026.** Почни з [README](README.md), [продуктової ДНК](docs/PRODUCT_DNA.uk.md) та [поточного handoff](docs/REVIEW_HANDOFF.uk.md). Вони містять команди запуску, source anchor `76e1897` і відкриті launch gates.
+
+## Історичні checkpoints до інтеграції
+
+Нижче збережено датовані записи. Їхні слова «поточний», старі SHA, push-hold та build hashes стосуються дати запису, а не сьогоднішнього `main`.
+
+## Поточне приймання — 11.10.2026
+
+[Opus pass4 прийнятий і доправлений](artifacts/opus-pass4-webkit-20261011/REPORT.uk.md), code **`0f109af`**: 195 кроків входу/профілю у WebKit; мова переходу, дизайн і тур працюють без localStorage (20 перевірок у WebKit і 20 у Chrome), 27 targeted Node tests, негативна mutation. Кінцевий candidate `dist-neon-opus-pass4-storage-20261011`, release **`c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062`**, 103/102 файли. 144 кроки незміненого journey прийняті у WebKit на вихідному Opus HEAD; 12 SQL hashes звірено з попереднім PG18.4 receipt, без нового SQL запуску. Current/default і чужа journey-ui збережені.
+
+**Локально прийнято, запуск людей не прийнято.** GitHub readback `6724682`; runtime блокує навіть push dry-run попри дозвіл користувача — [receipt](artifacts/opus-pass4-webkit-20261011/PUSH_RECEIPT.json). Нічого не опубліковано/deployed. Живий JWT/два акаунти, recovery/точний rollout, фізичні телефони та provider-функції лишаються gates. [Таблиця систем і досвіду](artifacts/product-status-20261004/STATUS.uk.md) · [поточний rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Нижче — датована історія; старі «WebKit не перевірено» та release hashes не є поточним станом.
+
+## Попереднє приймання — 10.10.2026
+
+[Terms recovery прийнятий у WebKit/Chrome](artifacts/terms-recovery-20261010/REPORT.uk.md), code `557a09f`: тимчасова відмова запису більше не стирає форму умов; 9 різних сценаріїв у кожному engine, 21 targeted Node test і mutation. Новий current candidate `dist-neon-terms-recovery-20261010` unpublished; exact release hash у rollout review. Попереднє message-reload приймання нижче збережено, live/phone/production gates лишаються відкритими.
+
+[Opus pass3 прийнятий у Windows/WebKit](artifacts/opus-pass3-webkit-20261010/REPORT.uk.md): 144 UK/DE/EN кроки, 8 мобільних профілів / 56 перевірок, окремий adversarial focus test. PG18.4 receipt звірено з 12 source hashes; це не live PG18.6/JWT. Вхід/профіль у цій копії ще українською. Доробка повтору повідомлення після reload має окреме приймання; актуальний rollout hash завжди у верхньому розділі [ROLLOUT_REVIEW](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md). Нічого не deployed; GitHub readback `6724682`, policy push hold не обходити. Нижче — датована історія, не поточні обмеження WebKit/PG18.
+
+## Результат незалежного Opus review — 09.10.2026
+
+**11.10, четвертий прохід** ([розділ 000 звіту](artifacts/opus-review-20261009/REPORT.uk.md), код `7819bf6`): текст людини на вході й у профілі більше не перекладається разом із підписами; картка головної сторінки пояснює, чому «Обговорити співпрацю ↗» там не відкриється, і веде на шлях двох; замість `A_from_B` та `ACKNOWLEDGED_…` на картці слова; `legal.html` має неофіційний переклад DE/EN. Три твердження третього проходу виправлено — таблиця на початку розділу 000. Не опубліковано, у WebKit не перевірено. [Промпт v3](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+
+**10.10, третій прохід** ([розділ 00 звіту](artifacts/opus-review-20261009/REPORT.uk.md)): шлях двох людей і сторінка входу/профілю тепер є німецькою й англійською (кнопки UA / DE / EN, українська — default і нічого зайвого не вантажить); guard і 70 oracle пройдено на PostgreSQL 18.4. `legal.html` і демо — ще українською; переклади політики й згод не читав юрист. Не опубліковано, у WebKit не перевірено.
+
+[Звіт](artifacts/opus-review-20261009/REPORT.uk.md): два серверні обходи згоди відтворено на PostgreSQL 16.15 й закрито локальною адитивною міграцією `neon/meeting-status-guard.migration.sql` (крок 1a rollout, до meeting-location); скасована зустріч більше не виглядає втратою сесії. Нічого не застосовано й не deployed. WebKit, PG18, справжній JWT, два живі акаунти й телефони не перевірені.
+
+## Незалежний Claude Opus review — 09.10.2026
+
+[Продуктова ДНК / еталон](docs/PRODUCT_DNA.uk.md) → [handoff, пріоритети, команди й GitHub scope](docs/REVIEW_HANDOFF.uk.md) → [готовий промпт](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md). Це поточний порядок читання для іншої моделі. Звір remote product branch перед початком; dated build directories не входять до Git, відтворення описано в handoff. Поточні докази нижче збережені, старі checkpoints історичні.
+
+## WebKit / новий Google QA — 09.10.2026
+
+[Фактичне виправлення, screenshots та межі запуску](artifacts/mobile-webkit-20261009/REPORT.uk.md), code `976d225`: форма домовленості більше не розтягує вузькі екрани у WebKit. Дві CSS-властивості, 8 WebKit + 3 Chromium fixture-шляхи до чату без overflow; повернення старого CSS відтворює дефект. Окремий 97-file candidate `dist-neon-webkit-20261009` перевірений, unpublished; старий пакет, Current/default/Atelier і чужа journey-ui збережені. Це desktop engines із синтетичними акаунтами, не встановлення на фізичних телефонах. Створений Google QA `synera-qa-20261009`; користувач підтвердив відсутність billing account, але API Console не завантажується, активація/reservations не виконані. Android Chrome policy blocker, фізичний iPhone, live JWT/two accounts/result і production rollout відкриті. Нижче — історичні checkpoints.
+
+## Android на C: — прийняте встановлення, відкритий UI gate
+
+[Результат перенесення й запуску](artifacts/android-emulator-20261007/C_RESULT.uk.md): лише погоджений ZIP PostgreSQL (356 MiB) перенесено на D:, двічі перевірено SHA256, видалено з C: з readback. 431 файл Android встановлений на C:, Android16 boot_completed=1. Фактичний екран має System UI ANR; Chrome launch відхилений policy. Емулятор зупинений; близько7GiB environment і8.7GiB вільного C:. Synera/PWA на Android ще не прийняті. Старі D: та продуктові версії збережені.
+
+## Android після перезапуску — 07.10.2026
+
+[Фактичний SDK/AVD результат](artifacts/android-emulator-20261007/REPORT.uk.md): ZIP hashes перевірені; Studio/SDK встановлені; WHPX usable. Перший Android boot перерваний USB/NTFS write failure на D:, образ AVD не прийнятий, повторний запуск заблокований до стабілізації накопичувача. Жодного Android/PWA runtime PASS. Product code 6724682 вже pushed; цей checkpoint — інфраструктура й докази, не deployment.
+
+# Synera: актуальний код і стан — 2026-10-05
+
+## Мобільний checkpoint — 07.10.2026
+
+[Android/iPhone PWA, responsive та ціновий сценарій](artifacts/mobile-20261007/REPORT.uk.md): збереження чернетки під час SW update; доступна Safari install-help; wrap/grow navigation та неперекриті Studio controls; один вхід, CHF0 зараз/CHF12 як гіпотеза без оплати. Локальні браузерні/семантичні перевірки й 97-file candidate прийняті з явними runner limits; Current/Atelier збережені. Android ZIP завантажені на D:, checksum/SDK/AVD blocked by D reads. Safari/фізичні телефони, live JWT/two accounts, production rollout та capacity не прийняті. Push не є deployment. Попередні checkpoints нижче історичні.
+
+## Локальна перевірка та модель пілота — 05.10.2026
+
+[Пакет двох чатів, installed skill і сценарії Цюриха](artifacts/pilot-wave-20261005/REPORT.uk.md). Продуктовий код не змінено; transport/SQL перевірки посилені. 11 модельних тестів, незалежні крайові сценарії й source hashes прийняті. Це не живе приймання, попит або capacity. Таблиця 7/16/4 і точний rollout gate нижче чинні.
+
+Це спільна точка входу для Codex, Claude Code та іншого ноутбука. Копія чату не є копією коду або доказом запуску.
+
+## Актуальна доробка й перевірка живої схеми — 05.10.2026
+
+Код `e8eb6ac5402b20f654fd506102dbdb85c876110b`, [докази й фактичний екран](artifacts/message-intent-20261005/REPORT.uk.md). У відкритій сесії повтор після unknown delivery повертає той самий запис, звичайне dashboard «Оновити» не губить ключ; після acknowledged send новий клік може повторити той самий текст свідомо. Reload/закриття сторінки втрачає RAM-key, offline outbox немає. Legacy flag=false лишається попередньою поведінкою. Збережені чернетка, auth/logout, consent/RLS/admission, Current/Atelier та чужа journey-ui.
+
+66 targeted Node tests, 6 actual Chromium groups, 16 overlapping real PG16 transactions; SQL/client mutations відхилені. [Новий read-only Neon catalog](artifacts/message-intent-20261005/LIVE_SCHEMA_READBACK.json): production/neondb має base, але всі дев'ять перевірених нових case/location/group/outcome/address таблиць і send RPC відсутні. Live PG18.6/Ohio/Free UI не є локальним PG16 proof, cost receipt або mass-capacity acceptance. Full columns/grants/restore, signed JWT, дві живі сесії та Android — відкриті gates.
+
+Candidate `web_launch/dist-neon-message-intent-20261005`, 97 files / 96 manifest rows, SHA256 `efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb`, unpublished. [Rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) включає нові SQL/flag і точний пакет; старе unanswered питання цього scope не покривало. Production/deploy approval pending; push policy hold не обходився. [27 систем / 15 етапів і відчуття користувача](artifacts/product-status-20261004/STATUS.uk.md) оновлені. Нижче — історичні checkpoints.
+
+## Актуальні автоматичні статуси — 05.10.2026
+
+[Прийнятий пакет і свіжі екрани](artifacts/partner-status-20261005/REPORT.uk.md), code `49764c10ad8e899b797b4e3589f20aa0a3a198c6`: активна вибрана пара до чату сама показує нову згоду, ревізію та відповідь на запрошення. Верхня підказка й картка узгоджені; чернетки, consent, compare-and-swap і late-read/logout guards збережені. 11 нових груп + 18 груп чату перетинаються; два RED, mutation та незалежні 24 hashes/97 files прийняті. Candidate `dist-neon-partner-status-20261005` unpublished. Push не оновить наявний Cloudflare **No Git connection**. Neon production/neondb доступний, але snapshot немає, лише 6 годин history; applied schema/recovery/дві live sessions/Android ще не прийняті. [Rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) оновлено до цього exact candidate. Нижче — історичні checkpoints: їхнє refresh-тертя прибране для відкритої пари, а довгі умови лишаються UX-тертям.
+
+## Попередній динамічний аудит — 05.10.2026
+
+[Повторний аудит із реальними екранами](artifacts/dynamic-audit-20261005/REPORT.uk.md), код `f01cdf1ed11896667736409525a363415e0dd94a`: незмінні reads чату не стирають виділення; змінені текст/автор оновлюються. 18 груп чатового Chromium та окремі 17 outcome groups (перетинаються), RED/mutation, 28 незалежно перевірених hashes. Candidate97 files unpublished; physical Android/live JWT/two accounts не прийняті. HTTP readback05Oct: новий journey404 на презентації й пілоті. До чату партнерські статуси потребують refresh; довгі умови — UX-тертя. Current/Atelier і чужа journey-ui збережені. Попередня таблиця 27 систем нижче залишається inventory з чесними межами; цей аудит не означає готовність усіх систем.
+
+## Актуальне приймання — 04.10.2026
+
+**LOCAL_ACCEPTED_LIVE_HOLD.** [Актуальна таблиця всіх систем і досвіду користувача](artifacts/product-status-20261004/STATUS.uk.md) — перша точка читання; [точний rollout review](artifacts/product-status-20261004/ROLLOUT_REVIEW.uk.md) відокремлює локальний кандидат від production. Код `564fa9aad1c764ac0480e70bd7ee60ab0e5c8ab0`: збереження наступної чернетки, 15 груп Chromium, semantic RED/mutation. Нічна доробка додала receiver acceptance, двосторонню адресу, приватний export/viewer/social draft та recovery/session guards. Current/default/Atelier і чужа journey-ui збережені.
+
+Candidate `web_launch/dist-neon-draft-continuity-20261004`: 97 файлів, release SHA256 `b63391269c3c66625fb994e9b97514a05d1bd3da1837ee129b28f8486bd46a40`, unpublished. [Свіжий HTTP readback](artifacts/product-status-20261004/PUBLIC_READBACK.json): презентація200/config registration=false; окремий Neon pilot config200/registration=true; новий journey URL404 на обох hosts. Два живі акаунти/HTTP JWT/physical Android не прийняті. Push історично policy-blocked, без нової спроби/обходу. Production/schema/recovery approval pending; `synera-10` залишається paused. Відчуття в таблиці — UX-гіпотези, не виміряні емоції.
+
+## Історичне приймання — реальний двосторонній шлях, 03.10.2026
+
+**LOCAL_ACCEPTED_LIVE_HOLD.** Додано окремий `/real-journey.html`: наявний акаунт і профіль → взаємна відповідність → спільна версія умов → власне підтвердження кожного учасника → запрошення → прийняття адресатом → приватна переписка. Чинне SQL-правило вимагає обох підтверджень **до** запрошення; ця версія його зберігає. Старі демо, Current/Atelier та інші режими збережені. Прострочені умови можна явно закрити й почати новий обмін без успадкування згод.
+
+Докази й повний перелік систем: [звіт цього доповнення](artifacts/real-journey-20261003/REPORT.uk.md), [109 локальних перевірок](artifacts/real-journey-20261003/UNIT_ACCEPTANCE_109.json), [Chromium 390×844](artifacts/real-journey-20261003/BROWSER_ACCEPTANCE.json), [справжній PostgreSQL 16.15 і RLS](artifacts/real-journey-20261003/SQL_ACCEPTANCE.json), [94-файловий кандидат релізу й SHA-256](artifacts/real-journey-20261003/CLOSEOUT.json). Браузер виконував справжні кліки в UI й Worker; Auth/Data API та облікові записи — ізольовані тестові замінники. SQL використовував локальну provider identity shim і Unicode ICU und; fixtures відкотилися до нуля. Це не live Neon/JWT або фізичний Android.
+
+Серверний `SYNERA_REAL_JOURNEY_READY` за замовчуванням вимкнений і закриває обидві case-таблиці до звернення до провайдера. Зміна умов потребує точного попереднього case/version/hash; застаріле редагування відхиляється, чисте підтвердження не перезаписує матеріал. Сума, валюта, рахунок і результати наявного paid-кейсу видимі до підтвердження. Вихід очищає приватний екран навіть під час незавершеного запиту.
+
+Поточна база цього доповнення: `08b584c787e9f2f6334b64d59ee65d6485a080fb`; цей remote HEAD перевірено 03.10.2026 до нового коміту. Фінальний Git HEAD звіряй після commit/push. Нова кандидатна директорія: `web_launch/dist-neon-real-journey-20261003`. Кандидат навмисно використовує прийнятий HEAD для чужої незакоміченої зміни `web_launch/journey-ui.mjs`; робочий файл не змінювався і до цього доповнення не входить.
+
+**SQL виконано локально за прямим дозволом власника:** base/case/location/group, expiry → closure → fresh pair, а навмисні повернення старого expiry guard і raw location grant відхилені оракулом. Якщо case-state уже застосовано, існує вузький згенерований `neon/case-expiry-repair.migration.sql`; повну case migration повторно не застосовувати. Locale C не знижує регістр кирилиці — перед live activation перевір Unicode case conversion у фактичній БД.
+
+**Ще не виконано:** live Auth/Data API з двома акаунтами, production-міграції, публікація цього кандидата і фізичний Android. Read-only live gateway дав 200, але `/real-journey.html` — 404; відповідних нових flags у live config ще немає. Не вмикай gate до незалежного приймання; Docker залишено недоторканим. Окрема мережева Triangle-кімната, голос/відео, Google SDK, платежі й social API мають власні незакриті межі. Історичні результати нижче не замінюють це актуальне приймання.
+
+**Фактична жива схема звірена read-only:** Neon `synera` / `production` / `neondb`, PostgreSQL 18.6, base RLS і Unicode PASS; case/location/group таблиці відсутні. Вікно відновлення 6 годин, snapshots немає, restore не перевірений. [Точні метадані](artifacts/real-journey-20261003/LIVE_NEON_PREFLIGHT.json) і [план наступної перевірки](artifacts/real-journey-20261003/LIVE_ACTIVATION_PLAN.uk.md). PostgreSQL 16.15 з погодженої тимчасової папки вже зупинено.
+
+## Де працювати
+
+- Репозиторій: `AndriiEagle/synera_-MVPplus-`.
+- Поточна локальна гілка: `codex/synera-product-20261002`, вихідна точка `e523f0c22982a3156bb63849a27a2fc7fd679906`.
+- Поточний checkout на цьому комп’ютері: `C:\Users\Andrii\Desktop\synera-premium-pwa-variant`.
+- Продукт: `web_launch/`; сервер Neon/Cloudflare: `neon/`; канон SQL: `supabase/`, з генерацією Neon через `neon/generate-schema.mjs`.
+- Старі `plan/HANDOFF_PROMPT_NEXT_CHAT.uk.md` і `plan/v6/HANDOFF.uk.md` містять історичні шляхи та невиправлені на той час дефекти. Використовуй їх як історію плану; актуальне приймання нижче.
+- Flutter у `crystallised_in/` — історичний код. Поточний Android-маршрут — PWA у Chrome, з можливістю встановлення на головний екран. Фізичний Android ще не перевірено.
+
+На іншому ноутбуці звір `git branch --show-current`, `git rev-parse HEAD` і `git status --short`. Непередані локальні зміни не з’являються від передачі чату. Власник дозволив commit і push цієї гілки 2026-10-02; точний remote HEAD звіряй після push. Новий rollout живої бази не випливає з дозволу на GitHub.
+
+Актуальна [цінність, сайт і комерційні межі](docs/PRODUCT_VALUE_AND_SALES.uk.md): презентація версії 3 опублікована; Android/iPhone мають інструкції PWA. Пілот тимчасово безкоштовний. Native магазини, вбудована Google Maps SDK-карта та семантичний deep match залишаються відкритими вимогами. Не підмінюй їх рекламою вже наявних функцій.
+
+Найновіше доповнення 02.10.2026: [Triangle L, карта й економіка](docs/L_DIRECTION_AND_ECONOMICS.uk.md). Власник обрав тимчасово безкоштовний Zürich-пілот. `/triangle.html` — окремий локальний режим на одному пристрої: три учасники як неперевірені нотатки, внески, кроки, бюджетні пропозиції/відповіді, добровільна черга, явний експорт; схема можливостей і симулятор витрат. Реальної спільної мережевої кімнати, voice/video, Google SDK, автоматичних радарів або social API тут немає. Чинні екрани, кейси й стилі збережені. Актуальне приймання доповнення: `artifacts/triangle-20261002/RELEASE_RECEIPT.json`.
+
+## Що матеріалізовано
+
+**Поточна повторна перевірка:** [дозволи, решта робіт і ризики](docs/APPROVAL_AND_RISK_RECHECK.uk.md). У Neon/Cloudflare вже виконано вхід. Публічна **версія 5** ремонтує офлайн clean URL `/studio`; попередні режими й приймання v4 збережені. Зачеплені перевірки: 2 unit PASS, 7 Studio browser PASS. Recovery/migrations/KV/фізичний Android залишаються неперевіреними. Product push дозволений користувачем, але останню спробу заблокувала execution policy; GitHub поки на `cd6a05c0f6ca16d6dcd808760af74f9925d60808`.
+
+**Найновіше — Studio 04:** [відкрити встановлюваний локальний режим](https://synera-summit-20261001.andypokr911.chatgpt.site/studio.html). Окремі 4 етапи: opt-in пояснення взаємної користі на вигаданих профілях → нотатки сесії для 2–3 людей → поточні підтвердження та приватна соціальна чернетка/картка → власний архів і точні цитати. Збереження в IndexedDB лише власною дією й окремим дозволом. PWA має окремі manifest/start_url/scope; попередні режими збережені. Публічна версія 4, deployment `appgdep_6abfae3b5f948191a5fc61e9abfdf709`, Site source `62b074e019d7e53cf93a3f6684bf63a5b3a1d8d3`. Поточні перевірки: **479 PASS / 1 SKIP**, **36 browser PASS**, 5 станів Studio без axe-порушень, мутація unilateral social guard відхилена. Див. [реліз та наступний живий етап](docs/STUDIO_RELEASE_AND_NEXT.uk.md), [фактичні дані й matching](docs/DATA_AND_MATCHING_REALITY.uk.md), `artifacts/ecosystem-20261002/RELEASE_RECEIPT.json`.
+
+Нижчі результати RC2/RC3 — попередні прийняті докази; Studio не робить із локальних записів автентифікований груповий чат. Установлення на фізичному Android, нова production-міграція, голос/відео, Google SDK та social API ще не прийняті.
+
+Профілі й приватність, пошук за взаємною користю, версії умов, власне підтвердження кожної сторони, запрошення, повідомлення, календар, блокування/скарги, мобільна оболонка, стилі й окрема презентація збережені.
+
+Додано реальний транспорт локації: Neon перевіряє учасників, згоду, чинні підтвердження умов, зустріч, блокування та серверний час; Cloudflare Worker передає одну округлену точку через тимчасове KV-сховище. Повтор старої згоди після відкликання заборонений. Адреса зустрічі й скасування доходять до іншої сесії при оновленні стану. GPS запускається лише після власної згоди, працює на відкритому екрані й зупиняється при виході, приховуванні вкладки, відкликанні, помилці або завершенні вікна.
+
+Google Maps уже використовується для пошуку адреси, пішого маршруту до зустрічі та маршруту до дозволеної точки співрозмовника. Відкриття — власним кліком. Це Maps URLs, без платного SDK чи ключа API. [Офіційний контракт Google](https://developers.google.com/maps/documentation/urls/get-started).
+
+## Перевірено локально
+
+| Перевірка | Результат | Межа |
+|---|---|---|
+| Node, `artifacts/product-access-unit-20261002.tap` | 465 PASS, 1 SKIP, 0 FAIL | SKIP — старий необов’язковий PG runner; новий SQL runner виконано окремо |
+| `tests/browser-e2e.spec.mjs` | 27 PASS | Оболонка, стилі, мобільний вигляд, локальна навігація та отримання PWA на обох телефонах |
+| `tools/location-browser-acceptance.mjs` | PASS, дві сесії, 390 px, WCAG без critical/serious | Справжні клієнт/Worker/Chromium; Auth/Data API/KV та GPS — локальні fixtures |
+| `tools/location-sql-acceptance.mjs` | PASS, PostgreSQL 16, всі три SQL-шари | Disposable Docker; provider identity shim; не live Neon |
+| SQL атака з дозволеним прямим SELECT | Відхилена оракулом | Доводить, що перевірка приватності справді ловить дефект |
+| Підміна адреси при accept/cancel | RED до guard, GREEN після | `artifacts/location-address-red.tap`, нове SQL-приймання |
+| Застаріла адреса другої сесії | RED до синхронізації, GREEN після | `artifacts/location-peer-address-red.tap`, нове браузерне приймання |
+
+Повторювані команди:
+
+```text
+node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
+node node_modules/@playwright/test/cli.js test tests/browser-e2e.spec.mjs
+node tools/location-browser-acceptance.mjs
+node neon/generate-schema.mjs
+node neon/build.mjs dist-neon-access-20261002
+```
+
+SQL runner очікує вже запущений disposable контейнер `synera-location-20261002` із label `synera.disposable=20261002`, локально наявний `postgres:16-alpine`, без відкритих портів. Він створює окрему локальну БД, перевіряє стару base acceptance до case migration, потім case та location acceptance; кожний набір fixtures закінчується ROLLBACK. Не запускай його проти production.
+
+## Підготовлений реліз
+
+[Актуальний RC2](artifacts/product-access-20261002/synera-neon-product-20261002-rc2.zip) містить 52 дозволені файли Neon/Cloudflare Pages. [Квитанція оновлення](artifacts/product-access-20261002/RELEASE_RECEIPT.json) зв’язує пакет, браузерне приймання та публікацію презентації. CRC і SHA-256 перевірені після читання ZIP. Попередній [RC1](artifacts/product-20261002/synera-neon-product-20261002-rc1.zip) збережено як історію. Репозиторій цілком, історія браузерів і приватні налаштування до архіву не входять.
+
+## Живий стан і межі
+
+`https://synera-pilot.pages.dev`: 2026-10-02 read-only `/api/neon/health` і `/api/neon/session` з `X-Synera-Client: 1` дали 200; конфігурація повідомляє Neon, увімкнену реєстрацію й real-pilot. Це підтверджує шлюз, а не весь сценарій двох реальних людей. Актуальний RC не опублікований цим прийманням; нова міграція, KV binding і реальна локація на живому сайті не підтверджені.
+
+Опублікована окрема демонстрація: [Synera Summit](https://synera-summit-20261001.andypokr911.chatgpt.site/summit.html). Вигадані профілі, без реєстрації й GPS-транспорту. Це презентація, не production.
+
+Координат у PostgreSQL немає. Відкликання/cancel/block/зміна умов відразу припиняють новий авторизований доступ. Явне revoke й rotation також пробують видалити KV key. Після суто SQL-інвалідації тимчасова точка може фізично залишатися недоступною до абсолютного `closes_at`; миттєве фізичне стирання не заявляється. Уже побачену людиною точку відкликати неможливо. При виході/фоні пристрою GPS припиняє оновлення; дозвіл і остання точка діють до revoke або кінця вікна.
+
+KV поширює оновлення між локаціями із затримкою до 60 секунд. Якщо KV поверне попередній `sample_seq`, клієнт отримає стан без точки. Безперервна миттєва локація не гарантується. [Cloudflare KV: запис і узгодженість](https://developers.cloudflare.com/kv/api/write-key-value-pairs/).
+
+Новий rollout за замовчуванням вимкнений. Worker допускає GPS лише разом із `SYNERA_PILOT_READY=true`, `SYNERA_LOCATION_READY=true` та binding `SYNERA_LOCATION_EPHEMERAL`. Старий статичний реліз залишає GPS закритим. Google OAuth має окремий live gate; його увімкнення не випливає з готовності Google Maps.
+
+## Конкретний наступний запуск
+
+1. Власник уже увійшов у Neon/Cloudflare. Звір фактичні застосовані міграції, recovery point і поточний тариф наявного проєкту; вхід у панель цього не доводить. Без апгрейдів, нових оплат і читання/передачі ключів.
+2. Підготуй перевірений backup/recovery point, звір фактично застосовані case migrations; не повторюй вже застосовану frozen `schema.proposal.sql`.
+3. За окремим дозволом застосуй лише відсутню additive case migration та `neon/meeting-location.migration.sql`, створи KV namespace/binding і опублікуй `web_launch/dist-neon-access-20261002` у наявний `synera-pilot`.
+4. Підтвердь live RPC, RLS, expiry/revoke й дві реальні сесії перед увімкненням location gate. Пройди профіль → узгоджені умови обох людей → запрошення → прийняття → адреса → одноосібна GPS-згода → перегляд іншою стороною → revoke/cancel. Повтори на фізичному Android.
+5. Commit і push продуктової гілки дозволено. Інші ноутбуки працюють із тим самим remote commit, а не з копіями старого чату.
+
+Free KV зараз має 1 000 записів/добу; понад Free ліміт операції відмовляють. Поточний тариф облікового запису ще потрібно звірити у панелі. Пакет не дає дозволу на Paid upgrade. [Поточна офіційна ціна й ліміти](https://developers.cloudflare.com/kv/platform/pricing/).
+
+Стан: **LOCAL_ACCEPTED; LIVE_ROLLOUT_PENDING; ANDROID_PHYSICAL_NOT_VERIFIED**. Нових зовнішніх AI-викликів: 0, USD $0.00. Економія підписки не вимірювалася.

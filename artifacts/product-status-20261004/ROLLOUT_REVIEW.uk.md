@@ -1,0 +1,67 @@
+# Synera — конкретний review наступного закритого пілота
+
+## Поточний кандидат — 11.10.2026
+
+[Opus pass4 + незалежне приймання](../opus-pass4-webkit-20261011/REPORT.uk.md), source **`0f109afbdf502e4733bd13d469f78f655e74818c`**: **`web_launch/dist-neon-opus-pass4-storage-20261011`**, **103 public files / 102 manifest rows**, release SHA-256 **`c4bd66010354edfe969fda15837c8e052556d2d4f56992f01c58c429f3d43062`**. 100 public assets звірені з source Git blobs, generated Worker/routes незмінні проти exact Opus build; foreign dirty asset виключено. Вхід/профіль: 195 кінцевих WebKit-кроків; denied-storage: 20 WebKit + 20 Chrome checks; 27 affected Node tests і mutation. Journey 144 WebKit-кроки — на первинному Opus пакеті; journey/SQL source незмінні. 12 hashes попереднього PG18.4 receipt збігаються, нового SQL запуску тут немає.
+
+**UNPUBLISHED, production approval/recovery/live acceptance OPEN.** Набір міграцій той самий **1 → 1a → 2–6**, target/schema/recovery/flags нижче не змінено. Цей прохід не активує billing, provider або production. Старі SQL 1–6 approval/candidate hashes не є дозволом на новий пакет. GitHub досі `6724682`; runtime відхилив push dry-run попри явну згоду, alternate transport не застосовано. First live HTTP JWT gate має відхилити sender self-accept і зафіксувати фактичний HTTP-статус `PT409`. Телефони, юридичні DE/EN, provider/voice/OAuth та sustained capacity лишаються окремими gates.
+
+## Історичний кандидат — 10.10.2026
+
+[Terms recovery acceptance](../terms-recovery-20261010/REPORT.uk.md), source `557a09f9cd9df6c1ea43a61330a4e47de0d8607a`: **`web_launch/dist-neon-terms-recovery-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`003501f35f5d56ae3dd5730c6ae346a315984a8ed1ed7a29beaf241d1f28e227`**. Точні Git blobs, чужий dirty asset виключено. 9 різних сценаріїв у кожному WebKit/Chrome engine, 21 targeted Node test і mutation; тимчасова data-write відмова зберігає форму, auth/consent/feature gates закриті. Із попереднього candidate змінено лише `real-journey.mjs` і один translation row; інші 95 assets і SQL receipt hashes незмінні. Unpublished; live scope — ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**. Немає SQL/provider/billing activation або auto-retry. Exact approval має називати цей поточний package; старі hashes не є дозволом upload. Push policy hold не обходити.
+
+## Історичний кандидат: message replay — 10.10.2026
+
+[Фінальне приймання](../message-reload-20261010/REPORT.uk.md), source `d29bee34cf57cf805ccb6ac4ff6d66946a5a06ee`: **`web_launch/dist-neon-message-reload-20261010`**, 98 public files / 97 manifest rows, release SHA-256 **`7b2d6f0e0c635aeef7322ae256d971890c2c5cbee7fcf4ec42234bc6d3acfa71`**. Точні Git-блоби без чужого dirty asset. EN/DE journey, PG18.4 source receipt, WebKit 144 кроки / 8 профілів, 40 affected tests і browser reload у WebKit/Chrome прийняті локально. PG18.4 не є production 18.6/JWT; OS телефони й recovery відкриті. Current default/Atelier добровільний збережені. Candidate unpublished. Live scope: ті самі target/schema/recovery/cost/flags нижче, міграції **1, 1a, 2–6**; metadata retry не додає SQL/provider/billing або auto-send. Старі hashes не є дозволом upload нового пакета. Push policy hold не обходити; commit/push permission не є production approval.
+
+## Історичний кандидат після повторної перевірки Opus — 09.10.2026
+
+[Незалежний PostgreSQL/WebKit readback](../opus-webkit-20261009/REPORT.uk.md), source `e46ce95e37e1f2f528bc91d46098ea4967f72dff`: **`web_launch/dist-neon-opus-head-webkit-20261009`**, 97 public files / 96 manifest rows, release SHA256 **`4b265ab8cd005fc9ee37240e58880d0b784e9039259ff8fe628dc2d23fc7a297`**. Побудовано з точних Git-блобів; чужий dirty `journey-ui.mjs` виключено. Новий guard пройшов PG16.15 full-stack oracle та mutations; три змінені UI-набори й 8-профільна матриця пройшли WebKit 26.6. Старий `153b1eba…` не є поточним candidate. Пакет unpublished; PG18, HTTP JWT/два живі акаунти, фізичні телефони, recovery і точний rollout approval відкриті. Звичайний push не є deploy. Перша архівна копія `dist-neon-opus-webkit-20261009` відхилена перевіркою точних байтів і не є rollout target.
+
+## Зміна набору міграцій — Opus review, 09.10.2026
+
+[Звіт і докази](../opus-review-20261009/REPORT.uk.md). **Точний дозвіл «SQL 1–6» нижче більше не описує безпечний набір.** Після кроку 2 (`meeting-location`) відправник може прийняти власне запрошення: відтворено на PG16.15. Додано крок **1a** — `neon/meeting-status-guard.migration.sql`, SHA256 `a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33`. Він не застосований ніде й потребує того самого review: PG18, справжній JWT, preconditions. Перед apply порахувати `pending`-запрошення старого потоку (metadata only): після 1a їх можна прийняти лише за погодженої домовленості. Клієнт, що відповідає guard, — у source після `378c461`; candidate `153b1eba…` його не містить.
+
+## Історичний мобільний кандидат до Opus — 09.10.2026
+
+[WebKit acceptance](../mobile-webkit-20261009/REPORT.uk.md), code `976d225`: `web_launch/dist-neon-webkit-20261009`, **97 public files / 96 manifest rows**, release SHA256 `153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488`. Add-only копія прийнятого `dist-neon-mobile-final-20261007`; змінено лише CSS форми й release metadata. 8 WebKit і 3 Chromium fixture-шляхи до чату, семантичне повернення старого дефекту та fresh candidate runtime прийняті. Це не фізичні телефони, PWA install або дві live sessions. Candidate unpublished; попередні пакети збережені. Це історичний CSS checkpoint; для наступного upload review має називати актуальний candidate/hash із верхнього розділу. Цей старий hash не є дозволом на нову публікацію.
+
+Новий Google Cloud `synera-qa-20261009` створений лише для device QA, зі збереженням старих проєктів. Користувач підтвердив відсутність billing account; API Console має load failure, API activation/reservations не виконані. Це не новий Neon/Cloudflare target і не обходить відкритий ADB Chrome policy gate. Production target, recovery/schema/flags, дві живі сесії та точний дозвіл нижче лишаються відкритими; metadata 05.10 не видаються за свіжий readback 09.10. Старі rollout details збережені для review, без SQL/deployment цього проходу.
+
+## Актуальний пакет — 05.10.2026
+
+[Message-intent acceptance](../message-intent-20261005/REPORT.uk.md): `web_launch/dist-neon-message-intent-20261005`, **97 public files / 96 manifest rows**, release SHA256 `efd4bc624a5aadb87d2676b036bff0a2e1d80f34182c32fce221460df82fdceb`. Ручний resend після unknown delivery зберігає один UUID у відкритій сесії, включно зі звичайним dashboard refresh. Після підтвердженого send/read нова явна дія має новий UUID. 66 targeted Node tests, 6 actual Chromium groups, 16 overlapping SQL retries на PG16.15; client/SQL mutations відхилені, незалежний hash readback. Це не RPS benchmark. Reload втрачає RAM-key; legacy lane з flag=false зберігає старе обмеження. Candidate unpublished, build gitignored; старий partner-status candidate збережений як історичний.
+
+[Свіжий read-only каталог](../message-intent-20261005/LIVE_SCHEMA_READBACK.json): Neon `synera` (`quiet-credit-94155104`) / `production` (`br-dawn-field-axoxc3c4`) / `neondb`. Base profiles/consents/meetings/messages існують з RLS; усі дев'ять перевірених нових case/location/group/outcome/address таблиць відсутні. `synera_send_message` також відсутня. `auth.uid()` є, identity UUID. Це BEGIN READ ONLY → metadata SELECT → ROLLBACK, без приватних рядків чи мутацій. Повні base columns/grants/policy bodies/source identity ще не звірені; catalog presence їх не доводить.
+
+Live target — **PG18.6, AWS Ohio, Free plan UI, compute 0.25–2 CU**, history 6 годин. Локальний SQL proof — PG16.15. UI Free не є cost receipt або гарантією безкоштовного recovery. [Попередній target readback](../partner-status-20261005/LIVE_TARGET_READBACK.json): snapshot немає, restore не прийнятий; Pages `synera-pilot`, **No Git connection**, старий deployment `fb29ee5e`. Цього разу Pages/recovery state не переперевірявся. Push не є deployment. Поточний пілот лишається в наявному регіоні; масовий Zürich запуск потребує окремого рішення щодо даних/регіону й capacity acceptance.
+
+**Точний дозвіл pending:** recovery point для вказаної production branch з попередньою перевіркою типу/вартості/повернення; лише відсутні SQL 1–6 нижче після exact base/grants та PG18 review; upload цього exact candidate в **наявний** Pages `synera-pilot`; readiness flags `SYNERA_REAL_JOURNEY_READY`, `SYNERA_CASE_OUTCOMES_READY`, `SYNERA_MEETING_ADDRESS_READY`, **`SYNERA_MESSAGE_INTENTS_READY`** лише після відповідних gates. Нова message SQL/flag/candidate не входили до попереднього unanswered питання про старий release. Нуль нових платних resources/provider calls; без credentials/secrets/voice/Google SDK/OAuth/checkout/GPS activation. За невідомої вартості, schema mismatch або неперевіреного recovery — HOLD саме живої зміни. Commit/push authorization не замінює production/deploy approval.
+
+## Історичний пакет і порядок review міграцій
+
+Нічого не застосовує. Код `564fa9aad1c764ac0480e70bd7ee60ab0e5c8ab0`, candidate `web_launch/dist-neon-draft-continuity-20261004`, 97 public files; release SHA256 `b63391269c3c66625fb994e9b97514a05d1bd3da1837ee129b28f8486bd46a40`.
+
+Історичний target: Neon `synera` / `production` / `neondb`, Cloudflare Pages `synera-pilot`, `https://synera-pilot.pages.dev`. Перед зміною заново прочитати його identity, applied schema й recovery point. HTTP config або вхід у панель цього не доводять. Точне питання production activation лишилося без погодження; дозвіл commit/push не є його заміною.
+
+| Порядок | Відсутній SQL для review | Межа |
+|---|---|---|
+| 0 | Наявний base | `schema.proposal.sql` не повторювати на існуючій базі. Зберегти справжню provider identity. |
+| 1 | `neon/case-state.migration.sql` | Case tables відсутні за свіжим catalog. Звірити preconditions перед apply; expiry repair зараз не потрібний. Якщо стан змінився — новий review, не rerun. |
+| 1a | `neon/meeting-status-guard.migration.sql` | **Нове, 09.10.** Після case-state, до meeting-location. Один trigger-guard на перехід статусу запрошення; SECURITY INVOKER, зв'язує тих самих викликачів, що й RLS. Працює і поверх уже наявного стеку. |
+| 2 | `neon/meeting-location.migration.sql` | Після case-state. SQL — лише consent/час/точність; GPS activation потребує окремого ephemeral KV binding. |
+| 3 | `neon/group-room.migration.sql` | Після base/case; admission helper потрібний для наступних RPC. Voice/video цим не вмикається. |
+| 4 | `neon/case-outcome.migration.sql` | Після case/group. Append-only attestations, receiver acceptance; виходить за старе питання лише про три міграції. |
+| 5 | `neon/meeting-address-agreement.migration.sql` | Після location/group. Legacy direct address PATCH закритий; оновлений consumer уже в candidate. |
+| 6 | `neon/message-intent.migration.sql` | Новий SECURITY INVOKER RPC; id column INSERT grant, immutable UUID replay, чинні RLS/trigger/admission. Function відсутня за catalog; target PG18 review і gates до readiness. Не запускати local mutation oracle у production. |
+
+Exact source hashes/local SQL receipts: [outcome](../overnight-20261004/CASE_OUTCOME_SQL.json), [address](../overnight-20261004/MEETING_ADDRESS_SQL.json). Це не доказ applied production; при іншому target/schema/precondition — HOLD.
+
+1. Read-only exact base columns/grants/policies/preconditions без приватних рядків; target PG18 review. SQL editor відновлює старі чернетки: починати з нового порожнього query, звірити target і весь SQL до Run. Свіжий catalog уже прийнятий, незмінений повтор не є новим доказом. Перед production SQL — збережена й перевірена recovery point; старі дані про 6-годинне вікно не доводять поточний restore.
+2. Погодити точний набір відсутніх міграцій, target і candidate. Нові платні resources, credentials або увімкнення всіх функцій не входять у дозвіл за замовчуванням. Зберегти попередній manifest/Worker для повернення.
+3. Review acceptance, потім лише погоджені міграції та readback functions/roles/RLS. У cloud не підміняти auth.uid shim і не запускати destructive mutation oracle.
+4. Flags/bindings звірити з server readiness. Journey/outcomes/address/message-intent закриті до відповідних gates; GPS не вмикати лише від наявності address SQL. Наявний closed-pilot allowlist максимум 10 — не розширювати цим rollout. JWT server-side.
+5. Два живі акаунти й справжній HTTP JWT → gateway → Data API/SQL. Потім Android: профіль → Give–Take → одна редакція умов → дві згоди → invitation/acceptance → чат → двостороння адреса → evidence/check/receiver acceptance → export. Перевірити next draft, ручний unknown-delivery recovery, revision/revoke/logout і late responses. Не створювати прихованих акаунтів чи замінювати людей ботами.
+6. Config200, push/deploy success — не acceptance живого циклу. Зберегти factual receipt/proof limits без приватного вмісту.
+
+Не входять: Google SDK/Places/Routes, передовий voice/video, live AI Triangle, LinkedIn/Instagram OAuth/постинг, checkout, нові analytics/ads services, mass registration або заява про сотні users/sec. Це окремі capability/consent/budget/acceptance кроки. Новий message replay локально прийнятий лише для same-session intent: reload/offline outbox/cross-device retry не завершені. Сотні користувачів за секунду потребують distinct-user sustained workload, latency/saturation/recovery та фактичної cloud вартості; 16 overlapping retries цього не доводять.

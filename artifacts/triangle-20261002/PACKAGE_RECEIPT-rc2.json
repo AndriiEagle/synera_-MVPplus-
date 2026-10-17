@@ -1,0 +1,10 @@
+{
+  "zip": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\triangle-20261002\\synera-triangle-neon-20261002-rc2.zip",
+  "files": 57,
+  "sha256": "e5b57ada1c7678bcdd0581b3c59ca6036d2ee72dee12b9603f8f4bc1ed6c3dde",
+  "byte_readback": "PASS",
+  "neon_deployed": false,
+  "site_public_files": 58,
+  "site_source_readback": "PASS",
+  "site_registration_enabled": false
+}

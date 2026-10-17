@@ -1,0 +1,63 @@
+{
+  "status": "PASS_LOCAL_OUTCOME_EXPORT",
+  "generated_at": "2026-10-04T03:12:31.839Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local explicit archive download, codec round-trip and synthetic account transport; not live authentication or complete account backup",
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/studio.mjs": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+    "web_launch/dist-neon-real-journey-20261003/release.json": "09aa45c0924e8f1438569b73e8009ff55e76921091afe0e0e61b31ed7146a6cc",
+    "web_launch/dist-neon-outcomes-api-20261004/release.json": "e71b53046222964167792e1896be4628a4ac7fbbb0a60be1b4505f2091145acf",
+    "web_launch/dist-neon-outcomes-ui-20261004/release.json": "78407842a606f1eef96305585693d0c70c5c06caabdab928d91364309e760135"
+  },
+  "source_sha256": {
+    "web_launch/real-journey-client.mjs": "46f96f85f23c7c1b043b80e4d62b20f084e781a2cf9a9d08851c7347d0f18ada",
+    "web_launch/real-journey.mjs": "6aca90513c55a68a7ee3d86fa9fbdb3dfa5fd85a9e040da0e319bdab7b56e0d2",
+    "web_launch/real-journey.html": "54366120a799b81629e245d35b1ccfa89d8423cbe992befaffb62129fe2989dc",
+    "web_launch/case-outcome-export.test.mjs": "c694d8436b132926000f42b82456300dde0782246df9a7ccaa091dec55bb27b3",
+    "web_launch/archive-codec.test.mjs": "1b8fa7636cc9d8381b8ca774ee6e5f14641ebdc937aed77f2525da3cb4100607",
+    "tools/case-outcome-export-browser.mjs": "0124071de3f8584493f37aa2713b1ce0b201238f095734f06dd1344cc8822423",
+    "tools/case-outcome-export-acceptance.mjs": "9e286fe974dd13507a33136e119313edf7967f7bd7467dd1f90e6d68c925c8e7"
+  },
+  "base_commit": "54b6fd3b4cb5ab0560972090356721933e9bc9ec",
+  "tests": {
+    "command": "node --test web_launch/case-outcome-export.test.mjs web_launch/archive-codec.test.mjs web_launch/case-outcome-client.test.mjs web_launch/real-journey-client.test.mjs web_launch/neon-store.test.mjs",
+    "pass": 34,
+    "fail": 0,
+    "skipped": 0
+  },
+  "compression_session_epoch_mutation_rejected": true,
+  "mutation_scope": "Only export epoch check removed in an isolated imported module; accepted source unchanged",
+  "downloads": [
+    {
+      "file": "artifacts/overnight-20261004/outcome-export-gzip.json",
+      "encoding": "gzip-base64",
+      "file_bytes": 1971,
+      "original_utf8_bytes": 5231,
+      "sha256": "f028b526d09b71d598f703361a64843cfabd4ee752f1906336ba0ad866f477a3"
+    },
+    {
+      "file": "artifacts/overnight-20261004/outcome-export-plain.json",
+      "encoding": "utf8-base64",
+      "file_bytes": 7139,
+      "original_utf8_bytes": 5231,
+      "sha256": "56313707d3c4cd0b47e616788806bd42ecfce427ff1fd78a0b706add972c988a"
+    }
+  ],
+  "reused_server_proof": "SQL and API exact source hashes still match; updated client and codec tested freshly",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-export-20261004",
+    "files": 94,
+    "published": false
+  },
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-outcomes-export-20261004",
+  "public_files": 94,
+  "release_sha256": "c1f84433277643fc5ad5f2be1699b7f0b627f897f6bd22f9836e8071b3aa2132",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

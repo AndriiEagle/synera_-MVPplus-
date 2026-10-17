@@ -1,0 +1,84 @@
+{
+  "created_at": "2026-10-02T10:43:24.999558+00:00",
+  "branch": "codex/synera-product-20261002",
+  "source_base": "0265bfab761f9c8428faca7be3e1d905562f7f27",
+  "neon_release": {
+    "path": "artifacts/product-access-20261002/synera-neon-product-20261002-rc2.zip",
+    "files": 52,
+    "sha256": "0c1a66b71981634bfc86be1fce618150afdf5738c662d91a8360a2e89b8ef398",
+    "archive_readback": "PASS",
+    "deployed": false
+  },
+  "presentation": {
+    "version": 2,
+    "source_commit": "9ff99b521be48bc301b5d941ea3b956eab9f0ab3",
+    "deployment_id": "appgdep_6abf88dd48e481919c8ec9c79f6cb4cd",
+    "status": "succeeded",
+    "url": "https://synera-summit-20261001.andypokr911.chatgpt.site",
+    "archive_files": 54,
+    "archive_sha256": "b4cf80ad2b0db221b6756c2d73bfc43a95d659aab452c1df3f59852560859261",
+    "native_content_hash": "sha256:47f43bd43405978240822202e07a9d01d5d2f765f716b1dd80d52ef7e7886d77"
+  },
+  "acceptance": {
+    "node_pass": 465,
+    "node_skip": 1,
+    "node_fail": 0,
+    "browser_pass": 27,
+    "a11y_main_and_catalogue": "0 violations; provider uncertainty remains outside UI audit",
+    "get_page_a11y": "no critical/serious violations",
+    "location_browser": "PASS; two local fixture accounts, simulated GPS/Auth/Data API/KV",
+    "sql": "reuse unchanged previously accepted disposable PG16 proof",
+    "wrong_app_origin_mutation": "rejected by expected browser oracle"
+  },
+  "proofs": [
+    {
+      "path": "artifacts/product-access-unit-20261002.tap",
+      "sha256": "8029cd2ef9492c99888fdd65abc7332b5e46355e75d875eba094244bae312a61"
+    },
+    {
+      "path": "artifacts/product-access-full-browser-20261002.txt",
+      "sha256": "b1c77b643d47df2fca37efa0d21a3bf1308c6750e38957a81d322c69630191ac"
+    },
+    {
+      "path": "artifacts/product-access-20261002/product-access-mutation.txt",
+      "sha256": "202453d1b25f65162834d250c5da65f1bd99d0bfb7e4cdf82f5617cd1d4df180",
+      "raw_local_path": "artifacts/product-access-mutation-20261002.txt",
+      "raw_sha256": "3d0ccd3bede6b65535fd75cd10a271a8ba0284bf3914e7278b7e908f5772c3df",
+      "normalization": "trailing whitespace only; lines semantically unchanged; original retained locally"
+    },
+    {
+      "path": "artifacts/product-access-a11y-20261002.txt",
+      "sha256": "be86adf33bf64962c6ded17e4910f1a3f40fc5c71cde5392efd3223375f8be81"
+    },
+    {
+      "path": "artifacts/location-browser-20261002.json",
+      "sha256": "fc8d6989a11448f4c65de5653f115aa7bad4778260318c855353ff5e920cd43e"
+    },
+    {
+      "path": "artifacts/location-sql.json",
+      "sha256": "ceef2dda8b2bfb6f344009507ac4b42fe7cb4d546ae5f1ed07d216812cc59cda"
+    },
+    {
+      "path": "artifacts/product-access-20261002/product-access-mobile.png",
+      "sha256": "ec2ca2235ef41ac30cc1473c59d0a646396d97e19a172a759d41205e072120ce"
+    },
+    {
+      "path": "artifacts/product-access-20261002/location-mobile.png",
+      "sha256": "bf663604cbe8857c2997f4ee04b9155597a1f2723c91645326527c23a8cd9c7a"
+    }
+  ],
+  "commercial_status": "not configured; owner price/payment response required",
+  "open_requirements": [
+    "verified live rollout and two real accounts",
+    "physical Android/iPhone acceptance",
+    "price and actual checkout/entitlement",
+    "native store release if requested",
+    "embedded Google Maps SDK",
+    "semantic deep matching"
+  ],
+  "source_push_authorized": true,
+  "source_push_verdict_at_packaging": "pending; compare final branch HEAD with git ls-remote",
+  "ai_provider_calls": 0,
+  "ai_usd": 0,
+  "subscription_savings": "unmeasured"
+}

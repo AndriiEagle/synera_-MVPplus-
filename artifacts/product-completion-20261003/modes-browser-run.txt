@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(review.includes(mode === 'joint_project' ? 'Спільний проєкт' : mode === 'paid_service' ? 'Оплачувана послуга' : mode === 'referral' ? 'Рекомендація' : mode === 'hybrid' ? 'Взаємний обмін + Рекомендація' : 'Взаємний обмін'))
+
+    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/real-journey-modes-browser-acceptance.mjs:70:80 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

@@ -1,0 +1,4 @@
+{
+  "status": "FAIL",
+  "message": "The expression evaluated to a falsy value:\n\n  assert.ok(assets.filter(i=>i.path.includes('icon-')).every(i=>i.filter==='invert(1)'))\n"
+}

@@ -1,0 +1,65 @@
+{
+  "status": "PASS_LOCAL_PRIVATE_MESSAGE_RECOVERY_CLOSURE",
+  "generated_at": "2026-10-04T10:13:31.248Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium 390x844 with synthetic two-account handler fixture; not signed HTTP JWT, live SQL/RLS, physical Android, provider activation or publication.",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "125cef34d4c0c77f92ccccbac80b9ecd71fa3bfd48e5746d8f101c54b2886434",
+    "web_launch/real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b",
+    "tools/message-recovery-acceptance.mjs": "c530e310033004ebc207d54124ce2c47b715e55ddaeff0406d47f5e0a30c219c"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/case-outcome-browser-acceptance.mjs": "6817c9e34fed48ad2d496c8d697eb6f8f9c87cecdee17cdc9bfaffa4b9758fb0",
+    "tools/fixtures/case-outcome-fixture.mjs": "358a1304bd7a4a3a100e0c0867662e5097403dac37c71398e4d583025aec5c63",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "web_launch/real-journey-client.test.mjs": "afa26315529f26a9e8a9e705d8f2cb65b2d3c21045effebbedf3233cf026d597",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/dist-neon-social-recovery-20261004/release.json": "db7595624c05154fd92ecda12bdf8eabd2224608446a1603df0d29b24a935e04",
+    "artifacts/overnight-20261004/social-recovery/ACCEPTANCE.json": "2b32baec4c63d4e6b001262a1257d0cce53a83d3a2e41204683b7325c859dd2f"
+  },
+  "base_commit": "69b04ea9982df91b65ded69ee71d9ad00e0fa343",
+  "red": "503 removed accepted chat before fix. Growing real message history then exposed keyboard accessibility failure; both semantic failures retained.",
+  "browser_check_groups": 13,
+  "mutation": "REJECTED: only send catch epoch/request guard removed in served copy. Delayed failure replaces completed logout status; canonical controller unchanged.",
+  "unchanged_controller_outside_send_sha256": "be74e7864e7931a8f3da2c6666a6daf322ac167e0063ce079ab3fe1b45c4b108",
+  "only_markup_change": "Named keyboard-focusable private transcript region; unchanged rest of HTML.",
+  "selected_unit_tests": {
+    "args": [
+      "--test",
+      "--test-reporter=tap",
+      "--test-name-pattern=two server-derived accounts",
+      "web_launch/real-journey-client.test.mjs"
+    ],
+    "pass": 1,
+    "fail": 0,
+    "output": "TAP version 13\n# Subtest: two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text\nok 1 - two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text\n  ---\n  duration_ms: 238.9428\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 471.3053\n"
+  },
+  "reused_proof": "Exact unchanged SQL/current gateway maps. Client/store/session-value unchanged, selected two-account shared-case/message test rerun. Previous controller/HTML browser proofs historical, not counted as current.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-message-recovery-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "message-current-390x844.png": "00ad44d24a3f821e5de1c7bc40098364f761704632316da9d4832ca57794be24"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-message-recovery-20261004",
+  "release_sha256": "2ba6345d489ba5c1a8df6c8bd9dc6cdc5fd216fb541b3fc06ac56f90922b9f3a",
+  "published": false,
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN",
+  "residual_risk": "Message writes have no persistent idempotency intent. Manual resend after ambiguous delivery can duplicate; refresh first. Automatic background reads remain enabled and do not write."
+}

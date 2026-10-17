@@ -1,0 +1,17 @@
+{
+  "tool": "tools/index-language-browser.mjs",
+  "engine": "Chromium 141, desktop, synthetic fixture",
+  "meaning": "Each row removes one piece of the change from a copy of the candidate; the same tool must fail. All rows did.",
+  "green": "index-language-green/RESULT.json",
+  "note": "The mutation runs used the candidate built before Codex's ced88b6 was merged; the page code they mutate is unchanged by the merge. The green receipt is from the merged candidate dist-neon-opus-pass4-20261010.",
+  "rows": [
+    { "name": "baseline", "change": "candidate built before this change", "result": "NEEDS_REVIEW", "evidence": "the DE/EN buttons do nothing: 105 Ukrainian strings stay on the first screens, no run passes" },
+    { "name": "m1", "change": "one row removed from the table («Мій профіль»)", "result": "NEEDS_REVIEW", "evidence": "66 sightings of Ukrainian text left on screen" },
+    { "name": "m2", "change": "the button module loads the language text up front", "result": "NEEDS_REVIEW", "evidence": "'a Ukrainian visit loaded language text'" },
+    { "name": "m3", "change": "the overlay does not put the Ukrainian text back", "result": "NEEDS_REVIEW", "evidence": "'the Ukrainian page was not restored exactly' in 4 runs" },
+    { "name": "m4", "change": "the delete field accepts only the Ukrainian word", "result": "NEEDS_REVIEW", "evidence": "'delete confirmation «LÖSCHEN»: false !== true'" },
+    { "name": "m5", "change": "typed chat messages are not excluded", "result": "NEEDS_REVIEW", "evidence": "the message «Оновити» was shown as «Aktualisieren»" },
+    { "name": "m6", "change": "the generated business-case summary is not handled", "result": "NEEDS_REVIEW", "evidence": "198 sightings of Ukrainian lines in the summary" },
+    { "name": "m7", "change": "section headings may not wrap in German/English", "result": "NEEDS_REVIEW", "evidence": "'page scrolls sideways by 13px' at 320 px, button «Aktualisieren»" }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "error": "Selecting a different room clears the previous draft\n+ actual - expected\n\n+ 'draft survives conflict'\n- ''\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Selecting a different room clears the previous draft\n+ actual - expected\n\n+ 'draft survives conflict'\n- ''\n\n    at file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/tools/group-room-browser-acceptance.mjs:61:164",
+  "observed_checks": {
+    "same_room_409_and_reselection_preserve_draft": true
+  },
+  "errors": [],
+  "requests": [
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/session",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/data/pilot_consents",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/session",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/data/pilot_consents",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/session",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/data/pilot_consents",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "path": "/api/neon/session",
+      "status": 200
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "path": "/api/neon/data/pilot_consents",
+      "status": 200
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "path": "/api/neon/data/profiles",
+      "status": 200
+    },
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/create",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/accept",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/accept",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/start",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/message",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/message",
+      "status": 403
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/advance",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/message",
+      "status": 409
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/list",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/399b7165-fd78-4954-95d0-2bfea2010b88/get",
+      "status": 200
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "path": "/api/neon/rooms/d4cf5066-64e5-4b11-a2f2-63c958a201a3/get",
+      "status": 200
+    }
+  ]
+}

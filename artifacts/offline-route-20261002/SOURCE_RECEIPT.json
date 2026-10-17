@@ -1,0 +1,8 @@
+{
+  "public_file": "studio-sw.mjs",
+  "sha256": "2f9674668170cfe9dbd094023ddaad64992b63b52c7a15be428b083971f42614",
+  "copy_readback": "PASS",
+  "red": "previous worker ignored /studio",
+  "green": "unit 2 passed; clean-host browser 1 passed",
+  "prod_database_mutated": false
+}

@@ -1,0 +1,35 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:05:25.493Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium selected-room/manual address reads against synthetic transport. No HTTP JWT, live accounts, Android or providers.",
+  "process_exit": 1,
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T08:05:25.618Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "scope": "Actual local Chromium, same synthetic account fixture across main app and private journey; not SQL/JWT, real accounts, Android or providers",
+    "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "extended_runner_sha256": "a0e7f31b21e81184065765fd8b6ee9ac717b000de2d1eaa1a27dce3321b8becc",
+    "process_exit": 1,
+    "error": "ENOENT: no such file or directory, open 'C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\overnight-20261004\\address-read\\MEETING_ADDRESS_UI_RED.json'",
+    "source_sha256": {
+      "web_launch/meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+      "web_launch/real-journey.mjs": "2285e7d1a7b3d1939debe8897ffa5654e0376c926d34d670ef206f86c54c01b1",
+      "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+      "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+      "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+      "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+      "tools/meeting-address-read-browser.mjs": "109a0961beebeff0c071bfed3d9310dd00a3ff8c37606c20560645c600832700"
+    }
+  },
+  "error": "ENOENT: no such file or directory, open 'C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\artifacts\\overnight-20261004\\address-read\\MEETING_ADDRESS_UI_RED.json'\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "2285e7d1a7b3d1939debe8897ffa5654e0376c926d34d670ef206f86c54c01b1",
+    "tools/meeting-journey-link-browser.mjs": "75ccfb190895db2882c57e55e420c6cf0eb67fd12c16232dbde1afc9909cd6f9",
+    "tools/meeting-address-read-browser.mjs": "109a0961beebeff0c071bfed3d9310dd00a3ff8c37606c20560645c600832700"
+  },
+  "extended_wrapper_sha256": "d5718eb914b07ac977e4e0dc3fd919897a1cf7a0d62b12aeb0c30e96ef1b78f8"
+}

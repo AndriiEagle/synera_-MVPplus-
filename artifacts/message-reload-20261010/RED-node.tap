@@ -1,0 +1,36 @@
+✔ lost POST response and explicit retry produce exactly one stored message (63.6945ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (13.3907ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (32.5772ms)
+✖ same-tab reload retries a committed unknown delivery once without storing message text (9.1688ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (46.9681ms)
+✔ authentication reset forgets pending intent (6.6399ms)
+✔ late committed acknowledgement is rejected after same-account restore (3.6082ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (4.815ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (2.7314ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 337.3012
+
+✖ failing tests:
+
+test at web_launch\message-intent.test.mjs:48:1
+✖ same-tab reload retries a committed unknown delivery once without storing message text (9.1688ms)
+  AssertionError [ERR_ASSERTION]: The explicit retry after reload duplicated the committed message
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/message-intent.test.mjs:55:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

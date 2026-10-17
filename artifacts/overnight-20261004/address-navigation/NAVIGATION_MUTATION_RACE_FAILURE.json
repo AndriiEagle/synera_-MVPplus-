@@ -1,0 +1,37 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T06:42:27.720Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium clicks, synthetic account/RPC; navigation fulfilled locally without Google, JWT or Android hardware",
+  "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+  "extended_runner_sha256": "56eb75102f87c3dc408ca01c44bab283943c8c53caf515d42c73bf94a15dfb22",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T06:42:28.435Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "preserved_accepted_chat": true,
+      "read_does_not_vote": true,
+      "retry_and_proposer_role": true,
+      "explicit_decline": true,
+      "stale_selection_requires_reload": true,
+      "bilateral_selected_address_and_literal_history": true,
+      "navigation_requires_explicit_click": true,
+      "failed_read_does_not_navigate": true,
+      "superseded_selection_stops_navigation": true
+    },
+    "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+    "error": "locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-address-refresh')\u001b[22m\n"
+  },
+  "process_exit": 1,
+  "error": "locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#real-address-refresh')\u001b[22m\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-address-navigation-browser.mjs": "9097a4caef49f80b85d90376779d985b62932316c2bdec54efc6c622dffc7246"
+  }
+}

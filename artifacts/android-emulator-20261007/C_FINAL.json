@@ -1,0 +1,28 @@
+{
+  "status": "INSTALLED_BOOTED_UI_NOT_ACCEPTED",
+  "criticalReadback": [
+    {
+      "path": "emulator\\emulator.exe",
+      "sha256": "653dfa9797ea524723c3eef98fd532776de9a056a1de2ef389dce782ab92037d",
+      "match": true
+    },
+    {
+      "path": "platform-tools\\adb.exe",
+      "sha256": "b4a6b455702684652cccf7b46258b29e653538904359a58fd4931cf3ef286b3f",
+      "match": true
+    },
+    {
+      "path": "system-images\\android-36\\google_apis_playstore\\x86_64\\system.img",
+      "sha256": "f72e0e86bc3476abcabd9437cad6459a7a515d585e219fd8fbb6de07b435258d",
+      "match": true
+    }
+  ],
+  "environmentBytes": 7514379928.0,
+  "limitBytes": 7516192768,
+  "freeC": 9336918016,
+  "minimumFreeBytes": 8589934592,
+  "emulatorStopped": true,
+  "chromeLaunch": "POLICY_REJECTED",
+  "systemUi": "ANR_DIALOG_ON_FIRST_BOOT",
+  "secondBoot": "PREVENTED_BY_STARTUP_SPACE_GUARD"
+}

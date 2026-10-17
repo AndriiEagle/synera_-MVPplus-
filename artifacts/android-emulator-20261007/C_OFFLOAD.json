@@ -1,0 +1,24 @@
+{
+  "status": "PURGED",
+  "source": "C:\\Users\\Andrii\\.codex\\tmp\\synera-pg16-20261003\\postgresql-16.15-5-windows-x64-binaries.zip",
+  "destination": "D:\\Moved\\SyneraInstallArchives-20261007\\postgresql-16.15-5-windows-x64-binaries.zip",
+  "copyExit": 1,
+  "checks": [
+    {
+      "pass": 1,
+      "bytes": 373254386,
+      "sourceSha256": "43BB45F173A6F08CF1D29A97A6D8DEB119E8E8093A24C00D2D1001A0CCAA8281",
+      "destinationSha256": "43BB45F173A6F08CF1D29A97A6D8DEB119E8E8093A24C00D2D1001A0CCAA8281",
+      "match": true
+    },
+    {
+      "pass": 2,
+      "bytes": 373254386,
+      "sourceSha256": "43BB45F173A6F08CF1D29A97A6D8DEB119E8E8093A24C00D2D1001A0CCAA8281",
+      "destinationSha256": "43BB45F173A6F08CF1D29A97A6D8DEB119E8E8093A24C00D2D1001A0CCAA8281",
+      "match": true
+    }
+  ],
+  "storageRisk": "Prior USB write loss; source preserved; archive is reinstallable software",
+  "postDeleteDestinationSha256": "43BB45F173A6F08CF1D29A97A6D8DEB119E8E8093A24C00D2D1001A0CCAA8281"
+}

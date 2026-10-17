@@ -1,0 +1,33 @@
+{
+  "status": "VERIFIED_TARGET_METADATA_WITH_LIMITS",
+  "observed_date": "2026-10-05",
+  "method": "Codex IAB, signed-in visible console metadata; no SQL execution, credentials or private user rows",
+  "neon": {
+    "project": "synera",
+    "project_id": "quiet-credit-94155104",
+    "branch": "production",
+    "branch_id": "br-dawn-field-axoxc3c4",
+    "database": "neondb",
+    "owner": "neondb_owner",
+    "restore_ui_url": "https://console.neon.tech/app/projects/quiet-credit-94155104/branches/br-dawn-field-axoxc3c4/restore",
+    "restore_window_label": "6 hour history window",
+    "snapshot_label": "No snapshots, no schedule set",
+    "recovery_point_created": false,
+    "restore_test": "NOT_RUN",
+    "applied_schema": "NOT_VERIFIED"
+  },
+  "cloudflare": {
+    "project": "synera-pilot",
+    "domain": "https://synera-pilot.pages.dev",
+    "delivery_label": "No Git connection",
+    "production_source_label": "main",
+    "production_deployment_url": "https://fb29ee5e.synera-pilot.pages.dev",
+    "production_age_label": "a month ago",
+    "latest_preview_source_label": "codex-synera-first-ten-integration",
+    "latest_preview_age_label": "8 days ago",
+    "new_candidate_deployed": false
+  },
+  "proof_boundary": "Console access and metadata are not a recovery test, applied migration, signed app JWT, two-account flow or physical Android acceptance. Push does not trigger this disconnected Pages project.",
+  "provider_calls": 0,
+  "provider_usd": 0
+}

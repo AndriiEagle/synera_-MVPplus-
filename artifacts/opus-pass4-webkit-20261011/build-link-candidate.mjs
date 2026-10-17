@@ -1,0 +1,31 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const sha = b => createHash('sha256').update(b).digest('hex');
+const out = 'artifacts/opus-pass4-webkit-20261011';
+const prior = JSON.parse(await fs.readFile(out + '/BUILD.json'));
+const git = args => execFileSync('git',args,{maxBuffer:16*1024*1024});
+assert.equal(git(['rev-parse','HEAD']).toString().trim(),prior.source_head);
+const oldSource = 'C:/Users/Andrii/.codex/tmp/synera-opus-pass4-webkit-20261011/source-head';
+const source = 'C:/Users/Andrii/.codex/tmp/synera-opus-pass4-webkit-20261011/source-link-fix';
+const name = 'dist-neon-opus-pass4-final-20261011', candidate = path.resolve('web_launch',name);
+for (const target of [source,candidate]) assert.equal(await fs.access(target).then(()=>true,()=>false),false,'Preserve '+target);
+await fs.cp(oldSource,source,{recursive:true,errorOnExist:true,force:false,filter:entry=>!path.basename(entry).startsWith('dist-neon')});
+const file = 'web_launch/index-i18n.mjs';
+assert.equal(sha(await fs.readFile(path.join(source,file))),sha(git(['cat-file','blob',prior.source_head+':'+file])));
+const changed = await fs.readFile(file); await fs.writeFile(path.join(source,file),changed);
+execFileSync(process.execPath,[path.join(source,'neon/build.mjs'),name],{stdio:'pipe'});
+await fs.cp(path.join(source,'web_launch',name),candidate,{recursive:true,errorOnExist:true,force:false});
+const release = await fs.readFile(path.join(candidate,'release.json')), manifest = JSON.parse(release);
+const previous = JSON.parse(await fs.readFile(path.join(prior.candidate,'release.json')));
+const deltas=[];
+for (const row of manifest.files) {
+  const bytes = await fs.readFile(path.join(candidate,row.name)); assert.equal(sha(bytes),row.sha256); assert.equal(bytes.length,row.bytes);
+  if (row.sha256!==previous.files.find(old=>old.name===row.name)?.sha256) deltas.push(row.name);
+}
+assert.deepEqual(deltas,['index-i18n.mjs']);
+assert.equal(sha(await fs.readFile('web_launch/journey-ui.mjs')),prior.foreign_worktree_journey_ui_sha256);
+const receipt={status:'PASS_REVIEWED_LOCAL_OVERLAY_BUILD',source_base:prior.source_head,source_overrides:{[file]:sha(changed)},candidate:path.relative(process.cwd(),candidate),release_sha256:sha(release),public_files:manifest.files.length+1,manifest_files_verified:manifest.files.length,changed_from_opus_head:deltas,foreign_dirty_preserved:true,published:false,provider_calls:0,usd:0};
+await fs.writeFile(out+'/FINAL-BUILD.json',JSON.stringify(receipt,null,2)+'\n'); console.log(JSON.stringify(receipt));

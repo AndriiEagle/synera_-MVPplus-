@@ -1,0 +1,15 @@
+{
+  "status": "REMOTE_BEHIND_LOCAL_HANDOFF",
+  "verified_at_utc": "2026-10-09T12:53:47.5461647Z",
+  "repository": "AndriiEagle/synera_-MVPplus-",
+  "visibility": "public",
+  "default_branch": "main",
+  "branch": "codex/synera-product-20261002",
+  "remote_sha": "6724682f5f43172e5732fa41b8a46e4baa6384e2",
+  "local_code_head": "7f2f217dc00df69342dd3291d3ab7d6ab6f7d8ab",
+  "local_commits_ahead_before_handoff": 10,
+  "push_attempted": false,
+  "policy_rejection": "approval required by policy, but AskForApproval is set to Never",
+  "bypass_used": false,
+  "deployment_performed": false
+}

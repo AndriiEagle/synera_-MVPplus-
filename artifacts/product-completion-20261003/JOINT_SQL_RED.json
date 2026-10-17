@@ -1,0 +1,73 @@
+{
+  "status": "NOT_ACCEPTED",
+  "scope": "Approved local PostgreSQL16.15, real SQL/RLS with provider identity shim; not live Neon/JWT/phone proof",
+  "generated_at": "2026-10-03T22:00:21.345Z",
+  "runtime": "C:\\Users\\Andrii\\.codex\\tmp\\synera-pg16-20261003",
+  "database": "synera_acceptance_1791064819061",
+  "server": {
+    "version": "16.15",
+    "data": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "stages": [
+    {
+      "name": "unicode_locale",
+      "exit_code": 0,
+      "stdout": "{\"provider\" : \"i\", \"icu_locale\" : \"und\", \"client_encoding\" : \"UTF8\", \"cyrillic_lower\" : \"онлайн\"}\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "provider_identity_shim",
+      "exit_code": 0,
+      "stdout": "CREATE SCHEMA\r\nCREATE TABLE\r\nCREATE SCHEMA\r\nCREATE FUNCTION\r\nDO\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "schema.proposal.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nALTER TABLE\r\nALTER TABLE\r\nGRANT\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE INDEX\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TRIGGER\r\nCREATE TABLE\r\nALTER TABLE\r\nREVOKE\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "acceptance.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nINSERT 0 4\r\nINSERT 0 3\r\nSET\r\n{\"sub\":\"44444444-4444-4444-8444-444444444444\",\"role\":\"authenticated\"}\r\nDO\r\nRESET\r\nINSERT 0 3\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\nINSERT 0 1\r\nDO\r\nINSERT 0 1\r\nDO\r\n{\"sub\":\"33333333-3333-4333-8333-333333333333\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nDO\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nUPDATE 1\r\nDO\r\nINSERT 0 1\r\nINSERT 0 1\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\nDELETE 0\r\nRESET\r\nDO\r\nSET\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nDELETE 1\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDELETE 1\r\nRESET\r\nDO\r\nDO\r\nPASS: consent, private profiles, shape/column grants, invitation ownership, names, messaging, blocks, third-party isolation, deletion and retained admission counters\r\nROLLBACK\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "case-state.migration.sql",
+      "exit_code": 0,
+      "stdout": "BEGIN\r\nDO\r\nDO\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE FUNCTION\r\nALTER TABLE\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE FUNCTION\r\nREVOKE\r\nGRANT\r\nCREATE TABLE\r\nCREATE INDEX\r\nCREATE INDEX\r\nCREATE FUNCTION\r\nREVOKE\r\nCREATE TRIGGER\r\nALTER TABLE\r\nREVOKE\r\nGRANT\r\nGRANT\r\nGRANT\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nCREATE POLICY\r\nDO\r\nCOMMIT\r\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "case-state.acceptance.sql",
+      "exit_code": 3,
+      "stdout": "BEGIN\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nINSERT 0 3\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\n{\"sub\":\"33333333-3333-4333-8333-333333333333\",\"role\":\"authenticated\"}\r\nDO\r\n{\"sub\":\"22222222-2222-4222-8222-222222222222\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nDO\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nINSERT 0 1\r\nDO\r\nINSERT 0 1\r\nRESET\r\nUPDATE 1\r\nSET\r\n{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}\r\nDO\r\n",
+      "stderr": "ERROR:  new row for relation \"match_cases\" violates check constraint \"match_cases_mode_check\"\r\nCONTEXT:  SQL statement \"insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)\r\n      values ('project-missing-contribution','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','joint_project',m,repeat('1',64),now()+interval '14 days')\"\r\nPL/pgSQL function inline_code_block line 6 at SQL statement\r\n",
+      "error": null
+    }
+  ],
+  "source_sha256": {
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/acceptance.sql": "6482d43a4f6397217bcf51af99f1ddfc68f7089c4be6563e3dac25d048e16a57",
+    "neon/case-state.migration.sql": "e205e64dbc4488110b9df8d54e4037a0fc4df080fc1c779b408fa62651a01993",
+    "neon/case-state.acceptance.sql": "89f7e58b61a001f24d0091c56b4036a4b4f3e747989d3831002ecfb2d5bbe4d9"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "locale": {
+    "provider": "i",
+    "icu_locale": "und",
+    "client_encoding": "UTF8",
+    "cyrillic_lower": "онлайн"
+  },
+  "failure": "case-state.acceptance.sql: ERROR:  new row for relation \"match_cases\" violates check constraint \"match_cases_mode_check\"\r\nCONTEXT:  SQL statement \"insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at)\r\n      values ('project-missing-contribution','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','joint_project',m,repeat('1',64),now()+interval '14 days')\"\r\nPL/pgSQL function inline_code_block line 6 at SQL statement\r\n\n\n3 !== 0\n",
+  "completed_at": "2026-10-03T22:00:25.553Z"
+}

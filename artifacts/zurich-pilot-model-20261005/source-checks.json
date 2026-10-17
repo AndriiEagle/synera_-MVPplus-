@@ -1,0 +1,54 @@
+{
+  "checked_on": "2026-10-05",
+  "checks": [
+    {
+      "id": "zurich_business_survey",
+      "url": "https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/daten/politik-und-verwaltung/befragungen/firmenbefragung.html",
+      "http_status": 200,
+      "html_sha256": "907c235546c322d4c4f49a811574e7983e7c3261d31bace87b44e0c4f5aeda50",
+      "bytes": 33075,
+      "anchors": {
+        "2025: 1499": true,
+        "nicht im statistischen Sinne repräsentativ": true
+      },
+      "verdict": "SOURCE_ANCHORS_VERIFIED"
+    },
+    {
+      "id": "work_notification",
+      "url": "https://www.zh.ch/de/wirtschaft-arbeit/erwerbstaetigkeit-auslaender/erwerbstaetige-im-asylbereich.html",
+      "http_status": 200,
+      "html_sha256": "4f5db44f8ada2c3dfba238a24e67747cb977a13dd9cf776ed6516b611d430ac1",
+      "bytes": 92345,
+      "anchors": {
+        "Selbständig tätig sein": true,
+        "Bevor die Arbeit aufgenommen werden darf, muss diese gemeldet werden": true
+      },
+      "verdict": "SOURCE_ANCHORS_VERIFIED"
+    },
+    {
+      "id": "voluntary_support",
+      "url": "https://www.zh.ch/de/soziales/sozialhilfe/sozialhilfehandbuch/flexdata-definition/9-einkommen--vermoegen-wsh/9-1-einkommen/9-1-03-freiwillige-leistungen-dritter.html",
+      "http_status": 200,
+      "html_sha256": "020ecb71bfde9501eb0067684e26da8b6a3e85ee9c2b0c49a090fa7f4e245aaf",
+      "bytes": 80909,
+      "anchors": {
+        "Vage Hoffnungen": true,
+        "im Einzelfall unter Berücksichtigung der konkreten Umstände": true
+      },
+      "verdict": "SOURCE_ANCHORS_VERIFIED"
+    },
+    {
+      "id": "self_employment_social_review",
+      "url": "https://www.zh.ch/de/soziales/sozialhilfe/sozialhilfehandbuch/flexdata-definition/6-grundlagen-der-wirtschaftlichen-hilfe/6-2-anspruchspruefung-wirtschaftliche-hilfe/6-2-04-erweiterte-sachverhaltsabklaerung-bei-selbstaendigerwerbenden.html",
+      "http_status": 200,
+      "html_sha256": "f640d5ee67a3821dc0da8ad9c3a897a47959ba9c1d7f9f597ebf06ce289e9f14",
+      "bytes": 101886,
+      "anchors": {
+        "vor Aufnahme der Tätigkeit": true,
+        "langfristig erfolgversprechend": true
+      },
+      "verdict": "SOURCE_ANCHORS_VERIFIED"
+    }
+  ],
+  "limit": "Anchor presence supports source readback; applicability and legal outcome require individual authority review."
+}

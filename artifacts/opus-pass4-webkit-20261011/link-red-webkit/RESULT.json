@@ -1,0 +1,58 @@
+{
+  "scope": "Desktop browser, actual navigation with denied localStorage, synthetic Auth/Data. No live JWT, physical device or RLS proof.",
+  "candidate": "dist-neon-opus-pass4-webkit-20261011",
+  "releaseHash": "b34eb7426ab8a2f910eccb466ef7d8739ad17d941a5ee3e0b7392bbc0b72ca1e",
+  "engine": {
+    "name": "webkit",
+    "version": "26.6"
+  },
+  "facts": {},
+  "checks": [
+    {
+      "name": "de: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "de: newly drawn next link carries the explicit choice",
+      "pass": false,
+      "detail": "/real-journey.html"
+    },
+    {
+      "name": "de: real next page keeps the choice without storage",
+      "pass": false,
+      "detail": {
+        "actual": "uk",
+        "url": "http://127.0.0.1:54697/real-journey.html"
+      }
+    },
+    {
+      "name": "de: language and navigation did not write data",
+      "pass": true
+    },
+    {
+      "name": "en: browser really denies localStorage",
+      "pass": true
+    },
+    {
+      "name": "en: newly drawn next link carries the explicit choice",
+      "pass": false,
+      "detail": "/real-journey.html"
+    },
+    {
+      "name": "en: real next page keeps the choice without storage",
+      "pass": false,
+      "detail": {
+        "actual": "uk",
+        "url": "http://127.0.0.1:54697/real-journey.html"
+      }
+    },
+    {
+      "name": "en: language and navigation did not write data",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "status": "NEEDS_REVIEW"
+}

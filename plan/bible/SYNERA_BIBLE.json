@@ -1,0 +1,1038 @@
+{
+ "schema_version": "synera.bible.v1",
+ "created": "2026-09-09",
+ "revision": 3,
+ "revised": "2026-09-11",
+ "mode": "wiring_only",
+ "order": [
+  "X_repair",
+  "A_ui",
+  "B_store",
+  "C_sql",
+  "D_cohort"
+ ],
+ "baseline": {
+  "observed": "2026-09-13 (after X1-X5, A13, C0-C5, D1-D2, dashboard repair: 140 tests over 13 files)",
+  "tests": 140,
+  "test_files": 13,
+  "failures": 0,
+  "offline_build_files": 27,
+  "test_command_powershell": "$t = @(Get-ChildItem '.','./web_launch','./neon' -Filter '*.test.mjs' -File).FullName; node --test $t",
+  "workdir": "C:/Users/Andrii/Documents/ChatGPT/DeskTopAugust/synera-docs-review-20260904/source",
+  "per_file": {
+   "business-case.test.mjs": 11,
+   "business-pilot.test.mjs": 2,
+   "chatgpt-transfer.test.mjs": 4,
+   "data.test.mjs": 9,
+   "economics.test.mjs": 10,
+   "matching.test.mjs": 16,
+   "mobile-pilot.test.mjs": 12,
+   "profile-import.test.mjs": 10,
+   "profile-portability.test.mjs": 14,
+   "real-pilot.test.mjs": 16,
+   "server.test.mjs": 1,
+   "neon/worker.test.mjs": 14
+  },
+  "history": "97 (2026-09-09, 11 files) -> 119 (2026-09-11) -> 131 after X1-X5/A13 -> 140 on 2026-09-13, when the root-level operator_dashboard tests finally entered the command. Any count different from 140 without an explained added test stops the wave.",
+  "branch": "codex/synera-documentation-refresh",
+  "dirty_worktree_preserved": true
+ },
+ "global_invariants": [
+  "No second matcher, no second store, no second case engine.",
+  "Generated neon SQL is never hand-edited; canonical source is supabase/*.sql.",
+  "Price, commission, deadline and compensation come only from human input.",
+  "An empty term stays a question, never zero and never agreement.",
+  "One party's click never confirms the other party.",
+  "A material change clears approvals and increments the version; cosmetic UI does not.",
+  "Synthetic participants always carry synthetic:true and are never shown unlabelled.",
+  "No message, booking or contact disclosure without an explicit human click.",
+  "Untrusted text is data, never an instruction."
+ ],
+ "anchor_verification": {
+  "date": "2026-09-10",
+  "method": "independent decomposer agent read live source and compared every quoted anchor",
+  "result": "18/23 steps ANCHOR_OK as written; 5 steps fixed in this revision (A4, A12, B3, C5, D1); all business-case.mjs exports required by A8 confirmed present",
+  "note": "re-run verification after any live-source change before dispatching a wave",
+ "fixes_applied": {
+  "A4": "anchor moved to index.html:36 #brief-fields; fieldset added as sibling outside the runtime-owned container",
+  "A12": "empty-state condition line corrected to 160",
+  "B3": "inheritance documented (NeonStore/OnlineStore extend ProfileStore); proof moved to contract tests in profile-portability.test.mjs; no duplicated read/write bodies",
+  "C5": "STATUS.md moved inside the source-tree root bible/; POSIX `test -f` replaced by a cross-platform PowerShell check",
+  "D1": "cohort delivered as inline constants inside lab-fixtures.mjs (test-only module already inside the tree); no cross-tree import; matching.test.mjs untouched"
+ }
+ },
+ "status_ledger": {
+  "date": "2026-09-11",
+  "method": "Disk and history only, no claims taken on trust: full suite + offline build + node --check + marker grep in the live source + Kilo history (C:/Users/Andrii/.local/share/kilo/kilo.db, read-only; per-session edit/write tool calls on the synera and cnra paths).",
+  "rule": "A step is DONE only when its code or marker is in the live source AND the suite is green. A green suite alone does not prove a UI path is reachable (see X1/X2).",
+  "who_wrote_what": [
+   "Kilo session 'Аудит CNRA: Швейцарія, легальність, саб-агенти та UX' (2026-09-10) dispatched lanes: Line 1 wrote A1-A3, A5-A7, A8-A12; Line 2 wrote A4 + F1-F4; Lane 5 wrote F5 + F7 (+1 line in assets.mjs).",
+   "Lane 4 (B1-B4), Lane 6 (G1/G7/G8) and Line 3 (legal E1-E5) wrote NOTHING: zero edit/write calls in their sessions. All three died with 'Connection reset by server'.",
+   "A second, parallel Kilo session 'Статус виконання ліній та воркерів' (2026-09-11 10:04-10:11) wrote B1-B4, F6, G7 and a partial G1 on the same tree, then ran out of steps mid-G1.",
+   "At 16:20 the first session credited those markers to Lane 4 ('Lane 4 — повністю виконана') and dispatched a G-residual agent. That agent never ran a tool: the Kilo process restarted at 16:22. Its claim 'сам пишу legal-драфти' also never happened; no legal draft exists."
+  ],
+  "lesson": "Two orchestrators on one tree broke the one-writer-per-file rule without either knowing. Before dispatching, check that no other session holds the same files.",
+  "steps": {
+   "A1-export-all-modes": "DONE: profile-brief.mjs:10 `export const ALL_MODES` (no marker comment; verified by code)",
+   "A2-app-imports-all-modes": "DONE: app.mjs:5 imports ALL_MODES; MODES kept",
+   "A3-render-five-modes": "DONE: app.mjs:90 modes tuple uses ALL_MODES",
+   "A4-mode-detail-fields": "DONE: index.html:37 SYN_MODE_DETAIL_FIELDS_PRESENT",
+   "A5-collect-mode-details": "DONE: SYN_MODE_DETAILS_COLLECTED",
+   "A6-restore-mode-details": "DONE: SYN_MODE_DETAILS_RESTORED",
+   "A7-show-brief-problems": "DONE: SYN_BRIEF_PROBLEMS_VISIBLE",
+   "A8-import-case-state": "DONE: SYN_CASE_STATE_IMPORTED",
+   "X1-hoist-consent-state": "DONE 2026-09-11: SYN_CONSENT_STATE_BEFORE_USE. Browser proof on a local mock Neon: session restore renders the profile and people; the same flow with the old app.mjs shows 'Не вдалося завершити дію' and 0 cards. Extra in the same block: toggles now mirror consentState (visibility followed the profile but was reset to OFF), and is_discoverable / #ai-consent stay in sync with the panel.",
+   "X2-consent-panel-markup": "DONE and RESOLVED 2026-09-13: SYN_CONSENT_PANEL_MARKUP. The Kilo session had duplicated the panel at 17:41 on 2026-09-11 (every consent id twice, markup test red); that session removed its own duplicate later the same evening. index.html now holds exactly one set of consent-* ids and the markup test is green.",
+   "X3-run-keeps-gates": "DONE 2026-09-11: SYN_RUN_KEEPS_GATES. run() re-enabled every button in finally, which reopened the introduction gate after page load and after any action. It now restores each button's own state. Behavioural test runs the real run() in vm.",
+   "X4-case-action-not-nested": "DONE 2026-09-11: SYN_CASE_ACTION_NOT_NESTED. btn() already wraps handlers in run(); caseAction called run() again, which returned early (busy), so 'Підтвердити умови' and 'Відкликати' never did anything since A10. Behavioural test runs btn/run/caseAction in vm.",
+   "X5-introduction-needs-consent": "DONE 2026-09-11: SYN_INTRODUCTION_NEEDS_CONSENT. The async caseSection set inviteButton.disabled = !allowed after renderPeople applied the introduction consent, so two approvals would reopen the button with the consent OFF. Both conditions are decided in one place now.",
+   "A13-terms-from-human-input": "DONE 2026-09-11 (new step, closes P05): SYN_TERMS_FROM_HUMAN_INPUT. Nothing in the UI could fill compensation/revision limit/confidentiality/IP/cancellation, so approveCase always threw 'Material terms incomplete' (in English). Added materialTermsFromInput in business-case.mjs (empty/malformed stays unresolved) + a per-pair terms form in the case; 'Підтвердити умови' is disabled with the missing list; errors are Ukrainian. Browser proof: v1 empty -> fill -> v2 approve -> change revision limit -> v3, own approval cleared, matrix notice shown, invite stays off.",
+   "X7-dashboard-cli-and-glob": "DONE 2026-09-13: the operator cockpit Kilo wrote (G8) was committed broken and unnoticed. operator_dashboard.mjs was truncated mid-CLI-block (SyntaxError: Unexpected end of input), and its tests live at the repo root, outside the canonical web_launch+neon glob, so nobody ever ran them. Closed the block, then fixed the real defect Kilo died on: new URL('C:\...') parses the drive letter as a URL scheme, so the is-main guard never matched and the CLI exited 0 writing nothing - replaced with pathToFileURL, the pattern neon/generate-schema.mjs already uses. Dashboard 8/8; canonical command widened to include root tests: 140 over 13 files.",
+   "A9-render-case-v2": "DONE and reachable after X2 (browser: 'версія 1 · SHA-256: 4f3777ae', format, outcomes, unresolved, evidence).",
+   "A10-approve-and-invalidate": "DONE after X4 + A13 (it never worked before: nested run() dropped every click, and incomplete terms could not be approved).",
+   "A11-gate-introduction": "DONE after X3 + X5 (the gate was reopened by run() and by the async case render). reviewIntroduction import added by the Kilo worker.",
+   "A12-cold-start": "DONE: SYN_COLD_START_EXPLAINED",
+   "B1-store-mode-details": "DONE: SYN_STORE_CARRIES_MODE_DETAILS (test)",
+   "B2-store-case-state": "DONE: SYN_STORE_CARRIES_CASE_STATE (profile-store.mjs saveCaseState/caseState + test)",
+   "B3-mirror-remote-stores": "DONE: SYN_REMOTE_STORE_SHAPE_MATCHES; neon-store/online-store untouched (inheritance), as the step requires",
+   "B4-portability-roundtrip": "DONE: SYN_PORTABILITY_ROUNDTRIP_PROVEN",
+   "C-wave-rescope": "The live Neon project already runs neon/schema.proposal.sql (docs/NEON_LAUNCH.uk.md: 106 statements, acceptance PASS). Editing supabase/real-pilot.proposal.sql as C1/C2 said would rewrite applied history, so C moved to an additive migration: supabase/case-state.proposal.sql + case-state.acceptance.sql. The original C1-C3 allowed_files are SUPERSEDED.",
+   "C0-brief-v2-in-sql": "DONE (new step), PRESENT_BUT_UNTESTED: the live synera_valid_brief accepts only version 1 with exchange/joint_project, so the wave-A UI (pilot modes) would fail to save against the live DB. Migration replaces the validator (v1 + v2 with mode_details) and relaxes published_brief_complete for v2 only.",
+   "C1-sql-match-cases": "DONE, PRESENT_BUT_UNTESTED: match_cases with server-owned version (+1 on every material/hash change), created/updated/closed times, 90-day cap, one open case per pair, closed cases frozen.",
+   "C2-sql-approvals": "DONE, PRESENT_BUT_UNTESTED: match_case_approvals; only party_id = auth.uid(), only for the case's current version+hash, only when material is complete (synera_case_material_complete); withdrawal final; stale approvals stop being live without deleting anyone's row. Plus meetings_need_approved_case: the server refuses an invitation without two live approvals.",
+   "C3-sql-rls-acceptance": "DONE, NOT RUN: supabase/case-state.acceptance.sql covers party A, party B, third party C, anonymous, stale version, revoked case, blocked peer, forged party id, forged timestamps, direct REST invitation and direct message. No database available; running it needs H1.",
+   "C4-generation-proof": "DONE: SYN_SQL_GENERATION_BYTE_PROVEN in neon/worker.test.mjs; neon/case-state.migration.sql + case-state.acceptance.sql regenerate byte-identically; the applied neon/schema.proposal.sql and acceptance.sql stay byte-identical (checked by hash before/after).",
+   "C5-label-untested": "DONE: source/bible/STATUS.md = PRESENT_BUT_UNTESTED, with the four things that must ship together.",
+   "D1-load-cohort": "DONE: SYN_COHORT_LOADED_AS_FIXTURES; SYNTHETIC_COHORT in lab-fixtures.mjs is byte-verbatim from COHORT_10.json revision 2; lab-fixtures is not in the offline bundle.",
+   "D2-cohort-journey": "DONE: 4 SYN_COHORT_JOURNEYS_GREEN tests in business-pilot.test.mjs (accepted paths, refusals, funnel denominators incl. 2 no_response + 2 feedback_missing, cohort never in a store/seed/asset). Before loading, the cohort was checked against the real matcher and corrected (COHORT_10.json revision_note): hector's referral benefit could never be relevant, lina did not declare hybrid, coverage miscounted feedback."
+  },
+  "addendum_v5_steps": {
+   "E1..E5 (legal drafts)": "NOT_STARTED: output/legal/ holds only SWISS_LEGAL_LAYER.uk.md. The claims 'драфти у роботі' / 'пишу власноруч' produced no file.",
+   "F1..F4 (import parse/redact/map)": "DONE: markers in profile-import.mjs + profile-import.test.mjs (10 tests)",
+   "F5-import-ui": "DONE: SYN_IMPORT_UI_CONFIRMED; behind const AI_MEMORY_IMPORT_ENABLED = false",
+   "F6-store-integration": "DONE: SYN_IMPORT_STORED (profile-portability.test.mjs)",
+   "F7-audit-event": "DONE: SYN_IMPORT_AUDITED (economics.mjs)",
+   "G1-consent-panel": "PARTIAL_AND_BROKEN: JS panel in app.mjs (SYN_CONSENT_PANEL_7), but index.html has no consent-* element and no behavioural test exists. Introduced the X1 crash and the X2 dead gate.",
+   "G2-approval-moment": "NOT_STARTED; BLOCKED_SCOPE_CONFLICT, see conflicts",
+   "G3-terms-diff": "NOT_STARTED",
+   "G4-outcome-card": "NOT_STARTED",
+   "G5-data-portability": "NOT_STARTED; largely REDUNDANT, see conflicts",
+   "G6-cold-start-logic": "REDUNDANT: A12 already delivers it; keep only as a re-check",
+   "G7-telemetry-writer": "DONE: SYN_TELEMETRY_CONTRACT (economics.mjs; writeEventsLog imports node:fs dynamically; economics.mjs is not in the offline bundle)",
+   "G8-operator-dashboard": "NOT_STARTED: no operator_dashboard.* file anywhere",
+   "H1..H3 (operator decision sheets)": "NOT_STARTED: no pilot-decision/ folder"
+  },
+  "conflicts_found": [
+   "G2 copy 'Схвалено! Ви — офіційна пара.' fires on one party's approval_given. That breaks two invariants: 'One party's click never confirms the other party' and 'reviewIntroduction always returns binding:false; never render as agreement'. Rewritten in MASTER_PLAN_ADDENDUM_V5.json (see its revision note).",
+   "G5 duplicates what already exists: app.mjs has #export-account and #delete-profile (server-side delete with confirmation). Re-scope G5 to 'make the existing export/delete visible next to the consent panel' or drop it; do not build a second local wipe.",
+   "G8 says 'package root' without naming which. Meant: the output package (output/cnra-solo-rebuild-20260909/), never the product tree.",
+   "H numbering differs: GENESIS_SPEC §6 has H1 DB, H2 lawyer/fiduciary, H3 organizer; MASTER_PLAN_ADDENDUM_V5 has H1 DB, H2 organizer, H3 route policy. The step IDs in ADDENDUM_V5 are the dispatch IDs; GENESIS §6 is the owner/deadline board.",
+   "README.uk.md status line said 'awaiting Wave A dispatch' after Wave A was already in the code. Updated."
+  ],
+  "open_human_decisions": [
+   "DECIDED 2026-09-11 (Andrii): consents stay per page load. The panel says so in its own copy.",
+   "Two writers again: Andrii drives the Kilo session 'Статус виконання ліній та воркерів' on the same web_launch files while this plan is executed; it duplicated the consent panel at 17:41. Pick one writer for web_launch/ until the duplicate is resolved.",
+   "Referral with thirdPartyStatus not_consulted is eligible and reaches the introduction gate (flag THIRD_PARTY_NOT_CONSULTED + unresolved third_party_agreement; the existing D1 rehearsal asserts allowed:true). Decide whether that is intended (the introduction is only seeker<->introducer) or whether approval must be blocked until the third party consents (needs a material field, so a hash/SQL change).",
+   "H1 disposable database for case-state.acceptance.sql: Docker is installed on this machine but has no Postgres image; a Neon branch is the other option. Either one needs your go (image download or branch creation).",
+   "Deploy rule: wave-A UI, case-state migration, B2-rework and the worker allowlist ship together or not at all (bible/STATUS.md in the source tree).",
+   "P07 expert review (Treuhänder) stays parked (SASKE P2-004 → park). Unchanged."
+  ],
+  "planned_next": [
+   {"step_id": "B2-rework-case-store-shape", "why": "saveCaseState posts one client-written JSON `state` (both parties' approvals inside), which RLS cannot check; C1/C2 store columns + per-party approval rows.", "allowed_files": ["web_launch/profile-store.mjs", "web_launch/profile-portability.test.mjs"], "change": "saveCaseState writes case_id/participants/mode/material/terms_hash/expires_at to match_cases; approve/withdraw become separate calls that insert/patch only the caller's match_case_approvals row; caseState reads both and rebuilds the domain state. No client-set version or timestamps.", "acceptance_marker": "SYN_CASE_STORE_MATCHES_SQL", "stop_conditions": ["NEEDS_HUMAN_APPROVAL before pointing it at any real database"]},
+   {"step_id": "C6-worker-allowlist", "why": "neon/worker.mjs TABLES has six tables; the case tables are unreachable through the gateway.", "allowed_files": ["neon/worker.mjs", "neon/worker.test.mjs"], "change": "Add match_cases and match_case_approvals to TABLES with a test; ship only together with the migration.", "acceptance_marker": "SYN_WORKER_ALLOWS_CASE_TABLES", "stop_conditions": ["NEEDS_HUMAN_APPROVAL: worker.mjs is deployed code"]},
+   {"step_id": "X6-app-uses-case-store", "why": "caseStates live only in the tab; the other party can never see an approval.", "allowed_files": ["web_launch/app.mjs"], "change": "After B2-rework: load/save case and approvals through the store; keep all domain checks client-side as well.", "acceptance_marker": "SYN_APP_SYNCS_CASE", "depends_on": ["B2-rework-case-store-shape", "C6-worker-allowlist"]}
+  ]
+ },
+ "traps": [
+  "consentState in app.mjs is declared at line 792, AFTER the top-level await at lines 774-784. Anything that runs during that await (session restore -> finishOnlineSignIn -> load -> fillProfileForm / renderPeople) must not read a const declared below it. Fixed by X1.",
+  "Every document.getElementById('consent-...') in app.mjs needs a matching id in index.html. The null-guards hide the missing markup instead of failing; a green suite does not catch it.",
+  "$('#mode') in app.mjs is the LOGIN STATUS label, not a collaboration mode.",
+  "MODES in profile-brief.mjs is the old two; MODES in matching.mjs is all five. Different constants.",
+  "ALL_MODES already exists in profile-brief.mjs line 10 - export it, do not recreate it.",
+  "normalizeBrief already handles mode_details and auto-sets PILOT_BRIEF_VERSION. Do not duplicate that logic in app.mjs.",
+  "briefProblems already contains every Ukrainian validation message. Do not rewrite them.",
+  "buildBusinessCase is v1 text; createCaseState is the v2 state machine. Different things.",
+  "reviewIntroduction always returns binding:false. Never render 'домовлено'."
+ ],
+ "concurrency": {
+  "max_active_workers": 3,
+  "writers_per_file": 1,
+  "rule": "Two steps naming the same file are sequential even if their topics differ. A large swarm means many queued microtasks, not many simultaneous edits."
+ },
+ "stop_codes": [
+  "BLOCKED_MISSING_CONTEXT",
+  "BLOCKED_SCOPE_CONFLICT",
+  "BLOCKED_FORBIDDEN_FILE",
+  "BLOCKED_VALIDATION_IMPOSSIBLE",
+  "NEEDS_HUMAN_APPROVAL"
+ ],
+ "reviewer_gates": [
+  {
+   "after": "A3-render-five-modes",
+   "check": "five modes render, labels come from constants, $('#mode') untouched"
+  },
+  {
+   "after": "A7-show-brief-problems",
+   "check": "every briefProblems message reachable from the UI; legacy v1 profile still saves"
+  },
+  {
+   "after": "A11-gate-introduction",
+   "check": "replay: approve, change price, confirm both approvals cleared and introduction re-blocked"
+  },
+  {
+   "after": "B4-portability-roundtrip",
+   "check": "legacy export imports unchanged; local and remote field names identical"
+  },
+  {
+   "after": "C4-generation-proof",
+   "check": "generated SQL is byte-reproducible; RLS still labelled untested"
+  }
+ ],
+ "forbidden_actions": [
+  "deploy",
+  "production migration",
+  "opening signup",
+  "real invitations",
+  "payments",
+  "meeting recording",
+  "sending private data to an external model",
+  "legal or tax conclusions",
+  "showing synthetic participants to a third real person"
+ ],
+ "steps": [
+  {
+   "step_id": "X1-hoist-consent-state",
+   "wave": "X",
+   "priority": "P0 — blocks every other dispatch on app.mjs",
+   "p_refs": [
+    "P10",
+    "P12"
+   ],
+   "depends_on": [],
+   "touch_policy": "bounded_multi_file",
+   "allowed_files": [
+    "web_launch/app.mjs",
+    "web_launch/mobile-pilot.test.mjs"
+   ],
+   "anchor": "app.mjs lines 791-792: `const CONSENT_PANEL_DEFAULTS = Object.freeze({ visibility: false, ... });` and `const consentState = { ...CONSENT_PANEL_DEFAULTS };`. Read earlier at line 71 (fillProfileForm) and lines 355/373 (renderPeople), which run during the top-level await at lines 774-784 when a session is restored.",
+   "defect": "Proven with a minimal repro (same structure): `ReferenceError: Cannot access 'consentState' before initialization`. In the app: a returning signed-in user (store.restore at line 782) or an email-link sign-in (line 779) hits load({profile:true}) -> fillProfileForm -> TDZ. run() catches it and shows the generic 'Не вдалося завершити дію' message, and the profile and people list are never rendered.",
+   "change": "Move exactly those two declaration lines, verbatim, to directly above `function fillProfileForm(profile) {` (currently line 52). Leave the toggle block (lines 793-823) where it is. Change nothing else. In mobile-pilot.test.mjs add one test that reads app.mjs as text and asserts that the index of `const consentState` is lower than the index of the first `consentState.` usage.",
+   "acceptance_marker": "SYN_CONSENT_STATE_BEFORE_USE",
+   "test_command": "node --check web_launch/app.mjs && node --test web_launch/mobile-pilot.test.mjs && (full suite: baseline.test_command, expect 120)",
+   "forbidden": [
+    "changing const to var to silence the error",
+    "wrapping the reads in try/catch",
+    "changing consent defaults",
+    "touching index.html in this step"
+   ],
+   "negative_examples": [
+    "Bad: `typeof consentState !== 'undefined' &&` guards at the read sites.",
+    "Bad: moving the whole 30-line toggle block to the top (it needs the DOM and form helpers)."
+   ],
+   "rollback": "Move the two lines back below `applyAuthState();renderProfileProgress();` and remove the test.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the two declaration lines are not found verbatim",
+    "BLOCKED_SCOPE_CONFLICT if another agent session is editing app.mjs",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "X2-consent-panel-markup",
+   "wave": "X",
+   "priority": "P0 — without it A9/A10 are unreachable and the invite button never enables",
+   "p_refs": [
+    "P10",
+    "P12",
+    "P03"
+   ],
+   "depends_on": [
+    "X1-hoist-consent-state"
+   ],
+   "touch_policy": "bounded_multi_file",
+   "allowed_files": [
+    "web_launch/index.html",
+    "web_launch/mobile-pilot.test.mjs"
+   ],
+   "anchor": "index.html line 42: `<section id=\"settings-view\" class=\"panel narrow\" hidden><h2>Твої дані й межі</h2>`. app.mjs lines 795-801 look up seven ids; index.html has none of them.",
+   "defect": "consentState.comparison and consentState.introduction start false and no element can change them. Result: every review_candidate shows 'Бізнес-кейс сховано дозволом' and asks the user to turn on a 'Порівняння профілів' switch that does not exist; the invite button stays disabled forever (app.mjs:373).",
+   "change": "Directly after that <h2>, add one <fieldset id=\"consent-panel\"> with a <legend> and exactly seven checkboxes with ids consent-visibility, consent-comparison, consent-introduction, consent-external-ai, consent-recording, consent-summary, consent-analytics-sync. None carries `checked`. consent-recording carries `disabled` and says it is locked off. Each label is Ukrainian and has one short line on what it gives the user. In mobile-pilot.test.mjs add one test: every `getElementById('consent-...')` id found in app.mjs occurs exactly once in index.html, and no consent-* input in index.html has `checked`.",
+   "acceptance_marker": "SYN_CONSENT_PANEL_MARKUP",
+   "test_command": "node --test web_launch/mobile-pilot.test.mjs && node web_launch/build.mjs --offline && (full suite, expect 121)",
+   "forbidden": [
+    "any consent checked by default",
+    "one checkbox for several consents",
+    "enabling recording",
+    "touching app.mjs in this step",
+    "persisting consents (open human decision, see status_ledger)"
+   ],
+   "negative_examples": [
+    "Bad: `<input id=\"consent-comparison\" checked>` so the case shows up again.",
+    "Bad: removing the comparison gate from app.mjs instead of adding the panel."
+   ],
+   "rollback": "Delete the #consent-panel fieldset and the added test.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the settings-view anchor is not found",
+    "BLOCKED_SCOPE_CONFLICT if another agent session is editing index.html",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A1-export-all-modes",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P02"
+   ],
+   "depends_on": [],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/profile-brief.mjs"
+   ],
+   "anchor": "line 10: `const ALL_MODES = Object.freeze(Object.fromEntries(COLLABORATION_MODES.map(...)))`",
+   "change": "Change `const ALL_MODES` to `export const ALL_MODES`. Nothing else. The constant already merges MODES and PILOT_MODES for all five collaboration modes.",
+   "acceptance_marker": "SYN_ALL_MODES_EXPORTED",
+   "test_command": "node --test web_launch/business-case.test.mjs web_launch/real-pilot.test.mjs",
+   "forbidden": [
+    "creating a new constant",
+    "changing MODES or PILOT_MODES",
+    "touching app.mjs"
+   ],
+   "negative_examples": [
+    "Bad: define a second merged map in app.mjs.",
+    "Bad: add a sixth mode."
+   ],
+   "rollback": "Revert the word `export` on line 10.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A2-app-imports-all-modes",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P02"
+   ],
+   "depends_on": [
+    "A1-export-all-modes"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 5: `import { normalizeBrief, briefProblems, compareRealProfiles, collaborationDraft, CAPABILITIES, CITIES, LANGUAGES, MODES, profileAIPayload, profileAIPrompt, validateAIDraft } from './profile-brief.mjs';`",
+   "change": "Add `ALL_MODES` to that import list. Keep `MODES` in the list; a later step removes it if unused. Do not reorder the other names.",
+   "acceptance_marker": "SYN_APP_IMPORTS_ALL_MODES",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "editing any other import line",
+    "renaming imported symbols"
+   ],
+   "negative_examples": [
+    "Bad: replace the whole import line with a new one.",
+    "Bad: import from matching.mjs instead."
+   ],
+   "rollback": "Remove `ALL_MODES` from line 5.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A3-render-five-modes",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P02"
+   ],
+   "depends_on": [
+    "A2-app-imports-all-modes"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 63: `for (const [key, title, choices] of [['offer_tags','Можу дати',CAPABILITIES],['need_tags','Потрібно мені',CAPABILITIES],['languages','Мови розмови',LANGUAGES],['modes','Формати співпраці',MODES]])`",
+   "change": "In that tuple list only, replace `MODES` with `ALL_MODES`. The user must now see five checkboxes: Обмін допомогою, Спільний проєкт, Платна послуга · локальний пілот, Рекомендація · локальний пілот, Змішаний формат · локальний пілот. Labels come from the constants; do not retype them.",
+   "acceptance_marker": "SYN_FIVE_MODES_RENDERED",
+   "test_command": "node --test web_launch/*.test.mjs && node web_launch/build.mjs --offline",
+   "forbidden": [
+    "writing mode labels as string literals",
+    "changing the other three tuples",
+    "touching $('#mode') which is the LOGIN STATUS element, not a collaboration mode"
+   ],
+   "negative_examples": [
+    "Bad: hardcode 'Платна послуга' in app.mjs.",
+    "Bad: set $('#mode').textContent to a collaboration mode."
+   ],
+   "rollback": "Restore `MODES` on line 63.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A4-mode-detail-fields",
+   "wave": "A",
+   "p_refs": [
+    "P02"
+   ],
+   "depends_on": [
+    "A3-render-five-modes"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/index.html"
+   ],
+   "anchor": "web_launch/index.html line 36: `<div id=\"brief-fields\"></div>` — the modes fieldset is generated at runtime by app.mjs lines 63-67 INSIDE this container",
+   "change": "Add one fieldset id=`mode-details`, hidden by default, as the immediate NEXT SIBLING after the #brief-fields div (static HTML in index.html; never inside the container, which app.mjs owns via innerHTML). Fieldset contains exactly: select name=`paid_role` with empty/buyer/supplier; select name=`referral_role` with empty/introducer/seeker; checkbox name=`referral_source_declared`; checkbox name=`referral_recipient_scope_declared`; checkbox group name=`referral_benefit_tags` over the seven CAPABILITIES keys; checkbox group name=`hybrid_components` over exchange/paid_service/referral. Labels in Ukrainian. No price field, no date field, no free-text field.",
+   "acceptance_marker": "SYN_MODE_DETAIL_FIELDS_PRESENT",
+   "test_command": "node web_launch/build.mjs --offline",
+   "forbidden": [
+    "adding any price, amount, currency or deadline input",
+    "adding free-text inputs",
+    "touching app.mjs in this step"
+   ],
+   "negative_examples": [
+    "Bad: add an input for CHF amount.",
+    "Bad: add a 'describe your offer' textarea."
+   ],
+   "rollback": "Delete the `#mode-details` fieldset.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A5-collect-mode-details",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P02"
+   ],
+   "depends_on": [
+    "A4-mode-detail-fields"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 43: the `normalizeBrief({ ...Object.fromEntries(data), offer_tags: ..., modes: data.getAll('modes'), ... })` call",
+   "change": "Add a `mode_details` key to that object literal, built from the form fields added in A4: `{ paid_service:{ role: data.get('paid_role')||'' }, referral:{ role: data.get('referral_role')||'', benefitTags: data.getAll('referral_benefit_tags'), sourceDeclared: data.has('referral_source_declared'), recipientScopeDeclared: data.has('referral_recipient_scope_declared'), thirdPartyStatus: 'not_consulted' }, hybrid:{ components: data.getAll('hybrid_components') } }`. normalizeBrief already sanitises this through normalizeModeDetails and already sets version 2 automatically. Do not sanitise here.",
+   "acceptance_marker": "SYN_MODE_DETAILS_COLLECTED",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "validating in app.mjs",
+    "defaulting thirdPartyStatus to 'consented'",
+    "setting version manually"
+   ],
+   "negative_examples": [
+    "Bad: thirdPartyStatus: 'consented'.",
+    "Bad: result.version = 2 in app.mjs."
+   ],
+   "rollback": "Remove the `mode_details` key from line 43.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A6-restore-mode-details",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P15"
+   ],
+   "depends_on": [
+    "A5-collect-mode-details"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 51: `for (const key of ['offer_tags','need_tags','languages','modes']) form.querySelectorAll(...)`",
+   "change": "After that loop, restore the A4 fields from `brief.mode_details` when it exists. A brief without mode_details (version 1, legacy profile) must refill without error and must not become invalid.",
+   "acceptance_marker": "SYN_MODE_DETAILS_RESTORED",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "throwing when mode_details is absent",
+    "forcing version 2 onto a legacy brief"
+   ],
+   "negative_examples": [
+    "Bad: crash on an old exported profile.",
+    "Bad: mark a version-1 brief as broken."
+   ],
+   "rollback": "Remove the restore block.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A7-show-brief-problems",
+   "wave": "A",
+   "p_refs": [
+    "P01",
+    "P02"
+   ],
+   "depends_on": [
+    "A6-restore-mode-details"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "wherever the profile form is saved and `briefProblems` is (or should be) called",
+   "change": "Ensure the Ukrainian strings returned by `briefProblems` are shown to the user before save. Those strings already exist in profile-brief.mjs (roles, referral source/recipient/benefit, at least two hybrid components). Do not rewrite or translate them.",
+   "acceptance_marker": "SYN_BRIEF_PROBLEMS_VISIBLE",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "writing new validation messages",
+    "validating in app.mjs"
+   ],
+   "negative_examples": [
+    "Bad: 'Please fill the role field'.",
+    "Bad: allow save with an empty paid_service role."
+   ],
+   "rollback": "Remove the display block.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A8-import-case-state",
+   "wave": "A",
+   "p_refs": [
+    "P04",
+    "P05"
+   ],
+   "depends_on": [
+    "A7-show-brief-problems"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 6: `import { buildBusinessCase, businessCaseText } from './business-case.mjs';`",
+   "change": "Extend that import with `createCaseState, approveCase, withdrawApproval, reviseCase, reviewCaseAction, INVALIDATION_MATRIX`. Import only; no usage in this step.",
+   "acceptance_marker": "SYN_CASE_STATE_IMPORTED",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "using the new symbols yet",
+    "removing buildBusinessCase or businessCaseText"
+   ],
+   "negative_examples": [
+    "Bad: delete businessCaseText because it looks like v1."
+   ],
+   "rollback": "Restore line 6 to its two original symbols.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A9-render-case-v2",
+   "wave": "A",
+   "p_refs": [
+    "P04",
+    "P05",
+    "P06"
+   ],
+   "depends_on": [
+    "A8-import-case-state"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "lines 179-187: the `if (comparison.status === 'review_candidate')` branch that builds a readonly textarea from businessCaseText",
+   "change": "Keep the textarea. Below it render, from `createCaseState`, three blocks: (1) material terms with the short SHA-256 (first 8 chars) and version number; (2) the unresolved questions list; (3) each party's evidence status label. Values are rendered as returned. Nothing is computed in app.mjs.",
+   "acceptance_marker": "SYN_CASE_V2_RENDERED",
+   "test_command": "node --test web_launch/business-case.test.mjs && node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "computing a hash in app.mjs",
+    "filling an unresolved field with a default",
+    "showing a score or percentage"
+   ],
+   "negative_examples": [
+    "Bad: compensation shown as 0 when unresolved.",
+    "Bad: '87% сумісність'."
+   ],
+   "rollback": "Remove the three rendered blocks.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A10-approve-and-invalidate",
+   "wave": "A",
+   "p_refs": [
+    "P03",
+    "P04"
+   ],
+   "depends_on": [
+    "A9-render-case-v2"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "the block rendered by A9",
+   "change": "Add one approve button and one withdraw button per party, wired to `approveCase` / `withdrawApproval`, showing both approval states separately. When a material term changes, call `reviseCase` and display the INVALIDATION_MATRIX consequence in Ukrainian: material_change clears BOTH approvals and increments the version; terms_approval_withdrawn clears only the withdrawing party. One party's click never sets the other party's state.",
+   "acceptance_marker": "SYN_APPROVALS_WIRED",
+   "test_command": "node --test web_launch/business-case.test.mjs && node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "one button approving for both",
+    "keeping approvals after a material change",
+    "hiding the version number"
+   ],
+   "negative_examples": [
+    "Bad: 'Погодити за обох'.",
+    "Bad: price changes and both approvals stay green."
+   ],
+   "rollback": "Remove the buttons and the notice.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A11-gate-introduction",
+   "wave": "A",
+   "p_refs": [
+    "P03",
+    "P12"
+   ],
+   "depends_on": [
+    "A10-approve-and-invalidate"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 188: `card.append(btn('Обговорити співпрацю ↗', () => openInvite(person,comparison)), btn('Межі спілкування / скарга',...))`",
+   "change": "Disable the 'Обговорити співпрацю ↗' button unless `reviewIntroduction` returns allowed:true. When blocked, show the reason. The result always carries binding:false — the UI must never render the words 'домовлено', 'угода укладена' or any equivalent.",
+   "acceptance_marker": "SYN_INTRODUCTION_GATED",
+   "test_command": "node --test web_launch/matching.test.mjs && node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "opening contacts before two approvals",
+    "rendering the pair as an agreement",
+    "auto-sending anything"
+   ],
+   "negative_examples": [
+    "Bad: 'Домовленість підтверджена'.",
+    "Bad: contacts visible at review_candidate."
+   ],
+   "rollback": "Restore line 188 to an ungated button.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "A12-cold-start",
+   "wave": "A",
+   "p_refs": [
+    "P16",
+    "P10"
+   ],
+   "depends_on": [
+    "A11-gate-introduction"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/app.mjs"
+   ],
+   "anchor": "line 160: `if (!ranked.length) {` (empty-state content at lines 161-163)",
+   "change": "Extend the empty state to name WHY there is no candidate, using the existing statuses from the priority map on line 154 (insufficient_mutual_value, needs_information, incompatible, consent_required) plus 'нікого ще немає'. Add nothing invented: no sample profiles, no placeholder people, no AI-generated evidence. Keep the existing 'Запросити колегу своєю карткою' button. If any listed profile carries `synthetic: true`, label it visibly as синтетичний учасник.",
+   "acceptance_marker": "SYN_COLD_START_EXPLAINED",
+   "test_command": "node --test web_launch/*.test.mjs && node web_launch/build.mjs --offline",
+   "forbidden": [
+    "generating example people",
+    "showing a synthetic participant without a label",
+    "claiming matches exist when none do"
+   ],
+   "negative_examples": [
+    "Bad: 'Ось як виглядатиме твоя пара' with a made-up person.",
+    "Bad: an unlabeled synthetic profile in the list."
+   ],
+   "rollback": "Restore the original empty state.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "B1-store-mode-details",
+   "wave": "B",
+   "p_refs": [
+    "P01",
+    "P15"
+   ],
+   "depends_on": [
+    "A12-cold-start"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/profile-store.mjs"
+   ],
+   "anchor": "the profile read/write path",
+   "change": "Persist and return `brief.mode_details` and `brief.version` unchanged. No new store, no new table, no reshaping. A version-1 profile without mode_details round-trips identically.",
+   "acceptance_marker": "SYN_STORE_CARRIES_MODE_DETAILS",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "creating a second store module",
+    "dropping unknown fields",
+    "upgrading version 1 to version 2 on read"
+   ],
+   "negative_examples": [
+    "Bad: silently set version=2 on load.",
+    "Bad: strip mode_details as unknown."
+   ],
+   "rollback": "Revert the read/write path.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "B2-store-case-state",
+   "wave": "B",
+   "p_refs": [
+    "P04",
+    "P15"
+   ],
+   "depends_on": [
+    "B1-store-mode-details"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/profile-store.mjs"
+   ],
+   "anchor": "the same module",
+   "change": "Persist case state per pair: material payload, hash, version, status, both approval states, expiry/revocation. Store only what `createCaseState` returns. No free text, no contacts, no transcript.",
+   "acceptance_marker": "SYN_STORE_CARRIES_CASE_STATE",
+   "test_command": "node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "storing message text or contacts",
+    "recomputing the hash on read"
+   ],
+   "negative_examples": [
+    "Bad: keep a chat log in the case record."
+   ],
+   "rollback": "Revert.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "B3-mirror-remote-stores",
+   "wave": "B",
+   "p_refs": [
+    "P15"
+   ],
+   "depends_on": [
+    "B2-store-case-state"
+   ],
+   "touch_policy": "bounded_multi_file",
+   "allowed_files": [
+    "web_launch/neon-store.mjs",
+    "web_launch/online-store.mjs",
+    "web_launch/profile-portability.test.mjs"
+   ],
+   "anchor": "web_launch/neon-store.mjs line 5: `export class NeonStore extends ProfileStore` — OnlineStore inherits ProfileStore the same way, so field-shape consistency is proven by contract tests, not by duplicating logic",
+   "change": "Do NOT duplicate read/write logic in the subclasses. If and only if a subclass overrides a read/write method, keep its field names and absence semantics identical to ProfileStore/B1/B2. The real proof lives in profile-portability.test.mjs: add contract tests asserting mode_details and case-state survive a ProfileStore -> NeonStore/OnlineStore round-trip with identical field names. No third store.",
+   "acceptance_marker": "SYN_REMOTE_STORE_SHAPE_MATCHES",
+   "test_command": "node --test web_launch/*.test.mjs && node --test neon/worker.test.mjs",
+   "forbidden": [
+    "diverging field names between local and remote",
+    "adding a third durable store",
+    "copy-pasting the parent's read/write body into subclasses"
+   ],
+   "negative_examples": [
+    "Bad: modeDetails remotely, mode_details locally."
+   ],
+   "rollback": "Revert adapter touches and remove added contract tests.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "B4-portability-roundtrip",
+   "wave": "B",
+   "p_refs": [
+    "P15"
+   ],
+   "depends_on": [
+    "B3-mirror-remote-stores"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/profile-portability.test.mjs"
+   ],
+   "anchor": "existing round-trip tests",
+   "change": "Add cases proving: a legacy version-1 export imports unchanged; a version-2 export with mode_details round-trips byte-identically; an export with an unknown future field does not crash the import.",
+   "acceptance_marker": "SYN_PORTABILITY_ROUNDTRIP_PROVEN",
+   "test_command": "node --test web_launch/profile-portability.test.mjs",
+   "forbidden": [
+    "changing production code in this step"
+   ],
+   "negative_examples": [
+    "Bad: fix the code to make the test pass without saying so."
+   ],
+   "rollback": "Remove the added tests.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "C1-sql-match-cases",
+   "wave": "C",
+   "p_refs": [
+    "P15",
+    "P04"
+   ],
+   "depends_on": [
+    "B4-portability-roundtrip"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "supabase/real-pilot.proposal.sql"
+   ],
+   "anchor": "canonical Supabase proposal source",
+   "change": "Add table `match_cases`: pseudonymous participant ids, mode, canonical material payload, material hash, version integer, status, expires_at, revoked_at, server-side created_at/updated_at. No contacts, no transcript, no free text beyond bounded approved fields.",
+   "acceptance_marker": "SYN_SQL_MATCH_CASES_PROPOSED",
+   "test_command": "node neon/generate-schema.mjs && git diff --check",
+   "forbidden": [
+    "editing neon/schema.proposal.sql by hand",
+    "running anything against a production database"
+   ],
+   "negative_examples": [
+    "Bad: hand-edit the generated Neon file.",
+    "Bad: add a display_name column."
+   ],
+   "rollback": "Remove the table from the canonical source and regenerate.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "C2-sql-approvals",
+   "wave": "C",
+   "p_refs": [
+    "P03",
+    "P04"
+   ],
+   "depends_on": [
+    "C1-sql-match-cases"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "supabase/real-pilot.proposal.sql"
+   ],
+   "anchor": "same canonical source",
+   "change": "Add table `match_case_approvals`: case id, party id, approved version, approved material hash, approved_at, withdrawn_at. Uniqueness so one party cannot hold two live approvals on one case.",
+   "acceptance_marker": "SYN_SQL_APPROVALS_PROPOSED",
+   "test_command": "node neon/generate-schema.mjs && git diff --check",
+   "forbidden": [
+    "allowing an approval row without a hash",
+    "hand-editing generated SQL"
+   ],
+   "negative_examples": [
+    "Bad: approval stored without the version it approved."
+   ],
+   "rollback": "Remove the table and regenerate.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "C3-sql-rls-acceptance",
+   "wave": "C",
+   "p_refs": [
+    "P10"
+   ],
+   "depends_on": [
+    "C2-sql-approvals"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "supabase/real-pilot.acceptance.sql"
+   ],
+   "anchor": "acceptance cases",
+   "change": "Add RLS acceptance cases for: party A, party B, an anonymous caller, a stale version, a revoked case, a blocked user, a forged client id, a forged client timestamp, a direct REST invitation attempt, a direct REST message attempt. Each states the expected refusal.",
+   "acceptance_marker": "SYN_SQL_RLS_CASES_WRITTEN",
+   "test_command": "node neon/generate-schema.mjs",
+   "forbidden": [
+    "claiming RLS is verified by Node tests",
+    "running against a real project"
+   ],
+   "negative_examples": [
+    "Bad: mark RLS as tested because the file exists."
+   ],
+   "rollback": "Remove the acceptance cases.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "C4-generation-proof",
+   "wave": "C",
+   "p_refs": [
+    "P15"
+   ],
+   "depends_on": [
+    "C3-sql-rls-acceptance"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "neon/generate-schema.mjs"
+   ],
+   "anchor": "generator",
+   "change": "Prove byte-for-byte that the generated Neon outputs come only from the canonical Supabase sources. Regenerate twice and compare hashes.",
+   "acceptance_marker": "SYN_SQL_GENERATION_BYTE_PROVEN",
+   "test_command": "node neon/generate-schema.mjs && node --test neon/worker.test.mjs",
+   "forbidden": [
+    "any manual edit of generated files"
+   ],
+   "negative_examples": [
+    "Bad: touch schema.proposal.sql directly."
+   ],
+   "rollback": "Revert the generator.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "C5-label-untested",
+   "wave": "C",
+   "p_refs": [
+    "P10",
+    "P14"
+   ],
+   "depends_on": [
+    "C4-generation-proof"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "bible/STATUS.md"
+   ],
+   "anchor": "new file `bible/STATUS.md` (same source-tree root as C1–C4, so the executor never crosses a tree boundary)",
+   "change": "Record the wave-C result as `PRESENT_BUT_UNTESTED`. State explicitly that Node tests prove generation and client contract only, never RLS behaviour, and that the label is removed only after a run against a disposable isolated database with separate human approval.",
+   "acceptance_marker": "SYN_SQL_LABELLED_UNTESTED",
+   "test_command": "powershell -NoProfile -Command \"if (Test-Path 'bible/STATUS.md') { 'OK' } else { exit 1 }\"",
+   "forbidden": [
+    "writing that the backend is verified",
+    "planning a production migration"
+   ],
+   "negative_examples": [
+    "Bad: 'backend ready'."
+   ],
+   "rollback": "Delete bible/STATUS.md.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "D1-load-cohort",
+   "wave": "D",
+   "p_refs": [
+    "P16",
+    "P14"
+   ],
+   "depends_on": [
+    "A12-cold-start"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/lab-fixtures.mjs"
+   ],
+   "anchor": "existing fixture module used by matching.test.mjs (web_launch/lab-fixtures.mjs exports LAB_PROFILES; matching.test.mjs line 4 imports it)",
+   "change": "In lab-fixtures.mjs ONLY: append ten inline constant objects copied verbatim from bible/COHORT_10.json (export const SYNTHETIC_COHORT = [...]). lab-fixtures.mjs is test-only and already sits inside the source tree, so no cross-tree import, no runtime file read, no new module, no touching matching.test.mjs in this step. Current LAB_PROFILES (3 static demo profiles) keep working unchanged. Every copied profile keeps `synthetic: true`. Do not add them to any production seed, any store default, or any live profile list.",
+   "acceptance_marker": "SYN_COHORT_LOADED_AS_FIXTURES",
+   "test_command": "node --test web_launch/matching.test.mjs",
+   "forbidden": [
+    "seeding synthetic profiles into a real store",
+    "dropping the synthetic flag",
+    "importing across the source-tree boundary",
+    "modifying matching.test.mjs in this step"
+   ],
+   "negative_examples": [
+    "Bad: insert the cohort into profile-store defaults."
+   ],
+   "rollback": "Remove the SYNTHETIC_COHORT export.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  },
+  {
+   "step_id": "D2-cohort-journey",
+   "wave": "D",
+   "p_refs": [
+    "P14",
+    "P03",
+    "P04"
+   ],
+   "depends_on": [
+    "D1-load-cohort",
+    "A12-cold-start"
+   ],
+   "touch_policy": "single_file",
+   "allowed_files": [
+    "web_launch/business-pilot.test.mjs"
+   ],
+   "anchor": "pilot journey tests",
+   "change": "Add one end-to-end synthetic journey per expected outcome from COHORT_10.json: four accepted paths (exchange, paid_service, referral, hybrid) and five refusals (joint_project -> needs_information, expired need, one-way value, withdrawn consent, referral third party not_consulted). Assert the funnel denominators from `pilotFunnel`, including missing feedback. Record synthetic receipts only.",
+   "acceptance_marker": "SYN_COHORT_JOURNEYS_GREEN",
+   "test_command": "node --test web_launch/business-pilot.test.mjs && node --test web_launch/*.test.mjs",
+   "forbidden": [
+    "treating a synthetic outcome as demand evidence",
+    "dropping a failed path from the denominator"
+   ],
+   "negative_examples": [
+    "Bad: report 4 successes and hide 5 refusals.",
+    "Bad: call this product-market fit."
+   ],
+   "rollback": "Remove the added journeys.",
+   "stop_conditions": [
+    "BLOCKED_MISSING_CONTEXT if the anchor line does not match the quoted text",
+    "BLOCKED_FORBIDDEN_FILE if any other file must change",
+    "NEEDS_HUMAN_APPROVAL before any deploy, migration or real message"
+   ]
+  }
+ ]
+}

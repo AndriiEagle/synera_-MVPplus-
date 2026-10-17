@@ -1,0 +1,30 @@
+[
+  {
+    "page": "index.html",
+    "url": "file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/index.html",
+    "timestamp": "2026-10-02T10:40:43.612Z",
+    "violations": [],
+    "passes": 42,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  },
+  {
+    "page": "catalogue.html",
+    "url": "file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/catalogue.html",
+    "timestamp": "2026-10-02T10:40:49.096Z",
+    "violations": [],
+    "passes": 41,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  }
+]

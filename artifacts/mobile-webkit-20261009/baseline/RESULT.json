@@ -1,0 +1,109 @@
+{
+  "phase": "baseline",
+  "mutation": false,
+  "scope": "Desktop WebKit, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "releaseHash": "a80d283892665eaf3800060f5154e3f37eae545ff5f9186fcbb35efd18b7315c",
+  "manifestFilesVerified": 96,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "standard",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "standard-get.png"
+    },
+    {
+      "profile": "standard",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 20,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "triangle",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 18,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "standard-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "standard",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 7,
+    "issues": 0,
+    "failures": 0,
+    "journeys": 1
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

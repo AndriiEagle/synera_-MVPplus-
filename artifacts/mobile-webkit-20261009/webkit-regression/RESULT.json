@@ -1,0 +1,240 @@
+{
+  "phase": "webkit-regression",
+  "mutation": false,
+  "scope": "Desktop browser, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "releaseHash": "a80d283892665eaf3800060f5154e3f37eae545ff5f9186fcbb35efd18b7315c",
+  "cssOverride": {
+    "file": "web_launch/real-journey.css",
+    "sha256": "e21d4d4b91bdc551da292519f588a7af9d01569cd4623fa0cbe0217f1f0c3118"
+  },
+  "manifestFilesVerified": 96,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "standard",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "standard",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "standard-journey-chat.png"
+    },
+    {
+      "profile": "large",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "large",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 430,
+        "document": 430,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "large-journey-chat.png"
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "landscape",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "landscape-journey-chat.png"
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "tablet",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 768,
+        "document": 768,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "tablet-journey-chat.png"
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "atelier",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "atelier-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "standard",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "large",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "landscape",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "tablet",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    },
+    {
+      "profile": "atelier",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 15,
+    "issues": 0,
+    "failures": 0,
+    "journeys": 5
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

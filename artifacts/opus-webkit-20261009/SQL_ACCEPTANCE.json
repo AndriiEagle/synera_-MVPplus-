@@ -1,0 +1,154 @@
+{
+  "status": "PASS_LOCAL_MEETING_STATUS_GUARD_SQL",
+  "generated_at": "2026-10-09T19:34:12.564Z",
+  "server": {
+    "version": "16.15",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "scope": "Disposable loopback PostgreSQL with an identity shim. Not a signed HTTP JWT, not Neon, not two live accounts, not production.",
+  "stages": [
+    {
+      "name": "baseline_case_stack_stale_acceptance",
+      "exit_code": 3,
+      "expected": "RED: Recipient accepted after the agreement changed",
+      "error": "Recipient accepted after the agreement changed",
+      "rolled_back": true
+    },
+    {
+      "name": "baseline_location_stack_sender_self_accept",
+      "exit_code": 3,
+      "expected": "RED: Sender accepted their own invitation",
+      "error": "Sender accepted their own invitation",
+      "rolled_back": true
+    },
+    {
+      "name": "baseline_full_stack_sender_self_accept",
+      "exit_code": 3,
+      "expected": "RED: Sender accepted their own invitation",
+      "error": "Sender accepted their own invitation",
+      "rolled_back": true
+    },
+    {
+      "name": "baseline_stack_invariants_without_guard",
+      "exit_code": 3,
+      "expected": "RED: Sender accepted their own invitation",
+      "error": "Sender accepted their own invitation",
+      "rolled_back": true
+    },
+    {
+      "name": "guard_case_stack",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "guard_then_full_stack",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "full_stack_then_guard",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "existing_case_state_acceptance_with_guard",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "second_apply_refused",
+      "exit_code": 3,
+      "expected": "RED: Inspect existing meeting status guard"
+    },
+    {
+      "name": "mutation_any_participant_may_answer",
+      "exit_code": 3,
+      "expected": "RED: Sender accepted their own invitation",
+      "error": "Sender accepted their own invitation",
+      "rolled_back": true
+    },
+    {
+      "name": "mutation_acceptance_ignores_approvals",
+      "exit_code": 3,
+      "expected": "RED: Recipient accepted after the agreement changed",
+      "error": "Recipient accepted after the agreement changed",
+      "rolled_back": true
+    },
+    {
+      "name": "mutation_unlisted_transitions_allowed",
+      "exit_code": 3,
+      "expected": "RED: Sender accepted their own invitation",
+      "error": "Sender accepted their own invitation",
+      "rolled_back": true
+    },
+    {
+      "name": "acceptance_after_mutations",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "stack_invariants_guard_first",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "stack_invariants_guard_last",
+      "exit_code": 0,
+      "expected": "PASS",
+      "error": null,
+      "rolled_back": true
+    },
+    {
+      "name": "stack_mutation_attestations_readable",
+      "exit_code": 3,
+      "expected": "RED: A consent or attestation table is readable directly",
+      "error": "A consent or attestation table is readable directly",
+      "rolled_back": true
+    },
+    {
+      "name": "stack_mutation_block_policy_dropped",
+      "exit_code": 3,
+      "expected": "RED: New terms written across a block",
+      "error": "New terms written across a block",
+      "rolled_back": true
+    },
+    {
+      "name": "stack_mutation_messages_rls_off",
+      "exit_code": 3,
+      "expected": "RED: Direct message passed before acceptance",
+      "error": "Direct message passed before acceptance",
+      "rolled_back": true
+    }
+  ],
+  "source_sha256": {
+    "neon/meeting-status-guard.migration.sql": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+    "neon/meeting-status-guard.acceptance.sql": "fb9a2e05ca1c144ea43834eef1d77ca543b9b3d4296a6dfda52dd6e11a630369",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/stack-invariants.acceptance.sql": "4d75a593b9ba241abc6a38395c5fa8089db9ba7bbf5680f6e5c53d3d16591cd5",
+    "tools/meeting-status-guard-sql-acceptance.mjs": "9146504335f823124802e1d406f31df65027e487fe99224da2c62dccc96dd1b8",
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "neon/meeting-address-agreement.migration.sql": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "live": false,
+  "databases_dropped": 12
+}

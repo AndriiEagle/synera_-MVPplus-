@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED_PUBLIC_HTTP_CLOUDFLARE_1010",
+  "httpStatus": 403,
+  "path": "/journey-ui.mjs",
+  "body": "error code: 1010",
+  "deploymentStatus": "succeeded",
+  "sourceCommit": "15c6259298e951fb859735f1f3a865234fb0e874",
+  "deployedSourceReadbackAccepted": false,
+  "physicalAndroidAccepted": false,
+  "action": "No bypass or access-policy change; use ordinary manual Android readback"
+}

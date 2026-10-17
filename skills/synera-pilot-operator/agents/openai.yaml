@@ -1,0 +1,4 @@
+interface:
+  display_name: "Synera pilot operator"
+  short_description: "Finish Synera pilot work with bounded local evidence"
+  default_prompt: "Use $synera-pilot-operator to finish the next verifiable Synera pilot step and report its evidence and remaining live gates."

@@ -1,0 +1,19 @@
+{
+  "status": "MUTANT_REJECTED_DUPLICATE_MESSAGE",
+  "scope": "Actual desktop Chromium 390x844; same-origin gateway with synthetic accounts/persistence. Not SQL or signed JWT/physical Android/live proof",
+  "checks": [],
+  "external": [],
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "client_sha256": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+  "injectionTrace": [
+    {
+      "phase": "post",
+      "method": "POST",
+      "path": "/api/neon/messages/44444444-4444-4444-8444-444444444444",
+      "messages": 1,
+      "busy": "true"
+    }
+  ],
+  "error": "Explicit retry duplicated an already delivered message\n\n2 !== 1\n"
+}

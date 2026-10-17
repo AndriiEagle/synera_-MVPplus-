@@ -1,0 +1,17 @@
+✔ lost POST response and explicit retry produce exactly one stored message (82.5411ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (17.9508ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (57.2018ms)
+✔ same-tab reload retries a committed unknown delivery once without storing message text (95.526ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (290.959ms)
+✔ authentication reset forgets pending intent (151.5361ms)
+✔ late committed acknowledgement is rejected after same-account restore (14.5859ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (21.1396ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (114.1297ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1222.2617

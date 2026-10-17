@@ -1,0 +1,14 @@
+{
+  "status": "PASS_SKILL_FILES_AND_DEPENDENCIES",
+  "scope": "File parity, valid frontmatter from quick_validate, source pointers; not proof of automatic skill discovery or subscription savings",
+  "files": {
+    "SKILL.md": "1c2ddd7bc02aaa5cedd3c2aceb22e694c9b5a346cbcf0cfb6cc5cc7cfe9901be",
+    "references/task-recipes.md": "3a51eac81bfa0df9b55db807abcadbedf413e9d0aba5dd4489aa7bf5538cc049",
+    "agents/openai.yaml": "804936226d9f52059477164dc794443254b875f70d8f36f4c1715cdc82fb520f"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "automatic_discovery_tested": true,
+  "semantic_review": "Parent applied instructions and reviewed gates; technical child read skill and reported tabletop verdict in commentary, then was interrupted before writing final report. No automatic invocation outcome claimed.",
+  "catalog_discovery_observed": "2026-10-05 developer-provided refreshed skill catalogue includes synera-pilot-operator"
+}

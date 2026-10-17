@@ -1,0 +1,15 @@
+
+Running 5 tests using 1 worker
+
+  ok 1 tests\product-access.spec.mjs:23:3 › Access journey de at 320 (4.6s)
+  ok 2 tests\product-access.spec.mjs:23:3 › Access journey en at 390 (4.6s)
+  ok 3 tests\product-access.spec.mjs:23:3 › Access journey de at 390 (3.8s)
+  ok 4 tests\product-access.spec.mjs:23:3 › Access journey uk at 390 (5.9s)
+  ok 5 tests\product-access.spec.mjs:23:3 › Access journey en at 1440 (4.9s)
+Timed out waiting 150s for the test suite to run
+Timed out waiting 150s for the teardown for load tests to run
+
+  5 passed (2.5m)
+  2 errors were not a part of any test, see above for details
+(node:20444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

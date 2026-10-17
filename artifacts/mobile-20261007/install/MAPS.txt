@@ -1,0 +1,22 @@
+✔ expiry cleanup drops the sample even when the meeting still says accepted (6.7633ms)
+✔ navigation preserves an agreed address outside Switzerland (1.5687ms)
+✔ GEO-01: grant needs own explicit consent, an accepted in-person meeting and a participant (3.1981ms)
+✔ GEO-01: the grant names exactly one recipient with a visible window and precision (0.6813ms)
+✔ GEO-01: no forced reciprocity — A sharing never makes B visible (1.7687ms)
+✔ GEO-01: outsider isolation — a non-recipient sees nothing, not even status details (2.737ms)
+✔ GEO-01: approximate precision coarsens the stored point and reports an honest radius (1.2587ms)
+✔ GEO-01: only the latest sample is kept (minimization) (2.957ms)
+✔ GEO-01: window, staleness and expiry are enforced (2.7052ms)
+✔ GEO-01: revocation and meeting cancellation drop the position immediately (1.9883ms)
+✔ GEO-01: static navigation works without GPS; online meetings get no map link (1.0113ms)
+✔ GEO-01: static and unconfigured Neon releases keep geolocation closed; the pure contract never captures GPS (87.7837ms)
+✔ summit demo runs the real bilateral matcher, including a negative example (78.5052ms)
+✔ directions encode the chosen destination, with no captured origin and no country substitution (1.317ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 483.9431

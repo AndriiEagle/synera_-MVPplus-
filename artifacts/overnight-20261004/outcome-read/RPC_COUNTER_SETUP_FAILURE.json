@@ -1,0 +1,18 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T08:39:49.917Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "pending_does_not_auto_accept": true,
+    "retry_keeps_text_and_intent": true,
+    "giver_cannot_self_accept": true,
+    "dispute_resolves_without_erasing_history": true,
+    "withdrawal_disables_outcome_actions": true,
+    "both_receiver_acceptances_confirm_all_results": true
+  },
+  "error": "Failed read retried automatically\n\n0 !== 1\n"
+}

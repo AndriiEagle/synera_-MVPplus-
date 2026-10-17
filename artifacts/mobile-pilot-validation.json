@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-09-05T14:07:53.8889897Z",
+  "tests": {
+    "failed": 0,
+    "passed": 45
+  },
+  "static_builds": {
+    "published": false,
+    "configured_files": 25,
+    "demo_files": 25
+  },
+  "browser": {
+    "viewport_height": 844,
+    "horizontal_overflow": false,
+    "viewport_width": 390,
+    "simulated_meeting": "pending -> next-hour -> accepted",
+    "document_css_width": 375,
+    "gpt_json_import": "preview passed, visibility off",
+    "draft_survives_hour_tick": true,
+    "osm_tiles": "loaded after opt-in",
+    "physical_iphone_tested": false,
+    "physical_android_tested": false,
+    "device_install_tested": false,
+    "bot_cards": 10
+  },
+  "supabase": {
+    "accounts": 0,
+    "live_auth_tested": false,
+    "meetings": 0,
+    "profiles": 0,
+    "pilot_consent_sql_applied": false,
+    "auth_http_status": 402
+  },
+  "provider": {
+    "actual_usd": 0,
+    "calls": 0,
+    "scheduler_enabled": false
+  },
+  "launch_ready": false
+}

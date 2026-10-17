@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED_BEFORE_EXECUTION_BY_RUNTIME_POLICY",
+  "requested_action": "git push --dry-run origin HEAD:refs/heads/codex/synera-product-20261002",
+  "tool_error": "approval required by policy, but AskForApproval is set to Never",
+  "explicit_user_authorization": true,
+  "remote_branch_readback": "6724682f5f43172e5732fa41b8a46e4baa6384e2",
+  "actual_push_performed": false,
+  "alternate_transport_attempted": false,
+  "production_changed": false
+}

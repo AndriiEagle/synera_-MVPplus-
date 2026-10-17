@@ -1,0 +1,102 @@
+{
+  "status": "PASS_LOCAL_LEGACY_LOCATION_AGREEMENT_CLOSURE",
+  "generated_at": "2026-10-04T07:12:32.701Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Local consumer gating, actual Chromium with synthetic sessions/RPC/GPS; no providers, live accounts, HTTP JWT, production or Android hardware",
+  "source_sha256": {
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/meeting-location.mjs": "1247b12b7f0a0bef693d426010aa079fda57e86b2e329121a405d2403adb6b96",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "web_launch/meeting-location-agreement.test.mjs": "f948af88f2d9815e5a72c6723c41c0c37198f840267be78e4c157a41cbf0ef3e",
+    "web_launch/meeting-address-client.test.mjs": "128a2d0006ff7d559151567ddd4ec7293bd69943ec76bb28b85967b6692994c7",
+    "web_launch/case-outcome-client.test.mjs": "73cbb7b9306c15a44d3688fb7c0c9acd319f6de12ae60c21bdea90397a72b6be",
+    "web_launch/real-journey-client.test.mjs": "afa26315529f26a9e8a9e705d8f2cb65b2d3c21045effebbedf3233cf026d597",
+    "web_launch/neon-store.test.mjs": "4c9a35504ad9d7cec189b619ad66167a3f34165ef81c241ec9b5f740243c2a07",
+    "web_launch/location-session.test.mjs": "74f807dce1605437ae41a27bc4a1c8b843dc5f18889b7a1e9f009c16e2ab9f96",
+    "tools/meeting-location-agreement-browser.mjs": "20eb7f0ffe0b7c58969f6c2767c6e754c0740492fd8f1950701f9d7a0d99d409",
+    "tools/meeting-location-agreement-acceptance.mjs": "f1a7220cecdbbe179d0906778e21cc4be3acb3b4d11084938bdd081cd67832a0"
+  },
+  "preserved_sha256": {
+    "web_launch/journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/real-journey.html": "e23b3718bda8f52bb82038bb9b31f0ee0240d2ef16994659c95aa46f5570887d",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/profile-store.mjs": "798623e2828ddb16efbb786af81525d656890351a18ca14240fb39b811cdda49",
+    "web_launch/location-session.mjs": "1e0f2ba007705abe1e7615e3778759c853e9989091b58d5ab1dba308658e5e20",
+    "web_launch/live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "web_launch/assets.mjs": "0dff061f5546378db701560133468823c45190d444b8a432cb2aae64e0244697",
+    "web_launch/atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "web_launch/atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "tools/location-browser-acceptance.mjs": "06b289cc0fdef30484b2d26d7cfdff1f8a22372134b0d8450eddc733d1a57211",
+    "tools/meeting-address-navigation-browser.mjs": "b7cc2928e2921e23e0edbef0b64e97d4a18dd5fe8d3df87b2c47f0d9861f1f36",
+    "web_launch/dist-neon-address-navigation-20261004/release.json": "01044381558aa5ba11bff5c28d0ecc18be126676642d3bc24e88f997b531f016",
+    "artifacts/overnight-20261004/address-navigation/NAVIGATION_ACCEPTANCE.json": "d3d2d5b56bbd00c2456158db00fcb1cc4c5d718034652679b36962ebb5fede5e"
+  },
+  "base_commit": "67b023320d6bf3a179b0dc98463cccf8ec6d5f3e",
+  "consumer_mutation_rejected": true,
+  "unit": {
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "web_launch/meeting-location-agreement.test.mjs",
+      "web_launch/meeting-address-client.test.mjs",
+      "web_launch/case-outcome-client.test.mjs",
+      "web_launch/real-journey-client.test.mjs",
+      "web_launch/neon-store.test.mjs",
+      "web_launch/location-session.test.mjs"
+    ],
+    "exit_code": 0,
+    "output": "TAP version 13\n# Subtest: outcome reads preserve both pending legs; one acceptance cannot confirm the whole collaboration\nok 1 - outcome reads preserve both pending legs; one acceptance cannot confirm the whole collaboration\n  ---\n  duration_ms: 435.7856\n  type: 'test'\n  ...\n# Subtest: rollout remains closed without the outcome flag and leaves existing case behaviour intact\nok 2 - rollout remains closed without the outcome flag and leaves existing case behaviour intact\n  ---\n  duration_ms: 82.799\n  type: 'test'\n  ...\n# Subtest: an explicit write keeps its original retry intent and only acknowledges the actor-bound server event\nok 3 - an explicit write keeps its original retry intent and only acknowledges the actor-bound server event\n  ---\n  duration_ms: 108.3748\n  type: 'test'\n  ...\n# Subtest: receiver checks, neutral disputes and a later explicit acceptance retain the complete event history\nok 4 - receiver checks, neutral disputes and a later explicit acceptance retain the complete event history\n  ---\n  duration_ms: 116.0268\n  type: 'test'\n  ...\n# Subtest: wrong roles, unknown actions and forged fields cause no outcome write\nok 5 - wrong roles, unknown actions and forged fields cause no outcome write\n  ---\n  duration_ms: 107.8988\n  type: 'test'\n  ...\n# Subtest: a malformed or foreign response cannot promote a collaboration to confirmed\nok 6 - a malformed or foreign response cannot promote a collaboration to confirmed\n  ---\n  duration_ms: 221.3028\n  type: 'test'\n  ...\n# Subtest: PostgreSQL transaction-start server_now is not treated as a wall-clock upper bound on prior committed events\nok 7 - PostgreSQL transaction-start server_now is not treated as a wall-clock upper bound on prior committed events\n  ---\n  duration_ms: 66.8862\n  type: 'test'\n  ...\n# Subtest: old reviewed terms and terms revised while the response travels never return an attestation\nok 8 - old reviewed terms and terms revised while the response travels never return an attestation\n  ---\n  duration_ms: 99.5667\n  type: 'test'\n  ...\n# Subtest: late private outcome responses are discarded after logout, same-account restore or another-account restore\nok 9 - late private outcome responses are discarded after logout, same-account restore or another-account restore\n  ---\n  duration_ms: 201.9431\n  type: 'test'\n  ...\n# Subtest: server session, consent and write-conflict failures remain failures and never manufacture a result\nok 10 - server session, consent and write-conflict failures remain failures and never manufacture a result\n  ---\n  duration_ms: 226.7443\n  type: 'test'\n  ...\n# Subtest: GPS starts only after explicit persisted consent; coordinates are rounded before transport\nok 11 - GPS starts only after explicit persisted consent; coordinates are rounded before transport\n  ---\n  duration_ms: 23.2229\n  type: 'test'\n  ...\n# Subtest: expiry timer, hidden-tab pause, cancellation, denial and logout stop device capture\nok 12 - expiry timer, hidden-tab pause, cancellation, denial and logout stop device capture\n  ---\n  duration_ms: 3.1454\n  type: 'test'\n  ...\n# Subtest: a failed authority refresh erases the peer position and cannot leave GPS running\nok 13 - a failed authority refresh erases the peer position and cannot leave GPS running\n  ---\n  duration_ms: 1.6011\n  type: 'test'\n  ...\n# Subtest: a delayed pre-revocation refresh cannot restore old coordinates in the UI\nok 14 - a delayed pre-revocation refresh cannot restore old coordinates in the UI\n  ---\n  duration_ms: 28.7065\n  type: 'test'\n  ...\n# Subtest: address state retains pending and bilateral history without enabling GPS or treating a proposal as acceptance\nok 15 - address state retains pending and bilateral history without enabling GPS or treating a proposal as acceptance\n  ---\n  duration_ms: 500.8339\n  type: 'test'\n  ...\n# Subtest: closed address rollout makes no private requests and preserves the existing case\nok 16 - closed address rollout makes no private requests and preserves the existing case\n  ---\n  duration_ms: 103.2562\n  type: 'test'\n  ...\n# Subtest: explicit proposal and recipient decisions send exact reviewed IDs and original retry intent through cookie transport\nok 17 - explicit proposal and recipient decisions send exact reviewed IDs and original retry intent through cookie transport\n  ---\n  duration_ms: 566.795\n  type: 'test'\n  ...\n# Subtest: implicit consent, forged fields, self-acceptance and stale selection cannot cause an address write\nok 18 - implicit consent, forged fields, self-acceptance and stale selection cannot cause an address write\n  ---\n  duration_ms: 163.844\n  type: 'test'\n  ...\n# Subtest: malformed actor-bound address history and invented agreement are rejected\nok 19 - malformed actor-bound address history and invented agreement are rejected\n  ---\n  duration_ms: 123.7779\n  type: 'test'\n  ...\n# Subtest: response cannot promote a proposal after material, meeting or selection changes while it travels\nok 20 - response cannot promote a proposal after material, meeting or selection changes while it travels\n  ---\n  duration_ms: 187.3854\n  type: 'test'\n  ...\n# Subtest: late address replies are invalidated by logout and restore of the same or another account\nok 21 - late address replies are invalidated by logout and restore of the same or another account\n  ---\n  duration_ms: 114.4159\n  type: 'test'\n  ...\n# Subtest: the final reply cannot attest agreement after a last-moment revision or withdrawal\nok 22 - the final reply cannot attest agreement after a last-moment revision or withdrawal\n  ---\n  duration_ms: 111.0021\n  type: 'test'\n  ...\n# Subtest: server denials do not create a local acceptance or hidden retry\nok 23 - server denials do not create a local acceptance or hidden retry\n  ---\n  duration_ms: 177.5569\n  type: 'test'\n  ...\n# Subtest: bilateral mode stops the legacy setter before transport or address mutation\nok 24 - bilateral mode stops the legacy setter before transport or address mutation\n  ---\n  duration_ms: 89.8714\n  type: 'test'\n  ...\n# Subtest: legacy default retains its existing explicit same-origin trimmed address write\nok 25 - legacy default retains its existing explicit same-origin trimmed address write\n  ---\n  duration_ms: 5.5809\n  type: 'test'\n  ...\n# Subtest: Google start requires readiness and consent before requesting or redirecting\nok 26 - Google start requires readiness and consent before requesting or redirecting\n  ---\n  duration_ms: 94.8058\n  type: 'test'\n  ...\n# Subtest: Google start never redirects on upstream failure or an unexpected destination\nok 27 - Google start never redirects on upstream failure or an unexpected destination\n  ---\n  duration_ms: 2.7432\n  type: 'test'\n  ...\n# Subtest: the legacy exchange entrypoint keeps its explicit no-money exchange contract\nok 28 - the legacy exchange entrypoint keeps its explicit no-money exchange contract\n  ---\n  duration_ms: 5.8935\n  type: 'test'\n  ...\n# Subtest: an expired pair can explicitly close its reviewed case and start fresh without carrying either approval\nok 29 - an expired pair can explicitly close its reviewed case and start fresh without carrying either approval\n  ---\n  duration_ms: 374.6441\n  type: 'test'\n  ...\n# Subtest: a stale participant or outsider cannot close a newer reviewed case\nok 30 - a stale participant or outsider cannot close a newer reviewed case\n  ---\n  duration_ms: 122.3037\n  type: 'test'\n  ...\n# Subtest: real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration\nok 31 - real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration\n  ---\n  duration_ms: 7.5622\n  type: 'test'\n  ...\n# Subtest: closed agreement rollout also denies direct table calls before any Auth/Data request\nok 32 - closed agreement rollout also denies direct table calls before any Auth/Data request\n  ---\n  duration_ms: 2.6529\n  type: 'test'\n  ...\n# Subtest: gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding\nok 33 - gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding\n  ---\n  duration_ms: 7.0161\n  type: 'test'\n  ...\n# Subtest: two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text\nok 34 - two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text\n  ---\n  duration_ms: 212.4826\n  type: 'test'\n  ...\n# Subtest: a stale screen cannot edit or approve a revision another account already changed\nok 35 - a stale screen cannot edit or approve a revision another account already changed\n  ---\n  duration_ms: 79.9014\n  type: 'test'\n  ...\n# Subtest: CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact\nok 36 - CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact\n  ---\n  duration_ms: 40.0765\n  type: 'test'\n  ...\n# Subtest: existing ProfileStore save path also rejects a write-time race and preserves the newer material\nok 37 - existing ProfileStore save path also rejects a write-time race and preserves the newer material\n  ---\n  duration_ms: 45.8321\n  type: 'test'\n  ...\n# Subtest: existing store rejects a competing revision already committed before its read, even with the same ordinal\nok 38 - existing store rejects a competing revision already committed before its read, even with the same ordinal\n  ---\n  duration_ms: 36.7533\n  type: 'test'\n  ...\n# Subtest: approval never writes material and a revision at POST is denied by the transport oracle\nok 39 - approval never writes material and a revision at POST is denied by the transport oracle\n  ---\n  duration_ms: 49.6562\n  type: 'test'\n  ...\n# Subtest: withdrawing affects only self; incomplete input and revoked session/consent cannot progress\nok 40 - withdrawing affects only self; incomplete input and revoked session/consent cannot progress\n  ---\n  duration_ms: 86.5273\n  type: 'test'\n  ...\n# Subtest: PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material\nok 41 - PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material\n  ---\n  duration_ms: 60.464\n  type: 'test'\n  ...\n1..41\n# tests 41\n# suites 0\n# pass 41\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 2497.5122\n"
+  },
+  "unit_tests": 41,
+  "setter_mutation": {
+    "status": "REJECTED",
+    "scope": "Only pre-transport bilateral guard removed; canonical file unchanged",
+    "output": "TAP version 13\n# Subtest: bilateral mode stops the legacy setter before transport or address mutation\nnot ok 1 - bilateral mode stops the legacy setter before transport or address mutation\n  ---\n  duration_ms: 48.6221\n  type: 'test'\n  location: 'C:\\\\Users\\\\Andrii\\\\Desktop\\\\synera-premium-pwa-variant\\\\artifacts\\\\overnight-20261004\\\\location-agreement\\\\setter-mutant.test.mjs:15:1'\n  failureType: 'testCodeFailure'\n  error: 'Missing expected rejection.'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  stack: |-\n    async TestContext.<anonymous> (file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/artifacts/overnight-20261004/location-agreement/setter-mutant.test.mjs:17:3)\n    async Test.run (node:internal/test_runner/test:1313:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)\n  ...\n# Subtest: legacy default retains its existing explicit same-origin trimmed address write\nok 2 - legacy default retains its existing explicit same-origin trimmed address write\n  ---\n  duration_ms: 2.0397\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 1\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 257.5282\n",
+    "canonical_sha256": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "mutant_sha256": "d94f9bf4a60bee02150bbafd874a525d883807e311e406a9b44d5b24c954236c",
+    "test_sha256": "24a5f586e2e942a38d7f151c628f69099d05aa378e91ece84b8cf56e10110614"
+  },
+  "legacy_checks": [
+    "no capture before consent",
+    "saved address reaches Google Maps",
+    "remote address sync",
+    "coarsening before peer display",
+    "independent sharing",
+    "revocation hides peer link",
+    "cancellation stops GPS",
+    "remote cancellation sync",
+    "no mobile overflow",
+    "no page errors",
+    "no critical or serious WCAG violations in location UI"
+  ],
+  "bilateral_gps_checks": [
+    "actual app flag removes unilateral editor and venue navigation without GPS consent",
+    "Current default and optional Atelier, reduced motion, no overflow and Axe zero",
+    "GPS remains independent and explicit; revocation erases peer route",
+    "explicit internal link reaches existing real journey"
+  ],
+  "navigation_checks": 21,
+  "navigation_regression_runner_sha256": "b3e4a566f084c22452e7627f0ed7b740d5819713cd87bad79955b3a897f7a35c",
+  "reused_proof": "Exact SQL/API source maps. Common-store client tests and navigation rerun; prior client/UI full-source proof is historical. PG and unaffected broad suites not rerun.",
+  "build": {
+    "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-location-agreement-20261004",
+    "files": 97,
+    "published": false
+  },
+  "screenshot_sha256": {
+    "bilateral-current-390x844.png": "3eaf1a9b9307e85acb18a06fb48d35bf6e90fff4a8b0750be3e6f7132a013c1d",
+    "bilateral-atelier-390x844.png": "272a8004a435902f50923e199f95e4571b696a221d199f440b8f326c7b9be1a6",
+    "legacy-location-390x844.png": "da77e7650a5ab308033061438a0b0863aae881b25877b9a85d8988d7ae99f6d9"
+  },
+  "public_files": 97,
+  "directory": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\web_launch\\dist-neon-location-agreement-20261004",
+  "release_sha256": "f7fcb93e7ee09661a468433b973c53f16ada4acba5737f401fdfc8ff8ecaaf62",
+  "published": false,
+  "google_maps": "NOT_RUN",
+  "physical_android": "NOT_RUN",
+  "signed_http_jwt": "NOT_RUN",
+  "live_accounts": "NOT_RUN"
+}

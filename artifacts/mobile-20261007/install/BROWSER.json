@@ -1,0 +1,25 @@
+{
+  "scope": "Desktop Chromium touch viewports, not native iOS or Android installation",
+  "checks": [
+    {
+      "name": "compact",
+      "width": 320,
+      "height": 568,
+      "manual_install_reachable": true
+    },
+    {
+      "name": "iphone-sized",
+      "width": 390,
+      "height": 844,
+      "manual_install_reachable": true
+    },
+    {
+      "name": "android-sized",
+      "width": 412,
+      "height": 915,
+      "manual_install_reachable": true
+    }
+  ],
+  "external": [],
+  "status": "PASS_LOCAL_INSTALL_GUIDE"
+}

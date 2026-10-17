@@ -1,0 +1,82 @@
+{
+  "phase": "final-candidate",
+  "mutation": false,
+  "scope": "Desktop browser, emulated iPhone browser settings, synthetic Auth/Data; no physical iOS, Android, PWA installation or live accounts",
+  "candidate": "web_launch\\dist-neon-webkit-20261009",
+  "releaseHash": "153b1ebabfd0f31fad812b146fdb7327930e4d6559f778ab586de903c0bf6488",
+  "cssOverride": null,
+  "manifestFilesVerified": 96,
+  "engine": {
+    "name": "webkit",
+    "version": "26.6",
+    "executable": "D:\\SyneraQA\\playwright-1.63.0\\webkit-2359\\Playwright.exe"
+  },
+  "rows": [
+    {
+      "profile": "small",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 5,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-editor",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 30,
+      "issues": [],
+      "screenshot": "small-journey-editor.png"
+    },
+    {
+      "profile": "small",
+      "page": "journey-invite",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 19,
+      "issues": [],
+      "screenshot": null
+    },
+    {
+      "profile": "small",
+      "page": "journey-chat",
+      "geometry": {
+        "viewport": 320,
+        "document": 320,
+        "overflow": []
+      },
+      "actions": 11,
+      "issues": [],
+      "screenshot": "small-journey-chat.png"
+    }
+  ],
+  "journeys": [
+    {
+      "profile": "small",
+      "approvals": 2,
+      "accepted": 1,
+      "messages": 1
+    }
+  ],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "observations": 4,
+    "issues": 0,
+    "failures": 0,
+    "journeys": 1
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

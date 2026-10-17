@@ -1,0 +1,28 @@
+{
+  "status": "MUTANT_REJECTED_LATE_SEND_FAILURE",
+  "generated_at": "2026-10-04T10:11:43.715Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "exit_code": 1,
+  "signal": null,
+  "runner_sha256": "76bff71ba9186a3e8f507f485d99912d72ba6656a4b54987e2ddc9561d75be59",
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T10:11:30.448Z",
+    "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {
+      "independent_approvals": true,
+      "accepted_invitation_private_text": true,
+      "rejected_send_keeps_chat_and_draft_manual_retry_once": true,
+      "ambiguous_delivery_keeps_draft_readback_without_resend": true,
+      "auth_failure_purges_private_state": true
+    },
+    "error": "Late failed send changed completed logout state\n+ actual - expected\n\n+ 'Доставку не підтверджено. Текст збережено; онови чат перед повторним надсиланням — повідомлення могло вже дійти.'\n- 'Ти вийшов/вийшла з Synera.'\n"
+  },
+  "source_sha256": {
+    "web_launch/real-journey.mjs": "125cef34d4c0c77f92ccccbac80b9ecd71fa3bfd48e5746d8f101c54b2886434",
+    "tools/message-recovery-browser.mjs": "81f3942e127f11f9bdc0b83e17cf70ac8b43cd74d34df43688b7a3ac93b47e3b"
+  }
+}

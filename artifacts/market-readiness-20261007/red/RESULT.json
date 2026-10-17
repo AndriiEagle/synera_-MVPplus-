@@ -1,0 +1,8 @@
+{
+  "status": "EXPECTED_DEFECT_CAUGHT",
+  "scope": "Chromium 390x844 synthetic transport; no physical Android/live users",
+  "checks": [],
+  "external": [],
+  "source_sha256": "476284fcd0d0b6201b48e5976ead3a126c430714c8f9c3cc1a9d4cb074db6060",
+  "error": "Transient refresh erased the private draft\n+ actual - expected\n\n+ ''\n- 'Моя наступна думка — без повторного написання 💛'\n"
+}

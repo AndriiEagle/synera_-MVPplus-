@@ -1,0 +1,21 @@
+{
+  "status": "PASS_PRESERVED_ADDRESS_CHAT_BASELINE",
+  "generated_at": "2026-10-04T06:06:41.240Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "preserved_accepted_chat": true,
+    "preserved_chat_logout": true
+  },
+  "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+  "external_requests": 0,
+  "source_sha256": {
+    "web_launch/real-journey.html": "ad8567446dc2d6d045c01b84567958937a4545e6897d0b4e59e9da8413c55356",
+    "web_launch/real-journey.mjs": "dc082b2d1631de3aa65406d7daca360e233778f259ab9ff870952ddd83bd472c",
+    "web_launch/real-journey.css": "6d94d16726beae9333b2228726eab892888c8358b49ec14bd04fed6780ec38db",
+    "web_launch/real-journey-client.mjs": "b8737a9dc9d02c59b909399368f80ea252f96bf5e69f3fff26ea302a1916fb5d",
+    "web_launch/neon-store.mjs": "8421f9c4227d0bb09af678cb328f8df6ad1ec861977835f7bf8598e11aac739b",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "tools/meeting-address-browser.mjs": "60323eb4b2d4d99a80ee94c34655bf3f6986b2a643c2ce8e4dfa37e89ff49ea0"
+  }
+}

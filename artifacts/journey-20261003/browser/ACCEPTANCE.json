@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": [
+    "real Atlas CTA -> same Mara",
+    "consents default off and enforced",
+    "real user/scenario transcript",
+    "no completion before both current approvals",
+    "revised terms reset approvals",
+    "local demo result",
+    "archive exact quote and participant roundtrip",
+    "same session handed to Studio",
+    "result axe zero violations and no overflow"
+  ],
+  "pageErrors": [],
+  "physicalAndroid": false,
+  "publicAI": false
+}

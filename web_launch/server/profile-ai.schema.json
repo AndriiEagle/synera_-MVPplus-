@@ -1,0 +1,92 @@
+{
+  "title": "Synera profile capability suggestions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "offer_tags",
+    "need_tags",
+    "evidence",
+    "questions"
+  ],
+  "properties": {
+    "offer_tags": {
+      "type": "array",
+      "maxItems": 7,
+      "items": {
+        "type": "string",
+        "enum": [
+          "automation",
+          "design",
+          "research",
+          "sales",
+          "video",
+          "finance",
+          "events"
+        ]
+      }
+    },
+    "need_tags": {
+      "type": "array",
+      "maxItems": 7,
+      "items": {
+        "type": "string",
+        "enum": [
+          "automation",
+          "design",
+          "research",
+          "sales",
+          "video",
+          "finance",
+          "events"
+        ]
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "tag",
+          "quote"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "offers",
+              "seeks"
+            ]
+          },
+          "tag": {
+            "type": "string",
+            "enum": [
+              "automation",
+              "design",
+              "research",
+              "sales",
+              "video",
+              "finance",
+              "events"
+            ]
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 160
+          }
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "maxLength": 240
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "mutation": "Served atelier.css without opt-in overlay rules; source files unchanged",
+  "guard": "Actual rendered style must change",
+  "observed_rejection": "Atelier has a visible effect",
+  "provider_calls": 0
+}

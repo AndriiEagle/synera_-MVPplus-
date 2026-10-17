@@ -1,0 +1,30 @@
+{
+  "status": "PASS_NEON_SQL_ROLLED_BACK",
+  "verified_at": "2026-10-03T22:19:01.013Z",
+  "project_id": "quiet-credit-94155104",
+  "review_branch_id": "br-quiet-pond-axw377pp",
+  "review_branch_name": "synera-real-journey-check-20261003",
+  "postgres": "18.6 (4e955f5)",
+  "editor_source_readback": "exact_after_CRLF_normalization",
+  "query_count": 302,
+  "pass_table": "#review_result1PASS: case, bilateral project, location and group SQL/RLS on isolated review branch; schema and fixtures will be rolled back",
+  "rollback_readback": {
+    "cases_absent": true,
+    "rooms_absent": true,
+    "locations_absent": true,
+    "fixture_users_left": 0
+  },
+  "scope": "Actual private Neon PG18 SQL/RLS and provider auth.uid() with SQL claims fixtures; not cryptographically signed HTTP JWT, two-account public deployment or Android proof",
+  "source_sha256": {
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/meeting-location.acceptance.sql": "9f8b533a612419c9df6771de4f8aa8303af92c2fcb80e56f68a165e499faef55",
+    "neon/group-room.acceptance.sql": "243f532336db120f86df3316a0cac33b43e0f0231d93acd01904ae9dabbc8b8d"
+  },
+  "sql_sha256": "25599a6b48a5e62576641337aa5dbede032c2c0fdf6272bb9e3c972f9f2d2199",
+  "production_mutations": 0,
+  "paid_model_calls": 0,
+  "provider_usd": 0
+}

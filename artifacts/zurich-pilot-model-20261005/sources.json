@@ -1,0 +1,35 @@
+{
+  "checked_on": "2026-10-05",
+  "timezone": "Europe/Zurich",
+  "scope": "Public official context only; no personal eligibility determination; no market conversion rates inferred",
+  "sources": [
+    {
+      "id": "zurich_business_survey",
+      "url": "https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/daten/politik-und-verwaltung/befragungen/firmenbefragung.html",
+      "locator": "Glossar; participation list 2025",
+      "claim_uk": "Міське опитування 2025 має 1499 учасників (37%). Місто прямо попереджає: добровільні відповіді та неоднакова участь малих/великих фірм не дають статистичної репрезентативності. Це контекст вибірки, не попит на Synera.",
+      "check_anchors": ["2025: 1499", "nicht im statistischen Sinne repräsentativ"]
+    },
+    {
+      "id": "work_notification",
+      "url": "https://www.zh.ch/de/wirtschaft-arbeit/erwerbstaetigkeit-auslaender/erwerbstaetige-im-asylbereich.html",
+      "locator": "Schutzbedürftige (Status S); Dürfen / Vorgehen vor Arbeitsaufnahme / Nach der Meldung, browser lines 64-94",
+      "claim_uk": "Для відповідної категорії кантон дозволяє самозайнятість і вимагає повідомлення перед початком роботи; повідомлення може подати сама самозайнята особа. Правильне подання є окремою передумовою. Це не звільнення від соціальних, податкових чи інших обов'язків.",
+      "check_anchors": ["Selbständig tätig sein", "Bevor die Arbeit aufgenommen werden darf, muss diese gemeldet werden"]
+    },
+    {
+      "id": "voluntary_support",
+      "url": "https://www.zh.ch/de/soziales/sozialhilfe/sozialhilfehandbuch/flexdata-definition/9-einkommen--vermoegen-wsh/9-1-einkommen/9-1-03-freiwillige-leistungen-dritter.html",
+      "locator": "9.1.03, version 01.03.2021; Erläuterungen 1-2, browser lines 99-106",
+      "claim_uk": "Добровільні сторонні надходження загалом можуть враховуватися як доходи. Винятки залежать від конкретних обставин; невизначена надія на підтримку не є забезпеченим доходом. Назва donation сама по собі нічого не звільняє.",
+      "check_anchors": ["Vage Hoffnungen", "im Einzelfall unter Berücksichtigung der konkreten Umstände"]
+    },
+    {
+      "id": "self_employment_social_review",
+      "url": "https://www.zh.ch/de/soziales/sozialhilfe/sozialhilfehandbuch/flexdata-definition/6-grundlagen-der-wirtschaftlichen-hilfe/6-2-anspruchspruefung-wirtschaftliche-hilfe/6-2-04-erweiterte-sachverhaltsabklaerung-bei-selbstaendigerwerbenden.html",
+      "locator": "6.2.04; Erläuterungen, assessment of economic viability before activity",
+      "claim_uk": "Розгляд підтримки самозайнятої особи включає економічну життєздатність; соціальна допомога не є автоматичним фінансуванням підприємницького ризику. Конкретну діяльність і надходження слід окремо узгодити з відповідальною службою.",
+      "check_anchors": ["vor Aufnahme der Tätigkeit", "langfristig erfolgversprechend"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "viewport": {
+    "width": 320,
+    "height": 720
+  },
+  "reducedMotion": true,
+  "checks": [
+    "existing consents, typed message, and current approvals survive baseline flow",
+    "quiet toggle preserves non-default preferences, terms, consents, typed message, and current approvals"
+  ]
+}

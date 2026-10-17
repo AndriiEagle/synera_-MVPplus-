@@ -1,0 +1,8 @@
+{
+  "status": "BLOCKED_STORAGE_WRITE_FAILURE",
+  "time_local": "2026-10-07T15:26:05+02:00",
+  "volume": "D:",
+  "evidence": ["STORAGE_EVENTS.json", "EMULATOR_CRASH.json", "BOOT.json"],
+  "affected_test_files": ["userdata-qemu.img.qcow2", "encryptionkey.img.qcow2"],
+  "recovery": "Stabilize USB connection; inspect storage and package integrity before a fresh isolated AVD. Do not reuse the failed writable image as accepted. No automatic retry, repair, deletion or relocation."
+}

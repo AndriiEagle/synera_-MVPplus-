@@ -1,0 +1,56 @@
+{
+  "status": "ACCEPTED_F1_ONLY_OTHER_PROVIDER_JOBS_HOLD",
+  "requirement": {
+    "id": "mandatory-chinese-visual-review",
+    "revision": "q1",
+    "provider_execution": {
+      "allowed_models": [
+        "minimax/minimax-m3"
+      ],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "request_sha256": "cc3f4eee932b9d00e1f37271e0226154c617a1670f79d09804e2a3035d7d740c",
+      "task_id": "02-minimax-design"
+    }
+  },
+  "source_image_sha256": [
+    "c6765a9fe6c8779e1af4029656d101e53d1fde792439d6ee44afdde0283a588c",
+    "f9adfa77c11e28616fc9324c8da0a47403c28e917387aadf0b92559d1333e910"
+  ],
+  "receipt": {
+    "generation_id": "gen-1791899091-CsiHd3Se9YkYXTPxLhit",
+    "task_id": "02-minimax-design",
+    "actual_model": "minimax/minimax-m3",
+    "artifact_sha256": "63ab7dcde640a6d0f967613d6ce5f34a5a14815151b73103b83c7e401b3f2251",
+    "output_request_sha256": "cc3f4eee932b9d00e1f37271e0226154c617a1670f79d09804e2a3035d7d740c",
+    "receipt_state": "verified",
+    "cost": 0.00243141,
+    "cost_status": "recorded",
+    "cost_evidence_type": "provider_usage_cost",
+    "provider_calls": 1,
+    "truncated": false,
+    "ok": true,
+    "route_identity_verified": true
+  },
+  "receipt_link": {
+    "receipt_index": 0,
+    "generation_id": "gen-1791899091-CsiHd3Se9YkYXTPxLhit",
+    "task_id": "02-minimax-design",
+    "claim_id": "synera-20261015-minimax-F1",
+    "status": "verified_link",
+    "reason_codes": []
+  },
+  "input_modalities": [
+    "text",
+    "image"
+  ],
+  "independent_acceptance": "PROVIDER_TRIAGE.uk.md",
+  "zero_call_and_text_only_controls": "REJECTED_AS_EXPECTED",
+  "current_turn_provider_calls": 0,
+  "known_cumulative_usd": "0.00605802",
+  "cumulative_total_cost": "UNKNOWN: DeepSeek 429/no receipt; GLM started/no terminal",
+  "remaining_provider_wave": "HOLD; no automatic retry",
+  "scope": "Original screenshot diagnosis accepted; current repair independently checked by Chromium, not a new model image review"
+}

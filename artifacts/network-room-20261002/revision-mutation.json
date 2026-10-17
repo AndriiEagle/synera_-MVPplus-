@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "guard": "zero revision must be refused before RPC",
+  "original": {
+    "status": 400,
+    "rpc_calls": 0
+  },
+  "mutant": {
+    "status": 200,
+    "rpc_calls": 1
+  },
+  "mutant_rejected_by_oracle": true,
+  "scope": "in-memory gateway mutation; no source overwrite or SQL proof"
+}

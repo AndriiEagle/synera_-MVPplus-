@@ -1,0 +1,25 @@
+{
+  "status": "PASS_BASIC_ANDROID_UI_CHROME_ONBOARDING_PENDING",
+  "observations": [
+    {
+      "capture": "host-home",
+      "package": "com.google.android.apps.nexuslauncher",
+      "anrDialog": false
+    },
+    {
+      "capture": "host-notifications",
+      "package": "com.android.systemui",
+      "anrDialog": false
+    },
+    {
+      "capture": "host-home-returned",
+      "package": "com.android.chrome",
+      "anrDialog": false
+    }
+  ],
+  "thirdCaptureNote": "Despite its label, this capture shows Chrome first-run, not returned launcher",
+  "syneraChromeTest": "NOT_RUN",
+  "freeBytes": 9612144640,
+  "ramCacheExists": false,
+  "nativeWindowUserReadback": "PENDING"
+}

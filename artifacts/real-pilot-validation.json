@@ -1,0 +1,152 @@
+{
+  "format": "synera-real-pilot-validation-1",
+  "verified_on": "2026-09-05",
+  "node_tests": {
+    "total": 57,
+    "passed": 57,
+    "failed": 0,
+    "scope": "Local logic and mocked REST/model boundaries; not live Auth or new DB RLS"
+  },
+  "syntax_check": "pass",
+  "git_diff_check": "pass",
+  "build": {
+    "directory": "web_launch/dist-real",
+    "files": 22,
+    "published": false,
+    "registration_enabled": false,
+    "automatic_public_ai": false,
+    "release_zip": "../synera-real-pilot-20260905-r2.zip",
+    "release_zip_sha256": "F494983F43FB1F7A7D5063F73725DD1AE078A2CF0F26B8687A82F8F3FD38DFB1",
+    "release_zip_bytes": 60289
+  },
+  "browser": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "document_width": 375,
+    "overflow": false,
+    "owned_profile_v2_import": "pass",
+    "conditions_restored": "pass",
+    "visibility_after_import": false,
+    "ai_payload_excludes_identity": "pass",
+    "ai_evidence_preview_with_fixture": "pass",
+    "human_apply_required": true,
+    "live_signup": false,
+    "live_persistence": false,
+    "physical_android_install": false,
+    "physical_iphone_install": false,
+    "actual_local_ai_result_review_and_apply": "pass on private TEST ONLY draft"
+  },
+  "backend": {
+    "project": "onwvsxgoxuuiopwnvvvy",
+    "auth_checked_at": "2026-09-05T16:27:54.114Z",
+    "auth_http_status": 402,
+    "counts": {
+      "accounts": 0,
+      "profiles": 0,
+      "meetings": 0,
+      "database_bytes": 10816659
+    },
+    "new_schema_applied": false,
+    "new_sql_acceptance_run": false
+  },
+  "ai": {
+    "route": "existing DOMOVYK adapter, extraction mode with strict JSON schema",
+    "attempts": 3,
+    "actual_inferences": 2,
+    "successful_api_tests": 1,
+    "rejected_generations": 1,
+    "resource_blocked_attempts": 1,
+    "model": "gemma-4-e2b-day.gguf",
+    "input_tokens": 559,
+    "output_tokens": 330,
+    "total_tokens": 889,
+    "provider_calls": 0,
+    "actual_usd": 0,
+    "latest_http_status": 200,
+    "latest_schema_valid": true,
+    "source_quote_validation": true,
+    "actual_result_browser_apply": true,
+    "acceptance_scope": "One public professional fixture; no general benchmark or real-user human acceptance",
+    "public_automatic_ai_deployed": false,
+    "actual_chatgpt_request_made": false,
+    "receipts": [
+      {
+        "receipt": "C:\\Users\\Andrii\\Desktop\\KI\\token-monster\\.ai-os\\derived\\domovyk-local-first\\20260905T190933-4d07cef8.receipt.json",
+        "timestamp_utc": "2026-09-05T17:10:08.045652Z",
+        "model": "gemma-4-e2b-day.gguf",
+        "outcome": "generated_needs_local_acceptance",
+        "usage": {
+          "completion_tokens": 164,
+          "prompt_tokens": 280,
+          "total_tokens": 444,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "output_chars": 414,
+        "schema_valid": true,
+        "provider": {
+          "called": false,
+          "calls": 0,
+          "actual_or_reserved_usd": 0
+        },
+        "acceptance": {
+          "verdict": "needs_review",
+          "evidence": "Synera JSON and exact source quotations validated; human confirmation in the profile editor is still required.",
+          "accepted_at_utc": "2026-09-05T17:10:08.365379Z"
+        },
+        "error": null
+      },
+      {
+        "receipt": "C:\\Users\\Andrii\\Desktop\\KI\\token-monster\\.ai-os\\derived\\domovyk-local-first\\20260905T185806-0a906bcd.receipt.json",
+        "timestamp_utc": "2026-09-05T16:59:11.543862Z",
+        "model": "gemma-4-e2b-day.gguf",
+        "outcome": "generated_needs_local_acceptance",
+        "usage": {
+          "completion_tokens": 166,
+          "prompt_tokens": 279,
+          "total_tokens": 445,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "output_chars": 431,
+        "schema_valid": null,
+        "provider": {
+          "called": false,
+          "calls": 0,
+          "actual_or_reserved_usd": 0
+        },
+        "acceptance": {
+          "verdict": "rejected",
+          "evidence": "Synera endpoint returned 503 after generation; the response did not reach validated browser preview. First-run failure stage was not retained. Public test fixture only.",
+          "accepted_at_utc": "2026-09-05T17:07:52.168687Z"
+        },
+        "error": null
+      },
+      {
+        "receipt": "C:\\Users\\Andrii\\Desktop\\KI\\token-monster\\.ai-os\\derived\\domovyk-local-first\\20260905T181307-ef79d014.receipt.json",
+        "timestamp_utc": "2026-09-05T16:13:15.876454Z",
+        "model": "gemma-4-e2b-day.gguf",
+        "outcome": "blocked",
+        "usage": {},
+        "output_chars": 0,
+        "schema_valid": null,
+        "provider": {
+          "called": false,
+          "calls": 0,
+          "actual_or_reserved_usd": 0
+        },
+        "acceptance": {
+          "verdict": "pending",
+          "evidence": null
+        },
+        "error": "cpu_or_ram_pressure"
+      }
+    ]
+  },
+  "next": "Approve prepared Supabase Support request. Then review/apply the prepared schema, test RLS, configure SMTP/HTTPS and accept with real accounts.",
+  "ready_for_launch": false
+}

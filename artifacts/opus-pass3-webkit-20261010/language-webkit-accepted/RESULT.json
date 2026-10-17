@@ -1,0 +1,1207 @@
+{
+  "scope": "Desktop browser, synthetic Auth/Data fixture through the real gateway code; the address step is an in-tool model. No physical phone, live account, JWT or RLS proof.",
+  "candidate": "dist-neon-opus-pass3-webkit-20261010",
+  "releaseHash": "a80d403432041784e5ea868d055f127e91eb32565923de9b90dd3d2833a9d740",
+  "engine": {
+    "name": "webkit",
+    "version": "26.6"
+  },
+  "runs": [
+    {
+      "run": "uk-390",
+      "steps": [
+        {
+          "step": "first paint",
+          "status": "Дані оновлено з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "new terms",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "mode note: joint_project",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "mode note: referral",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "mode note: hybrid",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "mode note: paid_service",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "money fields",
+          "status": "Нові умови порожні: заповни їх вручну.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "refused dates",
+          "status": "Некоректний матеріал пробного періоду",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "saved revision",
+          "status": "Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "own approval",
+          "status": "Твоє підтвердження збережено.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "second person, no parameter",
+          "status": "Дані оновлено з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "both approved",
+          "status": "Твоє підтвердження збережено.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation sent",
+          "status": "Запрошення надіслано. Воно ще не є прийнятою зустріччю.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "invitation received",
+          "status": "Дані оновлено з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation accepted",
+          "status": "Запрошення прийнято. Розмова доступна обом.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "conversation opened",
+          "status": "Показано приватну розмову після прийнятого запрошення.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "message sent",
+          "status": "Повідомлення надіслано й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "refused message",
+          "status": "Сервер не прийняв цю дію: можливий денний ліміт дій або застарілі дані. Натисни «Оновити» й перевір поля; якщо",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 115,
+          "reserved": 139
+        },
+        {
+          "step": "address: nothing proposed",
+          "status": "Актуальний стан адреси прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address proposed",
+          "status": "Адресу запропоновано. Чекаємо окремого вибору другої людини.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address to decide",
+          "status": "Актуальний стан адреси прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address agreed",
+          "status": "Твій вибір адреси збережено на сервері.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "results: waiting for evidence",
+          "status": "Результати домовленості прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "evidence submitted",
+          "status": "Твою дію збережено й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result checked",
+          "status": "Твою дію збережено й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result accepted",
+          "status": "Твою дію збережено й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute opened by me",
+          "status": "Твою дію збережено й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute seen by the giver",
+          "status": "Результати домовленості прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "all results accepted",
+          "status": "Твою дію збережено й прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "private copy",
+          "status": "Приватну копію створено. Вихідний UTF-8: 4941 байт; файл: 1823 байт.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "social draft: general",
+          "status": "Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "social draft: linkedin",
+          "status": "Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "Atelier on",
+          "status": "Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "Current view back",
+          "status": "Приватну чернетку створено з прийнятого внеску. Перевір текст та дозволи перед зовнішнім поширенням.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "after switching away and back",
+          "status": "Актуальний стан адреси прочитано з сервера.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "session lost via existing background poll",
+          "status": "Потрібен активний сеанс.",
+          "ukrainianLeft": null,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        }
+      ],
+      "termsHash": "516d630f2417e8175115a7a6bab60e452f7f77629170fc26c871e903820b2c85",
+      "pass": true
+    },
+    {
+      "run": "de-390",
+      "steps": [
+        {
+          "step": "first paint",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "new terms",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: joint_project",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: referral",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: hybrid",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: paid_service",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "money fields",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "refused dates",
+          "status": "Das Formular oder der Server hat diese Daten nicht angenommen. Prüfe die Felder und versuche es noch einmal.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "saved revision",
+          "status": "Die neue Fassung wurde gespeichert. Beide Bestätigungen müssen getrennt erfolgen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "own approval",
+          "status": "Deine Bestätigung wurde gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "second person, no parameter",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "both approved",
+          "status": "Deine Bestätigung wurde gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation sent",
+          "status": "Einladung gesendet. Sie ist noch kein angenommenes Treffen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "invitation received",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation accepted",
+          "status": "Einladung angenommen. Das Gespräch ist für beide verfügbar.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "conversation opened",
+          "status": "Das private Gespräch nach der angenommenen Einladung wird angezeigt.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "message sent",
+          "status": "Nachricht gesendet und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "refused message",
+          "status": "Der Server hat diese Aktion nicht angenommen: Möglicherweise ist das Tageslimit erreicht oder die Daten sind v",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 134,
+          "reserved": 158
+        },
+        {
+          "step": "address: nothing proposed",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address proposed",
+          "status": "Adresse vorgeschlagen. Wir warten auf die getrennte Entscheidung der anderen Person.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address to decide",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address agreed",
+          "status": "Deine Adresswahl wurde auf dem Server gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "results: waiting for evidence",
+          "status": "Die Ergebnisse der Vereinbarung wurden vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "evidence submitted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result checked",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result accepted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute opened by me",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute seen by the giver",
+          "status": "Die Ergebnisse der Vereinbarung wurden vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "all results accepted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "private copy",
+          "status": "Private Kopie erstellt. Ursprüngliches UTF-8: 4941 Bytes; Datei: 1823 Bytes.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "social draft: general",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "social draft: linkedin",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "Atelier on",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "Current view back",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "after switching away and back",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "session lost via manual refresh",
+          "status": "Aktive Sitzung erforderlich.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        }
+      ],
+      "termsHash": "516d630f2417e8175115a7a6bab60e452f7f77629170fc26c871e903820b2c85",
+      "pass": true
+    },
+    {
+      "run": "en-390",
+      "steps": [
+        {
+          "step": "first paint",
+          "status": "Data refreshed from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "new terms",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: joint_project",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: referral",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: hybrid",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: paid_service",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "money fields",
+          "status": "The new terms are empty: fill them in by hand.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "refused dates",
+          "status": "The form or the server did not accept this data. Check the fields and try again.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "saved revision",
+          "status": "The new revision has been saved. Both confirmations must be made separately.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "own approval",
+          "status": "Your confirmation has been saved.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "second person, no parameter",
+          "status": "Data refreshed from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "both approved",
+          "status": "Your confirmation has been saved.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation sent",
+          "status": "Invitation sent. It is not an accepted meeting yet.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "invitation received",
+          "status": "Data refreshed from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation accepted",
+          "status": "Invitation accepted. The conversation is available to both.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "conversation opened",
+          "status": "The private conversation after the accepted invitation is shown.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "message sent",
+          "status": "Message sent and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "refused message",
+          "status": "The server did not accept this action: the daily action limit may be reached or the data may be out of date. P",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 115,
+          "reserved": 139
+        },
+        {
+          "step": "address: nothing proposed",
+          "status": "The current address state has been read from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address proposed",
+          "status": "Address proposed. Waiting for the other person’s separate choice.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address to decide",
+          "status": "The current address state has been read from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address agreed",
+          "status": "Your address choice has been saved on the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "results: waiting for evidence",
+          "status": "The results of the agreement have been read from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "evidence submitted",
+          "status": "Your action has been saved and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result checked",
+          "status": "Your action has been saved and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result accepted",
+          "status": "Your action has been saved and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute opened by me",
+          "status": "Your action has been saved and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute seen by the giver",
+          "status": "The results of the agreement have been read from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "all results accepted",
+          "status": "Your action has been saved and read back from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "private copy",
+          "status": "Private copy created. Original UTF-8: 4941 bytes; file: 1823 bytes.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "social draft: general",
+          "status": "The private draft was created from the accepted contribution. Check the text and permissions before sharing it",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "social draft: linkedin",
+          "status": "The private draft was created from the accepted contribution. Check the text and permissions before sharing it",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "Atelier on",
+          "status": "The private draft was created from the accepted contribution. Check the text and permissions before sharing it",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "Current view back",
+          "status": "The private draft was created from the accepted contribution. Check the text and permissions before sharing it",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "after switching away and back",
+          "status": "The current address state has been read from the server.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "session lost via manual refresh",
+          "status": "An active session is required.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        }
+      ],
+      "termsHash": "516d630f2417e8175115a7a6bab60e452f7f77629170fc26c871e903820b2c85",
+      "pass": true
+    },
+    {
+      "run": "de-320",
+      "steps": [
+        {
+          "step": "first paint",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "new terms",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: joint_project",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: referral",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: hybrid",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "mode note: paid_service",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "money fields",
+          "status": "Die neuen Bedingungen sind leer: Fülle sie von Hand aus.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "refused dates",
+          "status": "Das Formular oder der Server hat diese Daten nicht angenommen. Prüfe die Felder und versuche es noch einmal.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "saved revision",
+          "status": "Die neue Fassung wurde gespeichert. Beide Bestätigungen müssen getrennt erfolgen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "own approval",
+          "status": "Deine Bestätigung wurde gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "second person, no parameter",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "both approved",
+          "status": "Deine Bestätigung wurde gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "invitation sent",
+          "status": "Einladung gesendet. Sie ist noch kein angenommenes Treffen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "invitation received",
+          "status": "Daten vom Server aktualisiert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        },
+        {
+          "step": "invitation accepted",
+          "status": "Einladung angenommen. Das Gespräch ist für beide verfügbar.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "conversation opened",
+          "status": "Das private Gespräch nach der angenommenen Einladung wird angezeigt.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "message sent",
+          "status": "Nachricht gesendet und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "refused message",
+          "status": "Der Server hat diese Aktion nicht angenommen: Möglicherweise ist das Tageslimit erreicht oder die Daten sind v",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 172,
+          "reserved": 196
+        },
+        {
+          "step": "address: nothing proposed",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address proposed",
+          "status": "Adresse vorgeschlagen. Wir warten auf die getrennte Entscheidung der anderen Person.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 77,
+          "reserved": 101
+        },
+        {
+          "step": "address to decide",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "address agreed",
+          "status": "Deine Adresswahl wurde auf dem Server gespeichert.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "results: waiting for evidence",
+          "status": "Die Ergebnisse der Vereinbarung wurden vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "evidence submitted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result checked",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "result accepted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute opened by me",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "dispute seen by the giver",
+          "status": "Die Ergebnisse der Vereinbarung wurden vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "all results accepted",
+          "status": "Deine Aktion wurde gespeichert und vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "private copy",
+          "status": "Private Kopie erstellt. Ursprüngliches UTF-8: 4941 Bytes; Datei: 1827 Bytes.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "social draft: general",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "social draft: linkedin",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "Atelier on",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "Current view back",
+          "status": "Der private Entwurf wurde aus dem abgenommenen Beitrag erstellt. Prüfe Text und Freigaben, bevor du ihn nach a",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 96,
+          "reserved": 120
+        },
+        {
+          "step": "after switching away and back",
+          "status": "Der aktuelle Stand der Adresse wurde vom Server gelesen.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 58,
+          "reserved": 82
+        },
+        {
+          "step": "session lost via manual refresh",
+          "status": "Aktive Sitzung erforderlich.",
+          "ukrainianLeft": 0,
+          "sideways": 0,
+          "statusHeight": 39,
+          "reserved": 63
+        }
+      ],
+      "termsHash": "516d630f2417e8175115a7a6bab60e452f7f77629170fc26c871e903820b2c85",
+      "pass": true
+    }
+  ],
+  "problems": [],
+  "failures": [],
+  "provider_calls": 0,
+  "usd": 0,
+  "summary": {
+    "runs": 4,
+    "passed": 4,
+    "steps": 144,
+    "tallestStatus": 172,
+    "ukrainianLeft": 0,
+    "sideways": 0,
+    "oneTermsHash": true,
+    "problems": 0,
+    "failures": 0
+  },
+  "status": "PASS_DESKTOP_WEBKIT_SYNTHETIC"
+}

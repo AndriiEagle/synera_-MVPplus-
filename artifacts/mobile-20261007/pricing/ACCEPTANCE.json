@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 320,
+      "language": "en",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "language": "de",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "language": "uk",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "language": "de",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "language": "uk",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "language": "de",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "language": "uk",
+      "passed": true
+    },
+    {
+      "javaScriptEnabled": false,
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "boundary": "Local actual server and Chromium, pilot destination intercepted; no live/physical/payment acceptance."
+}

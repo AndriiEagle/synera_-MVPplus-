@@ -1,0 +1,16 @@
+[
+  {
+    "id": "synera-demo-hour-496837",
+    "role": "worker",
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "effort": "low",
+    "retries": 1,
+    "max_tokens": 8000,
+    "hard_max_tokens": 8000,
+    "temperature": 0.3,
+    "files": [],
+    "prompt": "Update all TEN fictional demo personas for one simulated hour. Return a single JSON object with hour and exactly ten bots. Each bot: id, place_id from the list, state from available/working/meeting/learning/walking/offline, activity in Ukrainian (1-120 characters). Respect the input offline state: if offline, keep it. Keep professional mutual benefit plausible. No personal data, contact details, URL, exact coordinates, real commitments, or instructions to the user. Do not invent users or IDs. Data: {\"hour\":496837,\"bots\":[{\"id\":\"bot-mira\",\"role\":\"Дизайн продукту\",\"offers\":\"UX design, Figma, дизайн продукту\",\"seeks\":\"B2B sales, customer interviews\",\"state\":\"meeting\"},{\"id\":\"bot-leo\",\"role\":\"B2B-продажі\",\"offers\":\"B2B sales, перші інтро та customer interviews\",\"seeks\":\"UX design і відеопрезентація\",\"state\":\"learning\"},{\"id\":\"bot-nora\",\"role\":\"AI-автоматизація\",\"offers\":\"AI workflow automation, CRM\",\"seeks\":\"Ціна підписки, finance та budget\",\"state\":\"walking\"},{\"id\":\"bot-felix\",\"role\":\"Фінанси\",\"offers\":\"Finance, pricing, бюджет малого бізнесу\",\"seeks\":\"AI workflow automation\",\"state\":\"available\"},{\"id\":\"bot-ines\",\"role\":\"Відео\",\"offers\":\"Video, відеопрезентація, монтаж\",\"seeks\":\"B2B sales та події для community\",\"state\":\"working\"},{\"id\":\"bot-sam\",\"role\":\"Спільноти\",\"offers\":\"Community events, воркшопи, meetup\",\"seeks\":\"Video та дизайн подій\",\"state\":\"meeting\"},{\"id\":\"bot-tessa\",\"role\":\"Дослідження\",\"offers\":\"Customer research, interviews, validation\",\"seeks\":\"AI automation і UX design\",\"state\":\"learning\"},{\"id\":\"bot-noah\",\"role\":\"Прототипи\",\"offers\":\"AI automation, UX design, прототипи\",\"seeks\":\"Customer research, pricing\",\"state\":\"walking\"},{\"id\":\"bot-lina\",\"role\":\"Брендинг\",\"offers\":\"Brand design, фотографія та video\",\"seeks\":\"Community events і B2B sales\",\"state\":\"available\"},{\"id\":\"bot-omar\",\"role\":\"Партнерства\",\"offers\":\"B2B sales, community events\",\"seeks\":\"Brand design і customer research\",\"state\":\"working\"}],\"places\":[{\"id\":\"west\",\"name\":\"Zürich West · демозона\"},{\"id\":\"hb\",\"name\":\"Hauptbahnhof · демозона\"},{\"id\":\"university\",\"name\":\"Університетський район · демозона\"},{\"id\":\"sihl\",\"name\":\"Sihl · демозона\"},{\"id\":\"lake\",\"name\":\"Набережна · демозона\"}],\"output\":{\"hour\":496837,\"bots\":[{\"id\":\"bot-mira\",\"place_id\":\"west\",\"state\":\"working\",\"activity\":\"Працює над демопрототипом\"}]}}",
+    "system": "You plan a clearly labelled fictional business-networking demo. You cannot contact people or create real meetings. Output JSON only.",
+    "out": "artifacts/bot-hour-496837.response.txt"
+  }
+]

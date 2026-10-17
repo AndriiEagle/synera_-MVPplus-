@@ -1,0 +1,12 @@
+{
+  "status": "PASS_PRESERVED_CHAT_BASELINE",
+  "generated_at": "2026-10-04T02:34:14.470Z",
+  "scope": "Actual local Chromium 390x844 with synthetic handleNeon accounts/RPC; not signed JWT, live accounts, physical Android or production",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "independent_approvals": true,
+    "accepted_invitation_private_text": true,
+    "logout_clears_old_private_chat": true
+  }
+}

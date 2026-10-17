@@ -1,0 +1,4987 @@
+{
+  "kind": "SCENARIO_NOT_FORECAST",
+  "interval": "p10/p90 across hypothetical stochastic runs; not population confidence intervals",
+  "input_sha256_canonical": "367ad6ae2ee5744878293710e42ad362dabc3fef5b1b22f186dceecefeb4a600",
+  "monthly": {
+    "conservative/free_launch": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_admitted": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "possible_pairs": {
+            "mean": 1.1925,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.3175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.1275,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "time_pairs": {
+            "mean": 0.05,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06919,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06919,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.211333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06919,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.52252333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.0975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 0.9075,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "churned": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 1.0175,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.26,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.07,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0225,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.02,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06457,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06457,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.1998333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06457,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.05790333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.5975,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.57,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 5.6675,
+            "p10": 3.0,
+            "p90": 8.100000000000023
+          },
+          "new_active": {
+            "mean": 0.955,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.52,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "churned": {
+            "mean": 0.9475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.475,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.2175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "possible_pairs": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.2425,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.045,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.0175,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.0125,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.0649,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.0649,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.19875,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.0649,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.0149,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      }
+    ],
+    "conservative/optional_support_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_admitted": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "possible_pairs": {
+            "mean": 1.1925,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.3175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.1275,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "time_pairs": {
+            "mean": 0.05,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06919,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06919,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.211333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06919,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.52252333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.0975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 0.9075,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "churned": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 1.0175,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.26,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.07,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0225,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.02,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06457,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06457,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.1998333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06457,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.05790333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.5975,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.57,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 5.6675,
+            "p10": 3.0,
+            "p90": 8.100000000000023
+          },
+          "new_active": {
+            "mean": 0.955,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.52,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "churned": {
+            "mean": 0.9475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.475,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.2175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "possible_pairs": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.2425,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.045,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.0175,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.0125,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.0649,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.0649,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.19875,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.0649,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.0149,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      }
+    ],
+    "conservative/optional_tiers_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_admitted": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 2.4925,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "new_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "possible_pairs": {
+            "mean": 1.1925,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.3175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.1275,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "time_pairs": {
+            "mean": 0.05,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06919,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06919,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.211333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06919,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.52252333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.605,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.0975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 0.9075,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "churned": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.56,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 1.0175,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.26,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.07,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.0225,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0075,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.02,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.06457,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.06457,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.1998333333333333,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.06457,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.05790333333333,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 1.5975,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "new_admitted": {
+            "mean": 1.57,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "admitted_cumulative": {
+            "mean": 5.6675,
+            "p10": 3.0,
+            "p90": 8.100000000000023
+          },
+          "new_active": {
+            "mean": 0.955,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "prior_active": {
+            "mean": 1.4675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "retained": {
+            "mean": 0.52,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "churned": {
+            "mean": 0.9475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "active": {
+            "mean": 1.475,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_active": {
+            "mean": 1.5725,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "initial_cohort_retained": {
+            "mean": 0.2175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "possible_pairs": {
+            "mean": 1.0125,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "bilateral_pairs": {
+            "mean": 0.2425,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "context_pairs": {
+            "mean": 0.12,
+            "p10": 0.0,
+            "p90": 0.10000000000002274
+          },
+          "time_pairs": {
+            "mean": 0.045,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "consent_pairs": {
+            "mean": 0.0175,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.0125,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "completed_meetings": {
+            "mean": 0.01,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "accepted_meetings": {
+            "mean": 0.0025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "value_users_month": {
+            "mean": 0.005,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.025,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "eligible_payers": {
+            "mean": 0.015,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.0649,
+            "p10": 0.0,
+            "p90": 0.132
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.0649,
+            "p10": 25.0,
+            "p90": 25.132
+          },
+          "operator_hours": {
+            "mean": 2.19875,
+            "p10": 2.0,
+            "p90": 2.4
+          },
+          "cash_balance_chf": {
+            "mean": -25.0649,
+            "p10": -25.132,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -113.0149,
+            "p10": -121.132,
+            "p90": -105.0
+          }
+        }
+      }
+    ],
+    "base/free_launch": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 5.4325,
+            "p10": 0.0,
+            "p90": 10.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.4775,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 0.9675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.6225,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.43,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3375,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.2675,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.15026,
+            "p10": 0.044000000000000004,
+            "p90": 0.22
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.15026,
+            "p10": 25.044,
+            "p90": 25.22
+          },
+          "operator_hours": {
+            "mean": 2.5115833333333333,
+            "p10": 2.1333333333333333,
+            "p90": 2.8333333333333335
+          },
+          "cash_balance_chf": {
+            "mean": -25.15026,
+            "p10": -25.22,
+            "p90": -25.044
+          },
+          "economic_balance_chf": {
+            "mean": -125.61359333333333,
+            "p10": -138.55333333333334,
+            "p90": -110.37733333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.7975,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.7175,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.935,
+            "p10": 4.900000000000006,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.1175,
+            "p10": 0.9000000000000057,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.48,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "possible_pairs": {
+            "mean": 7.6175,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 2.1575,
+            "p10": 0.0,
+            "p90": 5.0
+          },
+          "context_pairs": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.88,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.5625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.435,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1825,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.365,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.6425,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.565,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.17831000000000002,
+            "p10": 0.08800000000000001,
+            "p90": 0.264
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.17831,
+            "p10": 25.088,
+            "p90": 25.264
+          },
+          "operator_hours": {
+            "mean": 2.612833333333333,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -25.17831,
+            "p10": -25.264,
+            "p90": -25.088
+          },
+          "economic_balance_chf": {
+            "mean": -129.69164333333333,
+            "p10": -143.93066666666667,
+            "p90": -115.75466666666665
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.79,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.0025,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 8.9375,
+            "p10": 7.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 1.63,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "retained": {
+            "mean": 2.2675,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.785,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "active": {
+            "mean": 3.8975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.0475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 6.8825,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.9125,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 1.2375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.7975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.535,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3075,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.35,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.93,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.6625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.17149,
+            "p10": 0.08800000000000001,
+            "p90": 0.264
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.17149,
+            "p10": 25.088,
+            "p90": 25.264
+          },
+          "operator_hours": {
+            "mean": 2.5859166666666664,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -25.17149,
+            "p10": -25.264,
+            "p90": -25.088
+          },
+          "economic_balance_chf": {
+            "mean": -128.60815666666667,
+            "p10": -143.93066666666667,
+            "p90": -115.75466666666665
+          }
+        }
+      }
+    ],
+    "base/optional_support_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 5.4325,
+            "p10": 0.0,
+            "p90": 10.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.4775,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 0.9675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.6225,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.43,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3375,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.2675,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.15026,
+            "p10": 0.044000000000000004,
+            "p90": 0.22
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.15026,
+            "p10": 25.044,
+            "p90": 25.22
+          },
+          "operator_hours": {
+            "mean": 2.5115833333333333,
+            "p10": 2.1333333333333333,
+            "p90": 2.8333333333333335
+          },
+          "cash_balance_chf": {
+            "mean": -25.15026,
+            "p10": -25.22,
+            "p90": -25.044
+          },
+          "economic_balance_chf": {
+            "mean": -125.61359333333333,
+            "p10": -138.55333333333334,
+            "p90": -110.37733333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.7975,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.7175,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.935,
+            "p10": 4.900000000000006,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.1175,
+            "p10": 0.9000000000000057,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.48,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "possible_pairs": {
+            "mean": 7.6175,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 2.1575,
+            "p10": 0.0,
+            "p90": 5.0
+          },
+          "context_pairs": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.88,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.5625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.435,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1825,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.365,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.6425,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.565,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.0625,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0.625,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.17831000000000002,
+            "p10": 0.08800000000000001,
+            "p90": 0.264
+          },
+          "fees_chf": {
+            "mean": 0.040625,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.218935,
+            "p10": 25.088,
+            "p90": 25.308
+          },
+          "operator_hours": {
+            "mean": 2.612833333333333,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -24.593935,
+            "p10": -25.264,
+            "p90": -25.044
+          },
+          "economic_balance_chf": {
+            "mean": -129.10726833333334,
+            "p10": -143.93066666666667,
+            "p90": -115.75466666666665
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.79,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.0025,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 8.9375,
+            "p10": 7.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 1.63,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "retained": {
+            "mean": 2.2675,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.785,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "active": {
+            "mean": 3.8975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.0475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 6.8825,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.9125,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 1.2375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.7975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.535,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3075,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.35,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.93,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.6625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.03,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0.3,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.17149,
+            "p10": 0.08800000000000001,
+            "p90": 0.264
+          },
+          "fees_chf": {
+            "mean": 0.0195,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.19099,
+            "p10": 25.088,
+            "p90": 25.264
+          },
+          "operator_hours": {
+            "mean": 2.5859166666666664,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -24.89099,
+            "p10": -25.264,
+            "p90": -25.088
+          },
+          "economic_balance_chf": {
+            "mean": -128.32765666666666,
+            "p10": -143.93066666666667,
+            "p90": -115.75466666666665
+          }
+        }
+      }
+    ],
+    "base/optional_tiers_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "admitted_cumulative": {
+            "mean": 4.2175,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "new_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 5.4325,
+            "p10": 0.0,
+            "p90": 10.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.4775,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 0.9675,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.6225,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.43,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3375,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.2675,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.305,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.15026,
+            "p10": 0.044000000000000004,
+            "p90": 0.22
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.15026,
+            "p10": 25.044,
+            "p90": 25.22
+          },
+          "operator_hours": {
+            "mean": 2.5115833333333333,
+            "p10": 2.1333333333333333,
+            "p90": 2.8333333333333335
+          },
+          "cash_balance_chf": {
+            "mean": -25.15026,
+            "p10": -25.22,
+            "p90": -25.044
+          },
+          "economic_balance_chf": {
+            "mean": -125.61359333333333,
+            "p10": -138.55333333333334,
+            "p90": -110.37733333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.7975,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.7175,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.935,
+            "p10": 4.900000000000006,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.1175,
+            "p10": 0.9000000000000057,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.48,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.935,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "possible_pairs": {
+            "mean": 7.6175,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 2.1575,
+            "p10": 0.0,
+            "p90": 5.0
+          },
+          "context_pairs": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.88,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.5625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.435,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.1825,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.365,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.6425,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.565,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0.065,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.0625,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0.78,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0.625,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.18975,
+            "p10": 0.08800000000000001,
+            "p90": 0.264
+          },
+          "fees_chf": {
+            "mean": 0.087425,
+            "p10": 0.0,
+            "p90": 0.65
+          },
+          "cash_cost_chf": {
+            "mean": 25.277175,
+            "p10": 25.088,
+            "p90": 25.7424
+          },
+          "operator_hours": {
+            "mean": 2.612833333333333,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -23.872175,
+            "p10": -25.264,
+            "p90": -15.913999999999998
+          },
+          "economic_balance_chf": {
+            "mean": -128.38550833333332,
+            "p10": -143.93066666666667,
+            "p90": -115.75466666666665
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 2.79,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "new_admitted": {
+            "mean": 2.0025,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "admitted_cumulative": {
+            "mean": 8.9375,
+            "p10": 7.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 1.63,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "prior_active": {
+            "mean": 4.0525,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "retained": {
+            "mean": 2.2675,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "churned": {
+            "mean": 1.785,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "active": {
+            "mean": 3.8975,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "initial_active": {
+            "mean": 3.415,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "initial_cohort_retained": {
+            "mean": 1.0475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "possible_pairs": {
+            "mean": 6.8825,
+            "p10": 1.0,
+            "p90": 15.0
+          },
+          "bilateral_pairs": {
+            "mean": 1.9125,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "context_pairs": {
+            "mean": 1.2375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "time_pairs": {
+            "mean": 0.7975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "consent_pairs": {
+            "mean": 0.535,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "scheduled_meetings": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "completed_meetings": {
+            "mean": 0.3075,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "accepted_meetings": {
+            "mean": 0.175,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "value_users_month": {
+            "mean": 0.35,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 0.93,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "eligible_payers": {
+            "mean": 0.6625,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "basic_payers": {
+            "mean": 0.055,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0.02,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.03,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 1.24,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0.3,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.19349000000000002,
+            "p10": 0.08800000000000001,
+            "p90": 0.30800000000000005
+          },
+          "fees_chf": {
+            "mean": 0.0854,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.27889,
+            "p10": 25.088,
+            "p90": 25.352
+          },
+          "operator_hours": {
+            "mean": 2.5859166666666664,
+            "p10": 2.2666666666666666,
+            "p90": 2.966666666666667
+          },
+          "cash_balance_chf": {
+            "mean": -23.73889,
+            "p10": -25.264,
+            "p90": -25.0
+          },
+          "economic_balance_chf": {
+            "mean": -127.17555666666667,
+            "p10": -142.64133333333334,
+            "p90": -115.75466666666665
+          }
+        }
+      }
+    ],
+    "strong/free_launch": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 6.5875,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_admitted": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "possible_pairs": {
+            "mean": 15.95,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.395,
+            "p10": 0.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 3.695,
+            "p10": 0.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.16,
+            "p10": 0.0,
+            "p90": 6.100000000000023
+          },
+          "consent_pairs": {
+            "mean": 2.7225,
+            "p10": 0.0,
+            "p90": 5.100000000000023
+          },
+          "scheduled_meetings": {
+            "mean": 1.375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.2175,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "accepted_meetings": {
+            "mean": 0.9875,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "eligible_payers": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.26004,
+            "p10": 0.17600000000000002,
+            "p90": 0.35200000000000004
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.26004,
+            "p10": 25.176,
+            "p90": 25.352
+          },
+          "operator_hours": {
+            "mean": 3.0171666666666668,
+            "p10": 2.533333333333333,
+            "p90": 3.4333333333333336
+          },
+          "cash_balance_chf": {
+            "mean": -25.26004,
+            "p10": -25.352,
+            "p90": -25.176
+          },
+          "economic_balance_chf": {
+            "mean": -145.94670666666667,
+            "p10": -162.64133333333334,
+            "p90": -126.50933333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.39,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 3.0075,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.585,
+            "p10": 8.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.685,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "churned": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "possible_pairs": {
+            "mean": 23.3575,
+            "p10": 10.0,
+            "p90": 36.0
+          },
+          "bilateral_pairs": {
+            "mean": 6.5925,
+            "p10": 2.0,
+            "p90": 12.0
+          },
+          "context_pairs": {
+            "mean": 5.605,
+            "p10": 2.0,
+            "p90": 10.0
+          },
+          "time_pairs": {
+            "mean": 4.7775,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "consent_pairs": {
+            "mean": 4.0675,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.8825,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.735,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "value_users_month": {
+            "mean": 2.83,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 3.87,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.7075,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.31592000000000003,
+            "p10": 0.22,
+            "p90": 0.396
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.31592,
+            "p10": 25.22,
+            "p90": 25.396
+          },
+          "operator_hours": {
+            "mean": 3.2710833333333333,
+            "p10": 2.8333333333333335,
+            "p90": 3.7
+          },
+          "cash_balance_chf": {
+            "mean": -25.31592,
+            "p10": -25.396,
+            "p90": -25.22
+          },
+          "economic_balance_chf": {
+            "mean": -156.15925333333334,
+            "p10": -173.39600000000002,
+            "p90": -138.55333333333334
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.355,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.9825,
+            "p10": 10.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "prior_active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "retained": {
+            "mean": 5.6025,
+            "p10": 3.0,
+            "p90": 8.0
+          },
+          "churned": {
+            "mean": 1.5775,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 5.955,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.525,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 16.115,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.905,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 4.0825,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.4925,
+            "p10": 1.0,
+            "p90": 7.0
+          },
+          "consent_pairs": {
+            "mean": 2.9375,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.49,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.11,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 2.22,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 4.5525,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.905,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.26202000000000003,
+            "p10": 0.17600000000000002,
+            "p90": 0.35200000000000004
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.26202,
+            "p10": 25.176,
+            "p90": 25.352
+          },
+          "operator_hours": {
+            "mean": 3.0423333333333336,
+            "p10": 2.5666666666666664,
+            "p90": 3.533333333333333
+          },
+          "cash_balance_chf": {
+            "mean": -25.26202,
+            "p10": -25.352,
+            "p90": -25.176
+          },
+          "economic_balance_chf": {
+            "mean": -146.95535333333333,
+            "p10": -166.72933333333333,
+            "p90": -127.79866666666666
+          }
+        }
+      }
+    ],
+    "strong/optional_support_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 6.5875,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_admitted": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "possible_pairs": {
+            "mean": 15.95,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.395,
+            "p10": 0.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 3.695,
+            "p10": 0.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.16,
+            "p10": 0.0,
+            "p90": 6.100000000000023
+          },
+          "consent_pairs": {
+            "mean": 2.7225,
+            "p10": 0.0,
+            "p90": 5.100000000000023
+          },
+          "scheduled_meetings": {
+            "mean": 1.375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.2175,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "accepted_meetings": {
+            "mean": 0.9875,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "eligible_payers": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.26004,
+            "p10": 0.17600000000000002,
+            "p90": 0.35200000000000004
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.26004,
+            "p10": 25.176,
+            "p90": 25.352
+          },
+          "operator_hours": {
+            "mean": 3.0171666666666668,
+            "p10": 2.533333333333333,
+            "p90": 3.4333333333333336
+          },
+          "cash_balance_chf": {
+            "mean": -25.26004,
+            "p10": -25.352,
+            "p90": -25.176
+          },
+          "economic_balance_chf": {
+            "mean": -145.94670666666667,
+            "p10": -162.64133333333334,
+            "p90": -126.50933333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.39,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 3.0075,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.585,
+            "p10": 8.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.685,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "churned": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "possible_pairs": {
+            "mean": 23.3575,
+            "p10": 10.0,
+            "p90": 36.0
+          },
+          "bilateral_pairs": {
+            "mean": 6.5925,
+            "p10": 2.0,
+            "p90": 12.0
+          },
+          "context_pairs": {
+            "mean": 5.605,
+            "p10": 2.0,
+            "p90": 10.0
+          },
+          "time_pairs": {
+            "mean": 4.7775,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "consent_pairs": {
+            "mean": 4.0675,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.8825,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.735,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "value_users_month": {
+            "mean": 2.83,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 3.87,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.7075,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.8475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 8.475,
+            "p10": 0.0,
+            "p90": 20.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.31592000000000003,
+            "p10": 0.22,
+            "p90": 0.396
+          },
+          "fees_chf": {
+            "mean": 0.550875,
+            "p10": 0.0,
+            "p90": 1.3
+          },
+          "cash_cost_chf": {
+            "mean": 25.866795,
+            "p10": 25.264,
+            "p90": 26.652
+          },
+          "operator_hours": {
+            "mean": 3.2710833333333333,
+            "p10": 2.8333333333333335,
+            "p90": 3.7
+          },
+          "cash_balance_chf": {
+            "mean": -17.391795,
+            "p10": -25.352,
+            "p90": -6.6080000000000005
+          },
+          "economic_balance_chf": {
+            "mean": -148.23512833333334,
+            "p10": -164.046,
+            "p90": -133.04706666666664
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.355,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.9825,
+            "p10": 10.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "prior_active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "retained": {
+            "mean": 5.6025,
+            "p10": 3.0,
+            "p90": 8.0
+          },
+          "churned": {
+            "mean": 1.5775,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 5.955,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.525,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 16.115,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.905,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 4.0825,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.4925,
+            "p10": 1.0,
+            "p90": 7.0
+          },
+          "consent_pairs": {
+            "mean": 2.9375,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.49,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.11,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 2.22,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 4.5525,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.905,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.165,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 1.65,
+            "p10": 0.0,
+            "p90": 10.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.26202000000000003,
+            "p10": 0.17600000000000002,
+            "p90": 0.35200000000000004
+          },
+          "fees_chf": {
+            "mean": 0.10725,
+            "p10": 0.0,
+            "p90": 0.65
+          },
+          "cash_cost_chf": {
+            "mean": 25.36927,
+            "p10": 25.176,
+            "p90": 25.913999999999998
+          },
+          "operator_hours": {
+            "mean": 3.0423333333333336,
+            "p10": 2.5666666666666664,
+            "p90": 3.533333333333333
+          },
+          "cash_balance_chf": {
+            "mean": -23.719269999999998,
+            "p10": -25.352,
+            "p90": -15.957999999999998
+          },
+          "economic_balance_chf": {
+            "mean": -145.41260333333332,
+            "p10": -162.64133333333334,
+            "p90": -127.79866666666666
+          }
+        }
+      }
+    ],
+    "strong/optional_tiers_hypothesis": [
+      {
+        "month": 1,
+        "metrics": {
+          "contacts": {
+            "mean": 12,
+            "p10": 12.0,
+            "p90": 12.0
+          },
+          "join_candidates": {
+            "mean": 6.5875,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_admitted": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "admitted_cumulative": {
+            "mean": 6.5775,
+            "p10": 4.0,
+            "p90": 9.0
+          },
+          "new_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "prior_active": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "retained": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "churned": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "possible_pairs": {
+            "mean": 15.95,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.395,
+            "p10": 0.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 3.695,
+            "p10": 0.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.16,
+            "p10": 0.0,
+            "p90": 6.100000000000023
+          },
+          "consent_pairs": {
+            "mean": 2.7225,
+            "p10": 0.0,
+            "p90": 5.100000000000023
+          },
+          "scheduled_meetings": {
+            "mean": 1.375,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.2175,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "accepted_meetings": {
+            "mean": 0.9875,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "eligible_payers": {
+            "mean": 1.975,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "basic_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donations_chf": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.26004,
+            "p10": 0.17600000000000002,
+            "p90": 0.35200000000000004
+          },
+          "fees_chf": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "cash_cost_chf": {
+            "mean": 25.26004,
+            "p10": 25.176,
+            "p90": 25.352
+          },
+          "operator_hours": {
+            "mean": 3.0171666666666668,
+            "p10": 2.533333333333333,
+            "p90": 3.4333333333333336
+          },
+          "cash_balance_chf": {
+            "mean": -25.26004,
+            "p10": -25.352,
+            "p90": -25.176
+          },
+          "economic_balance_chf": {
+            "mean": -145.94670666666667,
+            "p10": -162.64133333333334,
+            "p90": -126.50933333333333
+          }
+        }
+      },
+      {
+        "month": 2,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.39,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 3.0075,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.585,
+            "p10": 8.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 2.685,
+            "p10": 1.0,
+            "p90": 4.0
+          },
+          "prior_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "churned": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 4.495,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "possible_pairs": {
+            "mean": 23.3575,
+            "p10": 10.0,
+            "p90": 36.0
+          },
+          "bilateral_pairs": {
+            "mean": 6.5925,
+            "p10": 2.0,
+            "p90": 12.0
+          },
+          "context_pairs": {
+            "mean": 5.605,
+            "p10": 2.0,
+            "p90": 10.0
+          },
+          "time_pairs": {
+            "mean": 4.7775,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "consent_pairs": {
+            "mean": 4.0675,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.8825,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.735,
+            "p10": 1.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.415,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "value_users_month": {
+            "mean": 2.83,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 3.87,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.7075,
+            "p10": 2.0,
+            "p90": 6.0
+          },
+          "basic_payers": {
+            "mean": 1.11,
+            "p10": 0.0,
+            "p90": 2.1000000000000227
+          },
+          "advanced_payers": {
+            "mean": 0,
+            "p10": 0.0,
+            "p90": 0.0
+          },
+          "donors": {
+            "mean": 0.8475,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 13.32,
+            "p10": 0.0,
+            "p90": 25.200000000000273
+          },
+          "donations_chf": {
+            "mean": 8.475,
+            "p10": 0.0,
+            "p90": 20.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.5112800000000001,
+            "p10": 0.264,
+            "p90": 0.792
+          },
+          "fees_chf": {
+            "mean": 1.350075,
+            "p10": 0.0,
+            "p90": 2.74
+          },
+          "cash_cost_chf": {
+            "mean": 26.861355,
+            "p10": 25.264,
+            "p90": 28.532000000000004
+          },
+          "operator_hours": {
+            "mean": 3.2710833333333333,
+            "p10": 2.8333333333333335,
+            "p90": 3.7
+          },
+          "cash_balance_chf": {
+            "mean": -5.066355,
+            "p10": -25.308,
+            "p90": 15.6484
+          },
+          "economic_balance_chf": {
+            "mean": -135.90968833333332,
+            "p10": -154.78893333333332,
+            "p90": -116.00666666666666
+          }
+        }
+      },
+      {
+        "month": 3,
+        "metrics": {
+          "contacts": {
+            "mean": 8,
+            "p10": 8.0,
+            "p90": 8.0
+          },
+          "join_candidates": {
+            "mean": 4.355,
+            "p10": 3.0,
+            "p90": 6.0
+          },
+          "new_admitted": {
+            "mean": 0.3975,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "admitted_cumulative": {
+            "mean": 9.9825,
+            "p10": 10.0,
+            "p90": 10.0
+          },
+          "new_active": {
+            "mean": 0.3525,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "prior_active": {
+            "mean": 7.18,
+            "p10": 5.0,
+            "p90": 9.0
+          },
+          "retained": {
+            "mean": 5.6025,
+            "p10": 3.0,
+            "p90": 8.0
+          },
+          "churned": {
+            "mean": 1.5775,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "active": {
+            "mean": 5.955,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_active": {
+            "mean": 5.91,
+            "p10": 4.0,
+            "p90": 8.0
+          },
+          "initial_cohort_retained": {
+            "mean": 3.525,
+            "p10": 1.0,
+            "p90": 5.0
+          },
+          "possible_pairs": {
+            "mean": 16.115,
+            "p10": 6.0,
+            "p90": 28.0
+          },
+          "bilateral_pairs": {
+            "mean": 4.905,
+            "p10": 1.0,
+            "p90": 9.0
+          },
+          "context_pairs": {
+            "mean": 4.0825,
+            "p10": 1.0,
+            "p90": 8.0
+          },
+          "time_pairs": {
+            "mean": 3.4925,
+            "p10": 1.0,
+            "p90": 7.0
+          },
+          "consent_pairs": {
+            "mean": 2.9375,
+            "p10": 0.0,
+            "p90": 6.0
+          },
+          "scheduled_meetings": {
+            "mean": 1.49,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "completed_meetings": {
+            "mean": 1.3575,
+            "p10": 0.0,
+            "p90": 3.0
+          },
+          "accepted_meetings": {
+            "mean": 1.11,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "value_users_month": {
+            "mean": 2.22,
+            "p10": 0.0,
+            "p90": 4.0
+          },
+          "unique_value_users_cumulative": {
+            "mean": 4.5525,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "eligible_payers": {
+            "mean": 3.905,
+            "p10": 2.0,
+            "p90": 7.0
+          },
+          "basic_payers": {
+            "mean": 0.6875,
+            "p10": 0.0,
+            "p90": 2.0
+          },
+          "advanced_payers": {
+            "mean": 0.5,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "donors": {
+            "mean": 0.165,
+            "p10": 0.0,
+            "p90": 1.0
+          },
+          "recurring_revenue_chf": {
+            "mean": 22.75,
+            "p10": 0.0,
+            "p90": 53.0
+          },
+          "donations_chf": {
+            "mean": 1.65,
+            "p10": 0.0,
+            "p90": 10.0
+          },
+          "ai_cost_chf": {
+            "mean": 0.6910200000000001,
+            "p10": 0.17600000000000002,
+            "p90": 1.32
+          },
+          "fees_chf": {
+            "mean": 1.2597500000000001,
+            "p10": 0.0,
+            "p90": 2.755
+          },
+          "cash_cost_chf": {
+            "mean": 26.95077,
+            "p10": 25.176,
+            "p90": 29.082
+          },
+          "operator_hours": {
+            "mean": 3.0423333333333336,
+            "p10": 2.5666666666666664,
+            "p90": 3.533333333333333
+          },
+          "cash_balance_chf": {
+            "mean": -2.55077,
+            "p10": -25.264,
+            "p90": 28.786
+          },
+          "economic_balance_chf": {
+            "mean": -124.24410333333333,
+            "p10": -146.16,
+            "p90": -97.39416666666668
+          }
+        }
+      }
+    ]
+  },
+  "totals": {
+    "conservative/free_launch": {
+      "accepted_meetings": {
+        "mean": 0.0125,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -75.19866,
+        "p10": -75.352,
+        "p90": -75.088
+      },
+      "economic_balance_chf": {
+        "mean": -339.59532666666667,
+        "p10": -358.01866666666666,
+        "p90": -325.75466666666665
+      }
+    },
+    "conservative/optional_support_hypothesis": {
+      "accepted_meetings": {
+        "mean": 0.0125,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -75.19866,
+        "p10": -75.352,
+        "p90": -75.088
+      },
+      "economic_balance_chf": {
+        "mean": -339.59532666666667,
+        "p10": -358.01866666666666,
+        "p90": -325.75466666666665
+      }
+    },
+    "conservative/optional_tiers_hypothesis": {
+      "accepted_meetings": {
+        "mean": 0.0125,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -75.19866,
+        "p10": -75.352,
+        "p90": -75.088
+      },
+      "economic_balance_chf": {
+        "mean": -339.59532666666667,
+        "p10": -358.01866666666666,
+        "p90": -325.75466666666665
+      }
+    },
+    "base/free_launch": {
+      "accepted_meetings": {
+        "mean": 0.51,
+        "p10": 0.0,
+        "p90": 2.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -75.50006,
+        "p10": -75.704,
+        "p90": -75.308
+      },
+      "economic_balance_chf": {
+        "mean": -383.9133933333333,
+        "p10": -414.4996,
+        "p90": -352.64133333333336
+      }
+    },
+    "base/optional_support_hypothesis": {
+      "accepted_meetings": {
+        "mean": 0.51,
+        "p10": 0.0,
+        "p90": 2.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0.925,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -74.63518499999999,
+        "p10": -75.66,
+        "p90": -75.1276
+      },
+      "economic_balance_chf": {
+        "mean": -383.04851833333333,
+        "p10": -414.4996,
+        "p90": -352.64133333333336
+      }
+    },
+    "base/optional_tiers_hypothesis": {
+      "accepted_meetings": {
+        "mean": 0.51,
+        "p10": 0.0,
+        "p90": 2.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 2.02,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0.925,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -72.761325,
+        "p10": -75.66,
+        "p90": -66.0856
+      },
+      "economic_balance_chf": {
+        "mean": -381.1746583333333,
+        "p10": -411.9209333333333,
+        "p90": -352.6413333333333
+      }
+    },
+    "strong/free_launch": {
+      "accepted_meetings": {
+        "mean": 3.5125,
+        "p10": 1.0,
+        "p90": 7.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "cash_balance_chf": {
+        "mean": -75.83798,
+        "p10": -76.012,
+        "p90": -75.616
+      },
+      "economic_balance_chf": {
+        "mean": -449.0613133333333,
+        "p10": -490.72266666666667,
+        "p90": -408.99333333333334
+      }
+    },
+    "strong/optional_support_hypothesis": {
+      "accepted_meetings": {
+        "mean": 3.5125,
+        "p10": 1.0,
+        "p90": 7.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 0,
+        "p10": 0.0,
+        "p90": 0.0
+      },
+      "donations_chf": {
+        "mean": 10.125,
+        "p10": 0.0,
+        "p90": 20.0
+      },
+      "cash_balance_chf": {
+        "mean": -66.371105,
+        "p10": -75.88,
+        "p90": -57.004
+      },
+      "economic_balance_chf": {
+        "mean": -439.5944383333333,
+        "p10": -477.4336666666667,
+        "p90": -402.32666666666665
+      }
+    },
+    "strong/optional_tiers_hypothesis": {
+      "accepted_meetings": {
+        "mean": 3.5125,
+        "p10": 1.0,
+        "p90": 7.0
+      },
+      "recurring_revenue_chf": {
+        "mean": 36.07,
+        "p10": 0.0,
+        "p90": 82.0
+      },
+      "donations_chf": {
+        "mean": 10.125,
+        "p10": 0.0,
+        "p90": 20.0
+      },
+      "cash_balance_chf": {
+        "mean": -32.877165,
+        "p10": -75.704,
+        "p90": 14.318200000000003
+      },
+      "economic_balance_chf": {
+        "mean": -406.10049833333335,
+        "p10": -447.6552333333333,
+        "p90": -364.33143333333334
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "parameter": "join",
+      "value": 0.19999999999999998,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.22,
+      "active_end_mean": 2.61
+    },
+    {
+      "parameter": "join",
+      "value": 0.35,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.51,
+      "active_end_mean": 3.8975
+    },
+    {
+      "parameter": "join",
+      "value": 0.5,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.7375,
+      "active_end_mean": 3.5775
+    },
+    {
+      "parameter": "context_fit",
+      "value": 0.5,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.4,
+      "active_end_mean": 3.8675
+    },
+    {
+      "parameter": "context_fit",
+      "value": 0.65,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.51,
+      "active_end_mean": 3.8975
+    },
+    {
+      "parameter": "context_fit",
+      "value": 0.8,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.6175,
+      "active_end_mean": 3.9425
+    },
+    {
+      "parameter": "time_overlap",
+      "value": 0.5,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.4075,
+      "active_end_mean": 3.88
+    },
+    {
+      "parameter": "time_overlap",
+      "value": 0.65,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.51,
+      "active_end_mean": 3.8975
+    },
+    {
+      "parameter": "time_overlap",
+      "value": 0.8,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.61,
+      "active_end_mean": 3.9125
+    },
+    {
+      "parameter": "consent_each",
+      "value": 0.65,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.3625,
+      "active_end_mean": 3.865
+    },
+    {
+      "parameter": "consent_each",
+      "value": 0.8,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.51,
+      "active_end_mean": 3.8975
+    },
+    {
+      "parameter": "consent_each",
+      "value": 0.9500000000000001,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.7,
+      "active_end_mean": 3.95
+    },
+    {
+      "parameter": "retain_with_value",
+      "value": 0.65,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.495,
+      "active_end_mean": 3.8425
+    },
+    {
+      "parameter": "retain_with_value",
+      "value": 0.8,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.51,
+      "active_end_mean": 3.8975
+    },
+    {
+      "parameter": "retain_with_value",
+      "value": 0.9500000000000001,
+      "horizon_days": 90,
+      "accepted_horizon_mean": 0.53,
+      "active_end_mean": 4.0025
+    }
+  ],
+  "break_even": {
+    "basic": {
+      "price_chf_month": 12,
+      "incremental_contribution_chf": 11.104,
+      "cash_payers_needed": 3,
+      "economic_payers_needed": 17,
+      "available_active_people": 10,
+      "excludes_donations": true,
+      "fixed_cohort_assumption": true
+    },
+    "advanced": {
+      "price_chf_month": 29,
+      "incremental_contribution_chf": 27.069,
+      "cash_payers_needed": 1,
+      "economic_payers_needed": 7,
+      "available_active_people": 10,
+      "excludes_donations": true,
+      "fixed_cohort_assumption": true
+    }
+  }
+}

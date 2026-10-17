@@ -1,0 +1,25 @@
+{
+  "status": "FAIL",
+  "scope": "Real isolated PostgreSQL16 transactions with local provider identity shim; no signed JWT/live Neon/capacity proof",
+  "checks": [],
+  "source_sha256": {
+    "tools/pilot-hardening-sql.mjs": "37a1abd1b44c4ba166390f80d20ba641ed22ff18aecff10a9affea04baed8adc",
+    "neon/local_acceptance.mjs": "50e08d0e9bf761eb0e11282e77dfbbdc22ab9bb2ec89340e3b4bf895ebf2ee2e",
+    "web_launch/real-journey-client.mjs": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+    "web_launch/business-case.mjs": "1e6e2642a01ad434ef1cb6e182eccebb6d4c1dd92d590c8b51356a5a50b3bd47",
+    "tools/fixtures/real-journey-fixture.mjs": "a7b9778eaffa6746e837f9efafddad1d96c5ab995ffde8d089c409e39ba7463d",
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "server": {
+    "version": "16.15",
+    "data": "C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/data",
+    "host": "127.0.0.1",
+    "port": 55331
+  },
+  "database": "synera_pilot_hardening_1791224072221",
+  "error": "ERROR:  new row for relation \"meeting_requests\" violates check constraint \"meeting_requests_meeting_place_check\"\r\n\n\n3 !== 0\n"
+}

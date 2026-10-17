@@ -1,0 +1,19 @@
+{
+  "status": "PURGED",
+  "source": "C:/Users/Andrii/.codex/tmp/synera-android-local/avd/Synera_Local_API36.avd/snapshots/default_boot/ram.img",
+  "destination": "D:/Moved/SyneraAndroidCache-20261008/ram.img",
+  "checks": [
+    {
+      "pass": 1,
+      "sourceSha256": "F34E7C01D88884F4A9778234B475146E3390899B904C375F526946C859F73FBD",
+      "destinationSha256": "F34E7C01D88884F4A9778234B475146E3390899B904C375F526946C859F73FBD",
+      "bytes": 2684420096
+    },
+    {
+      "pass": 2,
+      "sourceSha256": "F34E7C01D88884F4A9778234B475146E3390899B904C375F526946C859F73FBD",
+      "destinationSha256": "F34E7C01D88884F4A9778234B475146E3390899B904C375F526946C859F73FBD",
+      "bytes": 2684420096
+    }
+  ]
+}

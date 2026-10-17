@@ -1,0 +1,65 @@
+{
+  "status": "LOCAL_ACCEPTED_PUBLIC_STUDIO_V4_DEPLOYED",
+  "source_base": "cd6a05c0f6ca16d6dcd808760af74f9925d60808",
+  "product_commit": "PENDING_AT_PACK_TIME",
+  "public_site": {
+    "deployment": {
+      "id": "appgdep_6abfae3b5f948191a5fc61e9abfdf709",
+      "project_id": "appgprj_6abe5c4d86988191821437cf779b4e9e",
+      "title": "Synera — Summit preview",
+      "version_id": "appgprj_6abe5c4d86988191821437cf779b4e9e~appgver_eb94098ea7388191923ddb1c925e4de6",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://synera-summit-20261001.andypokr911.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6abe5c4d86988191821437cf779b4e9e",
+      "failure_message": null,
+      "env_set_revision": 0,
+      "updated_at": "2026-10-02T13:14:50.373017+00:00"
+    },
+    "version": {
+      "id": "appgprj_6abe5c4d86988191821437cf779b4e9e~appgver_eb94098ea7388191923ddb1c925e4de6",
+      "project_id": "appgprj_6abe5c4d86988191821437cf779b4e9e",
+      "version_number": 4,
+      "source": {
+        "commit_sha": "62b074e019d7e53cf93a3f6684bf63a5b3a1d8d3"
+      },
+      "archive_storage": {
+        "archive_format": "tar",
+        "sediment_file_id": "file_000000006b3c821092d082cfb87359f3",
+        "content_hash": "sha256:9856f172d9dcc4f3b760e0b443c4994a340ab6fc5478229e5526d5e6de7645ad",
+        "size_bytes": 829440,
+        "file_count": 69
+      },
+      "screenshot_url": null,
+      "deployment_id": "appgdep_6abfae3b5f948191a5fc61e9abfdf709"
+    }
+  },
+  "verification": {
+    "node": {
+      "pass": 479,
+      "skip": 1,
+      "fail": 0
+    },
+    "browser": {
+      "pass": 36,
+      "fail": 0
+    },
+    "axe_states": 5,
+    "axe_violations": 0,
+    "mutation": "UNILATERAL_DRAFT_GUARD_REMOVAL_REJECTED",
+    "public_payload_readback": "PASS"
+  },
+  "limits": {
+    "same_device_unverified": true,
+    "neon_rollout": false,
+    "physical_android": false,
+    "google_sdk": false,
+    "remote_voice_video": false,
+    "social_publisher": false,
+    "token_savings": "UNMEASURED"
+  },
+  "provider_calls": 0,
+  "USD": 0
+}

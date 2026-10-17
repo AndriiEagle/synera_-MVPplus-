@@ -1,0 +1,28 @@
+{
+  "status": "NOT_ACCEPTED",
+  "generated_at": "2026-10-04T07:47:19.060Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual local Chromium, same synthetic account fixture across main app and private journey; not SQL/JWT, real accounts, Android or providers",
+  "oracle_sha256": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+  "extended_runner_sha256": "56f0b921838108a535b14811bf48fe8a929bf2aa6a360a49c77f2b7a9e080be8",
+  "process_exit": 1,
+  "browser": {
+    "status": "NOT_ACCEPTED",
+    "generated_at": "2026-10-04T07:47:19.965Z",
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "checks": {},
+    "scope": "Real Chromium 390x844, synthetic accounts and RPC projection; not signed HTTP JWT, SQL via HTTP, live people or Android hardware",
+    "error": "Selected GPS link did not open the conversation\n\nfalse !== true\n"
+  },
+  "error": "Selected GPS link did not open the conversation\n\nfalse !== true\n\n\n1 !== 0\n",
+  "source_sha256": {
+    "web_launch/meeting-location.mjs": "1247b12b7f0a0bef693d426010aa079fda57e86b2e329121a405d2403adb6b96",
+    "web_launch/real-journey.mjs": "02e3677e880c899af81ac6ef392a67ba734c5bfddac866b735d9406d1047ebe0",
+    "web_launch/app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "web_launch/neon-store.mjs": "f86751ac9765a17b5be17cf2ff65e8056197c1c0820a7dd8a602985db50d2286",
+    "tools/meeting-address-browser.mjs": "5afad9e78cd4021b5158f9bd8e71e6c0c8fcf37b4fe16f453fd36aedf9924a7b",
+    "tools/meeting-journey-link-browser.mjs": "64fa91605138d258c4e442fd6c5818e6c1f3a2fe1f6f8a9e600b08bd213d3302"
+  }
+}

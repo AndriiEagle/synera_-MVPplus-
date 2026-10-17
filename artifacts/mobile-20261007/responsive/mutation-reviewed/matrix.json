@@ -1,0 +1,697 @@
+{
+  "phase": "mutation-reviewed",
+  "temp": "C:/Users/Andrii/.codex/tmp/synera-mobile-responsive",
+  "mutation": "all",
+  "scope": "local source; isolated synthetic accounts, not live or physical devices",
+  "engines": [
+    {
+      "engine": "chromium",
+      "status": "RUN",
+      "version": "154.0.8037.98",
+      "profile": "--user-data-dir=C:\\Users\\Andrii\\.codex\\tmp\\synera-mobile-responsive\\playwright_chromiumdev_profile-Be3Jq0"
+    },
+    {
+      "engine": "webkit",
+      "status": "UNAVAILABLE_CACHE_ON_D",
+      "boundary": "No installed C: WebKit selected; no install or D: probe"
+    }
+  ],
+  "rows": [
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "index",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 11,
+      "issues": [],
+      "screenshot": "chromium-landscape-index.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "summit",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 15,
+      "issues": [],
+      "screenshot": "chromium-landscape-summit.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "get",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 11,
+      "issues": [],
+      "screenshot": "chromium-landscape-get.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "studio",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 20,
+      "issues": [
+        {
+          "kind": "unreachable-action",
+          "id": "fit-give",
+          "tag": "SELECT",
+          "text": "Код\nДизайн\nПродажі",
+          "x": 45,
+          "y": 172.8125,
+          "width": 754,
+          "height": 44,
+          "hit": false,
+          "occluder": "DIV.section-heading",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "fit-need",
+          "tag": "SELECT",
+          "text": "Дизайн\nКод\nПродажі",
+          "x": 45,
+          "y": 172.8125,
+          "width": 754,
+          "height": 44,
+          "hit": false,
+          "occluder": "DIV.section-heading",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "fit-language",
+          "tag": "SELECT",
+          "text": "English\nDeutsch\nУкраїнська",
+          "x": 45,
+          "y": 172.8125,
+          "width": 754,
+          "height": 44,
+          "hit": false,
+          "occluder": "DIV.section-heading",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "fit-communication",
+          "tag": "SELECT",
+          "text": "Особисто\nАсинхронно\nВідео",
+          "x": 45,
+          "y": 172.8125,
+          "width": 754,
+          "height": 44,
+          "hit": false,
+          "occluder": "DIV.section-heading",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "fit-consent",
+          "tag": "INPUT",
+          "text": "",
+          "x": 49,
+          "y": 184.8125,
+          "width": 20,
+          "height": 20,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "fit-public",
+          "tag": "INPUT",
+          "text": "",
+          "x": 49,
+          "y": 184.8125,
+          "width": 20,
+          "height": 20,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Показати взаємну користь ↗",
+          "x": 45,
+          "y": 172.8125,
+          "width": 229.75,
+          "height": 44,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Перейти до карти можливостей ↗",
+          "x": 22,
+          "y": 178.890625,
+          "width": 229.03125,
+          "height": 45,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        }
+      ],
+      "screenshot": "chromium-landscape-studio.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "studio-journey",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 16,
+      "issues": [
+        {
+          "kind": "unreachable-action",
+          "id": "journey-give",
+          "tag": "SELECT",
+          "text": "Код / автоматизація\nДизайн\nПродажі",
+          "x": 45,
+          "y": 173.34375,
+          "width": 368,
+          "height": 44,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "journey-need",
+          "tag": "SELECT",
+          "text": "Дизайн\nКод / автоматизація\nПродажі",
+          "x": 431,
+          "y": 173.34375,
+          "width": 368,
+          "height": 44,
+          "hit": false,
+          "occluder": "DIV.section-heading",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "journey-language",
+          "tag": "SELECT",
+          "text": "English\nDeutsch\nУкраїнська",
+          "x": 45,
+          "y": 173.34375,
+          "width": 368,
+          "height": 44,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "journey-communication",
+          "tag": "SELECT",
+          "text": "Особисто\nАсинхронно\nВідео",
+          "x": 45,
+          "y": 173.34375,
+          "width": 368,
+          "height": 44,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "journey-fit-consent",
+          "tag": "INPUT",
+          "text": "",
+          "x": 49,
+          "y": 185.34375,
+          "width": 20,
+          "height": 20,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "journey-visibility",
+          "tag": "INPUT",
+          "text": "",
+          "x": 49,
+          "y": 185.34375,
+          "width": 20,
+          "height": 20,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Знайти взаємну користь ↗",
+          "x": 45,
+          "y": 173.34375,
+          "width": 214.9375,
+          "height": 44,
+          "hit": false,
+          "occluder": "P.",
+          "clipped": false
+        }
+      ],
+      "screenshot": "chromium-landscape-studio-journey.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "real-journey",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 5,
+      "issues": [],
+      "screenshot": "chromium-landscape-real-journey.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "landscape",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 844,
+        "document": 844,
+        "overflow": []
+      },
+      "actionsChecked": 5,
+      "issues": [],
+      "screenshot": "chromium-landscape-outcome-archive.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "index",
+      "geometry": {
+        "viewport": 390,
+        "document": 458,
+        "overflow": []
+      },
+      "actionsChecked": 11,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 390,
+          "document": 458,
+          "overflow": []
+        }
+      ],
+      "screenshot": "chromium-large-text-index.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "summit",
+      "geometry": {
+        "viewport": 390,
+        "document": 413,
+        "overflow": []
+      },
+      "actionsChecked": 15,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 390,
+          "document": 413,
+          "overflow": []
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Get Synera ↗",
+          "x": 311.046875,
+          "y": -17.5,
+          "width": 74.15625,
+          "height": 110,
+          "hit": true,
+          "occluder": "A.small-link",
+          "clipped": true
+        }
+      ],
+      "screenshot": "chromium-large-text-summit.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "get",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actionsChecked": 11,
+      "issues": [],
+      "screenshot": "chromium-large-text-get.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "studio",
+      "geometry": {
+        "viewport": 390,
+        "document": 468,
+        "overflow": [
+          {
+            "tag": "EM",
+            "id": "",
+            "class": "",
+            "text": "Наш наступний крок.",
+            "right": 468.34375
+          },
+          {
+            "tag": "EM",
+            "id": "",
+            "class": "",
+            "text": "чиєсь «потрібно».",
+            "right": 404.703125
+          }
+        ]
+      },
+      "actionsChecked": 20,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 390,
+          "document": 468,
+          "overflow": [
+            {
+              "tag": "EM",
+              "id": "",
+              "class": "",
+              "text": "Наш наступний крок.",
+              "right": 468.34375
+            },
+            {
+              "tag": "EM",
+              "id": "",
+              "class": "",
+              "text": "чиєсь «потрібно».",
+              "right": 404.703125
+            }
+          ]
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Трикутник L ↗",
+          "x": 212.046875,
+          "y": -4,
+          "width": 154.953125,
+          "height": 83,
+          "hit": true,
+          "occluder": "A.small-link",
+          "clipped": true
+        }
+      ],
+      "screenshot": "chromium-large-text-studio.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "studio-journey",
+      "geometry": {
+        "viewport": 390,
+        "document": 528,
+        "overflow": [
+          {
+            "tag": "A",
+            "id": "",
+            "class": "small-link",
+            "text": "Попередня карта ↗",
+            "right": 415.453125
+          },
+          {
+            "tag": "A",
+            "id": "",
+            "class": "small-link",
+            "text": "Реальний пілот ↗",
+            "right": 528.28125
+          },
+          {
+            "tag": "EM",
+            "id": "",
+            "class": "",
+            "text": "Дійти до результату.",
+            "right": 496.734375
+          }
+        ]
+      },
+      "actionsChecked": 16,
+      "issues": [
+        {
+          "kind": "document-overflow",
+          "viewport": 390,
+          "document": 528,
+          "overflow": [
+            {
+              "tag": "A",
+              "id": "",
+              "class": "small-link",
+              "text": "Попередня карта ↗",
+              "right": 415.453125
+            },
+            {
+              "tag": "A",
+              "id": "",
+              "class": "small-link",
+              "text": "Реальний пілот ↗",
+              "right": 528.28125
+            },
+            {
+              "tag": "EM",
+              "id": "",
+              "class": "",
+              "text": "Дійти до результату.",
+              "right": 496.734375
+            }
+          ]
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Studio ↗",
+          "x": 212.046875,
+          "y": -4,
+          "width": 71.875,
+          "height": 83,
+          "hit": true,
+          "occluder": "A.small-link",
+          "clipped": true
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Попередня карта ↗",
+          "x": 258.921875,
+          "y": -4,
+          "width": 131.53125,
+          "height": 83,
+          "hit": true,
+          "occluder": "A.small-link",
+          "clipped": true
+        },
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Реальний пілот ↗",
+          "x": 277.453125,
+          "y": -4,
+          "width": 112.828125,
+          "height": 83,
+          "hit": true,
+          "occluder": "A.small-link",
+          "clipped": true
+        }
+      ],
+      "screenshot": "chromium-large-text-studio-journey.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "real-journey",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actionsChecked": 5,
+      "issues": [
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Вхід і профіль",
+          "x": 143.234375,
+          "y": -9.5,
+          "width": 231.84375,
+          "height": 39,
+          "hit": true,
+          "occluder": "A.",
+          "clipped": true
+        }
+      ],
+      "screenshot": "chromium-large-text-real-journey.png",
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "size": "large-text",
+      "page": "outcome-archive",
+      "geometry": {
+        "viewport": 390,
+        "document": 390,
+        "overflow": []
+      },
+      "actionsChecked": 5,
+      "issues": [
+        {
+          "kind": "unreachable-action",
+          "id": "",
+          "tag": "A",
+          "text": "Жива домовленість",
+          "x": 145.8125,
+          "y": -1.5,
+          "width": 232.1875,
+          "height": 78,
+          "hit": true,
+          "occluder": "A.",
+          "clipped": true
+        }
+      ],
+      "screenshot": "chromium-large-text-outcome-archive.png",
+      "pageErrors": []
+    }
+  ],
+  "failures": [],
+  "sources": {
+    "index.html": "fb583a2bc302e229c948a4e64f88d3104a1a8d7f1a9f5c7173b3ea02e0ad3e3e",
+    "app.mjs": "2965880338bdc602c388c082dfff533217c0eebaa70cd146035cdef11d2892d2",
+    "style-switcher.mjs": "4c3acf60015953d542c48a81e7eee55f4138e1779fc00ec621ce9df0e39b1bfa",
+    "atelier.css": "9bcb14942b017f6b686e97273a9fee3c2fe03d37405aa326972388189f427869",
+    "atelier.mjs": "8d84cc5b7ed32147d5edcccc32eb9a127b265d2d73a8606092ee511da6958b0c",
+    "online-store.mjs": "764d4cacfb510a4112b1a87f0fce3dff1d02a14a779f23668456f3cd558a3264",
+    "profile-portability.mjs": "f4a84d6b04d644dbe95fb5cd629a7ad18bcc692c698fee9a175dc2b0d882f6fb",
+    "profile-brief.mjs": "8e0f7e78438e05df0aa0cedd3190ef192128253adc60ac1ba8b1f902cedddd77",
+    "calendar.mjs": "1600cd51fa5513404d010db26c66e89794d3d89fdcea9e83ae8032fd6b19f120",
+    "style.css": "71969391de4b29c88c097b47caf6e44a6a38d7362accd5a4aeecaaf7c1d7cb3c",
+    "matching.mjs": "ec88c16ddc1372853025d9aa1efc8b5c51f7c3135f1f0539272759470d866c89",
+    "onboarding-tour.mjs": "96460fa8ce1653a30c68b5e3e04925d74a9b10d4dc5fbdbeba60e65fbb2691ec",
+    "location-session.mjs": "1e0f2ba007705abe1e7615e3778759c853e9989091b58d5ab1dba308658e5e20",
+    "demo-journey.mjs": "18ff0a9ca72e273cf9421eebb90449dd351b44df0386790bba4df401a5fc234c",
+    "summit.html": "30f32bf65bd06fabce0ab0e4d08df018c02ca80e39e5d741cfb7ed9a9cca9340",
+    "summit.css": "e91eed353e919b8befc12c0e913302ad8a298e2a29ca2643768ed0a57424354c",
+    "summit.mjs": "17a7050ed230969383d8962e50136c192ac3597ca39a519fd074692bdc2e53c6",
+    "get.html": "446e548d72692927f8d44dba27391b9f1afe8ebf3afa7689cdec514c7da885a5",
+    "product-access.mjs": "07ac6e3dec6c1ac449e8437070965d5b598e8afe8e417fb3c04a94efa36eef86",
+    "triangle.html": "62448c9d8736a69d0d2d65f83031a6c93ea915091ec47cbe61ea85083d54097d",
+    "triangle.css": "33757c558fe7cec6dcca6976636926791da6c7961bda66cc8b653c7ddc76a15a",
+    "triangle.mjs": "36874acc896829d6b2f5af205a9754d1eb267101fb4020a0fe108002148b0add",
+    "triangle-room.mjs": "c9aa019bc70271e278995b6980cea74d5dd6dfc389ba20e7aab7c7e1b1af89aa",
+    "explore-planner.mjs": "f6411a7ebf569efbd1161ecf3781dee839da3cc839a23714519d4d3eba9b064c",
+    "studio.html": "1eb2b03f33fe9dab8214992be94f610a10b83ca1bec25c75bc1f2ba5cc001699",
+    "studio.css": "a37daa0a62f1030f68777e0a721e6269b8ec6bd00c78a1b4e1060b6c8f3fb3e0",
+    "studio.mjs": "82f5e4cc660150f0e048b595b78b4522895edd5f83ae19a43e5691564f85cbed",
+    "studio-journey.html": "8bbbda66ffee7074bdebce26b1c524de09db2b5a2495240c12a757c0fd911ebb",
+    "journey.css": "d84c012dd63e2a310d8b1d2aa11d94553328087e4d43d1a1442cccb692c951ec",
+    "journey-ui.mjs": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b",
+    "journey-core.mjs": "ea7e1d3d6a5540073501f43cec3a15b21f76574fafb0dbd1594112ddd731ee45",
+    "journey-ai-client.mjs": "1bae62d2115d75706ce5f35be6b3d1cfb9da0d90abd51b4373aa575893f4c363",
+    "journey-handoff.mjs": "e6292f432487c89eeca87314fffb868d7bcb52117132ff44c2d3908644f12533",
+    "real-journey.html": "5f5db71922be5ab420608b81392ce585bb3166e548ebd5a274b71d8f156c5818",
+    "real-journey.css": "d5590b6e11236c279436825dd9f2f33cf3293843c11e08604498751ff94a1298",
+    "real-journey.mjs": "de7c8891753dfafa522feb8a50ae5eae57520edb622a30f9f81461e7670cc197",
+    "real-journey-client.mjs": "e6d6a800c95c9a899df141f0d788a8d7ede1493128470d238c665e335a03888f",
+    "outcome-archive.html": "d62d588d4b7b6a267f7a623d19cfbde9eb177575a665931c9c539aa823f56856",
+    "outcome-archive.mjs": "d9257b5c8fbdaa1e4ff67fc5df2c1b02c00f5fae56e6ebfce8e4f2a5f181f09d",
+    "outcome-archive-ui.mjs": "3230a93f35d0ca78749bdd8ca260b6fbd91bea6d75293efc620dcaa02c24841e",
+    "rooms.html": "5eeab62ae84a238a0f73e65b0cf8f548d0fb168d03b637b773399985e96be587",
+    "rooms.css": "951e93289f5d8f3e0cf4632e5eabb64d3ab6164e7aff2b8c15d2009adeaad487",
+    "rooms.mjs": "c54f0cb52c5aca06356579f35f939d80e09f42f944d65c81272a815ff5733dae",
+    "room-api.mjs": "0f78337d4d41be22aa19f9e5e88ee5db15b3189e68a341f8c74b3ac514c4022e",
+    "studio-install.mjs": "8c93c476d005d8212a7e2a9611008c216464a9f3fa6b555e920a0084e1013417",
+    "studio-sw.mjs": "df7917d66d91f1d72c89f6b27eaf9f40c002fae34413d94f4ef138d533b290f0",
+    "session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "declared-fit.mjs": "92afa77f19232e3ed7087d7932922d7dfb53834a1ee5ff3bcbb6afebc74cd1b5",
+    "group-logistics.mjs": "9c0ca8bc0de57963fe28d46b0231d0d2ce0fd9e333858094aaa8c2777e859adf",
+    "archive-codec.mjs": "2f23a59e5c7f65a7049bd1d2e572a855ec24435595e01b129ded838e8eb33d04",
+    "profile-store.mjs": "798623e2828ddb16efbb786af81525d656890351a18ca14240fb39b811cdda49",
+    "neon-store.mjs": "8cef986fc96b10b2db3ff574eb20a6239ea4014456748e22a5679b969e4fba78",
+    "chatgpt-transfer.mjs": "a71800913e6359a609c35b09919d953088231a75f46286e3140267ecbce22f40",
+    "map.mjs": "bd890a1d86c6ecdbfc5dc7e21772f0afb48fdd1ed003bf1c612402f0429981c5",
+    "pilot-policy.mjs": "2448fccaa949df9066d93d604c9670700db06e20b476866b43a7a46063194ac1",
+    "profile-package.mjs": "792588575f310600b69735ede80219d187cf002a45f6157bff4630fa3ede7a15",
+    "business-case.mjs": "1e6e2642a01ad434ef1cb6e182eccebb6d4c1dd92d590c8b51356a5a50b3bd47",
+    "profile-import.mjs": "a9c034adad45f97eb2b92ea66528a5d0e4dcc808a7732d012a938d9afeb39e4b",
+    "i18n.mjs": "cb67ac71cc7d3ca619965a713f8655ef03a504987e74c911396ad6d17597da3e",
+    "proof-state.mjs": "479b14de89262249c90afc3153721123d7aab6fc75680ccb2410cfa5b6f5d3de",
+    "need-decay.mjs": "d9ffc6a2d8cd720938c18c686b2600e2191c7ee57d5b4b93954df0c6ae29afb8",
+    "meeting-card.mjs": "516b5f474990e23ba5b1b1e1aed7fe80aeac30d96bd02e08f558e7e3c210b4a5",
+    "live-location.mjs": "3da2a3249c2c0c5fa2cb6f5f218944d22c82c2e0b7a3c43c9389e6cf176a5741",
+    "meeting-location.mjs": "ea0a6a9ee2926f46bc3fb87e6b2025228106780111435630edd197b67c0fc7bd",
+    "cycle-exchange.mjs": "6a5a1499e764e3e15068f05f554e89bfa0ffa8b23d672e0508f1a08ca4a06237",
+    "b-matching.mjs": "14039c77a85f4ac55bdbecf7fefb806d0c47e6066d3dd6b89c2e85fd4a6f5acd",
+    "field-audience.mjs": "fb861cdacb3f3ba86b56d71fe395747ca00970be95c38f5f924e8ec5e01154e3",
+    "swiss-compliance.mjs": "4b66c0ebaf4b1df1ec97ac8eb198a7f24b68893363ff0515098a6ff0a519a169",
+    "funnel-analytics.mjs": "cedb1b4056d4a568402876335a7092ce81fbe0213dd466c8c8373785d1fa13d7",
+    "pwa.mjs": "1a8ed6b707a37521ae6b8bcd980a5e257f95c289a8742ecd1419ef2e7edad296",
+    "sw.mjs": "2dc95cd3874a5c1ca824a891d8c34a752692b404745b305adb44dd06a11569f7",
+    "legal.html": "75cdd02f3f5bffc79028b10035b53f606d682a822948d88c584a002bcf8c0b54",
+    "catalogue.html": "b294c45a5267bb02216252f1bc34085228778a26ec7c3724ea5ccb0214fb96a7",
+    "tokens.css": "013045fc7a918fd41ce191945f0b34861156e754eab214f4a3306e904ff68902",
+    "cascade.mjs": "b03ec2d2f310ad15615843eee82e4d6631e9c9c01e4c66deef7053a73da4e10d",
+    "iceberg-client.mjs": "16c6fefdbe4dd9cc71e35638908e877c88e9b15d17b8f5bae28c0ac2c18bdc41"
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverKillRequested": true
+  },
+  "summary": {
+    "rows": 14,
+    "issues": 26,
+    "failures": 0
+  }
+}
