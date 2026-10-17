@@ -1,0 +1,80 @@
+{
+  "root_task": "synera-gemini-20261017",
+  "shared_cap_usd": 0.5,
+  "actual_total_usd": 0.0052906,
+  "actual_provider_calls": 4,
+  "input_modalities": [
+    "text"
+  ],
+  "untransmitted_local_privacy_abort": 1,
+  "privacy_acceptance_claim": "synera-gemini-20261017-privacy-corrected",
+  "ci_static_acceptance_claim": "synera-gemini-20261017-ci-static",
+  "receipt_linkage": "Both accepted corrected outputs verified through existing Harness receipt_claim_linkage; raw ledger and outputs remain at canonical owner. Initial drafts contained explicitly corrected/refuted claims.",
+  "proof_limit": "Source review and component checks only; production and actual CI execution are separate.",
+  "receipts": [
+    {
+      "generation_id": "gen-1792265492-j8AoXtcSPmP2rSMun5mb",
+      "task_id": "ask",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "provider_calls": 1,
+      "cost": 0.001488325,
+      "cost_status": "recorded",
+      "cost_evidence_type": "provider_usage_cost",
+      "route_identity_verified": true,
+      "artifact_sha256": "38d9ee52c3cfeef531a99bdc0b3ff13c4c9f3c424f96eb77db20862430b177a1",
+      "output_request_sha256": "8cb1badcd4aaa74b0f1a9b2f66df8c9400b2eeace78f9affc0b34f77df96cadb",
+      "prompt_tokens": 12361,
+      "completion_tokens": 2245,
+      "truncated": false
+    },
+    {
+      "generation_id": "gen-1792265833-j7BuYbqphqefJW4MtnzF",
+      "task_id": "ask",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "provider_calls": 1,
+      "cost": 0.002063125,
+      "cost_status": "recorded",
+      "cost_evidence_type": "provider_usage_cost",
+      "route_identity_verified": true,
+      "artifact_sha256": "6ed82f30b921cd3abe847ade0240b494415e832b36cfc1c90bd0279c7b3a8673",
+      "output_request_sha256": "3bfdf6d6ef9737c6b7700311aa226f2c3344b45ca592aa00f6b598adb997c7fa",
+      "prompt_tokens": 17485,
+      "completion_tokens": 3007,
+      "truncated": false
+    },
+    {
+      "generation_id": "gen-1792266088-rWXX7JUdqexHEeQDxw9V",
+      "task_id": "synera-gemini-ci-20261017",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "provider_calls": 1,
+      "cost": 0.000957125,
+      "cost_status": "recorded",
+      "cost_evidence_type": "provider_usage_cost",
+      "route_identity_verified": true,
+      "artifact_sha256": "a75d283773ede969c5ac344b76f0ce26961181c58defec4cf5dd13bc4c4adf78",
+      "output_request_sha256": "ae6ff25e3c77006cb8c0f5a5375ad6d1d41f760c4f6da6dbbcb0aa657e8c5866",
+      "prompt_tokens": 7235,
+      "completion_tokens": 1658,
+      "truncated": false
+    },
+    {
+      "generation_id": "gen-1792266251-lw4zikRQ69GoPSc7dOrV",
+      "task_id": "synera-gemini-ci-20261017-review1",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "provider_calls": 1,
+      "cost": 0.000782025,
+      "cost_status": "recorded",
+      "cost_evidence_type": "provider_usage_cost",
+      "route_identity_verified": true,
+      "artifact_sha256": "42693fa2b4a7663cd56c8e9e5bd58d7e3695894dd133a7a71ecfee9ff56c28bd",
+      "output_request_sha256": "522d5c9e7230c36f6f045d806a6306315cf479a80dc865153345bd37b8db0913",
+      "prompt_tokens": 7747,
+      "completion_tokens": 804,
+      "truncated": false
+    }
+  ]
+}
