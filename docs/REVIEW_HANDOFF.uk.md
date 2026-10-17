@@ -2,6 +2,8 @@
 
 Оновлено 17.10.2026. [Репозиторій](https://github.com/AndriiEagle/synera_-MVPplus-) публічний; канонічна гілка для нового review — **`main`**. [Продуктова ДНК](PRODUCT_DNA.uk.md) · [завдання рев’юеру](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
 
+Додаткова перевірка рекомендацій Gemini: [рішення, виправлення та незакриті gates](../artifacts/gemini-review-20261017/REPORT.uk.md). Вона відділяє підтверджений пропуск PostgreSQL у CI від неприйнятого tombstone SQL і бізнесових гіпотез; production readiness залишається окремим прийманням.
+
 ## Що входить у цей зріз
 
 Інтеграція поєднує попередній `main` **`6642c89359969afade480a7140e7feed08ad9574`** і перевірений продуктовий source **`76e189756f807cf8a6cf553cc687c626ac16ffff`**. Runtime, SQL, assets, тести та CI з другого коміту збережені; конфлікти README й `.gitattributes` розв’язані без зміни поведінки застосунку. Точний SHA своєї копії отримай через `git rev-parse HEAD`.

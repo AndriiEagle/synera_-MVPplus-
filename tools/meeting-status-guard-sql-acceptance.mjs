@@ -132,8 +132,24 @@ try {
   report.status = 'PASS_LOCAL_MEETING_STATUS_GUARD_SQL';
 } catch (error) { report.error = error.message; throw error; }
 finally {
-  for (const database of created) sql('postgres', `drop database if exists ${database};`);
-  report.databases_dropped = created.length;
+  report.databases_dropped = 0;
+  report.cleanup_errors = [];
+  for (const database of created) {
+    try {
+      const dropped = sql('postgres', `drop database if exists ${database};`);
+      if (dropped.status === 0 && !dropped.error) report.databases_dropped++;
+      else report.cleanup_errors.push({ database, exit_code: dropped.status,
+        error: dropped.stderr || dropped.error?.message || 'DROP did not complete successfully' });
+    } catch (error) {
+      report.cleanup_errors.push({ database, exit_code: null, error: error.message });
+    }
+  }
+  report.cleanup_pass = report.cleanup_errors.length === 0;
+  if (!report.cleanup_pass) {
+    report.status = 'NOT_ACCEPTED';
+    // Do not throw from finally: retain any original acceptance error and try every DROP.
+    process.exitCode = 1;
+  }
   if (receiptPath) { await fs.mkdir(path.dirname(receiptPath), { recursive: true }); await fs.writeFile(receiptPath, JSON.stringify(report, null, 2) + '\n'); }
   console.log(JSON.stringify({ status: report.status, stages: report.stages.map(stage => ({ name: stage.name, exit_code: stage.exit_code, expected: stage.expected })), receipt: receiptPath }));
 }

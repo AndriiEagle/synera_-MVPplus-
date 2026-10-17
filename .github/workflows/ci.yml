@@ -12,6 +12,58 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  postgres-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          # Disposable CI only; no published port or production credentials.
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Existing runner uses docker exec/cp; a connection string alone is insufficient.
+      - name: C03.L4 disposable case-state RLS acceptance
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PG: postgres://postgres@127.0.0.1/postgres
+        run: node --test neon/local_acceptance.test.mjs
+
+      # Run psql INSIDE the same service: loopback safety checks remain meaningful,
+      # with no host psql installation or mapped network port.
+      - name: Meeting status guard and full-stack SQL invariants
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PGPORT: '5432'
+        run: |
+          cat > "$RUNNER_TEMP/synera-acceptance-psql" <<'SH'
+          #!/usr/bin/env bash
+          exec docker exec -i "$SYNERA_ACCEPTANCE_DOCKER" psql "$@"
+          SH
+          chmod +x "$RUNNER_TEMP/synera-acceptance-psql"
+          SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
+            node tools/meeting-status-guard-sql-acceptance.mjs \
+            --receipt=artifacts/postgres-acceptance/meeting-status-guard.json
+
+      - name: Upload SQL acceptance receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postgres-acceptance
+          path: artifacts/postgres-acceptance/
+          if-no-files-found: ignore
+          retention-days: 7
+
   test:
     runs-on: ubuntu-latest
     steps:
