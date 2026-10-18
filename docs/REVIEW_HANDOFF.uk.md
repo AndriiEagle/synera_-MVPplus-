@@ -2,7 +2,7 @@
 
 Оновлено 19.10.2026. [Репозиторій](https://github.com/AndriiEagle/synera_-MVPplus-) публічний; канонічна гілка для нового review — **`main`**. [Продуктова ДНК](PRODUCT_DNA.uk.md) · [завдання рев’юеру](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
 
-Поточне доповнення після аудиту: **`03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d`** — код і локальні докази. [Звіт реалізації](../artifacts/gemini-implementation-20261017/REPORT.uk.md) · [хешовані фінальні перевірки](../artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json) · [план пілоту](../plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md). Новий промпт прив’язаний саме до цього commit; наступні документаційні коміти не змінюють код. До зовнішнього review перевір, що цей SHA є предком main.
+Поточне доповнення після аудиту: **`7eaa952c6e0e498521cc325ab1cf24fec1e0f725`** — код і локальні докази. [Звіт реалізації](../artifacts/gemini-implementation-20261017/REPORT.uk.md) · [хешовані фінальні перевірки](../artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json) · [план пілоту](../plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md). Новий промпт прив’язаний саме до цього commit; наступні документаційні коміти не змінюють код. До зовнішнього review перевір, що цей SHA є предком main.
 
 Додано `action-scoper.mjs`, `result-card.mjs` та `profile-erasure.*`; 692 Node PASS / 1 локальний SKIP, окрема PostgreSQL16 acceptance 12+4+3, browser fixtures 10+4, offline shell PASS. GitHub CI перевіряй за SHA конкретного запуску. Profile erasure — окремий gate OFF; provider Auth deletion pending, двосторонні записи зберігаються. Це не production activation.
 

@@ -29,3 +29,12 @@
 Новий erasure gate за замовчуванням **OFF**. Provider-account deletion має **pending**. Спільні тексти, домовленості, повідомлення, адреси, safety records, backups та чужі копії можуть містити персональні дані; їхнє повне видалення і юридична відповідність не заявляються.
 
 У цій роботі не виконуються production SQL/deploy, запрошення людей, зміна видимості репозиторію чи оплата. Після GitHub review потрібне окреме приймання реального rollout із двома акаунтами й підписаними JWT, provider deletion procedure та фізичними Android/iPhone. До цього не називати кандидата повністю готовим до відкритого запуску.
+
+
+## Публікація 19.10 і повторне приймання
+
+Код запушений у [PR6](https://github.com/AndriiEagle/synera_-MVPplus-/pull/6), canonical public repo збережений. CI спочатку відтворив пропуск PGAPPNAME у Docker wrapper; commit `7eaa952` виправляє саме передачу параметра, без зміни SQL або послаблення oracle. [GitHub PostgreSQL receipt](CI_SQL_ACCEPTANCE.json) підтверджує повний повторний PASS. Фінальний стан merge та CI перевіряється через PR6; цей документ не є заявою про deploy.
+
+[Provider receipts](PROVIDER_RECEIPTS.json): 12 реальних GLM53Flash викликів разом із попередньою фазою, $0.017140781 із спільних $0.50; inputs тільки text. Два Codex-чати закінчили по два targeted reviews. Усі вісім нових provider outputs мають індивідуальний canonical receipt link і незалежний triage. Три додаткові provider followups залишаються HOLD через чужий unresolved receipt у спільному Token Monster: guard не обходився. Точна межа — PROVIDER_TRIAGE.
+
+Наступний зовнішній аудит: [готовий промпт](../../docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md), лише pinned source, read-only, обов’язковий доказ реального читання коду перед оцінками.

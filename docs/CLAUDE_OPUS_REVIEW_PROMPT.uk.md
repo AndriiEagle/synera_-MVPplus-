@@ -16,18 +16,18 @@
 
 Прямі source-посилання:
 
-- [neon/profile-erasure.migration.sql](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/profile-erasure.migration.sql)
-- [neon/profile-erasure-generate.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/profile-erasure-generate.mjs)
-- [neon/worker.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/worker.mjs)
-- [web_launch/neon-store.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/neon-store.mjs)
-- [web_launch/app.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/app.mjs)
-- [web_launch/real-journey.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/real-journey.mjs)
-- [web_launch/action-scoper.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/action-scoper.mjs)
-- [web_launch/result-card.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/result-card.mjs)
-- [tools/profile-erasure-lock-review.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/tools/profile-erasure-lock-review.mjs)
-- [artifacts/gemini-implementation-20261017/REPORT.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/artifacts/gemini-implementation-20261017/REPORT.uk.md)
-- [artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json)
-- [plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md)
+- [neon/profile-erasure.migration.sql](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/neon/profile-erasure.migration.sql)
+- [neon/profile-erasure-generate.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/neon/profile-erasure-generate.mjs)
+- [neon/worker.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/neon/worker.mjs)
+- [web_launch/neon-store.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/web_launch/neon-store.mjs)
+- [web_launch/app.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/web_launch/app.mjs)
+- [web_launch/real-journey.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/web_launch/real-journey.mjs)
+- [web_launch/action-scoper.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/web_launch/action-scoper.mjs)
+- [web_launch/result-card.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/web_launch/result-card.mjs)
+- [tools/profile-erasure-lock-review.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/tools/profile-erasure-lock-review.mjs)
+- [artifacts/gemini-implementation-20261017/REPORT.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/artifacts/gemini-implementation-20261017/REPORT.uk.md)
+- [artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json)
+- [plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/7eaa952c6e0e498521cc325ab1cf24fec1e0f725/plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md)
 
 Почни з нового REPORT, потім PRODUCT_DNA й сценаріїв. Перевір кожну прийняту рекомендацію попереднього звіту, а також обґрунтованість відхилених: довільні CHF49/249, 3× швидкість, примусове gamification та гарантований викуп не були прийняті як факти. Немає приватного документа, доступного лише в локальному Downloads, який потрібний для цього аудиту: його суттєві рекомендації й рішення зведені в REPORT та плані пілоту.
 
@@ -46,10 +46,10 @@
 **Єдиний репозиторій:** https://github.com/AndriiEagle/synera_-MVPplus-
 
 **Єдина дозволена лінія розробки:** main. **Зафіксований зріз коду для цього аудиту:**
-03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d
+7eaa952c6e0e498521cc325ab1cf24fec1e0f725
 
 **Незмінне посилання на source:**
-https://github.com/AndriiEagle/synera_-MVPplus-/tree/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d
+https://github.com/AndriiEagle/synera_-MVPplus-/tree/7eaa952c6e0e498521cc325ab1cf24fec1e0f725
 
 Це зафіксований commit продукту й локальних доказів, який має входити в main перед передачею завдання. Спочатку перевір ancestry; якщо main ще не містить цей commit, познач HANDOFF_PENDING і не переходь на інші гілки. Сам цей промпт може бути доданий пізнішим документаційним комітом; це не змінює source pin. Не підмішуй новіші зміни в оцінку. Познач у звіті дату аудиту й цей SHA. Якщо Андрій хоче перевірити інший зріз — потрібний новий явний pin.
 

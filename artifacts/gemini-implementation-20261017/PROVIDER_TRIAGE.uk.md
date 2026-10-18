@@ -12,3 +12,10 @@
 | erasure-sql-review | Замість сліпого копіювання email tombstone/видалення locks виконуються реальні PG reproductions. New-sub lifecycle і UPSERT lock inversion відтворені; фінальні рішення й source transitions — ERASURE.uk.md. Спекулятивні твердження щодо невиданих reviewer-у RPC/policies самі по собі не є дефектами; перевірено фактичні restrictive member policies та surface SQL. |
 
 Проміжні невдалі та прийняті receipts збережені. Для остаточного висновку використовуються лише receipts, чиї source_sha256 збігаються з current source; старий зелений receipt не закриває змінений файл. Підсумкова квитанція провайдера і finite review linkage готуються після збору всіх термінальних відповідей.
+
+
+Фінальний readback 19.10: card-review2 відкликав F1/F4, NO_CHANGE прийнято; косметичний timeout revoke не змінено після фактичного download PASS. erasure-ui-review1 F1 відхилено: доступ застосунку відкликають tombstone/admission незалежно від provider signout. F2 відхилено після читання повного run(): absent store.user викликає showSignedOut(). F3 підтверджено тестами A/B/restore/logout.
+
+12 фактичних GLM викликів сумарно з попередньою фазою, відома вартість $0.017140781 / $0.50. Вісім викликів цієї реалізації мають canonical output hashes та індивідуальні acceptance links. Усі inputs текстові.
+
+Додаткові SQL followup1+2 і UI followup2 залишаються HOLD: canonical spend guard виявив сторонній unreceipted dispatch; read-only recovery повернув transport_binding_invalid. Нового inference немає, чужий lock/ledger не обходився. Це межа завершеності повторних provider-review, не заміна фактично пройдених незалежних Codex/SQL/browser перевірок.

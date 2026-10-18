@@ -1,0 +1,45 @@
+{
+  "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+  "database": "synera_erasure_locks_1792362550428",
+  "base": "synera_erasure_1792362544504",
+  "legacy_profile_first": false,
+  "scope": "Disposable SQL identity-shim; actual UPSERT/RPC with transaction barriers",
+  "checks": [
+    {
+      "name": "existing_erase-first",
+      "leader_code": 0,
+      "follower_code": 3,
+      "leader_error": "",
+      "follower_error": "ERROR:  Profile deactivated\nCONTEXT:  PL/pgSQL function public.synera_profile_erasure_guard() line 4 at RAISE\n",
+      "pass": true
+    },
+    {
+      "name": "existing_upsert-first",
+      "leader_code": 0,
+      "follower_code": 0,
+      "leader_error": "",
+      "follower_error": "",
+      "pass": true
+    },
+    {
+      "name": "missing_erase-first",
+      "leader_code": 0,
+      "follower_code": 3,
+      "leader_error": "",
+      "follower_error": "ERROR:  Profile deactivated\nCONTEXT:  PL/pgSQL function public.synera_profile_erasure_guard() line 4 at RAISE\n",
+      "pass": true
+    },
+    {
+      "name": "missing_upsert-first",
+      "leader_code": 0,
+      "follower_code": 0,
+      "leader_error": "",
+      "follower_error": "",
+      "pass": true
+    }
+  ],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+    "tools/profile-erasure-lock-review.mjs": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c"
+  }
+}
