@@ -48,7 +48,7 @@ jobs:
         run: |
           cat > "$RUNNER_TEMP/synera-acceptance-psql" <<'SH'
           #!/usr/bin/env bash
-          exec docker exec -i "$SYNERA_ACCEPTANCE_DOCKER" psql "$@"
+          exec docker exec -i -e PGAPPNAME="${PGAPPNAME:-}" -e PGCLIENTENCODING=UTF8 "$SYNERA_ACCEPTANCE_DOCKER" psql "$@"
           SH
           chmod +x "$RUNNER_TEMP/synera-acceptance-psql"
           SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
