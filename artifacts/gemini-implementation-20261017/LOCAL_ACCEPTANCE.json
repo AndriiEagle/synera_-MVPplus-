@@ -1,0 +1,33 @@
+{
+  "base_commit": "9437e0e5836368679ba44cd1dd240270156e0595",
+  "scope": "Local SQL identity-shim and Chromium fixtures only; no production mutation",
+  "receipts": {
+    "ERASURE_SQL_REVIEW2_FINAL_VERIFIED.json": {
+      "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+      "checks": 12,
+      "source_fingerprint_verified": true
+    },
+    "ERASURE_REVIEW2_LOCKS_VERIFIED.json": {
+      "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+      "checks": 4,
+      "source_fingerprint_verified": true
+    },
+    "ERASURE_REVIEW2_OUTCOME_FINAL_VERIFIED.json": {
+      "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+      "checks": 3,
+      "source_fingerprint_verified": true
+    },
+    "ERASURE_BROWSER.json": {
+      "status": "PASS_LOCAL_PROFILE_ERASURE_BROWSER",
+      "checks": 4,
+      "source_fingerprint_verified": true
+    },
+    "CASE_SOCIAL_BROWSER.json": {
+      "status": "PASS_LOCAL_CASE_SOCIAL_BROWSER",
+      "checks": 10,
+      "source_fingerprint_verified": true
+    }
+  },
+  "new_erasure_gate_default": false,
+  "provider_deletion": "pending"
+}

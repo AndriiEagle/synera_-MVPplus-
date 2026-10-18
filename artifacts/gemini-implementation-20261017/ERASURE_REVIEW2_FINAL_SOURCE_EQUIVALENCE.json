@@ -1,0 +1,6 @@
+{
+  "status": "PASS_EXACT_OUTCOME_PRESERVATION",
+  "original_sha256": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+  "migration_sha256": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+  "only_change": "profile FOR SHARE and fresh membership check after original case authorization; all original case/outcome checks and output preserved"
+}

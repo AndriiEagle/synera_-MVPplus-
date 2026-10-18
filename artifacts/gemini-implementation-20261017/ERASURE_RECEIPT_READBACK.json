@@ -1,0 +1,77 @@
+{
+  "status": "PASS_RECEIPT_CURRENT_SOURCE_READBACK",
+  "receipt": "artifacts/gemini-implementation-20261017/ERASURE_SQL_ACCEPTED.json",
+  "receipt_sha256": "f9e0115d331ed9a9d9e5d136a21a31b63180cdd4d9ba3ff1afd7c335e9123739",
+  "checked_sources": [
+    {
+      "path": "tools/profile-erasure-sql-acceptance.mjs",
+      "expected": "4b2f60ca103dd2b31e494311048a862803d85d8c7ba4a93eca64d3c2e1d3997a",
+      "actual": "4b2f60ca103dd2b31e494311048a862803d85d8c7ba4a93eca64d3c2e1d3997a",
+      "match": true
+    },
+    {
+      "path": "neon/schema.proposal.sql",
+      "expected": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+      "actual": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+      "match": true
+    },
+    {
+      "path": "neon/case-state.migration.sql",
+      "expected": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+      "actual": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+      "match": true
+    },
+    {
+      "path": "neon/meeting-status-guard.migration.sql",
+      "expected": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+      "actual": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+      "match": true
+    },
+    {
+      "path": "neon/meeting-location.migration.sql",
+      "expected": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+      "actual": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+      "match": true
+    },
+    {
+      "path": "neon/group-room.migration.sql",
+      "expected": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+      "actual": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+      "match": true
+    },
+    {
+      "path": "neon/case-outcome.migration.sql",
+      "expected": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+      "actual": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+      "match": true
+    },
+    {
+      "path": "neon/meeting-address-agreement.migration.sql",
+      "expected": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+      "actual": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+      "match": true
+    },
+    {
+      "path": "neon/message-intent.migration.sql",
+      "expected": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+      "actual": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+      "match": true
+    },
+    {
+      "path": "neon/case-state.acceptance.sql",
+      "expected": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+      "actual": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+      "match": true
+    },
+    {
+      "path": "neon/profile-erasure.migration.sql",
+      "expected": "aec81a42df388ac62b79c27612e46cde7ec8bb037c4494ad1063f08480b0cc37",
+      "actual": "aec81a42df388ac62b79c27612e46cde7ec8bb037c4494ad1063f08480b0cc37",
+      "match": true
+    }
+  ],
+  "owned_source_hashes_match": true,
+  "sql_scope": "Disposable loopback PostgreSQL identity shim only; no signed JWT, live Neon, provider deletion or deployment",
+  "checks_passed": 10,
+  "live": false
+}

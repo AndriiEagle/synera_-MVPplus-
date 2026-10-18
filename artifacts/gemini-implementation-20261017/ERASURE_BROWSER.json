@@ -1,0 +1,18 @@
+{
+  "status": "PASS_LOCAL_PROFILE_ERASURE_BROWSER",
+  "checks": [
+    "default off preserves the separate legacy deletion route",
+    "error preserves account and form; invalid confirmation makes zero requests",
+    "normal logout clears typed destructive confirmation before another sign-in",
+    "success purges current local form/consents and reports retained records plus pending provider deletion"
+  ],
+  "scope": "Real Chromium 390x844; synthetic account/API, no signed JWT, live Neon or provider deletion",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "source_sha256": {
+    "web_launch/app.mjs": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+    "web_launch/index.html": "4ce0613c9a9a09297c6e59451a0271f8e7311c8af758e46d2e68dfcdd2a33b0b",
+    "web_launch/neon-store.mjs": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+    "tools/profile-erasure-browser.mjs": "75705ace645b712b253863ec097d773309116bc6725d1452482b909c5aa9b499"
+  }
+}

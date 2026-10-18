@@ -1,0 +1,54 @@
+[
+  {
+    "path": "neon/profile-erasure.migration.sql",
+    "sha256": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd"
+  },
+  {
+    "path": "neon/profile-erasure.mjs",
+    "sha256": "8eddaa8f4c9e638285870b603f1a95366be393b1d49bf0297b02e0765eae10de"
+  },
+  {
+    "path": "neon/profile-erasure-generate.mjs",
+    "sha256": "9b5cc12aa742918ada0aedd799d17ffe9d8613ab54a9fd55edc8c54a846cbe2f"
+  },
+  {
+    "path": "neon/profile-erasure-generation.test.mjs",
+    "sha256": "16e27cfd26b5931728f56f132579a2c9529db83eb7435fd3245b8934efb50f95"
+  },
+  {
+    "path": "neon/profile-erasure-surfaces.acceptance.sql",
+    "sha256": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8"
+  },
+  {
+    "path": "neon/profile-erasure-lifecycle.acceptance.sql",
+    "sha256": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee"
+  },
+  {
+    "path": "neon/profile-erasure.test.mjs",
+    "sha256": "907e581de46c8a49cebebc8e2590c66f688b801f20199792122ec8d0377f704f"
+  },
+  {
+    "path": "tools/profile-erasure-sql-acceptance.mjs",
+    "sha256": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0"
+  },
+  {
+    "path": "tools/profile-erasure-review1.mjs",
+    "sha256": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f"
+  },
+  {
+    "path": "tools/profile-erasure-lock-review.mjs",
+    "sha256": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c"
+  },
+  {
+    "path": "neon/worker.mjs",
+    "sha256": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484"
+  },
+  {
+    "path": "neon/build.mjs",
+    "sha256": "67a42cbeac2e9fa1be13278c8377f91e21a6c415bc47b8961db95551566b39b3"
+  },
+  {
+    "path": "web_launch/neon-store.mjs",
+    "sha256": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b"
+  }
+]

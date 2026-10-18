@@ -1,0 +1,1 @@
+{"variant":"audit-final-20261018","status":"PASS_CACHE_ONLY_OFFLINE_STARTUP","failed":[],"out":"D:\\synera-audit-implementation-20261017\\artifacts\\offline-shell-acceptance\\PASS3_AUDIT-FINAL-20261018"}

@@ -1,0 +1,10 @@
+{
+  "status": "NOT_ACCEPTED",
+  "database": "synera_erasure_1792267855930",
+  "scope": "Disposable loopback PostgreSQL identity shim only; no signed JWT, live Neon, provider deletion or deployment",
+  "checks": [],
+  "source_sha256": {},
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "error": "psql: error: connection to server at \"127.0.0.1\", port 55331 failed: Connection refused (0x0000274D/10061)\r\n\tIs the server running on that host and accepting TCP/IP connections?\r\n\n\n2 !== 0\n"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+  "database": "synera_erasure_review1_1792278370829",
+  "base": "synera_erasure_1792268577847",
+  "guard_applied": true,
+  "scope": "Fresh disposable copy; identity shim only",
+  "checks": [
+    {
+      "name": "outcome_waiter_denied_after_erasure_commit",
+      "pass": true,
+      "code": 3,
+      "stderr": "ERROR:  Outcome unavailable\r\nCONTEXT:  PL/pgSQL function public.synera_case_outcome(text,jsonb) line 28 at RAISE\r\n",
+      "returned_sensitive_state": false
+    }
+  ],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "9b1085886632eace5dd2aada28fe6c4a828797ab5e6bbf3831a8ca022e1b0a04",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "tools/profile-erasure-review1.mjs": "49e0613dc18f33a7cf639d4438d81c9519034618832b3791c45a4e0b4637459d"
+  }
+}

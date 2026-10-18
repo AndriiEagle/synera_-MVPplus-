@@ -1,0 +1,21 @@
+{
+  "status": "NOT_ACCEPTED",
+  "database": "synera_erasure_locks_1792279256234",
+  "base": "synera_erasure_1792278961061",
+  "legacy_profile_first": true,
+  "scope": "Disposable SQL identity-shim; actual UPSERT/RPC with transaction barriers",
+  "checks": [
+    {
+      "name": "existing_erase-first",
+      "leader_code": 0,
+      "follower_code": 3,
+      "leader_error": "",
+      "follower_error": "ERROR:  deadlock detected\r\nDETAIL:  Process 105224 waits for ShareLock on transaction 986; blocked by process 74012.\r\nProcess 74012 waits for ExclusiveLock on advisory lock [18722,1459787345,2829998524,1]; blocked by process 105224.\r\nHINT:  See server log for query details.\r\nCONTEXT:  while locking tuple (0,7) in relation \"profiles\"\r\n"
+    }
+  ],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "15b6584eb1381ad29bc642f57177b42eaaf524b048caa44e78ae36338aafd65e",
+    "tools/profile-erasure-lock-review.mjs": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c"
+  },
+  "error": "The input did not match the regular expression /Profile deactivated|row-level security/. Input:\n\n'ERROR:  deadlock detected\\r\\n' +\n  'DETAIL:  Process 105224 waits for ShareLock on transaction 986; blocked by process 74012.\\r\\n' +\n  'Process 74012 waits for ExclusiveLock on advisory lock [18722,1459787345,2829998524,1]; blocked by process 105224.\\r\\n' +\n  'HINT:  See server log for query details.\\r\\n' +\n  'CONTEXT:  while locking tuple (0,7) in relation \"profiles\"\\r\\n'\n"
+}

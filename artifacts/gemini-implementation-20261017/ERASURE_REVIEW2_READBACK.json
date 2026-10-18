@@ -1,0 +1,29 @@
+{
+  "status": "PASS_CURRENT_REVIEW2_RECEIPT_READBACK",
+  "receipts": [
+    {
+      "receipt": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW2_FINAL_VERIFIED.json",
+      "sha256": "7db75915f27ab4cf0c4e1f2062c18750fd0ff32327a04a50c001bbc6cd61463b",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+      "checks": 12,
+      "all_source_hashes_match": true
+    },
+    {
+      "receipt": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_LOCKS_VERIFIED.json",
+      "sha256": "0ca8b6074a82c09e618236cdffc8972affb7fa97f1265bc91ad2f789f13447e0",
+      "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+      "checks": 4,
+      "all_source_hashes_match": true
+    },
+    {
+      "receipt": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_OUTCOME_FINAL_VERIFIED.json",
+      "sha256": "44641c1f776e407de2e24fb7893cdeefdbeae673801c55b0f78fae5e732c0c6d",
+      "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+      "checks": 3,
+      "all_source_hashes_match": true
+    }
+  ],
+  "live": false,
+  "provider_calls": 0,
+  "provider_usd": 0
+}
