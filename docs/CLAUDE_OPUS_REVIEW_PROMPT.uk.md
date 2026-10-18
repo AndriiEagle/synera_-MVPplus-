@@ -1,8 +1,35 @@
 # Synera: незалежний стратегічний і технічний аудит для хмарної моделі
 
-Завдання Андрія, 17.10.2026. Модель має читання репозиторію, але не має права push. Це повний контракт аудиту; результат повертається у відповіді моделі, без змін на GitHub.
+Повторний аудит після реалізації рекомендацій, 19.10.2026. Модель має читання репозиторію, але не має права push. Це повний контракт аудиту; результат повертається у відповіді моделі, без змін на GitHub.
 
 ---
+
+## 0. Обов’язкова перевірка доступу до source
+
+Попередній Gemini-звіт прямо визнав відсутність доступу до коду. Не повторюй аудит уявної реалізації. До оцінок відкрий щонайменше `neon/profile-erasure.migration.sql`, `web_launch/real-journey.mjs`, `web_launch/result-card.mjs` саме за SHA нижче; наведи три конкретні факти з шляхом, рядками й коротким поясненням поведінки. Якщо отримав тільки цей промпт, README або помилку доступу — стан `NEEDS_SOURCE`; технічні оцінки та твердження «перевірено» недопустимі. Відділи прочитане від реально виконаних тестів. Не вважай green CI безумовним доказом правильності продукту.
+
+Це read-only повторний аудит. Додаткові платні API-виклики: бюджет $0. Не запускай інших агентів за гроші. Поверни звіт у чаті; жодних remote mutations.
+
+Що змінилося: добровільна допомога у формулюванні умов усіх п’яти режимів збереженої людської домовленості; приватна HTML-картка власного тексту з повторною перевіркою згоди; окреме стирання профільних даних/відкликання admission зі збереженням спільних записів. **PROFILE_ERASURE_READY вимкнено за замовчуванням; видалення Auth identity — pending.** Це не повне видалення облікового запису й не юридична гарантія. Current/Atelier, добровільність, людський текст, ціни та двосторонні згоди збережені.
+
+Локальні докази: 692 Node PASS, 0 FAIL, 1 локальний Docker SKIP; окремий реальний PostgreSQL16 — 12 основних, 4 блокування UPSERT і 3 outcome-barrier перевірки; browser fixtures — 10+4; offline shell PASS. Перевір актуальні source hashes у receipts. Старі RED/intermediate JSON навмисно збережені; актуальні фінальні назви наведені в REPORT. Live JWT двох акаунтів, production rollout/restore та фізичні телефони цим не доведено.
+
+Прямі source-посилання:
+
+- [neon/profile-erasure.migration.sql](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/profile-erasure.migration.sql)
+- [neon/profile-erasure-generate.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/profile-erasure-generate.mjs)
+- [neon/worker.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/neon/worker.mjs)
+- [web_launch/neon-store.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/neon-store.mjs)
+- [web_launch/app.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/app.mjs)
+- [web_launch/real-journey.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/real-journey.mjs)
+- [web_launch/action-scoper.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/action-scoper.mjs)
+- [web_launch/result-card.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/web_launch/result-card.mjs)
+- [tools/profile-erasure-lock-review.mjs](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/tools/profile-erasure-lock-review.mjs)
+- [artifacts/gemini-implementation-20261017/REPORT.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/artifacts/gemini-implementation-20261017/REPORT.uk.md)
+- [artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json)
+- [plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md](https://github.com/AndriiEagle/synera_-MVPplus-/blob/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d/plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md)
+
+Почни з нового REPORT, потім PRODUCT_DNA й сценаріїв. Перевір кожну прийняту рекомендацію попереднього звіту, а також обґрунтованість відхилених: довільні CHF49/249, 3× швидкість, примусове gamification та гарантований викуп не були прийняті як факти. Немає приватного документа, доступного лише в локальному Downloads, який потрібний для цього аудиту: його суттєві рекомендації й рішення зведені в REPORT та плані пілоту.
 
 ## 1. Твоя головна ціль
 
@@ -19,12 +46,12 @@
 **Єдиний репозиторій:** https://github.com/AndriiEagle/synera_-MVPplus-
 
 **Єдина дозволена лінія розробки:** main. **Зафіксований зріз коду для цього аудиту:**
-c72a3705ac031b16b4f7cda072fd81465f7e3a3e
+03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d
 
 **Незмінне посилання на source:**
-https://github.com/AndriiEagle/synera_-MVPplus-/tree/c72a3705ac031b16b4f7cda072fd81465f7e3a3e
+https://github.com/AndriiEagle/synera_-MVPplus-/tree/03d1a36dd743c2b4114b87dbef97dc3e8ee25b1d
 
-Це опублікований main на момент постановки. Сам цей промпт може бути доданий пізнішим документаційним комітом; це не змінює source pin. Не підмішуй новіші зміни в оцінку. Познач у звіті дату аудиту й цей SHA. Якщо Андрій хоче перевірити інший зріз — потрібний новий явний pin.
+Це зафіксований commit продукту й локальних доказів, який має входити в main перед передачею завдання. Спочатку перевір ancestry; якщо main ще не містить цей commit, познач HANDOFF_PENDING і не переходь на інші гілки. Сам цей промпт може бути доданий пізнішим документаційним комітом; це не змінює source pin. Не підмішуй новіші зміни в оцінку. Познач у звіті дату аудиту й цей SHA. Якщо Андрій хоче перевірити інший зріз — потрібний новий явний pin.
 
 - Не відкривай, не порівнюй і не використовуй інші гілки, PR, форки чи репозиторії. Не шукай «ще новішу Synera» в акаунті. Згадки старих гілок у handoff — історія, не напрямок переходу.
 - Датовані документи й artifacts **усередині цього SHA** можна читати як докази з власними межами. Не переходь із них на інші code refs або локальні KI/DOMOVYK-проєкти.
@@ -68,7 +95,7 @@ https://github.com/AndriiEagle/synera_-MVPplus-/tree/c72a3705ac031b16b4f7cda072f
 Ключові власники:
 - Головна/профіль: web_launch/index.html, app.mjs, profile-store.mjs, index-i18n.mjs, index-i18n-table.mjs.
 - **Реальний серверний шлях:** web_launch/real-journey.html → real-journey.mjs → real-journey-client.mjs; мови — real-journey-i18n.mjs.
-- **Синтетичний Studio-сценарій:** studio-journey.html, journey-ui.mjs, journey-core.mjs. Не приймай його demo-персонажів і сценарні згоди за live-пару. У handoff на pinned SHA є неточність: journey-ui.mjs згадано в рядку реального шляху; перевір HTML imports, карта вище її уточнює.
+- **Синтетичний Studio-сценарій:** studio-journey.html, journey-ui.mjs, journey-core.mjs. Не приймай його demo-персонажів і сценарні згоди за live-пару.
 - Стилі/PWA: style.css, style-switcher.mjs, pwa.mjs, sw.mjs.
 - Gateway, consent/RLS і міграції: neon/worker.mjs, meeting-status-guard.migration.sql, stack-invariants.acceptance.sql та їхні фактичні dependencies.
 - Packaging і перевірки: neon/build.mjs, web_launch/assets.mjs, tests/, tools/, .github/workflows/ci.yml, package-lock.json.
