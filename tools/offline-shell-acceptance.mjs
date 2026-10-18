@@ -39,7 +39,7 @@ const server=http.createServer(async(req,res)=>{
 let browser,context,diagnosticPage;
 try{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
- browser=await chromium.launch({headless:true,timeout:20000});result.engine={name:'chromium',version:browser.version(),executable:chromium.executablePath()};
+ browser=await chromium.launch({headless:true,timeout:20000,executablePath:process.env.SYNERA_CHROMIUM_EXECUTABLE||chromium.executablePath()});result.engine={name:'chromium',version:browser.version(),executable:process.env.SYNERA_CHROMIUM_EXECUTABLE||chromium.executablePath()};
  context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'allow',reducedMotion:'reduce',locale:'uk-UA'});
  context.setDefaultTimeout(6000);
  await context.addInitScript(()=>localStorage.setItem('synera.first-user-tour.v1','done'));

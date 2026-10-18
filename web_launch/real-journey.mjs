@@ -1,6 +1,8 @@
 import { RealJourneyStore, assertRealJourneyGate, materialFromEditor } from './real-journey-client.mjs';
 import { CAPABILITIES } from './profile-brief.mjs';
 import { meetingDirectionsUrl } from './live-location.mjs';
+import { createResultCard } from './result-card.mjs';
+import { draftActionScope, draftIntroOffer } from './action-scoper.mjs';
 import { tr, t, known, dateLocale, getLanguage, setLanguage, initLanguage, collectStatic, mirrorText } from './real-journey-i18n.mjs';
 
 const $ = id => document.getElementById(id);
@@ -399,6 +401,60 @@ async function createOutcomeSocialDraft() {
     throw error;
   }
 }
+async function downloadResultCard() {
+  const context = state.outcomeContext, epoch = state.epoch, generation = state.socialGeneration;
+  if (!context || !state.socialDraft || !outcomeUI.socialConsent.checked) return;
+  const text = outcomeUI.socialText.value;
+  try {
+    const fresh = await state.store.socialDraft(context.peerId, context.reviewed, { wording: outcomeUI.socialWording.value });
+    if (epoch !== state.epoch || state.outcomeContext !== context || generation !== state.socialGeneration ||
+        !outcomeUI.socialConsent.checked || outcomeUI.socialText.value !== text) return;
+    const card = createResultCard(fresh, { language: getLanguage(), text });
+    const url = URL.createObjectURL(new Blob([card.html], { type: card.mimeType }));
+    try { const link = el('a', '', { href: url, download: card.fileName }); link.click(); }
+    finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
+    setStatus(t('Приватну картку завантажено. Перед поширенням перевір текст і дозволи інших людей.'));
+  } catch (error) {
+    if (epoch !== state.epoch || state.outcomeContext !== context || generation !== state.socialGeneration) return;
+    if (error?.code === 'result_card_text_invalid') { setStatus(t('Картку не створено. Додай непорожній текст або скороти надто великий текст; твої зміни збережені.')); return; }
+    if (error?.code === 'result_card_draft_invalid') { clearSocialDraft(); setStatus(t('Домовленість змінилася. Перевір результати перед створенням чернетки.')); return; }
+    if (error?.status === 409) { clearSocialDraft(); setStatus(t('Домовленість змінилася. Перевір результати перед створенням чернетки.')); return; }
+    if (error?.status === 401 || error?.status === 403) throw error;
+    setStatus(t('Картку не завантажено. Твій текст збережений; перевір підключення й повтори.'));
+  }
+}
+function draftTerms(kind) {
+  if (state.busy || !state.dashboard || !state.peerId) return;
+  const fields = Object.fromEntries(new FormData(ui.termsForm));
+  const ownTags = state.dashboard.own.brief?.offer_tags || [];
+  const peerTags = state.dashboard.people.find(person => person.id === state.peerId)?.brief?.offer_tags || [];
+  const common = { language: getLanguage(), mode: fields.mode, subject: $('real-help-subject').value,
+    dueOn: fields.due_on };
+  let proposal;
+  if (kind === 'intro') {
+    const result = draftIntroOffer({ ...common, giveTag: fields.give_tag, takeTag: fields.take_tag,
+      ownOfferTags: ownTags, peerOfferTags: peerTags, currentFields: fields });
+    proposal = result.fields;
+  } else {
+    const scopes = [['give', ownTags], ['take', peerTags]].map(([prefix, tags]) => draftActionScope({ ...common,
+      evidenceType: $('real-help-evidence').value, capabilityTag: fields[prefix + '_tag'], declaredTags: tags,
+      target: fields[prefix + '_target'], acceptanceCriteria: fields[prefix + '_criteria'] }));
+    if (scopes.every(scope => scope.proposal)) proposal = { give_target: scopes[0].proposal.target,
+      give_criteria: scopes[0].proposal.acceptance_criteria, take_target: scopes[1].proposal.target,
+      take_criteria: scopes[1].proposal.acceptance_criteria };
+  }
+  if (!proposal) { setStatus(t('Вкажи тему, строк і навички, які учасники заявили у своїх профілях.')); return; }
+  let changed = false;
+  for (const [key, value] of Object.entries(proposal)) {
+    const input = ui.termsForm.elements.namedItem(key);
+    if (input && !input.value.trim() && value !== input.value) { input.value = value; changed = true; }
+  }
+  if (changed) {
+    if (!state.termsDirty) state.termsBase = state.caseState;
+    state.termsDirty = true; ui.approveCheck.checked = false; updateApprovalControls();
+  }
+  setStatus(t('Порожні поля доповнено; твій текст збережений. Перевір і збережи нову редакцію. Згода та запрошення — окремі дії.'));
+}
 function renderReview(current) {
   clear(ui.review);
   const key = current ? `${current.caseId}/${current.version}/${current.termsHash}` : null;
@@ -595,6 +651,9 @@ outcomeUI.export.addEventListener('click', () => run(exportOutcome));
 outcomeUI.socialConsent.addEventListener('change', () => { outcomeUI.socialCreate.disabled = !outcomeUI.socialConsent.checked; if (!outcomeUI.socialConsent.checked) clearSocialDraft(); });
 outcomeUI.socialWording.addEventListener('change', clearSocialDraft);
 outcomeUI.socialCreate.addEventListener('click', () => run(createOutcomeSocialDraft));
+$('real-social-card').addEventListener('click', () => run(downloadResultCard));
+$('real-help-intro').addEventListener('click', () => draftTerms('intro'));
+$('real-help-scope').addEventListener('click', () => draftTerms('scope'));
 outcomeUI.socialSelect.addEventListener('click', () => { outcomeUI.socialText.focus(); outcomeUI.socialText.select(); setStatus(t('Текст виділено. Скопіюй його вручну після перевірки; Synera нічого не публікує.')); });
 if (typeof CompressionStream !== 'function') { outcomeUI.compress.checked = false; outcomeUI.compress.disabled = true; }
 $('real-close').addEventListener('click', () => run(closeTerms));

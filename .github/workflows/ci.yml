@@ -55,6 +55,20 @@ jobs:
             node tools/meeting-status-guard-sql-acceptance.mjs \
             --receipt=artifacts/postgres-acceptance/meeting-status-guard.json
 
+      - name: Profile data erasure and stale-session SQL acceptance
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PGPORT: '5432'
+        run: |
+          export SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql"
+          node tools/profile-erasure-sql-acceptance.mjs \
+            --receipt=artifacts/postgres-acceptance/profile-erasure.json
+          export SYNERA_ERASURE_REVIEW_BASE_DB="$(node -p "require('./artifacts/postgres-acceptance/profile-erasure.json').database")"
+          node tools/profile-erasure-review1.mjs \
+            --receipt=artifacts/postgres-acceptance/profile-erasure-outcome-concurrency.json
+          node tools/profile-erasure-lock-review.mjs \
+            --receipt=artifacts/postgres-acceptance/profile-erasure-upsert-locks.json
+
       - name: Upload SQL acceptance receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,9 +105,24 @@ jobs:
       - run: node neon/build.mjs dist-neon-ci
       - run: node tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-ci
       - run: node tools/location-browser-acceptance.mjs
+      - run: node tools/case-social-draft-browser.mjs
+      - run: node tools/profile-erasure-browser.mjs
 
       # axe-core через Playwright; exit 1 при critical/serious порушеннях.
       - run: node web_launch/a11y_audit.mjs
+
+      - name: Upload audit UI acceptance receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-ui-acceptance
+          path: |
+            artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json
+            artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json
+            artifacts/gemini-implementation-20261017/result-card-390x844.png
+            artifacts/gemini-implementation-20261017/profile-erasure-390x844.png
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Upload test artifacts on failure
         if: failure()
@@ -105,6 +134,7 @@ jobs:
             playwright-report/
             artifacts/header-layout-20261015/
             artifacts/offline-shell-acceptance/
+            artifacts/gemini-implementation-20261017/
           if-no-files-found: ignore
           retention-days: 7
 

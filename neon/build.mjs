@@ -16,7 +16,7 @@ if ((await fs.readdir(directory)).some(name => ![...assets, ...generated].includ
 const policy = await fs.readFile(path.join(root, 'pilot-policy.mjs'), 'utf8');
 const workerSource = await fs.readFile(new URL('./worker.mjs', import.meta.url), 'utf8');
 const policyImport = "import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';";
-const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';\nimport { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';\nimport { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';";
+const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';\nimport { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';\nimport { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';\nimport { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';";
 const googleSource = await fs.readFile(new URL('./google-oauth.mjs', import.meta.url), 'utf8');
 if (!workerSource.startsWith(expectedImports) || /\bimport\s/.test(workerSource.slice(expectedImports.length)) ||
     !googleSource.startsWith(policyImport) || /\bimport\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');
@@ -37,7 +37,10 @@ const outcome = '\nconst {outcomeReady,outcomeRPCArgs}=(()=>{\n' + outcomeSource
 const addressSource = await fs.readFile(new URL('./meeting-address.mjs', import.meta.url), 'utf8');
 if (/\bimport\s/.test(addressSource)) throw new Error('Address dependencies changed; review build');
 const address = '\nconst {meetingAddressReady,meetingAddressRPCArgs}=(()=>{\n' + addressSource.replace(/^export /gm, '') + '\nreturn {meetingAddressReady,meetingAddressRPCArgs};\n})();\n';
-const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
+const erasureSource = await fs.readFile(new URL('./profile-erasure.mjs', import.meta.url), 'utf8');
+if (/\bimport\s/.test(erasureSource)) throw new Error('Erasure dependencies changed; review build');
+const erasure = '\nconst {profileErasureReady,profileErasureResult}=(()=>{\n' + erasureSource.replace(/^export /gm, '') + '\nreturn {profileErasureReady,profileErasureResult};\n})();\n';
+const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + erasure + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
 const receipt = { built_at: new Date().toISOString(), backend: 'neon', cloudflare_pages_advanced_mode: true, files: [], published: false, live_auth_verified: false, live_rls_verified: false, automatic_public_ai: false };
 for (const name of assets) await fs.copyFile(path.join(root, name), path.join(directory, name));
 await fs.writeFile(path.join(directory, '_worker.js'), worker);

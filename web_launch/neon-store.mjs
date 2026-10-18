@@ -5,6 +5,7 @@ import { consentRecord } from './pilot-policy.mjs';
 export class NeonStore extends ProfileStore {
   mode = 'neon';
   #user = null;
+  #restoreRevision = 0;
   constructor(config, fetchImpl = fetch) {
     super();
     if (config.backend !== 'neon') throw new Error('Потрібна конфігурація Neon');
@@ -14,6 +15,7 @@ export class NeonStore extends ProfileStore {
     this.googleOAuthEnabled = config.googleOAuthEnabled === true;
     this.liveLocationEnabled = config.liveLocationEnabled === true;
     this.meetingAddressEnabled = config.meetingAddressEnabled === true;
+    this.profileErasureEnabled = config.profileErasureEnabled === true;
     this.googleOAuthInitUrl = config.googleOAuthInitUrl || '';
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
@@ -22,11 +24,12 @@ export class NeonStore extends ProfileStore {
   remember() {}
   forgetStoredSession() {}
   async #request(path, { method = 'GET', body, prefer } = {}) {
+    const actor = this.#user;
     const response = await this.fetch(path, { method, credentials: 'same-origin', cache: 'no-store',
       headers: { 'Content-Type': 'application/json', 'X-Synera-Client': '1', ...(prefer ? { Prefer: prefer } : {}) },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(20000) });
     if (!response.ok) {
-      if (response.status === 401) this.#user = null;
+      if (response.status === 401 && this.#user === actor) this.#user = null;
       const details = await response.json().catch(() => null);
       throw new ServiceError(response.status, details?.error);
     }
@@ -34,6 +37,20 @@ export class NeonStore extends ProfileStore {
     return text ? JSON.parse(text) : null;
   }
   async availability() { return this.#request('/api/neon/health'); }
+  async eraseProfileData() {
+    this.requireUser();
+    if (!this.profileErasureEnabled) throw new ServiceError(503, 'profile_erasure_not_ready');
+    const actor = this.#user;
+    const result = await this.#request('/api/neon/profile-erasure', {method:'POST',body:{confirm:'ERASE_APPLICATION_DATA'}});
+    if (this.#user !== actor) throw Object.assign(new ServiceError(409), {
+      code:'profile_erasure_session_changed', message:'Сесія змінилася. Результат попереднього запиту не змінює поточний акаунт.',
+    });
+    if (result?.status !== 'application_data_erased' || result.providerDeletion !== 'pending' ||
+        result.retainedScope !== 'bilateral_records_and_safety_evidence' || typeof result.repeated !== 'boolean' ||
+        typeof result.sessionRevoked !== 'boolean') throw new ServiceError(503, 'profile_erasure_unconfirmed');
+    this.#user = null;
+    return result;
+  }
   async _caseOutcome(caseId, payload) {
     this.requireUser();
     if (typeof caseId !== 'string' || !/^[A-Za-z0-9_:-]{1,64}$/.test(caseId)) throw new ServiceError(400);
@@ -68,7 +85,9 @@ export class NeonStore extends ProfileStore {
     if (rows.length !== 1) throw new ServiceError(403);
   }
   async restore() {
+    const actor = this.#user, revision = ++this.#restoreRevision;
     const data = await this.#request('/api/neon/session');
+    if (this.#user !== actor || revision !== this.#restoreRevision) return Boolean(this.#user);
     this.#user = data?.user || null;
     return Boolean(this.#user);
   }
