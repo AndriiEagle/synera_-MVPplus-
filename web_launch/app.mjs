@@ -128,6 +128,7 @@ for (const [code, city] of Object.entries(CITIES)) { const option = el('option',
 function importPreviewProfile() { return cleanProfileFields({ display_name: $('#import-display-name').value, city: $('#import-city').value, offers: $('#import-offers').value, seeks: $('#import-seeks').value }); }
 function currentPublicUrl() { return config?.publicSiteUrl || (location.protocol === 'https:' ? location.href : ''); }
 function applyAuthState() {
+  $('#profile-erasure-controls').hidden = config?.backend !== 'neon' || config?.profileErasureEnabled !== true || typeof store?.eraseProfileData !== 'function';
   $('#auth-fields').disabled = busy || !onlineReady;
   $('#signup').hidden = config?.backend === 'neon' || !config?.registrationEnabled;
   $('#google-signin').hidden = config?.backend !== 'neon' || config?.googleOAuthEnabled !== true || Boolean(otpEmail) || Boolean(store?.user);
@@ -176,7 +177,7 @@ function showSignedOut() {
   form.reset(); $('#password').value = ''; $('#invite-note').value = ''; $('#people-search').value = '';
   otpEmail = ''; otpConsent = null; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#email').readOnly = false;
   if (config?.backend === 'neon') $('#auth-submit').textContent = 'Надіслати код';
-  for (const selector of ['#profile-import-text','#profile-share-output','#ai-json','#ai-gpt-prompt','#chat-body','#report-detail','#delete-confirmation']) $(selector).value = '';
+  for (const selector of ['#profile-import-text','#profile-share-output','#ai-json','#ai-gpt-prompt','#chat-body','#report-detail','#delete-confirmation','#profile-erasure-confirmation']) $(selector).value = '';
   $('#import-preview').querySelectorAll('input,textarea').forEach(node => { node.value = ''; });
   for (const selector of ['#people','#meetings','#blocked-people','#chat-messages','#ai-result','#ai-payload','#map-selected']) $(selector).replaceChildren();
   peopleMap.clear(); own = null; people = []; meetings = []; draft = null; aiDraft = aiPayload = aiSource = null; activeChat = safetyPerson = null;
@@ -602,6 +603,28 @@ $('#export-account').addEventListener('click',()=>run(async()=>{const data=await
 $('#delete-profile').addEventListener('click',()=>{$('#delete-confirmation').value='';$('#delete-dialog').showModal();});
 $('#delete-cancel').addEventListener('click',()=>$('#delete-dialog').close());
 $('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!deletionConfirmed($('#delete-confirmation').value))return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
+$('#profile-erasure-form').addEventListener('submit', event => {
+  event.preventDefault();
+  run(async () => {
+    if (!deletionConfirmed($('#profile-erasure-confirmation').value)) return;
+    const owner = store, actor = store?.user;
+    if (!actor || config?.profileErasureEnabled !== true) return;
+    try {
+      await owner.eraseProfileData();
+    } catch (error) {
+      if (store !== owner || (store.user && store.user !== actor)) return;
+      throw error;
+    }
+    if (store !== owner || store.user) return;
+    showSignedOut();
+    Object.assign(consentState, CONSENT_PANEL_DEFAULTS);
+    $('#consent-panel').querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = false; });
+    $('#ai-consent').checked = false;
+    resetAI();
+    $('#profile-erasure-confirmation').value = '';
+    message('Дані профілю стерто, доступ до пілоту відкликано. Спільні записи збережені. Видалення акаунта для входу очікує оператора.');
+  });
+});
 function resetAI() { aiDraft=null;$('#ai-result').replaceChildren();$('#apply-ai').hidden=true;applyAuthState(); }
 $('#prepare-ai').addEventListener('click',()=>{
   try {

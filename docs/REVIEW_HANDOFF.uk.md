@@ -1,6 +1,11 @@
 # Synera: актуальний handoff для незалежного review
 
-Оновлено 17.10.2026. [Репозиторій](https://github.com/AndriiEagle/synera_-MVPplus-) публічний; канонічна гілка для нового review — **`main`**. [Продуктова ДНК](PRODUCT_DNA.uk.md) · [завдання рев’юеру](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+Оновлено 19.10.2026. [Репозиторій](https://github.com/AndriiEagle/synera_-MVPplus-) публічний; канонічна гілка для нового review — **`main`**. [Продуктова ДНК](PRODUCT_DNA.uk.md) · [завдання рев’юеру](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
+
+Поточне доповнення після аудиту: **`7eaa952c6e0e498521cc325ab1cf24fec1e0f725`** — код і локальні докази. [Звіт реалізації](../artifacts/gemini-implementation-20261017/REPORT.uk.md) · [хешовані фінальні перевірки](../artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json) · [план пілоту](../plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md). Новий промпт прив’язаний саме до цього commit; наступні документаційні коміти не змінюють код. До зовнішнього review перевір, що цей SHA є предком main.
+
+Додано `action-scoper.mjs`, `result-card.mjs` та `profile-erasure.*`; 692 Node PASS / 1 локальний SKIP, окрема PostgreSQL16 acceptance 12+4+3, browser fixtures 10+4, offline shell PASS. GitHub CI перевіряй за SHA конкретного запуску. Profile erasure — окремий gate OFF; provider Auth deletion pending, двосторонні записи зберігаються. Це не production activation.
+
 
 Додаткова перевірка рекомендацій Gemini: [рішення, виправлення та незакриті gates](../artifacts/gemini-review-20261017/REPORT.uk.md). Вона відділяє підтверджений пропуск PostgreSQL у CI від неприйнятого tombstone SQL і бізнесових гіпотез; production readiness залишається окремим прийманням.
 
@@ -52,6 +57,8 @@ node tools/header-layout-acceptance-20261013.mjs
 node neon/build.mjs dist-neon-review-20261017
 node tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-review-20261017
 node tools/location-browser-acceptance.mjs
+node tools/case-social-draft-browser.mjs
+node tools/profile-erasure-browser.mjs
 node web_launch/a11y_audit.mjs
 ```
 
@@ -59,7 +66,7 @@ node web_launch/a11y_audit.mjs
 
 Локальний перегляд: `node web_launch/server.mjs`, відкрий надрукований loopback URL. Використовуй чисте середовище без `SYNERA_*` overrides: tracked `config.public.json` закриває реєстрацію та live readiness. Не потрібні ключі чи акаунти. Повний серверний шлях перевіряється окремо; preview не є заміною live API. Не додавай `--local-ai` для переносного review: ця окрема опція залежить від локального KI/DOMOVYK, а nested memory tests — від сховища автора на D:. Ці залежності не входять у clone і не потрібні наведеним CI-командам.
 
-Builder пише у власний `web_launch/dist-neon-*`: для нового review обери нове ім’я, щоб зберегти попередню збірку. `release.json` містить 102 asset hashes; `built_at` змінює hash самого receipt. Порівнюй кожний asset, а не лише загальний release SHA. Ліцензії включених assets — `web_launch/asset-licenses.txt`.
+Builder пише у власний `web_launch/dist-neon-*`: для нового review обери нове ім’я, щоб зберегти попередню збірку. `release.json` містить hashes усіх assets поточної збірки; `built_at` змінює hash самого receipt. Порівнюй кожний asset, а не лише загальний release SHA. Ліцензії включених assets — `web_launch/asset-licenses.txt`.
 
 Для SQL використай лише погоджену одноразову локальну PostgreSQL: [runner](../tools/meeting-status-guard-sql-acceptance.mjs), [повний стек](../neon/stack-invariants.acceptance.sql). Без `SYNERA_ACCEPTANCE_PG` відповідний Node integration test пропускається. JS-fixture не виконує RLS; SQL identity shim не доводить живий JWT. Не використовуй production connection string для acceptance-runner.
 
@@ -95,3 +102,5 @@ Builder пише у власний `web_launch/dist-neon-*`: для нового
 ## Що повернути власнику
 
 Один короткий звіт: SHA, середовище, самостійно відтворені P0/P1/P2 із file/line і кроками, які припущення спростовані, команди й фактичні результати, неперевірені межі та один наступний крок. Висновок «готово для людей» потребує живих gates вище. Якщо доробку замовлено окремо, працюй у власній `codex/<task>` гілці й поверни commit/PR; merge/deploy не випливає з прохання дати висновки.
+
+Нові SQL перевірки та concurrency-команди: [ERASURE_CI.uk.md](../artifacts/gemini-implementation-20261017/ERASURE_CI.uk.md). Запускай тільки на одноразовій PostgreSQL, без production credentials.

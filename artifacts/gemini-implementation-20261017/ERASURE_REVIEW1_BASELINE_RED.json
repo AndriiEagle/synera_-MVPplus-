@@ -1,0 +1,21 @@
+{
+  "status": "NOT_ACCEPTED",
+  "database": "synera_erasure_review1_1792278298962",
+  "base": "synera_erasure_1792268577847",
+  "scope": "Fresh disposable copy; identity shim only",
+  "checks": [
+    {
+      "name": "outcome_waiter_denied_after_erasure_commit",
+      "pass": false,
+      "code": 0,
+      "stderr": "",
+      "returned_sensitive_state": true
+    }
+  ],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "aec81a42df388ac62b79c27612e46cde7ec8bb037c4494ad1063f08480b0cc37",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "tools/profile-erasure-review1.mjs": "0fe807a6287fd53a969ef27fc195d95dd35976f2c4e4c5c5447d3574ec479caf"
+  },
+  "error": "Outcome RPC admitted before case lock disclosed retained state after erasure committed"
+}

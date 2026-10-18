@@ -1,0 +1,8 @@
+{
+  "status": "EXPECTED_RED",
+  "scope": "Future provider-sub lifecycle simulation; not stale JWT and no live Auth deletion",
+  "sql": "neon/profile-erasure-lifecycle.acceptance.sql",
+  "migration_sha256": "15b6584eb1381ad29bc642f57177b42eaaf524b048caa44e78ae36338aafd65e",
+  "exit_code": 1,
+  "output": "{\"sub\":\"55555555-5555-4555-8555-555555555555\",\"role\":\"authenticated\"}\r\npsql:neon/profile-erasure-lifecycle.acceptance.sql:15: ERROR:  Fresh provider sub inherited erased email admission\r\nCONTEXT:  PL/pgSQL function inline_code_block line 2 at RAISE\r\n"
+}

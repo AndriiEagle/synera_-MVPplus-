@@ -1,0 +1,122 @@
+{
+  "actual_provider_calls": 12,
+  "implementation_calls": 8,
+  "prior_phase_calls": 4,
+  "actual_total_usd": 0.017140781,
+  "shared_cap_usd": 0.5,
+  "actual_models": [
+    "z-ai/glm-5.3-flash"
+  ],
+  "input_modalities": [
+    "text"
+  ],
+  "finite_provider_followups": "HOLD_SQL_2_UI_1_UNRECEIPTED_OTHER_DISPATCH",
+  "receipt_links_verified": 8,
+  "calls": [
+    {
+      "task_id": "social-card-design",
+      "generation_id": "gen-1792267657-iuCjCwvO0c4fJIf7peAU",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "cost": 0.000712075,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "60e5c9781f1193765e6f32290549cb4667124c230c841b585773896b65feff86",
+      "output_request_sha256": "0276b59216c3f908e7f3c2cc0686df42ed1d7753e6f2dd710e49894050fe0c26",
+      "prompt_tokens": 4971,
+      "completion_tokens": 1357,
+      "truncated": false
+    },
+    {
+      "task_id": "intro-scoper-contract",
+      "generation_id": "gen-1792267706-hLRdU52qoiIkFHjaKPqY",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "StreamLake",
+      "cost": 0.00140565,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "e156bad56b5d5cfc38f5211becd979544f28a029d5c50cba63ad460bf3bf7a3d",
+      "output_request_sha256": "4267655cf749d4756d3ff634c67ad80b323351eee424e3f2cdf66db2fe9edc91",
+      "prompt_tokens": 11982,
+      "completion_tokens": 2028,
+      "truncated": false
+    },
+    {
+      "task_id": "card-review1",
+      "generation_id": "gen-1792278500-YFoSPyakayOsAgZuZkiO",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.001558176,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "aa9d1b11444d1e0de879bfc8b6dfdaeeda374184d56b5b9d5cb3f7a6f6c43ab0",
+      "output_request_sha256": "f657a09eb46b30fd9ba8a02600859125f0f53240dbaecc92f5abf98cc5c1d3e3",
+      "prompt_tokens": 4062,
+      "completion_tokens": 6816,
+      "truncated": false
+    },
+    {
+      "task_id": "scoper-review1",
+      "generation_id": "gen-1792278643-70GZH6L2CAeVyHrVhO9O",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.002117048,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "104e2accbb2411f7fc810722e8bb100781b81c1323f5ea33f9997b7eb79fdce1",
+      "output_request_sha256": "8b4a420450c49de70092b1734f0d501395bd5bb0b7185218485b1079ea45e574",
+      "prompt_tokens": 6726,
+      "completion_tokens": 8971,
+      "truncated": false
+    },
+    {
+      "task_id": "erasure-sql-review",
+      "generation_id": "gen-1792278809-22dlglwwCx0CTVUbG9HA",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.00245108,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "66f3540431578e1fd505d6e542e26433c468d48696d60fde6648e134a0119ec6",
+      "output_request_sha256": "a52c62e794dce86e085f5df0c22cc1e8c3eaabaec447ec57f80cf9af18865b57",
+      "prompt_tokens": 7810,
+      "completion_tokens": 10381,
+      "truncated": false
+    },
+    {
+      "task_id": "erasure-ui-review",
+      "generation_id": "gen-1792279022-Dyq9VKCk8MkeMRxT0rEC",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.000980152,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "e4a851d3326c887b48183718ccbecdda3f8372f67b325dd8ed898f989b8eba98",
+      "output_request_sha256": "4d4146778980eff7bee3b3406307e24b1c0c2511861c7abd262eabfa1b322289",
+      "prompt_tokens": 4599,
+      "completion_tokens": 3797,
+      "truncated": false
+    },
+    {
+      "task_id": "card-review2",
+      "generation_id": "gen-1792279314-iJneYaHg1xFckQC8XjVu",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.001516896,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "0942f75c1699cfdb17d5ef9744cc2029e2ad0a2d2db1685ab12671890776a27d",
+      "output_request_sha256": "09a5126b316c9eb905bfa90ad10b5cbd8d2ccdc22b563f379f37c3345c5ab92c",
+      "prompt_tokens": 11302,
+      "completion_tokens": 4872,
+      "truncated": false
+    },
+    {
+      "task_id": "erasure-ui-review1",
+      "generation_id": "gen-1792279390-MXw03365HOvRr03CGGev",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "provider": "OpenInference",
+      "cost": 0.001109104,
+      "cost_evidence_type": "provider_usage_cost",
+      "artifact_sha256": "5318575bfe121778d5991c034ca35344d121679cc4368d16d86e148d73f382af",
+      "output_request_sha256": "17ecfe08eefced8e118f052e3565c4f8c7c8ffed6ade68ecf046efcb6d3c5c86",
+      "prompt_tokens": 6023,
+      "completion_tokens": 4100,
+      "truncated": false
+    }
+  ],
+  "limits": "No vision or production acceptance. Extra 3 finite provider passes remain HOLD; independent Codex finite reviews completed separately."
+}

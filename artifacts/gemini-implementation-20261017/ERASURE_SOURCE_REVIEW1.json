@@ -1,0 +1,34 @@
+[
+  {
+    "path": "neon/profile-erasure.migration.sql",
+    "sha256": "15b6584eb1381ad29bc642f57177b42eaaf524b048caa44e78ae36338aafd65e"
+  },
+  {
+    "path": "neon/profile-erasure-generate.mjs",
+    "sha256": "9b5cc12aa742918ada0aedd799d17ffe9d8613ab54a9fd55edc8c54a846cbe2f"
+  },
+  {
+    "path": "neon/profile-erasure-generation.test.mjs",
+    "sha256": "16e27cfd26b5931728f56f132579a2c9529db83eb7435fd3245b8934efb50f95"
+  },
+  {
+    "path": "neon/profile-erasure-surfaces.acceptance.sql",
+    "sha256": "cd1294277c8a7452d20b1a211928a88686d2b1af882afbced2b501d34296a333"
+  },
+  {
+    "path": "tools/profile-erasure-review1.mjs",
+    "sha256": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f"
+  },
+  {
+    "path": "neon/worker.mjs",
+    "sha256": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484"
+  },
+  {
+    "path": "neon/build.mjs",
+    "sha256": "67a42cbeac2e9fa1be13278c8377f91e21a6c415bc47b8961db95551566b39b3"
+  },
+  {
+    "path": "web_launch/neon-store.mjs",
+    "sha256": "c99a774ab8de2767aca6d9a9a704b28dcce5271b5d6430182d8cdd46ea255a2f"
+  }
+]

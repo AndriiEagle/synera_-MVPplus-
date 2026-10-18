@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: typed deletion confirmation leaked through logout into the next account
+
+'DELETE' !== ''
+
+    at file:///D:/synera-audit-implementation-20261017/tools/profile-erasure-browser.mjs:61:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'DELETE',
+  expected: '',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

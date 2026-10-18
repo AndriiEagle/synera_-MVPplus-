@@ -1,0 +1,30 @@
+{
+  "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+  "database": "synera_erasure_review1_1792279392950",
+  "base": "synera_erasure_1792279332074",
+  "guard_applied": true,
+  "scope": "Fresh disposable copy; identity shim only",
+  "checks": [
+    {
+      "name": "missing_case_preserves_original_authorization",
+      "pass": true
+    },
+    {
+      "name": "outcome_waiter_denied_after_erasure_commit",
+      "pass": true,
+      "code": 3,
+      "stderr": "ERROR:  Outcome unavailable\r\nCONTEXT:  PL/pgSQL function public.synera_case_outcome(text,jsonb) line 33 at RAISE\r\n",
+      "returned_sensitive_state": false
+    },
+    {
+      "name": "erasure_waits_for_already_admitted_outcome_transaction",
+      "pass": true,
+      "database": "synera_erasure_review1_1792279392950_reverse"
+    }
+  ],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "tools/profile-erasure-review1.mjs": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f"
+  }
+}

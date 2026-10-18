@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "head_sha": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "run_url": "https://github.com/AndriiEagle/synera_-MVPplus-/actions/runs/39172359440",
+  "checks": [
+    {
+      "receipt": "meeting-status-guard.json",
+      "sha256": "3cc18adaef80f528d968a8e2b01158079b539d7e8f89342aff3707d9bd07555f",
+      "status": "PASS_LOCAL_MEETING_STATUS_GUARD_SQL",
+      "checks": 0,
+      "source_hashes_match": true
+    },
+    {
+      "receipt": "profile-erasure-outcome-concurrency.json",
+      "sha256": "180af941d50e6032f18474164f82bc3f0201cdce5a40854112b9fe874f2f9307",
+      "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+      "checks": 3,
+      "source_hashes_match": true
+    },
+    {
+      "receipt": "profile-erasure-upsert-locks.json",
+      "sha256": "0cd305d7555a615a73c8054251959eb268655840cf0d344f2ab818a3bc955fb5",
+      "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+      "checks": 4,
+      "source_hashes_match": true
+    },
+    {
+      "receipt": "profile-erasure.json",
+      "sha256": "785f6ead200f6c95c7a5ea882eb93dcf9715f31a26f36344d3372d4c331bd14d",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+      "checks": 12,
+      "source_hashes_match": true
+    }
+  ],
+  "scope": "Real disposable GitHub Actions PostgreSQL16; session labels forwarded through docker; no production"
+}

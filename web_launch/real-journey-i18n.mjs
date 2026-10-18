@@ -8,6 +8,24 @@ const DATE_LOCALES = Object.freeze({ uk: 'uk', de: 'de-CH', en: 'en-GB' });
 
 // [Ukrainian source, German (Swiss spelling, informal «du»), English]
 export const TABLE = Object.freeze([
+  ["Картку не створено. Додай непорожній текст або скороти надто великий текст; твої зміни збережені.", "Karte nicht erstellt. Ergänze einen Text oder kürze einen zu grossen Text; deine Änderungen bleiben erhalten.", "Card not created. Add some text or shorten an oversized text; your edits are preserved."],
+  ["Швидка підготовка пропозиції", "Vorschlag schnell vorbereiten", "Prepare a proposal"],
+  ["Доповнює лише порожні поля. Твій текст і фінансові умови зберігаються; нічого не надсилається без окремої дії.", "Ergänzt nur leere Felder. Dein Text und finanzielle Bedingungen bleiben erhalten; ohne separate Aktion wird nichts gesendet.", "Fills empty fields only. Your text and financial terms stay unchanged; nothing is sent without a separate action."],
+  ["Тема пропозиції", "Thema des Vorschlags", "Proposal topic"],
+  ["Що одержувач зможе перевірити", "Was die empfangende Person prüfen kann", "What the recipient can check"],
+  ["Документ", "Dokument", "Document"],
+  ["Посилання на результат", "Ergebnislink", "Result link"],
+  ["Демонстрацію", "Demonstration", "Demonstration"],
+  ["Контрольний список", "Prüfliste", "Checklist"],
+  ["Нотатку розмови", "Gesprächsnotiz", "Conversation note"],
+  ["Підготувати пропозицію розмови", "Gesprächsvorschlag vorbereiten", "Draft a conversation proposal"],
+  ["Доповнити дію та критерії", "Handlung und Kriterien ergänzen", "Draft action and criteria"],
+  ["Вкажи тему, строк і навички, які учасники заявили у своїх профілях.", "Gib Thema, Termin und Fähigkeiten an, die in euren Profilen stehen.", "Enter a topic, deadline and skills declared in your profiles."],
+  ["Порожні поля доповнено; твій текст збережений. Перевір і збережи нову редакцію. Згода та запрошення — окремі дії.", "Leere Felder ergänzt; dein Text bleibt erhalten. Prüfe und speichere die neue Fassung. Zustimmung und Einladung bleiben separate Aktionen.", "Empty fields filled; your text is preserved. Review and save the new version. Approval and invitation remain separate actions."],
+
+  ['Завантажити приватну картку', 'Private Karte herunterladen', 'Download private card'],
+  ['Приватну картку завантажено. Перед поширенням перевір текст і дозволи інших людей.', 'Private Karte heruntergeladen. Prüfe vor dem Teilen den Text und die Zustimmung anderer Personen.', 'Private card downloaded. Before sharing, check the text and other people’s permissions.'],
+  ['Картку не завантажено. Твій текст збережений; перевір підключення й повтори.', 'Karte nicht heruntergeladen. Dein Text bleibt erhalten; prüfe die Verbindung und versuche es erneut.', 'Card not downloaded. Your text is preserved; check the connection and retry.'],
   // Page frame
   ['Synera · реальна домовленість', 'Synera · echte Vereinbarung', 'Synera · real agreement'],
   ['Перейти до вмісту', 'Zum Inhalt springen', 'Skip to content'],

@@ -10,9 +10,10 @@ import { A, B, config, fields } from './fixtures/real-journey-fixture.mjs';
 import { createOutcomeFixture } from './fixtures/case-outcome-fixture.mjs';
 import { RealJourneyStore, exchangeMaterial } from '../web_launch/real-journey-client.mjs';
 
-const proof = 'artifacts/overnight-20261004', red = process.argv.includes('--red');
+const proof = 'artifacts/gemini-implementation-20261017', red = process.argv.includes('--red');
 const report = { status: 'NOT_ACCEPTED', generated_at: new Date().toISOString(), provider_calls: 0, provider_usd: 0,
   scope: 'Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard', checks: [] };
+await fs.mkdir(proof, { recursive: true });
 const db = createOutcomeFixture(), stores = {};
 for (const id of [A, B]) { stores[id] = new RealJourneyStore({ ...config, caseOutcomesEnabled: true }, db.fetchFor(id)); await stores[id].dashboard(); }
 let reviewed = await stores[A].saveTerms(B, exchangeMaterial(A, B, fields({ give_target: 'Мій прототип × Zürich 💛\n  <script>literal</script> / 向前', take_target: 'Приватна робота партнера' })));
@@ -25,7 +26,7 @@ for (const [index, leg] of reviewed.material.trial.deliverables.entries()) {
   await stores[leg.receiver_id].recordOutcome(peer(leg.receiver_id), reviewed, { action: 'check', index, intentId: crypto.randomUUID(), scopeNotes: 'PRIVATE CHECKS' });
   if (index === 0) await stores[leg.receiver_id].recordOutcome(peer(leg.receiver_id), reviewed, { action: 'accept', index, intentId: crypto.randomUUID() });
 }
-const names = ['web_launch/real-journey-client.mjs', 'web_launch/real-journey.mjs', 'web_launch/real-journey.html', 'web_launch/session-value.mjs', 'tools/case-social-draft-browser.mjs'];
+const names = ['web_launch/real-journey-client.mjs', 'web_launch/real-journey.mjs', 'web_launch/real-journey.html', 'web_launch/session-value.mjs', 'tools/case-social-draft-browser.mjs', 'web_launch/result-card.mjs', 'web_launch/action-scoper.mjs'];
 report.source_sha256 = Object.fromEntries(await Promise.all(names.map(async name => [name, createHash('sha256').update(await fs.readFile(name)).digest('hex')])));
 const server = spawn(process.execPath, ['web_launch/server.mjs', '--demo'], { env: { ...process.env, SYNERA_PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
 let browser;
@@ -51,6 +52,20 @@ try {
   });
   const ready = () => page.waitForFunction(() => !document.body.dataset.realBusy);
   await page.goto(base + '/real-journey.html'); await page.waitForFunction(() => !document.getElementById('real-content').hidden);
+  await page.getByRole('button', { name: 'Відкрити умови', exact: true }).first().click(); await ready();
+  await page.locator('#real-editor > summary').click(); await page.locator('#real-draft-help > summary').click();
+  const terms = page.locator('#real-terms-form'), humanTarget = 'Мій власний опис результату';
+  await terms.locator('[name="give_target"]').fill(humanTarget);
+  const financial = await terms.locator('[name="compensation_status"]').inputValue();
+  await terms.locator('[name="give_criteria"]').fill(''); await page.locator('#real-help-subject').fill('Перевірити прототип');
+  const writesBeforeHelp = db.requests.filter(row => row.method !== 'GET').length;
+  await page.locator('#real-help-scope').click();
+  assert.equal(await terms.locator('[name="give_target"]').inputValue(), humanTarget);
+  assert.equal(await terms.locator('[name="compensation_status"]').inputValue(), financial);
+  assert.match(await terms.locator('[name="give_criteria"]').inputValue(), /Перевірити прототип/);
+  assert.equal(db.requests.filter(row => row.method !== 'GET').length, writesBeforeHelp);
+  report.checks.push('full journey helper fills empty proof criteria, preserves human target and compensation, makes zero writes');
+  await page.locator('#real-meetings-panel > summary').click();
   await page.getByRole('button', { name: 'Відкрити розмову', exact: true }).click(); await ready();
   await page.locator('#real-outcome-refresh').click(); await ready();
   const controls = page.locator('#real-social-controls'), output = page.locator('#real-social-output'), text = page.locator('#real-social-text');
@@ -70,9 +85,40 @@ try {
   await page.locator('#real-social-wording').selectOption('linkedin'); assert.equal(await output.isHidden(), true); assert.equal(await consent.isChecked(), false);
   await createDraft(); assert.ok((await text.inputValue()).includes('LinkedIn'));
   const edited = (await text.inputValue()) + '\nМоє уточнення, без автоматичної публікації.'; await text.fill(edited);
+  await text.fill(''); await page.locator('#real-social-card').click(); await ready();
+  assert.match(await page.locator('#real-status').innerText(), /Додай непорожній текст/);
+  assert.equal(await output.isVisible(), true); await text.fill(edited);
   await page.locator('#real-social-select').click();
   assert.deepEqual(await text.evaluate(element => ({ start: element.selectionStart, end: element.selectionEnd, value: element.value })), { start: 0, end: edited.length, value: edited });
   report.checks.push('LinkedIn format requires new choice; edited text selected without OS clipboard or publication');
+  const cardButton = page.locator('#real-social-card'), downloads = [];
+  page.on('download', item => downloads.push(item));
+  const downloaded = page.waitForEvent('download'); await cardButton.click();
+  const card = await downloaded; await ready();
+  const cardHtml = await fs.readFile(await card.path(), 'utf8');
+  for (const secret of ['PRIVATE EVIDENCE', 'PRIVATE CHECKS', 'private.example', A, B]) assert.equal(cardHtml.includes(secret), false);
+  const cardPage = await context.newPage(); await cardPage.setContent(cardHtml);
+  assert.equal(await cardPage.locator('pre').textContent(), edited);
+  assert.equal(await cardPage.locator('script').count(), 0);
+  assert.equal(await cardPage.locator('a,img,iframe').count(), 0);
+  assert.match(await cardPage.locator('footer').innerText(), /не незалежна сертифікація/);
+  assert.ok(await cardPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  assert.deepEqual((await new AxeBuilder({ page: cardPage }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations, []);
+  await cardPage.screenshot({ path: `${proof}/result-card-390x844.png`, fullPage: true });
+  await cardPage.close(); assert.equal(db.events.length, eventsBefore);
+  report.checks.push('real download retains author edits; escaped inert private card has no IDs, links, evidence, scripts or a11y violations');
+  let cardRelease, cardReached;
+  const cardWait = new Promise(resolve => { cardRelease = resolve; }), cardStarted = new Promise(resolve => { cardReached = resolve; });
+  db.controls.beforeOutcome = async body => { if (body.action === 'state') { cardReached(); await cardWait; } };
+  const beforeDownload = downloads.length; await cardButton.click(); await cardStarted;
+  await text.fill(edited + '\nNew edit during validation'); cardRelease(); db.controls.beforeOutcome = null; await ready();
+  assert.equal(downloads.length, beforeDownload); assert.equal(await text.inputValue(), edited + '\nNew edit during validation');
+  report.checks.push('editing during fresh validation cancels download without losing the new text');
+  await stores[B].withdrawTerms(A, reviewed); await cardButton.click(); await ready();
+  assert.equal(downloads.length, beforeDownload); assert.equal(await output.isHidden(), true);
+  await stores[B].approveTerms(A, reviewed); await page.locator('#real-outcome-refresh').click(); await ready(); await createDraft();
+  report.checks.push('remote approval withdrawal blocks fresh download and clears stale draft');
+
   let release, reached; const wait = new Promise(resolve => { release = resolve; }), started = new Promise(resolve => { reached = resolve; });
   db.controls.beforeOutcome = async body => { if (body.action === 'state') { reached(); await wait; } };
   await create.click(); await started; await consent.uncheck(); release(); db.controls.beforeOutcome = null; await ready();

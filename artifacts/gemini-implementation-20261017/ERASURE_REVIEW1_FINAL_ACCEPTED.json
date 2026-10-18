@@ -1,0 +1,14 @@
+{
+  "status": "NOT_ACCEPTED",
+  "database": "synera_erasure_review1_1792278467085",
+  "base": "synera_erasure_1792268577847",
+  "guard_applied": true,
+  "scope": "Fresh disposable copy; identity shim only",
+  "checks": [],
+  "source_sha256": {
+    "neon/profile-erasure.migration.sql": "9b1085886632eace5dd2aada28fe6c4a828797ab5e6bbf3831a8ca022e1b0a04",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "tools/profile-erasure-review1.mjs": "244b268fbebf0b872c065e17ec6b61cd8d39f04f870c6343e811bebcd11d00e5"
+  },
+  "error": "spawnSync C:/Users/Andrii/.codex/tmp/synera-pg16-20261003/runtime/pgsql/bin/psql.exe ETIMEDOUT\n\nnull !== 0\n"
+}

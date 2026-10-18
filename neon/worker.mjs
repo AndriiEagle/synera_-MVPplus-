@@ -4,6 +4,7 @@ import { handleMeetingLocation, locationReady } from './meeting-location.mjs';
 import { handleGroupRoom, groupRoomsReady } from './group-room.mjs';
 import { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';
 import { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';
+import { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -163,6 +164,25 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
     }
+    if (path === '/profile-erasure') {
+      if (!profileErasureReady(env)) throw new GatewayError(503, 'profile_erasure_not_ready');
+      if (request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
+      const body = await readJson(request); checkKeys(body, ['confirm']);
+      if (body.confirm !== 'ERASE_APPLICATION_DATA') throw new GatewayError(400, 'profile_erasure_confirmation_required');
+      const session = await getSession(fetchImpl, endpoints, cookie, allowed);
+      if (!session) throw new GatewayError(401);
+      const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_erase_profile_data', {
+        method:'POST', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + session.jwt}, body:'{}',
+      }, 'profile_erasure_unavailable');
+      const result = profileErasureResult(await response.json());
+      // Erasure is already committed. A provider sign-out failure must not pretend it rolled back.
+      let sessionRevoked = true;
+      try { await authRequest(fetchImpl, endpoints, '/sign-out', {method:'POST',body:{},cookie}); }
+      catch { sessionRevoked = false; }
+      // No Set-Cookie: this response may arrive after this browser signed into B.
+      // Revoke the captured A provider session only; its stale JWT is fenced by SQL.
+      return answer({...result,sessionRevoked});
+    }
     if (path.startsWith('/messages/')) {
       if (env.SYNERA_REAL_JOURNEY_READY !== 'true' || env.SYNERA_MESSAGE_INTENTS_READY !== 'true') throw new GatewayError(503, 'message_intents_not_ready');
       const route = path.match(/^\/messages\/([a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12})$/);
@@ -239,7 +259,8 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     return new Response(response.body, { status: response.status, headers: jsonHeaders });
   } catch (error) {
     const status = error instanceof GatewayError ? error.status : 503;
-    const clear = status === 401 || new URL(request.url).pathname === '/api/neon/logout';
+    const requestPath = new URL(request.url).pathname;
+    const clear = (status === 401 && requestPath !== '/api/neon/profile-erasure') || requestPath === '/api/neon/logout';
     return answer({ error: error instanceof GatewayError ? error.code : 'service_unavailable', status }, status, clear ? { 'Set-Cookie': sessionCookie('') } : {});
   }
 }
@@ -265,6 +286,7 @@ export function createNeonWorker(publicAssets) {
         messageIntentsEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true' && env.SYNERA_MESSAGE_INTENTS_READY === 'true',
         caseOutcomesEnabled: outcomeReady(env),
         meetingAddressEnabled: meetingAddressReady(env),
+        profileErasureEnabled: profileErasureReady(env),
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

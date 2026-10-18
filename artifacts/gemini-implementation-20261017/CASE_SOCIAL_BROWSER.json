@@ -1,0 +1,37 @@
+{
+  "status": "PASS_LOCAL_CASE_SOCIAL_BROWSER",
+  "generated_at": "2026-10-17T23:16:34.533Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "scope": "Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard",
+  "checks": [
+    "full journey helper fills empty proof criteria, preserves human target and compensation, makes zero writes",
+    "one accepted leg exposes no social achievement",
+    "explicit checkbox creates only actor contribution; no evidence, identity or outcome write",
+    "LinkedIn format requires new choice; edited text selected without OS clipboard or publication",
+    "real download retains author edits; escaped inert private card has no IDs, links, evidence, scripts or a11y violations",
+    "editing during fresh validation cancels download without losing the new text",
+    "remote approval withdrawal blocks fresh download and clears stale draft",
+    "withdrawing local draft consent cancels pending generation",
+    "withdrawn case approval hides and clears draft",
+    "logout purges social draft and permission"
+  ],
+  "source_sha256": {
+    "web_launch/real-journey-client.mjs": "442018459e42aaa46d6326aa4a4d66657659313289c9bc8f0d1551dc4ea0d7b0",
+    "web_launch/real-journey.mjs": "c011f873efab98e35725696e56ee5f890e2e9fea5f54199456b38160883c83ac",
+    "web_launch/real-journey.html": "fb6c6dcdc444ea6e79c1dac1ccea8267ed6d904f56fa2a09cd9ca19550ed609a",
+    "web_launch/session-value.mjs": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+    "tools/case-social-draft-browser.mjs": "d2161e0776f3bbe5ed992a6ecc6f478cb3072136d35cbca52278a032b86ba38c",
+    "web_launch/result-card.mjs": "c701779ac2fea5892493e3d2931fdd55a728d3d121693db3642e3538a91de5a3",
+    "web_launch/action-scoper.mjs": "0e6f2453628d331972c07354c2e2cfd02096902b2d0d3f1366f08e907b62ed07"
+  },
+  "axe_current": 0,
+  "axe_atelier": 0,
+  "no_overflow": {
+    "width": 390,
+    "viewport": 390
+  },
+  "no_private_storage": true,
+  "page_errors": [],
+  "external_requests": 0
+}

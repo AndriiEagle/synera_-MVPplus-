@@ -1,0 +1,79 @@
+{
+  "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+  "database": "synera_erasure_1792362544504",
+  "scope": "Disposable loopback PostgreSQL identity shim only; no signed JWT, live Neon, provider deletion or deployment",
+  "checks": [
+    {
+      "name": "legacy_delete_still_rejected_by_room_restrict",
+      "pass": true
+    },
+    {
+      "name": "anonymous_null_and_arbitrary_target_denied",
+      "pass": true
+    },
+    {
+      "name": "late_failure_rolls_back_profile_names_and_tombstone",
+      "pass": true
+    },
+    {
+      "name": "overlapping_erasure_waits_and_replays_once",
+      "pass": true
+    },
+    {
+      "name": "self_only_atomic_profile_and_name_erasure_retains_shared_graph",
+      "pass": true
+    },
+    {
+      "name": "repeat_is_deterministic_even_without_membership",
+      "pass": true
+    },
+    {
+      "name": "stale_jwt_cannot_read_republish_recreate_or_use_room_and_messages",
+      "pass": true
+    },
+    {
+      "name": "peer_cannot_discover_erased_profile_and_keeps_bilateral_evidence",
+      "pass": true
+    },
+    {
+      "name": "tombstone_is_not_readable_writable_by_authenticated",
+      "pass": true
+    },
+    {
+      "name": "mutation_expected_red_stale_jwt_admission",
+      "pass": true
+    },
+    {
+      "name": "all_authenticated_data_surfaces_after_deactivation",
+      "pass": true,
+      "rolled_back": true
+    },
+    {
+      "name": "fresh_provider_sub_cannot_inherit_erased_email_admission",
+      "pass": true,
+      "rolled_back": true
+    }
+  ],
+  "source_sha256": {
+    "tools/profile-erasure-sql-acceptance.mjs": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0",
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/meeting-status-guard.migration.sql": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "neon/meeting-address-agreement.migration.sql": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/profile-erasure.migration.sql": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+    "neon/profile-erasure-surfaces.acceptance.sql": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8",
+    "neon/profile-erasure-lifecycle.acceptance.sql": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "server": {
+    "version": "16.15",
+    "host": "127.0.0.1",
+    "port": 5432
+  }
+}

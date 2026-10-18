@@ -1,0 +1,15 @@
+{
+  "status": "PASS_EXACT_OUTCOME_PRESERVATION",
+  "original_sha256": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+  "migration_sha256": "15b6584eb1381ad29bc642f57177b42eaaf524b048caa44e78ae36338aafd65e",
+  "preserved": [
+    "original case NOT FOUND and actor check",
+    "blocked-pair check",
+    "version/hash check",
+    "closed/expired mutation denial",
+    "receiver/giver permission checks",
+    "output/event/idempotency semantics",
+    "SECURITY DEFINER and fixed search_path"
+  ],
+  "only_change": "profile FOR SHARE and fresh membership check after original case authorization"
+}
