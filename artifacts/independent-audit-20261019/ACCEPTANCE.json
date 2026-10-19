@@ -1,0 +1,171 @@
+{
+  "kind": "independent_audit_acceptance_ledger",
+  "audit_status": "COMPLETED_WITH_FINDINGS_AND_EXPLICIT_UNVERIFIED_GATES",
+  "created_at_utc": "2026-10-18T23:38:47.246462+00:00",
+  "audit_date_zurich": "2026-10-19",
+  "repository": "AndriiEagle/synera_-MVPplus-",
+  "allowed_branch": "main",
+  "audited_source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "source": {
+    "transport": "GitHub connector snapshot, not git clone",
+    "git_clone_succeeded": false,
+    "files_materialized_and_git_blob_verified": 443,
+    "original_snapshot_rechecked_unmodified": true,
+    "main_contains_pin": true,
+    "ancestry_check": {
+      "status": "ahead",
+      "ahead_by": 2,
+      "behind_by": 0,
+      "merge_base": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725"
+    },
+    "product_code_modified": false,
+    "test_oracles_modified": false
+  },
+  "node_tests": {
+    "runtime": "Node24.19.0",
+    "ci_runtime": "Node22; not rerun here",
+    "method": "One fresh process per test file, --test-isolation=none, separate 105 files; canonical file list; no source/oracle edits",
+    "test_files": 105,
+    "initial": {
+      "tests": 693,
+      "pass": 690,
+      "fail": 2,
+      "skipped": 1,
+      "cancelled": 0
+    },
+    "loopback_reruns_passed": 2,
+    "final_distinct_test_counts": {
+      "tests": 693,
+      "pass": 692,
+      "fail": 0,
+      "skipped": 1
+    },
+    "double_counted_reruns": false,
+    "skip_reason": "Disposable Docker PostgreSQL acceptance unavailable; no Docker/psql runtime",
+    "source_files_changed_for_pass": false,
+    "evidence": [
+      "NODE_TESTS_INITIAL.json",
+      "NODE_TESTS_RERUNS.json"
+    ]
+  },
+  "build": {
+    "command": "node neon/build.mjs dist-neon-audit-20261019",
+    "exit_code": 0,
+    "actual_files": 105,
+    "hash_entries": 104,
+    "hash_or_size_mismatches": 0,
+    "published": false,
+    "live_auth_verified": false,
+    "live_rls_verified": false,
+    "evidence": "BUILD_VERIFICATION.json"
+  },
+  "reproduced_findings": [
+    {
+      "id": "TA-01",
+      "priority": "P1_FOR_ERASURE_ACTIVATION",
+      "status": "REPRODUCED_WRONG_ACTOR_ERASURE_DISPATCH",
+      "scope": "Original NeonStore and worker; shared cookie and upstream/RPC synthetic; confirms wrong bearer dispatch, not actual SQL erasure",
+      "live_incident_established": false
+    },
+    {
+      "id": "TA-02",
+      "priority": "P2",
+      "status": "REPRODUCED_VALID_EDITOR_MATERIAL_REJECTED",
+      "scope": "Original canonicalizer, RealJourneyStore and worker; synthetic provider; valid editor material 7214 UTF8 bytes rejected by 4096-byte gateway cap"
+    },
+    {
+      "id": "TA-03",
+      "priority": "P2",
+      "status": "REPRODUCED_STALE_401_CLEARS_NEW_SESSION_COOKIE",
+      "scope": "Original worker delayed synthetic upstream401 returns deletion Set-Cookie; cookie-jar effect modeled, not current browser execution"
+    },
+    {
+      "id": "TA-04",
+      "priority": "P2",
+      "status": "REPRODUCED_ONE_WAY_PAID_ACCEPTED_OUTCOME_CARD_REJECTED",
+      "scope": "Original valid one-way paid matching/editor/scoper inconsistency; separate canonical/store synthetic outcome accepted, supplier card rejected; no real SQL/browser"
+    }
+  ],
+  "repro_provenance": {
+    "scripts": [
+      "technical-repros.mjs",
+      "paid-oneway-card-repro.mjs"
+    ],
+    "exact_raw_sha256_checks_before_import_per_script": 27,
+    "both_rerun_by_root": true,
+    "exit_zero_means": "Baseline defects reproduced, not repaired product PASS",
+    "source_pin_verification_scope": "The listed 27-source closure; whole snapshot provenance separately verified by Git blob manifest"
+  },
+  "historical_receipts": {
+    "fresh_sql_or_browser_execution": false,
+    "final_receipt_sets": 5,
+    "raw_source_references_matched": 27,
+    "exact_lf_crlf_equivalent_references": 2,
+    "substantive_drift_established": false,
+    "separate_erasure_inventory_raw_matches": 13,
+    "evidence": "RECEIPT_VERIFICATION.json"
+  },
+  "visual": {
+    "current_render_verified": false,
+    "current_browser_flow_verified": false,
+    "current_accessibility_verified": false,
+    "current_visual_score": "NOT_ASSESSED",
+    "physical_android_iphone_verified": false,
+    "blocker": "No standalone Chromium executable; cloud tab creation for approved local preview did not complete",
+    "auto_review_rejection": false,
+    "historical_evidence_scope": "See UX_EVIDENCE.uk.md; historical screenshots do not accept current render",
+    "historical_images_root_viewed": 5,
+    "historical_image_git_blob_matches": 5,
+    "provenance": "VISUAL_IMAGE_PROVENANCE.json"
+  },
+  "unverified_gates": [
+    "Node22 CI-equivalent runtime",
+    "fresh PostgreSQL16 SQL execution",
+    "signed Neon JWT for two real accounts",
+    "deployed schema/grants/RLS",
+    "production release/recovery/restore",
+    "physical Android/iPhone",
+    "current rendered desktop/mobile/200percent text/keyboard",
+    "provider identity deletion and full retention/backup operations",
+    "actual cohort accepted/completed/repeat/payment and unit economics"
+  ],
+  "erasure": {
+    "exact_env_key": "SYNERA_PROFILE_ERASURE_READY",
+    "source_default": "OFF",
+    "deployed_value": "NOT_CHECKED",
+    "flag_changed": false,
+    "provider_identity_deletion": "PENDING_CONTRACT_NOT_IMPLEMENTED_OR_ACCEPTED_AS_FULL_DELETE"
+  },
+  "business": {
+    "recommendation": "NARROW_AND_VALIDATE_FIRST",
+    "live_pilot": "HOLD_PENDING_EXPLICIT_GATES",
+    "demand_score": "NOT_ASSESSED",
+    "monetization_score": "NOT_ASSESSED",
+    "distribution_score": "NOT_ASSESSED",
+    "people_contacted": false,
+    "human_experiment_run": false,
+    "billing_activated": false,
+    "price_changed": false
+  },
+  "operations": {
+    "production_sql_applied": false,
+    "production_deployed_by_audit": false,
+    "accounts_created": false,
+    "messages_sent_to_people": false,
+    "paid_external_model_api_calls": 0,
+    "additional_paid_api_budget_usd": 0,
+    "current_session_cost": "NOT_MEASURED"
+  },
+  "self_review": {
+    "fact_pass": true,
+    "falsification_pass": true,
+    "practicality_pass": true,
+    "not_independent_certifications": true
+  },
+  "publication": {
+    "target_branch": "main",
+    "write_scope": "Only artifacts/independent-audit-20261019/",
+    "method": "Fast-forward commit with expected head lease; no force",
+    "resulting_commit": "Returned after remote read-back in final response; this ledger does not self-attest its own publication"
+  }
+}

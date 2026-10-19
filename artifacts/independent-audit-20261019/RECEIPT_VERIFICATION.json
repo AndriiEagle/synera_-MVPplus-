@@ -1,0 +1,343 @@
+{
+  "auditedCommit": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "scope": "Receipt source digest verification only; not re-executed SQL/browser acceptance",
+  "result": [
+    {
+      "receipt": "ERASURE_SQL_REVIEW2_FINAL_VERIFIED.json",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+      "checksCount": 12,
+      "hashes": [
+        {
+          "path": "tools/profile-erasure-sql-acceptance.mjs",
+          "expected": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0",
+          "actual": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/schema.proposal.sql",
+          "expected": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+          "actual": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/case-state.migration.sql",
+          "expected": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+          "actual": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/meeting-status-guard.migration.sql",
+          "expected": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+          "actual": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/meeting-location.migration.sql",
+          "expected": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+          "actual": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/group-room.migration.sql",
+          "expected": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+          "actual": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/case-outcome.migration.sql",
+          "expected": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+          "actual": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/meeting-address-agreement.migration.sql",
+          "expected": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+          "actual": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/message-intent.migration.sql",
+          "expected": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+          "actual": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/case-state.acceptance.sql",
+          "expected": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+          "actual": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure.migration.sql",
+          "expected": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "actual": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-surfaces.acceptance.sql",
+          "expected": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8",
+          "actual": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-lifecycle.acceptance.sql",
+          "expected": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",
+          "actual": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    },
+    {
+      "receipt": "ERASURE_REVIEW2_LOCKS_VERIFIED.json",
+      "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+      "checksCount": 4,
+      "hashes": [
+        {
+          "path": "neon/profile-erasure.migration.sql",
+          "expected": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "actual": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-lock-review.mjs",
+          "expected": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c",
+          "actual": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    },
+    {
+      "receipt": "ERASURE_REVIEW2_OUTCOME_FINAL_VERIFIED.json",
+      "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+      "checksCount": 3,
+      "hashes": [
+        {
+          "path": "neon/profile-erasure.migration.sql",
+          "expected": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "actual": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/case-outcome.migration.sql",
+          "expected": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+          "actual": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-review1.mjs",
+          "expected": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f",
+          "actual": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    },
+    {
+      "receipt": "ERASURE_BROWSER.json",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_BROWSER",
+      "checksCount": 4,
+      "hashes": [
+        {
+          "path": "web_launch/app.mjs",
+          "expected": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+          "actual": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/index.html",
+          "expected": "4ce0613c9a9a09297c6e59451a0271f8e7311c8af758e46d2e68dfcdd2a33b0b",
+          "actual": "fd0e7a7fb6169ce38ec323c3aec05c7a049d0042e21308b6e17ee16f896fe5b5",
+          "matches": false,
+          "LF_to_CRLF_sha256": "4ce0613c9a9a09297c6e59451a0271f8e7311c8af758e46d2e68dfcdd2a33b0b",
+          "equivalence": "EXACT_MATCH_AFTER_LF_TO_CRLF"
+        },
+        {
+          "path": "web_launch/neon-store.mjs",
+          "expected": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+          "actual": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-browser.mjs",
+          "expected": "75705ace645b712b253863ec097d773309116bc6725d1452482b909c5aa9b499",
+          "actual": "75705ace645b712b253863ec097d773309116bc6725d1452482b909c5aa9b499",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    },
+    {
+      "receipt": "CASE_SOCIAL_BROWSER.json",
+      "status": "PASS_LOCAL_CASE_SOCIAL_BROWSER",
+      "checksCount": 10,
+      "hashes": [
+        {
+          "path": "web_launch/real-journey-client.mjs",
+          "expected": "442018459e42aaa46d6326aa4a4d66657659313289c9bc8f0d1551dc4ea0d7b0",
+          "actual": "442018459e42aaa46d6326aa4a4d66657659313289c9bc8f0d1551dc4ea0d7b0",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/real-journey.mjs",
+          "expected": "c011f873efab98e35725696e56ee5f890e2e9fea5f54199456b38160883c83ac",
+          "actual": "c011f873efab98e35725696e56ee5f890e2e9fea5f54199456b38160883c83ac",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/real-journey.html",
+          "expected": "fb6c6dcdc444ea6e79c1dac1ccea8267ed6d904f56fa2a09cd9ca19550ed609a",
+          "actual": "adceb5436f9c604327044538017e5145879bfdb00ea2698bd4d1b2850de869b5",
+          "matches": false,
+          "LF_to_CRLF_sha256": "fb6c6dcdc444ea6e79c1dac1ccea8267ed6d904f56fa2a09cd9ca19550ed609a",
+          "equivalence": "EXACT_MATCH_AFTER_LF_TO_CRLF"
+        },
+        {
+          "path": "web_launch/session-value.mjs",
+          "expected": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+          "actual": "eea39771726ead3a1b4090f5a005d97cf454fa5dde0dc754b333d04cf3afda62",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/case-social-draft-browser.mjs",
+          "expected": "d2161e0776f3bbe5ed992a6ecc6f478cb3072136d35cbca52278a032b86ba38c",
+          "actual": "d2161e0776f3bbe5ed992a6ecc6f478cb3072136d35cbca52278a032b86ba38c",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/result-card.mjs",
+          "expected": "c701779ac2fea5892493e3d2931fdd55a728d3d121693db3642e3538a91de5a3",
+          "actual": "c701779ac2fea5892493e3d2931fdd55a728d3d121693db3642e3538a91de5a3",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/action-scoper.mjs",
+          "expected": "0e6f2453628d331972c07354c2e2cfd02096902b2d0d3f1366f08e907b62ed07",
+          "actual": "0e6f2453628d331972c07354c2e2cfd02096902b2d0d3f1366f08e907b62ed07",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    },
+    {
+      "receipt": "ERASURE_SOURCE_REVIEW2.json",
+      "hashes": [
+        {
+          "path": "neon/profile-erasure.migration.sql",
+          "expected": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "actual": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure.mjs",
+          "expected": "8eddaa8f4c9e638285870b603f1a95366be393b1d49bf0297b02e0765eae10de",
+          "actual": "8eddaa8f4c9e638285870b603f1a95366be393b1d49bf0297b02e0765eae10de",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-generate.mjs",
+          "expected": "9b5cc12aa742918ada0aedd799d17ffe9d8613ab54a9fd55edc8c54a846cbe2f",
+          "actual": "9b5cc12aa742918ada0aedd799d17ffe9d8613ab54a9fd55edc8c54a846cbe2f",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-generation.test.mjs",
+          "expected": "16e27cfd26b5931728f56f132579a2c9529db83eb7435fd3245b8934efb50f95",
+          "actual": "16e27cfd26b5931728f56f132579a2c9529db83eb7435fd3245b8934efb50f95",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-surfaces.acceptance.sql",
+          "expected": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8",
+          "actual": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure-lifecycle.acceptance.sql",
+          "expected": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",
+          "actual": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/profile-erasure.test.mjs",
+          "expected": "907e581de46c8a49cebebc8e2590c66f688b801f20199792122ec8d0377f704f",
+          "actual": "907e581de46c8a49cebebc8e2590c66f688b801f20199792122ec8d0377f704f",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-sql-acceptance.mjs",
+          "expected": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0",
+          "actual": "a3ac453a47598f6f0d5f3ecf4daf41e21f3037d522fab435129359ddb7e95ba0",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-review1.mjs",
+          "expected": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f",
+          "actual": "df6eeaa1446a10c46da6cdc57a274bf24fc1982d518d772c6c03a10670c42d0f",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "tools/profile-erasure-lock-review.mjs",
+          "expected": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c",
+          "actual": "a7ddcb93ca3d85a6d38baa995ba61b7731a6bcb4c7ccecce1c1d3c976e34a98c",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/worker.mjs",
+          "expected": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484",
+          "actual": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "neon/build.mjs",
+          "expected": "67a42cbeac2e9fa1be13278c8377f91e21a6c415bc47b8961db95551566b39b3",
+          "actual": "67a42cbeac2e9fa1be13278c8377f91e21a6c415bc47b8961db95551566b39b3",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        },
+        {
+          "path": "web_launch/neon-store.mjs",
+          "expected": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+          "actual": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+          "matches": true,
+          "equivalence": "RAW_SHA256_MATCH"
+        }
+      ]
+    }
+  ],
+  "note": "Both HTML-only raw mismatches are exactly LF→CRLF; all reviewed other source bytes match. This is file-content equivalence after explicit line-ending conversion, not fresh test execution."
+}

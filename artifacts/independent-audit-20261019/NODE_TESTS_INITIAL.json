@@ -1,0 +1,1491 @@
+{
+  "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "created_at": "2026-10-18T23:07:09.332608+00:00",
+  "runtime": "Node 24.19.0",
+  "ci_runtime": "Node 22 not available",
+  "method": "One fresh process per test file, --test-isolation=none, separate 105 files; canonical file list; no source/oracle edits",
+  "files": [
+    {
+      "file": "neon/case-outcome.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.151,
+      "counts": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/config-endpoint.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.128,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/google-oauth.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.134,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/group-room-generation.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.095,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/group-room.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/local_acceptance.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "counts": {
+        "tests": 9,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 1
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/meeting-address.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.145,
+      "counts": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/meeting-location.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.105,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/meeting-status-cleanup.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/message-intent.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.132,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/migration_runner.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/profile-delete.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.142,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/profile-erasure-generation.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/profile-erasure.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.107,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "neon/worker.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.196,
+      "counts": {
+        "tests": 20,
+        "pass": 20,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "plan/v6/workflow/approval-boundary.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/action-scoper.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.134,
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/app.behavioral.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.144,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/archive-codec.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.121,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/atelier.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.057,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/b-matching.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/b2-case-store-shape.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/behaviors-core.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.09,
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/business-case.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.102,
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/business-pilot.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.109,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/cascade_orchestrator.test.mjs",
+      "exit_code": 1,
+      "seconds": 0.173,
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": true,
+      "failures": [
+        "not ok 1 - Iceberg Cascade Orchestrator - deploy and stream"
+      ]
+    },
+    {
+      "file": "web_launch/case-approval-guard.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.07,
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/case-cost.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.088,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/case-outcome-client.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.589,
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/case-outcome-export.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.397,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/case-social-draft.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.452,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/chatgpt-transfer.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.081,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/community.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.078,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/credit-ledger.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.083,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/cusum.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.09,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/cycle-exchange.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.072,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/data.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.162,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/decision-layer.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.129,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/declared-fit.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.067,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/demo-journey.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/differentiation.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.057,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/e2e-neon-flow.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.129,
+      "counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/economics.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.087,
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/effort-outcome.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.104,
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/explore-planner.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.054,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/field-audience.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.073,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/funnel-analytics.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.058,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/group-logistics.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/i18n.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.06,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/cascade_orchestrator.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/event_theme.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.065,
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/layout_recomposer.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.072,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/map_style.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.075,
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/operator_dashboard.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.085,
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/privacy_audit.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.089,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/iceberg/token_forge.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/index-i18n.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.438,
+      "counts": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/invitation-acceptance.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.457,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/joint-project.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.114,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/journey-ai-client.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.092,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/journey-core.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.131,
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/journey-handoff.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.084,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/k-anon.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.087,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/live-location.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.103,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/location-session.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.088,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/ma4.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.064,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/matching.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.128,
+      "counts": {
+        "tests": 19,
+        "pass": 19,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/meeting-address-client.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.973,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/meeting-card.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.096,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/meeting-location-agreement.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.103,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/message-intent.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.376,
+      "counts": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/mobile-pilot.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.198,
+      "counts": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/n-version-hash.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.099,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/need-decay.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/neon-store.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.101,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/onboarding-tour.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.053,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/outcome-acceptance.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.078,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/outcome-archive.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.128,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/profile-import.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.071,
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/profile-portability.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.145,
+      "counts": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/proof-state.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.051,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/pwa-mobile.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/pwa.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.055,
+      "counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/real-journey-client.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.365,
+      "counts": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/real-journey-i18n.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.172,
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/real-journey-mode-editor.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.174,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/real-pilot.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.187,
+      "counts": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/referral.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.064,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/result-card.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.063,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/room-api.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.102,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/server.test.mjs",
+      "exit_code": 1,
+      "seconds": 0.161,
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": [
+        "not ok 1 - HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible"
+      ]
+    },
+    {
+      "file": "web_launch/session-value.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.078,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/soft-block.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.067,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/stable-matching.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.117,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/studio-sw.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.135,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/style-switcher.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.107,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/summit.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.074,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/swiss-compliance.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.075,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/thompson.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/tier-matrix.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.082,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/triangle-room.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.081,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/unavailable-state.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.194,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/viewers.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.065,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/virality.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.084,
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    },
+    {
+      "file": "web_launch/wtp.test.mjs",
+      "exit_code": 0,
+      "seconds": 0.075,
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "infrastructure_listen_eperm": false,
+      "failures": []
+    }
+  ],
+  "totals": {
+    "tests": 693,
+    "pass": 690,
+    "fail": 2,
+    "skipped": 1,
+    "cancelled": 0
+  },
+  "full_pass": false
+}

@@ -1,0 +1,2228 @@
+{
+  "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "repository": "AndriiEagle/synera_-MVPplus-",
+  "transport": "GitHub connector snapshot; git clone failed infrastructure proxy",
+  "main_ancestry": {
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "merge_base": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "251643f8286ea725b1641ea7bb2cc2589f1a4d9e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "docs/PRODUCT_DNA.uk.md",
+      "git_blob_sha": "67572527cfbff41e01de5ed5b82d005bb430efcd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "docs/REVIEW_HANDOFF.uk.md",
+      "git_blob_sha": "761cd478d2abb1be21c110a0c0634cfb4433f2ed",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "package.json",
+      "git_blob_sha": "3af9e77e463dcb41540654aa96dfcba46c646f7c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "package-lock.json",
+      "git_blob_sha": "9ab81bf2d75db27054b4403e0315de980675e5fe",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure.migration.sql",
+      "git_blob_sha": "5deac194e45db9961b017f16c8e802377732db83",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/result-card.mjs",
+      "git_blob_sha": "7709a456c0a8efe31db0cfafa0d72124e790a399",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/REPORT.uk.md",
+      "git_blob_sha": "2897af24ac516e73f8f9403218bad901b7147a8c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "docs/quality/reviewed-release-20261015.uk.md",
+      "git_blob_sha": "ac1b7ba5b5f0ec1c2f889ee97ab70fc478223959",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md",
+      "git_blob_sha": "a8963092e074dcb3ea41495e74e55f54592aebfc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "plan/v6/workflow/approval-boundary.test.mjs",
+      "git_blob_sha": "cf2668362da48bae303fbe792cce7d5d4e974d51",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/a11y_audit_report.json",
+      "git_blob_sha": "d84fb0f84bb7fe6b5be9f08aa93ea6bc05cc81f1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/a11y_audit.mjs",
+      "git_blob_sha": "ce2590b0b69d03af18a2b61d7b4cad610044f083",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/action-scoper.mjs",
+      "git_blob_sha": "72afcc6fbf839bfaace313e9731b0488e0641ac2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/app.mjs",
+      "git_blob_sha": "ea05a1baa2277e8f59f00437239fa77ff8e3f541",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/archive-codec.mjs",
+      "git_blob_sha": "31999e606743e9272a133efb49f5419bc9873000",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/asset-licenses.txt",
+      "git_blob_sha": "b472da94930d4eaec40aea96dcb6f5281cafe99c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/assets.mjs",
+      "git_blob_sha": "96390ae8fb0adf7d111d93ba07dd252289190bf4",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/atelier.css",
+      "git_blob_sha": "c352347b2e5da5f22e5033aa86539245d210612d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/atelier.mjs",
+      "git_blob_sha": "ba1f73f4542c79fb411042158f5aaecfeb7be9e7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/b-matching.mjs",
+      "git_blob_sha": "3b9ccf01b3aab4a10ac375f60e96e7c85347507d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/build.mjs",
+      "git_blob_sha": "e639621eafec3ff9bf81b71f6ff33cf1de755855",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/business-case.mjs",
+      "git_blob_sha": "d1784e8095b4679e434b93b5c91be8208913ce5a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/calendar.mjs",
+      "git_blob_sha": "51997826cdce00b3e20191042403c8e132d712ec",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cascade.mjs",
+      "git_blob_sha": "2e3562066b8c26e3e6b590befc398e700c96f1d7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-cost.mjs",
+      "git_blob_sha": "97a20dd7783d93f891f8c15c65465d84244f90f6",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/catalogue.html",
+      "git_blob_sha": "c74b9cc77b159afb91a8485e8ad4bb58c54f30b0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/chatgpt-transfer.mjs",
+      "git_blob_sha": "f90f9a892c9884408f6c1e1b3b50fd806ba27544",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/community.mjs",
+      "git_blob_sha": "9743c740e7c48a6bb7efc1432c312dd3b459d246",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/config.mjs",
+      "git_blob_sha": "be61039352df0d13456a9dcdad92cd54a2f08243",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/config.public.json",
+      "git_blob_sha": "d3424287e23a6607a7965a192b772f2e9eb577fa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/credit-ledger.mjs",
+      "git_blob_sha": "63bcabbbb01ce937ba0d57579b7450f7622e8166",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cusum.mjs",
+      "git_blob_sha": "2bb4c71dea75fde164ba2b69b31cde9e60fc3fab",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cycle-exchange.mjs",
+      "git_blob_sha": "1d6ed52a3a4d3f0a31cdbac072270ad88fd5d4be",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/data.mjs",
+      "git_blob_sha": "1af9e868b50871b9bec98604ab64924028061d72",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/decision-bakeoff.mjs",
+      "git_blob_sha": "003dcead99740186db7c8f155ae5fd57df2fdf44",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/decision-layer.mjs",
+      "git_blob_sha": "cbf2805e71571c2e781316bc5e3d60650da9517c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/declared-fit.mjs",
+      "git_blob_sha": "61074c51d2f94c2a6ec582e7aacfa49607bffdfb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/demo-journey.mjs",
+      "git_blob_sha": "2bba1e297cc522d4e0b2d4b1085f55aba8109eb7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/differentiation.mjs",
+      "git_blob_sha": "b2e7b18275e81f17b00111f20ef87494500b7a23",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/economics.mjs",
+      "git_blob_sha": "89d6d17f96c1ca1ab6db78aa2c3129df10ef300d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/economics/qr_bill.mjs",
+      "git_blob_sha": "b5d71b14c3c5e777de892fcee51d0a6b37559078",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/explore-planner.mjs",
+      "git_blob_sha": "56579d8d9c79f8ca3cbe92687efd688cf8415cd8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/export-economics.mjs",
+      "git_blob_sha": "fa5b9fd9e83ccc4f65d7ec42034558f29dcbf7d1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/field-audience.mjs",
+      "git_blob_sha": "b63f56f79565f57a2af30461507cdca0031fd9de",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/funnel-analytics.mjs",
+      "git_blob_sha": "a76a0d5cbd795492eacf0bd5e107e9d3dc64cd6c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/get.html",
+      "git_blob_sha": "0ce31fe070cef1d5afcf9bbf58da1fb2040f5a6c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/group-logistics.mjs",
+      "git_blob_sha": "ae3bc8c940cd24358ffe45b2360cdecf77553318",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/health-check.mjs",
+      "git_blob_sha": "a7e5677cc11a0a93aed9f548a7f3660ea805c25f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/i18n.mjs",
+      "git_blob_sha": "9a02a0aa19dba15d8c707a6b171ba964cb69e55b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/i18n/de.json",
+      "git_blob_sha": "c80286057e3bc117744bb97bf8cc2d6c15e92787",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/i18n/en.json",
+      "git_blob_sha": "c12ccc8576b8ba1f24a63c0e50b69f3240cdb81d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/i18n/fr.json",
+      "git_blob_sha": "0cf231a01700dffdb96e999653c8512f5a520ab3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg-client.mjs",
+      "git_blob_sha": "fcb510898259beeab00d7d77068851773106faee",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/cascade_orchestrator.mjs",
+      "git_blob_sha": "4f8e5c52dd5a486d269e7f7a47460e06f879064f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/event_theme.mjs",
+      "git_blob_sha": "55a44ff38d04dcdbfa66885475a8daa740f543dd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/layout_recomposer.mjs",
+      "git_blob_sha": "0b08292e70783acbcb9656e1c765762da92d415f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/map_style.mjs",
+      "git_blob_sha": "f5e55d09aab337a46f61c920f19a1edda4c27873",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/operator_dashboard.mjs",
+      "git_blob_sha": "ad6c7cc0e8679027371adc35690384ea14d59fbd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/privacy_audit.mjs",
+      "git_blob_sha": "210aa8aece095c201f98b12ed56805e0aa3d88a8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/token_forge.mjs",
+      "git_blob_sha": "148d901aa10754cf96a7d640ef51f226374e4b26",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-archive.svg",
+      "git_blob_sha": "4c5ae8e33b565fa5edc5ea5fba50a860c4b9abcf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-code-xml.svg",
+      "git_blob_sha": "74f2299eb3e31a2ea1ce971ae8b4c64bf00ede88",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-handshake.svg",
+      "git_blob_sha": "448f058d97856faedb7a2058061ed08838041637",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-map-pin.svg",
+      "git_blob_sha": "5d73fbd48b1e663493efaa4523b6c105f996146b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-megaphone.svg",
+      "git_blob_sha": "5db6d38d53ef1205cfa16ee149279e53375e6dbe",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-message-circle.svg",
+      "git_blob_sha": "d269b8b0f3651b6ff136036da05efe9e02214ae1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/icon-pen-tool.svg",
+      "git_blob_sha": "738c6feca9473d8509784591e060f86288aa8f36",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index-i18n-table.mjs",
+      "git_blob_sha": "14a1f52a50be7249e6d4943e20bebf2fc5f76cb7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index-i18n.coverage.mjs",
+      "git_blob_sha": "f962ed59073475e8a11e85d0f7f3d7f9d1bcf966",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index-i18n.mjs",
+      "git_blob_sha": "86e7bcfc6cb3c851c0cbcb22f1a31df6dceedc52",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index-language.mjs",
+      "git_blob_sha": "aa7d4f165bbbf9e61c403d30dad633da42ab26b1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index.html",
+      "git_blob_sha": "0256ce3cf88697035bd0513ab4e960232603b97b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-ai-client.mjs",
+      "git_blob_sha": "5c3ae072aafdd332fc68b7062c54fac381fabf42",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-core.mjs",
+      "git_blob_sha": "d53d2c7e8e0715868f7d2699490289c2476118af",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-handoff.mjs",
+      "git_blob_sha": "a6dce6d7d93b8e6263103fa38a879876131862bc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-ui.mjs",
+      "git_blob_sha": "b04befc3da69d79c4ce3e5a92889c185555d4d63",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey.css",
+      "git_blob_sha": "f911177bcb35ece4528c92c4fbe96f2c9159686c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/k-anon.mjs",
+      "git_blob_sha": "44e00c4e35dde3c8d19a6f1b82d40c0fd15c610f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/lab-fixtures.mjs",
+      "git_blob_sha": "9518822a7bcd2c6c311d1bf3c456a8b86c314001",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/lab.css",
+      "git_blob_sha": "18cfec318457bd9970f828894b4582b691d06739",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/lab.html",
+      "git_blob_sha": "e182d9933c98a8e6b2619e19ef8911dfdffb7bb2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/lab.mjs",
+      "git_blob_sha": "4a593815dea27f2ca52456d94c94a0c64b361183",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/legal-i18n.mjs",
+      "git_blob_sha": "a30eb2a3e42ceeec5d0dcfd32deeea366c334893",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/legal-language.mjs",
+      "git_blob_sha": "aaa3c04ec1197ebe69dc345e3d904f53a51ed85f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/legal.html",
+      "git_blob_sha": "c47ef22352a5d3e614c31dac816badfd83ea12c2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/live-location.mjs",
+      "git_blob_sha": "f81f8487a14dd0dcddb80c472a8d535f0459604e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/location-session.mjs",
+      "git_blob_sha": "f42354a29a25739c64ffd3752485bac299e41e7b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/ma4.mjs",
+      "git_blob_sha": "ca25ddf7c7699ce257d1d40702d417984b5a455a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/manifest.webmanifest",
+      "git_blob_sha": "f780164134dcceba0cab77cbd8d1a5cb682e5dd2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/map.mjs",
+      "git_blob_sha": "88b2a9871f4f75b4ced2e8c42fcc92e3d42dd6aa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/matching.mjs",
+      "git_blob_sha": "ba47cd6079b7619fb23dcdd4ef8f18707fe0a7cf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/meeting-card.mjs",
+      "git_blob_sha": "5c4e1450a57c30d921fb21e0ac501e418fa3b6c7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/meeting-location.mjs",
+      "git_blob_sha": "2dd9c7be0a3a82c520cb85306c74be468bd4dd2d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/memory/vector_store.mjs",
+      "git_blob_sha": "72d6f8d5fa10ccf144eb611059f943db43a47814",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/n-version-hash.mjs",
+      "git_blob_sha": "222208d13a4741ce6ae05191319b5f20ba8a31f1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/need-decay.mjs",
+      "git_blob_sha": "f19f39bc79e15f7dd1b3bb634585d40d4bd9bd50",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/neon-store.mjs",
+      "git_blob_sha": "e2631972e2449c449c138ac66a056dc73e409719",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/onboarding-tour.mjs",
+      "git_blob_sha": "d668c0c2c1f96075b9e2a6c844df7770173424af",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/online-store.mjs",
+      "git_blob_sha": "9e179852021dc58f836a821b621d3370a82ec532",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/outcome-archive-ui.mjs",
+      "git_blob_sha": "fe8788e699c9f5100aa58f25de02f925c15c2d07",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/outcome-archive.html",
+      "git_blob_sha": "a3764767ab11822d73155938b6e9cc78e23e63e6",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/outcome-archive.mjs",
+      "git_blob_sha": "811b83dc2ac1cc7da41a16c60ca6e51a7096c97d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/pilot-policy.mjs",
+      "git_blob_sha": "e0a41c2cd519046f5f7ea579c9982a0cd9296af1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/product-access.mjs",
+      "git_blob_sha": "9f0472a71c28a306b877ca2763b3e9346f4c2d01",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-brief.mjs",
+      "git_blob_sha": "8e94ad597270018c9aab4150a90fa69dcf8eac2a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-import.mjs",
+      "git_blob_sha": "4ffa59fe288b496780439a47ef5f62de62e790ff",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-package.mjs",
+      "git_blob_sha": "48d7e126de1358c7295c00b6de557920f93dba4c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-portability.mjs",
+      "git_blob_sha": "3b150f2ab5eb9f3d98cb6126b6a3984e57bf1a24",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-store.mjs",
+      "git_blob_sha": "95ef0ec97c1daa994fcf3b201309c8c50fd27017",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/proof-state.mjs",
+      "git_blob_sha": "f1526a146e92f84e14bb945c3d263b8f6f18e9e5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/pwa.mjs",
+      "git_blob_sha": "f075b13024c2d5cd26882d185338c5855e339e7c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey-client.mjs",
+      "git_blob_sha": "806ec1b2278b41c49bd7f33e589d898d6f678326",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey-i18n.mjs",
+      "git_blob_sha": "3be3079d61cf6c139d91ce1be2bf984fbf9f2bd5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey.css",
+      "git_blob_sha": "099122956339b7c4012896c4124ba234d2cf8b62",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey.html",
+      "git_blob_sha": "02a796110d99ffb34b1d6ab3cb45d2b139b25346",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey.mjs",
+      "git_blob_sha": "946a32a0dd420ff220a5f2e89b4b4a76b51100ac",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/referral.mjs",
+      "git_blob_sha": "6c00ce95997122e2cfe71fe8701612b6762ead5c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/room-api.mjs",
+      "git_blob_sha": "148308e6899b198e5e7a76119972c96f733c6a12",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/rooms.css",
+      "git_blob_sha": "677c99e80b39de48bcea0072d35e029110b2f0d6",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/rooms.html",
+      "git_blob_sha": "67b2fd2cf4c9859eba15934ade7dac729bee5fcc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/rooms.mjs",
+      "git_blob_sha": "83440075b6714c8b97de4ad8518aee30ced0916e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server_cascade_api.mjs",
+      "git_blob_sha": "f134f6c89f2ede4f76eabf4c0930a44a21e4d2aa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server.mjs",
+      "git_blob_sha": "2629a9b4787a200ea9463e0f53f1878b28ea5db5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server/journey-ai.schema.json",
+      "git_blob_sha": "fcc55f698ee312d49a640ec69e8fa6324ebe8a3b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server/local-journey-ai.mjs",
+      "git_blob_sha": "da328a654966688ce554845878c1693c0d67ddd1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server/local-profile-ai.mjs",
+      "git_blob_sha": "7c55e8d6f9067a224e35522c38adac4a0dee2468",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server/profile-ai.schema.json",
+      "git_blob_sha": "c82d97fad95b6096b531ded33747fc67e36ac52b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/session-value.mjs",
+      "git_blob_sha": "2899615343c7b774348a3dc0b0f50189c19e1d3c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/simulation.mjs",
+      "git_blob_sha": "d9b4362870162956530599c969a27b7c72a81422",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/soft-block.mjs",
+      "git_blob_sha": "31c93f655d1280936ef53a9c5f677fd446763eee",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/source-strings.mjs",
+      "git_blob_sha": "4445cc797b837b0347d517c212c5b080084349df",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/stable-matching.mjs",
+      "git_blob_sha": "c11b51ffbc88ea77707c5e63aec765a7ef4ea09a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio-install.mjs",
+      "git_blob_sha": "9c4e6c3fd29f0862b0308e60fe030a0c06385c03",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio-journey.html",
+      "git_blob_sha": "b47ad4101919c72b2fae7ce2c10fbef8754f45df",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio-sw.mjs",
+      "git_blob_sha": "3620bb30b3ed939ad9632c608ef6fb191f5eb6f6",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio.css",
+      "git_blob_sha": "2072fa6ce749308e6afb77e61914874979ee6175",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio.html",
+      "git_blob_sha": "767e574859104a67077d5a969a887ed061a333f5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio.mjs",
+      "git_blob_sha": "bca9cc4d71ca34851e255bc9adee86319621c644",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio.webmanifest",
+      "git_blob_sha": "a02c63fd667cf7e7908b7cb9fbe23626154236e1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/style-switcher.mjs",
+      "git_blob_sha": "d0fa9710fa62ec448f27bf8d3bba086432c602a6",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/style.css",
+      "git_blob_sha": "057eb25b7d21d14e9f1505592c62c5a26a8665f4",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/summit.css",
+      "git_blob_sha": "77679c8f125f03a2a29bc677cff3320d6a107123",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/summit.html",
+      "git_blob_sha": "016f8c0bf0d859159d3778cc9a5fd0604ef768fb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/summit.mjs",
+      "git_blob_sha": "60784e7d79d89d842e6cb224706e1ecf482b98a8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/sw.mjs",
+      "git_blob_sha": "09f8c399328b1770ab8227510b207e13bd12a972",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/swiss-compliance.mjs",
+      "git_blob_sha": "4f298f6c87f9b29ff6b73675c5b900a83aef7fcb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/thompson.mjs",
+      "git_blob_sha": "0c363d781f61cd9c2d2cd8928c37ac17e7cdf0c2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/tier-matrix.mjs",
+      "git_blob_sha": "ebe4998340577bfe231a6fbf625eb7b60fe80940",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/tokens.css",
+      "git_blob_sha": "9109a5062fae047fe03755626ef80a37e5beddca",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/triangle-room.mjs",
+      "git_blob_sha": "2e12577716b3bd9bacb35669c150cec1e71dd2df",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/triangle.css",
+      "git_blob_sha": "546cbb78167994ab073ccd4c83f77955ce396bf0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/triangle.html",
+      "git_blob_sha": "c5549b68a147187346fd15fac1341eed17fa141a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/triangle.mjs",
+      "git_blob_sha": "755b17db236d9e62457815ba5234634873e7cedc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/viewers.mjs",
+      "git_blob_sha": "c78a816c74cf8cfb3105c26116414699b3563494",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/virality.mjs",
+      "git_blob_sha": "96fa2e0318cf1c1ad8b93fd7579a55bcba9a2b5a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/wtp.mjs",
+      "git_blob_sha": "80836c987634ee9869155fdb477b73726540672a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/acceptance.sql",
+      "git_blob_sha": "3a01408b21383bc60c32da6252e860141205f631",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/build.mjs",
+      "git_blob_sha": "d9aaf71dbe14d369fbca4f5b409d02bdbf4fa8aa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-expiry-repair.migration.sql",
+      "git_blob_sha": "8089c149fc11455e4390eefeb88a6c53fa488aac",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-outcome.acceptance.sql",
+      "git_blob_sha": "fd7ab71e956f67141e84e2c381730d58005e2896",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-outcome.migration.sql",
+      "git_blob_sha": "632ef762747523510bab38df012ac820e975b4df",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-outcome.mjs",
+      "git_blob_sha": "23839afaccb4f0b44994b05114d27eacbbd4f8bf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-state.acceptance.sql",
+      "git_blob_sha": "fd4d04a87ead7a7f51c176e7433a1ba29575de2a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-state.migration.sql",
+      "git_blob_sha": "c080a44b37e959e98c60948a37424787e42edd74",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/generate-schema.mjs",
+      "git_blob_sha": "b5bec413e3146400cf7784e21d01786e6084517a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/google-oauth.mjs",
+      "git_blob_sha": "0ab7f085644339db829a0bc6c086bfd62c6cfc8d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/group-room.acceptance.sql",
+      "git_blob_sha": "af68ee735b3267c521055d104ca54679ea84960b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/group-room.migration.sql",
+      "git_blob_sha": "8994bb9eca7aa915dd90a42fbe51f038b25e0338",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/group-room.mjs",
+      "git_blob_sha": "eec0c4b9e5139dd924e531fce99f1ec4b483c9f7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/local_acceptance.mjs",
+      "git_blob_sha": "b5f2a296780739f55daefe1023ec813b983a82cb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-address-agreement.acceptance.sql",
+      "git_blob_sha": "c6905377380b395523a4c9a3e2fc290dd1ade799",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-address-agreement.migration.sql",
+      "git_blob_sha": "a155ef80c3d1557c7b1aeeb49476653582e56add",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-address-direct-patch.regression.sql",
+      "git_blob_sha": "52c5bca876260856657438d0c6bab9d0686b6fc5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-address.mjs",
+      "git_blob_sha": "1ded272edd1b176295fa4ff5505cfa3c574769e0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-location.acceptance.sql",
+      "git_blob_sha": "6c2eb2766999f25ac89fd2354768d604063480dc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-location.migration.sql",
+      "git_blob_sha": "7495055ad946eaad5ba7d5460e6624faeb2fc5b2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-location.mjs",
+      "git_blob_sha": "6c7c4768b0f2d2489bf399158c7b0d027af57482",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-status-guard.acceptance.sql",
+      "git_blob_sha": "55817982f188960097129d7429858dce581acf1a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-status-guard.migration.sql",
+      "git_blob_sha": "afbccaed2c48d09b3c8b37881ca0a4b2e6835c37",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/message-intent-consent.acceptance.sql",
+      "git_blob_sha": "be6581ddc39c2e0e45f6e0ec6f26f3bc48cdc6dc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/message-intent.migration.sql",
+      "git_blob_sha": "c9a2df87e5d6227b337a66bd0251f98bc3984b17",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/migration_runner.mjs",
+      "git_blob_sha": "17a15317a91d6a1da35307e9c1121e4802cbf342",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure-generate.mjs",
+      "git_blob_sha": "b796691ec03fc32803e3b9e597f66a8b36f4942e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure-lifecycle.acceptance.sql",
+      "git_blob_sha": "8ea582d8479d939da3810e18f5632c8df56ec82d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure-surfaces.acceptance.sql",
+      "git_blob_sha": "4987f381f6990783993736ac8351ae0dd237941f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure.mjs",
+      "git_blob_sha": "330840b84a1aa05938ef64774a972ac526cc5886",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/schema.proposal.sql",
+      "git_blob_sha": "289be067311ed86ed01123333fdf605d3b02d44c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/stack-invariants.acceptance.sql",
+      "git_blob_sha": "37f3feddb1b0c8aeb90b0a034a7a6c6ac5313a95",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/worker.mjs",
+      "git_blob_sha": "2ea5a5cd44186873940ec80f4ed3fef5b7abdef1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json",
+      "git_blob_sha": "544d8292cb1cfa649e5dd04817221e2bcdaf8d10",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json",
+      "git_blob_sha": "749b750148e9d94dc8a0327c67d61dd4c322191b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_CI.uk.md",
+      "git_blob_sha": "b09d6d4c72bdc8aa5c00f40e275db5a85a0562a4",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_RECEIPT_READBACK.json",
+      "git_blob_sha": "cb682ecbdc5512e4f1753d6aa97874ed0119a95a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_BASELINE_RED.json",
+      "git_blob_sha": "34c3f2ad1439e55b14a353167ca6a1d0f5e21c1d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_FINAL_ACCEPTED.json",
+      "git_blob_sha": "ed88090f99c29d7f0997a56a6800fb95da02420d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_FINAL_RETRY_ACCEPTED.json",
+      "git_blob_sha": "9989a0c53ed00fd381470236003ea46910bb5c41",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_GUARD_ACCEPTED.json",
+      "git_blob_sha": "9a29f926a3d36440a1d5a535a3642431b21791e1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_SURFACES.json",
+      "git_blob_sha": "c35c3a996a6837ffa78d98cda4602a36904fc9e5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW1_VERIFIED.json",
+      "git_blob_sha": "b5b44ecc5f340bd17cfd32909aaafc5426f52b7f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_CLIENT_BASELINE_RED.json",
+      "git_blob_sha": "c8e1f25c265c9dfe5d3794656f49603df403241c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_FINAL_SOURCE_EQUIVALENCE.json",
+      "git_blob_sha": "99c2384c4cee89e1b4193d0d7287eb44437a3ca0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_FRESH_DB_CONCURRENCY.json",
+      "git_blob_sha": "a308c48a60283d06dddfd4ea821b52af8b74ac5e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_LIFECYCLE_BASELINE_RED.json",
+      "git_blob_sha": "ae45eaf1c10db4c79b22bfdf43279841d578177b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_LOCK_BASELINE_RED.json",
+      "git_blob_sha": "f2fb2f57b7484e6d9c470f07f71514734acd9ca2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_LOCKS_VERIFIED.json",
+      "git_blob_sha": "81208b6cc1318d17db46f318edd8a2438f0d9797",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_OUTCOME_FINAL_VERIFIED.json",
+      "git_blob_sha": "b790aa778eee92eefcf1e4036c0d4aa362ca97a8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_READBACK.json",
+      "git_blob_sha": "9ce3dad1779c2a27eee3a3924a5a89a9f2bbf546",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_REVIEW2_SOURCE_EQUIVALENCE.json",
+      "git_blob_sha": "240fd832e108c7c39d33054a4c2772f4ae083670",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SOURCE_REVIEW1.json",
+      "git_blob_sha": "b33fafe68c3d69cfa20ec5c8e4f5a183d6670e55",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SOURCE_REVIEW2.json",
+      "git_blob_sha": "c4ccef58ee5c1c9cba67a44f7a790b17e7d12aef",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SOURCE.json",
+      "git_blob_sha": "5d6e043123b91e819acca20533bdc0355ed12025",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_ACCEPTED.json",
+      "git_blob_sha": "066d3d704ca8fdacc98317c1160458ce012afd6b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW1_ACCEPTED.json",
+      "git_blob_sha": "660505bc89651ad0b4220494275d60ddbeb06b6c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW1_VERIFIED.json",
+      "git_blob_sha": "9b930f88f2266cccaedc4bc021653797c1d33344",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW2_FINAL_VERIFIED.json",
+      "git_blob_sha": "c18411285cafe5b1b80a6064ec1326c2981b61bd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW2_FINAL.json",
+      "git_blob_sha": "6ad2e300aad5a7f4228a0f3cff3c70b00fc53ee9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL_REVIEW2_VERIFIED.json",
+      "git_blob_sha": "ecc1d77b3020503a075ea6a305d20cdf0fd73a7f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_SQL.json",
+      "git_blob_sha": "fb91125359336e12d450cbe76ee530ad15e38443",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_UI_LOGOUT_RED.json",
+      "git_blob_sha": "3e86d94b01b11016640524c0c6323e5d701ca138",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE.uk.md",
+      "git_blob_sha": "d4067c208b7e37ecdaaa07ebe7d4da510b47c907",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json",
+      "git_blob_sha": "0c0d681930da4fb34997615a2fbdf0e85d55a6ec",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/PROVIDER_TRIAGE.uk.md",
+      "git_blob_sha": "58eb80a06e10032760519ee55fb9ceb309606dee",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/SCOPER.uk.md",
+      "git_blob_sha": "35c5e5080c4ddabfe6d4478e7d489106ff9c78ef",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-review-20261017/CI_REVIEW.uk.md",
+      "git_blob_sha": "641ff1c50c7ccd89cd26eddf54ed9a76de1edc5e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-review-20261017/EVIDENCE_REVIEW.uk.md",
+      "git_blob_sha": "fcefbcd43ed4a2e7b94cbb6fa00fc5b065ba553c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-review-20261017/PROVIDER_RECEIPTS.json",
+      "git_blob_sha": "dd22b83947e6720e614faf3c6d8f2ab9fb9424ac",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/gemini-review-20261017/REPORT.uk.md",
+      "git_blob_sha": "cc0d07730b3a1f1ba2831ae37b3247b5cc41fc01",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/a11y-report.json",
+      "git_blob_sha": "d3c13861a5ce1f8d8a901e9f07ec7142b2c93903",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/ACCEPTANCE.json",
+      "git_blob_sha": "179a347814cb6f3d290a7000da6fcc2a0e3e096d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/header-baseline.json",
+      "git_blob_sha": "4fa0c2f104f9615d216324978d93e0c7d061d8b5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/header-candidate.json",
+      "git_blob_sha": "f818dfa28089cd46c30811459cbe12b6d35b8736",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/header-mutant.json",
+      "git_blob_sha": "72a6dc69bee36c406a4ad40559b010ab9b2ef2d0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/location-browser.json",
+      "git_blob_sha": "807db47e8b982fc25913b051ec946d60579fee91",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/offline-candidate.json",
+      "git_blob_sha": "81141f92006168e436b7036cbeef18f723114c59",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/offline-mutant.json",
+      "git_blob_sha": "23ab71f8dce44b12232ba558c593d6fab83cbf1e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/PROVIDER_READBACK.json",
+      "git_blob_sha": "9e8ed1c7c7059eeaba8fb514d0d11d7a8de2587c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/reviewed-release-20261015/PROVIDER_TRIAGE.uk.md",
+      "git_blob_sha": "07aef40da254d88df794721733fedbd0a123af7e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": ".gitattributes",
+      "git_blob_sha": "5f413acfd3400dcd30c3d1b5a006513812c9330d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob_sha": "7fce75e39a88898ea6507249c776e01b52c2badc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "CLAUDE.md",
+      "git_blob_sha": "245e4f93034a1cd479a111feab9594bcfc7291ef",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/case-outcome.test.mjs",
+      "git_blob_sha": "ef8193da1bb73c5f0df58aade32ebb6550a991f3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/config-endpoint.test.mjs",
+      "git_blob_sha": "1d7c6d011ea6286e16b3970db26bc9e79b6c6fcb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/google-oauth.test.mjs",
+      "git_blob_sha": "e0be0aa93699f99e674d3ad7edac0b3f62618b51",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/group-room-generation.test.mjs",
+      "git_blob_sha": "00e6e52c80d8d12d5a817a9c588846d7b4666de2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/group-room.test.mjs",
+      "git_blob_sha": "d55054c55cad8ba808501dd140e03a841dde0032",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/local_acceptance.test.mjs",
+      "git_blob_sha": "9aaf06d08a430c95f83caa4a7902dc20fe3980cb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-address.test.mjs",
+      "git_blob_sha": "4acb0d549d860b11a23150057b730d8c9d0cb589",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-location.test.mjs",
+      "git_blob_sha": "6454260dec14a2b5a0d5a23803d0c38e26505d7b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/meeting-status-cleanup.test.mjs",
+      "git_blob_sha": "effbbe718b10f0ffa559fac2ecee706531de1c7b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/message-intent.test.mjs",
+      "git_blob_sha": "8a3d9854c11d9cb6d46fea3ebbbbdb0a20de7ba5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/migration_runner.test.mjs",
+      "git_blob_sha": "15f2adb74ffda7eb5c9f371d6ee4187e86866143",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-delete.test.mjs",
+      "git_blob_sha": "1f2d8edcf7f01e4a05636478b4018ac422366890",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure-generation.test.mjs",
+      "git_blob_sha": "2eac6aadfa98322dc440e0e27186e1bb02e789d7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/profile-erasure.test.mjs",
+      "git_blob_sha": "7eda6c083664bac28801d5e280e43d87838c8028",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "neon/worker.test.mjs",
+      "git_blob_sha": "35ebd2c007b2e6c189ea655a1143a1f0d2d9220e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "git_blob_sha": "78659fccb5b55af73775e5abda72e8b30ce1adfd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tests/browser-e2e.spec.mjs",
+      "git_blob_sha": "90e489c5497e31714c3a4c789715b41ad251f2d5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tests/product-access-checks.mjs",
+      "git_blob_sha": "ad736a78f98d87790a5b0e9c083f9adbf6085275",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tests/product-access.spec.mjs",
+      "git_blob_sha": "129baddb5acd51d85fd9e21d068e170ef7462bfe",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tests/studio-e2e.spec.mjs",
+      "git_blob_sha": "00edaff222bfd30b79db5c8e782f52aef97d52f5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/android-cloud-acceptance.mjs",
+      "git_blob_sha": "a01e37cb7357f69f58f36836332760667932475e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/atelier-acceptance.mjs",
+      "git_blob_sha": "bd53f253afbf86713ac190f5941d590f063f7942",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-browser-acceptance.mjs",
+      "git_blob_sha": "689ef4b680b0e46b79c97e24e09202644bbe1e1c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-client-acceptance.mjs",
+      "git_blob_sha": "26dccea4a79e2c7a1f214e357b9c189bfce077b8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-export-acceptance.mjs",
+      "git_blob_sha": "e73082946c6fc944935b058bdf0b874a24151a35",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-export-browser.mjs",
+      "git_blob_sha": "4671db372b8f06000785f5168adb4ccb18df86bf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-gateway-acceptance.mjs",
+      "git_blob_sha": "e320a4f71a691b3b9d29e7effbf64948b5e87efe",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-sql-acceptance.mjs",
+      "git_blob_sha": "f2cdff60c926b8fd37189ed987faff97c23c2c7e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-outcome-ui-release-acceptance.mjs",
+      "git_blob_sha": "9cfd9e6673c26be78d51c51b3e13698ed1f5bede",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-social-draft-acceptance.mjs",
+      "git_blob_sha": "1e096c3f451d50fa0bc70758a57ba3d8ae21ba13",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/case-social-draft-browser.mjs",
+      "git_blob_sha": "171609362df9e9b883d44660ccd90ba23e5cfd33",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/fixtures/case-outcome-fixture.mjs",
+      "git_blob_sha": "ed82ab571c1014d606f178c79a6bcc3fa38a06a7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/fixtures/message-intent-fixture.mjs",
+      "git_blob_sha": "3e060b048f014cf040d01c0668ca4a02a72b0e87",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/fixtures/profile-delete-fixture.mjs",
+      "git_blob_sha": "e7985f7ad17519e4b5c9aadc5ce439ba72cfb5aa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/fixtures/real-journey-fixture.mjs",
+      "git_blob_sha": "e1b343312e21ab4b851b0936f8131fb49fbde104",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/group-room-browser-acceptance.mjs",
+      "git_blob_sha": "625b1ca7447f7829e2adcf8d0047b754948823c4",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/group-room-package-acceptance.mjs",
+      "git_blob_sha": "9ff423e09ff12d8c2be7a569c08bd28f83508ce3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/group-room-sql-acceptance.mjs",
+      "git_blob_sha": "126826be0d317a57126cfab1c74d0f3e0d2b7cbf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/header-layout-acceptance-20261013.mjs",
+      "git_blob_sha": "a72559e4949d7f9af07095bca6086db0b8021063",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/invitation-acceptance-browser.mjs",
+      "git_blob_sha": "eceb0a21a36e1d9c9891fddce1fe7ad3aca6c862",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/journey-ai-acceptance.mjs",
+      "git_blob_sha": "1dbcb62a21eca843649f1a0a0d73caf1c2985707",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/journey-ai-http-acceptance.mjs",
+      "git_blob_sha": "428a99fa2ad42f3c69b9c7f4b762203a57d4e81e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/journey-browser-acceptance.mjs",
+      "git_blob_sha": "0825bfc292ba55970826b17cb8a9c66bed61c357",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/journey-dynamic-audit-acceptance.mjs",
+      "git_blob_sha": "b62c0752bdbea18d1c359b6beb5502512a29bd21",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/journey-surface-acceptance.mjs",
+      "git_blob_sha": "f4f4d796d5b8fdb7f3e2cea4f3d71a52984b24d2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/location-browser-acceptance.mjs",
+      "git_blob_sha": "5323c9345baea5f71a0bcbc55244bd20238c85a1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/location-sql-acceptance.mjs",
+      "git_blob_sha": "1d7218c70c881f94a9d0e2cdc963053975dfd418",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/market-release-acceptance.mjs",
+      "git_blob_sha": "8c7d117cac18ed6998a386eaf12b6af65db919a1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-client-acceptance.mjs",
+      "git_blob_sha": "fef2bd1bda4221dc8fcac27bef3480a9b12e7cab",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-gateway-acceptance.mjs",
+      "git_blob_sha": "b4bb581a15bd2a6a84944f220e05230a6d01d355",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-navigation-acceptance.mjs",
+      "git_blob_sha": "03651136dc34088199687682f19056707d4394bf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-read-acceptance.mjs",
+      "git_blob_sha": "848f5bbee2b4063ff7294acef0ee605870e4359c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-sql-acceptance.mjs",
+      "git_blob_sha": "bb124ce2d6a060a86ed34b0677aa2350d85667aa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-address-ui-acceptance.mjs",
+      "git_blob_sha": "6b4bf019c79a73709cf2cdeb21b7ed3a0a5bf5a3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-journey-link-acceptance.mjs",
+      "git_blob_sha": "79bd00e5c2d196bf382f3dbecc851e8380fd8a47",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-location-agreement-acceptance.mjs",
+      "git_blob_sha": "4b313e2c28b6262b9ea18e6b01b44ba2f82bb341",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/meeting-status-guard-sql-acceptance.mjs",
+      "git_blob_sha": "69584fbe036123f7e6365f2850e6039836d7616d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/message-draft-continuity-acceptance.mjs",
+      "git_blob_sha": "caed382319648494c6207e78db00de8347432633",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/message-intent-release-acceptance.mjs",
+      "git_blob_sha": "04ce45493d97d80901936bbeff86d92cd88b2447",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/message-intent-sql-acceptance.mjs",
+      "git_blob_sha": "6e3d9f4028f41ed3731e27e76bed811e922ebc31",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/message-recovery-acceptance.mjs",
+      "git_blob_sha": "e2a2b535f15de8a9d0816ecde70bc6751773456e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/mobile-pwa-acceptance.mjs",
+      "git_blob_sha": "d64a6a68979cc4e9f146ea4008dbf5a2be3e78a5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/mobile-release-acceptance.mjs",
+      "git_blob_sha": "17b638295d5d51162719f934661985fdd517e023",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/mobile-webkit-acceptance-20261009.mjs",
+      "git_blob_sha": "b100e49e46b5f4f940cf86076dd7108848ed30ce",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/offline-shell-acceptance.mjs",
+      "git_blob_sha": "7e8f0adc9f9e1ed746dff23b52edc9ae3e5f4041",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-archive-acceptance.mjs",
+      "git_blob_sha": "020873421695c15d5a94711b81884812c590d8e8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-archive-browser.mjs",
+      "git_blob_sha": "34ba6475b443fe868b68e29550e91e51fec5b0d7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-export-recovery-acceptance.mjs",
+      "git_blob_sha": "ebc7291a977f275835cbfb36d15102e693fc4c81",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-export-recovery-browser.mjs",
+      "git_blob_sha": "729358c12e268f69c03781245492806bc0eeff81",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-read-acceptance.mjs",
+      "git_blob_sha": "ade7b832857ba1a01b4b1047db4aa2db5d5399c0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/outcome-read-browser.mjs",
+      "git_blob_sha": "153aba90ca87f936ac16d7b497d20391f5b186a0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/partner-status-acceptance.mjs",
+      "git_blob_sha": "81b143cb3b2db2a2868d6eb7572d9d8a36c739c9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/pilot-hardening-sql.mjs",
+      "git_blob_sha": "8adf1f0e1d5474ae30cca0fb86cfbf6516ca1d30",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/pilot-hardening-transport.mjs",
+      "git_blob_sha": "737b7c14b960ee31c2c830bd7af8a03c41b1e5d9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/profile-erasure-browser.mjs",
+      "git_blob_sha": "886e0180f2b23a0bce4a762e1c205204b450ab13",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/profile-erasure-lock-review.mjs",
+      "git_blob_sha": "4b1726538832f9f0c8d4c1c3e0203dbc31b0c5bb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/profile-erasure-review1.mjs",
+      "git_blob_sha": "a231ee4390cb9b288f91177bd7125160a3fc5765",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/profile-erasure-sql-acceptance.mjs",
+      "git_blob_sha": "7d6e309eff5d23463dad4246de7c695408c868be",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/real-journey-browser-acceptance.mjs",
+      "git_blob_sha": "73c814324b8a6b6b21efba0322b35ca713410044",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/real-journey-modes-browser-acceptance.mjs",
+      "git_blob_sha": "4d750aa95a52a5d9331335db24a2c8f204f5b98e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/real-journey-release-acceptance.mjs",
+      "git_blob_sha": "c9c3acb40f5eb0fb4d187c1605970572635b7f4e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/real-journey-sql-acceptance.mjs",
+      "git_blob_sha": "a0c87831e166551a27c04398aeef68b01f0a6da9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/social-draft-recovery-acceptance.mjs",
+      "git_blob_sha": "e2a647fcd74c1ab319495c4e3c33f08b6d4711a2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/studio-acceptance.mjs",
+      "git_blob_sha": "4768906ad5a1e8876f763a50a721a84a604bfa46",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/summit-acceptance.mjs",
+      "git_blob_sha": "92bc6fb017734543aea83055584ecf9e40388946",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/triangle-visual-acceptance.mjs",
+      "git_blob_sha": "fddd06d61caf68ef18ca4518f86b4b37c6f6e00d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/ux-flow-acceptance.mjs",
+      "git_blob_sha": "0546fafddac79e1c10f74af0ead947d6140837ca",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/a11y_audit.md",
+      "git_blob_sha": "8524960e791687fb68c4b8993142ef9a4d01b0fd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/action-scoper.test.mjs",
+      "git_blob_sha": "d60e4327ff3645fed9e61b772382840c5aa1346a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/app.behavioral.test.mjs",
+      "git_blob_sha": "e86c679722582b2f1e1710f6af6fc242de3a1ab2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/archive-codec.test.mjs",
+      "git_blob_sha": "e916af0803ff7ac9fddba721c875fcde990829c5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/atelier.test.mjs",
+      "git_blob_sha": "654592dc1b94c88f8cf3930c06716e255d86adc9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/b-matching.test.mjs",
+      "git_blob_sha": "d3ffa1c4b813dc9c84c231ba33c4e717c8d3f366",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/b2-case-store-shape.test.mjs",
+      "git_blob_sha": "59b4972835f2f98d717244966e775f7316f3bdb5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/behaviors-core.test.mjs",
+      "git_blob_sha": "ca92e5da3349ea02a73cc163bf6bfc3c83fc1404",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/business-case.test.mjs",
+      "git_blob_sha": "70c0b5149be023f5144fbf7c481fa42f1c44b8e2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/business-pilot.test.mjs",
+      "git_blob_sha": "179c47177ff33f016dc40efee2dcba9b4dcc2d18",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cascade_orchestrator.test.mjs",
+      "git_blob_sha": "68f0dc0e5af730c51d0072cafbd3c0e1ce3cad62",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-approval-guard.test.mjs",
+      "git_blob_sha": "7ce7b30b98380032b78b80054a72044d7094b8b2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-cost.test.mjs",
+      "git_blob_sha": "587efc522f3271d36ae87f47c9c0bbfbe4c7898d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-outcome-client.test.mjs",
+      "git_blob_sha": "28f96f5e3f2cbe640b960b903d1abea53b745205",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-outcome-export.test.mjs",
+      "git_blob_sha": "6088aa5b44da296adea4c4bdbc81d9f8762f3ec3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/case-social-draft.test.mjs",
+      "git_blob_sha": "2af7b19478230b27b3d94720eff4bc2cdd459ec3",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/chatgpt-transfer.test.mjs",
+      "git_blob_sha": "56c1258fe33ddd4b2aca6db15743c043df91efb7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/community.test.mjs",
+      "git_blob_sha": "f3c1f0b5cab299bb080f7e40daf6c8aa0aa1175d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/credit-ledger.test.mjs",
+      "git_blob_sha": "cc518e2d824b1d1273141ec4d2a1564b301bc24a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cusum.test.mjs",
+      "git_blob_sha": "6796eda075aefdd3f85162d016432a3e02bf280f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/cycle-exchange.test.mjs",
+      "git_blob_sha": "9beaa29af7e1e03fffe29dd5cd68201d32d7ece2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/data.test.mjs",
+      "git_blob_sha": "d088735a44555d00a304a6e50bb181132e9f45dd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/decision-layer.test.mjs",
+      "git_blob_sha": "950fbfedc4c43b976cf6cf50fca622c3b6a81c91",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/declared-fit.test.mjs",
+      "git_blob_sha": "cc849df309827af092510736f4fc0500cdb1d9ec",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/demo-journey.test.mjs",
+      "git_blob_sha": "fae20f6f21704cc825abda75b3f3084876d86eb8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/differentiation.test.mjs",
+      "git_blob_sha": "1e95897a2604fd7f66dcbf2beb62db3bbc29ac59",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/e2e-neon-flow.test.mjs",
+      "git_blob_sha": "66f27cf362dfef009cee6db31afaa8c9f3514d92",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/economics.test.mjs",
+      "git_blob_sha": "7790be5492fe97f34881e32b7998ef196cd7eac1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/economics/qr_bill.test.mjs",
+      "git_blob_sha": "5d9acec0c2d8fa22aa5f0ffa2cae6988ffcea76e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/effort-outcome.test.mjs",
+      "git_blob_sha": "84f6fa3eb6994bf624443a7b7dd7eca3864c5e3d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/explore-planner.test.mjs",
+      "git_blob_sha": "70e91521cc4534528a9c8fa67db51d0d83ac378c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/field-audience.test.mjs",
+      "git_blob_sha": "4405f3dfa1bce9b70fe0a55f47807893941e3532",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/funnel-analytics.test.mjs",
+      "git_blob_sha": "7ce15963361ff077031a0e3c38bcdc77c299f46c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/group-logistics.test.mjs",
+      "git_blob_sha": "133f02abb7fc84aabf7488eb8697aa5d7fffb75a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/i18n.test.mjs",
+      "git_blob_sha": "72b686593019b9e960644a1b205c104d5bbba430",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/cascade_orchestrator.test.mjs",
+      "git_blob_sha": "baadc2b1e18bc92d282a4602b5ec31fdad535d19",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/event_theme.test.mjs",
+      "git_blob_sha": "08f47ebe9a220bea37909c75e6dbf9bf7c1905ef",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/layout_recomposer.test.mjs",
+      "git_blob_sha": "caf1b6e4c126d1c184e752525ee14b286071d4f8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/map_style.test.mjs",
+      "git_blob_sha": "3f7f71f7bc3ec2b24dded7d34c278f7ce979b6af",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/operator_dashboard.test.mjs",
+      "git_blob_sha": "a484e8592395fcb0cccfb61bf588281ec875c831",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/privacy_audit.test.mjs",
+      "git_blob_sha": "fad6099688264b081e7cf2097bcb0ac1cc4cc9e0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/iceberg/token_forge.test.mjs",
+      "git_blob_sha": "cf56fcb9c8bebaa593ac9e8efbaec8f051a08e2b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/index-i18n.test.mjs",
+      "git_blob_sha": "e2db827cb9627929ec4f161837e972ccbfda04d9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/invitation-acceptance.test.mjs",
+      "git_blob_sha": "8a50e88b3dc98ba30268c509a119155a1c58aeb7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/joint-project.test.mjs",
+      "git_blob_sha": "b1c02d6166444fdd2643f866bd4c4b414756d779",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-ai-client.test.mjs",
+      "git_blob_sha": "66cc9609bd8b7499e88f1ea28ea78727cc3fae4f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-core.test.mjs",
+      "git_blob_sha": "a6fc3302301edded5e501f095862c15c2b26f92a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/journey-handoff.test.mjs",
+      "git_blob_sha": "678405688e7a7fe08fc957b5add951d7c3e5ab69",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/k-anon.test.mjs",
+      "git_blob_sha": "8dc8a2b4990bf71b966602a4cc83afe68ed3afcc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/live-location.test.mjs",
+      "git_blob_sha": "77ee8d4401f80bbe6f9e673e79ca27a5464ab463",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/location-session.test.mjs",
+      "git_blob_sha": "992ec0aa4fc42be5719db18e5f7d89ea1bc66cb5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/ma4.test.mjs",
+      "git_blob_sha": "f0d9bdb1d5178b3cf4eda58919169952e4e3962e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/matching.test.mjs",
+      "git_blob_sha": "8792de4d63f1de83f8a339d4204620d6389f28c5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/meeting-address-client.test.mjs",
+      "git_blob_sha": "cf43ab637dc1eaad1fd0c763b74c86cbfaf790d2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/meeting-card.test.mjs",
+      "git_blob_sha": "32d777ee17aa90688213bea8e92358e31c7a134f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/meeting-location-agreement.test.mjs",
+      "git_blob_sha": "87836151351e4bfa53dae4427a168feda7f3e9ed",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/memory/vector_store.test.mjs",
+      "git_blob_sha": "4882a1c9d54849671028c683c27e3e081f2a68fd",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/message-intent.test.mjs",
+      "git_blob_sha": "ae1e7c5a4f35ed3e591678b3338267512bf19737",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/mobile-pilot.test.mjs",
+      "git_blob_sha": "18d6289a1052d7e1b760c505bdaa8344d87adfc4",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/n-version-hash.test.mjs",
+      "git_blob_sha": "a7b534e3571bc8f6d6271b7e3eabee47aa7b0062",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/need-decay.test.mjs",
+      "git_blob_sha": "be67f39382788b7ba44e6e8774a3e32730dc248a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/neon-store.test.mjs",
+      "git_blob_sha": "a585f0278670e129783b1ffbaf38d5514d5bafe8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/onboarding-tour.test.mjs",
+      "git_blob_sha": "c52ddebdf7826d5716a63f54eeec93f94c85b1fc",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/outcome-acceptance.test.mjs",
+      "git_blob_sha": "ecdb3d6ce7be51bf699aa4d7d02e8e602cf4309c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/outcome-archive.test.mjs",
+      "git_blob_sha": "8c30f6864c6315fa72641479c422a7a57420c068",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-import.test.mjs",
+      "git_blob_sha": "f98ea0a4b68937e0cd7d45e3a150fe6de65c8453",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/profile-portability.test.mjs",
+      "git_blob_sha": "681d6d6eecf7e96b3096f72b4d6c25d8fa0ef7a1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/proof-state.test.mjs",
+      "git_blob_sha": "ab4c1e9c744377cf072182ac146ff9f1ae08f2ac",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/pwa-mobile.test.mjs",
+      "git_blob_sha": "0f05652c56a881c232dfed8b13e05c2e43d1eede",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/pwa.test.mjs",
+      "git_blob_sha": "ae93922598a72110ad05f41cd8fb7c3bbf96c111",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/README.md",
+      "git_blob_sha": "f1ba9fcbd347d2da4f3f2fa3421521284da4ea11",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey-client.test.mjs",
+      "git_blob_sha": "33816fee1f7773069aff2877c21b040c5be8448d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey-i18n.test.mjs",
+      "git_blob_sha": "4552c19d1d7e54e53c3eb98c1504bd4abb993d4f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-journey-mode-editor.test.mjs",
+      "git_blob_sha": "4241bce037514f9c31b64afc1a6960800b412918",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/real-pilot.test.mjs",
+      "git_blob_sha": "73c2e47434e186677be379f6209745e8d12b9ea2",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/referral.test.mjs",
+      "git_blob_sha": "3d45c3764a80aa62c90035606f858f3c0e8cb021",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/result-card.test.mjs",
+      "git_blob_sha": "8268e150609b38270001f198fb9ab7f3f96f8e9e",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/room-api.test.mjs",
+      "git_blob_sha": "e213cb687f5258b10ccd8f7b01ba1d74ba50fa2c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server.test.mjs",
+      "git_blob_sha": "1ec81dae55c52bf0d934eba6d9c4be2e35093836",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/server/local-journey-ai.test.mjs",
+      "git_blob_sha": "329139169f8d0aa67beec4079c968157e4f05947",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/session-value.test.mjs",
+      "git_blob_sha": "10c52fb2457d6c43c7fedf7a92376d64665ea6fe",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/soft-block.test.mjs",
+      "git_blob_sha": "fe6a555982f85c38ad1fc798e5aedd019fe37b97",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/stable-matching.test.mjs",
+      "git_blob_sha": "d8653198c0f619bfdf31f0b0d2c3c4ec7d39ae4f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/studio-sw.test.mjs",
+      "git_blob_sha": "473b1e8b10eca00a339c579543534d52fa84423c",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/style-switcher.test.mjs",
+      "git_blob_sha": "e56083f4ea9186daab1623de117371bacec528f5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/summit.test.mjs",
+      "git_blob_sha": "bec86e8f7dd110387d0b1aedd9657e0d1970ccd0",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/swiss-compliance.test.mjs",
+      "git_blob_sha": "6b3810c58c6e6fea1743278ed5f110bf13ca5d1d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/thompson.test.mjs",
+      "git_blob_sha": "7980380a79229e1181dcb98caf218c2b6bc799cf",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/tier-matrix.test.mjs",
+      "git_blob_sha": "9b2af861c4a46818c0a01f92b20b0e59637152af",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/triangle-room.test.mjs",
+      "git_blob_sha": "08b97874a89b28a44dbc2452fe16520eeeec639d",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/unavailable-state.test.mjs",
+      "git_blob_sha": "a654c3dc1bafe88f7e7c4ce115c05522d25d5d1a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/viewers.test.mjs",
+      "git_blob_sha": "501658a3e1ba0859d494564955d78cc00aa7d3fa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/virality.test.mjs",
+      "git_blob_sha": "d11c0f6096c202e78b35743ff62470bf72c128b7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/wtp.test.mjs",
+      "git_blob_sha": "e1c287170113a65d77c745db450e3dea1595a859",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "web_launch/apple-touch-icon.png",
+      "git_blob_sha": "76690b11b388ab016a4f630dbc8cdeb6c39d5aa6",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/icon-192.png",
+      "git_blob_sha": "db9f3a16b62cd156cd5fd3c20b0e823031832342",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/icon-512.png",
+      "git_blob_sha": "495246d3a63237d1e571afd4bec29d9161ba837d",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/montserrat-400.woff2",
+      "git_blob_sha": "293685753725d84b180294111dfb86023b02275b",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/montserrat-500.woff2",
+      "git_blob_sha": "5c85c84d666c75838c1db22084b9bb73f1d66144",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/portrait-leo.webp",
+      "git_blob_sha": "42ccc6835d26a22618d672b352a27cda6cf8e018",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/portrait-mara.webp",
+      "git_blob_sha": "b19350b9da7a1e9e2b744801ec40be17ac4af67f",
+      "encoding": "base64"
+    },
+    {
+      "path": "web_launch/portrait-noor.webp",
+      "git_blob_sha": "36511b4b9ee19ed9a91883dc4e2488ac37518212",
+      "encoding": "base64"
+    },
+    {
+      "path": "supabase/schema.sql",
+      "git_blob_sha": "80a163aaf35ce58d1a4ad68ccbdc55881b40cfd9",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/real-pilot.proposal.sql",
+      "git_blob_sha": "7e59f1f6497f26fd2dd7e54ea33a97f74cec4750",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/real-pilot.acceptance.sql",
+      "git_blob_sha": "412b186114cb44d7c6b2c25f3a4fa19de9dfab69",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/case-state.proposal.sql",
+      "git_blob_sha": "68fc54fadc04775b7d666916a640dad68e79636f",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/case-state.acceptance.sql",
+      "git_blob_sha": "7890dbc53c9c671d6e41ad0258f59cdff4fe8ccb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/meeting-location.proposal.sql",
+      "git_blob_sha": "0bf4157ac21e9f72923d0f6fd31ada5ebb04422b",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/meeting-location.acceptance.sql",
+      "git_blob_sha": "ced67d0e2ddc69fb790e31dcbb64b58ff9c45275",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/group-room.proposal.sql",
+      "git_blob_sha": "90e326938004d2216961ecf7a73d13b1201e5094",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/group-room.acceptance.sql",
+      "git_blob_sha": "f1635a83adb3ad396f0acf2846859c8ea5c55f65",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "supabase/pilot-consent.proposal.sql",
+      "git_blob_sha": "2c7cb4b3f66f3c9668be016aa8238e22fc39ac53",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "tools/bot-hour-pack.mjs",
+      "git_blob_sha": "a9edd2041a8f3a156ee3c22c522a4be4c1e93e3a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/overnight-20261004/outcome-export-plain.json",
+      "git_blob_sha": "cd698278f21822c39ce152639a35a8487402761a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "artifacts/overnight-20261004/outcome-export-gzip.json",
+      "git_blob_sha": "99aec14cc80f7369e68b0a178ded9c4e7a171880",
+      "encoding": "utf-8"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "status": "PASS_AUDIT_REPLAY_PREFLIGHT_ONLY",
+  "scope": "Audit runner portability and fail-closed provenance checks. This is not product acceptance. Only disposable copied module was changed; pinned snapshot untouched.",
+  "checks": [
+    {
+      "script": "technical-repros.mjs",
+      "case": "default_repository_layout",
+      "exitCode": 0,
+      "sourcePinVerified": true,
+      "sourceFileCount": 27
+    },
+    {
+      "script": "paid-oneway-card-repro.mjs",
+      "case": "default_repository_layout",
+      "exitCode": 0,
+      "sourcePinVerified": true,
+      "sourceFileCount": 27
+    },
+    {
+      "script": "technical-repros.mjs",
+      "case": "one_source_module_changed_in_disposable_copy",
+      "exitCode": 1,
+      "status": "PINNED_REPLAY_REFUSED",
+      "productCodeImported": false,
+      "findingsReplayed": false,
+      "mismatchPaths": [
+        "neon/worker.mjs"
+      ]
+    },
+    {
+      "script": "paid-oneway-card-repro.mjs",
+      "case": "one_source_module_changed_in_disposable_copy",
+      "exitCode": 1,
+      "status": "PINNED_REPLAY_REFUSED",
+      "productCodeImported": false,
+      "findingsReplayed": false,
+      "mismatchPaths": [
+        "neon/worker.mjs"
+      ]
+    },
+    {
+      "script": "technical-repros.mjs",
+      "case": "relative_override_refused",
+      "exitCode": 1,
+      "status": "PINNED_REPLAY_REFUSED",
+      "productCodeImported": false,
+      "findingsReplayed": false
+    },
+    {
+      "script": "paid-oneway-card-repro.mjs",
+      "case": "relative_override_refused",
+      "exitCode": 1,
+      "status": "PINNED_REPLAY_REFUSED",
+      "productCodeImported": false,
+      "findingsReplayed": false
+    }
+  ]
+}

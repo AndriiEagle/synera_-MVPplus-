@@ -1,0 +1,17 @@
+{
+  "status": "PINNED_REPLAY_REFUSED",
+  "expectedBaselineCommit": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "sourcePinVerified": false,
+  "productCodeImported": false,
+  "findingsReplayed": false,
+  "reason": "Source differs from the audited baseline; no pinned replay performed.",
+  "sourceRoot": "/workspace/scratch/7d04b4a8a1e1/audit-work/synera-audit-replay-c6uz8lan/",
+  "mismatches": [
+    {
+      "path": "neon/worker.mjs",
+      "expected": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484",
+      "actual": "1afe374c9b44c755c3da4f316b851e547a52c9f821f59f94aba7ce03e4bd276d",
+      "matches": false
+    }
+  ]
+}

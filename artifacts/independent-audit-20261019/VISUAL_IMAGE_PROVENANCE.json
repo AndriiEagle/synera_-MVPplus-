@@ -1,0 +1,77 @@
+[
+  {
+    "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+    "path": "artifacts/gemini-implementation-20261017/case-social-draft-390x844.png",
+    "git_blob_sha": "f32ba6dcf920e3da8059c48ce5b08229bce9a12f",
+    "sha256": "b34578b7e893189516ad472c0ee18a3e60c5eef6aaa5538ea7103804a630fe07",
+    "bytes": 75817,
+    "local_path": "/workspace/scratch/7d04b4a8a1e1/audit-work/root-visual/case-social-draft-390x844.png",
+    "historical": true,
+    "current_render": false,
+    "dimensions": [
+      390,
+      844
+    ],
+    "root_viewed": true
+  },
+  {
+    "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+    "path": "artifacts/gemini-implementation-20261017/profile-erasure-390x844.png",
+    "git_blob_sha": "cef6e322df1f708dd1fe24837818425797052663",
+    "sha256": "4c498b5acb697779239af2f4c1167827537431805ba404c3c3b4be851fd6baed",
+    "bytes": 133089,
+    "local_path": "/workspace/scratch/7d04b4a8a1e1/audit-work/root-visual/profile-erasure-390x844.png",
+    "historical": true,
+    "current_render": false,
+    "dimensions": [
+      390,
+      2467
+    ],
+    "root_viewed": true
+  },
+  {
+    "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+    "path": "artifacts/gemini-implementation-20261017/result-card-390x844.png",
+    "git_blob_sha": "ab47c788b68ce46bf9a928af8a76433fe4c12a75",
+    "sha256": "31b21849a42563b7b0563795201249eeea981d80f03c012650c559b68f9489c0",
+    "bytes": 39476,
+    "local_path": "/workspace/scratch/7d04b4a8a1e1/audit-work/root-visual/result-card-390x844.png",
+    "historical": true,
+    "current_render": false,
+    "dimensions": [
+      390,
+      844
+    ],
+    "root_viewed": true
+  },
+  {
+    "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+    "path": "artifacts/mobile-20261007/responsive/full-reviewed/chromium-320-index.png",
+    "git_blob_sha": "54e2e057e2693e403aac3aa57fa2687ad691f353",
+    "sha256": "6f6972c1c41d0ee80943826030f0f83ef10854507b977cb76b91b5a6740231d3",
+    "bytes": 114785,
+    "dimensions": [
+      320,
+      2540
+    ],
+    "local_path": "/workspace/scratch/7d04b4a8a1e1/audit-work/root-visual/chromium-320-index.png",
+    "historical": true,
+    "current_render": false,
+    "root_viewed": true
+  },
+  {
+    "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+    "path": "artifacts/mobile-20261007/responsive/full-reviewed/chromium-atelier-320-index.png",
+    "git_blob_sha": "462f1d6358f49825a72e1f818fbcc1eed8f706f0",
+    "sha256": "ff2fff19765479584b775f133ed1713dc1fbb798a58e7f79cbdd57ff5c4874af",
+    "bytes": 157634,
+    "dimensions": [
+      320,
+      2851
+    ],
+    "local_path": "/workspace/scratch/7d04b4a8a1e1/audit-work/root-visual/chromium-atelier-320-index.png",
+    "historical": true,
+    "current_render": false,
+    "root_viewed": true
+  }
+]

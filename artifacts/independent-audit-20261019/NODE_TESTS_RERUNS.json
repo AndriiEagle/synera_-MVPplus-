@@ -1,0 +1,13 @@
+{
+  "source_pin": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "runtime": "Node 24.19.0",
+  "method": "Original test files, isolated temporary source copy; approved loopback-only sandbox escalation; no external deployment or provider calls",
+  "initial_summary": "node-isolated/SUMMARY.json",
+  "initial": {"tests":693,"pass":690,"fail":2,"skipped":1},
+  "reruns": [
+    {"file":"web_launch/server.test.mjs","command":"node --test --test-isolation=none --test-reporter=tap web_launch/server.test.mjs","exit_code":0,"tests":1,"pass":1,"fail":0,"skipped":0,"test_name":"HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible"},
+    {"file":"web_launch/cascade_orchestrator.test.mjs","command":"node --test --test-isolation=none --test-reporter=tap web_launch/cascade_orchestrator.test.mjs","exit_code":0,"tests":1,"pass":1,"fail":0,"skipped":0,"test_name":"Iceberg Cascade Orchestrator - deploy and stream"}
+  ],
+  "final_distinct_test_results": {"tests":693,"pass":692,"fail":0,"skipped":1},
+  "interpretation": "The 2 successful reruns replace the earlier infrastructure failures for the same tests; they are not counted as 2 new test cases. Node22 CI, live SQL/JWT and physical devices are not accepted by these runs."
+}
