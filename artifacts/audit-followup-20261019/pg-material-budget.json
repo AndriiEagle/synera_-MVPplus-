@@ -1,0 +1,94 @@
+{
+  "status": "PASS_LOCAL_MATERIAL_SQL",
+  "database": "synera_material_1792373095508",
+  "node": "v24.16.0",
+  "scope": "Actual local PostgreSQL with identity shim; no live JWT or deployment",
+  "checks": [
+    {
+      "name": "legal-500-uk",
+      "ui_bytes": 6954,
+      "postgres_bytes": 6954,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"a\"-boundary--1",
+      "ui_bytes": 16383,
+      "postgres_bytes": 16383,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"a\"-boundary-0",
+      "ui_bytes": 16384,
+      "postgres_bytes": 16384,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"a\"-boundary-1",
+      "ui_bytes": 16385,
+      "postgres_bytes": 16385,
+      "insert_accepted": false,
+      "pass": true
+    },
+    {
+      "name": "\"і\"-boundary--1",
+      "ui_bytes": 16383,
+      "postgres_bytes": 16383,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"і\"-boundary-0",
+      "ui_bytes": 16384,
+      "postgres_bytes": 16384,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"і\"-boundary-1",
+      "ui_bytes": 16385,
+      "postgres_bytes": 16385,
+      "insert_accepted": false,
+      "pass": true
+    },
+    {
+      "name": "\"😀\"-boundary--1",
+      "ui_bytes": 16383,
+      "postgres_bytes": 16383,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"😀\"-boundary-0",
+      "ui_bytes": 16384,
+      "postgres_bytes": 16384,
+      "insert_accepted": true,
+      "pass": true
+    },
+    {
+      "name": "\"😀\"-boundary-1",
+      "ui_bytes": 16385,
+      "postgres_bytes": 16385,
+      "insert_accepted": false,
+      "pass": true
+    },
+    {
+      "name": "escaped-strings",
+      "ui_bytes": 1278,
+      "postgres_bytes": 1278,
+      "insert_accepted": true,
+      "pass": true
+    }
+  ],
+  "source_sha256": {
+    "tools/audit-material-sql.mjs": "ca1f57e8db696bcc4c846640fa0c37f24e15f9f15de8fd2d689f2e111c17be3e",
+    "web_launch/case-material-budget.mjs": "6b086e1be436c60b893869b99a807d87e20f5aef0960adc7720de42151bda8a2",
+    "web_launch/business-case.mjs": "17feedc94a988d3d5c9f49e6b28f0ce05f495ea7e0d301533a78e70834797c8b",
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27"
+  },
+  "server": "16.15"
+}

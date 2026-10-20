@@ -1,0 +1,13 @@
+✔ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (4147.2984ms)
+✔ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (225.5193ms)
+✔ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (94.5491ms)
+✔ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (154.6272ms)
+✔ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (56.3498ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13820.3893

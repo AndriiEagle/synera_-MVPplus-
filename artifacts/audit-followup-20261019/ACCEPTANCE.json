@@ -1,0 +1,240 @@
+{
+  "status": "LOCAL_ACCEPTED_PRODUCTION_HOLD",
+  "started": "2026-10-19",
+  "completed_local": "2026-10-20",
+  "repository": "https://github.com/AndriiEagle/synera_-MVPplus-",
+  "branch": "main",
+  "visibility_verified": "PUBLIC",
+  "audited_baseline": "7eaa952c6e0e498521cc325ab1cf24fec1e0f725",
+  "base": "9de554a658125cf24ff91c1f5393188045a69eb1",
+  "implementation_commit": "e9bc6f409093105caf9eb15709d71d569d5546fc",
+  "changed_files": [
+    ".github/workflows/ci.yml",
+    "neon/build.mjs",
+    "neon/profile-erasure.test.mjs",
+    "neon/worker.mjs",
+    "neon/worker.test.mjs",
+    "tools/case-social-draft-browser.mjs",
+    "tools/profile-erasure-browser.mjs",
+    "web_launch/action-scoper.mjs",
+    "web_launch/action-scoper.test.mjs",
+    "web_launch/assets.mjs",
+    "web_launch/business-case.mjs",
+    "web_launch/case-social-draft.test.mjs",
+    "web_launch/decision-layer.test.mjs",
+    "web_launch/index-i18n-table.mjs",
+    "web_launch/neon-store.mjs",
+    "web_launch/profile-store.mjs",
+    "web_launch/real-journey-client.mjs",
+    "web_launch/real-journey-i18n.mjs",
+    "web_launch/real-journey-mode-editor.test.mjs",
+    "web_launch/real-journey.html",
+    "web_launch/real-journey.mjs",
+    "web_launch/session-value.test.mjs",
+    "web_launch/sw.mjs",
+    "neon/audit-material-budget.test.mjs",
+    "neon/audit-session-regression.test.mjs",
+    "tools/audit-material-sql.mjs",
+    "tools/audit-paid-journey-browser.mjs",
+    "tools/audit-session-cookie-browser.mjs",
+    "web_launch/case-material-budget.mjs"
+  ],
+  "findings": {
+    "TA-01": {
+      "expected": "Displayed account A versus verified B is rejected before destructive RPC; own erasure remains valid",
+      "actual": "409, zero RPC on mismatch, own RPC succeeds; stale UI cleared, newer local identity preserved",
+      "verdict": "PASS_LOCAL",
+      "evidence": [
+        "session-regression-RED.txt",
+        "session-cookie-browser.json",
+        "ERASURE_BROWSER.json"
+      ]
+    },
+    "TA-03": {
+      "expected": "Stale read 401/null cannot erase a new cookie, invalid sessions fail and explicit logout clears",
+      "actual": "Both completion orders for A-to-B and same-A re-login pass real two-tab HTTP cookie checks; logout 200/503 clears",
+      "verdict": "PASS_LOCAL",
+      "evidence": [
+        "session-cookie-browser.json"
+      ]
+    },
+    "TA-04": {
+      "expected": "No-offer buyer to one supplier deliverable, explicit money, two approvals, receiver check/accept and downloadable private supplier card",
+      "actual": "Actual local browser path and real disposable SQL transition checks pass; supplier/buyer/both edit and five mode semantic regressions pass",
+      "verdict": "PASS_LOCAL",
+      "evidence": [
+        "paid-journey-browser/BROWSER_ACCEPTANCE.json",
+        "pg-material-and-paid-final-pass.json",
+        "card-contract-RED.txt",
+        "CASE_SOCIAL_BROWSER.json"
+      ]
+    },
+    "TA-02": {
+      "expected": "UTF-8 material and wire limits agree with SQL, oversized input keeps draft",
+      "actual": "ASCII/Ukrainian/emoji 16383/16384/16385 JSONB boundaries; 18432 route-specific wire cap; other routes remain4096; browser 413 retains fields",
+      "verdict": "PASS_LOCAL",
+      "evidence": [
+        "material-budget-RED.txt",
+        "pg-material-and-paid-final-pass.json",
+        "paid-journey-browser/BROWSER_ACCEPTANCE.json"
+      ]
+    }
+  },
+  "node": {
+    "runtime": "v24.16.0",
+    "total": 708,
+    "pass": 707,
+    "fail": 0,
+    "skip": 1,
+    "skip_reason": "Docker-only local acceptance not configured in full local Node run; actual local PostgreSQL receipts are separate",
+    "command": "node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs",
+    "log": "node24-accepted.txt"
+  },
+  "postgres": {
+    "version": "16.15",
+    "unique_checks": 34,
+    "material_and_paid": 15,
+    "erasure": 12,
+    "outcome_concurrency": 3,
+    "upsert_locks": 4,
+    "identity": "local identity shim, not live JWT"
+  },
+  "browser": {
+    "paid_runtime": {
+      "node": "v24.16.0",
+      "chromium": "155.0.8059.85"
+    },
+    "cookie_runtime": {
+      "node": "v24.16.0",
+      "chromium": "155.0.8059.82"
+    },
+    "cookie_checks": 14,
+    "erasure_checks": 6,
+    "social_checks": 10,
+    "paid_and_layout_assertions": 16,
+    "page_errors": 0,
+    "layout": "Current/Atelier; UK320, DE390 with all84 visible text/control nodes doubled through DOM style, EN1440",
+    "limits": "Desktop Chromium with synthetic auth/data; DOM text enlargement is not OS accessibility zoom or physical device acceptance",
+    "previous_base_e2e": {
+      "pass": 39,
+      "log": "browser-e2e.txt",
+      "scope": "Earlier integration snapshot; final exact published source is covered by GitHub CI"
+    }
+  },
+  "build": {
+    "status": "PASS",
+    "directory": "dist-neon-audit-accepted-20261020",
+    "files": 106,
+    "hash_size_matches": 105,
+    "release_sha256": "e4a595924a23f9a225366761ada6fb37a29aa1f6ee11637c2b973e776ec33993",
+    "published": false
+  },
+  "offline": {
+    "status": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+    "receipt": "../offline-shell-acceptance/PASS3_AUDIT-ACCEPTED/RESULT.json",
+    "checks": 14
+  },
+  "ci": {
+    "node22_local": "NOT_RUN",
+    "required_workflow": ".github/workflows/ci.yml",
+    "verification": "Read GitHub CI attached to the publication commit; its result is produced after these evidence files are committed. No pre-publication Node22 PASS claim."
+  },
+  "receipts": [
+    {
+      "path": "session-cookie-browser.json",
+      "sha256": "7d112dd1b17df81e6bb7dc6cdc5e1f6ec368e9296095ec9f546e8bbc9994c374",
+      "status": "PASS_LOCAL_BROWSER_HTTP_COOKIE",
+      "checks": 14,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "ERASURE_BROWSER.json",
+      "sha256": "36a371f6a15f8ce7ef1d25768a2f2ce02296888680bd7a5569b4be9e13acb231",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_BROWSER",
+      "checks": 6,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "CASE_SOCIAL_BROWSER.json",
+      "sha256": "051c01b0a2d65d6bfdb093e929fd80448815a64bd075e8573b78bf1a5d3c7371",
+      "status": "PASS_LOCAL_CASE_SOCIAL_BROWSER",
+      "checks": 10,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "paid-journey-browser/BROWSER_ACCEPTANCE.json",
+      "sha256": "1d2a331e4508a23ad76d49db396a806ed8df776c2746dd0285183652ed5cd5de",
+      "status": "PASS",
+      "checks": 17,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "pg-material-and-paid-final-pass.json",
+      "sha256": "aadb967d85d841f0b92493992d85208b2d73b5608ee8d4ececa12eb411c79dba",
+      "status": "PASS_LOCAL_MATERIAL_SQL",
+      "checks": 15,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "pg-erasure.json",
+      "sha256": "103ed7863bb7bce735e7dcc2fc2a62d16bde6d4649d569606474715b4adeb845",
+      "status": "PASS_LOCAL_PROFILE_ERASURE_SQL",
+      "checks": 12,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "pg-outcome-concurrency.json",
+      "sha256": "ddbde67f75470516c3dbea6d2a4a281a41cdbb8317609b948fe2dcefb0d71538",
+      "status": "PASS_ERASURE_REVIEW1_CONCURRENT_OUTCOME",
+      "checks": 3,
+      "recorded_source_hashes_match_current_worktree": true
+    },
+    {
+      "path": "pg-upsert-locks.json",
+      "sha256": "3312bc11156c853e69e58505b3b49e0f9f9322a8bc1de15a0b90a97502be1968",
+      "status": "PASS_ERASURE_PROFILE_UPSERT_LOCKS",
+      "checks": 4,
+      "recorded_source_hashes_match_current_worktree": true
+    }
+  ],
+  "hashes": "CHANGED_SOURCE_HASHES.json records raw Windows worktree and normalized Git content separately. Historical receipts are reused only where their recorded source hashes still match.",
+  "failure_history": {
+    "node24-tests.txt": "Initial4 failures repaired; later accepted run707/0/1 supersedes",
+    "material-budget-initial-test-error.txt": "Test construction error, not product defect",
+    "paid-journey-browser/BROWSER_FAILURE.json": "Resolved stale next-action finding; next-action-RED.txt retains reproduction",
+    "social-browser-final.txt": "Resolved draft/card trust contract mismatch; social-browser-card-fixed.txt accepted",
+    "pg-material-and-paid-final.json": "Local PG service inactive after interruption; not a product failure",
+    "pg-material-and-paid-accepted.json": "Attempt still used old port during recovery; not acceptance",
+    "pg-material-and-paid-verified.json": "Recovery starting up; final-pass receipt is acceptance"
+  },
+  "preservation": {
+    "status": "PASS",
+    "historical_audit_files": 18,
+    "git_blobs_unchanged": true,
+    "unrelated_original_sha256": "68d8498139426050e54cd85c3347092701bac990ccbd9fb31205a5878bd4d33b"
+  },
+  "delegation": {
+    "internal_codex_workers": 2,
+    "external_patch_review": false,
+    "provider_calls": 0,
+    "provider_usd": 0,
+    "review_limit": "Hume initial plus two terminal reviews accepted. Euler initial/review1 and final files inspected; review2 terminal API unavailable after interruption. Coordinator replayed and repaired actual result independently. No fabricated terminal IDs or canonical reducer acceptance."
+  },
+  "not_run": [
+    "production deployment or SQL",
+    "two live signed JWT tests",
+    "production restore/recovery",
+    "physical Android and iPhone",
+    "provider identity deletion",
+    "payments or user cohort",
+    "new external model patch review"
+  ],
+  "preserved_gates": {
+    "erasure_source_default": "OFF",
+    "deployed_flags": "NOT_INSPECTED_OR_CHANGED",
+    "provider_deletion": "pending"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "subscription_cost": "NOT_MEASURED"
+}

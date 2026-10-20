@@ -1,0 +1,60 @@
+✖ TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity (519.1307ms)
+✖ TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC (130.8487ms)
+✖ TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does (7.7146ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4629.7331
+
+✖ failing tests:
+
+test at neon\audit-session-regression.test.mjs:20:1
+✖ TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity (519.1307ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-session-regression.test.mjs:23:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at neon\audit-session-regression.test.mjs:27:1
+✖ TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC (130.8487ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-session-regression.test.mjs:30:12)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at neon\audit-session-regression.test.mjs:35:1
+✖ TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does (7.7146ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-session-regression.test.mjs:39:51)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

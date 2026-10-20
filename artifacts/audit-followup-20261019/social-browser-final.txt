@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Додай непорожній текст/. Input:
+
+'Домовленість змінилася. Перевір результати перед створенням чернетки.'
+
+    at file:///D:/synera-review-fresh-20261019/tools/case-social-draft-browser.mjs:89:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'Домовленість змінилася. Перевір результати перед створенням чернетки.',
+  expected: /Додай непорожній текст/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

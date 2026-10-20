@@ -1,0 +1,40 @@
+✔ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (479.2429ms)
+✔ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (69.293ms)
+✔ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (238.6612ms)
+✔ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (150.0362ms)
+✔ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (31.281ms)
+✔ TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity (226.838ms)
+✔ TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC (168.6982ms)
+✔ TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does (93.2073ms)
+✔ TA01: a delayed subject mismatch cannot erase a newer local B or same-A login (63.7743ms)
+✔ decision oracle: five typed decisions preserve the deterministic launch gates (630.7986ms)
+✔ model advice cannot override missing consent, incompatibility, one-way value, or unresolved approvals (3.6107ms)
+✔ model cannot forge a deterministic recommendation to bypass a consent veto (2.7495ms)
+✔ meeting brief stays blocked when approvals or disclosure consent are merely asserted (11.9185ms)
+✔ unresolved payment and an unconsulted third party never become a recommended mode (8.0127ms)
+✔ decision request contract rejects unknown decision kinds (0.5437ms)
+✔ offline bakeoff records identity, cost, latency, oracle accuracy and abstention without a provider claim (5.073ms)
+✔ hosted answer without exact identity and receipt cannot pass local acceptance (1.0871ms)
+✔ mutation evidence: weakening the advisory veto makes the semantic guard fail (1718.4555ms)
+✔ rows are well-formed and do not shadow the shared table (23.2018ms)
+✔ patterns compile, are anchored and only refer to groups they have (94.579ms)
+✔ every pattern matches its own example and changes it (243.872ms)
+✔ every Ukrainian string of the page markup and its modules is accounted for (1331.4273ms)
+✔ a long text is never run through the patterns, and near-matches stay cheap (642.6069ms)
+✔ a Ukrainian visit loads only the button module; the rest ships but is fetched on demand (35.0098ms)
+✔ the rules page: every Ukrainian text has an unofficial translation, loaded only on demand (51.8255ms)
+✔ translate: whole labels, assembled text, lists; a person's own text is left alone (66.503ms)
+✔ profile deletion: the form and the code accept the same words, one per language (106.602ms)
+✔ a choice in a list is sent by a fixed value, never by its translated label (72.1858ms)
+✔ what a person wrote is marked and is never translated, even when it equals a label (270.5577ms)
+✔ dates follow the chosen language and lists of labels are translated item by item (488.1815ms)
+✔ the coverage lists hold nothing stale, doubled or contradictory (2948.5285ms)
+✔ the card says who a hint is for and what a confirmation means, not the internal codes (129.9016ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8141.858

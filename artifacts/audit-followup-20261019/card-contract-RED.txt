@@ -1,0 +1,36 @@
+✖ fresh bilateral acceptance yields only the actor contribution and never evidence, partner identity or publication (166.6736ms)
+✖ a supplier private card uses the buyer receiver acceptance for one paid deliverable (61.5075ms)
+✔ caller snapshots, silence, one accepted leg and a current dispute cannot manufacture a social achievement (80.5555ms)
+✔ withdrawn approval, expired terms and a new material revision invalidate a previously completed result for drafting (82.6375ms)
+✔ logout and same-account restore after outcome read discard the pending social draft (72.0075ms)
+✔ closed rollout, unsupported wording, outsiders and revoked consent cannot return a draft (52.6761ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 720.0309
+
+✖ failing tests:
+
+test at web_launch\case-social-draft.test.mjs:24:1
+✖ fresh bilateral acceptance yields only the actor contribution and never evidence, partner identity or publication (166.6736ms)
+  Error: Invalid private result draft
+      at createResultCard (file:///D:/synera-review-fresh-20261019/web_launch/result-card.mjs:13:120)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/web_launch/case-social-draft.test.mjs:31:20)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    code: 'result_card_draft_invalid'
+  }
+
+test at web_launch\case-social-draft.test.mjs:45:1
+✖ a supplier private card uses the buyer receiver acceptance for one paid deliverable (61.5075ms)
+  Error: Invalid private result draft
+      at createResultCard (file:///D:/synera-review-fresh-20261019/web_launch/result-card.mjs:13:120)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/web_launch/case-social-draft.test.mjs:57:13)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    code: 'result_card_draft_invalid'
+  }

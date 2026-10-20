@@ -1,0 +1,39 @@
+{
+  "status": "PASS_LOCAL_BROWSER_HTTP_COOKIE",
+  "generated_at": "2026-10-19T01:43:42.279Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "command": "node tools/audit-session-cookie-browser.mjs",
+  "runtime": {
+    "node": "v24.16.0",
+    "chromium": "155.0.8059.82"
+  },
+  "scope": "Actual Chromium two-tab cookie jar and actual handleNeon over local loopback HTTP. Upstream auth/RPC is synthetic; no production, live Neon, SQL, accounts, or secrets.",
+  "source_sha256": {
+    "neon/worker.mjs": "1685f6d4f55f977e0c2d8989012596452dbee8b3edbd8ddc8745413c4b5e7108",
+    "web_launch/neon-store.mjs": "61c124ad640c97a3e2731ea3afd5321499bfbb93051dc8177d42b05c15d337aa",
+    "tools/audit-session-cookie-browser.mjs": "479c2c3441a8d4fe90a1724a9b12f040d512a490683aebf4f6bc75c0aa33e8c0"
+  },
+  "checks": [
+    "TA01 two tabs: A display + B shared cookie returns 409 and makes zero RPC",
+    "TA01 own displayed subject reaches exactly one synthetic RPC",
+    "TA03 delayed 401 before A-to-audit_actor_b preserves generated cookie and fresh session",
+    "TA03 delayed 401 after A-to-audit_actor_b preserves generated cookie and fresh session",
+    "TA03 delayed 401 before A-to-audit_actor_a preserves generated cookie and fresh session",
+    "TA03 delayed 401 after A-to-audit_actor_a preserves generated cookie and fresh session",
+    "TA03 delayed null before A-to-audit_actor_b preserves generated cookie and fresh session",
+    "TA03 delayed null after A-to-audit_actor_b preserves generated cookie and fresh session",
+    "TA03 delayed null before A-to-audit_actor_a preserves generated cookie and fresh session",
+    "TA03 delayed null after A-to-audit_actor_a preserves generated cookie and fresh session",
+    "explicit successful logout clears actual browser cookie",
+    "actual browser invalid token returns 401 without clearing cookie",
+    "actual browser explicit logout clears cookie after upstream 503",
+    "browser made only loopback-origin requests"
+  ],
+  "browser_request_origins": [
+    "http://localhost:49312"
+  ],
+  "cookie_name": "__Host-synera-session",
+  "rpc_calls": 1,
+  "screenshot_scope": "Harness summary only; not product UI, UX, accessibility, or visual acceptance evidence."
+}

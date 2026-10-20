@@ -1,0 +1,38 @@
+{
+  "status": "PASS_LOCAL_PROFILE_ERASURE_BROWSER",
+  "checks": [
+    "default off preserves the separate legacy deletion route",
+    "error preserves account and form; invalid confirmation makes zero requests",
+    "normal logout clears typed destructive confirmation before another sign-in",
+    "320/390 actual focus and keyboard reach erasure confirmation without navigation occlusion",
+    "subject mismatch clears stale private UI and typed confirmation, asks for fresh account confirmation without success claim",
+    "success purges current local form/consents and reports retained records plus pending provider deletion"
+  ],
+  "scope": "Real Chromium 390x844; synthetic account/API, no signed JWT, live Neon or provider deletion",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "focus_geometry": [
+    {
+      "width": 320,
+      "top": 396.65625,
+      "bottom": 446.65625,
+      "height": 844,
+      "focused": true,
+      "unobscured": true
+    },
+    {
+      "width": 390,
+      "top": 397.171875,
+      "bottom": 447.171875,
+      "height": 844,
+      "focused": true,
+      "unobscured": true
+    }
+  ],
+  "source_sha256": {
+    "web_launch/app.mjs": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+    "web_launch/index.html": "4ce0613c9a9a09297c6e59451a0271f8e7311c8af758e46d2e68dfcdd2a33b0b",
+    "web_launch/neon-store.mjs": "61c124ad640c97a3e2731ea3afd5321499bfbb93051dc8177d42b05c15d337aa",
+    "tools/profile-erasure-browser.mjs": "d94e4fa1ca7ab0e58fd255ac477cfa663c6ac6f93f8b182acfd3b6a5f1c35b0d"
+  }
+}

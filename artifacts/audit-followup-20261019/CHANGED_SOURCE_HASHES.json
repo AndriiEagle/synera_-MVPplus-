@@ -1,0 +1,150 @@
+{
+  "files": {
+    ".github/workflows/ci.yml": {
+      "worktree_sha256": "b1009798cfa5d1955fe3cd3f4f6a4f9d3e2959d623d06c986203fddf9cae6549",
+      "git_blob": "dee66e9d71594421026ca2991b62f521cb3f7ada",
+      "git_content_sha256": "15453532561ea47e79a3a55e7a638e4d8dca2698b0e906fdcd8790a73f4c3b03"
+    },
+    "neon/build.mjs": {
+      "worktree_sha256": "69b431c18586bf614e5be4d1c81bda326746c6a9bc931c09e93c1e405bddc1a3",
+      "git_blob": "2410fc9734adbae8d17cc3bb4e449b2eda76fb65",
+      "git_content_sha256": "69b431c18586bf614e5be4d1c81bda326746c6a9bc931c09e93c1e405bddc1a3"
+    },
+    "neon/profile-erasure.test.mjs": {
+      "worktree_sha256": "2823c02a90910de7bb584953cbca6f6a848fcf5a08df89707e7209c0b69d2b17",
+      "git_blob": "3e9bc25a5df22ffc8f61c5a2a92bcc727f1653c6",
+      "git_content_sha256": "2823c02a90910de7bb584953cbca6f6a848fcf5a08df89707e7209c0b69d2b17"
+    },
+    "neon/worker.mjs": {
+      "worktree_sha256": "1685f6d4f55f977e0c2d8989012596452dbee8b3edbd8ddc8745413c4b5e7108",
+      "git_blob": "dc9119fd8e21872dd2a61b208ce21f41fd6bd72c",
+      "git_content_sha256": "1685f6d4f55f977e0c2d8989012596452dbee8b3edbd8ddc8745413c4b5e7108"
+    },
+    "neon/worker.test.mjs": {
+      "worktree_sha256": "e8d0cc893a8dc81ac6182bc653dc5599391206cadd94e31482f552a7237e6308",
+      "git_blob": "dc6d8aee1cf9364ffc003ada5400fd1bba937623",
+      "git_content_sha256": "e8d0cc893a8dc81ac6182bc653dc5599391206cadd94e31482f552a7237e6308"
+    },
+    "tools/case-social-draft-browser.mjs": {
+      "worktree_sha256": "0343aafd285df2746f12e598846d036afc5ea872278a3011ce589211108788bd",
+      "git_blob": "6edf99783978c7da690de8994f62bcc28054d862",
+      "git_content_sha256": "0343aafd285df2746f12e598846d036afc5ea872278a3011ce589211108788bd"
+    },
+    "tools/profile-erasure-browser.mjs": {
+      "worktree_sha256": "d94e4fa1ca7ab0e58fd255ac477cfa663c6ac6f93f8b182acfd3b6a5f1c35b0d",
+      "git_blob": "54e89972107c624eac5ba1bfd8070776a7e55fc2",
+      "git_content_sha256": "d94e4fa1ca7ab0e58fd255ac477cfa663c6ac6f93f8b182acfd3b6a5f1c35b0d"
+    },
+    "web_launch/action-scoper.mjs": {
+      "worktree_sha256": "7650bf261771321632355e66d845b4d9f916e02890958acdda8c694f7565a6b0",
+      "git_blob": "a93a392bb145add3e4758d40fa1fc74eed307f53",
+      "git_content_sha256": "7650bf261771321632355e66d845b4d9f916e02890958acdda8c694f7565a6b0"
+    },
+    "web_launch/action-scoper.test.mjs": {
+      "worktree_sha256": "c320656c95c075570c7d79cc5225dc21d7ad68fa7078f5dd3f0880f2d81c2067",
+      "git_blob": "f6c25fd9beddbe27ced091aa6a76e22c5b0d01a5",
+      "git_content_sha256": "c320656c95c075570c7d79cc5225dc21d7ad68fa7078f5dd3f0880f2d81c2067"
+    },
+    "web_launch/assets.mjs": {
+      "worktree_sha256": "ff2115f8864ace9bbf9906471e6f99a36ac25a283ba8c782a3ca1ad51714f096",
+      "git_blob": "d4cd1ca27a982a579cf4c27fb0be767144f24476",
+      "git_content_sha256": "ff2115f8864ace9bbf9906471e6f99a36ac25a283ba8c782a3ca1ad51714f096"
+    },
+    "web_launch/business-case.mjs": {
+      "worktree_sha256": "17feedc94a988d3d5c9f49e6b28f0ce05f495ea7e0d301533a78e70834797c8b",
+      "git_blob": "fbd356ac228b5e6a2a96d9e5be948bd181b20c95",
+      "git_content_sha256": "17feedc94a988d3d5c9f49e6b28f0ce05f495ea7e0d301533a78e70834797c8b"
+    },
+    "web_launch/case-social-draft.test.mjs": {
+      "worktree_sha256": "01facf536cee64194e3a08866e6e67b28ad01ba6c56c051c1a7169be0731f72c",
+      "git_blob": "764970c4a70850ca6c0a58c3f5c8ca78fcf966dc",
+      "git_content_sha256": "edddd2414f1cdad6774b9d81bfc5ef1013f9dc5f421c2927a0c320bcd17d4109"
+    },
+    "web_launch/decision-layer.test.mjs": {
+      "worktree_sha256": "fe834e2e95c2cd8c9ce05f4f87fa0ca57e319b3f5d37010377984cbbaa011582",
+      "git_blob": "eb27d444cb73327e77cf884f0b86181c24c4030c",
+      "git_content_sha256": "fe834e2e95c2cd8c9ce05f4f87fa0ca57e319b3f5d37010377984cbbaa011582"
+    },
+    "web_launch/index-i18n-table.mjs": {
+      "worktree_sha256": "a8998830ca5a0fcd3342852f2157712a89b0355b3ae2ebf5b325f880cab230ed",
+      "git_blob": "a24327fdeb5c2395fe03e3a2beaac7bb828b035e",
+      "git_content_sha256": "880e809a7ee8e8b2803e9c38db368934a1076cfd0ee80d02102d51b2bc09a46d"
+    },
+    "web_launch/neon-store.mjs": {
+      "worktree_sha256": "61c124ad640c97a3e2731ea3afd5321499bfbb93051dc8177d42b05c15d337aa",
+      "git_blob": "044e0e50880e0f03ec2794ab11fef4cabaf18638",
+      "git_content_sha256": "61c124ad640c97a3e2731ea3afd5321499bfbb93051dc8177d42b05c15d337aa"
+    },
+    "web_launch/profile-store.mjs": {
+      "worktree_sha256": "be7a750f81c652505179ad999b87c05170db9e6cf3841addb6ad06f424b3182c",
+      "git_blob": "8927cf5677d65a25b7140682802cda1ad10244e3",
+      "git_content_sha256": "be7a750f81c652505179ad999b87c05170db9e6cf3841addb6ad06f424b3182c"
+    },
+    "web_launch/real-journey-client.mjs": {
+      "worktree_sha256": "5ed4d25fc58209db090d7d7c030790c7ca6b9b5fc57c79dd549c29eb09696363",
+      "git_blob": "2bf4c6dc22941cc8c70b58e4aa09d1a6b0e5adc1",
+      "git_content_sha256": "6f6f86334f6d790a2c6869db464e17107edc6f6efb007c9fb99c6ba7d8531c72"
+    },
+    "web_launch/real-journey-i18n.mjs": {
+      "worktree_sha256": "4fc939d0fbb6da3112130f2e49a30121dcc5dfdb2a54efb91fbcebd19a7f0488",
+      "git_blob": "1826ac964cdf65668567eecb5de747051a354f2a",
+      "git_content_sha256": "4fc939d0fbb6da3112130f2e49a30121dcc5dfdb2a54efb91fbcebd19a7f0488"
+    },
+    "web_launch/real-journey-mode-editor.test.mjs": {
+      "worktree_sha256": "0f445e4e2759306265e8d5ef263b6b83c2703cb60637fe44a4144efb5c3a4dc9",
+      "git_blob": "1ca2c5caf6b0f2a9abb5155097064df38406113c",
+      "git_content_sha256": "0f445e4e2759306265e8d5ef263b6b83c2703cb60637fe44a4144efb5c3a4dc9"
+    },
+    "web_launch/real-journey.html": {
+      "worktree_sha256": "6f58802e3418129dddb9d605e62e5fd49855a6786366b1cc6d0db67cc6e6c12f",
+      "git_blob": "04823a652a60d47d7ef3c5dd67830673f7a2287d",
+      "git_content_sha256": "e1891d9c91baaaab52d5f545f1ef3e441d2d8e3dc5d9b2da8457668b39932f0d"
+    },
+    "web_launch/real-journey.mjs": {
+      "worktree_sha256": "e6e23838771bcec5b275948cff3ef84438647c6dd387efa45de122447b503483",
+      "git_blob": "067964ae1a65239e862865c1477cff65257e7eac",
+      "git_content_sha256": "15e660b5c18f80f69a286a6960aa598e8e85085d8b2db879c615bc3064e2d504"
+    },
+    "web_launch/session-value.test.mjs": {
+      "worktree_sha256": "ad390ee40ab45f0e7760db136d688b161056b54dd7c4ecf7bdc7d4450ebeb44c",
+      "git_blob": "3029d7ae06824d14eb38eb5817f77795e08afe8d",
+      "git_content_sha256": "ad390ee40ab45f0e7760db136d688b161056b54dd7c4ecf7bdc7d4450ebeb44c"
+    },
+    "web_launch/sw.mjs": {
+      "worktree_sha256": "7009358660ed3addc03fbae644963efb90d3c6b573855d5ed16e3c64127041f4",
+      "git_blob": "71031c4d4284d1bc7bc6ded5fd643e1c04118e5a",
+      "git_content_sha256": "7009358660ed3addc03fbae644963efb90d3c6b573855d5ed16e3c64127041f4"
+    },
+    "neon/audit-material-budget.test.mjs": {
+      "worktree_sha256": "f96cad0d5d2717d9a850753e355fc21c38ba5ef3347b799763e88fb973a5d612",
+      "git_blob": "43062af02b479df8a1224fe5e7d034472114c140",
+      "git_content_sha256": "f96cad0d5d2717d9a850753e355fc21c38ba5ef3347b799763e88fb973a5d612"
+    },
+    "neon/audit-session-regression.test.mjs": {
+      "worktree_sha256": "8beefc0de06777299521b25a0c6b64b2734bc54d080af8a445b7f37adcce1bae",
+      "git_blob": "3f67cf4646a8eb29deb057f03629ad785797452a",
+      "git_content_sha256": "8beefc0de06777299521b25a0c6b64b2734bc54d080af8a445b7f37adcce1bae"
+    },
+    "tools/audit-material-sql.mjs": {
+      "worktree_sha256": "4b5e5e6ce361b6326fe06a1dab35459b530cb9a3eac8bae58384a30dfcfe3620",
+      "git_blob": "31da6da31a0bdccfb330b6a4ed319a5ced2cc580",
+      "git_content_sha256": "a3678159e3ce60dcc29e0e19c9b2ddb5a5cdb23a5df6de75cc5400cfa07053f2"
+    },
+    "tools/audit-paid-journey-browser.mjs": {
+      "worktree_sha256": "50c1271068653c965755692bab196ca3ed70e1c76ca347181625066281775c9a",
+      "git_blob": "42a8c8447b863e0b13653e1fc2ca0b5348ba6b55",
+      "git_content_sha256": "c0ac1f786dca1083ad367144cba470997a1421e98c396eb11eb8fd1c33a4da43"
+    },
+    "tools/audit-session-cookie-browser.mjs": {
+      "worktree_sha256": "479c2c3441a8d4fe90a1724a9b12f040d512a490683aebf4f6bc75c0aa33e8c0",
+      "git_blob": "23aa98e9db9f29f44e522f7e77d2381799186050",
+      "git_content_sha256": "479c2c3441a8d4fe90a1724a9b12f040d512a490683aebf4f6bc75c0aa33e8c0"
+    },
+    "web_launch/case-material-budget.mjs": {
+      "worktree_sha256": "6b086e1be436c60b893869b99a807d87e20f5aef0960adc7720de42151bda8a2",
+      "git_blob": "7af2f97c384d400affb9d8ec4c6a801cf2d7eea5",
+      "git_content_sha256": "6b086e1be436c60b893869b99a807d87e20f5aef0960adc7720de42151bda8a2"
+    }
+  },
+  "note": "Worktree receipts use raw Windows bytes; Git applies .gitattributes EOL normalization. Git content hashes pin published source separately."
+}

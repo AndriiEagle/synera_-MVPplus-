@@ -1,0 +1,95 @@
+✖ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (620.8051ms)
+✖ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (71.1593ms)
+✖ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (25.2512ms)
+✖ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (27.5066ms)
+✖ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (17.6246ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1768.0994
+
+✖ failing tests:
+
+test at neon\audit-material-budget.test.mjs:28:1
+✖ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (620.8051ms)
+  Error [ServiceError]: Забагато тексту. Скороти умови й повтори збереження; чернетка залишається у формі.
+      at #request (file:///D:/synera-review-fresh-20261019/web_launch/neon-store.mjs:34:13)
+      at async RealJourneyStore.saveTerms (file:///D:/synera-review-fresh-20261019/web_launch/real-journey-client.mjs:432:7)
+      at async TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:32:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    status: 413,
+    code: undefined
+  }
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (71.1593ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  413 !== 200
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:46:59)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 413,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (25.2512ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  413 !== 200
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:46:59)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 413,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (27.5066ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  413 !== 200
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:46:59)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 413,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at neon\audit-material-budget.test.mjs:49:1
+✖ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (17.6246ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  413 !== 200
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:52:61)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 413,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

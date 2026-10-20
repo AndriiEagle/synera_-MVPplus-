@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /переглянути прийнятий результат/. Input:
+
+'Наступна дія: Тест Марія — прочитати й підтвердити поточну редакцію.'
+
+    at file:///D:/synera-review-fresh-20261019/tools/audit-paid-journey-browser.mjs:57:337 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'Наступна дія: Тест Марія — прочитати й підтвердити поточну редакцію.',
+  expected: /переглянути прийнятий результат/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

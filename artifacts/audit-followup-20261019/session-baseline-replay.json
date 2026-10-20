@@ -1,0 +1,25 @@
+{
+  "status": "PINNED_BASELINE_REPRODUCED_READONLY",
+  "generated_at": "2026-10-19T01:30:00Z",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "source": {
+    "root": "D:\\synera-audit-baseline-7eaa952",
+    "worker_sha256": "f4eaad8deb0da77fdcaf351f0e40cac5113cef9d6c1fe3f6615584dc2f05d484",
+    "neon_store_sha256": "ba054fcb10d851cab6e1a80c2bef4eb97fc7bb8d23942320fed3be44ccb3854b",
+    "immutable_repro_runner_sha256": "63e3a86a7c1f62207091bf2b640e71b0206c55acfbb7478389ec0d3e408a3843"
+  },
+  "command": "node --input-type=module - (stdin-only read-only replay using pinned worker and NeonStore modules)",
+  "ta01": {
+    "displayed_actor": "audit_actor_a",
+    "verified_bearer": "audit_actor_b",
+    "destructive_rpc_calls": 1,
+    "verdict": "BASELINE_DEFECT_REPRODUCED"
+  },
+  "ta03": {
+    "stale_session_response_status": 401,
+    "set_cookie": "__Host-synera-session=; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=0",
+    "verdict": "BASELINE_DEFECT_REPRODUCED"
+  },
+  "limits": "Synthetic upstream only. The pinned source tree was imported read-only; no historical receipt or source file was written."
+}

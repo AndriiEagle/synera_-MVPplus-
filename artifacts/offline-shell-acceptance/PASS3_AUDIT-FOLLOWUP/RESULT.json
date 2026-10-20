@@ -1,0 +1,664 @@
+{
+  "variant": "audit-followup",
+  "status": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+  "baseReleaseHash": "656c48f063d20eb36565649b3881f707c23aa17fe0c50e27b8092ccffe472120",
+  "overlay": null,
+  "servedSWHash": "7009358660ed3addc03fbae644963efb90d3c6b573855d5ed16e3c64127041f4",
+  "scope": "Desktop Chromium, fresh document, real SW/CacheStorage, HTTP cache cleared/disabled, synthetic config, no production/auth/private data",
+  "checks": [
+    {
+      "name": "online profile action works",
+      "pass": true
+    },
+    {
+      "name": "offline document is served by installed SW",
+      "pass": true
+    },
+    {
+      "name": "offline reload sends no server requests",
+      "pass": true
+    },
+    {
+      "name": "offline fresh document opens usable profile form",
+      "pass": true
+    },
+    {
+      "name": "offline German actual translated heading",
+      "pass": true
+    },
+    {
+      "name": "language keeps synthetic draft own words",
+      "pass": true
+    },
+    {
+      "name": "offline Atelier opt-in and real controls work",
+      "pass": true
+    },
+    {
+      "name": "Current style remains reversible",
+      "pass": true
+    },
+    {
+      "name": "offline rules load chosen language with unofficial translation notice",
+      "pass": true
+    },
+    {
+      "name": "config fails closed offline and API/query/non-GET cannot use public cache",
+      "pass": true,
+      "detail": [
+        {
+          "url": "/config.json",
+          "method": "GET",
+          "status": 503
+        },
+        {
+          "url": "/api/neon/data/profiles",
+          "method": "GET",
+          "error": "TypeError"
+        },
+        {
+          "url": "/api/neon/data/profiles",
+          "method": "POST",
+          "error": "TypeError"
+        },
+        {
+          "url": "/app.mjs?draft=synthetic-local",
+          "method": "GET",
+          "error": "TypeError"
+        },
+        {
+          "url": "/app.mjs",
+          "method": "POST",
+          "error": "TypeError"
+        }
+      ]
+    },
+    {
+      "name": "private probes and offline account-write attempt never change CacheStorage",
+      "pass": true
+    },
+    {
+      "name": "all offline actions send no server requests",
+      "pass": true
+    },
+    {
+      "name": "offline startup has no module/CSS request failures",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "offline page has no uncaught JavaScript error",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "online": {
+    "errors": [],
+    "requestFailures": [],
+    "cache": {
+      "controlled": true,
+      "keys": [
+        "synera-shell-20261019-audit-followup1"
+      ],
+      "entries": [
+        {
+          "name": "synera-shell-20261019-audit-followup1",
+          "paths": [
+            "/",
+            "/index.html",
+            "/style.css",
+            "/app.mjs",
+            "/style-switcher.mjs",
+            "/onboarding-tour.mjs",
+            "/demo-journey.mjs",
+            "/online-store.mjs",
+            "/profile-store.mjs",
+            "/neon-store.mjs",
+            "/profile-portability.mjs",
+            "/profile-brief.mjs",
+            "/profile-package.mjs",
+            "/calendar.mjs",
+            "/matching.mjs",
+            "/map.mjs",
+            "/pilot-policy.mjs",
+            "/pwa.mjs",
+            "/manifest.webmanifest",
+            "/icon-192.png",
+            "/icon-512.png",
+            "/apple-touch-icon.png",
+            "/legal.html",
+            "/catalogue.html",
+            "/tokens.css",
+            "/cascade.mjs",
+            "/iceberg-client.mjs",
+            "/chatgpt-transfer.mjs",
+            "/business-case.mjs",
+            "/i18n.mjs",
+            "/proof-state.mjs",
+            "/need-decay.mjs",
+            "/b-matching.mjs",
+            "/field-audience.mjs",
+            "/swiss-compliance.mjs",
+            "/funnel-analytics.mjs",
+            "/live-location.mjs",
+            "/meeting-location.mjs",
+            "/summit.html",
+            "/summit.css",
+            "/summit.mjs",
+            "/montserrat-400.woff2",
+            "/montserrat-500.woff2",
+            "/location-session.mjs",
+            "/get.html",
+            "/product-access.mjs",
+            "/triangle.html",
+            "/triangle.css",
+            "/triangle.mjs",
+            "/triangle-room.mjs",
+            "/explore-planner.mjs",
+            "/profile-import.mjs",
+            "/index-language.mjs",
+            "/index-i18n.mjs",
+            "/index-i18n-table.mjs",
+            "/real-journey-i18n.mjs",
+            "/legal-language.mjs",
+            "/legal-i18n.mjs",
+            "/atelier.mjs",
+            "/atelier.css",
+            "/result-card.mjs",
+            "/action-scoper.mjs",
+            "/session-value.mjs",
+            "/case-material-budget.mjs"
+          ]
+        }
+      ]
+    },
+    "mode": "Твоя чернетка · у цій вкладці"
+  },
+  "offline": {
+    "errors": [],
+    "requestFailures": [
+      {
+        "path": "/api/neon/data/profiles",
+        "resourceType": "fetch",
+        "error": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      {
+        "path": "/api/neon/data/profiles",
+        "resourceType": "fetch",
+        "error": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      {
+        "path": "/app.mjs",
+        "resourceType": "fetch",
+        "error": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      {
+        "path": "/app.mjs",
+        "resourceType": "fetch",
+        "error": "net::ERR_INTERNET_DISCONNECTED"
+      }
+    ],
+    "originServerClosed": true,
+    "networkIdle": false,
+    "controlled": true,
+    "mode": "Твоя чернетка · у цій вкладці",
+    "workspaceHidden": false,
+    "responses": [
+      {
+        "path": "/",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/tokens.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/style.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/atelier.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/tokens.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/index-language.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/pwa.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/app.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/style-switcher.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/demo-journey.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/onboarding-tour.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/atelier.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/online-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/neon-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-portability.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-package.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-brief.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/business-case.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/matching.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/map.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/pilot-policy.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-import.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/chatgpt-transfer.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/calendar.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/location-session.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/live-location.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/meeting-location.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/proof-state.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/case-material-budget.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/need-decay.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/b-matching.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/config.json",
+        "status": 503,
+        "fromSW": true
+      },
+      {
+        "path": "/real-journey-i18n.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/index-i18n.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/index-i18n-table.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/config.json",
+        "status": 503,
+        "fromSW": true
+      }
+    ],
+    "privacy": {
+      "before": [
+        "/",
+        "/action-scoper.mjs",
+        "/app.mjs",
+        "/apple-touch-icon.png",
+        "/atelier.css",
+        "/atelier.mjs",
+        "/b-matching.mjs",
+        "/business-case.mjs",
+        "/calendar.mjs",
+        "/cascade.mjs",
+        "/case-material-budget.mjs",
+        "/catalogue.html",
+        "/chatgpt-transfer.mjs",
+        "/demo-journey.mjs",
+        "/explore-planner.mjs",
+        "/field-audience.mjs",
+        "/funnel-analytics.mjs",
+        "/get.html",
+        "/i18n.mjs",
+        "/iceberg-client.mjs",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/index-i18n-table.mjs",
+        "/index-i18n.mjs",
+        "/index-language.mjs",
+        "/index.html",
+        "/legal-i18n.mjs",
+        "/legal-language.mjs",
+        "/legal.html",
+        "/live-location.mjs",
+        "/location-session.mjs",
+        "/manifest.webmanifest",
+        "/map.mjs",
+        "/matching.mjs",
+        "/meeting-location.mjs",
+        "/montserrat-400.woff2",
+        "/montserrat-500.woff2",
+        "/need-decay.mjs",
+        "/neon-store.mjs",
+        "/onboarding-tour.mjs",
+        "/online-store.mjs",
+        "/pilot-policy.mjs",
+        "/product-access.mjs",
+        "/profile-brief.mjs",
+        "/profile-import.mjs",
+        "/profile-package.mjs",
+        "/profile-portability.mjs",
+        "/profile-store.mjs",
+        "/proof-state.mjs",
+        "/pwa.mjs",
+        "/real-journey-i18n.mjs",
+        "/result-card.mjs",
+        "/session-value.mjs",
+        "/style-switcher.mjs",
+        "/style.css",
+        "/summit.css",
+        "/summit.html",
+        "/summit.mjs",
+        "/swiss-compliance.mjs",
+        "/tokens.css",
+        "/triangle-room.mjs",
+        "/triangle.css",
+        "/triangle.html",
+        "/triangle.mjs"
+      ],
+      "after": [
+        "/",
+        "/action-scoper.mjs",
+        "/app.mjs",
+        "/apple-touch-icon.png",
+        "/atelier.css",
+        "/atelier.mjs",
+        "/b-matching.mjs",
+        "/business-case.mjs",
+        "/calendar.mjs",
+        "/cascade.mjs",
+        "/case-material-budget.mjs",
+        "/catalogue.html",
+        "/chatgpt-transfer.mjs",
+        "/demo-journey.mjs",
+        "/explore-planner.mjs",
+        "/field-audience.mjs",
+        "/funnel-analytics.mjs",
+        "/get.html",
+        "/i18n.mjs",
+        "/iceberg-client.mjs",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/index-i18n-table.mjs",
+        "/index-i18n.mjs",
+        "/index-language.mjs",
+        "/index.html",
+        "/legal-i18n.mjs",
+        "/legal-language.mjs",
+        "/legal.html",
+        "/live-location.mjs",
+        "/location-session.mjs",
+        "/manifest.webmanifest",
+        "/map.mjs",
+        "/matching.mjs",
+        "/meeting-location.mjs",
+        "/montserrat-400.woff2",
+        "/montserrat-500.woff2",
+        "/need-decay.mjs",
+        "/neon-store.mjs",
+        "/onboarding-tour.mjs",
+        "/online-store.mjs",
+        "/pilot-policy.mjs",
+        "/product-access.mjs",
+        "/profile-brief.mjs",
+        "/profile-import.mjs",
+        "/profile-package.mjs",
+        "/profile-portability.mjs",
+        "/profile-store.mjs",
+        "/proof-state.mjs",
+        "/pwa.mjs",
+        "/real-journey-i18n.mjs",
+        "/result-card.mjs",
+        "/session-value.mjs",
+        "/style-switcher.mjs",
+        "/style.css",
+        "/summit.css",
+        "/summit.html",
+        "/summit.mjs",
+        "/swiss-compliance.mjs",
+        "/tokens.css",
+        "/triangle-room.mjs",
+        "/triangle.css",
+        "/triangle.html",
+        "/triangle.mjs"
+      ],
+      "attempts": [
+        {
+          "url": "/config.json",
+          "method": "GET",
+          "status": 503
+        },
+        {
+          "url": "/api/neon/data/profiles",
+          "method": "GET",
+          "error": "TypeError"
+        },
+        {
+          "url": "/api/neon/data/profiles",
+          "method": "POST",
+          "error": "TypeError"
+        },
+        {
+          "url": "/app.mjs?draft=synthetic-local",
+          "method": "GET",
+          "error": "TypeError"
+        },
+        {
+          "url": "/app.mjs",
+          "method": "POST",
+          "error": "TypeError"
+        }
+      ]
+    },
+    "moduleFailures": []
+  },
+  "serverRequests": [
+    "/index.html",
+    "/tokens.css",
+    "/app.mjs",
+    "/style.css",
+    "/index-language.mjs",
+    "/style-switcher.mjs",
+    "/onboarding-tour.mjs",
+    "/atelier.css",
+    "/demo-journey.mjs",
+    "/pwa.mjs",
+    "/atelier.mjs",
+    "/online-store.mjs",
+    "/neon-store.mjs",
+    "/profile-portability.mjs",
+    "/profile-package.mjs",
+    "/profile-brief.mjs",
+    "/business-case.mjs",
+    "/matching.mjs",
+    "/tokens.css",
+    "/map.mjs",
+    "/pilot-policy.mjs",
+    "/chatgpt-transfer.mjs",
+    "/profile-import.mjs",
+    "/calendar.mjs",
+    "/live-location.mjs",
+    "/meeting-location.mjs",
+    "/location-session.mjs",
+    "/profile-store.mjs",
+    "/proof-state.mjs",
+    "/case-material-budget.mjs",
+    "/need-decay.mjs",
+    "/b-matching.mjs",
+    "/config.json",
+    "/sw.mjs",
+    "/index.html",
+    "/index.html",
+    "/style.css",
+    "/app.mjs",
+    "/style-switcher.mjs",
+    "/onboarding-tour.mjs",
+    "/demo-journey.mjs",
+    "/online-store.mjs",
+    "/profile-store.mjs",
+    "/neon-store.mjs",
+    "/profile-portability.mjs",
+    "/profile-brief.mjs",
+    "/profile-package.mjs",
+    "/calendar.mjs",
+    "/matching.mjs",
+    "/map.mjs",
+    "/pilot-policy.mjs",
+    "/pwa.mjs",
+    "/manifest.webmanifest",
+    "/icon-192.png",
+    "/icon-512.png",
+    "/apple-touch-icon.png",
+    "/legal.html",
+    "/catalogue.html",
+    "/tokens.css",
+    "/cascade.mjs",
+    "/iceberg-client.mjs",
+    "/chatgpt-transfer.mjs",
+    "/business-case.mjs",
+    "/i18n.mjs",
+    "/proof-state.mjs",
+    "/need-decay.mjs",
+    "/b-matching.mjs",
+    "/field-audience.mjs",
+    "/swiss-compliance.mjs",
+    "/funnel-analytics.mjs",
+    "/live-location.mjs",
+    "/meeting-location.mjs",
+    "/summit.html",
+    "/summit.css",
+    "/summit.mjs",
+    "/montserrat-400.woff2",
+    "/montserrat-500.woff2",
+    "/location-session.mjs",
+    "/get.html",
+    "/product-access.mjs",
+    "/triangle.html",
+    "/triangle.css",
+    "/triangle.mjs",
+    "/triangle-room.mjs",
+    "/explore-planner.mjs",
+    "/profile-import.mjs",
+    "/index-language.mjs",
+    "/index-i18n.mjs",
+    "/index-i18n-table.mjs",
+    "/real-journey-i18n.mjs",
+    "/legal-language.mjs",
+    "/legal-i18n.mjs",
+    "/atelier.mjs",
+    "/atelier.css",
+    "/result-card.mjs",
+    "/action-scoper.mjs",
+    "/session-value.mjs",
+    "/case-material-budget.mjs"
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "engine": {
+    "name": "chromium",
+    "version": "155.0.8059.82",
+    "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  },
+  "stage": "offline-readiness"
+}

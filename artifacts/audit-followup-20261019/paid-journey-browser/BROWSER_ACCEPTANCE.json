@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "runtime": {
+    "node": "v24.16.0",
+    "chromium": "155.0.8059.85"
+  },
+  "sourceHashes": {
+    "web_launch/real-journey.html": "6f58802e3418129dddb9d605e62e5fd49855a6786366b1cc6d0db67cc6e6c12f",
+    "web_launch/real-journey.mjs": "e6e23838771bcec5b275948cff3ef84438647c6dd387efa45de122447b503483",
+    "web_launch/real-journey-client.mjs": "5ed4d25fc58209db090d7d7c030790c7ca6b9b5fc57c79dd549c29eb09696363",
+    "web_launch/real-journey-i18n.mjs": "4fc939d0fbb6da3112130f2e49a30121dcc5dfdb2a54efb91fbcebd19a7f0488",
+    "web_launch/action-scoper.mjs": "7650bf261771321632355e66d845b4d9f916e02890958acdda8c694f7565a6b0",
+    "tools/audit-paid-journey-browser.mjs": "50c1271068653c965755692bab196ca3ed70e1c76ca347181625066281775c9a"
+  },
+  "scope": "Actual local Chromium with isolated synthetic Auth/Data/outcome transport. Not live Neon, SQL/RLS/JWT, payment, deployment, device, or independent quality proof.",
+  "checks": {
+    "buyer_profile_has_no_offer_and_paid_match_is_eligible": true,
+    "buyer_no_offer_one_supplier_deliverable": true,
+    "two_independent_approvals": true,
+    "accepted_result_step_is_current": true,
+    "supplier_private_card_after_genuine_buyer_acceptance": true,
+    "supplier_card_downloads_with_private_CSP": true,
+    "server_413_keeps_all_manual_unicode_fields": true,
+    "empty_action_and_keyboard": true,
+    "accepted_result_step_clears_on_revision": true,
+    "accepted_result_step_clears_on_logout": true,
+    "layout_current_uk_320": {
+      "viewport": 320,
+      "width": 320,
+      "text": null
+    },
+    "layout_atelier_uk_320": {
+      "viewport": 320,
+      "width": 320,
+      "text": null
+    },
+    "layout_current_de_390_200pct": {
+      "viewport": 390,
+      "width": 390,
+      "text": {
+        "method": "all_visible_text_and_controls_dom_style",
+        "count": 84,
+        "allDoubled": true
+      }
+    },
+    "layout_atelier_de_390_200pct": {
+      "viewport": 390,
+      "width": 390,
+      "text": {
+        "method": "all_visible_text_and_controls_dom_style",
+        "count": 84,
+        "allDoubled": true
+      }
+    },
+    "layout_current_en_1440": {
+      "viewport": 1440,
+      "width": 1440,
+      "text": null
+    },
+    "layout_atelier_en_1440": {
+      "viewport": 1440,
+      "width": 1440,
+      "text": null
+    },
+    "page_errors": []
+  }
+}

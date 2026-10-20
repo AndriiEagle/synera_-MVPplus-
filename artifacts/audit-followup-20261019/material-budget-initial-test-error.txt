@@ -1,0 +1,78 @@
+✖ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (590.307ms)
+✖ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (3.7499ms)
+✖ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (2.8584ms)
+✖ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (2.5424ms)
+✖ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (97.8242ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3003.192
+
+✖ failing tests:
+
+test at neon\audit-material-budget.test.mjs:28:1
+✖ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (590.307ms)
+  Error: Обери підтриманий режим умов.
+      at materialFromEditor (file:///D:/synera-review-fresh-20261019/web_launch/real-journey-client.mjs:543:50)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:31:18)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (3.7499ms)
+  Error: Обери підтриманий режим умов.
+      at materialFromEditor (file:///D:/synera-review-fresh-20261019/web_launch/real-journey-client.mjs:543:50)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:40:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (2.8584ms)
+  Error: Обери підтриманий режим умов.
+      at materialFromEditor (file:///D:/synera-review-fresh-20261019/web_launch/real-journey-client.mjs:543:50)
+      at boundary (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:12:11)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:44:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+
+test at neon\audit-material-budget.test.mjs:34:37
+✖ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (2.5424ms)
+  Error: Обери підтриманий режим умов.
+      at materialFromEditor (file:///D:/synera-review-fresh-20261019/web_launch/real-journey-client.mjs:543:50)
+      at boundary (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:12:11)
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:44:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+
+test at neon\audit-material-budget.test.mjs:49:1
+✖ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (97.8242ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  413 !== 200
+  
+      at TestContext.<anonymous> (file:///D:/synera-review-fresh-20261019/neon/audit-material-budget.test.mjs:52:61)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 413,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,1 @@
+{"variant":"audit-accepted","status":"PASS_CACHE_ONLY_OFFLINE_STARTUP","failed":[],"out":"D:\\synera-review-fresh-20261019\\artifacts\\offline-shell-acceptance\\PASS3_AUDIT-ACCEPTED"}

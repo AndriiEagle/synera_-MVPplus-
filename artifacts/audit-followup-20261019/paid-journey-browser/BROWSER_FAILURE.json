@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "error": "The input did not match the regular expression /переглянути прийнятий результат/. Input:\n\n'Наступна дія: Тест Марія — прочитати й підтвердити поточну редакцію.'\n",
+  "checks": {
+    "buyer_profile_has_no_offer_and_paid_match_is_eligible": true,
+    "buyer_no_offer_one_supplier_deliverable": true,
+    "two_independent_approvals": true
+  },
+  "page_errors": []
+}

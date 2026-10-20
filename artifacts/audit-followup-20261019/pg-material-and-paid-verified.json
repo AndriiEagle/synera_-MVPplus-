@@ -1,0 +1,16 @@
+{
+  "status": "NOT_ACCEPTED",
+  "database": "synera_material_1792509853833",
+  "node": "v24.16.0",
+  "scope": "Actual local PostgreSQL with identity shim; no live JWT or deployment",
+  "checks": [],
+  "source_sha256": {
+    "tools/audit-material-sql.mjs": "4b5e5e6ce361b6326fe06a1dab35459b530cb9a3eac8bae58384a30dfcfe3620",
+    "web_launch/case-material-budget.mjs": "6b086e1be436c60b893869b99a807d87e20f5aef0960adc7720de42151bda8a2",
+    "web_launch/business-case.mjs": "17feedc94a988d3d5c9f49e6b28f0ce05f495ea7e0d301533a78e70834797c8b",
+    "web_launch/real-journey-client.mjs": "5ed4d25fc58209db090d7d7c030790c7ca6b9b5fc57c79dd549c29eb09696363",
+    "tools/fixtures/real-journey-fixture.mjs": "531e7f617e8c35fdec8b677625085c2f4b5db1115e00cabb76963e793549dfb3",
+    "neon/local_acceptance.mjs": "50e08d0e9bf761eb0e11282e77dfbbdc22ab9bb2ec89340e3b4bf895ebf2ee2e"
+  },
+  "error": "psql: error: connection to server at \"127.0.0.1\", port 5432 failed: FATAL:  the database system is starting up\r\n\n\n2 !== 0\n"
+}
