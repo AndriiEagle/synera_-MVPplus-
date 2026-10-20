@@ -12,6 +12,7 @@ export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs
   'journey-core.mjs': 'text/javascript', 'journey-ai-client.mjs': 'text/javascript', 'journey-handoff.mjs': 'text/javascript',
   'real-journey.html': 'text/html', 'real-journey.css': 'text/css', 'real-journey.mjs': 'text/javascript', 'real-journey-client.mjs': 'text/javascript', 'real-journey-i18n.mjs': 'text/javascript', 'index-language.mjs': 'text/javascript', 'index-i18n.mjs': 'text/javascript', 'index-i18n-table.mjs': 'text/javascript', 'legal-language.mjs': 'text/javascript', 'legal-i18n.mjs': 'text/javascript',
   'result-card.mjs': 'text/javascript', 'action-scoper.mjs': 'text/javascript',
+  'case-material-budget.mjs': 'text/javascript',
   'outcome-archive.html': 'text/html', 'outcome-archive.mjs': 'text/javascript', 'outcome-archive-ui.mjs': 'text/javascript',
   'portrait-mara.webp': 'image/webp', 'portrait-noor.webp': 'image/webp', 'portrait-leo.webp': 'image/webp',
   'icon-map-pin.svg': 'image/svg+xml', 'icon-message-circle.svg': 'image/svg+xml', 'icon-handshake.svg': 'image/svg+xml', 'icon-archive.svg': 'image/svg+xml',

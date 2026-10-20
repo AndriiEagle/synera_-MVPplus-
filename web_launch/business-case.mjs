@@ -1,5 +1,6 @@
 import { compareRealProfiles, normalizeBrief, CAPABILITIES } from './profile-brief.mjs';
 import { createProofState, advanceProofState, downgradeOnMaterialChange } from './proof-state.mjs';
+import { assertCaseMaterialBudget } from './case-material-budget.mjs';
 
 // A presentation of the existing matcher, not a second ranking engine or a contract.
 export function buildBusinessCase(own, other, options = {}) {
@@ -134,7 +135,7 @@ export function canonicalMaterialPayload(input = {}) {
   const amountMinor = money && Number.isSafeInteger(input.compensation?.amount_minor) && input.compensation.amount_minor > 0 ? input.compensation.amount_minor : null;
   const currency = money && typeof input.compensation?.currency === 'string' && /^[A-Z]{3}$/.test(input.compensation.currency) ? input.compensation.currency : '';
   const invoiceRequired = money && typeof input.compensation?.invoice_required === 'boolean' ? input.compensation.invoice_required : null;
-  return {
+  const payload = {
     mode: input.mode, components, outcomes,
     trial: { starts_on: input.trial.starts_on, due_on: input.trial.due_on, deliverables },
     compensation: { status: compensationStatus, amount_minor: amountMinor, currency, invoice_required: invoiceRequired },
@@ -145,6 +146,8 @@ export function canonicalMaterialPayload(input = {}) {
       cancellation: enumValue(input.terms?.cancellation, CANCELLATION, 'unresolved'),
     },
   };
+  assertCaseMaterialBudget(payload);
+  return payload;
 }
 
 function canonicalJson(value) {

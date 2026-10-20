@@ -5,6 +5,7 @@ import { handleGroupRoom, groupRoomsReady } from './group-room.mjs';
 import { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';
 import { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';
 import { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';
+import { caseMaterialBytes, CASE_MATERIAL_MAX_BYTES, CASE_REQUEST_MAX_BYTES } from '../web_launch/case-material-budget.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -61,15 +62,15 @@ function publicUser(data, allowed) {
   if (!user || typeof user.id !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(user.id) || typeof user.email !== 'string' || user.emailVerified !== true || !allowed.has(user.email.toLowerCase())) throw new GatewayError(401);
   return { id: user.id, email: user.email };
 }
-async function readJson(request) {
+async function readJson(request, maxBytes = 4096) {
   if (!/^application\/json(?:;|$)/i.test(request.headers.get('content-type') || '')) throw new GatewayError(415);
-  if (Number(request.headers.get('content-length')) > 4096) throw new GatewayError(413);
+  if (Number(request.headers.get('content-length')) > maxBytes) throw new GatewayError(413);
   if (!request.body) return {};
   const reader = request.body.getReader(); let size = 0, chunks = [];
   while (true) {
     const { value, done } = await reader.read(); if (done) break;
     size += value.length;
-    if (size > 4096) { await reader.cancel(); throw new GatewayError(413); }
+    if (size > maxBytes) { await reader.cancel(); throw new GatewayError(413); }
     chunks.push(value);
   }
   const bytes = new Uint8Array(size); let offset = 0;
@@ -162,15 +163,19 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     }
     if (path === '/session' && request.method === 'GET' && !url.search) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
-      return answer({ user: session?.user || null }, 200, session ? {} : { 'Set-Cookie': sessionCookie('') });
+      // A read can finish after another tab signed in. Only explicit logout clears cookies.
+      return answer({ user: session?.user || null });
     }
     if (path === '/profile-erasure') {
       if (!profileErasureReady(env)) throw new GatewayError(503, 'profile_erasure_not_ready');
       if (request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
-      const body = await readJson(request); checkKeys(body, ['confirm']);
+      const body = await readJson(request); checkKeys(body, ['confirm', 'expectedSubject']);
       if (body.confirm !== 'ERASE_APPLICATION_DATA') throw new GatewayError(400, 'profile_erasure_confirmation_required');
+      if (typeof body.expectedSubject !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(body.expectedSubject)) throw new GatewayError(400, 'profile_erasure_confirmation_required');
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       if (!session) throw new GatewayError(401);
+      // A precondition, never an RPC target: SQL still gets only the verified bearer.
+      if (body.expectedSubject !== session.user.id) throw new GatewayError(409, 'profile_erasure_subject_mismatch');
       const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_erase_profile_data', {
         method:'POST', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + session.jwt}, body:'{}',
       }, 'profile_erasure_unavailable');
@@ -249,7 +254,12 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     }
     const session = await getSession(fetchImpl, endpoints, cookie, allowed);
     if (!session) throw new GatewayError(401);
-    const body = ['POST', 'PATCH'].includes(request.method) ? await readJson(request) : undefined;
+    const body = ['POST', 'PATCH'].includes(request.method) ? await readJson(request, match[1] === 'match_cases' ? CASE_REQUEST_MAX_BYTES : 4096) : undefined;
+    if (match[1] === 'match_cases' && body && Object.hasOwn(body, 'material')) {
+      let size;
+      try { size = caseMaterialBytes(body.material); } catch { throw new GatewayError(400, 'case_material_invalid'); }
+      if (size > CASE_MATERIAL_MAX_BYTES) throw new GatewayError(413, 'case_material_too_large');
+    }
     const prefer = request.headers.get('Prefer');
     if (prefer && !/^(return=(minimal|representation)|resolution=(merge|ignore)-duplicates)(,(return=(minimal|representation)|resolution=(merge|ignore)-duplicates))*$/.test(prefer)) throw new GatewayError(400);
     const response = await checkedFetch(fetchImpl, endpoints.data + '/' + match[1] + url.search, { method: request.method,
@@ -260,7 +270,7 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
   } catch (error) {
     const status = error instanceof GatewayError ? error.status : 503;
     const requestPath = new URL(request.url).pathname;
-    const clear = (status === 401 && requestPath !== '/api/neon/profile-erasure') || requestPath === '/api/neon/logout';
+    const clear = requestPath === '/api/neon/logout';
     return answer({ error: error instanceof GatewayError ? error.code : 'service_unavailable', status }, status, clear ? { 'Set-Cookie': sessionCookie('') } : {});
   }
 }

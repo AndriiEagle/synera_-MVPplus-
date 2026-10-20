@@ -7,7 +7,7 @@ import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { A, config, createFixture } from './fixtures/real-journey-fixture.mjs';
 
-const proof = 'artifacts/gemini-implementation-20261017';
+const proof = process.env.SYNERA_ACCEPTANCE_OUTPUT || 'artifacts/gemini-implementation-20261017';
 await fs.mkdir(proof, { recursive: true });
 const report = { status: 'NOT_ACCEPTED', checks: [], scope: 'Real Chromium 390x844; synthetic account/API, no signed JWT, live Neon or provider deletion', provider_calls: 0, provider_usd: 0 };
 const server = spawn(process.execPath, ['web_launch/server.mjs', '--demo'], { env: { ...process.env, SYNERA_PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
@@ -22,7 +22,7 @@ try {
   for (const enabled of [false, true]) {
     const db = createFixture(), context = await browser.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block', reducedMotion: 'reduce' });
     await context.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
-    const page = await context.newPage(), errors = [], requests = []; let fail = true;
+    const page = await context.newPage(), errors = [], requests = []; let fail = true, mismatch = false;
     page.setDefaultTimeout(12000); page.on('pageerror', error => errors.push(error.message));
     await page.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url());
@@ -31,7 +31,7 @@ try {
       if (url.pathname === '/api/neon/health') { await route.fulfill({ json: { ok: true } }); return; }
       if (url.pathname === '/api/neon/profile-erasure') {
         requests.push(JSON.parse(request.postData()));
-        await route.fulfill({ status: fail ? 503 : 200, json: fail ? { error: 'profile_erasure_unconfirmed' } : { status: 'application_data_erased', providerDeletion: 'pending', retainedScope: 'bilateral_records_and_safety_evidence', repeated: false, sessionRevoked: true } }); return;
+        await route.fulfill({ status: mismatch ? 409 : fail ? 503 : 200, json: mismatch ? {error:'profile_erasure_subject_mismatch'} : fail ? { error: 'profile_erasure_unconfirmed' } : { status: 'application_data_erased', providerDeletion: 'pending', retainedScope: 'bilateral_records_and_safety_evidence', repeated: false, sessionRevoked: true } }); return;
       }
       if (url.pathname.startsWith('/api/neon/')) {
         const response = await db.fetchFor(A)(url.pathname + url.search, { method: request.method(), headers: request.headers(), ...(request.method() === 'GET' ? {} : { body: request.postData() }) });
@@ -62,14 +62,32 @@ try {
       await page.reload(); await page.waitForFunction(() => !document.getElementById('workspace').hidden);
       await page.locator('[data-tab="settings"]').click(); await controls.locator('summary').click(); await field.fill('DELETE');
       report.checks.push('normal logout clears typed destructive confirmation before another sign-in');
+      report.focus_geometry = [];
+      for (const width of [320,390]) {
+        await page.setViewportSize({width,height:844});
+        await field.evaluate(el=>{el.blur();window.scrollTo(0,0);el.focus();});
+        const geometry=await field.evaluate(el=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return {width:innerWidth,top:r.top,bottom:r.bottom,height:innerHeight,focused:document.activeElement===el,unobscured:hit===el||el.contains(hit)};});
+        report.focus_geometry.push(geometry);
+        assert.ok(geometry.focused&&geometry.unobscured&&geometry.top>=0&&geometry.bottom<=geometry.height,'Focused erasure confirmation must remain visible above navigation');
+        await page.keyboard.press('Tab');
+        assert.equal(await submit.evaluate(el=>document.activeElement===el),true,'Keyboard must reach explicit erasure button');
+      }
+      report.checks.push('320/390 actual focus and keyboard reach erasure confirmation without navigation occlusion');
       assert.deepEqual((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations.filter(row => ['critical', 'serious'].includes(row.impact)), []);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       await page.screenshot({ path: `${proof}/profile-erasure-390x844.png`, fullPage: true });
+      mismatch = true; await submit.click(); await page.waitForFunction(() => document.getElementById('workspace').hidden);
+      assert.equal(await field.inputValue(), ''); assert.equal(await page.locator('#profile-form [name="display_name"]').inputValue(), '');
+      assert.equal(await page.locator('#people').evaluate(el=>el.childElementCount),0);
+      assert.match(await page.locator('#notice').innerText(), /Нічого не стерто.*перевір акаунт/);
+      report.checks.push('subject mismatch clears stale private UI and typed confirmation, asks for fresh account confirmation without success claim');
+      mismatch = false; await page.reload(); await page.waitForFunction(() => !document.getElementById('workspace').hidden);
+      await page.locator('[data-tab="settings"]').click(); await controls.locator('summary').click(); await field.fill('DELETE');
       fail = false; await submit.click(); await page.waitForFunction(() => document.getElementById('workspace').hidden);
       assert.equal(await field.inputValue(), ''); assert.equal(await page.locator('#profile-form [name="display_name"]').inputValue(), '');
       assert.equal(await page.locator('#consent-panel input:checked').count(), 0);
       assert.match(await page.locator('#notice').innerText(), /Видалення акаунта для входу очікує оператора/);
-      assert.deepEqual(requests, [{ confirm: 'ERASE_APPLICATION_DATA' }, { confirm: 'ERASE_APPLICATION_DATA' }]);
+      assert.deepEqual(requests, Array.from({length:3},()=>({confirm:'ERASE_APPLICATION_DATA',expectedSubject:A})));
       report.checks.push('success purges current local form/consents and reports retained records plus pending provider deletion');
     } else report.checks.push('default off preserves the separate legacy deletion route');
     assert.deepEqual(errors, []); await context.close();

@@ -1,6 +1,7 @@
 import test from 'node:test';
+import { createResultCard } from './result-card.mjs';
 import assert from 'node:assert/strict';
-import { RealJourneyStore, exchangeMaterial, JourneyConflict } from './real-journey-client.mjs';
+import { RealJourneyStore, exchangeMaterial, materialFromEditor, JourneyConflict } from './real-journey-client.mjs';
 import { A, B, O, config, fields } from '../tools/fixtures/real-journey-fixture.mjs';
 import { createOutcomeFixture } from '../tools/fixtures/case-outcome-fixture.mjs';
 
@@ -27,6 +28,7 @@ test('fresh bilateral acceptance yields only the actor contribution and never ev
     const forged = { ...reviewed, material: { fake: 'Invented achievement' } };
     for (const wording of ['general', 'linkedin']) {
       const draft = await store.socialDraft(peer, forged, { wording });
+      assert.equal(createResultCard(draft).scope, 'private_author_draft');
       const own = reviewed.material.trial.deliverables.filter(row => row.giver_id === actor);
       for (const row of own) assert.ok(draft.text.includes(row.target));
       for (const row of reviewed.material.trial.deliverables.filter(row => row.giver_id !== actor)) assert.equal(draft.text.includes(row.target), false);
@@ -38,6 +40,24 @@ test('fresh bilateral acceptance yields only the actor contribution and never ev
     }
   }
   assert.equal(db.events.length, before, 'Draft creation wrote an outcome event');
+});
+
+test('a supplier private card uses the buyer receiver acceptance for one paid deliverable', async () => {
+  const db = createOutcomeFixture();
+  const buyer = new RealJourneyStore({ ...config, caseOutcomesEnabled: true }, db.fetchFor(A));
+  const supplier = new RealJourneyStore({ ...config, caseOutcomesEnabled: true }, db.fetchFor(B));
+  await buyer.dashboard(); await supplier.dashboard();
+  let reviewed = await buyer.saveTerms(B, materialFromEditor(A, B, fields({ mode: 'paid_service', paid_direction: 'buyer', give_tag: '', give_target: '', give_criteria: '',
+    compensation_status: 'agreed_money', amount: '125.50', currency: 'CHF', invoice: 'yes' })));
+  await buyer.approveTerms(B, reviewed); reviewed = await supplier.approveTerms(A, reviewed);
+  await supplier.recordOutcome(A, reviewed, { action: 'submit', index: 0, intentId: crypto.randomUUID(), evidenceUri: 'Private proof https://private.example/supplier' });
+  await buyer.recordOutcome(B, reviewed, { action: 'check', index: 0, intentId: crypto.randomUUID(), scopeNotes: 'Buyer checked the agreed screen' });
+  await buyer.recordOutcome(B, reviewed, { action: 'accept', index: 0, intentId: crypto.randomUUID() });
+  const draft = await supplier.socialDraft(A, reviewed);
+  assert.ok(createResultCard(draft).html.includes('Один перевірений екран'));
+  assert.ok(draft.text.includes('Один перевірений екран'));
+  assert.equal(draft.text.includes('Private proof'), false);
+  assert.deepEqual(draft.attestationReferences.map(ref => ref.eventId), db.events.filter(event => event.kind === 'accept').map(event => event.id));
 });
 
 test('caller snapshots, silence, one accepted leg and a current dispute cannot manufacture a social achievement', async () => {

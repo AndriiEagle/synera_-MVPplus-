@@ -69,6 +69,14 @@ jobs:
           node tools/profile-erasure-lock-review.mjs \
             --receipt=artifacts/postgres-acceptance/profile-erasure-upsert-locks.json
 
+      - name: Audit material byte boundary SQL acceptance
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PGPORT: '5432'
+        run: |
+          SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
+            node tools/audit-material-sql.mjs --receipt=artifacts/postgres-acceptance/material-budget.json
+
       - name: Upload SQL acceptance receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -107,6 +115,8 @@ jobs:
       - run: node tools/location-browser-acceptance.mjs
       - run: node tools/case-social-draft-browser.mjs
       - run: node tools/profile-erasure-browser.mjs
+      - run: node tools/audit-session-cookie-browser.mjs
+      - run: node tools/audit-paid-journey-browser.mjs
 
       # axe-core через Playwright; exit 1 при critical/serious порушеннях.
       - run: node web_launch/a11y_audit.mjs
@@ -121,6 +131,8 @@ jobs:
             artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json
             artifacts/gemini-implementation-20261017/result-card-390x844.png
             artifacts/gemini-implementation-20261017/profile-erasure-390x844.png
+            artifacts/audit-followup-20261019/session-cookie-browser.json
+            artifacts/audit-followup-20261019/paid-journey-browser/
           if-no-files-found: ignore
           retention-days: 7
 

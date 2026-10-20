@@ -54,6 +54,7 @@ export class ServiceError extends Error {
       402: 'Онлайн-сервіс тимчасово недоступний через обмеження хостингу. Власник уже має інформацію для відновлення.',
       403: 'Недостатньо прав для цієї дії.',
       409: 'Такий запит уже існує. Відкрий розділ «Зустрічі».',
+      413: 'Забагато тексту. Скороти умови й повтори збереження; чернетка залишається у формі.',
       422: 'Перевір введені дані.',
       429: 'Забагато спроб. Зачекай кілька хвилин перед наступною.',
     };
@@ -65,9 +66,10 @@ export class ServiceError extends Error {
       session_token_unavailable: 'Вхід підтверджено, але доступ до профілю ще не отримано. Спробуй продовжити вхід. Код помилки: AUTH-TOKEN.',
       session_unavailable: 'Не вдалося відновити з’єднання з акаунтом. Спробуй ще раз.',
       profile_delete_conflict: "Профіль не видалено: сервер відхилив видалення. Збережи приватний експорт у «Приватність» і звернися до оператора через «Правила та приватність».",
+      profile_erasure_subject_mismatch: 'Акаунт змінився в іншій вкладці. Нічого не стерто. Увійди знову, перевір акаунт і підтверди дію ще раз.',
       data_unavailable: 'Не вдалося завантажити або зберегти дані. Повтори дію; введені поля залишаються у формі.',
     };
-    super((code === 'otp_invalid' || (status === 409 && code === 'profile_delete_conflict') || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    super((code === 'otp_invalid' || (status === 409 && ['profile_delete_conflict', 'profile_erasure_subject_mismatch'].includes(code)) || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
     this.name = 'ServiceError'; this.status = status; this.code = Object.hasOwn(authMessages, code) ? code : undefined;
   }
 }

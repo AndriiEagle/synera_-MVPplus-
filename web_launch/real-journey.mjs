@@ -6,7 +6,7 @@ import { draftActionScope, draftIntroOffer } from './action-scoper.mjs';
 import { tr, t, known, dateLocale, getLanguage, setLanguage, initLanguage, collectStatic, mirrorText } from './real-journey-i18n.mjs';
 
 const $ = id => document.getElementById(id);
-const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'), auth: $('real-auth'), content: $('real-content-panel'), people: $('real-people'), cases: $('real-cases'), meetings: $('real-meetings'), peer: $('real-peer'), terms: $('real-terms'), termsForm: $('real-terms-form'), mode: $('real-mode'), hybrid: $('real-hybrid-components'), modeBoundary: $('real-mode-boundary'), money: $('real-money-terms'), paidBoundary: $('real-paid-boundary'), review: $('real-terms-review'), approveCheck: $('real-approve-check'), approve: $('real-approve'), withdraw: $('real-withdraw'), invite: $('real-invite'), inviteForm: $('real-invite-form'), conversation: $('real-conversation'), transcript: $('real-transcript'), messageForm: $('real-message-form'), message: $('real-message'), refresh: $('real-refresh'), logout: $('real-logout') });
+const ui = Object.freeze({ status: $('real-status'), blocked: $('real-blocked'), auth: $('real-auth'), content: $('real-content-panel'), people: $('real-people'), cases: $('real-cases'), meetings: $('real-meetings'), peer: $('real-peer'), terms: $('real-terms'), termsForm: $('real-terms-form'), mode: $('real-mode'), paidDirection: $('real-paid-direction'), giveTerms: $('real-give-terms'), takeTerms: $('real-take-terms'), paidRoleNote: $('real-paid-role-note'), hybrid: $('real-hybrid-components'), modeBoundary: $('real-mode-boundary'), money: $('real-money-terms'), paidBoundary: $('real-paid-boundary'), review: $('real-terms-review'), approveCheck: $('real-approve-check'), approve: $('real-approve'), withdraw: $('real-withdraw'), invite: $('real-invite'), inviteForm: $('real-invite-form'), conversation: $('real-conversation'), transcript: $('real-transcript'), messageForm: $('real-message-form'), message: $('real-message'), refresh: $('real-refresh'), logout: $('real-logout') });
 const state = { store: null, dashboard: null, peerId: null, caseState: null, meetingId: null, busy: false, epoch: 0, termsDirty: false, termsBase: null, messageDraftMeeting: null, reviewKey: null };
 Object.assign(state, { outcomesEnabled: false, conversationPeer: null, outcomeContext: null, outcomeData: null });
 const outcomeUI = { panel: $('real-outcomes'), refresh: $('real-outcome-refresh'), status: $('real-outcome-status'), cards: $('real-outcome-cards'), history: $('real-outcome-history'), events: $('real-outcome-events') };
@@ -28,7 +28,7 @@ const asText = value => typeof value === 'string' ? value : '';
 // A message raised by our own modules is shown in the chosen language. Any other Ukrainian text gets a
 // plain next step in that language instead of a sentence the person cannot read.
 const say = message => known(message) ? tr(message) : getLanguage() === 'uk' || !/[\u0400-\u04FF]/.test(message) ? message : tr('Форма або сервер не прийняли ці дані. Перевір поля й спробуй ще раз.');
-const errorText = error => error?.status === 401 ? tr('Сеанс завершився. Увійди знову.') : error?.status === 403 ? tr('Ця дія недоступна для поточного облікового запису.') : error?.status === 503 ? tr('Реальний шлях тимчасово недоступний.') : error?.status === 400 ? tr('Сервер не прийняв цю дію: можливий денний ліміт дій або застарілі дані. Натисни «Оновити» й перевір поля; якщо повториться, спробуй пізніше.') : error?.message ? say(error.message) : tr('Не вдалося завершити дію.');
+const errorText = error => error?.status === 401 ? tr('Сеанс завершився. Увійди знову.') : error?.status === 403 ? tr('Ця дія недоступна для поточного облікового запису.') : error?.status === 413 ? tr('Забагато тексту. Скороти умови й повтори збереження; чернетка залишається у формі.') : error?.status === 503 ? tr('Реальний шлях тимчасово недоступний.') : error?.status === 400 ? tr('Сервер не прийняв цю дію: можливий денний ліміт дій або застарілі дані. Натисни «Оновити» й перевір поля; якщо повториться, спробуй пізніше.') : error?.message ? say(error.message) : tr('Не вдалося завершити дію.');
 const statusLabels = { draft: 'Чернетка', awaiting_approval: 'Очікує підтвердження', approved_for_next_step: 'Погоджено обома', pending: 'Чекає відповіді', accepted: 'Прийнято', declined: 'Відхилено', cancelled: 'Скасовано' };
 const dateTime = value => Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat(dateLocale(), { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : tr('Час не вказано');
 // «Онлайн» is the stored value of the place list; every other place is text a person chose and stays as written.
@@ -47,10 +47,11 @@ const closedNote = el('p', t('Розмову закрито: зустріч ск
 // The reason sits next to the disabled control, not only in the status line at the top of the page.
 const composer = open => { ui.message.readOnly = !open; ui.messageForm.querySelector('button').disabled = !open; if (open) closedNote.remove(); else ui.messageForm.before(closedNote); };
 const inviteWait = el('p', t('Запрошення для цієї пари вже надіслано й чекає відповіді. Його видно в розділі «Зустрічі».'), { class: 'real-note', id: 'real-invite-wait' });
-// Where am I: people → shared terms → invitation → conversation. Derived from the same state the page renders.
+// Where am I: people → shared terms → invitation → conversation → receiver-accepted result.
 function syncSteps() {
   const both = state.caseState?.status === 'approved_for_next_step' && Date.parse(state.caseState.expiresAt) > Date.now();
-  const step = !state.dashboard ? -1 : !ui.conversation.hidden ? 3 : state.peerId ? (both ? 2 : 1) : 0;
+  const accepted = state.outcomeData?.outcome_confirmed === true;
+  const step = !state.dashboard ? -1 : accepted ? 4 : !ui.conversation.hidden ? 3 : state.peerId ? (both ? 2 : 1) : 0;
   document.querySelectorAll('.real-steps li').forEach((item, index) => { if (index === step) item.setAttribute('aria-current', 'step'); else item.removeAttribute('aria-current'); });
 }
 // A cancelled meeting or an answered invitation is not a lost session: the person stays signed in,
@@ -87,15 +88,18 @@ function makeButton(text, fn) { const button = el('button', text, { type: 'butto
 function appendEmpty(host, text) { host.append(el('p', text, { class: 'real-empty' })); }
 function populateTags() { for (const select of ui.termsForm.querySelectorAll('select[name="give_tag"],select[name="take_tag"]')) for (const [id, label] of Object.entries(CAPABILITIES)) select.append(el('option', t(label), { value: id })); }
 function syncModeEditor() {
-  const mode = ui.mode.value, money = ui.termsForm.elements.namedItem('compensation_status').value === 'agreed_money';
+  const mode = ui.mode.value, paid = mode === 'paid_service', direction = ui.termsForm.elements.namedItem('paid_direction').value, money = ui.termsForm.elements.namedItem('compensation_status').value === 'agreed_money';
   ui.hybrid.hidden = mode !== 'hybrid'; ui.money.hidden = !money;
-  ui.paidBoundary.hidden = mode !== 'paid_service';
+  ui.paidBoundary.hidden = !paid; ui.paidDirection.hidden = !paid; ui.paidRoleNote.hidden = !paid;
+  const toggleLeg = (field, visible) => { field.hidden = !visible; for (const input of field.querySelectorAll('input,select,textarea')) { input.disabled = !visible; input.required = visible && ['give_tag', 'give_target', 'give_criteria', 'take_tag', 'take_target', 'take_criteria'].includes(input.name); } };
+  toggleLeg(ui.giveTerms, !paid || direction !== 'buyer'); toggleLeg(ui.takeTerms, !paid || direction !== 'supplier');
+  setText(ui.paidRoleNote, t(direction === 'supplier' ? 'Ти виконуєш результат: замовник перевіряє й приймає його. Навичка замовника не потрібна.' : direction === 'both' ? 'Ця наявна редакція містить два результати. Збережи обидві сторони або окремо зміни роль.' : 'Ти замовляєш результат: виконавець дає один результат, ти його перевіряєш і приймаєш. Твоя навичка не потрібна.'));
   const boundary = mode === 'joint_project' ? 'Це двосторонній пробний спільний проєкт: кожна людина вручну описує свій конкретний внесок, результат і критерій. Це не автоматичний набір команди.' : mode === 'referral' ? 'Рекомендація не створює контакту чи згоди третьої особи: підтвердь їх окремо перед дією.' : mode === 'hybrid' ? 'Поєднання зберігає лише явно вибрані компоненти; вони не замінюють окремих погоджень.' : '';
   ui.modeBoundary.textContent = boundary && tr(boundary);
 }
 function renderPeople() {
   clear(ui.people); const people = state.dashboard?.people || [];
-  if (!people.length) return appendEmpty(ui.people, t('Наразі немає доступних профілів.'));
+  if (!people.length) { appendEmpty(ui.people, t('Наразі немає доступних профілів.')); ui.people.append(el('p', t('Наступна дія: онови свій профіль або перевір список ще раз.')), el('a', t('Відкрити вхід і профіль'), { href: '/index.html' }), makeButton(t('Оновити'), () => refresh())); return; }
   const list = el('div', '', { class: 'real-list' });
   for (const person of people) {
     const card = el('article', '', { class: 'real-card' }); card.append(el('h3', asText(person.display_name) || t('Учасник')));
@@ -321,11 +325,11 @@ function outcomeForm(card, context, index, action, label, field, options = null)
 }
 function renderOutcomes() {
   const context = state.outcomeContext, result = state.outcomeData; if (!context || !result) return;
-  clearSocialDraft();
+  clearSocialDraft(); renderNextAction();
   outcomeUI.socialControls.hidden = !result.outcome_confirmed || context.reviewed.status !== 'approved_for_next_step' || Date.parse(context.reviewed.expiresAt) <= Date.now();
   clear(outcomeUI.cards); clear(outcomeUI.events);
   const accepted = result.deliverables.filter(row => row.phase === 'accepted').length;
-  setText(outcomeUI.status, t('Редакція {version} · {status}', { version: result.version, status: () => result.outcome_confirmed ? tr('Усі результати прийняті одержувачами') : tr('Прийнято {accepted} з {total} результатів', { accepted, total: result.deliverables.length }) }));
+  setText(outcomeUI.status, t('Редакція {version} · {status}', { version: result.version, status: () => result.outcome_confirmed ? tr('Усі результати прийняті одержувачами; це не підтверджує оплату чи всі зобов’язання.') : tr('Прийнято {accepted} з {total} результатів', { accepted, total: result.deliverables.length }) })); syncSteps();
   outcomeUI.status.className = result.outcome_confirmed ? 'real-approval-ok' : 'real-approval-pending';
   for (const row of result.deliverables) {
     const card = el('article', '', { class: 'real-card', 'data-outcome-index': row.index });
@@ -428,7 +432,7 @@ function draftTerms(kind) {
   const fields = Object.fromEntries(new FormData(ui.termsForm));
   const ownTags = state.dashboard.own.brief?.offer_tags || [];
   const peerTags = state.dashboard.people.find(person => person.id === state.peerId)?.brief?.offer_tags || [];
-  const common = { language: getLanguage(), mode: fields.mode, subject: $('real-help-subject').value,
+  const common = { language: getLanguage(), mode: fields.mode, paidDirection: fields.paid_direction, subject: $('real-help-subject').value,
     dueOn: fields.due_on };
   let proposal;
   if (kind === 'intro') {
@@ -436,12 +440,15 @@ function draftTerms(kind) {
       ownOfferTags: ownTags, peerOfferTags: peerTags, currentFields: fields });
     proposal = result.fields;
   } else {
-    const scopes = [['give', ownTags], ['take', peerTags]].map(([prefix, tags]) => draftActionScope({ ...common,
+    const scopes = (fields.mode === 'paid_service' ? fields.paid_direction === 'supplier' ? [['give', ownTags]] : fields.paid_direction === 'both' ? [['give', ownTags], ['take', peerTags]] : [['take', peerTags]] : [['give', ownTags], ['take', peerTags]]).map(([prefix, tags]) => draftActionScope({ ...common,
       evidenceType: $('real-help-evidence').value, capabilityTag: fields[prefix + '_tag'], declaredTags: tags,
       target: fields[prefix + '_target'], acceptanceCriteria: fields[prefix + '_criteria'] }));
-    if (scopes.every(scope => scope.proposal)) proposal = { give_target: scopes[0].proposal.target,
-      give_criteria: scopes[0].proposal.acceptance_criteria, take_target: scopes[1].proposal.target,
-      take_criteria: scopes[1].proposal.acceptance_criteria };
+    if (scopes.every(scope => scope.proposal)) proposal = fields.mode === 'paid_service' && fields.paid_direction === 'supplier'
+      ? { give_target: scopes[0].proposal.target, give_criteria: scopes[0].proposal.acceptance_criteria }
+      : fields.mode === 'paid_service' && fields.paid_direction !== 'both'
+      ? { take_target: scopes[0].proposal.target, take_criteria: scopes[0].proposal.acceptance_criteria }
+      : { give_target: scopes[0].proposal.target, give_criteria: scopes[0].proposal.acceptance_criteria,
+        take_target: scopes[1].proposal.target, take_criteria: scopes[1].proposal.acceptance_criteria };
   }
   if (!proposal) { setStatus(t('Вкажи тему, строк і навички, які учасники заявили у своїх профілях.')); return; }
   let changed = false;
@@ -485,11 +492,21 @@ function renderReview(current) {
   ui.review.append(details);
   const approvals = current.approvals || {}; for (const id of current.participants || []) ui.review.append(el('p', () => `${nameFor(id)}: ${tr(approvals[id] ? 'підтвердив(ла) цю редакцію' : 'ще не підтвердив(ла)')}`, { class: approvals[id] ? 'real-approval-ok' : 'real-approval-pending' }));
 }
+function renderNextAction() {
+  if (!state.peerId || !state.dashboard) return;
+  const current = state.caseState, own = state.dashboard.own.id, approvals = current?.approvals || {};
+  const acceptedResult = state.outcomeData?.outcome_confirmed === true;
+  const acceptedMeeting = state.dashboard.meetings?.some(meeting => meeting.status === 'accepted' && [meeting.sender_id, meeting.recipient_id].includes(state.peerId));
+  const next = acceptedResult ? [own, 'переглянути прийнятий результат'] : acceptedMeeting ? [own, 'відкрити розмову й перейти до результатів'] : !current ? [own, 'заповнити й зберегти потрібні умови'] : !approvals[own] ? [own, 'прочитати й підтвердити поточну редакцію'] : !approvals[state.peerId] ? [state.peerId, 'прочитати й підтвердити поточну редакцію'] : [own, 'надіслати запрошення на розмову'];
+  $('real-next-action')?.remove();
+  ui.peer.append(el('p', t('Наступна дія: {name} — {action}.', { name: () => nameFor(next[0]), action: () => tr(next[1]) }), { class: 'real-note', id: 'real-next-action' }));
+}
 function renderPeer() {
   if (!state.peerId) return;
   const peerId = state.peerId;
   ui.peer.hidden = false; clear(ui.peer); ui.peer.append(el('h2', () => nameFor(peerId)), el('p', t('Ідентифікатор профілю: {id}', { id: peerId })));
   ui.terms.hidden = false; renderReview(state.caseState);
+  renderNextAction();
   if (!state.termsDirty) $('real-editor').open = !state.caseState;
   updateApprovalControls();
   syncOutcomesEntry();
@@ -514,6 +531,8 @@ function fillCurrentTerms(current) {
   if (!current) { syncModeEditor(); return; }
   const values = { ...current.material.trial, mode: current.material.mode, compensation_status: current.material.compensation.status, ...current.material.terms };
   if (current.material.compensation.status === 'agreed_money') Object.assign(values, { amount: (current.material.compensation.amount_minor / 100).toFixed(2), currency: current.material.compensation.currency, invoice: current.material.compensation.invoice_required ? 'yes' : 'no' });
+  const ownLeg = current.material.trial.deliverables.find(row => row.giver_id === state.dashboard.own.id), peerLeg = current.material.trial.deliverables.find(row => row.giver_id === state.peerId);
+  if (current.material.mode === 'paid_service') values.paid_direction = ownLeg && peerLeg ? 'both' : ownLeg ? 'supplier' : 'buyer';
   for (const [prefix, giver] of [['give', state.dashboard.own.id], ['take', state.peerId]]) {
     const leg = current.material.trial.deliverables.find(row => row.giver_id === giver);
     if (!leg) continue;
@@ -551,7 +570,7 @@ async function saveTerms(event) {
     throw error;
   }
   if (epoch !== state.epoch) return;
-  state.caseState = saved; state.termsDirty = false; state.termsBase = null; renderPeer();
+  clearOutcomes(); state.caseState = saved; state.termsDirty = false; state.termsBase = null; renderPeer();
   setStatus(t('Нову редакцію збережено. Обидва підтвердження потрібно зробити окремо.'));
 }
 async function approve() { if (!state.peerId || !ui.approveCheck.checked || !state.caseState) return setStatus(t('Постав позначку лише після читання поточної редакції.')); const epoch = state.epoch; const saved = await state.store.approveTerms(state.peerId, state.caseState); if (epoch !== state.epoch) return; state.caseState = saved; renderPeer(); setStatus(t('Твоє підтвердження збережено.')); }

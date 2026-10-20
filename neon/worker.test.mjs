@@ -170,7 +170,7 @@ test('OTP verification keeps provider session, identity metadata and JWT out of 
   assert.equal(calls.length, 1);
   const bad = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
     async () => new Response(JSON.stringify({ user: { ...user, emailVerified: false } })));
-  assert.equal(bad.status, 401); assert.match(bad.headers.get('set-cookie'), /Max-Age=0/);
+  assert.equal(bad.status, 401); assert.equal(bad.headers.get('set-cookie'), null);
 });
 
 test('a fresh provider session supplies the data token; caller Authorization and stray cookies are discarded', async () => {

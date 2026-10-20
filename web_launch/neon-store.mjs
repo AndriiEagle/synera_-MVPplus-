@@ -41,7 +41,14 @@ export class NeonStore extends ProfileStore {
     this.requireUser();
     if (!this.profileErasureEnabled) throw new ServiceError(503, 'profile_erasure_not_ready');
     const actor = this.#user;
-    const result = await this.#request('/api/neon/profile-erasure', {method:'POST',body:{confirm:'ERASE_APPLICATION_DATA'}});
+    let result;
+    try {
+      result = await this.#request('/api/neon/profile-erasure', {method:'POST',body:{confirm:'ERASE_APPLICATION_DATA',expectedSubject:actor.id}});
+    } catch (error) {
+      // Drop the stale displayed account, but never overwrite a newer local login.
+      if (error.code === 'profile_erasure_subject_mismatch' && this.#user === actor) this.#user = null;
+      throw error;
+    }
     if (this.#user !== actor) throw Object.assign(new ServiceError(409), {
       code:'profile_erasure_session_changed', message:'Сесія змінилася. Результат попереднього запиту не змінює поточний акаунт.',
     });

@@ -13,7 +13,7 @@ function fixture({enabled=true,result=accepted,signOutFails=false,rpcStatus=200}
     if(url.endsWith('/sign-out'))return Response.json({}, {status:signOutFails?503:200});
     return w.db.upstream(url,init);
   };
-  const send=(body={confirm:'ERASE_APPLICATION_DATA'},opts={})=>handleNeon(new Request(origin+'/api/neon/profile-erasure'+(opts.search||''),{
+  const send=(body={confirm:'ERASE_APPLICATION_DATA',expectedSubject:A},opts={})=>handleNeon(new Request(origin+'/api/neon/profile-erasure'+(opts.search||''),{
     method:'POST',headers:{Origin:origin,'Content-Type':'application/json','X-Synera-Client':'1',...(opts.noCookie?{}:{Cookie:'__Host-synera-session='+A})},body:JSON.stringify(body),
   }),env,upstream);
   return {w,env,calls,send};
@@ -23,7 +23,7 @@ test('erasure defaults disabled in server config and makes zero upstream request
   assert.equal((await(await createNeonWorker([]).fetch(new Request(origin+'/config.json'),f.w.env)).json()).profileErasureEnabled,false);
 });
 test('no arbitrary target, wrong confirmation, query or missing session reaches erasure RPC',async()=>{
-  for(const [body,options,status] of [[{confirm:'ERASE_APPLICATION_DATA',id:A},{},400],[{confirm:'yes'},{},400],[{}, {},400],[{confirm:'ERASE_APPLICATION_DATA'},{search:'?id='+A},404],[{confirm:'ERASE_APPLICATION_DATA'},{noCookie:true},401]]){
+  for(const [body,options,status] of [[{confirm:'ERASE_APPLICATION_DATA',expectedSubject:A,id:A},{},400],[{confirm:'yes',expectedSubject:A},{},400],[{}, {},400],[{confirm:'ERASE_APPLICATION_DATA',expectedSubject:A},{search:'?id='+A},404],[{confirm:'ERASE_APPLICATION_DATA',expectedSubject:A},{noCookie:true},401]]){
     const f=fixture();assert.equal((await f.send(body,options)).status,status);assert.equal(f.calls.filter(c=>c.path.endsWith('/rpc/synera_erase_profile_data')).length,0);
   }
 });
@@ -106,6 +106,6 @@ test('NeonStore distinct erasure method is gated, validates receipt, and clears 
     await store.restore();await assert.rejects(store.eraseProfileData());assert.equal(store.user.id,A);
     if(!enabled){assert.equal(calls.length,0);continue;}
     valid=true;assert.equal((await store.eraseProfileData()).providerDeletion,'pending');assert.equal(store.user,null);
-    assert.equal(calls[1].path,'/api/neon/profile-erasure');assert.deepEqual(JSON.parse(calls[1].init.body),{confirm:'ERASE_APPLICATION_DATA'});
+    assert.equal(calls[1].path,'/api/neon/profile-erasure');assert.deepEqual(JSON.parse(calls[1].init.body),{confirm:'ERASE_APPLICATION_DATA',expectedSubject:A});
   }
 });

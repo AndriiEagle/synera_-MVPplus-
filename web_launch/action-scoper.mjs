@@ -68,11 +68,16 @@ export function draftIntroOffer(input = {}) {
   const scope = (prefix, capabilityTag, declaredTags) => draftActionScope({ language: value.language, mode: value.mode,
     subject: value.subject, dueOn: value.dueOn, evidenceType: 'conversation_note', capabilityTag, declaredTags,
     target: fields[prefix + '_target'], acceptanceCriteria: fields[prefix + '_criteria'] });
-  const give = scope('give', value.giveTag, value.ownOfferTags), take = scope('take', value.takeTag, value.peerOfferTags);
-  const missing = [...new Set([...give.missing.map(key => 'give.' + key), ...take.missing.map(key => 'take.' + key)])];
+  const paid = value.mode === 'paid_service', direction = value.paidDirection;
+  const give = paid && direction === 'buyer' ? null : scope('give', value.giveTag, value.ownOfferTags);
+  const take = paid && direction === 'supplier' ? null : scope('take', value.takeTag, value.peerOfferTags);
+  if (!take && !give) return { status: 'needs_input', kind: 'conversation_proposal', language: languageFor(value.language), mode: value.mode,
+    binding: false, requiresReview: true, financialAgreement: false, boundary: copy[languageFor(value.language)].boundary, missing: ['paidDirection'], fields: null };
+  const missing = [...new Set([...(give?.missing || []).map(key => 'give.' + key), ...(take?.missing || []).map(key => 'take.' + key), ...(paid && !['buyer', 'supplier', 'both'].includes(direction) ? ['paidDirection'] : [])])];
   if (value.currentFields !== undefined && !record(value.currentFields)) missing.push('currentFields');
-  return { status: missing.length ? 'needs_input' : 'proposed', kind: 'conversation_proposal', language: give.language,
-    mode: give.mode, binding: false, requiresReview: true, financialAgreement: false, boundary: give.boundary, missing,
-    fields: missing.length ? null : { give_target: give.proposal.target, give_criteria: give.proposal.acceptance_criteria,
-      take_target: take.proposal.target, take_criteria: take.proposal.acceptance_criteria } };
+  const anchor = take || give;
+  return { status: missing.length ? 'needs_input' : 'proposed', kind: 'conversation_proposal', language: anchor.language,
+    mode: anchor.mode, binding: false, requiresReview: true, financialAgreement: false, boundary: anchor.boundary, missing,
+    fields: missing.length ? null : { ...(give ? { give_target: give.proposal.target, give_criteria: give.proposal.acceptance_criteria } : {}),
+      ...(take ? { take_target: take.proposal.target, take_criteria: take.proposal.acceptance_criteria } : {}) } };
 }

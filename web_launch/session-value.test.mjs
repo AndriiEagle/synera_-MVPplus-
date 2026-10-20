@@ -57,6 +57,11 @@ test('one participant may revoke only their own confirmation; unilateral approva
   assert.throws(() => createSocialDraft(once), /явного підтвердження/);
 });
 
+test('one-person generic sessions remain invalid', () => {
+  assert.throws(() => createSession({ sessionId: 'paid-case-1', participantIds: ['buyer'], outcome: { revision: 1,
+    facts: [{ sourceId: 'supplier-result', text: 'One accepted supplier deliverable.' }] } }), /два або три/);
+});
+
 test('archive roundtrip retains original text, history and consent scopes exactly', () => {
   const revised = replaceOutcome(confirmAll(base()), { at: 1300, outcome: { revision: 2, facts: [{ sourceId: 'outcome-2', text: 'Quote target: exact phrase.' }] } });
   const json = archiveSession(revised, { archiveId: 'archive-1', createdAt: 1600 });

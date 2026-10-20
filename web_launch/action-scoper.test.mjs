@@ -43,22 +43,32 @@ test('changing the human action or deadline changes the acceptance criterion', (
 
 test('all modes remain selectable; intro does not supply financial or legal agreement', () => {
   for (const mode of ['exchange', 'paid_service', 'referral', 'hybrid', 'joint_project']) {
-    const output = draftIntroOffer(intro({ mode }));
+    const output = draftIntroOffer(intro({ mode, paidDirection: mode === 'paid_service' ? 'buyer' : undefined }));
     assert.equal(output.status, 'proposed');
     assert.equal(output.mode, mode);
     assert.equal(output.kind, 'conversation_proposal');
     assert.equal(output.financialAgreement, false);
-    assert.deepEqual(Object.keys(output.fields).sort(), ['give_criteria', 'give_target', 'take_criteria', 'take_target']);
-    assert.ok(output.fields.give_target.includes('decision not to continue'));
+    assert.deepEqual(Object.keys(output.fields).sort(), mode === 'paid_service'
+      ? ['take_criteria', 'take_target'] : ['give_criteria', 'give_target', 'take_criteria', 'take_target']);
+    assert.ok((mode === 'paid_service' ? output.fields.take_target : output.fields.give_target).includes('decision not to continue'));
     assert.equal(output.binding, false);
     assert.equal(output.requiresReview, true);
     const explicit = mode === 'paid_service' ? { compensation_status: 'agreed_money', amount: '125.50', currency: 'CHF', invoice: 'yes' }
       : { compensation_status: mode === 'exchange' || mode === 'hybrid' ? 'agreed_exchange' : 'agreed_none' };
-    const material = materialFromEditor(A, B, { ...terms({ mode, components: ['exchange', 'referral'], ...explicit }), ...output.fields });
+    const paidBuyer = mode === 'paid_service' ? { give_tag: '', give_target: '', give_criteria: '' } : {};
+    const material = materialFromEditor(A, B, { ...terms({ mode, components: ['exchange', 'referral'], paid_direction: mode === 'paid_service' ? 'buyer' : undefined, ...explicit }), ...paidBuyer, ...output.fields });
     assert.equal(material.mode, mode);
-    assert.equal(material.trial.deliverables.length, 2);
+    assert.equal(material.trial.deliverables.length, mode === 'paid_service' ? 1 : 2);
     if (mode === 'paid_service') assert.equal(material.compensation.amount_minor, 12550);
   }
+});
+
+test('paid supplier drafts only its own result and a missing paid direction remains blocked', () => {
+  const supplier = draftIntroOffer(intro({ mode: 'paid_service', paidDirection: 'supplier', takeTag: '', peerOfferTags: [] }));
+  assert.equal(supplier.status, 'proposed');
+  assert.deepEqual(Object.keys(supplier.fields).sort(), ['give_criteria', 'give_target']);
+  const missing = draftIntroOffer(intro({ mode: 'paid_service' }));
+  assert.equal(missing.status, 'needs_input'); assert.ok(missing.missing.includes('paidDirection'));
 });
 
 test('unknown, empty and malformed values yield no draft; calendar rollovers are refused', () => {

@@ -119,7 +119,7 @@ test('mutation evidence: weakening the advisory veto makes the semantic guard fa
     await fs.writeFile(path.join(temp, 'business-case.mjs'), await fs.readFile(path.join(sourceRoot, 'business-case.mjs')));
     await fs.writeFile(path.join(temp, 'profile-brief.mjs'), await fs.readFile(path.join(sourceRoot, 'profile-brief.mjs')));
     await fs.writeFile(path.join(temp, 'profile-portability.mjs'), await fs.readFile(path.join(sourceRoot, 'profile-portability.mjs')));
-    for (const dependency of ['need-decay.mjs', 'b-matching.mjs', 'proof-state.mjs']) {
+    for (const dependency of ['need-decay.mjs', 'b-matching.mjs', 'proof-state.mjs', 'case-material-budget.mjs']) {
       await fs.writeFile(path.join(temp, dependency), await fs.readFile(path.join(sourceRoot, dependency)));
     }
     await fs.writeFile(path.join(temp, 'decision-layer.mjs'), source.replace("if (deterministic.hard_vetoes.length || deterministic.action !== 'recommend')", 'if (false)'));

@@ -10,7 +10,7 @@ import { A, B, config, fields } from './fixtures/real-journey-fixture.mjs';
 import { createOutcomeFixture } from './fixtures/case-outcome-fixture.mjs';
 import { RealJourneyStore, exchangeMaterial } from '../web_launch/real-journey-client.mjs';
 
-const proof = 'artifacts/gemini-implementation-20261017', red = process.argv.includes('--red');
+const proof = process.env.SYNERA_ACCEPTANCE_OUTPUT || 'artifacts/gemini-implementation-20261017', red = process.argv.includes('--red');
 const report = { status: 'NOT_ACCEPTED', generated_at: new Date().toISOString(), provider_calls: 0, provider_usd: 0,
   scope: 'Actual Chromium 390x844 private social draft controls; accounts and RPC are synthetic, not live JWT/SQL/LinkedIn or OS clipboard', checks: [] };
 await fs.mkdir(proof, { recursive: true });

@@ -2,7 +2,6 @@ import { NeonStore } from './neon-store.mjs';
 import { ServiceError } from './profile-store.mjs';
 import { compareRealProfiles } from './profile-brief.mjs';
 import { packArchive } from './archive-codec.mjs';
-import { createSession, confirmOutcome, createSocialDraft } from './session-value.mjs';
 import { canonicalMaterialPayload, hashMaterialPayload, caseMaterialProblems, caseParticipantProblems, materialTermsFromInput, approveCase, abandonCase } from './business-case.mjs';
 
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
@@ -361,21 +360,17 @@ export class RealJourneyStore extends NeonStore {
     if (!result.outcome_confirmed) throw new Error('Чернетка досягнення доступна після приймання всіх результатів їхніми одержувачами.');
     const own = result.deliverables.filter(row => row.giver_id === actor);
     if (!own.length) throw new ServiceError(403);
-    // Adapt existing attestation events to the conservative local draft contract.
-    // These pure confirmations never submit votes or claim verified identities.
-    let session = createSession({ sessionId: current.caseId, participantIds: current.participants,
-      outcome: { revision: current.version, facts: own.map(row => ({ sourceId: `result-${row.index}`, text: row.target })) } });
-    for (const id of current.participants) {
-      const accepted = result.events.filter(event => event.kind === 'accept' && event.actor_id === id).at(-1);
-      session = confirmOutcome(session, { participantId: id, revision: current.version, at: Date.parse(accepted?.created_at) });
-    }
-    const draft = createSocialDraft(session, { wording });
-    draft.text += '\n\nЦе мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.';
+    const accepted = own.map(row => result.events.find(event => event.kind === 'accept' && event.index === row.index && event.actor_id === row.receiver_id));
+    if (accepted.some(event => !event)) throw new ServiceError(502, 'receiver_acceptance_missing');
+    const prefix = wording === 'linkedin' ? 'Приватна чернетка для LinkedIn (не опубліковано):' : 'Приватна загальна social-чернетка (не опубліковано):';
+    const draft = { kind: 'private_social_draft', wording, publishable: false, trust: 'same_device_unverified',
+      text: `${prefix}\n${own.map(row => `• ${row.target}`).join('\n')}\n\nЦе мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.`,
+      sourceReferences: own.map(row => ({ sourceId: `result-${row.index}`, locator: `deliverables[${row.index}].target` })) };
     const latest = await this.pairState(peerId); guard(); this.#expect(latest, expected);
     if (!eligible(latest)) throw new JourneyConflict();
     return { ...draft, proof_scope: result.proof_scope,
       case: { caseId: current.caseId, version: current.version, termsHash: current.termsHash },
-      attestationReferences: own.map(row => ({ sourceId: `result-${row.index}`, eventId: result.events.find(event => event.kind === 'accept' && event.index === row.index).id })) };
+      attestationReferences: own.map((row, index) => ({ sourceId: `result-${row.index}`, eventId: accepted[index].id })) };
   }
   async #actor(peerId) {
     this.requireRealPilot();
@@ -542,13 +537,16 @@ export function materialFromEditor(me, peer, fields = {}) {
   const components = mode === 'hybrid' ? [...new Set(Array.isArray(fields.components) ? fields.components : [])].sort() : [mode];
   if (mode === 'hybrid' && components.length < 2) throw new Error('Поєднання потребує щонайменше двох явних компонентів.');
   if (mode === 'paid_service' && fields.compensation_status !== 'agreed_money') throw new Error('Оплачувана послуга вимагає явної грошової винагороди, валюти й рахунку.');
+  const paidDirection = fields.paid_direction;
+  if (mode === 'paid_service' && !['buyer', 'supplier', 'both'].includes(paidDirection)) throw new Error('Обери свою роль в оплачуваній послузі.');
   const leg = (prefix, giver, receiver) => {
     const value = { giver_id: giver, receiver_id: receiver, capability_tag: fields[prefix + '_tag'], target: fields[prefix + '_target'], acceptance_criteria: fields[prefix + '_criteria'] };
     const amount = fields[prefix + '_amount'], unit = fields[prefix + '_unit'];
     if (amount || unit) value.effort = { amount: /^\d{1,5}$/.test(String(amount)) ? Number(amount) : NaN, unit };
     return value;
   };
-  const deliverables = [leg('give', me, peer), leg('take', peer, me)];
+  const deliverables = mode !== 'paid_service' || paidDirection === 'both' ? [leg('give', me, peer), leg('take', peer, me)]
+    : paidDirection === 'buyer' ? [leg('take', peer, me)] : [leg('give', me, peer)];
   const material = canonicalMaterialPayload({ mode, components,
     outcomes: deliverables.map(leg => ({ receiver_id: leg.receiver_id, capability_tag: leg.capability_tag, target: leg.target })),
     trial: { starts_on: fields.starts_on, due_on: fields.due_on, deliverables }, ...materialTermsFromInput(fields),

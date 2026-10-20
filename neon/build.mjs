@@ -17,8 +17,10 @@ const policy = await fs.readFile(path.join(root, 'pilot-policy.mjs'), 'utf8');
 const workerSource = await fs.readFile(new URL('./worker.mjs', import.meta.url), 'utf8');
 const policyImport = "import { consentRecord, POLICY_VERSION } from '../web_launch/pilot-policy.mjs';";
 const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';\nimport { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';\nimport { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';\nimport { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';";
+const budgetImport = "\nimport { caseMaterialBytes, CASE_MATERIAL_MAX_BYTES, CASE_REQUEST_MAX_BYTES } from '../web_launch/case-material-budget.mjs';";
+const allExpectedImports = expectedImports + budgetImport;
 const googleSource = await fs.readFile(new URL('./google-oauth.mjs', import.meta.url), 'utf8');
-if (!workerSource.startsWith(expectedImports) || /\bimport\s/.test(workerSource.slice(expectedImports.length)) ||
+if (!workerSource.startsWith(allExpectedImports) || /\bimport\s/.test(workerSource.slice(allExpectedImports.length)) ||
     !googleSource.startsWith(policyImport) || /\bimport\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');
 // Keep helper names scoped exactly as they are in the source module.
 const google = googleSource.slice(policyImport.length).replace('export async function handleGoogleOAuth', 'async function handleGoogleOAuth');
@@ -40,7 +42,10 @@ const address = '\nconst {meetingAddressReady,meetingAddressRPCArgs}=(()=>{\n' +
 const erasureSource = await fs.readFile(new URL('./profile-erasure.mjs', import.meta.url), 'utf8');
 if (/\bimport\s/.test(erasureSource)) throw new Error('Erasure dependencies changed; review build');
 const erasure = '\nconst {profileErasureReady,profileErasureResult}=(()=>{\n' + erasureSource.replace(/^export /gm, '') + '\nreturn {profileErasureReady,profileErasureResult};\n})();\n';
-const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + erasure + workerSource.slice(expectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
+const budgetSource = await fs.readFile(path.join(root, 'case-material-budget.mjs'), 'utf8');
+if (/\bimport\s/.test(budgetSource)) throw new Error('Case budget dependencies changed; review build');
+const budget = '\nconst {caseMaterialBytes,CASE_MATERIAL_MAX_BYTES,CASE_REQUEST_MAX_BYTES}=(()=>{\n' + budgetSource.replace(/^export /gm, '') + '\nreturn {caseMaterialBytes,CASE_MATERIAL_MAX_BYTES,CASE_REQUEST_MAX_BYTES};\n})();\n';
+const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + erasure + budget + workerSource.slice(allExpectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
 const receipt = { built_at: new Date().toISOString(), backend: 'neon', cloudflare_pages_advanced_mode: true, files: [], published: false, live_auth_verified: false, live_rls_verified: false, automatic_public_ai: false };
 for (const name of assets) await fs.copyFile(path.join(root, name), path.join(directory, name));
 await fs.writeFile(path.join(directory, '_worker.js'), worker);
