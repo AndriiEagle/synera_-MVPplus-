@@ -1,0 +1,70 @@
+.sim { color: var(--color-20352b); background: var(--color-bg); line-height: 1.55; }
+.sim [hidden] { display: none !important; }
+.sim .sim-header { max-width: 1280px; height: auto; min-height: 80px; gap: 16px; padding: 18px 28px; }
+.sim-header #sim-install { margin-left: auto; }
+.sim .sim-main { max-width: 1280px; padding: 36px 28px 48px; }
+.sim-intro { max-width: 780px; margin-bottom: 28px; }
+.sim h1 { font-size: clamp(32px, 4vw, 52px); letter-spacing: -1.7px; margin-bottom: 16px; }
+.sim h2 { font-size: 24px; letter-spacing: -.6px; margin: 0 0 12px; }
+.sim h3 { font-size: 19px; margin: 0 0 8px; }
+.sim p { margin: 0 0 12px; }
+.sim .eyebrow { font-size: 11px; letter-spacing: 1.4px; margin-bottom: 10px; }
+.sim .lead { font-size: 17px; line-height: 1.6; margin-bottom: 16px; }
+.sim-disclaimer, .sim-note { padding: 12px 14px; border-left: 3px solid var(--color-notice-border); background: var(--color-bg-simulation); font-size: 14px; }
+.sim-muted { color: var(--color-muted-alt); font-size: 14px; }
+.sim-badge { display: inline-block; font-size: 12px; padding: 5px 10px; border: 1px solid var(--color-green-border); border-radius: 20px; color: var(--color-green-primary); background: var(--color-green-bg); }
+.sim-toolbar { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; }
+.sim-toolbar label { max-width: 420px; flex: 1 1 230px; }
+.sim-toolbar a { padding: 12px 0; color: var(--color-green-primary); }
+.sim #sim-status { padding: 12px 0; min-height: 48px; overflow-wrap: anywhere; }
+.sim #sim-status[data-error="true"] { color: var(--color-warning-text); }
+.sim-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.sim-card { min-width: 0; padding: 24px; border: 1px solid var(--color-line); border-radius: 18px; background: var(--color-bg-panel); box-shadow: var(--shadow-card); overflow-wrap: anywhere; }
+.sim-card-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: start; margin-bottom: 12px; }
+.sim-results, .sim-events { grid-column: 1 / -1; }
+.sim form { display: grid; gap: 12px; margin: 0; }
+.sim label { display: grid; gap: 7px; font-size: 14px; }
+.sim input, .sim textarea, .sim select { width: 100%; min-width: 0; margin: 0; border-radius: 10px; background: var(--color-bg-panel-alt); font-family: inherit; font-size: 16px; }
+.sim textarea { resize: vertical; line-height: 1.5; }
+.sim button { min-height: 44px; white-space: normal; overflow-wrap: anywhere; border-radius: 10px; padding: 10px 16px; }
+.sim button:disabled { opacity: .55; }
+.sim .sim-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.sim .sim-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; font-weight: 400; }
+.sim .sim-consent input { width: 22px; height: 22px; min-height: 22px; flex: 0 0 22px; margin-top: 2px; accent-color: var(--color-green-primary); }
+.sim-runtime { margin-top: 24px; border-top: 1px solid var(--color-line); padding-top: 20px; }
+.sim details > summary { cursor: pointer; min-height: 44px; padding: 12px 0; font-weight: 600; }
+.sim #sim-terms-panel { margin-top: 18px; border-top: 1px solid var(--color-line); }
+.sim #sim-reciprocal { display: grid; gap: 12px; }
+.sim #sim-draft-note { margin-top: 14px; }
+.sim-current dl { display: grid; gap: 4px; margin: 0 0 16px; }
+.sim-current dt { color: var(--color-muted-alt); font-size: 12px; margin-top: 8px; }
+.sim-current dd { margin: 0; white-space: pre-wrap; }
+.sim #sim-approvals { list-style: none; padding: 0; display: grid; gap: 8px; }
+.sim #sim-approvals li { padding: 10px 12px; border-radius: 10px; background: var(--color-bg-empty); font-size: 14px; }
+.sim #sim-messages { list-style: none; padding: 0; display: grid; gap: 12px; max-height: 440px; overflow-y: auto; overscroll-behavior: contain; margin: 20px 0; }
+.sim-message { border: 1px solid var(--color-line); border-radius: 12px; padding: 12px 14px; margin-right: 20px; background: var(--color-bg-panel-alt); }
+.sim-message[data-own="true"] { margin-right: 0; margin-left: 20px; background: var(--color-green-bg); }
+.sim-message small { display: block; color: var(--color-muted-alt); font-size: 12px; margin-bottom: 6px; }
+.sim-message p, .sim-output, .sim-check-notes { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+.sim #sim-deliverables { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.sim-deliverable { border-top: 1px solid var(--color-line); padding-top: 18px; min-width: 0; }
+.sim-output { padding: 14px; background: var(--color-bg-input); border-radius: 12px; margin: 12px 0; }
+.sim-deliverable label { margin-top: 12px; }
+.sim #sim-events { padding-left: 22px; font-size: 13px; color: var(--color-muted-alt); }
+.sim #sim-events li { margin: 10px 0; }
+.sim .sim-footer { max-width: 1280px; padding: 20px 28px; height: auto; font-size: 13px; color: var(--color-muted-alt); }
+.sim-skip { position: absolute; top: -100px; left: 12px; z-index: 2; padding: 12px; background: var(--color-bg-panel); color: var(--color-green-primary); }
+.sim-skip:focus { top: 8px; }
+.sim :is(button, a, summary, input, textarea, select):focus-visible { outline: 3px solid var(--color-green-focus); outline-offset: 3px; }
+@media (max-width: 760px) {
+  .sim .sim-header { padding: 14px 16px; gap: 10px; flex-wrap: wrap; }
+  .sim-header .sim-badge { order: 3; }
+  .sim .sim-main { padding: 26px 16px 32px; }
+  .sim-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .sim-card { padding: 18px; border-radius: 14px; }
+  .sim #sim-deliverables { grid-template-columns: minmax(0, 1fr); }
+  .sim h1 { font-size: 32px; letter-spacing: -1.2px; }
+  .sim #sim-messages { max-height: 330px; }
+  .sim .sim-footer { padding: 20px 16px max(20px, env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) { .sim * { transition: none !important; scroll-behavior: auto !important; } }

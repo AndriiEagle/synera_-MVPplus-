@@ -106,6 +106,8 @@ jobs:
       # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
       # Glob *.test.mjs розгортається bash'ем на ubuntu; другий і третій аргументи — neon-воркер і Iceberg-машини.
       - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
+      - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs
+      - run: python3 -B -m unittest discover -s tools -p test_simulation_provider.py
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
       - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs
@@ -117,6 +119,7 @@ jobs:
       - run: node tools/profile-erasure-browser.mjs
       - run: node tools/audit-session-cookie-browser.mjs
       - run: node tools/audit-paid-journey-browser.mjs
+      - run: node tools/simulation-browser-acceptance.mjs
 
       # axe-core через Playwright; exit 1 при critical/serious порушеннях.
       - run: node web_launch/a11y_audit.mjs
@@ -133,6 +136,7 @@ jobs:
             artifacts/gemini-implementation-20261017/profile-erasure-390x844.png
             artifacts/audit-followup-20261019/session-cookie-browser.json
             artifacts/audit-followup-20261019/paid-journey-browser/
+            artifacts/android-simulation-20261020/browser/
           if-no-files-found: ignore
           retention-days: 7
 

@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-20T16:45:14.078504+00:00",
+  "base": "a53fbb3c9dfdfc69bc813d2262f3e488cd936107",
+  "sourceHashes": "SOURCE_HASHES.json",
+  "overall": "PARTIAL_LOCAL_ACCEPTED_EXTERNAL_GATES_HOLD",
+  "node": {
+    "version": "24.16.0",
+    "tests": 743,
+    "pass": 742,
+    "fail": 0,
+    "skip": 1
+  },
+  "python": {
+    "tests": 3,
+    "pass": 3
+  },
+  "browser": "browser/acceptance.json",
+  "build": "BUILD_VERIFICATION.json",
+  "provider": {
+    "attempts": 2,
+    "successful": 1,
+    "knownSubtotalUsd": 0.041034,
+    "unknownCostAttempts": 1,
+    "totalCostUsd": null,
+    "budgetUsd": 6,
+    "models": {
+      "google/gemini-4-argon": "accepted scoped architecture advice",
+      "z-ai/glm-5.3-flash": "HTTP429, cost unknown, actual identity unverified",
+      "z-ai/glm-5.3": "NOT RUN"
+    }
+  },
+  "regressions": {
+    "removedRevisionGuard": "mutation failed as expected",
+    "crossPairConsent": "FAIL before, PASS after server consent set",
+    "crossPairDraft": "worker reproduced FAIL before, PASS after",
+    "keyboardScroll": "axe serious before tabindex, PASS after",
+    "legacySimulationPrivacy": "initial full suite failed 1; retained private legacy path via shared data module; final PASS",
+    "preDispatchCaptureRaces": "3 FAIL before, 4 PASS including clean control after; separate reviewer repeated 4 PASS"
+  },
+  "gates": {
+    "liveVision": "HOLD",
+    "physicalAndroidInstall": "NOT RUN",
+    "privateHTTPS": "PASS temporary Quick Tunnel; stable hostname pending",
+    "productionDeploy": "NOT RUN",
+    "liveSQLJWT": "NOT RUN this stage",
+    "LayaJevScreenshotControl": "NOT ACCEPTED: text advisory only",
+    "Node22CI": "pending push"
+  },
+  "https": "HTTPS_ACCEPTANCE.json"
+}

@@ -6,6 +6,11 @@ Synera допомагає солопідприємцям і малому біз�
 
 Реалізація рекомендацій аудиту 19.10: [зміни, тести й відкриті gates](artifacts/gemini-implementation-20261017/REPORT.uk.md). Новий [промпт повторної перевірки](docs/CLAUDE_OPUS_REVIEW_PROMPT.uk.md) прив’язаний до `7eaa952`.
 
+Кандидат 20.10: [Synera LAB для Android — 20 вигаданих AI-учасників](docs/ANDROID_SIMULATION.uk.md).
+Локальні HTTP/browser-перевірки й тимчасове приватне HTTPS пройдено;
+живий GLM vision і встановлення на фізичний телефон залишаються відкритими.
+[Докази й конкретні блокери](artifacts/android-simulation-20261020/RESULT.uk.md).
+
 ## Почати review
 
 1. [Продуктова ДНК та інваріанти](docs/PRODUCT_DNA.uk.md) — що має отримати людина й що треба зберегти.

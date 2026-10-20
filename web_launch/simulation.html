@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#254f3b">
+  <meta name="referrer" content="no-referrer">
+  <title>Synera · Лабораторія співпраці</title>
+  <link rel="manifest" href="/simulation.webmanifest">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/simulation.css">
+  <script type="module" src="/simulation-ui.mjs"></script>
+</head>
+<body class="sim">
+  <a class="sim-skip" href="#sim-workspace">До розмови</a>
+  <header class="sim-header">
+    <a class="brand" href="/simulation.html">synera<span>LAB</span></a>
+    <span class="sim-badge">Синтетична симуляція</span>
+    <button id="sim-install" type="button" class="quiet">Встановити</button>
+  </header>
+  <main class="sim-main">
+    <div class="sim-intro">
+      <p class="eyebrow">ПРИВАТНА ЛАБОРАТОРІЯ · 20 ВИГАДАНИХ AI-УЧАСНИКІВ</p>
+      <h1>Від розмови<br>до чіткої домовленості.</h1>
+      <p class="lead">Маленький обсяг. Дві окремі згоди. Результат, який перевіряє отримувач.</p>
+      <p class="sim-disclaimer">Усі повідомлення, дії та результати тут синтетичні. Це не реальні клієнти, оплата чи доказ попиту.</p>
+    </div>
+    <div class="sim-toolbar">
+      <label id="sim-picker-label" hidden>Співрозмовник · вигаданий AI
+        <select id="sim-person" aria-label="Обрати одного з 20 вигаданих AI-учасників"></select>
+      </label>
+      <button id="sim-refresh" class="quiet" type="button">Оновити</button>
+      <a id="sim-export" hidden>Експорт пари</a>
+    </div>
+    <p id="sim-status" role="status" aria-live="polite">Підключаю приватну сесію…</p>
+    <div class="sim-layout" id="sim-workspace">
+      <section class="sim-card sim-conversation" aria-labelledby="sim-person-name">
+        <div class="sim-card-heading"><p class="eyebrow">01 · РОЗМОВА</p><span id="sim-actor" class="sim-badge"></span></div>
+        <h2 id="sim-person-name">Твоя пара</h2>
+        <p id="sim-person-role" class="sim-muted"></p>
+        <p id="sim-scenario"></p>
+        <p id="sim-boundary" class="sim-note"></p>
+        <ol id="sim-messages" aria-label="Синтетична розмова" tabindex="0"></ol>
+        <form id="sim-message-form">
+          <label for="sim-message">Твоє повідомлення · лише вигадані дані</label>
+          <textarea id="sim-message" name="message" rows="3" required placeholder="Який конкретний результат потрібен?"></textarea>
+          <button id="sim-send" type="submit" disabled>Надіслати</button>
+        </form>
+        <section id="sim-runtime-controls" class="sim-runtime" hidden aria-label="Керування AI">
+          <p id="sim-backend" class="sim-note">HOLD · стан AI backend ще невідомий.</p>
+          <label class="sim-consent"><input id="sim-consent" type="checkbox"><span>Дозволяю передавати синтетичний текст цієї пари та знімки її екрана GLM-провайдеру для AI-ходів, зокрема після моїх наступних дій, доки не натисну STOP. Реальних персональних даних тут немає.</span></label>
+          <div class="sim-actions">
+            <button id="sim-run" type="button" disabled>AI-хід</button>
+            <button id="sim-stop" type="button" class="quiet" disabled>STOP AI</button>
+            <button id="sim-pause-pair" type="button" class="quiet" disabled>Зупинити пару</button>
+          </div>
+        </section>
+        <p id="sim-runtime-message" class="sim-muted"></p>
+      </section>
+      <section class="sim-card" aria-labelledby="sim-case-title">
+        <p class="eyebrow">02 · УМОВИ ТА ЗГОДА</p>
+        <h2 id="sim-case-title">Домовленість</h2>
+        <p id="sim-case-version">Чинної редакції ще немає.</p>
+        <div id="sim-current-terms" class="sim-current"></div>
+        <p class="sim-note" id="sim-fixed-terms">Перед згодою: 1 раунд правок; конфіденційність обов’язкова; права на результат — отримувачу; скасування — за взаємним письмовим повідомленням. Згода в симуляції дозволяє наступний крок і не є договором.</p>
+        <ul id="sim-approvals" aria-label="Незалежні погодження чинної редакції"></ul>
+        <div class="sim-actions">
+          <button id="sim-approve" type="button" disabled aria-describedby="sim-fixed-terms sim-draft-note">Погодити чинну редакцію</button>
+          <button id="sim-decline" type="button" class="quiet" disabled>Відмовитися</button>
+        </div>
+        <details id="sim-terms-panel">
+          <summary>Запропонувати / змінити умови</summary>
+          <p class="sim-muted">Зміна матеріальних умов скидає обидві згоди. Поля нижче — чернетка, доки її не запропоновано.</p>
+          <form id="sim-terms">
+            <label>Формат співпраці<select name="mode" required>
+              <option value="exchange">Обмін</option>
+              <option value="paid_service">Оплачувана послуга</option>
+              <option value="referral">Рекомендація</option>
+              <option value="hybrid">Гібрид · обмін + рекомендація</option>
+              <option value="joint_project">Спільний проєкт</option>
+            </select></label>
+            <label>Результат AI для власника<textarea name="target" rows="2" required></textarea></label>
+            <label>Критерії прийняття власником<textarea name="criteria" rows="2" required></textarea></label>
+            <div id="sim-reciprocal">
+              <label>Зустрічний результат власника для AI<textarea name="returnTarget" rows="2" required></textarea></label>
+              <label>Критерії прийняття AI<textarea name="returnCriteria" rows="2" required></textarea></label>
+            </div>
+            <label>Строк виконання<input type="date" name="due" required></label>
+            <label id="sim-amount-label" hidden>Погоджена сума · CHF<input name="amount" type="text" inputmode="decimal" placeholder="120.50"></label>
+            <button id="sim-propose" type="submit" disabled>Запропонувати умови</button>
+          </form>
+        </details>
+        <p id="sim-draft-note" class="sim-muted">Чернетки зберігаються лише в цьому браузері. Не вводь реальні персональні дані.</p>
+      </section>
+      <section class="sim-card sim-results" aria-labelledby="sim-results-title">
+        <p class="eyebrow">03 · РЕЗУЛЬТАТ І ПЕРЕВІРКА</p>
+        <h2 id="sim-results-title">Спочатку прочитай. Потім приймай.</h2>
+        <p id="sim-results-empty" class="sim-muted">Результати з’являться після пропозиції умов. Передавання потребує двох згод на поточну редакцію.</p>
+        <div id="sim-deliverables"></div>
+      </section>
+      <details class="sim-card sim-events"><summary>Синтетичний журнал дій</summary><ol id="sim-events"></ol></details>
+    </div>
+  </main>
+  <footer class="sim-footer">Synera LAB · приватний тест співпраці. Офлайн доступна лише оболонка; AI потребує живого backend.</footer>
+  <noscript>Для приватної симуляції потрібен JavaScript. AI без backend не працює.</noscript>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  ".github/workflows/ci.yml": {
+    "workingSha256": "b6496fc829438ed6a03201e1e5066cef2e1b5fdb9a19f532125ffef74312c172",
+    "gitContentSha256": "419f2a149b73e4f844f7ceebfcf6de83f70e3577d6e405af4b88b37dff47a676"
+  },
+  "README.md": {
+    "workingSha256": "6ba6a9795fc578a08ded452878aac641c4f23217310252dc992cc74993947154",
+    "gitContentSha256": "6ba6a9795fc578a08ded452878aac641c4f23217310252dc992cc74993947154"
+  },
+  "docs/ANDROID_SIMULATION.uk.md": {
+    "workingSha256": "6fd174645e258bf1a0d5cc31f5941ed7017c9db0894fb9dd137d0353b3566aa9",
+    "gitContentSha256": "6fd174645e258bf1a0d5cc31f5941ed7017c9db0894fb9dd137d0353b3566aa9"
+  },
+  "tools/simulation-browser-acceptance.mjs": {
+    "workingSha256": "1f02a19327b84b32a3eab611c511d7ad0022286f3e2c1998466a803746e211eb",
+    "gitContentSha256": "1f02a19327b84b32a3eab611c511d7ad0022286f3e2c1998466a803746e211eb"
+  },
+  "tools/simulation-provider.py": {
+    "workingSha256": "57fe3f8fe01ccaee9dbfd94d40a4fdded37f53ba28fc0e3dc2999522686b26d5",
+    "gitContentSha256": "57fe3f8fe01ccaee9dbfd94d40a4fdded37f53ba28fc0e3dc2999522686b26d5"
+  },
+  "tools/simulation-runner.mjs": {
+    "workingSha256": "d70d928a6cdfd2c7f36d31ccc72639299ff732454223d9b252e60e12f297c3cd",
+    "gitContentSha256": "d70d928a6cdfd2c7f36d31ccc72639299ff732454223d9b252e60e12f297c3cd"
+  },
+  "tools/simulation-runner.test.mjs": {
+    "workingSha256": "ad5d681e4556755c706d23d04f2f6f3cc0a49b4cc5614ad63ba6152d93dfeb5e",
+    "gitContentSha256": "ad5d681e4556755c706d23d04f2f6f3cc0a49b4cc5614ad63ba6152d93dfeb5e"
+  },
+  "tools/simulation-server.mjs": {
+    "workingSha256": "197064e7aad4fa1e8bb5a2c65fb8f738adf19ff9356b9115c33c2db102436715",
+    "gitContentSha256": "197064e7aad4fa1e8bb5a2c65fb8f738adf19ff9356b9115c33c2db102436715"
+  },
+  "tools/simulation-server.test.mjs": {
+    "workingSha256": "5b92a0e5adb95c4a040d678c6a0ef71f228c346a00ff8bd32be52ecb9e4fc37b",
+    "gitContentSha256": "5b92a0e5adb95c4a040d678c6a0ef71f228c346a00ff8bd32be52ecb9e4fc37b"
+  },
+  "tools/test_simulation_provider.py": {
+    "workingSha256": "38263f5669b9bc423d3a6022a142cb4fb77c5818048d6a4d74a848decf1b083e",
+    "gitContentSha256": "38263f5669b9bc423d3a6022a142cb4fb77c5818048d6a4d74a848decf1b083e"
+  },
+  "web_launch/assets.mjs": {
+    "workingSha256": "1fcb3078bd0882407da03aa964a7dd6771032258c1801baee23912ea17a26038",
+    "gitContentSha256": "1fcb3078bd0882407da03aa964a7dd6771032258c1801baee23912ea17a26038"
+  },
+  "web_launch/simulation-personas.mjs": {
+    "workingSha256": "8ddda24ec51b3c7cbfb82633e1dffa4dbe9a1c42ec4ed37f4bcc8afd03f76447",
+    "gitContentSha256": "8ddda24ec51b3c7cbfb82633e1dffa4dbe9a1c42ec4ed37f4bcc8afd03f76447"
+  },
+  "web_launch/simulation-session.mjs": {
+    "workingSha256": "6ed250ba6b232bb0fbb8146046ead4829f1e954f3312640bcb88a717f2fa3f7f",
+    "gitContentSha256": "6ed250ba6b232bb0fbb8146046ead4829f1e954f3312640bcb88a717f2fa3f7f"
+  },
+  "web_launch/simulation-session.test.mjs": {
+    "workingSha256": "7996eb3464149f3919b51cf089138bd01cd31e17fff40d8d24e1a021a8cd55fe",
+    "gitContentSha256": "7996eb3464149f3919b51cf089138bd01cd31e17fff40d8d24e1a021a8cd55fe"
+  },
+  "web_launch/simulation-sw.mjs": {
+    "workingSha256": "e9eda418941f2ac2a6461fd225f4f885a9ef91d728c26698f992acf024e75c45",
+    "gitContentSha256": "e9eda418941f2ac2a6461fd225f4f885a9ef91d728c26698f992acf024e75c45"
+  },
+  "web_launch/simulation-ui.mjs": {
+    "workingSha256": "2c5231bdb96ce5f2ef14bb4d946b763f73cab7b0c9c41057912b2b981fa6dcd3",
+    "gitContentSha256": "2c5231bdb96ce5f2ef14bb4d946b763f73cab7b0c9c41057912b2b981fa6dcd3"
+  },
+  "web_launch/simulation.css": {
+    "workingSha256": "5c696ad1fe870ee72b7bb5e120c92de299b0f04efaa93aa7f5e4cc56cb123c70",
+    "gitContentSha256": "5c696ad1fe870ee72b7bb5e120c92de299b0f04efaa93aa7f5e4cc56cb123c70"
+  },
+  "web_launch/simulation.html": {
+    "workingSha256": "31790b7e975c5eb06f8c119b933496376d809f8113d81e7d9f1c64579558239b",
+    "gitContentSha256": "31790b7e975c5eb06f8c119b933496376d809f8113d81e7d9f1c64579558239b"
+  },
+  "web_launch/simulation.mjs": {
+    "workingSha256": "6ecfb9eb89623cab26a4a720c35b0e81035096a32a639fd33666de563bc2b874",
+    "gitContentSha256": "6ecfb9eb89623cab26a4a720c35b0e81035096a32a639fd33666de563bc2b874"
+  },
+  "web_launch/simulation.webmanifest": {
+    "workingSha256": "96830f506e3de4960022a0e69d793752a5f10786f3ee914da702e705485a99ba",
+    "gitContentSha256": "96830f506e3de4960022a0e69d793752a5f10786f3ee914da702e705485a99ba"
+  }
+}

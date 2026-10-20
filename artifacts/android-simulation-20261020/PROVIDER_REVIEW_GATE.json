@@ -1,0 +1,65 @@
+{
+  "input": {
+    "schema_version": 1,
+    "contract": {
+      "root_task_id": "01a12c63-8e6d-7860-aa63-99ebb1777628",
+      "worker_id": "synera-android-flash-state-review",
+      "assignment_revision": "android-20261020",
+      "revision": "r1",
+      "complexity": "medium",
+      "allowed_paths": [
+        "public-source-review"
+      ],
+      "worker_allowed_paths": [
+        "public-source-review"
+      ],
+      "requirements": [
+        {
+          "id": "mandatory-chinese-review",
+          "revision": "q1",
+          "description": "Approved Chinese model must return independently accepted output",
+          "oracle_locator": "ARCHITECTURE_ACCEPTANCE.md",
+          "provider_execution": {
+            "allowed_models": [
+              "z-ai/glm-5.3-flash"
+            ],
+            "input_modalities": [
+              "text"
+            ],
+            "request_sha256": "db36b721f21d7130e824019c8a24655db820049308d332c3c747520dbea48167",
+            "task_id": "synera-android-flash-state-review"
+          }
+        }
+      ]
+    },
+    "readback": {
+      "status": "blocked"
+    }
+  },
+  "result": {
+    "schema_version": 1,
+    "action": "HOLD",
+    "reasons": [
+      "terminal_blocked"
+    ],
+    "harness_event_metadata": {
+      "delegation_review_action": "HOLD",
+      "delegation_review_reasons": [
+        "terminal_blocked"
+      ]
+    },
+    "side_effect_free": true,
+    "trust_boundary": "caller_supplied_metadata_is_not_authenticated; coordinator must perform supported-tool readback and Harness acceptance",
+    "terminal_status": "blocked"
+  },
+  "additionalMandatoryRequirements": {
+    "actualVision": "HOLD: no dispatched screenshot request or receipt; no fingerprint invented",
+    "glmStandardReview": "HOLD: unresolved receipt blocks additional paid calls"
+  },
+  "recovery": {
+    "dispatch_id": "tm-req-0596c09c8a46adf5a7fc58ee",
+    "status": "HOLD",
+    "reason": "receipt_http_404",
+    "newInferenceCalls": 0
+  }
+}

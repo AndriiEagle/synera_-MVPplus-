@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-20T17:02:44.137Z",
+  "origin": "https://jay-plumbing-andreas-organisations.trycloudflare.com",
+  "temporary": true,
+  "unauthorized401": true,
+  "apiNoStore": true,
+  "privateLogin": true,
+  "cookieHttpOnlySecureStrict": true,
+  "wrongOrigin403": true,
+  "people20": true,
+  "installability": {
+    "installabilityErrors": []
+  },
+  "physicalAndroid": "NOT RUN",
+  "providerCalls": 0
+}

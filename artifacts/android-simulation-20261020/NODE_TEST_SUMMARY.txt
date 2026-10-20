@@ -1,0 +1,9 @@
+✔ C11.L6: некоректний вхід — reason codes, не throw (2.422ms)
+ℹ tests 743
+ℹ suites 0
+ℹ pass 742
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 20497.0866
