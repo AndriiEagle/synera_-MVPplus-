@@ -1,0 +1,43 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/simulation-provider.py
+@@
+-def spend_state(rows, lifecycle, recovered, caps):
++def spend_state(rows, lifecycle, recovered, caps, liabilities=None):
+@@
+         cost = recovered.get(dispatch_id, lifecycle.known_cost(row.get("cost")))
++        if cost is None:
++            cost = (liabilities or {}).get(dispatch_id)
+@@
+-    recovered = swarm._reconciled_dispatch_costs(rows, lifecycle.dispatch_states(rows))
+-    spent = spend_state(rows, lifecycle, recovered, caps)
++    states = lifecycle.dispatch_states(rows)
++    recovered = swarm._reconciled_dispatch_costs(rows, states)
++    liabilities = (swarm.reserved_dispatch_liabilities(rows, states, Path(args.authority), active_run=ROOT_RUN + "-preflight")
++                   if authority.get("pendingReceipt") else {})
++    spent = spend_state(rows, lifecycle, recovered, caps, liabilities)
+     gate = swarm.receipt_recovery_status(run_label=ARCHITECTURE_RUN)
+-    if gate["paid_receipt_gate"] != "RECEIPTS_RESOLVED":
++    if gate["paid_receipt_gate"] != "RECEIPTS_RESOLVED" and (
++            not liabilities or any(r["dispatch_id"] not in liabilities for r in gate["unresolved"])):
+@@
+-        print(json.dumps({"enabled": True, "spent": spent, "remaining": TOTAL_CAP_USD - sum(spent.values())}))
++        outstanding = {key: cost for key, cost in liabilities.items() if key not in recovered and states[key].get("cost") is None}
++        print(json.dumps({"enabled": True, "budgetCharges": spent, "remaining": TOTAL_CAP_USD - sum(spent.values()),
++                          "reservedLiabilityUsd": sum(outstanding.values()), "receiptUnknown": bool(outstanding)}))
+@@
+                "--concurrency", "1", "--stop-on-error", "--summary-out", str(summary)]
++    if liabilities:
++        command += ["--liability-authority", str(Path(args.authority).resolve())]
+*** Update File: D:/synera-review-fresh-20261019/tools/test_simulation_provider.py
+@@
+     def test_only_canonical_recovery_resolves_unknown(self):
+@@
+             provider.spend_state([self.row(.01, "other/model")], LifecycleFixture, {}, CAPS)
++
++    def test_bounded_liability_is_charged_and_actual_receipt_supersedes_it(self):
++        rows = [self.row(None)]
++        self.assertEqual(provider.spend_state(rows, LifecycleFixture, {}, CAPS, {"one": .06})[provider.MODEL], .06)
++        self.assertEqual(provider.spend_state(rows, LifecycleFixture, {"one": .003}, CAPS, {"one": .06})[provider.MODEL], .003)
++        with self.assertRaises(ValueError):
++            provider.spend_state([{**self.row(None), "terminal": False}], LifecycleFixture, {}, CAPS, {"one": .06})
+*** End Patch

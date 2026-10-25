@@ -1,0 +1,11 @@
+✔ style switcher defaults malformed or absent preference to Atelier (0.8745ms)
+✔ style switcher changes only the visual preference and exposes the alternate style (0.9817ms)
+✔ the PWA refresh caches the visual module with a new shell version (28.8888ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 138.6522

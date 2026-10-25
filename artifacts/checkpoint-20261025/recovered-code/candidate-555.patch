@@ -1,0 +1,11 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/simulation-provider.py
+@@
+-           "prompt": prompt, "images": [str(image)], "image_input_tokens_high": 32768,
++           "system": prompt + "\nUse only the named actions. Arbitrary click/selector commands are forbidden. Keep revision exactly as specified.",
++           "prompt": "Inspect the attached current screen. Return one permitted JSON action. Scroll down when the conversation or the required controls are outside the screenshot.",
++           "output_schema": {"type": "object", "required": ["action", "revision"], "additional_properties": False,
++                             "properties": {"action": "string", "revision": "integer", "observation": "string",
++                                            "text": "string", "index": "integer", "direction": "string", "field": "string"}},
++           "images": [str(image)], "image_input_tokens_high": 32768,
+*** End Patch

@@ -1,0 +1,82 @@
+*** Begin Patch
+*** Add File: D:/synera-ai-simulation-20261020/test-route-candidate.py
++import argparse
++import copy
++import datetime
++import hashlib
++import importlib.util
++import json
++from pathlib import Path
++import sys
++import tempfile
++import unittest
++
++parser = argparse.ArgumentParser()
++parser.add_argument('--source', required=True)
++args = parser.parse_args()
++sys.path.insert(0, 'C:/Users/Andrii/Desktop/KI/token-monster')
++spec = importlib.util.spec_from_file_location('swarm_route_candidate', args.source)
++swarm = importlib.util.module_from_spec(spec)
++swarm.__file__ = 'C:/Users/Andrii/Desktop/KI/token-monster/swarm.py'
++spec.loader.exec_module(swarm)
++
++
++class RouteTests(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.tmp.cleanup)
++        self.root = Path(self.tmp.name)
++        self.fact = swarm._cached_completion_fact('z-ai/glm-5.3-flash')
++        raw = json.loads(Path('D:/synera-ai-simulation-20261020/handoff/FLASH_ENDPOINTS.local.json').read_text())
++        endpoint = next(e for e in raw['data']['endpoints'] if e['tag'] == 'streamlake/fp8')
++        self.snapshot = {'model': self.fact['id'], 'fetched_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'endpoint': endpoint}
++        self.job = {'id': 'bounded', 'model': self.fact['id'], 'prompt': 'Read one fictional screenshot',
++                    'effort': 'high', 'task_scope': 'narrow', 'max_tokens': 8000, 'hard_max_tokens': 12000}
++        self.save()
++
++    def save(self):
++        self.path = self.root / 'endpoint.json'
++        self.path.write_text(json.dumps(self.snapshot))
++        self.job['provider_route'] = {'snapshot': 'endpoint.json', 'sha256': hashlib.sha256(self.path.read_bytes()).hexdigest()}
++
++    def quote(self):
++        return swarm.plan_spend_preview([self.job], self.root, catalog_facts=[self.fact])
++
++    def test_quote_and_wire_use_the_same_pinned_price(self):
++        quote = self.quote()['jobs'][0]
++        prices = self.snapshot['endpoint']['pricing']
++        expected = round(quote['input_tokens_high'] * float(prices['prompt']) + quote['output_tokens_high'] * float(prices['completion']), 6)
++        self.assertEqual(quote['high_usd'], expected, 'quote must use pinned provider price rather than global minimum')
++        fact = swarm.provider_route_fact(self.job, self.fact, self.root)
++        route = swarm.provider_price_preferences(self.fact['id'], fact)
++        self.assertEqual(route['only'], ['streamlake/fp8'])
++        self.assertFalse(route['allow_fallbacks'])
++        self.assertTrue(route['require_parameters'])
++        self.assertAlmostEqual(route['max_price']['prompt'], float(prices['prompt']) * 1e6)
++
++    def test_unpinned_route_keeps_current_price(self):
++        self.job.pop('provider_route')
++        quote = self.quote()['jobs'][0]
++        expected = round(quote['input_tokens_high'] * self.fact['in_usd_m'] / 1e6 + quote['output_tokens_high'] * self.fact['out_usd_m'] / 1e6, 6)
++        self.assertEqual(quote['high_usd'], expected)
++        self.assertNotIn('only', swarm.provider_price_preferences(self.fact['id'], self.fact))
++
++    def test_changed_stale_wrong_model_extra_fee_and_unavailable_fail_closed(self):
++        original = copy.deepcopy(self.snapshot)
++        for change in ('hash', 'stale', 'model', 'fee', 'unavailable', 'escape'):
++            with self.subTest(change=change):
++                self.snapshot = copy.deepcopy(original)
++                if change == 'stale': self.snapshot['fetched_at'] = '2020-01-01T00:00:00+00:00'
++                if change == 'model': self.snapshot['model'] = 'wrong/model'
++                if change == 'fee': self.snapshot['endpoint']['pricing']['request'] = '0.1'
++                if change == 'unavailable': self.snapshot['endpoint']['status'] = -2
++                self.save()
++                if change == 'hash': self.path.write_text('{}')
++                if change == 'escape': self.job['provider_route']['snapshot'] = '../outside.json'
++                with self.assertRaises((ValueError, KeyError, OSError)):
++                    self.quote()
++
++
++if __name__ == '__main__':
++    unittest.main(argv=[sys.argv[0]], verbosity=2)
+*** End Patch

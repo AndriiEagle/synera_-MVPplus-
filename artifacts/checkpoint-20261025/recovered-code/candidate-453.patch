@@ -1,0 +1,6 @@
+*** Begin Patch
+*** Update File: D:/synera-ai-simulation-20261020/live-acceptance.mjs
+@@
+-import { chromium } from 'D:/synera-review-fresh-20261019/node_modules/playwright/index.mjs';
++import { chromium } from 'file:///D:/synera-review-fresh-20261019/node_modules/playwright/index.mjs';
+*** End Patch

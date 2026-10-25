@@ -1,0 +1,54 @@
+{
+  "base": "cdab78e5f310b846e6eee6b852432ec19483f2c9",
+  "productSourcesUnchanged": true,
+  "files": [
+    {
+      "path": "tools/simulation-provider.py",
+      "sha256": "e94e31564ca41410caee7fd21e466b74a4b3cedb9047cc556aefb8083c029020"
+    },
+    {
+      "path": "tools/test_simulation_provider.py",
+      "sha256": "3cf641acd07991739f65850862c32bc25a761dbac15056b5f704a0a205ccbbc7"
+    },
+    {
+      "path": "tools/simulation-server.mjs",
+      "sha256": "197064e7aad4fa1e8bb5a2c65fb8f738adf19ff9356b9115c33c2db102436715"
+    },
+    {
+      "path": "tools/simulation-runner.mjs",
+      "sha256": "d70d928a6cdfd2c7f36d31ccc72639299ff732454223d9b252e60e12f297c3cd"
+    },
+    {
+      "path": "tools/simulation-server.test.mjs",
+      "sha256": "5b92a0e5adb95c4a040d678c6a0ef71f228c346a00ff8bd32be52ecb9e4fc37b"
+    },
+    {
+      "path": "tools/simulation-runner.test.mjs",
+      "sha256": "ad5d681e4556755c706d23d04f2f6f3cc0a49b4cc5614ad63ba6152d93dfeb5e"
+    },
+    {
+      "path": "web_launch/simulation-session.mjs",
+      "sha256": "6ed250ba6b232bb0fbb8146046ead4829f1e954f3312640bcb88a717f2fa3f7f"
+    },
+    {
+      "path": "web_launch/simulation-session.test.mjs",
+      "sha256": "7996eb3464149f3919b51cf089138bd01cd31e17fff40d8d24e1a021a8cd55fe"
+    },
+    {
+      "path": "web_launch/simulation-ui.mjs",
+      "sha256": "2c5231bdb96ce5f2ef14bb4d946b763f73cab7b0c9c41057912b2b981fa6dcd3"
+    },
+    {
+      "path": "web_launch/simulation.html",
+      "sha256": "b486169baa6f3e851db11ddb3beaa5aeb582e353a0a618b3932d2435c21ebd18"
+    },
+    {
+      "path": "web_launch/simulation.webmanifest",
+      "sha256": "5b50afa5beb01e1fab327cac6b6e56ef96bb2fe3fda0205b021cf036e5aecf5d"
+    },
+    {
+      "path": "web_launch/simulation-sw.mjs",
+      "sha256": "e9eda418941f2ac2a6461fd225f4f885a9ef91d728c26698f992acf024e75c45"
+    }
+  ]
+}

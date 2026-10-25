@@ -1,0 +1,42 @@
+*** Begin Patch
+*** Add File: D:/synera-ai-simulation-20261020/live-acceptance.mjs
++import fs from 'node:fs/promises';
++import assert from 'node:assert/strict';
++import { chromium } from 'D:/synera-review-fresh-20261019/node_modules/playwright/index.mjs';
++
++const root = 'D:/synera-ai-simulation-20261020';
++const connection = JSON.parse(await fs.readFile(root + '/runtime/connection.json', 'utf8'));
++const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
++const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, serviceWorkers: 'block' });
++const page = await context.newPage();
++const person = process.argv[2] || 'bot-ada';
++const message = process.argv[3] || 'Тест на вигаданих даних: мій магазин продає сині керамічні чашки. Напиши три конкретні покращення картки товару. Для кожного дай точний приклад нового тексту та поясни користь. Ціна 24 CHF, об’єм 300 мл. Не вигадуй доставку, гарантію чи відгуки.';
++const read = () => page.evaluate(async id => (await fetch('/api/sim/session?person=' + id)).json(), person);
++try {
++  await page.goto(connection.localOrigin + '/simulation.html?person=' + person + new URL(connection.url).hash);
++  await page.waitForFunction(() => document.body.dataset.revision !== undefined);
++  assert.equal(new URL(page.url()).hash, '');
++  let snapshot = await read();
++  assert.equal(snapshot.runtime.busy, false);
++  await page.locator('#sim-message').fill(message);
++  const changed = page.waitForResponse(r => r.url().endsWith('/api/sim/action') && r.request().method() === 'POST');
++  await page.locator('#sim-send').click();
++  assert.ok((await changed).ok());
++  await page.locator('#sim-consent').check();
++  const started = page.waitForResponse(r => r.url().endsWith('/api/sim/run'));
++  await page.locator('#sim-run').click();
++  assert.equal((await started).status(), 202);
++  console.log('Live fictional UI run started:', person);
++  const deadline = Date.now() + 600000;
++  do {
++    await page.waitForTimeout(1500);
++    snapshot = await read();
++  } while (snapshot.runtime.busy && Date.now() < deadline);
++  assert.equal(snapshot.runtime.busy, false, 'Live runner did not finish within acceptance observation');
++  await page.screenshot({ path: root + '/live-' + person + '.png', fullPage: true });
++  await fs.writeFile(root + '/live-' + person + '.json', JSON.stringify(snapshot, null, 2));
++  console.log(JSON.stringify({ person, runtime: snapshot.runtime, lastMessages: snapshot.state.messages.slice(-2), events: snapshot.state.events.slice(-5) }));
++  assert.equal(snapshot.runtime.stopped, false, snapshot.runtime.message);
++  assert.ok(snapshot.state.messages.some(m => m.actor === person && m.source === 'ai'), 'No actual model message applied');
++} finally { await browser.close(); }
+*** End Patch

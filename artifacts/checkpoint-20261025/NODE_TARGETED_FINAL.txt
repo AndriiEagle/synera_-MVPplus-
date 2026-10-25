@@ -1,0 +1,24 @@
+✔ no provider dispatch when stop changes during capture (28.9142ms)
+✔ no provider dispatch when revision changes during capture (14.7049ms)
+✔ no provider dispatch when draft changes during capture (8.1287ms)
+✔ unchanged clean frame reaches one model call and records the UI result (10.4748ms)
+✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (228.7147ms)
+✔ executor refuses stale, cross-action payloads and unbounded fields (1.9617ms)
+✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (102.8491ms)
+✔ 20 distinct labelled fictional actors; legacy bot identities remain available (3.984ms)
+✔ paid_service: independent approvals and receiver-only accepted simulated output (34.5062ms)
+✔ exchange: independent approvals and receiver-only accepted simulated output (42.704ms)
+✔ referral: independent approvals and receiver-only accepted simulated output (6.1121ms)
+✔ hybrid: independent approvals and receiver-only accepted simulated output (7.4577ms)
+✔ joint_project: independent approvals and receiver-only accepted simulated output (4.9901ms)
+✔ stale frame revision, outsider, and stopped session never mutate state (2.688ms)
+✔ revising terms invalidates both approvals; refusal is available (4.3633ms)
+✔ failed validation retains complete text and previous state (0.9074ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3393.2341

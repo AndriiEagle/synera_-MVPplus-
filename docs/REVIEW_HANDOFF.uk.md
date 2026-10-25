@@ -1,5 +1,7 @@
 # Synera: актуальний handoff для незалежного review
 
+**Оновлення 25.10.2026:** почни з [перевіреного checkpoint](SYNERA_CONTINUATION_20261025.uk.md): він фіксує нові source/recovery facts та незавершений live AI/Android. Нижче збережений handoff19.10 для свого pinned source.
+
 Оновлено 19.10.2026. [Репозиторій](https://github.com/AndriiEagle/synera_-MVPplus-) публічний; канонічна гілка для нового review — **`main`**. [Продуктова ДНК](PRODUCT_DNA.uk.md) · [завдання рев’юеру](CLAUDE_OPUS_REVIEW_PROMPT.uk.md).
 
 Поточне доповнення після аудиту: **`7eaa952c6e0e498521cc325ab1cf24fec1e0f725`** — код і локальні докази. [Звіт реалізації](../artifacts/gemini-implementation-20261017/REPORT.uk.md) · [хешовані фінальні перевірки](../artifacts/gemini-implementation-20261017/LOCAL_ACCEPTANCE.json) · [план пілоту](../plan/launch/AUDIT_PILOT_CHECKS_20261018.uk.md). Новий промпт прив’язаний саме до цього commit; наступні документаційні коміти не змінюють код. До зовнішнього review перевір, що цей SHA є предком main.

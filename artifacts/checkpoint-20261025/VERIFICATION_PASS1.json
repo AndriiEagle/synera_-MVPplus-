@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-25T13:20:14.024272+00:00",
+  "pass": "LOCAL_PASS1",
+  "jsonParsed": true,
+  "relativeLinksResolved": true,
+  "recoveredPatchHashesMatched": 12,
+  "productSourceHashesUnchanged": 12,
+  "backupHashesAndPreservedOriginals": "PASS all included members",
+  "historicalBranchRemoteSha": "b38c14d3cc638afa80d30a22d79ec6ef53461501",
+  "allOldLocalCommitsPublished": true,
+  "noNewProviderCalls": true,
+  "openGates": [
+    "liveVision",
+    "privateHTTPS",
+    "physicalAndroid",
+    "realUserLaunch"
+  ]
+}

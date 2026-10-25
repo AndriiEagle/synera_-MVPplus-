@@ -1,0 +1,9 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/simulation-provider.py
+@@
+-                             "properties": {"action": "string", "revision": "integer", "observation": "string",
+-                                            "text": "string", "index": "integer", "direction": "string", "field": "string"}},
++                             "properties": {key: {"type": kind} for key, kind in {
++                                 "action": "string", "revision": "integer", "observation": "string", "text": "string",
++                                 "index": "integer", "direction": "string", "field": "string"}.items()}},
+*** End Patch

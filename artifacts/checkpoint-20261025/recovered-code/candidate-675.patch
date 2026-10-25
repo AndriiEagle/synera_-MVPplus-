@@ -1,0 +1,63 @@
+*** Begin Patch
+*** Add File: D:/synera-ai-simulation-20261020/prepare-route-candidate.py
++from pathlib import Path
++import difflib
++import hashlib
++import json
++
++root = Path('D:/synera-ai-simulation-20261020')
++owner = Path('C:/Users/Andrii/Desktop/KI/token-monster/swarm.py')
++folder = root / 'route-candidate'
++folder.mkdir(exist_ok=True)
++before = owner.read_text(encoding='utf-8')
++helper = '''def provider_route_fact(job: dict, fact: dict, root: pathlib.Path) -> dict:
++    """Opt-in provider pin with fresh endpoint pricing; defaults stay unchanged."""
++    route = job.get("provider_route")
++    if route is None:
++        return fact
++    if not isinstance(route, dict) or set(route) != {"snapshot", "sha256"}:
++        raise ValueError("invalid pinned provider route")
++    path = (root / route["snapshot"]).resolve()
++    path.relative_to(root.resolve())
++    raw = path.read_bytes()
++    if hashlib.sha256(raw).hexdigest() != route["sha256"]:
++        raise ValueError("provider route snapshot hash mismatch")
++    snapshot = json.loads(raw)
++    stamp = datetime.datetime.fromisoformat(snapshot["fetched_at"])
++    if stamp.tzinfo is None or not 0 <= (datetime.datetime.now(datetime.timezone.utc) - stamp).total_seconds() <= 3600:
++        raise ValueError("provider endpoint pricing stale or future")
++    endpoint = snapshot["endpoint"]
++    prices = endpoint["pricing"]
++    if (snapshot["model"] != fact["id"] or endpoint.get("status") != 0
++            or not endpoint.get("tag") or not endpoint.get("provider_name")
++            or set(prices) - {"prompt", "completion", "input_cache_read", "discount"}
++            or type(endpoint.get("context_length")) is not int or endpoint["context_length"] <= 0):
++        raise ValueError("provider endpoint identity, availability or pricing unknown")
++    rates = [float(prices[key]) * 1_000_000 for key in ("prompt", "completion")]
++    if any(not math.isfinite(rate) or rate <= 0 for rate in rates):
++        raise ValueError("invalid provider endpoint price")
++    if job.get("effort") and "reasoning" not in endpoint.get("supported_parameters", []):
++        raise ValueError("pinned provider does not support reasoning")
++    return {**fact, "in_usd_m": rates[0], "out_usd_m": rates[1], "extra_pricing": {},
++            "context": min(fact.get("context") or endpoint["context_length"], endpoint["context_length"]),
++            "provider_only": endpoint["tag"], "expected_provider": endpoint["provider_name"]}
++
++
++'''
++after = before
++edits = [
++    ('def _cached_completion_fact(model: str) -> dict:', helper + 'def _cached_completion_fact(model: str) -> dict:'),
++    ('        fact = by_id.get(model)\n        if fact is None:', '        fact = by_id.get(model)\n        if fact is not None:\n            fact = provider_route_fact(job, fact, root)\n        if fact is None:'),
++    ('        return {"allow_fallbacks": False, "max_price": {"prompt": prices[0], "completion": prices[1]}}',
++     '        preferences = {"allow_fallbacks": False, "max_price": {"prompt": prices[0], "completion": prices[1]}}\n        if facts.get("provider_only"):\n            preferences.update(only=[facts["provider_only"]], require_parameters=True)\n        return preferences'),
++    ('        runtime_fact = _cached_completion_fact(model) if backend == "openrouter" else None',
++     '        runtime_fact = provider_route_fact(job, _cached_completion_fact(model), root) if backend == "openrouter" else None'),
++]
++for old, new in edits:
++    assert after.count(old) == 1, old
++    after = after.replace(old, new)
++(folder / 'swarm.py').write_text(after, encoding='utf-8')
++(folder / 'provider-route.patch').write_text(''.join(difflib.unified_diff(before.splitlines(True), after.splitlines(True), fromfile='a/swarm.py', tofile='b/swarm.py')), encoding='utf-8')
++(folder / 'SOURCE.local.json').write_text(json.dumps({'owner': str(owner), 'beforeSha256': hashlib.sha256(owner.read_bytes()).hexdigest(), 'candidateSha256': hashlib.sha256((folder/'swarm.py').read_bytes()).hexdigest(), 'applied': False}, indent=2))
++print('Reviewable candidate and exact patch saved outside protected source; no source mutation.')
+*** End Patch

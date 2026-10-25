@@ -1,0 +1,22 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/test_simulation_provider.py
+@@
+-CAPS = {provider.MODEL: 4, "z-ai/glm-5.3": 1, "google/gemini-4-argon": 1}
++CAPS = {provider.MODEL: 4.3, "z-ai/glm-5.3": 1, "google/gemini-4-argon": 1}
+@@
+-                {**self.row(3.99), "dispatch_id": "two"}]
++                {**self.row(4.29), "dispatch_id": "two"}]
+@@
+-        self.assertAlmostEqual(sum(spent.values()), 4.031034)
++        self.assertAlmostEqual(sum(spent.values()), 4.331034)
+@@
+             provider.spend_state(rows, LifecycleFixture, {}, CAPS)
++
++    def test_additional_approval_is_available_but_total_stays_bounded(self):
++        rows = [self.row(4.2), {**self.row(.9, "z-ai/glm-5.3"), "dispatch_id": "pro"},
++                {**self.row(.95, "google/gemini-4-argon"), "dispatch_id": "argon"}]
++        self.assertAlmostEqual(sum(provider.spend_state(rows, LifecycleFixture, {}, CAPS).values()), 6.05)
++        rows.append({**self.row(.2), "dispatch_id": "over"})
++        with self.assertRaises(ValueError):
++            provider.spend_state(rows, LifecycleFixture, {}, CAPS)
+*** End Patch

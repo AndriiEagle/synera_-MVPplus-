@@ -1,0 +1,124 @@
+[
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 133,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-133.patch",
+    "sha256": "32d1e44d42a06c2ad856b435f4fc51820c7e760d79e9ba2d9ec6d71f0c53ed22",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/test_simulation_provider.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 142,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-142.patch",
+    "sha256": "1b02f2f02f282ff0fe2675601a599a1a104ac565b7df0ca5ac4156bae084dc5a",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/simulation-provider.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 166,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-166.patch",
+    "sha256": "3f83159012f7d553c78e48e294b02cad945af72f4e0169ecc0f874c92df109af",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/simulation-provider.py",
+      "D:/synera-review-fresh-20261019/docs/ANDROID_SIMULATION.uk.md"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 327,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-327.patch",
+    "sha256": "ea4e3aedcb4c58d82387f73441740b768e741421c838cb8fe43b392c1097c5f6",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/simulation-provider.py",
+      "D:/synera-review-fresh-20261019/tools/test_simulation_provider.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 396,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-396.patch",
+    "sha256": "7d8e2e2fb9d0bd84ea49bbd099a9398b770a100524a2c42b2a01d26d3013562c",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/live-acceptance.mjs"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 453,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-453.patch",
+    "sha256": "ae6b6696bfdb56bd5d176d18128c7e5b11f1fe627453f7b50e73839b2d93dbc6",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/live-acceptance.mjs"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 555,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-555.patch",
+    "sha256": "829605361d77285848902f1e33cc6798c62b73fa46325b15c0226505d72bc519",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/simulation-provider.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 563,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-563.patch",
+    "sha256": "866dd1bc48902d560e4f04c085d06c64407d8c0d4157d5d9b191d4cf0a1cf7ca",
+    "historicalTargetPaths": [
+      "D:/synera-review-fresh-20261019/tools/simulation-provider.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 621,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-621.patch",
+    "sha256": "05a2ccbf7d9106f3e729d277b826f1d36a54478e994ff953bae98acb8f7158ff",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/vision-canary.mjs"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 675,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-675.patch",
+    "sha256": "e9f5cff2a71e0f9f9a0279fc84a4b2245cd6af630dafd703066cc34bf8ff01cf",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/prepare-route-candidate.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 683,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-683.patch",
+    "sha256": "d40a7af8b45ea5934c703f5ac494849d8b39e44471363fc8c02a3a80e6fd3f5f",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/test-route-candidate.py"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  },
+  {
+    "sourceThreadId": "01a15a58-5fbd-7202-aa80-41422c536095",
+    "sourceLine": 760,
+    "path": "artifacts/checkpoint-20261025/recovered-code/candidate-760.patch",
+    "sha256": "381a0ef1abddc7f8d58dd0c9c8093cc5bc0d4f7441a460ee436169cc43b6a50a",
+    "historicalTargetPaths": [
+      "D:/synera-ai-simulation-20261020/route-candidate/REVIEW.uk.md"
+    ],
+    "status": "RECOVERED_HISTORICAL_CANDIDATE_NOT_APPLIED"
+  }
+]

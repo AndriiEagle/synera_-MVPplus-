@@ -1,0 +1,20 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/simulation-provider.py
+@@
+ MODEL = "z-ai/glm-5.3-flash"
++TOTAL_CAP_USD = 6.3
+@@
+-    if any(spent[m] > caps[m] for m in caps) or spent[MODEL] >= caps[MODEL] or sum(spent.values()) >= 6:
++    if any(spent[m] > caps[m] for m in caps) or spent[MODEL] >= caps[MODEL] or sum(spent.values()) >= TOTAL_CAP_USD:
+@@
+-    if authority.get("objective") != "synera-android-simulation-20261020" or authority.get("totalCapUsd") != 6 or caps != {
+-        MODEL: 4, "z-ai/glm-5.3": 1, "google/gemini-4-argon": 1
++    if authority.get("objective") != "synera-android-simulation-20261020" or authority.get("totalCapUsd") != TOTAL_CAP_USD or caps != {
++        MODEL: 4.3, "z-ai/glm-5.3": 1, "google/gemini-4-argon": 1
+@@
+-        print(json.dumps({"enabled": True, "spent": spent, "remaining": 6 - sum(spent.values())}))
++        print(json.dumps({"enabled": True, "spent": spent, "remaining": TOTAL_CAP_USD - sum(spent.values())}))
+@@
+-    budget = min(0.02, caps[MODEL] - spent[MODEL], 6 - sum(spent.values()))
++    budget = min(0.02, caps[MODEL] - spent[MODEL], TOTAL_CAP_USD - sum(spent.values()))
+*** End Patch

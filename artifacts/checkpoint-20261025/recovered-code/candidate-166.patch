@@ -1,0 +1,10 @@
+*** Begin Patch
+*** Update File: D:/synera-review-fresh-20261019/tools/simulation-provider.py
+@@
+-    job = {"id": job_id, "task_id": job_id, "role": "worker", "model": MODEL, "effort": "low",
++    job = {"id": job_id, "task_id": job_id, "role": "worker", "model": MODEL, "effort": "high",
+*** Update File: D:/synera-review-fresh-20261019/docs/ANDROID_SIMULATION.uk.md
+@@
+-`totalCapUsd: 6` і `modelCapsUsd`: Flash 4, GLM 5.3 1, Argon 1.
++`totalCapUsd: 6.30` і `modelCapsUsd`: Flash 4.30, GLM 5.3 1, Argon 1.
+*** End Patch

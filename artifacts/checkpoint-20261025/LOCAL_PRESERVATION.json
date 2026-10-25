@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-25T13:10:02.467987+00:00",
+  "bundle": "D:\\synera-checkpoint-20261025\\synera-history.bundle",
+  "bundleSha256": "9d9c7c44044d64433f6ede30dc04c529fe3b5f56fa1096efb020b9694664d625",
+  "backups": [
+    {
+      "label": "original",
+      "root": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant",
+      "archive": "D:\\synera-checkpoint-20261025\\original-local-work.zip",
+      "sha256": "6ea1eb8c975743b2e8355055277c5fa30584242204afe71cf32becc875458aa2",
+      "files": 4775,
+      "archiveBytes": 157115388,
+      "excludedCount": 23,
+      "verifiedEveryMemberHash": true
+    },
+    {
+      "label": "documentation",
+      "root": "C:\\Users\\Andrii\\Desktop\\synera-clone",
+      "archive": "D:\\synera-checkpoint-20261025\\documentation-local-work.zip",
+      "sha256": "1828054ac6c0fe4138d2ae453bc994d0a62c567db5141887847f5317bc545d2b",
+      "files": 17,
+      "archiveBytes": 193269,
+      "excludedCount": 1,
+      "verifiedEveryMemberHash": true
+    },
+    {
+      "label": "legal",
+      "root": "D:\\synera-clone-legal",
+      "archive": "D:\\synera-checkpoint-20261025\\legal-local-work.zip",
+      "sha256": "824ec4d6cb0341f47b9079f3064c3a40a25e9d88e12df00361043e03ea6bc0d3",
+      "files": 3,
+      "archiveBytes": 10526,
+      "excludedCount": 0,
+      "verifiedEveryMemberHash": true
+    }
+  ],
+  "publicationScope": "metadata only; private archive contents are local; originals untouched",
+  "excludedOwnerMaterial": "24 files preserved in original locations; exact exclusions in private manifests"
+}

@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-25T13:10:45.115175+00:00",
+  "sourceHead": "cdab78e5f310b846e6eee6b852432ec19483f2c9",
+  "runtime": "v24.16.0",
+  "command": [
+    "node",
+    "--import",
+    "file:///C:/Users/Andrii/.codex/outputs/synera-gilbert-readiness-20261021/dependency-resolution.mjs",
+    "--test",
+    "web_launch/simulation-session.test.mjs",
+    "tools/simulation-server.test.mjs",
+    "tools/simulation-runner.test.mjs"
+  ],
+  "exitCode": 0,
+  "pythonExitCode": 0,
+  "attempts": [
+    {
+      "result": "13 PASS / 1 load failure",
+      "cause": "playwright resolution without existing hook"
+    },
+    {
+      "result": "0 PASS / 3 load failures",
+      "cause": "Windows --import requires file URI, not drive path"
+    },
+    {
+      "result": "PASS",
+      "cause": "existing resolver via file URI, no product/source change"
+    }
+  ],
+  "nodePass": 16,
+  "nodeFail": 0,
+  "pythonPass": 3,
+  "pythonFail": 0,
+  "providerCallsThisCheckpoint": 0,
+  "providerUsdThisCheckpoint": 0,
+  "productBehaviorChanged": false,
+  "remoteReadback": "separate post-push local receipt",
+  "historicalCI": {
+    "run": 39465683637,
+    "headSha": "cdab78e5f310b846e6eee6b852432ec19483f2c9",
+    "conclusion": "success"
+  },
+  "gates": {
+    "liveVision": "NOT_ACCEPTED",
+    "privateHTTPS": "NO_CURRENT_RUNTIME_CONFIRMED",
+    "physicalAndroid": "NOT_RUN",
+    "humanGilbert": "NOT_RUN"
+  },
+  "knownPriorTaskCostUsd": 0.041229144,
+  "reservedPriorLiabilityUsd": 0.06,
+  "unknownPriorActualCost": true,
+  "rootCapUsd": 6.3
+}

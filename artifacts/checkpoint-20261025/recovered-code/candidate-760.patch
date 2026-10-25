@@ -1,0 +1,72 @@
+*** Begin Patch
+*** Add File: D:/synera-ai-simulation-20261020/route-candidate/REVIEW.uk.md
++# Synera: точний наступний ремонт vision-маршруту
++
++Статус: **LOCAL_CANDIDATE_VERIFIED; OWNER_REVIEW_PENDING. Не застосовано.**
++
++Мета залишається незавершеною: 20 живих вигаданих AI-учасників, actual PNG
++перед кожним рішенням, перевірена UI-дія, змістовний завершений цикл і п’ять
++режимів. Фізичний Android Андрій перевірить пізніше.
++
++## Що з’ясовано в цьому продовженні
++
++- Є canonical task-scoped liability reservation $0.06 для старого 429;
++  початковий terminal збережений: cost=null, QUARANTINED_UNRECEIPTED.
++  Резерв не є receipt і не закриває required Chinese/vision роботу.
++- Спільний cap узгоджено з наявним дозволом: $6.30, Flash $4.30,
++  GLM5.3 $1, Argon $1. Кумулятивні ліміти перевіряються adapter і canonical CLI.
++- 21/21 цільових Token Monster tests; 5/5 Synera budget tests.
++  У ширшому fail_closed suite є 7 failures і 3 errors; незмінний snapshot
++  до цього патча відтворив ті самі 10 назв. Вони стосуються completion ceiling.
++- Три actual Flash high calls мають actual identity/cost receipts.
++  Перші дві дії відхилені через контракт; третя — vision diagnostic.
++  Жодної прийнятої autonomous UI-дії ще немає.
++- Усі три пішли до OpenInference: 430, 646, 162 input tokens.
++  Випадковий код, явно видимий на actual PNG, модель не прочитала (UNKNOWN).
++  Код виключений із текстового промпту. Незалежне локальне відтворення HTTP body
++  збіглося з canonical request SHA, включно з exact embedded PNG.
++- Відомий subtotal всього Android-етапу: $0.041229144 + одна невідома стара
++  витрата; окремо зарезервовано $0.06. Це не підтверджена загальна вартість.
++
++## Конкретний кандидат
++
++`provider-route.patch` змінює лише existing owner `token-monster/swarm.py`:
++опційний provider_route посилається на hash-pinned свіжий endpoint snapshot;
++preview і wire використовують одну ціну; only закріплює exact endpoint,
++fallback вимкнено, require_parameters увімкнено. Без provider_route
++чинна поведінка збережена. Live endpoint discovery знайшов StreamLake FP8;
++його доступність і ціна не є доказом читання PNG.
++
++Hashes власника, кандидата й applied=false: `SOURCE.local.json`.
++3 тести кандидата PASS; той самий oracle на незмінному owner відтворив
++7 негативних збоїв. Це локальне компонентне прийняття, не live acceptance.
++
++## Новий чинний gate
++
++Оновлені user AGENTS вимагають Stabilizer для substantive protected changes.
++`KI_STABILIZER.md` забороняє агентці підписувати owner approval.
++Підготовлено `../stabilizer-tm/contract.json`, він **UNSEALED**.
++Engine дозволяє одну anchored replacement на файл; цей невеликий diff має
++чотири рознесені місця, тому його мінімальний спільний anchor перевищує
++максимальну частку заміни. Нові run IDs чи послаблення engine не використані.
++
++Запитано конкретний task-scoped дозвіл застосувати цей exact кандидат
++після preimage check як вузький виняток цього етапу. Бюджет не збільшується.
++До відповіді — жодного застосування кандидата або нового платного виклику.
++
++## Приймання після дозволу
++
++1. Звірити current owner preimage SHA із SOURCE.local.json; при дрейфі HOLD.
++2. Застосувати exact кандидат, повторити цільові тести й отримати свіжий
++   StreamLake endpoint snapshot, не підміняючи загальний cheapest catalog.
++3. Повторити held-out visual code через canonical swarm із provider_route,
++   shared root authority і невеликим cap. Прочитати actual provider receipt.
++4. Лише після прийнятого vision proof підключити маршрут до screenshot runner;
++   не послаблювати action/revision/privacy guards через malformed output.
++5. Пройти actual UI цикл, 20 ролей/5 режимів і негативні сценарії; тоді
++   evidence inventory, main commit/push/readback/CI і новий pinned audit prompt.
++
++Runtime і приватний Android URL збережені в ../runtime/connection.json.
++Сервер і tunnel не перезапускалися; API зараз STOP після відхиленої дії.
++Ключ, PNG приватних сесій і raw transport не публікувати.
+*** End Patch
