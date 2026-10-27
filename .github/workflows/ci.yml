@@ -108,6 +108,7 @@ jobs:
       - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
       - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs
       - run: node --test tests/pwa/*.test.mjs
+      - run: node --test tests/i18n_ch/*.test.mjs
       - run: python3 -B -m unittest discover -s tools -p test_simulation_provider.py
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
