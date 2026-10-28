@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="uk" data-synera-style="synera">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="referrer" content="no-referrer">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Synera — співпраця для солопідприємців</title><meta name="theme-color" content="#254f3b">
-<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/style.css">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/style.css">
+<script type="module" src="/install-hint.mjs"></script>
 <script type="module" src="/app.mjs"></script><script type="module" src="/index-language.mjs"></script><script type="module" src="/style-switcher.mjs"></script><script type="module" src="/onboarding-tour.mjs"></script><script type="module" src="/demo-journey.mjs"></script><script type="module" src="/pwa.mjs"></script>
 <link rel="stylesheet" href="/atelier.css"><script type="module" src="/atelier.mjs"></script>
 </head>
-<body>
+<body class="phone-pwa">
 <header><a class="brand" href="/">synera<span>●</span></a><span id="mode" class="badge" data-i18n="header.check_access">Перевірка доступу</span><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><div id="lang-switcher" class="switcher"><button type="button" class="quiet lang-btn active" data-lang="uk">UA</button><button type="button" class="quiet lang-btn" data-lang="de">DE</button><button type="button" class="quiet lang-btn" data-lang="en">EN</button></div><button id="style-toggle" class="quiet style-toggle" type="button">Стиль: Synera</button><label class="preset-picker"><span class="sr-only">Компактний дизайн-пресет</span><select id="style-preset" aria-label="Компактний дизайн-пресет"><option value="">Додаткові пресети</option><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option><option value="night">Нічна карта · преміум</option></select></label><button id="tour-start" class="quiet" type="button">Тур</button></div></details><button id="logout" class="quiet" hidden data-i18n="header.logout">Вийти</button><button id="back-login" class="quiet" hidden data-i18n="header.back_to_login">До входу</button></header>
 <main>
+<aside id="install-hint" class="install-hint" aria-label="Додай на екран телефону" hidden><div><strong>Додай на екран телефону</strong><p id="install-hint-guide" hidden>Поділитись → На екран Додому</p></div><button id="install-hint-install" class="quiet" type="button" hidden>Установити</button><button id="install-hint-close" class="quiet" type="button" aria-label="Закрити підказку">×</button></aside>
 <section class="intro"><p class="eyebrow" data-i18n="intro.eyebrow">СОЛОПІДПРИЄМЦІ · МАЛИЙ БІЗНЕС · ВЗАЄМНА КОРИСТЬ</p><h1 data-i18n="intro.title">Твоя майстерність.<br><span>Ваш спільний результат.</span></h1><p class="lead" data-i18n="intro.lead">Запропонуй те, що вмієш робити добре.<br>Знайди партнера, чия допомога потрібна твоєму бізнесу.</p><div class="draft-entry"><button id="prepare-profile" type="button">Підготувати профіль <span aria-hidden="true">↗</span></button><p class="fine">Без входу · чернетка лише в цій вкладці</p></div><ol class="journey"><li><span>01</span><div><strong data-i18n="intro.step1.title">Даю й шукаю</strong><small data-i18n="intro.step1.desc">Твоя компетенція та конкретна потреба зараз.</small></div></li><li><span>02</span><div><strong data-i18n="intro.step2.title">Бізнес-кейс для двох</strong><small data-i18n="intro.step2.desc">Користь кожному, теми розмови й умови для узгодження.</small></div></li><li><span>03</span><div><strong data-i18n="intro.step3.title">Перевірте співпрацю</strong><small data-i18n="intro.step3.desc">Домовтеся про один невеликий результат для кожного.</small></div></li></ol></section>
 <p id="notice" class="notice" role="status" aria-live="polite"></p>
 <section id="welcome" class="panel welcome">
@@ -22,8 +25,7 @@
   <p class="fine">Це вигадані профілі й чернетка. Вони не є людьми пілоту, не обіцяють збіг і не створюють запрошення.</p>
   <div id="demo-journey-stage" aria-live="polite"></div>
 </section>
-<p class="summit-entry"><a href="/real-journey.html">Спільні умови → запрошення → приватна розмова · реальний пілот ↗</a></p>
-<div class="summit-entry"><a href="/summit.html">Synera · інтерактивна презентація / Interactive preview ↗</a> · <a href="/triangle.html">Новий режим: Трикутник L ↗</a> · <a href="/rooms.html">Текстова кімната L · пілот ↗</a></div>
+<details class="summit-entry more-modes"><summary>Ще режими</summary><div class="more-modes-links"><a href="/real-journey.html">Спільні умови → запрошення → приватна розмова · реальний пілот ↗</a><a href="/summit.html">Synera · інтерактивна презентація / Interactive preview ↗</a><a href="/triangle.html">Новий режим: Трикутник L ↗</a><a href="/rooms.html">Текстова кімната L · пілот ↗</a></div></details>
 <div class="actions mode-actions"><button id="check-online" class="quiet">Перевірити доступ</button></div>
 <section id="workspace" hidden>
 <div class="workspace-bar"><nav aria-label="Розділи"><button data-tab="people" class="tab" data-i18n="nav.people">Люди</button><button data-tab="profile" class="tab" data-i18n="nav.profile">Мій профіль</button><button data-tab="meetings" class="tab"><span data-i18n="nav.meetings">Зустрічі</span> <span id="meeting-count">0</span></button><button data-tab="settings" class="tab" data-i18n="nav.privacy">Приватність</button></nav></div>

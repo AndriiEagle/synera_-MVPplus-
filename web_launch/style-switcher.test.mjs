@@ -66,7 +66,9 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
   assert.match(cacheName, /^synera-shell-/);
-  assert.notEqual(cacheName, 'synera-shell-20261002-triangle-v11', 'changed shell dependencies invalidate the previous cache');
+  for (const previous of ['synera-shell-20261002-triangle-v11', 'synera-shell-20261019-audit-followup1', 'synera-shell-20261027-phone-v12'])
+    assert.notEqual(cacheName, previous, 'changed shell dependencies invalidate the previous cache');
+  assert.ok(cachedShell.includes('/install-hint.mjs'));
   assert.ok(cachedShell.includes('/style-switcher.mjs'));
   assert.ok(cachedShell.includes('/onboarding-tour.mjs'));
   assert.ok(cachedShell.includes('/demo-journey.mjs'));

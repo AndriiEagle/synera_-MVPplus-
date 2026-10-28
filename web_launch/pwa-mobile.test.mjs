@@ -5,7 +5,8 @@ import fs from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 const source=process.env.SYNERA_PWA_MUTATION==='baseline'
  ?execFileSync('git',['show','a284a1e:web_launch/pwa.mjs'],{encoding:'utf8'})
- :await fs.readFile(new URL('./pwa.mjs',import.meta.url),'utf8');
+ :(await fs.readFile(new URL('./pwa.mjs',import.meta.url),'utf8')).replace(/^import \{ createInstallHint \} from '\.\/install-hint\.mjs';\r?\n/,'');
+// The install strip is its own unit (install-hint.test.mjs); here it is a stub so pwa.mjs runs as a script.
 async function harness(standalone=false){
   const events={}, clicks={}, swEvents={}, regEvents={}, workerEvents={};
   const button={hidden:false,addEventListener:(n,f)=>clicks[n]=f},status={textContent:''};
@@ -13,7 +14,7 @@ async function harness(standalone=false){
   const draft={value:'Незбережена думка'};
   const worker={state:'installing',addEventListener:(n,f)=>workerEvents[n]=f};
   const registration={installing:worker,addEventListener:(n,f)=>regEvents[n]=f};
-  const context={document:{querySelector:s=>s==='#install-app'?button:s==='#install-status'?status:null},navigator:{standalone,serviceWorker:{controller:{},register:async()=>registration,addEventListener:(n,f)=>swEvents[n]=f}},matchMedia:()=>({matches:standalone}),window:{isSecureContext:true,addEventListener:(n,f)=>events[n]=f,location:{reload:()=>{reloads++;draft.value='';}}},setTimeout:fn=>fn()};
+  const context={createInstallHint:()=>({update(){}}),document:{querySelector:s=>s==='#install-app'?button:s==='#install-status'?status:null},navigator:{standalone,serviceWorker:{controller:{},register:async()=>registration,addEventListener:(n,f)=>swEvents[n]=f}},matchMedia:()=>({matches:standalone}),window:{isSecureContext:true,addEventListener:(n,f)=>events[n]=f,location:{reload:()=>{reloads++;draft.value='';}}},setTimeout:fn=>fn()};
   vm.runInNewContext(source,context);await new Promise(r=>setImmediate(r));
   return {events,clicks,swEvents,regEvents,workerEvents,worker,button,status,draft,reloads:()=>reloads};
 }

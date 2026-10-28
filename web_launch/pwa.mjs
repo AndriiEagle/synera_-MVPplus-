@@ -1,16 +1,18 @@
+import { createInstallHint } from './install-hint.mjs';
 let installEvent;
 const installButton = document.querySelector('#install-app');
 const status = document.querySelector('#install-status');
 function announce(message) { if (status) status.textContent = message; }
 function installed() { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; }
+const hint = createInstallHint({ installed, onInstall: () => installButton?.click() });
 // Safari has no beforeinstallprompt event: keep the manual guide reachable.
 if (installButton) installButton.hidden = installed();
-window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); installEvent = event; if (installButton) installButton.hidden = false; announce('Synera можна встановити як PWA у цьому браузері.'); });
-window.addEventListener('appinstalled', () => { installEvent = null; announce('Synera встановлена. Відкрий її з домашнього екрана.'); if (installButton) installButton.hidden = true; });
+window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); installEvent = event; if (installButton) installButton.hidden = installed(); hint.update(true); announce('Synera можна встановити як PWA у цьому браузері.'); });
+window.addEventListener('appinstalled', () => { installEvent = null; hint.update(false); announce('Synera встановлена. Відкрий її з домашнього екрана.'); if (installButton) installButton.hidden = true; });
 if (installButton) {
   installButton.addEventListener('click', async () => {
     if (installEvent) {
-      const pending = installEvent; installEvent = null;
+      const pending = installEvent; installEvent = null; hint.update(false);
       try { await pending.prompt(); return; } catch { /* Manual installation remains available. */ }
     }
     announce(installed() ? 'Synera вже відкрита як застосунок.'
