@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { checkEntryHead, fileExistsUnder } from './pwa-checks.mjs';
 const read = p => fs.readFileSync(new URL(p, import.meta.url), 'utf8');
-const positiveDir = new URL('./fixtures/positive/', import.meta.url).pathname;
+const positiveDir = fileURLToPath(new URL('./fixtures/positive/', import.meta.url));
 
 test('positive fixture links a PNG apple-touch-icon that exists next to the page', () => {
   const result = checkEntryHead(read('./fixtures/positive/index.html'), { exists: fileExistsUnder(positiveDir) });

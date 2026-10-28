@@ -4,10 +4,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { checkManifest, checkServiceWorkerRegistration, checkEntryHead, probeServiceWorkerOffline, fileExistsUnder } from './pwa-checks.mjs';
 import { PUBLIC_ASSETS } from '../../web_launch/assets.mjs';
 
-const root = path.resolve(new URL('../../web_launch/', import.meta.url).pathname);
+const root = path.resolve(fileURLToPath(new URL('../../web_launch/', import.meta.url)));
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 const exists = fileExistsUnder(root);
 

@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { checkManifest, fileExistsUnder } from './pwa-checks.mjs';
 const read = p => fs.readFileSync(new URL(p, import.meta.url), 'utf8');
 
 test('positive fixture manifest is installable', () => {
-  const result = checkManifest(read('./fixtures/positive/manifest.webmanifest'), { exists: fileExistsUnder(new URL('./fixtures/positive/', import.meta.url).pathname) });
+  const result = checkManifest(read('./fixtures/positive/manifest.webmanifest'), { exists: fileExistsUnder(fileURLToPath(new URL('./fixtures/positive/', import.meta.url))) });
   assert.deepEqual(result.problems, []);
   assert.equal(result.manifest.display, 'standalone');
 });
