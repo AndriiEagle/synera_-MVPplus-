@@ -114,15 +114,18 @@ export const ROWS = [
 ];
 
 const norm = text => text.replace(/\s+/g, ' ').trim();
+const originals = new WeakMap();
 export function show(document, code) {
-  const column = code === 'de' ? 1 : code === 'en' ? 2 : 0; if (!column) return false;
+  const column = code === 'de' ? 1 : code === 'en' ? 2 : 0;
   const texts = new Map(ROWS.map(row => [row[0], row[column]]));
   const walker = document.createTreeWalker(document.documentElement, 4 /* NodeFilter.SHOW_TEXT */);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-    const source = node.nodeValue, text = texts.get(norm(source));
-    if (text !== undefined) node.nodeValue = source.match(/^\s*/)[0] + text + source.match(/\s*$/)[0];
+    const source = originals.get(node) ?? node.nodeValue, text = texts.get(norm(source));
+    if (text !== undefined) { originals.set(node, source); node.nodeValue = source.match(/^\s*/)[0] + text + source.match(/\s*$/)[0]; }
   }
   document.documentElement.lang = code;
+  document.querySelector('#translation-notice')?.remove();
+  if (!column) return true;
   // Say plainly what this text is, before the rules themselves, and offer the original.
   const notice = document.createElement('p'), link = document.createElement('a');
   notice.className = 'notice'; notice.id = 'translation-notice'; notice.textContent = NOTICE[code][0] + ' ';

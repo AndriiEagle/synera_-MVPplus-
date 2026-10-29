@@ -1,5 +1,11 @@
 // One public-file allowlist shared by the local server and static release builder.
-export const PUBLIC_ASSETS = Object.freeze({ 'index.html': 'text/html', 'app.mjs': 'text/javascript', 'style-switcher.mjs': 'text/javascript', 'atelier.css': 'text/css', 'atelier.mjs': 'text/javascript', 'online-store.mjs': 'text/javascript', 'profile-portability.mjs': 'text/javascript', 'profile-brief.mjs': 'text/javascript', 'calendar.mjs': 'text/javascript', 'style.css': 'text/css', 'matching.mjs': 'text/javascript',
+export const PUBLIC_ASSETS = Object.freeze({
+  'site-shell.css': 'text/css',
+  'site-shell.mjs': 'text/javascript',
+  'premium-match.webp': 'image/webp',
+  'premium-calendar.webp': 'image/webp',
+  'premium-terms.webp': 'image/webp',
+  'premium-signature.webp': 'image/webp', 'index.html': 'text/html', 'app.mjs': 'text/javascript', 'style-switcher.mjs': 'text/javascript', 'atelier.css': 'text/css', 'atelier.mjs': 'text/javascript', 'online-store.mjs': 'text/javascript', 'profile-portability.mjs': 'text/javascript', 'profile-brief.mjs': 'text/javascript', 'calendar.mjs': 'text/javascript', 'style.css': 'text/css', 'matching.mjs': 'text/javascript',
   'onboarding-tour.mjs': 'text/javascript',
   'install-hint.mjs': 'text/javascript',
   'location-session.mjs': 'text/javascript',

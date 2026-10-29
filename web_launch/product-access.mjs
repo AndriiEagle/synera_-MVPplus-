@@ -1,3 +1,4 @@
+import { initLanguage } from './real-journey-i18n.mjs';
 export const LIVE_APP_URL = 'https://synera-pilot.pages.dev/';
 export const PRODUCT_COPY = {
   en: {
@@ -81,8 +82,10 @@ export const PRODUCT_COPY = {
 };
 
 export function installProductAccess(doc = document) {
-  const select = doc.querySelector('#access-language');
-  if (!select) return;
+  const select = doc.querySelector('#site-language');
+  if (!select || !doc.querySelector('#open-live-app')) return;
+  let storage = null; try { storage = window.localStorage; } catch {}
+  select.value = initLanguage({ search: typeof location === 'undefined' ? '' : location.search, storage });
   doc.querySelector('#open-live-app').href = LIVE_APP_URL;
   function translate() {
     const language = Object.hasOwn(PRODUCT_COPY, select.value) ? select.value : 'en';

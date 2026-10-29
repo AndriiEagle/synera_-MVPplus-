@@ -1,0 +1,377 @@
+{
+  "base": "a95acd525afd3c7a729bf7123254d9e81c224e93",
+  "branch": "claude/synera-design-20261029c",
+  "tests": 539,
+  "buildFiles": 121,
+  "providerCalls": 0,
+  "usd": 0,
+  "requiredShots": 15,
+  "productHttpCases": 33,
+  "localLabPreviews": 3,
+  "visualReview": {
+    "reviewer": "current Codex, self-review",
+    "pngs": 51,
+    "sheets": 14,
+    "independentArtAcceptance": false
+  },
+  "files": [
+    {
+      "file": "web_launch/assets.mjs",
+      "sha256": "f8ac8210f13be17de83ae626e550cbcc7574515fe96b168b171f5b8c3d37dd95"
+    },
+    {
+      "file": "web_launch/catalogue.html",
+      "sha256": "2e4bcddda885cab99a6a2622d7a0ca2dc63f7d13c3700dfe8e9f14aa478ad19a"
+    },
+    {
+      "file": "web_launch/get.html",
+      "sha256": "b535e7d8e429366334f5958e232d70ca5b9c9f1f76d279dd911761cbf373a3b4"
+    },
+    {
+      "file": "web_launch/index-i18n-table.mjs",
+      "sha256": "21762c873fc84ec6ff442f8d50ffe99c3be106a3e868e63b49bd968441745fd4"
+    },
+    {
+      "file": "web_launch/index-i18n.mjs",
+      "sha256": "d86d7ed7942121d700f7bcf7d4a09944aada898fae0a3c0a102d003f346c0873"
+    },
+    {
+      "file": "web_launch/index-i18n.test.mjs",
+      "sha256": "6a3a61b6b4dc11c6a66c1fadecb9d6da26a3733cd98a5a6fd443c5a6bed13677"
+    },
+    {
+      "file": "web_launch/index.html",
+      "sha256": "57a0efe9f7249c05ec7df9dd9ef86f3c0f6b84cbe6c337ca6398d0940e8dacfd"
+    },
+    {
+      "file": "web_launch/lab.html",
+      "sha256": "e6512637e0c5091acae9a87a9a2ee2aaca6629e612a98ee8744e7d7b22ebbbe2"
+    },
+    {
+      "file": "web_launch/legal-i18n.mjs",
+      "sha256": "39fefb794c929753d032825de9bebde1cf0417f2f080878df5985049e2dd0036"
+    },
+    {
+      "file": "web_launch/legal.html",
+      "sha256": "b9b1d5422ada49c0fda139c2a8ffe8dbb7c59462a5d4c8574243a65775f175a4"
+    },
+    {
+      "file": "web_launch/onboarding-tour.mjs",
+      "sha256": "05b82d07a39a738f55e53db373bbab723ea4fba283bdee8b80efd944d9ea7f57"
+    },
+    {
+      "file": "web_launch/outcome-archive.html",
+      "sha256": "e4bdd3e5315a749628a3230ede99036f9eee2675be6aa58ec81c9c7b07ae1b50"
+    },
+    {
+      "file": "web_launch/product-access.mjs",
+      "sha256": "42d9be2cc402ccd5048723e1f54bccdebd072b58dff419453d88d3664be8277d"
+    },
+    {
+      "file": "web_launch/real-journey-i18n.mjs",
+      "sha256": "a5937290cab8c2097a4997e75555e821d31ea7c2984d0498a98fc98fa30a6f0a"
+    },
+    {
+      "file": "web_launch/real-journey-i18n.test.mjs",
+      "sha256": "4ccf5eb535e65b34df2cbbd300103b49309de37a7a914bc7d48000ea5f204833"
+    },
+    {
+      "file": "web_launch/real-journey.html",
+      "sha256": "777292c869f8f678ab1063295336a295321ba5db956b3f2e25f82c4982b1faf1"
+    },
+    {
+      "file": "web_launch/real-journey.mjs",
+      "sha256": "b5c7dfb758971241a9b570fc2074d1fa6ebdf9bafab9d1b0a25d02dcdd4323c8"
+    },
+    {
+      "file": "web_launch/rooms.html",
+      "sha256": "142b543210d103b6d915aa7ae86e2b55e569d71a9cd456892a93717d7ba971d0"
+    },
+    {
+      "file": "web_launch/rooms.mjs",
+      "sha256": "10b70881d228d4af13a223158716f9aa8a92ca15b25117c26d0f8503eb7f8264"
+    },
+    {
+      "file": "web_launch/studio-journey.html",
+      "sha256": "e25ea22b95384f3cac363a9493c3172e774bd23d224a223ae5302082fa539a67"
+    },
+    {
+      "file": "web_launch/studio-sw.mjs",
+      "sha256": "91d0b52402993aa3f37ea312874de6998e911d271cae67f9255287c174d31d0a"
+    },
+    {
+      "file": "web_launch/studio.html",
+      "sha256": "9ccde34dd4bb388b29627c7c9c619a6f66234bc0c7b7d7344265c4a798d27d64"
+    },
+    {
+      "file": "web_launch/style-switcher.mjs",
+      "sha256": "44a3e8c098aea0a864e5d148870d7e4bad1ddf0f75ad3ea4a68f4a7ec851ce1b"
+    },
+    {
+      "file": "web_launch/style-switcher.test.mjs",
+      "sha256": "53a227d2bf383ee8ebdf7a8858dd9e4181a1dd9685cb6a7e850322b782718bb6"
+    },
+    {
+      "file": "web_launch/summit.html",
+      "sha256": "41fa23536d47b27e9f1d1b0d133d2f73834bd4ff6a31bd482bf5c99e984ebff5"
+    },
+    {
+      "file": "web_launch/summit.mjs",
+      "sha256": "19afb5049aabeeb428e0cb4a63e0a65851ecfef3a61f1b936a0c269ab4355f71"
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "sha256": "daddbcc04c6d234b7b9d7e87e0231e9b8b21b1d9a4db8769e4acdbbc8ddd94e6"
+    },
+    {
+      "file": "web_launch/triangle.html",
+      "sha256": "031b0665518af5d7462dc1ebc9b308de3334e8bceb64fc3e10b99b613346a9c6"
+    },
+    {
+      "file": "tools/design-pass-browser.mjs",
+      "sha256": "71c36988fc793c5a9aeff23e55edcce5fe7321001327e595f33c7dc8eab7d0d2"
+    },
+    {
+      "file": "tools/design-pass-mutation.mjs",
+      "sha256": "7218ef8f0cdde746b1e2205c67e7c3916173990ffe10101cd4099db68370eb82"
+    },
+    {
+      "file": "web_launch/design-pass.test.mjs",
+      "sha256": "50190ba161324f6683c5faf00868d8e9b348a6cb0bb8e262cb639ce6f1846e61"
+    },
+    {
+      "file": "web_launch/premium-calendar.webp",
+      "sha256": "485f42f31919e3d85a1acc5e38d06262964043905d9dabc89c826a2627155f3f"
+    },
+    {
+      "file": "web_launch/premium-match.webp",
+      "sha256": "63243b6a2afcf1a1dd0bfb91bcea0210914236796969ab79d1505b32bbba6e1f"
+    },
+    {
+      "file": "web_launch/premium-signature.webp",
+      "sha256": "83bfde72b656adde6e0cb1faccd435fe47f9d3230a1f498c38a66af5e741aa4d"
+    },
+    {
+      "file": "web_launch/premium-terms.webp",
+      "sha256": "47d822c4c0b5fb88c800b495546dd2fc7e6ea9348ea83f154d43c4cae3e8c00e"
+    },
+    {
+      "file": "web_launch/site-shell.css",
+      "sha256": "c6ed2fc7de5515455e3119b152e65cd00da9b5d412978e4a9a4ed55e382bf221"
+    },
+    {
+      "file": "web_launch/site-shell.mjs",
+      "sha256": "708b2ac140d093c2ff0102186e1bd9f19140992b728fa094148e3ad086f71016"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "shots/design-android-first-visit.png",
+      "sha256": "07a1fc0e95528ca183ef419880e7d60345e9bec21d618cb6280fd57611a934b9"
+    },
+    {
+      "file": "shots/design-android-home-atelier.png",
+      "sha256": "07a1fc0e95528ca183ef419880e7d60345e9bec21d618cb6280fd57611a934b9"
+    },
+    {
+      "file": "shots/design-android-home.png",
+      "sha256": "07a1fc0e95528ca183ef419880e7d60345e9bec21d618cb6280fd57611a934b9"
+    },
+    {
+      "file": "shots/design-android-real-journey.png",
+      "sha256": "11f05d97661186810863614e371370b7c2871d34f90e0223699f8b02fa7f8b82"
+    },
+    {
+      "file": "shots/design-iphone-first-visit.png",
+      "sha256": "47f913f7ca0a7d62affe95355726946d026963c7caa8c3a72b203b857055d588"
+    },
+    {
+      "file": "shots/design-iphone-home-atelier.png",
+      "sha256": "47f913f7ca0a7d62affe95355726946d026963c7caa8c3a72b203b857055d588"
+    },
+    {
+      "file": "shots/design-iphone-home-full.png",
+      "sha256": "7f24fb01db2f741736ae424a21d1a59b692ca02002079bb58eed5b264c0fb1c0"
+    },
+    {
+      "file": "shots/design-iphone-home-night.png",
+      "sha256": "0b5eda5e8938207a30777127cdb46b785d6cb6e1799e471c1c06ea333da71a3b"
+    },
+    {
+      "file": "shots/design-iphone-home.png",
+      "sha256": "47f913f7ca0a7d62affe95355726946d026963c7caa8c3a72b203b857055d588"
+    },
+    {
+      "file": "shots/design-iphone-legal.png",
+      "sha256": "ca42c761a039f44a7ea047a73df50aa4bffda662b8673efcfc6cb7e85964f4ad"
+    },
+    {
+      "file": "shots/design-iphone-real-journey.png",
+      "sha256": "178abb88b2a737902764c8ebc601362c2e1a59e8b55bb440c913a3916f9cd79a"
+    },
+    {
+      "file": "shots/design-iphone-rooms.png",
+      "sha256": "c43f1123ea43e9c727163fe3be7499dee8165b7505b036bfab74de7c6ed5e620"
+    },
+    {
+      "file": "shots/design-iphone-studio.png",
+      "sha256": "275fddb78f4cc8a95057af95bf46a703f1767b5abdd78db1370f91b5ca7a1898"
+    },
+    {
+      "file": "shots/design-iphone-summit.png",
+      "sha256": "1838cdab6decbfb0803588e209697a1b3f5fa590a02bd9bf9232bfc4f2ccd76a"
+    },
+    {
+      "file": "shots/design-iphone-triangle.png",
+      "sha256": "e978b91340d0a79b17e38cc809d1b979deda53c82967b350e28d50829606a852"
+    },
+    {
+      "file": "shots/matrix-atelier-catalogue.png",
+      "sha256": "ffbdf1a6e5e309ba4a6dadae269d618064ab14c50a849074cdbb61a8621904a5"
+    },
+    {
+      "file": "shots/matrix-atelier-get.png",
+      "sha256": "a8ce5d5434a29d9d95fbc9aaa1ecebf158fb650405b82d993887660dec867119"
+    },
+    {
+      "file": "shots/matrix-atelier-index.png",
+      "sha256": "47f913f7ca0a7d62affe95355726946d026963c7caa8c3a72b203b857055d588"
+    },
+    {
+      "file": "shots/matrix-atelier-lab.png",
+      "sha256": "8b50d4294c56f4f75a7fad1262c7240f42f7a9580495b49ba11e612fb8aa8b87"
+    },
+    {
+      "file": "shots/matrix-atelier-legal.png",
+      "sha256": "ca42c761a039f44a7ea047a73df50aa4bffda662b8673efcfc6cb7e85964f4ad"
+    },
+    {
+      "file": "shots/matrix-atelier-outcome-archive.png",
+      "sha256": "1e6fe32816532f3d83f76b2b2a4c83510ccf73558ad4c5cae2bf6918518732dd"
+    },
+    {
+      "file": "shots/matrix-atelier-real-journey.png",
+      "sha256": "178abb88b2a737902764c8ebc601362c2e1a59e8b55bb440c913a3916f9cd79a"
+    },
+    {
+      "file": "shots/matrix-atelier-rooms.png",
+      "sha256": "c43f1123ea43e9c727163fe3be7499dee8165b7505b036bfab74de7c6ed5e620"
+    },
+    {
+      "file": "shots/matrix-atelier-studio-journey.png",
+      "sha256": "8b14cafa2e1a4902882ff449befab154b97012eb431bc11a127ef5b74a5835b4"
+    },
+    {
+      "file": "shots/matrix-atelier-studio.png",
+      "sha256": "275fddb78f4cc8a95057af95bf46a703f1767b5abdd78db1370f91b5ca7a1898"
+    },
+    {
+      "file": "shots/matrix-atelier-summit.png",
+      "sha256": "a7f93c273876076bbdeafa49ab528c501cc2155ec2ce458948a2c7e994646ca0"
+    },
+    {
+      "file": "shots/matrix-atelier-triangle.png",
+      "sha256": "ad3b04acb1b8b024af6e33938d2052fbceec5cf5c0a989637fe17f3d5f458b8a"
+    },
+    {
+      "file": "shots/matrix-night-catalogue.png",
+      "sha256": "0da565445919267fc210404bc12620d2ac4d83fc61250e9f0efb9197ca0669a2"
+    },
+    {
+      "file": "shots/matrix-night-get.png",
+      "sha256": "f2e1367a476fe0fd9529765bb141e1a1eb8ba55ab31d277f1612dfb6ab153904"
+    },
+    {
+      "file": "shots/matrix-night-index.png",
+      "sha256": "0b5eda5e8938207a30777127cdb46b785d6cb6e1799e471c1c06ea333da71a3b"
+    },
+    {
+      "file": "shots/matrix-night-lab.png",
+      "sha256": "a3915d9e3208ff480b8c87433e26a5ff2bb086571ff685c5254ecceab302d899"
+    },
+    {
+      "file": "shots/matrix-night-legal.png",
+      "sha256": "ed4b591601078f6355721653469c23c32d6ba23b7ff86849c19e8eaad2a1b731"
+    },
+    {
+      "file": "shots/matrix-night-outcome-archive.png",
+      "sha256": "258a10c900be8a7a54e2444c02540a16fcb94e74d39f6ab0f9f501c98215db77"
+    },
+    {
+      "file": "shots/matrix-night-real-journey.png",
+      "sha256": "4f0d7c1014659827b128810166e5932374ed8b86685e2bede85cbbd0842aece7"
+    },
+    {
+      "file": "shots/matrix-night-rooms.png",
+      "sha256": "ec95a1b9295ac5bb4f8402231f60e7a7555fbcdf7ce2d6ca0c07d6456b4ece87"
+    },
+    {
+      "file": "shots/matrix-night-studio-journey.png",
+      "sha256": "3db9bf41464a9e510c9fa70b10985c18a851e09bd82ede3cf7ec84e780d5f92e"
+    },
+    {
+      "file": "shots/matrix-night-studio.png",
+      "sha256": "386c3cb009543a3b21a0396b3b708d61c2feac40273d22d5071c287798f29bd1"
+    },
+    {
+      "file": "shots/matrix-night-summit.png",
+      "sha256": "a7062c6d6052c2e663961339d8b7bf75a66edb71833bdbc08af4b79f27fa201d"
+    },
+    {
+      "file": "shots/matrix-night-triangle.png",
+      "sha256": "c3d5f06f5f8c03df2504cf5a1068115dbe7da56bc9b6cd8093b63cdca40312db"
+    },
+    {
+      "file": "shots/matrix-synera-catalogue.png",
+      "sha256": "e1aa3aa5a80a818be3e85c3f4a8f40c40e2f0f6d3754ac5d2adba923adca1ee9"
+    },
+    {
+      "file": "shots/matrix-synera-get.png",
+      "sha256": "795625b130cee43f525ead175c6890c941e27b26d305c8d9c95d7b8f23210711"
+    },
+    {
+      "file": "shots/matrix-synera-index.png",
+      "sha256": "d8f827be0ee24782f3e3f4732c4827545ccaa6134a32774da48ee07eccae4b5f"
+    },
+    {
+      "file": "shots/matrix-synera-lab.png",
+      "sha256": "8ea43020b3726fa2a6b55de7a0b7db8e96cab9efcb272281ef81cf2290a189f3"
+    },
+    {
+      "file": "shots/matrix-synera-legal.png",
+      "sha256": "777f832e1e546aeded89dbcd08472cf2827005c3649f51c412dfe339be6ea41a"
+    },
+    {
+      "file": "shots/matrix-synera-outcome-archive.png",
+      "sha256": "20c52123b02a2739be69585a7b14dcb5785dabd35ad269c0f931f4a4b2481af9"
+    },
+    {
+      "file": "shots/matrix-synera-real-journey.png",
+      "sha256": "7fef8a47306fd8063166b502065d0fbded361f7abafa37d20b6eded42120871a"
+    },
+    {
+      "file": "shots/matrix-synera-rooms.png",
+      "sha256": "2c333b6060fba0ed341f8b595b5c27ad01ce093945f1282b9c58257e3bf04489"
+    },
+    {
+      "file": "shots/matrix-synera-studio-journey.png",
+      "sha256": "e636e9220eabee6bde7269498b6c5321b34abfdc1e831f75cf39db27fa3affaa"
+    },
+    {
+      "file": "shots/matrix-synera-studio.png",
+      "sha256": "8d3a2783f21fd62624481b87a7d5b01e7f311f7f0b4079204d10d953af6cb550"
+    },
+    {
+      "file": "shots/matrix-synera-summit.png",
+      "sha256": "80816c35677860c0aaaec767e17290960ff799b00f0c7263b132c3e2456c9d01"
+    },
+    {
+      "file": "shots/matrix-synera-triangle.png",
+      "sha256": "a4668e55c28a922d5539e73366bdb2071ca50040016925dd800143549ced9164"
+    }
+  ],
+  "report": {
+    "file": "docs/DESIGN-PASS-20261029.uk.md",
+    "sha256": "4da1ced988a1f9efe70917d7ac0f3182e135b50c522bd382f5030e41c9d3a5de"
+  }
+}

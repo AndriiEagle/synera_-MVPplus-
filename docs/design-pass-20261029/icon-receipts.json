@@ -1,0 +1,38 @@
+[
+  {
+    "source": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\design\\assets-20261027\\assets\\match\\idle.png",
+    "source_sha256": "301a8ae14b16ec17cda1906d008d001fbfabd2a1723ef9fb1e36012fb4b2c68e",
+    "file": "premium-match.webp",
+    "width": 160,
+    "height": 160,
+    "bytes": 7274,
+    "sha256": "63243b6a2afcf1a1dd0bfb91bcea0210914236796969ab79d1505b32bbba6e1f"
+  },
+  {
+    "source": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\design\\assets-20261027\\assets\\calendar\\available.png",
+    "source_sha256": "4a25dc869daec4f7d620b120c1e215a98a1c77b562dc10734ced918adc8ce02c",
+    "file": "premium-calendar.webp",
+    "width": 160,
+    "height": 160,
+    "bytes": 7346,
+    "sha256": "485f42f31919e3d85a1acc5e38d06262964043905d9dabc89c826a2627155f3f"
+  },
+  {
+    "source": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\design\\assets-20261027\\assets\\quota\\full.png",
+    "source_sha256": "546c92935f27e76296d15b8655143af8bd654f2624ae5924487b98a4d53fcf17",
+    "file": "premium-terms.webp",
+    "width": 160,
+    "height": 160,
+    "bytes": 6444,
+    "sha256": "47d822c4c0b5fb88c800b495546dd2fc7e6ea9348ea83f154d43c4cae3e8c00e"
+  },
+  {
+    "source": "C:\\Users\\Andrii\\Desktop\\synera-premium-pwa-variant\\design\\assets-20261027\\assets\\signature\\ribbon_link.png",
+    "source_sha256": "a20e17b613d93ee5fb05a03fba82942a4c9e98349618e9586db4cc419d6d33d4",
+    "file": "premium-signature.webp",
+    "width": 160,
+    "height": 160,
+    "bytes": 7810,
+    "sha256": "83bfde72b656adde6e0cb1faccd435fe47f9d3230a1f498c38a66af5e741aa4d"
+  }
+]

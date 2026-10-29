@@ -4,9 +4,9 @@ import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import { SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, COMPACT_PRESETS, ALL_STYLES, applyStyle, normalizeStyle, styleToggleCopy, installStyleSwitcher } from './style-switcher.mjs';
 
-test('style switcher defaults malformed or absent preference to the original Synera visual language', () => {
-  assert.equal(normalizeStyle(undefined), SYNERA_STYLE);
-  assert.equal(normalizeStyle('unknown'), SYNERA_STYLE);
+test('style switcher defaults malformed or absent preference to the release Atelier visual language', () => {
+  assert.equal(normalizeStyle(undefined), ATELIER_STYLE);
+  assert.equal(normalizeStyle('unknown'), ATELIER_STYLE);
   assert.equal(normalizeStyle(ATELIER_STYLE), ATELIER_STYLE);
   assert.equal(normalizeStyle(ORIGINAL_STYLE), ORIGINAL_STYLE);
   assert.equal(normalizeStyle('noir'), 'noir');
@@ -38,8 +38,8 @@ test('visual controls work when browser storage is denied and preserve an availa
       const button = { setAttribute() {}, addEventListener: (name, fn) => { events[name] = fn; } };
       const storage = mode === 'getter-denied' ? undefined : mode === 'read-denied' ? { getItem() { throw new Error('read denied'); }, setItem() { throw new Error('write denied'); } } : { getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value) };
       const current = installStyleSwitcher({ root, button, select: null, storage });
-      assert.equal(current, mode === 'available' ? ATELIER_STYLE : SYNERA_STYLE, mode);
-      events.click(); assert.equal(root.dataset.syneraStyle, mode === 'available' ? ORIGINAL_STYLE : ATELIER_STYLE, mode);
+      assert.equal(current, ATELIER_STYLE, mode);
+      events.click(); assert.equal(root.dataset.syneraStyle, ORIGINAL_STYLE, mode);
       assert.equal(root.dataset.consent, 'private', 'visual choice cannot change consent');
       if (mode === 'available') assert.equal(saved.get('synera.style'), ORIGINAL_STYLE, 'available storage still remembers the choice');
     }
@@ -65,8 +65,9 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   let installation;
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
-  assert.match(cacheName, /^synera-shell-/);
-  for (const previous of ['synera-shell-20261002-triangle-v11', 'synera-shell-20261019-audit-followup1', 'synera-shell-20261027-phone-v12'])
+  assert.equal(cacheName, 'synera-shell-20261029-atelier1');
+  for (const asset of ["/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp"]) assert.ok(cachedShell.includes(asset), asset);
+  for (const previous of ['synera-shell-20261002-triangle-v11', 'synera-shell-20261019-audit-followup1', 'synera-shell-20261027-phone-v12', 'synera-shell-20261028-phone-merge1'])
     assert.notEqual(cacheName, previous, 'changed shell dependencies invalidate the previous cache');
   assert.ok(cachedShell.includes('/install-hint.mjs'));
   assert.ok(cachedShell.includes('/style-switcher.mjs'));

@@ -1,6 +1,7 @@
 import { buildBusinessCase } from './business-case.mjs';
 import { meetingDirectionsUrl } from './live-location.mjs';
 import { PRODUCT_COPY } from './product-access.mjs';
+import { initLanguage } from './real-journey-i18n.mjs';
 
 // Fictional fixtures only; no auth, storage, telemetry, GPS or provider requests.
 export function summitExample({ need = 'design', asOf = new Date().toISOString().slice(0, 10) } = {}) {
@@ -12,7 +13,7 @@ export function summitExample({ need = 'design', asOf = new Date().toISOString()
     person('demo-leo', 'sales', need, 'A clearer product offer'), { asOf });
 }
 
-const COPY = {
+export const COPY = {
   en: {
     open:'Open app ↗', hero:'Great work.<br>Starts with<br><em>each other.</em>', description:'You bring something valuable.<br>Someone brings what you need.<br>Find the reason to build together.', explore:'Explore the connection <span aria-hidden="true">↗</span>', demoNote:'Interactive demo · fictional profiles · no sign-up', strap:'Less small talk. A clearer first step.', experienceEyebrow:'THE PRODUCT, IN YOUR HANDS', experienceTitle:'A connection<br>with a reason.', experienceLead:"Try the journey. Change the need. See why a conversation makes sense — or why it doesn't.",match:'Discover',terms:'Make it clear',meet:'Meet',synthetic:'SYNTHETIC DEMO · nothing is sent or saved',principles:'Designed for<br><em>both sides.</em>',clarity:'A reason, not a rating.',clarityBody:"See how your declared skills meet each other's needs. No score can promise chemistry or a successful business.",agency:'Your next step. Your choice.',agencyBody:'Review the scope, time and reward together. A suggestion is never permission to send an invitation.',reality:'Start small. Learn for real.',realityBody:'Choose a useful first result. Check what was delivered. Decide whether to keep working together.',closingEyebrow:"YOUR SKILL IS SOMEONE'S NEXT STEP",closing:'What could you<br>build <em>together?</em>',prepare:'Prepare your profile ↗',draftNote:'Profile drafts are available without an account.',releaseSummary:'What is ready in this preview?',releaseBody:"This interactive example uses the product's matching rules. Google Maps opens your selected destination. Live GPS sharing, real two-person acceptance, and production account/database readiness are not demonstrated here. This is a web app preview, not a native Android release.",privacy:'Privacy & terms ↗',
     matchTitle:'Two skills. Two useful outcomes.',matchBody:'Mara designs products. Leo helps businesses meet customers. Try changing what Leo needs.',offers:'OFFERS',seeks:'SEEKS',design:'Product design',sales:'B2B conversations',finance:'Bookkeeping',needLabel:'What does Leo need right now?',good:'Two-way relevance: Mara can help Leo with design. Leo can help Mara with sales. A reason to talk, not a guarantee.',bad:'No two-way fit in this example. Mara has not declared the skill Leo needs. Synera does not invent a match.',next:'Explore the first collaboration →',scopeTitle:'Start with something specific.',scopeBody:'An illustrative scope to discuss. These are not agreed terms or a contract.',scopeA:'Mara → one product-page review',scopeB:'Leo → a customer-conversation plan',effort:'Change Leo’s proposed effort',hours:'hours',balanced:'Both propose 2 hours. Equal time does not establish equal value. Scope, payment and acceptance still need agreement.',unbalanced:'The proposed effort differs. Discuss scope or compensation before either person agrees.',scopeFoot:'In the live app, each person approves the same version separately. Material changes invalidate earlier approvals.',seeMeeting:'See the meeting example →',meetingTitle:'From a conversation to a place.',meetingBody:'Example venue in Zürich. Enter the actual agreed address to open directions. This is not the AI Summit venue.',venue:'Meeting place / full address',mapLabel:'ILLUSTRATION · NOT LIVE GPS OR A STREET MAP',directions:'Walking route in Google Maps ↗',location:'Your position stays with your device and Google Maps. Synera does not request or share GPS here.',navigationHint:'Opens Google Maps. Confirm the destination there. Directions need internet; no ETA is invented.',back:'Restart the example ↺',noPlace:'Enter an in-person meeting address.',
@@ -27,10 +28,13 @@ const COPY = {
   },
 };
 
+const ART_COPY = {"uk":{"preview":"SYNERA / ЗНАЙОМСТВО","directions":"ДВА НАПРЯМИ. ОДИН ПОЧАТОК.","designRole":"Дизайн продукту","salesRole":"Ділові партнерства","offerCaption":"ДАЄ","seekCaption":"ШУКАЄ","productCaption":"Виразніший продукт.","conversationCaption":"Корисніші розмови.","illustrationCaption":"ПРИКЛАД ВЗАЄМНОСТІ","wayCaption":"ПРИНЦИПИ SYNERA","clarityCaption":"01 / ЯСНІСТЬ","agencyCaption":"02 / ВИБІР","realityCaption":"03 / ДІЯ","discoverCaption":"01 / ЗНАЙТИ","agreeCaption":"02 / УЗГОДИТИ","meetCaption":"03 / ЗУСТРІТИСЬ","chooseCaption":"04 / ОБРАТИ"},"de":{"preview":"SYNERA / KENNENLERNEN","directions":"ZWEI RICHTUNGEN. EIN ANFANG.","designRole":"Produktdesign","salesRole":"Geschäftspartnerschaften","offerCaption":"BIETET","seekCaption":"SUCHT","productCaption":"Ein klareres Produkt.","conversationCaption":"Bessere Gespräche.","illustrationCaption":"BEISPIEL EINER VERBINDUNG","wayCaption":"DIE SYNERA-PRINZIPIEN","clarityCaption":"01 / KLARHEIT","agencyCaption":"02 / EIGENE WAHL","realityCaption":"03 / PRAXIS","discoverCaption":"01 / ENTDECKEN","agreeCaption":"02 / VEREINBAREN","meetCaption":"03 / TREFFEN","chooseCaption":"04 / WÄHLEN"},"en":{"preview":"SYNERA / PRODUCT PREVIEW","directions":"TWO DIRECTIONS. ONE BEGINNING.","designRole":"Product design","salesRole":"B2B partnerships","offerCaption":"OFFERS","seekCaption":"SEEKS","productCaption":"A sharper product.","conversationCaption":"Better conversations.","illustrationCaption":"ILLUSTRATIVE CONNECTION","wayCaption":"THE SYNERA WAY","clarityCaption":"01 / CLARITY","agencyCaption":"02 / AGENCY","realityCaption":"03 / REALITY","discoverCaption":"01 / DISCOVER","agreeCaption":"02 / AGREE","meetCaption":"03 / MEET","chooseCaption":"04 / CHOOSE"}};
+
 export function installSummit(doc = document) {
   const stage = doc.querySelector('#stage'); if (!stage) return;
-  let language = 'en', step = 0, need = 'design', hours = 2, place = 'Zürich Hauptbahnhof, Zürich, Switzerland';
-  const t = key => PRODUCT_COPY[language][key] ?? COPY[language][key];
+  let storage = null; try { storage = window.localStorage; } catch {}
+  let language = initLanguage({ search: typeof location === 'undefined' ? '' : location.search, storage }), step = 0, need = 'design', hours = 2, place = 'Zürich Hauptbahnhof, Zürich, Switzerland';
+  const t = key => ART_COPY[language][key] ?? PRODUCT_COPY[language][key] ?? COPY[language][key];
   const el = (tag, text, className) => { const n = doc.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; };
   const action = (text, next) => { const b = el('button', text, 'text-button'); b.type = 'button'; b.onclick = () => { step = next; render(); stage.focus(); }; return b; };
   function render() {
@@ -69,7 +73,7 @@ export function installSummit(doc = document) {
     }
   }
   const translate=()=>{doc.documentElement.lang=language;doc.querySelectorAll('[data-copy]').forEach(n=>{n.innerHTML=t(n.dataset.copy);}); render();}; // Only trusted constants, never user input.
-  doc.querySelector('#summit-language').addEventListener('change',event=>{language=Object.hasOwn(COPY,event.target.value)?event.target.value:'en';translate();});
+  doc.querySelector('#site-language').addEventListener('change',event=>{language=Object.hasOwn(COPY,event.target.value)?event.target.value:'uk';translate();});
   const tabs=[...doc.querySelectorAll('[data-stage]')];
   tabs.forEach((b,index)=>{b.addEventListener('click',()=>{step=index;render();});b.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%3;if(event.key==='ArrowLeft')next=(index+2)%3;if(event.key==='Home')next=0;if(event.key==='End')next=2;if(next!==undefined){event.preventDefault();step=next;render();tabs[next].focus();}});});
   translate();

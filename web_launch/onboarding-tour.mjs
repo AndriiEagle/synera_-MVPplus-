@@ -48,14 +48,8 @@ export function installOnboardingTour({ document: doc = document, storage } = {}
   next.addEventListener('click', () => { if (index === TOUR_STEPS.length - 1) finish(true); else { index = nextTourStep(index, 1); render(); } });
   skip.addEventListener('click', () => finish(true));
   doc.addEventListener('keydown', event => { if (panel.hidden) return; if (event.key === 'Escape') { event.preventDefault(); finish(true); } if (event.key === 'ArrowRight') { event.preventDefault(); next.click(); } if (event.key === 'ArrowLeft' && index) { event.preventDefault(); back.click(); } });
-  // An idle first visit may receive guidance. Once a person begins a real local action
-  // (for example the synthetic demo), do not dim that work; the explicit Tour control
-  // remains available for replay.
-  let interacted = false;
-  const markInteraction = () => { interacted = true; };
-  doc.addEventListener('pointerdown', markInteraction, { once: true, capture: true });
-  doc.addEventListener('keydown', markInteraction, { once: true, capture: true });
-  if (shouldOfferTour(storage)) setTimeout(() => { if (shouldStartIdleTour({ offered: true, interacted })) start(); }, 500);
+  // The release landing screen keeps its hero visible. Guidance starts only through Tour in the menu;
+  // no timer scrolls a newcomer to a closed sign-in form. Saved completion and replay stay available.
   return { start, finish, get index() { return index; } };
 }
 

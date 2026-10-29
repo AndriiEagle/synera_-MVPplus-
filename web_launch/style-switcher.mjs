@@ -12,7 +12,7 @@ export const COMPACT_PRESETS = Object.freeze([
 export const ALL_STYLES = Object.freeze([SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, NIGHT_STYLE, ...COMPACT_PRESETS.map(([id]) => id)]);
 
 export function normalizeStyle(value) {
-  return ALL_STYLES.includes(value) ? value : SYNERA_STYLE;
+  return ALL_STYLES.includes(value) ? value : ATELIER_STYLE;
 }
 
 export function styleToggleCopy(style) {
@@ -46,7 +46,7 @@ export function installStyleSwitcher({ root = document.documentElement, button =
   let saved = null; try { saved = storage?.getItem(STYLE_STORAGE_KEY); } catch { /* visual preference remains in this page */ }
   const current = applyStyle(root, button, saved);
   if (select) {
-    select.value = current === NIGHT_STYLE || COMPACT_PRESETS.some(([id]) => id === current) ? current : '';
+    select.value = current;
     select.addEventListener('change', () => {
       if (!select.value) return;
       applyStyle(root, button, select.value);
@@ -58,7 +58,7 @@ export function installStyleSwitcher({ root = document.documentElement, button =
     const currentIndex = [SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE].indexOf(root.dataset.syneraStyle);
     const next = [SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE][(currentIndex + 1) % 3];
     applyStyle(root, button, next);
-    if (select) select.value = '';
+    if (select) select.value = next;
     try { storage?.setItem(STYLE_STORAGE_KEY, next); } catch { /* visual preference remains in this page */ }
   });
   return current;

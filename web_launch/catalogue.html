@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-synera-style="atelier">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
 <title>Synera Component Catalogue</title>
@@ -20,14 +20,14 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   .code-ref { font-size: var(--font-size-xs); color: var(--color-muted); font-family: var(--font-mono); margin-top: 8px; display: block; }
 </style>
-</head>
-<body>
+<link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><script type="module" src="/site-shell.mjs"></script>
+<script type="module" src="/atelier.mjs"></script></head>
+<body class="site-page"><header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
 <main class="catalogue">
-<h1>Synera Component Catalogue</h1>
-<p class="lead">All components in all states: default, hover, focus, disabled, loading, error</p>
+<section class="reference-intro"><p class="eyebrow">SYNERA / БІБЛІОТЕКА ДИЗАЙНУ</p><h1>Деталі складаються в ціле.</h1><p>Компоненти Synera та їхні стани — довідник для команди продукту.</p><a class="primary" href="#catalogue-components">Переглянути компоненти ↗</a></section>
 
 <!-- BUTTONS -->
-<section class="catalogue-section">
+<section id="catalogue-components" class="catalogue-section">
 <h2>Buttons</h2>
 <div class="component-grid">
 <div class="component-card">
@@ -659,11 +659,7 @@
 <div class="component-grid">
 <div class="component-card">
 <h3>Mobile Header</h3>
-<header style="height: auto; min-height: 76px; flex-wrap: wrap; gap: 10px; padding: 15px; border-bottom: 1px solid var(--color-line); display: flex; align-items: center;">
-<a class="brand" style="font-size: 28px;">synera<span>●</span></a>
-<span class="badge" style="font-size: 10px; max-width: 190px;">Перевірка</span>
-<button class="quiet" style="margin-left: auto;">Вийти</button>
-</header>
+<div class="catalogue-header-sample">synera · спільна шапка сторінок</div>
 <p class="code-ref">style.css: @media(max-width:650px) header</p>
 </div>
 
@@ -713,6 +709,7 @@
 </div>
 </section>
 
+<details class="more-modes"><summary>Ще режими</summary><nav class="more-modes-links" aria-label="Режими Synera"><a href="/">Профіль і знайомства <span aria-hidden="true">↗</span></a><a href="/summit.html">Як працює Synera <span aria-hidden="true">↗</span></a><a href="/studio.html">Майстерня співпраці <span aria-hidden="true">↗</span></a><a href="/studio-journey.html">Спробувати знайомство <span aria-hidden="true">↗</span></a><a href="/real-journey.html">Домовленість удвох <span aria-hidden="true">↗</span></a><a href="/rooms.html">Спільна розмова <span aria-hidden="true">↗</span></a><a href="/triangle.html">Розмова втрьох <span aria-hidden="true">↗</span></a><a href="/get.html">Synera на телефоні <span aria-hidden="true">↗</span></a></nav></details>
 </main>
 <footer style="margin-top: 64px; padding: 24px; text-align: center; color: var(--color-muted); font-size: var(--font-size-sm);">
 Synera Component Catalogue · Built with tokens.css · <a href="/index.html" style="color: var(--color-green-primary);">Back to App</a>

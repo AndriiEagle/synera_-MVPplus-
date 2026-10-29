@@ -53,7 +53,7 @@ function wording(key, language) {
   return key;
 }
 
-export function startOverlay(document) {
+export function startOverlay(document, { scope, staticOnly = false } = {}) {
   const texts = new WeakMap(), attributes = new WeakMap(), generated = new WeakMap();
   // What a person wrote is marked translate="no" by the page and is shown exactly as written, even when it
   // happens to equal one of the page's labels.
@@ -104,14 +104,28 @@ export function startOverlay(document) {
     if (root.matches('a[href]')) link(root); for (const element of root.querySelectorAll('a[href]')) link(element);
   }
   // Text the page writes later is handled as it arrives; our own writes are recognised and left alone.
-  new MutationObserver(records => {
+  const observer = new MutationObserver(records => {
     for (const record of records) {
       if (record.type === 'characterData') text(record.target);
       else if (record.type === 'attributes') attribute(record.target, record.attributeName);
       else for (const node of record.addedNodes) sweep(node);
     }
-  }).observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: NAMES });
+  });
+  const roots = scope ? [...document.querySelectorAll(scope)] : [document.documentElement];
+  const staticTexts = [], staticAttributes = [];
+  if (staticOnly) for (const root of roots) {
+    const walker = document.createTreeWalker(root, 4);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) staticTexts.push([node, node.nodeValue]);
+    for (const element of [root, ...root.querySelectorAll('*')]) for (const name of NAMES) {
+      if (element.hasAttribute(name)) staticAttributes.push([element, name, element.getAttribute(name)]);
+    }
+  }
+  if (!staticOnly) for (const root of roots) observer.observe(root, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: NAMES });
   return { apply() {
-    document.documentElement.lang = getLanguage(); sweep(document.documentElement);
+    document.documentElement.lang = getLanguage();
+    if (!staticOnly) { for (const root of roots) sweep(root); return; }
+    // A page module may replace a static label with a person's note. Only unchanged UI nodes are ours.
+    for (const [node, source] of staticTexts) if (node.isConnected && (node.nodeValue === source || node.nodeValue === texts.get(node)?.out)) text(node);
+    for (const [element, name, source] of staticAttributes) if (element.isConnected && (element.getAttribute(name) === source || element.getAttribute(name) === attributes.get(element)?.get(name)?.out)) attribute(element, name);
   } };
 }

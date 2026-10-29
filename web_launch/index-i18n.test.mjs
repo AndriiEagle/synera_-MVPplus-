@@ -20,7 +20,7 @@ import { PUBLIC_ASSETS } from './assets.mjs';
 
 const CYRILLIC = /[Ѐ-ӿ]/, norm = text => text.replace(/\s+/g, ' ').trim();
 const read = name => fs.readFileSync(new URL(name, import.meta.url), 'utf8');
-const LANGUAGE_FILES = ['index-language.mjs', 'index-i18n.mjs', 'index-i18n-table.mjs', 'real-journey-i18n.mjs'];
+const LANGUAGE_FILES = ['index-language.mjs', 'index-i18n.mjs', 'index-i18n-table.mjs', 'real-journey-i18n.mjs', 'legal-i18n.mjs'];
 const core = new Set(TABLE.map(row => row[0])), rows = new Set(ROWS.map(row => row[0]));
 const groupsIn = source => new RegExp(source + '|', 'u').exec('').length - 1;
 const references = template => [...template.matchAll(/\$(\d{1,2})/g)].map(match => Number(match[1]));
@@ -105,32 +105,32 @@ test('a long text is never run through the patterns, and near-matches stay cheap
   assert.ok(slowest < 500, `a near-match took ${slowest.toFixed(0)} ms`);
 });
 
-test('a Ukrainian visit loads only the button module; the rest ships but is fetched on demand', () => {
-  const html = read('./index.html'), loader = read('./index-language.mjs');
-  assert.match(html, /<script type="module" src="\/index-language\.mjs"><\/script>/);
+test('a Ukrainian visit uses the shared shell; translation text is fetched on demand', () => {
+  const html = read('./index.html'), loader = read('./site-shell.mjs');
+  assert.match(html, /<script type="module" src="\/site-shell\.mjs"><\/script>/);
   assert.equal(/index-i18n|real-journey-i18n/.test(html), false, 'the page must not reference the language text directly');
-  assert.equal(/^\s*import\s/m.test(loader), false, 'the button module must not import anything up front');
+  assert.equal(/^\s*import\s.*(?:index-i18n|real-journey-i18n)/m.test(loader), false, 'translation tables stay lazy');
   assert.ok(loader.includes(`'${LANGUAGE_KEY}'`), 'the choice must be shared with the two-person page');
-  for (const code of Object.keys(LANGUAGES)) { assert.ok(loader.includes(`'${code}'`)); assert.match(html, new RegExp(`data-lang="${code}"`)); }
+  for (const code of Object.keys(LANGUAGES)) { assert.ok(loader.includes(`'${code}'`)); assert.match(html, new RegExp(`option value="${code}"`)); }
   assert.match(html, /<html lang="uk"[ >]/);
   for (const name of ['index-language.mjs', 'index-i18n.mjs', 'index-i18n-table.mjs']) assert.equal(PUBLIC_ASSETS[name], 'text/javascript', name + ' must ship');
   for (const name of ['source-strings.mjs', 'index-i18n.coverage.mjs']) assert.equal(name in PUBLIC_ASSETS, false, name + ' is test data and must not ship');
 });
 
 test('the rules page: every Ukrainian text has an unofficial translation, loaded only on demand', async () => {
-  const html = read('./legal.html'), loader = read('./legal-language.mjs');
+  const html = read('./legal.html'), loader = read('./site-shell.mjs');
   const legal = await import('./legal-i18n.mjs');
   const decode = text => text.replace(/&nbsp;/g, '\u00a0').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
   const texts = [...html.matchAll(/>([^<>]+)</g)].map(match => norm(decode(match[1]))).filter(text => CYRILLIC.test(text));
   assert.ok(texts.length >= 30, 'rules scan found too little: ' + texts.length);
   const keys = new Set(legal.ROWS.map(row => row[0]));
   // A change to the binding Ukrainian text fails here until both translations follow it.
-  assert.deepEqual(texts.filter(text => !keys.has(text)), [], 'rules text without a translation');
+  assert.deepEqual(texts.filter(text => !keys.has(text) && !core.has(text) && text !== 'Українська'), [], 'rules and shared UI text without a translation');
   assert.deepEqual([...keys].filter(key => !texts.includes(key)), [], 'translation of text that is no longer in the rules');
   for (const [uk, de, en] of legal.ROWS) assert.ok(de && en && !CYRILLIC.test(de + en) && !de.includes('ß'), 'bad translation of: ' + uk.slice(0, 50));
   for (const code of ['de', 'en']) { assert.equal(legal.NOTICE[code].length, 2); assert.match(legal.NOTICE[code][0], code === 'de' ? /inoffizielle Übersetzung.*Verbindlich ist die ukrainische Fassung/ : /unofficial translation.*Ukrainian text.*binding/); }
-  assert.match(html, /<html lang="uk">/); assert.match(html, /<script type="module" src="\/legal-language\.mjs"><\/script>/);
-  assert.equal(/legal-i18n/.test(html), false); assert.equal(/^\s*import\s/m.test(loader), false, 'the rules page must not load the translation up front');
+  assert.match(html, /<html lang="uk"[ >]/); assert.match(html, /<script type="module" src="\/site-shell\.mjs"><\/script>/);
+  assert.equal(/legal-i18n/.test(html), false); assert.equal(/^\s*import\s.*legal-i18n/m.test(loader), false, 'the rules page must not load the translation up front');
   assert.ok(loader.includes(`'${LANGUAGE_KEY}'`) && loader.includes("query.has('original')"));
   for (const name of ['legal-language.mjs', 'legal-i18n.mjs']) assert.equal(PUBLIC_ASSETS[name], 'text/javascript');
 });

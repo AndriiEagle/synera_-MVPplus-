@@ -1,5 +1,5 @@
 // Cache only explicit public shell assets. Never cache API, tokens, profiles, map tiles or imports.
-const CACHE = 'synera-shell-20261028-phone-merge1';
+const CACHE = 'synera-shell-20261029-atelier1';
 const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/style-switcher.mjs', '/onboarding-tour.mjs', '/demo-journey.mjs', '/online-store.mjs', '/profile-store.mjs', '/neon-store.mjs', '/profile-portability.mjs', '/profile-brief.mjs', '/profile-package.mjs', '/calendar.mjs', '/matching.mjs', '/map.mjs', '/pilot-policy.mjs', '/pwa.mjs', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/legal.html', '/catalogue.html', '/tokens.css', '/cascade.mjs', '/iceberg-client.mjs'];
 SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs', '/live-location.mjs', '/meeting-location.mjs');
 SHELL.push('/summit.html', '/summit.css', '/summit.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2');
@@ -10,6 +10,7 @@ SHELL.push('/profile-import.mjs', '/index-language.mjs', '/index-i18n.mjs', '/in
 SHELL.push('/result-card.mjs', '/action-scoper.mjs', '/session-value.mjs');
 SHELL.push('/case-material-budget.mjs');
 SHELL.push('/install-hint.mjs');
+SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 self.addEventListener('install', event => { 
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))); 

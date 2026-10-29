@@ -85,7 +85,11 @@ async function run(action, { keepDraft = false } = {}) {
   } finally { state.busy = false; delete document.body.dataset.realBusy; }
 }
 function makeButton(text, fn) { const button = el('button', text, { type: 'button' }); button.addEventListener('click', () => run(fn)); return button; }
-function appendEmpty(host, text) { host.append(el('p', text, { class: 'real-empty' })); }
+function appendEmpty(host, text) {
+  const empty = el('div', null, { class: 'empty-with-icon' });
+  empty.append(el('img', null, { src: '/premium-match.webp', alt: '', width: '112', height: '112' }), el('p', text, { class: 'real-empty' }));
+  host.append(empty);
+}
 function populateTags() { for (const select of ui.termsForm.querySelectorAll('select[name="give_tag"],select[name="take_tag"]')) for (const [id, label] of Object.entries(CAPABILITIES)) select.append(el('option', t(label), { value: id })); }
 function syncModeEditor() {
   const mode = ui.mode.value, paid = mode === 'paid_service', direction = ui.termsForm.elements.namedItem('paid_direction').value, money = ui.termsForm.elements.namedItem('compensation_status').value === 'agreed_money';
@@ -727,7 +731,7 @@ setInterval(pollConversation, 5000);
 // Reserve exactly its height above anything scrolled into view, so it never lies over the focused control.
 if (typeof ResizeObserver === 'function') new ResizeObserver(() => document.documentElement.style.setProperty('--real-status-space', Math.ceil(ui.status.getBoundingClientRect().height) + 24 + 'px')).observe(ui.status);
 // Display language. Collected before any data is shown, so only the page's own wording is ever translated.
-const languageSelect = $('real-language'), staticText = collectStatic(document);
+const languageSelect = $('site-language'), staticText = collectStatic(document);
 const viewStatus = mirrorText(document.querySelector('[data-atelier-controls] [role="status"]'));
 function applyLanguage() {
   document.documentElement.lang = getLanguage(); languageSelect.value = getLanguage(); staticText.apply(); viewStatus.apply();
