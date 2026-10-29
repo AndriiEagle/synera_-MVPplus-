@@ -1,4 +1,4 @@
-# Production environment — 3d200f3196a19ece9383cfde37cee8699d61d348
+# Production environment — 354287da3453d76ad954bc9aac3d881c11aacf02
 
 Only exact string true enables a flag. Current dashboard values were NOT read. No credentials are bundled.
 
@@ -6,6 +6,7 @@ Only exact string true enables a flag. Current dashboard values were NOT read. N
 |---|---|---|---|
 | `ASSETS` | Pages automatic binding | automatic binding already used by r8 Pages Advanced mode | Pages supplies the static asset service |
 | `SYNERA_CASE_OUTCOMES_READY` | true | new since documented r8; current dashboard presence UNVERIFIED | only after outcome SQL acceptance |
+| `SYNERA_COMPLETE_ERASURE_READY` | false | new since documented r8; current dashboard presence UNVERIFIED | keep complete account erasure OFF until the identity-provider deletion (gate G7) is accepted live |
 | `SYNERA_GOOGLE_OAUTH_READY` | false | new since documented r8; current dashboard presence UNVERIFIED | MUST STAY OFF until provider and callback configured and tested |
 | `SYNERA_GROUP_ROOMS_READY` | false | new since documented r8; current dashboard presence UNVERIFIED | keep rooms OFF for this walk |
 | `SYNERA_LOCATION_EPHEMERAL` | not required while GPS/open registration OFF | new since documented r8; current dashboard presence UNVERIFIED | KV binding with get/put/delete, only if those features later enabled |

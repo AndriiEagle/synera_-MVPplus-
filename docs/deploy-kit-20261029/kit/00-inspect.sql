@@ -820,4 +820,28 @@ union all
 select 'profile-erasure.migration.sql' as migration, 'grant' as kind, 'authenticated:EXECUTE:public.synera_erase_profile_data()' as object, coalesce((coalesce(has_function_privilege('authenticated',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_erase_profile_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
 union all
 select 'profile-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_case_outcome(text,jsonb)' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_case_outcome' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='text, jsonb') is not null),false) as present
+union all
+select 'privacy-complete-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_complete_erase_application_data()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_complete_erase_application_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
+union all
+select 'privacy-complete-erasure.migration.sql' as migration, 'grant' as kind, 'authenticated:EXECUTE:public.synera_complete_erase_application_data()' as object, coalesce((coalesce(has_function_privilege('authenticated',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_complete_erase_application_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'function' as kind, 'public.synera_privacy_ops_counters_valid(jsonb)' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_privacy_ops_counters_valid' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='jsonb') is not null),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'table' as kind, 'public.synera_privacy_ops_logs' as object, coalesce((to_regclass('public.synera_privacy_ops_logs') is not null),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'column' as kind, 'public.synera_privacy_ops_logs.id' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='synera_privacy_ops_logs' and column_name='id')),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'column' as kind, 'public.synera_privacy_ops_logs.event_code' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='synera_privacy_ops_logs' and column_name='event_code')),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'column' as kind, 'public.synera_privacy_ops_logs.counters' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='synera_privacy_ops_logs' and column_name='counters')),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'column' as kind, 'public.synera_privacy_ops_logs.created_at' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='synera_privacy_ops_logs' and column_name='created_at')),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'index' as kind, 'public.synera_privacy_ops_logs_retention' as object, coalesce((to_regclass('public.synera_privacy_ops_logs_retention') is not null),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'rls' as kind, 'public.synera_privacy_ops_logs' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.synera_privacy_ops_logs')),false)),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'function' as kind, 'public.synera_purge_expired_privacy_data()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_expired_privacy_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
+union all
+select 'privacy-retention-purge.migration.sql' as migration, 'grant' as kind, 'service_role:EXECUTE:public.synera_purge_expired_privacy_data()' as object, coalesce((coalesce(has_function_privilege('service_role',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_expired_privacy_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
 order by migration,kind,object;

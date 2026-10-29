@@ -56,6 +56,20 @@
     "execution": "DISPOSABLE_ONLY; all source suites included in 11-acceptance-disposable.sql with runner-shaped fixtures; never production"
   },
   {
+    "name": "privacy-complete-erasure.acceptance.sql",
+    "sha256": "9bd4c2824a8e949024682f4f2aeca8e0ba37b26fc6ad75b710a5a23d08eb5668",
+    "normalized_sha256": "9bd4c2824a8e949024682f4f2aeca8e0ba37b26fc6ad75b710a5a23d08eb5668",
+    "sql": "-- Disposable PostgreSQL only. Called after the privacy acceptance fixture exists.\n-- The runner verifies output and then drops the disposable database.\nbegin;\nset local role authenticated;\nselect set_config('request.jwt.claims','{\"sub\":\"11111111-1111-4111-8111-111111111111\",\"role\":\"authenticated\"}',true);\nselect public.synera_complete_erase_application_data();\nreset role;\ndo $$ begin\n  if exists(select 1 from public.pilot_consents where user_id='11111111-1111-4111-8111-111111111111') then raise exception 'Consent remained'; end if;\n  if exists(select 1 from public.meeting_requests where sender_id='11111111-1111-4111-8111-111111111111' or recipient_id='11111111-1111-4111-8111-111111111111') then raise exception 'Meeting remained'; end if;\n  if not exists(select 1 from public.profile_erasures where user_id='11111111-1111-4111-8111-111111111111') then raise exception 'Stale-session tombstone missing'; end if;\nend $$;\nreset role;\nselect 'PRIVACY_COMPLETE_ERASURE_ACCEPTANCE_PASS';\nrollback;\n",
+    "execution": "DISPOSABLE_ONLY; all source suites included in 11-acceptance-disposable.sql with runner-shaped fixtures; never production"
+  },
+  {
+    "name": "privacy-retention-purge.acceptance.sql",
+    "sha256": "f98cb9d6b3a089396ecaef766948f2b4623a8e9b6f6ee558d51be325366e4e00",
+    "normalized_sha256": "f98cb9d6b3a089396ecaef766948f2b4623a8e9b6f6ee558d51be325366e4e00",
+    "sql": "-- Disposable PostgreSQL only. The service-role-only purge is verified by its runner.\nbegin;\nset local role service_role;\nselect public.synera_purge_expired_privacy_data();\nreset role;\nselect 'PRIVACY_RETENTION_PURGE_ACCEPTANCE_PASS';\nrollback;\n",
+    "execution": "DISPOSABLE_ONLY; all source suites included in 11-acceptance-disposable.sql with runner-shaped fixtures; never production"
+  },
+  {
     "name": "profile-erasure-lifecycle.acceptance.sql",
     "sha256": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",
     "normalized_sha256": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee",

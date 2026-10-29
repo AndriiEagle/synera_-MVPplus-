@@ -10,7 +10,7 @@ const sha = b => createHash('sha256').update(b).digest('hex');
 const lit = s => "'" + String(s).replaceAll("'", "''") + "'";
 const json = x => JSON.stringify(x, null, 2) + '\n';
 const slash = s => s.replaceAll('\\', '/');
-export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure'];
+export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'privacy-complete-erasure', 'privacy-retention-purge'];
 
 // Split only at SQL statement boundaries; dollar bodies and quoted text stay verbatim.
 export function splitSQL(sql) {
@@ -108,7 +108,7 @@ export async function workerEnvironment(root, entry = 'neon/worker.mjs') {
 export function validateUpload(files, allowlist) {
   if (files.length>1000) throw Error('Dashboard upload exceeds 1000 files');
   for (const {name,data} of files) {
-    if (!allowlist.includes(name) || !/^[a-zA-Z0-9_./-]+$/.test(name) || name.split('/').some(p=>!p || p==='.' || p==='..' || p.startsWith('.')) || /(?:\.map$|(?:^|[./-])(?:test|spec|env|secrets?)(?:[./-]|$)|\.sql$)/i.test(name)) throw Error('Unsafe upload path: '+name);
+    if (!allowlist.includes(name) || !/^[a-zA-Z0-9_./-]+(@[1-9]x\.[a-z0-9]+)?$/.test(name) || name.split('/').some(p=>!p || p==='.' || p==='..' || p.startsWith('.')) || /(?:\.map$|(?:^|[./-])(?:test|spec|env|secrets?)(?:[./-]|$)|\.sql$)/i.test(name)) throw Error('Unsafe upload path: '+name);
     if (data.length>25*1024*1024) throw Error('Upload file exceeds 25 MiB: '+name);
     const text=data.toString('utf8');
     if (/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|postgres(?:ql)?:\/\/[^\s"']+:[^\s"']+@|\b(?:sk-or-v1-[a-f0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,})\b|sourceMappingURL\s*=/.test(text)) throw Error('Secret or source map found in '+name);
@@ -174,7 +174,7 @@ function migrationSQL(base, migrations, allRows) {
 }
 
 function envValues(env,r8) {
-  const values={ASSETS:['Pages automatic binding','Pages supplies the static asset service'],SYNERA_SITE_URL:['https://synera-pilot.pages.dev','same HTTPS origin'],SYNERA_NEON_AUTH_URL:['owner fills','copy current production Auth URL ending /neondb/auth; keep existing'],SYNERA_NEON_DATA_URL:['owner fills','copy current production Data API URL ending /neondb/rest/v1; same branch/database'],SYNERA_PILOT_EMAILS:['owner fills','exact owner email,<PARTNER_EMAIL>; private, 2 distinct addresses, 1–10 supported'],SYNERA_PILOT_READY:['true','only after SQL/backup/config checks'],SYNERA_REGISTRATION_ENABLED:['true','false during preparation; true for the two admitted people'],SYNERA_REAL_JOURNEY_READY:['true','only after SQL acceptance; enables terms and two-party confirmations'],SYNERA_CASE_OUTCOMES_READY:['true','only after outcome SQL acceptance'],SYNERA_MESSAGE_INTENTS_READY:['true','only after message-intent SQL acceptance'],SYNERA_MEETING_ADDRESS_READY:['true','only after address SQL acceptance'],SYNERA_OPEN_REGISTRATION:['false','MUST STAY OFF: two-person closed pilot'],SYNERA_GOOGLE_OAUTH_READY:['false','MUST STAY OFF until provider and callback configured and tested'],SYNERA_LOCATION_READY:['false','keep GPS OFF for this walk'],SYNERA_GROUP_ROOMS_READY:['false','keep rooms OFF for this walk'],SYNERA_PROFILE_ERASURE_READY:['false','keep erasure OFF until separate live acceptance'],SYNERA_LOCATION_EPHEMERAL:['not required while GPS/open registration OFF','KV binding with get/put/delete, only if those features later enabled']};
+  const values={ASSETS:['Pages automatic binding','Pages supplies the static asset service'],SYNERA_SITE_URL:['https://synera-pilot.pages.dev','same HTTPS origin'],SYNERA_NEON_AUTH_URL:['owner fills','copy current production Auth URL ending /neondb/auth; keep existing'],SYNERA_NEON_DATA_URL:['owner fills','copy current production Data API URL ending /neondb/rest/v1; same branch/database'],SYNERA_PILOT_EMAILS:['owner fills','exact owner email,<PARTNER_EMAIL>; private, 2 distinct addresses, 1–10 supported'],SYNERA_PILOT_READY:['true','only after SQL/backup/config checks'],SYNERA_REGISTRATION_ENABLED:['true','false during preparation; true for the two admitted people'],SYNERA_REAL_JOURNEY_READY:['true','only after SQL acceptance; enables terms and two-party confirmations'],SYNERA_CASE_OUTCOMES_READY:['true','only after outcome SQL acceptance'],SYNERA_MESSAGE_INTENTS_READY:['true','only after message-intent SQL acceptance'],SYNERA_MEETING_ADDRESS_READY:['true','only after address SQL acceptance'],SYNERA_OPEN_REGISTRATION:['false','MUST STAY OFF: two-person closed pilot'],SYNERA_GOOGLE_OAUTH_READY:['false','MUST STAY OFF until provider and callback configured and tested'],SYNERA_LOCATION_READY:['false','keep GPS OFF for this walk'],SYNERA_GROUP_ROOMS_READY:['false','keep rooms OFF for this walk'],SYNERA_PROFILE_ERASURE_READY:['false','keep erasure OFF until separate live acceptance'],SYNERA_COMPLETE_ERASURE_READY:['false','keep complete account erasure OFF until the identity-provider deletion (gate G7) is accepted live'],SYNERA_LOCATION_EPHEMERAL:['not required while GPS/open registration OFF','KV binding with get/put/delete, only if those features later enabled']};
   return {...env,variables:env.variables.map(r=>{if(!values[r.name])throw Error('New env binding requires an owner value: '+r.name);return {...r,value:values[r.name][0],instructions:values[r.name][1],r8:r.name==='ASSETS'?'automatic binding already used by r8 Pages Advanced mode':r8.includes('`'+r.name+'`')?'documented in r8 launch instructions; current dashboard value UNVERIFIED':'new since documented r8; current dashboard presence UNVERIFIED'};})};
 }
 
@@ -196,7 +196,7 @@ export async function generateKit({root=fileURLToPath(new URL('../',import.meta.
   const {PUBLIC_ASSETS}=await import(pathToFileURL(path.join(root,'web_launch/assets.mjs')).href+'?kit='+Date.now());
   const env=envValues(await workerEnvironment(root),await fs.readFile(path.join(root,'docs/NEON_LAUNCH.uk.md'),'utf8'));
   const inputs=[...new Set(['neon/build.mjs','web_launch/assets.mjs',...env.sources,...Object.keys(PUBLIC_ASSETS).map(n=>'web_launch/'+n)])].sort();
-  for(const name of inputs)if(!/^(neon|web_launch)\/[\w./-]+$/.test(name)||name.includes('..'))throw Error('Unsafe build input '+name);
+  for(const name of inputs)if(!/^(neon|web_launch)\/[\w./-]+(@[1-9]x\.[a-z0-9]+)?$/.test(name)||name.includes('..'))throw Error('Unsafe build input '+name);
   const changed=git('diff','HEAD','--name-only','--',...inputs);if(changed)throw Error('Commit-named kit requires clean build inputs: '+changed);
   const source=[];for(const name of inputs)source.push({name,sha256:sha(await fs.readFile(path.join(root,name)))});
   const scratch=await fs.mkdtemp(path.join(allowed,'.build-'));let files;
