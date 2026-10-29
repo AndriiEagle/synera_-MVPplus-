@@ -34,6 +34,13 @@ export function applyStyle(root, button, style) {
   const next = normalizeStyle(style);
   const copy = styleToggleCopy(next);
   root.dataset.syneraStyle = next;
+  // Read the actual shared canvas so opt-in palettes keep their own browser chrome.
+  const doc = root.ownerDocument;
+  if (doc?.defaultView) {
+    const styles = doc.defaultView.getComputedStyle(root);
+    doc.querySelector('meta[name="theme-color"]')?.setAttribute('content', styles.getPropertyValue('--ui-canvas').trim());
+    doc.querySelector('meta[name="color-scheme"]')?.setAttribute('content', styles.colorScheme);
+  }
   if (button) {
     button.textContent = copy.text;
     button.setAttribute('aria-label', copy.label);

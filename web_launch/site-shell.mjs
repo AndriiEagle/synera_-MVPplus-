@@ -22,7 +22,7 @@ async function language(code) {
     if (currentRevision !== revision) return;
     core.setLanguage(code, storage);
     // The real page translates dynamic data through t()/said(); its static collector owns that page.
-    const scope = page === '/index' ? undefined : ownLanguage ? '.site-header,.more-modes' : '.site-header,.more-modes,.studio-heading,.real-heading,.rooms-intro,.lab-intro,.reference-intro';
+    const scope = page === '/index' ? undefined : ownLanguage ? '.site-header,.more-modes' : '.site-header,.more-modes,.studio-heading,.real-heading,.rooms-intro,.lab-intro,.reference-intro,#rooms-blocked';
     overlay ||= module.startOverlay(document, { scope, staticOnly: page !== '/index' });
     overlay.apply();
   }

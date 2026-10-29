@@ -1,0 +1,29 @@
+✔ positive fixture links a PNG apple-touch-icon that exists next to the page (43.4282ms)
+✔ negative fixture: SVG apple-touch-icon and missing manifest link are rejected (6.7212ms)
+✔ a referenced icon that does not exist on disk is a failure, not a pass (6.1425ms)
+✔ positive fixture manifest is installable (47.8642ms)
+✔ negative fixture manifest reports every install blocker (10.1529ms)
+✔ malformed manifest text is a single clear failure (1.0725ms)
+✔ positive fixture head has a responsive, zoomable viewport with safe-area support (29.1822ms)
+✔ negative fixture head: fixed-width, zoom-blocking viewport is rejected (9.8617ms)
+✔ a head without any viewport meta is reported (0.6365ms)
+✔ positive fixture: shell precached, root served from cache offline, config answers 503 offline JSON (127.4268ms)
+✔ negative fixture: network-only worker caches nothing and has no offline answer (7.854ms)
+✔ index.html head: viewport, apple-touch-icon, manifest, theme-color, lang (16.2963ms)
+✔ manifest.webmanifest is installable and its icons exist (4.7215ms)
+✔ pwa.mjs registers /sw.mjs as a guarded module worker and never reloads on its own (1.5675ms)
+✔ sw.mjs precaches the shell, serves / from cache offline, answers /config.json with 503 offline JSON (123.5746ms)
+✔ every precached shell path is a file the server actually serves (dead-path guard) (34.779ms)
+✔ every served page that registers the worker is itself in the shell (cold start offline) (17.193ms)
+✔ known gaps on secondary entry pages are recorded, not hidden (8.7172ms)
+✔ positive fixture registers a module worker at the root scope with guards (7.1731ms)
+✔ negative fixture: unguarded, relative, reload-on-update registration is rejected (3.4601ms)
+✔ a page without any registration is reported, not silently passed (1.0991ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 688.1039

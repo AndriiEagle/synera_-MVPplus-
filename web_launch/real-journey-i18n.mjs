@@ -8,6 +8,10 @@ const DATE_LOCALES = Object.freeze({ uk: 'uk', de: 'de-CH', en: 'en-GB' });
 
 // [Ukrainian source, German (Swiss spelling, informal «du»), English]
 export const TABLE = Object.freeze([
+  ['Підготувати чернетку профілю', 'Profilentwurf vorbereiten', 'Prepare a profile draft'],
+  ['Спробувати розмову втрьох у цій вкладці', 'Gespräch zu dritt in diesem Tab ausprobieren', 'Try a three-person conversation in this tab'],
+  ['потрібен вхід', 'Anmeldung nötig', 'sign-in required'],
+  ['Підготуй чернетку в цій вкладці. Для збереження на сервері потрібен вхід. Видимість профілю вмикаєш ти.', 'Erstelle einen Entwurf in diesem Tab. Zum Speichern auf dem Server musst du dich anmelden. Du bestimmst, ob dein Profil sichtbar ist.', 'Prepare a draft in this tab. Sign in to save it on the server. You choose whether your profile is visible.'],
   ["SYNERA / ПОРІВНЯННЯ МОЖЛИВОСТЕЙ","SYNERA / MÖGLICHKEITEN VERGLEICHEN","SYNERA / COMPARE OPPORTUNITIES"],
   ["Порівняти можливості ↗","Möglichkeiten vergleichen ↗","Compare opportunities ↗"],
   ["SYNERA / БІБЛІОТЕКА ДИЗАЙНУ","SYNERA / DESIGNBIBLIOTHEK","SYNERA / DESIGN LIBRARY"],

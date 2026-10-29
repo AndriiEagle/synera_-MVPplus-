@@ -1,10 +1,10 @@
 [
   {
     "page": "index.html",
-    "url": "file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/index.html",
-    "timestamp": "2026-10-02T10:40:43.612Z",
+    "url": "http://127.0.0.1:58489/index.html",
+    "timestamp": "2026-10-29T18:40:34.663Z",
     "violations": [],
-    "passes": 42,
+    "passes": 41,
     "incomplete": 1,
     "summary": {
       "critical": 0,
@@ -15,10 +15,10 @@
   },
   {
     "page": "catalogue.html",
-    "url": "file:///C:/Users/Andrii/Desktop/synera-premium-pwa-variant/web_launch/catalogue.html",
-    "timestamp": "2026-10-02T10:40:49.096Z",
+    "url": "http://127.0.0.1:58489/catalogue.html",
+    "timestamp": "2026-10-29T18:40:43.244Z",
     "violations": [],
-    "passes": 41,
+    "passes": 43,
     "incomplete": 1,
     "summary": {
       "critical": 0,

@@ -1,0 +1,298 @@
+{
+  "owned_source_and_reports": [
+    "DONE.md",
+    "docs/ARGON-FIXES-20261029.uk.md",
+    "docs/DESIGN-PASS-20261029.uk.md",
+    "docs/argon-fixes-20261029/capture-phones.mjs",
+    "tests/argon-fixes.cases.mjs",
+    "tests/browser-e2e.spec.mjs",
+    "tests/pwa/product-entry.test.mjs",
+    "web_launch/a11y_audit.mjs",
+    "web_launch/app.mjs",
+    "web_launch/catalogue.html",
+    "web_launch/get.html",
+    "web_launch/index.html",
+    "web_launch/lab.html",
+    "web_launch/legal.html",
+    "web_launch/onboarding-tour.mjs",
+    "web_launch/outcome-archive.html",
+    "web_launch/real-journey-i18n.mjs",
+    "web_launch/real-journey.html",
+    "web_launch/rooms.html",
+    "web_launch/simulation.html",
+    "web_launch/site-shell.css",
+    "web_launch/site-shell.mjs",
+    "web_launch/studio-journey.html",
+    "web_launch/studio-sw.mjs",
+    "web_launch/studio.html",
+    "web_launch/style-switcher.mjs",
+    "web_launch/style-switcher.test.mjs",
+    "web_launch/summit.css",
+    "web_launch/summit.html",
+    "web_launch/sw.mjs",
+    "web_launch/triangle.html"
+  ],
+  "other_tracked_worktree_changes_leave_alone": [
+    "artifacts/android-simulation-20261020/browser/acceptance.json",
+    "artifacts/android-simulation-20261020/browser/simulation-1440.png",
+    "artifacts/android-simulation-20261020/browser/simulation-320.png",
+    "artifacts/android-simulation-20261020/browser/simulation-390-text200.png",
+    "artifacts/android-simulation-20261020/browser/simulation-390.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/01-buyer-paid-terms.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/02-supplier-private-card.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/03-413-draft-retained.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_ACCEPTANCE.json",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-de-390-200pct.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-en-1440.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-uk-320.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-de-390-200pct.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-en-1440.png",
+    "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-uk-320.png",
+    "artifacts/audit-followup-20261019/session-cookie-browser.json",
+    "artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json",
+    "artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json",
+    "artifacts/gemini-implementation-20261017/case-social-draft-390x844.png",
+    "artifacts/gemini-implementation-20261017/profile-erasure-390x844.png",
+    "artifacts/location-mobile-20261002.png",
+    "web_launch/a11y_audit.md",
+    "web_launch/a11y_audit_report.json"
+  ],
+  "reviewed_screenshots": [
+    "main-iphone-home.png",
+    "main-iphone-summit.png",
+    "main-iphone-studio.png",
+    "main-iphone-triangle.png",
+    "main-iphone-real-journey.png",
+    "main-iphone-rooms.png",
+    "main-iphone-triangle-diagram.png",
+    "main-android-home.png",
+    "main-android-summit.png",
+    "main-android-studio.png",
+    "main-android-triangle.png",
+    "main-android-real-journey.png",
+    "main-android-rooms.png",
+    "main-android-triangle-diagram.png"
+  ],
+  "ci_steps": [
+    {
+      "step": "01-main",
+      "exit": 0,
+      "seconds": 15.78,
+      "command": [
+        "node",
+        "--test",
+        "web_launch/*.test.mjs",
+        "web_launch/iceberg/*.test.mjs",
+        "neon/*.test.mjs",
+        "plan/v6/workflow/approval-boundary.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\01-main.txt"
+    },
+    {
+      "step": "02-simulation",
+      "exit": 0,
+      "seconds": 1.38,
+      "command": [
+        "node",
+        "--import",
+        "file:///C:/Users/Andrii/.codex/outputs/synera-gilbert-readiness-20261021/dependency-resolution.mjs",
+        "--test",
+        "tools/simulation-server.test.mjs",
+        "tools/simulation-runner.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\02-simulation.txt"
+    },
+    {
+      "step": "03-pwa",
+      "exit": 0,
+      "seconds": 0.66,
+      "command": [
+        "node",
+        "--test",
+        "tests/pwa/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\03-pwa.txt"
+    },
+    {
+      "step": "04-i18n",
+      "exit": 0,
+      "seconds": 0.56,
+      "command": [
+        "node",
+        "--test",
+        "tests/i18n_ch/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\04-i18n.txt"
+    },
+    {
+      "step": "05-python",
+      "exit": 0,
+      "seconds": 0.44,
+      "command": [
+        "py",
+        "-3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_simulation_provider.py"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\05-python.txt"
+    },
+    {
+      "step": "06-e2e",
+      "exit": 0,
+      "seconds": 142.49,
+      "command": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "C:/sw/pw-chrome.config.mjs",
+        "--output",
+        "C:\\sw\\synera-design\\docs\\ci-green-20261029\\argonfix\\e2e-output",
+        "tests/browser-e2e.spec.mjs",
+        "tests/studio-e2e.spec.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\06-e2e.txt"
+    },
+    {
+      "step": "07-header",
+      "exit": 0,
+      "seconds": 44.73,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/header-layout-acceptance-20261013.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\07-header.txt"
+    },
+    {
+      "step": "08a-build",
+      "exit": 0,
+      "seconds": 0.67,
+      "command": [
+        "node",
+        "neon/build.mjs",
+        "dist-neon-ci"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\08a-build.txt"
+    },
+    {
+      "step": "08b-offline",
+      "exit": 0,
+      "seconds": 13.73,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/offline-shell-acceptance.mjs",
+        "--candidate=web_launch/dist-neon-ci"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\08b-offline.txt"
+    },
+    {
+      "step": "09-location",
+      "exit": 0,
+      "seconds": 11.25,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/location-browser-acceptance.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\09-location.txt"
+    },
+    {
+      "step": "10-social",
+      "exit": 0,
+      "seconds": 15.92,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/case-social-draft-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\10-social.txt"
+    },
+    {
+      "step": "11-erasure",
+      "exit": 0,
+      "seconds": 14.92,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/profile-erasure-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\11-erasure.txt"
+    },
+    {
+      "step": "12-cookie",
+      "exit": 0,
+      "seconds": 3.98,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/audit-session-cookie-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\12-cookie.txt"
+    },
+    {
+      "step": "13-paid",
+      "exit": 0,
+      "seconds": 30.03,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/audit-paid-journey-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\13-paid.txt"
+    },
+    {
+      "step": "14-simulation-browser",
+      "exit": 0,
+      "seconds": 16.73,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/simulation-browser-acceptance.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\14-simulation-browser.txt"
+    },
+    {
+      "step": "15-a11y",
+      "exit": 0,
+      "seconds": 15.86,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "web_launch/a11y_audit.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\15-a11y.txt"
+    },
+    {
+      "step": "16-android",
+      "exit": 0,
+      "seconds": 0.67,
+      "command": [
+        "node",
+        "--test",
+        "android/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\argonfix\\16-android.txt"
+    }
+  ],
+  "port_49611": "NO_LISTENER_AFTER_CAPTURE",
+  "head": "b083c07309d0bed3a449fa3801015bf9a49ec49d",
+  "provider_calls": 0,
+  "usd": 0
+}

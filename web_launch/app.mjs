@@ -130,6 +130,10 @@ function currentPublicUrl() { return config?.publicSiteUrl || (location.protocol
 function applyAuthState() {
   $('#profile-erasure-controls').hidden = config?.backend !== 'neon' || config?.profileErasureEnabled !== true || typeof store?.eraseProfileData !== 'function';
   $('#auth-fields').disabled = busy || !onlineReady;
+  // Readiness, rather than a temporary busy state, owns the closed-entry presentation.
+  $('#auth-form').hidden = !onlineReady;
+  $('.auth-heading').hidden = !onlineReady;
+  $('#auth-closed').hidden = onlineReady;
   $('#signup').hidden = config?.backend === 'neon' || !config?.registrationEnabled;
   $('#google-signin').hidden = config?.backend !== 'neon' || config?.googleOAuthEnabled !== true || Boolean(otpEmail) || Boolean(store?.user);
   $('#otp-tools').hidden = config?.backend !== 'neon' || !otpEmail;
@@ -549,7 +553,16 @@ async function finishOnlineSignIn(accepted) {
   await load({profile:true}); if(!own.display_name)tab('profile');message('Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».');
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
-$('#prepare-profile').addEventListener('click',()=>{showWorkspace();fillProfileForm(draft || {});tab('profile');$('#mode').textContent='Твоя чернетка · у цій вкладці';message('Підготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.');});
+function openProfileDraft() {
+  if ($('#workspace').hidden) { showWorkspace(); fillProfileForm(draft || {}); }
+  tab('profile');
+  if (!store?.user) {
+    $('#mode').textContent='Твоя чернетка · у цій вкладці';
+    message('Підготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.');
+  }
+}
+$('#prepare-profile').addEventListener('click', openProfileDraft);
+$('#auth-closed a').addEventListener('click', event => { event.preventDefault(); openProfileDraft(); });
 $('#back-login').addEventListener('click',()=>{draft=readProfileForm();$('#workspace').hidden=true;$('#welcome').hidden=false;$('#demo-journey').hidden=false;$('#back-login').hidden=true;document.body.classList.remove('signed-in');message('Чернетка залишається у вкладці. Після входу перевір її та збережи.');});
 $('#check-online').addEventListener('click',()=>run(checkOnline));
 $('#policy-cancel').addEventListener('click',()=>{policyAction=null;$('#password').value='';$('#policy-dialog').close();});
@@ -945,6 +958,7 @@ if (googleSignInError) {
   message('Не вдалося завершити Google-вхід. Спробуй ще раз або отримай код на пошту.', true);
 }
 applyAuthState();renderProfileProgress();
+if (callbackUrl.searchParams.get('draft') === '1' && !store?.user) openProfileDraft();
 
 // SYN_CONSENT_PANEL_7: seven granular consents, all default OFF; revoke has an instant effect.
 // In-memory only: no localStorage, URL or config may enable a consent. Recording stays locked OFF (StGB 179ter).

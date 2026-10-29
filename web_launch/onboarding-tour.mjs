@@ -1,7 +1,8 @@
+import { tr } from './real-journey-i18n.mjs';
 export const TOUR_STORAGE_KEY = 'synera.first-user-tour.v1';
 
 export const TOUR_STEPS = Object.freeze([
-  { target: '[data-tour="identity"]', title: 'Твій профіль — під твоїм контролем', body: 'Почни зі входу за запрошенням. Правила підтверджуються окремо; видимість профілю не вмикається автоматично.' },
+  { target: '[data-tour="identity"]', title: 'Твій профіль — під твоїм контролем', body: 'Підготуй чернетку в цій вкладці. Для збереження на сервері потрібен вхід. Видимість профілю вмикаєш ти.' },
   { target: '[data-tour="offer"]', title: 'Що ти даєш', body: 'Опиши конкретну сильну сторону й приклад. Це причина для розмови, а не рейтинг твоєї цінності.' },
   { target: '[data-tour="need"]', title: 'Що шукаєш', body: 'Назви потрібний зараз результат. Synera показує лише пояснювані перетини «даю ↔ шукаю».' },
   { target: '[data-tour="conditions"]', title: 'Умови й запрошення', body: 'Ти керуєш видимістю та умовами. Контакт відкривається тільки після двох окремих «так», без автоматичних відправлень.' },
@@ -35,11 +36,14 @@ export function installOnboardingTour({ document: doc = document, storage } = {}
   const render = () => {
     const step = TOUR_STEPS[index], target = doc.querySelector(step.target);
     if (!target) { finish(false); return; }
+    const workspace = target.closest('#workspace');
+    if (workspace?.hidden) doc.querySelector('#prepare-profile')?.click();
+    if (workspace) doc.querySelector('[data-tab="profile"]')?.click();
     // This public synthetic example remains reachable from a profile tour.
     if (target.id === 'demo-journey') target.hidden = false;
     activeTarget?.classList.remove('tour-target'); activeTarget = target; activeTarget.classList.add('tour-target');
     doc.documentElement.classList.add('tour-active'); overlay.hidden = panel.hidden = false;
-    eyebrow.textContent = `КРОК ${index + 1} / ${TOUR_STEPS.length}`; title.textContent = step.title; body.textContent = step.body;
+    eyebrow.textContent = `КРОК ${index + 1} / ${TOUR_STEPS.length}`; title.textContent = tr(step.title); body.textContent = tr(step.body);
     back.disabled = index === 0; next.textContent = index === TOUR_STEPS.length - 1 ? 'Завершити' : 'Далі';
     target.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };

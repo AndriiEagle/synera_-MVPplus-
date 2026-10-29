@@ -41,7 +41,8 @@ test.describe('installed shell',()=>{test.use({serviceWorkers:'allow'});
   const canonical=http.createServer(async(req,res)=>{const pathname=new URL(req.url,'http://localhost').pathname;const name=pathname==='/studio'?'studio.html':pathname.slice(1);if(!Object.hasOwn(PUBLIC_ASSETS,name)){res.writeHead(404);res.end();return;}try{res.writeHead(200,{'Content-Type':PUBLIC_ASSETS[name]});res.end(await fs.readFile('web_launch/'+name));}catch{res.writeHead(500);res.end();}});
   await new Promise(resolve=>canonical.listen(0,'127.0.0.1',resolve));
   try{const clean='http://127.0.0.1:'+canonical.address().port+'/studio';await page.goto(clean);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller?.scriptURL.endsWith('/studio-sw.mjs'));await context.setOffline(true);await page.reload();await expect(page.locator('h1')).toContainText('Твоя сила');await page.locator('[data-step=memory]').click();await expect(page.locator('#memory-title')).toContainText('точними словами');}
-  finally{await context.setOffline(false);await new Promise(resolve=>canonical.close(resolve));}
+  finally{await context.setOffline(false);// Chrome may keep a keep-alive socket open after the offline reload; close() alone then waits forever.
+  await new Promise(resolve=>{canonical.close(resolve);canonical.closeAllConnections();});}
  });
  test('dedicated manifest opens Studio and offline reload restores public shell with explicit saved session',async({page,context})=>{
   await start(page);await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller?.scriptURL.endsWith('/studio-sw.mjs'));const manifest=await(await page.request.get(base+'/studio.webmanifest')).json();expect(manifest.id).toBe('/studio.html');expect(manifest.start_url).toBe('/studio.html');expect(manifest.scope).toBe('/studio');

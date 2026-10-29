@@ -1,0 +1,303 @@
+{
+  "base": "b083c07309d0bed3a449fa3801015bf9a49ec49d",
+  "branch": "claude/synera-design-20261029c",
+  "source": [
+    {
+      "file": "docs/DESIGN-PASS-20261029.uk.md",
+      "sha256": "37204d07f1f760ffc45900e2a224f21bda2c2a9221faca3f6a4842cadb24b2b8"
+    },
+    {
+      "file": "docs/argon-fixes-20261029/capture-phones.mjs",
+      "sha256": "4d9d7d31947ba2f8b832e81d480137ac174d53f3169c3a2dd62ff884510b361f"
+    },
+    {
+      "file": "tests/argon-fixes.cases.mjs",
+      "sha256": "6ce28256072b52fe19d5ef7dd681b5af8ee210557c13d542ed1d5f436740232e"
+    },
+    {
+      "file": "tests/browser-e2e.spec.mjs",
+      "sha256": "b29abb1bffc81de098711a0a11c725541acd7d0d975dfa4a13e7a0c3b495679c"
+    },
+    {
+      "file": "tests/pwa/product-entry.test.mjs",
+      "sha256": "4e3654d128bd0f11974106ded67751ab04b036faf9240e41d154f8b89cf5bafd"
+    },
+    {
+      "file": "web_launch/a11y_audit.mjs",
+      "sha256": "a4b3e15e6933a4c8331dec30b6b569b99088e714d77ed9ceb06b88f9c9310243"
+    },
+    {
+      "file": "web_launch/app.mjs",
+      "sha256": "f51dde558f52cd6e817a4ed16e7c126c486481024d1f2d0e7d9e9e61e102b4af"
+    },
+    {
+      "file": "web_launch/catalogue.html",
+      "sha256": "4c83521b5161194e5a06134d8312f368a0428b3fef4a5f4aba8be18c03bd6a67"
+    },
+    {
+      "file": "web_launch/get.html",
+      "sha256": "fce1665c75884446b5c20ca3d0890f19cc5668246f6ccad6cc4dbbd6936d562b"
+    },
+    {
+      "file": "web_launch/index.html",
+      "sha256": "71369677044ca2afc85426de3ca05b44417065e5f6403c1c0084f5c237ff984f"
+    },
+    {
+      "file": "web_launch/lab.html",
+      "sha256": "05fae7ccd70b0465f16625ac7f094b8ec7dfdcc0aaaef7f80a7facd9e0b212dc"
+    },
+    {
+      "file": "web_launch/legal.html",
+      "sha256": "6a54a0bd1a421ffe1e4a4ab760b9ef9a0a2f813ae740f7e9e89fcb3199645a49"
+    },
+    {
+      "file": "web_launch/onboarding-tour.mjs",
+      "sha256": "74a274e3e14ca5324a1b83e89fed7c41f8ac4bd9cd2d921723d4bacf15503cd4"
+    },
+    {
+      "file": "web_launch/outcome-archive.html",
+      "sha256": "1585ab25a51d61c8119940155ab984d2a2fd5bb9b67704200ffed29ee40f30d8"
+    },
+    {
+      "file": "web_launch/real-journey-i18n.mjs",
+      "sha256": "8b605b090fe576e5e92e308a0b2d476e66821668ec70501375299767f612ca4e"
+    },
+    {
+      "file": "web_launch/real-journey.html",
+      "sha256": "5192d90fd5dabd26398faeab2d89b368e865b330f4fb2389129e1f791e3c374b"
+    },
+    {
+      "file": "web_launch/rooms.html",
+      "sha256": "06e023e2e77bbbc5c2ada3a641b1563fb30b453333b77fc608c463d14d989b18"
+    },
+    {
+      "file": "web_launch/simulation.html",
+      "sha256": "0c370230cce0ad3b80fe7bf15b3bd94bcbc0bc4da4703e0375c84c94121ac319"
+    },
+    {
+      "file": "web_launch/site-shell.css",
+      "sha256": "5d5bbcb98d1f95943cb8023568ce64201b9a2aa8891a7abec4f5ddac1981a870"
+    },
+    {
+      "file": "web_launch/site-shell.mjs",
+      "sha256": "b514da0ba123368f01bc59ba4de99f60ecb39ab2dd4220e3ec9ee3a6fa2d31a6"
+    },
+    {
+      "file": "web_launch/studio-journey.html",
+      "sha256": "3777051e5b662f5d9623a4dd92d24caac7986c089772c0be7d8db6a1297f80a3"
+    },
+    {
+      "file": "web_launch/studio-sw.mjs",
+      "sha256": "a549ee59855a88246276243dfe10b8d03bfd1d2ab802218b2cdd6d9bf9595b01"
+    },
+    {
+      "file": "web_launch/studio.html",
+      "sha256": "c867797dabb7c6332277233cbbd32b5b7da1e88f5fa257e73ea2b6116bb524d4"
+    },
+    {
+      "file": "web_launch/style-switcher.mjs",
+      "sha256": "f04775f1cba218ea48a99bf20692a5e6326af9efb2df76c5c00495dce8b8e8ea"
+    },
+    {
+      "file": "web_launch/style-switcher.test.mjs",
+      "sha256": "8b48dbef88b1ce78a82e811da06516cc3ece133f3bebddb6b455bf11c9dd8327"
+    },
+    {
+      "file": "web_launch/summit.css",
+      "sha256": "ac49bce14960427e2c184086545b4ad9b83dae67a41ece69166fc5d067fa0f17"
+    },
+    {
+      "file": "web_launch/summit.html",
+      "sha256": "5cd1d0c30475b4f0f0a33307cff40181e58d1bbf74d63e04552ac4ef003b835e"
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "sha256": "c30f3d6cb708de75598f75c8cf20591eeeed1e1f7b5be7b92264ffd5daa38f3c"
+    },
+    {
+      "file": "web_launch/triangle.html",
+      "sha256": "841ad39cc60d2084e5f7ab57b1a34c32aa330734714256dccd80b6937ad27051"
+    }
+  ],
+  "verified_baseline_copy": [
+    {
+      "file": "docs/DESIGN-PASS-20261029.uk.md",
+      "git_blob_sha256": "4da1ced988a1f9efe70917d7ac0f3182e135b50c522bd382f5030e41c9d3a5de",
+      "archive_sha256": "b271dc55f8b39a6f2b29554bb32e45e1f113067623fed3826a7de18ca3126d8b",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/a11y_audit.mjs",
+      "git_blob_sha256": "67bc0532c89a10da8bde68e3ec522af30a2a6dba0d3604c799ecdc481e592903",
+      "archive_sha256": "67bc0532c89a10da8bde68e3ec522af30a2a6dba0d3604c799ecdc481e592903",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/app.mjs",
+      "git_blob_sha256": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+      "archive_sha256": "da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/catalogue.html",
+      "git_blob_sha256": "4aca79281ce383cf51c291e86222c8660ef179fb5a0c15dcd22e772cbb8a27bc",
+      "archive_sha256": "a24da6c0af81763558d5899183dfc244f8a47c2bee53969cb864153d75d89596",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/get.html",
+      "git_blob_sha256": "a98fe38cde882d13b7de8c2d2bff47e795cfdef2e4f37163fd892f270c58c762",
+      "archive_sha256": "9c131d629f351667386956ab42dc063878d7037eb73237132090b929e35a0524",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/index.html",
+      "git_blob_sha256": "18e101b737a2613e77f9a4242e594ce20c8449951c864dee524fe43643d794c6",
+      "archive_sha256": "bfeb35754b6bb93267588cae900789ba2162b3ff9dcc60767caf6afc04fa56d1",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/lab.html",
+      "git_blob_sha256": "e5fb102c2227820522073b8e80dd12c2dfa7db35c342908859f27d811c8a5bfb",
+      "archive_sha256": "b0a749d9f1a4dc4a5074aeddcf09fda2fbf187c47f40ae06aed22695eff8db33",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/legal.html",
+      "git_blob_sha256": "d97fd22db487a388a3a0f781ee4e344b35a7e2e1165ba02823ae8c236d1bc374",
+      "archive_sha256": "6284fcb70f68513d2fc5989445992d5be926a38fe77fcb17668b235f036daa8a",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/onboarding-tour.mjs",
+      "git_blob_sha256": "05b82d07a39a738f55e53db373bbab723ea4fba283bdee8b80efd944d9ea7f57",
+      "archive_sha256": "05b82d07a39a738f55e53db373bbab723ea4fba283bdee8b80efd944d9ea7f57",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/outcome-archive.html",
+      "git_blob_sha256": "c6c5650ec4d82c6fb1d14ba6826fa6b437034cbe2dc2bf737277b1ee44295273",
+      "archive_sha256": "70e17512d668d48b372fcc57bcf9585fce1129d8c884e58f6adc81a904979fcc",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/real-journey-i18n.mjs",
+      "git_blob_sha256": "a5937290cab8c2097a4997e75555e821d31ea7c2984d0498a98fc98fa30a6f0a",
+      "archive_sha256": "a5937290cab8c2097a4997e75555e821d31ea7c2984d0498a98fc98fa30a6f0a",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/real-journey.html",
+      "git_blob_sha256": "bad353efabf419af3b076a999a48cb40aa3710e64d0a90a2cb33a153cf77b1ee",
+      "archive_sha256": "8328a944a27943cb3dfa812bd94e401f5896dd8118207cdee4ddf207f7383db5",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/rooms.html",
+      "git_blob_sha256": "8d58c17ecb9c50a6b431628bbdf667b708b50719f1b50abd8d6a70a5043fe26f",
+      "archive_sha256": "074a1a4b89218e1d7eab1ee3e75039b3444d9f104e9d9438dc31da7f30f77064",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/simulation.html",
+      "git_blob_sha256": "31790b7e975c5eb06f8c119b933496376d809f8113d81e7d9f1c64579558239b",
+      "archive_sha256": "b486169baa6f3e851db11ddb3beaa5aeb582e353a0a618b3932d2435c21ebd18",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/site-shell.css",
+      "git_blob_sha256": "4100e23a97a4aa8dec226af2456714262a3fb43f7bb5636ee29f57a18b0cc08c",
+      "archive_sha256": "92cf9e09bd702dc4b64f9eb600b9e811dbdab8c8c9701e998cea64b05dfbb3fa",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/site-shell.mjs",
+      "git_blob_sha256": "b050070b5376fdc14ba8f2301ec7892c725d6939a2eafad9c63e51c594d7d6a8",
+      "archive_sha256": "b050070b5376fdc14ba8f2301ec7892c725d6939a2eafad9c63e51c594d7d6a8",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/studio-journey.html",
+      "git_blob_sha256": "f0b6389a79ede89b9e77f1b1bc12f9486589140e5efbc897e47aba1d017795ce",
+      "archive_sha256": "eeade1d30afd0b0329e5aec30c5c04c8f1e8e65ce6db86be9ef093cb21b325fe",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/studio-sw.mjs",
+      "git_blob_sha256": "a0e8b459befc1ec3c8f8a426b69f05c551793d194860933379a5b53e08eafda7",
+      "archive_sha256": "a0e8b459befc1ec3c8f8a426b69f05c551793d194860933379a5b53e08eafda7",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/studio.html",
+      "git_blob_sha256": "b0a3811a1ea8d69c8672bf48cf39beb7f3474798f82d30f841b73151f4e8ff22",
+      "archive_sha256": "2386fc0280f95b354c3894d7aa443a052f9a828df274bfa161f5ddb6a99861f5",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/style-switcher.mjs",
+      "git_blob_sha256": "c68b62a8d5569c5e0aa235d92e7c8705c24dd22c376e764ae9510fd02ccebb03",
+      "archive_sha256": "c68b62a8d5569c5e0aa235d92e7c8705c24dd22c376e764ae9510fd02ccebb03",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/style-switcher.test.mjs",
+      "git_blob_sha256": "ad68ff7301205fa0d8448c230b52ac039693d40b5831bbf57ea736231a9fdf20",
+      "archive_sha256": "ad68ff7301205fa0d8448c230b52ac039693d40b5831bbf57ea736231a9fdf20",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/summit.css",
+      "git_blob_sha256": "e91eed353e919b8befc12c0e913302ad8a298e2a29ca2643768ed0a57424354c",
+      "archive_sha256": "0624bdcd926d28ee79fdcf8cc8ebf0193866e97c2ce6d884571be824ea6270ac",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/summit.html",
+      "git_blob_sha256": "5e17c9e72e1390fcb4749b0ee499c425fabfb4d422a4b14e3a80042b8519ba74",
+      "archive_sha256": "3dcac952b8db32dcb6320b3baa8eb53ee658736977450754bbcbc89cfe665b60",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "git_blob_sha256": "90cc150dc2114321ae3853f60ec5071ea4e9a0bb037b55ed8754a760d7a1d8f5",
+      "archive_sha256": "90cc150dc2114321ae3853f60ec5071ea4e9a0bb037b55ed8754a760d7a1d8f5",
+      "bytes_equal": true,
+      "lf_normalized_equal": true
+    },
+    {
+      "file": "web_launch/triangle.html",
+      "git_blob_sha256": "180a6d000019808b05d2837442f985d269a5e6024cc8ac2586084aadac8fa8a6",
+      "archive_sha256": "12ac06df9fd6b4f2954fd72dbcef5f3ce4fc820b7fc4edb60de563f22b458570",
+      "bytes_equal": false,
+      "lf_normalized_equal": true
+    }
+  ],
+  "baseline_note": "git archive applies repository EOL attributes; raw hashes and LF-normalized equivalence are recorded separately",
+  "provider_calls": 0,
+  "usd": 0,
+  "title_api": "set_thread_title unavailable in current tool inventory"
+}

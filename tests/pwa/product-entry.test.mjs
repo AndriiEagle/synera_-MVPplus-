@@ -62,7 +62,8 @@ test('known gaps on secondary entry pages are recorded, not hidden', () => {
   assert.deepEqual(gaps['index.html'], []);
   assert.ok(gaps['real-journey.html'].includes('apple-touch-icon link missing (iOS home-screen icon falls back to a page screenshot)'));
   assert.ok(gaps['real-journey.html'].includes('link rel=manifest missing'));
-  assert.ok(gaps['legal.html'].includes('meta theme-color missing (status bar keeps browser default)'));
+  // F5 closes this specific gap everywhere; retain the unrelated manifest/icon tripwires.
+  for (const page of pages) assert.equal(gaps[page].includes('meta theme-color missing (status bar keeps browser default)'), false, page + ' must declare its browser chrome colour');
   const summary = Object.entries(gaps).filter(([, p]) => p.length).map(([n, p]) => `${n}: ${p.length}`);
   assert.ok(summary.length >= 2, 'if the secondary pages were all fixed, delete this tripwire: ' + summary.join(', '));
 });

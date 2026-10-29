@@ -4,6 +4,7 @@
 // Покриття: статична поверхня + конфіг-гейт + помилки сторінки. Без auth/backend.
 import { test, expect } from '@playwright/test';
 import { spawn } from 'node:child_process';
+import './argon-fixes.cases.mjs';
 
 let serverProcess;
 let baseUrl;
@@ -215,7 +216,9 @@ test('first-user tour highlights guidance without blocking the local profile dra
   await openPreferences(page);
   await page.locator('#tour-start').click();
   await expect(page.getByRole('heading', { name: 'Твій профіль — під твоїм контролем' })).toBeVisible();
-  await page.locator('#prepare-profile').click();
+  const name = page.getByRole('textbox', { name: 'Ім’я для профілю', exact: true });
+  await name.fill('Чернетка під час туру');
+  await expect(name).toHaveValue('Чернетка під час туру');
   await expect(page.locator('#profile-view')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Далі' })).toBeVisible();
 });

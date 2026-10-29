@@ -6,7 +6,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { fileURLToPath } from 'url';
+import { spawn } from 'node:child_process';
 import AxeBuilder from '@axe-core/playwright';
 import { chromium } from 'playwright';
 
@@ -14,20 +15,34 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PAGES = [
-  { name: 'index.html', url: pathToFileURL(path.join(__dirname, 'index.html')).href },
-  { name: 'catalogue.html', url: pathToFileURL(path.join(__dirname, 'catalogue.html')).href },
+  { name: 'index.html' },
+  { name: 'catalogue.html' },
 ];
 
 async function runAudit() {
-  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-  const context = await browser.newContext();
+  // Root-relative assets and module imports need the same HTTP origin as the product.
+  // A file:// audit silently lost every shared stylesheet and audited an unstyled document.
+  const server = spawn(process.execPath, [path.join(__dirname, 'server.mjs')], { env: { ...process.env, SYNERA_PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  let browser;
   const results = [];
 
   try {
+    const base = await new Promise((resolve, reject) => {
+      let output = '';
+      const timer = setTimeout(() => reject(new Error('Audit server timeout: ' + output)), 30000);
+      server.stdout.on('data', chunk => { output += chunk; const url = output.match(/http:\/\/127\.0\.0\.1:\d+/); if (url) { clearTimeout(timer); resolve(url[0]); } });
+      server.once('error', error => { clearTimeout(timer); reject(error); });
+      server.once('exit', code => { clearTimeout(timer); reject(new Error('Audit server exited: ' + code)); });
+    });
+    browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const context = await browser.newContext();
     for (const page of PAGES) {
+      page.url = base + '/' + page.name;
       console.log(`\n=== Auditing ${page.name} ===`);
       const pageInstance = await context.newPage();
       await pageInstance.goto(page.url, { waitUntil: 'networkidle', timeout: 30000 });
+      await pageInstance.waitForFunction(() => getComputedStyle(document.documentElement).getPropertyValue('--ui-canvas').trim() !== '');
+      await pageInstance.evaluate(() => document.fonts.ready);
 
       const axe = new AxeBuilder({ page: pageInstance });
       const result = await axe.analyze();
@@ -120,17 +135,18 @@ async function runAudit() {
     const hasCriticalOrSerious = results.some(r => r.summary.critical > 0 || r.summary.serious > 0);
     if (hasCriticalOrSerious) {
       console.log('\n❌ CRITICAL/SERIOUS violations found - see report');
-      process.exit(1);
+      process.exitCode = 1;
     } else {
       console.log('\n✅ No critical or serious violations');
-      process.exit(0);
+      process.exitCode = 0;
     }
 
   } catch (error) {
     console.error('Audit failed:', error);
-    process.exit(1);
+    process.exitCode = 1;
   } finally {
-    await browser.close();
+    await browser?.close();
+    if (server.exitCode === null) { server.kill(); await new Promise(resolve => server.once('exit', resolve)); }
   }
 }
 

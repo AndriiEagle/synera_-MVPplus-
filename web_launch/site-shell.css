@@ -56,6 +56,7 @@ html[data-synera-style] {
   font-family: var(--ui-body);
 }
 html:is([data-synera-style=synera],[data-synera-style=night]) { color-scheme: dark; }
+html[data-synera-style]:not([data-synera-style=atelier]):not([data-synera-style=original]) { color-scheme: dark; }
 html[data-synera-style] body.site-page { background: var(--ui-canvas); color: var(--ui-ink); font-family: var(--ui-body); }
 .site-page :is(h1,h2,h3,.wordmark,.brand) { font-family: var(--ui-display); font-weight: 500; }
 .site-page :is(button,input,textarea,select) { font-family: var(--ui-body); }
@@ -66,6 +67,9 @@ html[data-synera-style] .site-page :is(p,li,button,input,textarea,select,label,s
 .site-page .local-badge { color: var(--ui-muted); }
 .site-page .seat-avatar { color: #f5f2e9; }
 .site-page .seat small { color: var(--ui-muted); }
+/* Put the upper participant's words above the avatar, clear of all three SVG threads. */
+.site-page .seat-a { display: flex; flex-direction: column; }
+.site-page .seat-a .seat-avatar { order: 1; margin: 10px auto 0; }
 .site-page .floating-card { color: #f5f2e9; --muted: #c5cbbf; --text: #f5f2e9; --gold: #dfc092; }
 .site-page .floating-card :is(b,p) { color: #f5f2e9; }
 .site-page .floating-card small { color: #c5cbbf; }
@@ -114,12 +118,17 @@ html[data-synera-style] .site-header .header-preferences-content > :is(.badge,#l
 .site-page .more-modes-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px 24px; padding-top: 12px; }
 .site-page .more-modes-links a { min-height: 44px; display: flex; align-items: center; color: var(--ui-ink); text-decoration: none; border-bottom: 1px solid var(--ui-line); }
 .site-page .more-modes-links a:hover { color: var(--ui-accent); }
+.site-page .mode-status { margin-left: auto; padding-left: 12px; font-size: 11px; color: var(--ui-muted); }
+.phone-pwa:has(#install-hint:not([hidden])) .install-bar { display: none; }
+#auth-closed p { margin: 0 0 12px; color: var(--ui-muted); }
+#auth-closed a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ui-accent); }
 
 /* Common surfaces retain the existing information architecture and controls. */
 html[data-synera-style] .site-page .workspace-bar .tab { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }
 html[data-synera-style] .site-page .workspace-bar .tab.active { background: var(--ui-action); color: var(--ui-on-action); border-color: var(--ui-action); }
 html[data-synera-style] .site-page :is(.studio-card,.triangle-card,.rooms-card,.real-card,.real-section,#real-blocked,#real-auth,.demo-panel,.device-guides details,.access-plan,.component-card) { background: var(--ui-panel); color: var(--ui-ink); border-color: var(--ui-line); box-shadow: none; }
 html[data-synera-style] .site-page :is(.real-heading p,.rooms-intro>p:not(.eyebrow),.studio-heading>p:not(.eyebrow),.subtle,.real-note,.real-hint,.rooms-fine,.rooms-empty,.real-empty) { color: var(--ui-muted); }
+html[data-synera-style] .site-page .real-heading p.eyebrow { color: var(--ui-accent); }
 html[data-synera-style] .site-page :is(input,select,textarea) { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }
 /* Keep the Phase-9 control/disabled boundaries stronger than decorative panel lines. */
 html[data-synera-style] .phone-pwa :is(input,select,textarea) { border-color: var(--synera-border-control); }
@@ -136,6 +145,10 @@ html[data-synera-style] .site-page :is(.budget-state,#place-result) { color: var
 .site-page .reference-intro { padding: 36px 0 44px; max-width: 760px; }
 .site-page .reference-intro h1 { font-size: clamp(34px,5vw,58px); line-height: 1.15; letter-spacing: -.045em; margin-top: 0; }
 .site-page .reference-intro p { line-height: 1.7; color: var(--ui-muted); }
+/* The catalogue's legacy examples must use the same palette as its surrounding card. */
+html[data-synera-style] .catalogue .tab.active { background: var(--ui-action); color: var(--ui-on-action); border-color: var(--ui-action); }
+html[data-synera-style] .catalogue .transfer-steps span { color: var(--ui-muted); }
+html[data-synera-style] .catalogue :is(.simulation-panel,.bot-activity) { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }
 .site-page :is(.reference-intro,.lab-intro,.legal-copy) > .primary { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 20px; font-size: 15px; margin: 14px 0 24px; }
 html[data-synera-style][data-atelier-type=large] .site-page :is(.lead,.hero-description,.fine,.subtle,.real-note,.rooms-fine) { font-size: 18px; }
 html[data-synera-style] .site-page :is(.primary,.rooms-primary,#prepare-profile) { background: var(--ui-action); color: var(--ui-on-action); border: 1px solid var(--ui-action); box-shadow: none; border-radius: 8px; font-weight: 600; }
@@ -147,6 +160,7 @@ html[data-synera-style] #real-status { background: var(--ui-canvas); color: var(
 .site-page :is(#real-blocked,#real-auth,#rooms-blocked,#rooms-auth) h2 { margin: 12px 0; font-size: 23px; line-height: 1.35; }
 .site-page :is(#real-blocked,#real-auth,#rooms-blocked,#rooms-auth) p { margin: 12px 0 24px; line-height: 1.75; color: var(--ui-muted); }
 .site-page :is(#real-blocked,#real-auth,#rooms-blocked,#rooms-auth) > a { display: inline-flex; align-items: center; min-height: 46px; padding: 10px 16px; border-radius: 8px; background: var(--ui-action); color: var(--ui-on-action); font-size: 14px; }
+html[data-synera-style] .site-page #rooms-blocked > .rooms-secondary { background: transparent; color: var(--ui-accent); margin-top: 12px; }
 .site-page .empty-with-icon { display: grid; gap: 12px; justify-items: start; padding: 16px 0; }
 .site-page .empty-with-icon img { width: 56px; height: 56px; }
 
@@ -192,6 +206,8 @@ html[data-synera-style] .phone-pwa .install-hint { order: 7; margin: 24px 0 0; p
 .site-page .studio-heading .button-row > .primary { margin: 0; }
 .site-page .studio-heading > .more-modes { max-width: 660px; }
 @media (max-width:700px) {
+  html[data-synera-style] .site-page > main:is(.studio,.rooms-shell,.real-shell,.access-page,.catalogue,.legal-copy), html[data-synera-style] .lab.site-page > main { width: 100%; padding-inline: 24px; }
+  html[data-synera-style] .site-page .primary { width: 100%; }
   html[data-synera-style] .site-page > .site-header { min-height: 76px; padding: 14px 24px; }
   .site-header .site-brand { font-size: 29px; }
   .site-header .header-preferences > summary { font-size: 13px; }
