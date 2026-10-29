@@ -1,0 +1,13 @@
+# Generated projects, dependencies and local release inputs stay out of Git.
+/build/
+/.toolchain/
+/.tmp/
+/private/
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+*.apk
+*.aab
+local.properties
