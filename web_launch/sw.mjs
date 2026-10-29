@@ -13,7 +13,9 @@ SHELL.push('/install-hint.mjs');
 SHELL.push('/simulation.html','/simulation.css','/simulation-ui.mjs','/simulation-session.mjs','/simulation-personas.mjs','/simulation-living.mjs','/simulation-copy.mjs','/simulation-living-ui.mjs','/simulation-living.css','/simulation-entry.mjs','/journal.mjs','/simulation.webmanifest');
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
+SHELL.push('/privacy.html', '/privacy.css', '/privacy-retention.mjs', '/privacy-content.mjs', '/privacy-device.mjs', '/privacy-common.mjs', '/privacy-centre.mjs', '/ops-log.mjs');
 self.addEventListener('install', event => { 
+  // Privacy controls share the public offline shell. CACHE is bumped by the merge owner.
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))); 
 });

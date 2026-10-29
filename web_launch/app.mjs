@@ -958,6 +958,8 @@ if (googleSignInError) {
   message('Не вдалося завершити Google-вхід. Спробуй ще раз або отримай код на пошту.', true);
 }
 applyAuthState();renderProfileProgress();
+// Reuse the existing authenticated privacy tab, including its existing export/delete gates.
+if (callbackUrl.searchParams.get('privacy') === '1' && store?.user) document.querySelector('[data-tab="settings"]')?.click();
 if (callbackUrl.searchParams.get('draft') === '1' && !store?.user) openProfileDraft();
 
 // SYN_CONSENT_PANEL_7: seven granular consents, all default OFF; revoke has an instant effect.

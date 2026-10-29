@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { logOps } from './ops-log.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const LOG_FILE = path.join(root, 'cascade_log.jsonl');
@@ -27,7 +28,7 @@ export async function loadCascadeState() {
       }
     }
   } catch (err) {
-    if (err.code !== 'ENOENT') console.error('Error reading cascade_log.jsonl:', err);
+    if (err.code !== 'ENOENT') logOps('cascade.read_failed');
     // If no log exists, we use default state and write it
     await saveCascadeState(currentState);
   }
@@ -62,7 +63,7 @@ export async function rollbackCascade() {
       return currentState;
     }
   } catch (err) {
-    console.error('Rollback failed:', err);
+    logOps('cascade.rollback_failed');
   }
   throw new Error('Cannot rollback further');
 }

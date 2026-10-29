@@ -1,0 +1,546 @@
+{
+  "variant": "reviewed",
+  "status": "RUNNER_OR_ASSERTION_ERROR",
+  "baseReleaseHash": "4c223689fc640f2688a7a4565bc1721d403bd03c0dbb055d2a225a04115098e6",
+  "overlay": null,
+  "servedSWHash": "30f653f2b8d854c571add61f01dc69846b68cde0bb2714f8492fea6e2fd32d87",
+  "scope": "Desktop Chromium, fresh document, real SW/CacheStorage, HTTP cache cleared/disabled, synthetic config, no production/auth/private data",
+  "checks": [
+    {
+      "name": "online profile action works",
+      "pass": true
+    },
+    {
+      "name": "offline document is served by installed SW",
+      "pass": true
+    },
+    {
+      "name": "offline reload sends no server requests",
+      "pass": true
+    },
+    {
+      "name": "offline fresh document opens usable profile form",
+      "pass": true
+    }
+  ],
+  "online": {
+    "errors": [],
+    "requestFailures": [],
+    "cache": {
+      "controlled": true,
+      "keys": [
+        "synera-shell-20261029-argon1"
+      ],
+      "entries": [
+        {
+          "name": "synera-shell-20261029-argon1",
+          "paths": [
+            "/",
+            "/index.html",
+            "/style.css",
+            "/app.mjs",
+            "/style-switcher.mjs",
+            "/onboarding-tour.mjs",
+            "/demo-journey.mjs",
+            "/online-store.mjs",
+            "/profile-store.mjs",
+            "/neon-store.mjs",
+            "/profile-portability.mjs",
+            "/profile-brief.mjs",
+            "/profile-package.mjs",
+            "/calendar.mjs",
+            "/matching.mjs",
+            "/map.mjs",
+            "/pilot-policy.mjs",
+            "/pwa.mjs",
+            "/manifest.webmanifest",
+            "/icon-192.png",
+            "/icon-512.png",
+            "/apple-touch-icon.png",
+            "/legal.html",
+            "/catalogue.html",
+            "/tokens.css",
+            "/cascade.mjs",
+            "/iceberg-client.mjs",
+            "/chatgpt-transfer.mjs",
+            "/business-case.mjs",
+            "/i18n.mjs",
+            "/proof-state.mjs",
+            "/need-decay.mjs",
+            "/b-matching.mjs",
+            "/field-audience.mjs",
+            "/swiss-compliance.mjs",
+            "/funnel-analytics.mjs",
+            "/live-location.mjs",
+            "/meeting-location.mjs",
+            "/summit.html",
+            "/summit.css",
+            "/summit.mjs",
+            "/montserrat-400.woff2",
+            "/montserrat-500.woff2",
+            "/location-session.mjs",
+            "/get.html",
+            "/product-access.mjs",
+            "/triangle.html",
+            "/triangle.css",
+            "/triangle.mjs",
+            "/triangle-room.mjs",
+            "/explore-planner.mjs",
+            "/profile-import.mjs",
+            "/index-language.mjs",
+            "/index-i18n.mjs",
+            "/index-i18n-table.mjs",
+            "/real-journey-i18n.mjs",
+            "/legal-language.mjs",
+            "/legal-i18n.mjs",
+            "/atelier.mjs",
+            "/atelier.css",
+            "/result-card.mjs",
+            "/action-scoper.mjs",
+            "/session-value.mjs",
+            "/case-material-budget.mjs",
+            "/install-hint.mjs",
+            "/adaptive.mjs",
+            "/adaptive-ui.mjs",
+            "/adaptive-config.mjs",
+            "/adaptive-i18n-table.mjs",
+            "/adaptive.css",
+            "/site-shell.css",
+            "/site-shell.mjs",
+            "/premium-match.webp",
+            "/premium-calendar.webp",
+            "/premium-terms.webp",
+            "/premium-signature.webp",
+            "/privacy.html",
+            "/privacy.css",
+            "/privacy-retention.js",
+            "/privacy-content.mjs",
+            "/privacy-device.mjs",
+            "/privacy-common.mjs",
+            "/privacy-centre.mjs"
+          ]
+        }
+      ]
+    },
+    "mode": ""
+  },
+  "offline": {
+    "errors": [],
+    "requestFailures": [],
+    "originServerClosed": true,
+    "networkIdle": false,
+    "controlled": true,
+    "mode": "",
+    "workspaceHidden": false,
+    "responses": [
+      {
+        "path": "/",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/tokens.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/style.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/privacy-retention.js",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/atelier.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/site-shell.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/install-hint.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/onboarding-tour.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/tokens.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/pwa.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/demo-journey.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/atelier.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/style-switcher.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/site-shell.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/app.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/adaptive.css",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/real-journey-i18n.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/montserrat-500.woff2",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/adaptive-ui.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/premium-match.webp",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/privacy-common.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/online-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/neon-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-portability.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-package.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-brief.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/business-case.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/premium-calendar.webp",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/matching.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/map.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/premium-terms.webp",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/pilot-policy.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/chatgpt-transfer.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/premium-signature.webp",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-import.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/calendar.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/live-location.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/meeting-location.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/location-session.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/adaptive.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/adaptive-config.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/adaptive-i18n-table.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/privacy-device.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/proof-state.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/privacy-content.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/case-material-budget.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/need-decay.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/b-matching.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/profile-store.mjs",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/privacy-retention.js",
+        "status": 200,
+        "fromSW": true
+      },
+      {
+        "path": "/config.json",
+        "status": 503,
+        "fromSW": true
+      }
+    ]
+  },
+  "serverRequests": [
+    "/index.html",
+    "/privacy-retention.js",
+    "/tokens.css",
+    "/style.css",
+    "/install-hint.mjs",
+    "/app.mjs",
+    "/style-switcher.mjs",
+    "/atelier.css",
+    "/site-shell.css",
+    "/onboarding-tour.mjs",
+    "/demo-journey.mjs",
+    "/pwa.mjs",
+    "/atelier.mjs",
+    "/site-shell.mjs",
+    "/tokens.css",
+    "/adaptive.css",
+    "/real-journey-i18n.mjs",
+    "/online-store.mjs",
+    "/neon-store.mjs",
+    "/profile-portability.mjs",
+    "/profile-package.mjs",
+    "/profile-brief.mjs",
+    "/business-case.mjs",
+    "/matching.mjs",
+    "/map.mjs",
+    "/pilot-policy.mjs",
+    "/chatgpt-transfer.mjs",
+    "/profile-import.mjs",
+    "/calendar.mjs",
+    "/live-location.mjs",
+    "/meeting-location.mjs",
+    "/location-session.mjs",
+    "/montserrat-500.woff2",
+    "/premium-match.webp",
+    "/premium-calendar.webp",
+    "/premium-terms.webp",
+    "/premium-signature.webp",
+    "/adaptive-ui.mjs",
+    "/privacy-common.mjs",
+    "/profile-store.mjs",
+    "/need-decay.mjs",
+    "/b-matching.mjs",
+    "/proof-state.mjs",
+    "/case-material-budget.mjs",
+    "/adaptive.mjs",
+    "/adaptive-config.mjs",
+    "/adaptive-i18n-table.mjs",
+    "/privacy-content.mjs",
+    "/privacy-device.mjs",
+    "/config.json",
+    "/privacy-retention.js",
+    "/sw.mjs",
+    "/index.html",
+    "/index.html",
+    "/style.css",
+    "/app.mjs",
+    "/style-switcher.mjs",
+    "/onboarding-tour.mjs",
+    "/demo-journey.mjs",
+    "/online-store.mjs",
+    "/profile-store.mjs",
+    "/neon-store.mjs",
+    "/profile-portability.mjs",
+    "/profile-brief.mjs",
+    "/profile-package.mjs",
+    "/calendar.mjs",
+    "/matching.mjs",
+    "/map.mjs",
+    "/pilot-policy.mjs",
+    "/pwa.mjs",
+    "/manifest.webmanifest",
+    "/icon-192.png",
+    "/icon-512.png",
+    "/apple-touch-icon.png",
+    "/legal.html",
+    "/catalogue.html",
+    "/tokens.css",
+    "/cascade.mjs",
+    "/iceberg-client.mjs",
+    "/chatgpt-transfer.mjs",
+    "/business-case.mjs",
+    "/i18n.mjs",
+    "/proof-state.mjs",
+    "/need-decay.mjs",
+    "/b-matching.mjs",
+    "/field-audience.mjs",
+    "/swiss-compliance.mjs",
+    "/funnel-analytics.mjs",
+    "/live-location.mjs",
+    "/meeting-location.mjs",
+    "/summit.html",
+    "/summit.css",
+    "/summit.mjs",
+    "/montserrat-400.woff2",
+    "/montserrat-500.woff2",
+    "/location-session.mjs",
+    "/get.html",
+    "/product-access.mjs",
+    "/triangle.html",
+    "/triangle.css",
+    "/triangle.mjs",
+    "/triangle-room.mjs",
+    "/explore-planner.mjs",
+    "/profile-import.mjs",
+    "/index-language.mjs",
+    "/index-i18n.mjs",
+    "/index-i18n-table.mjs",
+    "/real-journey-i18n.mjs",
+    "/legal-language.mjs",
+    "/legal-i18n.mjs",
+    "/atelier.mjs",
+    "/atelier.css",
+    "/result-card.mjs",
+    "/action-scoper.mjs",
+    "/session-value.mjs",
+    "/case-material-budget.mjs",
+    "/install-hint.mjs",
+    "/adaptive.mjs",
+    "/adaptive-ui.mjs",
+    "/adaptive-config.mjs",
+    "/adaptive-i18n-table.mjs",
+    "/adaptive.css",
+    "/site-shell.css",
+    "/site-shell.mjs",
+    "/premium-match.webp",
+    "/premium-calendar.webp",
+    "/premium-terms.webp",
+    "/premium-signature.webp",
+    "/privacy.html",
+    "/privacy.css",
+    "/privacy-retention.js",
+    "/privacy-content.mjs",
+    "/privacy-device.mjs",
+    "/privacy-common.mjs",
+    "/privacy-centre.mjs"
+  ],
+  "provider_calls": 0,
+  "usd": 0,
+  "engine": {
+    "name": "chromium",
+    "version": "156.0.8078.73",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "stage": "offline-readiness",
+  "runnerError": {
+    "name": "TimeoutError",
+    "message": "page.waitForFunction: Timeout 6000ms exceeded."
+  },
+  "diagnostic": {
+    "url": "http://127.0.0.1:61402/",
+    "body": "synera\n·\nМова і вигляд\nТвої дані\nМова\nУкраїнська\nDeutsch\nEnglish\nВигляд\nAtelier\nCurrent · Synera\nCurrent · Web\nNight\nNoir\nAlpine\nCopper\nAzure\nOrchid\nTerracotta\nCitrus\nSlate\nInk\nHarvest\nДо входу\nAtelier 2026\n\nТвій простір. Твій темп.\n\nЧинний\nAtelier 2026\nАкцент\nЗолото\nЧервоний\nСливовий\nПростір між елементами\nВільний\nКомпактний\nБільший текст\nЧіткіші межі\n\nЗберігається лише вигляд у цьому браузері. Налаштування Atelier діють після його вибору.\n\nПідготуй власний профіль або перенеси його з файлу. Завантаж JSON перед закриттям вкладки.\n\nВстановити Synera\n\nAndroid, iPhone та Windows · як PWA з браузера\n\nЩе режими\nЛюди\nМій профіль\nЗустрічі 0\nПриватність\n\nДО ПУБЛІКАЦІЇ: ЩЕ 5 ПУНКТІВ\n\nЩо можемо зробити разом?\nІмпорт\nКартка\n\nПОЧНИ З ТОГО, ЩО ВЖЕ Є\n\nТвій ChatGPT уже знає про тебе?\n\nПеренеси професійну чернетку й отримай заповнені поля. Ти перевіриш їх перед збереженням.\n\nЗаповнити з ChatGPT ↗\nІм’я для профілю\nМісто\nМожу допомогти з…\nЗараз шукаю…\nПерший результат співпраці\nСтруктурувати з AI\n\nAI пропонує навички й уточнення з твого тексту. Ти перевіряєш кожну пропозицію.\n\nAI-помічник\nНавички та умови співпраці\n\nОбери лише те, що справді можеш дати та що потрібно зараз.\n\nМожу дати\nАвтоматизація процесів\nДизайн продукту\nІнтерв’ю з клієнтами\nB2B-продажі\nВідеопрезентація\nБюджетування\nОрганізація подій\nПотрібно мені\nАвтоматизація процесів\nДизайн продукту\nІнтерв’ю з клієнтами\nB2B-продажі\nВідеопрезентація\nБюджетування\nОрганізація подій\nМови розмови\nУкраїнська\nEnglish\nDeutsch\nFrançais\nФормати співпраці\nОбмін допомогою\nЗмішаний формат · локальний пілот\nСпільний проєкт\nПлатна послуга · локальний пілот\nРекомендація · локальний пілот\nМісто для зустрічей\nОбрати або лише онлайн\nZürich\nWinterthur\nZug\nBasel\nBern\nГотовий їхати до\nСвого міста\n25 км\n50 км\n100 км\n300 км\nМожу співпрацювати онлайн\nДоступний від\nДоступний до\nПерш ніж розкривати деталі, хочу погодити конфіденційність\nГотовий обговорити умови конфіденційності іншої сторони\nКонкретний результат співпраці\nМова розмови\nФормат співпраці\nКоректний період доступності\nМісто або онлайн\nПоказувати профіль та умови співпраці зареєстрованим учасникам\nТакож показувати центр мого міста на карті\n\nEmail і точна адреса в картку не потрапляють. Вимкни видимість у будь-який момент.\n\nЗберегти профіль\nЗапросити колегу\nSynera / пілот для реальних учасників\nПравила та приватність\nВзаємність починається з довіри.\nТвої дані"
+  }
+}

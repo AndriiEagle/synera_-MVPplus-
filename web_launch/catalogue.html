@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="uk" data-synera-style="synera">
 <head>
+<script src="/privacy-retention.mjs"></script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark">
 <title>Synera Component Catalogue</title>
 <link rel="stylesheet" href="/tokens.css">
@@ -23,7 +24,7 @@
 <link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><script type="module" src="/site-shell.mjs"></script>
 <script type="module" src="/atelier.mjs"></script><meta name="theme-color" content="#15161d">
 </head>
-<body class="site-page"><header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
+<body class="site-page"><header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html">Твої дані</a><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
 <main class="catalogue">
 <section class="reference-intro"><p class="eyebrow">SYNERA / БІБЛІОТЕКА ДИЗАЙНУ</p><h1>Деталі складаються в ціле.</h1><p>Компоненти Synera та їхні стани — довідник для команди продукту.</p><a class="primary" href="#catalogue-components">Переглянути компоненти ↗</a></section>
 
@@ -714,6 +715,6 @@
 </main>
 <footer style="margin-top: 64px; padding: 24px; text-align: center; color: var(--color-muted); font-size: var(--font-size-sm);">
 Synera Component Catalogue · Built with tokens.css · <a href="/index.html" style="color: var(--color-green-primary);">Back to App</a>
-</footer>
+<a data-privacy-link href="/privacy.html">Твої дані</a></footer>
 </body>
 </html>
