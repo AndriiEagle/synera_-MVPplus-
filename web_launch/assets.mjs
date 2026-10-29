@@ -1,5 +1,17 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'persona-mira.webp': 'image/webp',
+  'persona-leo.webp': 'image/webp',
+  'persona-nora.webp': 'image/webp',
+  'persona-felix.webp': 'image/webp',
+  'persona-ines.webp': 'image/webp',
+  'persona-sam.webp': 'image/webp',
+  'persona-tessa.webp': 'image/webp',
+  'persona-noah.webp': 'image/webp',
+  'persona-lina.webp': 'image/webp',
+  'persona-omar.webp': 'image/webp',
+  'synera-thread.webp': 'image/webp',
+  'synera-thread@2x.webp': 'image/webp',
   'adaptive.mjs': 'text/javascript',
   'adaptive-ui.mjs': 'text/javascript',
   'adaptive-config.mjs': 'text/javascript',

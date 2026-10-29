@@ -53,3 +53,6 @@ web_launch/cascade_log.jsonl
 # Playwright local run artifacts
 test-results/
 playwright-report/
+
+# Local lane scratch (kept out of handoffs and releases).
+/tmp/

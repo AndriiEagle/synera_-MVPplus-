@@ -12,6 +12,7 @@ SHELL.push('/case-material-budget.mjs');
 SHELL.push('/install-hint.mjs');
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
+SHELL.push('/persona-mira.webp','/persona-leo.webp','/persona-nora.webp','/persona-felix.webp','/persona-ines.webp','/persona-sam.webp','/persona-tessa.webp','/persona-noah.webp','/persona-lina.webp','/persona-omar.webp','/synera-thread.webp','/synera-thread@2x.webp');
 self.addEventListener('install', event => { 
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))); 

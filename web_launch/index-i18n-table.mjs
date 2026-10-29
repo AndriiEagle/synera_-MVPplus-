@@ -5,6 +5,8 @@ import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ["Марія", "Maria", "Maria"],
+  ["Олексій", "Oleksii", "Oleksii"],
   ["SYNERA / ЗНАЙОМСТВО","SYNERA / KENNENLERNEN","SYNERA / PRODUCT PREVIEW"],
   ["ДВА НАПРЯМИ. ОДИН ПОЧАТОК.","ZWEI RICHTUNGEN. EIN ANFANG.","TWO DIRECTIONS. ONE BEGINNING."],
   ["Ділові партнерства","Geschäftspartnerschaften","B2B partnerships"],

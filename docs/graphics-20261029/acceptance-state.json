@@ -1,0 +1,544 @@
+{
+  "status": "PASS_GRAPHICS_LOCAL",
+  "task": 1606,
+  "base": "3d200f3196a19ece9383cfde37cee8699d61d348",
+  "branch": "claude/synera-graphics-20261029",
+  "source": "uncommitted reviewed graphics lane",
+  "checks": {
+    "node": {
+      "pass": 754,
+      "fail": 0,
+      "skip": 1,
+      "skipReason": "SYNERA_ACCEPTANCE_PG unset"
+    },
+    "pwa_i18n": {
+      "pass": 43,
+      "fail": 0
+    },
+    "browser": {
+      "pass": 54,
+      "fail": 0
+    },
+    "graphics_final": {
+      "pass": 4,
+      "fail": 0,
+      "exit": 0
+    },
+    "offline": "actual network-disabled home and Summit readback",
+    "visual": "35 screenshots and all generated images inspected by Codex",
+    "icons": "dark-neutral background, positive gold pixels, 0 outside maskable circle; old green negative control rejected"
+  },
+  "limits": [
+    "Chromium device emulation, no physical device or Safari claim",
+    "Simulation portrait crops are previews in Summit cards; agents lane owns simulation UI integration",
+    "No commit, push, deployment or native build",
+    "image_gen 7 calls; exact underlying model and USD unavailable"
+  ],
+  "files": [
+    {
+      "file": ".gitignore",
+      "sha256": "0c9e7eb8ef654e288dc03b345e7a1913e42325bce23d5fdfab189a0668191b8c",
+      "bytes": 974
+    },
+    {
+      "file": "android/twa-manifest.json",
+      "sha256": "c51f59fc5e6585c8ca03fca24455b28284cba6f12f87d223c535ca78d4f2320f",
+      "bytes": 1115
+    },
+    {
+      "file": "docs/GRAPHICS-20261029.uk.md",
+      "sha256": "9a67f5f07c6ed2a5997856e430719c93cdb58f47439e02bdf2ddc52af005d4f7",
+      "bytes": 9532
+    },
+    {
+      "file": "docs/graphics-20261029/README.uk.md",
+      "sha256": "a55bc666b75e5e0f5bcdd6f660d9b8eaa3fe6fbb7790acf487da0f2c5d60251d",
+      "bytes": 2967
+    },
+    {
+      "file": "docs/graphics-20261029/asset-evidence.json",
+      "sha256": "0c68007a63b04db4b0c9a1822791370f658241ecbafb26f1e223d34bf239309f",
+      "bytes": 6666
+    },
+    {
+      "file": "docs/graphics-20261029/browser-last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "docs/graphics-20261029/browser-tests.txt",
+      "sha256": "c309ca2d77bca82b8188d5f1ddc76db55e44fbd80a1fc7005f10800ef84f05b7",
+      "bytes": 15748
+    },
+    {
+      "file": "docs/graphics-20261029/contact-sheet.png",
+      "sha256": "c811ef3a7a0049f1995b85044566c8a824959a1e7facdccfdad1564bcfae911f",
+      "bytes": 462760
+    },
+    {
+      "file": "docs/graphics-20261029/graphics-final-exit.json",
+      "sha256": "ccfe3c0b843fd6c61943651d7070ed64cd7bb5f1ec9ffbeb66b08e30f4f0d7c5",
+      "bytes": 179
+    },
+    {
+      "file": "docs/graphics-20261029/graphics-final-tests.txt",
+      "sha256": "9cb87c2f79c6503cf79360b4023055b0aa625f93c35120f29082e9c4c10d6e22",
+      "bytes": 747
+    },
+    {
+      "file": "docs/graphics-20261029/graphics-last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "docs/graphics-20261029/node-tests.txt",
+      "sha256": "d9a56d6c6d826f11a2b2c7219c712b5ea6733fb313dd607c76493120c896ffd2",
+      "bytes": 142018
+    },
+    {
+      "file": "docs/graphics-20261029/overlap-before.txt",
+      "sha256": "8ea1b3ac98a585ee5df09255f47c5ec6acf6c397c27ad1fb70b59a43e9d33144",
+      "bytes": 4192
+    },
+    {
+      "file": "docs/graphics-20261029/playwright.config.mjs",
+      "sha256": "85833e7dbf7e159e7d447addc89e8ff8542e8af1589e5e4b64db87b15152df3d",
+      "bytes": 343
+    },
+    {
+      "file": "docs/graphics-20261029/prepare-assets.mjs",
+      "sha256": "87d3f0ccfca0afadae9651a475ebf3819bdc2eefb733d4608c960474b2d19d83",
+      "bytes": 3609
+    },
+    {
+      "file": "docs/graphics-20261029/pwa-i18n-tests.txt",
+      "sha256": "93d238199fe192f04b4b78594ddb1ff22d1c1dae050730dffc97e77e704ad5ef",
+      "bytes": 7614
+    },
+    {
+      "file": "docs/graphics-20261029/qa.mjs",
+      "sha256": "98e9c3156d108528ce927f2ad0f289153cab4d1abb516ab4e1c821f2c4a6d060",
+      "bytes": 5745
+    },
+    {
+      "file": "docs/graphics-20261029/review-portraits.png",
+      "sha256": "b54a373e423416d7b85b1d2b47f97b50166dac5fdb5258fd66afd8faaec53b9a",
+      "bytes": 198060
+    },
+    {
+      "file": "docs/graphics-20261029/review-screens.png",
+      "sha256": "de2f5978ace9009a91548144527f8fa1c25ed3713a1b6358579d6383edd869ae",
+      "bytes": 3163704
+    },
+    {
+      "file": "docs/graphics-20261029/review.mjs",
+      "sha256": "b010d4981035b9e3ba5e420550e16c4b68a8c1d851e1d66b8f6c6b06076e015b",
+      "bytes": 2458
+    },
+    {
+      "file": "docs/graphics-20261029/runtime-evidence.json",
+      "sha256": "c0fdc4e53163db035107f3071708e5acc9a845ee255d8e7a646f5343317b725c",
+      "bytes": 2586
+    },
+    {
+      "file": "docs/graphics-20261029/runtime-tests.txt",
+      "sha256": "fe11075c2cd0e59f5df859fff0d666104254b322ff3b0bce3e3cbca6e923b3f8",
+      "bytes": 938
+    },
+    {
+      "file": "docs/graphics-20261029/shots/desktop-home.png",
+      "sha256": "adaeb0159b0ee7aed6b0012ed2f6693822ce8aaf96b03148d4f788ea006ee2f8",
+      "bytes": 2005189
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-home-demo.png",
+      "sha256": "efef7d708c442a1abba0955290355bc6be4322c0d4da0081efd38ddabac72bcb",
+      "bytes": 333764
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-home-first.png",
+      "sha256": "687b82477aa81e017ca77b7c10fb76800c0d13373031e1aa6a4ed6ab7bae32ea",
+      "bytes": 727724
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-home-full.png",
+      "sha256": "9825a123be687d4cca678b17e7d53744c7ae3f663a3afc0e23dbe4f5d02940b1",
+      "bytes": 1351671
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-install.png",
+      "sha256": "384906c12448ee5027810282049eba4261867ddc0b68c78d3c9ca1e48da2b47f",
+      "bytes": 746304
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-felix.png",
+      "sha256": "c49c0756d3795cfcd92f450d2e4c90ce72dd7ed990ad2286ae38bb3def451bd0",
+      "bytes": 105429
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-ines.png",
+      "sha256": "35ddcad5733727abf320a4c91285d5554b8c242d181faa4ebd868480e2e932dc",
+      "bytes": 112584
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-leo.png",
+      "sha256": "65ffd928da0d175b86e1b8f34c5b2f9fbb201da8b38e48e5b5953cca2cb42af0",
+      "bytes": 96176
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-lina.png",
+      "sha256": "7ed48d9729709e6335a81b6cad2cc2f3ccc56bcba8c88a3c8f90fb7c41c7a00c",
+      "bytes": 106213
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-mira.png",
+      "sha256": "d2981d1113d61123c2ecbe306bd2bda04261ec9cb5127a6bc8b2abd9d2259722",
+      "bytes": 106944
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-noah.png",
+      "sha256": "6f201bbc2a00d8e20fe6bada12b6c29c740e09031c8cd7e27d05250cbc95e984",
+      "bytes": 103915
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-nora.png",
+      "sha256": "5a4a347f7b98d275a6ccc5f85a5ea58363be792e7e75fb76de99236cf32bebdc",
+      "bytes": 101602
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-omar.png",
+      "sha256": "132ce2ab46de2c1ba9164d3a1ac7712647e8f0380bb8076927cb0031d4529cd9",
+      "bytes": 103856
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-sam.png",
+      "sha256": "a2a0473efc38331fc61e8fd98402000758a7b3d7c6d39fe3a27cd90f1236ac5d",
+      "bytes": 110978
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-portrait-tessa.png",
+      "sha256": "50c26e2755772ec706fc8773ca0733c7b4ab528b07946efe0b9856a602d967ad",
+      "bytes": 109367
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-summit-cards.png",
+      "sha256": "4aa100ca469a7565c041e8c9d1d854e586086013779b61bb3f9b22d9266c8792",
+      "bytes": 511627
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-summit-first.png",
+      "sha256": "c9b8a85bcf5b304cadf43dd3554be74bd9acc3e88425a0f87e8f2748c8864be8",
+      "bytes": 490233
+    },
+    {
+      "file": "docs/graphics-20261029/shots/iphone13-summit-full.png",
+      "sha256": "02993bdf2dd89765097c762252e167b059747ad5116d5f8272319467fb0b53c8",
+      "bytes": 1920169
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-home-demo.png",
+      "sha256": "e859373914859423a13006f721f8897b69639d9a706a9ec91601c272eef8c046",
+      "bytes": 277586
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-home-first.png",
+      "sha256": "c643fe29a4d3c04ac90e9aee99c368f72f438c3b7785d0906adc61ebe16c299e",
+      "bytes": 661371
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-home-full.png",
+      "sha256": "90e195473b4c1998ff61374cf3b85ad61083113026504c6d4ea76d28abee0c62",
+      "bytes": 1180366
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-install.png",
+      "sha256": "694c51ff12e0945de64dd5ea971675a0259ce517557964997b6816978f663b31",
+      "bytes": 657977
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-felix.png",
+      "sha256": "531bd329a57d5532364d6fcb04b9cb6a764229b948d82445989605fd906da508",
+      "bytes": 87297
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-ines.png",
+      "sha256": "a21e023f6db174d5fac38ebbe6dc5c6aa6bf3380a5333ec09143f988a6e6fb6d",
+      "bytes": 91887
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-leo.png",
+      "sha256": "e674ecd7ff288d27740e63e48eb3b074f38af6e82badc8c40ad1211c93a66b55",
+      "bytes": 81067
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-lina.png",
+      "sha256": "07fc9fbe3911e5434aba334e7fb2af2d05157ce9d7922b44b1f319e6d6e317a4",
+      "bytes": 88021
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-mira.png",
+      "sha256": "d11d94b55ff45763d33fb69b053eb4af421f44480dabe68399aea174628b0816",
+      "bytes": 88414
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-noah.png",
+      "sha256": "4deb236079650c3d7940a07c81d67009667363ac408abcb5433e8c5b4d20fe5e",
+      "bytes": 86295
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-nora.png",
+      "sha256": "b342b366845871d7c7863c0e844781286c9629c3242a0736e8f736e1fcf71e0b",
+      "bytes": 85108
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-omar.png",
+      "sha256": "57a103577481fc05f695a3b91b67dbbdec0478c7f31b005ea1bfe010ea85be1e",
+      "bytes": 86463
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-sam.png",
+      "sha256": "da7451737187de2446ab310d594d8b28f5e03e3f8bf891114bd9d0dad346495e",
+      "bytes": 90785
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-portrait-tessa.png",
+      "sha256": "7986098a5c730414232f26470acabadfd6381443cea31fac777b398439044673",
+      "bytes": 90190
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-summit-cards.png",
+      "sha256": "162ebeae15e1d1db0865451b837b4bc602bce2fea37bd7560f0cc09843cf7d24",
+      "bytes": 418176
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-summit-first.png",
+      "sha256": "f97a43a5a28a7065c773ce85f7f647f660ba135530fcf3c261277c91b0a0a9de",
+      "bytes": 528761
+    },
+    {
+      "file": "docs/graphics-20261029/shots/pixel7-summit-full.png",
+      "sha256": "0eaeb0772499be3c285e3416d50f320775c20a21faa87fc9e9a70825360472fb",
+      "bytes": 1550822
+    },
+    {
+      "file": "docs/graphics-20261029/sources/before-apple-touch-icon.png",
+      "sha256": "92631ba395566bec05e5856754cfca942f2c5b94cdf5e3e5c2ff16045ecc907d",
+      "bytes": 1393
+    },
+    {
+      "file": "docs/graphics-20261029/sources/before-icon-192.png",
+      "sha256": "9046dd1aa8ea969113df88a1c0ea247860b8bdf17c8c582d79287296e87b7a2e",
+      "bytes": 1454
+    },
+    {
+      "file": "docs/graphics-20261029/sources/before-icon-512.png",
+      "sha256": "387a4ff069a57080b2b4221e7bc2f249c0b5bd10db2229e115fd5116b606eed4",
+      "bytes": 4416
+    },
+    {
+      "file": "docs/graphics-20261029/sources/icon-master.png",
+      "sha256": "ee29efacc9c9c14635ec0b54ac34e6c397aba23e9f189f6ba71c1f70b25d8263",
+      "bytes": 1115695
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-felix-640.png",
+      "sha256": "c95118fd03d0e5bc0c76ea42403ef3f06dbb3ea2fd496e3869d01b269a0ef12f",
+      "bytes": 579199
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-ines-640.png",
+      "sha256": "87dff3f99717e6c3ce1eecbc2328bc2789f23acd562106071943fa14b917273a",
+      "bytes": 595986
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-leo-640.png",
+      "sha256": "785351895a10a75f5644c7fb960149f60cbfefb9d837a50b4d4582dc1c5a39de",
+      "bytes": 532244
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-lina-640.png",
+      "sha256": "1b815c71972e6ac9c93e48d9ac72de593bf89837579032dc822ea6e2e7ed7524",
+      "bytes": 519256
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-mira-640.png",
+      "sha256": "2e396e1d63afc4ed61547f0126783a29496e96785d87cc3042933b575352a372",
+      "bytes": 582728
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-noah-640.png",
+      "sha256": "bba95bd8ad30e3917333d61b737e17ca100492535318bf7f19c8c46ddf8986ec",
+      "bytes": 514547
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-nora-640.png",
+      "sha256": "f6d2988edc308bda94833836fc063bf81868ee52429e91dc119efca0092332de",
+      "bytes": 513443
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-omar-640.png",
+      "sha256": "70db21f64909f41d6b9b874f66dd8ac91c831362ad9bbf30200af102c16d9313",
+      "bytes": 607228
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-sam-640.png",
+      "sha256": "c512ef51337a87009cac18dba2641bbb0af95e84e1c8d4cb4bb25cffe395a3e2",
+      "bytes": 592066
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-tessa-640.png",
+      "sha256": "b00ca41fffe9b7434d94ea566a7dc4c0c9ab15c50809ef2dabd86e085457cd53",
+      "bytes": 566091
+    },
+    {
+      "file": "docs/graphics-20261029/sources/synera-thread-master.png",
+      "sha256": "d4b876e5803d45c35e62dd7a96718b0e7cb2bdf7dcef449f430148e02151072a",
+      "bytes": 2011430
+    },
+    {
+      "file": "docs/graphics-20261029/sparse-checkout-before.txt",
+      "sha256": "782ea267de176f6ba27049b794648ade35293e044ff70c1649a45800bdf57bb4",
+      "bytes": 149158
+    },
+    {
+      "file": "docs/graphics-20261029/test-before.txt",
+      "sha256": "86bcaa7fac3faf0b9141f1bd4f3e265f6ae2f478a04212f679424b77066ea0a5",
+      "bytes": 11156
+    },
+    {
+      "file": "tests/graphics-e2e.spec.mjs",
+      "sha256": "466693622c916e8983bc82e653a52f0c870da8724b7bed0c878095d6470b80f6",
+      "bytes": 7815
+    },
+    {
+      "file": "web_launch/apple-touch-icon.png",
+      "sha256": "90d7b9f5c44e6853033bf0f2fe551979401b12ce142c69cccd1153cb54572c35",
+      "bytes": 20892
+    },
+    {
+      "file": "web_launch/assets.mjs",
+      "sha256": "bf6c4636c5ed8cfebe9366a38e76ff28f2169a0ef107d55809a43fdc8272d977",
+      "bytes": 5199
+    },
+    {
+      "file": "web_launch/graphics-assets.test.mjs",
+      "sha256": "cb01185a80b78e8d7c74dd1fc039abad65bed826862bf573d88b7f83db6ec316",
+      "bytes": 3340
+    },
+    {
+      "file": "web_launch/icon-192.png",
+      "sha256": "7a7a941171a25e5c8fd5d36f5532f4b3ab722930cc9eefde02fbd630832283b1",
+      "bytes": 23976
+    },
+    {
+      "file": "web_launch/icon-512.png",
+      "sha256": "2ee91b93a7966813d49476e6738b1dec25e17984f38341f4af7a3ceddeafc925",
+      "bytes": 181804
+    },
+    {
+      "file": "web_launch/index-i18n-table.mjs",
+      "sha256": "38b7c41659691246c63bbb622f22f00573d02e746aebb2c58e259bf54c861d82",
+      "bytes": 234590
+    },
+    {
+      "file": "web_launch/index.html",
+      "sha256": "c5d25ac88f689d1cdb0c9cf23f23c3ad5274adbc7cec0570296980185acf3a69",
+      "bytes": 34652
+    },
+    {
+      "file": "web_launch/manifest.webmanifest",
+      "sha256": "3e03da93db8e0e43d5b3e330925e0a0ddf21ff318b3630cdc1c9dfa7302c83ee",
+      "bytes": 659
+    },
+    {
+      "file": "web_launch/persona-felix.webp",
+      "sha256": "ea24ccbc4a6d27c282ef127d8e1ca820fbb6c3f628c894e723100e6120ee8b08",
+      "bytes": 10910
+    },
+    {
+      "file": "web_launch/persona-ines.webp",
+      "sha256": "385a1f2be04311bb33b8b758fcf2b2ac75136520cbe9a22c91157046b3f4c859",
+      "bytes": 12596
+    },
+    {
+      "file": "web_launch/persona-leo.webp",
+      "sha256": "f883429d5421061b04815392597803b2ab1f974152b899a20bc4df4532220295",
+      "bytes": 7166
+    },
+    {
+      "file": "web_launch/persona-lina.webp",
+      "sha256": "e374eed7eae764c69a8591091e018f3c79457d7934e98305a16c4eb996fe2129",
+      "bytes": 9326
+    },
+    {
+      "file": "web_launch/persona-mira.webp",
+      "sha256": "6b9b2caf30c2624b0ac101fe76a122bd2b807baad54e43bdbec18bc70640f469",
+      "bytes": 10840
+    },
+    {
+      "file": "web_launch/persona-noah.webp",
+      "sha256": "d78256b3c9e3b9322a47995bc99545c00fdaabfeb251b1c405e2afea18c1fcd7",
+      "bytes": 9400
+    },
+    {
+      "file": "web_launch/persona-nora.webp",
+      "sha256": "5f22b528ca30a13855fc7f598f9940c95d916f2b0f35cd4acec3d03205bb83a7",
+      "bytes": 8372
+    },
+    {
+      "file": "web_launch/persona-omar.webp",
+      "sha256": "5b667fc4ed392202b06da679c1425325f7dd47f800fbfdff829c8769d0453995",
+      "bytes": 10202
+    },
+    {
+      "file": "web_launch/persona-sam.webp",
+      "sha256": "05d74fa61357fce360bd427d5a9b8c45c1c92b3adf1541a98f9af745d8154773",
+      "bytes": 12314
+    },
+    {
+      "file": "web_launch/persona-tessa.webp",
+      "sha256": "31fdecba9080d26201a9129953849df59bf3c313e0e8f0eb3b914dfbbc373bd7",
+      "bytes": 11034
+    },
+    {
+      "file": "web_launch/simulation.webmanifest",
+      "sha256": "071c926a3b79d6776ed2c4a7cc20594f2dbc3ffeaf89198bb8247a65bbd9cb89",
+      "bytes": 587
+    },
+    {
+      "file": "web_launch/site-shell.css",
+      "sha256": "45d454ef8887b56026ac734bface072bf957863cb9eb16f7138f1e68d3fdc752",
+      "bytes": 23814
+    },
+    {
+      "file": "web_launch/studio.webmanifest",
+      "sha256": "9d4433d200183974a95ec0d37496dbf24ffaa82981ea4cc900d16a1795c5b670",
+      "bytes": 590
+    },
+    {
+      "file": "web_launch/summit.html",
+      "sha256": "84d4ccfe1ab83324681abda2ba30b60ac19d96501b7735bb34365270627b6395",
+      "bytes": 13103
+    },
+    {
+      "file": "web_launch/summit.mjs",
+      "sha256": "7fb3e66de42a55f41b7e5fcc5c0bc0afad284772c96e51239ea8aed4e342994f",
+      "bytes": 21626
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "sha256": "a476c36bdc5be37f1ccf35041022a2447d187647f5ccfed7fa1dfd5be3fd6066",
+      "bytes": 4504
+    },
+    {
+      "file": "web_launch/synera-thread.webp",
+      "sha256": "fa51d05ac1e93ff6f0021a2133265d244b5dfa7f47876c00f7b0d0f6f2f3d594",
+      "bytes": 36176
+    },
+    {
+      "file": "web_launch/synera-thread@2x.webp",
+      "sha256": "ca50e35011ca6797c73820a78d625c97295ba412684db93e8778c04f3d95094a",
+      "bytes": 110590
+    }
+  ]
+}
