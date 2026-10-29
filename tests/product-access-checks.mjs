@@ -16,7 +16,10 @@ export async function checkAccessPage(page, { width, language, base, screenshot 
       return route.continue();
     });
     await page.goto(`${base}/get.html`);
-    await page.locator('#access-language').selectOption(language);
+    // The design lane moved language selection into the common header.
+    await page.locator('.header-preferences > summary').click();
+    await page.locator('#site-language').selectOption(language);
+    await page.locator('.header-preferences > summary').click();
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     // One visual primary entry, encountered before demos in reading/tab order.
     await expect(page.locator('main a.primary')).toHaveCount(1);

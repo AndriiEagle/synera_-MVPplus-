@@ -192,6 +192,9 @@ function showSignedOut() {
   $('#map-panel').hidden = true; $('#toggle-map').textContent = 'Показати карту'; $('#toggle-map').setAttribute('aria-expanded','false'); $('#map-roads').textContent = 'Увімкнути OpenStreetMap';
   form.dataset.dirty = ''; renderProfileProgress();
 }
+// A confirmed device erasure also drops in-memory draft/import/AI state.
+// Server identity and server records remain the responsibility of the account controls.
+globalThis.window?.addEventListener?.('synera:device-erased', showSignedOut);
 async function checkOnline() {
   onlineReady = false; applyAuthState();
   if (!store) { $('#mode').textContent = 'Вхід ще не підключено'; $('#welcome-text').textContent = 'Можна підготувати та завантажити власний профіль. Онлайн-акаунти стануть доступні після налаштування сервісу.'; return; }

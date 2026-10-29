@@ -1,0 +1,1052 @@
+✔ TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged (342.9522ms)
+✔ TA02: a material below/at/above PostgreSQL bytes and bounded wire transport (27.9237ms)
+✔ TA02: і material below/at/above PostgreSQL bytes and bounded wire transport (54.3876ms)
+✔ TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport (24.4185ms)
+✔ TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096 (7.9122ms)
+✔ TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity (167.1144ms)
+✔ TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC (52.2612ms)
+✔ TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does (31.7231ms)
+✔ TA01: a delayed subject mismatch cannot erase a newer local B or same-A login (2.995ms)
+✔ established origin boundary rejects cross-site outcome requests before authentication (107.557ms)
+✔ outcome rollout is closed by default and requires all three explicit gates (58.777ms)
+✔ API forwards only the reviewed case payload with a fresh server-derived JWT (16.6844ms)
+✔ forged identity, clocks, invalid revisions and irrelevant action fields make no upstream call (54.1475ms)
+✔ route, byte, media and private-table boundaries reject unsupported requests without an RPC (11.0468ms)
+✔ missing/revoked sessions never reach the data API and conflict responses do not expose upstream details (8.2384ms)
+✔ public outcome config cannot enable a backend without the existing account/journey gates (1.5647ms)
+✔ the same semantic origin guard detects removal of the cross-site check in an isolated module (55.1325ms)
+✔ a valid provider configuration advertises Google sign-in with its verified init URL (70.2516ms)
+✔ an invalid provider URL closes Google sign-in and still answers the public configuration (4.6184ms)
+✔ Google OAuth bridges an explicit-consent start and callback without exposing provider values (116.7101ms)
+✔ Google OAuth rejects missing consent and unsafe upstream start responses without retaining a challenge (8.3233ms)
+✔ Google callback clears the challenge on malformed, duplicate, crossed or denied inputs (8.4081ms)
+✔ legacy challenge receives a distinct local cookie name and legacy flag alone stays closed (4.3817ms)
+✔ standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates (48.0403ms)
+✔ reviewed room migration and rollback oracle are exactly generated from their canonical sources (130.8132ms)
+✔ an unknown eligibility contract fails generation rather than silently omitting Neon admission (4.3182ms)
+✔ room contract sends only declared fields and database owns the actor (120.0955ms)
+✔ forged identity, duplicate/self invitations, wrong revisions and bodies make no RPC (42.5347ms)
+✔ live room rollout stays shut and original origin checks forbid cross-site mutations (15.2068ms)
+✔ room gateway forwards fresh verified-session JWT and never caller identity or cookies (4.571ms)
+✔ C03.L4: acceptance SQL структурно валідний — begin + set local role + ROLLBACK у кінці (29.4235ms)
+✔ C03.L4: disposable-гігієна — всі email у скрипті з .example, жодних реальних PII (14.7223ms)
+✔ C03.L4: валідатор ловить зламані скрипти — без ROLLBACK, з реальним email, з DROP DATABASE (31.2065ms)
+✔ C03.L4: neon_auth shim — мінімальний, ідемпотентний; schema.proposal.sql сам визначає synera_user_id (25.7519ms)
+✔ C03.L4: runAcceptance — fail-closed без інʼєкцій і на помилці pre:schema (2.3165ms)
+✔ C03.L4: runAcceptance через інʼєкцію — PASS із rolled_back і leftover=0 (1.7027ms)
+✔ C03.L4: receipt — fail-closed без вердикту; канонічна форма з always_rollback (0.8969ms)
+✔ C03.L4: migration.sql існує поруч і ніколи не редагується вручну — маркер generate-schema (24.2588ms)
+﹣ C03.L4: integration-run — тільки якщо SYNERA_ACCEPTANCE_PG заданий; інакше чесний SKIP (0.8932ms) # SYNERA_ACCEPTANCE_PG не заданий — integration-run проти disposable PG пропущений (offline CI)
+✔ address inherits same-origin and cross-site guards before any session access (102.7178ms)
+✔ address route and public configuration stay closed without all three explicit gates (14.1765ms)
+✔ all four address actions forward an exact reviewed proposal through a fixed RPC with a fresh server JWT (34.7303ms)
+✔ forged identity, clocks, stale shapes and implicit consent are rejected without upstream calls (19.6975ms)
+✔ address route, body and private-table boundaries reject unsupported requests before any RPC (13.718ms)
+✔ missing or revoked sessions stop before data and SQL denial/conflicts stay neutral without retries (58.9156ms)
+✔ public address config cannot enable an unreviewed backend or account journey (1.0276ms)
+✔ the same closed-mode guard catches removal of the address rollout check in an isolated module (76.9581ms)
+✔ persisted consent and latest position travel through verified session, coarsening and an absolute expiry (94.858ms)
+✔ no binding, missing consent, forgery and revoked authority cannot store or reveal a position (11.729ms)
+✔ permission policy and public feature flag require reviewed rollout and ephemeral binding together (4.7539ms)
+✔ a delayed older KV write cannot make an older position visible as the latest admitted position (5.3037ms)
+✔ a revocation during the KV read is rechecked before disclosing any coordinates (2.96ms)
+✔ location SQL generation is byte-proven and leaves the applied base schema untouched (73.5172ms)
+✔ meeting-status cleanup counts successful drops and preserves PASS (9.6327ms)
+✔ meeting-status successful cleanup preserves an earlier acceptance failure (13.1921ms)
+✔ meeting-status denied DROP is not counted, fails verdict, and still drops the next DB (25.2386ms)
+✔ meeting-status cleanup preserves the original thrown failure while handling transport errors (22.5208ms)
+✔ readiness gates keep new route and advertised capability closed without upstream calls (100.1393ms)
+✔ untrusted sender, unknown keys, query injection and wrong origin never reach message RPC (22.1957ms)
+✔ RPC forwards server session identity and preserves rejection with sanitized errors (20.1939ms)
+✔ C03.L7: splitStatements — долар-теги не ріжуться по семіколонах усередині (11.4031ms)
+✔ C03.L7: splitStatements — тег $fn$ і хвостовий statement без ; (0.6323ms)
+✔ C03.L7: dryRun на реальному case-state.migration.sql — детермінований, нічого не мутує (66.2435ms)
+✔ C03.L7: dryRun ловить небезпечні statement на синтетичному файлі (91.856ms)
+✔ C03.L7: requireApproval — fail-closed без operator-id і без backup (українська помилка) (1.9666ms)
+✔ C03.L7: apply без approval НЕ виконує жодного statement (fail-closed, контракт §4) (1.2634ms)
+✔ C03.L7: apply з approval і backup — preFiles → apply, gate у результаті (20.4962ms)
+✔ C03.L7: approvalReceipt — детермінована форма для STATUS.md (0.9583ms)
+✔ C03.L7: cleanup-незалежність — splitStatements не мутує вхід і детермінований (0.4971ms)
+✔ off-mode pins allowlist errors, normalization, verification and missing/oversized configuration (163.7854ms)
+✔ open-mode sends and verifies a normalized new email, then restores its session without an allowlist (82.0508ms)
+✔ open-mode requires valid current consent, an email, storage, trusted IP and all existing readiness flags (9.9693ms)
+✔ open verify requires an unexpired consent-bearing request before creating an Auth account (28.7223ms)
+✔ email request limit follows normalization across IPs and returns a bounded retry (62.6322ms)
+✔ IP request limit covers different emails and ignores forged X-Forwarded-For (145.3951ms)
+✔ simultaneous requests sharing a KV binding cannot bypass the in-isolate email or IP limit (114.6413ms)
+✔ verification cap covers different guesses and concurrent attempts; success consumes the challenge (70.3108ms)
+✔ request/verify responses do not disclose existing versus unknown addresses or upstream account errors (149.2231ms)
+✔ provider outage, throttling and KV failure stay closed and do not create a browser session (72.2401ms)
+✔ resending cannot reset failed verification budget; rate windows expire and KV stores no raw email, IP or OTP (97.4782ms)
+✔ Google open-mode admits a verified new identity through the existing challenge bridge; each old flag still closes it (25.4137ms)
+✔ P3 complete erasure is separate, self-only, and retains the stale-session tombstone (19.5362ms)
+✔ P4 purge has explicit retention windows and is not callable by a normal member (19.3112ms)
+✔ P3: complete application erasure defaults OFF and never calls upstream (84.3618ms)
+✔ P3: explicit complete erase uses verified subject, empty RPC body and pending provider status (15.6875ms)
+✔ P3: complete erasure rejects CSRF, subject changes and legacy confirmation without data writes (7.5272ms)
+✔ actual gateway sanitizes FK HTTP409; actual NeonStore makes one own DELETE and preserves session/data (90.1234ms)
+✔ gateway/client preserve existing semantics for HTTP401 (7.4005ms)
+✔ gateway/client preserve existing semantics for HTTP403 (43.3073ms)
+✔ gateway/client preserve existing semantics for HTTP429 (34.3477ms)
+✔ gateway/client preserve existing semantics for HTTP500 (25.807ms)
+✔ gateway/client preserve existing semantics for HTTP503 (3.572ms)
+✔ successful own DELETE returns only the deleted own row; another profile and current session remain (3.9192ms)
+✔ unrelated meeting HTTP409 retains the original meeting conflict interpretation (3.7843ms)
+✔ rooms-off is a server gate on all room actions with zero upstream calls (20.6227ms)
+✔ new erasure migration retains exact provenance and dependency closure of the original outcome owner (26.0465ms)
+✔ erasure defaults disabled in server config and makes zero upstream requests (121.2434ms)
+✔ no arbitrary target, wrong confirmation, query or missing session reaches erasure RPC (9.8363ms)
+✔ accepted own RPC sends only verified bearer and empty args, never clears a newer browser cookie (26.8709ms)
+✔ committed erasure is reported honestly if provider sign-out fails (6.5893ms)
+✔ delayed accepted A erasure cannot clear local session after restoring B or a new A session (8.0805ms)
+✔ delayed A unauthorized erasure cannot forget the newer B session (1.9417ms)
+✔ session restore started before erasure cannot resurrect the erased local identity (3.2848ms)
+✔ overlapping restores keep the latest requested session in either response order (7.4196ms)
+✔ unknown/malformed RPC response cannot report success or sign out (18.1341ms)
+✔ RPC failures preserve session and disclose no private upstream details (20.6928ms)
+✔ erasure CSRF rejection happens before auth and data calls (2.3178ms)
+✔ NeonStore distinct erasure method is gated, validates receipt, and clears user only on confirmed erasure (6.848ms)
+✔ closed backend, wrong origins, bad configuration and unsupported routes make no upstream request (131.4551ms)
+✔ Google start stays fail-closed even when a legacy flag is accidentally set (4.7242ms)
+✔ Google visibility requires the new rollout gate, registration and pilot readiness together (5.4151ms)
+✔ Google gateway completes browser navigation into the existing session and preserves write CSRF checks (14.4624ms)
+✔ failed Google callback cleans verifier URL and returns the user to a retryable login (1.667ms)
+✔ the case-state tables are reachable through the gateway and the allowlist stays an allowlist (10.8126ms)
+✔ OTP requires an invited email, explicit current consent and a bounded body before sending (12.2679ms)
+✔ OTP verification keeps provider session, identity metadata and JWT out of browser JSON (6.4091ms)
+✔ a fresh provider session supplies the data token; caller Authorization and stray cookies are discarded (2.257ms)
+✔ current Neon cookie survives OTP -> browser session -> data; unrelated cookie caches stay private (4.0577ms)
+✔ Cloudflare extensionless HTML redirects stay inside the public asset allowlist (6.9493ms)
+✔ missing or ambiguous provider cookies fail closed with an actionable code, never a raw provider body (6.5716ms)
+✔ client explains expired OTP and treats a temporary data failure as recoverable without forgetting the user (11.1924ms)
+✔ missing, malformed or revoked sessions stop before any data access; no hidden retry on provider failures (15.0073ms)
+✔ logout clears local HttpOnly cookie even when upstream revocation fails (1.6335ms)
+✔ published worker serves only the allowlist, keeps configuration closed and protects every response (4.9161ms)
+✔ Neon reuses the exact profile contract and sends no browser bearer token or provider URL (4.2832ms)
+✔ browser fetch is called without rebinding its receiver to the store (1.834ms)
+✔ migration preserves canonical rules, adds private verified-member gate, and never assumes it was applied (65.2516ms)
+✔ SYN_SQL_GENERATION_BYTE_PROVEN: case-state migration is additive, generated byte-for-byte, and never assumed applied (9.421ms)
+✔ control: authenticated A can submit an unapproved draft to the store transport (35.8065ms)
+✔ contract: A must not submit a newly forged B approval through bulk state persistence (16.6059ms)
+✔ uk/document: proof names the human subject, deadline and verification action (6.6208ms)
+✔ uk/link: proof names the human subject, deadline and verification action (0.5146ms)
+✔ uk/demo: proof names the human subject, deadline and verification action (0.4064ms)
+✔ uk/checklist: proof names the human subject, deadline and verification action (0.4298ms)
+✔ uk/conversation_note: proof names the human subject, deadline and verification action (0.647ms)
+✔ de/document: proof names the human subject, deadline and verification action (0.4945ms)
+✔ de/link: proof names the human subject, deadline and verification action (0.4308ms)
+✔ de/demo: proof names the human subject, deadline and verification action (0.2923ms)
+✔ de/checklist: proof names the human subject, deadline and verification action (0.334ms)
+✔ de/conversation_note: proof names the human subject, deadline and verification action (0.5601ms)
+✔ en/document: proof names the human subject, deadline and verification action (0.6182ms)
+✔ en/link: proof names the human subject, deadline and verification action (0.2729ms)
+✔ en/demo: proof names the human subject, deadline and verification action (0.1938ms)
+✔ en/checklist: proof names the human subject, deadline and verification action (0.4539ms)
+✔ en/conversation_note: proof names the human subject, deadline and verification action (0.3706ms)
+✔ changing the human action or deadline changes the acceptance criterion (0.5735ms)
+✔ all modes remain selectable; intro does not supply financial or legal agreement (61.3931ms)
+✔ paid supplier drafts only its own result and a missing paid direction remains blocked (0.5819ms)
+✔ unknown, empty and malformed values yield no draft; calendar rollovers are refused (0.8047ms)
+✔ Unicode survives; markup and hidden direction/control injection cannot enter generated strings (0.6651ms)
+✔ human drafts are preserved byte-for-byte and input is never mutated (0.6788ms)
+✔ two-leg proposals pass the existing material schema only with explicit human terms (102.2682ms)
+✔ personal accents preserve base look, clear by-look overrides and cover every palette (8.7758ms)
+✔ WCAG AA palette text/states/surfaces and meaningful borders on actual base surfaces (3.8127ms)
+✔ density and manual text size are independent, validated and local even when storage denied (4.3857ms)
+✔ proposals need explicit consent, three sessions/two days/signals; silence and preview never apply (3.0351ms)
+✔ declined proposal never applies or recurs after reload; stop clears counters and pending work (1.4917ms)
+✔ all hints have bounded complete translations; dismiss forever, replay manually and reset independently (1.3309ms)
+✔ reset is scoped to presentation; preserves language/profile/consent/tour and restores Current (8.2455ms)
+✔ one-day activity is insufficient, proposal cooldown is seven days, counters expire after 14 days (16.6521ms)
+✔ legacy explicit choices migrate, malformed storage is safe and unapproved fields are discarded (2.2209ms)
+✔ mutation oracle detects the removal of persistent proposal refusal (40.916ms)
+✔ reload and cross-page navigation in one tab do not fabricate new sessions (6.0996ms)
+✔ midnight is not a new session; corrupt counter entries cannot break the controls (1.3468ms)
+✖ C13.L2a: app.mjs імпортується без викидків — вся import-time DOM-обв’язка виконалась (10.7813ms)
+✖ C13.L2a: #auth-form має submit-слухач (25.2315ms)
+✖ C13.L2a: усі 4 data-tab кнопки мають click-слухачі (3.1319ms)
+✖ C13.L2a: клік data-tab=people без входу показує український guard у #notice (1.5823ms)
+✖ C13.L2a: клік data-tab=profile дозволений без входу — guard НЕ показується (1.3416ms)
+✖ C13.L2a: клік data-tab=settings запускає consent-sync і renderBlocks без викидів (58.3372ms)
+✔ gzip and plain envelope preserve exact multilingual quotes including spacing (127.2953ms)
+✔ tampered checksum, unknown envelope fields and unsupported version fail closed (8.6181ms)
+✔ oversized compressed expansion is rejected before returning archive (146.9812ms)
+✔ invalid preferences cannot activate a new visual layer or carry unknown data (3.7267ms)
+✔ returning to current removes the overlay without changing the established theme or consent state (0.6953ms)
+✔ M07: solves classic counterexample proving optimal (16) beats greedy (9) (61.9541ms)
+✔ M07: strictly respects heterogeneous per-user quotas (4.9009ms)
+✔ M07: deterministic tie-breaking produces stable outputs on equal weights (3.3076ms)
+✔ M07: rejects invalid and self candidates (0.6427ms)
+✔ SYN_CASE_STORE_MATCHES_SQL: writes columns and reconstructs state from case plus approval rows (46.1559ms)
+✔ C13.L2b calendar: прийнята зустріч 20 хв → точний hand-computed ICS (escape , ; \n) (6.705ms)
+✔ C13.L2b calendar: тривалості 30 і 60 хв — DTEND вручну порахований (2.1703ms)
+✔ C13.L2b calendar: межа fold 73 байти — продовження "\r\n " пораховане вручну (1.3838ms)
+✔ C13.L2b calendar: fail-closed — відхилені/некоректні зустрічі кидають доменну помилку (3.5543ms)
+✔ C13.L2b simulation: парк ботів і демо-місць — константний контракт (2.0759ms)
+✔ C13.L2b simulation: hourSlot — вручну пораховані слоти і доменна помилка (0.5662ms)
+✔ C13.L2b simulation: simulationAt 10:00Z — Цюрих 12:00, усі прокинуті, точні значення бот-0 і бот-1 (64.4086ms)
+✔ C13.L2b simulation: simulationAt 01:00Z — ніч, усі офлайн, місце від (0+index)%5 (0.8569ms)
+✔ C13.L2b simulation: simulatedReply — reciprocal від mira до leo, declined без сигналів, fail-closed (9.5862ms)
+✔ C13.L2b simulation: demoCollaborations — 5 пар, id з слотом, next_step за slot%3 (1.9157ms)
+✔ C13.L2b simulation: demoCollaborations — сусідній годинний слот змінює лише slot у id (2.1382ms)
+✔ C13.L2b health-check (структурно): модуль не експортує нічого — геп зафіксований (1.1659ms)
+✔ C13.L2b health-check (структурно): fail-closed гейт — ready_for_launch ніколи не true, аварійний exit 2 (1.1336ms)
+✔ each outcome belongs to its receiver; no invented competence, price, agreement or delivery (55.6321ms)
+✔ withdrawn discovery, one-way value and stale profiles cannot emit a business-case draft (1.939ms)
+✔ identity, subscription and private annotations cannot change the case (1.7055ms)
+✔ business case v2: paid and referral drafts include only the eligible receiver-owned benefit (3.1769ms)
+✔ material terms: byte canonicalization is stable and SHA-256 changes only for a material change (55.6772ms)
+✔ case state: both exact current approvals are required and a material revision clears them (47.7254ms)
+✔ case state: timestamps are monotonic and withdrawing one approval blocks the next action (11.7189ms)
+✔ case state: expiry, revocation, abandonment and independent permissions fail closed (7.0275ms)
+✔ case state: unresolved paid compensation cannot be approved (2.6874ms)
+✔ case state: direct material tampering cannot reuse the old hash and approvals (3.1514ms)
+✔ case state: every outcome and deliverable party must be one of the two participants (5.8515ms)
+✔ SYN_TERMS_FROM_HUMAN_INPUT: empty or malformed fields stay unresolved; nothing becomes agreement by default (1.3535ms)
+✔ SYN_TERMS_FROM_HUMAN_INPUT: full human terms pass the domain, and editing one term clears both approvals (23.0726ms)
+✔ synthetic D1 rehearsal: exchange, paid service, referral and hybrid reach only the pure introduction gate (144.0263ms)
+✔ synthetic D1 rehearsal: withdrawn comparison and changed material terms are explicit refusal journeys (29.6751ms)
+✔ SYN_COHORT_JOURNEYS_GREEN: four accepted paths — exchange (legacy v1), paid service, hybrid, referral (11.1665ms)
+✔ SYN_COHORT_JOURNEYS_GREEN: refusals stay refusals — invalid availability, withdrawn consent, one-way value (5.3783ms)
+✔ SYN_COHORT_JOURNEYS_GREEN: funnel keeps every refusal, ghost and missing feedback in the denominator (1.6783ms)
+✔ SYN_COHORT_JOURNEYS_GREEN: the synthetic cohort never reaches a store, seed or shipped asset (49.301ms)
+✔ Iceberg Cascade Orchestrator - deploy and stream (1050.9744ms)
+✔ a party cannot write the other party approval, even hand-crafted into the payload (55.1178ms)
+✔ own approval is written and derives awaiting_approval on its own (11.9721ms)
+✔ a genuine stored approval of the other party survives, and both together derive approved_for_next_step (6.0341ms)
+✔ a party cannot silently drop the other party stored approval by sending an empty approvals object (3.58ms)
+✔ a stored approval for an older version or a different terms hash is not carried forward (4.6974ms)
+✔ version cannot move backwards and participants cannot be swapped (5.0868ms)
+✔ a case is closed only by the party doing it, and closing clears approvals (10.219ms)
+✔ a caller who is not a participant writes no approval at all (3.9673ms)
+✔ V6-03: own approval is written separately to match_case_approvals for Neon RLS (5.8557ms)
+✔ X6 / V6-06: bilateral store sync allows party A and party B to independently approve and reach approved_for_next_step (4.3448ms)
+✔ C11.L1: кошторис кейса — точні значення (2.6049ms)
+✔ C11.L1: невиміряні гроші — unknown, а не нуль (gate) (0.5749ms)
+✔ C11.L1: некоректний вхід — reason codes, не throw (0.7041ms)
+✔ C11.L1: агрегат пілота — суми + чесний unknownCashCases (0.81ms)
+✔ C11.L1: змішані валюти відхилені; порожній пілот; середнє (0.8424ms)
+✔ outcome reads preserve both pending legs; one acceptance cannot confirm the whole collaboration (535.4336ms)
+✔ rollout remains closed without the outcome flag and leaves existing case behaviour intact (78.4392ms)
+✔ an explicit write keeps its original retry intent and only acknowledges the actor-bound server event (208.586ms)
+✔ receiver checks, neutral disputes and a later explicit acceptance retain the complete event history (157.9225ms)
+✔ wrong roles, unknown actions and forged fields cause no outcome write (110.5942ms)
+✔ a malformed or foreign response cannot promote a collaboration to confirmed (291.894ms)
+✔ PostgreSQL transaction-start server_now is not treated as a wall-clock upper bound on prior committed events (109.8652ms)
+✔ old reviewed terms and terms revised while the response travels never return an attestation (171.5819ms)
+✔ late private outcome responses are discarded after logout, same-account restore or another-account restore (356.4184ms)
+✔ server session, consent and write-conflict failures remain failures and never manufacture a result (443.281ms)
+✔ private plain and gzip exports preserve actual server-reviewed material and pending attestations exactly (603.5427ms)
+✔ a partial archive retains receiver-only acceptance and never promotes the other pending result (255.3233ms)
+✔ closed rollout, outsiders, revoked consent and logged-out accounts cannot produce an archive (96.1571ms)
+✔ logout and restore of the same account during compression discard the private export (110.247ms)
+✔ a material revision during compression cannot return a stale archive as the current reviewed result (235.1625ms)
+✔ fresh bilateral acceptance yields only the actor contribution and never evidence, partner identity or publication (821.1105ms)
+✔ a supplier private card uses the buyer receiver acceptance for one paid deliverable (256.5942ms)
+✔ caller snapshots, silence, one accepted leg and a current dispute cannot manufacture a social achievement (372.5206ms)
+✔ withdrawn approval, expired terms and a new material revision invalidate a previously completed result for drafting (339.3085ms)
+✔ logout and same-account restore after outcome read discard the pending social draft (258.1648ms)
+✔ closed rollout, unsupported wording, outsiders and revoked consent cannot return a draft (383.7595ms)
+✔ ChatGPT transfer prompt specifies every supported ID and fail-closed profile defaults (3.5512ms)
+✔ transfer summary normalizes known fields into the review labels (5.1919ms)
+✔ transfer summary fails closed for malformed, unknown, and prototype-supplied identifiers (0.8345ms)
+✔ transfer summary never infers availability from partial or dated input (0.8912ms)
+✔ C10.L4: публікація кейсу однією стороною; дубль заборонений (3.6582ms)
+✔ C10.L4: друга сторона підключається; автор не може приєднатися до власного кейсу (0.7491ms)
+✔ C10.L4: контакти організатору лише при взаємній згоді (gate) (0.4173ms)
+✔ C10.L4: картка на дошці без контактів, доки нема згоди (9.7246ms)
+✔ C10.L4: некоректний вхід — reason codes, не throw (0.5885ms)
+✔ C11.L3: append-only — новий масив, вхід не мутується (2.9557ms)
+✔ C11.L3: ідемпотентність — той самий idempotencyKey не списує двічі (0.6861ms)
+✔ C11.L3: баланс і заборона негативного залишку (0.765ms)
+✔ C11.L3: refund — лише за існуючим spend, не більше суми, один шлях на spend (2.7033ms)
+✔ C11.L3: некоректний вхід — reason codes, не throw; сам леджер захищений від сміття (0.7743ms)
+✔ M13: EWMA дорівнює порахованому вручну значенню (2.7041ms)
+✔ M13: CUSUM виявляє зсув середнього після 20 стабільних точок (1.0079ms)
+✔ M13: стабільна серія не дає хибного сигналу в межах бюджету (1.7676ms)
+✔ M13: некоректний вхід повертає valid=false з кодом причини, не кидає (2.3106ms)
+✔ M13: властивість — хибнопозитивна частка на 1000 стабільних серіях у межах бюджету (36.8697ms)
+✔ M09: detects bilateral 2-way cycles (A <-> B) (6.3325ms)
+✔ M09: detects triangular 3-way cycles (A -> B -> C -> A) (1.2079ms)
+✔ M09: triangular case proposal draft builds valid 3-way structure (1.451ms)
+✔ M09: disjoint cycle packing prevents any person from appearing in two cycles simultaneously (1.2717ms)
+✔ demo: anonymous reads fail and hidden profiles stay undiscoverable (4.7901ms)
+✔ demo: request is visible only to participants and only recipient can respond (21.9569ms)
+✔ demo: signout removes access and profile validation rejects oversized data (1.0198ms)
+✔ online adapter rejects secret keys and unexpected origins before a request (4.5438ms)
+✔ online adapter derives owner from session and excludes extra fields (113.3988ms)
+✔ online adapter coalesces expired-session refresh and clears memory on logout failure (4.5737ms)
+✔ online adapter does not report a zero-row response as successful acceptance (2.1134ms)
+✔ provider restriction is detected before credentials, with no retry or response-body exposure (2.2866ms)
+✔ release config strips unrelated values and keeps client access within its Supabase origin (1.5801ms)
+✔ decision oracle: five typed decisions preserve the deterministic launch gates (199.0509ms)
+✔ model advice cannot override missing consent, incompatibility, one-way value, or unresolved approvals (2.7022ms)
+✔ model cannot forge a deterministic recommendation to bypass a consent veto (1.8625ms)
+✔ meeting brief stays blocked when approvals or disclosure consent are merely asserted (12.4724ms)
+✔ unresolved payment and an unconsulted third party never become a recommended mode (2.767ms)
+✔ decision request contract rejects unknown decision kinds (0.4493ms)
+✔ offline bakeoff records identity, cost, latency, oracle accuracy and abstention without a provider claim (4.9911ms)
+✔ hosted answer without exact identity and receipt cannot pass local acceptance (1.0112ms)
+✔ mutation evidence: weakening the advisory veto makes the semantic guard fail (968.5705ms)
+✔ declared fit explains two-way complementary self-declared skills without a score (37.6547ms)
+✔ declared fit keeps missing preferences unknown and known conflict distinct (0.807ms)
+✔ revoked fit consent blocks comparison before any trait is emitted (2.6201ms)
+✔ fit consent never makes a hidden profile public (0.5095ms)
+✔ optional traits require explicit enablement on both sides and normalization drops undeclared fields (0.8413ms)
+✔ synthetic demo has a finite mutual-benefit journey and never turns a draft into a send (5.9215ms)
+✔ release look defaults to dark with gold (Synera) without overwriting any explicit saved style or consent (3.4088ms)
+✔ the common look selector retains the chosen style and never changes consent, including denied storage (1.4774ms)
+✔ all twelve user pages ship the same single header and one collapsed mode navigation (152.9488ms)
+✔ C12.L3: потужність — канонічна формула (d=0.5 -> 63/групу, d=0.8 -> 25) (2.9916ms)
+✔ C12.L3: некоректні параметри потужності — reason codes, не throw (0.4947ms)
+✔ C12.L3: парна різниця — hand-computed fixture (1.5466ms)
+✔ C12.L3: дублі пари і невалідні результати відхилені; порожній набір чесний (2.2614ms)
+✔ C12.L3: нульова дисперсія не ділить на нуль (0.503ms)
+✔ C13.L3: complete scripted E2E lifecycle against mock Neon backend (225.2494ms)
+✔ economics: includes recurring billing fee, per-member labour and fixed work (5.1117ms)
+✔ economics: VAT-inclusive price removes VAT from revenue while card fee uses full charge (0.6125ms)
+✔ economics: negative unit contribution has no finite break-even; zero customers still carry fixed costs (0.5159ms)
+✔ economics: invalid, missing numeric and fractional member inputs are rejected (1.0939ms)
+✔ pilot funnel: real, synthetic and model outputs cannot be blended (4.9825ms)
+✔ pilot funnel: accepted or rejected outcomes require exact case version/hash and recipient decision (0.8046ms)
+✔ SYN_IMPORT_AUDITED: profile_imported is pseudonymous append-only metadata, source-separated, never evidence (8.1413ms)
+✔ SYN_TELEMETRY_CONTRACT: consent off writes nothing, consent on appends validated events only (2.3112ms)
+✔ SYN_TELEMETRY_CONTRACT: 10s dedup collapses repeats and rejects PII, unknown types and orphan operator minutes (1.9001ms)
+✔ SYN_TELEMETRY_CONTRACT: events.jsonl writer is append-only, test-path overrideable and node-only (291.7171ms)
+✔ C11.L1: caseEconomics computes total case cost (1.2734ms)
+✔ P05: case without effort keeps the exact hash it had before the effort field existed (127.5756ms)
+✔ P05: adding effort is a material change that clears both approvals (11.4185ms)
+✔ P05: 1 hour against 30 hours is reported as a difference, never as equivalent (1.9341ms)
+✔ P05: equal volumes do not differ; a missing volume stays missing instead of guessed (1.2719ms)
+✔ P05: malformed effort fails closed in the domain and is ignored from human input (3.0628ms)
+✔ P08: only the receiver may decline; decline opens a neutral dispute and keeps history (40.7868ms)
+✔ P09: feedback is optional; no reply is missing data, not a negative value (7.8689ms)
+✔ meeting proposal minimizes worst journey within every participant limit, then imbalance (3.1732ms)
+✔ map cost uses monthly billable loads/elements, separate free caps and currency; zero members is not revenue proof (16.927ms)
+✔ complementarity explains each direction and never suggests hidden people (3.1357ms)
+✔ C04.L3: resolves viewer audience level based on relationship context (2.7493ms)
+✔ C04.L3: public viewer cannot see community, contact, or private fields (2.5477ms)
+✔ C04.L3: community viewer sees public and community fields, but NOT contacts or private data (3.5989ms)
+✔ C04.L3: after meeting viewer unlocks contact fields, but never private notes or billing (0.5735ms)
+✔ C04.L3: profile owner sees all fields (0.6947ms)
+✔ C04.L3: fail-closed on unknown fields (0.4199ms)
+✔ M11: calculateKaplanMeierSurvival handles empty, perfect, and full-churn cohorts (8.022ms)
+✔ M11: calculateKaplanMeierSurvival proves monotonic non-increasing survival curve (1.281ms)
+✔ M12: buildMarkovTransitionMatrix enforces row-stochastic invariant and absorbing states (4.5591ms)
+✔ M12: analyzeMarkovAbsorbingChain calculates fundamental matrix and exact absorption probabilities (3.5127ms)
+✔ ten distinct served portraits meet the actual raster and byte budgets (180.2724ms)
+✔ responsive scene has a true double-resolution variant and stays under its payload limit (6.2845ms)
+✔ every new image is both publicly served and included in the offline install (3.6457ms)
+✖ install canvases follow the dark default and all shipped icons decode at declared PNG sizes (5.401ms)
+✔ silence never invents a logistics preference or attendance (5.1872ms)
+✔ only explicit fallback on current proposal is used at deadline and remains labelled (1.5416ms)
+✔ revised place/date discards prior answers and fallback; stale copied state cannot authorize (1.2422ms)
+✔ withdraw and explicit no override preselected yes without mutating prior state (4.3337ms)
+✔ unknown participants, malformed dates, expired writes and obligations rejected (1.4658ms)
+✔ i18n: supports uk, de, and en with default uk (5.6672ms)
+✔ i18n: dictionary key symmetry across all languages (0.6709ms)
+✔ i18n: switching locale updates translated output (0.8881ms)
+✔ i18n: falls back cleanly for unknown locale or missing keys (0.5655ms)
+✔ i18n: detects locale from browser language header (0.5324ms)
+✔ C15.L5: Template Selector — детермінована мапа рівнів (канон §2.2) (5.0187ms)
+✔ C15.L5: fromHypothesis — детермінований план зі стабільним sha256 (3.9192ms)
+✔ C15.L5: fail-closed гіпотеза — dropoff <= 0 і L2 без когорти (українська помилка) (1.73ms)
+✔ C15.L5: preview — два варіанти A/B, консервативний = baseline, агресивний = proposal (4.5837ms)
+✔ C15.L5: preview reject варіант, що ламає WCAG AA (світлий текст на світлому фоні) (0.862ms)
+✔ C15.L5: preview — план не знайдений → fail-closed (16.0304ms)
+✔ C15.L5: confirm вимагає operatorId — тихих змін немає (канон §4.3) (1.2049ms)
+✔ C15.L5: deploy без confirm відкидається (2.7313ms)
+✔ C15.L5: deployAndLog — один запис з artifact_sha256, changed_paths, без PII (72.8961ms)
+✔ C15.L5: hash-ланцюг верифікується; тампірінг ловиться на конкретному рядку (13.7025ms)
+✔ C15.L5: rollbackLast — audit-запис з system-rollback і prev_hash попереднього (13.3777ms)
+✔ C15.L5: повний каскад L2 end-to-end — hypothesis → preview → confirm → deploy → verify (88.8026ms)
+✔ C15.L5: повний каскад L2 end-to-end через інʼєкції (deploy/rollback фейкові) (53.5672ms)
+✔ C15.L4: активний bundle за календарем — вручну пораховані дати (15.2962ms)
+✔ C15.L4: межа вікна — наступний день після закінчення вже null (1.663ms)
+✔ C15.L4: некоректна дата — fail-closed українською (1.7309ms)
+✔ C15.L4: bundles заморожені, токени — реальні імена з tokens.css (3.2872ms)
+✔ C15.L4: applyTheme валідує токени fail-closed і детермінований (2.7926ms)
+✔ C15.L4: rollback < 1s — чиста константа скиду, O(1) (2.35ms)
+✔ C15.L4: consentInvariantCheck блокує будь-яку операцію на 7 гейтах (0.7835ms)
+✔ C15.L4: listConsentGates — повний набір 7 гейтів канону (2.5776ms)
+✔ C15.L4: усі shipped bundles проходять applyTheme (pre-audited гарантія) (0.9271ms)
+✔ C15.L4: інваріант — немає мутацій consentState у модулі (1.0695ms)
+✔ C15.L2: реєстр екранів відповідає index.html (реальні id) (7.7646ms)
+✔ C15.L2: валідна перестановка приймається, дублікати/відсутні/зайві — відкидаються (0.7779ms)
+✔ C15.L2: recomposeOrder move — детерміновано, вхід не мутується (0.9793ms)
+✔ C15.L2: recomposeOrder promote — переміщення на початок (0.4908ms)
+✔ C15.L2: recomposeOrder fail-closed — невідомий екран і криве правило (українська помилка) (1.618ms)
+✔ C15.L2: toggleVisibility — settings захищений інваріантом канону (0.5755ms)
+✔ C15.L2: toggleVisibility fail-closed на невідомому екрані (0.4531ms)
+✔ C15.L2: regression gate — зміна порядку проходить, зміна набору ламає (0.7408ms)
+✔ C15.L2: regression gate ловить приховану панель приватності (0.5866ms)
+✔ C15.L2: describeLayout — канонічний рядок для audit log (1.089ms)
+✔ C15.L2: domId fail-closed на невідомому екрані (0.4683ms)
+✔ C15.L2: інваріант — немає мутацій consentState у модулі (0.7565ms)
+✔ C15.L3: три стилі з attribution, заморожені (7.5667ms)
+✔ C15.L3: превʼязаність user > event > cohort > default(osm) (0.6856ms)
+✔ C15.L3: невідомий стиль — українська доменна помилка (1.3296ms)
+✔ C15.L3: маркер-токени заморожені, різні між стилями, валідні hex (1.2646ms)
+✔ C15.L3: viewportRadius — без згоди null, зі згодою >= 15 км (GEO-01) (1.4978ms)
+✔ C15.L3: viewportRadius fail-closed на некоректному радіусі (5.9166ms)
+✔ C15.L3: geoGuard відкидає live GPS без гранту (0.6968ms)
+✔ C15.L3: geoGuard відкидає торкання consent-гейтів і невідомий стиль (0.5983ms)
+✔ C15.L3: geoGuard приймає чисту подію теми (4.4162ms)
+✔ C15.L3: всі стилі мають шаблон тайлів; satellite від osm відрізняється (1.7586ms)
+✔ C15.L3: інваріант — без мутацій consentState, без імпорту app.mjs (1.2702ms)
+✔ C15.L6: когорти заморожені і згідні з каноном §4.1 (designers/sales/winterthur-devs) (5.0976ms)
+✔ C15.L6: composePreview детермінований, sha256 стабільний, requiresOperatorConfirm=true (2.305ms)
+✔ C15.L6: невідома когорта — українська доменна помилка (1.243ms)
+✔ C15.L6: layoutOrder — валідна перестановка канонічного набору, інакше fail-closed (1.128ms)
+✔ C15.L6: невідома карта-підкладка у intent — fail-closed (0.492ms)
+✔ C15.L6: renderPreviewPanel — українські лейбли і підтвердження оператора (0.5889ms)
+✔ C15.L6: batchPreview — 3 дозволені, 4 відкидаються з українською помилкою (0.9976ms)
+✔ C15.L6: auditLine — канонічний рядок з відсортованими ключами (3.0319ms)
+✔ C15.L6: auditTrail — чистий ланцюг валідний, тампірінг ловиться за індексом (1.6007ms)
+✔ C15.L6: composePreview з невалідним layoutOrder НЕ проходить (fail-closed до деплою) (0.7584ms)
+✔ C15.L6: інваріант — без імпорту sibling-модулів, без мутацій consentState (1.5333ms)
+✔ C15.L7: усі 6 машин існують на диску і проходять аудит (реальний code review чекліст) (65.8797ms)
+✔ C15.L7: аудит ловить PII-літерал у синтетичній машині (false-negative гейт) (9.6543ms)
+✔ C15.L7: аудит ловить consent-мутацію у синтетичному коді (0.7568ms)
+✔ C15.L7: машина стану без rollback — MISSING_ROLLBACK finding (67.8767ms)
+✔ C15.L7: disposable email фікстури НЕ рахуються PII (штучний прогін чекліст-логіки) (0.6667ms)
+✔ C15.L7: auditSummaryLine — детермінований рядок для READINESS evidence (241.7436ms)
+✔ C15.L1: allowlist заморожений і складається з РЕАЛЬНИХ імен tokens.css (3.9029ms)
+✔ C15.L1: baseline дорівнює tokens.css значенням — жодної вигаданої фарби (1.2073ms)
+✔ C15.L1: forgeTokens — fail-closed на недозволеному ключі і на кривому кольорі (1.8072ms)
+✔ C15.L1: forgeTokens детермінований — той самий патч, той самий sha256 (16.015ms)
+✔ C15.L1: WCAG — відома еталонна пара чорний/білий = 21.0, поріг AA = 4.5 (0.8761ms)
+✔ C15.L1: WCAG — #777777 на #FFFFFF ≈ 4.47 < 4.5 → fail ( hand-computed відомий випадок) (0.5512ms)
+✔ C15.L1: базові пари бренду проходять AA (межі пораховані вручну: 8.5 і 7.0) (0.434ms)
+✔ C15.L1: guardAA ловить навмано провальну пару і повертає violations з ratio (0.6274ms)
+✔ C15.L1: guardAA fail-closed на токені поза набором (0.5068ms)
+✔ C15.L1: previewTokenSet — preview:true, sha256 стабільний, ключі поза списком відкидаються (0.97ms)
+✔ C15.L1: resetTokenSet повертає заморожений baseline — два виклики ідентичні (0.4888ms)
+✔ C15.L1: інваріант — у модулі немає звернень до consentState (0.6542ms)
+✔ rows are well-formed and do not shadow the shared table (25.6656ms)
+✔ patterns compile, are anchored and only refer to groups they have (16.4082ms)
+✔ every pattern matches its own example and changes it (178.9345ms)
+✖ every Ukrainian string of the page markup and its modules is accounted for (623.4966ms)
+✔ a long text is never run through the patterns, and near-matches stay cheap (523.785ms)
+✔ a Ukrainian visit uses the shared shell; translation text is fetched on demand (32.2946ms)
+✔ the rules page: every Ukrainian text has an unofficial translation, loaded only on demand (57.6553ms)
+✔ translate: whole labels, assembled text, lists; a person's own text is left alone (1.6384ms)
+✔ profile deletion: the form and the code accept the same words, one per language (34.0061ms)
+✔ a choice in a list is sent by a fixed value, never by its translated label (30.0149ms)
+✔ what a person wrote is marked and is never translated, even when it equals a label (26.7598ms)
+✔ dates follow the chosen language and lists of labels are translated item by item (109.5115ms)
+✔ the coverage lists hold nothing stale, doubled or contradictory (814.116ms)
+✔ the card says who a hint is for and what a confirmation means, not the internal codes (25.4773ms)
+✔ Android Chrome offers installation only with a real pending prompt (2.9448ms)
+✔ iPhone Safari offers the share guide (0.5668ms)
+✔ iPhone Chrome is not given Safari instructions, even with a prompt (0.7719ms)
+✔ standalone suppresses both installation modes (0.5997ms)
+✔ invalid or empty user agents and missing platform return none without throwing (13.7078ms)
+✔ desktop browsers and Android without Chromium do not show the phone strip (0.5282ms)
+✔ I1: opening the journal purges expired entries before profile/session recovery, without renewing fresh data (4.963ms)
+✔ I1: the head retention boundary expires the journal even on a non-simulation page (24.8684ms)
+✔ I3: all worker installations include their new public dependencies and invalidate the prior cache (66.2242ms)
+✔ a revised agreement blocks acceptance until both approve the current revision; then the same invitation works (710.8348ms)
+✔ a withdrawn approval, a closed agreement and an expired agreement each block acceptance; declining stays possible (557.0986ms)
+✔ the server decides a race: approval withdrawn after the client check is refused as a recoverable conflict (212.8323ms)
+✔ the transport oracle mirrors the database guard for callers that bypass the client (348.4916ms)
+✔ one pending invitation per pair, and none on an expired agreement, as the database enforces (199.6241ms)
+✔ a joint project keeps each contribution and result and requires two independent current-version approvals (124.86ms)
+✔ joint projects cannot omit one participant contribution or result (2.5957ms)
+✔ client sends canonical exact message IDs and verifies a bound Unicode reply (88.0609ms)
+✔ client rejects old identical historical text before any request (2.1231ms)
+✔ client rejects forged reply binding, missing stop reason and forged receipts without fallback (18.6817ms)
+✔ full Unicode input is sent whole; client does not trim or silently truncate it (3.0521ms)
+✔ archive provenance cannot be reused with a substituted AI reply (79.9083ms)
+✔ mutual declared value comes before incomplete matches for a different give and need (1.8088ms)
+✔ verified AI provenance survives completed archive next to its exact message (9.6062ms)
+✔ archive preserves the entire accepted maximum-length user message without prefix overflow (3.2862ms)
+✔ fixture is a consented three-person reciprocal cycle without people discovery (2.8336ms)
+✔ chat preserves exact source-labelled transcript and scenario reply uses actual user context (4.8216ms)
+✔ a proposal is isolated to its chosen person, revisions reset approval, and stale approval is rejected (1.3864ms)
+✔ decline and withdrawal do not silently retain approval (1.244ms)
+✔ AI text is advisory and cannot grant approval or complete a fictional meeting (4.4504ms)
+✔ completed demo creates truthful roundtrippable archive and retains synthetic label in private social draft (20.657ms)
+✔ counterexample guard: changing the current-revision equality would allow a stale consent to complete (1.0513ms)
+✔ one explicit handoff preserves exact transcript and consumes only its own ephemeral item (33.7948ms)
+✔ malformed handoff cannot be treated as a session or remove unrelated data (0.87ms)
+✔ C10.L5: групи < k зливаються в other, >= k публікуються (3.3495ms)
+✔ C10.L5: шум детермінований — той самий seed дає те саме значення; межі [0, count + k/2] (0.7621ms)
+✔ C10.L5: публікація не розкриває окремицю — 1 людина ніколи не публікується при будь-якому seed (6.5462ms)
+✔ C10.L5: зливаюча група other теж поважає k (1.5732ms)
+✔ C10.L5: canPublish — оракул для однієї цифри (0.7029ms)
+✔ C10.L5: некоректний вхід — reason codes, не throw (0.5502ms)
+✔ I4: every REPORT_A §6.1 MUST/conditional MUST is covered in DE, UK and EN; release gaps stay explicit (9.9143ms)
+✔ I4: checklist rejects removed controller, omitted transfer basis and missing human review (1.6517ms)
+✔ expiry cleanup drops the sample even when the meeting still says accepted (6.5461ms)
+✔ navigation preserves an agreed address outside Switzerland (0.7634ms)
+✔ GEO-01: grant needs own explicit consent, an accepted in-person meeting and a participant (2.1563ms)
+✔ GEO-01: the grant names exactly one recipient with a visible window and precision (0.6279ms)
+✔ GEO-01: no forced reciprocity — A sharing never makes B visible (1.1434ms)
+✔ GEO-01: outsider isolation — a non-recipient sees nothing, not even status details (2.4418ms)
+✔ GEO-01: approximate precision coarsens the stored point and reports an honest radius (1.1543ms)
+✔ GEO-01: only the latest sample is kept (minimization) (0.6496ms)
+✔ GEO-01: window, staleness and expiry are enforced (1.208ms)
+✔ GEO-01: revocation and meeting cancellation drop the position immediately (1.4655ms)
+✔ GEO-01: static navigation works without GPS; online meetings get no map link (0.5213ms)
+✔ GEO-01: static and unconfigured Neon releases keep geolocation closed; the pure contract never captures GPS (96.9135ms)
+✔ GPS starts only after explicit persisted consent; coordinates are rounded before transport (17.8888ms)
+✔ expiry timer, hidden-tab pause, cancellation, denial and logout stop device capture (2.9469ms)
+✔ a failed authority refresh erases the peer position and cannot leave GPS running (1.0723ms)
+✔ a delayed pre-revocation refresh cannot restore old coordinates in the UI (1.0634ms)
+✔ MA4: виграш на holdout БЕЗ згоди людини не підвищується (needs_review) (11.3508ms)
+✔ MA4: згода людини БЕЗ виграшу на holdout не підвищується (rejected) (0.5629ms)
+✔ MA4: виграш на holdout ТА згода людини дають promoted (0.4808ms)
+✔ MA4: підвищення без заздалегідь зареєстрованих ворот відхиляється (4.5576ms)
+✔ MA4: журнал рішень append-only — новий масив, вхід не змінюється, поля на місці (0.9959ms)
+✔ matching: explains both directions and uses the weaker side, not an average or success probability (57.6908ms)
+✔ matching: role-order invariance on 64 combinations of consent, language, date and reciprocal value (22.7165ms)
+✔ matching: payer, founder, name, verbose instructions and private diary do not enter decisions or report (2.5776ms)
+✔ matching: comparison consent fails closed without emitting profile content or an export (0.9302ms)
+✔ matching: both approvals are needed and conflicting data never produces approval (1.1345ms)
+✔ matching: no common language, time, mode or confidentiality agreement blocks a proposal (1.7694ms)
+✔ semantic similarity cannot promote a pair rejected by hard constraints or one-way benefit (1.5182ms)
+✔ matching: stale, future, malformed and missing data abstain; no self match (5.5371ms)
+✔ matching: a one-way benefit is not promoted as a reciprocal match (1.0174ms)
+✔ matching: geographic search has separate opt-in and honours the stricter travel limit (1.8125ms)
+✔ matching: duplicate tags cannot inflate weighted coverage (1.0922ms)
+✔ algorithmic matcher: exact bilateral coverage is deterministic, explained and has no provider call (2.3595ms)
+✔ algorithmic matcher: Synera comparator exposes the bounded result only after consent and eligibility gates (0.9933ms)
+✔ business modes: paid service is a non-binding one-way candidate only with explicit buyer and supplier roles (2.1243ms)
+✔ business modes: referral stays pseudonymous and cannot infer a third-party agreement (1.6679ms)
+✔ business modes: hybrid requires every named component and any missing paid role blocks the whole case (1.6472ms)
+✔ business modes: private annotations and arbitrary mode fields cannot affect eligibility (1.0225ms)
+✔ algorithmic matcher: M06 freshness decays the effective weight and algorithmic score (0.7883ms)
+✔ algorithmic matcher: M07 limits (cohort matching) filters out excess candidates using b-matching (3.2451ms)
+✔ address state retains pending and bilateral history without enabling GPS or treating a proposal as acceptance (689.8489ms)
+✔ closed address rollout makes no private requests and preserves the existing case (191.3141ms)
+✔ explicit proposal and recipient decisions send exact reviewed IDs and original retry intent through cookie transport (875.3511ms)
+✔ implicit consent, forged fields, self-acceptance and stale selection cannot cause an address write (174.1846ms)
+✔ malformed actor-bound address history and invented agreement are rejected (252.4695ms)
+✔ response cannot promote a proposal after material, meeting or selection changes while it travels (337.3047ms)
+✔ late address replies are invalidated by logout and restore of the same or another account (209.6298ms)
+✔ the final reply cannot attest agreement after a last-moment revision or withdrawal (423.0636ms)
+✔ server denials do not create a local acceptance or hidden retry (1037.4681ms)
+✔ C10.L2: meeting card cannot be shared without bilateral consent from both parties (257.622ms)
+✔ C10.L2: either party can revoke consent and immediately block public card (6.9569ms)
+✔ C10.L2: meeting card strictly excludes terms, compensation, prices, and contacts (4.6777ms)
+✔ C10.L2: closed or revoked case blocks meeting card even with mutual consent (80.1219ms)
+✔ C06.L6: renderMeetingCardHTML generates correct HTML and handles revoked cards (27.808ms)
+✔ bilateral mode stops the legacy setter before transport or address mutation (105.8181ms)
+✔ legacy default retains its existing explicit same-origin trimmed address write (37.05ms)
+✔ lost POST response and explicit retry produce exactly one stored message (224.9907ms)
+✔ failed read after committed send reuses intent; acknowledged repeat is a new message (47.7712ms)
+✔ ordinary dashboard refresh keeps ambiguous intent in the same authenticated account (83.3889ms)
+✔ same-tab reload retries a committed unknown delivery once without storing message text (25.0135ms)
+✔ logout while retry metadata hashes cannot restore a stale intent (5.6732ms)
+✔ concurrent unknown first sends retain both reload retry UUIDs (30.497ms)
+✔ blocked or corrupt storage falls back to the existing RAM retry path (33.9265ms)
+✔ persisted metadata cannot merge a different authenticated actor (32.9979ms)
+✔ persisted metadata cannot merge the same text across meetings (48.3301ms)
+✔ untrusted retry metadata is copied without extra fields (6.0451ms)
+✔ metadata churn settles before POST instead of retrying forever (3.9432ms)
+✔ concurrent same intent collapses; different text remains a separate explicit send (176.9934ms)
+✔ authentication reset forgets pending intent (40.0945ms)
+✔ late committed acknowledgement is rejected after same-account restore (6.6101ms)
+✔ forged acknowledgement keeps the exact intent for later manual recovery (10.3204ms)
+✔ outsider and cancelled meeting cannot send, and malformed config never enables the new lane (30.4801ms)
+✔ ten identifiable synthetic bots change only with the hour and rest at night (87.7218ms)
+✔ bot meetings respond next hour, remain idempotent and never pretend every request is a match (11.0026ms)
+✔ consent cannot be accepted by default and contains no forged server timestamp (1.1718ms)
+✔ LinkedIn Profile.csv maps one owned profile, ignores private columns and rejects contacts/multiple people (3.836ms)
+✔ GPT JSON fences are parsed, import visibility is always off, archive JSON is rejected (1.9955ms)
+✔ map uses a bounded visible tile area and never invents precise real-user locations (1.2439ms)
+✔ registration fails closed without verified schema, site and explicit consent (2.3015ms)
+✔ saved session contains only refresh token, rotates on restore and is cleared after failed logout (90.7613ms)
+✔ email recovery rejects malformed hashes before network and strips client timestamps from consent writes (2.3859ms)
+✔ service worker intercepts only public shell/config; online API, query tokens and map tiles pass through (91.0379ms)
+✔ PWA manifest icons exist and public shell imports are all included in the release allowlist (1293.9968ms)
+✔ one API pack uses only ten synthetic personas, low reasoning and one attempt; malformed output never passes (11.9344ms)
+✔ SYN_CONSENT_STATE_BEFORE_USE: no top-level binding of app.mjs is declared after the startup await (17.4609ms)
+✔ SYN_CONSENT_PANEL_MARKUP: every consent id app.mjs looks up exists once in index.html, off by default, recording locked (34.9572ms)
+✔ SYN_RUN_KEEPS_GATES: run() restores each button instead of enabling every gated one (63.876ms)
+✔ SYN_CASE_ACTION_NOT_NESTED: a case button click reaches the domain action through btn() -> run() (22.5851ms)
+✔ SYN_INTRODUCTION_NEEDS_CONSENT: no code path can open the invite button without the introduction consent (17.3051ms)
+✔ SYN_CONSENT_PANEL_7: seven toggles in index.html, defaults off, recording locked, revokes instant (40.3868ms)
+✔ C02.L8: обидві реалізації дають однаковий рядок і хеш на малій фікстурі (4.739ms)
+✔ C02.L8: порядок ключів не змінює хеш (обидві реалізації) (0.6748ms)
+✔ C02.L8: зміна значення змінює хеш (обидві реалізації) (0.8242ms)
+✔ C02.L8: 10 000 згенерованих випадків — реалізації збігаються (235.1363ms)
+✔ C02.L8: некоректні аргументи повертають valid=false, не кидають (0.7755ms)
+✔ need-decay: freshly created need has score near 1.0 (3.3283ms)
+✔ need-decay: future timestamp is explicitly invalid/stale (0.4636ms)
+✔ need-decay: decaying follows exponential curve (0.5893ms)
+✔ need-decay: filterAndLimitNeeds discards stale needs and limits per-user quota (4.4376ms)
+✔ Google start requires readiness and consent before requesting or redirecting (103.3445ms)
+✔ Google start never redirects on upstream failure or an unexpected destination (19.5821ms)
+✔ first-user tour preserves a finite keyboard-safe step sequence (5.9608ms)
+✔ tour is offered once but can be replayed from its explicit control (0.7391ms)
+✔ P5: emitted ops records mask emails, phone numbers, credentials and IPs (7.1033ms)
+✔ P5: every runtime server uses the masking boundary; raw email logging mutant is rejected (52.2989ms)
+✔ C01.L6: deliverable proof state defaults to self_declared (42.6505ms)
+✔ C01.L6: only deliverable giver can supply evidence and advance to evidence_supplied (27.9736ms)
+✔ C01.L6: participant checks scope and advances to checked_with_scope (12.0653ms)
+✔ C01.L7: only recipient confirms outcome; giver cannot self-promote or accept own delivery (18.9434ms)
+✔ C01.L6/L7: material change invalidates approvals and downgrades proof states to self_declared (14.5882ms)
+✔ closed or expired case rejects proof transitions (7.2401ms)
+✔ the real downloaded plain and gzip copies are read locally with exact terms and participant history (162.957ms)
+✔ a local incomplete copy remains incomplete and never becomes a server approval (6.255ms)
+✔ recomputed envelope digests cannot hide changed material, roles or fabricated acceptance (103.076ms)
+✔ corrupt, oversized and another archive format do not yield a private outcome (17.8642ms)
+✔ P2: mocked clock purges at 30 days; reads do not renew expiry; unrelated preferences survive (64.7639ms)
+✔ P2: legacy drafts get one migration grace period; a second load cannot extend it (15.645ms)
+✔ P1: scoped inventory recognises only Synera storage and all three cache families (9.1996ms)
+✔ P1/P8: privacy language keys have exact uk/de/en symmetry and no missing values (6.7481ms)
+✔ P6: security headers cover success, HEAD, config, API errors, 404 and 405 (589.9633ms)
+✔ P2: journal mocked clock uses last activity, expires at 30 days, preserves fresh and original entries (10.4965ms)
+✔ SYN_IMPORT_CHATGPT_PARSED: reads a synthetic ChatGPT export as data into hints (17.0433ms)
+✔ SYN_IMPORT_CLAUDE_PARSED: reads a synthetic Claude export into the same hint shape (1.2934ms)
+✔ SYN_IMPORT_CHATGPT_PARSED: instructions inside the export are data, never executed (1.2046ms)
+✔ SYN_IMPORT_CHATGPT_PARSED: invalid, empty and non-object exports fail soft with warnings (1.1907ms)
+✔ SYN_IMPORT_REDACTED: strips email, phone and third-party names; blocks IBAN and API keys without echoing them (4.7918ms)
+✔ SYN_IMPORT_REDACTED: clean hints pass through unchanged with zero removals and no blocked secrets (0.7521ms)
+✔ SYN_IMPORT_MAPPED: maps high-confidence hints deterministically and passes normalizeBrief without changes (4.856ms)
+✔ SYN_IMPORT_MAPPED: pilot modes keep normalized mode_details identical to the draft (1.1661ms)
+✔ SYN_IMPORT_MAPPED: low-confidence prose and unknown values are refused, not guessed (1.1339ms)
+✔ SYN_IMPORT_MAPPED: empty input yields an empty, normalizeBrief-safe draft that needs information (1.5784ms)
+✔ profile import: consent is required before profile content is emitted (13.2254ms)
+✔ profile import: labeled text is mapped into the existing profile fields (7.9216ms)
+✔ profile import: a first-result label fills the collaboration goal instead of contaminating seeks (2.3792ms)
+✔ profile import: generic pasted profile stays in review mode (1.4275ms)
+✔ profile import: contacts and provider secrets block import before preview (0.7011ms)
+✔ profile export: JSON roundtrip uses only portable public fields and disables visibility (2.8009ms)
+✔ profile sharing: localhost is omitted and sensitive fields are rejected (3.9474ms)
+✔ profile completion: reports the four public fields users need for matchmaking (0.586ms)
+✔ profile match hint: distinguishes reciprocal, one-way and missing signal (10.9973ms)
+✔ profile match hint: Ukrainian compound words produce a reciprocal demo signal (3.6341ms)
+✔ SYN_STORE_CARRIES_MODE_DETAILS: brief v2 with mode_details round-trips byte-identically; legacy v1 stays v1 (5.1843ms)
+✔ SYN_CASE_STORE_MATCHES_SQL: store writes normalized columns and reconstructs the domain state (65.404ms)
+✔ SYN_REMOTE_STORE_SHAPE_MATCHES: Neon/Supabase inherit the store bodies and post identical field names (9.5024ms)
+✔ SYN_PORTABILITY_ROUNDTRIP_PROVEN: legacy export unchanged, v2 brief byte-identical, future field safe (1.677ms)
+✔ SYN_IMPORT_STORED: confirmed import draft round-trips through the store; rejected draft leaves it untouched (4.6495ms)
+✔ proof-state: initial state defaults to self_declared (27.9439ms)
+✔ proof-state: strictly follows valid transition graph (4.1241ms)
+✔ proof-state: material modification resets both confirmations to self_declared (0.9485ms)
+✔ iPhone without beforeinstallprompt has a reachable installation guide (16.2779ms)
+✔ installed app hides installation action (10.0941ms)
+✔ Chrome prompt is explicit and consumed once; cancellation keeps manual help (5.0304ms)
+✔ rejected native install prompt leaves usable manual instructions (6.4911ms)
+✔ service worker update never discards an in-progress draft (3.6317ms)
+✔ cache-only presentation remains usable through browser lifecycle events without install controls (31.7483ms)
+✔ the legacy exchange entrypoint keeps its explicit no-money exchange contract (6.0676ms)
+✔ an expired pair can explicitly close its reviewed case and start fresh without carrying either approval (521.6229ms)
+✔ a stale participant or outsider cannot close a newer reviewed case (169.1068ms)
+✔ real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration (14.2089ms)
+✔ closed agreement rollout also denies direct table calls before any Auth/Data request (3.4268ms)
+✔ gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding (1.5901ms)
+✔ two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text (613.9227ms)
+✔ a stale screen cannot edit or approve a revision another account already changed (182.8166ms)
+✔ CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact (163.0021ms)
+✔ existing ProfileStore save path also rejects a write-time race and preserves the newer material (98.4718ms)
+✔ existing store rejects a competing revision already committed before its read, even with the same ordinal (44.8135ms)
+✔ approval never writes material and a revision at POST is denied by the transport oracle (64.8978ms)
+✔ withdrawing affects only self; incomplete input and revoked session/consent cannot progress (233.2768ms)
+✔ PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material (496.9563ms)
+✔ the table is complete and well-formed in German and English (25.6821ms)
+✔ every Ukrainian string of the page module is a translated source (93.0996ms)
+✔ every Ukrainian string of the page markup is a translated source (4.2854ms)
+✔ messages raised by the client, the skill list and the view switcher are translated sources (85.9831ms)
+✔ Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser (1.4716ms)
+✔ placeholders are filled once; unknown text is left alone (0.844ms)
+✔ the same form gives the same terms and the same hash in every language (87.0323ms)
+✔ real editor preserves explicit paid, referral, hybrid and joint-project material (69.964ms)
+✔ a paid buyer needs no offer: one supplier deliverable still requires explicit compensation (2.5889ms)
+✔ a supplier can edit an existing one-way paid case without flipping or dropping its deliverable (2.3829ms)
+✔ five modes retain distinct material obligations: bilateral exchange and project, explicit hybrid money, and referral is not third-party consent (5.0484ms)
+✔ a joint project is a bilateral trial case: a revision clears both approvals before an invitation can be sent (540.6725ms)
+✔ local receipt must prove this exact prompt/output pair and zero provider spend (5.8301ms)
+✔ real matching preserves bilateral evidence and role order; remote profiles need no invented city (56.0748ms)
+✔ pilot business modes cross the profile bridge while legacy version-one briefs remain byte-shape compatible (2.4257ms)
+✔ brief import sanitizes unknown authority and visibility; complete profile export round-trips conditions (11.6471ms)
+✔ AI payload requires consent, omits identity and other data, and blocks secrets/contact fields (2.6683ms)
+✔ AI gate rejects invented skill evidence, malformed output, empty output and unsafe questions (1.7957ms)
+✔ local AI refuses remote origins, DNS rebinding, missing consent, identities and oversized input before inference (3.4345ms)
+✔ local AI validates before review receipt, enforces one inference at a time and stops at session cap (2.639ms)
+✔ local AI failure never retries, surfaces raw provider text or accepts a missing review receipt (31.7109ms)
+✔ calendar requires actual acceptance, uses UTC and escapes attempted calendar-property injection (19.3788ms)
+✔ online real-user writes derive ownership and whitelist profile, meeting, message and report fields (131.2701ms)
+✔ full export paginates messages beyond UI limit and fails instead of returning a partial file (27.9708ms)
+✔ registration remains closed unless both schema gates and a public HTTPS return URL are explicit (1.3988ms)
+✔ SYN_IMPORT_UI_CONFIRMED: real export flows in memory to a confirmed form profile with expected fields (12.5704ms)
+✔ SYN_IMPORT_UI_CONFIRMED: unchecking a field keeps it out of the form; a role without its mode drops with pilot details (1.8766ms)
+✔ SYN_IMPORT_UI_CONFIRMED: blocked secrets stop the import before mapping and untrusted text stays data (26.883ms)
+✔ C10.L3: UWG-розкриття входить у сам текст поширення (gate) (2.8478ms)
+✔ C10.L3: атрибуція — валідний токен свого реферового (0.614ms)
+✔ C10.L3: самореферальна ферма заборонена (1.9683ms)
+✔ C10.L3: некоректний вхід — reason codes, не throw (0.3944ms)
+✔ private card uses accepted draft and preserves Unicode and human edits without exporting private metadata (17.9063ms)
+✔ card escapes executable markup and adds no network requests or public verification claim (1.3467ms)
+✔ card rejects fabricated public/verified scope and empty content (1.5187ms)
+✔ all display languages keep an explicit private author-draft boundary (2.0852ms)
+✔ UTF-8 limit rejects oversized edits with a text error, distinct from invalid draft scope (5.7807ms)
+✔ room gate requires exact Neon and every pilot flag (5.3722ms)
+✔ transport uses only same-origin room URLs and HttpOnly-session fetch options (119.0778ms)
+✔ create validates invitees and never sends client actor identity (2.1971ms)
+✔ message and revision actions reject malformed payloads before transport (1.3918ms)
+✔ request requires an authenticated store and preserves server authorization status (2.9434ms)
+✔ requests avoid PII logging surfaces (1.9195ms)
+✔ HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible (1828.064ms)
+✔ session value preserves exact notes and exposes only same-device unverified labels (5.9206ms)
+✔ social draft requires unanimous current-revision confirmation and never publishes (9.0511ms)
+✔ a material replacement clears confirmations; a stale participant cannot restore them (1.7351ms)
+✔ one participant may revoke only their own confirmation; unilateral approval remains blocked (1.3087ms)
+✔ one-person generic sessions remain invalid (0.6643ms)
+✔ archive roundtrip retains original text, history and consent scopes exactly (2.0869ms)
+✔ archive rejects unknown fields, malformed confirmations, and structurally invalid tampering (1.6895ms)
+✔ A1: seeded conversations cover all ten existing people, triads and separate consents before meeting/result (15.1481ms)
+✔ A2: a question and a counter-offer cannot consent; two actors confirm separately, then result (43.2789ms)
+✔ A2: decline is terminal, typed time and reward are preserved, unknown text asks instead of agreeing (8.8363ms)
+✔ A3: journal has one key, exact timestamped envelope, profile recovery, filter/export/erase (5.952ms)
+✔ A3: corrupt storage is preserved, denied storage retains current session and reports failure (0.9532ms)
+✔ A1–A5: all new interface, scenario and persona keys have uk/de/en symmetry (0.8306ms)
+✔ 20 distinct labelled fictional actors; legacy bot identities remain available (2.9316ms)
+✔ paid_service: independent approvals and receiver-only accepted simulated output (114.1531ms)
+✔ exchange: independent approvals and receiver-only accepted simulated output (134.2242ms)
+✔ referral: independent approvals and receiver-only accepted simulated output (12.0101ms)
+✔ hybrid: independent approvals and receiver-only accepted simulated output (6.4286ms)
+✔ joint_project: independent approvals and receiver-only accepted simulated output (5.7581ms)
+✔ stale frame revision, outsider, and stopped session never mutate state (4.4187ms)
+✔ revising terms invalidates both approvals; refusal is available (26.8468ms)
+✔ failed validation retains complete text and previous state (3.0152ms)
+✔ C04.L4: прихована ЛЮДИНА не бачить жодного поля (8.0968ms)
+✔ C04.L4: прихована КАТЕГОРІЯ не бачить жодного поля (0.809ms)
+✔ C04.L4: неприхований глядач бачить лише дозволені аудиторією поля (C04.L3) (1.2703ms)
+✔ C04.L4: fail-closed — невідоме поле не витікає сторонньому глядачу (0.7076ms)
+✔ C04.L4: жодного сповіщення — функції чисті, ідемпотентні, без мутацій (1.1756ms)
+✔ C04.L4: add/remove не мутують вхід і ідемпотентні (1.0047ms)
+✔ C04.L4/P2: fail-closed — некоректний підпис НЕ мовчки відкидається, а повертає reason (0.7839ms)
+✔ C04.L4: порожній блок не змінює нормальну поведінку аудиторії (0.6806ms)
+✔ C04.L4: filterDiscoverable виключає профілі власників, що приховали глядача (0.9462ms)
+✔ M08: класичний випадок 2x2 дає відому стабільну пару (75.6325ms)
+✔ M08: багато-до-багатьох — ніхто не перевищує свою квоту (80.6479ms)
+✔ M08: детерміноване розв’язання нічиїх — два прогони байт-ідентичні (1.6062ms)
+✔ M08: некоректний вхід повертає valid=false з кодом причини, не кидає (0.9512ms)
+✔ M08: властивість — 1000 згенерованих випадків не мають блокуючої пари (300.4744ms)
+✔ published clean Studio URLs retrieve the original cached shell offline (342.9982ms)
+✔ query URLs and non-shell paths never read a private response from cache (349.4715ms)
+✔ connected public journey works at clean and selected-person URLs offline (235.1298ms)
+✔ reviewed decorative portraits and icons still render from their exact public cache when offline (321.6388ms)
+✔ style switcher defaults malformed or absent preference to the dark-with-gold Synera look; Atelier stays a choice (3.5443ms)
+✔ style switcher changes only the visual preference and exposes the alternate style (3.3233ms)
+✔ visual controls work when browser storage is denied and preserve an available preference (6.4861ms)
+✔ the PWA refresh caches the visual module with a new shell version (471.889ms)
+✔ the PWA cache remains public and never answers offline account writes (29.9079ms)
+✔ summit demo runs the real bilateral matcher, including a negative example (59.0292ms)
+✔ directions encode the chosen destination, with no captured origin and no country substitution (3.1979ms)
+✔ DE-CH: exactly 26 official Swiss cantons are defined with multilingual names (7.847ms)
+✔ DE-CH: validateSwissCanton validates case-insensitively and rejects invalid codes (0.4666ms)
+✔ DE-CH: getCantonInfo returns complete metadata for valid cantons and null for invalid (4.108ms)
+✔ DE-CH: formatSwissFrancs formats CHF with Swiss apostrophe thousand separators (0.7443ms)
+✔ DE-CH: getSwissVatDisclaimer returns statutory MWSTG Art. 10 educational disclaimers (0.9247ms)
+✔ M14: кращий варіант обирається частіше за 200 детермінованих спроб (18.7938ms)
+✔ M14: заблокований варіант не обирається навіть із alpha=1000 (12.707ms)
+✔ M14: той самий seed дає ідентичну послідовність виборів (5.1407ms)
+✔ M14: невідомий варіант і некоректний вхід повертають valid=false, не кидають (0.6141ms)
+✔ M14: апостеріор Beta оновлюється правильно і вхід не мутується (1.0668ms)
+✔ C11.L2: вартість дії по тарифах — hand-computed (5.1012ms)
+✔ C11.L2: gate — базовий матчинг безкоштовний, довіра ніколи не продається (1.3857ms)
+✔ C11.L2: canPerform — баланс кредитів учитувається (6.5401ms)
+✔ C11.L2: матриця повна і заморожена (1.9119ms)
+✔ three distinct local members; money parses exactly and shares conserve cents across unequal cases (5.941ms)
+✔ silence and deadline never fabricate consent; explicit no/abstention block unanimity (16.2857ms)
+✔ all current explicit yes notes are required; revised terms and withdrawn response invalidate them (1.4838ms)
+✔ round is voluntary, expiry only advises, next/pause stay under human control (1.2237ms)
+✔ facilitator uses declared contributions/tasks, exports notes with optional chat and no binding claim (2.1613ms)
+✔ a conversation whose meeting was cancelled is reported as unavailable, not as a lost session (446.0595ms)
+✔ an invitation that was cancelled or already answered is reported as unavailable, not as a lost session (129.0838ms)
+✔ a revoked session and a missing consent keep their own signals (140.0772ms)
+✔ C11.L5: взаємна опція — власник з опцією бачить лише взаємних переглядачів (7.4749ms)
+✔ C11.L5: gate — власник без опції не бачить НІКОГО (відмова від стеження) (0.5012ms)
+✔ C11.L5: останній перегляд кожного переглядача, новіші перші (58.5168ms)
+✔ C11.L5: optOut — власник миттєво сліпий (0.5057ms)
+✔ C11.L5: append-only і валідація — самоперегляд і сміття відхилені (0.8043ms)
+✔ C10.L6: k-фактор — hand-computed fixture (4.2907ms)
+✔ C10.L6: некоректний вхід — reason codes, не throw (0.6307ms)
+✔ C10.L6: час до першої пари — найраніша пара від найранішого створення (2.6422ms)
+✔ C10.L6: жодної завершеної пари — reason, не вигадані цифри (3.5124ms)
+✔ C10.L6: завершення раніше створення — неможливо (fail-closed) (0.5251ms)
+✔ C10.L6: некоректні кейси (0.4899ms)
+✔ C10.L6: публікація метрики лише при когорті >= k і запрошених >= k (зв'язка з C10.L5) (0.6918ms)
+✔ C11.L6: згода окрема від участі — без consent відповідь відхилена (gate) (3.4502ms)
+✔ C11.L6: дубль учасника неможливий; append-only (0.5961ms)
+✔ C11.L6: WTP-крива — частки по цінах; < k ціна непублічна (1.4789ms)
+✔ C11.L6: viablePrice — перша ціна з часткою >= порогу (3.5298ms)
+✔ C11.L6: некоректний вхід — reason codes, не throw (2.4172ms)
+ℹ tests 779
+ℹ suites 0
+ℹ pass 770
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 15124.3945
+
+✖ failing tests:
+
+test at web_launch\app.behavioral.test.mjs:196:1
+✖ C13.L2a: app.mjs імпортується без викидків — вся import-time DOM-обв’язка виконалась (10.7813ms)
+  AssertionError [ERR_ASSERTION]: ReferenceError: window is not defined
+      at file:///C:/sw/synera-adaptive/web_launch/app.mjs:197:1
+      at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+      at async node:internal/modules/esm/loader:633:26
+      at async file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:192:7
+  + actual - expected
+  
+  + ReferenceError: window is not defined
+  +     at file:///C:/sw/synera-adaptive/web_launch/app.mjs:197:1
+  +     at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+  +     at async node:internal/modules/esm/loader:633:26
+  +     at async file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:192:7
+  - null
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:197:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: ReferenceError: window is not defined
+        at file:///C:/sw/synera-adaptive/web_launch/app.mjs:197:1
+        at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+        at async node:internal/modules/esm/loader:633:26
+        at async file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:192:7,
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\app.behavioral.test.mjs:200:1
+✖ C13.L2a: #auth-form має submit-слухач (25.2315ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(authForm.listeners.has('submit'))
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:202:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web_launch\app.behavioral.test.mjs:206:1
+✖ C13.L2a: усі 4 data-tab кнопки мають click-слухачі (3.1319ms)
+  AssertionError [ERR_ASSERTION]: people
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:211:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web_launch\app.behavioral.test.mjs:216:1
+✖ C13.L2a: клік data-tab=people без входу показує український guard у #notice (1.5823ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - 'Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.'
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:220:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\app.behavioral.test.mjs:223:1
+✖ C13.L2a: клік data-tab=profile дозволений без входу — guard НЕ показується (1.3416ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(tabByDataset('profile').classList.contains('active'))
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:229:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web_launch\app.behavioral.test.mjs:238:1
+✖ C13.L2a: клік data-tab=settings запускає consent-sync і renderBlocks без викидів (58.3372ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  null !== 'false'
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/app.behavioral.test.mjs:248:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'false',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\graphics-assets.test.mjs:44:1
+✖ install canvases follow the dark default and all shipped icons decode at declared PNG sizes (5.401ms)
+  Error: ENOENT: no such file or directory, open 'C:\sw\synera-adaptive\android\twa-manifest.json'
+      at Object.openSync (node:fs:561:18)
+      at readFileSync (node:fs:445:35)
+      at read (file:///C:/sw/synera-adaptive/web_launch/graphics-assets.test.mjs:10:18)
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/graphics-assets.test.mjs:49:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\sw\\synera-adaptive\\android\\twa-manifest.json'
+  }
+
+test at web_launch\index-i18n.test.mjs:70:1
+✖ every Ukrainian string of the page markup and its modules is accounted for (623.4966ms)
+  AssertionError [ERR_ASSERTION]: Ukrainian module text without German and English
+  + actual - expected
+  
+  + [
+  +   'demo-device-controls.mjs:5 DEMO · вигадані персонажі',
+  +   'demo-device-controls.mjs:5 Відповіді за сценарієм · Live AI вимкнено',
+  +   'demo-device-controls.mjs:5 Чернетки залишаються на цьому пристрої. Можеш використати вигадані дані. Не дода',
+  +   'demo-device-controls.mjs:5 Завершити демо',
+  +   'demo-device-controls.mjs:5 Демо завершено. Очистити дані на цьому телефоні? Дані залишаться, доки ти сам не',
+  +   'demo-device-controls.mjs:5 Залишити дані',
+  +   'demo-device-controls.mjs:5 Участь у пілоті · паперова згода',
+  +   'legal-documents.mjs:26 Повідомлення про приватність · переклад німецької чернетки',
+  +   'legal-documents.mjs:27 Відповідальна особа й контакт',
+  +   'legal-documents.mjs:27 Synera: [ПОВНЕ ЮРИДИЧНЕ ІМ’Я / OPERATOR NAME], [ПОШТОВА АДРЕСА / ADDRESS], Швейц',
+  +   'legal-documents.mjs:28 Мета й поточні межі',
+  +   'legal-documents.mjs:28 Для повнолітніх у професійній діяльності. Зараз: безплатне демо без акаунта, пла',
+  +   'legal-documents.mjs:29 Категорії даних',
+  +   'legal-documents.mjs:29 Для майбутніх акаунтів залежно від функцій: email, Auth, ім’я, місто, Give/Need/',
+  +   'legal-documents.mjs:30 Дані на цьому пристрої',
+  +   'legal-documents.mjs:30 Чернетки, налаштування, стан вступного туру й журнал симуляції — у браузері; фай',
+  +   'legal-documents.mjs:31 Одержувачі й видимість',
+  +   'legal-documents.mjs:31 Demo-тексти не надсилаються до бази Synera. Завантаження PWA створює запити до ф',
+  +   'legal-documents.mjs:32 Країни одержувачів',
+  +   'legal-documents.mjs:32 Старий план називає Neon AWS Ohio, США; фактичний стан проєкту — NEEDS_REVIEW. Н',
+  +   'legal-documents.mjs:33 Гарантії передавання за кордон',
+  +   'legal-documents.mjs:33 [ДЛЯ КОЖНОГО ПЕРЕДАВАННЯ ВКАЗАТИ ПІДТВЕРДЖЕНУ ГАРАНТІЮ АБО ВИНЯТОК]. Art. 16–17 ',
+  +   'legal-documents.mjs:34 Дані з інших джерел',
+  +   'legal-documents.mjs:34 У демо профілі й відповіді вигадані. Для майбутніх акаунтів запрошення, повідомл',
+  +   'legal-documents.mjs:35 Автоматизовані рішення та ШІ',
+  +   'legal-documents.mjs:35 Відповіді за сценарієм; Live AI вимкнено. Підбір пропонує варіанти, не вирішує з',
+  +   'legal-documents.mjs:36 Серверні строки й видалення',
+  +   'legal-documents.mjs:36 До реальних акаунтів визначити строк/критерій кожної категорії та ручне видаленн',
+  +   'legal-documents.mjs:37 Права й запити',
+  +   'legal-documents.mjs:37 У межах закону: доступ/копія, виправлення, видалення, за умовами — перенесення й',
+  +   'legal-documents.mjs:38 Доступність, безпека й зміни',
+  +   'legal-documents.mjs:38 Це повідомлення доступне через «Твої дані» до введення тексту. Потрібні додатков',
+  +   'legal-documents.mjs:58 Умови користування · чернетка',
+  +   'legal-documents.mjs:58 Від 18 років, для професійної діяльності; демо безплатне, платежі не обробляютьс',
+  +   'legal-documents.mjs:63 Участь в одноразовій пілотній демонстрації',
+  +   'legal-documents.mjs:63 30.10.2026 · Місце: [МІСЦЕ] · Оператор: [OPERATOR NAME], [ADDRESS], [EMAIL].',
+  +   'legal-documents.mjs:63 Добровільно тестую ранню Synera на власному телефоні й можу припинити будь-коли.',
+  +   'legal-documents.mjs:63 Після демо мені запропонують локальне стирання в центрі даних лише після мого пі',
+  +   'legal-documents.mjs:63 Добровільні нотатки/контакти: видалити до [ОБОВ’ЯЗКОВА ДАТА]. Підписана згода: [',
+  +   'legal-documents.mjs:63 □ Дозволяю зберігати мій добровільний відгук до зазначеної дати.',
+  +   'legal-documents.mjs:63 □ Хочу отримати email про наступний тест до [ДАТА ВИДАЛЕННЯ].',
+  +   'legal-documents.mjs:63 Порожні клітинки означають відсутність згоди. Без цих опцій я можу переглянути д',
+  +   'legal-documents.mjs:63 Розумію добровільність тесту з вигаданими профілями. Ім’я (необов’язково): _____',
+  +   'legal-documents.mjs:63 Заповнювати лише на папері. Сторінка не має онлайн-введення чи надсилання. Друк',
+  +   'legal-documents.mjs:73 2026-09-05-pilot-3 · NEEDS_REVIEW · Archiv / Архів / Archive',
+  +   'legal-documents.mjs:81 Чернетка — до перевірки юристом · Entwurf · Draft',
+  +   'legal-documents.mjs:82 Deutsch · Українська · English',
+  +   'legal-documents.mjs:89 [ПЕРЕВІРИТИ ФОРМУ] · [ТОРГОВИЙ РЕЄСТР, ЯКЩО Є] · [UID / MWST, ЯКЩО Є] · [ТЕЛЕФОН',
+  +   'privacy-content.mjs:4 Чернетка — до перевірки юристом',
+  +   'privacy-content.mjs:5 Керуй даними цього браузера без входу. Файл експорту приватний: він може містити',
+  +   'privacy-content.mjs:6 Завантажити дані пристрою · JSON',
+  +   'privacy-content.mjs:6 Стерти дані з цього браузера',
+  +   'privacy-content.mjs:7 Стерти чернетки, налаштування, сесії Studio та офлайн-кеші Synera? Спочатку закр',
+  +   'privacy-content.mjs:8 Дані Synera з цього браузера стерто. Закрий інші вкладки й вийди з серверного ак',
+  +   'privacy-content.mjs:9 Не всі сховища доступні. Очищення або експорт неповний:',
+  +   'privacy-content.mjs:10 Браузер не дозволив цю локальну дію. Хостинг може отримувати технічні дані заван',
+  +   'privacy-content.mjs:11 Приватний JSON підготовлено.',
+  +   'privacy-content.mjs:11 Що є на цьому пристрої',
+  +   'privacy-content.mjs:12 Показані точні імена сховищ. Суфікс після двокрапки — акаунт, персонаж або адрес',
+  +   'privacy-content.mjs:13 Мова, вигляд, адаптація й підказки · до твого стирання',
+  +   'privacy-content.mjs:14 Чернетки Demo · 30 днів після останнього запису; старі без дати — 30 днів від пе',
+  +   'privacy-content.mjs:15 Лише ця вкладка · до її закриття або завершення дії; браузер може відновити вкла',
+  +   'privacy-content.mjs:16 Старий шлях Supabase · токен лише за явним «Запам’ятати», до виходу або стирання',
+  +   'privacy-content.mjs:17 Сесії Studio · 30 днів від збереження; прострочені стираються при відкритті',
+  +   'privacy-content.mjs:18 Код і статичні сторінки офлайн · до оновлення або твого стирання',
+  +   'privacy-content.mjs:19 Журнал, явно збережена чернетка профілю та стан симуляції · 30 днів від запису; ',
+  +   'privacy-content.mjs:20 Незбережена чернетка профілю, імпорт і AI-прев’ю — у пам’яті вкладки. Явне збере',
+  +   'privacy-content.mjs:21 Журнал окремого приватного LAB-сервера — поза браузером, ці кнопки його не читаю',
+  +   'privacy-content.mjs:22 Строки серверних даних',
+  +   'privacy-content.mjs:23 Профіль, повідомлення, домовленості, адреси, кімнати та згоди — доки потрібні дл',
+  +   'privacy-content.mjs:24 Постачальники й країни',
+  +   'privacy-content.mjs:25 Neon / Databricks — база й вхід. За планом: США, Ohio; фактичний регіон перевіря',
+  +   'privacy-content.mjs:26 Cloudflare — сайт, шлюз, KV і технічні дані з’єднання; глобальна мережа, зокрема',
+  +   'privacy-content.mjs:27 Пошта для кодів — спільний сервіс Neon у плані; production-постачальника ще не п',
+  +   'privacy-content.mjs:28 OpenStreetMap / Google Maps — IP і вибрана область або адреса після твого кліку;',
+  +   'privacy-content.mjs:29 Твої права',
+  +   'privacy-content.mjs:30 Можеш попросити доступ і копію, виправлення, видалення, перенесення даних або за',
+  +   'privacy-content.mjs:31 Контакт: [EMAIL]. Відповідальний: [ІМʼЯ], [АДРЕСА], Швейцарія. Реквізити з юриди',
+  +   'privacy-content.mjs:32 У коді цієї версії немає cookie для стеження чи реклами. Після входу може бути з',
+  +   'privacy-content.mjs:33 Demo-люди вигадані. Сценарії та приклади синтетичні, без даних реальних учасникі',
+  +   'privacy-content.mjs:34 Серверні дані акаунта',
+  +   'privacy-content.mjs:34 Увійди й відкрий наявний розділ «Приватність»: там доступні серверний експорт і ',
+  +   'privacy-content.mjs:35 Відкрити «Приватність» акаунта',
+  +   'privacy-content.mjs:35 Правила й контакт пілоту',
+  +   'privacy-content.mjs:35 Для експорту й стирання потрібен JavaScript. Письмовий запит можна подати операт',
+  +   'privacy-content.mjs:65 Kontakt: [EMAIL]. Verantwortlich: [ІМʼЯ], [АДРЕСА], Schweiz. Die Platzhalter des',
+  +   'privacy-content.mjs:99 Contact: [EMAIL]. Controller: [ІМʼЯ], [АДРЕСА], Switzerland. These legal-draft p'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/index-i18n.test.mjs:83:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'demo-device-controls.mjs:5 DEMO · вигадані персонажі', 'demo-device-controls.mjs:5 Відповіді за сценарієм · Live AI вимкнено', 'demo-device-controls.mjs:5 Чернетки залишаються на цьому пристрої. Можеш використати вигадані дані. Не дода', 'demo-device-controls.mjs:5 Завершити демо', 'demo-device-controls.mjs:5 Демо завершено. Очистити дані на цьому телефоні? Дані залишаться, доки ти сам не', 'demo-device-controls.mjs:5 Залишити дані', 'demo-device-controls.mjs:5 Участь у пілоті · паперова згода', 'legal-documents.mjs:26 Повідомлення про приватність · переклад німецької чернетки', 'legal-documents.mjs:27 Відповідальна особа й контакт', 'legal-documents.mjs:27 Synera: [ПОВНЕ ЮРИДИЧНЕ ІМ’Я / OPERATOR NAME], [ПОШТОВА АДРЕСА / ADDRESS], Швейц', 'legal-documents.mjs:28 Мета й поточні межі', 'legal-documents.mjs:28 Для повнолітніх у професійній діяльності. Зараз: безплатне демо без акаунта, пла', 'legal-documents.mjs:29 Категорії даних', 'legal-documents.mjs:29 Для майбутніх акаунтів залежно від функцій: email, Auth, ім’я, місто, Give/Need/', 'legal-documents.mjs:30 Дані на цьому пристрої', 'legal-documents.mjs:30 Чернетки, налаштування, стан вступного туру й журнал симуляції — у браузері; фай', 'legal-documents.mjs:31 Одержувачі й видимість', 'legal-documents.mjs:31 Demo-тексти не надсилаються до бази Synera. Завантаження PWA створює запити до ф', 'legal-documents.mjs:32 Країни одержувачів', 'legal-documents.mjs:32 Старий план називає Neon AWS Ohio, США; фактичний стан проєкту — NEEDS_REVIEW. Н', 'legal-documents.mjs:33 Гарантії передавання за кордон', 'legal-documents.mjs:33 [ДЛЯ КОЖНОГО ПЕРЕДАВАННЯ ВКАЗАТИ ПІДТВЕРДЖЕНУ ГАРАНТІЮ АБО ВИНЯТОК]. Art. 16–17 ', 'legal-documents.mjs:34 Дані з інших джерел', 'legal-documents.mjs:34 У демо профілі й відповіді вигадані. Для майбутніх акаунтів запрошення, повідомл', 'legal-documents.mjs:35 Автоматизовані рішення та ШІ', 'legal-documents.mjs:35 Відповіді за сценарієм; Live AI вимкнено. Підбір пропонує варіанти, не вирішує з', 'legal-documents.mjs:36 Серверні строки й видалення', 'legal-documents.mjs:36 До реальних акаунтів визначити строк/критерій кожної категорії та ручне видаленн', 'legal-documents.mjs:37 Права й запити', 'legal-documents.mjs:37 У межах закону: доступ/копія, виправлення, видалення, за умовами — перенесення й', 'legal-documents.mjs:38 Доступність, безпека й зміни', 'legal-documents.mjs:38 Це повідомлення доступне через «Твої дані» до введення тексту. Потрібні додатков', 'legal-documents.mjs:58 Умови користування · чернетка', 'legal-documents.mjs:58 Від 18 років, для професійної діяльності; демо безплатне, платежі не обробляютьс', 'legal-documents.mjs:63 Участь в одноразовій пілотній демонстрації', 'legal-documents.mjs:63 30.10.2026 · Місце: [МІСЦЕ] · Оператор: [OPERATOR NAME], [ADDRESS], [EMAIL].', 'legal-documents.mjs:63 Добровільно тестую ранню Synera на власному телефоні й можу припинити будь-коли.', 'legal-documents.mjs:63 Після демо мені запропонують локальне стирання в центрі даних лише після мого пі', 'legal-documents.mjs:63 Добровільні нотатки/контакти: видалити до [ОБОВ’ЯЗКОВА ДАТА]. Підписана згода: [', 'legal-documents.mjs:63 □ Дозволяю зберігати мій добровільний відгук до зазначеної дати.', 'legal-documents.mjs:63 □ Хочу отримати email про наступний тест до [ДАТА ВИДАЛЕННЯ].', 'legal-documents.mjs:63 Порожні клітинки означають відсутність згоди. Без цих опцій я можу переглянути д', 'legal-documents.mjs:63 Розумію добровільність тесту з вигаданими профілями. Ім’я (необов’язково): _____', 'legal-documents.mjs:63 Заповнювати лише на папері. Сторінка не має онлайн-введення чи надсилання. Друк', 'legal-documents.mjs:73 2026-09-05-pilot-3 · NEEDS_REVIEW · Archiv / Архів / Archive', 'legal-documents.mjs:81 Чернетка — до перевірки юристом · Entwurf · Draft', 'legal-documents.mjs:82 Deutsch · Українська · English', 'legal-documents.mjs:89 [ПЕРЕВІРИТИ ФОРМУ] · [ТОРГОВИЙ РЕЄСТР, ЯКЩО Є] · [UID / MWST, ЯКЩО Є] · [ТЕЛЕФОН', 'privacy-content.mjs:4 Чернетка — до перевірки юристом', 'privacy-content.mjs:5 Керуй даними цього браузера без входу. Файл експорту приватний: він може містити', 'privacy-content.mjs:6 Завантажити дані пристрою · JSON', 'privacy-content.mjs:6 Стерти дані з цього браузера', 'privacy-content.mjs:7 Стерти чернетки, налаштування, сесії Studio та офлайн-кеші Synera? Спочатку закр', 'privacy-content.mjs:8 Дані Synera з цього браузера стерто. Закрий інші вкладки й вийди з серверного ак', 'privacy-content.mjs:9 Не всі сховища доступні. Очищення або експорт неповний:', 'privacy-content.mjs:10 Браузер не дозволив цю локальну дію. Хостинг може отримувати технічні дані заван', 'privacy-content.mjs:11 Приватний JSON підготовлено.', 'privacy-content.mjs:11 Що є на цьому пристрої', 'privacy-content.mjs:12 Показані точні імена сховищ. Суфікс після двокрапки — акаунт, персонаж або адрес', 'privacy-content.mjs:13 Мова, вигляд, адаптація й підказки · до твого стирання', 'privacy-content.mjs:14 Чернетки Demo · 30 днів після останнього запису; старі без дати — 30 днів від пе', 'privacy-content.mjs:15 Лише ця вкладка · до її закриття або завершення дії; браузер може відновити вкла', 'privacy-content.mjs:16 Старий шлях Supabase · токен лише за явним «Запам’ятати», до виходу або стирання', 'privacy-content.mjs:17 Сесії Studio · 30 днів від збереження; прострочені стираються при відкритті', 'privacy-content.mjs:18 Код і статичні сторінки офлайн · до оновлення або твого стирання', 'privacy-content.mjs:19 Журнал, явно збережена чернетка профілю та стан симуляції · 30 днів від запису; ', 'privacy-content.mjs:20 Незбережена чернетка профілю, імпорт і AI-прев’ю — у пам’яті вкладки. Явне збере', 'privacy-content.mjs:21 Журнал окремого приватного LAB-сервера — поза браузером, ці кнопки його не читаю', 'privacy-content.mjs:22 Строки серверних даних', 'privacy-content.mjs:23 Профіль, повідомлення, домовленості, адреси, кімнати та згоди — доки потрібні дл', 'privacy-content.mjs:24 Постачальники й країни', 'privacy-content.mjs:25 Neon / Databricks — база й вхід. За планом: США, Ohio; фактичний регіон перевіря', 'privacy-content.mjs:26 Cloudflare — сайт, шлюз, KV і технічні дані з’єднання; глобальна мережа, зокрема', 'privacy-content.mjs:27 Пошта для кодів — спільний сервіс Neon у плані; production-постачальника ще не п', 'privacy-content.mjs:28 OpenStreetMap / Google Maps — IP і вибрана область або адреса після твого кліку;', 'privacy-content.mjs:29 Твої права', 'privacy-content.mjs:30 Можеш попросити доступ і копію, виправлення, видалення, перенесення даних або за', 'privacy-content.mjs:31 Контакт: [EMAIL]. Відповідальний: [ІМʼЯ], [АДРЕСА], Швейцарія. Реквізити з юриди', 'privacy-content.mjs:32 У коді цієї версії немає cookie для стеження чи реклами. Після входу може бути з', 'privacy-content.mjs:33 Demo-люди вигадані. Сценарії та приклади синтетичні, без даних реальних учасникі', 'privacy-content.mjs:34 Серверні дані акаунта', 'privacy-content.mjs:34 Увійди й відкрий наявний розділ «Приватність»: там доступні серверний експорт і ', 'privacy-content.mjs:35 Відкрити «Приватність» акаунта', 'privacy-content.mjs:35 Правила й контакт пілоту', 'privacy-content.mjs:35 Для експорту й стирання потрібен JavaScript. Письмовий запит можна подати операт', 'privacy-content.mjs:65 Kontakt: [EMAIL]. Verantwortlich: [ІМʼЯ], [АДРЕСА], Schweiz. Die Platzhalter des', 'privacy-content.mjs:99 Contact: [EMAIL]. Controller: [ІМʼЯ], [АДРЕСА], Switzerland. These legal-draft p' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

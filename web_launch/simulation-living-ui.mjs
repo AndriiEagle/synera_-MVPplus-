@@ -2,6 +2,8 @@ import { BOT_PROFILES } from './simulation-personas.mjs';
 import { livingFeed, startVisitor, visitorMessage, personaRespond, recordVisitorResult } from './simulation-living.mjs';
 import { createJournal } from './journal.mjs';
 import { COPY, copy } from './simulation-copy.mjs';
+import { mountDeviceControls, inputNotice, demoMarker, DEMO_COPY } from './demo-device-controls.mjs';
+import { privacyLinks } from './privacy-common.mjs';
 
 const $ = id => document.getElementById(id);
 let storage; try { storage = localStorage; } catch {}
@@ -32,7 +34,7 @@ function bubble(e) {
   head.append(el('strong', `${personName(e.actor).replace(' · Demo', '')} · Demo`), el('small', t(e.kind === 'message' ? 'messageKind' : e.kind === 'result' ? 'resultKind' : e.kind)));
   item.append(head, el('p', e.text)); return item;
 }
-root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera<span>· Demo</span></a><nav id="living-language"><a href="?lang=uk" lang="uk">УКР</a><a href="?lang=de" lang="de">DE</a><a href="?lang=en" lang="en">EN</a></nav></header>
+root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera<span>· Demo</span></a><nav id="living-language"><a href="?lang=uk" lang="uk">УКР</a><a href="?lang=de" lang="de">DE</a><a href="?lang=en" lang="en">EN</a></nav><details class="header-preferences"><summary>☰</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html"></a></div></details></header>
 <main class="living-main"><p class="eyebrow" id="living-eyebrow"></p><h1 id="living-title"></h1><p class="lead" id="living-lead"></p><p class="living-honest" id="living-honest"></p><p id="living-status" role="status"></p>
 <nav class="living-tabs"><button type="button" data-view="feed"></button><button type="button" data-view="join"></button><button type="button" data-view="journal"></button></nav>
 <section id="living-feed"><h2 id="feed-title"></h2><div id="living-people" class="living-people"></div><div id="feed-controls" class="living-controls"></div><p id="motion-note"></p><p id="feed-progress" role="status"></p><div id="living-threads" class="living-threads"></div></section>
@@ -40,6 +42,12 @@ root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera
 <section id="visitor-chat" hidden><h3 id="visitor-title"></h3><div id="visitor-terms" class="living-card"></div><p id="visitor-approvals" role="status"></p><ol id="visitor-messages" class="living-messages" aria-live="polite"></ol><p id="visitor-wait" role="status"></p><button type="button" id="visitor-result" hidden></button><p id="visitor-closed" hidden></p><form id="visitor-composer" class="living-composer"><div id="visitor-chips" class="living-chips"></div><label for="visitor-text" id="message-label"></label><div class="composer-row"><textarea id="visitor-text" rows="2" required></textarea><button type="submit" id="visitor-send"></button></div></form></section></section>
 <section id="living-journal" hidden><h2 id="journal-title"></h2><p id="journal-local"></p><div class="living-controls"><label><span id="filter-label"></span><select id="journal-filter"></select></label><button id="journal-export" type="button"></button><button id="journal-print" type="button"></button><button id="journal-erase" type="button" class="quiet"></button></div><p id="journal-empty"></p><ol id="journal-events" class="living-messages"></ol></section>
 <footer class="living-footer"><a href="/" id="living-home"></a> · <a href="/studio.html">Studio</a> · <a href="/triangle.html">Triangle</a><p><a href="?lab=1" id="living-lab"></a></p></footer></main>`;
+demoMarker(); privacyLinks();
+inputNotice($('visitor-card'));
+$('visitor-text').setAttribute('aria-describedby',$('visitor-card').querySelector('[data-demo-input-notice]').id);
+const controls = mountDeviceControls(root.querySelector('.living-main'));
+$('living-honest').setAttribute('data-scripted-label', '');
+root.querySelector('.header-preferences summary').setAttribute('aria-label',root.querySelector('[data-privacy-link]').textContent);
 for (const [id, key] of Object.entries({ 'living-eyebrow': 'eyebrow', 'living-title': 'title', 'living-lead': 'lead', 'living-honest': 'honest', 'feed-title': 'feed', 'who-title': 'who', 'name-label': 'name', 'offers-label': 'offers', 'seeks-label': 'seeks', 'partner-label': 'partner', 'local-note': 'local', 'visitor-start': 'start', 'message-label': 'message', 'visitor-send': 'send', 'visitor-result': 'record', 'visitor-closed': 'closed', 'journal-title': 'journal', 'journal-local': 'local', 'filter-label': 'filter', 'journal-export': 'export', 'journal-print': 'print', 'journal-erase': 'erase', 'living-home': 'home', 'living-lab': 'lab' })) $(id).textContent = t(key);
 $('visitor-text').placeholder = t('placeholder');
 $('living-language').setAttribute('aria-label', t('language'));
@@ -80,6 +88,7 @@ function nextEvent() {
   add(e.kind, e.actor, e.text, { source: 'community', thread: e.thread, seed });
   $('feed-progress').textContent = cursor === feed.length ? t('finished') : `${cursor} / ${feed.length}`;
   $('feed-next').disabled = cursor === feed.length;
+  if (cursor === feed.length) controls.querySelector('[data-demo-end]').hidden = false;
 }
 function scheduleFeed() {
   clearTimeout(feedTimer); pauseButton.textContent = t(paused ? 'play' : 'pause'); pauseButton.setAttribute('aria-pressed', String(paused));
@@ -89,6 +98,8 @@ function externalErase() {
   clearTimeout(replyTimer); session = null; paused = true; scheduleFeed(); journal = createJournal(storage);
   $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); status(t('erased'));
 }
+window.addEventListener('synera:before-device-erase', () => { clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
+window.addEventListener('synera:device-erased', externalErase);
 function autoWriteAllowed() {
   // Storage events can arrive AFTER an already queued timer. Check the key at
   // the write boundary too, so a delayed reply cannot recreate an erased journal.
@@ -134,7 +145,7 @@ $('visitor-card').addEventListener('submit', e => {
   session = startVisitor(form.elements.partner.value, profile, seed, lang); persistMessages(0); renderVisitor();
   $('visitor-chat').scrollIntoView({ block: 'start' });
 });
-$('visitor-result').addEventListener('click', () => { const count = session.messages.length; session = recordVisitorResult(session, lang); persistMessages(count); renderVisitor(); });
+$('visitor-result').addEventListener('click', () => { const count = session.messages.length; session = recordVisitorResult(session, lang); persistMessages(count); renderVisitor(); controls.querySelector('[data-demo-end]').hidden=false; });
 for (const key of ['all', 'visitor', 'profile', 'community']) { const option = el('option', t(key)); option.value = key; $('journal-filter').append(option); }
 function renderJournal() {
   const entries = journal.entries($('journal-filter').value); $('journal-empty').textContent = entries.length ? '' : t('empty');
@@ -168,7 +179,10 @@ document.addEventListener('visibilitychange', scheduleFeed);
 window.addEventListener('online', () => status()); window.addEventListener('offline', () => status());
 if (!savedSession) add('session', 'Demo', t('session'), { source: 'community', seed });
 renderVisitor(); if (session?.pendingIntent) scheduleReply(); nextEvent(); scheduleFeed(); view('feed'); status();
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('/simulation-sw.mjs', { scope: '/simulation' })
+if ('serviceWorker' in navigator) Promise.all([
+  navigator.serviceWorker.register('/sw.mjs', { type:'module', updateViaCache:'none' }),
+  navigator.serviceWorker.register('/simulation-sw.mjs', { scope: '/simulation' }),
+])
   .then(() => navigator.serviceWorker.ready).then(() => {
     // Warm optional portraits AFTER activation, so absent graphics never block the shell.
     for (const p of BOT_PROFILES) fetch(`/persona-${p.id.replace('bot-', '')}.webp`).catch(() => {});

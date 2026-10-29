@@ -12,6 +12,16 @@
     try { const value = JSON.parse(storage.getItem(META_KEY) || '{}'); return value && typeof value === 'object' && !Array.isArray(value) ? value : {}; }
     catch { return {}; }
   }
+  function purgeJournal(storage, now = Date.now()) {
+    const key = 'synera.journal.v1', raw = storage.getItem(key);
+    if (!raw) return;
+    // Preserve damaged originals for explicit export/erasure, as the journal does.
+    let rows; try { rows = JSON.parse(raw); } catch { return; }
+    if (!Array.isArray(rows) || rows.some(row => !Number.isFinite(Date.parse(row?.at)))) return;
+    const kept = rows.filter(row => now - Date.parse(row.at) < DAYS * 86400000);
+    if (kept.length === rows.length) return;
+    if (kept.length) storage.setItem(key, JSON.stringify(kept)); else storage.removeItem(key);
+  }
   function purgeLocal(storage, now = Date.now(), { adopt = false } = {}) {
     const stamps = metadata(storage), removed = [];
     for (const key of keys(storage).filter(isDraft)) {
@@ -25,11 +35,12 @@
     return removed;
   }
   const nativeSet = root.Storage?.prototype.setItem;
-  const api = root.SyneraDeviceRetention = { DAYS, META_KEY, ownsKey, ownsCache, isDraft, keys, purgeLocal, error: null };
+  const api = root.SyneraDeviceRetention = { DAYS, META_KEY, ownsKey, ownsCache, isDraft, keys, purgeLocal, purgeJournal, error: null };
   if (!nativeSet) return;
   try {
     const storage = root.localStorage;
     purgeLocal(storage);
+    purgeJournal(storage);
     root.Storage.prototype.setItem = function (key, value) {
       const result = nativeSet.call(this, key, value);
       if (this === storage && isDraft(String(key))) {

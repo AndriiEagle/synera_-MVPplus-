@@ -157,4 +157,4 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
   update();return c;
 }
 
-if(typeof document!=='undefined'&&typeof window!=='undefined')installAdaptive();
+if(typeof document!=='undefined'&&typeof window!=='undefined'&&!document.body.classList.contains('pilot-consent'))installAdaptive();

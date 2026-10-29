@@ -1,8 +1,10 @@
 // Explicit local handoff only: opening the draft alone never persists its text.
 import { createJournal } from './journal.mjs';
 import { copy } from './simulation-copy.mjs';
+import { mountDeviceControls, inputNotice } from './demo-device-controls.mjs';
 let storage; try { storage = localStorage; } catch {}
 const form = document.getElementById('profile-form');
+if (form) { inputNotice(form); mountDeviceControls(form.parentElement, { draftForm: form }); }
 function saveDraft() {
   if (!form || document.getElementById('workspace')?.hidden) return;
   const data = new FormData(form), profile = { name: String(data.get('display_name') || '').trim(), offers: String(data.get('offers') || '').trim(), seeks: String(data.get('seeks') || '').trim() };

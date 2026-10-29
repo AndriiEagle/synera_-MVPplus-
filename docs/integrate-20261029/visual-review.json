@@ -1,0 +1,126 @@
+{
+  "shots": [
+    {
+      "file": "shots/iPhone-13-home.png",
+      "size": [
+        390,
+        2713
+      ],
+      "sha256": "b4649f5923f62e33eb493582c6c10f6f4a13d5778ed4edb8b57f2514265768c7",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/iPhone-13-journal.png",
+      "size": [
+        390,
+        4087
+      ],
+      "sha256": "7e67f77972ba51a16b8d284946890257cb9be8386979ab38d6ce882bcaf92a02",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/iPhone-13-legal.png",
+      "size": [
+        390,
+        11764
+      ],
+      "sha256": "17f356534bfded2039220b13c3bcb94494168080b50823706494dcd5f8d75809",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/iPhone-13-pilot-consent.png",
+      "size": [
+        390,
+        2075
+      ],
+      "sha256": "3db08bbb410d7fad9e390a6b63c36452a4154014c03e76b11c3b6fdb3fab0e18",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/iPhone-13-privacy.png",
+      "size": [
+        390,
+        5070
+      ],
+      "sha256": "66fa13341d40772ccbb80cebd2d0d4a586c21a35fc5bdd7ea8c9defc4bcebb8d",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/iPhone-13-simulation.png",
+      "size": [
+        390,
+        3418
+      ],
+      "sha256": "3a400b260de3e86123844771211d163bfd641d4d5c00cf89cae44ea2df86d2ed",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-home.png",
+      "size": [
+        412,
+        2740
+      ],
+      "sha256": "e5c8ef2853fba8472d05a86a03067de62d9253da9ac6e1c199c7a17671689a53",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-journal.png",
+      "size": [
+        412,
+        3929
+      ],
+      "sha256": "7d7035b6b51ebfb9ce6f041ac70b4dd49adfad693a07a2bf08227f51703a9b31",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-legal.png",
+      "size": [
+        412,
+        11276
+      ],
+      "sha256": "0a978ffdbda8120c478954a3ac951ff67be3c7f5c3cc2b58741f21b0d696ce28",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-pilot-consent.png",
+      "size": [
+        412,
+        1976
+      ],
+      "sha256": "ba8dade75ed3c3bbe6115c206e44a89016f4b3ca20274e9f23cdb5de63141dff",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-privacy.png",
+      "size": [
+        412,
+        4906
+      ],
+      "sha256": "40784a4a71b7629ca884d092d0701f573f2a4e67f2e51c7ea943a7345a81f86b",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    },
+    {
+      "file": "shots/Pixel-7-simulation.png",
+      "size": [
+        412,
+        3300
+      ],
+      "sha256": "b4d24cfc616c1ea182cce3d64ed6d894d1b3bac9ff7bd641f2d0730d6eb614cc",
+      "visually_reviewed": true,
+      "engine": "Chrome Chromium device emulation, not physical Safari/Android"
+    }
+  ],
+  "print": "DE/UK/EN: one A4 page each, Chrome PDF-viewer inspection; no fields or network submission",
+  "reviewer": "Codex visual inspection plus Playwright/axe measurements; no external model review"
+}

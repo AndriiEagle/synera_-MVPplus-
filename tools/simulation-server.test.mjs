@@ -5,6 +5,26 @@ import os from 'node:os';
 import path from 'node:path';
 import { createSimulationServer } from './simulation-server.mjs';
 import { validateDecision } from './simulation-runner.mjs';
+import { createSimulation } from '../web_launch/simulation-session.mjs';
+
+test('I1: runtime restart atomically removes expired sessions, preserves fresh ones and does not renew reads', async () => {
+  const directory=await fs.mkdtemp(path.join(os.tmpdir(),'synera-simulation-'));
+  const old=createSimulation('bot-mira','2000-01-01T00:00:00.000Z'), fresh=createSimulation('bot-leo');
+  const statePath=path.join(directory,'sessions.json');
+  await fs.writeFile(statePath,JSON.stringify({'bot-mira':old,'bot-leo':fresh}));
+  let app;
+  try {
+    app=await createSimulationServer({directory});
+    assert.deepEqual(JSON.parse(await fs.readFile(statePath,'utf8')),{'bot-leo':fresh});
+    await app.close();app=null;
+    app=await createSimulationServer({directory});
+    assert.deepEqual(JSON.parse(await fs.readFile(statePath,'utf8')),{'bot-leo':fresh});
+    assert.equal(await fs.stat(statePath+'.pending').then(()=>true,()=>false),false);
+  } finally {
+    await app?.close();
+    if(path.dirname(directory)===os.tmpdir()&&path.basename(directory).startsWith('synera-simulation-'))await fs.rm(directory,{recursive:true});
+  }
+});
 
 test('private HTTP sessions reject wrong origin, forged actor, stale request and private cache', async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'synera-simulation-'));

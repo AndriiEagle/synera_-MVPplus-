@@ -3,7 +3,7 @@ export const COPY = {
   uk: {
     language: 'Мова',
     title: 'Жива симуляція', eyebrow: 'ZÜRICH · 10 ВИГАДАНИХ ЛЮДЕЙ', lead: 'Подивись, як маленька ідея стає спільною справою. Або долучись сам.',
-    honest: 'Demo · Відповіді сценарні. AI не підключено. Люди, зустрічі й результати вигадані; нічого нікому не надсилається.',
+    honest: 'Demo · Відповіді за сценарієм. Live AI вимкнено. Люди, зустрічі й результати вигадані. Чернетки — на пристрої; хостинг отримує технічні дані з’єднання.',
     home: 'На головну', feed: 'Між людьми', join: 'Долучитися', journal: 'Журнал', pause: 'Пауза', play: 'Продовжити', next: 'Наступна репліка', finished: 'Ці розмови завершено', restart: 'Новий сеанс',
     motion: 'Рух зменшено: гортай репліки у своєму темпі.', activity: 'обговорює ідею', waiting: 'скоро в розмові', writing: 'готує відповідь…',
     name: 'Як тебе називати?', offers: 'Чим можеш допомогти?', seeks: 'Яка допомога потрібна тобі?', partner: 'З ким почати?',
@@ -33,7 +33,7 @@ export const COPY = {
   de: {
     language: 'Sprache',
     title: 'Lebendige Simulation', eyebrow: 'ZÜRICH · 10 FIKTIVE MENSCHEN', lead: 'Erlebe, wie aus einer kleinen Idee Zusammenarbeit wird. Oder mach selbst mit.',
-    honest: 'Demo · Antworten folgen einem Skript. Keine KI verbunden. Menschen, Treffen und Ergebnisse sind fiktiv; nichts wird an jemanden gesendet.',
+    honest: 'Demo · Antworten folgen einem Skript. Live-KI ausgeschaltet. Menschen, Treffen und Ergebnisse sind fiktiv. Entwürfe bleiben lokal; der Hoster erhält Verbindungsdaten.',
     home: 'Zur Startseite', feed: 'Unter Menschen', join: 'Mitmachen', journal: 'Journal', pause: 'Pause', play: 'Weiter', next: 'Nächste Nachricht', finished: 'Diese Gespräche sind abgeschlossen', restart: 'Neue Sitzung',
     motion: 'Weniger Bewegung: lies die Nachrichten in deinem Tempo.', activity: 'bespricht eine Idee', waiting: 'bald im Gespräch', writing: 'bereitet eine Antwort vor…',
     name: 'Wie heisst du?', offers: 'Wobei kannst du helfen?', seeks: 'Welche Hilfe suchst du?', partner: 'Mit wem anfangen?',
@@ -62,7 +62,7 @@ export const COPY = {
   en: {
     language: 'Language',
     title: 'Living simulation', eyebrow: 'ZÜRICH · 10 FICTIONAL PEOPLE', lead: 'See a small idea become a shared project. Or join in yourself.',
-    honest: 'Demo · Replies are scripted. AI is not connected. People, meetings and results are fictional; nothing is sent to anyone.',
+    honest: 'Demo · Replies are scripted. Live AI is off. People, meetings and results are fictional. Drafts stay locally; the host receives connection metadata.',
     home: 'Home', feed: 'Between people', join: 'Join in', journal: 'Journal', pause: 'Pause', play: 'Resume', next: 'Next message', finished: 'These conversations are complete', restart: 'New session',
     motion: 'Reduced motion: read messages at your own pace.', activity: 'discussing an idea', waiting: 'joining soon', writing: 'preparing a reply…',
     name: 'What should we call you?', offers: 'What can you help with?', seeks: 'What help do you need?', partner: 'Who to start with?',

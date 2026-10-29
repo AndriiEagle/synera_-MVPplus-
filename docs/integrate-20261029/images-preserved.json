@@ -1,0 +1,147 @@
+[
+  {
+    "file": "apple-touch-icon.png",
+    "sha256": "90d7b9f5c44e6853033bf0f2fe551979401b12ce142c69cccd1153cb54572c35",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-192.png",
+    "sha256": "7a7a941171a25e5c8fd5d36f5532f4b3ab722930cc9eefde02fbd630832283b1",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-512.png",
+    "sha256": "2ee91b93a7966813d49476e6738b1dec25e17984f38341f4af7a3ceddeafc925",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-archive.svg",
+    "sha256": "933e6164724be46d3c9744918d62a51c801128ce04d5800dc7c7ed4b71571090",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-code-xml.svg",
+    "sha256": "99e02488968e093de6f7ece1fde12595359d6bb1fe4b7287cab37c1f7a50a8aa",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-handshake.svg",
+    "sha256": "06945025309e02762eaf573dc4a8c4fde30ab3239e9c3ceac6dfcc7cdc0efce8",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-map-pin.svg",
+    "sha256": "b41cbfd22c6e733b3010b13e55aea41c2ed16f0908787a30a78a02ad4a2fc204",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-megaphone.svg",
+    "sha256": "c00609e9ef73193d56f2a29440156034872acd2c2b7151a86f92eb8729383c35",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-message-circle.svg",
+    "sha256": "81f91b048fd80a1cc7daf53ab4a57d6679f85f2dac689e82305b27e7e17199cd",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "icon-pen-tool.svg",
+    "sha256": "baa1ab2ab5718b07c394a8d51a5dde21434e96a56bd6e79702588782d2c1eae8",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-felix.webp",
+    "sha256": "ea24ccbc4a6d27c282ef127d8e1ca820fbb6c3f628c894e723100e6120ee8b08",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-ines.webp",
+    "sha256": "385a1f2be04311bb33b8b758fcf2b2ac75136520cbe9a22c91157046b3f4c859",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-leo.webp",
+    "sha256": "f883429d5421061b04815392597803b2ab1f974152b899a20bc4df4532220295",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-lina.webp",
+    "sha256": "e374eed7eae764c69a8591091e018f3c79457d7934e98305a16c4eb996fe2129",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-mira.webp",
+    "sha256": "6b9b2caf30c2624b0ac101fe76a122bd2b807baad54e43bdbec18bc70640f469",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-noah.webp",
+    "sha256": "d78256b3c9e3b9322a47995bc99545c00fdaabfeb251b1c405e2afea18c1fcd7",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-nora.webp",
+    "sha256": "5f22b528ca30a13855fc7f598f9940c95d916f2b0f35cd4acec3d03205bb83a7",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-omar.webp",
+    "sha256": "5b667fc4ed392202b06da679c1425325f7dd47f800fbfdff829c8769d0453995",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-sam.webp",
+    "sha256": "05d74fa61357fce360bd427d5a9b8c45c1c92b3adf1541a98f9af745d8154773",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "persona-tessa.webp",
+    "sha256": "31fdecba9080d26201a9129953849df59bf3c313e0e8f0eb3b914dfbbc373bd7",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "portrait-leo.webp",
+    "sha256": "a3accb4a89db6e67ca069941dc63efb5ecd46ab286e035cdaad89dc0f276d22f",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "portrait-mara.webp",
+    "sha256": "947dfdb6e8346fb7fb976a08508daa10506d16db336926f6ed8df1ae9c14e455",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "portrait-noor.webp",
+    "sha256": "be525165286f44471bae3097a61a2cd17f4b0b317d4e068958b10aad6aca0309",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "premium-calendar.webp",
+    "sha256": "485f42f31919e3d85a1acc5e38d06262964043905d9dabc89c826a2627155f3f",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "premium-match.webp",
+    "sha256": "63243b6a2afcf1a1dd0bfb91bcea0210914236796969ab79d1505b32bbba6e1f",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "premium-signature.webp",
+    "sha256": "83bfde72b656adde6e0cb1faccd435fe47f9d3230a1f498c38a66af5e741aa4d",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "premium-terms.webp",
+    "sha256": "47d822c4c0b5fb88c800b495546dd2fc7e6ea9348ea83f154d43c4cae3e8c00e",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "synera-thread.webp",
+    "sha256": "fa51d05ac1e93ff6f0021a2133265d244b5dfa7f47876c00f7b0d0f6f2f3d594",
+    "matches_HEAD_with_git_worktree_filters": true
+  },
+  {
+    "file": "synera-thread@2x.webp",
+    "sha256": "ca50e35011ca6797c73820a78d625c97295ba412684db93e8778c04f3d95094a",
+    "matches_HEAD_with_git_worktree_filters": true
+  }
+]

@@ -12,3 +12,11 @@
 .privacy-centre a { text-underline-offset: .2em; }
 .privacy-centre :focus-visible { outline: 3px solid #e7c476; outline-offset: 4px; }
 .privacy-centre #privacy-status { min-height: 1.75em; }
+.demo-marker { position:sticky; top:0; z-index:40; padding:7px 16px; text-align:center; background:var(--bg,#15161d); color:var(--text,#f4f0e8); border-bottom:1px solid #8c7649; font:600 12px/1.5 system-ui,sans-serif; }
+.demo-device-controls { margin:24px auto; padding:18px; max-width:100%; border:1px solid #8c7649; border-radius:16px; }
+.demo-device-controls button { white-space:normal; overflow-wrap:anywhere; }
+.demo-input-notice { font-size:.88rem; line-height:1.6; padding:12px; border-left:2px solid #b89c61; }
+.living-header .header-preferences { margin-left:auto; }
+.living .header-preferences summary { color:#dcc59a; font-size:1.2rem; }
+.sim.living .living-tabs button[aria-pressed=true] { background:#38322b; border-color:#dcc59a; }
+@media print { .demo-marker,.demo-device-controls { display:none; } }

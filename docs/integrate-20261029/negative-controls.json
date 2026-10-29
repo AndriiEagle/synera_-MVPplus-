@@ -1,0 +1,14 @@
+{
+  "status": "PASS_MUTATION_REJECTED",
+  "kind": "local source mutation, no provider",
+  "source_sha256": "9c9ea3d627f829b9faa260a8c4e9064f2c0dfd0e9676473158d7d29652de37ed",
+  "accepted": {
+    "expiredRemoved": true,
+    "foreignPreserved": true
+  },
+  "mutant": {
+    "expiredRemoved": false,
+    "foreignPreserved": true
+  },
+  "provider_calls": 0
+}

@@ -13,11 +13,13 @@ export function renderNotice(target) {
       for (const [purpose, storage, keys] of DEVICE_GROUPS) { list.append(element('dt', c[purpose])); const row = element('dd'); row.append(element('strong', storage)); for (const key of keys) row.append(element('code', key)); list.append(row); }
       target.append(list);
     }
+    const evidence=element('p','NEEDS_REVIEW · '), source=element('a','DSG / EDÖB');
+    source.href='https://www.edoeb.admin.ch/en/duty-to-provide-information'; evidence.append(source);target.append(evidence);
   }
 }
-function privacyLinks() {
+export function privacyLinks() {
   const c = PRIVACY_COPY[code()];
-  for (const target of [document.querySelector('.header-preferences-content'), document.querySelector('footer') || document.body.appendChild(element('footer'))]) {
+  for (const target of [...document.querySelectorAll('.header-preferences-content'), ...document.querySelectorAll('footer')]) {
     if (!target || target.querySelector('[data-privacy-link]')) continue;
     const link = element('a', c.title); link.href = '/privacy.html'; link.dataset.privacyLink = ''; target.append(link);
   }

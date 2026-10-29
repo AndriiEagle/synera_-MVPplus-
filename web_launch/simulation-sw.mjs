@@ -1,4 +1,4 @@
-const CACHE = 'synera-simulation-20261020-v1';
+const CACHE = 'synera-simulation-20261029-gilbert1';
 const PORTRAITS = ['mira','leo','nora','felix','ines','sam','tessa','noah','lina','omar'].map(key => `/persona-${key}.webp`);
 const SHELL = ['/simulation.html', '/simulation.css', '/simulation-ui.mjs', '/simulation-session.mjs',
   '/simulation-living.mjs', '/simulation-copy.mjs', '/simulation-living-ui.mjs', '/simulation-living.css', '/journal.mjs',
@@ -7,8 +7,10 @@ const SHELL = ['/simulation.html', '/simulation.css', '/simulation-ui.mjs', '/si
   '/style.css', '/tokens.css', '/montserrat-400.woff2', '/montserrat-500.woff2', '/simulation.webmanifest', '/icon-192.png', '/icon-512.png'];
 // Optional graphics must not hold the installation transaction open. They are
 // cached on successful requests after activation; missing portraits use initials.
-self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
-self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
+SHELL.push('/privacy-centre.mjs','/atelier.mjs','/atelier.css','/legal-language.mjs');
+SHELL.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.css','/pilot-consent.html','/privacy.html','/privacy.css','/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/site-shell.css','/site-shell.mjs','/style-switcher.mjs','/adaptive-ui.mjs','/adaptive.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css','/legal.html','/tokens.css','/style.css','/legal-i18n.mjs','/index-i18n.mjs','/index-i18n-table.mjs','/real-journey-i18n.mjs');
+self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll([...new Set(SHELL)]))));
+self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('synera-simulation-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== self.location.origin ||

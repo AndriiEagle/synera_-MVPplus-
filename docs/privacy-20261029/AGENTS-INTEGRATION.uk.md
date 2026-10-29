@@ -1,3 +1,31 @@
+# INTEGRATE closure · 29.10.2026
+
+**CLOSED_LOCAL_WITH_LIMITS.** Обидві точки контракту застосовані в інтеграційній
+гілці `claude/synera-agents-20261029` поверх `a0e17ee`.
+
+- `simulation.html` має synchronous head retention до читання стану; публічна
+  simulation й приватний LAB мають privacy links. Центр перелічує `synera.journal.v1`;
+  30-day purge перевірено до profile/session recovery. JSON/erase охоплюють key/state,
+  скасовують відкладені writers, зберігають чужі application storage.
+- `tools/simulation-server.mjs` застосовує `purgeExpiredJournal` після validation і
+  до listener, атомарно пише очищену карту, повторює purge перед runtime persist.
+  Новий справжній restart test з expired/fresh sessions проходить, повторний старт
+  не оновлює timestamps. Queue/STOP/consent gates збережені.
+- [Фінальна квитанція](../integrate-20261029/acceptance.json): 779 Node PASS + 1
+  existing PG skip, 43 PWA/i18n PASS, 8 simulation server/runner PASS, 91 Playwright
+  PASS, header/offline/a11y exit 0; served source hashes до/після однакові.
+- Direct simulation тепер підтримує також root privacy/legal/consent navigation
+  офлайн після активації відповідних workers; їх scope не розширено.
+
+Це локальне приймання інтеграції. Браузерні кнопки не охоплюють окремий runtime
+файл, серверний акаунт/Auth, HttpOnly cookies, downloads чи інші вкладки. Production
+SQL, real accounts, фізичні телефони й legal/provider gates не закриті цим документом.
+[Повний звіт](../INTEGRATE-20261029.uk.md).
+
+---
+
+## Початковий контракт PRIVACY — збережена історія до інтеграції
+
 # Межа з agents lane: P1/P2
 
 Simulation-файли не змінені: це прямо поза дозволеною зоною PRIVACY.

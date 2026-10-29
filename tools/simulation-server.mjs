@@ -6,6 +6,7 @@ import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { PUBLIC_ASSETS } from '../web_launch/assets.mjs';
 import { securityHeaders } from '../web_launch/config.mjs';
 import { createSimulation, simulationAction, SIMULATION_PEOPLE } from '../web_launch/simulation-session.mjs';
+import { purgeExpiredJournal } from './privacy-journal-retention.mjs';
 
 const webRoot = fileURLToPath(new URL('../web_launch/', import.meta.url));
 const sameSecret = (a, b) => typeof a === 'string' && Buffer.byteLength(a) === Buffer.byteLength(b) && timingSafeEqual(Buffer.from(a), Buffer.from(b));
@@ -43,6 +44,8 @@ export async function createSimulationServer({ directory, publicOrigin = '', run
     await fs.writeFile(statePath + '.pending', JSON.stringify(next), { mode: 0o600 });
     await fs.rename(statePath + '.pending', statePath);
   };
+  const startup = purgeExpiredJournal(sessions);
+  if (startup.expired.length) { await persist(startup.sessions); sessions = startup.sessions; }
   async function session(id) {
     if (!personExists(id)) throw Error('Невідомий AI-учасник');
     return sessions[id] || createSimulation(id);
@@ -55,7 +58,7 @@ export async function createSimulationServer({ directory, publicOrigin = '', run
       const current = await session(id);
       const updated = await simulationAction(current, { ...action, actor });
       if (actor !== 'owner') updated.events.at(-1).evidence = identity.frame.evidence;
-      const next = { ...sessions, [id]: updated };
+      const next = { ...purgeExpiredJournal(sessions).sessions, [id]: updated };
       await persist(next); sessions = next;
       if (actor !== 'owner') identity.frame.used = true;
       return updated;
