@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-29",
+  "branch": "claude/synera-android-20261029",
+  "baseCommit": "ce7d629718b33229943b4423adfab0ca6fac2412",
+  "localSources": [
+    {
+      "file": "web_launch/manifest.webmanifest",
+      "sha256": "77cdc6cf98be346af9473c1090749e41437ca18c93f68536fbef6e55995eb177"
+    },
+    {
+      "file": "web_launch/icon-192.png",
+      "sha256": "9046dd1aa8ea969113df88a1c0ea247860b8bdf17c8c582d79287296e87b7a2e"
+    },
+    {
+      "file": "web_launch/icon-512.png",
+      "sha256": "387a4ff069a57080b2b4221e7bc2f249c0b5bd10db2229e115fd5116b606eed4"
+    },
+    {
+      "file": "web_launch/assets.mjs",
+      "sha256": "f8ac8210f13be17de83ae626e550cbcc7574515fe96b168b171f5b8c3d37dd95"
+    },
+    {
+      "file": "web_launch/build.mjs",
+      "sha256": "823df9af4153180d428a5a5fc981a4af0a54e9a0884248ec47cb81aa95de97ca"
+    },
+    {
+      "file": "web_launch/server.mjs",
+      "sha256": "0ac0a7c96c921417d09a15116a25edea97297d7e6481de10446d92e0da3fb6b6"
+    }
+  ],
+  "listingDraft": {
+    "path": "C:/Users/Andrii/Desktop/KI/plans/synera-lanes-20261029/deliverables/STORE-listing-and-TWA.json",
+    "sha256": "621e5f82c44ccd47353a950ce965d3d161bd407724cc793f4dbf6a0c9dc21f9a",
+    "sectionsUsed": [
+      "listing.de",
+      "listing.en",
+      "listing.uk",
+      "data_safety",
+      "content_rating",
+      "andrii_must_do",
+      "twa"
+    ]
+  },
+  "bubblewrap": {
+    "npmVersion": "1.27.0",
+    "npmMetadata": "https://registry.npmjs.org/@bubblewrap/cli/latest",
+    "gitCommit": "0eb0671985d3f28eb2567a5463999046255fa3b8",
+    "sourceChecks": [
+      {
+        "path": "packages/core/src/lib/TwaManifest.ts",
+        "sha256": "e11b74042169f4f423623670e09b9f0f6fea47c12255835bb18a5db2154f66a6",
+        "locators": [
+          "201-245 constructor: startUrl and appVersion JSON keys",
+          "290-316 validate",
+          "587-661 TwaManifestJson / SigningKeyInfo"
+        ]
+      },
+      {
+        "path": "packages/core/template_project/app/build.gradle",
+        "sha256": "8d8c2e53522217487d55a0c21d8e400c458d885086547392a1b813de716e94d9",
+        "locators": [
+          "54 compileSdkVersion 36",
+          "59 targetSdkVersion 36"
+        ]
+      },
+      {
+        "path": "packages/core/template_project/build.gradle",
+        "sha256": "d0f27b20d2c5d578508364791121a021d6866b3e0ddb20e3f8e4695ecfba0c9f",
+        "locators": [
+          "26 Android Gradle plugin 8.9.1"
+        ]
+      }
+    ],
+    "boundary": "Read-only official source comparison. Bubblewrap was not installed, loaded or executed."
+  },
+  "acceptance": {
+    "command": "node --test android/*.test.mjs",
+    "boundary": "Local template, icon and metadata checks only; not a Gradle build, device test or Play acceptance."
+  }
+}
