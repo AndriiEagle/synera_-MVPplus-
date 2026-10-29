@@ -9,6 +9,7 @@ import { NOTICE, TERMS, PILOT } from './legal-documents.mjs';
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ['Радар · Demo ↗', 'Radar · Demo ↗', 'Radar · Demo ↗'],
   ['Жива симуляція', 'Lebendige Simulation', 'Living simulation'],
   ['Відкрити живу симуляцію · Demo ↗', 'Lebendige Simulation öffnen · Demo ↗', 'Open living simulation · Demo ↗'],
   ['Зберегти чернетку в локальний журнал', 'Entwurf im lokalen Journal speichern', 'Save draft to the local journal'],

@@ -1,0 +1,6 @@
+[
+ {"id":"demo-founder-walk","date":"2026-10-30","district":"kreis4","topics":["sales","community"],"title":{"uk":"Demo · Прогулянка підприємців","de":"Demo · Spaziergang für Gründende","en":"Demo · Founder walk"}},
+ {"id":"demo-design-breakfast","date":"2026-10-31","district":"kreis5","topics":["design","research"],"title":{"uk":"Demo · Сніданок про дизайн","de":"Demo · Design-Frühstück","en":"Demo · Design breakfast"}},
+ {"id":"demo-workflow","date":"2026-10-29","district":"altstadt","topics":["automation","finance"],"title":{"uk":"Demo · Майстерня автоматизації","de":"Demo · Automatisierungswerkstatt","en":"Demo · Workflow workshop"}},
+ {"id":"demo-video","date":"2026-11-01","district":"seefeld","topics":["video","community"],"title":{"uk":"Demo · Відео й знайомства","de":"Demo · Video und Kontakte","en":"Demo · Video and connections"}}
+]

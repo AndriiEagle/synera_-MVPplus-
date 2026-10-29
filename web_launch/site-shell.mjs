@@ -24,6 +24,7 @@ async function language(code) {
   const currentRevision = ++revision;
   try { languageStorage?.setItem(KEY, code); } catch {}
   document.documentElement.lang = code;
+  for (const link of document.querySelectorAll('[data-radar-link]')) link.textContent = {uk:'Радар · Demo ↗',de:'Radar · Demo ↗',en:'Radar · Demo ↗'}[code];
   if (code !== 'uk' || overlay) {
     const [core, module] = await Promise.all([import('./real-journey-i18n.mjs'), import('./index-i18n.mjs')]);
     if (currentRevision !== revision) return;

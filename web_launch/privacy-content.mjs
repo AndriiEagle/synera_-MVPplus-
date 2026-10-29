@@ -1,6 +1,8 @@
 // Draft legal copy from the supplied launch PLAN §1. No provider contract is certified here.
 const copy = {
   uk: {
+    radarStorage: 'Радар · відкритість і приватні чернетки подій',
+    radar: 'Радар · окрема добровільна відкритість: user, until, precision, district, give, need у synera.radar.openness.v1. Район обираєш сам; GPS і точні координати не збираються. На 1 або 3 години чи до опівночі Цюриха; після строку чи вимкнення запис прибирається при наступній активній перевірці. Поки браузер закритий, він нічого не виконує. Зараз це лише локальне Demo, без передавання. synera.radar.demo-start.v1 задає сценарій десяти вигаданих людей. Чернетки подій у synera.radar.events.v1 залишаються до твого стирання; розмова й місце — у пам’яті вкладки. Експорт і стирання пристрою охоплюють ці ключі. Серверна версія лише запропонована: бачать інші відкриті учасники, відкликання через видалення; RLS і purge потребують перевірки до запуску.',
     title: 'Твої дані', draft: 'Чернетка — до перевірки юристом',
     intro: 'Керуй даними цього браузера без входу. Файл експорту приватний: він може містити тексти й старий токен входу. Зберігай його у себе.',
     download: 'Завантажити дані пристрою · JSON', erase: 'Стерти дані з цього браузера',
@@ -35,6 +37,8 @@ const copy = {
     accountLink: 'Відкрити «Приватність» акаунта', legalLink: 'Правила й контакт пілоту', noScript: 'Для експорту й стирання потрібен JavaScript. Письмовий запит можна подати оператору через сторінку правил.',
   },
   de: {
+    radarStorage: 'Radar · Offenheit und private Veranstaltungsentwürfe',
+    radar: 'Radar · separate freiwillige Offenheit: user, until, precision, district, give, need in synera.radar.openness.v1. Bezirk selbst gewählt; kein GPS, keine exakten Koordinaten. 1 oder 3 Stunden oder bis Zürcher Mitternacht; nach Ablauf oder Ausschalten beim nächsten aktiven Check entfernt. Ein geschlossener Browser führt nichts aus. Derzeit lokales Demo ohne Übermittlung. synera.radar.demo-start.v1 steuert zehn fiktive Personen. Veranstaltungsentwürfe in synera.radar.events.v1 bleiben bis zu deiner Löschung; Gespräch und Treffpunkt nur im Tab-Speicher. Geräteexport und Löschung umfassen diese Schlüssel. Serverversion nur vorgeschlagen: andere offene Mitglieder als Empfänger, Widerruf durch Löschen; RLS und Purge vor Start prüfen.',
     title: 'Deine Daten', draft: 'Entwurf — vor der juristischen Prüfung',
     intro: 'Verwalte die Daten dieses Browsers ohne Anmeldung. Der Export ist privat: Er kann Texte und ein altes Anmeldetoken enthalten. Bewahre ihn bei dir auf.',
     download: 'Gerätedaten herunterladen · JSON', erase: 'Daten aus diesem Browser löschen',
@@ -69,6 +73,8 @@ const copy = {
     accountLink: 'Privatsphäre des Kontos öffnen', legalLink: 'Regeln und Pilotkontakt', noScript: 'Export und Löschung benötigen JavaScript. Eine schriftliche Anfrage ist über den Kontakt auf der Regelseite möglich.',
   },
   en: {
+    radarStorage: 'Radar · openness and private event drafts',
+    radar: 'Radar · separate voluntary openness: user, until, precision, district, give, need in synera.radar.openness.v1. You choose a district; no GPS or exact coordinates. 1 or 3 hours or until Zurich midnight; removed after expiry or switching off at the next active check. A closed browser runs nothing. Currently local Demo only, with no transfer. synera.radar.demo-start.v1 scripts ten fictional people. Event drafts in synera.radar.events.v1 stay until you erase them; conversation and meeting place stay in tab memory. Device export and erasure cover these keys. Server version is a proposal only: other open members as recipients, revocation by deletion; RLS and purge need acceptance before launch.',
     title: 'Your data', draft: 'Draft — pending legal review',
     intro: 'Manage this browser’s data without signing in. The export is private: it may contain text and an old sign-in token. Keep it on your own device.',
     download: 'Download device data · JSON', erase: 'Erase data from this browser',
@@ -109,6 +115,7 @@ export const DEVICE_GROUPS = Object.freeze([
   ['preferences', 'localStorage', ['synera.style', 'synera.real-journey.language.v1', 'synera.adaptive.preferences.v1', 'synera.atelier.preferences.v1', 'synera.first-user-tour.v1', 'synera.install-hint.dismissed.v1']],
   ['journal', 'localStorage', ['synera.journal.v1 (at, kind, actor, text, data; profile and simulation state)']],
   ['drafts', 'localStorage', ['synera.sim.draft.v1:<actor>:<personId>', 'synera.privacy.retention.v1']],
+  ['radarStorage', 'localStorage', ['synera.radar.openness.v1', 'synera.radar.demo-start.v1', 'synera.radar.events.v1']],
   ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1']],
   ['login', 'localStorage', ['synera-session:<Supabase URL>']],
   ['studio', 'IndexedDB', ['synera-studio-v1 / sessions / <sessionId> (id, at, json)']],

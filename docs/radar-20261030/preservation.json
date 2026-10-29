@@ -1,0 +1,33 @@
+{
+  "restoredOwnGeneratedTrackedFiles": [
+    "docs/graphics2-20261029/runtime-evidence.json",
+    "docs/integrate-20261029/print/pilot-de.pdf",
+    "docs/integrate-20261029/print/pilot-en.pdf",
+    "docs/integrate-20261029/print/pilot-uk.pdf",
+    "docs/integrate-20261029/shots/Pixel-7-home.png",
+    "docs/integrate-20261029/shots/Pixel-7-journal.png",
+    "docs/integrate-20261029/shots/Pixel-7-legal.png",
+    "docs/integrate-20261029/shots/Pixel-7-pilot-consent.png",
+    "docs/integrate-20261029/shots/Pixel-7-privacy.png",
+    "docs/integrate-20261029/shots/Pixel-7-simulation.png",
+    "docs/integrate-20261029/shots/iPhone-13-journal.png",
+    "docs/integrate-20261029/shots/iPhone-13-legal.png",
+    "docs/integrate-20261029/shots/iPhone-13-pilot-consent.png",
+    "docs/integrate-20261029/shots/iPhone-13-privacy.png",
+    "docs/integrate-20261029/shots/iPhone-13-simulation.png",
+    "web_launch/a11y_audit.md",
+    "web_launch/a11y_audit_report.json",
+    "docs/agents-20261029/Pixel 7-feed.png",
+    "docs/agents-20261029/Pixel 7-join.png",
+    "docs/agents-20261029/de-320-text200.png",
+    "docs/agents-20261029/en-320-text200.png",
+    "docs/agents-20261029/iPhone 13-feed.png",
+    "docs/agents-20261029/iPhone 13-join.png",
+    "docs/agents-20261029/uk-320-text200.png",
+    "docs/privacy-20261029/shots/iphone13-legal.png",
+    "docs/privacy-20261029/shots/iphone13-privacy.png",
+    "docs/privacy-20261029/shots/pixel7-legal.png",
+    "docs/privacy-20261029/shots/pixel7-privacy.png"
+  ],
+  "preexistingUntrackedFilesPreserved": 123
+}

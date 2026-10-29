@@ -17,6 +17,7 @@ SHELL.push('/privacy.html', '/privacy.css', '/privacy-retention.mjs', '/privacy-
 SHELL.push('/persona-mira.webp','/persona-leo.webp','/persona-nora.webp','/persona-felix.webp','/persona-ines.webp','/persona-sam.webp','/persona-tessa.webp','/persona-noah.webp','/persona-lina.webp','/persona-omar.webp','/synera-thread.webp','/synera-thread@2x.webp');
 SHELL.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.css','/pilot-consent.html','/privacy.html','/privacy.css','/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/site-shell.css','/site-shell.mjs','/style-switcher.mjs','/adaptive-ui.mjs','/adaptive.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css','/legal.html','/tokens.css','/style.css');
 SHELL.push('/scenes.css','/scene-summit.webp','/scene-summit@2x.webp','/scene-studio.webp','/scene-studio@2x.webp','/scene-triangle.webp','/scene-triangle@2x.webp','/scene-real-journey.webp','/scene-real-journey@2x.webp','/scene-rooms.webp','/scene-rooms@2x.webp','/scene-simulation.webp','/scene-simulation@2x.webp','/scene-privacy.webp','/scene-privacy@2x.webp','/scene-legal.webp','/scene-legal@2x.webp','/scene-get.webp','/scene-get@2x.webp','/scene-empty.webp','/scene-empty@2x.webp');
+SHELL.push('/radar.html','/radar.css','/radar.mjs','/radar-ui.mjs','/radar-copy.mjs','/radar-events.json');
 self.addEventListener('install', event => {
   // Privacy controls share the public offline shell. CACHE is bumped by the merge owner.
   self.skipWaiting();

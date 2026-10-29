@@ -1,5 +1,7 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'radar.html': 'text/html', 'radar.css': 'text/css', 'radar.mjs': 'text/javascript',
+  'radar-ui.mjs': 'text/javascript', 'radar-copy.mjs': 'text/javascript', 'radar-events.json': 'application/json',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',

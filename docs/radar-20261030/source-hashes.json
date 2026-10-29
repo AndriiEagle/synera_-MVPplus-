@@ -1,0 +1,32 @@
+{
+  "base": "f69882f1e5e5b5085449505db0487351fc19c90b",
+  "branch": "claude/synera-radar-20261030",
+  "sha256": {
+    "web_launch/radar.html": "cd9345a190fe72b9ad876df2dc9d33d1f167632539a98b494f2084aadb7a0e30",
+    "web_launch/radar.css": "862910d7dd3e7695ddeb62df135264703161b36133d21491196140b101af49d3",
+    "web_launch/radar.mjs": "3d91d205e59392eac9f401698f4900fd887643d9d84d54b8da5ba263fd466a91",
+    "web_launch/radar-ui.mjs": "b455774e2dc9322af3d5b7030ee1f4528c18aa229b43b3eb0f857aefb889b0b9",
+    "web_launch/radar-copy.mjs": "038ea8c71e2c95ef1aa2aa4fd2ff7a97655cfd24792fadf31aaf9d95b4a1b688",
+    "web_launch/radar-events.json": "53b6984fbc1156ed339a1735a3e579ef47ba403c9f709a14e3ff67f312ac9c99",
+    "web_launch/radar.test.mjs": "06bb87c3d0b4678ddc5775a343674623da17eff6d94cf2518cb7c5abe8dbb1f6",
+    "tests/radar-e2e.spec.mjs": "9b7698f754e0f3bdb7fc80c06d8771aa39467e7132e2ac562ea385b9bfe036b2",
+    "neon/openness.migration.sql": "0598434b392e07b175ff18a3706c6a95c1d59cf015f97f1ea8d55842eb79377e",
+    "web_launch/assets.mjs": "f0136e9ca0a1c797637f231f340a0af3f3746922738578ad418b9812c67079b3",
+    "web_launch/sw.mjs": "ce957444203e315a8aff4b1bedd713182796bc3e85b19971572d29661a975167",
+    "web_launch/site-shell.mjs": "0a548ea04726074c0c686c74e6030e457170f8147a38e2eb21a79c0dc2a2e574",
+    "web_launch/index-i18n-table.mjs": "b3e6abf6e3f4ac85a7b7aeeef47f799cc9725835b7f4d230324207fe90b40ccd",
+    "web_launch/index.html": "8012e2de5677d618a554f6d73dc92e0d40cb73627b42268e74cc3229740123f4",
+    "web_launch/triangle.html": "f8e5af6e3caef5c9589eb74c11fe7204737ac78d9f128c003aff7d64b2e246d7",
+    "web_launch/privacy-content.mjs": "86bbff4ba34e28cb56a322c91c22aa8ec6d6a6618d646891a3c811c47715c9e1",
+    "web_launch/privacy-common.mjs": "eb09602bb56a377ab4bb0afe6785531bc309c08abab5450252ac630b7042f52e",
+    "docs/PRIVACY-BY-DESIGN-20261029.uk.md": "e4187b93ad7ccd7147ecdbca26e6188ae62bff68960a1e6dff45a4773a2c449d",
+    "docs/RADAR-20261030.uk.md": "3dec4cc8ff60ec841e25afb568aca4dd978ae2867b86d0f0b2b5a67311951e6f",
+    "web_launch/simulation-living-ui.mjs": "35e4dd40788be9b58776722ed4fda766dd1809ef9c1e12c75d4df2e133798565",
+    "web_launch/journal.mjs": "99afadb340821ee4dc6d843906f7c3f51efba0e08b8a38f2c6e87dcf4f5687a6",
+    "tests/simulation-living.spec.mjs": "0f302fbbe45765e7b2d9d275fe48e3d76ddd8d6209ae8387fdcd5e4fb6972ba2",
+    "docs/radar-20261030/shots/iphone13-conversation.png": "b0858416295d982c51b7642cfbd5be7228460bd5e79dcf2702d74d97edb21408",
+    "docs/radar-20261030/shots/iphone13-radar.png": "c1680d19c4cdb75cd8881eb9712a20c96ec401d71d02041454e7313456603da2",
+    "docs/radar-20261030/shots/pixel7-conversation.png": "84d5ea07a316e3f6b8057520fbfa3424130e0ab2bfa56e0fb2206ff20a5f8447",
+    "docs/radar-20261030/shots/pixel7-radar.png": "e3d27ca066217ae9b59c4776519583eb27c2a743cf4e19f65659c30ad8aa671d"
+  }
+}

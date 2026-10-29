@@ -1,0 +1,69 @@
+[
+  {
+    "check": "copy-tests",
+    "args": [
+      "node",
+      "--test",
+      "web_launch/privacy-device.test.mjs",
+      "web_launch/index-i18n.test.mjs",
+      "web_launch/radar.test.mjs"
+    ],
+    "exit": 0,
+    "tail": [
+      "✔ events require current Zurich week, matching skill and selected district or city (4.3315ms)",
+      "✔ all Radar copy, persona text and district labels have uk/de/en symmetry (3.6246ms)",
+      "ℹ tests 25",
+      "ℹ suites 0",
+      "ℹ pass 25",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 2975.9769"
+    ]
+  },
+  {
+    "check": "build-current",
+    "args": [
+      "node",
+      "neon/build.mjs",
+      "dist-neon-ci"
+    ],
+    "exit": 0,
+    "tail": [
+      "{\"directory\":\"C:\\\\sw\\\\synera-android\\\\web_launch\\\\dist-neon-ci\",\"files\":182,\"published\":false}"
+    ]
+  },
+  {
+    "check": "offline-current",
+    "args": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/offline-shell-acceptance.mjs",
+      "--candidate=web_launch/dist-neon-ci"
+    ],
+    "exit": 2,
+    "tail": [
+      "{\"variant\":\"reviewed\",\"status\":\"RUNNER_OR_ASSERTION_ERROR\",\"failed\":[],\"runnerError\":{\"name\":\"Error\",\"message\":\"browserType.launch: Failed to launch chromium because executable doesn't exist at C:\\\\Users\\\\Andrii\\\\AppData\\\\Local\\\\ms-playwright\\\\chromium-1243\\\\chrome-win64\\\\chrome.exe\"},\"out\":\"C:\\\\sw\\\\synera-android\\\\artifacts\\\\offline-shell-acceptance\\\\PASS3_REVIEWED\"}"
+    ]
+  },
+  {
+    "check": "offline-current-retry",
+    "args": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/offline-shell-acceptance.mjs",
+      "--candidate=web_launch/dist-neon-ci"
+    ],
+    "env": {
+      "SYNERA_CHROMIUM_EXECUTABLE": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+    },
+    "exit": 0,
+    "tail": [
+      "{\"variant\":\"reviewed\",\"status\":\"PASS_CACHE_ONLY_OFFLINE_STARTUP\",\"failed\":[],\"out\":\"C:\\\\sw\\\\synera-android\\\\artifacts\\\\offline-shell-acceptance\\\\PASS3_REVIEWED\"}"
+    ],
+    "supersedes": "offline-current: missing system-Chrome environment variable"
+  }
+]
