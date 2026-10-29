@@ -1,6 +1,7 @@
 import { createPersonalization, applyPersonalization } from './adaptive.mjs';
 import { PALETTES, DENSITIES, HINTS } from './adaptive-config.mjs';
 import { ADAPTIVE_ROWS } from './adaptive-i18n-table.mjs';
+import { installObservation } from './adapt-ui.mjs';
 
 // This UI owns its small translation table on every shared-shell page. It never reads form values.
 export function installAdaptive({ document:doc=document, storage, now=Date.now }={}) {
@@ -13,6 +14,8 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
     session.setItem('synera.adaptive.session-check','1');session.removeItem('synera.adaptive.session-check');
   }catch {session=null;}
   const c=createPersonalization({storage,session,root,now});
+  // Retire the legacy UI collector: all new observations have one owner/key.
+  if(c.state.adaptation.enabled)c.setAdaptation(false);
   if(!session&&c.state.adaptation.enabled)c.setAdaptation(false);
   const maps={uk:0,de:1,en:2};
   const t=source=>ADAPTIVE_ROWS.find(row=>row[0]===source)?.[maps[root.lang]??0]??source;
@@ -42,8 +45,8 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
   for(const d of DENSITIES)density.append(node('option',d.name_uk,{value:d.id}));
   density.addEventListener('change',()=>{c.choose({density:density.value});update();});
   const enlarge=node('button','Збільшити текст тут',{type:'button'}), textReset=node('button','Звичайний масштаб тексту',{type:'button'});
-  enlarge.addEventListener('click',()=>{ c.signal('enlarge'); c.choose({textScale:Math.min(2,c.state.textScale+.125)}); update(); });
-  textReset.addEventListener('click',()=>{c.choose({textScale:1});update();});
+  enlarge.addEventListener('click',()=>{ c.signal('enlarge'); c.choose({textScale:Math.min(2,c.state.textScale+.125)}); doc.dispatchEvent(new CustomEvent('synera:text-scale',{detail:{scale:c.state.textScale}})); update(); });
+  textReset.addEventListener('click',()=>{c.choose({textScale:1});doc.dispatchEvent(new CustomEvent('synera:text-scale',{detail:{scale:1}}));update();});
   sizes.append(densityLabel,enlarge,textReset);section.append(sizes);
   const undo=node('button','Повернути попереднє',{type:'button','data-adaptive-undo':''});
   undo.addEventListener('click',()=>{c.undo();update();});section.append(undo);
@@ -53,6 +56,7 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
   }
   const consent=checkbox('Дозволити підказки вигляду за моїми діями на цьому пристрої. Дані не надсилаються.',enabled=>{c.setAdaptation(enabled);closeProposal();update();},'adaptive_permission');
   consent.disabled=!session;
+  consent.closest('label').hidden=true;
   const hintToggle=checkbox('Показувати підказки',enabled=>{c.setHints(enabled);clearHint();update();});
   const help=node('button','Допомога на цьому екрані',{type:'button'}), replay=node('button','Показати підказки знову',{type:'button'});
   help.addEventListener('click',()=>{clearHint(); showHint(lastHint||'welcome',help,true);});
@@ -154,7 +158,7 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
     if(root.classList.contains('tour-active')) {clearHint();if(proposed)resolve('decline');}
     if(records.some(r=>r.attributeName==='data-synera-style'||r.attributeName==='data-synera-atelier'))applyPersonalization(root,c.state);
   }).observe(root,{attributes:true,attributeFilter:['lang','class','data-synera-style','data-synera-atelier']});
-  update();return c;
+  update();installObservation({doc,storage,personalization:c,now});return c;
 }
 
 if(typeof document!=='undefined'&&typeof window!=='undefined'&&!document.body.classList.contains('pilot-consent'))installAdaptive();

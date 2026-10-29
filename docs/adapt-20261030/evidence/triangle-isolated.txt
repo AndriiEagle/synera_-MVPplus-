@@ -1,0 +1,15 @@
+
+Running 1 test using 1 worker
+
+
+
+node : (node:36848) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:2 Zeichen:1
++ node node_modules/@playwright/test/cli.js test tests/browser-e2e.spec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:36848) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/1] tests\browser-e2e.spec.mjs:564:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns
+  1 passed (21.7s)

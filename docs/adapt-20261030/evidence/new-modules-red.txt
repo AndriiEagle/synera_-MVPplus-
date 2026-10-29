@@ -1,0 +1,60 @@
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\sw\synera-adaptive\web_launch\adapt-observer.mjs' imported from C:\sw\synera-adaptive\web_launch\adapt-observer.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)
+    at #resolve (node:internal/modules/esm/loader:673:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/sw/synera-adaptive/web_launch/adapt-observer.mjs'
+}
+
+Node.js v24.16.0
+✖ web_launch\adapt-observer.test.mjs (389.1987ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\sw\synera-adaptive\web_launch\sovereign.mjs' imported from C:\sw\synera-adaptive\web_launch\sovereign.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)
+    at #resolve (node:internal/modules/esm/loader:673:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/sw/synera-adaptive/web_launch/sovereign.mjs'
+}
+
+Node.js v24.16.0
+✖ web_launch\sovereign.test.mjs (370.8365ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 594.51
+
+✖ failing tests:
+
+test at web_launch\adapt-observer.test.mjs:1:1
+✖ web_launch\adapt-observer.test.mjs (389.1987ms)
+  'test failed'
+
+test at web_launch\sovereign.test.mjs:1:1
+✖ web_launch\sovereign.test.mjs (370.8365ms)
+  'test failed'

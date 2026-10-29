@@ -11,6 +11,9 @@ const copy = {
     downloaded: 'Приватний JSON підготовлено.', stored: 'Що є на цьому пристрої',
     inventory: 'Показані точні імена сховищ. Суфікс після двокрапки — акаунт, персонаж або адреса сервісу. Вміст не надсилається на сервер.',
     preferences: 'Мова, вигляд, адаптація й підказки · до твого стирання',
+    adaptation: 'Повільна адаптація · добровільно, до твого вимкнення або скидання',
+    adaptiveData: 'synera.adapt.v1: після окремої згоди — лічильники розділів, голос/текст, 6-годинні частини доби, масштаб, три діапазони часу до першої дії та явно вибрані мови полів. Тут же ручні вибори, одна пропозиція й прийняті зміни. Без текстів, аудіо, контактів чи маршрутів. «Більше не питати» стирає спостереження; скидання скасовує адаптації. Дані не надсилаються.',
+    balanceData: 'Рівна взаємність: локальні події внесків, прохань, перенесень, змін умов і підтверджень — для однакового огляду учасникам цієї співпраці. Без психологічних ярликів, оцінки людини чи автоматичного блокування. Огляд у пам’яті вкладки. Схожі знайомства використовують лише твій журнал, добровільні професійні теги й явно позначені корисні результати; до 30 днів від запису. Згоду можна відкликати, журнал — стерти. Автоматичного надсилання оператору немає.',
     drafts: 'Чернетки Demo · 30 днів після останнього запису; старі без дати — 30 днів від першого відкриття цієї версії',
     session: 'Лише ця вкладка · до її закриття або завершення дії; браузер може відновити вкладку',
     login: 'Старий шлях Supabase · токен лише за явним «Запам’ятати», до виходу або стирання',
@@ -45,6 +48,9 @@ const copy = {
     downloaded: 'Privater JSON-Export vorbereitet.', stored: 'Was dieses Gerät speichert',
     inventory: 'Die genauen Speichernamen sind aufgeführt. Der Zusatz nach dem Doppelpunkt bezeichnet Konto, Demo-Figur oder Dienstadresse. Die Inhalte werden nicht an den Server gesendet.',
     preferences: 'Sprache, Darstellung, Anpassung und Hinweise · bis zu deiner Löschung',
+    adaptation: 'Langsame Anpassung · freiwillig, bis zum Abschalten oder Zurücksetzen',
+    adaptiveData: 'synera.adapt.v1: nach separater Zustimmung Bereichszähler, Spracheingabe/Text, 6-Stunden-Tagesabschnitte, Zoom, drei Zeitbereiche bis zur ersten Aktion und explizit gewählte Feldsprachen. Dazu manuelle Auswahl, ein Vorschlag und angenommene Änderungen. Keine Texte, Audiodaten, Kontakte oder Routen. «Nicht mehr fragen» löscht Beobachtungen; Zurücksetzen widerruft Anpassungen. Keine Übertragung.',
+    balanceData: 'Gegenseitigkeit: lokale Ereignisse zu Beiträgen, Anfragen, Verschiebungen, Bedingungen und Bestätigungen für dieselbe Übersicht aller Beteiligten dieser Zusammenarbeit. Keine psychologischen Etiketten, Personenbewertung oder automatischen Sperren. Übersicht im Tab-Speicher. Ähnliche Kontakte verwenden nur dein Journal, freiwillige berufliche Tags und ausdrücklich als nützlich markierte Ergebnisse; bis 30 Tage nach Eintrag. Zustimmung widerrufbar, Journal löschbar. Keine automatische Meldung an den Betreiber.',
     drafts: 'Demo-Entwürfe · 30 Tage nach dem letzten Speichern; alte undatierte Entwürfe ab dem ersten Öffnen dieser Version',
     session: 'Nur dieser Tab · bis zum Schliessen oder Abschluss der Aktion; der Browser kann den Tab wiederherstellen',
     login: 'Alter Supabase-Weg · Token nur nach ausdrücklichem «Merken», bis zur Abmeldung oder Löschung',
@@ -79,6 +85,9 @@ const copy = {
     downloaded: 'Private JSON export prepared.', stored: 'What this device stores',
     inventory: 'These are exact storage names. The suffix after a colon identifies the account, Demo person or service URL. Contents are not sent to the server.',
     preferences: 'Language, appearance, adaptation and hints · until you erase them',
+    adaptation: 'Gradual adaptation · voluntary, until you turn it off or reset it',
+    adaptiveData: 'synera.adapt.v1: after separate consent, section counts, voice/text, 6-hour day parts, zoom, three time-to-first-action bands and explicitly chosen field languages. Also manual choices, one proposal and accepted changes. No text, audio, contacts or routes. “Do not ask again” erases observations; reset reverses adaptations. Nothing is transmitted.',
+    balanceData: 'Equal reciprocity: local contribution, request, deadline, term-change and confirmation events for the same view for all participants in this collaboration. No psychological labels, person ratings or automatic blocking. View in tab memory. Similar introductions use only your own journal, voluntary professional tags and explicitly marked useful results; up to 30 days after entry. Consent can be withdrawn and the journal erased. No automatic report to the operator.',
     drafts: 'Demo drafts · 30 days after the last write; old undated drafts get 30 days from the first opening of this version',
     session: 'This tab only · until it closes or the action ends; browsers may restore tabs',
     login: 'Legacy Supabase route · token only after explicit “Remember”, until sign-out or erasure',
@@ -106,6 +115,7 @@ const copy = {
 export const PRIVACY_COPY = Object.freeze(copy);
 export const languageCode = value => ['uk', 'de', 'en'].includes(value) ? value : 'uk';
 export const DEVICE_GROUPS = Object.freeze([
+  ['adaptation', 'localStorage', ['synera.adapt.v1']],
   ['preferences', 'localStorage', ['synera.style', 'synera.real-journey.language.v1', 'synera.adaptive.preferences.v1', 'synera.atelier.preferences.v1', 'synera.first-user-tour.v1', 'synera.install-hint.dismissed.v1']],
   ['journal', 'localStorage', ['synera.journal.v1 (at, kind, actor, text, data; profile and simulation state)']],
   ['drafts', 'localStorage', ['synera.sim.draft.v1:<actor>:<personId>', 'synera.privacy.retention.v1']],

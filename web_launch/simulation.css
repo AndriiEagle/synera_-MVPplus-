@@ -1,5 +1,6 @@
 .sim { color: var(--color-20352b); background: var(--color-bg); line-height: 1.55; }
 .sim [hidden] { display: none !important; }
+html[data-simulation-mode="living"] #simulation-lab { display:none; }
 .sim .sim-header { max-width: 1280px; height: auto; min-height: 80px; gap: 16px; padding: 18px 28px; }
 .sim-header #sim-install { margin-left: auto; }
 .sim .sim-main { max-width: 1280px; padding: 36px 28px 48px; }

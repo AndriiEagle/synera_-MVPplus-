@@ -1,0 +1,120 @@
+
+Running 33 tests using 2 workers
+
+
+
+node : (node:36796) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:2 Zeichen:1
++ node node_modules/@playwright/test/cli.js test tests/adapt-e2e.spec.m ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:36796) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:25168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/33] tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load
+[2/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / summit.html: scene, first action, reduced motion, no shift
+[3/33] tests\adapt-e2e.spec.mjs:21:1 › third-session consent/decline/accept/undo/reset, draft preserved, no outbound payload
+[4/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / studio.html: scene, first action, reduced motion, no shift
+[5/33] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in uk
+[6/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / studio-journey.html: scene, first action, reduced motion, no shift
+[7/33] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in de
+[8/33] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in en
+[9/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / triangle.html: scene, first action, reduced motion, no shift
+[10/33] tests\adapt-e2e.spec.mjs:64:1 › Triangle shows three-party prompts, completed local tasks and symmetric counts
+[11/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / real-journey.html: scene, first action, reduced motion, no shift
+[12/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / rooms.html: scene, first action, reduced motion, no shift
+[13/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / simulation.html: scene, first action, reduced motion, no shift
+[14/33] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow iPhone 13
+[15/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / privacy.html: scene, first action, reduced motion, no shift
+[16/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / legal.html: scene, first action, reduced motion, no shift
+  1) tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow iPhone 13 ─────────────
+
+    Error: locator.check: Clicking the checkbox did not change its state
+    Call log:
+      - waiting for locator('[data-adapt-observer] input')
+        - locator resolved to <input type="checkbox"/>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - click action done
+        - waiting for scheduled navigations to finish
+        - navigations have finished
+
+
+      82 |   await expect(page.locator('[data-adapt-observer] label')).toBeInViewport({ratio:0.95});
+      83 |   await page.screenshot({path:`docs/adapt-20261030/shots/${device.replaceAll(' ','-')}-adaptation.png`});
+    > 84 |   await page.locator('[data-adapt-observer] input').check();
+         |                                                     ^
+      85 |   expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('synera.adapt.v1')).enabled)).toBe(true);
+      86 |   await context.close();
+      87 | });
+        at C:\sw\synera-adaptive\tests\adapt-e2e.spec.mjs:84:53
+
+    Error Context: tmp\adapt-repaired\adapt-e2e-screenshots-and-no-horizontal-overflow-iPhone-13\error-context.md
+
+    Error Context: tmp\adapt-repaired\adapt-e2e-screenshots-and-no-horizontal-overflow-iPhone-13\error-context.md
+
+
+[17/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / get.html: scene, first action, reduced motion, no shift
+(node:35412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[18/33] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow Pixel 7
+[19/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / outcome-archive.html: scene, first action, reduced motion, no shift
+[20/33] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / pilot-consent.html: scene, first action, reduced motion, no shift
+[21/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / summit.html: scene, first action, reduced motion, no shift
+  2) tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow Pixel 7 ───────────────
+
+    Error: locator.check: Clicking the checkbox did not change its state
+    Call log:
+      - waiting for locator('[data-adapt-observer] input')
+        - locator resolved to <input type="checkbox"/>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - click action done
+        - waiting for scheduled navigations to finish
+        - navigations have finished
+
+
+      82 |   await expect(page.locator('[data-adapt-observer] label')).toBeInViewport({ratio:0.95});
+      83 |   await page.screenshot({path:`docs/adapt-20261030/shots/${device.replaceAll(' ','-')}-adaptation.png`});
+    > 84 |   await page.locator('[data-adapt-observer] input').check();
+         |                                                     ^
+      85 |   expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('synera.adapt.v1')).enabled)).toBe(true);
+      86 |   await context.close();
+      87 | });
+        at C:\sw\synera-adaptive\tests\adapt-e2e.spec.mjs:84:53
+
+    Error Context: tmp\adapt-repaired\adapt-e2e-screenshots-and-no-horizontal-overflow-Pixel-7\error-context.md
+
+    Error Context: tmp\adapt-repaired\adapt-e2e-screenshots-and-no-horizontal-overflow-Pixel-7\error-context.md
+
+
+[22/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / studio.html: scene, first action, reduced motion, no shift
+[23/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / studio-journey.html: scene, first action, reduced motion, no shift
+[24/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / triangle.html: scene, first action, reduced motion, no shift
+[25/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / real-journey.html: scene, first action, reduced motion, no shift
+[26/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / rooms.html: scene, first action, reduced motion, no shift
+[27/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / simulation.html: scene, first action, reduced motion, no shift
+[28/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / privacy.html: scene, first action, reduced motion, no shift
+[29/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / legal.html: scene, first action, reduced motion, no shift
+[30/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / get.html: scene, first action, reduced motion, no shift
+[31/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / outcome-archive.html: scene, first action, reduced motion, no shift
+[32/33] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / pilot-consent.html: scene, first action, reduced motion, no shift
+[33/33] tests\graphics2-e2e.spec.mjs:51:1 › all scene variants are public WebP and 1x stays under 140 KB
+  2 failed
+    tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow iPhone 13 ──────────────
+    tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow Pixel 7 ────────────────
+  31 passed (1.1m)

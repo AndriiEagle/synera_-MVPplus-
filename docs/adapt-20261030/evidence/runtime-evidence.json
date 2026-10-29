@@ -1,0 +1,463 @@
+{
+  "serverPid": 35608,
+  "serverStopped": true,
+  "pages": [
+    {
+      "device": "iphone13",
+      "page": "summit.html",
+      "scene": "summit",
+      "box": {
+        "x": 24,
+        "y": 643.84375,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 24,
+        "y": 520.546875,
+        "width": 342,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-summit@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "studio.html",
+      "scene": "studio",
+      "box": {
+        "x": 24,
+        "y": 534.890625,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 24,
+        "y": 404.890625,
+        "width": 342,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-studio@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "studio-journey.html",
+      "scene": "studio",
+      "box": {
+        "x": 24,
+        "y": 534.890625,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 24,
+        "y": 404.890625,
+        "width": 342,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-studio@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "triangle.html",
+      "scene": "triangle",
+      "box": {
+        "x": 24,
+        "y": 440.796875,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 24,
+        "y": 326.296875,
+        "width": 342,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-triangle@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "real-journey.html",
+      "scene": "real-journey",
+      "box": {
+        "x": 24,
+        "y": 884.6875,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 45,
+        "y": 687.6875,
+        "width": 229.8125,
+        "height": 46
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-real-journey@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "rooms.html",
+      "scene": "rooms",
+      "box": {
+        "x": 24,
+        "y": 962.640625,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 45,
+        "y": 707.640625,
+        "width": 179.390625,
+        "height": 46
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-rooms@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "simulation.html",
+      "scene": "simulation",
+      "box": {
+        "x": 16,
+        "y": 428.578125,
+        "width": 358,
+        "height": 238.65625
+      },
+      "action": {
+        "x": 16,
+        "y": 691.234375,
+        "width": 128.515625,
+        "height": 48
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-simulation@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "privacy.html",
+      "scene": "privacy",
+      "box": {
+        "x": 96,
+        "y": 169.6875,
+        "width": 198,
+        "height": 132
+      },
+      "action": {
+        "x": 24,
+        "y": 461.6875,
+        "width": 307.890625,
+        "height": 50
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-privacy@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "legal.html",
+      "scene": "legal",
+      "box": {
+        "x": 24,
+        "y": 192.6875,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 41,
+        "y": 546.46875,
+        "width": 184.34375,
+        "height": 52
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-legal@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "get.html",
+      "scene": "get",
+      "box": {
+        "x": 24,
+        "y": 598.015625,
+        "width": 342,
+        "height": 228
+      },
+      "action": {
+        "x": 24,
+        "y": 417.625,
+        "width": 342,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-get@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "outcome-archive.html",
+      "scene": "empty",
+      "box": {
+        "x": 51,
+        "y": 787.40625,
+        "width": 288,
+        "height": 192
+      },
+      "action": {
+        "x": 45,
+        "y": 475.40625,
+        "width": 300,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-empty@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "iphone13",
+      "page": "pilot-consent.html",
+      "scene": "legal",
+      "box": {
+        "x": 37,
+        "y": 576.546875,
+        "width": 316,
+        "height": 210.65625
+      },
+      "action": {
+        "x": 37,
+        "y": 471.65625,
+        "width": 316,
+        "height": 88.890625
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-legal@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "summit.html",
+      "scene": "summit",
+      "box": {
+        "x": 24,
+        "y": 602.640625,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 24,
+        "y": 479.34375,
+        "width": 364,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-summit@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "studio.html",
+      "scene": "studio",
+      "box": {
+        "x": 24,
+        "y": 541.546875,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 24,
+        "y": 411.546875,
+        "width": 364,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-studio@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "studio-journey.html",
+      "scene": "studio",
+      "box": {
+        "x": 24,
+        "y": 479.03125,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 24,
+        "y": 370.03125,
+        "width": 364,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-studio@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "triangle.html",
+      "scene": "triangle",
+      "box": {
+        "x": 24,
+        "y": 443.015625,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 24,
+        "y": 328.515625,
+        "width": 364,
+        "height": 58
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-triangle@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "real-journey.html",
+      "scene": "real-journey",
+      "box": {
+        "x": 24,
+        "y": 889.125,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 45,
+        "y": 692.125,
+        "width": 229.8125,
+        "height": 46
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-real-journey@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "rooms.html",
+      "scene": "rooms",
+      "box": {
+        "x": 24,
+        "y": 893.078125,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 45,
+        "y": 656.078125,
+        "width": 179.390625,
+        "height": 46
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-rooms@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "simulation.html",
+      "scene": "simulation",
+      "box": {
+        "x": 16,
+        "y": 405.53125,
+        "width": 380,
+        "height": 253.328125
+      },
+      "action": {
+        "x": 16,
+        "y": 682.859375,
+        "width": 135.859375,
+        "height": 48
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-simulation@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "privacy.html",
+      "scene": "privacy",
+      "box": {
+        "x": 107,
+        "y": 169.6875,
+        "width": 198,
+        "height": 132
+      },
+      "action": {
+        "x": 24,
+        "y": 433.6875,
+        "width": 307.890625,
+        "height": 50
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-privacy@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "legal.html",
+      "scene": "legal",
+      "box": {
+        "x": 24,
+        "y": 192.6875,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 41.46875,
+        "y": 561.59375,
+        "width": 184.34375,
+        "height": 52
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-legal@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "get.html",
+      "scene": "get",
+      "box": {
+        "x": 24,
+        "y": 602.703125,
+        "width": 364,
+        "height": 242.65625
+      },
+      "action": {
+        "x": 24,
+        "y": 422.3125,
+        "width": 364,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-get@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "outcome-archive.html",
+      "scene": "empty",
+      "box": {
+        "x": 62,
+        "y": 742.84375,
+        "width": 288,
+        "height": 192
+      },
+      "action": {
+        "x": 45,
+        "y": 451.84375,
+        "width": 322,
+        "height": 62
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-empty@2x.webp",
+      "pageErrors": []
+    },
+    {
+      "device": "pixel7",
+      "page": "pilot-consent.html",
+      "scene": "legal",
+      "box": {
+        "x": 37.46875,
+        "y": 556.71875,
+        "width": 337.0625,
+        "height": 224.703125
+      },
+      "action": {
+        "x": 37.46875,
+        "y": 472.125,
+        "width": 337.0625,
+        "height": 68.59375
+      },
+      "currentSrc": "http://127.0.0.1:50802/scene-legal@2x.webp",
+      "pageErrors": []
+    }
+  ],
+  "pending": []
+}

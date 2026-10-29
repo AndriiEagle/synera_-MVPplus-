@@ -1,0 +1,22 @@
+
+Running 8 tests using 1 worker
+
+
+node : (node:30572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:3 Zeichen:1
++ node node_modules/@playwright/test/cli.js test tests/adapt-e2e.spec.m ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:30572) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/8] tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load
+[2/8] tests\adapt-e2e.spec.mjs:21:1 › third-session consent/decline/accept/undo/reset, draft preserved, no outbound payload
+[3/8] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in uk
+[4/8] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in de
+[5/8] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in en
+[6/8] tests\adapt-e2e.spec.mjs:64:1 › Triangle shows three-party prompts, completed local tasks and symmetric counts
+[7/8] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow iPhone 13
+[8/8] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow Pixel 7
+  8 passed (45.4s)

@@ -1,0 +1,41 @@
+✖ opt-in, coarse allowlisted signals, third real session, one suggestion, reload continuity (22.0961ms)
+✔ manual choices survive undo/reset, no/stop persist, revocation erases observations (26.5121ms)
+✔ decline and never ask cannot be reversed by reload, denied storage and reset do not crash (2.6139ms)
+✔ other-tab erasure cannot be resurrected by queued observer writes (27.8735ms)
+✔ another tab revoking consent or choosing manually wins over queued old-tab writes (15.352ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 931.1216
+
+✖ failing tests:
+
+test at tmp\adapt-mutation\adapt-observer.test.mjs:5:1
+✖ opt-in, coarse allowlisted signals, third real session, one suggestion, reload continuity (22.0961ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   id: 'adapt-2-voiceFirst',
+  +   key: 'voiceFirst',
+  +   previous: null,
+  +   value: true
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/tmp/adapt-mutation/adapt-observer.test.mjs:14:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { id: 'adapt-2-voiceFirst', key: 'voiceFirst', value: true, previous: null },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

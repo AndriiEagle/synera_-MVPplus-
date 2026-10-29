@@ -1,0 +1,1 @@
+PASS: disposable mutation rejected (exit 1); original source unchanged; tmp/adapt-mutation/red.txt

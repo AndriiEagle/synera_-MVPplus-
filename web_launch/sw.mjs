@@ -12,6 +12,8 @@ SHELL.push('/case-material-budget.mjs');
 SHELL.push('/install-hint.mjs');
 SHELL.push('/simulation.html','/simulation.css','/simulation-ui.mjs','/simulation-session.mjs','/simulation-personas.mjs','/simulation-living.mjs','/simulation-copy.mjs','/simulation-living-ui.mjs','/simulation-living.css','/simulation-entry.mjs','/journal.mjs','/simulation.webmanifest');
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
+SHELL.push('/adapt-copy.mjs','/adapt-observer.mjs','/adapt-ui.mjs','/sovereign.mjs','/sovereign-ui.mjs','/balance.mjs','/journal-matching.mjs','/adapt-demo.mjs');
+SHELL.push('/simulation-mode.mjs');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 SHELL.push('/privacy.html', '/privacy.css', '/privacy-retention.mjs', '/privacy-content.mjs', '/privacy-device.mjs', '/privacy-common.mjs', '/privacy-centre.mjs', '/ops-log.mjs');
 SHELL.push('/persona-mira.webp','/persona-leo.webp','/persona-nora.webp','/persona-felix.webp','/persona-ines.webp','/persona-sam.webp','/persona-tessa.webp','/persona-noah.webp','/persona-lina.webp','/persona-omar.webp','/synera-thread.webp','/synera-thread@2x.webp');

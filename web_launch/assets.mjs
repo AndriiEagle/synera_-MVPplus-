@@ -1,5 +1,9 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'adapt-copy.mjs':'text/javascript', 'adapt-observer.mjs':'text/javascript', 'adapt-ui.mjs':'text/javascript',
+  'sovereign.mjs':'text/javascript', 'sovereign-ui.mjs':'text/javascript', 'balance.mjs':'text/javascript',
+  'journal-matching.mjs':'text/javascript', 'adapt-demo.mjs':'text/javascript',
+  'simulation-mode.mjs':'text/javascript',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',

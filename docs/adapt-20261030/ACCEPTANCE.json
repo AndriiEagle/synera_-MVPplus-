@@ -1,0 +1,78 @@
+{
+  "status": "READY_FOR_OWNER_REVIEW_WITH_LIMITS",
+  "at": "2026-10-29T23:21:15.065Z",
+  "base": "f69882f1e5e5b5085449505db0487351fc19c90b",
+  "source_manifest_sha256": "512a63b2c01a806810ebf8bb0023a3a0874c4e7e4fb4d99010ed81d3b5a3305f",
+  "node": {
+    "total": 795,
+    "passed": 794,
+    "failed": 0,
+    "skipped": 1,
+    "skip": "existing disposable PostgreSQL acceptance unavailable"
+  },
+  "pwa_i18n_tools": {
+    "passed": 51
+  },
+  "python": {
+    "passed": 3
+  },
+  "playwright": {
+    "cases": 124,
+    "fullRunPassed": 123,
+    "fullRunFailed": 1,
+    "fullRunFailure": "Triangle screenshot exceeded 30-second test timeout",
+    "isolatedTrianglePassed": 1,
+    "adaptFinal": 8
+  },
+  "header": {
+    "cases": 12,
+    "status": "PASS"
+  },
+  "offline": {
+    "status": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+    "release_sha256": "0f9d1fe001ada16d32d16518b53f0e6322c0157a77f03f4dfbdfbda5b4a24800"
+  },
+  "buildFiles": 185,
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "owner_approval": false,
+  "stabilizer_run": "NOT_SELECTED",
+  "limits": [
+    "local Chromium emulation, not physical phones or Safari",
+    "live voice seam needs VOICE integration",
+    "no live two-account delivery",
+    "operator path prepares no automatic send",
+    "no commit, push, merge or deploy"
+  ],
+  "screenshots": [
+    {
+      "file": "iPhone-13-adaptation.png",
+      "width": 1170,
+      "height": 1992,
+      "sha256": "4fe3ec50c00ff4796ecabcf5d3a4d2b74f3b922f884d25298119d533f4bd35bb",
+      "inspection": "manually viewed"
+    },
+    {
+      "file": "iPhone-13-balance.png",
+      "width": 1170,
+      "height": 1992,
+      "sha256": "11c025b06a4b082ba125b0e5f08d900df26276dd40dc92fc7137964674469630",
+      "inspection": "manually viewed"
+    },
+    {
+      "file": "Pixel-7-adaptation.png",
+      "width": 1082,
+      "height": 2202,
+      "sha256": "b5fb017050615e4bd2c6fc9a3b4fb738ebe111c6bcc51fcc7277cf967c469dbd",
+      "inspection": "manually viewed"
+    },
+    {
+      "file": "Pixel-7-balance.png",
+      "width": 1082,
+      "height": 2202,
+      "sha256": "66c461a22a6bfa2e1b7da9ccb8bf435f190ea2710736a4e1fc909e0aab23588e",
+      "inspection": "manually viewed"
+    }
+  ],
+  "browserNote": "Full run: 123 PASS and one Triangle screenshot timeout after behavioral assertions and axe. Same unchanged test: isolated PASS in 21.7 s. No timeout increase, skip or weakened assertion."
+}
