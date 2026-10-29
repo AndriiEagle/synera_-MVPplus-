@@ -1,0 +1,85 @@
+2026-10-29T15:50:21.283Z pw:api => browserType.launch started
+2026-10-29T15:50:22.025Z pw:api <= browserType.launch succeeded
+2026-10-29T15:50:22.028Z pw:api => browser.newContext started
+2026-10-29T15:50:22.109Z pw:api <= browser.newContext succeeded
+
+=== Auditing index.html ===
+2026-10-29T15:50:22.111Z pw:api => browserContext.newPage started
+2026-10-29T15:50:22.542Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:22.565Z pw:api => page.goto started
+2026-10-29T15:50:22.567Z pw:api navigating to "file:///C:/sw/synera-design/web_launch/index.html", waiting until "networkidle"
+2026-10-29T15:50:22.691Z pw:api   "commit" event fired
+2026-10-29T15:50:22.692Z pw:api   navigated to "file:///C:/sw/synera-design/web_launch/index.html"
+2026-10-29T15:50:22.738Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:22.738Z pw:api   "load" event fired
+2026-10-29T15:50:23.440Z pw:api   "networkidle" event fired
+2026-10-29T15:50:23.441Z pw:api <= page.goto succeeded
+2026-10-29T15:50:23.443Z pw:api => page.evaluate started
+2026-10-29T15:50:23.901Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:23.902Z pw:api => page.evaluate started
+2026-10-29T15:50:23.907Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:23.907Z pw:api => frame.evaluate started
+2026-10-29T15:50:23.930Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:23.931Z pw:api => frame.evaluate started
+2026-10-29T15:50:24.669Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:24.675Z pw:api => browserContext.newPage started
+2026-10-29T15:50:25.178Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:25.179Z pw:api => page.evaluate started
+2026-10-29T15:50:25.563Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:25.564Z pw:api => page.evaluate started
+2026-10-29T15:50:25.567Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:25.567Z pw:api => page.evaluate started
+2026-10-29T15:50:25.571Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:25.576Z pw:api => page.evaluate started
+2026-10-29T15:50:25.599Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:25.600Z pw:api => page.evaluate started
+2026-10-29T15:50:25.780Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:25.787Z pw:api => page.close started
+2026-10-29T15:50:25.819Z pw:api <= page.close succeeded
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 45, Incomplete: 0
+2026-10-29T15:50:25.820Z pw:api => page.close started
+2026-10-29T15:50:25.840Z pw:api <= page.close succeeded
+
+=== Auditing catalogue.html ===
+2026-10-29T15:50:25.841Z pw:api => browserContext.newPage started
+2026-10-29T15:50:26.078Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:26.079Z pw:api => page.goto started
+2026-10-29T15:50:26.079Z pw:api navigating to "file:///C:/sw/synera-design/web_launch/catalogue.html", waiting until "networkidle"
+2026-10-29T15:50:26.116Z pw:api   "commit" event fired
+2026-10-29T15:50:26.116Z pw:api   navigated to "file:///C:/sw/synera-design/web_launch/catalogue.html"
+2026-10-29T15:50:26.136Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:26.633Z pw:api   "networkidle" event fired
+2026-10-29T15:50:26.634Z pw:api <= page.goto succeeded
+2026-10-29T15:50:26.634Z pw:api => page.evaluate started
+2026-10-29T15:50:26.706Z pw:api   "load" event fired
+2026-10-29T15:50:27.168Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:27.168Z pw:api => page.evaluate started
+2026-10-29T15:50:27.286Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:27.286Z pw:api => frame.evaluate started
+2026-10-29T15:50:27.348Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:27.348Z pw:api => frame.evaluate started
+2026-10-29T15:50:30.037Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:30.079Z pw:api => browserContext.newPage started
+2026-10-29T15:50:30.165Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:30.166Z pw:api => page.evaluate started
+2026-10-29T15:50:30.594Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:30.594Z pw:api => page.evaluate started
+2026-10-29T15:50:30.597Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:30.597Z pw:api => page.evaluate started
+2026-10-29T15:50:30.601Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:30.621Z pw:api => page.evaluate started
+2026-10-29T15:50:30.814Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:30.814Z pw:api => page.evaluate started
+2026-10-29T15:50:31.549Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:31.560Z pw:api => page.close started
+2026-10-29T15:50:31.592Z pw:api <= page.close succeeded
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 43, Incomplete: 1
+2026-10-29T15:50:31.593Z pw:api => page.close started
+2026-10-29T15:50:31.609Z pw:api <= page.close succeeded
+
+Detailed report written to: C:\sw\synera-design\web_launch\a11y_audit_report.json
+Summary written to: C:\sw\synera-design\web_launch\a11y_audit.md
+
+✅ No critical or serious violations

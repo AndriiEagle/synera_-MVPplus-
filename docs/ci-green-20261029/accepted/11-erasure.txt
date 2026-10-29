@@ -1,0 +1,859 @@
+2026-10-29T15:49:10.684Z pw:api => browserType.launch started
+2026-10-29T15:49:11.832Z pw:api <= browserType.launch succeeded
+2026-10-29T15:49:11.837Z pw:api => browser.newContext started
+2026-10-29T15:49:11.900Z pw:api <= browser.newContext succeeded
+2026-10-29T15:49:11.902Z pw:api => browserContext.addInitScript started
+2026-10-29T15:49:11.905Z pw:api <= browserContext.addInitScript succeeded
+2026-10-29T15:49:11.907Z pw:api => browserContext.newPage started
+2026-10-29T15:49:12.330Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:49:12.332Z pw:api => page.route started
+2026-10-29T15:49:12.337Z pw:api <= page.route succeeded
+2026-10-29T15:49:12.382Z pw:api => page.goto started
+2026-10-29T15:49:12.385Z pw:api navigating to "http://127.0.0.1:51506/", waiting until "load"
+2026-10-29T15:49:12.419Z pw:api => route.continue started
+2026-10-29T15:49:12.422Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.471Z pw:api   "commit" event fired
+2026-10-29T15:49:12.472Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:12.540Z pw:api => route.continue started
+2026-10-29T15:49:12.552Z pw:api => route.continue started
+2026-10-29T15:49:12.553Z pw:api => route.continue started
+2026-10-29T15:49:12.554Z pw:api => route.continue started
+2026-10-29T15:49:12.556Z pw:api => route.continue started
+2026-10-29T15:49:12.557Z pw:api => route.continue started
+2026-10-29T15:49:12.559Z pw:api => route.continue started
+2026-10-29T15:49:12.560Z pw:api => route.continue started
+2026-10-29T15:49:12.561Z pw:api => route.continue started
+2026-10-29T15:49:12.563Z pw:api => route.continue started
+2026-10-29T15:49:12.564Z pw:api => route.continue started
+2026-10-29T15:49:12.565Z pw:api => route.continue started
+2026-10-29T15:49:12.580Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.584Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.584Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.585Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.586Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.649Z pw:api => route.continue started
+2026-10-29T15:49:12.652Z pw:api => route.continue started
+2026-10-29T15:49:12.663Z pw:api => route.continue started
+2026-10-29T15:49:12.664Z pw:api => route.continue started
+2026-10-29T15:49:12.665Z pw:api => route.continue started
+2026-10-29T15:49:12.666Z pw:api => route.continue started
+2026-10-29T15:49:12.668Z pw:api => route.continue started
+2026-10-29T15:49:12.669Z pw:api => route.continue started
+2026-10-29T15:49:12.670Z pw:api => route.continue started
+2026-10-29T15:49:12.671Z pw:api => route.continue started
+2026-10-29T15:49:12.672Z pw:api => route.continue started
+2026-10-29T15:49:12.673Z pw:api => route.continue started
+2026-10-29T15:49:12.680Z pw:api => route.continue started
+2026-10-29T15:49:12.682Z pw:api => route.continue started
+2026-10-29T15:49:12.683Z pw:api => route.continue started
+2026-10-29T15:49:12.685Z pw:api => route.continue started
+2026-10-29T15:49:12.686Z pw:api => route.continue started
+2026-10-29T15:49:12.687Z pw:api => route.continue started
+2026-10-29T15:49:12.708Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.709Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.742Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.742Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.742Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.743Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.744Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.746Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:12.747Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.001Z pw:api => route.continue started
+2026-10-29T15:49:13.013Z pw:api => route.continue started
+2026-10-29T15:49:13.018Z pw:api => route.continue started
+2026-10-29T15:49:13.019Z pw:api => route.continue started
+2026-10-29T15:49:13.020Z pw:api => route.continue started
+2026-10-29T15:49:13.030Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.051Z pw:api => route.continue started
+2026-10-29T15:49:13.052Z pw:api => route.continue started
+2026-10-29T15:49:13.053Z pw:api => route.continue started
+2026-10-29T15:49:13.054Z pw:api => route.continue started
+2026-10-29T15:49:13.055Z pw:api => route.continue started
+2026-10-29T15:49:13.056Z pw:api => route.continue started
+2026-10-29T15:49:13.057Z pw:api => route.continue started
+2026-10-29T15:49:13.058Z pw:api => route.continue started
+2026-10-29T15:49:13.064Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.065Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.065Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.065Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.067Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.067Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.067Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.067Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.068Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.068Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.068Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.068Z pw:api <= route.continue succeeded
+2026-10-29T15:49:13.115Z pw:api => route.fulfill started
+2026-10-29T15:49:13.119Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.135Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:49:13.355Z pw:api   "load" event fired
+2026-10-29T15:49:13.357Z pw:api <= page.goto succeeded
+2026-10-29T15:49:13.359Z pw:api => page.waitForFunction started
+2026-10-29T15:49:13.369Z pw:api => route.fulfill started
+2026-10-29T15:49:13.398Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.450Z pw:api => route.fulfill started
+2026-10-29T15:49:13.472Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.478Z pw:api => route.fulfill started
+2026-10-29T15:49:13.481Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.490Z pw:api => route.fulfill started
+2026-10-29T15:49:13.496Z pw:api => route.fulfill started
+2026-10-29T15:49:13.500Z pw:api => route.fulfill started
+2026-10-29T15:49:13.506Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.510Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.510Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:13.707Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:13.708Z pw:api => locator.click started
+2026-10-29T15:49:13.721Z pw:api waiting for locator('[data-tab="settings"]')
+2026-10-29T15:49:13.812Z pw:api   locator resolved to <button class="tab" data-tab="settings" aria-current="false" data-i18n="nav.privacy">Приватність</button>
+2026-10-29T15:49:13.818Z pw:api attempting click action
+2026-10-29T15:49:13.820Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:13.942Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:13.943Z pw:api   scrolling into view if needed
+2026-10-29T15:49:13.945Z pw:api   done scrolling
+2026-10-29T15:49:13.955Z pw:api   performing click action
+2026-10-29T15:49:13.995Z pw:api => route.fulfill started
+2026-10-29T15:49:13.996Z pw:api   click action done
+2026-10-29T15:49:13.996Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:13.999Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:14.000Z pw:api   navigations have finished
+2026-10-29T15:49:14.001Z pw:api <= locator.click succeeded
+2026-10-29T15:49:14.002Z pw:api => locator.isHidden started
+2026-10-29T15:49:14.004Z pw:api   checking visibility of locator('#profile-erasure-controls')
+2026-10-29T15:49:14.011Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:14.011Z pw:api => locator.isVisible started
+2026-10-29T15:49:14.012Z pw:api   checking visibility of locator('#delete-profile')
+2026-10-29T15:49:14.017Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:14.022Z pw:api => browserContext.close started
+2026-10-29T15:49:14.041Z pw:api <= browserContext.close succeeded
+2026-10-29T15:49:14.042Z pw:api => browser.newContext started
+2026-10-29T15:49:14.111Z pw:api <= browser.newContext succeeded
+2026-10-29T15:49:14.112Z pw:api => browserContext.addInitScript started
+2026-10-29T15:49:14.113Z pw:api <= browserContext.addInitScript succeeded
+2026-10-29T15:49:14.113Z pw:api => browserContext.newPage started
+2026-10-29T15:49:14.397Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:49:14.398Z pw:api => page.route started
+2026-10-29T15:49:14.771Z pw:api <= page.route succeeded
+2026-10-29T15:49:14.772Z pw:api => page.goto started
+2026-10-29T15:49:14.773Z pw:api navigating to "http://127.0.0.1:51506/", waiting until "load"
+2026-10-29T15:49:14.791Z pw:api => route.continue started
+2026-10-29T15:49:14.793Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.809Z pw:api   "commit" event fired
+2026-10-29T15:49:14.809Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:14.831Z pw:api => route.continue started
+2026-10-29T15:49:14.836Z pw:api => route.continue started
+2026-10-29T15:49:14.837Z pw:api => route.continue started
+2026-10-29T15:49:14.838Z pw:api => route.continue started
+2026-10-29T15:49:14.839Z pw:api => route.continue started
+2026-10-29T15:49:14.841Z pw:api => route.continue started
+2026-10-29T15:49:14.842Z pw:api => route.continue started
+2026-10-29T15:49:14.843Z pw:api => route.continue started
+2026-10-29T15:49:14.844Z pw:api => route.continue started
+2026-10-29T15:49:14.845Z pw:api => route.continue started
+2026-10-29T15:49:14.846Z pw:api => route.continue started
+2026-10-29T15:49:14.848Z pw:api => route.continue started
+2026-10-29T15:49:14.852Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.856Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.857Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.857Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.858Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.858Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.890Z pw:api => route.continue started
+2026-10-29T15:49:14.900Z pw:api => route.continue started
+2026-10-29T15:49:14.906Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.911Z pw:api => route.continue started
+2026-10-29T15:49:14.912Z pw:api => route.continue started
+2026-10-29T15:49:14.913Z pw:api => route.continue started
+2026-10-29T15:49:14.915Z pw:api => route.continue started
+2026-10-29T15:49:14.916Z pw:api => route.continue started
+2026-10-29T15:49:14.925Z pw:api => route.continue started
+2026-10-29T15:49:14.926Z pw:api => route.continue started
+2026-10-29T15:49:14.927Z pw:api => route.continue started
+2026-10-29T15:49:14.928Z pw:api => route.continue started
+2026-10-29T15:49:14.930Z pw:api => route.continue started
+2026-10-29T15:49:14.931Z pw:api => route.continue started
+2026-10-29T15:49:14.932Z pw:api => route.continue started
+2026-10-29T15:49:14.933Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.933Z pw:api => route.continue started
+2026-10-29T15:49:14.934Z pw:api => route.continue started
+2026-10-29T15:49:14.935Z pw:api => route.continue started
+2026-10-29T15:49:14.936Z pw:api => route.continue started
+2026-10-29T15:49:14.943Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.943Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.943Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.943Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.943Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.945Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.946Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.947Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.948Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.948Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.948Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.949Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.949Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.949Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.949Z pw:api <= route.continue succeeded
+2026-10-29T15:49:14.949Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.238Z pw:api => route.continue started
+2026-10-29T15:49:15.242Z pw:api => route.continue started
+2026-10-29T15:49:15.243Z pw:api => route.continue started
+2026-10-29T15:49:15.244Z pw:api => route.continue started
+2026-10-29T15:49:15.265Z pw:api => route.continue started
+2026-10-29T15:49:15.271Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.280Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.280Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.280Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.282Z pw:api => route.continue started
+2026-10-29T15:49:15.283Z pw:api => route.continue started
+2026-10-29T15:49:15.285Z pw:api => route.continue started
+2026-10-29T15:49:15.286Z pw:api => route.continue started
+2026-10-29T15:49:15.288Z pw:api => route.continue started
+2026-10-29T15:49:15.289Z pw:api => route.continue started
+2026-10-29T15:49:15.291Z pw:api => route.continue started
+2026-10-29T15:49:15.293Z pw:api => route.continue started
+2026-10-29T15:49:15.296Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.298Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.298Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.301Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.301Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.301Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.301Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.301Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.302Z pw:api <= route.continue succeeded
+2026-10-29T15:49:15.344Z pw:api => route.fulfill started
+2026-10-29T15:49:15.347Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.359Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:49:15.572Z pw:api   "load" event fired
+2026-10-29T15:49:15.572Z pw:api <= page.goto succeeded
+2026-10-29T15:49:15.573Z pw:api => page.waitForFunction started
+2026-10-29T15:49:15.581Z pw:api => route.fulfill started
+2026-10-29T15:49:15.598Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.629Z pw:api => route.fulfill started
+2026-10-29T15:49:15.632Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.639Z pw:api => route.fulfill started
+2026-10-29T15:49:15.642Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.655Z pw:api => route.fulfill started
+2026-10-29T15:49:15.660Z pw:api => route.fulfill started
+2026-10-29T15:49:15.662Z pw:api => route.fulfill started
+2026-10-29T15:49:15.670Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.672Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.672Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:15.823Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:15.823Z pw:api => locator.click started
+2026-10-29T15:49:15.824Z pw:api waiting for locator('[data-tab="settings"]')
+2026-10-29T15:49:15.885Z pw:api   locator resolved to <button class="tab" data-tab="settings" aria-current="false" data-i18n="nav.privacy">Приватність</button>
+2026-10-29T15:49:15.892Z pw:api attempting click action
+2026-10-29T15:49:15.893Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:15.917Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:15.917Z pw:api   scrolling into view if needed
+2026-10-29T15:49:15.919Z pw:api   done scrolling
+2026-10-29T15:49:15.929Z pw:api   performing click action
+2026-10-29T15:49:15.994Z pw:api => route.fulfill started
+2026-10-29T15:49:15.994Z pw:api   click action done
+2026-10-29T15:49:15.995Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:16.000Z pw:api   navigations have finished
+2026-10-29T15:49:16.002Z pw:api <= locator.click succeeded
+2026-10-29T15:49:16.003Z pw:api => locator.isHidden started
+2026-10-29T15:49:16.004Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:16.006Z pw:api   checking visibility of locator('#profile-erasure-controls')
+2026-10-29T15:49:16.016Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:16.016Z pw:api => locator.isVisible started
+2026-10-29T15:49:16.017Z pw:api   checking visibility of locator('#delete-profile')
+2026-10-29T15:49:16.025Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:16.025Z pw:api => locator.click started
+2026-10-29T15:49:16.027Z pw:api waiting for locator('#profile-erasure-controls').locator('summary')
+2026-10-29T15:49:16.041Z pw:api   locator resolved to <summary>Припинити участь і стерти дані профілю</summary>
+2026-10-29T15:49:16.043Z pw:api attempting click action
+2026-10-29T15:49:16.044Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.070Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:16.070Z pw:api   scrolling into view if needed
+2026-10-29T15:49:16.072Z pw:api   done scrolling
+2026-10-29T15:49:16.078Z pw:api   performing click action
+2026-10-29T15:49:16.097Z pw:api   click action done
+2026-10-29T15:49:16.097Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:16.099Z pw:api   navigations have finished
+2026-10-29T15:49:16.100Z pw:api <= locator.click succeeded
+2026-10-29T15:49:16.101Z pw:api => locator.innerText started
+2026-10-29T15:49:16.102Z pw:api waiting for locator('#profile-erasure-controls')
+2026-10-29T15:49:16.110Z pw:api   locator resolved to <details open="" id="profile-erasure-controls">…</details>
+2026-10-29T15:49:16.111Z pw:api <= locator.innerText succeeded
+2026-10-29T15:49:16.112Z pw:api => locator.innerText started
+2026-10-29T15:49:16.113Z pw:api waiting for locator('#profile-erasure-controls')
+2026-10-29T15:49:16.119Z pw:api   locator resolved to <details open="" id="profile-erasure-controls">…</details>
+2026-10-29T15:49:16.119Z pw:api <= locator.innerText succeeded
+2026-10-29T15:49:16.120Z pw:api => locator.fill started
+2026-10-29T15:49:16.121Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:16.130Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:16.133Z pw:api   fill("wrong")
+2026-10-29T15:49:16.133Z pw:api attempting fill action
+2026-10-29T15:49:16.133Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:49:16.146Z pw:api <= locator.fill succeeded
+2026-10-29T15:49:16.147Z pw:api => locator.click started
+2026-10-29T15:49:16.148Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:16.160Z pw:api   locator resolved to <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:16.163Z pw:api attempting click action
+2026-10-29T15:49:16.163Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.238Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:16.238Z pw:api   scrolling into view if needed
+2026-10-29T15:49:16.240Z pw:api   done scrolling
+2026-10-29T15:49:16.246Z pw:api   performing click action
+2026-10-29T15:49:16.267Z pw:api   click action done
+2026-10-29T15:49:16.267Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:16.269Z pw:api   navigations have finished
+2026-10-29T15:49:16.270Z pw:api <= locator.click succeeded
+2026-10-29T15:49:16.270Z pw:api => locator.fill started
+2026-10-29T15:49:16.271Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:16.281Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:16.284Z pw:api   fill("DELETE")
+2026-10-29T15:49:16.285Z pw:api attempting fill action
+2026-10-29T15:49:16.285Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:49:16.295Z pw:api <= locator.fill succeeded
+2026-10-29T15:49:16.296Z pw:api => locator.click started
+2026-10-29T15:49:16.297Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:16.313Z pw:api   locator resolved to <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:16.315Z pw:api attempting click action
+2026-10-29T15:49:16.315Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.359Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:16.359Z pw:api   scrolling into view if needed
+2026-10-29T15:49:16.361Z pw:api   done scrolling
+2026-10-29T15:49:16.366Z pw:api   performing click action
+2026-10-29T15:49:16.379Z pw:api => route.fulfill started
+2026-10-29T15:49:16.380Z pw:api   click action done
+2026-10-29T15:49:16.380Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:16.382Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:16.382Z pw:api   navigations have finished
+2026-10-29T15:49:16.383Z pw:api <= locator.click succeeded
+2026-10-29T15:49:16.383Z pw:api => page.waitForFunction started
+2026-10-29T15:49:16.410Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:16.411Z pw:api => locator.isVisible started
+2026-10-29T15:49:16.411Z pw:api   checking visibility of locator('#workspace')
+2026-10-29T15:49:16.416Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:16.417Z pw:api => locator.inputValue started
+2026-10-29T15:49:16.418Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:16.422Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:16.422Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:16.423Z pw:api => locator.inputValue started
+2026-10-29T15:49:16.423Z pw:api waiting for locator('#profile-form [name="display_name"]')
+2026-10-29T15:49:16.428Z pw:api   locator resolved to <input required="" maxlength="60" name="display_name" autocomplete="name"/>
+2026-10-29T15:49:16.429Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:16.429Z pw:api => locator.click started
+2026-10-29T15:49:16.430Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:16.436Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:16.439Z pw:api attempting click action
+2026-10-29T15:49:16.439Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.481Z pw:api   element is not stable
+2026-10-29T15:49:16.481Z pw:api retrying click action
+2026-10-29T15:49:16.481Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.530Z pw:api   element is not stable
+2026-10-29T15:49:16.530Z pw:api retrying click action
+2026-10-29T15:49:16.530Z pw:api   waiting 20ms
+2026-10-29T15:49:16.553Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.595Z pw:api   element is not stable
+2026-10-29T15:49:16.595Z pw:api retrying click action
+2026-10-29T15:49:16.595Z pw:api   waiting 100ms
+2026-10-29T15:49:16.698Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.726Z pw:api   element is not stable
+2026-10-29T15:49:16.726Z pw:api retrying click action
+2026-10-29T15:49:16.726Z pw:api   waiting 100ms
+2026-10-29T15:49:16.836Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:16.868Z pw:api   element is not stable
+2026-10-29T15:49:16.868Z pw:api retrying click action
+2026-10-29T15:49:16.868Z pw:api   waiting 500ms
+2026-10-29T15:49:16.891Z pw:api   "networkidle" event fired
+2026-10-29T15:49:17.379Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:17.404Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:17.404Z pw:api   scrolling into view if needed
+2026-10-29T15:49:17.407Z pw:api   done scrolling
+2026-10-29T15:49:17.411Z pw:api   performing click action
+2026-10-29T15:49:17.426Z pw:api   click action done
+2026-10-29T15:49:17.426Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:17.430Z pw:api   navigations have finished
+2026-10-29T15:49:17.431Z pw:api <= locator.click succeeded
+2026-10-29T15:49:17.431Z pw:api => locator.click started
+2026-10-29T15:49:17.432Z pw:api waiting for locator('#logout')
+2026-10-29T15:49:17.440Z pw:api   locator resolved to <button id="logout" type="button">Вийти</button>
+2026-10-29T15:49:17.443Z pw:api attempting click action
+2026-10-29T15:49:17.443Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:17.475Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:17.475Z pw:api   scrolling into view if needed
+2026-10-29T15:49:17.477Z pw:api   done scrolling
+2026-10-29T15:49:17.482Z pw:api   performing click action
+2026-10-29T15:49:17.496Z pw:api => route.fulfill started
+2026-10-29T15:49:17.497Z pw:api   click action done
+2026-10-29T15:49:17.498Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:17.500Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:17.501Z pw:api   navigations have finished
+2026-10-29T15:49:17.502Z pw:api <= locator.click succeeded
+2026-10-29T15:49:17.503Z pw:api => page.waitForFunction started
+2026-10-29T15:49:17.532Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:17.532Z pw:api => locator.inputValue started
+2026-10-29T15:49:17.533Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:17.537Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:17.537Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:17.538Z pw:api => page.reload started
+2026-10-29T15:49:17.539Z pw:api waiting for navigation until "load"
+2026-10-29T15:49:17.554Z pw:api => route.continue started
+2026-10-29T15:49:17.556Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.607Z pw:api   "commit" event fired
+2026-10-29T15:49:17.608Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:17.608Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:17.630Z pw:api => route.continue started
+2026-10-29T15:49:17.631Z pw:api => route.continue started
+2026-10-29T15:49:17.633Z pw:api => route.continue started
+2026-10-29T15:49:17.634Z pw:api => route.continue started
+2026-10-29T15:49:17.635Z pw:api => route.continue started
+2026-10-29T15:49:17.636Z pw:api => route.continue started
+2026-10-29T15:49:17.637Z pw:api => route.continue started
+2026-10-29T15:49:17.639Z pw:api => route.continue started
+2026-10-29T15:49:17.640Z pw:api => route.continue started
+2026-10-29T15:49:17.641Z pw:api => route.continue started
+2026-10-29T15:49:17.643Z pw:api => route.continue started
+2026-10-29T15:49:17.647Z pw:api => route.continue started
+2026-10-29T15:49:17.649Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.650Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.652Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.652Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.652Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.653Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.653Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.654Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.654Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.654Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.654Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.654Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.693Z pw:api => route.continue started
+2026-10-29T15:49:17.694Z pw:api => route.continue started
+2026-10-29T15:49:17.695Z pw:api => route.continue started
+2026-10-29T15:49:17.700Z pw:api => route.continue started
+2026-10-29T15:49:17.701Z pw:api => route.continue started
+2026-10-29T15:49:17.707Z pw:api => route.continue started
+2026-10-29T15:49:17.708Z pw:api => route.continue started
+2026-10-29T15:49:17.709Z pw:api => route.continue started
+2026-10-29T15:49:17.710Z pw:api => route.continue started
+2026-10-29T15:49:17.711Z pw:api => route.continue started
+2026-10-29T15:49:17.712Z pw:api => route.continue started
+2026-10-29T15:49:17.713Z pw:api => route.continue started
+2026-10-29T15:49:17.714Z pw:api => route.continue started
+2026-10-29T15:49:17.715Z pw:api => route.continue started
+2026-10-29T15:49:17.716Z pw:api => route.continue started
+2026-10-29T15:49:17.717Z pw:api => route.continue started
+2026-10-29T15:49:17.718Z pw:api => route.continue started
+2026-10-29T15:49:17.719Z pw:api => route.continue started
+2026-10-29T15:49:17.719Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.720Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.726Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.726Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.726Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.727Z pw:api => route.continue started
+2026-10-29T15:49:17.728Z pw:api => route.continue started
+2026-10-29T15:49:17.729Z pw:api => route.continue started
+2026-10-29T15:49:17.732Z pw:api => route.continue started
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.735Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.736Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.739Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.740Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.740Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.740Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.783Z pw:api => route.continue started
+2026-10-29T15:49:17.784Z pw:api => route.continue started
+2026-10-29T15:49:17.785Z pw:api => route.continue started
+2026-10-29T15:49:17.786Z pw:api => route.continue started
+2026-10-29T15:49:17.791Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.791Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.791Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.791Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.810Z pw:api => route.fulfill started
+2026-10-29T15:49:17.813Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:17.814Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:49:17.897Z pw:api => route.continue started
+2026-10-29T15:49:17.913Z pw:api => route.continue started
+2026-10-29T15:49:17.915Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.923Z pw:api => route.continue started
+2026-10-29T15:49:17.925Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.927Z pw:api => route.continue started
+2026-10-29T15:49:17.928Z pw:api => route.continue started
+2026-10-29T15:49:17.930Z pw:api => route.fulfill started
+2026-10-29T15:49:17.949Z pw:api   "load" event fired
+2026-10-29T15:49:17.950Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.950Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.950Z pw:api <= route.continue succeeded
+2026-10-29T15:49:17.951Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:17.953Z pw:api => route.fulfill started
+2026-10-29T15:49:17.954Z pw:api <= page.reload succeeded
+2026-10-29T15:49:17.955Z pw:api => page.waitForFunction started
+2026-10-29T15:49:17.964Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:17.979Z pw:api => route.fulfill started
+2026-10-29T15:49:17.982Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:18.005Z pw:api => route.fulfill started
+2026-10-29T15:49:18.010Z pw:api => route.fulfill started
+2026-10-29T15:49:18.013Z pw:api => route.fulfill started
+2026-10-29T15:49:18.015Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:18.018Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:18.018Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:18.064Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:18.065Z pw:api => locator.click started
+2026-10-29T15:49:18.066Z pw:api waiting for locator('[data-tab="settings"]')
+2026-10-29T15:49:18.119Z pw:api   locator resolved to <button class="tab" data-tab="settings" aria-current="false" data-i18n="nav.privacy">Приватність</button>
+2026-10-29T15:49:18.126Z pw:api attempting click action
+2026-10-29T15:49:18.126Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:18.155Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:18.155Z pw:api   scrolling into view if needed
+2026-10-29T15:49:18.156Z pw:api   done scrolling
+2026-10-29T15:49:18.161Z pw:api   performing click action
+2026-10-29T15:49:18.183Z pw:api => route.fulfill started
+2026-10-29T15:49:18.184Z pw:api   click action done
+2026-10-29T15:49:18.184Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:18.188Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:18.189Z pw:api   navigations have finished
+2026-10-29T15:49:18.190Z pw:api <= locator.click succeeded
+2026-10-29T15:49:18.191Z pw:api => locator.click started
+2026-10-29T15:49:18.192Z pw:api waiting for locator('#profile-erasure-controls').locator('summary')
+2026-10-29T15:49:18.200Z pw:api   locator resolved to <summary>Припинити участь і стерти дані профілю</summary>
+2026-10-29T15:49:18.202Z pw:api attempting click action
+2026-10-29T15:49:18.202Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:18.237Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:18.237Z pw:api   scrolling into view if needed
+2026-10-29T15:49:18.239Z pw:api   done scrolling
+2026-10-29T15:49:18.243Z pw:api   performing click action
+2026-10-29T15:49:18.251Z pw:api   click action done
+2026-10-29T15:49:18.251Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:18.253Z pw:api   navigations have finished
+2026-10-29T15:49:18.253Z pw:api <= locator.click succeeded
+2026-10-29T15:49:18.254Z pw:api => locator.fill started
+2026-10-29T15:49:18.254Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:18.260Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:18.264Z pw:api   fill("DELETE")
+2026-10-29T15:49:18.264Z pw:api attempting fill action
+2026-10-29T15:49:18.264Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:49:18.273Z pw:api <= locator.fill succeeded
+2026-10-29T15:49:18.273Z pw:api => page.setViewportSize started
+2026-10-29T15:49:18.297Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:49:18.298Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.300Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:18.308Z pw:api   locator resolved to visible <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:18.323Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.323Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.324Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:18.329Z pw:api   locator resolved to visible <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:18.342Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.343Z pw:api => keyboard.press started
+2026-10-29T15:49:18.350Z pw:api <= keyboard.press succeeded
+2026-10-29T15:49:18.350Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.351Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:18.359Z pw:api   locator resolved to visible <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:18.369Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.369Z pw:api => page.setViewportSize started
+2026-10-29T15:49:18.390Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:49:18.390Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.391Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:18.406Z pw:api   locator resolved to visible <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:18.418Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.419Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.419Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:18.425Z pw:api   locator resolved to visible <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:18.437Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.437Z pw:api => keyboard.press started
+2026-10-29T15:49:18.442Z pw:api <= keyboard.press succeeded
+2026-10-29T15:49:18.442Z pw:api => locator.evaluate started
+2026-10-29T15:49:18.443Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:18.450Z pw:api   locator resolved to visible <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:18.461Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:18.462Z pw:api => page.evaluate started
+2026-10-29T15:49:18.697Z pw:api   "networkidle" event fired
+2026-10-29T15:49:18.828Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:18.829Z pw:api => page.evaluate started
+2026-10-29T15:49:18.836Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:18.837Z pw:api => frame.evaluate started
+2026-10-29T15:49:18.885Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:18.885Z pw:api => frame.evaluate started
+2026-10-29T15:49:19.527Z pw:api => route.continue started
+2026-10-29T15:49:19.529Z pw:api => route.continue started
+2026-10-29T15:49:19.531Z pw:api <= route.continue succeeded
+2026-10-29T15:49:19.534Z pw:api <= route.continue succeeded
+2026-10-29T15:49:19.536Z pw:api => route.continue started
+2026-10-29T15:49:19.538Z pw:api => route.continue started
+2026-10-29T15:49:19.540Z pw:api <= route.continue succeeded
+2026-10-29T15:49:19.542Z pw:api <= route.continue succeeded
+2026-10-29T15:49:19.796Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:19.803Z pw:api => browserContext.newPage started
+2026-10-29T15:49:19.892Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:49:19.893Z pw:api => page.evaluate started
+2026-10-29T15:49:20.343Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.344Z pw:api => page.evaluate started
+2026-10-29T15:49:20.350Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.350Z pw:api => page.evaluate started
+2026-10-29T15:49:20.354Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.357Z pw:api => page.evaluate started
+2026-10-29T15:49:20.387Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.387Z pw:api => page.evaluate started
+2026-10-29T15:49:20.659Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.662Z pw:api => page.close started
+2026-10-29T15:49:20.685Z pw:api <= page.close succeeded
+2026-10-29T15:49:20.685Z pw:api => page.evaluate started
+2026-10-29T15:49:20.697Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:20.698Z pw:api => page.screenshot started
+2026-10-29T15:49:20.699Z pw:api taking page screenshot
+2026-10-29T15:49:20.705Z pw:api waiting for fonts to load...
+2026-10-29T15:49:20.708Z pw:api fonts loaded
+2026-10-29T15:49:20.936Z pw:api <= page.screenshot succeeded
+2026-10-29T15:49:20.941Z pw:api => locator.click started
+2026-10-29T15:49:20.942Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:20.949Z pw:api   locator resolved to <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:20.955Z pw:api attempting click action
+2026-10-29T15:49:20.956Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:20.976Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:20.976Z pw:api   scrolling into view if needed
+2026-10-29T15:49:20.977Z pw:api   done scrolling
+2026-10-29T15:49:20.982Z pw:api   performing click action
+2026-10-29T15:49:20.993Z pw:api => route.fulfill started
+2026-10-29T15:49:20.994Z pw:api   click action done
+2026-10-29T15:49:20.994Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:20.996Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:20.996Z pw:api   navigations have finished
+2026-10-29T15:49:20.996Z pw:api <= locator.click succeeded
+2026-10-29T15:49:20.997Z pw:api => page.waitForFunction started
+2026-10-29T15:49:21.024Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:21.025Z pw:api => locator.inputValue started
+2026-10-29T15:49:21.025Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:21.030Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:21.031Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:21.031Z pw:api => locator.inputValue started
+2026-10-29T15:49:21.033Z pw:api waiting for locator('#profile-form [name="display_name"]')
+2026-10-29T15:49:21.039Z pw:api   locator resolved to <input required="" maxlength="60" name="display_name" autocomplete="name"/>
+2026-10-29T15:49:21.039Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:21.040Z pw:api => locator.evaluate started
+2026-10-29T15:49:21.041Z pw:api waiting for locator('#people')
+2026-10-29T15:49:21.049Z pw:api   locator resolved to hidden <div id="people" class="cards"></div>
+2026-10-29T15:49:21.064Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:49:21.065Z pw:api => locator.innerText started
+2026-10-29T15:49:21.066Z pw:api waiting for locator('#notice')
+2026-10-29T15:49:21.071Z pw:api   locator resolved to <p id="notice" role="status" aria-live="polite" class="notice error">Акаунт змінився в іншій вкладці. Нічого не стерто…</p>
+2026-10-29T15:49:21.072Z pw:api <= locator.innerText succeeded
+2026-10-29T15:49:21.072Z pw:api => page.reload started
+2026-10-29T15:49:21.073Z pw:api waiting for navigation until "load"
+2026-10-29T15:49:21.097Z pw:api => route.continue started
+2026-10-29T15:49:21.101Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.151Z pw:api   "commit" event fired
+2026-10-29T15:49:21.151Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:21.151Z pw:api   navigated to "http://127.0.0.1:51506/"
+2026-10-29T15:49:21.171Z pw:api => route.continue started
+2026-10-29T15:49:21.174Z pw:api => route.continue started
+2026-10-29T15:49:21.175Z pw:api => route.continue started
+2026-10-29T15:49:21.181Z pw:api => route.continue started
+2026-10-29T15:49:21.182Z pw:api => route.continue started
+2026-10-29T15:49:21.183Z pw:api => route.continue started
+2026-10-29T15:49:21.185Z pw:api => route.continue started
+2026-10-29T15:49:21.186Z pw:api => route.continue started
+2026-10-29T15:49:21.187Z pw:api => route.continue started
+2026-10-29T15:49:21.188Z pw:api => route.continue started
+2026-10-29T15:49:21.190Z pw:api => route.continue started
+2026-10-29T15:49:21.191Z pw:api => route.continue started
+2026-10-29T15:49:21.196Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.198Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.198Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.200Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.201Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.234Z pw:api => route.continue started
+2026-10-29T15:49:21.248Z pw:api => route.continue started
+2026-10-29T15:49:21.248Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.250Z pw:api => route.continue started
+2026-10-29T15:49:21.256Z pw:api => route.continue started
+2026-10-29T15:49:21.259Z pw:api => route.continue started
+2026-10-29T15:49:21.261Z pw:api => route.continue started
+2026-10-29T15:49:21.262Z pw:api => route.continue started
+2026-10-29T15:49:21.272Z pw:api => route.continue started
+2026-10-29T15:49:21.275Z pw:api => route.continue started
+2026-10-29T15:49:21.277Z pw:api => route.continue started
+2026-10-29T15:49:21.278Z pw:api => route.continue started
+2026-10-29T15:49:21.280Z pw:api => route.continue started
+2026-10-29T15:49:21.281Z pw:api => route.continue started
+2026-10-29T15:49:21.282Z pw:api => route.continue started
+2026-10-29T15:49:21.283Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.283Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.284Z pw:api => route.continue started
+2026-10-29T15:49:21.285Z pw:api => route.continue started
+2026-10-29T15:49:21.287Z pw:api => route.continue started
+2026-10-29T15:49:21.288Z pw:api => route.continue started
+2026-10-29T15:49:21.295Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.313Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.318Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.318Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.318Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.318Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.319Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.321Z pw:api => route.continue started
+2026-10-29T15:49:21.327Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.335Z pw:api => route.continue started
+2026-10-29T15:49:21.339Z pw:api => route.continue started
+2026-10-29T15:49:21.341Z pw:api => route.continue started
+2026-10-29T15:49:21.345Z pw:api => route.continue started
+2026-10-29T15:49:21.346Z pw:api => route.continue started
+2026-10-29T15:49:21.354Z pw:api => route.continue started
+2026-10-29T15:49:21.369Z pw:api => route.continue started
+2026-10-29T15:49:21.370Z pw:api => route.continue started
+2026-10-29T15:49:21.371Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.371Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.371Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.371Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.371Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.380Z pw:api => route.continue started
+2026-10-29T15:49:21.381Z pw:api => route.continue started
+2026-10-29T15:49:21.382Z pw:api => route.continue started
+2026-10-29T15:49:21.383Z pw:api => route.continue started
+2026-10-29T15:49:21.384Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.386Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.387Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.390Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.390Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.390Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.391Z pw:api <= route.continue succeeded
+2026-10-29T15:49:21.419Z pw:api => route.fulfill started
+2026-10-29T15:49:21.421Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.422Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:49:21.472Z pw:api   "load" event fired
+2026-10-29T15:49:21.472Z pw:api <= page.reload succeeded
+2026-10-29T15:49:21.473Z pw:api => page.waitForFunction started
+2026-10-29T15:49:21.509Z pw:api => route.fulfill started
+2026-10-29T15:49:21.513Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.534Z pw:api => route.fulfill started
+2026-10-29T15:49:21.538Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.544Z pw:api => route.fulfill started
+2026-10-29T15:49:21.547Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.555Z pw:api => route.fulfill started
+2026-10-29T15:49:21.557Z pw:api => route.fulfill started
+2026-10-29T15:49:21.560Z pw:api => route.fulfill started
+2026-10-29T15:49:21.568Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.569Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.569Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.610Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:21.610Z pw:api => locator.click started
+2026-10-29T15:49:21.611Z pw:api waiting for locator('[data-tab="settings"]')
+2026-10-29T15:49:21.659Z pw:api   locator resolved to <button class="tab" data-tab="settings" aria-current="false" data-i18n="nav.privacy">Приватність</button>
+2026-10-29T15:49:21.662Z pw:api attempting click action
+2026-10-29T15:49:21.662Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:21.699Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:21.699Z pw:api   scrolling into view if needed
+2026-10-29T15:49:21.701Z pw:api   done scrolling
+2026-10-29T15:49:21.706Z pw:api   performing click action
+2026-10-29T15:49:21.727Z pw:api => route.fulfill started
+2026-10-29T15:49:21.734Z pw:api   click action done
+2026-10-29T15:49:21.734Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:21.735Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:21.736Z pw:api   navigations have finished
+2026-10-29T15:49:21.737Z pw:api <= locator.click succeeded
+2026-10-29T15:49:21.737Z pw:api => locator.click started
+2026-10-29T15:49:21.738Z pw:api waiting for locator('#profile-erasure-controls').locator('summary')
+2026-10-29T15:49:21.748Z pw:api   locator resolved to <summary>Припинити участь і стерти дані профілю</summary>
+2026-10-29T15:49:21.753Z pw:api attempting click action
+2026-10-29T15:49:21.753Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:22.117Z pw:api   element is not stable
+2026-10-29T15:49:22.117Z pw:api retrying click action
+2026-10-29T15:49:22.117Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:22.155Z pw:api   element is not stable
+2026-10-29T15:49:22.155Z pw:api retrying click action
+2026-10-29T15:49:22.155Z pw:api   waiting 20ms
+2026-10-29T15:49:22.180Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:22.222Z pw:api   element is not stable
+2026-10-29T15:49:22.222Z pw:api retrying click action
+2026-10-29T15:49:22.222Z pw:api   waiting 100ms
+2026-10-29T15:49:22.243Z pw:api   "networkidle" event fired
+2026-10-29T15:49:22.328Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:22.378Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:22.378Z pw:api   scrolling into view if needed
+2026-10-29T15:49:22.380Z pw:api   done scrolling
+2026-10-29T15:49:22.384Z pw:api   performing click action
+2026-10-29T15:49:22.390Z pw:api   click action done
+2026-10-29T15:49:22.391Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:22.391Z pw:api   navigations have finished
+2026-10-29T15:49:22.392Z pw:api <= locator.click succeeded
+2026-10-29T15:49:22.392Z pw:api => locator.fill started
+2026-10-29T15:49:22.392Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:22.397Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:22.399Z pw:api   fill("DELETE")
+2026-10-29T15:49:22.399Z pw:api attempting fill action
+2026-10-29T15:49:22.399Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:49:22.407Z pw:api <= locator.fill succeeded
+2026-10-29T15:49:22.407Z pw:api => locator.click started
+2026-10-29T15:49:22.408Z pw:api waiting for locator('#profile-erasure-form button')
+2026-10-29T15:49:22.417Z pw:api   locator resolved to <button type="submit">Стерти дані профілю й вийти з пілоту</button>
+2026-10-29T15:49:22.419Z pw:api attempting click action
+2026-10-29T15:49:22.420Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:22.451Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:22.451Z pw:api   scrolling into view if needed
+2026-10-29T15:49:22.452Z pw:api   done scrolling
+2026-10-29T15:49:22.455Z pw:api   performing click action
+2026-10-29T15:49:22.464Z pw:api => route.fulfill started
+2026-10-29T15:49:22.465Z pw:api   click action done
+2026-10-29T15:49:22.465Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:22.467Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:22.467Z pw:api   navigations have finished
+2026-10-29T15:49:22.468Z pw:api <= locator.click succeeded
+2026-10-29T15:49:22.468Z pw:api => page.waitForFunction started
+2026-10-29T15:49:22.500Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:22.501Z pw:api => locator.inputValue started
+2026-10-29T15:49:22.501Z pw:api waiting for locator('#profile-erasure-confirmation')
+2026-10-29T15:49:22.506Z pw:api   locator resolved to <input required="" autocomplete="off" id="profile-erasure-confirmation" pattern="ВИДАЛИТИ|DELETE|[Ll][Öö][Ss][Cc][Hh][Ee][Nn]|[Ll][Oo][Ee][Ss][Cc][Hh][Ee][Nn]"/>
+2026-10-29T15:49:22.506Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:22.507Z pw:api => locator.inputValue started
+2026-10-29T15:49:22.507Z pw:api waiting for locator('#profile-form [name="display_name"]')
+2026-10-29T15:49:22.511Z pw:api   locator resolved to <input required="" maxlength="60" name="display_name" autocomplete="name"/>
+2026-10-29T15:49:22.512Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:22.512Z pw:api => locator.count started
+2026-10-29T15:49:22.516Z pw:api <= locator.count succeeded
+2026-10-29T15:49:22.517Z pw:api => locator.innerText started
+2026-10-29T15:49:22.517Z pw:api waiting for locator('#notice')
+2026-10-29T15:49:22.521Z pw:api   locator resolved to <p id="notice" role="status" class="notice" aria-live="polite">Дані профілю стерто, доступ до пілоту відкликано.…</p>
+2026-10-29T15:49:22.521Z pw:api <= locator.innerText succeeded
+2026-10-29T15:49:22.522Z pw:api => browserContext.close started
+2026-10-29T15:49:22.538Z pw:api <= browserContext.close succeeded
+2026-10-29T15:49:22.543Z pw:api => browser.close started
+2026-10-29T15:49:22.908Z pw:api <= browser.close succeeded
+{"status":"PASS_LOCAL_PROFILE_ERASURE_BROWSER","checks":["default off preserves the separate legacy deletion route","error preserves account and form; invalid confirmation makes zero requests","normal logout clears typed destructive confirmation before another sign-in","320/390 actual focus and keyboard reach erasure confirmation without navigation occlusion","subject mismatch clears stale private UI and typed confirmation, asks for fresh account confirmation without success claim","success purges current local form/consents and reports retained records plus pending provider deletion"],"scope":"Real Chromium 390x844; synthetic account/API, no signed JWT, live Neon or provider deletion","provider_calls":0,"provider_usd":0,"focus_geometry":[{"width":320,"top":397,"bottom":447,"height":844,"focused":true,"unobscured":true},{"width":390,"top":396.671875,"bottom":446.671875,"height":844,"focused":true,"unobscured":true}],"source_sha256":{"web_launch/app.mjs":"da581331b7d1cf200468dc69c5b4195a0ca1e7729fbf397aa9fc7f4cb683ee57","web_launch/index.html":"57a0efe9f7249c05ec7df9dd9ef86f3c0f6b84cbe6c337ca6398d0940e8dacfd","web_launch/neon-store.mjs":"61c124ad640c97a3e2731ea3afd5321499bfbb93051dc8177d42b05c15d337aa","tools/profile-erasure-browser.mjs":"999528bd45752915a77e2d37d1c39d7f0c1373b18b5ca56a104cd5881fbd7081"}}

@@ -83,8 +83,18 @@ try {
   await buyer.locator('#real-logout').click(); await buyer.locator('#real-auth').waitFor({ state: 'visible' }); assert.notEqual(await buyer.locator('.real-steps li').nth(4).getAttribute('aria-current'), 'step'); checks.accepted_result_step_clears_on_logout = true;
 
   for (const [language, width, zoom] of [['uk', 320, false], ['de', 390, true], ['en', 1440, false]]) for (const view of ['current', 'atelier']) {
-    const page = await pageFor(A, { width, height: 844 }); await page.locator('#real-language').selectOption(language); await choose(page, 'Тест Марія'); await open(page, 'real-editor');
-    if (view === 'atelier') { await page.locator('[data-atelier-controls] summary').click(); await page.getByRole('button', { name: 'Atelier 2026' }).click(); assert.equal(await page.locator('html').getAttribute('data-synera-atelier'), 'on'); }
+    const page = await pageFor(A, { width, height: 844 });
+    await page.locator('.header-preferences > summary').click();
+    await page.locator('#site-language').selectOption(language);
+    await page.waitForFunction(value => document.documentElement.lang === value, language);
+    const style = view === 'atelier' ? 'atelier' : 'synera';
+    await page.locator('#style-preset').selectOption(style);
+    await page.locator('.adaptive-legacy > summary').click();
+    await page.locator('.atelier-mode-choice button').nth(view === 'atelier' ? 1 : 0).click();
+    assert.equal(await page.locator('html').getAttribute('data-synera-style'), style);
+    assert.equal(await page.locator('html').getAttribute('data-synera-atelier'), view === 'atelier' ? 'on' : null);
+    await page.locator('.header-preferences > summary').click();
+    await choose(page, 'Тест Марія'); await open(page, 'real-editor');
     const text = zoom ? await page.evaluate(() => {
       const nodes = [...document.querySelectorAll('#real-content-panel *')].filter(node => node.checkVisibility() && (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(node.tagName) || [...node.childNodes].some(child => child.nodeType === Node.TEXT_NODE && child.textContent.trim())));
       const sizes = nodes.map(node => parseFloat(getComputedStyle(node).fontSize));

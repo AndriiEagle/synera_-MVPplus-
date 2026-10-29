@@ -1,0 +1,1503 @@
+2026-10-29T15:48:53.157Z pw:api => browserType.launch started
+2026-10-29T15:48:53.742Z pw:api <= browserType.launch succeeded
+2026-10-29T15:48:53.744Z pw:api => browser.newContext started
+2026-10-29T15:48:53.782Z pw:api <= browser.newContext succeeded
+2026-10-29T15:48:53.789Z pw:api => browserContext.newPage started
+2026-10-29T15:48:54.198Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:54.201Z pw:api => page.route started
+2026-10-29T15:48:54.208Z pw:api <= page.route succeeded
+2026-10-29T15:48:54.210Z pw:api => page.goto started
+2026-10-29T15:48:54.212Z pw:api navigating to "http://127.0.0.1:52313/real-journey.html", waiting until "load"
+2026-10-29T15:48:54.240Z pw:api => route.continue started
+2026-10-29T15:48:54.243Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.297Z pw:api   "commit" event fired
+2026-10-29T15:48:54.297Z pw:api   navigated to "http://127.0.0.1:52313/real-journey.html"
+2026-10-29T15:48:54.315Z pw:api => route.continue started
+2026-10-29T15:48:54.316Z pw:api => route.continue started
+2026-10-29T15:48:54.318Z pw:api => route.continue started
+2026-10-29T15:48:54.319Z pw:api => route.continue started
+2026-10-29T15:48:54.320Z pw:api => route.continue started
+2026-10-29T15:48:54.329Z pw:api => route.continue started
+2026-10-29T15:48:54.330Z pw:api => route.continue started
+2026-10-29T15:48:54.332Z pw:api => route.continue started
+2026-10-29T15:48:54.390Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.390Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.390Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.391Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.392Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.392Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.392Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.392Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.445Z pw:api => route.continue started
+2026-10-29T15:48:54.453Z pw:api => route.continue started
+2026-10-29T15:48:54.471Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.472Z pw:api => route.continue started
+2026-10-29T15:48:54.473Z pw:api => route.continue started
+2026-10-29T15:48:54.476Z pw:api => route.continue started
+2026-10-29T15:48:54.477Z pw:api => route.continue started
+2026-10-29T15:48:54.478Z pw:api => route.continue started
+2026-10-29T15:48:54.479Z pw:api => route.continue started
+2026-10-29T15:48:54.480Z pw:api => route.continue started
+2026-10-29T15:48:54.482Z pw:api => route.continue started
+2026-10-29T15:48:54.482Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.488Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.488Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.489Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.556Z pw:api => route.continue started
+2026-10-29T15:48:54.561Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.576Z pw:api => route.continue started
+2026-10-29T15:48:54.577Z pw:api => route.continue started
+2026-10-29T15:48:54.578Z pw:api => route.continue started
+2026-10-29T15:48:54.579Z pw:api => route.continue started
+2026-10-29T15:48:54.581Z pw:api => route.continue started
+2026-10-29T15:48:54.582Z pw:api => route.continue started
+2026-10-29T15:48:54.583Z pw:api => route.continue started
+2026-10-29T15:48:54.584Z pw:api => route.continue started
+2026-10-29T15:48:54.585Z pw:api => route.continue started
+2026-10-29T15:48:54.586Z pw:api => route.continue started
+2026-10-29T15:48:54.594Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.595Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.597Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.597Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.597Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.597Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.598Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.598Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.598Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.598Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.631Z pw:api => route.continue started
+2026-10-29T15:48:54.633Z pw:api => route.continue started
+2026-10-29T15:48:54.634Z pw:api => route.continue started
+2026-10-29T15:48:54.635Z pw:api => route.continue started
+2026-10-29T15:48:54.636Z pw:api => route.continue started
+2026-10-29T15:48:54.639Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.640Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.640Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.640Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.640Z pw:api <= route.continue succeeded
+2026-10-29T15:48:54.675Z pw:api => route.fulfill started
+2026-10-29T15:48:54.679Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.684Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:48:54.835Z pw:api   "load" event fired
+2026-10-29T15:48:54.837Z pw:api <= page.goto succeeded
+2026-10-29T15:48:54.839Z pw:api => page.waitForFunction started
+2026-10-29T15:48:54.855Z pw:api => route.fulfill started
+2026-10-29T15:48:54.863Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.894Z pw:api => route.fulfill started
+2026-10-29T15:48:54.898Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.909Z pw:api => route.fulfill started
+2026-10-29T15:48:54.915Z pw:api => route.fulfill started
+2026-10-29T15:48:54.916Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:54.918Z pw:api => locator.click started
+2026-10-29T15:48:54.921Z pw:api => route.fulfill started
+2026-10-29T15:48:54.922Z pw:api => route.fulfill started
+2026-10-29T15:48:54.930Z pw:api waiting for getByRole('button', { name: 'Відкрити умови', exact: true }).first()
+2026-10-29T15:48:54.939Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.941Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.952Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.952Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:54.980Z pw:api => route.fulfill started
+2026-10-29T15:48:54.984Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.011Z pw:api => route.fulfill started
+2026-10-29T15:48:55.014Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.140Z pw:api   locator resolved to <button data-tr="" type="button">Відкрити умови</button>
+2026-10-29T15:48:55.144Z pw:api attempting click action
+2026-10-29T15:48:55.146Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:55.189Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:55.189Z pw:api   scrolling into view if needed
+2026-10-29T15:48:55.191Z pw:api   done scrolling
+2026-10-29T15:48:55.200Z pw:api   performing click action
+2026-10-29T15:48:55.224Z pw:api => route.fulfill started
+2026-10-29T15:48:55.226Z pw:api   click action done
+2026-10-29T15:48:55.226Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:55.231Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.232Z pw:api   navigations have finished
+2026-10-29T15:48:55.234Z pw:api <= locator.click succeeded
+2026-10-29T15:48:55.235Z pw:api => page.waitForFunction started
+2026-10-29T15:48:55.237Z pw:api => route.fulfill started
+2026-10-29T15:48:55.241Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.245Z pw:api => route.fulfill started
+2026-10-29T15:48:55.248Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.253Z pw:api => route.fulfill started
+2026-10-29T15:48:55.256Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:55.264Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:55.264Z pw:api => locator.click started
+2026-10-29T15:48:55.269Z pw:api waiting for locator('#real-editor > summary')
+2026-10-29T15:48:55.380Z pw:api   locator resolved to <summary>Запропонувати умови / змінити редакцію</summary>
+2026-10-29T15:48:55.383Z pw:api attempting click action
+2026-10-29T15:48:55.383Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:55.407Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:55.407Z pw:api   scrolling into view if needed
+2026-10-29T15:48:55.409Z pw:api   done scrolling
+2026-10-29T15:48:55.414Z pw:api   performing click action
+2026-10-29T15:48:55.428Z pw:api   click action done
+2026-10-29T15:48:55.428Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:55.434Z pw:api   navigations have finished
+2026-10-29T15:48:55.434Z pw:api <= locator.click succeeded
+2026-10-29T15:48:55.435Z pw:api => locator.click started
+2026-10-29T15:48:55.436Z pw:api waiting for locator('#real-draft-help > summary')
+2026-10-29T15:48:55.443Z pw:api   locator resolved to <summary>Швидка підготовка пропозиції</summary>
+2026-10-29T15:48:55.446Z pw:api attempting click action
+2026-10-29T15:48:55.446Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:55.599Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:55.599Z pw:api   scrolling into view if needed
+2026-10-29T15:48:55.601Z pw:api   done scrolling
+2026-10-29T15:48:55.606Z pw:api   performing click action
+2026-10-29T15:48:55.616Z pw:api   click action done
+2026-10-29T15:48:55.616Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:55.618Z pw:api   navigations have finished
+2026-10-29T15:48:55.618Z pw:api <= locator.click succeeded
+2026-10-29T15:48:55.620Z pw:api => locator.evaluate started
+2026-10-29T15:48:55.621Z pw:api waiting for locator('#real-draft-help')
+2026-10-29T15:48:55.628Z pw:api   locator resolved to visible <details open="" id="real-draft-help">…</details>
+2026-10-29T15:48:55.644Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:48:55.644Z pw:api => locator.fill started
+2026-10-29T15:48:55.647Z pw:api waiting for locator('#real-terms-form').locator('[name="give_target"]')
+2026-10-29T15:48:55.654Z pw:api   locator resolved to <textarea required="" maxlength="2000" name="give_target"></textarea>
+2026-10-29T15:48:55.657Z pw:api   fill("Мій власний опис результату")
+2026-10-29T15:48:55.657Z pw:api attempting fill action
+2026-10-29T15:48:55.658Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:55.679Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:55.680Z pw:api => locator.inputValue started
+2026-10-29T15:48:55.681Z pw:api waiting for locator('#real-terms-form').locator('[name="compensation_status"]')
+2026-10-29T15:48:55.687Z pw:api   locator resolved to <select required="" name="compensation_status">…</select>
+2026-10-29T15:48:55.687Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:55.688Z pw:api => locator.fill started
+2026-10-29T15:48:55.689Z pw:api waiting for locator('#real-terms-form').locator('[name="give_criteria"]')
+2026-10-29T15:48:55.695Z pw:api   locator resolved to <textarea required="" maxlength="2000" name="give_criteria"></textarea>
+2026-10-29T15:48:55.698Z pw:api   fill("")
+2026-10-29T15:48:55.698Z pw:api attempting fill action
+2026-10-29T15:48:55.698Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:55.718Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:55.719Z pw:api => locator.fill started
+2026-10-29T15:48:55.720Z pw:api waiting for locator('#real-help-subject')
+2026-10-29T15:48:55.726Z pw:api   locator resolved to <input maxlength="240" id="real-help-subject"/>
+2026-10-29T15:48:55.728Z pw:api   fill("Перевірити прототип")
+2026-10-29T15:48:55.728Z pw:api attempting fill action
+2026-10-29T15:48:55.728Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:55.739Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:55.740Z pw:api => locator.click started
+2026-10-29T15:48:55.740Z pw:api waiting for locator('#real-help-scope')
+2026-10-29T15:48:55.746Z pw:api   locator resolved to <button type="button" id="real-help-scope">Доповнити дію та критерії</button>
+2026-10-29T15:48:55.749Z pw:api attempting click action
+2026-10-29T15:48:55.749Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:55.772Z pw:api   "networkidle" event fired
+2026-10-29T15:48:55.886Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:55.886Z pw:api   scrolling into view if needed
+2026-10-29T15:48:55.888Z pw:api   done scrolling
+2026-10-29T15:48:55.898Z pw:api   performing click action
+2026-10-29T15:48:55.937Z pw:api   click action done
+2026-10-29T15:48:55.937Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:55.939Z pw:api   navigations have finished
+2026-10-29T15:48:55.940Z pw:api <= locator.click succeeded
+2026-10-29T15:48:55.940Z pw:api => locator.inputValue started
+2026-10-29T15:48:55.941Z pw:api waiting for locator('#real-terms-form').locator('[name="give_target"]')
+2026-10-29T15:48:55.946Z pw:api   locator resolved to <textarea required="" maxlength="2000" name="give_target"></textarea>
+2026-10-29T15:48:55.947Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:55.947Z pw:api => locator.inputValue started
+2026-10-29T15:48:55.948Z pw:api waiting for locator('#real-terms-form').locator('[name="compensation_status"]')
+2026-10-29T15:48:55.953Z pw:api   locator resolved to <select required="" name="compensation_status">…</select>
+2026-10-29T15:48:55.953Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:55.954Z pw:api => locator.inputValue started
+2026-10-29T15:48:55.954Z pw:api waiting for locator('#real-terms-form').locator('[name="give_criteria"]')
+2026-10-29T15:48:55.959Z pw:api   locator resolved to <textarea required="" maxlength="2000" name="give_criteria"></textarea>
+2026-10-29T15:48:55.959Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:55.960Z pw:api => locator.click started
+2026-10-29T15:48:55.961Z pw:api waiting for locator('#real-meetings-panel > summary')
+2026-10-29T15:48:55.966Z pw:api   locator resolved to <summary>Зустрічі</summary>
+2026-10-29T15:48:55.968Z pw:api attempting click action
+2026-10-29T15:48:55.968Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:55.975Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:55.976Z pw:api   scrolling into view if needed
+2026-10-29T15:48:55.977Z pw:api   done scrolling
+2026-10-29T15:48:55.982Z pw:api   performing click action
+2026-10-29T15:48:55.990Z pw:api   click action done
+2026-10-29T15:48:55.990Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:55.992Z pw:api   navigations have finished
+2026-10-29T15:48:55.992Z pw:api <= locator.click succeeded
+2026-10-29T15:48:55.993Z pw:api => locator.click started
+2026-10-29T15:48:55.994Z pw:api waiting for getByRole('button', { name: 'Відкрити розмову', exact: true })
+2026-10-29T15:48:56.017Z pw:api   locator resolved to <button data-tr="" type="button">Відкрити розмову</button>
+2026-10-29T15:48:56.019Z pw:api attempting click action
+2026-10-29T15:48:56.020Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.050Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.050Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.051Z pw:api   done scrolling
+2026-10-29T15:48:56.056Z pw:api   performing click action
+2026-10-29T15:48:56.073Z pw:api => route.fulfill started
+2026-10-29T15:48:56.074Z pw:api   click action done
+2026-10-29T15:48:56.074Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.076Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.080Z pw:api   navigations have finished
+2026-10-29T15:48:56.081Z pw:api <= locator.click succeeded
+2026-10-29T15:48:56.082Z pw:api => page.waitForFunction started
+2026-10-29T15:48:56.088Z pw:api => route.fulfill started
+2026-10-29T15:48:56.091Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.096Z pw:api => route.fulfill started
+2026-10-29T15:48:56.099Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.132Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:56.132Z pw:api => locator.click started
+2026-10-29T15:48:56.133Z pw:api waiting for locator('#real-outcome-refresh')
+2026-10-29T15:48:56.140Z pw:api   locator resolved to <button type="button" id="real-outcome-refresh">Перевірити результати</button>
+2026-10-29T15:48:56.143Z pw:api attempting click action
+2026-10-29T15:48:56.143Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.172Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.172Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.174Z pw:api   done scrolling
+2026-10-29T15:48:56.178Z pw:api   performing click action
+2026-10-29T15:48:56.188Z pw:api => route.fulfill started
+2026-10-29T15:48:56.189Z pw:api   click action done
+2026-10-29T15:48:56.189Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.191Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.192Z pw:api   navigations have finished
+2026-10-29T15:48:56.192Z pw:api <= locator.click succeeded
+2026-10-29T15:48:56.193Z pw:api => page.waitForFunction started
+2026-10-29T15:48:56.204Z pw:api => route.fulfill started
+2026-10-29T15:48:56.206Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.211Z pw:api => route.fulfill started
+2026-10-29T15:48:56.214Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.222Z pw:api => route.fulfill started
+2026-10-29T15:48:56.225Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.231Z pw:api => route.fulfill started
+2026-10-29T15:48:56.233Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.238Z pw:api => route.fulfill started
+2026-10-29T15:48:56.240Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.244Z pw:api => route.fulfill started
+2026-10-29T15:48:56.246Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.250Z pw:api => route.fulfill started
+2026-10-29T15:48:56.253Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.257Z pw:api => route.fulfill started
+2026-10-29T15:48:56.260Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.267Z pw:api => route.fulfill started
+2026-10-29T15:48:56.272Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.275Z pw:api => route.fulfill started
+2026-10-29T15:48:56.278Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.282Z pw:api => route.fulfill started
+2026-10-29T15:48:56.285Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.289Z pw:api => route.fulfill started
+2026-10-29T15:48:56.293Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.297Z pw:api => route.fulfill started
+2026-10-29T15:48:56.300Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.339Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:56.340Z pw:api => locator.isHidden started
+2026-10-29T15:48:56.341Z pw:api   checking visibility of locator('#real-social-controls')
+2026-10-29T15:48:56.348Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:48:56.362Z pw:api => locator.click started
+2026-10-29T15:48:56.363Z pw:api waiting for locator('#real-outcome-refresh')
+2026-10-29T15:48:56.368Z pw:api   locator resolved to <button type="button" id="real-outcome-refresh">Перевірити результати</button>
+2026-10-29T15:48:56.371Z pw:api attempting click action
+2026-10-29T15:48:56.371Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.391Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.391Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.392Z pw:api   done scrolling
+2026-10-29T15:48:56.397Z pw:api   performing click action
+2026-10-29T15:48:56.405Z pw:api => route.fulfill started
+2026-10-29T15:48:56.406Z pw:api   click action done
+2026-10-29T15:48:56.406Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.408Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.408Z pw:api   navigations have finished
+2026-10-29T15:48:56.409Z pw:api <= locator.click succeeded
+2026-10-29T15:48:56.409Z pw:api => page.waitForFunction started
+2026-10-29T15:48:56.422Z pw:api => route.fulfill started
+2026-10-29T15:48:56.424Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.428Z pw:api => route.fulfill started
+2026-10-29T15:48:56.430Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.435Z pw:api => route.fulfill started
+2026-10-29T15:48:56.437Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.441Z pw:api => route.fulfill started
+2026-10-29T15:48:56.444Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.448Z pw:api => route.fulfill started
+2026-10-29T15:48:56.450Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.454Z pw:api => route.fulfill started
+2026-10-29T15:48:56.456Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.461Z pw:api => route.fulfill started
+2026-10-29T15:48:56.463Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.467Z pw:api => route.fulfill started
+2026-10-29T15:48:56.468Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.473Z pw:api => route.fulfill started
+2026-10-29T15:48:56.475Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.480Z pw:api => route.fulfill started
+2026-10-29T15:48:56.482Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.486Z pw:api => route.fulfill started
+2026-10-29T15:48:56.489Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.493Z pw:api => route.fulfill started
+2026-10-29T15:48:56.495Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.499Z pw:api => route.fulfill started
+2026-10-29T15:48:56.501Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.509Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:56.510Z pw:api => locator.isVisible started
+2026-10-29T15:48:56.511Z pw:api   checking visibility of locator('#real-social-controls')
+2026-10-29T15:48:56.515Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:48:56.515Z pw:api => locator.click started
+2026-10-29T15:48:56.516Z pw:api waiting for locator('#real-social-controls').locator('summary')
+2026-10-29T15:48:56.521Z pw:api   locator resolved to <summary>Приватна соціальна чернетка</summary>
+2026-10-29T15:48:56.523Z pw:api attempting click action
+2026-10-29T15:48:56.523Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.554Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.554Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.556Z pw:api   done scrolling
+2026-10-29T15:48:56.561Z pw:api   performing click action
+2026-10-29T15:48:56.571Z pw:api   click action done
+2026-10-29T15:48:56.571Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.573Z pw:api   navigations have finished
+2026-10-29T15:48:56.573Z pw:api <= locator.click succeeded
+2026-10-29T15:48:56.574Z pw:api => locator.isDisabled started
+2026-10-29T15:48:56.575Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:48:56.578Z pw:api   locator resolved to <button disabled type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:48:56.578Z pw:api <= locator.isDisabled succeeded
+2026-10-29T15:48:56.578Z pw:api => locator.isHidden started
+2026-10-29T15:48:56.579Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:48:56.583Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:48:56.583Z pw:api => locator.check started
+2026-10-29T15:48:56.584Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:48:56.589Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:48:56.597Z pw:api attempting click action
+2026-10-29T15:48:56.597Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.858Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.859Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.860Z pw:api   done scrolling
+2026-10-29T15:48:56.866Z pw:api   performing click action
+2026-10-29T15:48:56.873Z pw:api   click action done
+2026-10-29T15:48:56.873Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.873Z pw:api   navigations have finished
+2026-10-29T15:48:56.876Z pw:api <= locator.check succeeded
+2026-10-29T15:48:56.876Z pw:api => locator.click started
+2026-10-29T15:48:56.877Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:48:56.883Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:48:56.885Z pw:api attempting click action
+2026-10-29T15:48:56.886Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:56.928Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:56.928Z pw:api   scrolling into view if needed
+2026-10-29T15:48:56.930Z pw:api   done scrolling
+2026-10-29T15:48:56.937Z pw:api   performing click action
+2026-10-29T15:48:56.953Z pw:api => route.fulfill started
+2026-10-29T15:48:56.954Z pw:api   click action done
+2026-10-29T15:48:56.954Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:56.957Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.959Z pw:api   navigations have finished
+2026-10-29T15:48:56.960Z pw:api <= locator.click succeeded
+2026-10-29T15:48:56.961Z pw:api => page.waitForFunction started
+2026-10-29T15:48:56.966Z pw:api => route.fulfill started
+2026-10-29T15:48:56.971Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.977Z pw:api => route.fulfill started
+2026-10-29T15:48:56.980Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.986Z pw:api => route.fulfill started
+2026-10-29T15:48:56.989Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:56.998Z pw:api => route.fulfill started
+2026-10-29T15:48:57.001Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.007Z pw:api => route.fulfill started
+2026-10-29T15:48:57.010Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.017Z pw:api => route.fulfill started
+2026-10-29T15:48:57.021Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.027Z pw:api => route.fulfill started
+2026-10-29T15:48:57.030Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.037Z pw:api => route.fulfill started
+2026-10-29T15:48:57.039Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.045Z pw:api => route.fulfill started
+2026-10-29T15:48:57.049Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.053Z pw:api => route.fulfill started
+2026-10-29T15:48:57.055Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.060Z pw:api => route.fulfill started
+2026-10-29T15:48:57.064Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.069Z pw:api => route.fulfill started
+2026-10-29T15:48:57.072Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.078Z pw:api => route.fulfill started
+2026-10-29T15:48:57.081Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.088Z pw:api => route.fulfill started
+2026-10-29T15:48:57.092Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.097Z pw:api => route.fulfill started
+2026-10-29T15:48:57.100Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.106Z pw:api => route.fulfill started
+2026-10-29T15:48:57.110Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.115Z pw:api => route.fulfill started
+2026-10-29T15:48:57.118Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.139Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:57.140Z pw:api => locator.isVisible started
+2026-10-29T15:48:57.140Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:48:57.148Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:48:57.148Z pw:api => locator.inputValue started
+2026-10-29T15:48:57.149Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.154Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.155Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:57.156Z pw:api => locator.count started
+2026-10-29T15:48:57.161Z pw:api <= locator.count succeeded
+2026-10-29T15:48:57.162Z pw:api => locator.selectOption started
+2026-10-29T15:48:57.164Z pw:api waiting for locator('#real-social-wording')
+2026-10-29T15:48:57.170Z pw:api   locator resolved to <select id="real-social-wording">…</select>
+2026-10-29T15:48:57.174Z pw:api attempting select option action
+2026-10-29T15:48:57.174Z pw:api   waiting for element to be visible and enabled
+2026-10-29T15:48:57.181Z pw:api   selected specified option(s)
+2026-10-29T15:48:57.181Z pw:api <= locator.selectOption succeeded
+2026-10-29T15:48:57.182Z pw:api => locator.isHidden started
+2026-10-29T15:48:57.182Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:48:57.188Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:48:57.189Z pw:api => locator.isChecked started
+2026-10-29T15:48:57.190Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:48:57.194Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:48:57.195Z pw:api <= locator.isChecked succeeded
+2026-10-29T15:48:57.195Z pw:api => locator.check started
+2026-10-29T15:48:57.196Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:48:57.200Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:48:57.208Z pw:api attempting click action
+2026-10-29T15:48:57.208Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:57.250Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:57.250Z pw:api   scrolling into view if needed
+2026-10-29T15:48:57.251Z pw:api   done scrolling
+2026-10-29T15:48:57.255Z pw:api   performing click action
+2026-10-29T15:48:57.262Z pw:api   click action done
+2026-10-29T15:48:57.263Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:57.263Z pw:api   navigations have finished
+2026-10-29T15:48:57.265Z pw:api <= locator.check succeeded
+2026-10-29T15:48:57.265Z pw:api => locator.click started
+2026-10-29T15:48:57.266Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:48:57.271Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:48:57.273Z pw:api attempting click action
+2026-10-29T15:48:57.273Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:57.323Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:57.323Z pw:api   scrolling into view if needed
+2026-10-29T15:48:57.324Z pw:api   done scrolling
+2026-10-29T15:48:57.328Z pw:api   performing click action
+2026-10-29T15:48:57.335Z pw:api => route.fulfill started
+2026-10-29T15:48:57.336Z pw:api   click action done
+2026-10-29T15:48:57.336Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:57.337Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.338Z pw:api   navigations have finished
+2026-10-29T15:48:57.338Z pw:api <= locator.click succeeded
+2026-10-29T15:48:57.339Z pw:api => page.waitForFunction started
+2026-10-29T15:48:57.351Z pw:api => route.fulfill started
+2026-10-29T15:48:57.353Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.357Z pw:api => route.fulfill started
+2026-10-29T15:48:57.359Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.363Z pw:api => route.fulfill started
+2026-10-29T15:48:57.365Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.371Z pw:api => route.fulfill started
+2026-10-29T15:48:57.373Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.377Z pw:api => route.fulfill started
+2026-10-29T15:48:57.378Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.382Z pw:api => route.fulfill started
+2026-10-29T15:48:57.383Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.387Z pw:api => route.fulfill started
+2026-10-29T15:48:57.389Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.392Z pw:api => route.fulfill started
+2026-10-29T15:48:57.394Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.399Z pw:api => route.fulfill started
+2026-10-29T15:48:57.401Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.405Z pw:api => route.fulfill started
+2026-10-29T15:48:57.407Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.412Z pw:api => route.fulfill started
+2026-10-29T15:48:57.414Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.418Z pw:api => route.fulfill started
+2026-10-29T15:48:57.420Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.424Z pw:api => route.fulfill started
+2026-10-29T15:48:57.426Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.430Z pw:api => route.fulfill started
+2026-10-29T15:48:57.432Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.436Z pw:api => route.fulfill started
+2026-10-29T15:48:57.439Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.443Z pw:api => route.fulfill started
+2026-10-29T15:48:57.444Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.448Z pw:api => route.fulfill started
+2026-10-29T15:48:57.450Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.474Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:57.475Z pw:api => locator.isVisible started
+2026-10-29T15:48:57.475Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:48:57.478Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:48:57.479Z pw:api => locator.inputValue started
+2026-10-29T15:48:57.480Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.483Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.483Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:57.483Z pw:api => locator.inputValue started
+2026-10-29T15:48:57.484Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.486Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.487Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:48:57.487Z pw:api => locator.fill started
+2026-10-29T15:48:57.487Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.493Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.495Z pw:api   fill("Приватна чернетка для LinkedIn (не опубліковано):
+• Мій прототип × Zürich 💛
+  <script>literal</script> / 向前
+
+Це мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.
+Моє уточнення, без автоматичної публікації.")
+2026-10-29T15:48:57.495Z pw:api attempting fill action
+2026-10-29T15:48:57.495Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:57.514Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:57.514Z pw:api => locator.fill started
+2026-10-29T15:48:57.515Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.519Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.522Z pw:api   fill("")
+2026-10-29T15:48:57.522Z pw:api attempting fill action
+2026-10-29T15:48:57.522Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:57.531Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:57.532Z pw:api => locator.click started
+2026-10-29T15:48:57.532Z pw:api waiting for locator('#real-social-card')
+2026-10-29T15:48:57.537Z pw:api   locator resolved to <button type="button" id="real-social-card">Завантажити приватну картку</button>
+2026-10-29T15:48:57.539Z pw:api attempting click action
+2026-10-29T15:48:57.539Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:57.569Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:57.569Z pw:api   scrolling into view if needed
+2026-10-29T15:48:57.570Z pw:api   done scrolling
+2026-10-29T15:48:57.573Z pw:api   performing click action
+2026-10-29T15:48:57.581Z pw:api => route.fulfill started
+2026-10-29T15:48:57.582Z pw:api   click action done
+2026-10-29T15:48:57.582Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:57.583Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.584Z pw:api   navigations have finished
+2026-10-29T15:48:57.584Z pw:api <= locator.click succeeded
+2026-10-29T15:48:57.585Z pw:api => page.waitForFunction started
+2026-10-29T15:48:57.636Z pw:api => route.fulfill started
+2026-10-29T15:48:57.638Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.641Z pw:api => route.fulfill started
+2026-10-29T15:48:57.643Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.646Z pw:api => route.fulfill started
+2026-10-29T15:48:57.652Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.657Z pw:api => route.fulfill started
+2026-10-29T15:48:57.659Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.662Z pw:api => route.fulfill started
+2026-10-29T15:48:57.664Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.667Z pw:api => route.fulfill started
+2026-10-29T15:48:57.669Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.672Z pw:api => route.fulfill started
+2026-10-29T15:48:57.674Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.677Z pw:api => route.fulfill started
+2026-10-29T15:48:57.679Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.684Z pw:api => route.fulfill started
+2026-10-29T15:48:57.686Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.690Z pw:api => route.fulfill started
+2026-10-29T15:48:57.692Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.695Z pw:api => route.fulfill started
+2026-10-29T15:48:57.697Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.700Z pw:api => route.fulfill started
+2026-10-29T15:48:57.703Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.706Z pw:api => route.fulfill started
+2026-10-29T15:48:57.708Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.711Z pw:api => route.fulfill started
+2026-10-29T15:48:57.713Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.716Z pw:api => route.fulfill started
+2026-10-29T15:48:57.718Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.722Z pw:api => route.fulfill started
+2026-10-29T15:48:57.724Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.727Z pw:api => route.fulfill started
+2026-10-29T15:48:57.729Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:57.907Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:57.907Z pw:api => locator.innerText started
+2026-10-29T15:48:57.908Z pw:api waiting for locator('#real-status')
+2026-10-29T15:48:57.913Z pw:api   locator resolved to <p data-tr="" role="status" id="real-status" aria-live="polite">Картку не створено. Додай непорожній текст або ск…</p>
+2026-10-29T15:48:57.913Z pw:api <= locator.innerText succeeded
+2026-10-29T15:48:57.913Z pw:api => locator.isVisible started
+2026-10-29T15:48:57.913Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:48:57.916Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:48:57.916Z pw:api => locator.fill started
+2026-10-29T15:48:57.916Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:57.920Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:57.922Z pw:api   fill("Приватна чернетка для LinkedIn (не опубліковано):
+• Мій прототип × Zürich 💛
+  <script>literal</script> / 向前
+
+Це мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.
+Моє уточнення, без автоматичної публікації.")
+2026-10-29T15:48:57.922Z pw:api attempting fill action
+2026-10-29T15:48:57.922Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:57.938Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:57.939Z pw:api => locator.click started
+2026-10-29T15:48:57.939Z pw:api waiting for locator('#real-social-select')
+2026-10-29T15:48:57.946Z pw:api   locator resolved to <button type="button" id="real-social-select">Виділити для копіювання</button>
+2026-10-29T15:48:57.949Z pw:api attempting click action
+2026-10-29T15:48:57.949Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:57.981Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:57.981Z pw:api   scrolling into view if needed
+2026-10-29T15:48:57.982Z pw:api   done scrolling
+2026-10-29T15:48:57.987Z pw:api   performing click action
+2026-10-29T15:48:57.997Z pw:api   click action done
+2026-10-29T15:48:57.997Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:57.998Z pw:api   navigations have finished
+2026-10-29T15:48:57.999Z pw:api <= locator.click succeeded
+2026-10-29T15:48:57.999Z pw:api => locator.evaluate started
+2026-10-29T15:48:58.000Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:48:58.005Z pw:api   locator resolved to visible <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:48:58.036Z pw:api <= locator.evaluate succeeded
+2026-10-29T15:48:58.041Z pw:api => locator.click started
+2026-10-29T15:48:58.043Z pw:api waiting for locator('#real-social-card')
+2026-10-29T15:48:58.048Z pw:api   locator resolved to <button type="button" id="real-social-card">Завантажити приватну картку</button>
+2026-10-29T15:48:58.050Z pw:api attempting click action
+2026-10-29T15:48:58.050Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:58.077Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:58.077Z pw:api   scrolling into view if needed
+2026-10-29T15:48:58.079Z pw:api   done scrolling
+2026-10-29T15:48:58.083Z pw:api   performing click action
+2026-10-29T15:48:58.092Z pw:api => route.fulfill started
+2026-10-29T15:48:58.093Z pw:api   click action done
+2026-10-29T15:48:58.093Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:58.095Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.095Z pw:api   navigations have finished
+2026-10-29T15:48:58.096Z pw:api <= locator.click succeeded
+2026-10-29T15:48:58.108Z pw:api => route.fulfill started
+2026-10-29T15:48:58.111Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.119Z pw:api => route.fulfill started
+2026-10-29T15:48:58.122Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.126Z pw:api => route.fulfill started
+2026-10-29T15:48:58.128Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.134Z pw:api => route.fulfill started
+2026-10-29T15:48:58.136Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.141Z pw:api => route.fulfill started
+2026-10-29T15:48:58.144Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.148Z pw:api => route.fulfill started
+2026-10-29T15:48:58.152Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.158Z pw:api => route.fulfill started
+2026-10-29T15:48:58.162Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.166Z pw:api => route.fulfill started
+2026-10-29T15:48:58.169Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.175Z pw:api => route.fulfill started
+2026-10-29T15:48:58.178Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.183Z pw:api => route.fulfill started
+2026-10-29T15:48:58.185Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.189Z pw:api => route.fulfill started
+2026-10-29T15:48:58.192Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.196Z pw:api => route.fulfill started
+2026-10-29T15:48:58.198Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.203Z pw:api => route.fulfill started
+2026-10-29T15:48:58.205Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.210Z pw:api => route.fulfill started
+2026-10-29T15:48:58.212Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.217Z pw:api => route.fulfill started
+2026-10-29T15:48:58.219Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.224Z pw:api => route.fulfill started
+2026-10-29T15:48:58.227Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.231Z pw:api => route.fulfill started
+2026-10-29T15:48:58.234Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:58.244Z pw:api <= page.waitForEvent succeeded
+2026-10-29T15:48:58.244Z pw:api => page.waitForFunction started
+2026-10-29T15:48:58.251Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:58.835Z pw:api => browserContext.newPage started
+2026-10-29T15:48:58.953Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:58.954Z pw:api => page.setContent started
+2026-10-29T15:48:58.956Z pw:api setting frame content, waiting until "load"
+2026-10-29T15:48:59.172Z pw:api <= page.setContent succeeded
+2026-10-29T15:48:59.173Z pw:api => locator.textContent started
+2026-10-29T15:48:59.174Z pw:api waiting for locator('pre')
+2026-10-29T15:48:59.224Z pw:api   locator resolved to <pre>Приватна чернетка для LinkedIn (не опубліковано):…</pre>
+2026-10-29T15:48:59.224Z pw:api <= locator.textContent succeeded
+2026-10-29T15:48:59.224Z pw:api => locator.count started
+2026-10-29T15:48:59.228Z pw:api <= locator.count succeeded
+2026-10-29T15:48:59.228Z pw:api => locator.count started
+2026-10-29T15:48:59.232Z pw:api <= locator.count succeeded
+2026-10-29T15:48:59.233Z pw:api => locator.innerText started
+2026-10-29T15:48:59.234Z pw:api waiting for locator('footer')
+2026-10-29T15:48:59.238Z pw:api   locator resolved to <footer>…</footer>
+2026-10-29T15:48:59.239Z pw:api <= locator.innerText succeeded
+2026-10-29T15:48:59.240Z pw:api => page.evaluate started
+2026-10-29T15:48:59.246Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:59.247Z pw:api => page.evaluate started
+2026-10-29T15:48:59.623Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:59.623Z pw:api => page.evaluate started
+2026-10-29T15:48:59.625Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:59.626Z pw:api => frame.evaluate started
+2026-10-29T15:48:59.636Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:48:59.637Z pw:api => frame.evaluate started
+2026-10-29T15:48:59.677Z pw:api => route.fulfill started
+2026-10-29T15:48:59.680Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:59.687Z pw:api => route.fulfill started
+2026-10-29T15:48:59.689Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:59.694Z pw:api => route.fulfill started
+2026-10-29T15:48:59.695Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:59.762Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:48:59.765Z pw:api => browserContext.newPage started
+2026-10-29T15:48:59.868Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:59.869Z pw:api => page.evaluate started
+2026-10-29T15:49:00.264Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:00.264Z pw:api => page.evaluate started
+2026-10-29T15:49:00.267Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:00.267Z pw:api => page.evaluate started
+2026-10-29T15:49:00.270Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:00.270Z pw:api => page.evaluate started
+2026-10-29T15:49:00.275Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:00.275Z pw:api => page.evaluate started
+2026-10-29T15:49:00.311Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:00.313Z pw:api => page.close started
+2026-10-29T15:49:00.356Z pw:api <= page.close succeeded
+2026-10-29T15:49:00.357Z pw:api => page.screenshot started
+2026-10-29T15:49:00.358Z pw:api taking page screenshot
+2026-10-29T15:49:00.361Z pw:api waiting for fonts to load...
+2026-10-29T15:49:00.365Z pw:api fonts loaded
+2026-10-29T15:49:00.433Z pw:api <= page.screenshot succeeded
+2026-10-29T15:49:00.437Z pw:api => page.close started
+2026-10-29T15:49:00.460Z pw:api <= page.close succeeded
+2026-10-29T15:49:00.461Z pw:api => locator.click started
+2026-10-29T15:49:00.461Z pw:api waiting for locator('#real-social-card')
+2026-10-29T15:49:00.477Z pw:api   locator resolved to <button type="button" id="real-social-card">Завантажити приватну картку</button>
+2026-10-29T15:49:00.479Z pw:api attempting click action
+2026-10-29T15:49:00.480Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:00.497Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:00.497Z pw:api   scrolling into view if needed
+2026-10-29T15:49:00.502Z pw:api   done scrolling
+2026-10-29T15:49:00.506Z pw:api   performing click action
+2026-10-29T15:49:00.515Z pw:api => route.fulfill started
+2026-10-29T15:49:00.516Z pw:api   click action done
+2026-10-29T15:49:00.516Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:00.517Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.519Z pw:api   navigations have finished
+2026-10-29T15:49:00.519Z pw:api <= locator.click succeeded
+2026-10-29T15:49:00.523Z pw:api => route.fulfill started
+2026-10-29T15:49:00.525Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.529Z pw:api => route.fulfill started
+2026-10-29T15:49:00.530Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.534Z pw:api => route.fulfill started
+2026-10-29T15:49:00.539Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.544Z pw:api => route.fulfill started
+2026-10-29T15:49:00.546Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.550Z pw:api => route.fulfill started
+2026-10-29T15:49:00.552Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.556Z pw:api => route.fulfill started
+2026-10-29T15:49:00.558Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.565Z pw:api => route.fulfill started
+2026-10-29T15:49:00.566Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.570Z pw:api => route.fulfill started
+2026-10-29T15:49:00.572Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.576Z pw:api => locator.fill started
+2026-10-29T15:49:00.577Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:49:00.581Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:49:00.583Z pw:api   fill("Приватна чернетка для LinkedIn (не опубліковано):
+• Мій прототип × Zürich 💛
+  <script>literal</script> / 向前
+
+Це мої результати у Synera, прийняті їхніми одержувачами. Підтвердження учасників не є незалежною перевіркою якості.
+Моє уточнення, без автоматичної публікації.
+New edit during validation")
+2026-10-29T15:49:00.583Z pw:api attempting fill action
+2026-10-29T15:49:00.583Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:49:00.604Z pw:api <= locator.fill succeeded
+2026-10-29T15:49:00.604Z pw:api => page.waitForFunction started
+2026-10-29T15:49:00.605Z pw:api => route.fulfill started
+2026-10-29T15:49:00.610Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.615Z pw:api => route.fulfill started
+2026-10-29T15:49:00.617Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.621Z pw:api => route.fulfill started
+2026-10-29T15:49:00.623Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.626Z pw:api => route.fulfill started
+2026-10-29T15:49:00.628Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.632Z pw:api => route.fulfill started
+2026-10-29T15:49:00.636Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.640Z pw:api => route.fulfill started
+2026-10-29T15:49:00.642Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.645Z pw:api => route.fulfill started
+2026-10-29T15:49:00.647Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.651Z pw:api => route.fulfill started
+2026-10-29T15:49:00.653Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.658Z pw:api => route.fulfill started
+2026-10-29T15:49:00.661Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.683Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:00.683Z pw:api => locator.inputValue started
+2026-10-29T15:49:00.684Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:49:00.687Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:49:00.687Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:00.695Z pw:api => locator.click started
+2026-10-29T15:49:00.695Z pw:api waiting for locator('#real-social-card')
+2026-10-29T15:49:00.699Z pw:api   locator resolved to <button type="button" id="real-social-card">Завантажити приватну картку</button>
+2026-10-29T15:49:00.701Z pw:api attempting click action
+2026-10-29T15:49:00.701Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:00.731Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:00.731Z pw:api   scrolling into view if needed
+2026-10-29T15:49:00.733Z pw:api   done scrolling
+2026-10-29T15:49:00.737Z pw:api   performing click action
+2026-10-29T15:49:00.744Z pw:api => route.fulfill started
+2026-10-29T15:49:00.745Z pw:api   click action done
+2026-10-29T15:49:00.745Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:00.746Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.747Z pw:api   navigations have finished
+2026-10-29T15:49:00.747Z pw:api <= locator.click succeeded
+2026-10-29T15:49:00.748Z pw:api => page.waitForFunction started
+2026-10-29T15:49:00.761Z pw:api => route.fulfill started
+2026-10-29T15:49:00.762Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.766Z pw:api => route.fulfill started
+2026-10-29T15:49:00.769Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.773Z pw:api => route.fulfill started
+2026-10-29T15:49:00.775Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.800Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:00.800Z pw:api => locator.isHidden started
+2026-10-29T15:49:00.801Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:00.807Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:00.818Z pw:api => locator.click started
+2026-10-29T15:49:00.818Z pw:api waiting for locator('#real-outcome-refresh')
+2026-10-29T15:49:00.824Z pw:api   locator resolved to <button type="button" id="real-outcome-refresh">Перевірити результати</button>
+2026-10-29T15:49:00.826Z pw:api attempting click action
+2026-10-29T15:49:00.826Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:00.869Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:00.869Z pw:api   scrolling into view if needed
+2026-10-29T15:49:00.870Z pw:api   done scrolling
+2026-10-29T15:49:00.874Z pw:api   performing click action
+2026-10-29T15:49:00.883Z pw:api => route.fulfill started
+2026-10-29T15:49:00.884Z pw:api   click action done
+2026-10-29T15:49:00.884Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:00.886Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.886Z pw:api   navigations have finished
+2026-10-29T15:49:00.887Z pw:api <= locator.click succeeded
+2026-10-29T15:49:00.887Z pw:api => page.waitForFunction started
+2026-10-29T15:49:00.905Z pw:api => route.fulfill started
+2026-10-29T15:49:00.907Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.912Z pw:api => route.fulfill started
+2026-10-29T15:49:00.914Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.919Z pw:api => route.fulfill started
+2026-10-29T15:49:00.922Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.927Z pw:api => route.fulfill started
+2026-10-29T15:49:00.930Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.934Z pw:api => route.fulfill started
+2026-10-29T15:49:00.937Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.942Z pw:api => route.fulfill started
+2026-10-29T15:49:00.949Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.952Z pw:api => route.fulfill started
+2026-10-29T15:49:00.959Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.961Z pw:api => route.fulfill started
+2026-10-29T15:49:00.966Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.970Z pw:api => route.fulfill started
+2026-10-29T15:49:00.975Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.977Z pw:api => route.fulfill started
+2026-10-29T15:49:00.980Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.984Z pw:api => route.fulfill started
+2026-10-29T15:49:00.986Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.990Z pw:api => route.fulfill started
+2026-10-29T15:49:00.995Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:00.998Z pw:api => route.fulfill started
+2026-10-29T15:49:01.001Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.019Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:01.019Z pw:api => locator.check started
+2026-10-29T15:49:01.020Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:49:01.028Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:49:01.035Z pw:api attempting click action
+2026-10-29T15:49:01.035Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.063Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.063Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.064Z pw:api   done scrolling
+2026-10-29T15:49:01.068Z pw:api   performing click action
+2026-10-29T15:49:01.075Z pw:api   click action done
+2026-10-29T15:49:01.075Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.075Z pw:api   navigations have finished
+2026-10-29T15:49:01.077Z pw:api <= locator.check succeeded
+2026-10-29T15:49:01.078Z pw:api => locator.click started
+2026-10-29T15:49:01.078Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:49:01.083Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:49:01.085Z pw:api attempting click action
+2026-10-29T15:49:01.085Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.113Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.113Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.114Z pw:api   done scrolling
+2026-10-29T15:49:01.119Z pw:api   performing click action
+2026-10-29T15:49:01.131Z pw:api => route.fulfill started
+2026-10-29T15:49:01.132Z pw:api   click action done
+2026-10-29T15:49:01.132Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.137Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.138Z pw:api   navigations have finished
+2026-10-29T15:49:01.139Z pw:api <= locator.click succeeded
+2026-10-29T15:49:01.139Z pw:api => page.waitForFunction started
+2026-10-29T15:49:01.149Z pw:api => route.fulfill started
+2026-10-29T15:49:01.153Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.159Z pw:api => route.fulfill started
+2026-10-29T15:49:01.167Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.172Z pw:api => route.fulfill started
+2026-10-29T15:49:01.175Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.185Z pw:api => route.fulfill started
+2026-10-29T15:49:01.188Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.195Z pw:api => route.fulfill started
+2026-10-29T15:49:01.200Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.206Z pw:api => route.fulfill started
+2026-10-29T15:49:01.210Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.217Z pw:api => route.fulfill started
+2026-10-29T15:49:01.220Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.227Z pw:api => route.fulfill started
+2026-10-29T15:49:01.229Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.233Z pw:api => route.fulfill started
+2026-10-29T15:49:01.235Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.240Z pw:api => route.fulfill started
+2026-10-29T15:49:01.242Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.246Z pw:api => route.fulfill started
+2026-10-29T15:49:01.248Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.254Z pw:api => route.fulfill started
+2026-10-29T15:49:01.260Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.263Z pw:api => route.fulfill started
+2026-10-29T15:49:01.267Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.272Z pw:api => route.fulfill started
+2026-10-29T15:49:01.277Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.281Z pw:api => route.fulfill started
+2026-10-29T15:49:01.286Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.290Z pw:api => route.fulfill started
+2026-10-29T15:49:01.294Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.298Z pw:api => route.fulfill started
+2026-10-29T15:49:01.303Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.320Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:01.321Z pw:api => locator.isVisible started
+2026-10-29T15:49:01.321Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:01.330Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:01.331Z pw:api => locator.click started
+2026-10-29T15:49:01.331Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:49:01.338Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:49:01.341Z pw:api attempting click action
+2026-10-29T15:49:01.341Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.389Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.389Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.391Z pw:api   done scrolling
+2026-10-29T15:49:01.397Z pw:api   performing click action
+2026-10-29T15:49:01.406Z pw:api => route.fulfill started
+2026-10-29T15:49:01.407Z pw:api   click action done
+2026-10-29T15:49:01.407Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.409Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.410Z pw:api   navigations have finished
+2026-10-29T15:49:01.411Z pw:api <= locator.click succeeded
+2026-10-29T15:49:01.422Z pw:api => route.fulfill started
+2026-10-29T15:49:01.425Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.431Z pw:api => route.fulfill started
+2026-10-29T15:49:01.434Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.440Z pw:api => route.fulfill started
+2026-10-29T15:49:01.442Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.449Z pw:api => route.fulfill started
+2026-10-29T15:49:01.451Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.457Z pw:api => route.fulfill started
+2026-10-29T15:49:01.459Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.463Z pw:api => route.fulfill started
+2026-10-29T15:49:01.465Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.470Z pw:api => route.fulfill started
+2026-10-29T15:49:01.472Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.476Z pw:api => route.fulfill started
+2026-10-29T15:49:01.478Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.482Z pw:api => locator.uncheck started
+2026-10-29T15:49:01.483Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:49:01.488Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:49:01.493Z pw:api attempting click action
+2026-10-29T15:49:01.493Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.519Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.519Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.520Z pw:api   done scrolling
+2026-10-29T15:49:01.523Z pw:api   performing click action
+2026-10-29T15:49:01.529Z pw:api   click action done
+2026-10-29T15:49:01.529Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.529Z pw:api   navigations have finished
+2026-10-29T15:49:01.531Z pw:api <= locator.uncheck succeeded
+2026-10-29T15:49:01.532Z pw:api => page.waitForFunction started
+2026-10-29T15:49:01.533Z pw:api => route.fulfill started
+2026-10-29T15:49:01.535Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.550Z pw:api => route.fulfill started
+2026-10-29T15:49:01.553Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.557Z pw:api => route.fulfill started
+2026-10-29T15:49:01.560Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.564Z pw:api => route.fulfill started
+2026-10-29T15:49:01.569Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.572Z pw:api => route.fulfill started
+2026-10-29T15:49:01.576Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.579Z pw:api => route.fulfill started
+2026-10-29T15:49:01.581Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.586Z pw:api => route.fulfill started
+2026-10-29T15:49:01.588Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.594Z pw:api => route.fulfill started
+2026-10-29T15:49:01.600Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.602Z pw:api => route.fulfill started
+2026-10-29T15:49:01.605Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.615Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:01.615Z pw:api => locator.isHidden started
+2026-10-29T15:49:01.616Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:01.619Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:01.619Z pw:api => locator.inputValue started
+2026-10-29T15:49:01.620Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:49:01.624Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:49:01.624Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:01.625Z pw:api => locator.check started
+2026-10-29T15:49:01.626Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:49:01.630Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:49:01.636Z pw:api attempting click action
+2026-10-29T15:49:01.636Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.664Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.664Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.665Z pw:api   done scrolling
+2026-10-29T15:49:01.669Z pw:api   performing click action
+2026-10-29T15:49:01.675Z pw:api   click action done
+2026-10-29T15:49:01.675Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.675Z pw:api   navigations have finished
+2026-10-29T15:49:01.678Z pw:api <= locator.check succeeded
+2026-10-29T15:49:01.678Z pw:api => locator.click started
+2026-10-29T15:49:01.679Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:49:01.684Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:49:01.687Z pw:api attempting click action
+2026-10-29T15:49:01.687Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.738Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.738Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.739Z pw:api   done scrolling
+2026-10-29T15:49:01.744Z pw:api   performing click action
+2026-10-29T15:49:01.752Z pw:api => route.fulfill started
+2026-10-29T15:49:01.752Z pw:api   click action done
+2026-10-29T15:49:01.753Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:01.755Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.755Z pw:api   navigations have finished
+2026-10-29T15:49:01.756Z pw:api <= locator.click succeeded
+2026-10-29T15:49:01.756Z pw:api => page.waitForFunction started
+2026-10-29T15:49:01.768Z pw:api => route.fulfill started
+2026-10-29T15:49:01.771Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.777Z pw:api => route.fulfill started
+2026-10-29T15:49:01.784Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.786Z pw:api => route.fulfill started
+2026-10-29T15:49:01.789Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.794Z pw:api => route.fulfill started
+2026-10-29T15:49:01.797Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.802Z pw:api => route.fulfill started
+2026-10-29T15:49:01.805Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.809Z pw:api => route.fulfill started
+2026-10-29T15:49:01.814Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.817Z pw:api => route.fulfill started
+2026-10-29T15:49:01.821Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.826Z pw:api => route.fulfill started
+2026-10-29T15:49:01.829Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.835Z pw:api => route.fulfill started
+2026-10-29T15:49:01.844Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.848Z pw:api => route.fulfill started
+2026-10-29T15:49:01.860Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.864Z pw:api => route.fulfill started
+2026-10-29T15:49:01.868Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.871Z pw:api => route.fulfill started
+2026-10-29T15:49:01.877Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.880Z pw:api => route.fulfill started
+2026-10-29T15:49:01.886Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.891Z pw:api => route.fulfill started
+2026-10-29T15:49:01.895Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.898Z pw:api => route.fulfill started
+2026-10-29T15:49:01.901Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.905Z pw:api => route.fulfill started
+2026-10-29T15:49:01.909Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.914Z pw:api => route.fulfill started
+2026-10-29T15:49:01.919Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:01.927Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:01.928Z pw:api => locator.isVisible started
+2026-10-29T15:49:01.928Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:01.933Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:01.934Z pw:api => locator.click started
+2026-10-29T15:49:01.935Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:01.941Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:01.944Z pw:api attempting click action
+2026-10-29T15:49:01.944Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:01.972Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:01.973Z pw:api   scrolling into view if needed
+2026-10-29T15:49:01.975Z pw:api   done scrolling
+2026-10-29T15:49:01.982Z pw:api   performing click action
+2026-10-29T15:49:02.003Z pw:api   click action done
+2026-10-29T15:49:02.003Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:02.005Z pw:api   navigations have finished
+2026-10-29T15:49:02.006Z pw:api <= locator.click succeeded
+2026-10-29T15:49:02.007Z pw:api => locator.selectOption started
+2026-10-29T15:49:02.008Z pw:api waiting for locator('#style-preset')
+2026-10-29T15:49:02.017Z pw:api   locator resolved to <select id="style-preset" aria-label="Вигляд">…</select>
+2026-10-29T15:49:02.021Z pw:api attempting select option action
+2026-10-29T15:49:02.021Z pw:api   waiting for element to be visible and enabled
+2026-10-29T15:49:02.037Z pw:api   selected specified option(s)
+2026-10-29T15:49:02.038Z pw:api <= locator.selectOption succeeded
+2026-10-29T15:49:02.039Z pw:api => locator.click started
+2026-10-29T15:49:02.040Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:02.080Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:02.084Z pw:api attempting click action
+2026-10-29T15:49:02.084Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:02.119Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:02.119Z pw:api   scrolling into view if needed
+2026-10-29T15:49:02.121Z pw:api   done scrolling
+2026-10-29T15:49:02.127Z pw:api   performing click action
+2026-10-29T15:49:02.135Z pw:api   click action done
+2026-10-29T15:49:02.135Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:02.137Z pw:api   navigations have finished
+2026-10-29T15:49:02.137Z pw:api <= locator.click succeeded
+2026-10-29T15:49:02.138Z pw:api => locator.getAttribute started
+2026-10-29T15:49:02.139Z pw:api waiting for locator('html')
+2026-10-29T15:49:02.149Z pw:api   locator resolved to <html lang="uk" data-synera-style="synera" data-density="comfortable" data-adaptive-text="regular" data-personal-accent="by-look">…</html>
+2026-10-29T15:49:02.150Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:49:02.151Z pw:api => page.evaluate started
+2026-10-29T15:49:02.553Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:02.554Z pw:api => page.evaluate started
+2026-10-29T15:49:02.556Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:02.556Z pw:api => frame.evaluate started
+2026-10-29T15:49:02.582Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:02.582Z pw:api => frame.evaluate started
+2026-10-29T15:49:03.087Z pw:api => route.continue started
+2026-10-29T15:49:03.096Z pw:api => route.continue started
+2026-10-29T15:49:03.100Z pw:api <= route.continue succeeded
+2026-10-29T15:49:03.101Z pw:api => route.continue started
+2026-10-29T15:49:03.102Z pw:api => route.continue started
+2026-10-29T15:49:03.123Z pw:api <= route.continue succeeded
+2026-10-29T15:49:03.123Z pw:api <= route.continue succeeded
+2026-10-29T15:49:03.123Z pw:api <= route.continue succeeded
+2026-10-29T15:49:03.350Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:03.355Z pw:api => browserContext.newPage started
+2026-10-29T15:49:03.427Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:49:03.429Z pw:api => page.evaluate started
+2026-10-29T15:49:03.822Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:03.823Z pw:api => page.evaluate started
+2026-10-29T15:49:03.827Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:03.827Z pw:api => page.evaluate started
+2026-10-29T15:49:03.833Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:03.836Z pw:api => page.evaluate started
+2026-10-29T15:49:03.865Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:03.866Z pw:api => page.evaluate started
+2026-10-29T15:49:04.099Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:04.103Z pw:api => page.close started
+2026-10-29T15:49:04.126Z pw:api <= page.close succeeded
+2026-10-29T15:49:04.127Z pw:api => locator.scrollIntoViewIfNeeded started
+2026-10-29T15:49:04.128Z pw:api waiting for locator('#real-social-output')
+2026-10-29T15:49:04.143Z pw:api   locator resolved to visible <div class="real-form" id="real-social-output">…</div>
+2026-10-29T15:49:04.150Z pw:api attempting scroll into view action
+2026-10-29T15:49:04.151Z pw:api   waiting for element to be stable
+2026-10-29T15:49:04.184Z pw:api <= locator.scrollIntoViewIfNeeded succeeded
+2026-10-29T15:49:04.184Z pw:api => page.screenshot started
+2026-10-29T15:49:04.185Z pw:api taking page screenshot
+2026-10-29T15:49:04.189Z pw:api waiting for fonts to load...
+2026-10-29T15:49:04.192Z pw:api fonts loaded
+2026-10-29T15:49:04.678Z pw:api => route.fulfill started
+2026-10-29T15:49:04.680Z pw:api <= page.screenshot succeeded
+2026-10-29T15:49:04.682Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:04.684Z pw:api => locator.click started
+2026-10-29T15:49:04.685Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:04.689Z pw:api => route.fulfill started
+2026-10-29T15:49:04.693Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:04.694Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:04.697Z pw:api attempting click action
+2026-10-29T15:49:04.698Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:04.701Z pw:api => route.fulfill started
+2026-10-29T15:49:04.705Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:04.746Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:04.746Z pw:api   scrolling into view if needed
+2026-10-29T15:49:04.748Z pw:api   done scrolling
+2026-10-29T15:49:04.752Z pw:api   performing click action
+2026-10-29T15:49:04.758Z pw:api   click action done
+2026-10-29T15:49:04.758Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:04.759Z pw:api   navigations have finished
+2026-10-29T15:49:04.759Z pw:api <= locator.click succeeded
+2026-10-29T15:49:04.760Z pw:api => locator.selectOption started
+2026-10-29T15:49:04.760Z pw:api waiting for locator('#style-preset')
+2026-10-29T15:49:04.765Z pw:api   locator resolved to <select id="style-preset" aria-label="Вигляд">…</select>
+2026-10-29T15:49:04.767Z pw:api attempting select option action
+2026-10-29T15:49:04.767Z pw:api   waiting for element to be visible and enabled
+2026-10-29T15:49:04.770Z pw:api   selected specified option(s)
+2026-10-29T15:49:04.771Z pw:api <= locator.selectOption succeeded
+2026-10-29T15:49:04.771Z pw:api => locator.click started
+2026-10-29T15:49:04.772Z pw:api waiting for locator('.adaptive-legacy').locator(':scope > summary')
+2026-10-29T15:49:04.791Z pw:api   locator resolved to <summary>Попередні налаштування Atelier</summary>
+2026-10-29T15:49:04.794Z pw:api attempting click action
+2026-10-29T15:49:04.794Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:04.844Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:04.844Z pw:api   scrolling into view if needed
+2026-10-29T15:49:04.846Z pw:api   done scrolling
+2026-10-29T15:49:04.849Z pw:api   performing click action
+2026-10-29T15:49:04.855Z pw:api   click action done
+2026-10-29T15:49:04.856Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:04.857Z pw:api   navigations have finished
+2026-10-29T15:49:04.857Z pw:api <= locator.click succeeded
+2026-10-29T15:49:04.858Z pw:api => locator.click started
+2026-10-29T15:49:04.858Z pw:api waiting for locator('.adaptive-legacy').getByRole('button', { name: 'Atelier 2026', exact: true })
+2026-10-29T15:49:04.864Z pw:api   locator resolved to <button type="button" aria-pressed="false">Atelier 2026</button>
+2026-10-29T15:49:04.865Z pw:api attempting click action
+2026-10-29T15:49:04.865Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:04.893Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:04.893Z pw:api   scrolling into view if needed
+2026-10-29T15:49:04.894Z pw:api   done scrolling
+2026-10-29T15:49:04.898Z pw:api   performing click action
+2026-10-29T15:49:04.933Z pw:api   click action done
+2026-10-29T15:49:04.933Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:04.935Z pw:api   navigations have finished
+2026-10-29T15:49:04.935Z pw:api <= locator.click succeeded
+2026-10-29T15:49:04.936Z pw:api => locator.getAttribute started
+2026-10-29T15:49:04.937Z pw:api waiting for locator('html')
+2026-10-29T15:49:04.940Z pw:api   locator resolved to <html lang="uk" data-synera-atelier="on" data-density="comfortable" data-atelier-accent="gold" data-synera-style="atelier" data-atelier-type="regular" data-adaptive-text="regular" data-personal-accent="by-look" data-atelier-contrast="normal" data-atelier-density="comfortable">…</html>
+2026-10-29T15:49:04.941Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:49:04.941Z pw:api => locator.click started
+2026-10-29T15:49:04.942Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:04.949Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:04.951Z pw:api attempting click action
+2026-10-29T15:49:04.951Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:04.991Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:04.992Z pw:api   scrolling into view if needed
+2026-10-29T15:49:04.993Z pw:api   done scrolling
+2026-10-29T15:49:04.997Z pw:api   performing click action
+2026-10-29T15:49:05.005Z pw:api   click action done
+2026-10-29T15:49:05.005Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:05.006Z pw:api   navigations have finished
+2026-10-29T15:49:05.007Z pw:api <= locator.click succeeded
+2026-10-29T15:49:05.007Z pw:api => page.evaluate started
+2026-10-29T15:49:05.111Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:05.112Z pw:api => page.evaluate started
+2026-10-29T15:49:05.114Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:05.114Z pw:api => frame.evaluate started
+2026-10-29T15:49:05.127Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:05.128Z pw:api => frame.evaluate started
+2026-10-29T15:49:05.436Z pw:api => route.continue started
+2026-10-29T15:49:05.438Z pw:api <= route.continue succeeded
+2026-10-29T15:49:05.441Z pw:api => route.continue started
+2026-10-29T15:49:05.443Z pw:api => route.continue started
+2026-10-29T15:49:05.444Z pw:api <= route.continue succeeded
+2026-10-29T15:49:05.445Z pw:api <= route.continue succeeded
+2026-10-29T15:49:05.603Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:49:05.610Z pw:api => browserContext.newPage started
+2026-10-29T15:49:05.679Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:49:05.679Z pw:api => page.evaluate started
+2026-10-29T15:49:06.042Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.042Z pw:api => page.evaluate started
+2026-10-29T15:49:06.046Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.047Z pw:api => page.evaluate started
+2026-10-29T15:49:06.052Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.058Z pw:api => page.evaluate started
+2026-10-29T15:49:06.096Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.097Z pw:api => page.evaluate started
+2026-10-29T15:49:06.315Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.318Z pw:api => page.close started
+2026-10-29T15:49:06.351Z pw:api <= page.close succeeded
+2026-10-29T15:49:06.351Z pw:api => locator.click started
+2026-10-29T15:49:06.352Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:06.369Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:06.372Z pw:api attempting click action
+2026-10-29T15:49:06.372Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:06.391Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:06.392Z pw:api   scrolling into view if needed
+2026-10-29T15:49:06.393Z pw:api   done scrolling
+2026-10-29T15:49:06.397Z pw:api   performing click action
+2026-10-29T15:49:06.403Z pw:api   click action done
+2026-10-29T15:49:06.403Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:06.405Z pw:api   navigations have finished
+2026-10-29T15:49:06.405Z pw:api <= locator.click succeeded
+2026-10-29T15:49:06.406Z pw:api => locator.selectOption started
+2026-10-29T15:49:06.406Z pw:api waiting for locator('#style-preset')
+2026-10-29T15:49:06.411Z pw:api   locator resolved to <select id="style-preset" aria-label="Вигляд">…</select>
+2026-10-29T15:49:06.414Z pw:api attempting select option action
+2026-10-29T15:49:06.414Z pw:api   waiting for element to be visible and enabled
+2026-10-29T15:49:06.421Z pw:api   selected specified option(s)
+2026-10-29T15:49:06.421Z pw:api <= locator.selectOption succeeded
+2026-10-29T15:49:06.422Z pw:api => locator.click started
+2026-10-29T15:49:06.423Z pw:api waiting for locator('.adaptive-legacy').getByRole('button', { name: 'Чинний', exact: true })
+2026-10-29T15:49:06.438Z pw:api   locator resolved to <button type="button" aria-pressed="false">Чинний</button>
+2026-10-29T15:49:06.442Z pw:api attempting click action
+2026-10-29T15:49:06.442Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:06.725Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:06.725Z pw:api   scrolling into view if needed
+2026-10-29T15:49:06.731Z pw:api   done scrolling
+2026-10-29T15:49:06.735Z pw:api   performing click action
+2026-10-29T15:49:06.763Z pw:api   click action done
+2026-10-29T15:49:06.764Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:06.766Z pw:api   navigations have finished
+2026-10-29T15:49:06.767Z pw:api <= locator.click succeeded
+2026-10-29T15:49:06.767Z pw:api => locator.click started
+2026-10-29T15:49:06.768Z pw:api waiting for locator('.adaptive-legacy').locator(':scope > summary')
+2026-10-29T15:49:06.775Z pw:api   locator resolved to <summary>Попередні налаштування Atelier</summary>
+2026-10-29T15:49:06.778Z pw:api attempting click action
+2026-10-29T15:49:06.778Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:06.813Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:06.813Z pw:api   scrolling into view if needed
+2026-10-29T15:49:06.814Z pw:api   done scrolling
+2026-10-29T15:49:06.819Z pw:api   performing click action
+2026-10-29T15:49:06.827Z pw:api   click action done
+2026-10-29T15:49:06.828Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:06.829Z pw:api   navigations have finished
+2026-10-29T15:49:06.829Z pw:api <= locator.click succeeded
+2026-10-29T15:49:06.829Z pw:api => locator.click started
+2026-10-29T15:49:06.830Z pw:api waiting for locator('.header-preferences > summary')
+2026-10-29T15:49:06.837Z pw:api   locator resolved to <summary>Мова і вигляд</summary>
+2026-10-29T15:49:06.840Z pw:api attempting click action
+2026-10-29T15:49:06.840Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:06.879Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:06.879Z pw:api   scrolling into view if needed
+2026-10-29T15:49:06.881Z pw:api   done scrolling
+2026-10-29T15:49:06.887Z pw:api   performing click action
+2026-10-29T15:49:06.898Z pw:api   click action done
+2026-10-29T15:49:06.898Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:06.900Z pw:api   navigations have finished
+2026-10-29T15:49:06.901Z pw:api <= locator.click succeeded
+2026-10-29T15:49:06.901Z pw:api => page.evaluate started
+2026-10-29T15:49:06.907Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:06.923Z pw:api => locator.click started
+2026-10-29T15:49:06.924Z pw:api waiting for locator('#real-outcome-refresh')
+2026-10-29T15:49:06.932Z pw:api   locator resolved to <button type="button" id="real-outcome-refresh">Перевірити результати</button>
+2026-10-29T15:49:06.936Z pw:api attempting click action
+2026-10-29T15:49:06.937Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:06.944Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:06.944Z pw:api   scrolling into view if needed
+2026-10-29T15:49:06.945Z pw:api   done scrolling
+2026-10-29T15:49:06.951Z pw:api   performing click action
+2026-10-29T15:49:06.961Z pw:api => route.fulfill started
+2026-10-29T15:49:06.962Z pw:api   click action done
+2026-10-29T15:49:06.962Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:06.964Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:06.964Z pw:api   navigations have finished
+2026-10-29T15:49:06.964Z pw:api <= locator.click succeeded
+2026-10-29T15:49:06.965Z pw:api => page.waitForFunction started
+2026-10-29T15:49:06.977Z pw:api => route.fulfill started
+2026-10-29T15:49:06.980Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:06.985Z pw:api => route.fulfill started
+2026-10-29T15:49:06.988Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:06.993Z pw:api => route.fulfill started
+2026-10-29T15:49:06.995Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.002Z pw:api => route.fulfill started
+2026-10-29T15:49:07.005Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.010Z pw:api => route.fulfill started
+2026-10-29T15:49:07.013Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.019Z pw:api => route.fulfill started
+2026-10-29T15:49:07.022Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.028Z pw:api => route.fulfill started
+2026-10-29T15:49:07.030Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.036Z pw:api => route.fulfill started
+2026-10-29T15:49:07.039Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.046Z pw:api => route.fulfill started
+2026-10-29T15:49:07.049Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.055Z pw:api => route.fulfill started
+2026-10-29T15:49:07.058Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.063Z pw:api => route.fulfill started
+2026-10-29T15:49:07.066Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.072Z pw:api => route.fulfill started
+2026-10-29T15:49:07.075Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.080Z pw:api => route.fulfill started
+2026-10-29T15:49:07.084Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.093Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:07.094Z pw:api => locator.isHidden started
+2026-10-29T15:49:07.095Z pw:api   checking visibility of locator('#real-social-controls')
+2026-10-29T15:49:07.104Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:07.104Z pw:api => locator.inputValue started
+2026-10-29T15:49:07.105Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:49:07.110Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:49:07.111Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:07.124Z pw:api => locator.click started
+2026-10-29T15:49:07.124Z pw:api waiting for locator('#real-outcome-refresh')
+2026-10-29T15:49:07.130Z pw:api   locator resolved to <button type="button" id="real-outcome-refresh">Перевірити результати</button>
+2026-10-29T15:49:07.132Z pw:api attempting click action
+2026-10-29T15:49:07.132Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:07.162Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:07.162Z pw:api   scrolling into view if needed
+2026-10-29T15:49:07.163Z pw:api   done scrolling
+2026-10-29T15:49:07.168Z pw:api   performing click action
+2026-10-29T15:49:07.179Z pw:api => route.fulfill started
+2026-10-29T15:49:07.181Z pw:api   click action done
+2026-10-29T15:49:07.181Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:07.183Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.183Z pw:api   navigations have finished
+2026-10-29T15:49:07.184Z pw:api <= locator.click succeeded
+2026-10-29T15:49:07.184Z pw:api => page.waitForFunction started
+2026-10-29T15:49:07.193Z pw:api => route.fulfill started
+2026-10-29T15:49:07.196Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.200Z pw:api => route.fulfill started
+2026-10-29T15:49:07.202Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.207Z pw:api => route.fulfill started
+2026-10-29T15:49:07.209Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.213Z pw:api => route.fulfill started
+2026-10-29T15:49:07.215Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.219Z pw:api => route.fulfill started
+2026-10-29T15:49:07.221Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.224Z pw:api => route.fulfill started
+2026-10-29T15:49:07.226Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.230Z pw:api => route.fulfill started
+2026-10-29T15:49:07.232Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.236Z pw:api => route.fulfill started
+2026-10-29T15:49:07.238Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.243Z pw:api => route.fulfill started
+2026-10-29T15:49:07.245Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.250Z pw:api => route.fulfill started
+2026-10-29T15:49:07.252Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.256Z pw:api => route.fulfill started
+2026-10-29T15:49:07.258Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.261Z pw:api => route.fulfill started
+2026-10-29T15:49:07.263Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.266Z pw:api => route.fulfill started
+2026-10-29T15:49:07.268Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.287Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:07.288Z pw:api => locator.check started
+2026-10-29T15:49:07.289Z pw:api waiting for locator('#real-social-consent')
+2026-10-29T15:49:07.293Z pw:api   locator resolved to <input type="checkbox" id="real-social-consent"/>
+2026-10-29T15:49:07.298Z pw:api attempting click action
+2026-10-29T15:49:07.298Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:07.332Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:07.332Z pw:api   scrolling into view if needed
+2026-10-29T15:49:07.333Z pw:api   done scrolling
+2026-10-29T15:49:07.337Z pw:api   performing click action
+2026-10-29T15:49:07.343Z pw:api   click action done
+2026-10-29T15:49:07.343Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:07.343Z pw:api   navigations have finished
+2026-10-29T15:49:07.345Z pw:api <= locator.check succeeded
+2026-10-29T15:49:07.346Z pw:api => locator.click started
+2026-10-29T15:49:07.346Z pw:api waiting for locator('#real-social-create')
+2026-10-29T15:49:07.351Z pw:api   locator resolved to <button type="button" id="real-social-create">Створити приватну чернетку</button>
+2026-10-29T15:49:07.353Z pw:api attempting click action
+2026-10-29T15:49:07.353Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:07.381Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:07.381Z pw:api   scrolling into view if needed
+2026-10-29T15:49:07.382Z pw:api   done scrolling
+2026-10-29T15:49:07.385Z pw:api   performing click action
+2026-10-29T15:49:07.391Z pw:api => route.fulfill started
+2026-10-29T15:49:07.392Z pw:api   click action done
+2026-10-29T15:49:07.392Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:07.393Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.394Z pw:api   navigations have finished
+2026-10-29T15:49:07.394Z pw:api <= locator.click succeeded
+2026-10-29T15:49:07.395Z pw:api => page.waitForFunction started
+2026-10-29T15:49:07.409Z pw:api => route.fulfill started
+2026-10-29T15:49:07.411Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.415Z pw:api => route.fulfill started
+2026-10-29T15:49:07.418Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.421Z pw:api => route.fulfill started
+2026-10-29T15:49:07.424Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.428Z pw:api => route.fulfill started
+2026-10-29T15:49:07.430Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.434Z pw:api => route.fulfill started
+2026-10-29T15:49:07.436Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.440Z pw:api => route.fulfill started
+2026-10-29T15:49:07.442Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.446Z pw:api => route.fulfill started
+2026-10-29T15:49:07.448Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.452Z pw:api => route.fulfill started
+2026-10-29T15:49:07.454Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.458Z pw:api => route.fulfill started
+2026-10-29T15:49:07.460Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.465Z pw:api => route.fulfill started
+2026-10-29T15:49:07.467Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.472Z pw:api => route.fulfill started
+2026-10-29T15:49:07.475Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.479Z pw:api => route.fulfill started
+2026-10-29T15:49:07.481Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.485Z pw:api => route.fulfill started
+2026-10-29T15:49:07.488Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.492Z pw:api => route.fulfill started
+2026-10-29T15:49:07.494Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.498Z pw:api => route.fulfill started
+2026-10-29T15:49:07.501Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.505Z pw:api => route.fulfill started
+2026-10-29T15:49:07.507Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.511Z pw:api => route.fulfill started
+2026-10-29T15:49:07.513Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.522Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:07.522Z pw:api => locator.isVisible started
+2026-10-29T15:49:07.522Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:07.527Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:49:07.528Z pw:api => locator.click started
+2026-10-29T15:49:07.528Z pw:api waiting for locator('#real-logout')
+2026-10-29T15:49:07.533Z pw:api   locator resolved to <button type="button" id="real-logout">Вийти</button>
+2026-10-29T15:49:07.534Z pw:api attempting click action
+2026-10-29T15:49:07.534Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:49:07.752Z pw:api   element is visible, enabled and stable
+2026-10-29T15:49:07.752Z pw:api   scrolling into view if needed
+2026-10-29T15:49:07.754Z pw:api   done scrolling
+2026-10-29T15:49:07.758Z pw:api   performing click action
+2026-10-29T15:49:07.776Z pw:api => route.fulfill started
+2026-10-29T15:49:07.780Z pw:api   click action done
+2026-10-29T15:49:07.781Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:49:07.781Z pw:api <= route.fulfill succeeded
+2026-10-29T15:49:07.783Z pw:api   navigations have finished
+2026-10-29T15:49:07.784Z pw:api <= locator.click succeeded
+2026-10-29T15:49:07.784Z pw:api => page.waitForFunction started
+2026-10-29T15:49:07.791Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:49:07.792Z pw:api => locator.inputValue started
+2026-10-29T15:49:07.793Z pw:api waiting for locator('#real-social-text')
+2026-10-29T15:49:07.796Z pw:api   locator resolved to <textarea rows="7" id="real-social-text"></textarea>
+2026-10-29T15:49:07.796Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:49:07.796Z pw:api => locator.isHidden started
+2026-10-29T15:49:07.797Z pw:api   checking visibility of locator('#real-social-output')
+2026-10-29T15:49:07.800Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:07.801Z pw:api => locator.isHidden started
+2026-10-29T15:49:07.801Z pw:api   checking visibility of locator('#real-social-controls')
+2026-10-29T15:49:07.805Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:49:07.805Z pw:api => page.evaluate started
+2026-10-29T15:49:07.815Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:07.815Z pw:api => page.evaluate started
+2026-10-29T15:49:07.818Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:07.819Z pw:api => page.evaluate started
+2026-10-29T15:49:07.821Z pw:api <= page.evaluate succeeded
+2026-10-29T15:49:07.822Z pw:api => browser.close started
+2026-10-29T15:49:08.343Z pw:api <= browser.close succeeded
+{"status":"PASS_LOCAL_CASE_SOCIAL_BROWSER","checks":10,"external_requests":0}

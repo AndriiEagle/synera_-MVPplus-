@@ -1,0 +1,623 @@
+2026-10-29T15:49:59.668Z pw:api => browserType.launch started
+2026-10-29T15:50:00.333Z pw:api <= browserType.launch succeeded
+2026-10-29T15:50:00.335Z pw:api => browser.newContext started
+2026-10-29T15:50:00.399Z pw:api <= browser.newContext succeeded
+2026-10-29T15:50:00.400Z pw:api => browserContext.newPage started
+2026-10-29T15:50:00.730Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:00.732Z pw:api => page.goto started
+2026-10-29T15:50:00.734Z pw:api navigating to "http://127.0.0.1:53608/simulation.html#key=3072fe10b7bea2ded4a85239d694ea1d608762f3439f2c294b3af5f850416a11", waiting until "load"
+2026-10-29T15:50:00.780Z pw:api   "commit" event fired
+2026-10-29T15:50:00.780Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html#key=3072fe10b7bea2ded4a85239d694ea1d608762f3439f2c294b3af5f850416a11"
+2026-10-29T15:50:01.073Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:01.074Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:01.105Z pw:api   "load" event fired
+2026-10-29T15:50:01.106Z pw:api <= page.goto succeeded
+2026-10-29T15:50:01.108Z pw:api => page.waitForFunction started
+2026-10-29T15:50:01.193Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:01.194Z pw:api => locator.count started
+2026-10-29T15:50:01.308Z pw:api <= locator.count succeeded
+2026-10-29T15:50:01.309Z pw:api => locator.fill started
+2026-10-29T15:50:01.311Z pw:api waiting for locator('#sim-message')
+2026-10-29T15:50:01.319Z pw:api   locator resolved to <textarea rows="3" required="" name="message" id="sim-message" placeholder="Який конкретний результат потрібен?"></textarea>
+2026-10-29T15:50:01.321Z pw:api   fill("Чернетка <script>no execution</script>")
+2026-10-29T15:50:01.321Z pw:api attempting fill action
+2026-10-29T15:50:01.322Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:01.335Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:01.335Z pw:api => locator.focus started
+2026-10-29T15:50:01.336Z pw:api waiting for locator('#sim-message')
+2026-10-29T15:50:01.340Z pw:api   locator resolved to <textarea rows="3" required="" name="message" id="sim-message" placeholder="Який конкретний результат потрібен?"></textarea>
+2026-10-29T15:50:01.345Z pw:api <= locator.focus succeeded
+2026-10-29T15:50:01.635Z pw:api   "networkidle" event fired
+2026-10-29T15:50:04.144Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:04.145Z pw:api => locator.inputValue started
+2026-10-29T15:50:04.147Z pw:api waiting for locator('#sim-message')
+2026-10-29T15:50:04.152Z pw:api   locator resolved to <textarea rows="3" required="" name="message" id="sim-message" placeholder="Який конкретний результат потрібен?"></textarea>
+2026-10-29T15:50:04.152Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:50:04.153Z pw:api => page.evaluate started
+2026-10-29T15:50:04.159Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:04.160Z pw:api => page.reload started
+2026-10-29T15:50:04.162Z pw:api waiting for navigation until "load"
+2026-10-29T15:50:04.199Z pw:api   "commit" event fired
+2026-10-29T15:50:04.200Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:04.200Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:04.310Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:04.326Z pw:api   "load" event fired
+2026-10-29T15:50:04.327Z pw:api <= page.reload succeeded
+2026-10-29T15:50:04.328Z pw:api => page.waitForFunction started
+2026-10-29T15:50:04.386Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:04.387Z pw:api => locator.inputValue started
+2026-10-29T15:50:04.388Z pw:api waiting for locator('#sim-message')
+2026-10-29T15:50:04.465Z pw:api   locator resolved to <textarea rows="3" required="" name="message" id="sim-message" placeholder="Який конкретний результат потрібен?"></textarea>
+2026-10-29T15:50:04.466Z pw:api <= locator.inputValue succeeded
+2026-10-29T15:50:04.469Z pw:api => locator.getAttribute started
+2026-10-29T15:50:04.471Z pw:api waiting for locator('body')
+2026-10-29T15:50:04.478Z pw:api   locator resolved to <body class="sim" data-revision="0">…</body>
+2026-10-29T15:50:04.478Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:04.479Z pw:api => locator.click started
+2026-10-29T15:50:04.481Z pw:api waiting for locator('#sim-send')
+2026-10-29T15:50:04.490Z pw:api   locator resolved to <button id="sim-send" type="submit">Надіслати</button>
+2026-10-29T15:50:04.506Z pw:api attempting click action
+2026-10-29T15:50:04.508Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:04.540Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:04.540Z pw:api   scrolling into view if needed
+2026-10-29T15:50:04.544Z pw:api   done scrolling
+2026-10-29T15:50:04.552Z pw:api   performing click action
+2026-10-29T15:50:04.571Z pw:api   click action done
+2026-10-29T15:50:04.571Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:04.576Z pw:api   navigations have finished
+2026-10-29T15:50:04.577Z pw:api <= locator.click succeeded
+2026-10-29T15:50:04.577Z pw:api => page.waitForFunction started
+2026-10-29T15:50:04.595Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:04.596Z pw:api => locator.count started
+2026-10-29T15:50:04.602Z pw:api <= locator.count succeeded
+2026-10-29T15:50:04.603Z pw:api => locator.click started
+2026-10-29T15:50:04.604Z pw:api waiting for locator('#sim-terms-panel > summary')
+2026-10-29T15:50:04.614Z pw:api   locator resolved to <summary>Запропонувати / змінити умови</summary>
+2026-10-29T15:50:04.617Z pw:api attempting click action
+2026-10-29T15:50:04.618Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:04.659Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:04.660Z pw:api   scrolling into view if needed
+2026-10-29T15:50:04.661Z pw:api   done scrolling
+2026-10-29T15:50:04.668Z pw:api   performing click action
+2026-10-29T15:50:04.684Z pw:api   click action done
+2026-10-29T15:50:04.684Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:04.686Z pw:api   navigations have finished
+2026-10-29T15:50:04.686Z pw:api <= locator.click succeeded
+2026-10-29T15:50:04.688Z pw:api => locator.selectOption started
+2026-10-29T15:50:04.690Z pw:api waiting for locator('[name=mode]')
+2026-10-29T15:50:04.698Z pw:api   locator resolved to <select name="mode" required="">…</select>
+2026-10-29T15:50:04.702Z pw:api attempting select option action
+2026-10-29T15:50:04.702Z pw:api   waiting for element to be visible and enabled
+2026-10-29T15:50:04.710Z pw:api   selected specified option(s)
+2026-10-29T15:50:04.711Z pw:api <= locator.selectOption succeeded
+2026-10-29T15:50:04.712Z pw:api => locator.fill started
+2026-10-29T15:50:04.713Z pw:api waiting for locator('#sim-terms [name=target]')
+2026-10-29T15:50:04.726Z pw:api   locator resolved to <textarea rows="2" required="" name="target"></textarea>
+2026-10-29T15:50:04.729Z pw:api   fill("Три конкретні покращення сторінки")
+2026-10-29T15:50:04.729Z pw:api attempting fill action
+2026-10-29T15:50:04.729Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:04.743Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:04.744Z pw:api => locator.fill started
+2026-10-29T15:50:04.745Z pw:api waiting for locator('#sim-terms [name=criteria]')
+2026-10-29T15:50:04.759Z pw:api   locator resolved to <textarea rows="2" required="" name="criteria"></textarea>
+2026-10-29T15:50:04.762Z pw:api   fill("Три дії з поясненням користі")
+2026-10-29T15:50:04.762Z pw:api attempting fill action
+2026-10-29T15:50:04.762Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:04.775Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:04.776Z pw:api => locator.fill started
+2026-10-29T15:50:04.777Z pw:api waiting for locator('#sim-terms [name=amount]')
+2026-10-29T15:50:04.784Z pw:api   locator resolved to <input type="text" required="" name="amount" inputmode="decimal" placeholder="120.50"/>
+2026-10-29T15:50:04.787Z pw:api   fill("120.50")
+2026-10-29T15:50:04.787Z pw:api attempting fill action
+2026-10-29T15:50:04.787Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:04.802Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:04.802Z pw:api => locator.fill started
+2026-10-29T15:50:04.803Z pw:api waiting for locator('#sim-terms [name=due]')
+2026-10-29T15:50:04.812Z pw:api   locator resolved to <input name="due" type="date" required=""/>
+2026-10-29T15:50:04.816Z pw:api   fill("2026-11-05")
+2026-10-29T15:50:04.816Z pw:api attempting fill action
+2026-10-29T15:50:04.816Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:04.822Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:04.823Z pw:api => locator.isHidden started
+2026-10-29T15:50:04.824Z pw:api   checking visibility of locator('#sim-reciprocal')
+2026-10-29T15:50:04.828Z pw:api <= locator.isHidden succeeded
+2026-10-29T15:50:04.829Z pw:api => locator.getAttribute started
+2026-10-29T15:50:04.829Z pw:api waiting for locator('body')
+2026-10-29T15:50:04.838Z pw:api   locator resolved to <body class="sim" data-revision="1">…</body>
+2026-10-29T15:50:04.838Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:04.839Z pw:api => locator.click started
+2026-10-29T15:50:04.840Z pw:api waiting for locator('#sim-propose')
+2026-10-29T15:50:04.845Z pw:api   locator resolved to <button type="submit" id="sim-propose">Запропонувати умови</button>
+2026-10-29T15:50:04.847Z pw:api attempting click action
+2026-10-29T15:50:04.847Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:04.875Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:04.876Z pw:api   scrolling into view if needed
+2026-10-29T15:50:04.877Z pw:api   done scrolling
+2026-10-29T15:50:04.882Z pw:api   performing click action
+2026-10-29T15:50:04.904Z pw:api   click action done
+2026-10-29T15:50:04.904Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:04.906Z pw:api   navigations have finished
+2026-10-29T15:50:04.907Z pw:api <= locator.click succeeded
+2026-10-29T15:50:04.907Z pw:api => page.waitForFunction started
+2026-10-29T15:50:04.915Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:04.916Z pw:api => locator.getAttribute started
+2026-10-29T15:50:04.916Z pw:api waiting for locator('body')
+2026-10-29T15:50:04.921Z pw:api   locator resolved to <body class="sim" data-revision="2">…</body>
+2026-10-29T15:50:04.921Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:04.922Z pw:api => locator.click started
+2026-10-29T15:50:04.922Z pw:api waiting for locator('#sim-approve')
+2026-10-29T15:50:04.955Z pw:api   locator resolved to <button type="button" id="sim-approve" aria-describedby="sim-fixed-terms sim-draft-note">Погодити чинну редакцію</button>
+2026-10-29T15:50:04.958Z pw:api attempting click action
+2026-10-29T15:50:04.958Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:04.995Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:04.995Z pw:api   scrolling into view if needed
+2026-10-29T15:50:04.997Z pw:api   done scrolling
+2026-10-29T15:50:05.002Z pw:api   performing click action
+2026-10-29T15:50:05.022Z pw:api   click action done
+2026-10-29T15:50:05.022Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:05.024Z pw:api   navigations have finished
+2026-10-29T15:50:05.024Z pw:api <= locator.click succeeded
+2026-10-29T15:50:05.025Z pw:api => page.waitForFunction started
+2026-10-29T15:50:05.030Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:05.031Z pw:api => locator.check started
+2026-10-29T15:50:05.032Z pw:api waiting for locator('#sim-consent')
+2026-10-29T15:50:05.046Z pw:api   locator resolved to <input type="checkbox" id="sim-consent"/>
+2026-10-29T15:50:05.055Z pw:api attempting click action
+2026-10-29T15:50:05.055Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:05.085Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:05.085Z pw:api   scrolling into view if needed
+2026-10-29T15:50:05.087Z pw:api   done scrolling
+2026-10-29T15:50:05.092Z pw:api   performing click action
+2026-10-29T15:50:05.099Z pw:api   click action done
+2026-10-29T15:50:05.099Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:05.099Z pw:api   navigations have finished
+2026-10-29T15:50:05.102Z pw:api <= locator.check succeeded
+2026-10-29T15:50:05.102Z pw:api => locator.click started
+2026-10-29T15:50:05.103Z pw:api waiting for locator('#sim-run')
+2026-10-29T15:50:05.111Z pw:api   locator resolved to <button id="sim-run" type="button">AI-хід</button>
+2026-10-29T15:50:05.113Z pw:api attempting click action
+2026-10-29T15:50:05.113Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:05.160Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:05.161Z pw:api   scrolling into view if needed
+2026-10-29T15:50:05.162Z pw:api   done scrolling
+2026-10-29T15:50:05.167Z pw:api   performing click action
+2026-10-29T15:50:05.201Z pw:api   click action done
+2026-10-29T15:50:05.202Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:05.227Z pw:api   navigations have finished
+2026-10-29T15:50:05.228Z pw:api <= locator.click succeeded
+2026-10-29T15:50:05.739Z pw:api   "networkidle" event fired
+2026-10-29T15:50:07.355Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:07.355Z pw:api => browser.newContext started
+2026-10-29T15:50:07.382Z pw:api <= browser.newContext succeeded
+2026-10-29T15:50:07.383Z pw:api => browserContext.addCookies started
+2026-10-29T15:50:07.387Z pw:api <= browserContext.addCookies succeeded
+2026-10-29T15:50:07.387Z pw:api => browserContext.newPage started
+2026-10-29T15:50:07.793Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:07.793Z pw:api => page.goto started
+2026-10-29T15:50:07.794Z pw:api navigating to "http://127.0.0.1:53608/simulation.html?person=bot-mira", waiting until "load"
+2026-10-29T15:50:07.889Z pw:api   "commit" event fired
+2026-10-29T15:50:07.889Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html?person=bot-mira"
+2026-10-29T15:50:08.177Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:08.231Z pw:api   "load" event fired
+2026-10-29T15:50:08.232Z pw:api <= page.goto succeeded
+2026-10-29T15:50:08.232Z pw:api => page.waitForFunction started
+2026-10-29T15:50:08.349Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:08.350Z pw:api => locator.count started
+2026-10-29T15:50:08.405Z pw:api <= locator.count succeeded
+2026-10-29T15:50:08.407Z pw:api => locator.scrollIntoViewIfNeeded started
+2026-10-29T15:50:08.408Z pw:api waiting for locator('#sim-approve')
+2026-10-29T15:50:08.418Z pw:api   locator resolved to visible <button type="button" id="sim-approve" aria-describedby="sim-fixed-terms sim-draft-note">Погодити чинну редакцію</button>
+2026-10-29T15:50:08.436Z pw:api attempting scroll into view action
+2026-10-29T15:50:08.436Z pw:api   waiting for element to be stable
+2026-10-29T15:50:08.497Z pw:api <= locator.scrollIntoViewIfNeeded succeeded
+2026-10-29T15:50:08.498Z pw:api => page.screenshot started
+2026-10-29T15:50:08.501Z pw:api taking page screenshot
+2026-10-29T15:50:08.508Z pw:api waiting for fonts to load...
+2026-10-29T15:50:08.514Z pw:api fonts loaded
+2026-10-29T15:50:08.628Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:08.629Z pw:api => locator.getAttribute started
+2026-10-29T15:50:08.630Z pw:api waiting for locator('body')
+2026-10-29T15:50:08.635Z pw:api   locator resolved to <body class="sim" data-revision="3">…</body>
+2026-10-29T15:50:08.636Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:08.638Z pw:api => locator.getAttribute started
+2026-10-29T15:50:08.639Z pw:api waiting for locator('body')
+2026-10-29T15:50:08.643Z pw:api   locator resolved to <body class="sim" data-revision="3">…</body>
+2026-10-29T15:50:08.643Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:08.645Z pw:api => locator.boundingBox started
+2026-10-29T15:50:08.646Z pw:api waiting for locator('#sim-approve')
+2026-10-29T15:50:08.652Z pw:api   locator resolved to visible <button type="button" id="sim-approve" aria-describedby="sim-fixed-terms sim-draft-note">Погодити чинну редакцію</button>
+2026-10-29T15:50:08.663Z pw:api <= locator.boundingBox succeeded
+2026-10-29T15:50:08.664Z pw:api => locator.isVisible started
+2026-10-29T15:50:08.665Z pw:api   checking visibility of locator('#sim-approve')
+2026-10-29T15:50:08.670Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:50:08.671Z pw:api => locator.click started
+2026-10-29T15:50:08.672Z pw:api waiting for locator('#sim-approve')
+2026-10-29T15:50:08.679Z pw:api   locator resolved to <button type="button" id="sim-approve" aria-describedby="sim-fixed-terms sim-draft-note">Погодити чинну редакцію</button>
+2026-10-29T15:50:08.682Z pw:api attempting click action
+2026-10-29T15:50:08.682Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:08.724Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:08.725Z pw:api   scrolling into view if needed
+2026-10-29T15:50:08.726Z pw:api   done scrolling
+2026-10-29T15:50:08.733Z pw:api   performing click action
+2026-10-29T15:50:08.746Z pw:api   "networkidle" event fired
+2026-10-29T15:50:08.766Z pw:api   click action done
+2026-10-29T15:50:08.766Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:08.779Z pw:api   navigations have finished
+2026-10-29T15:50:08.780Z pw:api <= locator.click succeeded
+2026-10-29T15:50:08.781Z pw:api => page.waitForFunction started
+2026-10-29T15:50:08.791Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:08.792Z pw:api => locator.scrollIntoViewIfNeeded started
+2026-10-29T15:50:08.796Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('textarea[name=output]')
+2026-10-29T15:50:08.803Z pw:api   locator resolved to visible <textarea rows="3" name="output"></textarea>
+2026-10-29T15:50:08.813Z pw:api attempting scroll into view action
+2026-10-29T15:50:08.813Z pw:api   waiting for element to be stable
+2026-10-29T15:50:08.856Z pw:api <= locator.scrollIntoViewIfNeeded succeeded
+2026-10-29T15:50:08.857Z pw:api => locator.scrollIntoViewIfNeeded started
+2026-10-29T15:50:08.858Z pw:api waiting for locator('[data-deliverable-index="0"] textarea[name=output]')
+2026-10-29T15:50:08.863Z pw:api   locator resolved to visible <textarea rows="3" name="output"></textarea>
+2026-10-29T15:50:08.869Z pw:api attempting scroll into view action
+2026-10-29T15:50:08.869Z pw:api   waiting for element to be stable
+2026-10-29T15:50:08.910Z pw:api <= locator.scrollIntoViewIfNeeded succeeded
+2026-10-29T15:50:08.910Z pw:api => page.screenshot started
+2026-10-29T15:50:08.911Z pw:api taking page screenshot
+2026-10-29T15:50:08.914Z pw:api waiting for fonts to load...
+2026-10-29T15:50:08.916Z pw:api fonts loaded
+2026-10-29T15:50:08.973Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:08.973Z pw:api => locator.getAttribute started
+2026-10-29T15:50:08.974Z pw:api waiting for locator('body')
+2026-10-29T15:50:08.978Z pw:api   locator resolved to <body class="sim" data-revision="4">…</body>
+2026-10-29T15:50:08.978Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:08.979Z pw:api => locator.getAttribute started
+2026-10-29T15:50:08.980Z pw:api waiting for locator('body')
+2026-10-29T15:50:08.986Z pw:api   locator resolved to <body class="sim" data-revision="4">…</body>
+2026-10-29T15:50:08.986Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:08.987Z pw:api => locator.boundingBox started
+2026-10-29T15:50:08.988Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('textarea[name="output"]')
+2026-10-29T15:50:08.994Z pw:api   locator resolved to visible <textarea rows="3" name="output"></textarea>
+2026-10-29T15:50:09.004Z pw:api <= locator.boundingBox succeeded
+2026-10-29T15:50:09.005Z pw:api => locator.isVisible started
+2026-10-29T15:50:09.006Z pw:api   checking visibility of locator('[data-deliverable-index="0"]').locator('textarea[name="output"]')
+2026-10-29T15:50:09.010Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:50:09.011Z pw:api => locator.boundingBox started
+2026-10-29T15:50:09.012Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action="deliver"]')
+2026-10-29T15:50:09.017Z pw:api   locator resolved to visible <button type="button" data-action="deliver">Передати результат</button>
+2026-10-29T15:50:09.027Z pw:api <= locator.boundingBox succeeded
+2026-10-29T15:50:09.027Z pw:api => locator.isVisible started
+2026-10-29T15:50:09.028Z pw:api   checking visibility of locator('[data-deliverable-index="0"]').locator('[data-action="deliver"]')
+2026-10-29T15:50:09.034Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:50:09.034Z pw:api => locator.fill started
+2026-10-29T15:50:09.035Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('textarea[name="output"]')
+2026-10-29T15:50:09.040Z pw:api   locator resolved to <textarea rows="3" name="output"></textarea>
+2026-10-29T15:50:09.043Z pw:api   fill("1. Один чіткий заголовок. 2. Приклад результату. 3. Одна наступна дія.")
+2026-10-29T15:50:09.043Z pw:api attempting fill action
+2026-10-29T15:50:09.044Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:09.055Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:09.055Z pw:api => locator.boundingBox started
+2026-10-29T15:50:09.057Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action="deliver"]')
+2026-10-29T15:50:09.063Z pw:api   locator resolved to visible <button type="button" data-action="deliver">Передати результат</button>
+2026-10-29T15:50:09.071Z pw:api <= locator.boundingBox succeeded
+2026-10-29T15:50:09.072Z pw:api => locator.isVisible started
+2026-10-29T15:50:09.073Z pw:api   checking visibility of locator('[data-deliverable-index="0"]').locator('[data-action="deliver"]')
+2026-10-29T15:50:09.078Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:50:09.079Z pw:api => locator.click started
+2026-10-29T15:50:09.080Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action="deliver"]')
+2026-10-29T15:50:09.086Z pw:api   locator resolved to <button type="button" data-action="deliver">Передати результат</button>
+2026-10-29T15:50:09.089Z pw:api attempting click action
+2026-10-29T15:50:09.089Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:09.138Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:09.138Z pw:api   scrolling into view if needed
+2026-10-29T15:50:09.140Z pw:api   done scrolling
+2026-10-29T15:50:09.146Z pw:api   performing click action
+2026-10-29T15:50:09.172Z pw:api   click action done
+2026-10-29T15:50:09.172Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:09.177Z pw:api   navigations have finished
+2026-10-29T15:50:09.177Z pw:api <= locator.click succeeded
+2026-10-29T15:50:09.178Z pw:api => page.waitForFunction started
+2026-10-29T15:50:09.183Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:09.184Z pw:api => locator.isVisible started
+2026-10-29T15:50:09.184Z pw:api   checking visibility of locator('[data-deliverable-index="0"]').locator('[data-action=accept]')
+2026-10-29T15:50:09.195Z pw:api <= locator.isVisible succeeded
+2026-10-29T15:50:09.196Z pw:api => locator.click started
+2026-10-29T15:50:09.197Z pw:api waiting for locator('#sim-refresh')
+2026-10-29T15:50:09.203Z pw:api   locator resolved to <button class="quiet" type="button" id="sim-refresh">Оновити</button>
+2026-10-29T15:50:09.206Z pw:api attempting click action
+2026-10-29T15:50:09.206Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:09.219Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:09.219Z pw:api   scrolling into view if needed
+2026-10-29T15:50:09.220Z pw:api   done scrolling
+2026-10-29T15:50:09.225Z pw:api   performing click action
+2026-10-29T15:50:09.240Z pw:api   click action done
+2026-10-29T15:50:09.241Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:09.242Z pw:api   navigations have finished
+2026-10-29T15:50:09.243Z pw:api <= locator.click succeeded
+2026-10-29T15:50:09.258Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:09.259Z pw:api => page.waitForFunction started
+2026-10-29T15:50:09.266Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:09.267Z pw:api => locator.isEnabled started
+2026-10-29T15:50:09.268Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action=accept]')
+2026-10-29T15:50:09.273Z pw:api   locator resolved to <button disabled type="button" data-action="accept">Прийняти</button>
+2026-10-29T15:50:09.273Z pw:api <= locator.isEnabled succeeded
+2026-10-29T15:50:09.274Z pw:api => locator.fill started
+2026-10-29T15:50:09.275Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('textarea[name=checkNotes]')
+2026-10-29T15:50:09.285Z pw:api   locator resolved to <textarea rows="2" name="checkNotes"></textarea>
+2026-10-29T15:50:09.303Z pw:api   fill("Прочитано всі три дії; кожна відповідає погодженим критеріям.")
+2026-10-29T15:50:09.303Z pw:api attempting fill action
+2026-10-29T15:50:09.303Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:50:09.371Z pw:api <= locator.fill succeeded
+2026-10-29T15:50:09.372Z pw:api => locator.getAttribute started
+2026-10-29T15:50:09.372Z pw:api waiting for locator('body')
+2026-10-29T15:50:09.376Z pw:api   locator resolved to <body class="sim" data-revision="5">…</body>
+2026-10-29T15:50:09.376Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:09.377Z pw:api => locator.click started
+2026-10-29T15:50:09.378Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action=check]')
+2026-10-29T15:50:09.385Z pw:api   locator resolved to <button type="button" data-action="check">Записати перевірку</button>
+2026-10-29T15:50:09.387Z pw:api attempting click action
+2026-10-29T15:50:09.387Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:09.439Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:09.439Z pw:api   scrolling into view if needed
+2026-10-29T15:50:09.441Z pw:api   done scrolling
+2026-10-29T15:50:09.450Z pw:api   performing click action
+2026-10-29T15:50:09.515Z pw:api   click action done
+2026-10-29T15:50:09.516Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:09.520Z pw:api   navigations have finished
+2026-10-29T15:50:09.521Z pw:api <= locator.click succeeded
+2026-10-29T15:50:09.522Z pw:api => page.waitForFunction started
+2026-10-29T15:50:09.533Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:09.534Z pw:api => locator.getAttribute started
+2026-10-29T15:50:09.534Z pw:api waiting for locator('body')
+2026-10-29T15:50:09.539Z pw:api   locator resolved to <body class="sim" data-revision="6">…</body>
+2026-10-29T15:50:09.539Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:50:09.540Z pw:api => locator.click started
+2026-10-29T15:50:09.541Z pw:api waiting for locator('[data-deliverable-index="0"]').locator('[data-action=accept]')
+2026-10-29T15:50:09.550Z pw:api   locator resolved to <button type="button" data-action="accept">Прийняти</button>
+2026-10-29T15:50:09.553Z pw:api attempting click action
+2026-10-29T15:50:09.553Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:09.584Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:09.584Z pw:api   scrolling into view if needed
+2026-10-29T15:50:09.585Z pw:api   done scrolling
+2026-10-29T15:50:09.592Z pw:api   performing click action
+2026-10-29T15:50:09.618Z pw:api   click action done
+2026-10-29T15:50:09.618Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:09.620Z pw:api   navigations have finished
+2026-10-29T15:50:09.621Z pw:api <= locator.click succeeded
+2026-10-29T15:50:09.622Z pw:api => page.waitForFunction started
+2026-10-29T15:50:09.628Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:09.629Z pw:api => locator.innerText started
+2026-10-29T15:50:09.630Z pw:api waiting for locator('[data-deliverable-index="0"]')
+2026-10-29T15:50:09.645Z pw:api   locator resolved to <article class="sim-deliverable" data-deliverable-index="0">…</article>
+2026-10-29T15:50:09.646Z pw:api <= locator.innerText succeeded
+2026-10-29T15:50:09.649Z pw:api => apiRequestContext.get started
+2026-10-29T15:50:09.668Z pw:api → GET http://127.0.0.1:53608/api/sim/export?person=bot-mira
+2026-10-29T15:50:09.668Z pw:api   user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36
+2026-10-29T15:50:09.669Z pw:api   accept: */*
+2026-10-29T15:50:09.669Z pw:api   accept-encoding: gzip,deflate,br
+2026-10-29T15:50:09.669Z pw:api   cookie: synera_sim=478cd74e07f954d115a69ca2576c0ecc73612ac3f35484131c0fd0a4041eb71f
+2026-10-29T15:50:09.682Z pw:api ← 200 OK
+2026-10-29T15:50:09.683Z pw:api   cache-control: no-store
+2026-10-29T15:50:09.683Z pw:api   strict-transport-security: max-age=31536000
+2026-10-29T15:50:09.683Z pw:api   x-content-type-options: nosniff
+2026-10-29T15:50:09.683Z pw:api   referrer-policy: no-referrer
+2026-10-29T15:50:09.683Z pw:api   permissions-policy: camera=(), microphone=(), geolocation=()
+2026-10-29T15:50:09.683Z pw:api   content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; worker-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+2026-10-29T15:50:09.683Z pw:api   content-type: application/json; charset=utf-8
+2026-10-29T15:50:09.683Z pw:api   content-disposition: attachment; filename="synera-simulation.json"
+2026-10-29T15:50:09.684Z pw:api   date: Thu, 29 Oct 2026 15:50:09 GMT
+2026-10-29T15:50:09.684Z pw:api   connection: keep-alive
+2026-10-29T15:50:09.684Z pw:api   keep-alive: timeout=5
+2026-10-29T15:50:09.684Z pw:api   transfer-encoding: chunked
+2026-10-29T15:50:09.691Z pw:api <= apiRequestContext.get succeeded
+2026-10-29T15:50:09.695Z pw:api => locator.click started
+2026-10-29T15:50:09.696Z pw:api waiting for locator('#sim-stop')
+2026-10-29T15:50:09.705Z pw:api   locator resolved to <button id="sim-stop" type="button" class="quiet">STOP AI</button>
+2026-10-29T15:50:09.707Z pw:api attempting click action
+2026-10-29T15:50:09.708Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:09.745Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:09.745Z pw:api   scrolling into view if needed
+2026-10-29T15:50:09.747Z pw:api   done scrolling
+2026-10-29T15:50:09.753Z pw:api   performing click action
+2026-10-29T15:50:09.766Z pw:api   click action done
+2026-10-29T15:50:09.766Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:09.770Z pw:api   navigations have finished
+2026-10-29T15:50:09.772Z pw:api <= locator.click succeeded
+2026-10-29T15:50:09.775Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:09.784Z pw:api => browserContext.close started
+2026-10-29T15:50:09.808Z pw:api <= browserContext.close succeeded
+2026-10-29T15:50:09.808Z pw:api => page.setViewportSize started
+2026-10-29T15:50:09.890Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:50:09.890Z pw:api => page.evaluate started
+2026-10-29T15:50:09.896Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:09.897Z pw:api => page.screenshot started
+2026-10-29T15:50:09.898Z pw:api taking page screenshot
+2026-10-29T15:50:09.906Z pw:api waiting for fonts to load...
+2026-10-29T15:50:09.908Z pw:api fonts loaded
+2026-10-29T15:50:10.292Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:10.299Z pw:api => page.setViewportSize started
+2026-10-29T15:50:10.333Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:50:10.334Z pw:api => page.evaluate started
+2026-10-29T15:50:10.343Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:10.344Z pw:api => page.screenshot started
+2026-10-29T15:50:10.345Z pw:api taking page screenshot
+2026-10-29T15:50:10.351Z pw:api waiting for fonts to load...
+2026-10-29T15:50:10.354Z pw:api fonts loaded
+2026-10-29T15:50:11.020Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:11.022Z pw:api => page.setViewportSize started
+2026-10-29T15:50:11.068Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:50:11.069Z pw:api => page.evaluate started
+2026-10-29T15:50:11.074Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:11.075Z pw:api => page.screenshot started
+2026-10-29T15:50:11.075Z pw:api taking page screenshot
+2026-10-29T15:50:11.081Z pw:api waiting for fonts to load...
+2026-10-29T15:50:11.083Z pw:api fonts loaded
+2026-10-29T15:50:11.663Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:11.670Z pw:api => page.setViewportSize started
+2026-10-29T15:50:11.719Z pw:api <= page.setViewportSize succeeded
+2026-10-29T15:50:11.720Z pw:api => page.evaluate started
+2026-10-29T15:50:11.743Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:11.743Z pw:api => page.evaluate started
+2026-10-29T15:50:12.055Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:12.055Z pw:api => page.screenshot started
+2026-10-29T15:50:12.058Z pw:api taking page screenshot
+2026-10-29T15:50:12.066Z pw:api waiting for fonts to load...
+2026-10-29T15:50:12.075Z pw:api fonts loaded
+2026-10-29T15:50:12.864Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:12.868Z pw:api => page.evaluate started
+2026-10-29T15:50:13.198Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:13.199Z pw:api => page.evaluate started
+2026-10-29T15:50:13.201Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:13.202Z pw:api => frame.evaluate started
+2026-10-29T15:50:13.223Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:13.223Z pw:api => frame.evaluate started
+2026-10-29T15:50:14.127Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:50:14.138Z pw:api => browserContext.newPage started
+2026-10-29T15:50:14.319Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:14.320Z pw:api => page.evaluate started
+2026-10-29T15:50:14.721Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:14.721Z pw:api => page.evaluate started
+2026-10-29T15:50:14.724Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:14.724Z pw:api => page.evaluate started
+2026-10-29T15:50:14.730Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:14.739Z pw:api => page.evaluate started
+2026-10-29T15:50:14.793Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:14.794Z pw:api => page.evaluate started
+2026-10-29T15:50:15.053Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:15.059Z pw:api => page.close started
+2026-10-29T15:50:15.079Z pw:api <= page.close succeeded
+2026-10-29T15:50:15.081Z pw:api => page.reload started
+2026-10-29T15:50:15.081Z pw:api waiting for navigation until "load"
+2026-10-29T15:50:15.116Z pw:api   "commit" event fired
+2026-10-29T15:50:15.117Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.117Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.210Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:15.217Z pw:api   "load" event fired
+2026-10-29T15:50:15.218Z pw:api <= page.reload succeeded
+2026-10-29T15:50:15.219Z pw:api => page.waitForFunction started
+2026-10-29T15:50:15.283Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:15.284Z pw:api => page.evaluate started
+2026-10-29T15:50:15.287Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:15.288Z pw:api => browserContext.setOffline started
+2026-10-29T15:50:15.292Z pw:api <= browserContext.setOffline succeeded
+2026-10-29T15:50:15.292Z pw:api => page.reload started
+2026-10-29T15:50:15.293Z pw:api waiting for navigation until "load"
+2026-10-29T15:50:15.325Z pw:api   "commit" event fired
+2026-10-29T15:50:15.325Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.325Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.399Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:15.405Z pw:api   "load" event fired
+2026-10-29T15:50:15.406Z pw:api <= page.reload succeeded
+2026-10-29T15:50:15.407Z pw:api => locator.waitFor started
+2026-10-29T15:50:15.408Z pw:api waiting for locator('#sim-message') to be visible
+2026-10-29T15:50:15.452Z pw:api   locator resolved to visible <textarea rows="3" required="" name="message" id="sim-message" placeholder="Який конкретний результат потрібен?"></textarea>
+2026-10-29T15:50:15.453Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:50:15.453Z pw:api => locator.innerText started
+2026-10-29T15:50:15.454Z pw:api waiting for locator('#sim-status')
+2026-10-29T15:50:15.457Z pw:api   locator resolved to <p role="status" id="sim-status" data-error="true" aria-live="polite">Failed to fetch Відкрий приватне посилання симуля…</p>
+2026-10-29T15:50:15.457Z pw:api <= locator.innerText succeeded
+2026-10-29T15:50:15.458Z pw:api => locator.isEnabled started
+2026-10-29T15:50:15.458Z pw:api waiting for locator('#sim-send')
+2026-10-29T15:50:15.462Z pw:api   locator resolved to <button disabled id="sim-send" type="submit">Надіслати</button>
+2026-10-29T15:50:15.462Z pw:api <= locator.isEnabled succeeded
+2026-10-29T15:50:15.463Z pw:api => browserContext.setOffline started
+2026-10-29T15:50:15.465Z pw:api <= browserContext.setOffline succeeded
+2026-10-29T15:50:15.465Z pw:api => page.evaluate started
+2026-10-29T15:50:15.475Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:15.476Z pw:api => page.reload started
+2026-10-29T15:50:15.476Z pw:api waiting for navigation until "load"
+2026-10-29T15:50:15.502Z pw:api   "commit" event fired
+2026-10-29T15:50:15.502Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.502Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html"
+2026-10-29T15:50:15.597Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:15.607Z pw:api   "load" event fired
+2026-10-29T15:50:15.607Z pw:api <= page.reload succeeded
+2026-10-29T15:50:15.608Z pw:api => page.waitForFunction started
+2026-10-29T15:50:15.666Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:15.666Z pw:api => locator.check started
+2026-10-29T15:50:15.667Z pw:api waiting for locator('#sim-consent')
+2026-10-29T15:50:15.704Z pw:api   locator resolved to <input type="checkbox" id="sim-consent"/>
+2026-10-29T15:50:15.709Z pw:api attempting click action
+2026-10-29T15:50:15.709Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:15.738Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:15.738Z pw:api   scrolling into view if needed
+2026-10-29T15:50:15.739Z pw:api   done scrolling
+2026-10-29T15:50:15.744Z pw:api   performing click action
+2026-10-29T15:50:15.751Z pw:api   click action done
+2026-10-29T15:50:15.751Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:15.752Z pw:api   navigations have finished
+2026-10-29T15:50:15.754Z pw:api <= locator.check succeeded
+2026-10-29T15:50:15.754Z pw:api => locator.click started
+2026-10-29T15:50:15.754Z pw:api waiting for locator('#sim-run')
+2026-10-29T15:50:15.759Z pw:api   locator resolved to <button id="sim-run" type="button">AI-хід</button>
+2026-10-29T15:50:15.762Z pw:api attempting click action
+2026-10-29T15:50:15.762Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:15.812Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:15.816Z pw:api   scrolling into view if needed
+2026-10-29T15:50:15.818Z pw:api   done scrolling
+2026-10-29T15:50:15.821Z pw:api   performing click action
+2026-10-29T15:50:15.837Z pw:api   click action done
+2026-10-29T15:50:15.837Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:15.839Z pw:api   navigations have finished
+2026-10-29T15:50:15.841Z pw:api <= locator.click succeeded
+2026-10-29T15:50:15.844Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:15.846Z pw:api => browserType.launch started
+2026-10-29T15:50:16.350Z pw:api   "networkidle" event fired
+2026-10-29T15:50:16.550Z pw:api <= browserType.launch succeeded
+2026-10-29T15:50:16.550Z pw:api => browser.newContext started
+2026-10-29T15:50:16.611Z pw:api <= browser.newContext succeeded
+2026-10-29T15:50:16.612Z pw:api => browserContext.addCookies started
+2026-10-29T15:50:16.699Z pw:api <= browserContext.addCookies succeeded
+2026-10-29T15:50:16.699Z pw:api => browserContext.newPage started
+2026-10-29T15:50:17.184Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:50:17.185Z pw:api => page.goto started
+2026-10-29T15:50:17.185Z pw:api navigating to "http://127.0.0.1:53608/simulation.html?person=bot-mira", waiting until "load"
+2026-10-29T15:50:17.321Z pw:api   "commit" event fired
+2026-10-29T15:50:17.322Z pw:api   navigated to "http://127.0.0.1:53608/simulation.html?person=bot-mira"
+2026-10-29T15:50:17.659Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:50:17.700Z pw:api   "load" event fired
+2026-10-29T15:50:17.701Z pw:api <= page.goto succeeded
+2026-10-29T15:50:17.701Z pw:api => page.waitForFunction started
+2026-10-29T15:50:17.757Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:17.759Z pw:api => page.waitForFunction started
+2026-10-29T15:50:17.766Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:50:17.766Z pw:api => page.evaluate started
+2026-10-29T15:50:17.859Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:17.863Z pw:api => page.screenshot started
+2026-10-29T15:50:17.863Z pw:api taking page screenshot
+2026-10-29T15:50:17.877Z pw:api waiting for fonts to load...
+2026-10-29T15:50:17.880Z pw:api fonts loaded
+2026-10-29T15:50:18.232Z pw:api   "networkidle" event fired
+2026-10-29T15:50:18.672Z pw:api <= page.screenshot succeeded
+2026-10-29T15:50:18.677Z pw:api => page.evaluate started
+2026-10-29T15:50:18.682Z pw:api <= page.evaluate succeeded
+2026-10-29T15:50:18.691Z pw:api => locator.click started
+2026-10-29T15:50:18.692Z pw:api waiting for locator('#sim-stop')
+2026-10-29T15:50:18.698Z pw:api   locator resolved to <button id="sim-stop" type="button" class="quiet">STOP AI</button>
+2026-10-29T15:50:18.701Z pw:api attempting click action
+2026-10-29T15:50:18.701Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:50:18.711Z pw:api   element is visible, enabled and stable
+2026-10-29T15:50:18.711Z pw:api   scrolling into view if needed
+2026-10-29T15:50:18.713Z pw:api   done scrolling
+2026-10-29T15:50:18.717Z pw:api   performing click action
+2026-10-29T15:50:18.726Z pw:api   click action done
+2026-10-29T15:50:18.726Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:50:18.728Z pw:api   navigations have finished
+2026-10-29T15:50:18.728Z pw:api <= locator.click succeeded
+2026-10-29T15:50:18.740Z pw:api <= page.waitForResponse succeeded
+2026-10-29T15:50:18.747Z pw:api => browser.close started
+2026-10-29T15:50:19.220Z pw:api <= browser.close succeeded
+{
+  "checks": {
+    "private_login_20_fictional_people_key_removed": true,
+    "poll_and_reload_preserve_draft_and_focus": true,
+    "actual_http_two_actor_paid_cycle_receiver_only": true,
+    "synthetic_frame_receipts_on_actor_events": true,
+    "explicit_stop_invalidates_actor": true,
+    "widths_and_double_text_no_horizontal_overflow": true,
+    "axe_no_serious_or_critical": true,
+    "offline_shell_loads_but_no_fake_ai_or_private_cache": true,
+    "real_png_runner_stop_rejects_delayed_synthetic_decision": true,
+    "no_browser_exceptions": true
+  },
+  "providerCalls": 0,
+  "output": "artifacts/android-simulation-20261020/browser"
+}
+2026-10-29T15:50:19.225Z pw:api => browser.close started
+2026-10-29T15:50:19.674Z pw:api <= browser.close succeeded

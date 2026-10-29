@@ -77,14 +77,18 @@ try{
  result.offline.responses=responses;
  if(functional){
   const name=offline.locator('#profile-form [name="display_name"]');await name.fill('Own words offline');
-  await offline.locator('.header-preferences summary').click();
-  await offline.locator('[data-lang="de"]').click();
+  await offline.locator('.header-preferences > summary').click();
+  await offline.locator('#site-language').selectOption('de');
   await offline.waitForFunction(()=>document.documentElement.lang==='de',null,{timeout:6000});
-  check('offline German actual translated heading',!(await offline.locator('.intro h1').innerText()).includes('Твоя майстерність'));
+  await offline.waitForFunction(()=>document.querySelector('.intro h1')?.textContent.includes('Dein Können.'),null,{timeout:6000});
+  const heading=await offline.locator('.intro h1').innerText();
+  check('offline German actual translated heading',heading.includes('Dein Können.')&&!heading.includes('Твоя майстерність'));
   check('language keeps synthetic draft own words',await name.inputValue()==='Own words offline');
-  await offline.locator('#style-toggle').click();
-  check('offline Atelier opt-in and real controls work',await offline.locator('html').getAttribute('data-synera-style')==='atelier'&&await offline.locator('.atelier-settings').count()>0);
-  await offline.locator('#style-toggle').click();await offline.locator('#style-toggle').click();
+  await offline.locator('#style-preset').selectOption('atelier');
+  check('offline Atelier selection and real controls work',await offline.locator('html').getAttribute('data-synera-style')==='atelier'&&await offline.locator('.atelier-settings').count()>0);
+  await offline.locator('#style-preset').selectOption('original');
+  check('offline previous Web design remains selectable',await offline.locator('html').getAttribute('data-synera-style')==='original');
+  await offline.locator('#style-preset').selectOption('synera');
   check('Current style remains reversible',await offline.locator('html').getAttribute('data-synera-style')==='synera');
  }
  await offline.screenshot({path:path.join(dest,'offline-after-action.png'),fullPage:true});

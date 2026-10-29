@@ -138,7 +138,8 @@ export function installAdaptive({ document:doc=document, storage, now=Date.now }
   ];
   doc.addEventListener('focusin',event=>{
     c.activity();
-    if(hintBox && !hintBox.contains(event.target) && hintTarget!==event.target)clearHint();
+    // Keep the hint until dismissal: removing it on focus moves the next pointer target before click.
+    if(hintBox && !hintBox.checkVisibility())clearHint();
     for(const [selector,id] of contexts)if(event.target.matches(selector)){showHint(id,event.target);break;}
   });
   doc.addEventListener('click',()=>{c.activity();queueMicrotask(offer);});

@@ -32,7 +32,7 @@ test.afterAll(async () => {
 
 async function openPreferences(page) {
   const preferences = page.locator('.site-header .header-preferences');
-  if (!await preferences.evaluate(element => element.open)) await preferences.locator('summary').click();
+  if (!await preferences.evaluate(element => element.open)) await preferences.locator(':scope > summary').click();
   await expect(page.getByRole('combobox', { name: 'Вигляд', exact: true })).toBeVisible();
   await expect(page.getByRole('combobox', { name: 'Мова', exact: true })).toBeVisible();
 }
@@ -493,7 +493,7 @@ test('Night map premium style: selectable, keeps the first action above the fold
   await page.locator('#style-preset').selectOption('night');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'night');
   await expect(page.locator('#style-preset')).toHaveValue('night');
-  await page.locator('.header-preferences summary').click();
+  await page.locator('.header-preferences > summary').click();
   const h1 = await page.locator('.intro h1').boundingBox();
   const cta = await page.locator('.draft-entry').boundingBox();
   expect(h1.y).toBeLessThan(cta.y);

@@ -54,6 +54,7 @@ try {
   await page.goto(base + '/real-journey.html'); await page.waitForFunction(() => !document.getElementById('real-content').hidden);
   await page.getByRole('button', { name: 'Відкрити умови', exact: true }).first().click(); await ready();
   await page.locator('#real-editor > summary').click(); await page.locator('#real-draft-help > summary').click();
+  assert.equal(await page.locator('#real-draft-help').evaluate(node => node.open), true, 'Moving focus from the editor hint must not swallow the helper click');
   const terms = page.locator('#real-terms-form'), humanTarget = 'Мій власний опис результату';
   await terms.locator('[name="give_target"]').fill(humanTarget);
   const financial = await terms.locator('[name="compensation_status"]').inputValue();
@@ -125,14 +126,24 @@ try {
   assert.equal(await output.isHidden(), true, 'Revoked draft consent allowed a late private draft'); assert.equal(await text.inputValue(), '');
   report.checks.push('withdrawing local draft consent cancels pending generation');
   await createDraft();
-  const look = page.locator('[data-atelier-controls]');
+  const look = page.locator('.adaptive-legacy');
+  await page.locator('.header-preferences > summary').click();
+  await page.locator('#style-preset').selectOption('synera');
+  await page.locator('.header-preferences > summary').click();
   assert.equal(await page.locator('html').getAttribute('data-synera-atelier'), null);
   assert.deepEqual((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations, []); report.axe_current = 0;
   await output.scrollIntoViewIfNeeded(); await page.screenshot({ path: `${proof}/case-social-draft-390x844.png` });
-  await look.locator('summary').click(); await look.getByRole('button', { name: 'Atelier 2026', exact: true }).click();
+  await page.locator('.header-preferences > summary').click();
+  await page.locator('#style-preset').selectOption('atelier');
+  await look.locator(':scope > summary').click(); await look.getByRole('button', { name: 'Atelier 2026', exact: true }).click();
   assert.equal(await page.locator('html').getAttribute('data-synera-atelier'), 'on');
+  await page.locator('.header-preferences > summary').click();
   assert.deepEqual((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations, []); report.axe_atelier = 0;
-  await look.getByRole('button', { name: 'Чинний', exact: true }).click(); await look.locator('summary').click();
+  await page.locator('.header-preferences > summary').click();
+  await page.locator('#style-preset').selectOption('synera');
+  await look.getByRole('button', { name: 'Чинний', exact: true }).click();
+  await look.locator(':scope > summary').click();
+  await page.locator('.header-preferences > summary').click();
   const layout = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth })); assert.ok(layout.width <= layout.viewport); report.no_overflow = layout;
   await stores[B].withdrawTerms(A, reviewed); await page.locator('#real-outcome-refresh').click(); await ready();
   assert.equal(await controls.isHidden(), true); assert.equal(await text.inputValue(), ''); report.checks.push('withdrawn case approval hides and clears draft');
@@ -141,7 +152,11 @@ try {
   assert.equal(await text.inputValue(), ''); assert.equal(await output.isHidden(), true); assert.equal(await controls.isHidden(), true);
   report.checks.push('logout purges social draft and permission');
   const storage = await page.evaluate(async () => ({ local: Object.keys(localStorage), session: Object.keys(sessionStorage), caches: await caches.keys(), databases: await indexedDB.databases() }));
-  assert.deepEqual(storage, { local: ['synera.atelier.preferences.v1'], session: [], caches: [], databases: [] }); report.no_private_storage = true;
+  storage.local.sort();
+  assert.deepEqual(storage, { local: ['synera.atelier.preferences.v1', 'synera.real-journey.language.v1', 'synera.style'], session: [], caches: [], databases: [] });
+  assert.equal(await page.evaluate(() => localStorage.getItem('synera.real-journey.language.v1')), 'uk');
+  assert.equal(await page.evaluate(() => localStorage.getItem('synera.style')), 'synera');
+  report.no_private_storage = true;
   assert.deepEqual(errors, []); assert.deepEqual(external, []); report.page_errors = errors; report.external_requests = 0;
   report.status = 'PASS_LOCAL_CASE_SOCIAL_BROWSER';
 } catch (error) { report.error = error.message; throw error; }

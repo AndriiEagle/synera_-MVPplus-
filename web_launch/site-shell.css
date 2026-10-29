@@ -116,6 +116,8 @@ html[data-synera-style] .site-header .header-preferences-content > :is(.badge,#l
 .site-page .more-modes-links a:hover { color: var(--ui-accent); }
 
 /* Common surfaces retain the existing information architecture and controls. */
+html[data-synera-style] .site-page .workspace-bar .tab { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }
+html[data-synera-style] .site-page .workspace-bar .tab.active { background: var(--ui-action); color: var(--ui-on-action); border-color: var(--ui-action); }
 html[data-synera-style] .site-page :is(.studio-card,.triangle-card,.rooms-card,.real-card,.real-section,#real-blocked,#real-auth,.demo-panel,.device-guides details,.access-plan,.component-card) { background: var(--ui-panel); color: var(--ui-ink); border-color: var(--ui-line); box-shadow: none; }
 html[data-synera-style] .site-page :is(.real-heading p,.rooms-intro>p:not(.eyebrow),.studio-heading>p:not(.eyebrow),.subtle,.real-note,.real-hint,.rooms-fine,.rooms-empty,.real-empty) { color: var(--ui-muted); }
 html[data-synera-style] .site-page :is(input,select,textarea) { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }

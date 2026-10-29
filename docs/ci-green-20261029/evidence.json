@@ -1,0 +1,644 @@
+{
+  "base_sha": "3768a346db03fff5bae389c978f22161ae5e3ee9",
+  "branch": "claude/synera-design-20261029c",
+  "status": "PASS_LOCAL_ALL_REQUESTED_STEPS",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "source_sha256": {
+    "tests/browser-e2e.spec.mjs": "1e5a3b2e49aef0119062bebb173fc311739c39071932e88d65f0fec426d8e1b5",
+    "tools/audit-paid-journey-browser.mjs": "9727cedff11c6dbecf6420e11c75a3431b1a032930c0143b4d647aa9862efc48",
+    "tools/case-social-draft-browser.mjs": "57084995b544f99f135de5b29f28ce64b915f6d1439db2f97172c75ea0aaa93c",
+    "tools/header-layout-acceptance-20261013.mjs": "1c172766cf730744a4fe0a8deb38f5095fad8e377251ba7c51d1faef873c3c16",
+    "tools/offline-shell-acceptance.mjs": "90973d997d49beabef4529e83522b23e85c5a4f9cc9d0d773e0f2067d2dd795f",
+    "tools/profile-erasure-browser.mjs": "999528bd45752915a77e2d37d1c39d7f0c1373b18b5ca56a104cd5881fbd7081",
+    "web_launch/adaptive-ui.mjs": "e064b7333f2edaccce149fe49166a9e31e3f24b71e5379162cb5b72c0f37922e",
+    "web_launch/site-shell.css": "92cf9e09bd702dc4b64f9eb600b9e811dbdab8c8c9701e998cea64b05dfbb3fa"
+  },
+  "control_sha256": {
+    ".github/workflows/ci.yml": "cd03972e896fc152ca15d61fcc23dda3393463014795a8b03a32bfa29342c104",
+    "playwright.config.mjs": "7e2195daf9ad2cc05bceb0d1336270dc8c95936789d0ed9e58c31b7438c885c2",
+    "package.json": "0cb6e89da140066aa6f4aee3b8fdf6721f45c100e3ebd33032544ec981b0d008",
+    "package-lock.json": "8a78fad8eb81c5cfa93d0d18f0ca44bd2efa9f5033037a5a1f9244afcc8806af",
+    "web_launch/assets.mjs": "e31993571c16b848093d96120352fd40264d8326a2a20955344f3379d4c2319d",
+    "web_launch/sw.mjs": "1ed16ea36abc25129da00429428078975d24602cf1b4a2c5db7efff71ce679ec",
+    "web_launch/studio-sw.mjs": "a0e8b459befc1ec3c8f8a426b69f05c551793d194860933379a5b53e08eafda7",
+    "web_launch/dist-neon-ci/release.json": "034d9e829a289211d52d979745aa9a80e1deb0bf06d301ad170a3672f706951f"
+  },
+  "local_adapter_sha256": {
+    "C:/sw/pw-chrome.config.mjs": "6d8dd4e2dce205e38b26a61c987073f1654499fb6df85d68bc912dd34c9a3553",
+    "C:/sw/task1601-header-chrome.cjs": "59595797b7519b9e5c0314859e89368e14584e22393ffa93b45fab54d3d86b07"
+  },
+  "patch_sha256": "549f45a10a0301482d551c254ae0c8c5475c06a84d4b63456f42799546a5a712",
+  "restored_generated": [
+    {
+      "path": "artifacts/android-simulation-20261020/browser/acceptance.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/acceptance.json",
+      "sha256": "af3549529a5fe4fed63b5bee36dcaec980555558db0d4bc939cb487fa13ca66b"
+    },
+    {
+      "path": "artifacts/android-simulation-20261020/browser/simulation-1440.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-1440.png",
+      "sha256": "5b8e96e000a8b9cd0c727af54cf0c904cf38d9e5d2cd000b579ce7cdc815376c"
+    },
+    {
+      "path": "artifacts/android-simulation-20261020/browser/simulation-320.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-320.png",
+      "sha256": "d840b264d2c18db186a3349e63b539be66adcb37a9053be147aef00f9aaacba4"
+    },
+    {
+      "path": "artifacts/android-simulation-20261020/browser/simulation-390-text200.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-390-text200.png",
+      "sha256": "da165c81ee08062549b7d2e4d4dcf6c56714eb025ce9a94a9608b5baecd2744e"
+    },
+    {
+      "path": "artifacts/android-simulation-20261020/browser/simulation-390.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-390.png",
+      "sha256": "3bca4857d72fad4b4328eb426c4ba14a06013929f3582bcd9dda97d0f1da3812"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/01-buyer-paid-terms.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/01-buyer-paid-terms.png",
+      "sha256": "99458a60ceb6af9b6f8e63d16ba2f584a4e537095aadee124adb4f846742dac9"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/02-supplier-private-card.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/02-supplier-private-card.png",
+      "sha256": "eb1e33605825ff6f6955d782c1de2c738fe5aa4dc5af23b96f8c9e4d52e69551"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/03-413-draft-retained.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/03-413-draft-retained.png",
+      "sha256": "abbdbbaae297fcd36950969237b7d0684f9cb016a564096f756399a8eee871ff"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_ACCEPTANCE.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_ACCEPTANCE.json",
+      "sha256": "9748ab46f512a880990e3aa811d9b7249c11f36c322e5f330892912f2db695b9"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_FAILURE.json",
+      "captured": "docs/ci-green-20261029/diagnostic-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_FAILURE.json",
+      "sha256": "f9ecaca8934e0794fcb44894e7e7dc5a5d3a8e30ff2cf658d102ef33e23a11a4"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-de-390-200pct.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-de-390-200pct.png",
+      "sha256": "d60fd27c2d039f3aca5a9e2400aea54d16242c0f4f1752014016a50c90927178"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-en-1440.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-en-1440.png",
+      "sha256": "1e7e7c07629d9e3ee0f6a1e78becdedaa71097a4d85b8c74be4077e053d03739"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-uk-320.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-uk-320.png",
+      "sha256": "e47fd940f153e2743f9cc3db3d2406e9bad4345e1453eeff1850e0b86a497d9d"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-de-390-200pct.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-de-390-200pct.png",
+      "sha256": "4006120adfc14e25c100b510f7b2fe4234ecfc3235133fe61226571660062110"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-en-1440.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-en-1440.png",
+      "sha256": "6820b7378b9a480b90635755efbbccb3f8021a418fd8f616526bbf6790c39ee8"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/paid-journey-browser/visual-current-uk-320.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-uk-320.png",
+      "sha256": "105a1de0ac027f838b8e247855d4f00904aed3fd52be4b905bcdb23f09dc73ea"
+    },
+    {
+      "path": "artifacts/audit-followup-20261019/session-cookie-browser.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/session-cookie-browser.json",
+      "sha256": "05ccc7ba8c4232eb93da469f4b4d17aa081f7f84e3e2bcc30459c50f2166aea3"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json",
+      "sha256": "2ba62e2c1c82f94b82e516ddd9764ac771d2a36b0a42f1d026c056abaa3c3593"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json",
+      "sha256": "43df594d176b7ae3a80b164eb2433c3898bd317b079330e371d584944529a3df"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/case-social-draft-390x844.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/case-social-draft-390x844.png",
+      "sha256": "0c44659c4a7ba874398a4e0bc36feab7d58cb3d68823b33f502034f836be2581"
+    },
+    {
+      "path": "artifacts/gemini-implementation-20261017/profile-erasure-390x844.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/profile-erasure-390x844.png",
+      "sha256": "e28d0fe1562fbe86125652f35b5d0589438a63ab6d3b63b82fb83f118c310db4"
+    },
+    {
+      "path": "artifacts/location-mobile-20261002.png",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/artifacts/location-mobile-20261002.png",
+      "sha256": "63fc559e89480a2b841c943d0cd2cec0e3dcefa9bd21bf5d08967ecf0e0b2c86"
+    },
+    {
+      "path": "web_launch/a11y_audit.md",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/web_launch/a11y_audit.md",
+      "sha256": "af6acf5613efbef59bf791daa5f13257fcccb81b07069d1c84b21b5f0d0b2011"
+    },
+    {
+      "path": "web_launch/a11y_audit_report.json",
+      "captured": "docs/ci-green-20261029/accepted-artifacts/web_launch/a11y_audit_report.json",
+      "sha256": "1de49f7d75aa4ec44461790448eb00c3c37dc2f43944be2ddbc1cbb1017be090"
+    }
+  ],
+  "results": [
+    {
+      "step": "01-main",
+      "exit": 0,
+      "seconds": 11.22,
+      "command": [
+        "node",
+        "--test",
+        "web_launch/*.test.mjs",
+        "web_launch/iceberg/*.test.mjs",
+        "neon/*.test.mjs",
+        "plan/v6/workflow/approval-boundary.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\01-main.txt"
+    },
+    {
+      "step": "02-simulation",
+      "exit": 0,
+      "seconds": 1.3,
+      "command": [
+        "node",
+        "--import",
+        "file:///C:/Users/Andrii/.codex/outputs/synera-gilbert-readiness-20261021/dependency-resolution.mjs",
+        "--test",
+        "tools/simulation-server.test.mjs",
+        "tools/simulation-runner.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\02-simulation.txt"
+    },
+    {
+      "step": "03-pwa",
+      "exit": 0,
+      "seconds": 0.77,
+      "command": [
+        "node",
+        "--test",
+        "tests/pwa/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\03-pwa.txt"
+    },
+    {
+      "step": "04-i18n",
+      "exit": 0,
+      "seconds": 0.48,
+      "command": [
+        "node",
+        "--test",
+        "tests/i18n_ch/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\04-i18n.txt"
+    },
+    {
+      "step": "05-python",
+      "exit": 0,
+      "seconds": 0.48,
+      "command": [
+        "py",
+        "-3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_simulation_provider.py"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\05-python.txt"
+    },
+    {
+      "step": "06-e2e",
+      "exit": 0,
+      "seconds": 118.03,
+      "command": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "C:/sw/pw-chrome.config.mjs",
+        "--output",
+        "C:\\sw\\synera-design\\docs\\ci-green-20261029\\accepted\\e2e-output",
+        "tests/browser-e2e.spec.mjs",
+        "tests/studio-e2e.spec.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\06-e2e.txt"
+    },
+    {
+      "step": "07-header",
+      "exit": 0,
+      "seconds": 50.7,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/header-layout-acceptance-20261013.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\07-header.txt"
+    },
+    {
+      "step": "08a-build",
+      "exit": 0,
+      "seconds": 0.75,
+      "command": [
+        "node",
+        "neon/build.mjs",
+        "dist-neon-ci"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\08a-build.txt"
+    },
+    {
+      "step": "08b-offline",
+      "exit": 0,
+      "seconds": 14.34,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/offline-shell-acceptance.mjs",
+        "--candidate=web_launch/dist-neon-ci"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\08b-offline.txt"
+    },
+    {
+      "step": "09-location",
+      "exit": 0,
+      "seconds": 11.89,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/location-browser-acceptance.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\09-location.txt"
+    },
+    {
+      "step": "10-social",
+      "exit": 0,
+      "seconds": 16.78,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/case-social-draft-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\10-social.txt"
+    },
+    {
+      "step": "11-erasure",
+      "exit": 0,
+      "seconds": 14.61,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/profile-erasure-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\11-erasure.txt"
+    },
+    {
+      "step": "12-cookie",
+      "exit": 0,
+      "seconds": 4.55,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/audit-session-cookie-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\12-cookie.txt"
+    },
+    {
+      "step": "13-paid",
+      "exit": 0,
+      "seconds": 31.19,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/audit-paid-journey-browser.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\13-paid.txt"
+    },
+    {
+      "step": "14-simulation-browser",
+      "exit": 0,
+      "seconds": 20.95,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "tools/simulation-browser-acceptance.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\14-simulation-browser.txt"
+    },
+    {
+      "step": "15-a11y",
+      "exit": 0,
+      "seconds": 12.62,
+      "command": [
+        "node",
+        "--require",
+        "C:/sw/task1601-header-chrome.cjs",
+        "web_launch/a11y_audit.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\15-a11y.txt"
+    },
+    {
+      "step": "16-android",
+      "exit": 0,
+      "seconds": 0.48,
+      "command": [
+        "node",
+        "--test",
+        "android/*.test.mjs"
+      ],
+      "log": "docs\\ci-green-20261029\\accepted\\16-android.txt"
+    }
+  ],
+  "limits": [
+    "Local Node 24/system Chrome, not GitHub Node 22/bundled Chromium",
+    "Existing PostgreSQL skip",
+    "One earlier Studio timeout not reproduced in three diagnostic repeats or final full run",
+    "set_thread_title unavailable"
+  ],
+  "evidence_sha256": {
+    "docs/ci-green-20261029/accepted-process-readback.json": "b423bb45501e0fa49d3b77e635f800a29f1fdcf5a58e00c7e04a7ff7833045f2",
+    "docs/ci-green-20261029/accepted.patch": "549f45a10a0301482d551c254ae0c8c5475c06a84d4b63456f42799546a5a712",
+    "docs/ci-green-20261029/hint-reversal.txt": "a7076253e82965e62f7337972254be877c8a8839f9378ac7f745537a7ee4f422",
+    "docs/ci-green-20261029/reversal-hook.cjs": "695ea8c7a5835e3c08dde2718c114a2836669e0bf4a25a838799838a38007906",
+    "docs/ci-green-20261029/run-ci.py": "05ca6d0b741c87830edff05370fbc4e96b2e841efd0be0efb8ce7867a45b8460",
+    "docs/ci-green-20261029/studio-diagnostic.txt": "bfd83a4e9588b15fc6bb04ae72e5c94c7b77bf82b129626178909b9a9cde5089",
+    "docs/ci-green-20261029/tabs-reversal.txt": "92393a7b2d1c57ce3530b31e0334327abe2ef34350efa5994757f44f736f5aab",
+    "docs/ci-green-20261029/accepted/01-main.txt": "931e28305448ad47bd0f1c395a32922566dea450548eb77c04118fa31bf2b39e",
+    "docs/ci-green-20261029/accepted/02-simulation.txt": "856e347fd604b572ebfaed5cdfd3bd3809090c6b329ae800aacad37e6733693f",
+    "docs/ci-green-20261029/accepted/03-pwa.txt": "18081d5635714bf7dc53e03d957fb281a82d4091ea3d1eb501b751d224cecc36",
+    "docs/ci-green-20261029/accepted/04-i18n.txt": "a20cf48a4abae9df83bca07ef393d0a084d5339a83c878d3f7a5ea701d544738",
+    "docs/ci-green-20261029/accepted/05-python.txt": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+    "docs/ci-green-20261029/accepted/06-e2e.txt": "16f2d373344ca447462f17a74c67061573c00d3c599e57788a07895c5dd0e1e7",
+    "docs/ci-green-20261029/accepted/07-header.txt": "a1a0b5b72e26f6ca8774032350309a39f9adbda025aad528305ce23396ebc486",
+    "docs/ci-green-20261029/accepted/08a-build.txt": "8303b27b87cedce0ee9086691d312d5b1d8dad6ba97c08ca92c08be415cb0964",
+    "docs/ci-green-20261029/accepted/08b-offline.txt": "cfc90582f8c24804643453876d78ef9694bd4ef75c227d6781c7450017f52348",
+    "docs/ci-green-20261029/accepted/09-location.txt": "1efe37eb35822e32be4433a7905e623229c7288b2a163c16d92f5b721a9c3343",
+    "docs/ci-green-20261029/accepted/10-social.txt": "e243fbe46bbd9dbe8ccae738a0b0cf7cd3ebdbb31ee219c9ba1f0118e7e2fe6e",
+    "docs/ci-green-20261029/accepted/11-erasure.txt": "e82cf362f3472c8f7632a469462dbe1c86d7f1997b7d68d575e4a28bd0bc68b6",
+    "docs/ci-green-20261029/accepted/12-cookie.txt": "5f729dc66970e120943714adb5ed87d3bdc1e387bdc2e9d146c3ff4b1b3e657d",
+    "docs/ci-green-20261029/accepted/13-paid.txt": "fee9a00e8e0ced60413cb41b5741d69244011e244ad37c4811eaae64deb31ba4",
+    "docs/ci-green-20261029/accepted/14-simulation-browser.txt": "7836a6ccd67d24ebb7786cef9ee098443a480053273caffdd1a403f16bb57307",
+    "docs/ci-green-20261029/accepted/15-a11y.txt": "a5fcae505718b7114f7ebc2e02438ac7342c19548c278a984db6357e26d73d87",
+    "docs/ci-green-20261029/accepted/16-android.txt": "c6d7664d3577dd727aa56dcf994ca369890e45b5fd3664602e6870db06157a35",
+    "docs/ci-green-20261029/accepted/results.json": "61aa296b2da71eef7d0891268112840344122f2035aef6b674d2ab373e265cbc",
+    "docs/ci-green-20261029/baseline/01-main.txt": "0d3e108580c488fcdda25858baa4b9c6b33650c02c20ad996dd23e6e45b5a54c",
+    "docs/ci-green-20261029/baseline/02-simulation.txt": "c545c10bce95f91874224ed7d473d71659d91d7817ba78d87b8a39f385978b4a",
+    "docs/ci-green-20261029/baseline/03-pwa.txt": "357dce90b6ef405b6ae791e42c58ae1aa9d338f70c7b1a5ae9688e784adea09d",
+    "docs/ci-green-20261029/baseline/04-i18n.txt": "08cb29afbe4e11af3ed744bce2eac01f4a8f9b03464eaf59d7312be77e1ad09d",
+    "docs/ci-green-20261029/baseline/05-python.txt": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+    "docs/ci-green-20261029/baseline/06-e2e.txt": "47686055ab519604a7c2892d70b23c620eb0340c4807c0b387333c67a5c1f13d",
+    "docs/ci-green-20261029/baseline/07-header.txt": "9c451a87bcf8f699b679ef51ad2d966110977de3434373e2e25aba850b429cb4",
+    "docs/ci-green-20261029/baseline/08a-build.txt": "8303b27b87cedce0ee9086691d312d5b1d8dad6ba97c08ca92c08be415cb0964",
+    "docs/ci-green-20261029/baseline/08b-offline.txt": "707732e17280c8325a26cdb24820193a4ac6f871bf08591a275dc18b5404fa81",
+    "docs/ci-green-20261029/baseline/09-location.txt": "d4cbd7a425d9ed8669d913d6eebbcd9e23ca56c191da042b7f72b2f0403ec501",
+    "docs/ci-green-20261029/baseline/10-social.txt": "4454d049b3f24551e288dd8ba4ca2ff319d484701398281e4be4e4b2e98a676f",
+    "docs/ci-green-20261029/baseline/11-erasure.txt": "f48963bfcb7a9f97550d41c3ae9087f477a9a25d68b7a7bda47e002f2ac35dc8",
+    "docs/ci-green-20261029/baseline/12-cookie.txt": "682d43623561eaf247a03448940859635a8908377ddb73db988769edce02bb06",
+    "docs/ci-green-20261029/baseline/13-paid.txt": "18d316d18fad896c11f28c7d1cdd7bf9d38b115ea9e0192638bcb97b47f30e74",
+    "docs/ci-green-20261029/baseline/14-simulation-browser.txt": "93b1b9d28f8323e35df1486cc9252ec2de71623ef6ff58fa3d455bd48a82a76b",
+    "docs/ci-green-20261029/baseline/15-a11y.txt": "eccc8ea010e3d0a06d054a9f88be09b99a990ed42b17f60f088e62e8b5ac2afd",
+    "docs/ci-green-20261029/baseline/16-android.txt": "ad4c4cea29d47724d68ccf75cb8884b9756f19620ed3ffd49db271310f5ff55c",
+    "docs/ci-green-20261029/baseline/results.json": "0bb67b839aba1f9ed2295ccd0af02bbbd858f3af51c27279a3bd37fa1233a67e",
+    "docs/ci-green-20261029/chrome/08b-offline.txt": "3001657ccc677899a7bc63d25ebd95dd3d8003322e4ecc3846c640886ec15ac3",
+    "docs/ci-green-20261029/chrome/10-social.txt": "a58a1ad90118e88c4b258c760493f5f58a47c6a50bcfb17b105b09e66a7d82e5",
+    "docs/ci-green-20261029/chrome/11-erasure.txt": "49017a89602c6807edd2af04bf40ce934e0dba2f9e7dad4daac3c7b8745da083",
+    "docs/ci-green-20261029/chrome/12-cookie.txt": "5d27cbd14f759b39afa669edd1faa50f822e8ed83e210351ba05f0279c22fa04",
+    "docs/ci-green-20261029/chrome/13-paid.txt": "e66f8e56f5cfd833d1c10767f5edd8ef71481ae435d618aab88cf70433f6e2b2",
+    "docs/ci-green-20261029/chrome/14-simulation-browser.txt": "f5b42d8aca6ea72ff28f9f5b52243718afbb603f4ae8954fbb5895091b325ed3",
+    "docs/ci-green-20261029/chrome/offline-result.json": "2b90529a8c8cc356a3aa86d10c887150913f04d4ac3706bfcbca5d58dbfe682e",
+    "docs/ci-green-20261029/chrome/results.json": "b280cdca54593dba82da117f85e9c490ec64ede7afcbe01e936b7f72192a11be",
+    "docs/ci-green-20261029/e2e-output/.last-run.json": "44cee084b895c4ece3de44304a88ed08fa5e3dd26923e51898095f7e928da90b",
+    "docs/ci-green-20261029/final/01-main.txt": "3bbe8b0ab163c750125c1e8b0c8090456a86015b6c0f33577b69a4c226365e3c",
+    "docs/ci-green-20261029/final/02-simulation.txt": "5e62e12ea7574f2e6ef7ca4be2380251bd65a25b494f5a08d4020082bbd75a11",
+    "docs/ci-green-20261029/final/03-pwa.txt": "8876306bb7f80083abee2c793766859bb10268732495b4708b70d1ce3fa7ad3b",
+    "docs/ci-green-20261029/final/04-i18n.txt": "3475378548d9a3bbf87caff6a8cd46f92a82eb12513f9c4adb2f07206da137e5",
+    "docs/ci-green-20261029/final/05-python.txt": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+    "docs/ci-green-20261029/final/06-e2e.txt": "71c987e0936c52a512455f05bf5250e8e86c52e81011114d36ff3c4152d948d8",
+    "docs/ci-green-20261029/final/07-header.txt": "3e10c633893aeaf69fef3524321ba96585486e7e964c7b031179b600964f1fc5",
+    "docs/ci-green-20261029/final/08a-build.txt": "8303b27b87cedce0ee9086691d312d5b1d8dad6ba97c08ca92c08be415cb0964",
+    "docs/ci-green-20261029/final/08b-offline.txt": "9db0782ad5821c86602d7ab9ef490fca4b9d46e6aef0446c6ad7506e98b2d3ee",
+    "docs/ci-green-20261029/final/09-location.txt": "d4cbd7a425d9ed8669d913d6eebbcd9e23ca56c191da042b7f72b2f0403ec501",
+    "docs/ci-green-20261029/final/10-social.txt": "1eedd111a64104b381cd63fcd737b0cfee542f83bcd2bf684f7eaf751a57f198",
+    "docs/ci-green-20261029/final/11-erasure.txt": "718ef43c53925ca8fe52f0588b4f32e3b2c7734fc739ecf8d0869a9b0eaaa910",
+    "docs/ci-green-20261029/final/12-cookie.txt": "5d27cbd14f759b39afa669edd1faa50f822e8ed83e210351ba05f0279c22fa04",
+    "docs/ci-green-20261029/final/13-paid.txt": "117ec91c31c558a7e939b03ec5d68f490fdc6b00084f6f90e42666480092cb67",
+    "docs/ci-green-20261029/final/14-simulation-browser.txt": "f5b42d8aca6ea72ff28f9f5b52243718afbb603f4ae8954fbb5895091b325ed3",
+    "docs/ci-green-20261029/final/15-a11y.txt": "eccc8ea010e3d0a06d054a9f88be09b99a990ed42b17f60f088e62e8b5ac2afd",
+    "docs/ci-green-20261029/final/16-android.txt": "8187e97626f256ea571e6dec0662361a1a4c4c85e722364c918219820ea301b7",
+    "docs/ci-green-20261029/final/offline-result.json": "50245afdec0b9d1c1145163dc56e99afb8a5ff8670d8e016330945f93aecbb9f",
+    "docs/ci-green-20261029/final/results.json": "73c95fdfd0d75c7efa44185bdafb0e93a4f1ac026edea555d54622fb68976de5",
+    "docs/ci-green-20261029/hint-regression-before/10-social.txt": "df33047c97b9820743faf9c26d5bfc71f7f22a7539c73dedce8af3b0fa3d676f",
+    "docs/ci-green-20261029/hint-regression-before/results.json": "e877257e7e62295c49963d9fa973a4233d82b4cdf876031997b365f5c4b36a64",
+    "docs/ci-green-20261029/offline-translation/08b-offline.txt": "94447c5e6e2234bbddd84be1cb34e1d3cc8052b81a6cb5c430a72f147468cd1f",
+    "docs/ci-green-20261029/offline-translation/results.json": "1aff7baaf2c39c8f11550a482eb84fff8e2b4055e33f8bac62ee6943a61f0cf4",
+    "docs/ci-green-20261029/product-final/10-social.txt": "1eedd111a64104b381cd63fcd737b0cfee542f83bcd2bf684f7eaf751a57f198",
+    "docs/ci-green-20261029/product-final/11-erasure.txt": "718ef43c53925ca8fe52f0588b4f32e3b2c7734fc739ecf8d0869a9b0eaaa910",
+    "docs/ci-green-20261029/product-final/results.json": "694e7966595b4e9f0a87d3c532f3f9c574e561f54c6187d69da02b31d298db42",
+    "docs/ci-green-20261029/product-repair/10-social.txt": "4bcf5da4bfdda7d3961048d7329bb995ff7de456e55c9d6d7c495f9e2b978f2d",
+    "docs/ci-green-20261029/product-repair/11-erasure.txt": "718ef43c53925ca8fe52f0588b4f32e3b2c7734fc739ecf8d0869a9b0eaaa910",
+    "docs/ci-green-20261029/product-repair/results.json": "bef881748f598821f1c7cb48639d17648891c3a42452ee5d413b1407f03dfff1",
+    "docs/ci-green-20261029/repair/08b-offline.txt": "94447c5e6e2234bbddd84be1cb34e1d3cc8052b81a6cb5c430a72f147468cd1f",
+    "docs/ci-green-20261029/repair/10-social.txt": "986138751065f1646e0e6852afee42b22f36e6df88f1313489efe336370274b6",
+    "docs/ci-green-20261029/repair/11-erasure.txt": "efb378dda71b97f8a1dd996093728d2d09f37d44e9fbf3ce33173c83b39edd9a",
+    "docs/ci-green-20261029/repair/13-paid.txt": "117ec91c31c558a7e939b03ec5d68f490fdc6b00084f6f90e42666480092cb67",
+    "docs/ci-green-20261029/repair/results.json": "866bdb88dee9ee071c03b4233756e89d58092676595d3d5a5b90e6634c9ce9c2",
+    "docs/ci-green-20261029/selectors/06-e2e.txt": "16bd77380b437175fafd64e940ad5d30d731109e66a0c53d1fa7913638597a1b",
+    "docs/ci-green-20261029/selectors/07-header.txt": "3e10c633893aeaf69fef3524321ba96585486e7e964c7b031179b600964f1fc5",
+    "docs/ci-green-20261029/selectors/results.json": "284ee580cdbd4bd5399ed91359a15b9f8894ae3dbbf83308585b17781cbb2c13",
+    "docs/ci-green-20261029/studio-diagnostic-output/.last-run.json": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+    "docs/ci-green-20261029/accepted/e2e-output/.last-run.json": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Free-launch-di-3c69a-tores-existing-presentation/launch-desktop.png": "16e6360e3a139eb247b3ad957efdb1c84a5224d5949327bd05dc6e4b09714219",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-auth-mobile.png": "70a7c72e9eeb1eada4bee485865a0e65053c7f6b9588069affa4fd357c84391d",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-entry-mobile.png": "cde28d504efca98b04f99ac8a526c6df044222363c15b10076f8c2e7402387f7",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-hero-h1-видимий-на-desktop-viewport/desktop-landing.png": "ebb05628570db7ae2987888c716c4dfd0e6ad7adf88b20ae02c59122f289dec5",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-hero-h1-видимий-на-mobile-viewport-375px/mobile-landing.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/first-action.png": "8df72cc519dd2f6214107bd430d52f3f6f196d268178cbe5a81a3668a9b41994",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/profile-preferences.png": "ffac3e0a8c73ae733d149c0c844afd9d630942b4ca29a8007ce2c7733a970f44",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/first-action.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/profile-preferences.png": "028add0041825857d4fe1475b183d9279674673ff34a4137b05328f7b0080c07",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-mobile-profile-4ecb2-lling-past-the-first-screen/mobile-profile.png": "6b43c15a99c7c200b40333735d640c138f25bdb9103eab7d022f9f8c75df5999",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Opportunity-ma-c24ff-ts-with-no-provider-request/atlas-mobile.png": "b934030554e62e603fb367b01ce65cac7fed1e3351908748ee20d0b54b501f5e",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available/product-access-mobile.png": "5643fce8211372a1488503e6dd09e1b1d43d861a79e5e7e061abb8d19242b706",
+    "docs/ci-green-20261029/accepted/e2e-output/browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns/triangle-mobile.png": "b229bc7f13002bc3e0ff7032b38739558d2d5fd6e9b939a9bc076bd2a47b4113",
+    "docs/ci-green-20261029/accepted/header/candidate/de-atelier-320-preferences.png": "18a77f4bce7c35fc1242bd43d7f5dad1f7fcbc56affa62d02e40166a1f94037d",
+    "docs/ci-green-20261029/accepted/header/candidate/de-atelier-320.png": "60d7de7f8790ed264e37ce9871f7bfd06c7cdc5211f8ae87f33da3224292bc2f",
+    "docs/ci-green-20261029/accepted/header/candidate/de-atelier-390-preferences.png": "7d524d1a471348a8cf463a7a3fce9aa02f9d1ecb89dd53a0e97ca6f7046189d2",
+    "docs/ci-green-20261029/accepted/header/candidate/de-atelier-390.png": "1d3db7253d915999d089feb795466cf33a3f6b6161defd926cda21360dc4c13d",
+    "docs/ci-green-20261029/accepted/header/candidate/de-current-320-preferences.png": "75d8d2e809ab6df9c02672477e94693fbeb47d0587139d470e57141063c5385d",
+    "docs/ci-green-20261029/accepted/header/candidate/de-current-320.png": "94f20ebb9c7aeb5f1e640046b2e460ce6a681d1265e2818e88b46b55fc8e7159",
+    "docs/ci-green-20261029/accepted/header/candidate/de-current-390-preferences.png": "b2058144cd6fb912f0ea356afea90abd7c96203caf673d58474aa2ddb36acf1e",
+    "docs/ci-green-20261029/accepted/header/candidate/de-current-390.png": "8453f8fcd6a0e9433bf4b669a055f6ceb867e31594abf76b16335c58ece4e56f",
+    "docs/ci-green-20261029/accepted/header/candidate/en-atelier-320-preferences.png": "b5f67fb98bad72c97fe474520cd38d2e6e7c7af04f57d26516a123d5a2054a92",
+    "docs/ci-green-20261029/accepted/header/candidate/en-atelier-320.png": "ac3e298b2f4575e27908e113ffdd55295325c072c7f7a7d82f026c1f7e9ca996",
+    "docs/ci-green-20261029/accepted/header/candidate/en-atelier-390-preferences.png": "5997c6286cb64512baae4f3a1047cf15f0bb13642ced66283e94d2234d0d2cfa",
+    "docs/ci-green-20261029/accepted/header/candidate/en-atelier-390.png": "16d0ce6c2fa683ccf972c4b464c26a996bc88e505f6c9b2d31d1c867b39c4148",
+    "docs/ci-green-20261029/accepted/header/candidate/en-current-320-preferences.png": "49a364a7149cc0efa15a58e5270e090e5c40653a9ed2211c4367ff2cfd3634b0",
+    "docs/ci-green-20261029/accepted/header/candidate/en-current-320.png": "4eb3beee04733ff3444c18f5955c0a371136917a0ae30c4b99f439f103658c4a",
+    "docs/ci-green-20261029/accepted/header/candidate/en-current-390-preferences.png": "7892d917638d33e6f21aa3b4cd6c91d48ea0359ef0efaed06fd7d79ad1aab1e7",
+    "docs/ci-green-20261029/accepted/header/candidate/en-current-390.png": "f6bb5a03d79ce00c008e581e54e9b1f52331cde54ba9f67b1149cef69cffb599",
+    "docs/ci-green-20261029/accepted/header/candidate/RESULT.json": "65e0c920bfd361376f1639ba6d435a8444ec5b15e363dc0663781d0357fb49f3",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-atelier-320-preferences.png": "da4b37c5eacabccb89cc2fe1c30151c1a34bff27bb33baf4783b36f25594fb08",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-atelier-320.png": "ab36c99500c21f092e26caadbbb9971531819c30951ab80fd935ea0242cb81b4",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-atelier-390-preferences.png": "a28cba1bc39bc0cb56abead65cd14190a019fc8faf16fcc52192669e40f84950",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-atelier-390.png": "df832038d2c51e54e382cec6b4b16b89c1c1ec1a20e0e1a7ef744fb0b8d10f12",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-current-320-preferences.png": "337aff19b1714974b28886277ea5b057659d48a556e737181adec02ef471b1b9",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-current-320.png": "03aaa557ee3963e03fa0918c9f675eed9abe3d21f97a17816a650d13166fa385",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-current-390-preferences.png": "e5600da024f938ec6402cd5ae8706b6e5a30ad46dd331683d49e6273fde132df",
+    "docs/ci-green-20261029/accepted/header/candidate/uk-current-390.png": "3867871d18048236aa5b1022eaa8c3f92d51fb8a4e9357581944f3e99fb8c0a4",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/location-browser-20261002.json": "0961a2c138a49b8bac0ca7ca5fcf3701435629e0ad07ab7b3f1a0f645bc8c5c2",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/location-mobile-20261002.png": "63fc559e89480a2b841c943d0cd2cec0e3dcefa9bd21bf5d08967ecf0e0b2c86",
+    "docs/ci-green-20261029/accepted-artifacts/offline/diagnostic.png": "fd6705245d2829dbdcf4044a9a00e7e07b6c459b51274456184fae3a730273ad",
+    "docs/ci-green-20261029/accepted-artifacts/offline/offline-after-action.png": "cf7393f867100d883eb75f730cb887e9ac85b4ff0feb6d1004c2721318e398db",
+    "docs/ci-green-20261029/accepted-artifacts/offline/offline-legal-de.png": "0548be1baf945a17a39ebb92b2e4c6c6bc176b796ef1c5a5d08f1fd14adcdbe8",
+    "docs/ci-green-20261029/accepted-artifacts/offline/online-profile.png": "6c87c91132cb7f80e65e67f34adfb46a28a297d27e4d7cda191839ff0aa8cbbe",
+    "docs/ci-green-20261029/accepted-artifacts/offline/RESULT.json": "a43bb2c19a339a89386e8b18f44dfca529f6a7c6c4217e5f8d6b14e0f965047b",
+    "docs/ci-green-20261029/accepted-artifacts/web_launch/a11y_audit.md": "af6acf5613efbef59bf791daa5f13257fcccb81b07069d1c84b21b5f0d0b2011",
+    "docs/ci-green-20261029/accepted-artifacts/web_launch/a11y_audit_report.json": "1de49f7d75aa4ec44461790448eb00c3c37dc2f43944be2ddbc1cbb1017be090",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/session-cookie-browser.json": "05ccc7ba8c4232eb93da469f4b4d17aa081f7f84e3e2bcc30459c50f2166aea3",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/case-social-draft-390x844.png": "0c44659c4a7ba874398a4e0bc36feab7d58cb3d68823b33f502034f836be2581",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/CASE_SOCIAL_BROWSER.json": "2ba62e2c1c82f94b82e516ddd9764ac771d2a36b0a42f1d026c056abaa3c3593",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/ERASURE_BROWSER.json": "43df594d176b7ae3a80b164eb2433c3898bd317b079330e371d584944529a3df",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/gemini-implementation-20261017/profile-erasure-390x844.png": "e28d0fe1562fbe86125652f35b5d0589438a63ab6d3b63b82fb83f118c310db4",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/acceptance.json": "af3549529a5fe4fed63b5bee36dcaec980555558db0d4bc939cb487fa13ca66b",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-1440.png": "5b8e96e000a8b9cd0c727af54cf0c904cf38d9e5d2cd000b579ce7cdc815376c",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-320.png": "d840b264d2c18db186a3349e63b539be66adcb37a9053be147aef00f9aaacba4",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-390-text200.png": "da165c81ee08062549b7d2e4d4dcf6c56714eb025ce9a94a9608b5baecd2744e",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/android-simulation-20261020/browser/simulation-390.png": "3bca4857d72fad4b4328eb426c4ba14a06013929f3582bcd9dda97d0f1da3812",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/01-buyer-paid-terms.png": "99458a60ceb6af9b6f8e63d16ba2f584a4e537095aadee124adb4f846742dac9",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/02-supplier-private-card.png": "eb1e33605825ff6f6955d782c1de2c738fe5aa4dc5af23b96f8c9e4d52e69551",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/03-413-draft-retained.png": "abbdbbaae297fcd36950969237b7d0684f9cb016a564096f756399a8eee871ff",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_ACCEPTANCE.json": "9748ab46f512a880990e3aa811d9b7249c11f36c322e5f330892912f2db695b9",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-de-390-200pct.png": "d60fd27c2d039f3aca5a9e2400aea54d16242c0f4f1752014016a50c90927178",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-en-1440.png": "1e7e7c07629d9e3ee0f6a1e78becdedaa71097a4d85b8c74be4077e053d03739",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-atelier-uk-320.png": "e47fd940f153e2743f9cc3db3d2406e9bad4345e1453eeff1850e0b86a497d9d",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-de-390-200pct.png": "4006120adfc14e25c100b510f7b2fe4234ecfc3235133fe61226571660062110",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-en-1440.png": "6820b7378b9a480b90635755efbbccb3f8021a418fd8f616526bbf6790c39ee8",
+    "docs/ci-green-20261029/accepted-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/visual-current-uk-320.png": "105a1de0ac027f838b8e247855d4f00904aed3fd52be4b905bcdb23f09dc73ea",
+    "docs/ci-green-20261029/baseline/header/candidate/RESULT.json": "7cea099b15ce4ad9ffde610ec4b39ad88068aa741780845cafec7e2afba4e3d3",
+    "docs/ci-green-20261029/diagnostic-artifacts/artifacts/audit-followup-20261019/paid-journey-browser/BROWSER_FAILURE.json": "f9ecaca8934e0794fcb44894e7e7dc5a5d3a8e30ff2cf658d102ef33e23a11a4",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-a-compact-pres-89554--at-a-375px-mobile-viewport/error-context.md": "cfe83888b8fe0bb68110b3dbb1eee42a18cca36350e60bccb9bdc9672902c103",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-all-ten-compac-4450d--changing-the-document-flow/error-context.md": "009b18648aed7e310b4af3102d244ff1de8f4d74c9a7e182dd925eed10e9b93a",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Atelier-is-the-b5ee9-n-remain-reversible-choices/error-context.md": "f1441f918173a5d467117a51ff5c9101486a18d110c33522ca766cf0f9ac97e8",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-compact-preset-fef15-gside-the-three-main-styles/error-context.md": "f44c9b94aaad0225fd30943c33f68daf1661d8f041cf315d1a8da47cc1d43c56",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-draft-tour-rea-465ef-ile-when-returning-to-login/error-context.md": "617541e69634ac0b387dc2378b4fc1f78cdf5dd25be436cce20fe1c7ec35c128",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-first-user-tou-40500-ing-the-local-profile-draft/error-context.md": "13e05a205b61c7d701aa0614050b1abf1cbc86a35cfb945ee91ac3dab55cb253",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Free-launch-di-3c69a-tores-existing-presentation/launch-desktop.png": "16e6360e3a139eb247b3ad957efdb1c84a5224d5949327bd05dc6e4b09714219",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-auth-mobile.png": "5278e29e360d111915645ba67a48a80327a339a97c57b123f8dc9fb3fa03456a",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-entry-mobile.png": "9b7940f0fee7a3d87a6236992c11bc9dca2fd0a860a416fa207dfd79b682187d",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-hero-h1-видимий-на-desktop-viewport/desktop-landing.png": "ebb05628570db7ae2987888c716c4dfd0e6ad7adf88b20ae02c59122f289dec5",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-hero-h1-видимий-на-mobile-viewport-375px/mobile-landing.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/error-context.md": "b037decd248e74457fffc6b41fb6fffdb5ee0283fb488207889fc678eebdfab5",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/first-action.png": "8df72cc519dd2f6214107bd430d52f3f6f196d268178cbe5a81a3668a9b41994",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/error-context.md": "137b9e7685b4d3c30d1453da7f35541ac7a26035980d0a581409d71b9c47820b",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/first-action.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-first-v-4f8f2-ettings-available-on-demand/error-context.md": "05c9e02d5579e1e10b46930dca1137a83771c1e9b2107aacb6c7d24338e3106e",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-mobile-profile-4ecb2-lling-past-the-first-screen/mobile-profile.png": "015a0c9f466b4673fd263a87d18722c4e050eee3a318846074e908de1a962f98",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Night-map-prem-52796-motion-under-reduced-motion/error-context.md": "61793d927da21202e3e230811825b54bd26ff65c2c3b487a1e98b045cdefe885",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Opportunity-ma-c24ff-ts-with-no-provider-request/atlas-mobile.png": "5a0ef80a96efe30434aa0fb4d7c449c973166fa8caa6eb5c4505214f34e8449a",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available/error-context.md": "ca156156ae3e7eb8b19750292e38f0bee03773a00a923a3183cf0aeff755d4c7",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-small-mobile-v-67d0b-and-style-control-on-screen/error-context.md": "a5ad5064d14c93f6a4dc1e89e7ad1390931c22adc601addad096e68ecb8bae53",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-SYN-PHASE9-A11-b355c-bled-поверхня-focus-visible/error-context.md": "dfcd6a943b1a07aa53888c47913d37f5a90f9cd07890f130381143697c63be4e",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-SYN-TOKEN-WIRE-4b7d2--язуються-в-computed-стилях/error-context.md": "ef88d25f7b468c6825e083a09d6852b9f83d8b8959568e9272f96a8a4cc99892",
+    "docs/ci-green-20261029/e2e-output/browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns/triangle-mobile.png": "b229bc7f13002bc3e0ff7032b38739558d2d5fd6e9b939a9bc076bd2a47b4113",
+    "docs/ci-green-20261029/final/e2e-output/.last-run.json": "ac2ada7bd1fd7dea32e56e9735c0ea6b310cb2e35bdba67a66fbc8598eab7830",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Free-launch-di-3c69a-tores-existing-presentation/launch-desktop.png": "16e6360e3a139eb247b3ad957efdb1c84a5224d5949327bd05dc6e4b09714219",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-auth-mobile.png": "338670047d621dca9e0ee387b4b9114218ca40666077ef020e31ec7c69aafc84",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-entry-mobile.png": "f48a5818f7b0985b3240a891ad560529bfff27790aaced762533de9109758197",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-hero-h1-видимий-на-desktop-viewport/desktop-landing.png": "ebb05628570db7ae2987888c716c4dfd0e6ad7adf88b20ae02c59122f289dec5",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-hero-h1-видимий-на-mobile-viewport-375px/mobile-landing.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/first-action.png": "8df72cc519dd2f6214107bd430d52f3f6f196d268178cbe5a81a3668a9b41994",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/profile-preferences.png": "ffac3e0a8c73ae733d149c0c844afd9d630942b4ca29a8007ce2c7733a970f44",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/first-action.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/profile-preferences.png": "028add0041825857d4fe1475b183d9279674673ff34a4137b05328f7b0080c07",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-mobile-profile-4ecb2-lling-past-the-first-screen/mobile-profile.png": "3ae1ba7869e540c081f70f85699eee8c88d10d6e0806c0c7b6ae4542fe203b7e",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Opportunity-ma-c24ff-ts-with-no-provider-request/atlas-mobile.png": "d1b0c0ee93bc098aa8f1e192a8e1c496d851221b0e7cd47964326dd5478a09d4",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available/product-access-mobile.png": "5643fce8211372a1488503e6dd09e1b1d43d861a79e5e7e061abb8d19242b706",
+    "docs/ci-green-20261029/final/e2e-output/browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns/triangle-mobile.png": "b229bc7f13002bc3e0ff7032b38739558d2d5fd6e9b939a9bc076bd2a47b4113",
+    "docs/ci-green-20261029/final/e2e-output/studio-e2e-installed-shell-5ce46-ailable-after-going-offline/error-context.md": "ba9ef08a6c5e287dc3dd331e7d7e0787ba4b57c80f9ed5c46737d42b1cd067cf",
+    "docs/ci-green-20261029/final/header/candidate/de-atelier-320-preferences.png": "18a77f4bce7c35fc1242bd43d7f5dad1f7fcbc56affa62d02e40166a1f94037d",
+    "docs/ci-green-20261029/final/header/candidate/de-atelier-320.png": "60d7de7f8790ed264e37ce9871f7bfd06c7cdc5211f8ae87f33da3224292bc2f",
+    "docs/ci-green-20261029/final/header/candidate/de-atelier-390-preferences.png": "7d524d1a471348a8cf463a7a3fce9aa02f9d1ecb89dd53a0e97ca6f7046189d2",
+    "docs/ci-green-20261029/final/header/candidate/de-atelier-390.png": "1d3db7253d915999d089feb795466cf33a3f6b6161defd926cda21360dc4c13d",
+    "docs/ci-green-20261029/final/header/candidate/de-current-320-preferences.png": "75d8d2e809ab6df9c02672477e94693fbeb47d0587139d470e57141063c5385d",
+    "docs/ci-green-20261029/final/header/candidate/de-current-320.png": "94f20ebb9c7aeb5f1e640046b2e460ce6a681d1265e2818e88b46b55fc8e7159",
+    "docs/ci-green-20261029/final/header/candidate/de-current-390-preferences.png": "b2058144cd6fb912f0ea356afea90abd7c96203caf673d58474aa2ddb36acf1e",
+    "docs/ci-green-20261029/final/header/candidate/de-current-390.png": "8453f8fcd6a0e9433bf4b669a055f6ceb867e31594abf76b16335c58ece4e56f",
+    "docs/ci-green-20261029/final/header/candidate/en-atelier-320-preferences.png": "b5f67fb98bad72c97fe474520cd38d2e6e7c7af04f57d26516a123d5a2054a92",
+    "docs/ci-green-20261029/final/header/candidate/en-atelier-320.png": "ac3e298b2f4575e27908e113ffdd55295325c072c7f7a7d82f026c1f7e9ca996",
+    "docs/ci-green-20261029/final/header/candidate/en-atelier-390-preferences.png": "5997c6286cb64512baae4f3a1047cf15f0bb13642ced66283e94d2234d0d2cfa",
+    "docs/ci-green-20261029/final/header/candidate/en-atelier-390.png": "16d0ce6c2fa683ccf972c4b464c26a996bc88e505f6c9b2d31d1c867b39c4148",
+    "docs/ci-green-20261029/final/header/candidate/en-current-320-preferences.png": "49a364a7149cc0efa15a58e5270e090e5c40653a9ed2211c4367ff2cfd3634b0",
+    "docs/ci-green-20261029/final/header/candidate/en-current-320.png": "4eb3beee04733ff3444c18f5955c0a371136917a0ae30c4b99f439f103658c4a",
+    "docs/ci-green-20261029/final/header/candidate/en-current-390-preferences.png": "7892d917638d33e6f21aa3b4cd6c91d48ea0359ef0efaed06fd7d79ad1aab1e7",
+    "docs/ci-green-20261029/final/header/candidate/en-current-390.png": "f6bb5a03d79ce00c008e581e54e9b1f52331cde54ba9f67b1149cef69cffb599",
+    "docs/ci-green-20261029/final/header/candidate/RESULT.json": "65e0c920bfd361376f1639ba6d435a8444ec5b15e363dc0663781d0357fb49f3",
+    "docs/ci-green-20261029/final/header/candidate/uk-atelier-320-preferences.png": "da4b37c5eacabccb89cc2fe1c30151c1a34bff27bb33baf4783b36f25594fb08",
+    "docs/ci-green-20261029/final/header/candidate/uk-atelier-320.png": "ab36c99500c21f092e26caadbbb9971531819c30951ab80fd935ea0242cb81b4",
+    "docs/ci-green-20261029/final/header/candidate/uk-atelier-390-preferences.png": "a28cba1bc39bc0cb56abead65cd14190a019fc8faf16fcc52192669e40f84950",
+    "docs/ci-green-20261029/final/header/candidate/uk-atelier-390.png": "df832038d2c51e54e382cec6b4b16b89c1c1ec1a20e0e1a7ef744fb0b8d10f12",
+    "docs/ci-green-20261029/final/header/candidate/uk-current-320-preferences.png": "337aff19b1714974b28886277ea5b057659d48a556e737181adec02ef471b1b9",
+    "docs/ci-green-20261029/final/header/candidate/uk-current-320.png": "03aaa557ee3963e03fa0918c9f675eed9abe3d21f97a17816a650d13166fa385",
+    "docs/ci-green-20261029/final/header/candidate/uk-current-390-preferences.png": "e5600da024f938ec6402cd5ae8706b6e5a30ad46dd331683d49e6273fde132df",
+    "docs/ci-green-20261029/final/header/candidate/uk-current-390.png": "3867871d18048236aa5b1022eaa8c3f92d51fb8a4e9357581944f3e99fb8c0a4",
+    "docs/ci-green-20261029/selectors/e2e-output/.last-run.json": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Free-launch-di-3c69a-tores-existing-presentation/launch-desktop.png": "16e6360e3a139eb247b3ad957efdb1c84a5224d5949327bd05dc6e4b09714219",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-auth-mobile.png": "5278e29e360d111915645ba67a48a80327a339a97c57b123f8dc9fb3fa03456a",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Google-entry-e-28c8f-d-shows-recoverable-failure/google-entry-mobile.png": "9b7940f0fee7a3d87a6236992c11bc9dca2fd0a860a416fa207dfd79b682187d",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-hero-h1-видимий-на-desktop-viewport/desktop-landing.png": "ebb05628570db7ae2987888c716c4dfd0e6ad7adf88b20ae02c59122f289dec5",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-hero-h1-видимий-на-mobile-viewport-375px/mobile-landing.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/first-action.png": "8df72cc519dd2f6214107bd430d52f3f6f196d268178cbe5a81a3668a9b41994",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-mobile-320px-k-95742-erences-within-the-viewport/profile-preferences.png": "ffac3e0a8c73ae733d149c0c844afd9d630942b4ca29a8007ce2c7733a970f44",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/first-action.png": "3cb5a3b05e14f74cbb62db42ba0b985cedbf15e5c19643a9cfd1e5465277482d",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-mobile-375px-k-b43ea-erences-within-the-viewport/profile-preferences.png": "0700c355c031c9d171eff8bd36730261a20dcea67dc0c31af4154aef46d42038",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-mobile-profile-4ecb2-lling-past-the-first-screen/mobile-profile.png": "41d7ed689e1f4bdd837ff315a30738bf9b2b82148b6227c7e1f02aa114c4cc07",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Opportunity-ma-c24ff-ts-with-no-provider-request/atlas-mobile.png": "5d79364260274c595a5b25bd7107ccc7000e8dd8d9f8c9f8f774cf7d12e02a8f",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Presentation-l-ae6a5-nding-checkout-is-available/product-access-mobile.png": "5643fce8211372a1488503e6dd09e1b1d43d861a79e5e7e061abb8d19242b706",
+    "docs/ci-green-20261029/selectors/e2e-output/browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns/triangle-mobile.png": "b229bc7f13002bc3e0ff7032b38739558d2d5fd6e9b939a9bc076bd2a47b4113",
+    "docs/ci-green-20261029/selectors/header/candidate/de-atelier-320-preferences.png": "18a77f4bce7c35fc1242bd43d7f5dad1f7fcbc56affa62d02e40166a1f94037d",
+    "docs/ci-green-20261029/selectors/header/candidate/de-atelier-320.png": "058c531a3623ad0aef2b6ebac9dbde0aad3c3c83dd5a73415bc65f441072c1fa",
+    "docs/ci-green-20261029/selectors/header/candidate/de-atelier-390-preferences.png": "bd2378445d58af998563373d1dae64394de4f1f68eb70745f3416619eb0f90e2",
+    "docs/ci-green-20261029/selectors/header/candidate/de-atelier-390.png": "94bec8e9186397e4c814110dac19ec9d6b6b112c2f08211c5e4c797893fce27d",
+    "docs/ci-green-20261029/selectors/header/candidate/de-current-320-preferences.png": "5303a40d78d245897c0577952d151d6ef45967a299e71856cf76742f59dea3f6",
+    "docs/ci-green-20261029/selectors/header/candidate/de-current-320.png": "77cef49d29c4a0354faec18cd76b014c75ac1ef9e53dbf14c03c531a3db92cf2",
+    "docs/ci-green-20261029/selectors/header/candidate/de-current-390-preferences.png": "f1f4425e18d5c2b83d80bd4ee64516674486a25024467ec5cb2b7ce2a850fe41",
+    "docs/ci-green-20261029/selectors/header/candidate/de-current-390.png": "219b4953f9dca3739e7962c5d56d073a607620515a9ed9ae92a72323d7d443c4",
+    "docs/ci-green-20261029/selectors/header/candidate/en-atelier-320-preferences.png": "b5f67fb98bad72c97fe474520cd38d2e6e7c7af04f57d26516a123d5a2054a92",
+    "docs/ci-green-20261029/selectors/header/candidate/en-atelier-320.png": "ce484202c38c533cde65232c4aa841eb2dbcc6bb46c6f0189ffd805a57b002d2",
+    "docs/ci-green-20261029/selectors/header/candidate/en-atelier-390-preferences.png": "ab7a0035a50f75806a71510ceaef52dd858cfcb0dd834452acce650e27ea7ea0",
+    "docs/ci-green-20261029/selectors/header/candidate/en-atelier-390.png": "1f7e2db7c5439f97c989a075fed3252ab701528b61b0fa20e90838ca30605b3e",
+    "docs/ci-green-20261029/selectors/header/candidate/en-current-320-preferences.png": "b0b29355a93baeb67a13594eb4519dd3580d62f06b9c2cb327bd289362148dc4",
+    "docs/ci-green-20261029/selectors/header/candidate/en-current-320.png": "faf443341b6577b38bbb2effef39fabd67bd25d69f6af90ba1c42ea37bb0d74d",
+    "docs/ci-green-20261029/selectors/header/candidate/en-current-390-preferences.png": "f57a97ae9365bcd2ce6fe26b3620fe8d970efb8989b3120d893ce35d65b39111",
+    "docs/ci-green-20261029/selectors/header/candidate/en-current-390.png": "0d75ee9990ee8f13fa59c0789aa24ee7afd3e0bf3a2657ec0f689d0f0c94389a",
+    "docs/ci-green-20261029/selectors/header/candidate/RESULT.json": "65e0c920bfd361376f1639ba6d435a8444ec5b15e363dc0663781d0357fb49f3",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-atelier-320-preferences.png": "da4b37c5eacabccb89cc2fe1c30151c1a34bff27bb33baf4783b36f25594fb08",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-atelier-320.png": "1e4c5d210348b1ae5e1b85cd2a90b18b3e8fb2e1e8fce93602c474da3eec61ea",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-atelier-390-preferences.png": "acb06bf384147180d871b5de6aa23c04773a631c941fa01d614d2c1504267cd1",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-atelier-390.png": "b842427cfe58a2914948a90d4bec1b094ab6d3c9fd3b25c29567d05f5cb58355",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-current-320-preferences.png": "0af1c306af10fe7684eae4a91f2363fb97782cafeca14f7c1ec6038780b5e9a1",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-current-320.png": "ff48e799842a0b3c5b8df1b1689200bf1b17925c7542d6e4df630f4268523d8d",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-current-390-preferences.png": "74697c2f258a8160a5ef77dd1b305bae3fa37467f0b1ba16296b45548af2d87e",
+    "docs/ci-green-20261029/selectors/header/candidate/uk-current-390.png": "a25ce519da6eaa3c561aeb977a93e1ef66dfd206d38bcfdbcd5e43c9add19fb3"
+  },
+  "report_sha256": "1e29ff0ac9c76bec8ba82784ece5d71887ea0c7e49d278c7608668e56fbc4366"
+}

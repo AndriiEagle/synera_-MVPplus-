@@ -37,6 +37,7 @@ try{for(const language of ['uk','de','en'])for(const atelier of [false,true])for
   await page.locator('.header-preferences > summary').click();await page.locator('#site-language').selectOption(language);await page.waitForFunction(l=>document.documentElement.lang===l,language);
   // Atelier is now the default: explicitly exercise Current too, plus the existing Atelier settings.
   const style=atelier?'atelier':'synera';await page.locator('#style-preset').selectOption(style);
+  await page.locator('.adaptive-legacy > summary').click();
   await page.locator('.atelier-mode-choice button').nth(atelier?1:0).click();
   await page.waitForFunction(({language,style,atelier})=>document.documentElement.lang===language&&document.documentElement.dataset.syneraStyle===style&&(document.documentElement.dataset.syneraAtelier==='on')===atelier,{language,style,atelier});
   check('selected language and appearance applied',true);await page.evaluate(()=>document.fonts.ready);

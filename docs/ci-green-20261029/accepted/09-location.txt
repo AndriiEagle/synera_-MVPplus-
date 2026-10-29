@@ -1,0 +1,455 @@
+2026-10-29T15:48:41.559Z pw:api => browserType.launch started
+2026-10-29T15:48:42.877Z pw:api <= browserType.launch succeeded
+2026-10-29T15:48:42.880Z pw:api => browser.newContext started
+2026-10-29T15:48:43.062Z pw:api <= browser.newContext succeeded
+2026-10-29T15:48:43.063Z pw:api => browserContext.addInitScript started
+2026-10-29T15:48:43.068Z pw:api <= browserContext.addInitScript succeeded
+2026-10-29T15:48:43.070Z pw:api => browserContext.newPage started
+2026-10-29T15:48:43.505Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:43.508Z pw:api => page.route started
+2026-10-29T15:48:43.512Z pw:api <= page.route succeeded
+2026-10-29T15:48:43.538Z pw:api => page.route started
+2026-10-29T15:48:43.539Z pw:api <= page.route succeeded
+2026-10-29T15:48:43.540Z pw:api => page.route started
+2026-10-29T15:48:43.540Z pw:api <= page.route succeeded
+2026-10-29T15:48:43.542Z pw:api => page.goto started
+2026-10-29T15:48:43.543Z pw:api navigating to "http://127.0.0.1:61211/", waiting until "load"
+2026-10-29T15:48:43.569Z pw:api => route.fetch started
+2026-10-29T15:48:43.582Z pw:api → GET http://127.0.0.1:61211/
+2026-10-29T15:48:43.582Z pw:api   user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36
+2026-10-29T15:48:43.582Z pw:api   accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+2026-10-29T15:48:43.582Z pw:api   accept-encoding: gzip,deflate,br
+2026-10-29T15:48:43.582Z pw:api   upgrade-insecure-requests: 1
+2026-10-29T15:48:43.582Z pw:api   sec-ch-ua: "Not:A-Brand";v="8", "Chromium";v="156", "Google Chrome";v="156"
+2026-10-29T15:48:43.583Z pw:api   sec-ch-ua-mobile: ?0
+2026-10-29T15:48:43.583Z pw:api   sec-ch-ua-platform: "Windows"
+2026-10-29T15:48:43.604Z pw:api ← 200 OK
+2026-10-29T15:48:43.605Z pw:api   cache-control: no-store
+2026-10-29T15:48:43.605Z pw:api   strict-transport-security: max-age=31536000
+2026-10-29T15:48:43.605Z pw:api   x-content-type-options: nosniff
+2026-10-29T15:48:43.605Z pw:api   referrer-policy: no-referrer
+2026-10-29T15:48:43.605Z pw:api   permissions-policy: camera=(), microphone=(), geolocation=()
+2026-10-29T15:48:43.605Z pw:api   content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; worker-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+2026-10-29T15:48:43.605Z pw:api   content-type: text/html; charset=utf-8
+2026-10-29T15:48:43.605Z pw:api   date: Thu, 29 Oct 2026 15:48:43 GMT
+2026-10-29T15:48:43.605Z pw:api   connection: keep-alive
+2026-10-29T15:48:43.605Z pw:api   keep-alive: timeout=5
+2026-10-29T15:48:43.605Z pw:api   transfer-encoding: chunked
+2026-10-29T15:48:43.613Z pw:api <= route.fetch succeeded
+2026-10-29T15:48:43.615Z pw:api => route.fulfill started
+2026-10-29T15:48:43.621Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:43.643Z pw:api   "commit" event fired
+2026-10-29T15:48:43.643Z pw:api   navigated to "http://127.0.0.1:61211/"
+2026-10-29T15:48:44.163Z pw:api => route.fulfill started
+2026-10-29T15:48:44.166Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.179Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:48:44.296Z pw:api   "load" event fired
+2026-10-29T15:48:44.298Z pw:api <= page.goto succeeded
+2026-10-29T15:48:44.299Z pw:api => locator.waitFor started
+2026-10-29T15:48:44.306Z pw:api waiting for locator('#workspace:not([hidden])') to be visible
+2026-10-29T15:48:44.327Z pw:api => route.fulfill started
+2026-10-29T15:48:44.337Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.363Z pw:api => route.fulfill started
+2026-10-29T15:48:44.366Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.381Z pw:api => route.fulfill started
+2026-10-29T15:48:44.383Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.391Z pw:api => route.fulfill started
+2026-10-29T15:48:44.395Z pw:api => route.fulfill started
+2026-10-29T15:48:44.400Z pw:api => route.fulfill started
+2026-10-29T15:48:44.403Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.404Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.405Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:44.550Z pw:api   locator resolved to visible <section id="workspace">…</section>
+2026-10-29T15:48:44.551Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:44.552Z pw:api => locator.click started
+2026-10-29T15:48:44.554Z pw:api waiting for locator('[data-tab="meetings"]')
+2026-10-29T15:48:44.567Z pw:api   locator resolved to <button class="tab" data-tab="meetings" aria-current="false">…</button>
+2026-10-29T15:48:44.573Z pw:api attempting click action
+2026-10-29T15:48:44.574Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:44.735Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:44.735Z pw:api   scrolling into view if needed
+2026-10-29T15:48:44.738Z pw:api   done scrolling
+2026-10-29T15:48:44.747Z pw:api   performing click action
+2026-10-29T15:48:44.778Z pw:api   click action done
+2026-10-29T15:48:44.778Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:44.780Z pw:api   navigations have finished
+2026-10-29T15:48:44.780Z pw:api <= locator.click succeeded
+2026-10-29T15:48:44.781Z pw:api => locator.click started
+2026-10-29T15:48:44.782Z pw:api waiting for locator('.meeting-location summary')
+2026-10-29T15:48:44.789Z pw:api   locator resolved to <summary>Місце і навігація перед зустріччю</summary>
+2026-10-29T15:48:44.792Z pw:api attempting click action
+2026-10-29T15:48:44.792Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:44.913Z pw:api   "networkidle" event fired
+2026-10-29T15:48:44.947Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:44.947Z pw:api   scrolling into view if needed
+2026-10-29T15:48:44.950Z pw:api   done scrolling
+2026-10-29T15:48:44.955Z pw:api   performing click action
+2026-10-29T15:48:44.985Z pw:api   click action done
+2026-10-29T15:48:44.985Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:44.986Z pw:api   navigations have finished
+2026-10-29T15:48:44.987Z pw:api <= locator.click succeeded
+2026-10-29T15:48:44.988Z pw:api => browser.newContext started
+2026-10-29T15:48:45.005Z pw:api <= browser.newContext succeeded
+2026-10-29T15:48:45.006Z pw:api => browserContext.addInitScript started
+2026-10-29T15:48:45.007Z pw:api <= browserContext.addInitScript succeeded
+2026-10-29T15:48:45.007Z pw:api => browserContext.newPage started
+2026-10-29T15:48:45.186Z pw:api => route.fulfill started
+2026-10-29T15:48:45.194Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:45.292Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:45.293Z pw:api => page.route started
+2026-10-29T15:48:45.296Z pw:api <= page.route succeeded
+2026-10-29T15:48:45.297Z pw:api => page.route started
+2026-10-29T15:48:45.297Z pw:api <= page.route succeeded
+2026-10-29T15:48:45.298Z pw:api => page.route started
+2026-10-29T15:48:45.298Z pw:api <= page.route succeeded
+2026-10-29T15:48:45.299Z pw:api => page.goto started
+2026-10-29T15:48:45.299Z pw:api navigating to "http://127.0.0.1:61211/", waiting until "load"
+2026-10-29T15:48:45.317Z pw:api => route.fetch started
+2026-10-29T15:48:45.321Z pw:api → GET http://127.0.0.1:61211/
+2026-10-29T15:48:45.321Z pw:api   user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36
+2026-10-29T15:48:45.321Z pw:api   accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+2026-10-29T15:48:45.321Z pw:api   accept-encoding: gzip,deflate,br
+2026-10-29T15:48:45.321Z pw:api   upgrade-insecure-requests: 1
+2026-10-29T15:48:45.321Z pw:api   sec-ch-ua: "Not:A-Brand";v="8", "Chromium";v="156", "Google Chrome";v="156"
+2026-10-29T15:48:45.321Z pw:api   sec-ch-ua-mobile: ?0
+2026-10-29T15:48:45.321Z pw:api   sec-ch-ua-platform: "Windows"
+2026-10-29T15:48:45.327Z pw:api ← 200 OK
+2026-10-29T15:48:45.327Z pw:api   cache-control: no-store
+2026-10-29T15:48:45.327Z pw:api   strict-transport-security: max-age=31536000
+2026-10-29T15:48:45.327Z pw:api   x-content-type-options: nosniff
+2026-10-29T15:48:45.327Z pw:api   referrer-policy: no-referrer
+2026-10-29T15:48:45.327Z pw:api   permissions-policy: camera=(), microphone=(), geolocation=()
+2026-10-29T15:48:45.327Z pw:api   content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; worker-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+2026-10-29T15:48:45.327Z pw:api   content-type: text/html; charset=utf-8
+2026-10-29T15:48:45.327Z pw:api   date: Thu, 29 Oct 2026 15:48:45 GMT
+2026-10-29T15:48:45.327Z pw:api   connection: keep-alive
+2026-10-29T15:48:45.328Z pw:api   keep-alive: timeout=5
+2026-10-29T15:48:45.328Z pw:api   transfer-encoding: chunked
+2026-10-29T15:48:45.330Z pw:api <= route.fetch succeeded
+2026-10-29T15:48:45.330Z pw:api => route.fulfill started
+2026-10-29T15:48:45.335Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:45.347Z pw:api   "commit" event fired
+2026-10-29T15:48:45.347Z pw:api   navigated to "http://127.0.0.1:61211/"
+2026-10-29T15:48:45.865Z pw:api => route.fulfill started
+2026-10-29T15:48:45.867Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:45.879Z pw:api   "domcontentloaded" event fired
+2026-10-29T15:48:46.051Z pw:api   "load" event fired
+2026-10-29T15:48:46.052Z pw:api <= page.goto succeeded
+2026-10-29T15:48:46.053Z pw:api => locator.waitFor started
+2026-10-29T15:48:46.054Z pw:api waiting for locator('#workspace:not([hidden])') to be visible
+2026-10-29T15:48:46.060Z pw:api => route.fulfill started
+2026-10-29T15:48:46.068Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.095Z pw:api => route.fulfill started
+2026-10-29T15:48:46.098Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.110Z pw:api => route.fulfill started
+2026-10-29T15:48:46.112Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.119Z pw:api => route.fulfill started
+2026-10-29T15:48:46.123Z pw:api => route.fulfill started
+2026-10-29T15:48:46.125Z pw:api => route.fulfill started
+2026-10-29T15:48:46.128Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.129Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.129Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.255Z pw:api   locator resolved to visible <section id="workspace">…</section>
+2026-10-29T15:48:46.255Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:46.256Z pw:api => locator.click started
+2026-10-29T15:48:46.257Z pw:api waiting for locator('[data-tab="meetings"]')
+2026-10-29T15:48:46.263Z pw:api   locator resolved to <button class="tab" data-tab="meetings" aria-current="false">…</button>
+2026-10-29T15:48:46.265Z pw:api attempting click action
+2026-10-29T15:48:46.265Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:46.463Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:46.463Z pw:api   scrolling into view if needed
+2026-10-29T15:48:46.467Z pw:api   done scrolling
+2026-10-29T15:48:46.486Z pw:api   performing click action
+2026-10-29T15:48:46.547Z pw:api   click action done
+2026-10-29T15:48:46.547Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:46.555Z pw:api   navigations have finished
+2026-10-29T15:48:46.555Z pw:api <= locator.click succeeded
+2026-10-29T15:48:46.556Z pw:api => locator.click started
+2026-10-29T15:48:46.557Z pw:api waiting for locator('.meeting-location summary')
+2026-10-29T15:48:46.567Z pw:api   locator resolved to <summary>Місце і навігація перед зустріччю</summary>
+2026-10-29T15:48:46.572Z pw:api attempting click action
+2026-10-29T15:48:46.572Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:46.612Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:46.612Z pw:api   scrolling into view if needed
+2026-10-29T15:48:46.638Z pw:api   done scrolling
+2026-10-29T15:48:46.639Z pw:api   "networkidle" event fired
+2026-10-29T15:48:46.644Z pw:api   performing click action
+2026-10-29T15:48:46.713Z pw:api   click action done
+2026-10-29T15:48:46.713Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:46.717Z pw:api => route.fulfill started
+2026-10-29T15:48:46.732Z pw:api   navigations have finished
+2026-10-29T15:48:46.733Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:46.733Z pw:api <= locator.click succeeded
+2026-10-29T15:48:46.735Z pw:api => page.evaluate started
+2026-10-29T15:48:46.764Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:46.765Z pw:api => page.evaluate started
+2026-10-29T15:48:46.777Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:46.778Z pw:api => locator.fill started
+2026-10-29T15:48:46.779Z pw:api waiting for locator('[name="meeting-address"]')
+2026-10-29T15:48:46.787Z pw:api   locator resolved to <input maxlength="200" name="meeting-address" placeholder="Наприклад: Bahnhofplatz 15, Zürich"/>
+2026-10-29T15:48:46.791Z pw:api   fill("Bahnhofplatz 15, Zürich")
+2026-10-29T15:48:46.791Z pw:api attempting fill action
+2026-10-29T15:48:46.792Z pw:api   waiting for element to be visible, enabled and editable
+2026-10-29T15:48:46.812Z pw:api <= locator.fill succeeded
+2026-10-29T15:48:46.813Z pw:api => locator.click started
+2026-10-29T15:48:46.816Z pw:api waiting for getByRole('button', { name: 'Зберегти адресу', exact: true })
+2026-10-29T15:48:46.862Z pw:api   locator resolved to <button class="quiet" type="submit">Зберегти адресу</button>
+2026-10-29T15:48:46.864Z pw:api attempting click action
+2026-10-29T15:48:46.865Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:46.887Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:46.887Z pw:api   scrolling into view if needed
+2026-10-29T15:48:46.888Z pw:api   done scrolling
+2026-10-29T15:48:46.893Z pw:api   <nav aria-label="Розділи">…</nav> from <div class="workspace-bar">…</div> subtree intercepts pointer events
+2026-10-29T15:48:46.893Z pw:api retrying click action
+2026-10-29T15:48:46.893Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:46.937Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:46.937Z pw:api   scrolling into view if needed
+2026-10-29T15:48:46.954Z pw:api   done scrolling
+2026-10-29T15:48:46.982Z pw:api   performing click action
+2026-10-29T15:48:47.032Z pw:api => route.fulfill started
+2026-10-29T15:48:47.044Z pw:api   click action done
+2026-10-29T15:48:47.044Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:47.046Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.105Z pw:api => route.fulfill started
+2026-10-29T15:48:47.110Z pw:api => route.fulfill started
+2026-10-29T15:48:47.113Z pw:api => route.fulfill started
+2026-10-29T15:48:47.113Z pw:api   navigations have finished
+2026-10-29T15:48:47.114Z pw:api <= locator.click succeeded
+2026-10-29T15:48:47.115Z pw:api => locator.waitFor started
+2026-10-29T15:48:47.117Z pw:api waiting for locator('.meeting-location a[href*="/maps/dir/"]').first() to be visible
+2026-10-29T15:48:47.128Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.130Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.130Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.148Z pw:api => route.fulfill started
+2026-10-29T15:48:47.171Z pw:api   locator resolved to visible <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=Bahnhofplatz+15%2C+Z%C3%BCrich&travelmode=walking&dir_action=navigate">Пішки до місця зустрічі в Google Maps ↗</a>
+2026-10-29T15:48:47.172Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:47.172Z pw:api => page.waitForFunction started
+2026-10-29T15:48:47.179Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.230Z pw:api <= page.waitForFunction succeeded
+2026-10-29T15:48:47.231Z pw:api => locator.getAttribute started
+2026-10-29T15:48:47.232Z pw:api waiting for locator('.meeting-location a[href*="/maps/dir/"]').first()
+2026-10-29T15:48:47.242Z pw:api   locator resolved to <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=Bahnhofplatz+15%2C+Z%C3%BCrich&travelmode=walking&dir_action=navigate">Пішки до місця зустрічі в Google Maps ↗</a>
+2026-10-29T15:48:47.242Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:48:47.243Z pw:api => locator.isEnabled started
+2026-10-29T15:48:47.244Z pw:api waiting for getByRole('button', { name: 'Дозволити на час зустрічі', exact: true })
+2026-10-29T15:48:47.262Z pw:api   locator resolved to <button disabled type="button" data-location-consent-action="true">Дозволити на час зустрічі</button>
+2026-10-29T15:48:47.262Z pw:api <= locator.isEnabled succeeded
+2026-10-29T15:48:47.263Z pw:api => locator.check started
+2026-10-29T15:48:47.264Z pw:api waiting for locator('[name="location-consent"]')
+2026-10-29T15:48:47.272Z pw:api   locator resolved to <input value="on" type="checkbox" name="location-consent"/>
+2026-10-29T15:48:47.292Z pw:api attempting click action
+2026-10-29T15:48:47.292Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:47.512Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:47.512Z pw:api   scrolling into view if needed
+2026-10-29T15:48:47.527Z pw:api   done scrolling
+2026-10-29T15:48:47.559Z pw:api   performing click action
+2026-10-29T15:48:47.595Z pw:api   click action done
+2026-10-29T15:48:47.595Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:47.596Z pw:api   navigations have finished
+2026-10-29T15:48:47.604Z pw:api <= locator.check succeeded
+2026-10-29T15:48:47.605Z pw:api => locator.click started
+2026-10-29T15:48:47.606Z pw:api waiting for getByRole('button', { name: 'Дозволити на час зустрічі', exact: true })
+2026-10-29T15:48:47.640Z pw:api   locator resolved to <button type="button" data-location-consent-action="true">Дозволити на час зустрічі</button>
+2026-10-29T15:48:47.651Z pw:api attempting click action
+2026-10-29T15:48:47.651Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:47.715Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:47.715Z pw:api   scrolling into view if needed
+2026-10-29T15:48:47.725Z pw:api   done scrolling
+2026-10-29T15:48:47.748Z pw:api   performing click action
+2026-10-29T15:48:47.773Z pw:api => route.fulfill started
+2026-10-29T15:48:47.774Z pw:api   click action done
+2026-10-29T15:48:47.774Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:47.777Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.779Z pw:api   navigations have finished
+2026-10-29T15:48:47.780Z pw:api <= locator.click succeeded
+2026-10-29T15:48:47.786Z pw:api => route.fulfill started
+2026-10-29T15:48:47.790Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:47.830Z pw:api => route.fulfill started
+2026-10-29T15:48:47.837Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:48.001Z pw:api => route.fulfill started
+2026-10-29T15:48:48.029Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:48.042Z pw:api => locator.click started
+2026-10-29T15:48:48.044Z pw:api waiting for getByRole('button', { name: 'Оновити локацію', exact: true })
+2026-10-29T15:48:48.090Z pw:api   locator resolved to <button class="quiet" type="button">Оновити локацію</button>
+2026-10-29T15:48:48.103Z pw:api attempting click action
+2026-10-29T15:48:48.103Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:48.113Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:48.113Z pw:api   scrolling into view if needed
+2026-10-29T15:48:48.118Z pw:api   done scrolling
+2026-10-29T15:48:48.124Z pw:api   performing click action
+2026-10-29T15:48:48.140Z pw:api => route.fulfill started
+2026-10-29T15:48:48.141Z pw:api   click action done
+2026-10-29T15:48:48.142Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:48.144Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:48.144Z pw:api   navigations have finished
+2026-10-29T15:48:48.145Z pw:api <= locator.click succeeded
+2026-10-29T15:48:48.145Z pw:api => locator.waitFor started
+2026-10-29T15:48:48.146Z pw:api waiting for getByRole('link', { name: 'Пішки до співрозмовника в Google Maps ↗', exact: true }) to be visible
+2026-10-29T15:48:48.222Z pw:api   locator resolved to visible <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=47.375%2C8.540000000000001&travelmode=walking&dir_action=navigate">Пішки до співрозмовника в Google Maps ↗</a>
+2026-10-29T15:48:48.222Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:48.223Z pw:api => locator.getAttribute started
+2026-10-29T15:48:48.224Z pw:api waiting for locator('.meeting-location a[href*="/maps/dir/"]').first()
+2026-10-29T15:48:48.230Z pw:api   locator resolved to <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=Bahnhofplatz+15%2C+Z%C3%BCrich&travelmode=walking&dir_action=navigate">Пішки до місця зустрічі в Google Maps ↗</a>
+2026-10-29T15:48:48.230Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:48:48.231Z pw:api => locator.getAttribute started
+2026-10-29T15:48:48.231Z pw:api waiting for getByRole('link', { name: 'Пішки до співрозмовника в Google Maps ↗', exact: true })
+2026-10-29T15:48:48.239Z pw:api   locator resolved to <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=47.375%2C8.540000000000001&travelmode=walking&dir_action=navigate">Пішки до співрозмовника в Google Maps ↗</a>
+2026-10-29T15:48:48.239Z pw:api <= locator.getAttribute succeeded
+2026-10-29T15:48:48.240Z pw:api => page.evaluate started
+2026-10-29T15:48:48.242Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:48.243Z pw:api => page.evaluate started
+2026-10-29T15:48:48.246Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:48.247Z pw:api => page.evaluate started
+2026-10-29T15:48:48.636Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:48.636Z pw:api => page.evaluate started
+2026-10-29T15:48:48.639Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:48.639Z pw:api => frame.evaluate started
+2026-10-29T15:48:48.679Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:48:48.680Z pw:api => frame.evaluate started
+2026-10-29T15:48:49.260Z pw:api <= frame.evaluate succeeded
+2026-10-29T15:48:49.263Z pw:api => browserContext.newPage started
+2026-10-29T15:48:49.343Z pw:api <= browserContext.newPage succeeded
+2026-10-29T15:48:49.344Z pw:api => page.evaluate started
+2026-10-29T15:48:49.797Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:49.797Z pw:api => page.evaluate started
+2026-10-29T15:48:49.799Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:49.800Z pw:api => page.evaluate started
+2026-10-29T15:48:49.802Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:49.803Z pw:api => page.evaluate started
+2026-10-29T15:48:49.811Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:49.812Z pw:api => page.evaluate started
+2026-10-29T15:48:49.866Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:49.868Z pw:api => page.close started
+2026-10-29T15:48:49.890Z pw:api <= page.close succeeded
+2026-10-29T15:48:49.893Z pw:api => page.screenshot started
+2026-10-29T15:48:49.894Z pw:api taking page screenshot
+2026-10-29T15:48:49.901Z pw:api waiting for fonts to load...
+2026-10-29T15:48:49.903Z pw:api fonts loaded
+2026-10-29T15:48:50.418Z pw:api <= page.screenshot succeeded
+2026-10-29T15:48:50.422Z pw:api => locator.click started
+2026-10-29T15:48:50.423Z pw:api waiting for getByRole('button', { name: 'Відкликати дозвіл', exact: true })
+2026-10-29T15:48:50.432Z pw:api   locator resolved to <button class="quiet" type="button">Відкликати дозвіл</button>
+2026-10-29T15:48:50.434Z pw:api attempting click action
+2026-10-29T15:48:50.434Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.461Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.461Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.462Z pw:api   done scrolling
+2026-10-29T15:48:50.466Z pw:api   performing click action
+2026-10-29T15:48:50.483Z pw:api => route.fulfill started
+2026-10-29T15:48:50.486Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.486Z pw:api   click action done
+2026-10-29T15:48:50.486Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.490Z pw:api   navigations have finished
+2026-10-29T15:48:50.491Z pw:api <= locator.click succeeded
+2026-10-29T15:48:50.491Z pw:api => locator.click started
+2026-10-29T15:48:50.492Z pw:api waiting for getByRole('button', { name: 'Оновити локацію', exact: true })
+2026-10-29T15:48:50.497Z pw:api => route.fulfill started
+2026-10-29T15:48:50.500Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.520Z pw:api   locator resolved to <button class="quiet" type="button">Оновити локацію</button>
+2026-10-29T15:48:50.522Z pw:api attempting click action
+2026-10-29T15:48:50.522Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.534Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.534Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.536Z pw:api   done scrolling
+2026-10-29T15:48:50.540Z pw:api   performing click action
+2026-10-29T15:48:50.551Z pw:api => route.fulfill started
+2026-10-29T15:48:50.552Z pw:api   click action done
+2026-10-29T15:48:50.552Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.553Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.554Z pw:api   navigations have finished
+2026-10-29T15:48:50.554Z pw:api <= locator.click succeeded
+2026-10-29T15:48:50.555Z pw:api => locator.waitFor started
+2026-10-29T15:48:50.555Z pw:api waiting for getByRole('link', { name: 'Пішки до співрозмовника в Google Maps ↗', exact: true }) to be detached
+2026-10-29T15:48:50.565Z pw:api   locator resolved to visible <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=47.375%2C8.540000000000001&travelmode=walking&dir_action=navigate">Пішки до співрозмовника в Google Maps ↗</a>
+2026-10-29T15:48:50.597Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:50.598Z pw:api => page.evaluate started
+2026-10-29T15:48:50.600Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:50.600Z pw:api => locator.check started
+2026-10-29T15:48:50.600Z pw:api waiting for locator('[name="location-consent"]')
+2026-10-29T15:48:50.605Z pw:api   locator resolved to <input value="on" type="checkbox" name="location-consent"/>
+2026-10-29T15:48:50.610Z pw:api attempting click action
+2026-10-29T15:48:50.610Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.656Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.656Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.657Z pw:api   done scrolling
+2026-10-29T15:48:50.661Z pw:api   performing click action
+2026-10-29T15:48:50.666Z pw:api   click action done
+2026-10-29T15:48:50.667Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.667Z pw:api   navigations have finished
+2026-10-29T15:48:50.669Z pw:api <= locator.check succeeded
+2026-10-29T15:48:50.669Z pw:api => locator.click started
+2026-10-29T15:48:50.669Z pw:api waiting for getByRole('button', { name: 'Дозволити на час зустрічі', exact: true })
+2026-10-29T15:48:50.680Z pw:api   locator resolved to <button type="button" data-location-consent-action="true">Дозволити на час зустрічі</button>
+2026-10-29T15:48:50.683Z pw:api attempting click action
+2026-10-29T15:48:50.683Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.722Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.722Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.724Z pw:api   done scrolling
+2026-10-29T15:48:50.727Z pw:api   performing click action
+2026-10-29T15:48:50.738Z pw:api => route.fulfill started
+2026-10-29T15:48:50.739Z pw:api   click action done
+2026-10-29T15:48:50.739Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.741Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.741Z pw:api   navigations have finished
+2026-10-29T15:48:50.741Z pw:api <= locator.click succeeded
+2026-10-29T15:48:50.753Z pw:api => route.fulfill started
+2026-10-29T15:48:50.755Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.769Z pw:api => route.fulfill started
+2026-10-29T15:48:50.771Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.786Z pw:api => route.fulfill started
+2026-10-29T15:48:50.788Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.794Z pw:api => locator.click started
+2026-10-29T15:48:50.795Z pw:api waiting for getByRole('button', { name: 'Скасувати зустріч', exact: true })
+2026-10-29T15:48:50.811Z pw:api   locator resolved to <button class="quiet" type="button">Скасувати зустріч</button>
+2026-10-29T15:48:50.813Z pw:api attempting click action
+2026-10-29T15:48:50.813Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.845Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.845Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.846Z pw:api   done scrolling
+2026-10-29T15:48:50.850Z pw:api   performing click action
+2026-10-29T15:48:50.861Z pw:api => route.fulfill started
+2026-10-29T15:48:50.863Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.865Z pw:api   click action done
+2026-10-29T15:48:50.865Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.867Z pw:api   navigations have finished
+2026-10-29T15:48:50.868Z pw:api <= locator.click succeeded
+2026-10-29T15:48:50.868Z pw:api => locator.waitFor started
+2026-10-29T15:48:50.869Z pw:api waiting for locator('.meeting-location') to be detached
+2026-10-29T15:48:50.875Z pw:api => route.fulfill started
+2026-10-29T15:48:50.877Z pw:api => route.fulfill started
+2026-10-29T15:48:50.878Z pw:api => route.fulfill started
+2026-10-29T15:48:50.880Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.881Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.881Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.882Z pw:api   locator resolved to visible <details open="" class="meeting-location" data-saved-address="Bahnhofplatz 15, Zürich" data-meeting-id="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa">…</details>
+2026-10-29T15:48:50.899Z pw:api => route.fulfill started
+2026-10-29T15:48:50.901Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.908Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:50.909Z pw:api => page.evaluate started
+2026-10-29T15:48:50.910Z pw:api <= page.evaluate succeeded
+2026-10-29T15:48:50.911Z pw:api => locator.click started
+2026-10-29T15:48:50.911Z pw:api waiting for getByRole('button', { name: 'Оновити локацію', exact: true })
+2026-10-29T15:48:50.924Z pw:api   locator resolved to <button class="quiet" type="button">Оновити локацію</button>
+2026-10-29T15:48:50.926Z pw:api attempting click action
+2026-10-29T15:48:50.926Z pw:api   waiting for element to be visible, enabled and stable
+2026-10-29T15:48:50.941Z pw:api   element is visible, enabled and stable
+2026-10-29T15:48:50.941Z pw:api   scrolling into view if needed
+2026-10-29T15:48:50.942Z pw:api   done scrolling
+2026-10-29T15:48:50.947Z pw:api   performing click action
+2026-10-29T15:48:50.959Z pw:api => route.fulfill started
+2026-10-29T15:48:50.960Z pw:api   click action done
+2026-10-29T15:48:50.960Z pw:api   waiting for scheduled navigations to finish
+2026-10-29T15:48:50.962Z pw:api <= route.fulfill succeeded
+2026-10-29T15:48:50.963Z pw:api   navigations have finished
+2026-10-29T15:48:50.963Z pw:api <= locator.click succeeded
+2026-10-29T15:48:50.963Z pw:api => locator.waitFor started
+2026-10-29T15:48:50.964Z pw:api waiting for locator('.meeting-location') to be detached
+2026-10-29T15:48:50.980Z pw:api   locator resolved to visible <details open="" class="meeting-location" data-saved-address="Bahnhofplatz 15, Zürich" data-meeting-id="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa">…</details>
+2026-10-29T15:48:51.008Z pw:api <= locator.waitFor succeeded
+2026-10-29T15:48:51.009Z pw:api => locator.innerText started
+2026-10-29T15:48:51.010Z pw:api waiting for locator('#meetings h3')
+2026-10-29T15:48:51.015Z pw:api   locator resolved to <h3>Скасовано</h3>
+2026-10-29T15:48:51.016Z pw:api <= locator.innerText succeeded
+{"pass":true,"scope":"Real Chromium at 390px; real client/store/worker; simulated two-account Auth/Data API/KV and browser GPS; not physical Android or live providers","checks":["no capture before consent","saved address reaches Google Maps","remote address sync","coarsening before peer display","independent sharing","revocation hides peer link","cancellation stops GPS","remote cancellation sync","no mobile overflow","no page errors","no critical or serious WCAG violations in location UI"],"provider_calls":0}
+2026-10-29T15:48:51.018Z pw:api => browser.close started
+2026-10-29T15:48:51.496Z pw:api <= browser.close succeeded

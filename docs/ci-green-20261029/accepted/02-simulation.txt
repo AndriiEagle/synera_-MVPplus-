@@ -1,0 +1,15 @@
+✔ no provider dispatch when stop changes during capture (21.3784ms)
+✔ no provider dispatch when revision changes during capture (7.1445ms)
+✔ no provider dispatch when draft changes during capture (6.5085ms)
+✔ unchanged clean frame reaches one model call and records the UI result (7.8211ms)
+✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (144.1764ms)
+✔ executor refuses stale, cross-action payloads and unbounded fields (1.2218ms)
+✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (55.377ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1127.7889

@@ -56,6 +56,7 @@ try {
       assert.equal(await page.locator('#workspace').isVisible(), true); assert.equal(await field.inputValue(), 'DELETE');
       assert.equal(await page.locator('#profile-form [name="display_name"]').inputValue(), db.profiles[0].display_name);
       report.checks.push('error preserves account and form; invalid confirmation makes zero requests');
+      await page.locator('.header-preferences > summary').click();
       await page.locator('#logout').click();
       await page.waitForFunction(() => document.getElementById('workspace').hidden);
       assert.equal(await field.inputValue(), '', 'typed deletion confirmation leaked through logout into the next account');
