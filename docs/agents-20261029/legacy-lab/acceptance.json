@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-29T19:29:35.136Z",
+  "runtime": "v24.16.0",
+  "checks": {
+    "private_login_20_fictional_people_key_removed": true,
+    "poll_and_reload_preserve_draft_and_focus": true,
+    "actual_http_two_actor_paid_cycle_receiver_only": true,
+    "synthetic_frame_receipts_on_actor_events": true,
+    "explicit_stop_invalidates_actor": true,
+    "widths_and_double_text_no_horizontal_overflow": true,
+    "axe_no_serious_or_critical": true,
+    "offline_shell_loads_but_no_fake_ai_or_private_cache": true,
+    "real_png_runner_stop_rejects_delayed_synthetic_decision": true,
+    "no_browser_exceptions": true
+  },
+  "requests": [
+    {
+      "screenshotSha256": "02d2d60c2b2658130fe5f673bf8c656d5c5f995b09f3814c6210ec1e5fcb4f38",
+      "actualPng": true,
+      "providerCalled": false
+    }
+  ],
+  "evidence": "actual local HTTP and Chromium; deterministic actor/model injection",
+  "liveProvider": "NOT RUN",
+  "physicalAndroid": "NOT RUN",
+  "privateHTTPS": "NOT RUN"
+}

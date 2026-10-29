@@ -11,9 +11,12 @@
   <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/simulation.css">
+  <link rel="stylesheet" href="/simulation-living.css">
   <script type="module" src="/simulation-ui.mjs"></script>
 </head>
 <body class="sim">
+  <div id="living-simulation" hidden></div>
+  <div id="simulation-lab">
   <a class="sim-skip" href="#sim-workspace">До розмови</a>
   <header class="sim-header">
     <a class="brand" href="/simulation.html">synera<span>LAB</span></a>
@@ -105,5 +108,6 @@
   </main>
   <footer class="sim-footer">Synera LAB · приватний тест співпраці. Офлайн доступна лише оболонка; AI потребує живого backend.</footer>
   <noscript>Для приватної симуляції потрібен JavaScript. AI без backend не працює.</noscript>
+  </div>
 </body>
 </html>

@@ -53,3 +53,6 @@ export function demoCollaborations(at = new Date()) {
     simulated: true,
   }));
 }
+
+// Session-paced extension of the same ten-person local simulator.
+export { livingFeed, classifyIntent, startVisitor, visitorMessage, personaRespond, recordVisitorResult } from './simulation-living.mjs';

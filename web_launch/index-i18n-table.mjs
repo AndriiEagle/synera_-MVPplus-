@@ -1,10 +1,14 @@
 import { ADAPTIVE_ROWS } from './adaptive-i18n-table.mjs';
+import { COPY as SIMULATION_COPY } from './simulation-copy.mjs';
 import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
 // German and English text for the sign-in and profile page. Loaded only after a person picks one of them,
 // so a Ukrainian visit never downloads or runs this file. The Ukrainian page stays the source: each row is
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ['Жива симуляція', 'Lebendige Simulation', 'Living simulation'],
+  ['Відкрити живу симуляцію · Demo ↗', 'Lebendige Simulation öffnen · Demo ↗', 'Open living simulation · Demo ↗'],
+  ['Зберегти чернетку в локальний журнал', 'Entwurf im lokalen Journal speichern', 'Save draft to the local journal'],
   ["SYNERA / ЗНАЙОМСТВО","SYNERA / KENNENLERNEN","SYNERA / PRODUCT PREVIEW"],
   ["ДВА НАПРЯМИ. ОДИН ПОЧАТОК.","ZWEI RICHTUNGEN. EIN ANFANG.","TWO DIRECTIONS. ONE BEGINNING."],
   ["Ділові партнерства","Geschäftspartnerschaften","B2B partnerships"],
@@ -948,3 +952,5 @@ export const PATTERNS = [
 
 // The shared-shell preferences use the same source rows in every locale.
 ROWS.push(...ADAPTIVE_ROWS.filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));
+ROWS.push(...Object.keys(SIMULATION_COPY.uk).map(key => [SIMULATION_COPY.uk[key], SIMULATION_COPY.de[key], SIMULATION_COPY.en[key]])
+  .filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));

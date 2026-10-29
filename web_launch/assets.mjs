@@ -16,6 +16,8 @@ export const PUBLIC_ASSETS = Object.freeze({
   'location-session.mjs': 'text/javascript',
   'demo-journey.mjs': 'text/javascript',
   'simulation.html': 'text/html', 'simulation.css': 'text/css', 'simulation-ui.mjs': 'text/javascript',
+  'simulation-living.mjs': 'text/javascript', 'simulation-living-ui.mjs': 'text/javascript', 'simulation-living.css': 'text/css',
+  'simulation-copy.mjs': 'text/javascript', 'simulation-entry.mjs': 'text/javascript', 'journal.mjs': 'text/javascript',
   'simulation-session.mjs': 'text/javascript', 'simulation-personas.mjs': 'text/javascript',
   'simulation.webmanifest': 'application/manifest+json', 'simulation-sw.mjs': 'text/javascript',
   'summit.html': 'text/html', 'summit.css': 'text/css', 'summit.mjs': 'text/javascript',

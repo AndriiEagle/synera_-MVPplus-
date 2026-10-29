@@ -10,6 +10,7 @@ SHELL.push('/profile-import.mjs', '/index-language.mjs', '/index-i18n.mjs', '/in
 SHELL.push('/result-card.mjs', '/action-scoper.mjs', '/session-value.mjs');
 SHELL.push('/case-material-budget.mjs');
 SHELL.push('/install-hint.mjs');
+SHELL.push('/simulation.html','/simulation.css','/simulation-ui.mjs','/simulation-session.mjs','/simulation-personas.mjs','/simulation-living.mjs','/simulation-copy.mjs','/simulation-living-ui.mjs','/simulation-living.css','/simulation-entry.mjs','/journal.mjs','/simulation.webmanifest');
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 self.addEventListener('install', event => { 

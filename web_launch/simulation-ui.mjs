@@ -1,5 +1,13 @@
 import { getDeliverableProofStates } from './simulation-session.mjs';
 
+// Private links and existing actor URLs retain the unchanged live LAB path.
+const params = new URLSearchParams(location.search);
+if (!location.hash.includes('key=') && !params.has('person') && !params.has('lab')) {
+  await import('./simulation-living-ui.mjs');
+} else {
+if (location.hash.includes('key=') && !params.has('lab')) {
+  params.set('lab', '1'); history.replaceState(null, '', location.pathname + '?' + params + location.hash);
+}
 const $ = id => document.getElementById(id);
 const termsForm = $('sim-terms');
 const fields = ['mode', 'target', 'criteria', 'returnTarget', 'returnCriteria', 'due', 'amount'];
@@ -305,3 +313,4 @@ async function init() {
   }
 }
 void init();
+}
