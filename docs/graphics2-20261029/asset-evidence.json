@@ -1,0 +1,162 @@
+[
+  {
+    "file": "scene-summit.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 45000,
+    "sha256": "821b9043ebbb332dc7f7cd089820f63689e70c9529d5aa1e7f61d2d3ea45082c",
+    "sourceSha256": "0ff42ad69d92186cec21191f214aa2515767f9a86be1d8129db5fd14ce71e98c"
+  },
+  {
+    "file": "scene-summit@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 130684,
+    "sha256": "2b538a6c6f59602cafa37aa98a1a401bbf0cfef9105383259fd0c68e17971ee1",
+    "sourceSha256": "0ff42ad69d92186cec21191f214aa2515767f9a86be1d8129db5fd14ce71e98c"
+  },
+  {
+    "file": "scene-studio.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 47978,
+    "sha256": "4ac1f7c7647aba1c2ae0f2ca25158ccad5ddc747ffc71d77ca5d43abb61ae504",
+    "sourceSha256": "07487a06f62d72344b29becd0d13d5dbda2fadacc7e6911dc5c6e20fec0fef88"
+  },
+  {
+    "file": "scene-studio@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 146296,
+    "sha256": "34ef2729ce83fc1570465a289c13089e83a41d08db65a50cac23dd7d1917677a",
+    "sourceSha256": "07487a06f62d72344b29becd0d13d5dbda2fadacc7e6911dc5c6e20fec0fef88"
+  },
+  {
+    "file": "scene-triangle.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 71658,
+    "sha256": "10244b1db9abfc2166e1b3b0ec7376e2d6f249e31cf4eea9074e0c74217bc567",
+    "sourceSha256": "95b09b1c72c5d8c3e3de2d073ec8901df142afb1dce79deb8e7364265a060f44"
+  },
+  {
+    "file": "scene-triangle@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 230904,
+    "sha256": "5c819b49201ee9a646c9582dd9f352d0816e2102214f7f0000eafb13c6d2afbb",
+    "sourceSha256": "95b09b1c72c5d8c3e3de2d073ec8901df142afb1dce79deb8e7364265a060f44"
+  },
+  {
+    "file": "scene-real-journey.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 59084,
+    "sha256": "b6093909a76a82fb13fc35868d6f7b8b351c0db2a2a97d63912e4f57c0264b87",
+    "sourceSha256": "1f1e03c42fce4dff3144d9fcec88a556c7c3740ba14258d314edb29b2b219957"
+  },
+  {
+    "file": "scene-real-journey@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 177350,
+    "sha256": "df58ac8cf4d33056ba2c905aa18a233dac7d15baf21381bc99529da1a1ec36c8",
+    "sourceSha256": "1f1e03c42fce4dff3144d9fcec88a556c7c3740ba14258d314edb29b2b219957"
+  },
+  {
+    "file": "scene-rooms.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 89340,
+    "sha256": "084eca1b259d50df667e8f47c96a601af739e299327e7f7873aceabac3022cf4",
+    "sourceSha256": "34e226b1c7fcde5f8913b72ae866422f4733874c5e31745c8491a4cb189b0162"
+  },
+  {
+    "file": "scene-rooms@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 323708,
+    "sha256": "50d9d9a497cb58b221d9e7fea7ac49521e4bbc6d68dffbce4d94262fc808d40c",
+    "sourceSha256": "34e226b1c7fcde5f8913b72ae866422f4733874c5e31745c8491a4cb189b0162"
+  },
+  {
+    "file": "scene-simulation.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 125046,
+    "sha256": "ef1d6d942fae126c71fd31f3466384b189742cb70ee495ea491b07184b3959a5",
+    "sourceSha256": "8c0fad4e65342aedd42764a21805ad4f28e181ccf8f3a1a4f84acf4f88ef5d7a"
+  },
+  {
+    "file": "scene-simulation@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 381830,
+    "sha256": "7dcde177c0127a6ad5fce9cc5ea0d38e6733c4757ff3b1be44db3f7f291caea6",
+    "sourceSha256": "8c0fad4e65342aedd42764a21805ad4f28e181ccf8f3a1a4f84acf4f88ef5d7a"
+  },
+  {
+    "file": "scene-privacy.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 65812,
+    "sha256": "4f9c268ade0e1b9098e28955da4fa5322e85cb5e547f9c06788a43b4988a5602",
+    "sourceSha256": "51beb0f1ca82f75d035db0382c683b49ee283ed56515ac3294bcaec5ff439c1d"
+  },
+  {
+    "file": "scene-privacy@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 192058,
+    "sha256": "dbfa128acd2e63e598f068b0c291b1b2a66a346f63194329a6962396404f84a1",
+    "sourceSha256": "51beb0f1ca82f75d035db0382c683b49ee283ed56515ac3294bcaec5ff439c1d"
+  },
+  {
+    "file": "scene-legal.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 53512,
+    "sha256": "d967dc2ab5758a973128f2c2575e2e8f2b41e0b315c50cbd9a6a54890b35a5b5",
+    "sourceSha256": "0ca44881ceeba3aa7b90f18c0b4060f748c16e8310806e7f7959ee3aec4ad620"
+  },
+  {
+    "file": "scene-legal@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 157240,
+    "sha256": "3e471c8e51fb65ac1a9b644317823f5eb3aecc003a862fd82a66d1bc7632653a",
+    "sourceSha256": "0ca44881ceeba3aa7b90f18c0b4060f748c16e8310806e7f7959ee3aec4ad620"
+  },
+  {
+    "file": "scene-get.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 51952,
+    "sha256": "0e4836cacdba6276b29043666057ef6db3661dee1a20047979aee942d920a834",
+    "sourceSha256": "0f90d6046f906e990f0c3a5be101db9c08bc2bd1875bc7bdab5b715a0918002c"
+  },
+  {
+    "file": "scene-get@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 154842,
+    "sha256": "d3c2abd9c62739615fa3ca6d93d22fdb65f19febe3d93d61f92d7de53e8a9d92",
+    "sourceSha256": "0f90d6046f906e990f0c3a5be101db9c08bc2bd1875bc7bdab5b715a0918002c"
+  },
+  {
+    "file": "scene-empty.webp",
+    "width": 768,
+    "height": 512,
+    "bytes": 30354,
+    "sha256": "2564766839d96faf26322d36bd2cc75cd82de401918cbe2a3ba7dc7f3cff8e48",
+    "sourceSha256": "1c9381c44f4e1882774cbbf58ad3f1a51b0fcd07428c28a8f851764a5c15063d"
+  },
+  {
+    "file": "scene-empty@2x.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 98122,
+    "sha256": "e823e9665e360f6d5ce72ddf49a3651056f1eb944a61b99d0324da6e8637e51f",
+    "sourceSha256": "1c9381c44f4e1882774cbbf58ad3f1a51b0fcd07428c28a8f851764a5c15063d"
+  }
+]

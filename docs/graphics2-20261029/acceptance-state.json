@@ -1,0 +1,110 @@
+{
+  "status": "READY_GRAPHICS_LOCAL_INTEGRATION_PATCH_PENDING",
+  "base": "2d564d8f2927dc88dffb39fc566e78fc63ec938e",
+  "branch": "claude/synera-graphics-20261029",
+  "originalScenes": 10,
+  "servedVariants": 20,
+  "oneXMaxBytes": 125046,
+  "phoneScreenshots": 78,
+  "localPageDeviceChecks": 20,
+  "stagedOwningLaneChecks": 6,
+  "verification": {
+    "mainNode": {
+      "passed": 754,
+      "failed": 0,
+      "existingPgSkipped": 1
+    },
+    "pwaI18n": {
+      "passed": 43,
+      "failed": 0
+    },
+    "combinedBrowser": {
+      "passed": 71,
+      "failed": 0
+    },
+    "finalGraphics": {
+      "passed": 21,
+      "failed": 0
+    },
+    "offlineWorkers": [
+      {
+        "worker": "sw.mjs",
+        "scope": "/",
+        "page": "summit.html",
+        "cached": {
+          "/scenes.css": true,
+          "/scene-summit.webp": true,
+          "/scene-summit@2x.webp": true
+        },
+        "decodedOffline": true
+      },
+      {
+        "worker": "studio-sw.mjs",
+        "scope": "/studio",
+        "page": "studio.html",
+        "cached": {
+          "/scenes.css": true,
+          "/scene-studio.webp": true,
+          "/scene-studio@2x.webp": true
+        },
+        "decodedOffline": true
+      },
+      {
+        "worker": "simulation-sw.mjs",
+        "scope": "/simulation",
+        "page": "simulation.html",
+        "cached": {
+          "/scenes.css": true,
+          "/scene-simulation.webp": true,
+          "/scene-simulation@2x.webp": true
+        },
+        "decodedOffline": true
+      }
+    ],
+    "adverseMutationDetected": true,
+    "build": {
+      "files": 159,
+      "published": false
+    }
+  },
+  "pending": [
+    "Merge owning-lane privacy.html and pilot-consent.html",
+    "Owner review/apply pending-integration.patch, including the public Simulation and Pilot consent renderer seams",
+    "Integrated final-source browser run and owner CACHE bump"
+  ],
+  "preservedUntracked": [
+    "docs/graphics-20261029/shots/"
+  ],
+  "titleRename": "TOOL_UNAVAILABLE",
+  "models": {
+    "builtInImageGen": {
+      "calls": 10,
+      "exactModel": "UNKNOWN",
+      "usd": "UNKNOWN"
+    },
+    "tokenMonster": {
+      "calls": 0,
+      "usd": 0
+    }
+  },
+  "serverCleanup": [
+    {
+      "file": "runtime-evidence.json",
+      "pid": 11728,
+      "recordedStopped": true,
+      "currentlyRunning": false
+    },
+    {
+      "file": "verification.json",
+      "pid": 15440,
+      "recordedStopped": true,
+      "currentlyRunning": false
+    },
+    {
+      "file": "pending-integration-evidence.json",
+      "pid": 35136,
+      "recordedStopped": true,
+      "currentlyRunning": false
+    }
+  ]
+}

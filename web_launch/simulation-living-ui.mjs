@@ -42,6 +42,9 @@ root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera
 <section id="visitor-chat" hidden><h3 id="visitor-title"></h3><div id="visitor-terms" class="living-card"></div><p id="visitor-approvals" role="status"></p><ol id="visitor-messages" class="living-messages" aria-live="polite"></ol><p id="visitor-wait" role="status"></p><button type="button" id="visitor-result" hidden></button><p id="visitor-closed" hidden></p><form id="visitor-composer" class="living-composer"><div id="visitor-chips" class="living-chips"></div><label for="visitor-text" id="message-label"></label><div class="composer-row"><textarea id="visitor-text" rows="2" required></textarea><button type="submit" id="visitor-send"></button></div></form></section></section>
 <section id="living-journal" hidden><h2 id="journal-title"></h2><p id="journal-local"></p><div class="living-controls"><label><span id="filter-label"></span><select id="journal-filter"></select></label><button id="journal-export" type="button"></button><button id="journal-print" type="button"></button><button id="journal-erase" type="button" class="quiet"></button></div><p id="journal-empty"></p><ol id="journal-events" class="living-messages"></ol></section>
 <footer class="living-footer"><a href="/" id="living-home"></a> · <a href="/studio.html">Studio</a> · <a href="/triangle.html">Triangle</a><p><a href="?lab=1" id="living-lab"></a></p></footer></main>`;
+// Preserve the one static scene when the public renderer replaces its own root.
+const scene = document.querySelector('figure.scene-simulation');
+if (scene) root.querySelector('#living-status').after(scene);
 demoMarker(); privacyLinks();
 inputNotice($('visitor-card'));
 $('visitor-text').setAttribute('aria-describedby',$('visitor-card').querySelector('[data-demo-input-notice]').id);

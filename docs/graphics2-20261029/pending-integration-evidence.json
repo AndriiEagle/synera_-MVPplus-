@@ -1,0 +1,215 @@
+{
+  "source": "C:\\sw\\synera-adaptive",
+  "sourceKind": "READ_ONLY_PARALLEL_LANE_PREVIEW_NOT_MERGED",
+  "serverPid": 35136,
+  "pages": [
+    {
+      "device": "iphone13",
+      "page": "privacy.html",
+      "action": {
+        "x": 24,
+        "y": 461.6875,
+        "width": 307.890625,
+        "height": 50
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 96,
+        "y": 169.6875,
+        "width": 198,
+        "height": 132
+      }
+    },
+    {
+      "device": "iphone13",
+      "page": "simulation.html",
+      "action": {
+        "x": 16,
+        "y": 691.234375,
+        "width": 128.515625,
+        "height": 48
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 16,
+        "y": 428.578125,
+        "width": 358,
+        "height": 238.65625
+      }
+    },
+    {
+      "device": "iphone13",
+      "page": "pilot-consent.html",
+      "action": {
+        "x": 37,
+        "y": 471.65625,
+        "width": 316,
+        "height": 88.890625
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 37,
+        "y": 576.546875,
+        "width": 316,
+        "height": 210.65625
+      },
+      "languages": [
+        "uk",
+        "en",
+        "de"
+      ],
+      "hiddenForPrint": true
+    },
+    {
+      "device": "pixel7",
+      "page": "privacy.html",
+      "action": {
+        "x": 24,
+        "y": 433.6875,
+        "width": 307.890625,
+        "height": 50
+      },
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 107,
+        "y": 169.6875,
+        "width": 198,
+        "height": 132
+      }
+    },
+    {
+      "device": "pixel7",
+      "page": "simulation.html",
+      "action": {
+        "x": 16,
+        "y": 682.859375,
+        "width": 135.859375,
+        "height": 48
+      },
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 16,
+        "y": 405.53125,
+        "width": 380,
+        "height": 253.328125
+      }
+    },
+    {
+      "device": "pixel7",
+      "page": "pilot-consent.html",
+      "action": {
+        "x": 37.46875,
+        "y": 472.125,
+        "width": 337.0625,
+        "height": 68.59375
+      },
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "firstActionVisible": true,
+      "overflow": false,
+      "scene": {
+        "x": 37.46875,
+        "y": 556.71875,
+        "width": 337.0625,
+        "height": 224.703125
+      },
+      "languages": [
+        "uk",
+        "en",
+        "de"
+      ],
+      "hiddenForPrint": true
+    }
+  ],
+  "inputHashes": {
+    "assets.mjs": "3d4acae0a87692139298cadcdb276350e1ae4c58244c6cdaff4e697454137dc9",
+    "privacy.html": "b4f2d695f526cba4713c691e47e90c1520ae10c7716dfcbeb02d1019951fb902",
+    "pilot-consent.html": "30843b00b378d18f2a4d2f332bbd0c7aac7a662fbdd8056914c21634cfcc5b55",
+    "simulation.html": "f9b5b1738de8de6254f16fcfe39f8a84c45db60b1b4173858b8b5179b4b10100",
+    "simulation-living-ui.mjs": "c29621864e378c053ddfd45c5ead423cb3e946fe7a0e87daaf261a55d2625397",
+    "legal-documents.mjs": "b1024f86bca6d01aa454104de5f78fb6fe9980643ba825036c482648a3fa12a1",
+    "tokens.css": "013045fc7a918fd41ce191945f0b34861156e754eab214f4a3306e904ff68902",
+    "privacy-retention.mjs": "9c9ea3d627f829b9faa260a8c4e9064f2c0dfd0e9676473158d7d29652de37ed",
+    "style.css": "d6d0344db092fa16c777ab60c57d5e6c042bb854feba74209d8fcd03426570cc",
+    "site-shell.css": "5d05abee2061aa8778fec771bd06af35cc8aa44d2959dc5351b2860dc57b49e3",
+    "site-shell.mjs": "624f5d5d96de885dc3a8e285616f7612a969cb39340956d09a82598832b125cf",
+    "privacy.css": "5f3a462279d6092e808798efc0fdffd18a561feeafc603386e2276c7d9406480",
+    "privacy-centre.mjs": "0997293573cbcf3d120017cd0c75d4f6da58bf991bb9c523ec03f41512e5214d",
+    "atelier.css": "45dfc77c4045f054421208ec7953083cf1845ac393c2059ff6f359a9074712dd",
+    "adaptive.css": "6417c6a701fbea823c1639aa79f872b875bab25dba1b16d770e2403520e11ed0",
+    "style-switcher.mjs": "f04775f1cba218ea48a99bf20692a5e6326af9efb2df76c5c00495dce8b8e8ea",
+    "adaptive-ui.mjs": "743f7ebfacb180d127c879396117faecb3f4b172a31fd0e12258837e55c6b790",
+    "privacy-common.mjs": "9c4c9f1ad9ad138b5549a07cac2041001a2594637cac1dc221c77c2b110205ec",
+    "demo-device-controls.mjs": "dc15e8d50cfccd3b6b2c92761fba7d5f057934480c4424430c57958833f662c5",
+    "privacy-device.mjs": "f6a5df2ce46af60d791372d64bd0912979e61f095edf50a6819ac245a7d0be56",
+    "privacy-content.mjs": "dc6e1c85243f3d825871dd775267de84410d073d6c06a7d408a7599021ca367d",
+    "montserrat-500.woff2": "0551b789dba2587de3d0aeb52ffeee4c42579fc40e58226a0670c26e4d799f94",
+    "adaptive-config.mjs": "29969d26c7b1ab9d3095b424b994b297cf6becff3a201d4ea0f7249dad35731c",
+    "adaptive-i18n-table.mjs": "a56c898b1a1cc49c8b57fce7f6b36654cba84f920b2ac8270c0ae779eeb87d51",
+    "adaptive.mjs": "335f6322f3120c8c39dc6887e796719d5058cf86c0ff7dcb38b6fe29bd5b6595",
+    "simulation.css": "cc2677f4c2c0b498b42a93ee5dd425c6220aff8edbd7537452a685c0a279b672",
+    "simulation-living.css": "47c57e03f0f4c909e5460d0b86f09efebaae7e4afec57127b3c728cf4e56581f",
+    "simulation-ui.mjs": "fb7c3a7679475b315eae9a3afd57218665b1b7fc8a7627773125f1ed87b027fe",
+    "simulation-session.mjs": "6ed250ba6b232bb0fbb8146046ead4829f1e954f3312640bcb88a717f2fa3f7f",
+    "business-case.mjs": "17feedc94a988d3d5c9f49e6b28f0ce05f495ea7e0d301533a78e70834797c8b",
+    "simulation-personas.mjs": "8ddda24ec51b3c7cbfb82633e1dffa4dbe9a1c42ec4ed37f4bcc8afd03f76447",
+    "profile-brief.mjs": "8e0f7e78438e05df0aa0cedd3190ef192128253adc60ac1ba8b1f902cedddd77",
+    "proof-state.mjs": "479b14de89262249c90afc3153721123d7aab6fc75680ccb2410cfa5b6f5d3de",
+    "case-material-budget.mjs": "6b086e1be436c60b893869b99a807d87e20f5aef0960adc7720de42151bda8a2",
+    "matching.mjs": "ec88c16ddc1372853025d9aa1efc8b5c51f7c3135f1f0539272759470d866c89",
+    "profile-portability.mjs": "f4a84d6b04d644dbe95fb5cd629a7ad18bcc692c698fee9a175dc2b0d882f6fb",
+    "b-matching.mjs": "14039c77a85f4ac55bdbecf7fefb806d0c47e6066d3dd6b89c2e85fd4a6f5acd",
+    "need-decay.mjs": "d9ffc6a2d8cd720938c18c686b2600e2191c7ee57d5b4b93954df0c6ae29afb8",
+    "simulation-living.mjs": "3bbcb016cfb435c0e1fa37bb5ff84a4ebbc65554cdbe37ff9a9d6c7c0eb06139",
+    "journal.mjs": "99afadb340821ee4dc6d843906f7c3f51efba0e08b8a38f2c6e87dcf4f5687a6",
+    "simulation-copy.mjs": "64ad3aad2ae058bce533430fd22150c343f95597a285bb259b7ae52b34d0b9ee",
+    "icon-192.png": "7a7a941171a25e5c8fd5d36f5532f4b3ab722930cc9eefde02fbd630832283b1",
+    "persona-mira.webp": "6b9b2caf30c2624b0ac101fe76a122bd2b807baad54e43bdbec18bc70640f469",
+    "persona-nora.webp": "5f22b528ca30a13855fc7f598f9940c95d916f2b0f35cd4acec3d03205bb83a7",
+    "persona-leo.webp": "f883429d5421061b04815392597803b2ab1f974152b899a20bc4df4532220295",
+    "persona-felix.webp": "ea24ccbc4a6d27c282ef127d8e1ca820fbb6c3f628c894e723100e6120ee8b08",
+    "persona-ines.webp": "385a1f2be04311bb33b8b758fcf2b2ac75136520cbe9a22c91157046b3f4c859",
+    "persona-sam.webp": "05d74fa61357fce360bd427d5a9b8c45c1c92b3adf1541a98f9af745d8154773",
+    "persona-tessa.webp": "31fdecba9080d26201a9129953849df59bf3c313e0e8f0eb3b914dfbbc373bd7",
+    "persona-noah.webp": "d78256b3c9e3b9322a47995bc99545c00fdaabfeb251b1c405e2afea18c1fcd7",
+    "persona-omar.webp": "5b667fc4ed392202b06da679c1425325f7dd47f800fbfdff829c8769d0453995",
+    "persona-lina.webp": "e374eed7eae764c69a8591091e018f3c79457d7934e98305a16c4eb996fe2129",
+    "atelier.mjs": "523562f953b40ce60a2a9898544a0eaa658edc8bebab846540979deedb547c19",
+    "legal-documents.css": "3f5b2bb89d419f4655e4955d461649388fd9e520d50e3167eba5c13329e75286"
+  },
+  "renderedChanges": [
+    "privacy.html",
+    "simulation.html",
+    "pilot-consent.html",
+    "simulation-living-ui.mjs",
+    "legal-documents.mjs"
+  ],
+  "serverStopped": true
+}

@@ -1,0 +1,118 @@
+{
+  "source": [
+    {
+      "page": "summit.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "studio.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "studio-journey.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "triangle.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "real-journey.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "rooms.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "simulation.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "privacy.html",
+      "status": "PENDING_OWNING_LANE_MERGE"
+    },
+    {
+      "page": "legal.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "get.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "outcome-archive.html",
+      "status": "ORIGINAL_AFTER_REMOVING_TWO_INSERTIONS",
+      "lineEndings": "git/checkout CRLF normalized"
+    },
+    {
+      "page": "pilot-consent.html",
+      "status": "PENDING_OWNING_LANE_MERGE"
+    }
+  ],
+  "baseline": "2d564d8f2927dc88dffb39fc566e78fc63ec938e",
+  "serverPid": 15440,
+  "offline": [
+    {
+      "worker": "sw.mjs",
+      "scope": "/",
+      "page": "summit.html",
+      "cached": {
+        "/scenes.css": true,
+        "/scene-summit.webp": true,
+        "/scene-summit@2x.webp": true
+      },
+      "decodedOffline": true
+    },
+    {
+      "worker": "studio-sw.mjs",
+      "scope": "/studio",
+      "page": "studio.html",
+      "cached": {
+        "/scenes.css": true,
+        "/scene-studio.webp": true,
+        "/scene-studio@2x.webp": true
+      },
+      "decodedOffline": true
+    },
+    {
+      "worker": "simulation-sw.mjs",
+      "scope": "/simulation",
+      "page": "simulation.html",
+      "cached": {
+        "/scenes.css": true,
+        "/scene-simulation.webp": true,
+        "/scene-simulation@2x.webp": true
+      },
+      "decodedOffline": true
+    }
+  ],
+  "mutation": {
+    "kind": "route-only oversized scene",
+    "originalAction": {
+      "x": 24,
+      "y": 458.6875,
+      "width": 342,
+      "height": 50
+    },
+    "mutantAction": {
+      "x": 24,
+      "y": 1230.6875,
+      "width": 342,
+      "height": 50
+    },
+    "viewportHeight": 844,
+    "guardDetectsFailure": true,
+    "sourceFilesMutated": false
+  },
+  "serverStopped": true
+}

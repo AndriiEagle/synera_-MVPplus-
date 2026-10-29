@@ -1,0 +1,784 @@
+{
+  "status": "READY_GRAPHICS_LOCAL_INTEGRATION_PATCH_PENDING",
+  "files": [
+    {
+      "file": "docs/GRAPHICS2-20261029.uk.md",
+      "bytes": 14496,
+      "sha256": "349080d4a8c2a6b41b996294616e58ff7d304c500078e8a580878792522d04e3"
+    },
+    {
+      "file": "docs/graphics2-20261029/acceptance-state.json",
+      "bytes": 2622,
+      "sha256": "6fdabd9e601acf3a8510c03b1175855063b97b121c608b1e01dc6bee612d8249"
+    },
+    {
+      "file": "docs/graphics2-20261029/asset-evidence.json",
+      "bytes": 5437,
+      "sha256": "68e4bcd7b52704af5baf07cdfb42f3660ca2f8c42c02194912b3347ad80bb1ef"
+    },
+    {
+      "file": "docs/graphics2-20261029/browser-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "file": "docs/graphics2-20261029/browser-tests.txt",
+      "bytes": 19858,
+      "sha256": "4de9d3296dc19b5643350d2557c782bf0ed812eb4fbef8883159078d024869e8"
+    },
+    {
+      "file": "docs/graphics2-20261029/build.txt",
+      "bytes": 246,
+      "sha256": "7d506c3a80633dd7ba6bec3e39befc7ace8b50b5c26ecce27f47cd75994d14be"
+    },
+    {
+      "file": "docs/graphics2-20261029/changed-files.txt",
+      "bytes": 7909,
+      "sha256": "8a619cac3a34a6a4e44c8002bb6cbac620b2396bde419ac0d517c5eb3c7ca91e"
+    },
+    {
+      "file": "docs/graphics2-20261029/contact-sheet.png",
+      "bytes": 1709733,
+      "sha256": "ab2f33331ae83d92fddbad27596f387ea4c2a2e01d080783a6c9f33c8ef7af13"
+    },
+    {
+      "file": "docs/graphics2-20261029/generation.json",
+      "bytes": 15918,
+      "sha256": "10072c5025ff8ab2c3a8c20bf65c51550e4778d727838a0caafcc3df65e2ecb1"
+    },
+    {
+      "file": "docs/graphics2-20261029/integrate-scenes.mjs",
+      "bytes": 3154,
+      "sha256": "ddd6b32f1d193266111bfbf94569f1b63d792b6c7b42c1c5405e74a3498e011b"
+    },
+    {
+      "file": "docs/graphics2-20261029/node-tests.txt",
+      "bytes": 141680,
+      "sha256": "df1343849c16eb8e2f708a235e71a2482eeb29e33b2ec73aa80f7e4f3c985352"
+    },
+    {
+      "file": "docs/graphics2-20261029/patch-check.json",
+      "bytes": 231,
+      "sha256": "890864e4f331c801838220f10af93d2462697c4ad1cfedfcf5b6152450a4b29d"
+    },
+    {
+      "file": "docs/graphics2-20261029/pending-integration-evidence.json",
+      "bytes": 8196,
+      "sha256": "8c94b5eb0275e60ef607b34c5d1fef9a6de3196748e8bc4418ab4f6030166adb"
+    },
+    {
+      "file": "docs/graphics2-20261029/pending-integration.patch",
+      "bytes": 10650,
+      "sha256": "faa65875a89e8e977ac4c26dd44292b2d6b273db0a3a496f72ed3641139aca64"
+    },
+    {
+      "file": "docs/graphics2-20261029/pending-integration.txt",
+      "bytes": 2036,
+      "sha256": "778155134aa6b53668bfd281ef7344408ccc952935f5c30e25290c9764600e57"
+    },
+    {
+      "file": "docs/graphics2-20261029/playwright.config.mjs",
+      "bytes": 267,
+      "sha256": "1c3d27b60cf3c5c8b9f5afa63609b5aa8e3100223c26ad3c1e121095b52ea885"
+    },
+    {
+      "file": "docs/graphics2-20261029/prepare-assets.mjs",
+      "bytes": 3191,
+      "sha256": "052b9330e177687e7f1a3ea29e5ea090b75d81fd28715ae3a0f3eaee232fd4be"
+    },
+    {
+      "file": "docs/graphics2-20261029/preview-integration.mjs",
+      "bytes": 7700,
+      "sha256": "02c62eb1b2d50e61c9713f40a06b7601163a9cfec0fcdb908c6fd6b5ba5fa7d3"
+    },
+    {
+      "file": "docs/graphics2-20261029/pwa-i18n-tests.txt",
+      "bytes": 7596,
+      "sha256": "ba1645aa382033f12cc980c4da402fc6a5ade81d717b28fc3fd9aa86929baf24"
+    },
+    {
+      "file": "docs/graphics2-20261029/review-scene-slots.png",
+      "bytes": 2222402,
+      "sha256": "8cbeb3ce52d8b64275d148158c438067455df9bcf3355b74a958e4bf7eccb7e9"
+    },
+    {
+      "file": "docs/graphics2-20261029/review-sheets.mjs",
+      "bytes": 1461,
+      "sha256": "b8ee6070bd52c744901bd48ac915b21482330f50b6d82cb336dcf91011be2156"
+    },
+    {
+      "file": "docs/graphics2-20261029/review-staged-first.png",
+      "bytes": 620573,
+      "sha256": "aaae7b5d962be957572e2cf66c6f388ee28bc8e769f6642d21536409404cd1e4"
+    },
+    {
+      "file": "docs/graphics2-20261029/runtime-evidence.json",
+      "bytes": 8386,
+      "sha256": "575ddf3c76b01366076261f8a005f073de9927192bf490df7eb7ee6245b974ee"
+    },
+    {
+      "file": "docs/graphics2-20261029/scene-browser-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "file": "docs/graphics2-20261029/scene-browser-tests.txt",
+      "bytes": 6296,
+      "sha256": "cba8eda5b5946a17537017862544f79214400866f547142ab0224174dc2a690f"
+    },
+    {
+      "file": "docs/graphics2-20261029/scenes.json",
+      "bytes": 1180,
+      "sha256": "409fe71bffa3746c303d9c6388d5f391fc6bb1285c63992e64ec6ea9cb63c6df"
+    },
+    {
+      "file": "docs/graphics2-20261029/server-cleanup.json",
+      "bytes": 380,
+      "sha256": "1911f05500d9abf3b94320cddc2d3988afe5f1c0fa58e044a4815c4e1fbaf5cc"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-get.html-first.png",
+      "bytes": 130713,
+      "sha256": "604e640b1ae7d5a2cd0734f265df63662791601adc5abd970a432443081dcb89"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-get.html-full.png",
+      "bytes": 250055,
+      "sha256": "312c26496d312e801477592f8a96a4fa70238fa0f2b6fa4eb2210ff4f93ad880"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-get.html-scene.png",
+      "bytes": 99040,
+      "sha256": "210a86c9fe774487d7bd4c2993126996589de92e3830ac7ade9f1b5293eee12c"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-legal.html-first.png",
+      "bytes": 141249,
+      "sha256": "47e370763d2c0ee32f93f6be32520243c2cf26165531490853d9ce09af138e2e"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-legal.html-full.png",
+      "bytes": 523807,
+      "sha256": "0a12d7966753a187e646c7fdca38a41c338f1a5280f0b4c49e4c6473ff8958cf"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-legal.html-scene.png",
+      "bytes": 105306,
+      "sha256": "357776becb302def4652e4a52c3e7a1a8e63acdaee19f7364b48dc81ba305f7f"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-outcome-archive.html-first.png",
+      "bytes": 38496,
+      "sha256": "015391c052aa08a86864352dae95a8429d6198fbd2aed3d79bb045cc2ff30dd7"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-outcome-archive.html-full.png",
+      "bytes": 86124,
+      "sha256": "199999aa3f953ee6d8959d208dafb612f8021f8c29bb8aff2299c6cf16de5644"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-outcome-archive.html-scene.png",
+      "bytes": 45901,
+      "sha256": "73d03783ffb7689667c723c806d17d56d6b21105acfb1706179cd17b9144fc15"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-pilot-consent.html-staged-first.png",
+      "bytes": 153199,
+      "sha256": "22056a95163a3a1c938841c5553b6506e5e773a236c8bfaf62a0dd65a1c474c7"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-pilot-consent.html-staged-full.png",
+      "bytes": 218541,
+      "sha256": "f0ad530e54a807f9040e32b9813873d15ca416f7683888c8c2fde9429fdde607"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-pilot-consent.html-staged-scene.png",
+      "bytes": 91711,
+      "sha256": "f10a42a08420f088ad8fba457699a2a1dfbb237bdb8d7bd005aaa4f217d03bef"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-privacy.html-staged-first.png",
+      "bytes": 89192,
+      "sha256": "b22ce760f8fc14c1ed3d867b93ff5633d757acaa0fef6fe835dc072d4f3ead89"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-privacy.html-staged-full.png",
+      "bytes": 320137,
+      "sha256": "a8efe29b71ebcf8213560e94224ca22643c352d9b3957d5038bedeb5c2ac3b57"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-privacy.html-staged-scene.png",
+      "bytes": 39414,
+      "sha256": "36e01363c2f1be487a2e15be6075d6e3280861613a4d99c651eac38f01a92961"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-real-journey.html-first.png",
+      "bytes": 50044,
+      "sha256": "f3cf5da1e96347f7133337a1b89610db8461ec85b12cd08b9a1bf39ebedce3a3"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-real-journey.html-full.png",
+      "bytes": 168733,
+      "sha256": "96570428cf3aacc52674c905f00ba923982f493f49da13e1a4792c90735d6e3d"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-real-journey.html-scene.png",
+      "bytes": 110574,
+      "sha256": "065c1727a1a1ebeaf39fc2c31aa1b5a3a8154fadc0030e6cba63c1456779c229"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-rooms.html-first.png",
+      "bytes": 40823,
+      "sha256": "3b4c8bacfc306cdadd0153d14f8ec8b431b814f4451d67ffa4a15a89733eacff"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-rooms.html-full.png",
+      "bytes": 182621,
+      "sha256": "89451bef089e033de091020b22ecd28e9f11c1335bbb9e0b2ba6f32d2dd90107"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-rooms.html-scene.png",
+      "bytes": 124771,
+      "sha256": "c60f0716a892a2c7b2ce3b3169cb78c46f25bc495f14ba6a4f17b3b9445d5058"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-first.png",
+      "bytes": 198519,
+      "sha256": "f287980a3af164b5c7299d247f3ddf4a50f0c5e2cb492327a15fd34c830a3f4b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-full.png",
+      "bytes": 256927,
+      "sha256": "b85d60dd99458c0d86321a90aad007ed2d3b006760017473f32501ac9b92beb4"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-scene.png",
+      "bytes": 163803,
+      "sha256": "6968414f015cba2671377574c1d2ac386cdec0cbeb9b816697e30a592a6e43ff"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-staged-first.png",
+      "bytes": 194911,
+      "sha256": "df3f35f19d8ea292e6889d35b16672d9e69dc0b665b78ec59d2697b0bcb2de20"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-staged-full.png",
+      "bytes": 293254,
+      "sha256": "a1da0bf11d63620845fc2294e1b39440f20b4b0c1d965f18bb3cec656e8d5742"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-simulation.html-staged-scene.png",
+      "bytes": 163192,
+      "sha256": "2170c913a4cb991285641d2841f3e24ca7b3560f2fb429ddd67248f216d0f57c"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio-journey.html-first.png",
+      "bytes": 130366,
+      "sha256": "38a346362903bc96c2da731d41e55b0e0b40b28679f02eb479e9b420f47e1105"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio-journey.html-full.png",
+      "bytes": 175181,
+      "sha256": "f3c188d8134e04f1b1813d9707165b76fcfcf17b178b12847b86db6a160c5bfc"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio-journey.html-scene.png",
+      "bytes": 98063,
+      "sha256": "4ac0f6b2b68ce8c8caea79168d07d09912c7ac12ce3b0fa2668e0d98c55d71f5"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio.html-first.png",
+      "bytes": 130003,
+      "sha256": "ca335f72543a3b8c555bde193c2dedfd901ea03968a9f5d0cfeb67fc4e20bc6b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio.html-full.png",
+      "bytes": 196163,
+      "sha256": "775b57cdc866626205afeebdfee7de4659ec469a712f5f5c34fcd1018cc554bf"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-studio.html-scene.png",
+      "bytes": 98063,
+      "sha256": "4ac0f6b2b68ce8c8caea79168d07d09912c7ac12ce3b0fa2668e0d98c55d71f5"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-summit.html-first.png",
+      "bytes": 129205,
+      "sha256": "7581c20edccf229fe8a68265c1024cbca1634d1b106d7d9aacd4b570f7f55f0f"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-summit.html-full.png",
+      "bytes": 489673,
+      "sha256": "2985791f5566e700c958fd918f1a70681ed2c233929dc20072e42722053d5293"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-summit.html-scene.png",
+      "bytes": 95923,
+      "sha256": "759ea32f20a607ed4716c24f42e4f32ce2774be4c37d78eaf3b4b1dd767f298b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-triangle.html-first.png",
+      "bytes": 139229,
+      "sha256": "166cfba645411d835e8c45eb4cb93f381d7935526abf8874586c0c29d50ec3e3"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-triangle.html-full.png",
+      "bytes": 198488,
+      "sha256": "0a97f5c697ccebfeea050e697130f7030f0cd018b193727f48bfce8e7082b092"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/iphone13-triangle.html-scene.png",
+      "bytes": 110957,
+      "sha256": "3a30ccbb185f6c1274d6fc1504396fcbeef10ae1c5f734330a784fe10ac7514b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-get.html-first.png",
+      "bytes": 139885,
+      "sha256": "2587822b6b159b908e26e335047e9f4e4fc3efae02fbc328418c0b29af91d10b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-get.html-full.png",
+      "bytes": 261252,
+      "sha256": "1dcb562269443dca23a4b8d7837128f29d8aed6a4084bb0f51b84bfef8cfdc49"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-get.html-scene.png",
+      "bytes": 106422,
+      "sha256": "94623da802230f46c75ed937edba8b12b080a81f221771f03a2674953b869928"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-legal.html-first.png",
+      "bytes": 155058,
+      "sha256": "c5aa1d2f6c7021d0668c845655d1ec4f2188e6030a0b048cc9262b2fbc37fd7b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-legal.html-full.png",
+      "bytes": 538299,
+      "sha256": "eb740e8a5f8d5df19c0be84cdb8b10c8aeeb5c367b0c3e9652346177aa7581f7"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-legal.html-scene.png",
+      "bytes": 116571,
+      "sha256": "12580c8156d6b8347213fe988048366dbc0209c00b681e87744d18875b2b5f20"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-outcome-archive.html-first.png",
+      "bytes": 78666,
+      "sha256": "eb46e283d13e1fcc0b6b091cd8cabfedb6887affff29761f1c42994442f571b5"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-outcome-archive.html-full.png",
+      "bytes": 86084,
+      "sha256": "0e47eaa9d218251df44833f2634f688e311c68619d8c2db664494083f84c84d1"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-outcome-archive.html-scene.png",
+      "bytes": 45886,
+      "sha256": "748f9596c73d8b3daf4b254e07cb36bb0fcab936f8a34e80160c0cb201bc25b8"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-pilot-consent.html-staged-first.png",
+      "bytes": 164548,
+      "sha256": "b9980a470969ab3a32b7cb351dead96b5d71117b08016d602cca3ae612530a02"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-pilot-consent.html-staged-full.png",
+      "bytes": 232512,
+      "sha256": "09435015285c87b930d335d3d8b7953d7bd2f8456636c8347e8e10578ec5df6e"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-pilot-consent.html-staged-scene.png",
+      "bytes": 102351,
+      "sha256": "c6e9a859f5253655ce0d982b7bfe7c26b37d712f10611d37ab09ff42bd9b85fc"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-privacy.html-staged-first.png",
+      "bytes": 96227,
+      "sha256": "c804106ad9128764a6d6ea9a7d785dcadb8e327973e0b31db5b9e0500e6b4598"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-privacy.html-staged-full.png",
+      "bytes": 327112,
+      "sha256": "d97f1d9f9193a01bf533489a073dff2fdac54c6339a25f7d965923bb629cef7c"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-privacy.html-staged-scene.png",
+      "bytes": 39414,
+      "sha256": "36e01363c2f1be487a2e15be6075d6e3280861613a4d99c651eac38f01a92961"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-real-journey.html-first.png",
+      "bytes": 58897,
+      "sha256": "50562e09c913115849bf135a32f0e090b2d245a0be1acb802b7f098c5233db10"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-real-journey.html-full.png",
+      "bytes": 183933,
+      "sha256": "c7c817b0bf54cb8ed2a887a53820c123f9b109e8f109e16c363c61a82cefd7af"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-real-journey.html-scene.png",
+      "bytes": 126832,
+      "sha256": "8ef88fba7a29c717f529d58e23117f0bd36b40f973a8681bea82aaa52de3fa8f"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-rooms.html-first.png",
+      "bytes": 59375,
+      "sha256": "636db6e305ec6fad27791c0f39817695596a11fd7058d6a263e7a20a7ebec638"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-rooms.html-full.png",
+      "bytes": 198463,
+      "sha256": "b63ac65d9deba9501c0c0c898f50dcf40a7efe04f352b5ce201c187b566d3634"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-rooms.html-scene.png",
+      "bytes": 140676,
+      "sha256": "4940ae636c7d316fb062a6d1c0e16a89855fe634cd6e8e2729a4fb4bc63ac00b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-first.png",
+      "bytes": 220694,
+      "sha256": "c6fec5d8ecd7530042944644bfe33775bf8576992ce2a860ae4182cd18626cdc"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-full.png",
+      "bytes": 274865,
+      "sha256": "4f91f7283c9bda23cabcdb49b5526b7a50de860c6c5408dfb3598b8276c0e79a"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-scene.png",
+      "bytes": 183197,
+      "sha256": "c76868e12e3658597098543e6ee93b7aef8123db4de8488abd4299d2dce790a7"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-staged-first.png",
+      "bytes": 218431,
+      "sha256": "4bf7a9b76c9aad90fef6e753b7ccd76f731c8ce03067ae499536c96eabc6a1a5"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-staged-full.png",
+      "bytes": 310212,
+      "sha256": "6a63376de20b687ba85d78a8c0a284824e3f84aff51a207af6a7907bd5854f67"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-simulation.html-staged-scene.png",
+      "bytes": 182977,
+      "sha256": "25b5bac22f2a3ef8905f812d3879cd23e597c395e6d66f135141dec0f3cb21a3"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio-journey.html-first.png",
+      "bytes": 147694,
+      "sha256": "2cd291faaa4d88aea1c36f2a8a2c5c1bc11656451d163ff950f2e73bfc1609a9"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio-journey.html-full.png",
+      "bytes": 184700,
+      "sha256": "a71be3dbe5d5d34fdad90a962270c6293897801e022311fb5f1b7ca79ba8e342"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio-journey.html-scene.png",
+      "bytes": 108081,
+      "sha256": "83b38b333b813e66fd3073378d6084324d2df5f38e7f63961181f8c9078ce79a"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio.html-first.png",
+      "bytes": 144015,
+      "sha256": "f1967d48d7484283bbeb73122b1b9dbbd980cfecb8e2d50e7b4fd893d5a6ab5a"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio.html-full.png",
+      "bytes": 206698,
+      "sha256": "72b51ff14796dfc6e7196f6fd314c35c02c628d69b27aa436e0b134aa9a7bae6"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-studio.html-scene.png",
+      "bytes": 107668,
+      "sha256": "b98cdecb1bd40a9818f123d5c508e004acf95884dab5b09cb9e9d1314a36d940"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-summit.html-first.png",
+      "bytes": 148669,
+      "sha256": "dc9ee91f67b5becb37ee7a0c32b683986196447fb3ac112bb697b4d9d78868cb"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-summit.html-full.png",
+      "bytes": 500897,
+      "sha256": "d71779fb978e7ee1d1927df1375e5119dda6f4ab1b8c7085c16bdc7a8d849aa7"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-summit.html-scene.png",
+      "bytes": 106120,
+      "sha256": "d481c64b6554707c83b6ec3124357f5cf00bcb1f11dd3e1a4adfd9022d1ad5a5"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-triangle.html-first.png",
+      "bytes": 155254,
+      "sha256": "084a2194f57bd95b0b05f4795f0d72220a9f17c9d7d452171a3b1b147a40a91b"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-triangle.html-full.png",
+      "bytes": 211828,
+      "sha256": "ea7b6fb86a368faae015630fe3cbe0411cfaf02a107689170c3f5f15bdb06bf3"
+    },
+    {
+      "file": "docs/graphics2-20261029/shots/pixel7-triangle.html-scene.png",
+      "bytes": 124298,
+      "sha256": "c93b64802e9dda58019321a00eb3f4510f800bf51d88bb3c828f446866b6316f"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-empty.png",
+      "bytes": 1809975,
+      "sha256": "1c9381c44f4e1882774cbbf58ad3f1a51b0fcd07428c28a8f851764a5c15063d"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-get.png",
+      "bytes": 2024195,
+      "sha256": "0f90d6046f906e990f0c3a5be101db9c08bc2bd1875bc7bdab5b715a0918002c"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-legal.png",
+      "bytes": 2060405,
+      "sha256": "0ca44881ceeba3aa7b90f18c0b4060f748c16e8310806e7f7959ee3aec4ad620"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-privacy.png",
+      "bytes": 2199502,
+      "sha256": "51beb0f1ca82f75d035db0382c683b49ee283ed56515ac3294bcaec5ff439c1d"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-real-journey.png",
+      "bytes": 2205003,
+      "sha256": "1f1e03c42fce4dff3144d9fcec88a556c7c3740ba14258d314edb29b2b219957"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-rooms.png",
+      "bytes": 2674420,
+      "sha256": "34e226b1c7fcde5f8913b72ae866422f4733874c5e31745c8491a4cb189b0162"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-simulation.png",
+      "bytes": 2728501,
+      "sha256": "8c0fad4e65342aedd42764a21805ad4f28e181ccf8f3a1a4f84acf4f88ef5d7a"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-studio.png",
+      "bytes": 2026563,
+      "sha256": "07487a06f62d72344b29becd0d13d5dbda2fadacc7e6911dc5c6e20fec0fef88"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-summit.png",
+      "bytes": 1969390,
+      "sha256": "0ff42ad69d92186cec21191f214aa2515767f9a86be1d8129db5fd14ce71e98c"
+    },
+    {
+      "file": "docs/graphics2-20261029/sources/scene-triangle.png",
+      "bytes": 2349025,
+      "sha256": "95b09b1c72c5d8c3e3de2d073ec8901df142afb1dce79deb8e7364265a060f44"
+    },
+    {
+      "file": "docs/graphics2-20261029/test-before.txt",
+      "bytes": 4724,
+      "sha256": "2be48a8e63195e72166109acae6329098c35fa886eb604a58fbee342dd1f2643"
+    },
+    {
+      "file": "docs/graphics2-20261029/verification.json",
+      "bytes": 3022,
+      "sha256": "3275d17747eacf846dd56e19d61ff3db7c77569d3f3999d8eea72887ea26f3a9"
+    },
+    {
+      "file": "docs/graphics2-20261029/verification.txt",
+      "bytes": 224,
+      "sha256": "41b60cbb47397b7d8f29d4dddb8f23e79a081c6867e8ca072d83bc4e5846bebe"
+    },
+    {
+      "file": "docs/graphics2-20261029/verify.mjs",
+      "bytes": 5405,
+      "sha256": "253d7cb9374b65e95d01e3910dc7664680adb839e99b92c752badb3dde419806"
+    },
+    {
+      "file": "tests/graphics2-e2e.spec.mjs",
+      "bytes": 5036,
+      "sha256": "d87f6d8488ef0e276bc8100697b83a11f0cf6eccb96c1ecc6fb6c9f4e9a54cef"
+    },
+    {
+      "file": "web_launch/assets.mjs",
+      "bytes": 5991,
+      "sha256": "b47b211e40c9eb90c903553de43c6d66476f17521aa2b96932796977f2256c8b"
+    },
+    {
+      "file": "web_launch/get.html",
+      "bytes": 11636,
+      "sha256": "b281d794bbb1692c57a0ede589f158714e15cd0aa8d8fec0257f4e15b8ba6ede"
+    },
+    {
+      "file": "web_launch/legal.html",
+      "bytes": 19052,
+      "sha256": "aab23300a147803693ae4111a1a35be944a3eba911b515cc5c144de30566ffaf"
+    },
+    {
+      "file": "web_launch/outcome-archive.html",
+      "bytes": 5669,
+      "sha256": "0c73013e39b225eb58119a81c722a4a93607b125d7d3dbcd5c5f7143c2282c00"
+    },
+    {
+      "file": "web_launch/real-journey.html",
+      "bytes": 19065,
+      "sha256": "ecbaaf8c7c4017673c6c829fe430b1e24d5ed76b12b0efd63d92ecf375b7ccf8"
+    },
+    {
+      "file": "web_launch/rooms.html",
+      "bytes": 8241,
+      "sha256": "c92bff3547fe181233f9c0a96e14040562c4aa4243859ad9e98ab74821903717"
+    },
+    {
+      "file": "web_launch/scene-empty.webp",
+      "bytes": 30354,
+      "sha256": "2564766839d96faf26322d36bd2cc75cd82de401918cbe2a3ba7dc7f3cff8e48"
+    },
+    {
+      "file": "web_launch/scene-empty@2x.webp",
+      "bytes": 98122,
+      "sha256": "e823e9665e360f6d5ce72ddf49a3651056f1eb944a61b99d0324da6e8637e51f"
+    },
+    {
+      "file": "web_launch/scene-get.webp",
+      "bytes": 51952,
+      "sha256": "0e4836cacdba6276b29043666057ef6db3661dee1a20047979aee942d920a834"
+    },
+    {
+      "file": "web_launch/scene-get@2x.webp",
+      "bytes": 154842,
+      "sha256": "d3c2abd9c62739615fa3ca6d93d22fdb65f19febe3d93d61f92d7de53e8a9d92"
+    },
+    {
+      "file": "web_launch/scene-legal.webp",
+      "bytes": 53512,
+      "sha256": "d967dc2ab5758a973128f2c2575e2e8f2b41e0b315c50cbd9a6a54890b35a5b5"
+    },
+    {
+      "file": "web_launch/scene-legal@2x.webp",
+      "bytes": 157240,
+      "sha256": "3e471c8e51fb65ac1a9b644317823f5eb3aecc003a862fd82a66d1bc7632653a"
+    },
+    {
+      "file": "web_launch/scene-privacy.webp",
+      "bytes": 65812,
+      "sha256": "4f9c268ade0e1b9098e28955da4fa5322e85cb5e547f9c06788a43b4988a5602"
+    },
+    {
+      "file": "web_launch/scene-privacy@2x.webp",
+      "bytes": 192058,
+      "sha256": "dbfa128acd2e63e598f068b0c291b1b2a66a346f63194329a6962396404f84a1"
+    },
+    {
+      "file": "web_launch/scene-real-journey.webp",
+      "bytes": 59084,
+      "sha256": "b6093909a76a82fb13fc35868d6f7b8b351c0db2a2a97d63912e4f57c0264b87"
+    },
+    {
+      "file": "web_launch/scene-real-journey@2x.webp",
+      "bytes": 177350,
+      "sha256": "df58ac8cf4d33056ba2c905aa18a233dac7d15baf21381bc99529da1a1ec36c8"
+    },
+    {
+      "file": "web_launch/scene-rooms.webp",
+      "bytes": 89340,
+      "sha256": "084eca1b259d50df667e8f47c96a601af739e299327e7f7873aceabac3022cf4"
+    },
+    {
+      "file": "web_launch/scene-rooms@2x.webp",
+      "bytes": 323708,
+      "sha256": "50d9d9a497cb58b221d9e7fea7ac49521e4bbc6d68dffbce4d94262fc808d40c"
+    },
+    {
+      "file": "web_launch/scene-simulation.webp",
+      "bytes": 125046,
+      "sha256": "ef1d6d942fae126c71fd31f3466384b189742cb70ee495ea491b07184b3959a5"
+    },
+    {
+      "file": "web_launch/scene-simulation@2x.webp",
+      "bytes": 381830,
+      "sha256": "7dcde177c0127a6ad5fce9cc5ea0d38e6733c4757ff3b1be44db3f7f291caea6"
+    },
+    {
+      "file": "web_launch/scene-studio.webp",
+      "bytes": 47978,
+      "sha256": "4ac1f7c7647aba1c2ae0f2ca25158ccad5ddc747ffc71d77ca5d43abb61ae504"
+    },
+    {
+      "file": "web_launch/scene-studio@2x.webp",
+      "bytes": 146296,
+      "sha256": "34ef2729ce83fc1570465a289c13089e83a41d08db65a50cac23dd7d1917677a"
+    },
+    {
+      "file": "web_launch/scene-summit.webp",
+      "bytes": 45000,
+      "sha256": "821b9043ebbb332dc7f7cd089820f63689e70c9529d5aa1e7f61d2d3ea45082c"
+    },
+    {
+      "file": "web_launch/scene-summit@2x.webp",
+      "bytes": 130684,
+      "sha256": "2b538a6c6f59602cafa37aa98a1a401bbf0cfef9105383259fd0c68e17971ee1"
+    },
+    {
+      "file": "web_launch/scene-triangle.webp",
+      "bytes": 71658,
+      "sha256": "10244b1db9abfc2166e1b3b0ec7376e2d6f249e31cf4eea9074e0c74217bc567"
+    },
+    {
+      "file": "web_launch/scene-triangle@2x.webp",
+      "bytes": 230904,
+      "sha256": "5c819b49201ee9a646c9582dd9f352d0816e2102214f7f0000eafb13c6d2afbb"
+    },
+    {
+      "file": "web_launch/scenes.css",
+      "bytes": 2126,
+      "sha256": "64031711701a4363b90bcd700f5ec78a51b137233cb8f93afb2407496561a400"
+    },
+    {
+      "file": "web_launch/simulation-sw.mjs",
+      "bytes": 1038,
+      "sha256": "ef034707b875285581db4dd515b0338a78da69cf5a4449088688ff3c640db75b"
+    },
+    {
+      "file": "web_launch/simulation.html",
+      "bytes": 9075,
+      "sha256": "1daa13b4a2a7067db6a2915820cff23951d991f8c0ad21907b8026ba116bf117"
+    },
+    {
+      "file": "web_launch/studio-journey.html",
+      "bytes": 13371,
+      "sha256": "f4733209e45e33353a949de31489e74cfcfd3a7062be2a26cc7ef8b0677636c3"
+    },
+    {
+      "file": "web_launch/studio-sw.mjs",
+      "bytes": 2314,
+      "sha256": "b4bcdd05e368a27cdb31962def39790835501a81048034b90756e61d98b1e51b"
+    },
+    {
+      "file": "web_launch/studio.html",
+      "bytes": 17369,
+      "sha256": "68a064bc1c3d4493daec8dae9e94f8fb895fbeccc36c48a20e25823b5ef5d8ad"
+    },
+    {
+      "file": "web_launch/summit.html",
+      "bytes": 13446,
+      "sha256": "5d81d9cfdf7126319186674c099793af15a787963d60451caa39499817432148"
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "bytes": 4995,
+      "sha256": "eff43ee7f9648297f5916c93c0a753284b17e0a4b241bd437ab21f4f6a2cfa37"
+    },
+    {
+      "file": "web_launch/triangle.html",
+      "bytes": 21345,
+      "sha256": "fcba80220d255c54328b2d3faf8a39acea77b7a8044a5bc9ab847b465e6a1321"
+    }
+  ],
+  "exclusions": [
+    "self",
+    "DONE.md is written last"
+  ]
+}
