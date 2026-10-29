@@ -192,6 +192,9 @@ function showSignedOut() {
   $('#map-panel').hidden = true; $('#toggle-map').textContent = 'Показати карту'; $('#toggle-map').setAttribute('aria-expanded','false'); $('#map-roads').textContent = 'Увімкнути OpenStreetMap';
   form.dataset.dirty = ''; renderProfileProgress();
 }
+// A confirmed device erasure also drops in-memory draft/import/AI state.
+// Server identity and server records remain the responsibility of the account controls.
+globalThis.window?.addEventListener?.('synera:device-erased', showSignedOut);
 async function checkOnline() {
   onlineReady = false; applyAuthState();
   if (!store) { $('#mode').textContent = 'Вхід ще не підключено'; $('#welcome-text').textContent = 'Можна підготувати та завантажити власний профіль. Онлайн-акаунти стануть доступні після налаштування сервісу.'; return; }
@@ -958,6 +961,8 @@ if (googleSignInError) {
   message('Не вдалося завершити Google-вхід. Спробуй ще раз або отримай код на пошту.', true);
 }
 applyAuthState();renderProfileProgress();
+// Reuse the existing authenticated privacy tab, including its existing export/delete gates.
+if (callbackUrl.searchParams.get('privacy') === '1' && store?.user) document.querySelector('[data-tab="settings"]')?.click();
 if (callbackUrl.searchParams.get('draft') === '1' && !store?.user) openProfileDraft();
 
 // SYN_CONSENT_PANEL_7: seven granular consents, all default OFF; revoke has an instant effect.

@@ -1,0 +1,18 @@
+{
+  "source_report": "REPORT_A.md §6.1 (10 MUST / conditional MUST items)",
+  "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+  "status": "NEEDS_REVIEW",
+  "boundary": "Coverage only. Placeholders do not satisfy a real controller, contact, countries or safeguards. Real-account release remains NO-GO.",
+  "items": [
+    {"id":"controller", "section":"controller", "must":"Real controller identity, not just project name", "terms":["OPERATOR NAME"]},
+    {"id":"contact", "section":"controller", "must":"Working controller contact", "terms":["EMAIL", "ADDRESS"]},
+    {"id":"purposes", "section":"purpose", "must":"Purposes before collection", "terms":["Anmeldung|входу|sign-in", "Beschwerden|скарг|complaints"]},
+    {"id":"recipients", "section":"recipients", "must":"Recipients or recipient categories", "terms":["Neon / Databricks", "Cloudflare", "OTP"]},
+    {"id":"states", "section":"countries", "must":"States for every actual foreign disclosure", "terms":["USA|США", "Frankfurt", "NEEDS_REVIEW"]},
+    {"id":"safeguards", "section":"safeguards", "must":"Applicable Art.16 safeguards or Art.17 exception", "terms":["16–17", "Swiss-U.S. DPF", "DPA"]},
+    {"id":"indirect", "section":"indirect", "must":"Categories when data are not obtained directly", "terms":["Nachrichten|повідомлення|messages", "20 DSG"]},
+    {"id":"transparency", "section":"transparency", "must":"Precise, intelligible and accessible before collection", "terms":["vor der Dateneingabe|до введення|before entering", "gilbert-draft-1"]},
+    {"id":"context", "section":"rights", "must":"Other necessary context to exercise rights", "terms":["EMAIL", "30", "25–32"]},
+    {"id":"automated", "section":"automated", "must":"Conditional Art.21 information and human review", "terms":["21 DSG", "Menschen|людиною|human review"]}
+  ]
+}

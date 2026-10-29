@@ -8,6 +8,7 @@ const DATE_LOCALES = Object.freeze({ uk: 'uk', de: 'de-CH', en: 'en-GB' });
 
 // [Ukrainian source, German (Swiss spelling, informal «du»), English]
 export const TABLE = Object.freeze([
+  ['Твої дані', 'Deine Daten', 'Your data'],
   ['Підготувати чернетку профілю', 'Profilentwurf vorbereiten', 'Prepare a profile draft'],
   ['Спробувати розмову втрьох у цій вкладці', 'Gespräch zu dritt in diesem Tab ausprobieren', 'Try a three-person conversation in this tab'],
   ['потрібен вхід', 'Anmeldung nötig', 'sign-in required'],
@@ -67,7 +68,7 @@ export const TABLE = Object.freeze([
   ["Знайти","Entdecken","Discover"],
   ["Узгодити","Klären","Make it clear"],
   ["Зустрітись","Treffen","Meet"],
-  ["ВИГАДАНИЙ ПРИКЛАД · нічого не надсилається й не зберігається","FIKTIVE DEMO · es wird nichts gesendet oder gespeichert","SYNTHETIC DEMO · nothing is sent or saved"],
+  ["DEMO · вигадані персонажі · сценарій на пристрої; хостинг бачить технічні запити","DEMO · fiktive Personen · lokales Skript; der Hoster sieht technische Anfragen","DEMO · fictional people · local script; the host sees technical requests"],
   ["Створено для обох.","Für beide Seiten.","Designed for both sides."],
   ["Причина, а не оцінка.","Ein Grund, keine Bewertung.","A reason, not a rating."],
   ["Побач, як заявлені навички закривають потреби одне одного. Жоден бал не гарантує хімію чи успішний бізнес.","Erkenne, wie eure angegebenen Fähigkeiten den Bedarf der anderen Seite treffen. Kein Wert garantiert den Erfolg.","See how your declared skills meet each other's needs. No score can promise chemistry or a successful business."],

@@ -1,0 +1,47 @@
+{
+  "base": "3d200f3196a19ece9383cfde37cee8699d61d348",
+  "branch": "claude/synera-agents-20261029",
+  "source": {
+    "tests/simulation-living.spec.mjs": "0f302fbbe45765e7b2d9d275fe48e3d76ddd8d6209ae8387fdcd5e4fb6972ba2",
+    "tools/simulation-living-mutation.mjs": "403996a909d9977ed834825dbc839047f096b31f3f93888f6bd92936cfd5ae47",
+    "web_launch/assets.mjs": "b47a3b5d0cb71181eefad495804a91150ee40e20e3438861c52f7d09d31dea03",
+    "web_launch/index-i18n-table.mjs": "aab7173a593b341ba9451710ca7d9e805137c5294b47f0023249db35eb25fdbc",
+    "web_launch/index.html": "4613d12c4cc3c97c3db120272c9037dc4eb2c4e9a1464726bfd41b19b1c08f28",
+    "web_launch/journal.mjs": "78b65adaa56e84810b2e97c6e7c901d7dfa93d81bd67e924e42f2deb49e70209",
+    "web_launch/simulation-copy.mjs": "7d026ffa5ff53f8a7ce6835283550f8bd103852d4bd91303b84870dac94edea2",
+    "web_launch/simulation-entry.mjs": "9988975574c0b7ff1fe3eb3a13d21f0ec6d7f62b7e125832ee3b78c59a008dc5",
+    "web_launch/simulation-living-ui.mjs": "0c7e7d5a1251692b5220cae9489e20fc917a95d4c87f328a905acb6898cab50d",
+    "web_launch/simulation-living.css": "47c57e03f0f4c909e5460d0b86f09efebaae7e4afec57127b3c728cf4e56581f",
+    "web_launch/simulation-living.mjs": "3bbcb016cfb435c0e1fa37bb5ff84a4ebbc65554cdbe37ff9a9d6c7c0eb06139",
+    "web_launch/simulation-living.test.mjs": "c12d2d4a0b2c82fa13e68f97984e79e2f858a4dfd2dd47316c23eff6832cf868",
+    "web_launch/simulation-sw.mjs": "bffa7aba9057e3596243eb2732065492277aa99c178b31844ee90857179c81de",
+    "web_launch/simulation-ui.mjs": "fb7c3a7679475b315eae9a3afd57218665b1b7fc8a7627773125f1ed87b027fe",
+    "web_launch/simulation.html": "1c43ab5832a6adffbdbbfef1f6ed7ad7e13f55d52b113bc52cad77d89194a216",
+    "web_launch/simulation.mjs": "64b23de9351f2cff933dca08d091a29d77253e660ed09087f1a2382e0a2f47e9",
+    "web_launch/simulation.webmanifest": "45ca3e57098227244f310cf0a6dcc51d4cf56cb0129fb3f2993aa9aaaca05519",
+    "web_launch/sw.mjs": "07e74c63be7680b92fbf4961310896ffcd722f6b94c2591251f723d228605538"
+  },
+  "receipts": {
+    "node-terminal.txt": "b3a129ab1ddf6f2aa33bfb786fbf170dd15bb028167a64b398fab258017f70b3",
+    "pwa-i18n-terminal.txt": "b7a350a239657a27cc15b6531f8809485ccb253360f5bc916a1bc37c1b6a2218",
+    "browser-accepted.txt": "809b4f08d746e0d01537f1da27fd09ebacb8dcd9e8a8250ebfd783dc5a73f3db",
+    "browser-final.txt": "876ce911b0f6ef268400cd163e07a0974900f5a627fe341f6dadccca48e04745",
+    "simulation-tests.txt": "ff52b91975eddd81068f36fd72fd110c2ac08f08c4aaf3caa5c177062b7cde91",
+    "provider-tests-final.txt": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+    "mutation.txt": "29b12b9a32d9d4a0f10d2865e09a4e160cfb8df59ed2900f271cb7b6e1c746bd",
+    "erasure-repeated.txt": "8d5992f35343372d2dbd122d7e949fe0f1ee79a3c423e58c4510acf62945ed2e",
+    "legacy-lab/acceptance.json": "6ee89c7b56807bdc6e35e07349555fa819b1d0611c08521477e52f66a4d08416"
+  },
+  "screenshots": {
+    "de-320-text200.png": "56de95620dc4cf741fa924ef181b8e61c7df025ca7f3c0e1ffabc07f8b15896f",
+    "en-320-text200.png": "01ee58309481c6d15151b2fb1d5c87b4f292756dbcc20205e5cdee0bf72a8c22",
+    "iPhone 13-feed.png": "01ae7518c36ac6760fa656bba0190124d2b1569d3d58f04707d0900b0204b62f",
+    "iPhone 13-join.png": "c051c31adc150beab72e7354ceadef0c96d953ac3b555cf40c37cbccd3b81273",
+    "Pixel 7-feed.png": "5542471a83a55122ccd84e63b42e7624b83824fa64ed26012d2468ef003f1768",
+    "Pixel 7-join.png": "51ce554769eb2b77b5bd4522269f6e753142684a9306e5b81bb3378a91c57e3f",
+    "uk-320-text200.png": "5e14215070f5eddbdf26aa8370ed91875429ddb7ef5bc8a0f81e48aa76e6c46c"
+  },
+  "providerCalls": 0,
+  "usd": 0,
+  "cleanup": "HTTP server 127.0.0.1:49639 PID 11632 stop rejected by automatic policy"
+}

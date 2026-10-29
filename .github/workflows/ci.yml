@@ -69,6 +69,15 @@ jobs:
           node tools/profile-erasure-lock-review.mjs \
             --receipt=artifacts/postgres-acceptance/profile-erasure-upsert-locks.json
 
+      - name: Privacy complete-erasure and retention-purge SQL acceptance
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PGPORT: '5432'
+        run: |
+          SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
+            node tools/privacy-sql-acceptance.mjs \
+            --receipt=artifacts/postgres-acceptance/privacy.json
+
       - name: Audit material byte boundary SQL acceptance
         env:
           SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
@@ -112,7 +121,7 @@ jobs:
       - run: python3 -B -m unittest discover -s tools -p test_simulation_provider.py
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
-      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs
+      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs tests/privacy-e2e.spec.mjs
       - run: node tools/header-layout-acceptance-20261013.mjs
       - run: node neon/build.mjs dist-neon-ci
       - run: node tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-ci

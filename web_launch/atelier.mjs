@@ -36,6 +36,7 @@ function node(document, tag, text, attrs = {}) {
 }
 
 export function installAtelier({ document = window.document, root = document.documentElement, storage } = {}) {
+  if (document.body?.classList.contains('pilot-consent')) return;
   if (document.querySelector('[data-atelier-controls]')) return;
   if (storage === undefined) { try { storage = window.localStorage; } catch { storage = null; } }
   let preference = applyAtelier(root, readPreference(storage));

@@ -1,0 +1,14 @@
+﻿{
+    "checkedAt":  "2026-10-29T21:12:32.6820937Z",
+    "ownedServersRemaining":  [
+
+                              ],
+    "foreignServerLeftUntouched":  {
+                                       "evidence":  "Parent shell command readback",
+                                       "pid":  11224,
+                                       "parentPid":  8956,
+                                       "action":  "not stopped",
+                                       "worktree":  "C:/sw/synera-design"
+                                   },
+    "method":  "PID ownership/readback; tests use child.kill in finally/afterAll, no process-name termination"
+}

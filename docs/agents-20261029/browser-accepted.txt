@@ -1,0 +1,18 @@
+
+Running 11 tests using 1 worker
+
+(node:33896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\simulation-living.spec.mjs:21:1 › A1: home entry and real pacing, pause, manual reduced-motion, complete pairs/triads (11.5s)
+  ok  2 tests\simulation-living.spec.mjs:41:1 › A2/A3: chips, typed counter-offer, independent confirmations, journal export, reload, erase (4.5s)
+  ok  3 tests\simulation-living.spec.mjs:72:1 › A2: typed decline remains terminal and never creates a meeting (3.8s)
+  ok  4 tests\simulation-living.spec.mjs:79:1 › A3: home draft handed over only after explicit local save; journal profile filter (5.9s)
+  ok  5 tests\simulation-living.spec.mjs:90:1 › A3: erasure in another tab cancels pending replies and autoplay without resurrecting the key (9.7s)
+  ok  6 tests\simulation-living.spec.mjs:104:1 › A1/A2: first home load caches simulation; reload offline still replies with no API (12.7s)
+  ok  7 tests\simulation-living.spec.mjs:118:1 › A1/A4: direct simulation visit activates its worker even when every optional portrait is absent (3.3s)
+  ok  8 tests\simulation-living.spec.mjs:128:38 › A4/A5: uk labels, portrait fallback, 320–430px and double text (5.9s)
+  ok  9 tests\simulation-living.spec.mjs:128:38 › A4/A5: de labels, portrait fallback, 320–430px and double text (5.4s)
+  ok 10 tests\simulation-living.spec.mjs:128:38 › A4/A5: en labels, portrait fallback, 320–430px and double text (5.6s)
+  ok 11 tests\simulation-living.spec.mjs:148:1 › A5: iPhone 13 and Pixel 7 emulation screenshots, visible input, no serious axe issues (16.4s)
+
+  11 passed (1.7m)

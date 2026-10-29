@@ -1,0 +1,14 @@
+[
+  {"name":"summit","page":"summit.html","heading":".hero-copy","action":".hero-copy .primary"},
+  {"name":"studio","page":"studio.html","heading":".studio-heading","action":".studio-heading .primary"},
+  {"name":"studio","page":"studio-journey.html","heading":".studio-heading","action":".studio-heading .primary"},
+  {"name":"triangle","page":"triangle.html","heading":".studio-heading","action":".studio-heading .primary"},
+  {"name":"real-journey","page":"real-journey.html","heading":".real-heading","action":"#real-blocked a"},
+  {"name":"rooms","page":"rooms.html","heading":".rooms-intro","action":"#rooms-blocked .rooms-link"},
+  {"name":"simulation","page":"simulation.html","heading":".sim-intro","action":"#sim-refresh"},
+  {"name":"privacy","page":"privacy.html","heading":"h1","action":"#privacy-download"},
+  {"name":"legal","page":"legal.html","heading":"h1","action":"main .primary"},
+  {"name":"get","page":"get.html","heading":".access-intro","action":"#open-live-app"},
+  {"name":"empty","page":"outcome-archive.html","heading":".real-heading","action":"#archive-file"},
+  {"name":"legal","page":"pilot-consent.html","heading":"h1","action":".pilot-print"}
+]

@@ -1,10 +1,19 @@
 import { ADAPTIVE_ROWS } from './adaptive-i18n-table.mjs';
+import { COPY as SIMULATION_COPY } from './simulation-copy.mjs';
 import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
+import { PRIVACY_COPY } from './privacy-content.mjs';
+import { DEMO_COPY } from './demo-device-controls.mjs';
+import { NOTICE, TERMS, PILOT } from './legal-documents.mjs';
 // German and English text for the sign-in and profile page. Loaded only after a person picks one of them,
 // so a Ukrainian visit never downloads or runs this file. The Ukrainian page stays the source: each row is
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ['Жива симуляція', 'Lebendige Simulation', 'Living simulation'],
+  ['Відкрити живу симуляцію · Demo ↗', 'Lebendige Simulation öffnen · Demo ↗', 'Open living simulation · Demo ↗'],
+  ['Зберегти чернетку в локальний журнал', 'Entwurf im lokalen Journal speichern', 'Save draft to the local journal'],
+  ["Марія", "Maria", "Maria"],
+  ["Олексій", "Oleksii", "Oleksii"],
   ["SYNERA / ЗНАЙОМСТВО","SYNERA / KENNENLERNEN","SYNERA / PRODUCT PREVIEW"],
   ["ДВА НАПРЯМИ. ОДИН ПОЧАТОК.","ZWEI RICHTUNGEN. EIN ANFANG.","TWO DIRECTIONS. ONE BEGINNING."],
   ["Ділові партнерства","Geschäftspartnerschaften","B2B partnerships"],
@@ -948,3 +957,19 @@ export const PATTERNS = [
 
 // The shared-shell preferences use the same source rows in every locale.
 ROWS.push(...ADAPTIVE_ROWS.filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));
+ROWS.push(...Object.keys(SIMULATION_COPY.uk).map(key => [SIMULATION_COPY.uk[key], SIMULATION_COPY.de[key], SIMULATION_COPY.en[key]])
+  .filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));
+const draftRows = [];
+for (const table of [PRIVACY_COPY, DEMO_COPY]) for (const key of Object.keys(table.uk)) draftRows.push([table.uk[key],table.de[key],table.en[key]]);
+for (const key of Object.keys(NOTICE.uk)) {
+  if (key==='title') draftRows.push([NOTICE.uk.title,NOTICE.de.title,NOTICE.en.title]);
+  else for(let i=0;i<2;i++)draftRows.push([NOTICE.uk[key][i],NOTICE.de[key][i],NOTICE.en[key][i]]);
+}
+for(const table of [TERMS,PILOT])for(let i=0;i<table.uk.length;i++)draftRows.push([table.uk[i],table.de[i],table.en[i]]);
+draftRows.push(
+ ['Deutsch · Українська · English','Deutsch · Ukrainisch · English','German · Ukrainian · English'],
+ ['Чернетка — до перевірки юристом · Entwurf · Draft','Entwurf — juristische Prüfung ausstehend','Draft — pending legal review'],
+ ['2026-09-05-pilot-3 · NEEDS_REVIEW · Archiv / Архів / Archive','2026-09-05-pilot-3 · NEEDS_REVIEW · Archiv','2026-09-05-pilot-3 · NEEDS_REVIEW · Archive'],
+ ['[ПЕРЕВІРИТИ ФОРМУ] · [ТОРГОВИЙ РЕЄСТР, ЯКЩО Є] · [UID / MWST, ЯКЩО Є] · [ТЕЛЕФОН НЕОБОВ’ЯЗКОВО]','[RECHTSFORM PRÜFEN] · [HANDELSREGISTER, FALLS EINGETRAGEN] · [UID / MWST, FALLS EINSCHLÄGIG] · [TELEFON OPTIONAL]','[VERIFY LEGAL FORM] · [COMMERCIAL REGISTER IF REGISTERED] · [UID / VAT IF APPLICABLE] · [PHONE OPTIONAL]']
+);
+for(const values of draftRows){const row=values.map(text=>text.replace(/\s+/g,' ').trim());if(!ROWS.some(existing=>existing[0]===row[0])&&!SHARED_ROWS.some(existing=>existing[0]===row[0]))ROWS.push(row);}

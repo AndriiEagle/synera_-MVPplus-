@@ -1,0 +1,52 @@
+✖ P2: mocked clock purges at 30 days; reads do not renew expiry; unrelated preferences survive (655.2185ms)
+✖ P2: legacy drafts get one migration grace period; a second load cannot extend it (10.619ms)
+✔ P1: scoped inventory recognises only Synera storage and all three cache families (9.5017ms)
+✔ P1/P8: privacy language keys have exact uk/de/en symmetry and no missing values (6.3772ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3748.514
+
+✖ failing tests:
+
+test at web_launch\privacy-device.test.mjs:21:1
+✖ P2: mocked clock purges at 30 days; reads do not renew expiry; unrelated preferences survive (655.2185ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '{"message":"private draft"}'
+  - null
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-openreg/tmp/privacy-negative-YZ5uMi/web_launch/privacy-device.test.mjs:31:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{"message":"private draft"}',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\privacy-device.test.mjs:35:1
+✖ P2: legacy drafts get one migration grace period; a second load cannot extend it (10.619ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '{"terms":{}}'
+  - null
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-openreg/tmp/privacy-negative-YZ5uMi/web_launch/privacy-device.test.mjs:40:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{"terms":{}}',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

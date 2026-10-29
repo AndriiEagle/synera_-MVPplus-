@@ -1,0 +1,310 @@
+{
+  "scope": "lane evidence only; hashes prove integrity, not legal/provider acceptance",
+  "files": [
+    {
+      "path": "docs/privacy-20261029/a11y-a11y_audit.md",
+      "sha256": "11cfbebf9db1f119ed903c876ae7b690e19f275cbd7c9e16549e9612f2e06ef0",
+      "bytes": 272
+    },
+    {
+      "path": "docs/privacy-20261029/a11y-a11y_audit_report.json",
+      "sha256": "8f099ae9b0493af7d83d38e3bab82b628cb16f04e026e7f1b48c6553028cbac6",
+      "bytes": 592
+    },
+    {
+      "path": "docs/privacy-20261029/a11y.log",
+      "sha256": "a54b65e89d60b7d586f0108f21533e2b7938a7eb5a8c0cf564ebb523136c2501",
+      "bytes": 882
+    },
+    {
+      "path": "docs/privacy-20261029/acceptance.json",
+      "sha256": "c86bcd124b09671894fccc146cab69e724f326fe622b7ce3943c053e2b9b4afb",
+      "bytes": 21310
+    },
+    {
+      "path": "docs/privacy-20261029/AGENTS-INTEGRATION.uk.md",
+      "sha256": "e57dab26479b442acfd3773f20624b81052392f8844f309ccdcde1190eb3e291",
+      "bytes": 2991
+    },
+    {
+      "path": "docs/privacy-20261029/browser-exit.json",
+      "sha256": "a3ecf015456b1eb4b4cc33395fe2c38feba0e7c46c79b6c431972052917bd7f4",
+      "bytes": 240
+    },
+    {
+      "path": "docs/privacy-20261029/browser-final.log",
+      "sha256": "bcd561bbbe99ef4d8b8f6ad97def157534576c2d40547f554dceaf82101ab58d",
+      "bytes": 16400
+    },
+    {
+      "path": "docs/privacy-20261029/browser-first.log",
+      "sha256": "8770ad3889c3b310adc9ecc0668a89f146e0dc6961f9015dc86e66f3c3348ba1",
+      "bytes": 2820
+    },
+    {
+      "path": "docs/privacy-20261029/browser-verified.log",
+      "sha256": "a6bcd99bd5074b4021e6fe679a277ab1b0831e6f1c0f5dcc6d50ee99c427ace2",
+      "bytes": 8203
+    },
+    {
+      "path": "docs/privacy-20261029/build-accepted.log",
+      "sha256": "ad1c60e731ff62bd72b9cc9627769f7620a7c4ae812a2b1ac3d313dbb0d4cf93",
+      "bytes": 222
+    },
+    {
+      "path": "docs/privacy-20261029/build-final.log",
+      "sha256": "ead56a7cc42d92712fbbd48ee7bc16f7533c8b8581357a930eb7356ffd6e8e26",
+      "bytes": 204
+    },
+    {
+      "path": "docs/privacy-20261029/build-final2.log",
+      "sha256": "8ef85277c3f81f89c2e32f8c2442acba8319c418054ef74ef937dec441165099",
+      "bytes": 216
+    },
+    {
+      "path": "docs/privacy-20261029/build.log",
+      "sha256": "ead56a7cc42d92712fbbd48ee7bc16f7533c8b8581357a930eb7356ffd6e8e26",
+      "bytes": 204
+    },
+    {
+      "path": "docs/privacy-20261029/cascade-logging-before.tap",
+      "sha256": "65394ffaf60fb34b3752172712db381ea3d24d0cb049bb4189bcef308d567c69",
+      "bytes": 12620
+    },
+    {
+      "path": "docs/privacy-20261029/cascade-logging-final.tap",
+      "sha256": "edff9b5f204e89a7f87ac0159ac92b3fe80f7a21af3a4da3ad1f2da4c295e6a1",
+      "bytes": 968
+    },
+    {
+      "path": "docs/privacy-20261029/device-before.tap",
+      "sha256": "1991f580a1c19b18c18df09d72f9410029bc82035e838501b8aede0b8a7434e9",
+      "bytes": 6092
+    },
+    {
+      "path": "docs/privacy-20261029/endpoint-before.tap",
+      "sha256": "3f8a3b51ad3c888e9b033ec3d4d776d31cb2357d5fdcbf51e2e7916401181d8f",
+      "bytes": 4732
+    },
+    {
+      "path": "docs/privacy-20261029/final-targeted.tap",
+      "sha256": "d76255fef94bab00067ecbfcdc7d7d85db94332e6daaf8f048e0505de252da93",
+      "bytes": 2232
+    },
+    {
+      "path": "docs/privacy-20261029/i18n-final.tap",
+      "sha256": "c1fc278fac87501dd510d4fdd61d012c4eb7d22218d0d9304b42e27109954730",
+      "bytes": 4172
+    },
+    {
+      "path": "docs/privacy-20261029/i18n-repair.tap",
+      "sha256": "7e1d9976ff5746ffe9f8f2bc08d5c23fa18cc66036694a0bd6effd900cd19915",
+      "bytes": 6102
+    },
+    {
+      "path": "docs/privacy-20261029/inherited-openreg-DONE.md",
+      "sha256": "ae6a09358efedf4da906883f41230275f168b51ce5349771855b6c01b1e5361e",
+      "bytes": 8313
+    },
+    {
+      "path": "docs/privacy-20261029/input-sources.json",
+      "sha256": "2c6ea4171548d159901bee425940ab9bc08b508e1c34b37567d69b9782489908",
+      "bytes": 1963
+    },
+    {
+      "path": "docs/privacy-20261029/main-final.tap",
+      "sha256": "46e8e88481d7886075592e425f541a674f352e2168d53fecfce8ce6e08a86304",
+      "bytes": 143242
+    },
+    {
+      "path": "docs/privacy-20261029/main.tap",
+      "sha256": "b88841adf17bf62801745175f29889f94a73878cec804ba6c7ed6874d9239988",
+      "bytes": 161372
+    },
+    {
+      "path": "docs/privacy-20261029/mime-repair.tap",
+      "sha256": "e5aeac4b723dcf61a989fc9d3243e973972470a131cc28d450e18c226cc6ba60",
+      "bytes": 1808
+    },
+    {
+      "path": "docs/privacy-20261029/negative-controls.json",
+      "sha256": "e0adf0e5844a578c625a639b3206eb15f858c532b1e05dbdc84c0703fa635937",
+      "bytes": 442
+    },
+    {
+      "path": "docs/privacy-20261029/negative-controls.log",
+      "sha256": "034114def8a22e5bf89e3f2497541916e4e1227b98fc170f5b3d401c110a348b",
+      "bytes": 704
+    },
+    {
+      "path": "docs/privacy-20261029/offline-accepted.log",
+      "sha256": "219ff96f7df590a72bea66344fb761dd8c1abed042e890bacdb15004bfc901ff",
+      "bytes": 360
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted/offline-after-action.png",
+      "sha256": "51667985be03adb6ea54c4d4a1276dfc8aa40b978bd659954ae99315c701f617",
+      "bytes": 203797
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted/offline-legal-de.png",
+      "sha256": "c2f36ec4c4de7cc2967fc9ed3a06e3fa9c298da4bc9baf4c7523b767cb36a895",
+      "bytes": 668367
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted/online-profile.png",
+      "sha256": "9138694b3ffa6d135a74d2dfeafc94835edc0f87706d9feab4a54ef6be1958b0",
+      "bytes": 194186
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted/RESULT.json",
+      "sha256": "ff3c2603c4496178c8154f716ff486f7c582ac2ba95d9a0808b58b51de796660",
+      "bytes": 20816
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted-before-log-refactor/offline-after-action.png",
+      "sha256": "51667985be03adb6ea54c4d4a1276dfc8aa40b978bd659954ae99315c701f617",
+      "bytes": 203797
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted-before-log-refactor/offline-legal-de.png",
+      "sha256": "c2f36ec4c4de7cc2967fc9ed3a06e3fa9c298da4bc9baf4c7523b767cb36a895",
+      "bytes": 668367
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted-before-log-refactor/online-profile.png",
+      "sha256": "9138694b3ffa6d135a74d2dfeafc94835edc0f87706d9feab4a54ef6be1958b0",
+      "bytes": 194186
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-accepted-before-log-refactor/RESULT.json",
+      "sha256": "2c4f27781df208ddceedcf91fe6d1c1b6055b8d703280959872b1a4e2d4dfa0a",
+      "bytes": 20717
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-before/diagnostic.png",
+      "sha256": "37caf57511effed322687fa82cb6c8f477d7571168d91808482c0f64de71c520",
+      "bytes": 181717
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-before/online-profile.png",
+      "sha256": "d242d6d29f8507b59baae75bf7074f31333db2b6746fd269c625cce51ae7c61b",
+      "bytes": 180104
+    },
+    {
+      "path": "docs/privacy-20261029/offline-probe-before/RESULT.json",
+      "sha256": "fdffaeede1c1c2f882a4919f4dc240e016e050864f98af1c15b89a76a19bbc5d",
+      "bytes": 17086
+    },
+    {
+      "path": "docs/privacy-20261029/offline-shell-final.log",
+      "sha256": "59bed4ddf1fe75bdc4d92479785235164715dfe6f8f05d8b73f0a80817ab4f79",
+      "bytes": 510
+    },
+    {
+      "path": "docs/privacy-20261029/offline-shell.log",
+      "sha256": "5a467cc1a166b4c340d437fc22d2c3096e2311bbe7b43eba0fa124b0579bd4bc",
+      "bytes": 746
+    },
+    {
+      "path": "docs/privacy-20261029/offline-verified.log",
+      "sha256": "4f1d897615336a9f8588a32a814fd8b332496d15f34cb253b275ae9fc98d13fc",
+      "bytes": 348
+    },
+    {
+      "path": "docs/privacy-20261029/playwright.config.mjs",
+      "sha256": "f6dce5fe55b89d6b3b9e968fdb193588fdf194725a3b360e0c7f145993bc76de",
+      "bytes": 184
+    },
+    {
+      "path": "docs/privacy-20261029/pre-logging-repair/acceptance.json",
+      "sha256": "1c15f0b1b64937f44502d3da3c135222a39960df9576e0ba736daa3ff3bafa64",
+      "bytes": 21130
+    },
+    {
+      "path": "docs/privacy-20261029/pre-logging-repair/verified-browser.log",
+      "sha256": "d5a607d8e9645cb4d8823877753378c452a54ecbfaa392c128f59f9d1621a72c",
+      "bytes": 11958
+    },
+    {
+      "path": "docs/privacy-20261029/pre-logging-repair/verified-main.log",
+      "sha256": "81c4e9f6a3a5b83b52e03cf57dd95433c507462f72c98554ad148201755a8330",
+      "bytes": 79164
+    },
+    {
+      "path": "docs/privacy-20261029/pre-logging-repair/verified-pwa-i18n.log",
+      "sha256": "374aef1cedcefef5e823b79b6ff3ade1f0ee035c883f3a7d24091c44aecfe937",
+      "bytes": 3857
+    },
+    {
+      "path": "docs/privacy-20261029/pwa-i18n-final.tap",
+      "sha256": "2cc17aa58030605e6413256e2d5f54540b69a342763610b1477ff7790bc2dee1",
+      "bytes": 7614
+    },
+    {
+      "path": "docs/privacy-20261029/pwa-i18n.tap",
+      "sha256": "425cb2014c96390a2e254a68ad49005aea2c48475decb3fdb429be1417fc0fdf",
+      "bytes": 9456
+    },
+    {
+      "path": "docs/privacy-20261029/repair-targeted.tap",
+      "sha256": "8b2a6401835d38dde63e088162c380aad115f2edf7ebaa6a68cf77aac3a67832",
+      "bytes": 7892
+    },
+    {
+      "path": "docs/privacy-20261029/retention-mutant.tap",
+      "sha256": "ae2ca05a7a43637ddfbdec9c823313eb6b4d6d4a27054fbfd49748d2480ae176",
+      "bytes": 1994
+    },
+    {
+      "path": "docs/privacy-20261029/security-before.tap",
+      "sha256": "9fa34b08ef9854d111724beb8a21d79ed9dafc6b4b2b9bb11abbc3496732bc3a",
+      "bytes": 23404
+    },
+    {
+      "path": "docs/privacy-20261029/SERVER-DATA-MAP.uk.md",
+      "sha256": "363144be164130923b88a4f5e7bf139da1d897fe273277495ffdbbebff03764e",
+      "bytes": 5877
+    },
+    {
+      "path": "docs/privacy-20261029/shots/iphone13-legal.png",
+      "sha256": "9a756ab4d2823d8f943be9c44e3a36ceb95a27aaac60d767676d6024bdd88267",
+      "bytes": 607436
+    },
+    {
+      "path": "docs/privacy-20261029/shots/iphone13-privacy.png",
+      "sha256": "dec5e556bc95990241afbd0403e1534920090946a417f9066d5b542fa5758beb",
+      "bytes": 243054
+    },
+    {
+      "path": "docs/privacy-20261029/shots/pixel7-legal.png",
+      "sha256": "e0dd22fd5b7ee2fba199d3a531cb7504f26b297c9800aa934c5fe8ccf879a2c1",
+      "bytes": 609264
+    },
+    {
+      "path": "docs/privacy-20261029/shots/pixel7-privacy.png",
+      "sha256": "51ea39c101f57f04d096a6fe9cbcad307edd03fad038c7e617d8a90dcd60ec1e",
+      "bytes": 248054
+    },
+    {
+      "path": "docs/privacy-20261029/targeted.tap",
+      "sha256": "3b5dda601140b00676de7e45ea2a996a81f59c86681670fe31d7f7f80715d993",
+      "bytes": 3110
+    },
+    {
+      "path": "docs/privacy-20261029/verified-browser.log",
+      "sha256": "9eaab1148908a65ce9659ae7ee644c6dd4733cf6fc6c039e59566e3f3c33a6fb",
+      "bytes": 8199
+    },
+    {
+      "path": "docs/privacy-20261029/verified-main.log",
+      "sha256": "80c34e24311c1f85acb756a055fd3a41d84a95c8fd16f9d172bccbf0096b1a3f",
+      "bytes": 79117
+    },
+    {
+      "path": "docs/privacy-20261029/verified-pwa-i18n.log",
+      "sha256": "9dc80b7b8946afa67b3172be0f2f41e903c2592941452bea4cefad242671fed8",
+      "bytes": 3855
+    }
+  ]
+}

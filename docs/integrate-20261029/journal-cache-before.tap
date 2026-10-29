@@ -1,0 +1,71 @@
+✖ I1: opening the journal purges expired entries before profile/session recovery, without renewing fresh data (3.232ms)
+✖ I1: the head retention boundary expires the journal even on a non-simulation page (12.3838ms)
+✖ I3: all worker installations include their new public dependencies and invalidate the prior cache (7.5348ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.4115
+
+✖ failing tests:
+
+test at web_launch\integrate-gilbert.test.mjs:8:1
+✖ I1: opening the journal purges expired entries before profile/session recovery, without renewing fresh data (3.232ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/integrate-gilbert.test.mjs:13:51)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\integrate-gilbert.test.mjs:19:1
+✖ I1: the head retention boundary expires the journal even on a non-simulation page (12.3838ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '[{"at":"2000-01-01T00:00:00Z","kind":"profile","actor":"visitor","text":"old","data":{}}]'
+  - null
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/integrate-gilbert.test.mjs:23:10)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '[{"at":"2000-01-01T00:00:00Z","kind":"profile","actor":"visitor","text":"old","data":{}}]',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at web_launch\integrate-gilbert.test.mjs:25:1
+✖ I3: all worker installations include their new public dependencies and invalidate the prior cache (7.5348ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'synera-shell-20261029-argon1'
+  - 'synera-shell-20261029-gilbert1'
+                           ^
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-adaptive/web_launch/integrate-gilbert.test.mjs:31:12)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'synera-shell-20261029-argon1',
+    expected: 'synera-shell-20261029-gilbert1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

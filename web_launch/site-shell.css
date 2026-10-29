@@ -1,3 +1,4 @@
+@import url("/privacy.css");
 @import url('/tokens.css');
 @import url('/adaptive.css');
 
@@ -226,4 +227,22 @@ html[data-synera-style] .phone-pwa .install-hint { order: 7; margin: 24px 0 0; p
 }
 @media(prefers-reduced-motion:reduce) {
   .site-page *, .site-page *::before, .site-page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* GRAPHICS 29.10: one quiet gold thread, always after the first action. */
+html[data-synera-style] .phone-pwa .intro > .signature-scene { display:block; width:100%; max-width:680px; margin:28px 0 0; }
+.signature-scene img { display:block; width:100%; height:auto; aspect-ratio:3 / 2; border-radius:12px; }
+.demo-people { display:flex; gap:28px; margin:24px 0; }
+.demo-people figure { display:grid; justify-items:start; gap:10px; margin:0; }
+.demo-portrait { display:block; width:96px; height:96px; object-fit:cover; border-radius:16px; border:1px solid var(--ui-line); }
+.demo-people figcaption { display:grid; gap:5px; font:500 14px var(--ui-body); }
+.site-page .demo-face-tag { display:inline-block; width:fit-content; font:500 10px/1.5 var(--ui-body); letter-spacing:.06em; color:var(--ui-accent); border:1px solid var(--ui-line); padding:1px 6px; border-radius:4px; }
+.site-page .floating-card img.avatar, .site-page .person img.avatar { display:block; width:64px; height:64px; object-fit:cover; border-radius:12px; border:1px solid var(--ui-line); background:#15161d; }
+.site-page .floating-card b .demo-face-tag { margin-left:5px; vertical-align:middle; }
+.site-page .floating-card { grid-template-columns:64px minmax(0,1fr); gap:12px; }
+.site-page .floating-card b .demo-face-tag { display:block; margin:4px 0 0; }
+@media(min-width:1000px) {
+  html[data-synera-style] .phone-pwa:not(.signed-in) .intro { max-width:none; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); column-gap:40px; align-items:start; }
+  html[data-synera-style] .phone-pwa .intro > :not(.signature-scene) { grid-column:1; }
+  html[data-synera-style] .phone-pwa .intro > .signature-scene { grid-column:2; grid-row:1 / 5; margin:20px 0 0; align-self:center; }
 }

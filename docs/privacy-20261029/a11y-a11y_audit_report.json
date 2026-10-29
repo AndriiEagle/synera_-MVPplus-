@@ -1,0 +1,30 @@
+[
+  {
+    "page": "index.html",
+    "url": "http://127.0.0.1:53196/index.html",
+    "timestamp": "2026-10-29T19:34:38.470Z",
+    "violations": [],
+    "passes": 41,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  },
+  {
+    "page": "catalogue.html",
+    "url": "http://127.0.0.1:53196/catalogue.html",
+    "timestamp": "2026-10-29T19:34:51.494Z",
+    "violations": [],
+    "passes": 43,
+    "incomplete": 1,
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    }
+  }
+]

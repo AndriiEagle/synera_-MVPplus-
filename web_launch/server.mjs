@@ -8,6 +8,7 @@ import { randomBytes } from 'node:crypto';
 import { createLocalProfileAI, readSmallBody } from './server/local-profile-ai.mjs';
 import { createLocalJourneyAI } from './server/local-journey-ai.mjs';
 import { handleCascadeAPI } from './server_cascade_api.mjs';
+import { logListening, logOps } from './ops-log.mjs';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const config = await loadConfig({ demo: process.argv.includes('--demo'), neon: process.argv.includes('--neon-preview') });
 const localAI = process.argv.includes('--local-ai') ? { enabled: true, nonce: randomBytes(24).toString('hex') } : null;
@@ -46,8 +47,8 @@ const server = http.createServer(async (req, res) => {
   const asset = allowed.get(requestPath);
   if (!asset) { res.writeHead(404, headers); res.end('Not found'); return; }
   try { const content = await fs.readFile(path.join(root, asset[0])); res.writeHead(200, { ...headers, 'Content-Type': asset[1] + '; charset=utf-8' }); res.end(req.method === 'HEAD' ? undefined : content); }
-  catch { res.writeHead(500, headers); res.end('Asset unavailable'); }
+  catch { logOps('asset.unavailable', { status: 500 }); res.writeHead(500, headers); res.end('Asset unavailable'); }
 });
 server.requestTimeout = 20000;
 server.headersTimeout = 10000;
-server.listen(Number(process.env.SYNERA_PORT || 0), '127.0.0.1', () => console.log(`Synera real-user pilot: http://127.0.0.1:${server.address().port}`));
+server.listen(Number(process.env.SYNERA_PORT || 0), '127.0.0.1', () => logListening(server.address().port));
