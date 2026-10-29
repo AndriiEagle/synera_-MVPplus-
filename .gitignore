@@ -56,3 +56,5 @@ playwright-report/
 
 # Privacy lane: disposable C: test snapshots; source and evidence live in docs/privacy-20261029.
 /tmp/privacy-*/
+# Local lane scratch (kept out of handoffs and releases).
+/tmp/

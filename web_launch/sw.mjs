@@ -14,6 +14,7 @@ SHELL.push('/simulation.html','/simulation.css','/simulation-ui.mjs','/simulatio
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 SHELL.push('/privacy.html', '/privacy.css', '/privacy-retention.mjs', '/privacy-content.mjs', '/privacy-device.mjs', '/privacy-common.mjs', '/privacy-centre.mjs', '/ops-log.mjs');
+SHELL.push('/persona-mira.webp','/persona-leo.webp','/persona-nora.webp','/persona-felix.webp','/persona-ines.webp','/persona-sam.webp','/persona-tessa.webp','/persona-noah.webp','/persona-lina.webp','/persona-omar.webp','/synera-thread.webp','/synera-thread@2x.webp');
 self.addEventListener('install', event => { 
   // Privacy controls share the public offline shell. CACHE is bumped by the merge owner.
   self.skipWaiting();

@@ -1,0 +1,169 @@
+{
+  "generator": "Codex built-in image_gen",
+  "fictional": true,
+  "processing": "FFmpeg crop/resize/WebP only",
+  "assets": [
+    {
+      "file": "docs/graphics-20261029/sources/persona-mira-640.png",
+      "bytes": 582728,
+      "sha256": "2e396e1d63afc4ed61547f0126783a29496e96785d87cc3042933b575352a372",
+      "origin": "exec-3a783314-0e4d-4215-8df2-6e295511bc6c.png"
+    },
+    {
+      "file": "web_launch/persona-mira.webp",
+      "bytes": 10840,
+      "sha256": "6b9b2caf30c2624b0ac101fe76a122bd2b807baad54e43bdbec18bc70640f469",
+      "origin": "docs\\graphics-20261029\\sources\\persona-mira-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-leo-640.png",
+      "bytes": 532244,
+      "sha256": "785351895a10a75f5644c7fb960149f60cbfefb9d837a50b4d4582dc1c5a39de",
+      "origin": "exec-3a783314-0e4d-4215-8df2-6e295511bc6c.png"
+    },
+    {
+      "file": "web_launch/persona-leo.webp",
+      "bytes": 7166,
+      "sha256": "f883429d5421061b04815392597803b2ab1f974152b899a20bc4df4532220295",
+      "origin": "docs\\graphics-20261029\\sources\\persona-leo-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-nora-640.png",
+      "bytes": 513443,
+      "sha256": "f6d2988edc308bda94833836fc063bf81868ee52429e91dc119efca0092332de",
+      "origin": "exec-cf04c0cd-bb4f-4dea-b4a9-f9bf9f31371a.png"
+    },
+    {
+      "file": "web_launch/persona-nora.webp",
+      "bytes": 8372,
+      "sha256": "5f22b528ca30a13855fc7f598f9940c95d916f2b0f35cd4acec3d03205bb83a7",
+      "origin": "docs\\graphics-20261029\\sources\\persona-nora-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-felix-640.png",
+      "bytes": 579199,
+      "sha256": "c95118fd03d0e5bc0c76ea42403ef3f06dbb3ea2fd496e3869d01b269a0ef12f",
+      "origin": "exec-cf04c0cd-bb4f-4dea-b4a9-f9bf9f31371a.png"
+    },
+    {
+      "file": "web_launch/persona-felix.webp",
+      "bytes": 10910,
+      "sha256": "ea24ccbc4a6d27c282ef127d8e1ca820fbb6c3f628c894e723100e6120ee8b08",
+      "origin": "docs\\graphics-20261029\\sources\\persona-felix-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-ines-640.png",
+      "bytes": 595986,
+      "sha256": "87dff3f99717e6c3ce1eecbc2328bc2789f23acd562106071943fa14b917273a",
+      "origin": "exec-c0976512-c561-4cca-b736-5d13f081af14.png"
+    },
+    {
+      "file": "web_launch/persona-ines.webp",
+      "bytes": 12596,
+      "sha256": "385a1f2be04311bb33b8b758fcf2b2ac75136520cbe9a22c91157046b3f4c859",
+      "origin": "docs\\graphics-20261029\\sources\\persona-ines-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-sam-640.png",
+      "bytes": 592066,
+      "sha256": "c512ef51337a87009cac18dba2641bbb0af95e84e1c8d4cb4bb25cffe395a3e2",
+      "origin": "exec-c0976512-c561-4cca-b736-5d13f081af14.png"
+    },
+    {
+      "file": "web_launch/persona-sam.webp",
+      "bytes": 12314,
+      "sha256": "05d74fa61357fce360bd427d5a9b8c45c1c92b3adf1541a98f9af745d8154773",
+      "origin": "docs\\graphics-20261029\\sources\\persona-sam-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-tessa-640.png",
+      "bytes": 566091,
+      "sha256": "b00ca41fffe9b7434d94ea566a7dc4c0c9ab15c50809ef2dabd86e085457cd53",
+      "origin": "exec-2bc7c8bb-9694-41ac-935d-89e1b75c62c0.png"
+    },
+    {
+      "file": "web_launch/persona-tessa.webp",
+      "bytes": 11034,
+      "sha256": "31fdecba9080d26201a9129953849df59bf3c313e0e8f0eb3b914dfbbc373bd7",
+      "origin": "docs\\graphics-20261029\\sources\\persona-tessa-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-noah-640.png",
+      "bytes": 514547,
+      "sha256": "bba95bd8ad30e3917333d61b737e17ca100492535318bf7f19c8c46ddf8986ec",
+      "origin": "exec-2bc7c8bb-9694-41ac-935d-89e1b75c62c0.png"
+    },
+    {
+      "file": "web_launch/persona-noah.webp",
+      "bytes": 9400,
+      "sha256": "d78256b3c9e3b9322a47995bc99545c00fdaabfeb251b1c405e2afea18c1fcd7",
+      "origin": "docs\\graphics-20261029\\sources\\persona-noah-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-lina-640.png",
+      "bytes": 519256,
+      "sha256": "1b815c71972e6ac9c93e48d9ac72de593bf89837579032dc822ea6e2e7ed7524",
+      "origin": "exec-0e6c14c2-4b0b-4b86-b17b-657307b4821a.png"
+    },
+    {
+      "file": "web_launch/persona-lina.webp",
+      "bytes": 9326,
+      "sha256": "e374eed7eae764c69a8591091e018f3c79457d7934e98305a16c4eb996fe2129",
+      "origin": "docs\\graphics-20261029\\sources\\persona-lina-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/persona-omar-640.png",
+      "bytes": 607228,
+      "sha256": "70db21f64909f41d6b9b874f66dd8ac91c831362ad9bbf30200af102c16d9313",
+      "origin": "exec-0e6c14c2-4b0b-4b86-b17b-657307b4821a.png"
+    },
+    {
+      "file": "web_launch/persona-omar.webp",
+      "bytes": 10202,
+      "sha256": "5b667fc4ed392202b06da679c1425325f7dd47f800fbfdff829c8769d0453995",
+      "origin": "docs\\graphics-20261029\\sources\\persona-omar-640.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/synera-thread-master.png",
+      "bytes": 2011430,
+      "sha256": "d4b876e5803d45c35e62dd7a96718b0e7cb2bdf7dcef449f430148e02151072a",
+      "origin": "built-in image_gen"
+    },
+    {
+      "file": "web_launch/synera-thread.webp",
+      "bytes": 36176,
+      "sha256": "fa51d05ac1e93ff6f0021a2133265d244b5dfa7f47876c00f7b0d0f6f2f3d594",
+      "origin": "docs\\graphics-20261029\\sources\\synera-thread-master.png"
+    },
+    {
+      "file": "web_launch/synera-thread@2x.webp",
+      "bytes": 110590,
+      "sha256": "ca50e35011ca6797c73820a78d625c97295ba412684db93e8778c04f3d95094a",
+      "origin": "docs\\graphics-20261029\\sources\\synera-thread-master.png"
+    },
+    {
+      "file": "docs/graphics-20261029/sources/icon-master.png",
+      "bytes": 1115695,
+      "sha256": "ee29efacc9c9c14635ec0b54ac34e6c397aba23e9f189f6ba71c1f70b25d8263",
+      "origin": "built-in image_gen; resized with FFmpeg"
+    },
+    {
+      "file": "web_launch/icon-192.png",
+      "bytes": 23976,
+      "sha256": "7a7a941171a25e5c8fd5d36f5532f4b3ab722930cc9eefde02fbd630832283b1",
+      "origin": "built-in image_gen; resized with FFmpeg"
+    },
+    {
+      "file": "web_launch/icon-512.png",
+      "bytes": 181804,
+      "sha256": "2ee91b93a7966813d49476e6738b1dec25e17984f38341f4af7a3ceddeafc925",
+      "origin": "built-in image_gen; resized with FFmpeg"
+    },
+    {
+      "file": "web_launch/apple-touch-icon.png",
+      "bytes": 20892,
+      "sha256": "90d7b9f5c44e6853033bf0f2fe551979401b12ce142c69cccd1153cb54572c35",
+      "origin": "built-in image_gen; resized with FFmpeg"
+    }
+  ]
+}

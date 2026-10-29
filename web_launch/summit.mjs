@@ -46,7 +46,10 @@ export function installSummit(doc = document) {
       const pair = el('div', undefined, 'pair');
       for (const [name, offer, seek] of [['Mara','design','sales'],['Leo','sales',need === 'design' ? 'design' : 'finance']]) {
         const card = el('article', undefined, 'person'), dl = el('dl');
-        card.append(el('span', name[0], 'avatar'), el('b', name), el('small', 'Zürich · EN / DE'));
+        const portrait = el('img', undefined, 'avatar');
+        portrait.src = name === 'Mara' ? '/persona-mira.webp' : '/persona-leo.webp';
+        portrait.alt = ''; portrait.width = 64; portrait.height = 64; portrait.loading = 'lazy';
+        card.append(portrait, el('b', name), el('small', 'Demo', 'demo-face-tag'), el('small', 'Zürich · EN / DE'));
         dl.append(el('dt', t('offers')), el('dd', t(offer)), el('dt', t('seeks')), el('dd', t(seek))); card.append(dl); pair.append(card);
       }
       const label = el('label', t('needLabel')), select = el('select'); select.id = 'demo-need';

@@ -9,6 +9,8 @@ export const ROWS = [
   ['Жива симуляція', 'Lebendige Simulation', 'Living simulation'],
   ['Відкрити живу симуляцію · Demo ↗', 'Lebendige Simulation öffnen · Demo ↗', 'Open living simulation · Demo ↗'],
   ['Зберегти чернетку в локальний журнал', 'Entwurf im lokalen Journal speichern', 'Save draft to the local journal'],
+  ["Марія", "Maria", "Maria"],
+  ["Олексій", "Oleksii", "Oleksii"],
   ["SYNERA / ЗНАЙОМСТВО","SYNERA / KENNENLERNEN","SYNERA / PRODUCT PREVIEW"],
   ["ДВА НАПРЯМИ. ОДИН ПОЧАТОК.","ZWEI RICHTUNGEN. EIN ANFANG.","TWO DIRECTIONS. ONE BEGINNING."],
   ["Ділові партнерства","Geschäftspartnerschaften","B2B partnerships"],
