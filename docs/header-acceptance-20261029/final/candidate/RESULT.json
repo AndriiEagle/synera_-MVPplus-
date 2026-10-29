@@ -1,0 +1,4029 @@
+{
+  "variant": "candidate",
+  "engine": "156.0.8078.73",
+  "runs": [
+    {
+      "language": "uk",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 162.34375,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "uk-current-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 162.34375,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 128.5,
+            "bottom": 172.5
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 218,
+            "bottom": 262
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 280,
+            "bottom": 324
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 342,
+            "bottom": 386
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 419,
+            "bottom": 441.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 441.5,
+            "bottom": 464
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 84.03125,
+            "top": 536.5,
+            "bottom": 555.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 649.984375,
+            "bottom": 693.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 719.984375,
+            "bottom": 739.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 777.984375,
+            "bottom": 797.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 823.984375,
+            "bottom": 880.046875
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 894.046875,
+            "bottom": 931.421875
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 84.03125
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 156.984375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 147.078125
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "uk-current-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 232.34375,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "uk-current-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 232.34375,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 128.5,
+            "bottom": 172.5
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 218,
+            "bottom": 262
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 280,
+            "bottom": 324
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 342,
+            "bottom": 386
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 419,
+            "bottom": 441.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 441.5,
+            "bottom": 464
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 114.03125,
+            "top": 536.5,
+            "bottom": 555.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 649.984375,
+            "bottom": 693.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 719.984375,
+            "bottom": 739.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 777.984375,
+            "bottom": 797.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 823.984375,
+            "bottom": 861.359375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.359375,
+            "bottom": 894.046875
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 114.03125
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 186.984375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 177.078125
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "uk-current-390-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 162.34375,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "uk-atelier-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 162.34375,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 130,
+            "bottom": 174
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 221,
+            "bottom": 265
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 283,
+            "bottom": 327
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 345,
+            "bottom": 389
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 422,
+            "bottom": 444.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 444.5,
+            "bottom": 467
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 84.03125,
+            "top": 539,
+            "bottom": 558.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 650.375,
+            "bottom": 694.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 720.375,
+            "bottom": 740.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 778.375,
+            "bottom": 798.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 824.375,
+            "bottom": 880.4375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 894.4375,
+            "bottom": 913.125
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 84.03125
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 150.375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 141.234375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "uk-atelier-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "uk",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 232.34375,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "uk-atelier-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 232.34375,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 130,
+            "bottom": 174
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 221,
+            "bottom": 265
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 283,
+            "bottom": 327
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 345,
+            "bottom": 389
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 422,
+            "bottom": 444.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 444.5,
+            "bottom": 467
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 114.03125,
+            "top": 539,
+            "bottom": 558.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 650.375,
+            "bottom": 694.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 720.375,
+            "bottom": 740.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 778.375,
+            "bottom": 798.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 824.375,
+            "bottom": 861.75
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.75,
+            "bottom": 894.4375
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 114.03125
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 180.375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 171.234375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "uk-atelier-390-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 14,
+            "bottom": 58
+          },
+          {
+            "id": "SUMMARY",
+            "left": 130.203125,
+            "right": 296,
+            "top": 74,
+            "bottom": 122
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "de-current-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 14,
+            "bottom": 58
+          },
+          {
+            "id": "SUMMARY",
+            "left": 130.203125,
+            "right": 296,
+            "top": 74,
+            "bottom": 122
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 188.5,
+            "bottom": 232.5
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 278,
+            "bottom": 322
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 340,
+            "bottom": 384
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 402,
+            "bottom": 446
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 479,
+            "bottom": 501.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 501.5,
+            "bottom": 524
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 538,
+            "bottom": 582.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 538,
+            "bottom": 582.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 81.265625,
+            "top": 596.5,
+            "bottom": 615.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 622.6875,
+            "bottom": 667.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 622.6875,
+            "bottom": 667.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 622.6875,
+            "bottom": 667.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 709.984375,
+            "bottom": 753.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 779.984375,
+            "bottom": 799.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 837.984375,
+            "bottom": 857.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 883.984375,
+            "bottom": 940.046875
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 954.046875,
+            "bottom": 991.421875
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 81.265625
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 154.65625
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 170.515625
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "de-current-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 200.203125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "de-current-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 200.203125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 128.5,
+            "bottom": 172.5
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 218,
+            "bottom": 262
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 280,
+            "bottom": 324
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 342,
+            "bottom": 386
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 419,
+            "bottom": 441.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 441.5,
+            "bottom": 464
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 111.265625,
+            "top": 536.5,
+            "bottom": 555.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 649.984375,
+            "bottom": 693.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 719.984375,
+            "bottom": 739.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 777.984375,
+            "bottom": 797.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 823.984375,
+            "bottom": 861.359375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.359375,
+            "bottom": 894.046875
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 111.265625
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 184.65625
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 200.515625
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "de-current-390-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 14,
+            "bottom": 58
+          },
+          {
+            "id": "SUMMARY",
+            "left": 130.203125,
+            "right": 296,
+            "top": 74,
+            "bottom": 122
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "de-atelier-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 14,
+            "bottom": 58
+          },
+          {
+            "id": "SUMMARY",
+            "left": 130.203125,
+            "right": 296,
+            "top": 74,
+            "bottom": 122
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 190,
+            "bottom": 234
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 281,
+            "bottom": 325
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 343,
+            "bottom": 387
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 405,
+            "bottom": 449
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 482,
+            "bottom": 504.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 504.5,
+            "bottom": 527
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 541,
+            "bottom": 585
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 541,
+            "bottom": 585
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 81.265625,
+            "top": 599,
+            "bottom": 618.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 625.1875,
+            "bottom": 669.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 625.1875,
+            "bottom": 669.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 625.1875,
+            "bottom": 669.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 710.375,
+            "bottom": 754.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 780.375,
+            "bottom": 800.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 838.375,
+            "bottom": 858.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 884.375,
+            "bottom": 940.4375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 954.4375,
+            "bottom": 973.125
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 81.265625
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 148.234375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 162.859375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "de-atelier-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "de",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 200.203125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "de-atelier-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 200.203125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 130,
+            "bottom": 174
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 221,
+            "bottom": 265
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 283,
+            "bottom": 327
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 345,
+            "bottom": 389
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 422,
+            "bottom": 444.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 444.5,
+            "bottom": 467
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 111.265625,
+            "top": 539,
+            "bottom": 558.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 650.375,
+            "bottom": 694.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 720.375,
+            "bottom": 740.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 778.375,
+            "bottom": 798.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 824.375,
+            "bottom": 861.75
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.75,
+            "bottom": 894.4375
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 111.265625
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 178.234375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 192.859375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "de-atelier-390-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": false,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 135.328125,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "en-current-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 135.328125,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 128.5,
+            "bottom": 172.5
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 218,
+            "bottom": 262
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 280,
+            "bottom": 324
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 342,
+            "bottom": 386
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 419,
+            "bottom": 441.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 441.5,
+            "bottom": 464
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 80.96875,
+            "top": 536.5,
+            "bottom": 555.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 649.984375,
+            "bottom": 693.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 719.984375,
+            "bottom": 739.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 777.984375,
+            "bottom": 797.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 823.984375,
+            "bottom": 861.359375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 875.359375,
+            "bottom": 912.734375
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 80.96875
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 134.703125
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 165.90625
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "en-current-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": false,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 205.328125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "en-current-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 205.328125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 128.5,
+            "bottom": 172.5
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 218,
+            "bottom": 262
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 280,
+            "bottom": 324
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 342,
+            "bottom": 386
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 419,
+            "bottom": 441.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 441.5,
+            "bottom": 464
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 478,
+            "bottom": 522.5
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 110.96875,
+            "top": 536.5,
+            "bottom": 555.6875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 562.6875,
+            "bottom": 607.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 649.984375,
+            "bottom": 693.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 719.984375,
+            "bottom": 739.984375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 777.984375,
+            "bottom": 797.984375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 823.984375,
+            "bottom": 861.359375
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.359375,
+            "bottom": 894.046875
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 110.96875
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 164.703125
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 195.90625
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "en-current-390-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": true,
+      "width": 320,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 135.328125,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": false
+      },
+      "screenshot": "en-atelier-320.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 135.328125,
+            "right": 296,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 41,
+            "right": 271,
+            "top": 130,
+            "bottom": 174
+          },
+          {
+            "id": "style-preset",
+            "left": 41,
+            "right": 271,
+            "top": 221,
+            "bottom": 265
+          },
+          {
+            "id": "back-login",
+            "left": 41,
+            "right": 271,
+            "top": 283,
+            "bottom": 327
+          },
+          {
+            "id": "tour-start",
+            "left": 41,
+            "right": 271,
+            "top": 345,
+            "bottom": 389
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 422,
+            "bottom": 444.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 41,
+            "right": 271,
+            "top": 444.5,
+            "bottom": 467
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 153,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "BUTTON",
+            "left": 159,
+            "right": 271,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "LEGEND",
+            "left": 41,
+            "right": 80.96875,
+            "top": 539,
+            "bottom": 558.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 41,
+            "right": 113.65625,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 119.65625,
+            "right": 192.328125,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 198.328125,
+            "right": 271,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 41,
+            "right": 271,
+            "top": 650.375,
+            "bottom": 694.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 720.375,
+            "bottom": 740.375
+          },
+          {
+            "id": "INPUT",
+            "left": 41,
+            "right": 61,
+            "top": 778.375,
+            "bottom": 798.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 41,
+            "right": 271,
+            "top": 824.375,
+            "bottom": 861.75
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 41,
+            "right": 271,
+            "top": 875.75,
+            "bottom": 894.4375
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 320
+          },
+          {
+            "left": 16,
+            "right": 296
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 153
+          },
+          {
+            "left": 159,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 80.96875
+          },
+          {
+            "left": 41,
+            "right": 113.65625
+          },
+          {
+            "left": 119.65625,
+            "right": 192.328125
+          },
+          {
+            "left": 198.328125,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 129.8125
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 61
+          },
+          {
+            "left": 71,
+            "right": 158.609375
+          },
+          {
+            "left": 41,
+            "right": 271
+          },
+          {
+            "left": 41,
+            "right": 271
+          }
+        ],
+        "documentWidth": 320,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "en-atelier-320-preferences.png",
+      "pass": true
+    },
+    {
+      "language": "en",
+      "atelier": true,
+      "width": 390,
+      "checks": [
+        {
+          "name": "selected language and appearance applied",
+          "pass": true
+        },
+        {
+          "name": "language and appearance controls remain reachable",
+          "pass": true
+        },
+        {
+          "name": "header controls and status do not overlap",
+          "pass": true
+        },
+        {
+          "name": "document fits viewport",
+          "pass": true
+        },
+        {
+          "name": "back-to-login button is unobstructed",
+          "pass": true
+        },
+        {
+          "name": "Import remains reachable",
+          "pass": true
+        },
+        {
+          "name": "Card includes unsaved draft",
+          "pass": true
+        },
+        {
+          "name": "fields and permissions preserved",
+          "pass": true
+        },
+        {
+          "name": "no account writes",
+          "pass": true
+        }
+      ],
+      "closedGeometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 205.328125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": false
+      },
+      "screenshot": "en-atelier-390.png",
+      "geometry": {
+        "boxes": [
+          {
+            "id": "site-brand",
+            "left": 24,
+            "right": 117.390625,
+            "top": 16,
+            "bottom": 60
+          },
+          {
+            "id": "SUMMARY",
+            "left": 205.328125,
+            "right": 366,
+            "top": 14,
+            "bottom": 62
+          },
+          {
+            "id": "site-language",
+            "left": 71,
+            "right": 341,
+            "top": 130,
+            "bottom": 174
+          },
+          {
+            "id": "style-preset",
+            "left": 71,
+            "right": 341,
+            "top": 221,
+            "bottom": 265
+          },
+          {
+            "id": "back-login",
+            "left": 71,
+            "right": 341,
+            "top": 283,
+            "bottom": 327
+          },
+          {
+            "id": "tour-start",
+            "left": 71,
+            "right": 341,
+            "top": 345,
+            "bottom": 389
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 422,
+            "bottom": 444.5
+          },
+          {
+            "id": "atelier-settings-title",
+            "left": 71,
+            "right": 341,
+            "top": 444.5,
+            "bottom": 467
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 203,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "BUTTON",
+            "left": 209,
+            "right": 341,
+            "top": 481,
+            "bottom": 525
+          },
+          {
+            "id": "LEGEND",
+            "left": 71,
+            "right": 110.96875,
+            "top": 539,
+            "bottom": 558.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 71,
+            "right": 157,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 163,
+            "right": 249,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "BUTTON",
+            "left": 255,
+            "right": 341,
+            "top": 565.1875,
+            "bottom": 609.1875
+          },
+          {
+            "id": "SELECT",
+            "left": 71,
+            "right": 341,
+            "top": 650.375,
+            "bottom": 694.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 720.375,
+            "bottom": 740.375
+          },
+          {
+            "id": "INPUT",
+            "left": 71,
+            "right": 91,
+            "top": 778.375,
+            "bottom": 798.375
+          },
+          {
+            "id": "atelier-settings-note",
+            "left": 71,
+            "right": 341,
+            "top": 824.375,
+            "bottom": 861.75
+          },
+          {
+            "id": "atelier-settings-status",
+            "left": 71,
+            "right": 341,
+            "top": 875.75,
+            "bottom": 894.4375
+          }
+        ],
+        "overlap": [],
+        "bounds": [
+          {
+            "left": 0,
+            "right": 390
+          },
+          {
+            "left": 46,
+            "right": 366
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 203
+          },
+          {
+            "left": 209,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 110.96875
+          },
+          {
+            "left": 71,
+            "right": 157
+          },
+          {
+            "left": 163,
+            "right": 249
+          },
+          {
+            "left": 255,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 159.8125
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 91
+          },
+          {
+            "left": 101,
+            "right": 188.609375
+          },
+          {
+            "left": 71,
+            "right": 341
+          },
+          {
+            "left": 71,
+            "right": 341
+          }
+        ],
+        "documentWidth": 390,
+        "buttonHit": true
+      },
+      "preferencesScreenshot": "en-atelier-390-preferences.png",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "scope": "Synthetic local draft; no backend, production, physical-device or human-usability proof",
+  "status": "PASS"
+}

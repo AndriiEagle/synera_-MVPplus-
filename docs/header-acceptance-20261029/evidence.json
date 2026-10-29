@@ -1,0 +1,931 @@
+{
+  "task": 1601,
+  "date": "2026-10-29",
+  "base": "ef39b7d48e875eb88871cc2cfabf91344f1c7875",
+  "head": "ef39b7d48e875eb88871cc2cfabf91344f1c7875",
+  "branch": "claude/synera-design-20261029c",
+  "node": "v24.16.0",
+  "browser": "system Chrome, via local-only preload/config; not CI Chromium",
+  "source": [
+    {
+      "file": "tools/header-layout-acceptance-20261013.mjs",
+      "sha256": "9e4f2f82b05a9c20c357371efd08943725d1ade0b748d3a9260814901788f5ea",
+      "baseSha256": "7c1ce51d15c2fefa2e9fe152f28d72149275107442384a798bb62252dafcb533",
+      "contentUnchangedAfterLFNormalization": false
+    },
+    {
+      "file": "web_launch/site-shell.css",
+      "sha256": "870562494ee109af09ae4cb9b0a8bb622a2e868b150406b023595a193b250bfa",
+      "baseSha256": "fa98835a46785461ced48d905db85af156187878badcfc36bab69f9dba15312a",
+      "contentUnchangedAfterLFNormalization": false
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "sha256": "cd03972e896fc152ca15d61fcc23dda3393463014795a8b03a32bfa29342c104",
+      "baseSha256": "c0f95f47ecd1837a72281ecc26f8b7183b69b555dea4e55c5fbf6ecebafbac77",
+      "contentUnchangedAfterLFNormalization": true
+    },
+    {
+      "file": "playwright.config.mjs",
+      "sha256": "7e2195daf9ad2cc05bceb0d1336270dc8c95936789d0ed9e58c31b7438c885c2",
+      "baseSha256": "7e2195daf9ad2cc05bceb0d1336270dc8c95936789d0ed9e58c31b7438c885c2",
+      "contentUnchangedAfterLFNormalization": true
+    },
+    {
+      "file": "tests/browser-e2e.spec.mjs",
+      "sha256": "ab10f5a3fdaf2f5440a4d5450df88e552ce56957c5da8ef4cbff81527454dd6e",
+      "baseSha256": "ab10f5a3fdaf2f5440a4d5450df88e552ce56957c5da8ef4cbff81527454dd6e",
+      "contentUnchangedAfterLFNormalization": true
+    },
+    {
+      "file": "tests/studio-e2e.spec.mjs",
+      "sha256": "afcfa724fd857bdeebb679e68d45e899016c6278e5da5f7b75c1e73ae04cbfa1",
+      "baseSha256": "afcfa724fd857bdeebb679e68d45e899016c6278e5da5f7b75c1e73ae04cbfa1",
+      "contentUnchangedAfterLFNormalization": true
+    }
+  ],
+  "originalChecks": [
+    "header controls and status do not overlap",
+    "document fits viewport",
+    "back-to-login button is unobstructed",
+    "Import remains reachable",
+    "Card includes unsaved draft",
+    "fields and permissions preserved",
+    "no account writes"
+  ],
+  "runs": {
+    "original": {
+      "file": "baseline/RESULT.json",
+      "status": "FAIL",
+      "engine": "156.0.8078.73",
+      "cases": 12,
+      "pass": 0,
+      "checks": 0,
+      "errors": 12,
+      "failed": [
+        {
+          "language": "uk",
+          "atelier": false,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=uk]')\u001b[22m\n"
+        },
+        {
+          "language": "uk",
+          "atelier": false,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=uk]')\u001b[22m\n"
+        },
+        {
+          "language": "uk",
+          "atelier": true,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=uk]')\u001b[22m\n"
+        },
+        {
+          "language": "uk",
+          "atelier": true,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=uk]')\u001b[22m\n"
+        },
+        {
+          "language": "de",
+          "atelier": false,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=de]')\u001b[22m\n"
+        },
+        {
+          "language": "de",
+          "atelier": false,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=de]')\u001b[22m\n"
+        },
+        {
+          "language": "de",
+          "atelier": true,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=de]')\u001b[22m\n"
+        },
+        {
+          "language": "de",
+          "atelier": true,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=de]')\u001b[22m\n"
+        },
+        {
+          "language": "en",
+          "atelier": false,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=en]')\u001b[22m\n"
+        },
+        {
+          "language": "en",
+          "atelier": false,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=en]')\u001b[22m\n"
+        },
+        {
+          "language": "en",
+          "atelier": true,
+          "width": 320,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=en]')\u001b[22m\n"
+        },
+        {
+          "language": "en",
+          "atelier": true,
+          "width": 390,
+          "checks": [],
+          "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lang-switcher [data-lang=en]')\u001b[22m\n"
+        }
+      ]
+    },
+    "selectorsOnly": {
+      "file": "candidate/RESULT.json",
+      "status": "FAIL",
+      "engine": "156.0.8078.73",
+      "cases": 12,
+      "pass": 10,
+      "checks": 108,
+      "errors": 0,
+      "failed": [
+        {
+          "language": "de",
+          "atelier": false,
+          "width": 320,
+          "checks": [
+            {
+              "name": "document fits viewport",
+              "pass": false
+            }
+          ]
+        },
+        {
+          "language": "de",
+          "atelier": true,
+          "width": 320,
+          "checks": [
+            {
+              "name": "document fits viewport",
+              "pass": false
+            }
+          ]
+        }
+      ]
+    },
+    "final": {
+      "file": "final/candidate/RESULT.json",
+      "status": "PASS",
+      "engine": "156.0.8078.73",
+      "cases": 12,
+      "pass": 12,
+      "checks": 108,
+      "errors": 0,
+      "failed": []
+    },
+    "cssReversal": {
+      "file": "reversal/baseline/RESULT.json",
+      "status": "FAIL",
+      "engine": "156.0.8078.73",
+      "cases": 12,
+      "pass": 10,
+      "checks": 108,
+      "errors": 0,
+      "failed": [
+        {
+          "language": "de",
+          "atelier": false,
+          "width": 320,
+          "checks": [
+            {
+              "name": "document fits viewport",
+              "pass": false
+            }
+          ]
+        },
+        {
+          "language": "de",
+          "atelier": true,
+          "width": 320,
+          "checks": [
+            {
+              "name": "document fits viewport",
+              "pass": false
+            }
+          ]
+        }
+      ]
+    },
+    "overlapMutant": {
+      "file": "negative/mutant/RESULT.json",
+      "status": "FAIL",
+      "engine": "156.0.8078.73",
+      "cases": 12,
+      "pass": 10,
+      "checks": 108,
+      "errors": 0,
+      "failed": [
+        {
+          "language": "uk",
+          "atelier": false,
+          "width": 320,
+          "checks": [
+            {
+              "name": "header controls and status do not overlap",
+              "pass": false
+            }
+          ]
+        },
+        {
+          "language": "en",
+          "atelier": false,
+          "width": 320,
+          "checks": [
+            {
+              "name": "header controls and status do not overlap",
+              "pass": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "tests": {
+    "main": {
+      "tests": 739,
+      "pass": 738,
+      "fail": 0,
+      "skip": 1,
+      "reason": "SYNERA_ACCEPTANCE_PG unset",
+      "exit": 0,
+      "log": "node-main-final.tap"
+    },
+    "additionalNode": {
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "skip": 0,
+      "exit": 0,
+      "log": "node-additional-final.tap"
+    },
+    "playwright": {
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skip": 0,
+      "exit": 0,
+      "log": "playwright-final.txt"
+    },
+    "python": {
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "exit": 0,
+      "log": "python-simulation-final.txt"
+    }
+  },
+  "localAdapters": [
+    {
+      "file": "C:/sw/task1601-header-chrome.cjs",
+      "sha256": "59595797b7519b9e5c0314859e89368e14584e22393ffa93b45fab54d3d86b07",
+      "source": "// Local launch adapter only; CI still calls the unmodified Chromium entrypoint.\nconst { createRequire } = require('node:module');\nconst fromRepo = createRequire('C:/sw/synera-design/package.json');\nconst { chromium } = fromRepo('playwright');\nconst launch = chromium.launch.bind(chromium);\nchromium.launch = options => launch({ ...options, channel: 'chrome' });\n"
+    },
+    {
+      "file": "C:/sw/task1601-header-reversal.cjs",
+      "sha256": "02f50ad61e856d5b0ab25659988881d8515fe0a80cc16e58429e18e3b9635421",
+      "source": "// Same final oracle, but serve the exact CSS from the requested base commit.\nrequire('./task1601-header-chrome.cjs');\nconst { createRequire } = require('node:module');\nconst { execFileSync } = require('node:child_process');\nconst fromRepo = createRequire('C:/sw/synera-design/package.json');\nconst { chromium } = fromRepo('playwright');\nconst css = execFileSync('git', ['-C', 'C:/sw/synera-design', 'show',\n  'ef39b7d48e875eb88871cc2cfabf91344f1c7875:web_launch/site-shell.css']);\nconst launch = chromium.launch.bind(chromium);\nchromium.launch = async options => {\n  const browser = await launch(options);\n  const newContext = browser.newContext.bind(browser);\n  browser.newContext = async options => {\n    const context = await newContext(options);\n    const newPage = context.newPage.bind(context);\n    context.newPage = async (...args) => {\n      const page = await newPage(...args);\n      await page.route('**/site-shell.css', route => route.fulfill({\n        contentType: 'text/css', body: css,\n      }));\n      return page;\n    };\n    return context;\n  };\n  return browser;\n};\n"
+    },
+    {
+      "file": "C:/sw/task1601-pw-chrome.config.mjs",
+      "sha256": "025b0c2cd3df0bbd1f65a37c48d372f86beba8328e124bd40bc490b2dac9618e",
+      "source": "import base from './synera-design/playwright.config.mjs';\nexport default {\n  ...base,\n  testDir: 'C:/sw/synera-design/tests',\n  outputDir: 'C:/sw/task1601-e2e-results',\n  use: { ...base.use, channel: 'chrome' },\n};\n"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/header-acceptance-20261029/baseline/RESULT.json",
+      "bytes": 5102,
+      "sha256": "7ac3f70be89043d34cdf568be9768f64812c10caa32a31768f81da42e22ecd6c"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/baseline.log",
+      "bytes": 8104,
+      "sha256": "863ffa17a5762ea2489133e2da862b95882457c256af65b160ac7f6504e34d78"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/baseline.txt",
+      "bytes": 8104,
+      "sha256": "863ffa17a5762ea2489133e2da862b95882457c256af65b160ac7f6504e34d78"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-atelier-320-preferences.png",
+      "bytes": 28554,
+      "sha256": "e2ac59a629ead555d941b953eda1813e767a93880321d51cfb704ab0369469ff"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-atelier-320.png",
+      "bytes": 28948,
+      "sha256": "ebb00cd12dbb66dda4f9347ae78d40b783fce7249385ed95e3a175bcabad987e"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-atelier-390-preferences.png",
+      "bytes": 33634,
+      "sha256": "99cffc3b40f6e1dd22aaff12d5246277c2fdce3092c78d8b707fbc6537368be9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-atelier-390.png",
+      "bytes": 32836,
+      "sha256": "8b3c75ad3691560d90561253790e5a3b586275521a20d95ad920102b66a52837"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-current-320-preferences.png",
+      "bytes": 42675,
+      "sha256": "2c71679d764471d622d957f911be5763a158ade316e0ac6edcebe30595342122"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-current-320.png",
+      "bytes": 38677,
+      "sha256": "537129a16de1a608c595e3c4a173d570ad2c11c027014c49f2293c704dae80db"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-current-390-preferences.png",
+      "bytes": 62195,
+      "sha256": "6cac65879550e6fde60eec725e2a5fb4d24871ad2eda025472de71c7e84808be"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/de-current-390.png",
+      "bytes": 46827,
+      "sha256": "bcbdcdb7d3e6b8069c009c3fe9ba8656bb0f4823fb39bbf835482ab8e3040b18"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-atelier-320-preferences.png",
+      "bytes": 27854,
+      "sha256": "e7b3a82452743d77aa4f7ca7a5cd219ddf3982a911f1b240d92222762325a3b2"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-atelier-320.png",
+      "bytes": 28408,
+      "sha256": "64572447e24816cf4b30dd321f4656839fa4d26bfb6f20332205b9192a14e16b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-atelier-390-preferences.png",
+      "bytes": 33424,
+      "sha256": "a11db8696fc06a9835edd869654a4cda90e0ca2b736c044a2e94291490cf500d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-atelier-390.png",
+      "bytes": 33280,
+      "sha256": "67dabcef946cff4eee783707dde56bc926a75cbe0c7fcefea4f2f6b6939c6088"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-current-320-preferences.png",
+      "bytes": 54519,
+      "sha256": "7664c92dd0e7b1c3ecb116377515d8f7e8d5858f136d663889800c6552317a93"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-current-320.png",
+      "bytes": 45216,
+      "sha256": "8ad1f06d1bdac0bf6f08e415cd27bcce9e608e4e1a33f731a3614be8b1ac87b9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-current-390-preferences.png",
+      "bytes": 57048,
+      "sha256": "760d51545861716b3dc054905c8a78813da0413a8a05eb6df9d58d064cf43884"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/en-current-390.png",
+      "bytes": 48777,
+      "sha256": "af4f24e14eec3201528acd0b9e797c10c10d32ad7de07abedcec93cad61e3497"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/RESULT.json",
+      "bytes": 90536,
+      "sha256": "f842c9d885ee8c41951a2109cedba0528f893d37565254598ff8a1ecc4f0e1a5"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-atelier-320-preferences.png",
+      "bytes": 28169,
+      "sha256": "08216a2c16190872b77c5e5eb963c199ef7040a3660681ed282f21bbc63f8046"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-atelier-320.png",
+      "bytes": 30058,
+      "sha256": "9b01898eae52ae1f51483d1fc4dc3414f2654fa42856671bd8747610e19f26fa"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-atelier-390-preferences.png",
+      "bytes": 31722,
+      "sha256": "097b1a069c1915516f450fea6e023dba719038256f61d59cd629984b2da69857"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-atelier-390.png",
+      "bytes": 31362,
+      "sha256": "944f4c604b35751983c205addaec16cc85181abd48f387236b2515423e379a47"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-current-320-preferences.png",
+      "bytes": 53145,
+      "sha256": "f89510232eedfcf9b5b265ce29d87baed94bedd75b66bb0bd0598b4685fa3c9f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-current-320.png",
+      "bytes": 47254,
+      "sha256": "498d1fdc7da27b2348610e33f98bbbdfe8ff6a8244c1d944862c4a38f5281215"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-current-390-preferences.png",
+      "bytes": 59785,
+      "sha256": "cb402341db3bf9ca0a7ca1d47a6c96206106f4e73e4e4223806c0841f343929f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate/uk-current-390.png",
+      "bytes": 48819,
+      "sha256": "74baddec15f81883653379a22301fe37408fbe7996f831d6abe88b9a21789ccf"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/candidate.log",
+      "bytes": 566,
+      "sha256": "99a5ace8a336544f9f4d6d2b09e8b43a64056235787b0410145ae68559295b4f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-atelier-320-preferences.png",
+      "bytes": 26629,
+      "sha256": "4b7c777703a34903818a0af543551f0072c258b8f7199f1aeb56768f315590c0"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-atelier-320.png",
+      "bytes": 28984,
+      "sha256": "0bdb88c0dfba446fff97d414266d19f67e8808cdfb6c4553cc0cec0c0a25f810"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-atelier-390-preferences.png",
+      "bytes": 33634,
+      "sha256": "99cffc3b40f6e1dd22aaff12d5246277c2fdce3092c78d8b707fbc6537368be9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-atelier-390.png",
+      "bytes": 32836,
+      "sha256": "8b3c75ad3691560d90561253790e5a3b586275521a20d95ad920102b66a52837"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-current-320-preferences.png",
+      "bytes": 45856,
+      "sha256": "fad9b959a2b6160679783274631eca8bd2633ec4127955ece6ac80f62b12db31"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-current-320.png",
+      "bytes": 38690,
+      "sha256": "4bf8776508348303ac46a64403ef7a4771e43f1a52d71d3243a082007a10680f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-current-390-preferences.png",
+      "bytes": 58430,
+      "sha256": "8f9e703b28882538cb4fa458e0088a35e2671911d35e5326888b24f99f2ec731"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/de-current-390.png",
+      "bytes": 46827,
+      "sha256": "bcbdcdb7d3e6b8069c009c3fe9ba8656bb0f4823fb39bbf835482ab8e3040b18"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-atelier-320-preferences.png",
+      "bytes": 27854,
+      "sha256": "e7b3a82452743d77aa4f7ca7a5cd219ddf3982a911f1b240d92222762325a3b2"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-atelier-320.png",
+      "bytes": 28408,
+      "sha256": "64572447e24816cf4b30dd321f4656839fa4d26bfb6f20332205b9192a14e16b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-atelier-390-preferences.png",
+      "bytes": 33424,
+      "sha256": "a11db8696fc06a9835edd869654a4cda90e0ca2b736c044a2e94291490cf500d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-atelier-390.png",
+      "bytes": 33280,
+      "sha256": "67dabcef946cff4eee783707dde56bc926a75cbe0c7fcefea4f2f6b6939c6088"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-current-320-preferences.png",
+      "bytes": 51781,
+      "sha256": "16c54c05d68a5586ccd3b293dce7d7ee0ff192a4b29adff49be325b18a6e8cd4"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-current-320.png",
+      "bytes": 45216,
+      "sha256": "8ad1f06d1bdac0bf6f08e415cd27bcce9e608e4e1a33f731a3614be8b1ac87b9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-current-390-preferences.png",
+      "bytes": 53256,
+      "sha256": "e652406f62bc716466b51f07e997919b28e7306d6acef74947e2431e4087bda5"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/en-current-390.png",
+      "bytes": 48777,
+      "sha256": "af4f24e14eec3201528acd0b9e797c10c10d32ad7de07abedcec93cad61e3497"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/RESULT.json",
+      "bytes": 86943,
+      "sha256": "1b1afa9bd288c0a24725864b10763734d800666f49b3b3a9d2aa6e6b3679c14e"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-atelier-320-preferences.png",
+      "bytes": 28169,
+      "sha256": "08216a2c16190872b77c5e5eb963c199ef7040a3660681ed282f21bbc63f8046"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-atelier-320.png",
+      "bytes": 30058,
+      "sha256": "9b01898eae52ae1f51483d1fc4dc3414f2654fa42856671bd8747610e19f26fa"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-atelier-390-preferences.png",
+      "bytes": 31722,
+      "sha256": "097b1a069c1915516f450fea6e023dba719038256f61d59cd629984b2da69857"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-atelier-390.png",
+      "bytes": 31362,
+      "sha256": "944f4c604b35751983c205addaec16cc85181abd48f387236b2515423e379a47"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-current-320-preferences.png",
+      "bytes": 49223,
+      "sha256": "dc0b47b7030e47e29666f558293f900c1d1809ee7663e5cd6d56a5a1d7eb8193"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-current-320.png",
+      "bytes": 47254,
+      "sha256": "498d1fdc7da27b2348610e33f98bbbdfe8ff6a8244c1d944862c4a38f5281215"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-current-390-preferences.png",
+      "bytes": 54290,
+      "sha256": "d6488cae58b768d5e13886167043906ca937da60c90d9b68874f770b12f29c1d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final/candidate/uk-current-390.png",
+      "bytes": 48819,
+      "sha256": "74baddec15f81883653379a22301fe37408fbe7996f831d6abe88b9a21789ccf"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final.log",
+      "bytes": 154,
+      "sha256": "12dd435823c5fd32781a03839cd8ffaf0f9d8b4abd38b16c254fb2e90c0ea9f0"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/final.txt",
+      "bytes": 154,
+      "sha256": "12dd435823c5fd32781a03839cd8ffaf0f9d8b4abd38b16c254fb2e90c0ea9f0"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/mutant.log",
+      "bytes": 638,
+      "sha256": "5b14b305c75ac10fdd48d80be8dd6b765ad202b1d0732577fe1714ca5c0ef6fe"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/mutant.txt",
+      "bytes": 638,
+      "sha256": "5b14b305c75ac10fdd48d80be8dd6b765ad202b1d0732577fe1714ca5c0ef6fe"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-atelier-320-preferences.png",
+      "bytes": 26629,
+      "sha256": "4b7c777703a34903818a0af543551f0072c258b8f7199f1aeb56768f315590c0"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-atelier-320.png",
+      "bytes": 28984,
+      "sha256": "0bdb88c0dfba446fff97d414266d19f67e8808cdfb6c4553cc0cec0c0a25f810"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-atelier-390-preferences.png",
+      "bytes": 33634,
+      "sha256": "99cffc3b40f6e1dd22aaff12d5246277c2fdce3092c78d8b707fbc6537368be9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-atelier-390.png",
+      "bytes": 32836,
+      "sha256": "8b3c75ad3691560d90561253790e5a3b586275521a20d95ad920102b66a52837"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-current-320-preferences.png",
+      "bytes": 45835,
+      "sha256": "1906f2f397c8b3c927db6072a2e40f9b74cf9061acf53529339dc3c9827d634e"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-current-320.png",
+      "bytes": 38670,
+      "sha256": "11567320359330633e11be40980f7f4be37a9debcb09f1a367697894e02ceb40"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-current-390-preferences.png",
+      "bytes": 58430,
+      "sha256": "8f9e703b28882538cb4fa458e0088a35e2671911d35e5326888b24f99f2ec731"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/de-current-390.png",
+      "bytes": 46827,
+      "sha256": "bcbdcdb7d3e6b8069c009c3fe9ba8656bb0f4823fb39bbf835482ab8e3040b18"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-atelier-320-preferences.png",
+      "bytes": 27854,
+      "sha256": "e7b3a82452743d77aa4f7ca7a5cd219ddf3982a911f1b240d92222762325a3b2"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-atelier-320.png",
+      "bytes": 28408,
+      "sha256": "64572447e24816cf4b30dd321f4656839fa4d26bfb6f20332205b9192a14e16b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-atelier-390-preferences.png",
+      "bytes": 33424,
+      "sha256": "a11db8696fc06a9835edd869654a4cda90e0ca2b736c044a2e94291490cf500d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-atelier-390.png",
+      "bytes": 33280,
+      "sha256": "67dabcef946cff4eee783707dde56bc926a75cbe0c7fcefea4f2f6b6939c6088"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-current-320-preferences.png",
+      "bytes": 51012,
+      "sha256": "663352aeed612b43b3b67e7b53ca170120072c3b23c76f2fd7e83c873f413bb2"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-current-320.png",
+      "bytes": 44519,
+      "sha256": "91dc31e95852a7ea8f7acd038d02922815eec94ba2edc27973103bf40359af2b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-current-390-preferences.png",
+      "bytes": 53256,
+      "sha256": "e652406f62bc716466b51f07e997919b28e7306d6acef74947e2431e4087bda5"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/en-current-390.png",
+      "bytes": 48777,
+      "sha256": "af4f24e14eec3201528acd0b9e797c10c10d32ad7de07abedcec93cad61e3497"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/RESULT.json",
+      "bytes": 87274,
+      "sha256": "605198f175ea9e727a7bdb58d4ba9c8d67b6f1ba35b92011858014f1d57f9942"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-atelier-320-preferences.png",
+      "bytes": 28169,
+      "sha256": "08216a2c16190872b77c5e5eb963c199ef7040a3660681ed282f21bbc63f8046"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-atelier-320.png",
+      "bytes": 30058,
+      "sha256": "9b01898eae52ae1f51483d1fc4dc3414f2654fa42856671bd8747610e19f26fa"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-atelier-390-preferences.png",
+      "bytes": 31722,
+      "sha256": "097b1a069c1915516f450fea6e023dba719038256f61d59cd629984b2da69857"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-atelier-390.png",
+      "bytes": 31362,
+      "sha256": "944f4c604b35751983c205addaec16cc85181abd48f387236b2515423e379a47"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-current-320-preferences.png",
+      "bytes": 48654,
+      "sha256": "171e5fb4d9beafa6cad3468b03822d583e9997e74c844124e8c0ae1279b6d32d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-current-320.png",
+      "bytes": 46705,
+      "sha256": "70af036ee82d95410e9c0951a1e7d9c0dad397bad1dced5fe6ff1d4baf4cfa71"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-current-390-preferences.png",
+      "bytes": 54290,
+      "sha256": "d6488cae58b768d5e13886167043906ca937da60c90d9b68874f770b12f29c1d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/negative/mutant/uk-current-390.png",
+      "bytes": 48819,
+      "sha256": "74baddec15f81883653379a22301fe37408fbe7996f831d6abe88b9a21789ccf"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-additional-final.log",
+      "bytes": 8760,
+      "sha256": "3e2e87fd506956de5b9fa467c159d0b5f5680f85bd470f0e9da8f112899b67f1"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-additional-final.tap",
+      "bytes": 8760,
+      "sha256": "3e2e87fd506956de5b9fa467c159d0b5f5680f85bd470f0e9da8f112899b67f1"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-additional.log",
+      "bytes": 8764,
+      "sha256": "fc8dd93f8b394744993d58704cb5aa5fda9dd79daba447c6046fdb165f76473c"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-main-final.log",
+      "bytes": 138408,
+      "sha256": "0ab5cc28caca0741f94c96388de970eef9d6909c7db38ecdec02f6a32b4fb164"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-main-final.tap",
+      "bytes": 138408,
+      "sha256": "0ab5cc28caca0741f94c96388de970eef9d6909c7db38ecdec02f6a32b4fb164"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/node-main.log",
+      "bytes": 138408,
+      "sha256": "275b2d1132738f6b155a50a3ef606e978980dc5eb3ec226e875e00c88e62f98f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/playwright-final.log",
+      "bytes": 11418,
+      "sha256": "f224ce08f877ad8c7fae11b099d8a9ab35ac25f05adf810aba5ce80f71257a07"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/playwright-final.txt",
+      "bytes": 11418,
+      "sha256": "f224ce08f877ad8c7fae11b099d8a9ab35ac25f05adf810aba5ce80f71257a07"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/playwright.log",
+      "bytes": 11410,
+      "sha256": "39bf7bc02c867f6a72f6a0d0cb165fac5fd1596fc239c1150c3d55f634c47e4b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/python-simulation-final.log",
+      "bytes": 106,
+      "sha256": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/python-simulation-final.txt",
+      "bytes": 106,
+      "sha256": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/python-simulation.log",
+      "bytes": 830,
+      "sha256": "fa89039816dad2db81cf175cc6579666dfc3a3cee5cddddedf90b8f372e8a05b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-atelier-320-preferences.png",
+      "bytes": 28554,
+      "sha256": "e2ac59a629ead555d941b953eda1813e767a93880321d51cfb704ab0369469ff"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-atelier-320.png",
+      "bytes": 28948,
+      "sha256": "ebb00cd12dbb66dda4f9347ae78d40b783fce7249385ed95e3a175bcabad987e"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-atelier-390-preferences.png",
+      "bytes": 33634,
+      "sha256": "99cffc3b40f6e1dd22aaff12d5246277c2fdce3092c78d8b707fbc6537368be9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-atelier-390.png",
+      "bytes": 32836,
+      "sha256": "8b3c75ad3691560d90561253790e5a3b586275521a20d95ad920102b66a52837"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-current-320-preferences.png",
+      "bytes": 42675,
+      "sha256": "2c71679d764471d622d957f911be5763a158ade316e0ac6edcebe30595342122"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-current-320.png",
+      "bytes": 38677,
+      "sha256": "537129a16de1a608c595e3c4a173d570ad2c11c027014c49f2293c704dae80db"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-current-390-preferences.png",
+      "bytes": 62195,
+      "sha256": "6cac65879550e6fde60eec725e2a5fb4d24871ad2eda025472de71c7e84808be"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/de-current-390.png",
+      "bytes": 46827,
+      "sha256": "bcbdcdb7d3e6b8069c009c3fe9ba8656bb0f4823fb39bbf835482ab8e3040b18"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-atelier-320-preferences.png",
+      "bytes": 27854,
+      "sha256": "e7b3a82452743d77aa4f7ca7a5cd219ddf3982a911f1b240d92222762325a3b2"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-atelier-320.png",
+      "bytes": 28408,
+      "sha256": "64572447e24816cf4b30dd321f4656839fa4d26bfb6f20332205b9192a14e16b"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-atelier-390-preferences.png",
+      "bytes": 33424,
+      "sha256": "a11db8696fc06a9835edd869654a4cda90e0ca2b736c044a2e94291490cf500d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-atelier-390.png",
+      "bytes": 33280,
+      "sha256": "67dabcef946cff4eee783707dde56bc926a75cbe0c7fcefea4f2f6b6939c6088"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-current-320-preferences.png",
+      "bytes": 54519,
+      "sha256": "7664c92dd0e7b1c3ecb116377515d8f7e8d5858f136d663889800c6552317a93"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-current-320.png",
+      "bytes": 45216,
+      "sha256": "8ad1f06d1bdac0bf6f08e415cd27bcce9e608e4e1a33f731a3614be8b1ac87b9"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-current-390-preferences.png",
+      "bytes": 57048,
+      "sha256": "760d51545861716b3dc054905c8a78813da0413a8a05eb6df9d58d064cf43884"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/en-current-390.png",
+      "bytes": 48777,
+      "sha256": "af4f24e14eec3201528acd0b9e797c10c10d32ad7de07abedcec93cad61e3497"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/RESULT.json",
+      "bytes": 90535,
+      "sha256": "ffa65c660a41bcc00a5f9f995e8528c09564c3a2110f6eb6f71d5cc347ca859d"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-atelier-320-preferences.png",
+      "bytes": 28169,
+      "sha256": "08216a2c16190872b77c5e5eb963c199ef7040a3660681ed282f21bbc63f8046"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-atelier-320.png",
+      "bytes": 30058,
+      "sha256": "9b01898eae52ae1f51483d1fc4dc3414f2654fa42856671bd8747610e19f26fa"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-atelier-390-preferences.png",
+      "bytes": 31722,
+      "sha256": "097b1a069c1915516f450fea6e023dba719038256f61d59cd629984b2da69857"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-atelier-390.png",
+      "bytes": 31362,
+      "sha256": "944f4c604b35751983c205addaec16cc85181abd48f387236b2515423e379a47"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-current-320-preferences.png",
+      "bytes": 53145,
+      "sha256": "f89510232eedfcf9b5b265ce29d87baed94bedd75b66bb0bd0598b4685fa3c9f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-current-320.png",
+      "bytes": 47254,
+      "sha256": "498d1fdc7da27b2348610e33f98bbbdfe8ff6a8244c1d944862c4a38f5281215"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-current-390-preferences.png",
+      "bytes": 59785,
+      "sha256": "cb402341db3bf9ca0a7ca1d47a6c96206106f4e73e4e4223806c0841f343929f"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal/baseline/uk-current-390.png",
+      "bytes": 48819,
+      "sha256": "74baddec15f81883653379a22301fe37408fbe7996f831d6abe88b9a21789ccf"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal.log",
+      "bytes": 564,
+      "sha256": "6402da89e585380c48f4a62046639ddeb6c735d4486d1e9d094da222c9a50a73"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/reversal.txt",
+      "bytes": 564,
+      "sha256": "6402da89e585380c48f4a62046639ddeb6c735d4486d1e9d094da222c9a50a73"
+    },
+    {
+      "file": "docs/header-acceptance-20261029/selectors-only.txt",
+      "bytes": 566,
+      "sha256": "99a5ace8a336544f9f4d6d2b09e8b43a64056235787b0410145ae68559295b4f"
+    }
+  ],
+  "scope": "Local synthetic browser acceptance only. No install, commit, push, deploy or hosted model calls. Remote CI not rerun."
+}
