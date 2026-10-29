@@ -1,0 +1,127 @@
+{
+  "status": "PASS_LOCAL_POSTGRESQL",
+  "scope": "Disposable loopback identity shim only; no Neon, signed HTTP JWT, live accounts or deployment",
+  "source_commit": "3d200f3196a19ece9383cfde37cee8699d61d348",
+  "generator_sha256": "d0d46c19765ff93ae90e5a9c41fe31ae817520cdf1f1980d25f251eafab8dc83",
+  "oracle_sha256": "3b4ad105ad19748bf89386bd41122140f97bf7a7bf29910f35a9a3c69361cd84",
+  "migrate_sha256": "635b1abd333af0c4ff651fc2f6a8391db5c9ef202c1940cd32533439b82ea184",
+  "replay_sha256": "a56be5355b494e8d827b5e38f7effadf87a3a2350fde9349499f49805fc1d13c",
+  "source_sql": [
+    {
+      "name": "neon/acceptance.sql",
+      "sha256": "6482d43a4f6397217bcf51af99f1ddfc68f7089c4be6563e3dac25d048e16a57"
+    },
+    {
+      "name": "neon/case-expiry-repair.migration.sql",
+      "sha256": "d31d9f08d552024c294a893e8003a1b84b8fa0210b49355751f56ae631c7a20a"
+    },
+    {
+      "name": "neon/case-outcome.acceptance.sql",
+      "sha256": "6d5375cfef4b86c7eb57c355391be7a03e15b51b5924703076a9bf07d061024e"
+    },
+    {
+      "name": "neon/case-outcome.migration.sql",
+      "sha256": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6"
+    },
+    {
+      "name": "neon/case-state.acceptance.sql",
+      "sha256": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27"
+    },
+    {
+      "name": "neon/case-state.migration.sql",
+      "sha256": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4"
+    },
+    {
+      "name": "neon/group-room.acceptance.sql",
+      "sha256": "243f532336db120f86df3316a0cac33b43e0f0231d93acd01904ae9dabbc8b8d"
+    },
+    {
+      "name": "neon/group-room.migration.sql",
+      "sha256": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da"
+    },
+    {
+      "name": "neon/meeting-address-agreement.acceptance.sql",
+      "sha256": "98826a17905610031ddebc82d564f9f04aa3e5fdd8235ff11cd68b8805f47215"
+    },
+    {
+      "name": "neon/meeting-address-agreement.migration.sql",
+      "sha256": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a"
+    },
+    {
+      "name": "neon/meeting-location.acceptance.sql",
+      "sha256": "7eff3c383e1eb10bbade85176e0b4323f3b14bafea725523972dc2dd08bab506"
+    },
+    {
+      "name": "neon/meeting-location.migration.sql",
+      "sha256": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b"
+    },
+    {
+      "name": "neon/meeting-status-guard.acceptance.sql",
+      "sha256": "fb9a2e05ca1c144ea43834eef1d77ca543b9b3d4296a6dfda52dd6e11a630369"
+    },
+    {
+      "name": "neon/meeting-status-guard.migration.sql",
+      "sha256": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33"
+    },
+    {
+      "name": "neon/message-intent-consent.acceptance.sql",
+      "sha256": "454059b65ed16ef6d3c27ae4fca3b748644719230bf64a300d4d380bfde3cb50"
+    },
+    {
+      "name": "neon/message-intent.migration.sql",
+      "sha256": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e"
+    },
+    {
+      "name": "neon/profile-erasure-lifecycle.acceptance.sql",
+      "sha256": "c1e9bdc57ee8bc931a7f4241cd57d6a03156b8164fd456968730b1c5b75deeee"
+    },
+    {
+      "name": "neon/profile-erasure-surfaces.acceptance.sql",
+      "sha256": "cbdd38a28b3d2088825368c633f0f6100b9d148614700bc7fe2e306c3c7441c8"
+    },
+    {
+      "name": "neon/profile-erasure.migration.sql",
+      "sha256": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd"
+    },
+    {
+      "name": "neon/schema.proposal.sql",
+      "sha256": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a"
+    },
+    {
+      "name": "neon/stack-invariants.acceptance.sql",
+      "sha256": "4d75a593b9ba241abc6a38395c5fa8089db9ba7bbf5680f6e5c53d3d16591cd5"
+    }
+  ],
+  "results": [
+    {
+      "kind": "upgrade",
+      "database": "kit_1793303744361_upgrade",
+      "pass": true
+    },
+    {
+      "kind": "partial",
+      "database": "kit_1793303744361_partial",
+      "pass": true
+    },
+    {
+      "kind": "drift",
+      "database": "kit_1793303744361_drift",
+      "pass": true
+    },
+    {
+      "kind": "security",
+      "database": "kit_1793303744361_security",
+      "pass": true
+    },
+    {
+      "kind": "policy",
+      "database": "kit_1793303744361_policy",
+      "pass": true
+    },
+    {
+      "kind": "replay",
+      "database": "kit_1793303744361_replay",
+      "pass": true
+    }
+  ]
+}
