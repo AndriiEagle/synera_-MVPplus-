@@ -1,0 +1,8 @@
+{
+    "port":  49811,
+    "time_utc":  "2026-10-29T14:57:40.4786196Z",
+    "pid":  23084,
+    "command":  "\"C:\\Program Files\\nodejs\\node.exe\" web_launch/server.mjs",
+    "listening":  false,
+    "stopped":  true
+}

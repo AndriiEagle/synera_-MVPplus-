@@ -92,6 +92,7 @@ export function installAtelier({ document = window.document, root = document.doc
     try { storage?.setItem(ATELIER_PREFERENCE_KEY, JSON.stringify(preference)); saved = Boolean(storage); } catch { /* Works without persistence. */ }
     status.textContent = `${preference.enabled ? 'Atelier увімкнено' : 'Чинний вигляд повернуто'}. ${saved ? 'Вигляд збережено.' : 'Лише в цій вкладці.'}`;
   }
+  document.addEventListener?.('synera:appearance-reset', () => change({ ...defaults }));
   update();
   return { getPreference: () => ({ ...preference }), setPreference: change };
 }

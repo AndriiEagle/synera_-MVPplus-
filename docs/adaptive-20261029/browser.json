@@ -1,0 +1,149 @@
+{
+  "results": [
+    {
+      "name": "palette atelier/gold",
+      "background": "rgb(107, 67, 0)",
+      "color": "rgb(255, 255, 255)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette atelier/ruby",
+      "background": "rgb(155, 28, 49)",
+      "color": "rgb(255, 255, 255)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette atelier/violet",
+      "background": "rgb(100, 49, 165)",
+      "color": "rgb(255, 255, 255)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette atelier/rose",
+      "background": "rgb(157, 32, 93)",
+      "color": "rgb(255, 255, 255)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette atelier/emerald",
+      "background": "rgb(28, 99, 72)",
+      "color": "rgb(255, 255, 255)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette night/gold",
+      "background": "rgb(242, 198, 109)",
+      "color": "rgb(20, 17, 10)",
+      "height": 56.390625
+    },
+    {
+      "name": "palette night/ruby",
+      "background": "rgb(255, 154, 170)",
+      "color": "rgb(33, 12, 18)",
+      "height": 56.390625
+    },
+    {
+      "name": "palette night/violet",
+      "background": "rgb(198, 167, 255)",
+      "color": "rgb(24, 13, 42)",
+      "height": 56.390625
+    },
+    {
+      "name": "palette night/rose",
+      "background": "rgb(246, 162, 205)",
+      "color": "rgb(38, 13, 26)",
+      "height": 56.390625
+    },
+    {
+      "name": "palette night/emerald",
+      "background": "rgb(135, 215, 179)",
+      "color": "rgb(9, 37, 26)",
+      "height": 56.390625
+    },
+    {
+      "name": "palette synera/gold",
+      "background": "rgb(242, 198, 109)",
+      "color": "rgb(20, 17, 10)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette synera/ruby",
+      "background": "rgb(255, 154, 170)",
+      "color": "rgb(33, 12, 18)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette synera/violet",
+      "background": "rgb(198, 167, 255)",
+      "color": "rgb(24, 13, 42)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette synera/rose",
+      "background": "rgb(246, 162, 205)",
+      "color": "rgb(38, 13, 26)",
+      "height": 59.1875
+    },
+    {
+      "name": "palette synera/emerald",
+      "background": "rgb(135, 215, 179)",
+      "color": "rgb(9, 37, 26)",
+      "height": 59.1875
+    },
+    {
+      "name": "density compact",
+      "height": 59.1875,
+      "panelWidth": "360px"
+    },
+    {
+      "name": "density comfortable",
+      "height": 59.1875,
+      "panelWidth": "400px"
+    },
+    {
+      "name": "density large",
+      "height": 59.1875,
+      "panelWidth": "448px"
+    },
+    {
+      "name": "preferences preserve draft"
+    },
+    {
+      "name": "local preference survives reload"
+    },
+    {
+      "name": "uk/de/en live controls"
+    },
+    {
+      "name": "one hint, permanent dismiss, tour exclusion"
+    },
+    {
+      "name": "320px reflow / 200% text"
+    },
+    {
+      "name": "320px / 200% text preferences reflow"
+    },
+    {
+      "name": "preferences send no requests"
+    },
+    {
+      "name": "reset Current / by-look / comfortable"
+    },
+    {
+      "name": "storage denial keeps manual controls usable"
+    },
+    {
+      "name": "denied tab storage disables proposals, keeps manual accents"
+    },
+    {
+      "name": "proposal preview / decline / reload"
+    },
+    {
+      "name": "confirmed proposal / one-click undo"
+    },
+    {
+      "name": "no page errors"
+    }
+  ],
+  "errors": []
+}

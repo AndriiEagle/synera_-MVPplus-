@@ -1,3 +1,5 @@
+import { ADAPTIVE_ROWS } from './adaptive-i18n-table.mjs';
+import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
 // German and English text for the sign-in and profile page. Loaded only after a person picks one of them,
 // so a Ukrainian visit never downloads or runs this file. The Ukrainian page stays the source: each row is
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
@@ -943,3 +945,6 @@ export const PATTERNS = [
   ["^(Твій результат|Результат партнера): (.+)\\. Заявлена допомога: (.+)\\.$", "$1: $2. Angegebene Hilfe: $3.", "$1: $2. Declared help: $3.", [1,3], ", "],
   ["^(.+?): (Погодити|Погодити — взаємність не означає безоплатність|Погодити до передавання матеріалів|Уточнити для конкретної послуги; правовий висновок не сформовано)\\.$", "$1: $2.", "$1: $2.", [1,2], null],
 ];
+
+// The shared-shell preferences use the same source rows in every locale.
+ROWS.push(...ADAPTIVE_ROWS.filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));
