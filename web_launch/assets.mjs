@@ -1,5 +1,16 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'scenes.css': 'text/css',
+  'scene-summit.webp': 'image/webp', 'scene-summit@2x.webp': 'image/webp',
+  'scene-studio.webp': 'image/webp', 'scene-studio@2x.webp': 'image/webp',
+  'scene-triangle.webp': 'image/webp', 'scene-triangle@2x.webp': 'image/webp',
+  'scene-real-journey.webp': 'image/webp', 'scene-real-journey@2x.webp': 'image/webp',
+  'scene-rooms.webp': 'image/webp', 'scene-rooms@2x.webp': 'image/webp',
+  'scene-simulation.webp': 'image/webp', 'scene-simulation@2x.webp': 'image/webp',
+  'scene-privacy.webp': 'image/webp', 'scene-privacy@2x.webp': 'image/webp',
+  'scene-legal.webp': 'image/webp', 'scene-legal@2x.webp': 'image/webp',
+  'scene-get.webp': 'image/webp', 'scene-get@2x.webp': 'image/webp',
+  'scene-empty.webp': 'image/webp', 'scene-empty@2x.webp': 'image/webp',
   'persona-mira.webp': 'image/webp',
   'persona-leo.webp': 'image/webp',
   'persona-nora.webp': 'image/webp',

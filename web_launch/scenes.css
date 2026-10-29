@@ -1,0 +1,49 @@
+/* Original Zurich still lifes. Static imagery: no animation or JS dependency. */
+figure.scene {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 768px;
+  margin: 24px auto 32px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #15161d;
+  aspect-ratio: 3 / 2;
+}
+.scene picture, .scene img { display: block; width: 100%; height: 100%; }
+.scene img { object-fit: contain; }
+.hero > .scene { grid-column: 1 / -1; order: 1; }
+/* A small pause for the archive's initial empty state. */
+figure.scene-empty { max-width: 288px; }
+/* Reusable closed-card vignette, without adding a second figure to the page. */
+:is(#real-blocked, #rooms-blocked)::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 80px;
+  margin-top: 16px;
+  background: #15161d url('/scene-empty.webp') center / contain no-repeat;
+  border-radius: 8px;
+}
+@media (max-width: 700px) {
+  figure.scene { margin-block: 16px 24px; }
+  .hero > .scene { order: 0; }
+  /* Keep the existing closed-state action ahead of the illustration. */
+  :is(.real-shell, .rooms-shell) { display: flex; flex-direction: column; }
+  :is(.real-shell, .rooms-shell) > * { order: 3; }
+  :is(.real-shell, .rooms-shell) > :is(.real-heading, .rooms-intro, #real-status, #rooms-status) { order: 0; }
+  :is(.real-shell, .rooms-shell) > :is(#real-blocked, #real-auth, #rooms-blocked, #rooms-auth) { order: 1; }
+  :is(.real-shell, .rooms-shell) > .scene { order: 2; }
+  /* The archive has no closed-state card: its picker is the first action. */
+  #archive-content > .real-section { order: 1; }
+  .privacy-centre > .scene { max-width: 198px; }
+  /* In the printable consent, keep Print ahead of the decorative image. */
+  .pilot-paper { display: flex; flex-direction: column; }
+  .pilot-paper > * { order: 3; }
+  .pilot-paper > :is(.privacy-draft, .legal-languages, h1) { order: 0; }
+  .pilot-paper > .pilot-print { order: 1; }
+  .pilot-paper > .scene { order: 2; }
+}
+@media print { .pilot-consent .scene { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .scene, .scene *, :is(#real-blocked, #rooms-blocked)::after { animation: none; transition: none; }
+}

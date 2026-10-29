@@ -1,0 +1,55 @@
+diff --git a/web_launch/privacy.html b/web_launch/privacy.html
+index fcc8cbf..f823e91 100644
+--- a/web_launch/privacy.html
++++ b/web_launch/privacy.html
+@@ -5,8 +5,10 @@
+ <title>Твої дані · Synera</title><meta name="theme-color" content="#15161d">
+ <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><link rel="stylesheet" href="/privacy.css">
+ <script type="module" src="/site-shell.mjs"></script><script type="module" src="/privacy-centre.mjs"></script>
++<link rel="stylesheet" href="/scenes.css">
+ </head><body class="site-page"><header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html">Твої дані</a><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
+-<main class="privacy-centre"><h1 data-privacy-copy="title">Твої дані</h1><p data-privacy-copy="intro"></p>
++<main class="privacy-centre"><h1 data-privacy-copy="title">Твої дані</h1>
++<figure class="scene scene-privacy"><picture><source type="image/webp" srcset="/scene-privacy.webp 768w, /scene-privacy@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 768px"><img src="/scene-privacy.webp" width="768" height="512" alt="" decoding="async" loading="lazy"></picture></figure><p data-privacy-copy="intro"></p>
+ <div class="privacy-actions"><button type="button" id="privacy-download" data-privacy-copy="download">Завантажити дані пристрою · JSON</button><button type="button" id="privacy-erase" data-privacy-copy="erase">Стерти дані з цього браузера</button></div>
+ <p id="privacy-status" role="status" aria-live="polite"></p><section aria-label="Privacy notice" id="privacy-notice"></section>
+ <h2 data-privacy-copy="account"></h2><p data-privacy-copy="accountText"></p><p><a id="privacy-account" href="/?privacy=1" data-privacy-copy="accountLink"></a></p>
+diff --git a/web_launch/pilot-consent.html b/web_launch/pilot-consent.html
+index 43e0daa..bb18be2 100644
+--- a/web_launch/pilot-consent.html
++++ b/web_launch/pilot-consent.html
+@@ -3,6 +3,7 @@
+ <script src="/privacy-retention.mjs"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Synera · Pilot consent</title><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><script type="module" src="/site-shell.mjs"></script>
+ <script type="module" src="/atelier.mjs"></script><link rel="stylesheet" href="/legal-documents.css"><meta name="theme-color" content="#15161d">
+ <meta name="color-scheme" content="dark">
++<link rel="stylesheet" href="/scenes.css">
+ </head>
+ <body class="site-page pilot-consent"><header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html">Твої дані</a><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
+ <main><section id="legal-documents"></section><noscript>Bitte JavaScript für die druckbare Erklärung aktivieren. Keine Online-Erfassung. · Потрібен JavaScript для друку. Онлайн-збору немає. · Enable JavaScript to print. No online collection.</noscript></main><footer><a href="/legal.html">Privacy · Terms · Impressum</a><a data-privacy-link href="/privacy.html">Deine Daten</a></footer></body></html>
+diff --git a/web_launch/simulation-living-ui.mjs b/web_launch/simulation-living-ui.mjs
+index 0e520f3..3fc05dc 100644
+--- a/web_launch/simulation-living-ui.mjs
++++ b/web_launch/simulation-living-ui.mjs
+@@ -42,6 +42,9 @@ root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera
+ <section id="visitor-chat" hidden><h3 id="visitor-title"></h3><div id="visitor-terms" class="living-card"></div><p id="visitor-approvals" role="status"></p><ol id="visitor-messages" class="living-messages" aria-live="polite"></ol><p id="visitor-wait" role="status"></p><button type="button" id="visitor-result" hidden></button><p id="visitor-closed" hidden></p><form id="visitor-composer" class="living-composer"><div id="visitor-chips" class="living-chips"></div><label for="visitor-text" id="message-label"></label><div class="composer-row"><textarea id="visitor-text" rows="2" required></textarea><button type="submit" id="visitor-send"></button></div></form></section></section>
+ <section id="living-journal" hidden><h2 id="journal-title"></h2><p id="journal-local"></p><div class="living-controls"><label><span id="filter-label"></span><select id="journal-filter"></select></label><button id="journal-export" type="button"></button><button id="journal-print" type="button"></button><button id="journal-erase" type="button" class="quiet"></button></div><p id="journal-empty"></p><ol id="journal-events" class="living-messages"></ol></section>
+ <footer class="living-footer"><a href="/" id="living-home"></a> · <a href="/studio.html">Studio</a> · <a href="/triangle.html">Triangle</a><p><a href="?lab=1" id="living-lab"></a></p></footer></main>`;
++// Preserve the one static scene when the public renderer replaces its own root.
++const scene = document.querySelector('figure.scene-simulation');
++if (scene) root.querySelector('#living-status').after(scene);
+ demoMarker(); privacyLinks();
+ inputNotice($('visitor-card'));
+ $('visitor-text').setAttribute('aria-describedby',$('visitor-card').querySelector('[data-demo-input-notice]').id);
+diff --git a/web_launch/legal-documents.mjs b/web_launch/legal-documents.mjs
+index ca93e10..45a5d1b 100644
+--- a/web_launch/legal-documents.mjs
++++ b/web_launch/legal-documents.mjs
+@@ -83,7 +83,7 @@ export function renderDocuments(pilot=false) {
+     const nav=el('nav');nav.className='legal-languages';nav.setAttribute('aria-label','Deutsch · Українська · English');
+     for(const [code,label]of [['de','Deutsch · Haupttext'],['uk','Українська'],['en','English']]){const b=el('button',label);b.type='button';b.lang=code;b.setAttribute('aria-pressed',String(code===locale));b.onclick=()=>{locale=code;render();};nav.append(b);}target.append(nav);
+     const evidence=(section,status,url)=>{const p=el('p',status+' · ');p.className='legal-evidence';const a=el('a',url===SOURCES.terms?'SECO · UWG':'DSG / DSV · EDÖB');a.href=url;a.rel='noopener';p.append(a);section.append(p);};
+-    if(pilot){const rows=PILOT[locale];target.append(el('h1',rows[0]));for(const text of rows.slice(1,-1))target.append(el('p',text));evidence(target,'EXPERT_REQUIRED',SOURCES.dsg);const print=el('button',rows.at(-1));print.type='button';print.className='pilot-print';print.onclick=()=>window.print();target.append(print);return;}
++    if(pilot){const rows=PILOT[locale];target.append(el('h1',rows[0]));target.insertAdjacentHTML('beforeend', '<figure class="scene scene-legal"><picture><source type="image/webp" srcset="/scene-legal.webp 768w, /scene-legal@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 768px"><img src="/scene-legal.webp" width="768" height="512" alt="" decoding="async" loading="lazy"></picture></figure>');for(const text of rows.slice(1,-1))target.append(el('p',text));evidence(target,'EXPERT_REQUIRED',SOURCES.dsg);const print=el('button',rows.at(-1));print.type='button';print.className='pilot-print';print.onclick=()=>window.print();target.append(print);return;}
+     target.append(el('h2',NOTICE[locale].title));
+     for(const [key,row]of Object.entries(NOTICE[locale])){if(key==='title')continue;const s=el('section');s.dataset.noticeItem=key;s.append(el('h3',row[0]),el('p',row[1]));evidence(s,'NEEDS_REVIEW',key==='device'?SOURCES.dsv:SOURCES.dsg);target.append(s);}
+     const terms=el('section');terms.id='draft-terms';terms.append(el('h2',TERMS[locale][0]),el('p',TERMS[locale][1]));evidence(terms,'EXPERT_REQUIRED',SOURCES.terms);target.append(terms);

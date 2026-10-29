@@ -3,6 +3,7 @@ const SHELL = ['/simulation.html', '/simulation.css', '/simulation-ui.mjs', '/si
   '/simulation-personas.mjs', '/profile-portability.mjs', '/business-case.mjs', '/profile-brief.mjs',
   '/proof-state.mjs', '/case-material-budget.mjs', '/matching.mjs', '/b-matching.mjs', '/need-decay.mjs',
   '/style.css', '/tokens.css', '/simulation.webmanifest', '/icon-192.png', '/icon-512.png'];
+SHELL.push('/scenes.css','/scene-simulation.webp','/scene-simulation@2x.webp');
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', event => {

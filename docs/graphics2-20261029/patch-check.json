@@ -1,0 +1,12 @@
+{
+  "status": 0,
+  "stdout": "",
+  "stderr": "",
+  "sourceMatchesPreview": {
+    "privacy.html": true,
+    "pilot-consent.html": true,
+    "simulation-living-ui.mjs": true,
+    "legal-documents.mjs": true
+  },
+  "applied": false
+}

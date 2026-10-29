@@ -13,6 +13,7 @@ SHELL.push('/install-hint.mjs');
 SHELL.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 SHELL.push("/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 SHELL.push('/persona-mira.webp','/persona-leo.webp','/persona-nora.webp','/persona-felix.webp','/persona-ines.webp','/persona-sam.webp','/persona-tessa.webp','/persona-noah.webp','/persona-lina.webp','/persona-omar.webp','/synera-thread.webp','/synera-thread@2x.webp');
+SHELL.push('/scenes.css','/scene-summit.webp','/scene-summit@2x.webp','/scene-studio.webp','/scene-studio@2x.webp','/scene-triangle.webp','/scene-triangle@2x.webp','/scene-real-journey.webp','/scene-real-journey@2x.webp','/scene-rooms.webp','/scene-rooms@2x.webp','/scene-simulation.webp','/scene-simulation@2x.webp','/scene-privacy.webp','/scene-privacy@2x.webp','/scene-legal.webp','/scene-legal@2x.webp','/scene-get.webp','/scene-get@2x.webp','/scene-empty.webp','/scene-empty@2x.webp');
 self.addEventListener('install', event => { 
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))); 
