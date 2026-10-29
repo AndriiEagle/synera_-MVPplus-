@@ -22,8 +22,11 @@ test('zero, single rappen and amounts below one franc keep two decimals', () => 
   }
 });
 
-test('hand-built output agrees with the engine Intl.NumberFormat after whitespace normalisation', () => {
-  const norm = s => s.replace(/[\s  ]/g, ' ');
+test('hand-built output agrees with the engine Intl.NumberFormat after separator normalisation', () => {
+  // The grouping glyph is ICU/CLDR data, not our contract: Node 22 and Node 24 (CLDR 48) print an ASCII apostrophe
+  // for de-CH/it-CH and fr-CH currency; formatCHF keeps U+2019 / U+202F, which the first test pins. Compare code
+  // position, digits and the decimal point; ignore which grouping and space glyph the runtime uses.
+  const norm = s => s.replace(/[\s\u00a0\u202f\u2019']/g, '');
   for (const locale of CH_LOCALES) for (const minor of [0, 5, 750, 125050, 1234567, 123456789]) {
     const intl = new Intl.NumberFormat(locale, { style: 'currency', currency: 'CHF' }).format(minor / 100);
     assert.equal(norm(formatCHF(minor, locale)), norm(intl), `${locale} ${minor}`);
