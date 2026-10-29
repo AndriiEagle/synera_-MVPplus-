@@ -1,5 +1,6 @@
 // Shared presentation controls. They never read form values, profile data or consent.
 import './style-switcher.mjs';
+import './adaptive-ui.mjs';
 const KEY = 'synera.real-journey.language.v1', CODES = ['uk', 'de', 'en'];
 
 let storage = null;

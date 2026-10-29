@@ -1,0 +1,78 @@
+/* Prepared presentation settings only: the page structure and case material stay in place. */
+html[data-synera-style][data-personal-accent]:not([data-personal-accent="by-look"]) {
+  --ui-accent:var(--accent-text); --ui-action:var(--accent); --ui-on-action:var(--on-accent);
+}
+html[data-synera-style][data-personal-accent]:not([data-personal-accent="by-look"]) .site-page :is(.primary,#prepare-profile,#auth-submit,.rooms-primary) {
+  background:var(--accent); color:var(--on-accent); border-color:var(--accent-border);
+}
+html[data-synera-style][data-personal-accent]:not([data-personal-accent="by-look"]) .site-page :is(.primary,#prepare-profile,#auth-submit,.rooms-primary):hover { background:var(--accent-hover); }
+html[data-synera-style][data-personal-accent]:not([data-personal-accent="by-look"]) .site-page :is(.primary,#prepare-profile,#auth-submit,.rooms-primary):active { background:var(--accent-active); }
+html[data-personal-accent]:not([data-personal-accent="by-look"]) .site-page :is(a,button,input,select,textarea,summary):focus-visible {
+  outline:2px solid var(--focus-ring); outline-offset:2px; box-shadow:0 0 0 2px var(--focus-ring-gap);
+}
+html[data-personal-accent]:not([data-personal-accent="by-look"]) .adaptive-accents button[aria-pressed=true] {
+  background:var(--accent-surface); color:var(--on-accent-surface); border-color:var(--accent-border);
+}
+html[data-density] .site-page { font-size:calc(var(--adaptive-body-font-rem) * var(--adaptive-text-scale)); line-height:var(--adaptive-body-line-height); }
+html[data-synera-style][data-density] .site-page :is(button,select,input:not([type=checkbox]):not([type=radio]),textarea,summary,.primary) {
+  min-height:var(--adaptive-control-min-height-px); height:auto;
+  font-size:calc(var(--adaptive-button-label-rem) * var(--adaptive-text-scale)); line-height:1.5;
+  white-space:normal; overflow-wrap:anywhere; max-width:100%;
+}
+html[data-synera-style][data-density] .site-page :is(button,summary,.primary) { touch-action:manipulation; }
+html[data-density] .site-page :is(input[type=checkbox],input[type=radio]) { min-height:24px; width:24px; height:24px; flex:none; }
+html[data-density] .site-page :is(label.check,.adaptive-check,.real-check) { min-height:var(--adaptive-control-min-height-px); }
+html[data-synera-style][data-density] .site-page :is(.fine,.subtle,.real-note,.rooms-fine,.adaptive-storage,small) { font-size:calc(var(--adaptive-secondary-font-rem) * var(--adaptive-text-scale)); line-height:1.5; }
+html[data-synera-style][data-density] .site-page :is(.lead,.hero-description,.real-card p,.studio-card p,.rooms-card p,.adaptive-hint p,.adaptive-reset p) { font-size:calc(var(--adaptive-body-font-rem) * var(--adaptive-text-scale)); line-height:1.6; }
+html[data-synera-style][data-density] .site-page :is(.panel,.real-section,.real-card,.studio-card,.rooms-card,#real-auth,#real-blocked,#welcome) { padding:var(--adaptive-panel-padding-px); }
+html[data-density] .site-page :is(.real-list,.real-actions,.actions,.adaptive-settings,.adaptive-sizes[open]) { gap:var(--adaptive-item-gap-px); }
+html[data-density] .site-page :is(.real-card,.person-card) { min-height:var(--adaptive-list-row-min-height-px); }
+html[data-synera-style][data-density] .site-page main { max-width:var(--adaptive-content-max-width-px); min-width:0; }
+html[data-density] .site-page :is(.grid,.real-list,.people-grid) { grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--adaptive-desktop-detail-panel-preferred-width-px)),1fr)); }
+html[data-density] .site-page :is(main,section,article,fieldset,.header-preferences-content) { min-width:0; overflow-wrap:anywhere; }
+.adaptive-settings { display:grid; border-top:1px solid var(--ui-line); padding-top:20px; gap:12px; }
+.adaptive-settings h3 { font-size:1rem; margin:0; }
+.adaptive-accents { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; border:0; padding:0; margin:0; min-width:0; }
+.adaptive-accents legend { padding:0 0 8px; color:var(--ui-muted); }
+.adaptive-accents button { display:flex; gap:4px; align-items:center; justify-content:center; }
+.adaptive-accents button[aria-pressed=true] { border:2px solid var(--ui-action); }
+.adaptive-accents button[aria-pressed=true]::before { content:'✓'; flex:none; }
+html[data-synera-style][data-density] .site-page .adaptive-settings button {
+  background:var(--ui-field); background-image:none; color:var(--ui-ink); border:1px solid var(--ui-line); box-shadow:none;
+}
+html[data-synera-style][data-density] .site-page .adaptive-accents button[aria-pressed=true] {
+  background:var(--accent-surface,var(--ui-field)); color:var(--on-accent-surface,var(--ui-ink)); border:2px solid var(--accent-border,var(--ui-action));
+}
+html[data-synera-style][data-density] .site-page .adaptive-accents button { position:relative; display:block; padding-inline:8px; }
+html[data-synera-style][data-density] .site-page .adaptive-accents button[aria-pressed=true]::before { position:absolute; top:3px; left:4px; font-size:10px; }
+html[data-synera-style][data-density] .site-page .adaptive-accents button:not([data-personal-accent=by-look])::after {
+  content:''; width:8px; height:8px; border-radius:50%; background:var(--swatch-dark); position:absolute; right:5px; bottom:5px;
+}
+html:is([data-synera-style=atelier],[data-synera-style=original])[data-density] .site-page .adaptive-accents button:not([data-personal-accent=by-look])::after { background:var(--swatch-light); }
+.adaptive-settings :is(summary,button,select) { cursor:pointer; }
+.adaptive-settings details>summary { padding-block:12px; color:var(--ui-ink); }
+.adaptive-sizes[open] { display:grid; }
+.site-header .adaptive-check { display:flex; align-items:center; gap:12px; color:var(--ui-ink); padding-block:8px; cursor:pointer; }
+.adaptive-check input { accent-color:var(--ui-action); }
+.adaptive-settings :disabled { opacity:.6; cursor:default; }
+.adaptive-hint,.adaptive-proposal { position:relative; padding:16px; margin:12px 0; border:1px solid var(--ui-line); border-inline-start:3px solid var(--ui-accent); border-radius:8px; background:var(--ui-panel); color:var(--ui-ink); }
+.adaptive-hint p,.adaptive-proposal p { margin:0 0 12px; }
+.adaptive-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.adaptive-hint .adaptive-actions { display:grid; grid-template-columns:minmax(0,1fr); }
+.site-header .adaptive-hint .adaptive-actions button { width:100%; }
+.site-header .adaptive-actions button { width:auto; flex:1 1 100px; }
+.adaptive-storage { color:var(--ui-muted); margin:0; }
+.adaptive-preview { max-width:min(760px,calc(100% - 24px)); max-height:90dvh; overflow:auto; padding:24px; border:1px solid var(--ui-line); border-radius:16px; background:var(--ui-panel); color:var(--ui-ink); font:inherit; }
+.adaptive-preview::backdrop { background:#0009; }
+.adaptive-preview h2 { font-size:1.5rem; }
+.adaptive-preview button { min-height:48px; padding:12px; font:inherit; margin:4px; }
+html[data-synera-style] .site-page .adaptive-preview button { background:var(--ui-field); color:var(--ui-ink); border:1px solid var(--ui-line); border-radius:8px; box-shadow:none; }
+html[data-synera-style] .site-page .adaptive-preview .primary { background:var(--ui-action); color:var(--ui-on-action); }
+.adaptive-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.adaptive-sample { background:var(--ui-canvas); border:1px solid var(--ui-line); border-radius:8px; min-width:0; overflow-wrap:anywhere; }
+.adaptive-sample h3 { font:inherit; font-weight:600; }
+.adaptive-sample-action { display:flex; align-items:center; padding:8px; background:var(--ui-action); color:var(--ui-on-action); border-radius:6px; }
+@media(max-width:600px) { .adaptive-comparison { grid-template-columns:1fr; } }
+@media(forced-colors:active) {
+  html[data-synera-style][data-personal-accent] { --ui-accent:LinkText; --ui-action:ButtonFace; --ui-on-action:ButtonText; --accent:ButtonFace; --accent-hover:ButtonFace; --accent-active:ButtonFace; --on-accent:ButtonText; --accent-surface:Canvas; --on-accent-surface:CanvasText; --accent-border:ButtonText; --focus-ring:Highlight; --focus-ring-gap:Canvas; }
+}

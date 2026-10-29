@@ -1,4 +1,5 @@
 @import url('/tokens.css');
+@import url('/adaptive.css');
 
 /* Release palette and shared type, independent of each page's older layout. */
 :root {
