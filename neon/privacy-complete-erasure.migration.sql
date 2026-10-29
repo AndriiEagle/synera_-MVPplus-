@@ -1,0 +1,78 @@
+-- REVIEW ONLY. NOT APPLIED. Additive after the complete reviewed journey stack
+-- and profile-erasure.migration.sql. This is deliberately a different endpoint
+-- from synera_erase_profile_data(): that legacy RPC retains bilateral evidence.
+begin;
+do $$ begin
+  if to_regprocedure('public.synera_erase_profile_data()') is null
+    or to_regclass('public.location_consent_intents') is null
+    or to_regclass('public.meeting_address_events') is null
+    or to_regclass('public.match_outcome_events') is null
+    or to_regclass('public.group_rooms') is null then
+    raise exception 'Apply reviewed profile-erasure and journey migrations first';
+  end if;
+  if to_regprocedure('public.synera_complete_erase_application_data()') is not null then
+    raise exception 'Inspect existing complete erasure migration';
+  end if;
+end $$;
+
+-- This endpoint intentionally has no argument: the verified JWT subject is the
+-- only subject it can erase. The legacy erasure runs first to retain its
+-- stale-session tombstone and admission lock semantics.
+create function public.synera_complete_erase_application_data() returns jsonb
+language plpgsql security definer set search_path='' set lock_timeout='5s' as $$
+declare actor uuid:=public.synera_user_id(); repeated boolean; erased jsonb;
+begin
+  if actor is null then raise exception 'Erasure unavailable' using errcode='42501'; end if;
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text,17017));
+  repeated:=exists(select 1 from public.profile_erasures where user_id=actor);
+  if not repeated then
+    erased:=public.synera_erase_profile_data();
+    if erased->>'status'<>'application_data_erased' then raise exception 'Erasure unavailable' using errcode='42501'; end if;
+  end if;
+
+  -- Deleting a participant's meetings cascades their direct messages, address
+  -- agreement events, location grants and location-consent intent ids.
+  delete from public.meeting_requests where sender_id=actor or recipient_id=actor;
+  -- Cases carry both parties' negotiated material. Complete erasure deletes
+  -- cases involving the requester and their dependent approvals/outcomes.
+  delete from public.match_cases where participant_low=actor or participant_high=actor;
+  delete from public.profile_blocks where blocker_id=actor or blocked_id=actor;
+  delete from public.pilot_consents where user_id=actor;
+  -- Reports can contain free text about either party. Complete erasure removes
+  -- both directions; retaining a report about the requester would not be a
+  -- truthful complete application-data erasure claim.
+  delete from public.profile_reports where reporter_id=actor or reported_id=actor;
+
+  -- A room belongs to several people. Remove the erased person's authored text
+  -- and events; revoke membership. A room created by the erased person is
+  -- anonymised and closed so peers retain no title/goal supplied by that person.
+  -- A peer-owned active room may currently point its turn at the erased
+  -- member's position. Close that affected room before removing membership;
+  -- peer title, goal and peer-authored rows are retained.
+  update public.group_rooms r set status='closed',turn_position=null,turn_deadline=null,
+    turn_started_revision=null,closed_at=coalesce(r.closed_at,now()),revision=r.revision+1
+    where r.creator_id<>actor and exists(select 1 from public.group_room_members m where m.room_id=r.id and m.user_id=actor);
+  delete from public.group_room_messages m using public.group_rooms r
+    where m.room_id=r.id and (m.sender_id=actor or r.creator_id=actor);
+  delete from public.group_room_events e using public.group_rooms r
+    where e.room_id=r.id and (e.actor_id=actor or r.creator_id=actor);
+  delete from public.group_room_members m using public.group_rooms r
+    where m.room_id=r.id and (m.user_id=actor or r.creator_id=actor);
+  delete from public.group_rooms where creator_id=actor;
+
+  -- Retain only the minimal profile/tombstone identity needed to reject an old
+  -- provider session. synera_write_limits also remains: it is a protected
+  -- anti-abuse counter, not application content, and is inaccessible to clients.
+  return jsonb_build_object('status','application_data_completely_erased',
+    'providerDeletion','pending','staleSessionTombstone','retained','repeated',repeated);
+end $$;
+revoke all on function public.synera_complete_erase_application_data() from public,authenticated;
+grant execute on function public.synera_complete_erase_application_data() to authenticated;
+do $$ declare r text; begin
+  foreach r in array array['anon','anonymous'] loop
+    if exists(select 1 from pg_roles where rolname=r) then
+      execute format('revoke all on function public.synera_complete_erase_application_data() from %I',r);
+    end if;
+  end loop;
+end $$;
+commit;

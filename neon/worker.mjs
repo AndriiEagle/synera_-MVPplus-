@@ -186,20 +186,28 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       // A read can finish after another tab signed in. Only explicit logout clears cookies.
       return answer({ user: session?.user || null });
     }
-    if (path === '/profile-erasure') {
+    if (path === '/profile-erasure' || path === '/privacy-erasure') {
+      const complete = path === '/privacy-erasure';
       if (!profileErasureReady(env)) throw new GatewayError(503, 'profile_erasure_not_ready');
+      if (complete && env.SYNERA_COMPLETE_ERASURE_READY !== 'true') throw new GatewayError(503, 'profile_erasure_not_ready');
       if (request.method !== 'POST' || url.search) throw new GatewayError(404, 'not_found');
       const body = await readJson(request); checkKeys(body, ['confirm', 'expectedSubject']);
-      if (body.confirm !== 'ERASE_APPLICATION_DATA') throw new GatewayError(400, 'profile_erasure_confirmation_required');
+      if (body.confirm !== (complete ? 'ERASE_ALL_APPLICATION_DATA' : 'ERASE_APPLICATION_DATA')) throw new GatewayError(400, 'profile_erasure_confirmation_required');
       if (typeof body.expectedSubject !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(body.expectedSubject)) throw new GatewayError(400, 'profile_erasure_confirmation_required');
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
       if (!session) throw new GatewayError(401);
       // A precondition, never an RPC target: SQL still gets only the verified bearer.
       if (body.expectedSubject !== session.user.id) throw new GatewayError(409, 'profile_erasure_subject_mismatch');
-      const response = await checkedFetch(fetchImpl, endpoints.data + '/rpc/synera_erase_profile_data', {
+      const response = await checkedFetch(fetchImpl, endpoints.data + (complete ? '/rpc/synera_complete_erase_application_data' : '/rpc/synera_erase_profile_data'), {
         method:'POST', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + session.jwt}, body:'{}',
       }, 'profile_erasure_unavailable');
-      const result = profileErasureResult(await response.json());
+      const raw = await response.json();
+      let result;
+      if (complete) {
+        if (raw?.status !== 'application_data_completely_erased' || raw.providerDeletion !== 'pending' ||
+            raw.staleSessionTombstone !== 'retained' || typeof raw.repeated !== 'boolean') throw new GatewayError(503, 'profile_erasure_unavailable');
+        result = { status: raw.status, providerDeletion: raw.providerDeletion, staleSessionTombstone: raw.staleSessionTombstone, repeated: raw.repeated };
+      } else result = profileErasureResult(raw);
       // Erasure is already committed. A provider sign-out failure must not pretend it rolled back.
       let sessionRevoked = true;
       try { await authRequest(fetchImpl, endpoints, '/sign-out', {method:'POST',body:{},cookie}); }

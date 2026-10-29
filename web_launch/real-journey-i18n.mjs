@@ -8,6 +8,7 @@ const DATE_LOCALES = Object.freeze({ uk: 'uk', de: 'de-CH', en: 'en-GB' });
 
 // [Ukrainian source, German (Swiss spelling, informal «du»), English]
 export const TABLE = Object.freeze([
+  ['Твої дані', 'Deine Daten', 'Your data'],
   ['Підготувати чернетку профілю', 'Profilentwurf vorbereiten', 'Prepare a profile draft'],
   ['Спробувати розмову втрьох у цій вкладці', 'Gespräch zu dritt in diesem Tab ausprobieren', 'Try a three-person conversation in this tab'],
   ['потрібен вхід', 'Anmeldung nötig', 'sign-in required'],

@@ -1,0 +1,18 @@
+{
+  "scope": "local snapshots only",
+  "checks": [
+    {
+      "name": "disabled_expiry_is_rejected_by_mocked_clock_test",
+      "pass": true,
+      "nativeExit": 1
+    },
+    {
+      "name": "base_HEAD_cannot_open_privacy_centre",
+      "pass": true,
+      "status": 404
+    }
+  ],
+  "temp": "C:\\sw\\synera-openreg\\tmp\\privacy-negative-YZ5uMi",
+  "base": "3d200f3196a19ece9383cfde37cee8699d61d348",
+  "status": "PASS_NEGATIVE_CONTROLS"
+}

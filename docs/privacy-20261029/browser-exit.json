@@ -1,0 +1,1 @@
+{"command": ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "docs/privacy-20261029/playwright.config.mjs", "tests/browser-e2e.spec.mjs", "tests/studio-e2e.spec.mjs", "tests/privacy-e2e.spec.mjs"], "native_exit_code": 0}
