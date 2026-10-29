@@ -1,0 +1,16 @@
+✔ no provider dispatch when stop changes during capture (27.4017ms)
+✔ no provider dispatch when revision changes during capture (41.3296ms)
+✔ no provider dispatch when draft changes during capture (27.2211ms)
+✔ unchanged clean frame reaches one model call and records the UI result (16.4606ms)
+✔ I1: runtime restart atomically removes expired sessions, preserves fresh ones and does not renew reads (353.7238ms)
+✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (409.9266ms)
+✔ executor refuses stale, cross-action payloads and unbounded fields (3.0078ms)
+✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (210.5781ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3073.8722

@@ -71,9 +71,11 @@ export function renderDocuments(pilot=false) {
   if(!pilot) {
     const archive=el('details');archive.className='legacy-pilot';
     archive.append(el('summary','2026-09-05-pilot-3 · NEEDS_REVIEW · Archiv / Архів / Archive'));
-    for(const child of [...main.children]) if(child!==target && child.id!=='privacy-notice' && child.tagName!=='H1' && !child.classList.contains('more-modes')) archive.append(child);
+    for(const child of [...main.children]) if(child!==target && child.id!=='privacy-notice' && child.tagName!=='H1' && !child.classList.contains('more-modes') && !child.matches('figure.scene')) archive.append(child);
     main.append(archive);
     const heading=main.querySelector(':scope > h1');if(heading)main.prepend(heading);
+    // The page's signature scene stays visible under the heading; only the old pilot text goes to the archive.
+    const scene=main.querySelector(':scope > figure.scene');if(heading&&scene)heading.after(scene);
     const source=el('a','NEEDS_REVIEW · DSG / EDÖB');source.href=SOURCES.dsg;archive.prepend(source);
   }
   let locale = new URL(location.href).searchParams.get('lang');if(!Object.hasOwn(NOTICE,locale))locale='de';

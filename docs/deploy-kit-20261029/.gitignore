@@ -4,3 +4,4 @@
 .pg-*/
 pg-init.txt
 pg-server.log
+*.zip

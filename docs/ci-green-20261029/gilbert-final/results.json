@@ -1,0 +1,224 @@
+[
+  {
+    "step": "01-main",
+    "exit": 0,
+    "seconds": 19.86,
+    "command": [
+      "node",
+      "--test",
+      "web_launch/*.test.mjs",
+      "web_launch/iceberg/*.test.mjs",
+      "neon/*.test.mjs",
+      "plan/v6/workflow/approval-boundary.test.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\01-main.txt"
+  },
+  {
+    "step": "02-simulation",
+    "exit": 0,
+    "seconds": 3.42,
+    "command": [
+      "node",
+      "--import",
+      "file:///C:/Users/Andrii/.codex/outputs/synera-gilbert-readiness-20261021/dependency-resolution.mjs",
+      "--test",
+      "tools/simulation-server.test.mjs",
+      "tools/simulation-runner.test.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\02-simulation.txt"
+  },
+  {
+    "step": "03-pwa",
+    "exit": 0,
+    "seconds": 1.17,
+    "command": [
+      "node",
+      "--test",
+      "tests/pwa/*.test.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\03-pwa.txt"
+  },
+  {
+    "step": "04-i18n",
+    "exit": 0,
+    "seconds": 0.78,
+    "command": [
+      "node",
+      "--test",
+      "tests/i18n_ch/*.test.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\04-i18n.txt"
+  },
+  {
+    "step": "05-python",
+    "exit": 0,
+    "seconds": 0.89,
+    "command": [
+      "py",
+      "-3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools",
+      "-p",
+      "test_simulation_provider.py"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\05-python.txt"
+  },
+  {
+    "step": "06-e2e",
+    "exit": 0,
+    "seconds": 478.59,
+    "command": [
+      "node",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "C:/sw/pw-chrome.config.mjs",
+      "--output",
+      "C:\\sw\\synera-design\\docs\\ci-green-20261029\\gilbert-final\\e2e-output",
+      "tests/browser-e2e.spec.mjs",
+      "tests/studio-e2e.spec.mjs",
+      "tests/privacy-e2e.spec.mjs",
+      "tests/graphics-e2e.spec.mjs",
+      "tests/graphics2-e2e.spec.mjs",
+      "tests/integrate-e2e.spec.mjs",
+      "tests/simulation-living.spec.mjs",
+      "tests/product-access.spec.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\06-e2e.txt"
+  },
+  {
+    "step": "07-header",
+    "exit": 0,
+    "seconds": 37.78,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/header-layout-acceptance-20261013.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\07-header.txt"
+  },
+  {
+    "step": "08a-build",
+    "exit": 0,
+    "seconds": 1.09,
+    "command": [
+      "node",
+      "neon/build.mjs",
+      "dist-neon-ci"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\08a-build.txt"
+  },
+  {
+    "step": "08b-offline",
+    "exit": 0,
+    "seconds": 29.55,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/offline-shell-acceptance.mjs",
+      "--candidate=web_launch/dist-neon-ci"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\08b-offline.txt"
+  },
+  {
+    "step": "09-location",
+    "exit": 0,
+    "seconds": 9.74,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/location-browser-acceptance.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\09-location.txt"
+  },
+  {
+    "step": "10-social",
+    "exit": 0,
+    "seconds": 16.59,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/case-social-draft-browser.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\10-social.txt"
+  },
+  {
+    "step": "11-erasure",
+    "exit": 0,
+    "seconds": 12.45,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/profile-erasure-browser.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\11-erasure.txt"
+  },
+  {
+    "step": "12-cookie",
+    "exit": 0,
+    "seconds": 7.09,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/audit-session-cookie-browser.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\12-cookie.txt"
+  },
+  {
+    "step": "13-paid",
+    "exit": 0,
+    "seconds": 38.19,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/audit-paid-journey-browser.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\13-paid.txt"
+  },
+  {
+    "step": "14-simulation-browser",
+    "exit": 0,
+    "seconds": 26.02,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "tools/simulation-browser-acceptance.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\14-simulation-browser.txt"
+  },
+  {
+    "step": "15-a11y",
+    "exit": 0,
+    "seconds": 15.11,
+    "command": [
+      "node",
+      "--require",
+      "C:/sw/task1601-header-chrome.cjs",
+      "web_launch/a11y_audit.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\15-a11y.txt"
+  },
+  {
+    "step": "16-android",
+    "exit": 0,
+    "seconds": 0.55,
+    "command": [
+      "node",
+      "--test",
+      "android/*.test.mjs"
+    ],
+    "log": "docs\\ci-green-20261029\\gilbert-final\\16-android.txt"
+  }
+]

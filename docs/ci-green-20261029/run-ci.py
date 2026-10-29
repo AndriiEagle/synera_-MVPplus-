@@ -16,7 +16,7 @@ STEPS = [
     ('03-pwa', NODE + ['--test', 'tests/pwa/*.test.mjs']),
     ('04-i18n', NODE + ['--test', 'tests/i18n_ch/*.test.mjs']),
     ('05-python', ['py', '-3', '-B', '-m', 'unittest', 'discover', '-s', 'tools', '-p', 'test_simulation_provider.py']),
-    ('06-e2e', NODE + ['node_modules/@playwright/test/cli.js', 'test', '--config', 'C:/sw/pw-chrome.config.mjs', '--output', str(ROOT / 'docs/ci-green-20261029/e2e-output'), 'tests/browser-e2e.spec.mjs', 'tests/studio-e2e.spec.mjs']),
+    ('06-e2e', NODE + ['node_modules/@playwright/test/cli.js', 'test', '--config', 'C:/sw/pw-chrome.config.mjs', '--output', str(ROOT / 'docs/ci-green-20261029/e2e-output'), 'tests/browser-e2e.spec.mjs', 'tests/studio-e2e.spec.mjs', 'tests/privacy-e2e.spec.mjs', 'tests/graphics-e2e.spec.mjs', 'tests/graphics2-e2e.spec.mjs', 'tests/integrate-e2e.spec.mjs', 'tests/simulation-living.spec.mjs', 'tests/product-access.spec.mjs']),
     ('07-header', BROWSER + ['tools/header-layout-acceptance-20261013.mjs']),
     ('08a-build', NODE + ['neon/build.mjs', 'dist-neon-ci']),
     ('08b-offline', BROWSER + ['tools/offline-shell-acceptance.mjs', '--candidate=web_launch/dist-neon-ci']),

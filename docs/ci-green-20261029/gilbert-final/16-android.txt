@@ -1,0 +1,14 @@
+✔ Bubblewrap manifest matches the existing PWA and files-only template contract (6.1505ms)
+✔ every PWA, TWA and shortcut icon exists; launcher and maskable PNG are at least 512px (14.2539ms)
+✔ three fastlane locales contain complete text within 30/80/4000 limits (24.118ms)
+✔ Digital Asset Links template binds the same package and explicitly awaits the Play certificate (2.7983ms)
+✔ negative controls reject schema, permissions, color drift, missing and escaped icons (24.2037ms)
+✔ negative controls reject overflow, missing text and invalid single-line fields (2.4296ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 384.195
