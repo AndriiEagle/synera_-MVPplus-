@@ -12,7 +12,7 @@ export const COMPACT_PRESETS = Object.freeze([
 export const ALL_STYLES = Object.freeze([SYNERA_STYLE, ATELIER_STYLE, ORIGINAL_STYLE, NIGHT_STYLE, ...COMPACT_PRESETS.map(([id]) => id)]);
 
 export function normalizeStyle(value) {
-  return ALL_STYLES.includes(value) ? value : ATELIER_STYLE;
+  return ALL_STYLES.includes(value) ? value : SYNERA_STYLE;
 }
 
 export function styleToggleCopy(style) {

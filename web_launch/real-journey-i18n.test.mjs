@@ -53,7 +53,7 @@ test('every Ukrainian string of the page markup is a translated source', async (
   // A language is named in that language, and the selector is labelled in all three at once.
   const own = new Set(['Українська', 'Мова · Sprache · Language']);
   assert.deepEqual(ukrainian.filter(text => !hasSource(text) && !own.has(text)), []);
-  assert.match(html, /<html lang="uk" data-synera-style="atelier">/, 'Ukrainian must stay the default document language');
+  assert.match(html, /<html lang="uk" data-synera-style="synera">/, 'Ukrainian must stay the default document language');
   assert.match(html, /<select id="site-language"[^>]*><option value="uk"[^>]*>Українська<\/option><option value="de"[^>]*>Deutsch<\/option><option value="en"[^>]*>English<\/option><\/select>/);
   assert.equal(PUBLIC_ASSETS['real-journey-i18n.mjs'], 'text/javascript', 'the module must ship with the page');
 });

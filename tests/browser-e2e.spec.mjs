@@ -148,12 +148,12 @@ for (const width of [320, 375]) {
   });
 }
 
-test('Atelier is the default; Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
+test('Dark with gold (Synera) is the default; Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
   const styles = page.getByRole('combobox', { name: 'Вигляд', exact: true });
-  await expect(styles).toHaveValue('atelier');
-  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
+  await expect(styles).toHaveValue('synera');
+  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
   for (const style of ['synera', 'atelier', 'original', 'synera', 'atelier']) {
     await styles.selectOption(style);
     await expect(page.locator('html')).toHaveAttribute('data-synera-style', style);

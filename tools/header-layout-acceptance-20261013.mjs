@@ -35,7 +35,7 @@ try{for(const language of ['uk','de','en'])for(const atelier of [false,true])for
   await page.goto(base+'/?lang=en',{waitUntil:'networkidle'});await page.locator('#prepare-profile').click();await page.locator('#profile-view').waitFor({state:'visible'});
   await page.locator('#profile-form [name=offers]').fill('SYNTHETIC UNSAVED prototype');await page.locator('#profile-form [name=display_name]').fill('Synthetic Review');const before=await page.evaluate(fields);
   await page.locator('.header-preferences > summary').click();await page.locator('#site-language').selectOption(language);await page.waitForFunction(l=>document.documentElement.lang===l,language);
-  // Atelier is now the default: explicitly exercise Current too, plus the existing Atelier settings.
+  // Dark with gold (Current) is the default again since 29.10: explicitly exercise both Current and Atelier.
   const style=atelier?'atelier':'synera';await page.locator('#style-preset').selectOption(style);
   await page.locator('.adaptive-legacy > summary').click();
   await page.locator('.atelier-mode-choice button').nth(atelier?1:0).click();

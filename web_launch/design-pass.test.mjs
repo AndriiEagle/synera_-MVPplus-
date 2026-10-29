@@ -4,14 +4,14 @@ import { installStyleSwitcher, ALL_STYLES } from './style-switcher.mjs';
 import fs from 'node:fs';
 import { PUBLIC_ASSETS } from './assets.mjs';
 
-test('release look defaults to Atelier without overwriting any explicit saved style or consent', () => {
+test('release look defaults to dark with gold (Synera) without overwriting any explicit saved style or consent', () => {
   for (const preference of [null, 'invalid', ...ALL_STYLES]) {
     const saved = new Map(preference === null ? [] : [['synera.style', preference]]);
     const root = { dataset: { consent: 'private' } };
     const current = installStyleSwitcher({ root, button: null, select: null, storage: {
       getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value)
     } });
-    assert.equal(current, ALL_STYLES.includes(preference) ? preference : 'atelier');
+    assert.equal(current, ALL_STYLES.includes(preference) ? preference : 'synera');
     assert.equal(root.dataset.consent, 'private');
     assert.equal(saved.get('synera.style'), preference === null ? undefined : preference, 'reading a default never writes a preference');
   }
@@ -25,7 +25,7 @@ test('the common look selector retains the chosen style and never changes consen
       getItem(){if(denied)throw new Error('denied');return null;},
       setItem(key,value){if(denied)throw new Error('denied');saved.set(key,value);}
     }});
-    assert.equal(select.value,'atelier');
+    assert.equal(select.value,'synera');
     for(const value of ALL_STYLES){
       select.value=value;handlers.change();
       assert.equal(root.dataset.syneraStyle,value);
