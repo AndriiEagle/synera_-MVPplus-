@@ -1,0 +1,32 @@
+TAP version 13
+# Subtest: standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates
+not ok 1 - standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates
+  ---
+  duration_ms: 60.049
+  type: 'test'
+  location: 'C:\\Users\\Andrii\\AppData\\Local\\Temp\\synera-openreg-5UJehO\\neon\\google-oauth.test.mjs:111:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    401 !== 303
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 303
+  actual: 401
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Andrii/AppData/Local/Temp/synera-openreg-5UJehO/neon/google-oauth.test.mjs:119:12)
+    async Test.run (node:internal/test_runner/test:1313:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 243.0727

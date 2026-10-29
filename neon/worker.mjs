@@ -6,6 +6,7 @@ import { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';
 import { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';
 import { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';
 import { caseMaterialBytes, CASE_MATERIAL_MAX_BYTES, CASE_REQUEST_MAX_BYTES } from '../web_launch/case-material-budget.mjs';
+import { normalizeOpenEmail, withOtpProtection, OtpProtectionError } from './otp-abuse.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -20,7 +21,7 @@ const TABLES = new Set(['profiles', 'pilot_consents', 'meeting_requests', 'meeti
 const METHODS = new Set(['GET', 'POST', 'PATCH', 'DELETE']);
 const jsonHeaders = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
 const answer = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { ...jsonHeaders, ...headers } });
-class GatewayError extends Error { constructor(status, code = 'service_unavailable') { super('Gateway request rejected'); this.status = status; this.code = code; } }
+class GatewayError extends Error { constructor(status, code = 'service_unavailable', upstreamStatus) { super('Gateway request rejected'); this.status = status; this.code = code; this.upstreamStatus = upstreamStatus; } }
 
 function originValue(value) {
   const url = new URL(value);
@@ -37,6 +38,7 @@ export function neonEndpoints(env) {
   return { auth: auth.href, data: data.href, origin: originValue(env.SYNERA_SITE_URL) };
 }
 function participants(env) {
+  if (env.SYNERA_OPEN_REGISTRATION === 'true') return { has(email) { try { normalizeOpenEmail(email); return true; } catch { return false; } } };
   const emails = String(env.SYNERA_PILOT_EMAILS || '').split(',').map(v => v.trim().toLowerCase()).filter(Boolean);
   if (!emails.length || emails.length > 10 || emails.some(v => !/^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/.test(v))) throw new GatewayError(503);
   return new Set(emails);
@@ -79,7 +81,8 @@ async function readJson(request, maxBytes = 4096) {
   catch { throw new GatewayError(400); }
 }
 function checkKeys(body, expected) { if (Object.keys(body).some(key => !expected.includes(key))) throw new GatewayError(400); }
-function checkedEmail(body, allowed) {
+function checkedEmail(body, allowed, env) {
+  if (env.SYNERA_OPEN_REGISTRATION === 'true') return normalizeOpenEmail(body.email);
   if (typeof body.email !== 'string' || body.email.length > 254) throw new GatewayError(400);
   const email = body.email.trim().toLowerCase();
   if (!allowed.has(email)) throw new GatewayError(403);
@@ -90,7 +93,7 @@ async function checkedFetch(fetchImpl, url, init, code = 'service_unavailable') 
   try { response = await fetchImpl(url, { ...init, redirect: 'manual', signal: AbortSignal.timeout(12000), cache: 'no-store' }); }
   catch { throw new GatewayError(503, code); }
   if (!response.ok) throw new GatewayError([400, 401, 403, 409, 422, 429].includes(response.status) ? response.status : 503,
-    code === 'otp_verification_unavailable' && [400, 401, 422].includes(response.status) ? 'otp_invalid' : code);
+    code === 'otp_verification_unavailable' && [400, 401, 422].includes(response.status) ? 'otp_invalid' : code, response.status);
   return response;
 }
 async function authRequest(fetchImpl, endpoints, path, { method = 'GET', body, cookie = '' } = {}) {
@@ -148,18 +151,35 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
       const body = await readJson(request); checkKeys(body, ['email', 'consent']);
       if (body.consent?.policy_version !== POLICY_VERSION) throw new GatewayError(400);
       try { consentRecord(body.consent); } catch { throw new GatewayError(400); }
-      const email = checkedEmail(body, allowed);
-      await authRequest(fetchImpl, endpoints, '/email-otp/send-verification-otp', { method: 'POST', body: { email, type: 'sign-in' } });
+      const email = checkedEmail(body, allowed, env);
+      const send = async () => {
+        try { await authRequest(fetchImpl, endpoints, '/email-otp/send-verification-otp', { method: 'POST', body: { email, type: 'sign-in' } }); }
+        catch (error) {
+          // Provider account-existence errors receive the same response as a sent code.
+          if (env.SYNERA_OPEN_REGISTRATION !== 'true' || !(error instanceof GatewayError) || ![400, 401, 403, 404, 409, 422].includes(error.upstreamStatus ?? error.status)) throw error;
+        }
+      };
+      if (env.SYNERA_OPEN_REGISTRATION === 'true') await withOtpProtection(env, email, request, 'request', send, consentRecord(body.consent));
+      else await send();
       return answer({ sent: true });
     }
     if (path === '/otp/verify' && request.method === 'POST' && !url.search) {
       if (env.SYNERA_REGISTRATION_ENABLED !== 'true') throw new GatewayError(403);
-      const body = await readJson(request); checkKeys(body, ['email', 'otp']); const email = checkedEmail(body, allowed);
+      const body = await readJson(request); checkKeys(body, ['email', 'otp']); const email = checkedEmail(body, allowed, env);
       if (typeof body.otp !== 'string' || !/^\d{6}$/.test(body.otp)) throw new GatewayError(400);
-      const response = await authRequest(fetchImpl, endpoints, '/sign-in/email-otp', { method: 'POST', body: { email, otp: body.otp } });
-      const user = publicUser(await response.json(), allowed);
-      if (user.email.toLowerCase() !== email) throw new GatewayError(401);
-      return answer({ user }, 200, { 'Set-Cookie': sessionCookie(providerCookie(response)) });
+      const verify = async () => {
+        try {
+          const response = await authRequest(fetchImpl, endpoints, '/sign-in/email-otp', { method: 'POST', body: { email, otp: body.otp } });
+          const user = publicUser(await response.json(), allowed);
+          if (user.email.toLowerCase() !== email) throw new GatewayError(401);
+          return answer({ user }, 200, { 'Set-Cookie': sessionCookie(providerCookie(response)) });
+        } catch (error) {
+          if (env.SYNERA_OPEN_REGISTRATION === 'true' && error instanceof GatewayError && [400, 401, 403, 404, 409, 422].includes(error.upstreamStatus ?? error.status)) throw new GatewayError(400, 'otp_invalid');
+          throw error;
+        }
+      };
+      return env.SYNERA_OPEN_REGISTRATION === 'true'
+        ? await withOtpProtection(env, email, request, 'verify', verify, { policy_version: POLICY_VERSION }) : await verify();
     }
     if (path === '/session' && request.method === 'GET' && !url.search) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
@@ -268,10 +288,12 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     // RLS and column grants enforce ownership even if somebody bypasses the browser UI.
     return new Response(response.body, { status: response.status, headers: jsonHeaders });
   } catch (error) {
-    const status = error instanceof GatewayError ? error.status : 503;
+    const known = error instanceof GatewayError || error instanceof OtpProtectionError;
+    const status = known ? error.status : 503;
     const requestPath = new URL(request.url).pathname;
     const clear = requestPath === '/api/neon/logout';
-    return answer({ error: error instanceof GatewayError ? error.code : 'service_unavailable', status }, status, clear ? { 'Set-Cookie': sessionCookie('') } : {});
+    return answer({ error: known ? error.code : 'service_unavailable', status }, status,
+      { ...(clear ? { 'Set-Cookie': sessionCookie('') } : {}), ...(error.retryAfter ? { 'Retry-After': String(error.retryAfter) } : {}) });
   }
 }
 

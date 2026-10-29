@@ -1,0 +1,4426 @@
+TAP version 13
+# Subtest: TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged
+ok 1 - TA02: four legal Ukrainian fields of 500 characters cross the real gateway unchanged
+  ---
+  duration_ms: 265.5832
+  type: 'test'
+  ...
+# Subtest: TA02: a material below/at/above PostgreSQL bytes and bounded wire transport
+ok 2 - TA02: a material below/at/above PostgreSQL bytes and bounded wire transport
+  ---
+  duration_ms: 39.004
+  type: 'test'
+  ...
+# Subtest: TA02: і material below/at/above PostgreSQL bytes and bounded wire transport
+ok 3 - TA02: і material below/at/above PostgreSQL bytes and bounded wire transport
+  ---
+  duration_ms: 18.4096
+  type: 'test'
+  ...
+# Subtest: TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport
+ok 4 - TA02: 😀 material below/at/above PostgreSQL bytes and bounded wire transport
+  ---
+  duration_ms: 21.0525
+  type: 'test'
+  ...
+# Subtest: TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096
+ok 5 - TA02: request byte boundary includes JSON overhead and keeps unrelated routes at 4096
+  ---
+  duration_ms: 7.1082
+  type: 'test'
+  ...
+# Subtest: TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity
+ok 6 - TA01: displayed A with verified B refuses before destructive RPC and clears stale local identity
+  ---
+  duration_ms: 102.5508
+  type: 'test'
+  ...
+# Subtest: TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC
+ok 7 - TA01: own erasure is still self-only, and malformed/missing/mismatched subject never calls RPC
+  ---
+  duration_ms: 28.1864
+  type: 'test'
+  ...
+# Subtest: TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does
+ok 8 - TA03: null and rejected read sessions never emit cookie deletion; explicit logout still does
+  ---
+  duration_ms: 5.7668
+  type: 'test'
+  ...
+# Subtest: TA01: a delayed subject mismatch cannot erase a newer local B or same-A login
+ok 9 - TA01: a delayed subject mismatch cannot erase a newer local B or same-A login
+  ---
+  duration_ms: 3.0149
+  type: 'test'
+  ...
+# Subtest: established origin boundary rejects cross-site outcome requests before authentication
+ok 10 - established origin boundary rejects cross-site outcome requests before authentication
+  ---
+  duration_ms: 132.8021
+  type: 'test'
+  ...
+# Subtest: outcome rollout is closed by default and requires all three explicit gates
+ok 11 - outcome rollout is closed by default and requires all three explicit gates
+  ---
+  duration_ms: 28.9477
+  type: 'test'
+  ...
+# Subtest: API forwards only the reviewed case payload with a fresh server-derived JWT
+ok 12 - API forwards only the reviewed case payload with a fresh server-derived JWT
+  ---
+  duration_ms: 16.9949
+  type: 'test'
+  ...
+# Subtest: forged identity, clocks, invalid revisions and irrelevant action fields make no upstream call
+ok 13 - forged identity, clocks, invalid revisions and irrelevant action fields make no upstream call
+  ---
+  duration_ms: 30.9513
+  type: 'test'
+  ...
+# Subtest: route, byte, media and private-table boundaries reject unsupported requests without an RPC
+ok 14 - route, byte, media and private-table boundaries reject unsupported requests without an RPC
+  ---
+  duration_ms: 26.3825
+  type: 'test'
+  ...
+# Subtest: missing/revoked sessions never reach the data API and conflict responses do not expose upstream details
+ok 15 - missing/revoked sessions never reach the data API and conflict responses do not expose upstream details
+  ---
+  duration_ms: 8.8663
+  type: 'test'
+  ...
+# Subtest: public outcome config cannot enable a backend without the existing account/journey gates
+ok 16 - public outcome config cannot enable a backend without the existing account/journey gates
+  ---
+  duration_ms: 1.5908
+  type: 'test'
+  ...
+# Subtest: the same semantic origin guard detects removal of the cross-site check in an isolated module
+ok 17 - the same semantic origin guard detects removal of the cross-site check in an isolated module
+  ---
+  duration_ms: 39.7212
+  type: 'test'
+  ...
+# Subtest: a valid provider configuration advertises Google sign-in with its verified init URL
+ok 18 - a valid provider configuration advertises Google sign-in with its verified init URL
+  ---
+  duration_ms: 103.9166
+  type: 'test'
+  ...
+# Subtest: an invalid provider URL closes Google sign-in and still answers the public configuration
+ok 19 - an invalid provider URL closes Google sign-in and still answers the public configuration
+  ---
+  duration_ms: 4.3598
+  type: 'test'
+  ...
+# Subtest: Google OAuth bridges an explicit-consent start and callback without exposing provider values
+ok 20 - Google OAuth bridges an explicit-consent start and callback without exposing provider values
+  ---
+  duration_ms: 128.1453
+  type: 'test'
+  ...
+# Subtest: Google OAuth rejects missing consent and unsafe upstream start responses without retaining a challenge
+ok 21 - Google OAuth rejects missing consent and unsafe upstream start responses without retaining a challenge
+  ---
+  duration_ms: 10.9333
+  type: 'test'
+  ...
+# Subtest: Google callback clears the challenge on malformed, duplicate, crossed or denied inputs
+ok 22 - Google callback clears the challenge on malformed, duplicate, crossed or denied inputs
+  ---
+  duration_ms: 36.4878
+  type: 'test'
+  ...
+# Subtest: legacy challenge receives a distinct local cookie name and legacy flag alone stays closed
+ok 23 - legacy challenge receives a distinct local cookie name and legacy flag alone stays closed
+  ---
+  duration_ms: 20.251
+  type: 'test'
+  ...
+# Subtest: standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates
+ok 24 - standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates
+  ---
+  duration_ms: 9.0426
+  type: 'test'
+  ...
+# Subtest: reviewed room migration and rollback oracle are exactly generated from their canonical sources
+ok 25 - reviewed room migration and rollback oracle are exactly generated from their canonical sources
+  ---
+  duration_ms: 48.416
+  type: 'test'
+  ...
+# Subtest: an unknown eligibility contract fails generation rather than silently omitting Neon admission
+ok 26 - an unknown eligibility contract fails generation rather than silently omitting Neon admission
+  ---
+  duration_ms: 60.9788
+  type: 'test'
+  ...
+# Subtest: room contract sends only declared fields and database owns the actor
+ok 27 - room contract sends only declared fields and database owns the actor
+  ---
+  duration_ms: 91.15
+  type: 'test'
+  ...
+# Subtest: forged identity, duplicate/self invitations, wrong revisions and bodies make no RPC
+ok 28 - forged identity, duplicate/self invitations, wrong revisions and bodies make no RPC
+  ---
+  duration_ms: 45.7296
+  type: 'test'
+  ...
+# Subtest: live room rollout stays shut and original origin checks forbid cross-site mutations
+ok 29 - live room rollout stays shut and original origin checks forbid cross-site mutations
+  ---
+  duration_ms: 11.4323
+  type: 'test'
+  ...
+# Subtest: room gateway forwards fresh verified-session JWT and never caller identity or cookies
+ok 30 - room gateway forwards fresh verified-session JWT and never caller identity or cookies
+  ---
+  duration_ms: 4.2975
+  type: 'test'
+  ...
+# Subtest: C03.L4: acceptance SQL структурно валідний — begin + set local role + ROLLBACK у кінці
+ok 31 - C03.L4: acceptance SQL структурно валідний — begin + set local role + ROLLBACK у кінці
+  ---
+  duration_ms: 23.3089
+  type: 'test'
+  ...
+# Subtest: C03.L4: disposable-гігієна — всі email у скрипті з .example, жодних реальних PII
+ok 32 - C03.L4: disposable-гігієна — всі email у скрипті з .example, жодних реальних PII
+  ---
+  duration_ms: 11.444
+  type: 'test'
+  ...
+# Subtest: C03.L4: валідатор ловить зламані скрипти — без ROLLBACK, з реальним email, з DROP DATABASE
+ok 33 - C03.L4: валідатор ловить зламані скрипти — без ROLLBACK, з реальним email, з DROP DATABASE
+  ---
+  duration_ms: 36.4866
+  type: 'test'
+  ...
+# Subtest: C03.L4: neon_auth shim — мінімальний, ідемпотентний; schema.proposal.sql сам визначає synera_user_id
+ok 34 - C03.L4: neon_auth shim — мінімальний, ідемпотентний; schema.proposal.sql сам визначає synera_user_id
+  ---
+  duration_ms: 13.5592
+  type: 'test'
+  ...
+# Subtest: C03.L4: runAcceptance — fail-closed без інʼєкцій і на помилці pre:schema
+ok 35 - C03.L4: runAcceptance — fail-closed без інʼєкцій і на помилці pre:schema
+  ---
+  duration_ms: 4.8299
+  type: 'test'
+  ...
+# Subtest: C03.L4: runAcceptance через інʼєкцію — PASS із rolled_back і leftover=0
+ok 36 - C03.L4: runAcceptance через інʼєкцію — PASS із rolled_back і leftover=0
+  ---
+  duration_ms: 2.0607
+  type: 'test'
+  ...
+# Subtest: C03.L4: receipt — fail-closed без вердикту; канонічна форма з always_rollback
+ok 37 - C03.L4: receipt — fail-closed без вердикту; канонічна форма з always_rollback
+  ---
+  duration_ms: 1.1402
+  type: 'test'
+  ...
+# Subtest: C03.L4: migration.sql існує поруч і ніколи не редагується вручну — маркер generate-schema
+ok 38 - C03.L4: migration.sql існує поруч і ніколи не редагується вручну — маркер generate-schema
+  ---
+  duration_ms: 5.39
+  type: 'test'
+  ...
+# Subtest: C03.L4: integration-run — тільки якщо SYNERA_ACCEPTANCE_PG заданий; інакше чесний SKIP
+ok 39 - C03.L4: integration-run — тільки якщо SYNERA_ACCEPTANCE_PG заданий; інакше чесний SKIP # SKIP SYNERA_ACCEPTANCE_PG не заданий — integration-run проти disposable PG пропущений (offline CI)
+  ---
+  duration_ms: 0.9531
+  type: 'test'
+  ...
+# Subtest: address inherits same-origin and cross-site guards before any session access
+ok 40 - address inherits same-origin and cross-site guards before any session access
+  ---
+  duration_ms: 77.7691
+  type: 'test'
+  ...
+# Subtest: address route and public configuration stay closed without all three explicit gates
+ok 41 - address route and public configuration stay closed without all three explicit gates
+  ---
+  duration_ms: 24.1197
+  type: 'test'
+  ...
+# Subtest: all four address actions forward an exact reviewed proposal through a fixed RPC with a fresh server JWT
+ok 42 - all four address actions forward an exact reviewed proposal through a fixed RPC with a fresh server JWT
+  ---
+  duration_ms: 35.6395
+  type: 'test'
+  ...
+# Subtest: forged identity, clocks, stale shapes and implicit consent are rejected without upstream calls
+ok 43 - forged identity, clocks, stale shapes and implicit consent are rejected without upstream calls
+  ---
+  duration_ms: 23.6571
+  type: 'test'
+  ...
+# Subtest: address route, body and private-table boundaries reject unsupported requests before any RPC
+ok 44 - address route, body and private-table boundaries reject unsupported requests before any RPC
+  ---
+  duration_ms: 8.019
+  type: 'test'
+  ...
+# Subtest: missing or revoked sessions stop before data and SQL denial/conflicts stay neutral without retries
+ok 45 - missing or revoked sessions stop before data and SQL denial/conflicts stay neutral without retries
+  ---
+  duration_ms: 9.8381
+  type: 'test'
+  ...
+# Subtest: public address config cannot enable an unreviewed backend or account journey
+ok 46 - public address config cannot enable an unreviewed backend or account journey
+  ---
+  duration_ms: 0.9544
+  type: 'test'
+  ...
+# Subtest: the same closed-mode guard catches removal of the address rollout check in an isolated module
+ok 47 - the same closed-mode guard catches removal of the address rollout check in an isolated module
+  ---
+  duration_ms: 50.8919
+  type: 'test'
+  ...
+# Subtest: persisted consent and latest position travel through verified session, coarsening and an absolute expiry
+ok 48 - persisted consent and latest position travel through verified session, coarsening and an absolute expiry
+  ---
+  duration_ms: 92.9601
+  type: 'test'
+  ...
+# Subtest: no binding, missing consent, forgery and revoked authority cannot store or reveal a position
+ok 49 - no binding, missing consent, forgery and revoked authority cannot store or reveal a position
+  ---
+  duration_ms: 19.0397
+  type: 'test'
+  ...
+# Subtest: permission policy and public feature flag require reviewed rollout and ephemeral binding together
+ok 50 - permission policy and public feature flag require reviewed rollout and ephemeral binding together
+  ---
+  duration_ms: 6.6055
+  type: 'test'
+  ...
+# Subtest: a delayed older KV write cannot make an older position visible as the latest admitted position
+ok 51 - a delayed older KV write cannot make an older position visible as the latest admitted position
+  ---
+  duration_ms: 8.4049
+  type: 'test'
+  ...
+# Subtest: a revocation during the KV read is rechecked before disclosing any coordinates
+ok 52 - a revocation during the KV read is rechecked before disclosing any coordinates
+  ---
+  duration_ms: 3.6078
+  type: 'test'
+  ...
+# Subtest: location SQL generation is byte-proven and leaves the applied base schema untouched
+ok 53 - location SQL generation is byte-proven and leaves the applied base schema untouched
+  ---
+  duration_ms: 60.5452
+  type: 'test'
+  ...
+# Subtest: meeting-status cleanup counts successful drops and preserves PASS
+ok 54 - meeting-status cleanup counts successful drops and preserves PASS
+  ---
+  duration_ms: 9.6234
+  type: 'test'
+  ...
+# Subtest: meeting-status successful cleanup preserves an earlier acceptance failure
+ok 55 - meeting-status successful cleanup preserves an earlier acceptance failure
+  ---
+  duration_ms: 6.7392
+  type: 'test'
+  ...
+# Subtest: meeting-status denied DROP is not counted, fails verdict, and still drops the next DB
+ok 56 - meeting-status denied DROP is not counted, fails verdict, and still drops the next DB
+  ---
+  duration_ms: 6.876
+  type: 'test'
+  ...
+# Subtest: meeting-status cleanup preserves the original thrown failure while handling transport errors
+ok 57 - meeting-status cleanup preserves the original thrown failure while handling transport errors
+  ---
+  duration_ms: 3.9991
+  type: 'test'
+  ...
+# Subtest: readiness gates keep new route and advertised capability closed without upstream calls
+ok 58 - readiness gates keep new route and advertised capability closed without upstream calls
+  ---
+  duration_ms: 89.0143
+  type: 'test'
+  ...
+# Subtest: untrusted sender, unknown keys, query injection and wrong origin never reach message RPC
+ok 59 - untrusted sender, unknown keys, query injection and wrong origin never reach message RPC
+  ---
+  duration_ms: 9.457
+  type: 'test'
+  ...
+# Subtest: RPC forwards server session identity and preserves rejection with sanitized errors
+ok 60 - RPC forwards server session identity and preserves rejection with sanitized errors
+  ---
+  duration_ms: 24.9517
+  type: 'test'
+  ...
+# Subtest: C03.L7: splitStatements — долар-теги не ріжуться по семіколонах усередині
+ok 61 - C03.L7: splitStatements — долар-теги не ріжуться по семіколонах усередині
+  ---
+  duration_ms: 4.6914
+  type: 'test'
+  ...
+# Subtest: C03.L7: splitStatements — тег $fn$ і хвостовий statement без ;
+ok 62 - C03.L7: splitStatements — тег $fn$ і хвостовий statement без ;
+  ---
+  duration_ms: 0.5741
+  type: 'test'
+  ...
+# Subtest: C03.L7: dryRun на реальному case-state.migration.sql — детермінований, нічого не мутує
+ok 63 - C03.L7: dryRun на реальному case-state.migration.sql — детермінований, нічого не мутує
+  ---
+  duration_ms: 34.166
+  type: 'test'
+  ...
+# Subtest: C03.L7: dryRun ловить небезпечні statement на синтетичному файлі
+ok 64 - C03.L7: dryRun ловить небезпечні statement на синтетичному файлі
+  ---
+  duration_ms: 29.1363
+  type: 'test'
+  ...
+# Subtest: C03.L7: requireApproval — fail-closed без operator-id і без backup (українська помилка)
+ok 65 - C03.L7: requireApproval — fail-closed без operator-id і без backup (українська помилка)
+  ---
+  duration_ms: 2.2188
+  type: 'test'
+  ...
+# Subtest: C03.L7: apply без approval НЕ виконує жодного statement (fail-closed, контракт §4)
+ok 66 - C03.L7: apply без approval НЕ виконує жодного statement (fail-closed, контракт §4)
+  ---
+  duration_ms: 3.1655
+  type: 'test'
+  ...
+# Subtest: C03.L7: apply з approval і backup — preFiles → apply, gate у результаті
+ok 67 - C03.L7: apply з approval і backup — preFiles → apply, gate у результаті
+  ---
+  duration_ms: 6.5605
+  type: 'test'
+  ...
+# Subtest: C03.L7: approvalReceipt — детермінована форма для STATUS.md
+ok 68 - C03.L7: approvalReceipt — детермінована форма для STATUS.md
+  ---
+  duration_ms: 2.879
+  type: 'test'
+  ...
+# Subtest: C03.L7: cleanup-незалежність — splitStatements не мутує вхід і детермінований
+ok 69 - C03.L7: cleanup-незалежність — splitStatements не мутує вхід і детермінований
+  ---
+  duration_ms: 0.4606
+  type: 'test'
+  ...
+# Subtest: off-mode pins allowlist errors, normalization, verification and missing/oversized configuration
+ok 70 - off-mode pins allowlist errors, normalization, verification and missing/oversized configuration
+  ---
+  duration_ms: 136.7237
+  type: 'test'
+  ...
+# Subtest: open-mode sends and verifies a normalized new email, then restores its session without an allowlist
+ok 71 - open-mode sends and verifies a normalized new email, then restores its session without an allowlist
+  ---
+  duration_ms: 26.9346
+  type: 'test'
+  ...
+# Subtest: open-mode requires valid current consent, an email, storage, trusted IP and all existing readiness flags
+ok 72 - open-mode requires valid current consent, an email, storage, trusted IP and all existing readiness flags
+  ---
+  duration_ms: 10.997
+  type: 'test'
+  ...
+# Subtest: open verify requires an unexpired consent-bearing request before creating an Auth account
+ok 73 - open verify requires an unexpired consent-bearing request before creating an Auth account
+  ---
+  duration_ms: 8.3668
+  type: 'test'
+  ...
+# Subtest: email request limit follows normalization across IPs and returns a bounded retry
+ok 74 - email request limit follows normalization across IPs and returns a bounded retry
+  ---
+  duration_ms: 14.1547
+  type: 'test'
+  ...
+# Subtest: IP request limit covers different emails and ignores forged X-Forwarded-For
+ok 75 - IP request limit covers different emails and ignores forged X-Forwarded-For
+  ---
+  duration_ms: 90.7133
+  type: 'test'
+  ...
+# Subtest: simultaneous requests sharing a KV binding cannot bypass the in-isolate email or IP limit
+ok 76 - simultaneous requests sharing a KV binding cannot bypass the in-isolate email or IP limit
+  ---
+  duration_ms: 79.6055
+  type: 'test'
+  ...
+# Subtest: verification cap covers different guesses and concurrent attempts; success consumes the challenge
+ok 77 - verification cap covers different guesses and concurrent attempts; success consumes the challenge
+  ---
+  duration_ms: 31.2916
+  type: 'test'
+  ...
+# Subtest: request/verify responses do not disclose existing versus unknown addresses or upstream account errors
+ok 78 - request/verify responses do not disclose existing versus unknown addresses or upstream account errors
+  ---
+  duration_ms: 55.5031
+  type: 'test'
+  ...
+# Subtest: provider outage, throttling and KV failure stay closed and do not create a browser session
+ok 79 - provider outage, throttling and KV failure stay closed and do not create a browser session
+  ---
+  duration_ms: 18.2435
+  type: 'test'
+  ...
+# Subtest: resending cannot reset failed verification budget; rate windows expire and KV stores no raw email, IP or OTP
+ok 80 - resending cannot reset failed verification budget; rate windows expire and KV stores no raw email, IP or OTP
+  ---
+  duration_ms: 20.607
+  type: 'test'
+  ...
+# Subtest: Google open-mode admits a verified new identity through the existing challenge bridge; each old flag still closes it
+ok 81 - Google open-mode admits a verified new identity through the existing challenge bridge; each old flag still closes it
+  ---
+  duration_ms: 14.1197
+  type: 'test'
+  ...
+# Subtest: actual gateway sanitizes FK HTTP409; actual NeonStore makes one own DELETE and preserves session/data
+ok 82 - actual gateway sanitizes FK HTTP409; actual NeonStore makes one own DELETE and preserves session/data
+  ---
+  duration_ms: 94.0357
+  type: 'test'
+  ...
+# Subtest: gateway/client preserve existing semantics for HTTP401
+ok 83 - gateway/client preserve existing semantics for HTTP401
+  ---
+  duration_ms: 7.2527
+  type: 'test'
+  ...
+# Subtest: gateway/client preserve existing semantics for HTTP403
+ok 84 - gateway/client preserve existing semantics for HTTP403
+  ---
+  duration_ms: 5.5103
+  type: 'test'
+  ...
+# Subtest: gateway/client preserve existing semantics for HTTP429
+ok 85 - gateway/client preserve existing semantics for HTTP429
+  ---
+  duration_ms: 4.7827
+  type: 'test'
+  ...
+# Subtest: gateway/client preserve existing semantics for HTTP500
+ok 86 - gateway/client preserve existing semantics for HTTP500
+  ---
+  duration_ms: 8.4577
+  type: 'test'
+  ...
+# Subtest: gateway/client preserve existing semantics for HTTP503
+ok 87 - gateway/client preserve existing semantics for HTTP503
+  ---
+  duration_ms: 3.9183
+  type: 'test'
+  ...
+# Subtest: successful own DELETE returns only the deleted own row; another profile and current session remain
+ok 88 - successful own DELETE returns only the deleted own row; another profile and current session remain
+  ---
+  duration_ms: 4.305
+  type: 'test'
+  ...
+# Subtest: unrelated meeting HTTP409 retains the original meeting conflict interpretation
+ok 89 - unrelated meeting HTTP409 retains the original meeting conflict interpretation
+  ---
+  duration_ms: 4.3645
+  type: 'test'
+  ...
+# Subtest: rooms-off is a server gate on all room actions with zero upstream calls
+ok 90 - rooms-off is a server gate on all room actions with zero upstream calls
+  ---
+  duration_ms: 8.3386
+  type: 'test'
+  ...
+# Subtest: new erasure migration retains exact provenance and dependency closure of the original outcome owner
+ok 91 - new erasure migration retains exact provenance and dependency closure of the original outcome owner
+  ---
+  duration_ms: 41.0458
+  type: 'test'
+  ...
+# Subtest: erasure defaults disabled in server config and makes zero upstream requests
+ok 92 - erasure defaults disabled in server config and makes zero upstream requests
+  ---
+  duration_ms: 85.5702
+  type: 'test'
+  ...
+# Subtest: no arbitrary target, wrong confirmation, query or missing session reaches erasure RPC
+ok 93 - no arbitrary target, wrong confirmation, query or missing session reaches erasure RPC
+  ---
+  duration_ms: 12.5393
+  type: 'test'
+  ...
+# Subtest: accepted own RPC sends only verified bearer and empty args, never clears a newer browser cookie
+ok 94 - accepted own RPC sends only verified bearer and empty args, never clears a newer browser cookie
+  ---
+  duration_ms: 10.0528
+  type: 'test'
+  ...
+# Subtest: committed erasure is reported honestly if provider sign-out fails
+ok 95 - committed erasure is reported honestly if provider sign-out fails
+  ---
+  duration_ms: 3.8513
+  type: 'test'
+  ...
+# Subtest: delayed accepted A erasure cannot clear local session after restoring B or a new A session
+ok 96 - delayed accepted A erasure cannot clear local session after restoring B or a new A session
+  ---
+  duration_ms: 23.5234
+  type: 'test'
+  ...
+# Subtest: delayed A unauthorized erasure cannot forget the newer B session
+ok 97 - delayed A unauthorized erasure cannot forget the newer B session
+  ---
+  duration_ms: 4.9934
+  type: 'test'
+  ...
+# Subtest: session restore started before erasure cannot resurrect the erased local identity
+ok 98 - session restore started before erasure cannot resurrect the erased local identity
+  ---
+  duration_ms: 3.8846
+  type: 'test'
+  ...
+# Subtest: overlapping restores keep the latest requested session in either response order
+ok 99 - overlapping restores keep the latest requested session in either response order
+  ---
+  duration_ms: 1.8103
+  type: 'test'
+  ...
+# Subtest: unknown/malformed RPC response cannot report success or sign out
+ok 100 - unknown/malformed RPC response cannot report success or sign out
+  ---
+  duration_ms: 8.8362
+  type: 'test'
+  ...
+# Subtest: RPC failures preserve session and disclose no private upstream details
+ok 101 - RPC failures preserve session and disclose no private upstream details
+  ---
+  duration_ms: 9.5579
+  type: 'test'
+  ...
+# Subtest: erasure CSRF rejection happens before auth and data calls
+ok 102 - erasure CSRF rejection happens before auth and data calls
+  ---
+  duration_ms: 21.9938
+  type: 'test'
+  ...
+# Subtest: NeonStore distinct erasure method is gated, validates receipt, and clears user only on confirmed erasure
+ok 103 - NeonStore distinct erasure method is gated, validates receipt, and clears user only on confirmed erasure
+  ---
+  duration_ms: 5.6886
+  type: 'test'
+  ...
+# Subtest: closed backend, wrong origins, bad configuration and unsupported routes make no upstream request
+ok 104 - closed backend, wrong origins, bad configuration and unsupported routes make no upstream request
+  ---
+  duration_ms: 111.3974
+  type: 'test'
+  ...
+# Subtest: Google start stays fail-closed even when a legacy flag is accidentally set
+ok 105 - Google start stays fail-closed even when a legacy flag is accidentally set
+  ---
+  duration_ms: 6.2344
+  type: 'test'
+  ...
+# Subtest: Google visibility requires the new rollout gate, registration and pilot readiness together
+ok 106 - Google visibility requires the new rollout gate, registration and pilot readiness together
+  ---
+  duration_ms: 18.8111
+  type: 'test'
+  ...
+# Subtest: Google gateway completes browser navigation into the existing session and preserves write CSRF checks
+ok 107 - Google gateway completes browser navigation into the existing session and preserves write CSRF checks
+  ---
+  duration_ms: 37.4882
+  type: 'test'
+  ...
+# Subtest: failed Google callback cleans verifier URL and returns the user to a retryable login
+ok 108 - failed Google callback cleans verifier URL and returns the user to a retryable login
+  ---
+  duration_ms: 1.5417
+  type: 'test'
+  ...
+# Subtest: the case-state tables are reachable through the gateway and the allowlist stays an allowlist
+ok 109 - the case-state tables are reachable through the gateway and the allowlist stays an allowlist
+  ---
+  duration_ms: 12.7571
+  type: 'test'
+  ...
+# Subtest: OTP requires an invited email, explicit current consent and a bounded body before sending
+ok 110 - OTP requires an invited email, explicit current consent and a bounded body before sending
+  ---
+  duration_ms: 8.5645
+  type: 'test'
+  ...
+# Subtest: OTP verification keeps provider session, identity metadata and JWT out of browser JSON
+ok 111 - OTP verification keeps provider session, identity metadata and JWT out of browser JSON
+  ---
+  duration_ms: 6.0246
+  type: 'test'
+  ...
+# Subtest: a fresh provider session supplies the data token; caller Authorization and stray cookies are discarded
+ok 112 - a fresh provider session supplies the data token; caller Authorization and stray cookies are discarded
+  ---
+  duration_ms: 1.6291
+  type: 'test'
+  ...
+# Subtest: current Neon cookie survives OTP -> browser session -> data; unrelated cookie caches stay private
+ok 113 - current Neon cookie survives OTP -> browser session -> data; unrelated cookie caches stay private
+  ---
+  duration_ms: 3.6211
+  type: 'test'
+  ...
+# Subtest: Cloudflare extensionless HTML redirects stay inside the public asset allowlist
+ok 114 - Cloudflare extensionless HTML redirects stay inside the public asset allowlist
+  ---
+  duration_ms: 2.6678
+  type: 'test'
+  ...
+# Subtest: missing or ambiguous provider cookies fail closed with an actionable code, never a raw provider body
+ok 115 - missing or ambiguous provider cookies fail closed with an actionable code, never a raw provider body
+  ---
+  duration_ms: 6.7265
+  type: 'test'
+  ...
+# Subtest: client explains expired OTP and treats a temporary data failure as recoverable without forgetting the user
+ok 116 - client explains expired OTP and treats a temporary data failure as recoverable without forgetting the user
+  ---
+  duration_ms: 3.9066
+  type: 'test'
+  ...
+# Subtest: missing, malformed or revoked sessions stop before any data access; no hidden retry on provider failures
+ok 117 - missing, malformed or revoked sessions stop before any data access; no hidden retry on provider failures
+  ---
+  duration_ms: 5.9862
+  type: 'test'
+  ...
+# Subtest: logout clears local HttpOnly cookie even when upstream revocation fails
+ok 118 - logout clears local HttpOnly cookie even when upstream revocation fails
+  ---
+  duration_ms: 1.7987
+  type: 'test'
+  ...
+# Subtest: published worker serves only the allowlist, keeps configuration closed and protects every response
+ok 119 - published worker serves only the allowlist, keeps configuration closed and protects every response
+  ---
+  duration_ms: 13.2025
+  type: 'test'
+  ...
+# Subtest: Neon reuses the exact profile contract and sends no browser bearer token or provider URL
+ok 120 - Neon reuses the exact profile contract and sends no browser bearer token or provider URL
+  ---
+  duration_ms: 6.488
+  type: 'test'
+  ...
+# Subtest: browser fetch is called without rebinding its receiver to the store
+ok 121 - browser fetch is called without rebinding its receiver to the store
+  ---
+  duration_ms: 3.2043
+  type: 'test'
+  ...
+# Subtest: migration preserves canonical rules, adds private verified-member gate, and never assumes it was applied
+ok 122 - migration preserves canonical rules, adds private verified-member gate, and never assumes it was applied
+  ---
+  duration_ms: 47.8682
+  type: 'test'
+  ...
+# Subtest: SYN_SQL_GENERATION_BYTE_PROVEN: case-state migration is additive, generated byte-for-byte, and never assumed applied
+ok 123 - SYN_SQL_GENERATION_BYTE_PROVEN: case-state migration is additive, generated byte-for-byte, and never assumed applied
+  ---
+  duration_ms: 57.8794
+  type: 'test'
+  ...
+# Subtest: control: authenticated A can submit an unapproved draft to the store transport
+ok 124 - control: authenticated A can submit an unapproved draft to the store transport
+  ---
+  duration_ms: 46.4646
+  type: 'test'
+  ...
+# Subtest: contract: A must not submit a newly forged B approval through bulk state persistence
+ok 125 - contract: A must not submit a newly forged B approval through bulk state persistence
+  ---
+  duration_ms: 5.3308
+  type: 'test'
+  ...
+# Subtest: uk/document: proof names the human subject, deadline and verification action
+ok 126 - uk/document: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 7.3088
+  type: 'test'
+  ...
+# Subtest: uk/link: proof names the human subject, deadline and verification action
+ok 127 - uk/link: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.5113
+  type: 'test'
+  ...
+# Subtest: uk/demo: proof names the human subject, deadline and verification action
+ok 128 - uk/demo: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.4401
+  type: 'test'
+  ...
+# Subtest: uk/checklist: proof names the human subject, deadline and verification action
+ok 129 - uk/checklist: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.504
+  type: 'test'
+  ...
+# Subtest: uk/conversation_note: proof names the human subject, deadline and verification action
+ok 130 - uk/conversation_note: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 10.6515
+  type: 'test'
+  ...
+# Subtest: de/document: proof names the human subject, deadline and verification action
+ok 131 - de/document: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 1.0648
+  type: 'test'
+  ...
+# Subtest: de/link: proof names the human subject, deadline and verification action
+ok 132 - de/link: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.4405
+  type: 'test'
+  ...
+# Subtest: de/demo: proof names the human subject, deadline and verification action
+ok 133 - de/demo: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.318
+  type: 'test'
+  ...
+# Subtest: de/checklist: proof names the human subject, deadline and verification action
+ok 134 - de/checklist: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 6.946
+  type: 'test'
+  ...
+# Subtest: de/conversation_note: proof names the human subject, deadline and verification action
+ok 135 - de/conversation_note: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.7654
+  type: 'test'
+  ...
+# Subtest: en/document: proof names the human subject, deadline and verification action
+ok 136 - en/document: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 22.5794
+  type: 'test'
+  ...
+# Subtest: en/link: proof names the human subject, deadline and verification action
+ok 137 - en/link: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.2742
+  type: 'test'
+  ...
+# Subtest: en/demo: proof names the human subject, deadline and verification action
+ok 138 - en/demo: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 15.5609
+  type: 'test'
+  ...
+# Subtest: en/checklist: proof names the human subject, deadline and verification action
+ok 139 - en/checklist: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.3905
+  type: 'test'
+  ...
+# Subtest: en/conversation_note: proof names the human subject, deadline and verification action
+ok 140 - en/conversation_note: proof names the human subject, deadline and verification action
+  ---
+  duration_ms: 0.4436
+  type: 'test'
+  ...
+# Subtest: changing the human action or deadline changes the acceptance criterion
+ok 141 - changing the human action or deadline changes the acceptance criterion
+  ---
+  duration_ms: 0.5765
+  type: 'test'
+  ...
+# Subtest: all modes remain selectable; intro does not supply financial or legal agreement
+ok 142 - all modes remain selectable; intro does not supply financial or legal agreement
+  ---
+  duration_ms: 57.4047
+  type: 'test'
+  ...
+# Subtest: paid supplier drafts only its own result and a missing paid direction remains blocked
+ok 143 - paid supplier drafts only its own result and a missing paid direction remains blocked
+  ---
+  duration_ms: 0.6096
+  type: 'test'
+  ...
+# Subtest: unknown, empty and malformed values yield no draft; calendar rollovers are refused
+ok 144 - unknown, empty and malformed values yield no draft; calendar rollovers are refused
+  ---
+  duration_ms: 0.9011
+  type: 'test'
+  ...
+# Subtest: Unicode survives; markup and hidden direction/control injection cannot enter generated strings
+ok 145 - Unicode survives; markup and hidden direction/control injection cannot enter generated strings
+  ---
+  duration_ms: 0.7165
+  type: 'test'
+  ...
+# Subtest: human drafts are preserved byte-for-byte and input is never mutated
+ok 146 - human drafts are preserved byte-for-byte and input is never mutated
+  ---
+  duration_ms: 0.876
+  type: 'test'
+  ...
+# Subtest: two-leg proposals pass the existing material schema only with explicit human terms
+ok 147 - two-leg proposals pass the existing material schema only with explicit human terms
+  ---
+  duration_ms: 102.6054
+  type: 'test'
+  ...
+# Subtest: C13.L2a: app.mjs імпортується без викидків — вся import-time DOM-обв’язка виконалась
+ok 148 - C13.L2a: app.mjs імпортується без викидків — вся import-time DOM-обв’язка виконалась
+  ---
+  duration_ms: 5.9725
+  type: 'test'
+  ...
+# Subtest: C13.L2a: \#auth-form має submit-слухач
+ok 149 - C13.L2a: \#auth-form має submit-слухач
+  ---
+  duration_ms: 0.612
+  type: 'test'
+  ...
+# Subtest: C13.L2a: усі 4 data-tab кнопки мають click-слухачі
+ok 150 - C13.L2a: усі 4 data-tab кнопки мають click-слухачі
+  ---
+  duration_ms: 2.8455
+  type: 'test'
+  ...
+# Subtest: C13.L2a: клік data-tab=people без входу показує український guard у \#notice
+ok 151 - C13.L2a: клік data-tab=people без входу показує український guard у \#notice
+  ---
+  duration_ms: 1.5872
+  type: 'test'
+  ...
+# Subtest: C13.L2a: клік data-tab=profile дозволений без входу — guard НЕ показується
+ok 152 - C13.L2a: клік data-tab=profile дозволений без входу — guard НЕ показується
+  ---
+  duration_ms: 1.603
+  type: 'test'
+  ...
+# Subtest: C13.L2a: клік data-tab=settings запускає consent-sync і renderBlocks без викидів
+ok 153 - C13.L2a: клік data-tab=settings запускає consent-sync і renderBlocks без викидів
+  ---
+  duration_ms: 66.5367
+  type: 'test'
+  ...
+# Subtest: gzip and plain envelope preserve exact multilingual quotes including spacing
+ok 154 - gzip and plain envelope preserve exact multilingual quotes including spacing
+  ---
+  duration_ms: 157.9617
+  type: 'test'
+  ...
+# Subtest: tampered checksum, unknown envelope fields and unsupported version fail closed
+ok 155 - tampered checksum, unknown envelope fields and unsupported version fail closed
+  ---
+  duration_ms: 67.1865
+  type: 'test'
+  ...
+# Subtest: oversized compressed expansion is rejected before returning archive
+ok 156 - oversized compressed expansion is rejected before returning archive
+  ---
+  duration_ms: 238.8684
+  type: 'test'
+  ...
+# Subtest: invalid preferences cannot activate a new visual layer or carry unknown data
+ok 157 - invalid preferences cannot activate a new visual layer or carry unknown data
+  ---
+  duration_ms: 6.8241
+  type: 'test'
+  ...
+# Subtest: returning to current removes the overlay without changing the established theme or consent state
+ok 158 - returning to current removes the overlay without changing the established theme or consent state
+  ---
+  duration_ms: 0.8802
+  type: 'test'
+  ...
+# Subtest: M07: solves classic counterexample proving optimal (16) beats greedy (9)
+ok 159 - M07: solves classic counterexample proving optimal (16) beats greedy (9)
+  ---
+  duration_ms: 60.399
+  type: 'test'
+  ...
+# Subtest: M07: strictly respects heterogeneous per-user quotas
+ok 160 - M07: strictly respects heterogeneous per-user quotas
+  ---
+  duration_ms: 1.0423
+  type: 'test'
+  ...
+# Subtest: M07: deterministic tie-breaking produces stable outputs on equal weights
+ok 161 - M07: deterministic tie-breaking produces stable outputs on equal weights
+  ---
+  duration_ms: 2.3457
+  type: 'test'
+  ...
+# Subtest: M07: rejects invalid and self candidates
+ok 162 - M07: rejects invalid and self candidates
+  ---
+  duration_ms: 0.4995
+  type: 'test'
+  ...
+# Subtest: SYN_CASE_STORE_MATCHES_SQL: writes columns and reconstructs state from case plus approval rows
+ok 163 - SYN_CASE_STORE_MATCHES_SQL: writes columns and reconstructs state from case plus approval rows
+  ---
+  duration_ms: 79.4816
+  type: 'test'
+  ...
+# Subtest: C13.L2b calendar: прийнята зустріч 20 хв → точний hand-computed ICS (escape , ; \\n)
+ok 164 - C13.L2b calendar: прийнята зустріч 20 хв → точний hand-computed ICS (escape , ; \\n)
+  ---
+  duration_ms: 18.9817
+  type: 'test'
+  ...
+# Subtest: C13.L2b calendar: тривалості 30 і 60 хв — DTEND вручну порахований
+ok 165 - C13.L2b calendar: тривалості 30 і 60 хв — DTEND вручну порахований
+  ---
+  duration_ms: 34.014
+  type: 'test'
+  ...
+# Subtest: C13.L2b calendar: межа fold 73 байти — продовження "\\r\\n " пораховане вручну
+ok 166 - C13.L2b calendar: межа fold 73 байти — продовження "\\r\\n " пораховане вручну
+  ---
+  duration_ms: 1.5763
+  type: 'test'
+  ...
+# Subtest: C13.L2b calendar: fail-closed — відхилені/некоректні зустрічі кидають доменну помилку
+ok 167 - C13.L2b calendar: fail-closed — відхилені/некоректні зустрічі кидають доменну помилку
+  ---
+  duration_ms: 2.615
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: парк ботів і демо-місць — константний контракт
+ok 168 - C13.L2b simulation: парк ботів і демо-місць — константний контракт
+  ---
+  duration_ms: 1.7628
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: hourSlot — вручну пораховані слоти і доменна помилка
+ok 169 - C13.L2b simulation: hourSlot — вручну пораховані слоти і доменна помилка
+  ---
+  duration_ms: 0.4956
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: simulationAt 10:00Z — Цюрих 12:00, усі прокинуті, точні значення бот-0 і бот-1
+ok 170 - C13.L2b simulation: simulationAt 10:00Z — Цюрих 12:00, усі прокинуті, точні значення бот-0 і бот-1
+  ---
+  duration_ms: 78.3661
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: simulationAt 01:00Z — ніч, усі офлайн, місце від (0+index)%5
+ok 171 - C13.L2b simulation: simulationAt 01:00Z — ніч, усі офлайн, місце від (0+index)%5
+  ---
+  duration_ms: 1.0543
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: simulatedReply — reciprocal від mira до leo, declined без сигналів, fail-closed
+ok 172 - C13.L2b simulation: simulatedReply — reciprocal від mira до leo, declined без сигналів, fail-closed
+  ---
+  duration_ms: 10.0339
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: demoCollaborations — 5 пар, id з слотом, next_step за slot%3
+ok 173 - C13.L2b simulation: demoCollaborations — 5 пар, id з слотом, next_step за slot%3
+  ---
+  duration_ms: 2.0115
+  type: 'test'
+  ...
+# Subtest: C13.L2b simulation: demoCollaborations — сусідній годинний слот змінює лише slot у id
+ok 174 - C13.L2b simulation: demoCollaborations — сусідній годинний слот змінює лише slot у id
+  ---
+  duration_ms: 2.3399
+  type: 'test'
+  ...
+# Subtest: C13.L2b health-check (структурно): модуль не експортує нічого — геп зафіксований
+ok 175 - C13.L2b health-check (структурно): модуль не експортує нічого — геп зафіксований
+  ---
+  duration_ms: 23.9361
+  type: 'test'
+  ...
+# Subtest: C13.L2b health-check (структурно): fail-closed гейт — ready_for_launch ніколи не true, аварійний exit 2
+ok 176 - C13.L2b health-check (структурно): fail-closed гейт — ready_for_launch ніколи не true, аварійний exit 2
+  ---
+  duration_ms: 21.5092
+  type: 'test'
+  ...
+# Subtest: each outcome belongs to its receiver; no invented competence, price, agreement or delivery
+ok 177 - each outcome belongs to its receiver; no invented competence, price, agreement or delivery
+  ---
+  duration_ms: 61.9061
+  type: 'test'
+  ...
+# Subtest: withdrawn discovery, one-way value and stale profiles cannot emit a business-case draft
+ok 178 - withdrawn discovery, one-way value and stale profiles cannot emit a business-case draft
+  ---
+  duration_ms: 2.1616
+  type: 'test'
+  ...
+# Subtest: identity, subscription and private annotations cannot change the case
+ok 179 - identity, subscription and private annotations cannot change the case
+  ---
+  duration_ms: 1.8792
+  type: 'test'
+  ...
+# Subtest: business case v2: paid and referral drafts include only the eligible receiver-owned benefit
+ok 180 - business case v2: paid and referral drafts include only the eligible receiver-owned benefit
+  ---
+  duration_ms: 2.9526
+  type: 'test'
+  ...
+# Subtest: material terms: byte canonicalization is stable and SHA-256 changes only for a material change
+ok 181 - material terms: byte canonicalization is stable and SHA-256 changes only for a material change
+  ---
+  duration_ms: 75.8866
+  type: 'test'
+  ...
+# Subtest: case state: both exact current approvals are required and a material revision clears them
+ok 182 - case state: both exact current approvals are required and a material revision clears them
+  ---
+  duration_ms: 24.332
+  type: 'test'
+  ...
+# Subtest: case state: timestamps are monotonic and withdrawing one approval blocks the next action
+ok 183 - case state: timestamps are monotonic and withdrawing one approval blocks the next action
+  ---
+  duration_ms: 16.7822
+  type: 'test'
+  ...
+# Subtest: case state: expiry, revocation, abandonment and independent permissions fail closed
+ok 184 - case state: expiry, revocation, abandonment and independent permissions fail closed
+  ---
+  duration_ms: 9.8197
+  type: 'test'
+  ...
+# Subtest: case state: unresolved paid compensation cannot be approved
+ok 185 - case state: unresolved paid compensation cannot be approved
+  ---
+  duration_ms: 2.7397
+  type: 'test'
+  ...
+# Subtest: case state: direct material tampering cannot reuse the old hash and approvals
+ok 186 - case state: direct material tampering cannot reuse the old hash and approvals
+  ---
+  duration_ms: 3.3627
+  type: 'test'
+  ...
+# Subtest: case state: every outcome and deliverable party must be one of the two participants
+ok 187 - case state: every outcome and deliverable party must be one of the two participants
+  ---
+  duration_ms: 1.9532
+  type: 'test'
+  ...
+# Subtest: SYN_TERMS_FROM_HUMAN_INPUT: empty or malformed fields stay unresolved; nothing becomes agreement by default
+ok 188 - SYN_TERMS_FROM_HUMAN_INPUT: empty or malformed fields stay unresolved; nothing becomes agreement by default
+  ---
+  duration_ms: 1.4794
+  type: 'test'
+  ...
+# Subtest: SYN_TERMS_FROM_HUMAN_INPUT: full human terms pass the domain, and editing one term clears both approvals
+ok 189 - SYN_TERMS_FROM_HUMAN_INPUT: full human terms pass the domain, and editing one term clears both approvals
+  ---
+  duration_ms: 6.8489
+  type: 'test'
+  ...
+# Subtest: synthetic D1 rehearsal: exchange, paid service, referral and hybrid reach only the pure introduction gate
+ok 190 - synthetic D1 rehearsal: exchange, paid service, referral and hybrid reach only the pure introduction gate
+  ---
+  duration_ms: 182.3668
+  type: 'test'
+  ...
+# Subtest: synthetic D1 rehearsal: withdrawn comparison and changed material terms are explicit refusal journeys
+ok 191 - synthetic D1 rehearsal: withdrawn comparison and changed material terms are explicit refusal journeys
+  ---
+  duration_ms: 23.0607
+  type: 'test'
+  ...
+# Subtest: SYN_COHORT_JOURNEYS_GREEN: four accepted paths — exchange (legacy v1), paid service, hybrid, referral
+ok 192 - SYN_COHORT_JOURNEYS_GREEN: four accepted paths — exchange (legacy v1), paid service, hybrid, referral
+  ---
+  duration_ms: 10.3327
+  type: 'test'
+  ...
+# Subtest: SYN_COHORT_JOURNEYS_GREEN: refusals stay refusals — invalid availability, withdrawn consent, one-way value
+ok 193 - SYN_COHORT_JOURNEYS_GREEN: refusals stay refusals — invalid availability, withdrawn consent, one-way value
+  ---
+  duration_ms: 5.6641
+  type: 'test'
+  ...
+# Subtest: SYN_COHORT_JOURNEYS_GREEN: funnel keeps every refusal, ghost and missing feedback in the denominator
+ok 194 - SYN_COHORT_JOURNEYS_GREEN: funnel keeps every refusal, ghost and missing feedback in the denominator
+  ---
+  duration_ms: 1.5183
+  type: 'test'
+  ...
+# Subtest: SYN_COHORT_JOURNEYS_GREEN: the synthetic cohort never reaches a store, seed or shipped asset
+ok 195 - SYN_COHORT_JOURNEYS_GREEN: the synthetic cohort never reaches a store, seed or shipped asset
+  ---
+  duration_ms: 126.5223
+  type: 'test'
+  ...
+# Subtest: Iceberg Cascade Orchestrator - deploy and stream
+ok 196 - Iceberg Cascade Orchestrator - deploy and stream
+  ---
+  duration_ms: 1015.3177
+  type: 'test'
+  ...
+# Subtest: a party cannot write the other party approval, even hand-crafted into the payload
+ok 197 - a party cannot write the other party approval, even hand-crafted into the payload
+  ---
+  duration_ms: 46.6503
+  type: 'test'
+  ...
+# Subtest: own approval is written and derives awaiting_approval on its own
+ok 198 - own approval is written and derives awaiting_approval on its own
+  ---
+  duration_ms: 6.8841
+  type: 'test'
+  ...
+# Subtest: a genuine stored approval of the other party survives, and both together derive approved_for_next_step
+ok 199 - a genuine stored approval of the other party survives, and both together derive approved_for_next_step
+  ---
+  duration_ms: 4.8264
+  type: 'test'
+  ...
+# Subtest: a party cannot silently drop the other party stored approval by sending an empty approvals object
+ok 200 - a party cannot silently drop the other party stored approval by sending an empty approvals object
+  ---
+  duration_ms: 3.6024
+  type: 'test'
+  ...
+# Subtest: a stored approval for an older version or a different terms hash is not carried forward
+ok 201 - a stored approval for an older version or a different terms hash is not carried forward
+  ---
+  duration_ms: 5.4382
+  type: 'test'
+  ...
+# Subtest: version cannot move backwards and participants cannot be swapped
+ok 202 - version cannot move backwards and participants cannot be swapped
+  ---
+  duration_ms: 4.6731
+  type: 'test'
+  ...
+# Subtest: a case is closed only by the party doing it, and closing clears approvals
+ok 203 - a case is closed only by the party doing it, and closing clears approvals
+  ---
+  duration_ms: 16.2609
+  type: 'test'
+  ...
+# Subtest: a caller who is not a participant writes no approval at all
+ok 204 - a caller who is not a participant writes no approval at all
+  ---
+  duration_ms: 4.5648
+  type: 'test'
+  ...
+# Subtest: V6-03: own approval is written separately to match_case_approvals for Neon RLS
+ok 205 - V6-03: own approval is written separately to match_case_approvals for Neon RLS
+  ---
+  duration_ms: 27.1042
+  type: 'test'
+  ...
+# Subtest: X6 / V6-06: bilateral store sync allows party A and party B to independently approve and reach approved_for_next_step
+ok 206 - X6 / V6-06: bilateral store sync allows party A and party B to independently approve and reach approved_for_next_step
+  ---
+  duration_ms: 4.3476
+  type: 'test'
+  ...
+# Subtest: C11.L1: кошторис кейса — точні значення
+ok 207 - C11.L1: кошторис кейса — точні значення
+  ---
+  duration_ms: 3.0065
+  type: 'test'
+  ...
+# Subtest: C11.L1: невиміряні гроші — unknown, а не нуль (gate)
+ok 208 - C11.L1: невиміряні гроші — unknown, а не нуль (gate)
+  ---
+  duration_ms: 1.2783
+  type: 'test'
+  ...
+# Subtest: C11.L1: некоректний вхід — reason codes, не throw
+ok 209 - C11.L1: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 0.8003
+  type: 'test'
+  ...
+# Subtest: C11.L1: агрегат пілота — суми + чесний unknownCashCases
+ok 210 - C11.L1: агрегат пілота — суми + чесний unknownCashCases
+  ---
+  duration_ms: 2.5947
+  type: 'test'
+  ...
+# Subtest: C11.L1: змішані валюти відхилені; порожній пілот; середнє
+ok 211 - C11.L1: змішані валюти відхилені; порожній пілот; середнє
+  ---
+  duration_ms: 0.9495
+  type: 'test'
+  ...
+# Subtest: outcome reads preserve both pending legs; one acceptance cannot confirm the whole collaboration
+ok 212 - outcome reads preserve both pending legs; one acceptance cannot confirm the whole collaboration
+  ---
+  duration_ms: 583.1839
+  type: 'test'
+  ...
+# Subtest: rollout remains closed without the outcome flag and leaves existing case behaviour intact
+ok 213 - rollout remains closed without the outcome flag and leaves existing case behaviour intact
+  ---
+  duration_ms: 160.3174
+  type: 'test'
+  ...
+# Subtest: an explicit write keeps its original retry intent and only acknowledges the actor-bound server event
+ok 214 - an explicit write keeps its original retry intent and only acknowledges the actor-bound server event
+  ---
+  duration_ms: 249.5913
+  type: 'test'
+  ...
+# Subtest: receiver checks, neutral disputes and a later explicit acceptance retain the complete event history
+ok 215 - receiver checks, neutral disputes and a later explicit acceptance retain the complete event history
+  ---
+  duration_ms: 224.2705
+  type: 'test'
+  ...
+# Subtest: wrong roles, unknown actions and forged fields cause no outcome write
+ok 216 - wrong roles, unknown actions and forged fields cause no outcome write
+  ---
+  duration_ms: 145.8596
+  type: 'test'
+  ...
+# Subtest: a malformed or foreign response cannot promote a collaboration to confirmed
+ok 217 - a malformed or foreign response cannot promote a collaboration to confirmed
+  ---
+  duration_ms: 226.6349
+  type: 'test'
+  ...
+# Subtest: PostgreSQL transaction-start server_now is not treated as a wall-clock upper bound on prior committed events
+ok 218 - PostgreSQL transaction-start server_now is not treated as a wall-clock upper bound on prior committed events
+  ---
+  duration_ms: 96.3492
+  type: 'test'
+  ...
+# Subtest: old reviewed terms and terms revised while the response travels never return an attestation
+ok 219 - old reviewed terms and terms revised while the response travels never return an attestation
+  ---
+  duration_ms: 118.0955
+  type: 'test'
+  ...
+# Subtest: late private outcome responses are discarded after logout, same-account restore or another-account restore
+ok 220 - late private outcome responses are discarded after logout, same-account restore or another-account restore
+  ---
+  duration_ms: 347.6049
+  type: 'test'
+  ...
+# Subtest: server session, consent and write-conflict failures remain failures and never manufacture a result
+ok 221 - server session, consent and write-conflict failures remain failures and never manufacture a result
+  ---
+  duration_ms: 510.4813
+  type: 'test'
+  ...
+# Subtest: private plain and gzip exports preserve actual server-reviewed material and pending attestations exactly
+ok 222 - private plain and gzip exports preserve actual server-reviewed material and pending attestations exactly
+  ---
+  duration_ms: 920.3067
+  type: 'test'
+  ...
+# Subtest: a partial archive retains receiver-only acceptance and never promotes the other pending result
+ok 223 - a partial archive retains receiver-only acceptance and never promotes the other pending result
+  ---
+  duration_ms: 314.432
+  type: 'test'
+  ...
+# Subtest: closed rollout, outsiders, revoked consent and logged-out accounts cannot produce an archive
+ok 224 - closed rollout, outsiders, revoked consent and logged-out accounts cannot produce an archive
+  ---
+  duration_ms: 110.8095
+  type: 'test'
+  ...
+# Subtest: logout and restore of the same account during compression discard the private export
+ok 225 - logout and restore of the same account during compression discard the private export
+  ---
+  duration_ms: 133.4221
+  type: 'test'
+  ...
+# Subtest: a material revision during compression cannot return a stale archive as the current reviewed result
+ok 226 - a material revision during compression cannot return a stale archive as the current reviewed result
+  ---
+  duration_ms: 186.3639
+  type: 'test'
+  ...
+# Subtest: fresh bilateral acceptance yields only the actor contribution and never evidence, partner identity or publication
+ok 227 - fresh bilateral acceptance yields only the actor contribution and never evidence, partner identity or publication
+  ---
+  duration_ms: 923.3368
+  type: 'test'
+  ...
+# Subtest: a supplier private card uses the buyer receiver acceptance for one paid deliverable
+ok 228 - a supplier private card uses the buyer receiver acceptance for one paid deliverable
+  ---
+  duration_ms: 181.7861
+  type: 'test'
+  ...
+# Subtest: caller snapshots, silence, one accepted leg and a current dispute cannot manufacture a social achievement
+ok 229 - caller snapshots, silence, one accepted leg and a current dispute cannot manufacture a social achievement
+  ---
+  duration_ms: 299.8307
+  type: 'test'
+  ...
+# Subtest: withdrawn approval, expired terms and a new material revision invalidate a previously completed result for drafting
+ok 230 - withdrawn approval, expired terms and a new material revision invalidate a previously completed result for drafting
+  ---
+  duration_ms: 311.3486
+  type: 'test'
+  ...
+# Subtest: logout and same-account restore after outcome read discard the pending social draft
+ok 231 - logout and same-account restore after outcome read discard the pending social draft
+  ---
+  duration_ms: 280.7081
+  type: 'test'
+  ...
+# Subtest: closed rollout, unsupported wording, outsiders and revoked consent cannot return a draft
+ok 232 - closed rollout, unsupported wording, outsiders and revoked consent cannot return a draft
+  ---
+  duration_ms: 307.4105
+  type: 'test'
+  ...
+# Subtest: ChatGPT transfer prompt specifies every supported ID and fail-closed profile defaults
+ok 233 - ChatGPT transfer prompt specifies every supported ID and fail-closed profile defaults
+  ---
+  duration_ms: 3.5087
+  type: 'test'
+  ...
+# Subtest: transfer summary normalizes known fields into the review labels
+ok 234 - transfer summary normalizes known fields into the review labels
+  ---
+  duration_ms: 5.5611
+  type: 'test'
+  ...
+# Subtest: transfer summary fails closed for malformed, unknown, and prototype-supplied identifiers
+ok 235 - transfer summary fails closed for malformed, unknown, and prototype-supplied identifiers
+  ---
+  duration_ms: 0.8949
+  type: 'test'
+  ...
+# Subtest: transfer summary never infers availability from partial or dated input
+ok 236 - transfer summary never infers availability from partial or dated input
+  ---
+  duration_ms: 0.8658
+  type: 'test'
+  ...
+# Subtest: C10.L4: публікація кейсу однією стороною; дубль заборонений
+ok 237 - C10.L4: публікація кейсу однією стороною; дубль заборонений
+  ---
+  duration_ms: 2.8997
+  type: 'test'
+  ...
+# Subtest: C10.L4: друга сторона підключається; автор не може приєднатися до власного кейсу
+ok 238 - C10.L4: друга сторона підключається; автор не може приєднатися до власного кейсу
+  ---
+  duration_ms: 0.7812
+  type: 'test'
+  ...
+# Subtest: C10.L4: контакти організатору лише при взаємній згоді (gate)
+ok 239 - C10.L4: контакти організатору лише при взаємній згоді (gate)
+  ---
+  duration_ms: 0.4635
+  type: 'test'
+  ...
+# Subtest: C10.L4: картка на дошці без контактів, доки нема згоди
+ok 240 - C10.L4: картка на дошці без контактів, доки нема згоди
+  ---
+  duration_ms: 4.7415
+  type: 'test'
+  ...
+# Subtest: C10.L4: некоректний вхід — reason codes, не throw
+ok 241 - C10.L4: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 0.6955
+  type: 'test'
+  ...
+# Subtest: C11.L3: append-only — новий масив, вхід не мутується
+ok 242 - C11.L3: append-only — новий масив, вхід не мутується
+  ---
+  duration_ms: 2.8061
+  type: 'test'
+  ...
+# Subtest: C11.L3: ідемпотентність — той самий idempotencyKey не списує двічі
+ok 243 - C11.L3: ідемпотентність — той самий idempotencyKey не списує двічі
+  ---
+  duration_ms: 0.7136
+  type: 'test'
+  ...
+# Subtest: C11.L3: баланс і заборона негативного залишку
+ok 244 - C11.L3: баланс і заборона негативного залишку
+  ---
+  duration_ms: 2.6345
+  type: 'test'
+  ...
+# Subtest: C11.L3: refund — лише за існуючим spend, не більше суми, один шлях на spend
+ok 245 - C11.L3: refund — лише за існуючим spend, не більше суми, один шлях на spend
+  ---
+  duration_ms: 1.4594
+  type: 'test'
+  ...
+# Subtest: C11.L3: некоректний вхід — reason codes, не throw; сам леджер захищений від сміття
+ok 246 - C11.L3: некоректний вхід — reason codes, не throw; сам леджер захищений від сміття
+  ---
+  duration_ms: 0.9034
+  type: 'test'
+  ...
+# Subtest: M13: EWMA дорівнює порахованому вручну значенню
+ok 247 - M13: EWMA дорівнює порахованому вручну значенню
+  ---
+  duration_ms: 8.1934
+  type: 'test'
+  ...
+# Subtest: M13: CUSUM виявляє зсув середнього після 20 стабільних точок
+ok 248 - M13: CUSUM виявляє зсув середнього після 20 стабільних точок
+  ---
+  duration_ms: 17.0492
+  type: 'test'
+  ...
+# Subtest: M13: стабільна серія не дає хибного сигналу в межах бюджету
+ok 249 - M13: стабільна серія не дає хибного сигналу в межах бюджету
+  ---
+  duration_ms: 5.5538
+  type: 'test'
+  ...
+# Subtest: M13: некоректний вхід повертає valid=false з кодом причини, не кидає
+ok 250 - M13: некоректний вхід повертає valid=false з кодом причини, не кидає
+  ---
+  duration_ms: 0.9261
+  type: 'test'
+  ...
+# Subtest: M13: властивість — хибнопозитивна частка на 1000 стабільних серіях у межах бюджету
+ok 251 - M13: властивість — хибнопозитивна частка на 1000 стабільних серіях у межах бюджету
+  ---
+  duration_ms: 58.7677
+  type: 'test'
+  ...
+# Subtest: M09: detects bilateral 2-way cycles (A <-> B)
+ok 252 - M09: detects bilateral 2-way cycles (A <-> B)
+  ---
+  duration_ms: 6.6619
+  type: 'test'
+  ...
+# Subtest: M09: detects triangular 3-way cycles (A -> B -> C -> A)
+ok 253 - M09: detects triangular 3-way cycles (A -> B -> C -> A)
+  ---
+  duration_ms: 1.1163
+  type: 'test'
+  ...
+# Subtest: M09: triangular case proposal draft builds valid 3-way structure
+ok 254 - M09: triangular case proposal draft builds valid 3-way structure
+  ---
+  duration_ms: 2.5469
+  type: 'test'
+  ...
+# Subtest: M09: disjoint cycle packing prevents any person from appearing in two cycles simultaneously
+ok 255 - M09: disjoint cycle packing prevents any person from appearing in two cycles simultaneously
+  ---
+  duration_ms: 1.5912
+  type: 'test'
+  ...
+# Subtest: demo: anonymous reads fail and hidden profiles stay undiscoverable
+ok 256 - demo: anonymous reads fail and hidden profiles stay undiscoverable
+  ---
+  duration_ms: 7.6753
+  type: 'test'
+  ...
+# Subtest: demo: request is visible only to participants and only recipient can respond
+ok 257 - demo: request is visible only to participants and only recipient can respond
+  ---
+  duration_ms: 22.5683
+  type: 'test'
+  ...
+# Subtest: demo: signout removes access and profile validation rejects oversized data
+ok 258 - demo: signout removes access and profile validation rejects oversized data
+  ---
+  duration_ms: 0.8927
+  type: 'test'
+  ...
+# Subtest: online adapter rejects secret keys and unexpected origins before a request
+ok 259 - online adapter rejects secret keys and unexpected origins before a request
+  ---
+  duration_ms: 1.1803
+  type: 'test'
+  ...
+# Subtest: online adapter derives owner from session and excludes extra fields
+ok 260 - online adapter derives owner from session and excludes extra fields
+  ---
+  duration_ms: 117.1126
+  type: 'test'
+  ...
+# Subtest: online adapter coalesces expired-session refresh and clears memory on logout failure
+ok 261 - online adapter coalesces expired-session refresh and clears memory on logout failure
+  ---
+  duration_ms: 4.8559
+  type: 'test'
+  ...
+# Subtest: online adapter does not report a zero-row response as successful acceptance
+ok 262 - online adapter does not report a zero-row response as successful acceptance
+  ---
+  duration_ms: 2.2058
+  type: 'test'
+  ...
+# Subtest: provider restriction is detected before credentials, with no retry or response-body exposure
+ok 263 - provider restriction is detected before credentials, with no retry or response-body exposure
+  ---
+  duration_ms: 2.261
+  type: 'test'
+  ...
+# Subtest: release config strips unrelated values and keeps client access within its Supabase origin
+ok 264 - release config strips unrelated values and keeps client access within its Supabase origin
+  ---
+  duration_ms: 1.5783
+  type: 'test'
+  ...
+# Subtest: decision oracle: five typed decisions preserve the deterministic launch gates
+ok 265 - decision oracle: five typed decisions preserve the deterministic launch gates
+  ---
+  duration_ms: 183.2186
+  type: 'test'
+  ...
+# Subtest: model advice cannot override missing consent, incompatibility, one-way value, or unresolved approvals
+ok 266 - model advice cannot override missing consent, incompatibility, one-way value, or unresolved approvals
+  ---
+  duration_ms: 2.3727
+  type: 'test'
+  ...
+# Subtest: model cannot forge a deterministic recommendation to bypass a consent veto
+ok 267 - model cannot forge a deterministic recommendation to bypass a consent veto
+  ---
+  duration_ms: 2.047
+  type: 'test'
+  ...
+# Subtest: meeting brief stays blocked when approvals or disclosure consent are merely asserted
+ok 268 - meeting brief stays blocked when approvals or disclosure consent are merely asserted
+  ---
+  duration_ms: 10.1435
+  type: 'test'
+  ...
+# Subtest: unresolved payment and an unconsulted third party never become a recommended mode
+ok 269 - unresolved payment and an unconsulted third party never become a recommended mode
+  ---
+  duration_ms: 15.0507
+  type: 'test'
+  ...
+# Subtest: decision request contract rejects unknown decision kinds
+ok 270 - decision request contract rejects unknown decision kinds
+  ---
+  duration_ms: 0.4583
+  type: 'test'
+  ...
+# Subtest: offline bakeoff records identity, cost, latency, oracle accuracy and abstention without a provider claim
+ok 271 - offline bakeoff records identity, cost, latency, oracle accuracy and abstention without a provider claim
+  ---
+  duration_ms: 4.8989
+  type: 'test'
+  ...
+# Subtest: hosted answer without exact identity and receipt cannot pass local acceptance
+ok 272 - hosted answer without exact identity and receipt cannot pass local acceptance
+  ---
+  duration_ms: 0.9904
+  type: 'test'
+  ...
+# Subtest: mutation evidence: weakening the advisory veto makes the semantic guard fail
+ok 273 - mutation evidence: weakening the advisory veto makes the semantic guard fail
+  ---
+  duration_ms: 778.1564
+  type: 'test'
+  ...
+# Subtest: declared fit explains two-way complementary self-declared skills without a score
+ok 274 - declared fit explains two-way complementary self-declared skills without a score
+  ---
+  duration_ms: 7.6618
+  type: 'test'
+  ...
+# Subtest: declared fit keeps missing preferences unknown and known conflict distinct
+ok 275 - declared fit keeps missing preferences unknown and known conflict distinct
+  ---
+  duration_ms: 0.8078
+  type: 'test'
+  ...
+# Subtest: revoked fit consent blocks comparison before any trait is emitted
+ok 276 - revoked fit consent blocks comparison before any trait is emitted
+  ---
+  duration_ms: 2.6113
+  type: 'test'
+  ...
+# Subtest: fit consent never makes a hidden profile public
+ok 277 - fit consent never makes a hidden profile public
+  ---
+  duration_ms: 0.4925
+  type: 'test'
+  ...
+# Subtest: optional traits require explicit enablement on both sides and normalization drops undeclared fields
+ok 278 - optional traits require explicit enablement on both sides and normalization drops undeclared fields
+  ---
+  duration_ms: 1.1337
+  type: 'test'
+  ...
+# Subtest: synthetic demo has a finite mutual-benefit journey and never turns a draft into a send
+ok 279 - synthetic demo has a finite mutual-benefit journey and never turns a draft into a send
+  ---
+  duration_ms: 2.2797
+  type: 'test'
+  ...
+# Subtest: C12.L3: потужність — канонічна формула (d=0.5 -> 63/групу, d=0.8 -> 25)
+ok 280 - C12.L3: потужність — канонічна формула (d=0.5 -> 63/групу, d=0.8 -> 25)
+  ---
+  duration_ms: 15.7661
+  type: 'test'
+  ...
+# Subtest: C12.L3: некоректні параметри потужності — reason codes, не throw
+ok 281 - C12.L3: некоректні параметри потужності — reason codes, не throw
+  ---
+  duration_ms: 1.1984
+  type: 'test'
+  ...
+# Subtest: C12.L3: парна різниця — hand-computed fixture
+ok 282 - C12.L3: парна різниця — hand-computed fixture
+  ---
+  duration_ms: 1.9125
+  type: 'test'
+  ...
+# Subtest: C12.L3: дублі пари і невалідні результати відхилені; порожній набір чесний
+ok 283 - C12.L3: дублі пари і невалідні результати відхилені; порожній набір чесний
+  ---
+  duration_ms: 0.6617
+  type: 'test'
+  ...
+# Subtest: C12.L3: нульова дисперсія не ділить на нуль
+ok 284 - C12.L3: нульова дисперсія не ділить на нуль
+  ---
+  duration_ms: 0.5564
+  type: 'test'
+  ...
+# Subtest: C13.L3: complete scripted E2E lifecycle against mock Neon backend
+ok 285 - C13.L3: complete scripted E2E lifecycle against mock Neon backend
+  ---
+  duration_ms: 244.5247
+  type: 'test'
+  ...
+# Subtest: economics: includes recurring billing fee, per-member labour and fixed work
+ok 286 - economics: includes recurring billing fee, per-member labour and fixed work
+  ---
+  duration_ms: 6.2653
+  type: 'test'
+  ...
+# Subtest: economics: VAT-inclusive price removes VAT from revenue while card fee uses full charge
+ok 287 - economics: VAT-inclusive price removes VAT from revenue while card fee uses full charge
+  ---
+  duration_ms: 1.9656
+  type: 'test'
+  ...
+# Subtest: economics: negative unit contribution has no finite break-even; zero customers still carry fixed costs
+ok 288 - economics: negative unit contribution has no finite break-even; zero customers still carry fixed costs
+  ---
+  duration_ms: 0.5694
+  type: 'test'
+  ...
+# Subtest: economics: invalid, missing numeric and fractional member inputs are rejected
+ok 289 - economics: invalid, missing numeric and fractional member inputs are rejected
+  ---
+  duration_ms: 1.3167
+  type: 'test'
+  ...
+# Subtest: pilot funnel: real, synthetic and model outputs cannot be blended
+ok 290 - pilot funnel: real, synthetic and model outputs cannot be blended
+  ---
+  duration_ms: 6.1757
+  type: 'test'
+  ...
+# Subtest: pilot funnel: accepted or rejected outcomes require exact case version/hash and recipient decision
+ok 291 - pilot funnel: accepted or rejected outcomes require exact case version/hash and recipient decision
+  ---
+  duration_ms: 0.7362
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_AUDITED: profile_imported is pseudonymous append-only metadata, source-separated, never evidence
+ok 292 - SYN_IMPORT_AUDITED: profile_imported is pseudonymous append-only metadata, source-separated, never evidence
+  ---
+  duration_ms: 5.6784
+  type: 'test'
+  ...
+# Subtest: SYN_TELEMETRY_CONTRACT: consent off writes nothing, consent on appends validated events only
+ok 293 - SYN_TELEMETRY_CONTRACT: consent off writes nothing, consent on appends validated events only
+  ---
+  duration_ms: 11.3295
+  type: 'test'
+  ...
+# Subtest: SYN_TELEMETRY_CONTRACT: 10s dedup collapses repeats and rejects PII, unknown types and orphan operator minutes
+ok 294 - SYN_TELEMETRY_CONTRACT: 10s dedup collapses repeats and rejects PII, unknown types and orphan operator minutes
+  ---
+  duration_ms: 3.8238
+  type: 'test'
+  ...
+# Subtest: SYN_TELEMETRY_CONTRACT: events.jsonl writer is append-only, test-path overrideable and node-only
+ok 295 - SYN_TELEMETRY_CONTRACT: events.jsonl writer is append-only, test-path overrideable and node-only
+  ---
+  duration_ms: 67.4987
+  type: 'test'
+  ...
+# Subtest: C11.L1: caseEconomics computes total case cost
+ok 296 - C11.L1: caseEconomics computes total case cost
+  ---
+  duration_ms: 1.1454
+  type: 'test'
+  ...
+# Subtest: P05: case without effort keeps the exact hash it had before the effort field existed
+ok 297 - P05: case without effort keeps the exact hash it had before the effort field existed
+  ---
+  duration_ms: 105.6015
+  type: 'test'
+  ...
+# Subtest: P05: adding effort is a material change that clears both approvals
+ok 298 - P05: adding effort is a material change that clears both approvals
+  ---
+  duration_ms: 10.0148
+  type: 'test'
+  ...
+# Subtest: P05: 1 hour against 30 hours is reported as a difference, never as equivalent
+ok 299 - P05: 1 hour against 30 hours is reported as a difference, never as equivalent
+  ---
+  duration_ms: 20.84
+  type: 'test'
+  ...
+# Subtest: P05: equal volumes do not differ; a missing volume stays missing instead of guessed
+ok 300 - P05: equal volumes do not differ; a missing volume stays missing instead of guessed
+  ---
+  duration_ms: 1.3475
+  type: 'test'
+  ...
+# Subtest: P05: malformed effort fails closed in the domain and is ignored from human input
+ok 301 - P05: malformed effort fails closed in the domain and is ignored from human input
+  ---
+  duration_ms: 3.252
+  type: 'test'
+  ...
+# Subtest: P08: only the receiver may decline; decline opens a neutral dispute and keeps history
+ok 302 - P08: only the receiver may decline; decline opens a neutral dispute and keeps history
+  ---
+  duration_ms: 53.3038
+  type: 'test'
+  ...
+# Subtest: P09: feedback is optional; no reply is missing data, not a negative value
+ok 303 - P09: feedback is optional; no reply is missing data, not a negative value
+  ---
+  duration_ms: 6.7202
+  type: 'test'
+  ...
+# Subtest: meeting proposal minimizes worst journey within every participant limit, then imbalance
+ok 304 - meeting proposal minimizes worst journey within every participant limit, then imbalance
+  ---
+  duration_ms: 18.7315
+  type: 'test'
+  ...
+# Subtest: map cost uses monthly billable loads/elements, separate free caps and currency; zero members is not revenue proof
+ok 305 - map cost uses monthly billable loads/elements, separate free caps and currency; zero members is not revenue proof
+  ---
+  duration_ms: 1.1926
+  type: 'test'
+  ...
+# Subtest: complementarity explains each direction and never suggests hidden people
+ok 306 - complementarity explains each direction and never suggests hidden people
+  ---
+  duration_ms: 3.5809
+  type: 'test'
+  ...
+# Subtest: C04.L3: resolves viewer audience level based on relationship context
+ok 307 - C04.L3: resolves viewer audience level based on relationship context
+  ---
+  duration_ms: 2.7282
+  type: 'test'
+  ...
+# Subtest: C04.L3: public viewer cannot see community, contact, or private fields
+ok 308 - C04.L3: public viewer cannot see community, contact, or private fields
+  ---
+  duration_ms: 2.9023
+  type: 'test'
+  ...
+# Subtest: C04.L3: community viewer sees public and community fields, but NOT contacts or private data
+ok 309 - C04.L3: community viewer sees public and community fields, but NOT contacts or private data
+  ---
+  duration_ms: 2.642
+  type: 'test'
+  ...
+# Subtest: C04.L3: after meeting viewer unlocks contact fields, but never private notes or billing
+ok 310 - C04.L3: after meeting viewer unlocks contact fields, but never private notes or billing
+  ---
+  duration_ms: 0.6881
+  type: 'test'
+  ...
+# Subtest: C04.L3: profile owner sees all fields
+ok 311 - C04.L3: profile owner sees all fields
+  ---
+  duration_ms: 0.8809
+  type: 'test'
+  ...
+# Subtest: C04.L3: fail-closed on unknown fields
+ok 312 - C04.L3: fail-closed on unknown fields
+  ---
+  duration_ms: 0.5508
+  type: 'test'
+  ...
+# Subtest: M11: calculateKaplanMeierSurvival handles empty, perfect, and full-churn cohorts
+ok 313 - M11: calculateKaplanMeierSurvival handles empty, perfect, and full-churn cohorts
+  ---
+  duration_ms: 4.8631
+  type: 'test'
+  ...
+# Subtest: M11: calculateKaplanMeierSurvival proves monotonic non-increasing survival curve
+ok 314 - M11: calculateKaplanMeierSurvival proves monotonic non-increasing survival curve
+  ---
+  duration_ms: 0.9583
+  type: 'test'
+  ...
+# Subtest: M12: buildMarkovTransitionMatrix enforces row-stochastic invariant and absorbing states
+ok 315 - M12: buildMarkovTransitionMatrix enforces row-stochastic invariant and absorbing states
+  ---
+  duration_ms: 3.4482
+  type: 'test'
+  ...
+# Subtest: M12: analyzeMarkovAbsorbingChain calculates fundamental matrix and exact absorption probabilities
+ok 316 - M12: analyzeMarkovAbsorbingChain calculates fundamental matrix and exact absorption probabilities
+  ---
+  duration_ms: 2.636
+  type: 'test'
+  ...
+# Subtest: silence never invents a logistics preference or attendance
+ok 317 - silence never invents a logistics preference or attendance
+  ---
+  duration_ms: 4.7403
+  type: 'test'
+  ...
+# Subtest: only explicit fallback on current proposal is used at deadline and remains labelled
+ok 318 - only explicit fallback on current proposal is used at deadline and remains labelled
+  ---
+  duration_ms: 0.9576
+  type: 'test'
+  ...
+# Subtest: revised place/date discards prior answers and fallback; stale copied state cannot authorize
+ok 319 - revised place/date discards prior answers and fallback; stale copied state cannot authorize
+  ---
+  duration_ms: 0.8178
+  type: 'test'
+  ...
+# Subtest: withdraw and explicit no override preselected yes without mutating prior state
+ok 320 - withdraw and explicit no override preselected yes without mutating prior state
+  ---
+  duration_ms: 4.457
+  type: 'test'
+  ...
+# Subtest: unknown participants, malformed dates, expired writes and obligations rejected
+ok 321 - unknown participants, malformed dates, expired writes and obligations rejected
+  ---
+  duration_ms: 1.1428
+  type: 'test'
+  ...
+# Subtest: i18n: supports uk, de, and en with default uk
+ok 322 - i18n: supports uk, de, and en with default uk
+  ---
+  duration_ms: 7.8652
+  type: 'test'
+  ...
+# Subtest: i18n: dictionary key symmetry across all languages
+ok 323 - i18n: dictionary key symmetry across all languages
+  ---
+  duration_ms: 0.9129
+  type: 'test'
+  ...
+# Subtest: i18n: switching locale updates translated output
+ok 324 - i18n: switching locale updates translated output
+  ---
+  duration_ms: 2.7274
+  type: 'test'
+  ...
+# Subtest: i18n: falls back cleanly for unknown locale or missing keys
+ok 325 - i18n: falls back cleanly for unknown locale or missing keys
+  ---
+  duration_ms: 0.5172
+  type: 'test'
+  ...
+# Subtest: i18n: detects locale from browser language header
+ok 326 - i18n: detects locale from browser language header
+  ---
+  duration_ms: 0.499
+  type: 'test'
+  ...
+# Subtest: C15.L5: Template Selector — детермінована мапа рівнів (канон §2.2)
+ok 327 - C15.L5: Template Selector — детермінована мапа рівнів (канон §2.2)
+  ---
+  duration_ms: 12.0767
+  type: 'test'
+  ...
+# Subtest: C15.L5: fromHypothesis — детермінований план зі стабільним sha256
+ok 328 - C15.L5: fromHypothesis — детермінований план зі стабільним sha256
+  ---
+  duration_ms: 4.1882
+  type: 'test'
+  ...
+# Subtest: C15.L5: fail-closed гіпотеза — dropoff <= 0 і L2 без когорти (українська помилка)
+ok 329 - C15.L5: fail-closed гіпотеза — dropoff <= 0 і L2 без когорти (українська помилка)
+  ---
+  duration_ms: 3.3711
+  type: 'test'
+  ...
+# Subtest: C15.L5: preview — два варіанти A/B, консервативний = baseline, агресивний = proposal
+ok 330 - C15.L5: preview — два варіанти A/B, консервативний = baseline, агресивний = proposal
+  ---
+  duration_ms: 1.8053
+  type: 'test'
+  ...
+# Subtest: C15.L5: preview reject варіант, що ламає WCAG AA (світлий текст на світлому фоні)
+ok 331 - C15.L5: preview reject варіант, що ламає WCAG AA (світлий текст на світлому фоні)
+  ---
+  duration_ms: 0.6278
+  type: 'test'
+  ...
+# Subtest: C15.L5: preview — план не знайдений → fail-closed
+ok 332 - C15.L5: preview — план не знайдений → fail-closed
+  ---
+  duration_ms: 8.2752
+  type: 'test'
+  ...
+# Subtest: C15.L5: confirm вимагає operatorId — тихих змін немає (канон §4.3)
+ok 333 - C15.L5: confirm вимагає operatorId — тихих змін немає (канон §4.3)
+  ---
+  duration_ms: 0.9383
+  type: 'test'
+  ...
+# Subtest: C15.L5: deploy без confirm відкидається
+ok 334 - C15.L5: deploy без confirm відкидається
+  ---
+  duration_ms: 2.8536
+  type: 'test'
+  ...
+# Subtest: C15.L5: deployAndLog — один запис з artifact_sha256, changed_paths, без PII
+ok 335 - C15.L5: deployAndLog — один запис з artifact_sha256, changed_paths, без PII
+  ---
+  duration_ms: 53.875
+  type: 'test'
+  ...
+# Subtest: C15.L5: hash-ланцюг верифікується; тампірінг ловиться на конкретному рядку
+ok 336 - C15.L5: hash-ланцюг верифікується; тампірінг ловиться на конкретному рядку
+  ---
+  duration_ms: 46.8263
+  type: 'test'
+  ...
+# Subtest: C15.L5: rollbackLast — audit-запис з system-rollback і prev_hash попереднього
+ok 337 - C15.L5: rollbackLast — audit-запис з system-rollback і prev_hash попереднього
+  ---
+  duration_ms: 59.739
+  type: 'test'
+  ...
+# Subtest: C15.L5: повний каскад L2 end-to-end — hypothesis → preview → confirm → deploy → verify
+ok 338 - C15.L5: повний каскад L2 end-to-end — hypothesis → preview → confirm → deploy → verify
+  ---
+  duration_ms: 40.8435
+  type: 'test'
+  ...
+# Subtest: C15.L5: повний каскад L2 end-to-end через інʼєкції (deploy/rollback фейкові)
+ok 339 - C15.L5: повний каскад L2 end-to-end через інʼєкції (deploy/rollback фейкові)
+  ---
+  duration_ms: 68.7148
+  type: 'test'
+  ...
+# Subtest: C15.L4: активний bundle за календарем — вручну пораховані дати
+ok 340 - C15.L4: активний bundle за календарем — вручну пораховані дати
+  ---
+  duration_ms: 3.1921
+  type: 'test'
+  ...
+# Subtest: C15.L4: межа вікна — наступний день після закінчення вже null
+ok 341 - C15.L4: межа вікна — наступний день після закінчення вже null
+  ---
+  duration_ms: 0.4741
+  type: 'test'
+  ...
+# Subtest: C15.L4: некоректна дата — fail-closed українською
+ok 342 - C15.L4: некоректна дата — fail-closed українською
+  ---
+  duration_ms: 1.3727
+  type: 'test'
+  ...
+# Subtest: C15.L4: bundles заморожені, токени — реальні імена з tokens.css
+ok 343 - C15.L4: bundles заморожені, токени — реальні імена з tokens.css
+  ---
+  duration_ms: 13.1842
+  type: 'test'
+  ...
+# Subtest: C15.L4: applyTheme валідує токени fail-closed і детермінований
+ok 344 - C15.L4: applyTheme валідує токени fail-closed і детермінований
+  ---
+  duration_ms: 3.5631
+  type: 'test'
+  ...
+# Subtest: C15.L4: rollback < 1s — чиста константа скиду, O(1)
+ok 345 - C15.L4: rollback < 1s — чиста константа скиду, O(1)
+  ---
+  duration_ms: 7.2435
+  type: 'test'
+  ...
+# Subtest: C15.L4: consentInvariantCheck блокує будь-яку операцію на 7 гейтах
+ok 346 - C15.L4: consentInvariantCheck блокує будь-яку операцію на 7 гейтах
+  ---
+  duration_ms: 3.0797
+  type: 'test'
+  ...
+# Subtest: C15.L4: listConsentGates — повний набір 7 гейтів канону
+ok 347 - C15.L4: listConsentGates — повний набір 7 гейтів канону
+  ---
+  duration_ms: 0.5845
+  type: 'test'
+  ...
+# Subtest: C15.L4: усі shipped bundles проходять applyTheme (pre-audited гарантія)
+ok 348 - C15.L4: усі shipped bundles проходять applyTheme (pre-audited гарантія)
+  ---
+  duration_ms: 1.2477
+  type: 'test'
+  ...
+# Subtest: C15.L4: інваріант — немає мутацій consentState у модулі
+ok 349 - C15.L4: інваріант — немає мутацій consentState у модулі
+  ---
+  duration_ms: 16.2195
+  type: 'test'
+  ...
+# Subtest: C15.L2: реєстр екранів відповідає index.html (реальні id)
+ok 350 - C15.L2: реєстр екранів відповідає index.html (реальні id)
+  ---
+  duration_ms: 9.4508
+  type: 'test'
+  ...
+# Subtest: C15.L2: валідна перестановка приймається, дублікати/відсутні/зайві — відкидаються
+ok 351 - C15.L2: валідна перестановка приймається, дублікати/відсутні/зайві — відкидаються
+  ---
+  duration_ms: 0.8763
+  type: 'test'
+  ...
+# Subtest: C15.L2: recomposeOrder move — детерміновано, вхід не мутується
+ok 352 - C15.L2: recomposeOrder move — детерміновано, вхід не мутується
+  ---
+  duration_ms: 0.9069
+  type: 'test'
+  ...
+# Subtest: C15.L2: recomposeOrder promote — переміщення на початок
+ok 353 - C15.L2: recomposeOrder promote — переміщення на початок
+  ---
+  duration_ms: 0.5169
+  type: 'test'
+  ...
+# Subtest: C15.L2: recomposeOrder fail-closed — невідомий екран і криве правило (українська помилка)
+ok 354 - C15.L2: recomposeOrder fail-closed — невідомий екран і криве правило (українська помилка)
+  ---
+  duration_ms: 1.6138
+  type: 'test'
+  ...
+# Subtest: C15.L2: toggleVisibility — settings захищений інваріантом канону
+ok 355 - C15.L2: toggleVisibility — settings захищений інваріантом канону
+  ---
+  duration_ms: 0.6093
+  type: 'test'
+  ...
+# Subtest: C15.L2: toggleVisibility fail-closed на невідомому екрані
+ok 356 - C15.L2: toggleVisibility fail-closed на невідомому екрані
+  ---
+  duration_ms: 0.4529
+  type: 'test'
+  ...
+# Subtest: C15.L2: regression gate — зміна порядку проходить, зміна набору ламає
+ok 357 - C15.L2: regression gate — зміна порядку проходить, зміна набору ламає
+  ---
+  duration_ms: 0.7768
+  type: 'test'
+  ...
+# Subtest: C15.L2: regression gate ловить приховану панель приватності
+ok 358 - C15.L2: regression gate ловить приховану панель приватності
+  ---
+  duration_ms: 0.5478
+  type: 'test'
+  ...
+# Subtest: C15.L2: describeLayout — канонічний рядок для audit log
+ok 359 - C15.L2: describeLayout — канонічний рядок для audit log
+  ---
+  duration_ms: 0.9025
+  type: 'test'
+  ...
+# Subtest: C15.L2: domId fail-closed на невідомому екрані
+ok 360 - C15.L2: domId fail-closed на невідомому екрані
+  ---
+  duration_ms: 0.4266
+  type: 'test'
+  ...
+# Subtest: C15.L2: інваріант — немає мутацій consentState у модулі
+ok 361 - C15.L2: інваріант — немає мутацій consentState у модулі
+  ---
+  duration_ms: 1.9782
+  type: 'test'
+  ...
+# Subtest: C15.L3: три стилі з attribution, заморожені
+ok 362 - C15.L3: три стилі з attribution, заморожені
+  ---
+  duration_ms: 6.2579
+  type: 'test'
+  ...
+# Subtest: C15.L3: превʼязаність user > event > cohort > default(osm)
+ok 363 - C15.L3: превʼязаність user > event > cohort > default(osm)
+  ---
+  duration_ms: 0.5485
+  type: 'test'
+  ...
+# Subtest: C15.L3: невідомий стиль — українська доменна помилка
+ok 364 - C15.L3: невідомий стиль — українська доменна помилка
+  ---
+  duration_ms: 1.0359
+  type: 'test'
+  ...
+# Subtest: C15.L3: маркер-токени заморожені, різні між стилями, валідні hex
+ok 365 - C15.L3: маркер-токени заморожені, різні між стилями, валідні hex
+  ---
+  duration_ms: 1.1842
+  type: 'test'
+  ...
+# Subtest: C15.L3: viewportRadius — без згоди null, зі згодою >= 15 км (GEO-01)
+ok 366 - C15.L3: viewportRadius — без згоди null, зі згодою >= 15 км (GEO-01)
+  ---
+  duration_ms: 0.7316
+  type: 'test'
+  ...
+# Subtest: C15.L3: viewportRadius fail-closed на некоректному радіусі
+ok 367 - C15.L3: viewportRadius fail-closed на некоректному радіусі
+  ---
+  duration_ms: 0.4413
+  type: 'test'
+  ...
+# Subtest: C15.L3: geoGuard відкидає live GPS без гранту
+ok 368 - C15.L3: geoGuard відкидає live GPS без гранту
+  ---
+  duration_ms: 0.7117
+  type: 'test'
+  ...
+# Subtest: C15.L3: geoGuard відкидає торкання consent-гейтів і невідомий стиль
+ok 369 - C15.L3: geoGuard відкидає торкання consent-гейтів і невідомий стиль
+  ---
+  duration_ms: 0.5286
+  type: 'test'
+  ...
+# Subtest: C15.L3: geoGuard приймає чисту подію теми
+ok 370 - C15.L3: geoGuard приймає чисту подію теми
+  ---
+  duration_ms: 0.763
+  type: 'test'
+  ...
+# Subtest: C15.L3: всі стилі мають шаблон тайлів; satellite від osm відрізняється
+ok 371 - C15.L3: всі стилі мають шаблон тайлів; satellite від osm відрізняється
+  ---
+  duration_ms: 0.8491
+  type: 'test'
+  ...
+# Subtest: C15.L3: інваріант — без мутацій consentState, без імпорту app.mjs
+ok 372 - C15.L3: інваріант — без мутацій consentState, без імпорту app.mjs
+  ---
+  duration_ms: 2.3434
+  type: 'test'
+  ...
+# Subtest: C15.L6: когорти заморожені і згідні з каноном §4.1 (designers/sales/winterthur-devs)
+ok 373 - C15.L6: когорти заморожені і згідні з каноном §4.1 (designers/sales/winterthur-devs)
+  ---
+  duration_ms: 5.5536
+  type: 'test'
+  ...
+# Subtest: C15.L6: composePreview детермінований, sha256 стабільний, requiresOperatorConfirm=true
+ok 374 - C15.L6: composePreview детермінований, sha256 стабільний, requiresOperatorConfirm=true
+  ---
+  duration_ms: 2.46
+  type: 'test'
+  ...
+# Subtest: C15.L6: невідома когорта — українська доменна помилка
+ok 375 - C15.L6: невідома когорта — українська доменна помилка
+  ---
+  duration_ms: 1.3827
+  type: 'test'
+  ...
+# Subtest: C15.L6: layoutOrder — валідна перестановка канонічного набору, інакше fail-closed
+ok 376 - C15.L6: layoutOrder — валідна перестановка канонічного набору, інакше fail-closed
+  ---
+  duration_ms: 1.4181
+  type: 'test'
+  ...
+# Subtest: C15.L6: невідома карта-підкладка у intent — fail-closed
+ok 377 - C15.L6: невідома карта-підкладка у intent — fail-closed
+  ---
+  duration_ms: 1.5277
+  type: 'test'
+  ...
+# Subtest: C15.L6: renderPreviewPanel — українські лейбли і підтвердження оператора
+ok 378 - C15.L6: renderPreviewPanel — українські лейбли і підтвердження оператора
+  ---
+  duration_ms: 0.6265
+  type: 'test'
+  ...
+# Subtest: C15.L6: batchPreview — 3 дозволені, 4 відкидаються з українською помилкою
+ok 379 - C15.L6: batchPreview — 3 дозволені, 4 відкидаються з українською помилкою
+  ---
+  duration_ms: 3.2677
+  type: 'test'
+  ...
+# Subtest: C15.L6: auditLine — канонічний рядок з відсортованими ключами
+ok 380 - C15.L6: auditLine — канонічний рядок з відсортованими ключами
+  ---
+  duration_ms: 0.6075
+  type: 'test'
+  ...
+# Subtest: C15.L6: auditTrail — чистий ланцюг валідний, тампірінг ловиться за індексом
+ok 381 - C15.L6: auditTrail — чистий ланцюг валідний, тампірінг ловиться за індексом
+  ---
+  duration_ms: 1.6196
+  type: 'test'
+  ...
+# Subtest: C15.L6: composePreview з невалідним layoutOrder НЕ проходить (fail-closed до деплою)
+ok 382 - C15.L6: composePreview з невалідним layoutOrder НЕ проходить (fail-closed до деплою)
+  ---
+  duration_ms: 0.857
+  type: 'test'
+  ...
+# Subtest: C15.L6: інваріант — без імпорту sibling-модулів, без мутацій consentState
+ok 383 - C15.L6: інваріант — без імпорту sibling-модулів, без мутацій consentState
+  ---
+  duration_ms: 8.3659
+  type: 'test'
+  ...
+# Subtest: C15.L7: усі 6 машин існують на диску і проходять аудит (реальний code review чекліст)
+ok 384 - C15.L7: усі 6 машин існують на диску і проходять аудит (реальний code review чекліст)
+  ---
+  duration_ms: 89.2769
+  type: 'test'
+  ...
+# Subtest: C15.L7: аудит ловить PII-літерал у синтетичній машині (false-negative гейт)
+ok 385 - C15.L7: аудит ловить PII-літерал у синтетичній машині (false-negative гейт)
+  ---
+  duration_ms: 115.1709
+  type: 'test'
+  ...
+# Subtest: C15.L7: аудит ловить consent-мутацію у синтетичному коді
+ok 386 - C15.L7: аудит ловить consent-мутацію у синтетичному коді
+  ---
+  duration_ms: 0.6232
+  type: 'test'
+  ...
+# Subtest: C15.L7: машина стану без rollback — MISSING_ROLLBACK finding
+ok 387 - C15.L7: машина стану без rollback — MISSING_ROLLBACK finding
+  ---
+  duration_ms: 29.7843
+  type: 'test'
+  ...
+# Subtest: C15.L7: disposable email фікстури НЕ рахуються PII (штучний прогін чекліст-логіки)
+ok 388 - C15.L7: disposable email фікстури НЕ рахуються PII (штучний прогін чекліст-логіки)
+  ---
+  duration_ms: 0.6145
+  type: 'test'
+  ...
+# Subtest: C15.L7: auditSummaryLine — детермінований рядок для READINESS evidence
+ok 389 - C15.L7: auditSummaryLine — детермінований рядок для READINESS evidence
+  ---
+  duration_ms: 151.3984
+  type: 'test'
+  ...
+# Subtest: C15.L1: allowlist заморожений і складається з РЕАЛЬНИХ імен tokens.css
+ok 390 - C15.L1: allowlist заморожений і складається з РЕАЛЬНИХ імен tokens.css
+  ---
+  duration_ms: 21.5803
+  type: 'test'
+  ...
+# Subtest: C15.L1: baseline дорівнює tokens.css значенням — жодної вигаданої фарби
+ok 391 - C15.L1: baseline дорівнює tokens.css значенням — жодної вигаданої фарби
+  ---
+  duration_ms: 10.2404
+  type: 'test'
+  ...
+# Subtest: C15.L1: forgeTokens — fail-closed на недозволеному ключі і на кривому кольорі
+ok 392 - C15.L1: forgeTokens — fail-closed на недозволеному ключі і на кривому кольорі
+  ---
+  duration_ms: 1.7972
+  type: 'test'
+  ...
+# Subtest: C15.L1: forgeTokens детермінований — той самий патч, той самий sha256
+ok 393 - C15.L1: forgeTokens детермінований — той самий патч, той самий sha256
+  ---
+  duration_ms: 25.3511
+  type: 'test'
+  ...
+# Subtest: C15.L1: WCAG — відома еталонна пара чорний/білий = 21.0, поріг AA = 4.5
+ok 394 - C15.L1: WCAG — відома еталонна пара чорний/білий = 21.0, поріг AA = 4.5
+  ---
+  duration_ms: 0.8155
+  type: 'test'
+  ...
+# Subtest: C15.L1: WCAG — \#777777 на \#FFFFFF ≈ 4.47 < 4.5 → fail ( hand-computed відомий випадок)
+ok 395 - C15.L1: WCAG — \#777777 на \#FFFFFF ≈ 4.47 < 4.5 → fail ( hand-computed відомий випадок)
+  ---
+  duration_ms: 0.7624
+  type: 'test'
+  ...
+# Subtest: C15.L1: базові пари бренду проходять AA (межі пораховані вручну: 8.5 і 7.0)
+ok 396 - C15.L1: базові пари бренду проходять AA (межі пораховані вручну: 8.5 і 7.0)
+  ---
+  duration_ms: 0.5541
+  type: 'test'
+  ...
+# Subtest: C15.L1: guardAA ловить навмано провальну пару і повертає violations з ratio
+ok 397 - C15.L1: guardAA ловить навмано провальну пару і повертає violations з ratio
+  ---
+  duration_ms: 0.7063
+  type: 'test'
+  ...
+# Subtest: C15.L1: guardAA fail-closed на токені поза набором
+ok 398 - C15.L1: guardAA fail-closed на токені поза набором
+  ---
+  duration_ms: 0.5187
+  type: 'test'
+  ...
+# Subtest: C15.L1: previewTokenSet — preview:true, sha256 стабільний, ключі поза списком відкидаються
+ok 399 - C15.L1: previewTokenSet — preview:true, sha256 стабільний, ключі поза списком відкидаються
+  ---
+  duration_ms: 0.9746
+  type: 'test'
+  ...
+# Subtest: C15.L1: resetTokenSet повертає заморожений baseline — два виклики ідентичні
+ok 400 - C15.L1: resetTokenSet повертає заморожений baseline — два виклики ідентичні
+  ---
+  duration_ms: 0.4756
+  type: 'test'
+  ...
+# Subtest: C15.L1: інваріант — у модулі немає звернень до consentState
+ok 401 - C15.L1: інваріант — у модулі немає звернень до consentState
+  ---
+  duration_ms: 2.2013
+  type: 'test'
+  ...
+# Subtest: rows are well-formed and do not shadow the shared table
+ok 402 - rows are well-formed and do not shadow the shared table
+  ---
+  duration_ms: 19.2835
+  type: 'test'
+  ...
+# Subtest: patterns compile, are anchored and only refer to groups they have
+ok 403 - patterns compile, are anchored and only refer to groups they have
+  ---
+  duration_ms: 16.0382
+  type: 'test'
+  ...
+# Subtest: every pattern matches its own example and changes it
+ok 404 - every pattern matches its own example and changes it
+  ---
+  duration_ms: 181.9279
+  type: 'test'
+  ...
+# Subtest: every Ukrainian string of the page markup and its modules is accounted for
+ok 405 - every Ukrainian string of the page markup and its modules is accounted for
+  ---
+  duration_ms: 666.088
+  type: 'test'
+  ...
+# Subtest: a long text is never run through the patterns, and near-matches stay cheap
+ok 406 - a long text is never run through the patterns, and near-matches stay cheap
+  ---
+  duration_ms: 462.109
+  type: 'test'
+  ...
+# Subtest: a Ukrainian visit loads only the button module; the rest ships but is fetched on demand
+ok 407 - a Ukrainian visit loads only the button module; the rest ships but is fetched on demand
+  ---
+  duration_ms: 19.8351
+  type: 'test'
+  ...
+# Subtest: the rules page: every Ukrainian text has an unofficial translation, loaded only on demand
+ok 408 - the rules page: every Ukrainian text has an unofficial translation, loaded only on demand
+  ---
+  duration_ms: 56.2724
+  type: 'test'
+  ...
+# Subtest: translate: whole labels, assembled text, lists; a person's own text is left alone
+ok 409 - translate: whole labels, assembled text, lists; a person's own text is left alone
+  ---
+  duration_ms: 3.4653
+  type: 'test'
+  ...
+# Subtest: profile deletion: the form and the code accept the same words, one per language
+ok 410 - profile deletion: the form and the code accept the same words, one per language
+  ---
+  duration_ms: 17.2945
+  type: 'test'
+  ...
+# Subtest: a choice in a list is sent by a fixed value, never by its translated label
+ok 411 - a choice in a list is sent by a fixed value, never by its translated label
+  ---
+  duration_ms: 42.3366
+  type: 'test'
+  ...
+# Subtest: what a person wrote is marked and is never translated, even when it equals a label
+ok 412 - what a person wrote is marked and is never translated, even when it equals a label
+  ---
+  duration_ms: 35.129
+  type: 'test'
+  ...
+# Subtest: dates follow the chosen language and lists of labels are translated item by item
+ok 413 - dates follow the chosen language and lists of labels are translated item by item
+  ---
+  duration_ms: 95.0212
+  type: 'test'
+  ...
+# Subtest: the coverage lists hold nothing stale, doubled or contradictory
+ok 414 - the coverage lists hold nothing stale, doubled or contradictory
+  ---
+  duration_ms: 989.5344
+  type: 'test'
+  ...
+# Subtest: the card says who a hint is for and what a confirmation means, not the internal codes
+ok 415 - the card says who a hint is for and what a confirmation means, not the internal codes
+  ---
+  duration_ms: 26.0454
+  type: 'test'
+  ...
+# Subtest: Android Chrome offers installation only with a real pending prompt
+ok 416 - Android Chrome offers installation only with a real pending prompt
+  ---
+  duration_ms: 2.7146
+  type: 'test'
+  ...
+# Subtest: iPhone Safari offers the share guide
+ok 417 - iPhone Safari offers the share guide
+  ---
+  duration_ms: 0.6025
+  type: 'test'
+  ...
+# Subtest: iPhone Chrome is not given Safari instructions, even with a prompt
+ok 418 - iPhone Chrome is not given Safari instructions, even with a prompt
+  ---
+  duration_ms: 0.5019
+  type: 'test'
+  ...
+# Subtest: standalone suppresses both installation modes
+ok 419 - standalone suppresses both installation modes
+  ---
+  duration_ms: 2.6264
+  type: 'test'
+  ...
+# Subtest: invalid or empty user agents and missing platform return none without throwing
+ok 420 - invalid or empty user agents and missing platform return none without throwing
+  ---
+  duration_ms: 0.8002
+  type: 'test'
+  ...
+# Subtest: desktop browsers and Android without Chromium do not show the phone strip
+ok 421 - desktop browsers and Android without Chromium do not show the phone strip
+  ---
+  duration_ms: 0.8609
+  type: 'test'
+  ...
+# Subtest: a revised agreement blocks acceptance until both approve the current revision; then the same invitation works
+ok 422 - a revised agreement blocks acceptance until both approve the current revision; then the same invitation works
+  ---
+  duration_ms: 709.6591
+  type: 'test'
+  ...
+# Subtest: a withdrawn approval, a closed agreement and an expired agreement each block acceptance; declining stays possible
+ok 423 - a withdrawn approval, a closed agreement and an expired agreement each block acceptance; declining stays possible
+  ---
+  duration_ms: 412.3291
+  type: 'test'
+  ...
+# Subtest: the server decides a race: approval withdrawn after the client check is refused as a recoverable conflict
+ok 424 - the server decides a race: approval withdrawn after the client check is refused as a recoverable conflict
+  ---
+  duration_ms: 137.5346
+  type: 'test'
+  ...
+# Subtest: the transport oracle mirrors the database guard for callers that bypass the client
+ok 425 - the transport oracle mirrors the database guard for callers that bypass the client
+  ---
+  duration_ms: 124.318
+  type: 'test'
+  ...
+# Subtest: one pending invitation per pair, and none on an expired agreement, as the database enforces
+ok 426 - one pending invitation per pair, and none on an expired agreement, as the database enforces
+  ---
+  duration_ms: 199.2927
+  type: 'test'
+  ...
+# Subtest: a joint project keeps each contribution and result and requires two independent current-version approvals
+ok 427 - a joint project keeps each contribution and result and requires two independent current-version approvals
+  ---
+  duration_ms: 121.5109
+  type: 'test'
+  ...
+# Subtest: joint projects cannot omit one participant contribution or result
+ok 428 - joint projects cannot omit one participant contribution or result
+  ---
+  duration_ms: 15.8684
+  type: 'test'
+  ...
+# Subtest: client sends canonical exact message IDs and verifies a bound Unicode reply
+ok 429 - client sends canonical exact message IDs and verifies a bound Unicode reply
+  ---
+  duration_ms: 39.5956
+  type: 'test'
+  ...
+# Subtest: client rejects old identical historical text before any request
+ok 430 - client rejects old identical historical text before any request
+  ---
+  duration_ms: 1.3957
+  type: 'test'
+  ...
+# Subtest: client rejects forged reply binding, missing stop reason and forged receipts without fallback
+ok 431 - client rejects forged reply binding, missing stop reason and forged receipts without fallback
+  ---
+  duration_ms: 4.9971
+  type: 'test'
+  ...
+# Subtest: full Unicode input is sent whole; client does not trim or silently truncate it
+ok 432 - full Unicode input is sent whole; client does not trim or silently truncate it
+  ---
+  duration_ms: 2.6763
+  type: 'test'
+  ...
+# Subtest: archive provenance cannot be reused with a substituted AI reply
+ok 433 - archive provenance cannot be reused with a substituted AI reply
+  ---
+  duration_ms: 46.8985
+  type: 'test'
+  ...
+# Subtest: mutual declared value comes before incomplete matches for a different give and need
+ok 434 - mutual declared value comes before incomplete matches for a different give and need
+  ---
+  duration_ms: 3.4957
+  type: 'test'
+  ...
+# Subtest: verified AI provenance survives completed archive next to its exact message
+ok 435 - verified AI provenance survives completed archive next to its exact message
+  ---
+  duration_ms: 27.4611
+  type: 'test'
+  ...
+# Subtest: archive preserves the entire accepted maximum-length user message without prefix overflow
+ok 436 - archive preserves the entire accepted maximum-length user message without prefix overflow
+  ---
+  duration_ms: 3.4602
+  type: 'test'
+  ...
+# Subtest: fixture is a consented three-person reciprocal cycle without people discovery
+ok 437 - fixture is a consented three-person reciprocal cycle without people discovery
+  ---
+  duration_ms: 2.6957
+  type: 'test'
+  ...
+# Subtest: chat preserves exact source-labelled transcript and scenario reply uses actual user context
+ok 438 - chat preserves exact source-labelled transcript and scenario reply uses actual user context
+  ---
+  duration_ms: 5.4415
+  type: 'test'
+  ...
+# Subtest: a proposal is isolated to its chosen person, revisions reset approval, and stale approval is rejected
+ok 439 - a proposal is isolated to its chosen person, revisions reset approval, and stale approval is rejected
+  ---
+  duration_ms: 10.9322
+  type: 'test'
+  ...
+# Subtest: decline and withdrawal do not silently retain approval
+ok 440 - decline and withdrawal do not silently retain approval
+  ---
+  duration_ms: 1.7498
+  type: 'test'
+  ...
+# Subtest: AI text is advisory and cannot grant approval or complete a fictional meeting
+ok 441 - AI text is advisory and cannot grant approval or complete a fictional meeting
+  ---
+  duration_ms: 4.4801
+  type: 'test'
+  ...
+# Subtest: completed demo creates truthful roundtrippable archive and retains synthetic label in private social draft
+ok 442 - completed demo creates truthful roundtrippable archive and retains synthetic label in private social draft
+  ---
+  duration_ms: 3.3368
+  type: 'test'
+  ...
+# Subtest: counterexample guard: changing the current-revision equality would allow a stale consent to complete
+ok 443 - counterexample guard: changing the current-revision equality would allow a stale consent to complete
+  ---
+  duration_ms: 0.89
+  type: 'test'
+  ...
+# Subtest: one explicit handoff preserves exact transcript and consumes only its own ephemeral item
+ok 444 - one explicit handoff preserves exact transcript and consumes only its own ephemeral item
+  ---
+  duration_ms: 8.8915
+  type: 'test'
+  ...
+# Subtest: malformed handoff cannot be treated as a session or remove unrelated data
+ok 445 - malformed handoff cannot be treated as a session or remove unrelated data
+  ---
+  duration_ms: 8.1389
+  type: 'test'
+  ...
+# Subtest: C10.L5: групи < k зливаються в other, >= k публікуються
+ok 446 - C10.L5: групи < k зливаються в other, >= k публікуються
+  ---
+  duration_ms: 16.5801
+  type: 'test'
+  ...
+# Subtest: C10.L5: шум детермінований — той самий seed дає те саме значення; межі [0, count + k/2]
+ok 447 - C10.L5: шум детермінований — той самий seed дає те саме значення; межі [0, count + k/2]
+  ---
+  duration_ms: 4.0507
+  type: 'test'
+  ...
+# Subtest: C10.L5: публікація не розкриває окремицю — 1 людина ніколи не публікується при будь-якому seed
+ok 448 - C10.L5: публікація не розкриває окремицю — 1 людина ніколи не публікується при будь-якому seed
+  ---
+  duration_ms: 4.887
+  type: 'test'
+  ...
+# Subtest: C10.L5: зливаюча група other теж поважає k
+ok 449 - C10.L5: зливаюча група other теж поважає k
+  ---
+  duration_ms: 0.5983
+  type: 'test'
+  ...
+# Subtest: C10.L5: canPublish — оракул для однієї цифри
+ok 450 - C10.L5: canPublish — оракул для однієї цифри
+  ---
+  duration_ms: 0.5727
+  type: 'test'
+  ...
+# Subtest: C10.L5: некоректний вхід — reason codes, не throw
+ok 451 - C10.L5: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 0.4894
+  type: 'test'
+  ...
+# Subtest: expiry cleanup drops the sample even when the meeting still says accepted
+ok 452 - expiry cleanup drops the sample even when the meeting still says accepted
+  ---
+  duration_ms: 12.3271
+  type: 'test'
+  ...
+# Subtest: navigation preserves an agreed address outside Switzerland
+ok 453 - navigation preserves an agreed address outside Switzerland
+  ---
+  duration_ms: 0.8007
+  type: 'test'
+  ...
+# Subtest: GEO-01: grant needs own explicit consent, an accepted in-person meeting and a participant
+ok 454 - GEO-01: grant needs own explicit consent, an accepted in-person meeting and a participant
+  ---
+  duration_ms: 3.5665
+  type: 'test'
+  ...
+# Subtest: GEO-01: the grant names exactly one recipient with a visible window and precision
+ok 455 - GEO-01: the grant names exactly one recipient with a visible window and precision
+  ---
+  duration_ms: 0.6543
+  type: 'test'
+  ...
+# Subtest: GEO-01: no forced reciprocity — A sharing never makes B visible
+ok 456 - GEO-01: no forced reciprocity — A sharing never makes B visible
+  ---
+  duration_ms: 2.8488
+  type: 'test'
+  ...
+# Subtest: GEO-01: outsider isolation — a non-recipient sees nothing, not even status details
+ok 457 - GEO-01: outsider isolation — a non-recipient sees nothing, not even status details
+  ---
+  duration_ms: 2.4331
+  type: 'test'
+  ...
+# Subtest: GEO-01: approximate precision coarsens the stored point and reports an honest radius
+ok 458 - GEO-01: approximate precision coarsens the stored point and reports an honest radius
+  ---
+  duration_ms: 1.0873
+  type: 'test'
+  ...
+# Subtest: GEO-01: only the latest sample is kept (minimization)
+ok 459 - GEO-01: only the latest sample is kept (minimization)
+  ---
+  duration_ms: 0.8011
+  type: 'test'
+  ...
+# Subtest: GEO-01: window, staleness and expiry are enforced
+ok 460 - GEO-01: window, staleness and expiry are enforced
+  ---
+  duration_ms: 1.1902
+  type: 'test'
+  ...
+# Subtest: GEO-01: revocation and meeting cancellation drop the position immediately
+ok 461 - GEO-01: revocation and meeting cancellation drop the position immediately
+  ---
+  duration_ms: 1.389
+  type: 'test'
+  ...
+# Subtest: GEO-01: static navigation works without GPS; online meetings get no map link
+ok 462 - GEO-01: static navigation works without GPS; online meetings get no map link
+  ---
+  duration_ms: 0.5554
+  type: 'test'
+  ...
+# Subtest: GEO-01: static and unconfigured Neon releases keep geolocation closed; the pure contract never captures GPS
+ok 463 - GEO-01: static and unconfigured Neon releases keep geolocation closed; the pure contract never captures GPS
+  ---
+  duration_ms: 91.0227
+  type: 'test'
+  ...
+# Subtest: GPS starts only after explicit persisted consent; coordinates are rounded before transport
+ok 464 - GPS starts only after explicit persisted consent; coordinates are rounded before transport
+  ---
+  duration_ms: 21.2099
+  type: 'test'
+  ...
+# Subtest: expiry timer, hidden-tab pause, cancellation, denial and logout stop device capture
+ok 465 - expiry timer, hidden-tab pause, cancellation, denial and logout stop device capture
+  ---
+  duration_ms: 5.8276
+  type: 'test'
+  ...
+# Subtest: a failed authority refresh erases the peer position and cannot leave GPS running
+ok 466 - a failed authority refresh erases the peer position and cannot leave GPS running
+  ---
+  duration_ms: 1.1062
+  type: 'test'
+  ...
+# Subtest: a delayed pre-revocation refresh cannot restore old coordinates in the UI
+ok 467 - a delayed pre-revocation refresh cannot restore old coordinates in the UI
+  ---
+  duration_ms: 1.1181
+  type: 'test'
+  ...
+# Subtest: MA4: виграш на holdout БЕЗ згоди людини не підвищується (needs_review)
+ok 468 - MA4: виграш на holdout БЕЗ згоди людини не підвищується (needs_review)
+  ---
+  duration_ms: 23.8198
+  type: 'test'
+  ...
+# Subtest: MA4: згода людини БЕЗ виграшу на holdout не підвищується (rejected)
+ok 469 - MA4: згода людини БЕЗ виграшу на holdout не підвищується (rejected)
+  ---
+  duration_ms: 0.5634
+  type: 'test'
+  ...
+# Subtest: MA4: виграш на holdout ТА згода людини дають promoted
+ok 470 - MA4: виграш на holdout ТА згода людини дають promoted
+  ---
+  duration_ms: 0.6072
+  type: 'test'
+  ...
+# Subtest: MA4: підвищення без заздалегідь зареєстрованих ворот відхиляється
+ok 471 - MA4: підвищення без заздалегідь зареєстрованих ворот відхиляється
+  ---
+  duration_ms: 0.8375
+  type: 'test'
+  ...
+# Subtest: MA4: журнал рішень append-only — новий масив, вхід не змінюється, поля на місці
+ok 472 - MA4: журнал рішень append-only — новий масив, вхід не змінюється, поля на місці
+  ---
+  duration_ms: 0.8161
+  type: 'test'
+  ...
+# Subtest: matching: explains both directions and uses the weaker side, not an average or success probability
+ok 473 - matching: explains both directions and uses the weaker side, not an average or success probability
+  ---
+  duration_ms: 74.5798
+  type: 'test'
+  ...
+# Subtest: matching: role-order invariance on 64 combinations of consent, language, date and reciprocal value
+ok 474 - matching: role-order invariance on 64 combinations of consent, language, date and reciprocal value
+  ---
+  duration_ms: 22.4186
+  type: 'test'
+  ...
+# Subtest: matching: payer, founder, name, verbose instructions and private diary do not enter decisions or report
+ok 475 - matching: payer, founder, name, verbose instructions and private diary do not enter decisions or report
+  ---
+  duration_ms: 3.3402
+  type: 'test'
+  ...
+# Subtest: matching: comparison consent fails closed without emitting profile content or an export
+ok 476 - matching: comparison consent fails closed without emitting profile content or an export
+  ---
+  duration_ms: 1.1313
+  type: 'test'
+  ...
+# Subtest: matching: both approvals are needed and conflicting data never produces approval
+ok 477 - matching: both approvals are needed and conflicting data never produces approval
+  ---
+  duration_ms: 1.3535
+  type: 'test'
+  ...
+# Subtest: matching: no common language, time, mode or confidentiality agreement blocks a proposal
+ok 478 - matching: no common language, time, mode or confidentiality agreement blocks a proposal
+  ---
+  duration_ms: 9.576
+  type: 'test'
+  ...
+# Subtest: semantic similarity cannot promote a pair rejected by hard constraints or one-way benefit
+ok 479 - semantic similarity cannot promote a pair rejected by hard constraints or one-way benefit
+  ---
+  duration_ms: 3.363
+  type: 'test'
+  ...
+# Subtest: matching: stale, future, malformed and missing data abstain; no self match
+ok 480 - matching: stale, future, malformed and missing data abstain; no self match
+  ---
+  duration_ms: 3.4601
+  type: 'test'
+  ...
+# Subtest: matching: a one-way benefit is not promoted as a reciprocal match
+ok 481 - matching: a one-way benefit is not promoted as a reciprocal match
+  ---
+  duration_ms: 1.2701
+  type: 'test'
+  ...
+# Subtest: matching: geographic search has separate opt-in and honours the stricter travel limit
+ok 482 - matching: geographic search has separate opt-in and honours the stricter travel limit
+  ---
+  duration_ms: 4.2402
+  type: 'test'
+  ...
+# Subtest: matching: duplicate tags cannot inflate weighted coverage
+ok 483 - matching: duplicate tags cannot inflate weighted coverage
+  ---
+  duration_ms: 37.097
+  type: 'test'
+  ...
+# Subtest: algorithmic matcher: exact bilateral coverage is deterministic, explained and has no provider call
+ok 484 - algorithmic matcher: exact bilateral coverage is deterministic, explained and has no provider call
+  ---
+  duration_ms: 1.4914
+  type: 'test'
+  ...
+# Subtest: algorithmic matcher: Synera comparator exposes the bounded result only after consent and eligibility gates
+ok 485 - algorithmic matcher: Synera comparator exposes the bounded result only after consent and eligibility gates
+  ---
+  duration_ms: 0.9336
+  type: 'test'
+  ...
+# Subtest: business modes: paid service is a non-binding one-way candidate only with explicit buyer and supplier roles
+ok 486 - business modes: paid service is a non-binding one-way candidate only with explicit buyer and supplier roles
+  ---
+  duration_ms: 1.7959
+  type: 'test'
+  ...
+# Subtest: business modes: referral stays pseudonymous and cannot infer a third-party agreement
+ok 487 - business modes: referral stays pseudonymous and cannot infer a third-party agreement
+  ---
+  duration_ms: 1.4891
+  type: 'test'
+  ...
+# Subtest: business modes: hybrid requires every named component and any missing paid role blocks the whole case
+ok 488 - business modes: hybrid requires every named component and any missing paid role blocks the whole case
+  ---
+  duration_ms: 1.4613
+  type: 'test'
+  ...
+# Subtest: business modes: private annotations and arbitrary mode fields cannot affect eligibility
+ok 489 - business modes: private annotations and arbitrary mode fields cannot affect eligibility
+  ---
+  duration_ms: 1.0113
+  type: 'test'
+  ...
+# Subtest: algorithmic matcher: M06 freshness decays the effective weight and algorithmic score
+ok 490 - algorithmic matcher: M06 freshness decays the effective weight and algorithmic score
+  ---
+  duration_ms: 0.9462
+  type: 'test'
+  ...
+# Subtest: algorithmic matcher: M07 limits (cohort matching) filters out excess candidates using b-matching
+ok 491 - algorithmic matcher: M07 limits (cohort matching) filters out excess candidates using b-matching
+  ---
+  duration_ms: 3.47
+  type: 'test'
+  ...
+# Subtest: address state retains pending and bilateral history without enabling GPS or treating a proposal as acceptance
+ok 492 - address state retains pending and bilateral history without enabling GPS or treating a proposal as acceptance
+  ---
+  duration_ms: 736.4573
+  type: 'test'
+  ...
+# Subtest: closed address rollout makes no private requests and preserves the existing case
+ok 493 - closed address rollout makes no private requests and preserves the existing case
+  ---
+  duration_ms: 151.1682
+  type: 'test'
+  ...
+# Subtest: explicit proposal and recipient decisions send exact reviewed IDs and original retry intent through cookie transport
+ok 494 - explicit proposal and recipient decisions send exact reviewed IDs and original retry intent through cookie transport
+  ---
+  duration_ms: 834.8742
+  type: 'test'
+  ...
+# Subtest: implicit consent, forged fields, self-acceptance and stale selection cannot cause an address write
+ok 495 - implicit consent, forged fields, self-acceptance and stale selection cannot cause an address write
+  ---
+  duration_ms: 256.4589
+  type: 'test'
+  ...
+# Subtest: malformed actor-bound address history and invented agreement are rejected
+ok 496 - malformed actor-bound address history and invented agreement are rejected
+  ---
+  duration_ms: 240.2708
+  type: 'test'
+  ...
+# Subtest: response cannot promote a proposal after material, meeting or selection changes while it travels
+ok 497 - response cannot promote a proposal after material, meeting or selection changes while it travels
+  ---
+  duration_ms: 576.499
+  type: 'test'
+  ...
+# Subtest: late address replies are invalidated by logout and restore of the same or another account
+ok 498 - late address replies are invalidated by logout and restore of the same or another account
+  ---
+  duration_ms: 311.9338
+  type: 'test'
+  ...
+# Subtest: the final reply cannot attest agreement after a last-moment revision or withdrawal
+ok 499 - the final reply cannot attest agreement after a last-moment revision or withdrawal
+  ---
+  duration_ms: 459.0788
+  type: 'test'
+  ...
+# Subtest: server denials do not create a local acceptance or hidden retry
+ok 500 - server denials do not create a local acceptance or hidden retry
+  ---
+  duration_ms: 1472.6308
+  type: 'test'
+  ...
+# Subtest: C10.L2: meeting card cannot be shared without bilateral consent from both parties
+ok 501 - C10.L2: meeting card cannot be shared without bilateral consent from both parties
+  ---
+  duration_ms: 121.2862
+  type: 'test'
+  ...
+# Subtest: C10.L2: either party can revoke consent and immediately block public card
+ok 502 - C10.L2: either party can revoke consent and immediately block public card
+  ---
+  duration_ms: 11.6436
+  type: 'test'
+  ...
+# Subtest: C10.L2: meeting card strictly excludes terms, compensation, prices, and contacts
+ok 503 - C10.L2: meeting card strictly excludes terms, compensation, prices, and contacts
+  ---
+  duration_ms: 3.3254
+  type: 'test'
+  ...
+# Subtest: C10.L2: closed or revoked case blocks meeting card even with mutual consent
+ok 504 - C10.L2: closed or revoked case blocks meeting card even with mutual consent
+  ---
+  duration_ms: 2.8378
+  type: 'test'
+  ...
+# Subtest: C06.L6: renderMeetingCardHTML generates correct HTML and handles revoked cards
+ok 505 - C06.L6: renderMeetingCardHTML generates correct HTML and handles revoked cards
+  ---
+  duration_ms: 31.3308
+  type: 'test'
+  ...
+# Subtest: bilateral mode stops the legacy setter before transport or address mutation
+ok 506 - bilateral mode stops the legacy setter before transport or address mutation
+  ---
+  duration_ms: 118.0279
+  type: 'test'
+  ...
+# Subtest: legacy default retains its existing explicit same-origin trimmed address write
+ok 507 - legacy default retains its existing explicit same-origin trimmed address write
+  ---
+  duration_ms: 6.1205
+  type: 'test'
+  ...
+# Subtest: lost POST response and explicit retry produce exactly one stored message
+ok 508 - lost POST response and explicit retry produce exactly one stored message
+  ---
+  duration_ms: 266.8077
+  type: 'test'
+  ...
+# Subtest: failed read after committed send reuses intent; acknowledged repeat is a new message
+ok 509 - failed read after committed send reuses intent; acknowledged repeat is a new message
+  ---
+  duration_ms: 64.5649
+  type: 'test'
+  ...
+# Subtest: ordinary dashboard refresh keeps ambiguous intent in the same authenticated account
+ok 510 - ordinary dashboard refresh keeps ambiguous intent in the same authenticated account
+  ---
+  duration_ms: 96.03
+  type: 'test'
+  ...
+# Subtest: same-tab reload retries a committed unknown delivery once without storing message text
+ok 511 - same-tab reload retries a committed unknown delivery once without storing message text
+  ---
+  duration_ms: 25.0119
+  type: 'test'
+  ...
+# Subtest: logout while retry metadata hashes cannot restore a stale intent
+ok 512 - logout while retry metadata hashes cannot restore a stale intent
+  ---
+  duration_ms: 5.3584
+  type: 'test'
+  ...
+# Subtest: concurrent unknown first sends retain both reload retry UUIDs
+ok 513 - concurrent unknown first sends retain both reload retry UUIDs
+  ---
+  duration_ms: 57.2954
+  type: 'test'
+  ...
+# Subtest: blocked or corrupt storage falls back to the existing RAM retry path
+ok 514 - blocked or corrupt storage falls back to the existing RAM retry path
+  ---
+  duration_ms: 39.9735
+  type: 'test'
+  ...
+# Subtest: persisted metadata cannot merge a different authenticated actor
+ok 515 - persisted metadata cannot merge a different authenticated actor
+  ---
+  duration_ms: 16.7301
+  type: 'test'
+  ...
+# Subtest: persisted metadata cannot merge the same text across meetings
+ok 516 - persisted metadata cannot merge the same text across meetings
+  ---
+  duration_ms: 82.0422
+  type: 'test'
+  ...
+# Subtest: untrusted retry metadata is copied without extra fields
+ok 517 - untrusted retry metadata is copied without extra fields
+  ---
+  duration_ms: 29.5839
+  type: 'test'
+  ...
+# Subtest: metadata churn settles before POST instead of retrying forever
+ok 518 - metadata churn settles before POST instead of retrying forever
+  ---
+  duration_ms: 3.8342
+  type: 'test'
+  ...
+# Subtest: concurrent same intent collapses; different text remains a separate explicit send
+ok 519 - concurrent same intent collapses; different text remains a separate explicit send
+  ---
+  duration_ms: 155.4493
+  type: 'test'
+  ...
+# Subtest: authentication reset forgets pending intent
+ok 520 - authentication reset forgets pending intent
+  ---
+  duration_ms: 20.7507
+  type: 'test'
+  ...
+# Subtest: late committed acknowledgement is rejected after same-account restore
+ok 521 - late committed acknowledgement is rejected after same-account restore
+  ---
+  duration_ms: 33.1789
+  type: 'test'
+  ...
+# Subtest: forged acknowledgement keeps the exact intent for later manual recovery
+ok 522 - forged acknowledgement keeps the exact intent for later manual recovery
+  ---
+  duration_ms: 10.9778
+  type: 'test'
+  ...
+# Subtest: outsider and cancelled meeting cannot send, and malformed config never enables the new lane
+ok 523 - outsider and cancelled meeting cannot send, and malformed config never enables the new lane
+  ---
+  duration_ms: 12.86
+  type: 'test'
+  ...
+# Subtest: ten identifiable synthetic bots change only with the hour and rest at night
+ok 524 - ten identifiable synthetic bots change only with the hour and rest at night
+  ---
+  duration_ms: 117.4342
+  type: 'test'
+  ...
+# Subtest: bot meetings respond next hour, remain idempotent and never pretend every request is a match
+ok 525 - bot meetings respond next hour, remain idempotent and never pretend every request is a match
+  ---
+  duration_ms: 18.0382
+  type: 'test'
+  ...
+# Subtest: consent cannot be accepted by default and contains no forged server timestamp
+ok 526 - consent cannot be accepted by default and contains no forged server timestamp
+  ---
+  duration_ms: 4.1505
+  type: 'test'
+  ...
+# Subtest: LinkedIn Profile.csv maps one owned profile, ignores private columns and rejects contacts/multiple people
+ok 527 - LinkedIn Profile.csv maps one owned profile, ignores private columns and rejects contacts/multiple people
+  ---
+  duration_ms: 8.8763
+  type: 'test'
+  ...
+# Subtest: GPT JSON fences are parsed, import visibility is always off, archive JSON is rejected
+ok 528 - GPT JSON fences are parsed, import visibility is always off, archive JSON is rejected
+  ---
+  duration_ms: 2.101
+  type: 'test'
+  ...
+# Subtest: map uses a bounded visible tile area and never invents precise real-user locations
+ok 529 - map uses a bounded visible tile area and never invents precise real-user locations
+  ---
+  duration_ms: 1.8267
+  type: 'test'
+  ...
+# Subtest: registration fails closed without verified schema, site and explicit consent
+ok 530 - registration fails closed without verified schema, site and explicit consent
+  ---
+  duration_ms: 2.4279
+  type: 'test'
+  ...
+# Subtest: saved session contains only refresh token, rotates on restore and is cleared after failed logout
+ok 531 - saved session contains only refresh token, rotates on restore and is cleared after failed logout
+  ---
+  duration_ms: 107.2464
+  type: 'test'
+  ...
+# Subtest: email recovery rejects malformed hashes before network and strips client timestamps from consent writes
+ok 532 - email recovery rejects malformed hashes before network and strips client timestamps from consent writes
+  ---
+  duration_ms: 2.9736
+  type: 'test'
+  ...
+# Subtest: service worker intercepts only public shell/config; online API, query tokens and map tiles pass through
+ok 533 - service worker intercepts only public shell/config; online API, query tokens and map tiles pass through
+  ---
+  duration_ms: 135.7193
+  type: 'test'
+  ...
+# Subtest: PWA manifest icons exist and public shell imports are all included in the release allowlist
+ok 534 - PWA manifest icons exist and public shell imports are all included in the release allowlist
+  ---
+  duration_ms: 768.7356
+  type: 'test'
+  ...
+# Subtest: one API pack uses only ten synthetic personas, low reasoning and one attempt; malformed output never passes
+ok 535 - one API pack uses only ten synthetic personas, low reasoning and one attempt; malformed output never passes
+  ---
+  duration_ms: 24.8738
+  type: 'test'
+  ...
+# Subtest: SYN_CONSENT_STATE_BEFORE_USE: no top-level binding of app.mjs is declared after the startup await
+ok 536 - SYN_CONSENT_STATE_BEFORE_USE: no top-level binding of app.mjs is declared after the startup await
+  ---
+  duration_ms: 20.5743
+  type: 'test'
+  ...
+# Subtest: SYN_CONSENT_PANEL_MARKUP: every consent id app.mjs looks up exists once in index.html, off by default, recording locked
+ok 537 - SYN_CONSENT_PANEL_MARKUP: every consent id app.mjs looks up exists once in index.html, off by default, recording locked
+  ---
+  duration_ms: 75.9446
+  type: 'test'
+  ...
+# Subtest: SYN_RUN_KEEPS_GATES: run() restores each button instead of enabling every gated one
+ok 538 - SYN_RUN_KEEPS_GATES: run() restores each button instead of enabling every gated one
+  ---
+  duration_ms: 64.0738
+  type: 'test'
+  ...
+# Subtest: SYN_CASE_ACTION_NOT_NESTED: a case button click reaches the domain action through btn() -> run()
+ok 539 - SYN_CASE_ACTION_NOT_NESTED: a case button click reaches the domain action through btn() -> run()
+  ---
+  duration_ms: 44.3445
+  type: 'test'
+  ...
+# Subtest: SYN_INTRODUCTION_NEEDS_CONSENT: no code path can open the invite button without the introduction consent
+ok 540 - SYN_INTRODUCTION_NEEDS_CONSENT: no code path can open the invite button without the introduction consent
+  ---
+  duration_ms: 44.4984
+  type: 'test'
+  ...
+# Subtest: SYN_CONSENT_PANEL_7: seven toggles in index.html, defaults off, recording locked, revokes instant
+ok 541 - SYN_CONSENT_PANEL_7: seven toggles in index.html, defaults off, recording locked, revokes instant
+  ---
+  duration_ms: 116.8008
+  type: 'test'
+  ...
+# Subtest: C02.L8: обидві реалізації дають однаковий рядок і хеш на малій фікстурі
+ok 542 - C02.L8: обидві реалізації дають однаковий рядок і хеш на малій фікстурі
+  ---
+  duration_ms: 4.4818
+  type: 'test'
+  ...
+# Subtest: C02.L8: порядок ключів не змінює хеш (обидві реалізації)
+ok 543 - C02.L8: порядок ключів не змінює хеш (обидві реалізації)
+  ---
+  duration_ms: 0.7054
+  type: 'test'
+  ...
+# Subtest: C02.L8: зміна значення змінює хеш (обидві реалізації)
+ok 544 - C02.L8: зміна значення змінює хеш (обидві реалізації)
+  ---
+  duration_ms: 0.8884
+  type: 'test'
+  ...
+# Subtest: C02.L8: 10 000 згенерованих випадків — реалізації збігаються
+ok 545 - C02.L8: 10 000 згенерованих випадків — реалізації збігаються
+  ---
+  duration_ms: 274.9444
+  type: 'test'
+  ...
+# Subtest: C02.L8: некоректні аргументи повертають valid=false, не кидають
+ok 546 - C02.L8: некоректні аргументи повертають valid=false, не кидають
+  ---
+  duration_ms: 0.5115
+  type: 'test'
+  ...
+# Subtest: need-decay: freshly created need has score near 1.0
+ok 547 - need-decay: freshly created need has score near 1.0
+  ---
+  duration_ms: 11.0756
+  type: 'test'
+  ...
+# Subtest: need-decay: future timestamp is explicitly invalid/stale
+ok 548 - need-decay: future timestamp is explicitly invalid/stale
+  ---
+  duration_ms: 0.6485
+  type: 'test'
+  ...
+# Subtest: need-decay: decaying follows exponential curve
+ok 549 - need-decay: decaying follows exponential curve
+  ---
+  duration_ms: 0.9506
+  type: 'test'
+  ...
+# Subtest: need-decay: filterAndLimitNeeds discards stale needs and limits per-user quota
+ok 550 - need-decay: filterAndLimitNeeds discards stale needs and limits per-user quota
+  ---
+  duration_ms: 6.7766
+  type: 'test'
+  ...
+# Subtest: Google start requires readiness and consent before requesting or redirecting
+ok 551 - Google start requires readiness and consent before requesting or redirecting
+  ---
+  duration_ms: 103.5429
+  type: 'test'
+  ...
+# Subtest: Google start never redirects on upstream failure or an unexpected destination
+ok 552 - Google start never redirects on upstream failure or an unexpected destination
+  ---
+  duration_ms: 3.7702
+  type: 'test'
+  ...
+# Subtest: first-user tour preserves a finite keyboard-safe step sequence
+ok 553 - first-user tour preserves a finite keyboard-safe step sequence
+  ---
+  duration_ms: 5.1309
+  type: 'test'
+  ...
+# Subtest: tour is offered once but can be replayed from its explicit control
+ok 554 - tour is offered once but can be replayed from its explicit control
+  ---
+  duration_ms: 0.6982
+  type: 'test'
+  ...
+# Subtest: C01.L6: deliverable proof state defaults to self_declared
+ok 555 - C01.L6: deliverable proof state defaults to self_declared
+  ---
+  duration_ms: 74.7151
+  type: 'test'
+  ...
+# Subtest: C01.L6: only deliverable giver can supply evidence and advance to evidence_supplied
+ok 556 - C01.L6: only deliverable giver can supply evidence and advance to evidence_supplied
+  ---
+  duration_ms: 6.1536
+  type: 'test'
+  ...
+# Subtest: C01.L6: participant checks scope and advances to checked_with_scope
+ok 557 - C01.L6: participant checks scope and advances to checked_with_scope
+  ---
+  duration_ms: 3.5788
+  type: 'test'
+  ...
+# Subtest: C01.L7: only recipient confirms outcome; giver cannot self-promote or accept own delivery
+ok 558 - C01.L7: only recipient confirms outcome; giver cannot self-promote or accept own delivery
+  ---
+  duration_ms: 20.5723
+  type: 'test'
+  ...
+# Subtest: C01.L6/L7: material change invalidates approvals and downgrades proof states to self_declared
+ok 559 - C01.L6/L7: material change invalidates approvals and downgrades proof states to self_declared
+  ---
+  duration_ms: 9.2716
+  type: 'test'
+  ...
+# Subtest: closed or expired case rejects proof transitions
+ok 560 - closed or expired case rejects proof transitions
+  ---
+  duration_ms: 3.8525
+  type: 'test'
+  ...
+# Subtest: the real downloaded plain and gzip copies are read locally with exact terms and participant history
+ok 561 - the real downloaded plain and gzip copies are read locally with exact terms and participant history
+  ---
+  duration_ms: 178.5826
+  type: 'test'
+  ...
+# Subtest: a local incomplete copy remains incomplete and never becomes a server approval
+ok 562 - a local incomplete copy remains incomplete and never becomes a server approval
+  ---
+  duration_ms: 6.7726
+  type: 'test'
+  ...
+# Subtest: recomputed envelope digests cannot hide changed material, roles or fabricated acceptance
+ok 563 - recomputed envelope digests cannot hide changed material, roles or fabricated acceptance
+  ---
+  duration_ms: 195.2373
+  type: 'test'
+  ...
+# Subtest: corrupt, oversized and another archive format do not yield a private outcome
+ok 564 - corrupt, oversized and another archive format do not yield a private outcome
+  ---
+  duration_ms: 37.8394
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_CHATGPT_PARSED: reads a synthetic ChatGPT export as data into hints
+ok 565 - SYN_IMPORT_CHATGPT_PARSED: reads a synthetic ChatGPT export as data into hints
+  ---
+  duration_ms: 5.8633
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_CLAUDE_PARSED: reads a synthetic Claude export into the same hint shape
+ok 566 - SYN_IMPORT_CLAUDE_PARSED: reads a synthetic Claude export into the same hint shape
+  ---
+  duration_ms: 1.1771
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_CHATGPT_PARSED: instructions inside the export are data, never executed
+ok 567 - SYN_IMPORT_CHATGPT_PARSED: instructions inside the export are data, never executed
+  ---
+  duration_ms: 1.3697
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_CHATGPT_PARSED: invalid, empty and non-object exports fail soft with warnings
+ok 568 - SYN_IMPORT_CHATGPT_PARSED: invalid, empty and non-object exports fail soft with warnings
+  ---
+  duration_ms: 1.1422
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_REDACTED: strips email, phone and third-party names; blocks IBAN and API keys without echoing them
+ok 569 - SYN_IMPORT_REDACTED: strips email, phone and third-party names; blocks IBAN and API keys without echoing them
+  ---
+  duration_ms: 6.4057
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_REDACTED: clean hints pass through unchanged with zero removals and no blocked secrets
+ok 570 - SYN_IMPORT_REDACTED: clean hints pass through unchanged with zero removals and no blocked secrets
+  ---
+  duration_ms: 0.5892
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_MAPPED: maps high-confidence hints deterministically and passes normalizeBrief without changes
+ok 571 - SYN_IMPORT_MAPPED: maps high-confidence hints deterministically and passes normalizeBrief without changes
+  ---
+  duration_ms: 3.3063
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_MAPPED: pilot modes keep normalized mode_details identical to the draft
+ok 572 - SYN_IMPORT_MAPPED: pilot modes keep normalized mode_details identical to the draft
+  ---
+  duration_ms: 1.4577
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_MAPPED: low-confidence prose and unknown values are refused, not guessed
+ok 573 - SYN_IMPORT_MAPPED: low-confidence prose and unknown values are refused, not guessed
+  ---
+  duration_ms: 1.3539
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_MAPPED: empty input yields an empty, normalizeBrief-safe draft that needs information
+ok 574 - SYN_IMPORT_MAPPED: empty input yields an empty, normalizeBrief-safe draft that needs information
+  ---
+  duration_ms: 1.1288
+  type: 'test'
+  ...
+# Subtest: profile import: consent is required before profile content is emitted
+ok 575 - profile import: consent is required before profile content is emitted
+  ---
+  duration_ms: 8.8725
+  type: 'test'
+  ...
+# Subtest: profile import: labeled text is mapped into the existing profile fields
+ok 576 - profile import: labeled text is mapped into the existing profile fields
+  ---
+  duration_ms: 17.2075
+  type: 'test'
+  ...
+# Subtest: profile import: a first-result label fills the collaboration goal instead of contaminating seeks
+ok 577 - profile import: a first-result label fills the collaboration goal instead of contaminating seeks
+  ---
+  duration_ms: 2.17
+  type: 'test'
+  ...
+# Subtest: profile import: generic pasted profile stays in review mode
+ok 578 - profile import: generic pasted profile stays in review mode
+  ---
+  duration_ms: 1.2099
+  type: 'test'
+  ...
+# Subtest: profile import: contacts and provider secrets block import before preview
+ok 579 - profile import: contacts and provider secrets block import before preview
+  ---
+  duration_ms: 0.7586
+  type: 'test'
+  ...
+# Subtest: profile export: JSON roundtrip uses only portable public fields and disables visibility
+ok 580 - profile export: JSON roundtrip uses only portable public fields and disables visibility
+  ---
+  duration_ms: 1.6619
+  type: 'test'
+  ...
+# Subtest: profile sharing: localhost is omitted and sensitive fields are rejected
+ok 581 - profile sharing: localhost is omitted and sensitive fields are rejected
+  ---
+  duration_ms: 4.5853
+  type: 'test'
+  ...
+# Subtest: profile completion: reports the four public fields users need for matchmaking
+ok 582 - profile completion: reports the four public fields users need for matchmaking
+  ---
+  duration_ms: 0.6215
+  type: 'test'
+  ...
+# Subtest: profile match hint: distinguishes reciprocal, one-way and missing signal
+ok 583 - profile match hint: distinguishes reciprocal, one-way and missing signal
+  ---
+  duration_ms: 8.2676
+  type: 'test'
+  ...
+# Subtest: profile match hint: Ukrainian compound words produce a reciprocal demo signal
+ok 584 - profile match hint: Ukrainian compound words produce a reciprocal demo signal
+  ---
+  duration_ms: 25.4898
+  type: 'test'
+  ...
+# Subtest: SYN_STORE_CARRIES_MODE_DETAILS: brief v2 with mode_details round-trips byte-identically; legacy v1 stays v1
+ok 585 - SYN_STORE_CARRIES_MODE_DETAILS: brief v2 with mode_details round-trips byte-identically; legacy v1 stays v1
+  ---
+  duration_ms: 4.7954
+  type: 'test'
+  ...
+# Subtest: SYN_CASE_STORE_MATCHES_SQL: store writes normalized columns and reconstructs the domain state
+ok 586 - SYN_CASE_STORE_MATCHES_SQL: store writes normalized columns and reconstructs the domain state
+  ---
+  duration_ms: 112.5852
+  type: 'test'
+  ...
+# Subtest: SYN_REMOTE_STORE_SHAPE_MATCHES: Neon/Supabase inherit the store bodies and post identical field names
+ok 587 - SYN_REMOTE_STORE_SHAPE_MATCHES: Neon/Supabase inherit the store bodies and post identical field names
+  ---
+  duration_ms: 10.4664
+  type: 'test'
+  ...
+# Subtest: SYN_PORTABILITY_ROUNDTRIP_PROVEN: legacy export unchanged, v2 brief byte-identical, future field safe
+ok 588 - SYN_PORTABILITY_ROUNDTRIP_PROVEN: legacy export unchanged, v2 brief byte-identical, future field safe
+  ---
+  duration_ms: 1.5299
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_STORED: confirmed import draft round-trips through the store; rejected draft leaves it untouched
+ok 589 - SYN_IMPORT_STORED: confirmed import draft round-trips through the store; rejected draft leaves it untouched
+  ---
+  duration_ms: 23.9277
+  type: 'test'
+  ...
+# Subtest: proof-state: initial state defaults to self_declared
+ok 590 - proof-state: initial state defaults to self_declared
+  ---
+  duration_ms: 4.8377
+  type: 'test'
+  ...
+# Subtest: proof-state: strictly follows valid transition graph
+ok 591 - proof-state: strictly follows valid transition graph
+  ---
+  duration_ms: 1.4505
+  type: 'test'
+  ...
+# Subtest: proof-state: material modification resets both confirmations to self_declared
+ok 592 - proof-state: material modification resets both confirmations to self_declared
+  ---
+  duration_ms: 0.6214
+  type: 'test'
+  ...
+# Subtest: iPhone without beforeinstallprompt has a reachable installation guide
+ok 593 - iPhone without beforeinstallprompt has a reachable installation guide
+  ---
+  duration_ms: 22.0093
+  type: 'test'
+  ...
+# Subtest: installed app hides installation action
+ok 594 - installed app hides installation action
+  ---
+  duration_ms: 3.5071
+  type: 'test'
+  ...
+# Subtest: Chrome prompt is explicit and consumed once; cancellation keeps manual help
+ok 595 - Chrome prompt is explicit and consumed once; cancellation keeps manual help
+  ---
+  duration_ms: 4.009
+  type: 'test'
+  ...
+# Subtest: rejected native install prompt leaves usable manual instructions
+ok 596 - rejected native install prompt leaves usable manual instructions
+  ---
+  duration_ms: 6.0104
+  type: 'test'
+  ...
+# Subtest: service worker update never discards an in-progress draft
+ok 597 - service worker update never discards an in-progress draft
+  ---
+  duration_ms: 4.6081
+  type: 'test'
+  ...
+# Subtest: cache-only presentation remains usable through browser lifecycle events without install controls
+ok 598 - cache-only presentation remains usable through browser lifecycle events without install controls
+  ---
+  duration_ms: 116.6561
+  type: 'test'
+  ...
+# Subtest: the legacy exchange entrypoint keeps its explicit no-money exchange contract
+ok 599 - the legacy exchange entrypoint keeps its explicit no-money exchange contract
+  ---
+  duration_ms: 21.3898
+  type: 'test'
+  ...
+# Subtest: an expired pair can explicitly close its reviewed case and start fresh without carrying either approval
+ok 600 - an expired pair can explicitly close its reviewed case and start fresh without carrying either approval
+  ---
+  duration_ms: 977.5016
+  type: 'test'
+  ...
+# Subtest: a stale participant or outsider cannot close a newer reviewed case
+ok 601 - a stale participant or outsider cannot close a newer reviewed case
+  ---
+  duration_ms: 252.8833
+  type: 'test'
+  ...
+# Subtest: real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration
+ok 602 - real journey is separately closed; readiness and typed config cannot be inferred from pilot or registration
+  ---
+  duration_ms: 128.7487
+  type: 'test'
+  ...
+# Subtest: closed agreement rollout also denies direct table calls before any Auth/Data request
+ok 603 - closed agreement rollout also denies direct table calls before any Auth/Data request
+  ---
+  duration_ms: 1.9735
+  type: 'test'
+  ...
+# Subtest: gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding
+ok 604 - gateway refuses a material PATCH without the exact reviewed case/version/hash before forwarding
+  ---
+  duration_ms: 1.2107
+  type: 'test'
+  ...
+# Subtest: two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text
+ok 605 - two server-derived accounts share one case, independently approve, accept an invitation, then exchange actual stored text
+  ---
+  duration_ms: 656.895
+  type: 'test'
+  ...
+# Subtest: a stale screen cannot edit or approve a revision another account already changed
+ok 606 - a stale screen cannot edit or approve a revision another account already changed
+  ---
+  duration_ms: 271.2197
+  type: 'test'
+  ...
+# Subtest: CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact
+ok 607 - CAS predicate rejects a concurrent write AFTER client read and leaves the other material intact
+  ---
+  duration_ms: 167.5918
+  type: 'test'
+  ...
+# Subtest: existing ProfileStore save path also rejects a write-time race and preserves the newer material
+ok 608 - existing ProfileStore save path also rejects a write-time race and preserves the newer material
+  ---
+  duration_ms: 248.432
+  type: 'test'
+  ...
+# Subtest: existing store rejects a competing revision already committed before its read, even with the same ordinal
+ok 609 - existing store rejects a competing revision already committed before its read, even with the same ordinal
+  ---
+  duration_ms: 124.0554
+  type: 'test'
+  ...
+# Subtest: approval never writes material and a revision at POST is denied by the transport oracle
+ok 610 - approval never writes material and a revision at POST is denied by the transport oracle
+  ---
+  duration_ms: 146.5206
+  type: 'test'
+  ...
+# Subtest: withdrawing affects only self; incomplete input and revoked session/consent cannot progress
+ok 611 - withdrawing affects only self; incomplete input and revoked session/consent cannot progress
+  ---
+  duration_ms: 172.9569
+  type: 'test'
+  ...
+# Subtest: PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material
+ok 612 - PostgREST timezone and fractional timestamps still permit an explicit approval of the reviewed material
+  ---
+  duration_ms: 141.207
+  type: 'test'
+  ...
+# Subtest: the table is complete and well-formed in German and English
+ok 613 - the table is complete and well-formed in German and English
+  ---
+  duration_ms: 9.6025
+  type: 'test'
+  ...
+# Subtest: every Ukrainian string of the page module is a translated source
+ok 614 - every Ukrainian string of the page module is a translated source
+  ---
+  duration_ms: 85.2489
+  type: 'test'
+  ...
+# Subtest: every Ukrainian string of the page markup is a translated source
+ok 615 - every Ukrainian string of the page markup is a translated source
+  ---
+  duration_ms: 4.7484
+  type: 'test'
+  ...
+# Subtest: messages raised by the client, the skill list and the view switcher are translated sources
+ok 616 - messages raised by the client, the skill list and the view switcher are translated sources
+  ---
+  duration_ms: 43.106
+  type: 'test'
+  ...
+# Subtest: Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser
+ok 617 - Ukrainian is the default; a choice is explicit, remembered and never guessed from the browser
+  ---
+  duration_ms: 1.8747
+  type: 'test'
+  ...
+# Subtest: placeholders are filled once; unknown text is left alone
+ok 618 - placeholders are filled once; unknown text is left alone
+  ---
+  duration_ms: 0.7512
+  type: 'test'
+  ...
+# Subtest: the same form gives the same terms and the same hash in every language
+ok 619 - the same form gives the same terms and the same hash in every language
+  ---
+  duration_ms: 118.0272
+  type: 'test'
+  ...
+# Subtest: real editor preserves explicit paid, referral, hybrid and joint-project material
+ok 620 - real editor preserves explicit paid, referral, hybrid and joint-project material
+  ---
+  duration_ms: 63.6298
+  type: 'test'
+  ...
+# Subtest: a paid buyer needs no offer: one supplier deliverable still requires explicit compensation
+ok 621 - a paid buyer needs no offer: one supplier deliverable still requires explicit compensation
+  ---
+  duration_ms: 2.7061
+  type: 'test'
+  ...
+# Subtest: a supplier can edit an existing one-way paid case without flipping or dropping its deliverable
+ok 622 - a supplier can edit an existing one-way paid case without flipping or dropping its deliverable
+  ---
+  duration_ms: 2.2027
+  type: 'test'
+  ...
+# Subtest: five modes retain distinct material obligations: bilateral exchange and project, explicit hybrid money, and referral is not third-party consent
+ok 623 - five modes retain distinct material obligations: bilateral exchange and project, explicit hybrid money, and referral is not third-party consent
+  ---
+  duration_ms: 6.2113
+  type: 'test'
+  ...
+# Subtest: a joint project is a bilateral trial case: a revision clears both approvals before an invitation can be sent
+ok 624 - a joint project is a bilateral trial case: a revision clears both approvals before an invitation can be sent
+  ---
+  duration_ms: 1051.9127
+  type: 'test'
+  ...
+# Subtest: local receipt must prove this exact prompt/output pair and zero provider spend
+ok 625 - local receipt must prove this exact prompt/output pair and zero provider spend
+  ---
+  duration_ms: 6.1018
+  type: 'test'
+  ...
+# Subtest: real matching preserves bilateral evidence and role order; remote profiles need no invented city
+ok 626 - real matching preserves bilateral evidence and role order; remote profiles need no invented city
+  ---
+  duration_ms: 72.915
+  type: 'test'
+  ...
+# Subtest: pilot business modes cross the profile bridge while legacy version-one briefs remain byte-shape compatible
+ok 627 - pilot business modes cross the profile bridge while legacy version-one briefs remain byte-shape compatible
+  ---
+  duration_ms: 2.6886
+  type: 'test'
+  ...
+# Subtest: brief import sanitizes unknown authority and visibility; complete profile export round-trips conditions
+ok 628 - brief import sanitizes unknown authority and visibility; complete profile export round-trips conditions
+  ---
+  duration_ms: 9.4485
+  type: 'test'
+  ...
+# Subtest: AI payload requires consent, omits identity and other data, and blocks secrets/contact fields
+ok 629 - AI payload requires consent, omits identity and other data, and blocks secrets/contact fields
+  ---
+  duration_ms: 4.9679
+  type: 'test'
+  ...
+# Subtest: AI gate rejects invented skill evidence, malformed output, empty output and unsafe questions
+ok 630 - AI gate rejects invented skill evidence, malformed output, empty output and unsafe questions
+  ---
+  duration_ms: 2.0927
+  type: 'test'
+  ...
+# Subtest: local AI refuses remote origins, DNS rebinding, missing consent, identities and oversized input before inference
+ok 631 - local AI refuses remote origins, DNS rebinding, missing consent, identities and oversized input before inference
+  ---
+  duration_ms: 2.3379
+  type: 'test'
+  ...
+# Subtest: local AI validates before review receipt, enforces one inference at a time and stops at session cap
+ok 632 - local AI validates before review receipt, enforces one inference at a time and stops at session cap
+  ---
+  duration_ms: 3.2284
+  type: 'test'
+  ...
+# Subtest: local AI failure never retries, surfaces raw provider text or accepts a missing review receipt
+ok 633 - local AI failure never retries, surfaces raw provider text or accepts a missing review receipt
+  ---
+  duration_ms: 50.4066
+  type: 'test'
+  ...
+# Subtest: calendar requires actual acceptance, uses UTC and escapes attempted calendar-property injection
+ok 634 - calendar requires actual acceptance, uses UTC and escapes attempted calendar-property injection
+  ---
+  duration_ms: 8.3677
+  type: 'test'
+  ...
+# Subtest: online real-user writes derive ownership and whitelist profile, meeting, message and report fields
+ok 635 - online real-user writes derive ownership and whitelist profile, meeting, message and report fields
+  ---
+  duration_ms: 113.9932
+  type: 'test'
+  ...
+# Subtest: full export paginates messages beyond UI limit and fails instead of returning a partial file
+ok 636 - full export paginates messages beyond UI limit and fails instead of returning a partial file
+  ---
+  duration_ms: 66.5011
+  type: 'test'
+  ...
+# Subtest: registration remains closed unless both schema gates and a public HTTPS return URL are explicit
+ok 637 - registration remains closed unless both schema gates and a public HTTPS return URL are explicit
+  ---
+  duration_ms: 1.6992
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_UI_CONFIRMED: real export flows in memory to a confirmed form profile with expected fields
+ok 638 - SYN_IMPORT_UI_CONFIRMED: real export flows in memory to a confirmed form profile with expected fields
+  ---
+  duration_ms: 9.5916
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_UI_CONFIRMED: unchecking a field keeps it out of the form; a role without its mode drops with pilot details
+ok 639 - SYN_IMPORT_UI_CONFIRMED: unchecking a field keeps it out of the form; a role without its mode drops with pilot details
+  ---
+  duration_ms: 1.7665
+  type: 'test'
+  ...
+# Subtest: SYN_IMPORT_UI_CONFIRMED: blocked secrets stop the import before mapping and untrusted text stays data
+ok 640 - SYN_IMPORT_UI_CONFIRMED: blocked secrets stop the import before mapping and untrusted text stays data
+  ---
+  duration_ms: 70.406
+  type: 'test'
+  ...
+# Subtest: C10.L3: UWG-розкриття входить у сам текст поширення (gate)
+ok 641 - C10.L3: UWG-розкриття входить у сам текст поширення (gate)
+  ---
+  duration_ms: 3.5293
+  type: 'test'
+  ...
+# Subtest: C10.L3: атрибуція — валідний токен свого реферового
+ok 642 - C10.L3: атрибуція — валідний токен свого реферового
+  ---
+  duration_ms: 2.0639
+  type: 'test'
+  ...
+# Subtest: C10.L3: самореферальна ферма заборонена
+ok 643 - C10.L3: самореферальна ферма заборонена
+  ---
+  duration_ms: 3.5636
+  type: 'test'
+  ...
+# Subtest: C10.L3: некоректний вхід — reason codes, не throw
+ok 644 - C10.L3: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 15.7186
+  type: 'test'
+  ...
+# Subtest: private card uses accepted draft and preserves Unicode and human edits without exporting private metadata
+ok 645 - private card uses accepted draft and preserves Unicode and human edits without exporting private metadata
+  ---
+  duration_ms: 8.6543
+  type: 'test'
+  ...
+# Subtest: card escapes executable markup and adds no network requests or public verification claim
+ok 646 - card escapes executable markup and adds no network requests or public verification claim
+  ---
+  duration_ms: 1.2246
+  type: 'test'
+  ...
+# Subtest: card rejects fabricated public/verified scope and empty content
+ok 647 - card rejects fabricated public/verified scope and empty content
+  ---
+  duration_ms: 1.5588
+  type: 'test'
+  ...
+# Subtest: all display languages keep an explicit private author-draft boundary
+ok 648 - all display languages keep an explicit private author-draft boundary
+  ---
+  duration_ms: 2.0443
+  type: 'test'
+  ...
+# Subtest: UTF-8 limit rejects oversized edits with a text error, distinct from invalid draft scope
+ok 649 - UTF-8 limit rejects oversized edits with a text error, distinct from invalid draft scope
+  ---
+  duration_ms: 5.5814
+  type: 'test'
+  ...
+# Subtest: room gate requires exact Neon and every pilot flag
+ok 650 - room gate requires exact Neon and every pilot flag
+  ---
+  duration_ms: 3.0446
+  type: 'test'
+  ...
+# Subtest: transport uses only same-origin room URLs and HttpOnly-session fetch options
+ok 651 - transport uses only same-origin room URLs and HttpOnly-session fetch options
+  ---
+  duration_ms: 133.0111
+  type: 'test'
+  ...
+# Subtest: create validates invitees and never sends client actor identity
+ok 652 - create validates invitees and never sends client actor identity
+  ---
+  duration_ms: 3.7254
+  type: 'test'
+  ...
+# Subtest: message and revision actions reject malformed payloads before transport
+ok 653 - message and revision actions reject malformed payloads before transport
+  ---
+  duration_ms: 1.6465
+  type: 'test'
+  ...
+# Subtest: request requires an authenticated store and preserves server authorization status
+ok 654 - request requires an authenticated store and preserves server authorization status
+  ---
+  duration_ms: 4.3252
+  type: 'test'
+  ...
+# Subtest: requests avoid PII logging surfaces
+ok 655 - requests avoid PII logging surfaces
+  ---
+  duration_ms: 12.4723
+  type: 'test'
+  ...
+# Subtest: HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible
+ok 656 - HTTP: real-user assets load; legacy demo, lab, server code, private files and writes stay inaccessible
+  ---
+  duration_ms: 3157.7107
+  type: 'test'
+  ...
+# Subtest: session value preserves exact notes and exposes only same-device unverified labels
+ok 657 - session value preserves exact notes and exposes only same-device unverified labels
+  ---
+  duration_ms: 4.4929
+  type: 'test'
+  ...
+# Subtest: social draft requires unanimous current-revision confirmation and never publishes
+ok 658 - social draft requires unanimous current-revision confirmation and never publishes
+  ---
+  duration_ms: 5.4834
+  type: 'test'
+  ...
+# Subtest: a material replacement clears confirmations; a stale participant cannot restore them
+ok 659 - a material replacement clears confirmations; a stale participant cannot restore them
+  ---
+  duration_ms: 1.7723
+  type: 'test'
+  ...
+# Subtest: one participant may revoke only their own confirmation; unilateral approval remains blocked
+ok 660 - one participant may revoke only their own confirmation; unilateral approval remains blocked
+  ---
+  duration_ms: 1.0896
+  type: 'test'
+  ...
+# Subtest: one-person generic sessions remain invalid
+ok 661 - one-person generic sessions remain invalid
+  ---
+  duration_ms: 0.7742
+  type: 'test'
+  ...
+# Subtest: archive roundtrip retains original text, history and consent scopes exactly
+ok 662 - archive roundtrip retains original text, history and consent scopes exactly
+  ---
+  duration_ms: 2.0784
+  type: 'test'
+  ...
+# Subtest: archive rejects unknown fields, malformed confirmations, and structurally invalid tampering
+ok 663 - archive rejects unknown fields, malformed confirmations, and structurally invalid tampering
+  ---
+  duration_ms: 1.4893
+  type: 'test'
+  ...
+# Subtest: 20 distinct labelled fictional actors; legacy bot identities remain available
+ok 664 - 20 distinct labelled fictional actors; legacy bot identities remain available
+  ---
+  duration_ms: 4.5238
+  type: 'test'
+  ...
+# Subtest: paid_service: independent approvals and receiver-only accepted simulated output
+ok 665 - paid_service: independent approvals and receiver-only accepted simulated output
+  ---
+  duration_ms: 200.5246
+  type: 'test'
+  ...
+# Subtest: exchange: independent approvals and receiver-only accepted simulated output
+ok 666 - exchange: independent approvals and receiver-only accepted simulated output
+  ---
+  duration_ms: 70.9195
+  type: 'test'
+  ...
+# Subtest: referral: independent approvals and receiver-only accepted simulated output
+ok 667 - referral: independent approvals and receiver-only accepted simulated output
+  ---
+  duration_ms: 6.8569
+  type: 'test'
+  ...
+# Subtest: hybrid: independent approvals and receiver-only accepted simulated output
+ok 668 - hybrid: independent approvals and receiver-only accepted simulated output
+  ---
+  duration_ms: 37.1327
+  type: 'test'
+  ...
+# Subtest: joint_project: independent approvals and receiver-only accepted simulated output
+ok 669 - joint_project: independent approvals and receiver-only accepted simulated output
+  ---
+  duration_ms: 9.0491
+  type: 'test'
+  ...
+# Subtest: stale frame revision, outsider, and stopped session never mutate state
+ok 670 - stale frame revision, outsider, and stopped session never mutate state
+  ---
+  duration_ms: 7.743
+  type: 'test'
+  ...
+# Subtest: revising terms invalidates both approvals; refusal is available
+ok 671 - revising terms invalidates both approvals; refusal is available
+  ---
+  duration_ms: 32.0066
+  type: 'test'
+  ...
+# Subtest: failed validation retains complete text and previous state
+ok 672 - failed validation retains complete text and previous state
+  ---
+  duration_ms: 19.0259
+  type: 'test'
+  ...
+# Subtest: C04.L4: прихована ЛЮДИНА не бачить жодного поля
+ok 673 - C04.L4: прихована ЛЮДИНА не бачить жодного поля
+  ---
+  duration_ms: 45.0825
+  type: 'test'
+  ...
+# Subtest: C04.L4: прихована КАТЕГОРІЯ не бачить жодного поля
+ok 674 - C04.L4: прихована КАТЕГОРІЯ не бачить жодного поля
+  ---
+  duration_ms: 0.8156
+  type: 'test'
+  ...
+# Subtest: C04.L4: неприхований глядач бачить лише дозволені аудиторією поля (C04.L3)
+ok 675 - C04.L4: неприхований глядач бачить лише дозволені аудиторією поля (C04.L3)
+  ---
+  duration_ms: 1.7932
+  type: 'test'
+  ...
+# Subtest: C04.L4: fail-closed — невідоме поле не витікає сторонньому глядачу
+ok 676 - C04.L4: fail-closed — невідоме поле не витікає сторонньому глядачу
+  ---
+  duration_ms: 2.0669
+  type: 'test'
+  ...
+# Subtest: C04.L4: жодного сповіщення — функції чисті, ідемпотентні, без мутацій
+ok 677 - C04.L4: жодного сповіщення — функції чисті, ідемпотентні, без мутацій
+  ---
+  duration_ms: 1.3313
+  type: 'test'
+  ...
+# Subtest: C04.L4: add/remove не мутують вхід і ідемпотентні
+ok 678 - C04.L4: add/remove не мутують вхід і ідемпотентні
+  ---
+  duration_ms: 0.8384
+  type: 'test'
+  ...
+# Subtest: C04.L4/P2: fail-closed — некоректний підпис НЕ мовчки відкидається, а повертає reason
+ok 679 - C04.L4/P2: fail-closed — некоректний підпис НЕ мовчки відкидається, а повертає reason
+  ---
+  duration_ms: 0.5896
+  type: 'test'
+  ...
+# Subtest: C04.L4: порожній блок не змінює нормальну поведінку аудиторії
+ok 680 - C04.L4: порожній блок не змінює нормальну поведінку аудиторії
+  ---
+  duration_ms: 0.4775
+  type: 'test'
+  ...
+# Subtest: C04.L4: filterDiscoverable виключає профілі власників, що приховали глядача
+ok 681 - C04.L4: filterDiscoverable виключає профілі власників, що приховали глядача
+  ---
+  duration_ms: 0.797
+  type: 'test'
+  ...
+# Subtest: M08: класичний випадок 2x2 дає відому стабільну пару
+ok 682 - M08: класичний випадок 2x2 дає відому стабільну пару
+  ---
+  duration_ms: 55.0075
+  type: 'test'
+  ...
+# Subtest: M08: багато-до-багатьох — ніхто не перевищує свою квоту
+ok 683 - M08: багато-до-багатьох — ніхто не перевищує свою квоту
+  ---
+  duration_ms: 6.8667
+  type: 'test'
+  ...
+# Subtest: M08: детерміноване розв’язання нічиїх — два прогони байт-ідентичні
+ok 684 - M08: детерміноване розв’язання нічиїх — два прогони байт-ідентичні
+  ---
+  duration_ms: 1.1607
+  type: 'test'
+  ...
+# Subtest: M08: некоректний вхід повертає valid=false з кодом причини, не кидає
+ok 685 - M08: некоректний вхід повертає valid=false з кодом причини, не кидає
+  ---
+  duration_ms: 0.8146
+  type: 'test'
+  ...
+# Subtest: M08: властивість — 1000 згенерованих випадків не мають блокуючої пари
+ok 686 - M08: властивість — 1000 згенерованих випадків не мають блокуючої пари
+  ---
+  duration_ms: 224.2994
+  type: 'test'
+  ...
+# Subtest: published clean Studio URLs retrieve the original cached shell offline
+ok 687 - published clean Studio URLs retrieve the original cached shell offline
+  ---
+  duration_ms: 275.5108
+  type: 'test'
+  ...
+# Subtest: query URLs and non-shell paths never read a private response from cache
+ok 688 - query URLs and non-shell paths never read a private response from cache
+  ---
+  duration_ms: 533.0106
+  type: 'test'
+  ...
+# Subtest: connected public journey works at clean and selected-person URLs offline
+ok 689 - connected public journey works at clean and selected-person URLs offline
+  ---
+  duration_ms: 368.0997
+  type: 'test'
+  ...
+# Subtest: reviewed decorative portraits and icons still render from their exact public cache when offline
+ok 690 - reviewed decorative portraits and icons still render from their exact public cache when offline
+  ---
+  duration_ms: 468.3536
+  type: 'test'
+  ...
+# Subtest: style switcher defaults malformed or absent preference to the original Synera visual language
+ok 691 - style switcher defaults malformed or absent preference to the original Synera visual language
+  ---
+  duration_ms: 4.8605
+  type: 'test'
+  ...
+# Subtest: style switcher changes only the visual preference and exposes the alternate style
+ok 692 - style switcher changes only the visual preference and exposes the alternate style
+  ---
+  duration_ms: 2.7479
+  type: 'test'
+  ...
+# Subtest: visual controls work when browser storage is denied and preserve an available preference
+ok 693 - visual controls work when browser storage is denied and preserve an available preference
+  ---
+  duration_ms: 4.6789
+  type: 'test'
+  ...
+# Subtest: the PWA refresh caches the visual module with a new shell version
+ok 694 - the PWA refresh caches the visual module with a new shell version
+  ---
+  duration_ms: 385.6643
+  type: 'test'
+  ...
+# Subtest: the PWA cache remains public and never answers offline account writes
+ok 695 - the PWA cache remains public and never answers offline account writes
+  ---
+  duration_ms: 71.4696
+  type: 'test'
+  ...
+# Subtest: summit demo runs the real bilateral matcher, including a negative example
+ok 696 - summit demo runs the real bilateral matcher, including a negative example
+  ---
+  duration_ms: 109.2317
+  type: 'test'
+  ...
+# Subtest: directions encode the chosen destination, with no captured origin and no country substitution
+ok 697 - directions encode the chosen destination, with no captured origin and no country substitution
+  ---
+  duration_ms: 8.4935
+  type: 'test'
+  ...
+# Subtest: DE-CH: exactly 26 official Swiss cantons are defined with multilingual names
+ok 698 - DE-CH: exactly 26 official Swiss cantons are defined with multilingual names
+  ---
+  duration_ms: 3.3273
+  type: 'test'
+  ...
+# Subtest: DE-CH: validateSwissCanton validates case-insensitively and rejects invalid codes
+ok 699 - DE-CH: validateSwissCanton validates case-insensitively and rejects invalid codes
+  ---
+  duration_ms: 0.4943
+  type: 'test'
+  ...
+# Subtest: DE-CH: getCantonInfo returns complete metadata for valid cantons and null for invalid
+ok 700 - DE-CH: getCantonInfo returns complete metadata for valid cantons and null for invalid
+  ---
+  duration_ms: 2.0637
+  type: 'test'
+  ...
+# Subtest: DE-CH: formatSwissFrancs formats CHF with Swiss apostrophe thousand separators
+ok 701 - DE-CH: formatSwissFrancs formats CHF with Swiss apostrophe thousand separators
+  ---
+  duration_ms: 0.6912
+  type: 'test'
+  ...
+# Subtest: DE-CH: getSwissVatDisclaimer returns statutory MWSTG Art. 10 educational disclaimers
+ok 702 - DE-CH: getSwissVatDisclaimer returns statutory MWSTG Art. 10 educational disclaimers
+  ---
+  duration_ms: 1.0428
+  type: 'test'
+  ...
+# Subtest: M14: кращий варіант обирається частіше за 200 детермінованих спроб
+ok 703 - M14: кращий варіант обирається частіше за 200 детермінованих спроб
+  ---
+  duration_ms: 90.5519
+  type: 'test'
+  ...
+# Subtest: M14: заблокований варіант не обирається навіть із alpha=1000
+ok 704 - M14: заблокований варіант не обирається навіть із alpha=1000
+  ---
+  duration_ms: 23.9146
+  type: 'test'
+  ...
+# Subtest: M14: той самий seed дає ідентичну послідовність виборів
+ok 705 - M14: той самий seed дає ідентичну послідовність виборів
+  ---
+  duration_ms: 5.9105
+  type: 'test'
+  ...
+# Subtest: M14: невідомий варіант і некоректний вхід повертають valid=false, не кидають
+ok 706 - M14: невідомий варіант і некоректний вхід повертають valid=false, не кидають
+  ---
+  duration_ms: 0.7302
+  type: 'test'
+  ...
+# Subtest: M14: апостеріор Beta оновлюється правильно і вхід не мутується
+ok 707 - M14: апостеріор Beta оновлюється правильно і вхід не мутується
+  ---
+  duration_ms: 0.8437
+  type: 'test'
+  ...
+# Subtest: C11.L2: вартість дії по тарифах — hand-computed
+ok 708 - C11.L2: вартість дії по тарифах — hand-computed
+  ---
+  duration_ms: 15.641
+  type: 'test'
+  ...
+# Subtest: C11.L2: gate — базовий матчинг безкоштовний, довіра ніколи не продається
+ok 709 - C11.L2: gate — базовий матчинг безкоштовний, довіра ніколи не продається
+  ---
+  duration_ms: 1.0918
+  type: 'test'
+  ...
+# Subtest: C11.L2: canPerform — баланс кредитів учитувається
+ok 710 - C11.L2: canPerform — баланс кредитів учитувається
+  ---
+  duration_ms: 1.3689
+  type: 'test'
+  ...
+# Subtest: C11.L2: матриця повна і заморожена
+ok 711 - C11.L2: матриця повна і заморожена
+  ---
+  duration_ms: 3.0011
+  type: 'test'
+  ...
+# Subtest: three distinct local members; money parses exactly and shares conserve cents across unequal cases
+ok 712 - three distinct local members; money parses exactly and shares conserve cents across unequal cases
+  ---
+  duration_ms: 7.3839
+  type: 'test'
+  ...
+# Subtest: silence and deadline never fabricate consent; explicit no/abstention block unanimity
+ok 713 - silence and deadline never fabricate consent; explicit no/abstention block unanimity
+  ---
+  duration_ms: 2.7062
+  type: 'test'
+  ...
+# Subtest: all current explicit yes notes are required; revised terms and withdrawn response invalidate them
+ok 714 - all current explicit yes notes are required; revised terms and withdrawn response invalidate them
+  ---
+  duration_ms: 1.7153
+  type: 'test'
+  ...
+# Subtest: round is voluntary, expiry only advises, next/pause stay under human control
+ok 715 - round is voluntary, expiry only advises, next/pause stay under human control
+  ---
+  duration_ms: 1.3222
+  type: 'test'
+  ...
+# Subtest: facilitator uses declared contributions/tasks, exports notes with optional chat and no binding claim
+ok 716 - facilitator uses declared contributions/tasks, exports notes with optional chat and no binding claim
+  ---
+  duration_ms: 2.2054
+  type: 'test'
+  ...
+# Subtest: a conversation whose meeting was cancelled is reported as unavailable, not as a lost session
+ok 717 - a conversation whose meeting was cancelled is reported as unavailable, not as a lost session
+  ---
+  duration_ms: 667.103
+  type: 'test'
+  ...
+# Subtest: an invitation that was cancelled or already answered is reported as unavailable, not as a lost session
+ok 718 - an invitation that was cancelled or already answered is reported as unavailable, not as a lost session
+  ---
+  duration_ms: 349.415
+  type: 'test'
+  ...
+# Subtest: a revoked session and a missing consent keep their own signals
+ok 719 - a revoked session and a missing consent keep their own signals
+  ---
+  duration_ms: 279.3105
+  type: 'test'
+  ...
+# Subtest: C11.L5: взаємна опція — власник з опцією бачить лише взаємних переглядачів
+ok 720 - C11.L5: взаємна опція — власник з опцією бачить лише взаємних переглядачів
+  ---
+  duration_ms: 7.6336
+  type: 'test'
+  ...
+# Subtest: C11.L5: gate — власник без опції не бачить НІКОГО (відмова від стеження)
+ok 721 - C11.L5: gate — власник без опції не бачить НІКОГО (відмова від стеження)
+  ---
+  duration_ms: 0.8019
+  type: 'test'
+  ...
+# Subtest: C11.L5: останній перегляд кожного переглядача, новіші перші
+ok 722 - C11.L5: останній перегляд кожного переглядача, новіші перші
+  ---
+  duration_ms: 56.8545
+  type: 'test'
+  ...
+# Subtest: C11.L5: optOut — власник миттєво сліпий
+ok 723 - C11.L5: optOut — власник миттєво сліпий
+  ---
+  duration_ms: 3.4591
+  type: 'test'
+  ...
+# Subtest: C11.L5: append-only і валідація — самоперегляд і сміття відхилені
+ok 724 - C11.L5: append-only і валідація — самоперегляд і сміття відхилені
+  ---
+  duration_ms: 1.4286
+  type: 'test'
+  ...
+# Subtest: C10.L6: k-фактор — hand-computed fixture
+ok 725 - C10.L6: k-фактор — hand-computed fixture
+  ---
+  duration_ms: 6.2123
+  type: 'test'
+  ...
+# Subtest: C10.L6: некоректний вхід — reason codes, не throw
+ok 726 - C10.L6: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 1.088
+  type: 'test'
+  ...
+# Subtest: C10.L6: час до першої пари — найраніша пара від найранішого створення
+ok 727 - C10.L6: час до першої пари — найраніша пара від найранішого створення
+  ---
+  duration_ms: 12.2969
+  type: 'test'
+  ...
+# Subtest: C10.L6: жодної завершеної пари — reason, не вигадані цифри
+ok 728 - C10.L6: жодної завершеної пари — reason, не вигадані цифри
+  ---
+  duration_ms: 0.5966
+  type: 'test'
+  ...
+# Subtest: C10.L6: завершення раніше створення — неможливо (fail-closed)
+ok 729 - C10.L6: завершення раніше створення — неможливо (fail-closed)
+  ---
+  duration_ms: 0.5027
+  type: 'test'
+  ...
+# Subtest: C10.L6: некоректні кейси
+ok 730 - C10.L6: некоректні кейси
+  ---
+  duration_ms: 0.4389
+  type: 'test'
+  ...
+# Subtest: C10.L6: публікація метрики лише при когорті >= k і запрошених >= k (зв'язка з C10.L5)
+ok 731 - C10.L6: публікація метрики лише при когорті >= k і запрошених >= k (зв'язка з C10.L5)
+  ---
+  duration_ms: 1.2091
+  type: 'test'
+  ...
+# Subtest: C11.L6: згода окрема від участі — без consent відповідь відхилена (gate)
+ok 732 - C11.L6: згода окрема від участі — без consent відповідь відхилена (gate)
+  ---
+  duration_ms: 13.6842
+  type: 'test'
+  ...
+# Subtest: C11.L6: дубль учасника неможливий; append-only
+ok 733 - C11.L6: дубль учасника неможливий; append-only
+  ---
+  duration_ms: 0.713
+  type: 'test'
+  ...
+# Subtest: C11.L6: WTP-крива — частки по цінах; < k ціна непублічна
+ok 734 - C11.L6: WTP-крива — частки по цінах; < k ціна непублічна
+  ---
+  duration_ms: 1.516
+  type: 'test'
+  ...
+# Subtest: C11.L6: viablePrice — перша ціна з часткою >= порогу
+ok 735 - C11.L6: viablePrice — перша ціна з часткою >= порогу
+  ---
+  duration_ms: 37.6346
+  type: 'test'
+  ...
+# Subtest: C11.L6: некоректний вхід — reason codes, не throw
+ok 736 - C11.L6: некоректний вхід — reason codes, не throw
+  ---
+  duration_ms: 4.8629
+  type: 'test'
+  ...
+1..736
+# tests 736
+# suites 0
+# pass 735
+# fail 0
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 19193.3145
