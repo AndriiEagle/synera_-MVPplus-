@@ -36,14 +36,16 @@ try {
   const materialAB=exchangeMaterial(A,B,fields()),materialBC=exchangeMaterial(B,C,fields());
   const hashAB=await hashMaterialPayload(materialAB),hashBC=await hashMaterialPayload(materialBC);
   // Seed a complete data graph without exercising application writes; this is a
+  // Pending invitations are unique per (sender, recipient) (meeting_requests_pending): the three pending
+  // rows use three different pairs, since replica mode skips triggers and FKs but not unique indexes.
   // postgres-only fixture and the behavioural checks execute through RLS/RPCs.
   must(database,`set session_replication_role=replica;
     insert into public.meeting_requests(id,sender_id,recipient_id,note,status,proposed_at,duration_minutes,meeting_place,sender_name,recipient_name,meeting_address) values
       ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1','${A}','${B}','A private meeting','accepted',now()+interval '1 day',20,'Онлайн','A','B','Private address'),
       ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2','${B}','${A}','B private meeting','accepted',now()+interval '1 day',20,'Онлайн','B','A','Peer address'),
-      ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3','${B}','33333333-3333-4333-8333-333333333333','expired','pending',now()-interval '1 day',20,'Онлайн','B','C',''),
+      ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3','33333333-3333-4333-8333-333333333333','${B}','expired','pending',now()-interval '1 day',20,'Онлайн','C','B',''),
       ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4','${B}','33333333-3333-4333-8333-333333333333','future','pending',now()+interval '1 day',20,'Онлайн','B','C',''),
-      ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa5','${B}','33333333-3333-4333-8333-333333333333','legacy expired','pending',null,20,'Онлайн','B','C','');
+      ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa5','${B}','44444444-4444-4444-8444-444444444444','legacy expired','pending',null,20,'Онлайн','B','D','');
     insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values
       ('privacy-ab','${A}','${B}','exchange',${lit(JSON.stringify(materialAB))}::jsonb,'${hashAB}',now()+interval '1 day'),
       ('privacy-bc','${B}','${C}','exchange',${lit(JSON.stringify(materialBC))}::jsonb,'${hashBC}',now()+interval '1 day');
