@@ -1,0 +1,125 @@
+{
+  "schema": "synera.e2e-reconcile.v1",
+  "base_commit": "ce7d629718b33229943b4423adfab0ca6fac2412",
+  "branch": "claude/synera-design-20261029c",
+  "runtime": {
+    "node": "v24.16.0",
+    "chrome": "156.0.8078.73"
+  },
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "results": {
+    "node_main": {
+      "tests": 739,
+      "pass": 738,
+      "fail": 0,
+      "skipped": 1,
+      "cancelled": 0
+    },
+    "node_pwa_i18n": {
+      "tests": 43,
+      "pass": 43,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "playwright": {
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skipped": 0
+    },
+    "frozen_baseline": {
+      "tests": 39,
+      "pass": 20,
+      "fail": 19
+    },
+    "css_reversal": {
+      "tests": 6,
+      "pass": 0,
+      "fail": 6,
+      "expected_exit": 1
+    }
+  },
+  "baseline_css_sha256": "d2ba470fe1f5143de5aee8be07ae4c86531e57141eb91ade65a38649d49bcc07",
+  "final_oracle_sha256": "ab10f5a3fdaf2f5440a4d5450df88e552ce56957c5da8ef4cbff81527454dd6e",
+  "mutation_oracle_matches_final": true,
+  "limits": [
+    "Existing disposable PostgreSQL integration skipped: SYNERA_ACCEPTANCE_PG unset",
+    "Local Chrome/Node24; GitHub Node22/bundled Chromium has not been rerun",
+    "No install, commit, push or deploy",
+    "set_thread_title tool unavailable"
+  ],
+  "files": [
+    {
+      "path": "tests/browser-e2e.spec.mjs",
+      "bytes": 41541,
+      "sha256": "ab10f5a3fdaf2f5440a4d5450df88e552ce56957c5da8ef4cbff81527454dd6e"
+    },
+    {
+      "path": "tests/studio-e2e.spec.mjs",
+      "bytes": 11345,
+      "sha256": "afcfa724fd857bdeebb679e68d45e899016c6278e5da5f7b75c1e73ae04cbfa1"
+    },
+    {
+      "path": "web_launch/site-shell.css",
+      "bytes": 19642,
+      "sha256": "9d99c85808db7406fc279c09e7bb0d9c5c3593edde2ab47e7423f9392115254d"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "bytes": 660,
+      "sha256": "7e2195daf9ad2cc05bceb0d1336270dc8c95936789d0ed9e58c31b7438c885c2"
+    },
+    {
+      "path": "docs/E2E-RECONCILE-20261029.uk.md",
+      "bytes": 13494,
+      "sha256": "0dab25bbaad699c9b3fe9912264023adc44d95677266403d8eeeeeeccba9ac83"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/baseline-pinned.log",
+      "bytes": 105910,
+      "sha256": "788d63bab9757a8d4466d76bcb90ccd9eaaad50cc458fb7c76735416ce023755"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/css-reversal.log",
+      "bytes": 79636,
+      "sha256": "776a9838906187b1636bb3f96cb54740bd5481ad5e9d4f3231b4a0890dd2655e"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/geometry.json",
+      "bytes": 133,
+      "sha256": "b1bda0c28d8d78421a21457597b17b1b0f5de332f3733d4d32bb9dc95a44e8cc"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/node-main.log",
+      "bytes": 77570,
+      "sha256": "b7746248a6db8ea184be120e1c35a80ac967b7e56d49a4cad02a2c724bd5a973"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/node-pwa-i18n.log",
+      "bytes": 3906,
+      "sha256": "c69c48f62b8c2b3adc0f5ba43fcab8a4616b815a9ae9de8103c91a1f18d4a1f9"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/playwright-final.log",
+      "bytes": 6055,
+      "sha256": "e577edca902f8c57b0af48794dff0d1a3c743d1529b159a75d4cb316be260476"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/profile-after-top.png",
+      "bytes": 43652,
+      "sha256": "9cffe7adafc5d95b3db08e2c8aec8283ea036e985a8759ad7d57ee3ed02a2f6f"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/profile-before.png",
+      "bytes": 55527,
+      "sha256": "5836567faaff3e6f535fea0c41d8e9a4c968435d756d52298bb69829ad200150"
+    },
+    {
+      "path": "docs/e2e-reconcile-20261029/repair.log",
+      "bytes": 1457,
+      "sha256": "b029c8719e2cb2cb93a5a3978780f42e9b373977d53b168197352ffd071933ee"
+    }
+  ]
+}

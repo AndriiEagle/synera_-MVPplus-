@@ -31,8 +31,10 @@ test.afterAll(async () => {
 });
 
 async function openPreferences(page) {
-  await page.locator('.header-preferences summary').click();
-  await expect(page.locator('#style-toggle')).toBeVisible();
+  const preferences = page.locator('.site-header .header-preferences');
+  if (!await preferences.evaluate(element => element.open)) await preferences.locator('summary').click();
+  await expect(page.getByRole('combobox', { name: 'Вигляд', exact: true })).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'Мова', exact: true })).toBeVisible();
 }
 
 test('Google entry explains consent, sends no request before acceptance, and shows recoverable failure', async ({ page }, testInfo) => {
@@ -80,8 +82,10 @@ test('Google entry explains consent, sends no request before acceptance, and sho
 test('index віддає 200 і показує бренд synera', async ({ page }) => {
   const response = await page.goto(`${baseUrl}/`);
   expect(response.status()).toBe(200);
-  await expect(page.locator('.brand')).toBeVisible();
-  await expect(page.locator('.brand')).toContainText('synera');
+  const brand = page.locator('.site-header').getByRole('link', { name: 'Synera', exact: true });
+  await expect(brand).toBeVisible();
+  await expect(brand).toContainText('synera');
+  await expect(brand).toHaveAttribute('href', '/');
 });
 
 test('hero h1 видимий на desktop viewport', async ({ page }, testInfo) => {
@@ -103,15 +107,16 @@ test('hero h1 видимий на mobile viewport 375px', async ({ page }, testI
 
 test('mobile first visit gives one visible action and keeps appearance settings available on demand', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 700 });
-  await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
   await page.goto(`${baseUrl}/`);
   const action = page.locator('#prepare-profile');
   await expect(action).toBeVisible();
   expect((await action.boundingBox()).y).toBeLessThan(700);
-  await expect(page.locator('#style-toggle')).toBeHidden();
-  await page.locator('.header-preferences summary').click();
-  await expect(page.locator('#style-toggle')).toBeVisible();
-  await expect(page.locator('#style-preset')).toBeVisible();
+  await expect(page.locator('#style-preset')).toBeHidden();
+  await expect(page.locator('#site-language')).toBeHidden();
+  await expect(page.locator('.tour-panel')).toBeHidden();
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  await expect(page.locator('.more-modes')).not.toHaveAttribute('open', '');
+  await openPreferences(page);
   await page.locator('#style-preset').selectOption('noir');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
 });
@@ -143,30 +148,29 @@ for (const width of [320, 375]) {
   });
 }
 
-test('Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
+test('Atelier is the default; Synera, Atelier and previous Web design remain reversible choices', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
-  const toggle = page.locator('#style-toggle');
-  await expect(toggle).toBeVisible();
-  await expect(toggle).toHaveText('Стиль: Synera');
-  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
-  await toggle.click();
-  await expect(toggle).toHaveText('Стиль: Atelier');
+  const styles = page.getByRole('combobox', { name: 'Вигляд', exact: true });
+  await expect(styles).toHaveValue('atelier');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'atelier');
-  await toggle.click();
-  await expect(toggle).toHaveText('Стиль: Web');
-  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
-  await toggle.click();
-  await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
+  for (const style of ['synera', 'atelier', 'original', 'synera', 'atelier']) {
+    await styles.selectOption(style);
+    await expect(page.locator('html')).toHaveAttribute('data-synera-style', style);
+    await page.reload();
+    await openPreferences(page);
+    await expect(styles).toHaveValue(style);
+    await expect(page.locator('html')).toHaveAttribute('data-synera-style', style);
+  }
 });
 
-test('compact presets are visual-only choices alongside the preserved three-style switch', async ({ page }) => {
+test('compact presets are visual-only choices alongside the three main styles', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
   await page.locator('#style-preset').selectOption('noir');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'noir');
-  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Noir');
-  await page.locator('#style-toggle').click();
+  await expect(page.locator('#style-preset')).toHaveValue('noir');
+  await page.locator('#style-preset').selectOption('synera');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
 });
 
@@ -228,6 +232,7 @@ test('draft tour reaches the usable demo and preserves the profile when returnin
   await page.getByRole('button', { name: 'Завершити', exact: true }).click();
   await page.getByRole('button', { name: 'Показати взаємну користь', exact: true }).click();
   await expect(page.getByRole('heading', { name: '2. Причина для розмови в обидва боки', exact: true })).toBeVisible();
+  await openPreferences(page);
   await page.locator('#back-login').click();
   await expect(page.locator('#demo-journey')).toBeVisible();
   await page.locator('#prepare-profile').click();
@@ -289,7 +294,7 @@ test('small mobile view keeps the profile navigation and style control on screen
       documentWidth: document.documentElement.scrollWidth,
       viewportWidth: document.documentElement.clientWidth,
       nav: { left: rect('.workspace-bar nav').left, right: rect('.workspace-bar nav').right, bottom: rect('.workspace-bar nav').bottom },
-      style: { left: rect('#style-toggle').left, right: rect('#style-toggle').right },
+      style: { left: rect('#style-preset').left, right: rect('#style-preset').right },
     };
   });
   expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
@@ -351,6 +356,7 @@ test('нуль pageerror-подій під час навігації по таб
 test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні розв'язуються в computed-стилях", async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
+  await page.locator('#style-preset').selectOption('synera');
   const computed = await page.evaluate(() => {
     const cs = getComputedStyle(document.body);
     const input = document.querySelector('#email');
@@ -364,10 +370,10 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
   });
   // Обрана Synera зберігає палітру оригінального Flutter, обидва вебстилі доступні окремо.
   expect(computed.rootColor254f3b).toBe('#e7bd87');
-  await page.locator('#style-toggle').click();
+  await page.locator('#style-preset').selectOption('atelier');
   const atelierToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
   expect(atelierToken).toBe('#173f32');
-  await page.locator('#style-toggle').click();
+  await page.locator('#style-preset').selectOption('original');
   const originalToken = await page.locator('html').evaluate(root => getComputedStyle(root).getPropertyValue('--color-254f3b').trim());
   expect(originalToken).toBe('#254f3b');
   // Фон має бути реальною поверхнею, а не browser-дефолтом.
@@ -379,12 +385,11 @@ test("SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні р�
 // SYN_PHASE9_A11Y_E2E (2026-09-23, audit cycle 5): поліш N1–N6. Пинить computed-стилі:
 // N3/N6 — --synera-border-control у рамці інпута (3.88:1 vs #fff, WCAG 1.4.11);
 // N1/N2/N4 — disabled без opacity-гасіння: підписи чіткі, єдина disabled-поверхня;
-// N5 — клавіатурний фокус дає піксельне кільце 2px бренд-зеленим.
+// N5 — клавіатурний фокус дає видиме кільце спільної оболонки (3px, акцент палітри).
 test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible', async ({ page }) => {
   await page.goto(`${baseUrl}/`);
   await openPreferences(page);
-  await page.locator('#style-toggle').click(); // Atelier
-  await page.locator('#style-toggle').click(); // Previous Web; the original Phase-9 tokens remain proven here.
+  await page.locator('#style-preset').selectOption('original'); // The original Phase-9 tokens remain proven here.
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'original');
   await expect.poll(() => page.locator('#auth-submit').evaluate(button => getComputedStyle(button).backgroundColor)).toBe('rgb(230, 235, 231)');
   const computed = await page.evaluate(() => {
@@ -437,7 +442,7 @@ test('SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-пов�
     const s = getComputedStyle(document.activeElement);
     return `${s.outlineWidth}|${s.outlineStyle}|${s.outlineColor}`;
   });
-  expect(focusRing).toBe('2px|solid|rgb(25, 81, 62)');
+  expect(focusRing).toBe('3px|solid|rgb(37, 79, 59)');
 });
 
 // GEO-01: accepted in-person meeting — static navigation without GPS, own consent, one recipient, revoke.
@@ -487,7 +492,7 @@ test('Night map premium style: selectable, keeps the first action above the fold
   await openPreferences(page);
   await page.locator('#style-preset').selectOption('night');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'night');
-  await expect(page.locator('#style-toggle')).toHaveText('Стиль: Нічна карта');
+  await expect(page.locator('#style-preset')).toHaveValue('night');
   await page.locator('.header-preferences summary').click();
   const h1 = await page.locator('.intro h1').boundingBox();
   const cta = await page.locator('.draft-entry').boundingBox();
@@ -495,7 +500,7 @@ test('Night map premium style: selectable, keeps the first action above the fold
   expect(cta.y + cta.height).toBeLessThan(812);
   expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
   await openPreferences(page);
-  await page.locator('#style-toggle').click();
+  await page.locator('#style-preset').selectOption('synera');
   await expect(page.locator('html')).toHaveAttribute('data-synera-style', 'synera');
   await context.close();
 });
@@ -525,7 +530,11 @@ test('Presentation leads to real app access and both phone guides without preten
   expect(await page.locator('a[href*="checkout.stripe.com"], a[href*="buy.stripe.com"], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').count()).toBe(0);
   expect(privateRequests).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator('#access-language').selectOption('uk');
+  await openPreferences(page);
+  await page.locator('#site-language').selectOption('en');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('#open-live-app')).toHaveText('Open Synera ↗');
+  await page.locator('#site-language').selectOption('uk');
   await expect(page.locator('html')).toHaveAttribute('lang', 'uk');
   await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
   await expect(page.locator('#open-live-app')).toHaveText('Відкрити Synera ↗');
@@ -620,5 +629,7 @@ test('Free launch displays a hypothetical usage-based map cost and restores exis
   await page.locator('#scenario-members').fill('0');await expect(page.locator('#map-cost')).toContainText('$0.00 USD');
   const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
   await page.screenshot({path:testInfo.outputPath('launch-desktop.png'),fullPage:true});
-  await page.locator('.studio-heading a').click();await expect(page.locator('#hero-title')).toBeVisible();
+  await page.locator('.more-modes > summary').click();
+  await page.locator('.more-modes-links').getByRole('link',{name:'Як працює Synera',exact:true}).click();
+  await expect(page.locator('#hero-title')).toBeVisible();
 });

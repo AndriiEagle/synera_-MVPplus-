@@ -116,7 +116,16 @@ html[data-synera-style] .site-page > .site-header {
 html[data-synera-style] .site-page :is(.studio-card,.triangle-card,.rooms-card,.real-card,.real-section,#real-blocked,#real-auth,.demo-panel,.device-guides details,.access-plan,.component-card) { background: var(--ui-panel); color: var(--ui-ink); border-color: var(--ui-line); box-shadow: none; }
 html[data-synera-style] .site-page :is(.real-heading p,.rooms-intro>p:not(.eyebrow),.studio-heading>p:not(.eyebrow),.subtle,.real-note,.real-hint,.rooms-fine,.rooms-empty,.real-empty) { color: var(--ui-muted); }
 html[data-synera-style] .site-page :is(input,select,textarea) { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-line); }
+/* Keep the Phase-9 control/disabled boundaries stronger than decorative panel lines. */
+html[data-synera-style] .phone-pwa :is(input,select,textarea) { border-color: var(--synera-border-control); }
+html[data-synera-style] .phone-pwa :is(fieldset:disabled input,fieldset:disabled select,fieldset:disabled textarea,input:disabled,select:disabled,textarea:disabled) { background: var(--synera-disabled-bg); color: var(--synera-disabled-text); border-color: var(--synera-disabled-border); }
 html[data-synera-style] .site-page :is(.real-form,.studio) label { color: var(--ui-muted); }
+/* Triangle's old dark-only fills and status text need the same palette as their new cards. */
+html[data-synera-style] .site-page .studio:not(.ecosystem) button:not(.primary):not(.central-l):not(.atlas-marker):not([aria-pressed=true]) { background: var(--ui-field); color: var(--ui-ink); border-color: var(--ui-accent); }
+html[data-synera-style] .site-page .atlas-marker { color: #f5f2e9; }
+html[data-synera-style] .site-page :is(.atlas-detail-tag,.cost-output,.trust-list li) { color: var(--ui-muted); }
+html[data-synera-style] .site-page .trust-list b { color: var(--ui-ink); }
+html[data-synera-style] .site-page :is(.budget-state,#place-result) { color: var(--ui-ink) !important; }
 .site-page input[type=file] { padding: 8px; font-size: 14px; }
 .site-page input[type=file]::file-selector-button { background: var(--ui-action); color: var(--ui-on-action); border: 0; border-radius: 6px; min-height: 44px; padding: 10px 16px; margin-right: 10px; font: 600 14px var(--ui-body); cursor: pointer; }
 .site-page .reference-intro { padding: 36px 0 44px; max-width: 760px; }
@@ -165,6 +174,10 @@ html[data-synera-style] .phone-pwa .how-it-works { order: 2; padding: 16px 0 36p
 .how-it-works img { width: 72px; height: 72px; object-fit: contain; }
 .how-it-works strong { font: 500 15px/1.4 var(--ui-display); }
 .how-it-works small { color: var(--ui-muted); font: 400 14px/1.6 var(--ui-body); max-width: 220px; }
+/* Once drafting, the workspace takes the landing explanation's place above secondary modes/install. */
+html[data-synera-style] .phone-pwa.signed-in main { display: flex; flex-direction: column; }
+.phone-pwa.signed-in .how-it-works { display: none; }
+.phone-pwa.signed-in #workspace { order: 2; }
 html[data-synera-style] .phone-pwa #welcome { order: 3; max-width: none; width: 100%; margin: 12px 0 24px; padding: 32px; border: 1px solid var(--ui-line); border-radius: 16px; background: var(--ui-panel); box-shadow: none; }
 html[data-synera-style] .phone-pwa .more-modes { order: 4; margin: 8px 0 24px; }
 html[data-synera-style] .phone-pwa #demo-journey { order: 5; background: var(--ui-panel); border-color: var(--ui-line); }
