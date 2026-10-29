@@ -107,3 +107,23 @@ test('legacy challenge receives a distinct local cookie name and legacy flag alo
     { ...env, SYNERA_GOOGLE_OAUTH_READY: 'false' }, endpoints, allowed, async () => { throw new Error('must not fetch'); });
   assert.equal(disabled.status, 404);
 });
+
+test('standalone Google adapter admits a new verified identity only with the exact open flag and keeps consent/security gates', async () => {
+  const encoded = btoa(JSON.stringify({ name: challengeName, value: 'challenge-value' }));
+  const callback = () => request('/api/neon/oauth/google/callback?neon_auth_session_verifier=verifier-0123456789', {
+    headers: { Cookie: `__Host-synera-google-challenge=${encoded}` },
+  });
+  for (const [flag, verified, expected] of [['true', true, 303], ['false', true, 401], [undefined, true, 401], ['TRUE', true, 401], ['true', false, 401]]) {
+    const response = await handleGoogleOAuth(callback(), { ...env, SYNERA_OPEN_REGISTRATION: flag }, endpoints, new Set(),
+      async () => responseWithCookies({ session: { id: 's' }, user: { id: 'new-user', email: 'new@example.com', emailVerified: verified } }, [`${sessionName}=provider-session; Secure; HttpOnly`]));
+    assert.equal(response.status, expected);
+    if (expected !== 303) assert.doesNotMatch(cookies(response).join('\n'), /__Host-synera-session=provider-session/);
+  }
+  let calls = 0;
+  const missingConsent = await handleGoogleOAuth(request('/api/neon/oauth/google/start', { method: 'POST', body: {} }),
+    { ...env, SYNERA_OPEN_REGISTRATION: 'true' }, endpoints, new Set(), async () => { calls++; });
+  assert.equal(missingConsent.status, 400); assert.equal(calls, 0);
+  const missingVerifier = await handleGoogleOAuth(request('/api/neon/oauth/google/callback', { headers: { Cookie: `__Host-synera-google-challenge=${encoded}` } }),
+    { ...env, SYNERA_OPEN_REGISTRATION: 'true' }, endpoints, new Set(), async () => { calls++; });
+  assert.equal(missingVerifier.status, 400); assert.equal(calls, 0);
+});

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: no provider dispatch when stop changes during capture
+ok 1 - no provider dispatch when stop changes during capture
+  ---
+  duration_ms: 743.0334
+  type: 'test'
+  ...
+# Subtest: no provider dispatch when revision changes during capture
+ok 2 - no provider dispatch when revision changes during capture
+  ---
+  duration_ms: 189.3821
+  type: 'test'
+  ...
+# Subtest: no provider dispatch when draft changes during capture
+ok 3 - no provider dispatch when draft changes during capture
+  ---
+  duration_ms: 14.549
+  type: 'test'
+  ...
+# Subtest: unchanged clean frame reaches one model call and records the UI result
+ok 4 - unchanged clean frame reaches one model call and records the UI result
+  ---
+  duration_ms: 7.993
+  type: 'test'
+  ...
+# Subtest: private HTTP sessions reject wrong origin, forged actor, stale request and private cache
+ok 5 - private HTTP sessions reject wrong origin, forged actor, stale request and private cache
+  ---
+  duration_ms: 893.3571
+  type: 'test'
+  ...
+# Subtest: executor refuses stale, cross-action payloads and unbounded fields
+ok 6 - executor refuses stale, cross-action payloads and unbounded fields
+  ---
+  duration_ms: 2.5988
+  type: 'test'
+  ...
+# Subtest: provider consent belongs to the selected pair and STOP rejects an in-flight actor
+ok 7 - provider consent belongs to the selected pair and STOP rejects an in-flight actor
+  ---
+  duration_ms: 108.1835
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7683.055

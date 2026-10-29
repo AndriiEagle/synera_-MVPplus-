@@ -66,9 +66,12 @@ function upstreamSession(response) {
   if (parsed.length !== 1 || !/^[^\x00-\x20;]{1,4096}$/.test(parsed[0].value)) throw new OAuthError(503);
   return parsed[0].value;
 }
-function publicUser(data, allowed) {
+function publicUser(data, allowed, env) {
   const user = data?.user;
-  if (!data?.session || !user || typeof user.id !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(user.id) || typeof user.email !== 'string' || user.emailVerified !== true || !allowed?.has(user.email.toLowerCase())) throw new OAuthError(401, 'google_oauth_denied');
+  const admitted = typeof user?.email === 'string' && (env.SYNERA_OPEN_REGISTRATION === 'true'
+    ? user.email.length <= 254 && /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/.test(user.email)
+    : allowed?.has(user.email.toLowerCase()));
+  if (!data?.session || !user || typeof user.id !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(user.id) || typeof user.email !== 'string' || user.emailVerified !== true || !admitted) throw new OAuthError(401, 'google_oauth_denied');
   return { id: user.id, email: user.email };
 }
 function safeNeonInitUrl(value, endpoints) {
@@ -130,7 +133,7 @@ async function callback(request, env, endpoints, allowed, fetchImpl) {
   } });
   let data;
   try { data = await response.json(); } catch { throw new OAuthError(503); }
-  publicUser(data, allowed);
+  publicUser(data, allowed, env);
   const session = upstreamSession(response);
   const headers = new Headers({ Location: endpoints.origin + '/', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' });
   headers.append('Set-Cookie', `__Host-synera-session=${session}; Path=/; Secure; HttpOnly; SameSite=Lax`);

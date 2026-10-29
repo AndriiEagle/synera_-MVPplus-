@@ -1,0 +1,164 @@
+TAP version 13
+# Subtest: canton primary language maps to the matching Swiss locale
+ok 1 - canton primary language maps to the matching Swiss locale
+  ---
+  duration_ms: 3.147
+  type: 'test'
+  ...
+# Subtest: every canton resolves to one of the three locales; unknown codes resolve to null
+ok 2 - every canton resolves to one of the three locales; unknown codes resolve to null
+  ---
+  duration_ms: 1.3598
+  type: 'test'
+  ...
+# Subtest: CHF per locale follows CLDR: code position, grouping and point decimal
+ok 3 - CHF per locale follows CLDR: code position, grouping and point decimal
+  ---
+  duration_ms: 73.4749
+  type: 'test'
+  ...
+# Subtest: zero, single rappen and amounts below one franc keep two decimals
+ok 4 - zero, single rappen and amounts below one franc keep two decimals
+  ---
+  duration_ms: 1.0348
+  type: 'test'
+  ...
+# Subtest: hand-built output agrees with the engine Intl.NumberFormat after whitespace normalisation
+not ok 5 - hand-built output agrees with the engine Intl.NumberFormat after whitespace normalisation
+  ---
+  duration_ms: 73.8517
+  type: 'test'
+  location: 'C:\\Users\\Andrii\\AppData\\Local\\Temp\\synera-openreg-5UJehO\\tests\\i18n_ch\\currency.test.mjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    de-CH 125050
+    + actual - expected
+    
+    + 'CHF 1’250.50'
+    - "CHF 1'250.50"
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: "CHF 1'250.50"
+  actual: 'CHF 1’250.50'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Andrii/AppData/Local/Temp/synera-openreg-5UJehO/tests/i18n_ch/currency.test.mjs:29:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1306:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+    Test.postRun (node:internal/test_runner/test:1447:19)
+    Test.run (node:internal/test_runner/test:1372:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+  ...
+# Subtest: negative, fractional, NaN and string inputs are rejected instead of silently zeroed
+ok 6 - negative, fractional, NaN and string inputs are rejected instead of silently zeroed
+  ---
+  duration_ms: 2.1458
+  type: 'test'
+  ...
+# Subtest: plain ASCII variant for ICS/CSV
+ok 7 - plain ASCII variant for ICS/CSV
+  ---
+  duration_ms: 0.6679
+  type: 'test'
+  ...
+# Subtest: documented divergence: legacy swiss-compliance.formatSwissFrancs uses an ASCII apostrophe
+ok 8 - documented divergence: legacy swiss-compliance.formatSwissFrancs uses an ASCII apostrophe
+  ---
+  duration_ms: 0.8327
+  type: 'test'
+  ...
+# Subtest: numeric date is dd.mm.yyyy in all three Swiss languages
+ok 9 - numeric date is dd.mm.yyyy in all three Swiss languages
+  ---
+  duration_ms: 102.7246
+  type: 'test'
+  ...
+# Subtest: long date carries the month name of each language
+ok 10 - long date carries the month name of each language
+  ---
+  duration_ms: 7.3393
+  type: 'test'
+  ...
+# Subtest: time is 24-hour HH:mm, no am/pm, zero-padded
+ok 11 - time is 24-hour HH:mm, no am/pm, zero-padded
+  ---
+  duration_ms: 5.271
+  type: 'test'
+  ...
+# Subtest: date crosses midnight in Zurich even though the UTC date does not
+ok 12 - date crosses midnight in Zurich even though the UTC date does not
+  ---
+  duration_ms: 1.3273
+  type: 'test'
+  ...
+# Subtest: calendar slot: same-day range uses one date; midnight crossing repeats the date
+ok 13 - calendar slot: same-day range uses one date; midnight crossing repeats the date
+  ---
+  duration_ms: 7.9736
+  type: 'test'
+  ...
+# Subtest: slot rejects missing, zero, negative or reversed ranges
+ok 14 - slot rejects missing, zero, negative or reversed ranges
+  ---
+  duration_ms: 1.6439
+  type: 'test'
+  ...
+# Subtest: DST (M17): Zurich offset is +120 before and +60 after the October switch, and back in March
+ok 15 - DST (M17): Zurich offset is +120 before and +60 after the October switch, and back in March
+  ---
+  duration_ms: 4.3977
+  type: 'test'
+  ...
+# Subtest: invalid dates and locales throw
+ok 16 - invalid dates and locales throw
+  ---
+  duration_ms: 0.8041
+  type: 'test'
+  ...
+# Subtest: Accept-Language parsing honours q-values, drops q=0 and junk, keeps order for ties
+ok 17 - Accept-Language parsing honours q-values, drops q=0 and junk, keeps order for ties
+  ---
+  duration_ms: 9.0139
+  type: 'test'
+  ...
+# Subtest: exact Swiss tag wins over an earlier same-language tag only when it has equal or higher q
+ok 18 - exact Swiss tag wins over an earlier same-language tag only when it has equal or higher q
+  ---
+  duration_ms: 47.9156
+  type: 'test'
+  ...
+# Subtest: same language maps onto the Swiss variant: fr-FR → fr-CH, it-IT → it-CH, gsw → de-CH
+ok 19 - same language maps onto the Swiss variant: fr-FR → fr-CH, it-IT → it-CH, gsw → de-CH
+  ---
+  duration_ms: 1.4569
+  type: 'test'
+  ...
+# Subtest: unsupported, wildcard and empty requests fall back to de-CH (the Zürich pilot default)
+ok 20 - unsupported, wildcard and empty requests fall back to de-CH (the Zürich pilot default)
+  ---
+  duration_ms: 0.7081
+  type: 'test'
+  ...
+# Subtest: wildcard stops the search at its position: higher-q "*" means fallback, lower-q "*" is ignored
+ok 21 - wildcard stops the search at its position: higher-q "*" means fallback, lower-q "*" is ignored
+  ---
+  duration_ms: 0.821
+  type: 'test'
+  ...
+# Subtest: custom supported set keeps the product languages (uk is the source language)
+ok 22 - custom supported set keeps the product languages (uk is the source language)
+  ---
+  duration_ms: 1.9256
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 21
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3047.1171
