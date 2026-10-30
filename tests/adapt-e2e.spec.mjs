@@ -65,9 +65,9 @@ test('Triangle shows three-party prompts, completed local tasks and symmetric co
   await page.goto(`${base}/triangle.html`);await page.locator('#room-goal').fill('Demo prototype');
   for(const [id,name]of [['a','Alex Demo'],['b','Bo Demo'],['c','Cam Demo']])await page.locator(`#name-${id}`).fill(name);
   await page.locator('#local-understood').check();
-  await page.locator('#room-setup button').click();await expect(page.locator('#triangle-sovereign [data-suggestion=triangle]')).toBeVisible();
+  await page.locator('#room-setup button[type=submit]').click();await expect(page.locator('#triangle-sovereign [data-suggestion=triangle]')).toBeVisible();
   await expect(page.locator('#triangle-sovereign [data-balance]')).toHaveCount(0);
-  await page.locator('#task-title').fill('Demo sketch delivered');await page.locator('#task-owner').selectOption('a');await page.locator('#task-form button').click();await page.locator('#room-tasks input').check();
+  await page.locator('#task-title').fill('Demo sketch delivered');await page.locator('#task-owner').selectOption('a');await page.locator('#task-form button[type=submit]').click();await page.locator('#room-tasks input').check();
   await expect(page.locator('#triangle-sovereign [data-balance-signal=contributions]')).toBeVisible();
   await page.locator('#triangle-sovereign [data-balance-signal=contributions] summary').click();
   await expect(page.locator('#triangle-sovereign [data-balance-signal=contributions]')).toContainText('a: 1 · b: 0 · c: 0');

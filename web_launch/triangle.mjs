@@ -33,7 +33,7 @@ $('#room-setup').addEventListener('submit',event=>{event.preventDefault();guarde
   room=createRoom({goal:$('#room-goal').value,names:names.map(id=>$(`#name-${id}`).value),mode:$('#room-mode').value});
   roomEpoch++;
   $('#room-workspace').hidden=false;
-  $('#room-setup button').textContent='Створити нову кімнату';
+  $('#room-setup button[type=submit]').textContent='Створити нову кімнату';
   $('#active-goal').textContent=room.goal; $('#mode-description').textContent=modeCopy[room.mode];
   for(const select of [$('#message-member'),$('#task-owner')]) { select.replaceChildren(); for(const m of room.members){const option=node('option',m.name);option.value=m.id;select.append(option);} }
   $('#contributions').replaceChildren();

@@ -22,13 +22,13 @@ test('default-off, explicit consent, exact visitor-only payload, AI tag, revocat
   await send(page); await expect(page.locator('#visitor-wait')).toBeEmpty(); expect(calls).toHaveLength(0);
   await page.locator('#live-ai-toggle').click();await expect(page.locator('#live-ai-notice')).toContainText('OpenRouter');await expect(page.locator('#live-ai-notice')).toContainText('Z.ai');expect(calls).toHaveLength(0);
   await page.locator('#live-ai-decline').click();await expect(page.locator('#live-ai-toggle')).not.toBeChecked();
-  await enable(page);await send(page,'One draft, please');await expect(page.locator('[data-ai-tag]')).toHaveCount(1);
+  await enable(page);await send(page,'One draft, please');await expect(page.locator('#visitor-chat [data-ai-tag]')).toHaveCount(1);
   expect(calls).toHaveLength(1); expect(Object.keys(calls[0]).sort()).toEqual(['conversation','locale','persona','visitorText']);expect(JSON.stringify(calls[0])).not.toContain('PRIVATE PROFILE');
   await expect(page.locator('#visitor-result')).toBeHidden();await page.locator('#live-ai-toggle').click();
   const events=await page.evaluate(()=>JSON.parse(localStorage.getItem('synera.journal.v1')).filter(e=>e.kind==='consent'&&e.data.purpose==='live_ai_persona_reply'));
   expect(events.map(e=>e.data.decision)).toEqual(['grant','revoke']);expect(events[1].data.previousEventId).toBe(events[0].data.eventId);
   await send(page);await expect(page.locator('#visitor-wait')).toBeEmpty();expect(calls).toHaveLength(1);
-  await page.reload();await page.locator('[data-view=join]').click();await expect(page.locator('#live-ai-toggle')).not.toBeChecked();await expect(page.locator('[data-ai-tag]')).toHaveCount(1);
+  await page.reload();await page.locator('[data-view=join]').click();await expect(page.locator('#live-ai-toggle')).not.toBeChecked();await expect(page.locator('#visitor-chat [data-ai-tag]')).toHaveCount(1);
   await page.locator('[data-view=journal]').click();await expect(page.locator('#journal-events [data-ai-tag]')).toHaveCount(1);
 });
 test('cap reached falls back visibly; AI never signs persona agreement',async({page})=>{

@@ -15,6 +15,7 @@ create table public.openness (
 );
 create index openness_until on public.openness(until);
 alter table public.openness enable row level security;
+alter table public.openness force row level security;
 revoke all on public.openness from public, authenticated;
 grant select, insert, update, delete on public.openness to authenticated;
 
