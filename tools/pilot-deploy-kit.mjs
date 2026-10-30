@@ -5,12 +5,13 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { deflateRawSync } from 'node:zlib';
+import { readPrivacyGate, DEFAULT_READINESS } from './privacy-gate.mjs';
 
 const sha = b => createHash('sha256').update(b).digest('hex');
 const lit = s => "'" + String(s).replaceAll("'", "''") + "'";
 const json = x => JSON.stringify(x, null, 2) + '\n';
 const slash = s => s.replaceAll('\\', '/');
-export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'privacy-complete-erasure', 'privacy-retention-purge'];
+export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'privacy-complete-erasure', 'privacy-retention-purge', 'consent-evidence', 'rls-hardening'];
 
 // Split only at SQL statement boundaries; dollar bodies and quoted text stay verbatim.
 export function splitSQL(sql) {
@@ -71,6 +72,7 @@ export function migrationInventory(source, sql) {
       for (const a of m[2].matchAll(/\badd column (\w+)/gi)) col(m[1],a[1]);
       for (const a of m[2].matchAll(/\badd constraint (\w+)/gi)) add('constraint',m[1]+'.'+a[1],`exists(select 1 from pg_catalog.pg_constraint where conrelid=to_regclass(${lit(m[1])}) and conname=${lit(a[1])})`);
       if (/enable row level security/i.test(m[2])) add('rls',m[1],`coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass(${lit(m[1])})),false)`);
+      if (/force row level security/i.test(m[2])) add('forced-rls',m[1],`exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass(${lit(m[1])}) and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')`);
     } else if ((m = s.match(/^revoke (\w+)\s*\(([^)]+)\) on (public\.\w+) from ([\s\S]+)$/i))) {
       for(const role of comma(m[4])) for(const c of comma(m[2])) add('grant',role+':'+m[1].toUpperCase()+':'+m[3]+'.'+c,role==='public' ? `not exists(select 1 from information_schema.column_privileges where grantee='PUBLIC' and table_schema='public' and table_name=${lit(m[3].split('.').at(-1))} and column_name=${lit(c)} and privilege_type=${lit(m[1].toUpperCase())})` : `not coalesce(${columnPrivilege(role,m[3],c,m[1])},false)`,{denied:true});
     } else if ((m = s.match(/^grant ([\s\S]+?) on (function )?([\s\S]+?) to ([\s\S]+)$/i))) {
@@ -149,7 +151,7 @@ function policyDefinitions(rows) {
     return r.statement.replace(/^create policy \w+/i,'CREATE POLICY '+probe)+`;\nDO $kit$ BEGIN\nif not exists(select 1 from pg_catalog.pg_policy a join pg_catalog.pg_policy b on a.polrelid=b.polrelid where a.polrelid=to_regclass(${lit(r.table)}) and a.polname=${lit(r.name)} and b.polname=${lit(probe)} and a.polcmd=b.polcmd and a.polpermissive=b.polpermissive and a.polroles=b.polroles and pg_get_expr(a.polqual,a.polrelid) is not distinct from pg_get_expr(b.polqual,b.polrelid) and pg_get_expr(a.polwithcheck,a.polrelid) is not distinct from pg_get_expr(b.polwithcheck,b.polrelid)) then raise exception 'Unknown policy definition: ${r.object}'; end if;\nEND $kit$;\nDROP POLICY ${probe} ON ${r.table};`;
   }).join('\n');
 }
-function migrationSQL(base, migrations, allRows) {
+export function migrationSQL(base, migrations, allRows) {
   const baseline=base.filter(r=>['table','column','function','policy','rls','grant'].includes(r.kind));
   let sql=`-- Owner reviews project quiet-credit-94155104 / production in the console first.\n-- Source bodies are frozen; wrappers only skip complete known migrations.\n-- Copy the ENTIRE file into SQL Editor, never only the selected line.\nBEGIN;\nSET LOCAL lock_timeout='5s';\nSET LOCAL statement_timeout='120s';\nSELECT pg_advisory_xact_lock(97720261029);\nDO $kit$ BEGIN\nif not (${has(baseline)}) then raise exception 'Baseline r8 objects missing; do not apply schema.proposal.sql to production'; end if;\n${functionKnown(allRows)}\nEND $kit$;\n`;
   const seen=new Set(base.map(r=>r.kind+':'+r.object));
@@ -182,7 +184,7 @@ function checklist(commit,filename,env) {
   return `# Двоє людей: закритий пілот, до 30 хв після підготовки\n\nКомплект ${commit}. Завантажувати лише \`${filename}\`. Нічого тут не запускає cloud API.\nЧас нижче — план, не виміряна тривалість. SQL і реальні телефони власник ще не прийняв.\n\n## Перед стартом (обов'язково; якщо бракує — HOLD)\n\n- Власник має доступ до двох кабінетів, дві різні email-адреси й два фізичні телефони.\n- Neon: project **quiet-credit-94155104**, branch **production**, database **neondb**, AWS **us-east-2 (Ohio, США)**. Не створюй новий project.\n- Збережи ID/URL останнього справного production deployment r8 і всі попередні environment values ПРИВАТНО. Не вставляй їх у git/чат.\n- Neon: перевір наявну точку відновлення/backup і restore у disposable branch. Кнопки/доступність recovery залежать від акаунта; якщо restore не перевірений — зупинись. Це підготовка, не обіцянка 30 хв з нуля.\n- Прочитай \`env.md\`, \`changes-since-r8.uk.md\`, \`rollback.md\`. До SQL закрий нові входи: SYNERA_REGISTRATION_ENABLED=false, Google/open registration=false.\n\n## Власник: порядок 0–30 хв\n\n1. **0–3 хв — інспекція.** Neon console → project synera → Branch production → **SQL Editor** → database neondb, owner role → встав увесь \`00-inspect.sql\` → Run. Один рядок на очікуваний об'єкт; present=true/false. Відсутні нові об'єкти допустимі, відсутні базові r8 або часткова міграція — HOLD. Збережи результат локально. Не запускай базовий schema.proposal.sql вдруге.\n2. **3–7 хв — SQL.** Звір локальний receipt ../postgres-acceptance.json зі звітом лінії та manifest.json: source_commit і SHA 10-migrate/11-acceptance мають збігатися. Fixture suites вже перевірені локально з identity shim; на production їх не запускай. Якщо є підготовлений disposable clone, спершу виконай на ньому лише 10-migrate.sql. Якщо backup/restore ще не перевірені, відклади 30-хв вікно. Потім у production SQL Editor виконай увесь \`10-migrate.sql\`. Успіх: COMMIT і всі фінальні present=true; повторний запуск пропускає повні міграції. Помилка означає STOP: не запускай хвіст файлу окремо, виконай ROLLBACK за потреби.\n3. **7–9 хв — один партнер.** Відкрий \`20-add-member.sql\`, заміни <PARTNER_EMAIL> лише локально на адресу партнера малими літерами, виконай увесь файл у production. Успіх: admitted=true. Власник уже має свій допуск r8; якщо ні, HOLD для окремого owner review. Не вставляй вигаданих Demo-людей.\n4. **9–12 хв — environment.** Cloudflare dashboard → **Workers & Pages → synera-pilot → Settings → Variables and Secrets / Environment variables → Production**. Запиши попередні значення; вистав \`env.md\`. Список SYNERA_PILOT_EMAILS = попередня адреса власника + адреса партнера. URL Neon збережи чинними. Поки SYNERA_REGISTRATION_ENABLED=false. Google/open registration/GPS/rooms/erasure=false. Нові значення застосуються до НОВОГО deployment; вони не перемикають уже активний Worker.\n5. **12–15 хв — ZIP.** Pages → **synera-pilot → Deployments → Create a new deployment / Upload → Production** → перетягни \`${filename}\` → Save and Deploy. Не Create application, не новий project. ZIP має _worker.js та index.html у корені; не завантажуй усю теку kit. Успіх: новий production deployment Success. Зафіксуй його ID. Dashboard підтримує _worker.js, але не компілює functions/.\n6. **15–17 хв — read-only перевірка.** Відкрий https://synera-pilot.pages.dev/release.json у приватній вкладці: built_at=${commit ? 'час commit (див. manifest.json)' : ''}, звір _worker.js sha256 з manifest.json (це відрізняє старий Worker). https://synera-pilot.pages.dev/config.json: backend=neon, realPilotEnabled=true, realJourneyEnabled=true, messageIntentsEnabled=true, caseOutcomesEnabled=true, meetingAddressEnabled=true, registrationEnabled=false; googleOAuthEnabled/liveLocationEnabled/groupRoomsEnabled/profileErasureEnabled=false. Перевір health у DevTools Console НА цьому origin готовим GET нижче. Має бути HTTP 200, backend=neon, authGateway=reachable. Це перевіряє Auth gateway, не RLS/схему.\n7. **17–19 хв — відкрити вхід лише двом.** Приймай це лише після SQL/config/health перевірок; телефони A/B — наступний живий gate. Settings → Environment variables: SYNERA_REGISTRATION_ENABLED=true. Повторно Upload того самого ZIP у Production (env застосовується при deployment). /config.json тепер registrationEnabled=true; інші очікування кроку 6 зберігаються. Не підміняй SYNERA_OPEN_REGISTRATION.\n8. **19–22 хв — телефони A і B.** На кожному Safari/iPhone або Chrome/Android відкрий https://synera-pilot.pages.dev/; закрий стару PWA/вкладку, онови, за потреби очисти дані саме цього сайту (локальні чернетки спершу збережи). Звір новий темний із золотим дизайн. Прочитай правила/дані, постав обидві згоди, введи СВОЮ адресу, отримай новий 6-значний код. Код не пересилай іншій людині. Після входу збережи власний профіль, онови сторінку: має повернутися саме твій профіль. Для видимості партнера кожен окремо свідомо вмикає discoverable; GPS не потрібен. Не використовуй Demo для реального шляху.\n9. **22–27 хв — спільний шлях.** Відкрий https://synera-pilot.pages.dev/real-journey.html (Pages може прибрати .html). Вибери видимий профіль партнера. Спочатку узгодьте конкретні умови й створіть справу; кожна людина підтверджує ТУ САМУ версію окремо зі свого телефона. Після першої згоди друга лишається очікуваною. Потім надішли запрошення на зустріч, одержувач приймає на B; A не може прийняти за B. Порядок даних у чинному SQL: умови → дві згоди → запрошення/зустріч (не навпаки). Адреса, якщо потрібна, має окрему пропозицію/згоду; для швидкого проходу оберіть онлайн.\n10. **27–30 хв — результат і межі.** Виконайте малий справжній результат, наприклад взаємний огляд одного екрана. Автор додає результат, лише одержувач перевіряє й приймає його; автор не приймає власну роботу. Онови обидва телефони: умови, незалежні згоди, зустріч і прийнятий результат збереглися. Вийди на одному телефоні: інший лишається своїм користувачем. Без входу приватний шлях недоступний; чужий прихований профіль/повідомлення не читаються. До цих перевірок статус LIVE_TWO_PERSON=HOLD.\n\nHealth GET (не вставляй коди/токени; пряме відкриття health у адресному рядку дає 403 без службового заголовка):\n\n\`\`\`js\nconst r = await fetch('/api/neon/health', {headers:{'X-Synera-Client':'1'}});\nconsole.log(r.status, await r.json());\n\`\`\`\n\n## ROLLBACK — ціль 2 хв для Worker\n\n1. Pages → synera-pilot → Deployments → All deployments → **…** біля ЗБЕРЕЖЕНОГО попереднього production ID → **Rollback to this deployment** → Confirm. Preview не є rollback target.\n2. /release.json та /config.json мають збігатися зі збереженим r8. Вийди з нової PWA/онови дані сайту на обох телефонах; service worker старої вкладки може показувати кеш.\n3. Поверни збережені environment values для майбутніх deployment. Rollback deployment не означає видалення SQL/акаунтів. Для видалення саме нового admission: \`21-remove-member.sql\` і прибери тільки партнера із SYNERA_PILOT_EMAILS у НАСТУПНОМУ deployment. Старий r8 не має цього партнера у своєму env.\n4. **Не DROP нові таблиці після використання.** Additive SQL лишається; raw down statements у \`rollback.md\` — лише для disposable clone або restore в перевірену точку за окремим рішенням власника. Відкат даних не має доведеної межі 2 хв.\n\nДжерела UI/лімітів: [Cloudflare Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/), [Cloudflare Rollbacks](https://developers.cloudflare.com/pages/configuration/rollbacks/). Новий suite/receipt не є доказом живого проходу чи часу власника.\n`;
 }
 
-export async function generateKit({root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'docs/deploy-kit-20261029/kit')}={}) {
+export async function generateKit({root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'docs/deploy-kit-20261029/kit'),audience='closed-pilot',readiness=DEFAULT_READINESS}={}) {
   root=path.resolve(root);out=path.resolve(out);
   const allowed=path.join(root,'docs/deploy-kit-20261029');
   if(!out.startsWith(allowed+path.sep))throw Error('Output must be inside docs/deploy-kit-20261029/');
@@ -199,7 +201,8 @@ export async function generateKit({root=fileURLToPath(new URL('../',import.meta.
   for(const name of inputs)if(!/^(neon|web_launch)\/[\w./-]+(@[1-9]x\.[a-z0-9]+)?$/.test(name)||name.includes('..'))throw Error('Unsafe build input '+name);
   const changed=git('diff','HEAD','--name-only','--',...inputs);if(changed)throw Error('Commit-named kit requires clean build inputs: '+changed);
   const source=[];for(const name of inputs)source.push({name,sha256:sha(await fs.readFile(path.join(root,name)))});
-  const scratch=await fs.mkdtemp(path.join(allowed,'.build-'));let files;
+  await fs.mkdir(path.join(root,'tmp'),{recursive:true});
+  const scratch=await fs.mkdtemp(path.join(root,'tmp/kit-build-'));let files;
   try {
     for(const name of inputs){const dest=path.join(scratch,name);await fs.mkdir(path.dirname(dest),{recursive:true});await fs.copyFile(path.join(root,name),dest);}
     const clock=path.join(scratch,'clock.cjs');await fs.writeFile(clock,`const NativeDate=Date;global.Date=class extends NativeDate{constructor(...args){super(...(args.length?args:[${JSON.stringify(epoch)}]));}static now(){return new NativeDate(${JSON.stringify(epoch)}).valueOf();}};`);
@@ -271,12 +274,28 @@ export async function generateKit({root=fileURLToPath(new URL('../',import.meta.
   for(const row of source)if(sha(await fs.readFile(path.join(root,row.name)))!==row.sha256)throw Error('Source changed during build: '+row.name);
   for(const [name,hash] of sqlSource)if(sha(await fs.readFile(path.join(root,name)))!==hash)throw Error('SQL source changed during build: '+name);
   if(git('rev-parse','HEAD')!==commit)throw Error('HEAD changed during build');
-  for(const [name,data] of artifacts)await fs.writeFile(path.join(out,name),data);
-  await fs.writeFile(path.join(out,'manifest.json'),json(manifest));
+  artifacts.set('env.md', artifacts.get('env.md') + '\n## Worker invocation logs\n\nIn the owner-reviewed Wrangler configuration set:\n\n```toml\n[observability.logs]\ninvocation_logs = false\n```\n\nInvocation logs may contain request URLs. For dashboard-uploaded Pages, verify the equivalent platform setting and read back after deployment. This kit does not apply a Wrangler file or change the dashboard. Keep custom logs sanitised; this is not a separate DSV Art.4 audit archive.\n');
+  manifest.artifacts=[...artifacts].map(([name,data])=>({name,bytes:Buffer.byteLength(data),sha256:sha(data)}));
+  await writeKitArtifacts({out,artifacts,manifest,audience,readiness});
   return {commit,out,files:files.length,zip:manifest.zip,buildComparison:true,published:false};
 }
 
+// LAST release step: no ZIP or manifest is written until the audience gate passes.
+export async function writeKitArtifacts({out,artifacts,manifest,audience='closed-pilot',readiness=DEFAULT_READINESS}) {
+  const gate=await readPrivacyGate(readiness,audience);
+  for(const [name,data] of artifacts)await fs.writeFile(path.join(out,name),data);
+  await fs.writeFile(path.join(out,'manifest.json'),json({...manifest,release_audience:audience,privacy_gate:gate}));
+}
+
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
-  try { const args=process.argv.slice(2);if(args.length && (args.length!==2 || args[0]!=='--out'))throw Error('Usage: node tools/pilot-deploy-kit.mjs --out docs/deploy-kit-20261029/kit');console.log(json(await generateKit(args.length?{out:args[1]}:{}))); }
+  try {
+    const options={},args=process.argv.slice(2);
+    for(let i=0;i<args.length;i+=2) {
+      const key={'--out':'out','--audience':'audience','--readiness':'readiness'}[args[i]];
+      if(!key || !args[i+1] || Object.hasOwn(options,key))throw Error('Usage: node tools/pilot-deploy-kit.mjs [--out path] [--audience closed-pilot|open-registration] [--readiness path]');
+      options[key]=args[i+1];
+    }
+    console.log(json(await generateKit(options)));
+  }
   catch(error){console.error(error.message);process.exitCode=1;}
 }

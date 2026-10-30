@@ -1,0 +1,15 @@
+{
+  "status": "PASS_KIT_CLI_BOUNDARY",
+  "scope": "Current generator/gate/SQL with clean immutable HEAD frontend fixture; actual uncommitted lane build remains guarded",
+  "closed": {
+    "exit": 0,
+    "release_audience": "closed-pilot",
+    "env_note_read_back": true,
+    "env_sha256": "ce6c997716baf64b126f0a0ac7a4970f5dc54b64d34bbcc41a602b1535fdadd3"
+  },
+  "open": {
+    "exit": 1,
+    "output_files": [],
+    "reason": "OPEN REGISTRATION BLOCKED: dpa_accepted, notice_published_with_operator_data, deletion_accepted_live, dpia_decided, transfer_basis_confirmed"
+  }
+}

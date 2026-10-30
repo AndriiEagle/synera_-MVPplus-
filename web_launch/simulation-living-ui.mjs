@@ -101,7 +101,7 @@ function externalErase() {
   clearTimeout(replyTimer); session = null; paused = true; scheduleFeed(); journal = createJournal(storage);
   $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); status(t('erased'));
 }
-window.addEventListener('synera:before-device-erase', () => { clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
+window.addEventListener('synera:before-device-erase', () => { journal.cancelPending(); clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
 window.addEventListener('synera:device-erased', externalErase);
 function autoWriteAllowed() {
   // Storage events can arrive AFTER an already queued timer. Check the key at
@@ -139,12 +139,17 @@ function send(value) {
 }
 for (const key of ['accept', 'questionChip', 'scopeChip', 'rewardChip', 'limitsChip', 'timeChip', 'decline']) $('visitor-chips').append(button(t(key), () => send(t(key))));
 $('visitor-composer').addEventListener('submit', e => { e.preventDefault(); send($('visitor-text').value); });
-$('visitor-card').addEventListener('submit', e => {
+$('visitor-card').addEventListener('submit', async e => {
   e.preventDefault(); clearTimeout(replyTimer);
   const form = e.currentTarget, profile = Object.fromEntries(['name', 'offers', 'seeks'].map(k => [k, form.elements[k].value.trim()]));
   if (Object.values(profile).some(v => !v)) return;
+  const start = $('visitor-start'); if (start.disabled) return; start.disabled = true;
+  try {
+    // Store the exact notice visible before this local Demo action; never a cloud grant.
+    await journal.addConsent({action:'grant', label:t('consent'), document_text:form.querySelector('[data-demo-input-notice]').textContent + '\n' + $('local-note').textContent,
+      document_version:'local-demo-20261029', locale:document.documentElement.lang, purpose:'local-demo', recipient:'this-device', expires_at:null});
+  } catch { status(t('storageError')); return; } finally { start.disabled = false; }
   add('profile', 'visitor', t('profileSaved'), { source: 'profile', profile });
-  add('consent', 'visitor', t('consent'), { source: 'visitor', localOnly: true, demo: true });
   session = startVisitor(form.elements.partner.value, profile, seed, lang); persistMessages(0); renderVisitor();
   $('visitor-chat').scrollIntoView({ block: 'start' });
 });
@@ -171,6 +176,7 @@ $('journal-erase').addEventListener('click', () => {
 });
 window.addEventListener('storage', e => {
   if (e.key !== 'synera.journal.v1' && e.key !== null) return;
+  journal.cancelPending();
   journal = createJournal(storage);
   // Erasure in the privacy centre/another tab also cancels pending writers here.
   if (e.newValue === null) {

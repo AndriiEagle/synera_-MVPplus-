@@ -1,0 +1,95 @@
+{
+  "base": "f69882f1e5e5b5085449505db0487351fc19c90b",
+  "branch": "claude/synera-secure-20261030",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": [
+    {
+      "name": "main-node",
+      "command": "node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs",
+      "exit": 0,
+      "log": "tmp/main-node-final.log",
+      "log_sha256": "7c88138b8ac968f70226ab759e2329d1dc47f96228f3cd0878d84f0e345f4626",
+      "tail": "✔ C10.L6: жодної завершеної пари — reason, не вигадані цифри (0.5706ms)\r\n✔ C10.L6: завершення раніше створення — неможливо (fail-closed) (1.3445ms)\r\n✔ C10.L6: некоректні кейси (0.5027ms)\r\n✔ C10.L6: публікація метрики лише при когорті >= k і запрошених >= k (зв'язка з C10.L5) (0.8033ms)\r\n✔ C11.L6: згода окрема від участі — без consent відповідь відхилена (gate) (2.6411ms)\r\n✔ C11.L6: дубль учасника неможливий; append-only (0.5812ms)\r\n✔ C11.L6: WTP-крива — частки по цінах; < k ціна непублічна (1.2698ms)\r\n✔ C11.L6: viablePrice — перша ціна з часткою >= порогу (10.7921ms)\r\n✔ C11.L6: некоректний вхід — reason codes, не throw (6.6901ms)\r\nℹ tests 782\r\nℹ suites 0\r\nℹ pass 781\r\nℹ fail 0\r\nℹ cancelled 0\r\nℹ skipped 1\r\nℹ todo 0\r\nℹ duration_ms 24539.3291\r\n"
+    },
+    {
+      "name": "support-node",
+      "command": "node --test tests/pwa/*.test.mjs tests/i18n_ch/*.test.mjs tools/secure-package.test.mjs tools/simulation-server.test.mjs tools/simulation-runner.test.mjs",
+      "exit": 0,
+      "log": "tmp/support-node.log",
+      "log_sha256": "c75efc874e02746a54f9e924a84efa3642cf474652b6a635b7287616372b186a",
+      "tail": "2.1232ms)\r\n✔ no provider dispatch when revision changes during capture (53.9372ms)\r\n✔ no provider dispatch when draft changes during capture (22.7929ms)\r\n✔ unchanged clean frame reaches one model call and records the UI result (20.3912ms)\r\n✔ I1: runtime restart atomically removes expired sessions, preserves fresh ones and does not renew reads (118.8307ms)\r\n✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (153.4486ms)\r\n✔ executor refuses stale, cross-action payloads and unbounded fields (1.4698ms)\r\n✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (63.3446ms)\r\nℹ tests 55\r\nℹ suites 0\r\nℹ pass 55\r\nℹ fail 0\r\nℹ cancelled 0\r\nℹ skipped 0\r\nℹ todo 0\r\nℹ duration_ms 3011.0246\r\n"
+    },
+    {
+      "name": "secure-node-final",
+      "command": "node --test tools/secure-package.test.mjs web_launch/consent-evidence.test.mjs",
+      "exit": 0,
+      "log": "tmp/secure-node-final.log",
+      "log_sha256": "bc5855ee763d8f81db92237ce1971332bb5e12b4b3282cc7d0a25373f291111a",
+      "tail": "﻿✔ open gate fails closed on absent, empty, partial, string and false requirements (922.2508ms)\r\n✔ bundle scanner accepts clean files and rejects secrets nested/in any extension without echo (1379.9048ms)\r\n✔ erasure intent survives simulated database restore and retry, with no raw subjects (6.2834ms)\r\n✔ last kit step blocks open output, preserves existing output and packages closed pilot (205.2284ms)\r\n✔ journal binds exact consent document and withdrawal, preserves legacy rows and exports evidence (81.5176ms)\r\n✔ pending consent cannot recreate the journal after erasure or cross-tab cancellation (6.2685ms)\r\nℹ tests 6\r\nℹ suites 0\r\nℹ pass 6\r\nℹ fail 0\r\nℹ cancelled 0\r\nℹ skipped 0\r\nℹ todo 0\r\nℹ duration_ms 3505.4752\r\n"
+    },
+    {
+      "name": "all-browser",
+      "command": "node node_modules/@playwright/test/cli.js test --config tmp/secure-pw.config.mjs",
+      "exit": 0,
+      "log": "tmp/full-browser.log",
+      "log_sha256": "effdb2cf12ab6a16d0f78f05dbcf5373ef772ea48a88b6f37b26020a3e495a37",
+      "tail": "tests\\studio-e2e.spec.mjs:22:1 › portable gzip archive roundtrips inert original notes, exact source quotes and escaped share card (5.2s)\r\n  ok 117 tests\\studio-e2e.spec.mjs:30:1 › device save requires consent and restores exact session after reload without automatic saving (3.9s)\r\n  ok 118 tests\\studio-e2e.spec.mjs:34:1 › new logistics revision removes votes and silent deadline applies only explicit labelled fallback (6.4s)\r\n  ok 119 tests\\studio-e2e.spec.mjs:40:2 › installed shell › public-host clean URL remains available after going offline (1.2s)\r\n  ok 120 tests\\studio-e2e.spec.mjs:47:2 › installed shell › dedicated manifest opens Studio and offline reload restores public shell with explicit saved session (4.6s)\r\n\r\n  120 passed (6.9m)\r\n"
+    },
+    {
+      "name": "secure-browser-final",
+      "command": "node node_modules/@playwright/test/cli.js test --config tmp/secure-pw.config.mjs tests/secure-e2e.spec.mjs",
+      "exit": 0,
+      "log": "tmp/secure-browser-final.log",
+      "log_sha256": "eff1b430cf33a57eba3156d41d63ac2f3082b8725f4a1182b3d95dcb071d7fe0",
+      "tail": ") [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n  ok 1 tests\\secure-e2e.spec.mjs:10:36 › SECURE: exact visible consent evidence survives reload in uk (2.8s)\r\n  ok 2 tests\\secure-e2e.spec.mjs:10:36 › SECURE: exact visible consent evidence survives reload in de (2.6s)\r\n  ok 3 tests\\secure-e2e.spec.mjs:10:36 › SECURE: exact visible consent evidence survives reload in en (2.3s)\r\n  ok 4 tests\\secure-e2e.spec.mjs:29:1 › SECURE: erasure cancels a delayed consent digest without resurrecting data (2.0s)\r\n  ok 5 tests\\secure-e2e.spec.mjs:41:1 › SECURE: phone emulation screenshots of the consent flow and privacy inventory (5.5s)\r\n\r\n  5 passed (33.2s)\r\n"
+    },
+    {
+      "name": "kit-fixture",
+      "command": "node tmp/secure-kit-fixture.mjs (current controls and immutable HEAD build inputs)",
+      "exit": 0,
+      "log": "tmp/kit-fixture.log",
+      "log_sha256": "7bed4bc0000cebb96aed7d70595d3057962b0578a69720cb59a689ed38c94564",
+      "tail": "✔ owner kit: repeatable bytes, ZIP exactly matches isolated canonical build, SQL and env closure (7121.7646ms)\n✔ SQL splitter preserves quoted semicolons, comments and dollar bodies (2.0056ms)\n✔ inventory includes columns, function signatures, policies, grants and replacement fingerprints (0.9452ms)\n✔ ZIP boundary rejects traversal, maps, tests, secret material and size overflow (0.8461ms)\n✔ environment discovery refuses dynamic names instead of silently omitting a binding (15.8007ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 7344.7345\n"
+    },
+    {
+      "name": "bundle-scan",
+      "command": "node tools/check-client-bundle.mjs web_launch/dist-real web_launch/dist-neon-ci",
+      "exit": 0,
+      "log": "tmp/bundle-scan.log",
+      "log_sha256": "b2d28527a46764012e49e1cc5192121b8d3722a80c2abc4cbf11fd79c12b1e7b",
+      "tail": "﻿{\"directory\":\"C:\\\\sw\\\\synera-secure\\\\web_launch\\\\dist-real\",\"files\":177,\"status\":\"PATTERN_SCAN_PASS\",\"limitation\":\"Pattern scan cannot prove absence of every secret\"}\r\n{\"directory\":\"C:\\\\sw\\\\synera-secure\\\\web_launch\\\\dist-neon-ci\",\"files\":176,\"status\":\"PATTERN_SCAN_PASS\",\"limitation\":\"Pattern scan cannot prove absence of every secret\"}\r\n"
+    },
+    {
+      "name": "baseline_journal_rejected",
+      "exit": 1,
+      "expected": "nonzero",
+      "log": "docs/secure-20261030/baseline-journal.log"
+    },
+    {
+      "name": "mutant_journal_rejected",
+      "exit": 1,
+      "expected": "nonzero",
+      "log": "docs/secure-20261030/mutant-journal.log"
+    }
+  ],
+  "source_sha256": {
+    ".github/workflows/ci.yml": "d35c651e94bc77071e68f2a93efe500c5a730ea60898403441b7eb698876729c",
+    "tools/pilot-deploy-kit.mjs": "78a2bbcb36ef65e0d40f244b831cec28f13f05f61c946de6bc76c263a9c751e2",
+    "tools/privacy-gate.mjs": "90f63eb0c1f24b376273a21bdb921ecff8aeacb15c47b190bf0d396af69feb76",
+    "tools/check-client-bundle.mjs": "85bf47e4253ef3754da6d213d194c2fdce0695a5723dfc34f0456fb3d2f6f0c6",
+    "tools/secure-package.test.mjs": "f450967e59fef5b3b8e82828b89494c47433b84e12b50f936ab539cad110d48a",
+    "tools/secure-sql-acceptance.mjs": "35953128efdc42afeb3fc0501d17ae65eca3f9ccf21710d283fb142867365a42",
+    "tools/erasure-ledger.test-double.mjs": "54b79f9d33b1f34cf4db5eb7a331ce74a59f872617ed9584debaadae45489d4a",
+    "config/privacy-readiness.json": "7b3f414d30e591854bce2fea5925dd95062a70d7c10effef657a67afb7909bef",
+    "neon/consent-evidence.migration.sql": "250249397f116a4b4adced630a99b87b1401ba99b25d4cbac7354a0c1d0f2a28",
+    "neon/rls-hardening.migration.sql": "6fad753165a882f30996857a9ad27a696eba6db70b6dc5a8adc146a40cf9568d",
+    "neon/catalog_assert.sql": "638ac6cb8588bd6018640d279ac6bc12d98efdd8e7d52de0b377b9042e23b211",
+    "web_launch/journal.mjs": "6451ce5c5896f1a59cb2d180c43581db9bdb7f7408667088fa8c4e597a1111fb",
+    "web_launch/privacy-content.mjs": "22bf0cf489349579cb7674838b15526d6a2eb17a69b8f8b3ef811ee5cdc2ac3b",
+    "web_launch/simulation-living-ui.mjs": "b2d24ae53d9c69f9448fcb45c95ac26efb3e181721eb061534790c64335eb81e",
+    "web_launch/consent-evidence.test.mjs": "49f49eddb26ba60c875ca1e7da8474ce4118adee494317eb9900ac9daf988e19",
+    "tests/secure-e2e.spec.mjs": "1159fc71ccf10a58c3a99f5e46f4228bb1191fd16b1df5cd8c24046c7f1af077"
+  },
+  "review_prompt_characters": 3628
+}

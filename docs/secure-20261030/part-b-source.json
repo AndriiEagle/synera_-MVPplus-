@@ -1,0 +1,137 @@
+{
+  "origin": "ChatGPT Part B downloaded package, 2026-10-29; reviewed as UNTRUSTED, never executed",
+  "files": [
+    {
+      "path": ".github/workflows/privacy.yml",
+      "bytes": 1956,
+      "sha256": "400af01782ed6b52ea5946aec23887c9e9382fe308b180a33399bfda4db44c09",
+      "manifest_match": true
+    },
+    {
+      "path": "ACCEPTANCE_MATRIX.md",
+      "bytes": 3640,
+      "sha256": "ed20359617ded7ff1a65e4b3ff22f91fb930bc16cb6598cf7777841d91841561",
+      "manifest_match": true
+    },
+    {
+      "path": "config/readiness.json",
+      "bytes": 770,
+      "sha256": "d202a77f7cc3b5b4288ad940864db1cdccdd3bbb7cc33d50474ee1e6fbe2700e",
+      "manifest_match": true
+    },
+    {
+      "path": "config/retention.json",
+      "bytes": 507,
+      "sha256": "9690d2b8f0e837973dda49d0ef76562df5fbe6d9fb8d16b2c538c140cf0736f0",
+      "manifest_match": true
+    },
+    {
+      "path": "config/wrangler_privacy.toml",
+      "bytes": 293,
+      "sha256": "dbeb618e8ca6c970f9951af04aa7730728d9bad1aa97e43a04413a8946bb32ee",
+      "manifest_match": true
+    },
+    {
+      "path": "e2e/privacy.spec.mjs",
+      "bytes": 3876,
+      "sha256": "a804c9ae3460eb340bb19c93ef6f7c2ea52952ddbae8731f611bf520713c07da",
+      "manifest_match": true
+    },
+    {
+      "path": "IMPLEMENTATION_PLAN_RU.md",
+      "bytes": 15510,
+      "sha256": "e7d6f180b058b88a59ce227161808706654352358ab35fffde9907cea6f9988a",
+      "manifest_match": true
+    },
+    {
+      "path": "INCIDENT_RUNBOOK.md",
+      "bytes": 2336,
+      "sha256": "4568fefbb149ff7ef1d7074867c0fa90ba8eb6d34666b41056853c3407dcb0b0",
+      "manifest_match": true
+    },
+    {
+      "path": "MANIFEST.json",
+      "bytes": 3288,
+      "sha256": "5555c4a9ad774bd70f6f0039a6d8281dc278e99d2a93e9e030ddb4ef04a698cb",
+      "manifest_match": null
+    },
+    {
+      "path": "package.json",
+      "bytes": 490,
+      "sha256": "291c54495d2cede3d4f89bb1024df140a50b0a9f70d1b238e62d09d89dcaa248",
+      "manifest_match": true
+    },
+    {
+      "path": "playwright.config.mjs",
+      "bytes": 171,
+      "sha256": "f9da17baa789536b0f3129ccf15f1a85d012cad1643b58da9cb3da139b06f92a",
+      "manifest_match": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 5964,
+      "sha256": "c8a26ec38bbb44cd98240d7bab84f8e4bea797955a9a49b77dbff7fba781c737",
+      "manifest_match": true
+    },
+    {
+      "path": "scripts/check_client_bundle.mjs",
+      "bytes": 1080,
+      "sha256": "b749245bc1c0a725c67005fe37998bec49ce662476570be8d6da52b0c973c45c",
+      "manifest_match": true
+    },
+    {
+      "path": "scripts/check_sql.mjs",
+      "bytes": 641,
+      "sha256": "daff3a8bcb8859d922b6615fd3dd5e60b6f9560427a99923ce907c24e6570baa",
+      "manifest_match": true
+    },
+    {
+      "path": "scripts/check_vendor.mjs",
+      "bytes": 1352,
+      "sha256": "a0314c60602a7cf31029d84c89736213c4dc70d0b8bd64f59369cd5d1a1c0190",
+      "manifest_match": true
+    },
+    {
+      "path": "scripts/gate.mjs",
+      "bytes": 927,
+      "sha256": "eb8f693090f0a28dd8a5a50c7aeedc233e9db302e3e89b9d862937d6dd6c4a06",
+      "manifest_match": true
+    },
+    {
+      "path": "scripts/monitor.mjs",
+      "bytes": 337,
+      "sha256": "a9b0c678350d4e9b9cf43f06e17ee94800ee4ceb54a228e0d53ceb4aabdd00dc",
+      "manifest_match": true
+    },
+    {
+      "path": "sql/001_rls_template.sql",
+      "bytes": 5862,
+      "sha256": "e4396f31505b05e7d491de29f9ee29617fca948c360ac43663c32c83a0c950da",
+      "manifest_match": true
+    },
+    {
+      "path": "sql/catalog_assert.sql",
+      "bytes": 780,
+      "sha256": "12188c83b43e8a311fc7cede1ec72c9ef802b6915df9b0f17c885345ccc34bb8",
+      "manifest_match": true
+    },
+    {
+      "path": "src/security.mjs",
+      "bytes": 4996,
+      "sha256": "70818134159942bddd05c3652f6621ca30665b9f9b5dfee972f790aac93a25aa",
+      "manifest_match": true
+    },
+    {
+      "path": "tests/security.test.mjs",
+      "bytes": 5433,
+      "sha256": "d1700a9eadddadf84afb419379e05b475570e0651c486ca96e66672938e656e1",
+      "manifest_match": true
+    },
+    {
+      "path": "VERIFICATION.json",
+      "bytes": 4646,
+      "sha256": "933bf72d081b32733f4418519db0a16f6c52252e84fe2e563ae31bbd0529d434",
+      "manifest_match": true
+    }
+  ]
+}
