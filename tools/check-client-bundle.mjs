@@ -18,7 +18,10 @@ export async function scanClientBundle(directory) {
       if (!item.isFile()) throw Error('Unexpected bundle entry: ' + relative);
       // Scan all bytes, including extensionless files; secret markers are ASCII.
       const value = (await fs.readFile(file)).toString('utf8'); files++;
-      for (const [name, rule] of RULES) if (rule.test(value)) throw Error('Bundle secret pattern [' + name + '] in ' + relative);
+      // The Pages _worker.js is server code that the gateway never serves; it must READ secret bindings by name.
+      // Every value pattern still applies to it. Any other file reaches the browser and may not even name them.
+      const serverOnly = relative === '_worker.js';
+      for (const [name, rule] of RULES) if (!(serverOnly && name === 'secret-binding') && rule.test(value)) throw Error('Bundle secret pattern [' + name + '] in ' + relative);
     }
   }
   if ((await fs.lstat(root)).isSymbolicLink()) throw Error('Bundle root symlink refused');

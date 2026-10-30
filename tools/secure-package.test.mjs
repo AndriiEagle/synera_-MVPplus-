@@ -58,3 +58,18 @@ test('last kit step blocks open output, preserves existing output and packages c
     assert.equal(JSON.parse(await fs.readFile(path.join(out,'manifest.json'))).release_audience,'open-registration');
   } finally {await fs.rm(out,{recursive:true,force:true});}
 });
+
+
+test('server _worker.js may name secret bindings but never carry a secret value; client files may not even name them', async () => {
+  const fsp = await import('node:fs/promises'), os = await import('node:os'), p = await import('node:path');
+  const dir = await fsp.mkdtemp(p.join(os.tmpdir(), 'bundle-worker-'));
+  try {
+    await fsp.writeFile(p.join(dir, '_worker.js'), 'const k = env.OPENROUTER_API_KEY;');
+    assert.equal((await scanClientBundle(dir)).status, 'PATTERN_SCAN_PASS');
+    await fsp.writeFile(p.join(dir, '_worker.js'), 'const k = "sk-or-v1-' + 'a'.repeat(32) + '";');
+    await assert.rejects(scanClientBundle(dir), /provider-token/);
+    await fsp.writeFile(p.join(dir, '_worker.js'), 'ok');
+    await fsp.writeFile(p.join(dir, 'app.mjs'), 'const k = env.OPENROUTER_API_KEY;');
+    await assert.rejects(scanClientBundle(dir), /secret-binding/);
+  } finally { await fsp.rm(dir, { recursive: true, force: true }); }
+});
