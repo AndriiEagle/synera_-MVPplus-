@@ -9,6 +9,7 @@ SHELL.push('/home-lazy.mjs');
 SHELL.push('/summit.html', '/summit.css', '/summit.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2');
 SHELL.push('/location-session.mjs','/live-ai-client.mjs');
 SHELL.push('/get.html', '/product-access.mjs');
+SHELL.push('/qr.mjs','/getsite.mjs','/getsite-copy.mjs','/getsite.css','/get-uk.webmanifest','/get-de.webmanifest','/get-en.webmanifest');
 SHELL.push('/triangle.html', '/triangle.css', '/triangle.mjs', '/triangle-room.mjs', '/explore-planner.mjs');
 SHELL.push('/profile-import.mjs', '/index-language.mjs', '/index-i18n.mjs', '/index-i18n-table.mjs', '/real-journey-i18n.mjs', '/legal-language.mjs', '/legal-i18n.mjs', '/atelier.mjs', '/atelier.css');
 SHELL.push('/result-card.mjs', '/action-scoper.mjs', '/session-value.mjs');

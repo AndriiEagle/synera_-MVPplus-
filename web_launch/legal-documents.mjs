@@ -1,4 +1,5 @@
 // Legal drafts from REPORT_C §4.1–4.4 and REPORT_A §6.1. No registration or online collection.
+import { qrSVG } from './qr.mjs';
 export const SOURCES = {
   notice:'https://www.edoeb.admin.ch/en/duty-to-provide-information',
   dsg:'https://www.fedlex.admin.ch/eli/cc/2022/491/de',
@@ -85,13 +86,19 @@ export function renderDocuments(pilot=false) {
     const nav=el('nav');nav.className='legal-languages';nav.setAttribute('aria-label','Deutsch · Українська · English');
     for(const [code,label]of [['de','Deutsch · Haupttext'],['uk','Українська'],['en','English']]){const b=el('button',label);b.type='button';b.lang=code;b.setAttribute('aria-pressed',String(code===locale));b.onclick=()=>{locale=code;render();};nav.append(b);}target.append(nav);
     const evidence=(section,status,url)=>{const p=el('p',status+' · ');p.className='legal-evidence';const a=el('a',url===SOURCES.terms?'SECO · UWG':'DSG / DSV · EDÖB');a.href=url;a.rel='noopener';p.append(a);section.append(p);};
-    if(pilot){const rows=PILOT[locale];target.append(el('h1',rows[0]));target.insertAdjacentHTML('beforeend', '<figure class="scene scene-legal"><picture><source type="image/webp" srcset="/scene-legal.webp 768w, /scene-legal@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 768px"><img src="/scene-legal.webp" width="768" height="512" alt="" decoding="async" loading="lazy"></picture></figure>');for(const text of rows.slice(1,-1))target.append(el('p',text));evidence(target,'EXPERT_REQUIRED',SOURCES.dsg);const print=el('button',rows.at(-1));print.type='button';print.className='pilot-print';print.onclick=()=>window.print();target.append(print);return;}
+    function printLink(path,label) {
+      const url=new URL(path,location.origin);url.searchParams.set('lang',locale);
+      const figure=el('figure');figure.className='legal-qr';
+      try { figure.innerHTML=qrSVG(url.href); } catch { /* A long host still has a printable link. */ }
+      const caption=el('figcaption'),a=el('a',label+' · '+url.href);a.href=url.href;caption.append(a);figure.append(caption);target.append(figure);
+    }
+    if(pilot){const rows=PILOT[locale];target.append(el('h1',rows[0]));target.insertAdjacentHTML('beforeend', '<figure class="scene scene-legal"><picture><source type="image/webp" srcset="/scene-legal.webp 768w, /scene-legal@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 768px"><img src="/scene-legal.webp" width="768" height="512" alt="" decoding="async" loading="lazy"></picture></figure>');for(const text of rows.slice(1,-1))target.append(el('p',text));evidence(target,'EXPERT_REQUIRED',SOURCES.dsg);printLink('/privacy.html',locale==='de'?'Deine Daten':locale==='uk'?'Твої дані':'Your data');const print=el('button',rows.at(-1));print.type='button';print.className='pilot-print';print.onclick=()=>window.print();target.append(print);return;}
     target.append(el('h2',NOTICE[locale].title));
     for(const [key,row]of Object.entries(NOTICE[locale])){if(key==='title')continue;const s=el('section');s.dataset.noticeItem=key;s.append(el('h3',row[0]),el('p',row[1]));evidence(s,'NEEDS_REVIEW',key==='device'?SOURCES.dsv:SOURCES.dsg);target.append(s);}
     const terms=el('section');terms.id='draft-terms';terms.append(el('h2',TERMS[locale][0]),el('p',TERMS[locale][1]));evidence(terms,'EXPERT_REQUIRED',SOURCES.terms);target.append(terms);
     const imp=el('section');imp.id='draft-impressum';imp.append(el('h2','Impressum'),el('p','[OPERATOR NAME] · [ADDRESS] · [EMAIL]'),el('p',locale==='de'?'[RECHTSFORM PRÜFEN] · [HANDELSREGISTER, FALLS EINGETRAGEN] · [UID / MWST, FALLS EINSCHLÄGIG] · [TELEFON OPTIONAL]':locale==='uk'?'[ПЕРЕВІРИТИ ФОРМУ] · [ТОРГОВИЙ РЕЄСТР, ЯКЩО Є] · [UID / MWST, ЯКЩО Є] · [ТЕЛЕФОН НЕОБОВ’ЯЗКОВО]':'[VERIFY LEGAL FORM] · [COMMERCIAL REGISTER IF REGISTERED] · [UID / VAT IF APPLICABLE] · [PHONE OPTIONAL]'));
     evidence(imp,'EXPERT_REQUIRED',SOURCES.terms);target.append(imp);
-    for(const [href,text]of [['/privacy.html',locale==='de'?'Deine Daten':locale==='uk'?'Твої дані':'Your data'],['/pilot-consent.html',PILOT[locale][0]]]){const p=el('p'),a=el('a',text);a.href=href+'?lang='+locale;p.append(a);target.append(p);}
+    for(const [href,text]of [['/privacy.html',locale==='de'?'Deine Daten':locale==='uk'?'Твої дані':'Your data'],['/pilot-consent.html',PILOT[locale][0]]])printLink(href,text);
   }
   render();
   document.getElementById('site-language')?.addEventListener('change',e=>{locale=e.target.value;render();});

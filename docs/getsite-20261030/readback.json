@@ -1,0 +1,16 @@
+{
+  "status": "PASS_READBACK",
+  "sourceHashes": 23,
+  "lcp_ms": [
+    412,
+    664,
+    644
+  ],
+  "cls": [
+    0,
+    0,
+    0
+  ],
+  "reportLinks": "present",
+  "generatedArtifactsRestored": 118
+}

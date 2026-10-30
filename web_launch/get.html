@@ -1,35 +1,33 @@
 <!doctype html>
 <html lang="uk" data-synera-style="synera">
-<head>
-<script src="/privacy-retention.mjs"></script>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<head><meta charset="utf-8"><script src="/privacy-retention.mjs"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#15161d"><meta name="color-scheme" content="dark"><meta name="referrer" content="no-referrer">
-<title>Get Synera — Android & iPhone</title>
-<meta name="description" content="Open Synera's web app and add it to your Android or iPhone Home Screen. Explore the product and current access options.">
-<link rel="icon" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/summit.css">
-<script type="module" src="/product-access.mjs"></script>
-<link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><script type="module" src="/site-shell.mjs"></script>
-<script type="module" src="/atelier.mjs"></script><link rel="stylesheet" href="/scenes.css">
-</head>
-<body class="site-page">
-<a class="skip" href="#access">До встановлення</a>
+<title>Synera · Твоє коло у Цюриху</title><meta name="description" content="Synera · Zürich. Independent skills. Shared possibilities. Android & iPhone.">
+<link rel="icon" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link id="install-manifest" rel="manifest" href="/get-uk.webmanifest">
+<link rel="stylesheet" href="/summit.css"><link rel="stylesheet" href="/atelier.css"><link rel="stylesheet" href="/site-shell.css"><link rel="stylesheet" href="/scenes.css"><link rel="stylesheet" href="/getsite.css">
+<script type="module" src="/site-shell.mjs"></script><script type="module" src="/atelier.mjs"></script><script type="module" src="/getsite.mjs"></script>
+</head><body class="site-page">
+<a class="skip" href="#access" data-get-copy="skip">До встановлення</a>
 <header class="site-header"><a class="site-brand" href="/" aria-label="Synera">synera<span aria-hidden="true">·</span></a><details class="header-preferences"><summary>Мова і вигляд</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html">Твої дані</a><label>Мова<select id="site-language" aria-label="Мова"><option value="uk" lang="uk">Українська</option><option value="de" lang="de">Deutsch</option><option value="en" lang="en">English</option></select></label><label>Вигляд<select id="style-preset" aria-label="Вигляд"><option value="atelier">Atelier</option><option value="synera">Current · Synera</option><option value="original">Current · Web</option><option value="night">Night</option><optgroup label="Додаткові пресети"><option value="noir">Noir</option><option value="alpine">Alpine</option><option value="copper">Copper</option><option value="azure">Azure</option><option value="orchid">Orchid</option><option value="terracotta">Terracotta</option><option value="citrus">Citrus</option><option value="slate">Slate</option><option value="ink">Ink</option><option value="harvest">Harvest</option></optgroup></select></label><span id="mode" class="badge" hidden>Перевірка доступу</span><button id="logout" type="button" hidden>Вийти</button><button id="back-login" type="button" hidden>До входу</button><button id="tour-start" type="button" hidden>Тур</button></div></details></header>
-<main id="access" class="access-page">
-<section class="access-intro" aria-labelledby="access-title">
-<p class="eyebrow" data-product-copy="accessEyebrow">SYNERA / ВЕБПІЛОТ</p>
-<h1 id="access-title" data-product-copy="accessTitle">Synera на твоєму телефоні.</h1>
-<p class="hero-description" data-product-copy="accessLead">Відкрий пілот у браузері. Додай його на головний екран і повертайся до профілю, розмов та зустрічей.</p>
-<p class="access-free-summary" data-product-copy="freeSummary">Тимчасово CHF 0 · без банківської картки</p>
-<a id="open-live-app" class="primary" href="https://synera-pilot.pages.dev/" rel="noopener noreferrer" data-product-copy="openApp">Відкрити Synera ↗</a>
-<p class="access-note" data-product-copy="pilotNote">Поточний пілот — вебзастосунок. Встановлення на фізичних телефонах і новий сценарій локації ще потребують живого приймання.</p>
-</section>
-<figure class="scene scene-get"><picture><source type="image/webp" srcset="/scene-get.webp 768w, /scene-get@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 768px"><img src="/scene-get.webp" width="768" height="512" alt="" decoding="async" loading="lazy"></picture></figure>
-<section class="device-guides" aria-label="Phone installation">
-<details data-platform="android"><summary><span>01</span> Android</summary><p data-product-copy="androidSteps">Відкрий Synera у Chrome. Меню браузера → Додати на головний екран → Встановити. Якщо цього пункту немає, скористайся ярликом браузера. Спочатку відкрий сторінку пілоту за посиланням вище.</p><a class="small-link" href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Chrome ↗</a></details>
-<details data-platform="ios"><summary><span>02</span> iPhone</summary><p data-product-copy="iphoneSteps">Відкрий Synera у Safari. Поділитися (або меню сторінки → Поділитися) → На початковий екран. Увімкни Відкривати як вебпрограму, якщо доступно, потім Додати. Спочатку відкрий пілот за посиланням вище.</p><a class="small-link" href="https://support.apple.com/guide/iphone/turn-a-website-into-an-app-iph42ab2f3a7/ios" target="_blank" rel="noopener noreferrer">Apple Safari ↗</a></details>
-</section>
-<p class="access-note" data-product-copy="webNote">Один вебзастосунок для обох телефонів. Завантаження з магазинів ще недоступні.</p>
-<div class="access-plans">
+<main id="access" class="getsite">
+<section class="get-hero" aria-labelledby="access-title"><div class="get-copy">
+<p class="eyebrow">SYNERA / ZÜRICH</p><h1 id="access-title" data-get-copy="heading">Твоє коло взаємності у Цюриху.</h1>
+<a id="install-primary" class="primary" href="/?draft=1&amp;lang=uk" data-get-copy="android">Встановити на Android</a>
+<p class="get-note" data-get-copy="note">Без магазину. Просто з браузера.</p>
+<section id="install-fallback"><p>Android: Chrome ⋮ → Встановити. iPhone: Safari → Поділитись → На екран Домому.<br>Chrome ⋮ → Installieren. Safari → Teilen → Zum Home-Bildschirm.<br>Chrome ⋮ → Install. Safari → Share → Add to Home Screen.</p></section>
+</div><figure class="scene scene-get"><picture><source type="image/webp" srcset="/scene-get.webp 768w, /scene-get@2x.webp 1536w" sizes="(max-width:700px) calc(100vw - 48px), 460px"><img src="/scene-get.webp" width="768" height="512" alt="" decoding="async" fetchpriority="high"></picture></figure></section>
+<section class="get-transfer" aria-labelledby="transfer-title"><figure><div id="phone-qr" role="img" aria-label="QR"></div></figure><div>
+<h2 id="transfer-title" data-get-copy="scan">Відскануй телефоном</h2><a id="qr-link" href="/get.html" data-get-copy="qrLink">Відкрити це посилання</a>
+<div class="get-choices"><a id="continue-browser" href="/?draft=1&amp;lang=uk" data-get-copy="continue">Продовжити у браузері</a><button id="manual-install" type="button" data-get-copy="guide" disabled>Як встановити</button></div></div></section>
+<section class="get-values" aria-label="Synera">
+<article class="get-value"><img src="/persona-mira.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><h2 data-get-copy="find">Знайти взаємність</h2><p data-get-copy="findBody">Твої навички потрібні комусь. Його досвід — тобі.</p></article>
+<article class="get-value"><img src="/persona-leo.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><h2 data-get-copy="agree">Домовитись чесно</h2><p data-get-copy="agreeBody">Обсяг, час і винагорода. Одна версія умов для обох.</p></article>
+<article class="get-value"><img src="/persona-nora.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><h2 data-get-copy="keep">Зберегти результат</h2><p data-get-copy="keepBody">Домовленість і наступний крок — завжди під рукою.</p></article></section>
+<p class="get-demo"><a id="open-demo-journey" href="/simulation.html?lang=uk" data-get-link data-get-copy="demo">Demo всередині: 10 вигаданих людей</a></p>
+<p class="get-privacy"><span data-get-copy="privacy">Твої дані — твій вибір.</span> <a href="/privacy.html" data-get-link data-get-copy="privacyLink">Приватність</a></p>
+<div class="get-stores"><p><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3l16 9-16 9V3zm0 0l10 13m-10 5L15 8"/></svg><span data-get-copy="play">Google Play: готується</span></p><p><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 7c-7-5-10 1-8 7 1 4 3 7 5 6l3-1 3 1c2 1 4-3 5-5-5-2-4-6-1-8-2-3-5-2-7 0zm0-3c1-3 3-3 4-3 0 3-2 4-4 4"/></svg><span data-get-copy="apple">App Store: пізніше</span></p></div>
+<details class="get-more"><summary data-product-copy="paidTitle">Пілот у Цюриху тимчасово безкоштовний.</summary><div class="access-plans">
 <section id="payment-availability" class="access-plan" data-state="free-pilot" aria-labelledby="payment-title">
 <p class="eyebrow" data-product-copy="nowLabel">ДОСТУПНО ЗАРАЗ</p><p class="access-price">CHF 0</p>
 <h2 id="payment-title" data-product-copy="paidTitle">Пілот у Цюриху тимчасово безкоштовний.</h2><p data-product-copy="paidBody">Перші корисні знайомства без банківської картки. Майбутній платний план потребуватиме окремого вибору після показу ціни й умов. Автоматичного переходу на оплату та купівлі через магазини застосунків немає.</p>
@@ -41,10 +39,17 @@
 <p class="access-evidence" data-product-copy="scenarioEvidence">Ціна CHF 12 і ліміт 10 запитів узяті з нашої моделі планування. Це припущення, а не підтверджений попит, доведені витрати чи гарантія клієнтів, зустрічей або доходу. Оплату й донати тут не ввімкнено.</p>
 </section></div>
 <section id="feedback-note" class="access-feedback" aria-labelledby="feedback-title"><h2 id="feedback-title" data-product-copy="feedbackTitle">Допоможи сформувати план, якщо хочеш.</h2><p data-product-copy="feedbackBody">Відгук добровільний: що було б корисним і чи справедлива запропонована ціна? Можеш обговорити це з людиною, яка показує тобі Synera. На цій сторінці немає форми відгуку; вона не зберігає й не надсилає твою відповідь.</p><a class="small-link" href="/triangle.html#launch" data-product-copy="economicsLink">Переглянути припущення запуску й витрат ↗</a></section>
-<section class="access-demo" aria-labelledby="studio-access-title"><p class="eyebrow" data-product-copy="demoLabel">ПОДИВИТИСЬ ОКРЕМО / ЛОКАЛЬНЕ ДЕМО</p><h2 id="studio-access-title" data-product-copy="studioTitle">Спробуй Studio перед участю.</h2><p data-product-copy="studioBody">Переглянь локальні нотатки сесії, підтвердження результату, соціальні чернетки й власний архів у браузері на телефоні або комп’ютері. Демопрофілі вигадані; Studio відокремлена від живого пілоту й не є спільною мережевою кімнатою.</p><p class="actions"><a id="open-studio-app" class="small-link" href="/studio.html" data-product-copy="studioLink">Відкрити демо Studio ↗</a><a id="open-demo-journey" class="small-link" href="/studio-journey.html" data-product-copy="journeyLink">Пройти демонстраційний цикл ↗</a></p><p class="access-note" data-product-copy="studioNote">Для встановлення на головний екран відкрий Studio на Android або iPhone та дотримуйся підказок там. Встановлення демо не приєднує до живого пілоту.</p></section>
-<a class="small-link" href="/summit.html" data-product-copy="back">Подивитись продукт ↗</a>
+</details>
 <details class="more-modes"><summary>Ще режими</summary><nav class="more-modes-links" aria-label="Режими Synera"><a href="/">Профіль і знайомства <span aria-hidden="true">↗</span></a><a href="/summit.html">Як працює Synera <span aria-hidden="true">↗</span></a><a href="/studio.html">Майстерня співпраці <span aria-hidden="true">↗</span></a><a href="/studio-journey.html">Спробувати знайомство <span aria-hidden="true">↗</span></a><a href="/real-journey.html">Домовленість удвох <span aria-hidden="true">↗</span><small class="mode-status">потрібен вхід</small></a><a href="/rooms.html">Спільна розмова <span aria-hidden="true">↗</span><small class="mode-status">потрібен вхід</small></a><a href="/triangle.html">Розмова втрьох <span aria-hidden="true">↗</span></a><a href="/get.html">Synera на телефоні <span aria-hidden="true">↗</span></a></nav></details>
-</main>
-<footer><a class="wordmark" href="/summit.html">synera<span>·</span></a><p>Independent skills. Shared possibilities.</p><a href="/legal.html" data-product-copy="policy">Приватність та умови ↗</a><a data-privacy-link href="/privacy.html">Твої дані</a></footer>
-</body>
-</html>
+<dialog id="install-guide" class="install-dialog" aria-labelledby="guide-title"><button id="install-guide-close" type="button" aria-label="Закрити інструкцію">×</button>
+<h2 id="guide-title" data-get-copy="guide">Як встановити</h2>
+<div class="get-choices"><button id="guide-android" type="button" aria-pressed="true">Android</button><button id="guide-ios" type="button" aria-pressed="false">iPhone</button></div>
+<section id="android-guide" data-platform="android"><h3 data-get-copy="androidTitle">На Android — через Chrome</h3><ol>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 8h9M8.5 14l-4-8m9.5 9l-5 7"/></svg><span data-get-copy="android1">Відкрий цю сторінку в Chrome.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg><span data-get-copy="android2">Натисни меню ⋮ → «Додати на головний екран».</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 12h8m-4-4v8"/></svg><span data-get-copy="android3">Обери «Встановити» й підтвердь.</span></li></ol></section>
+<section id="ios-guide" data-platform="ios" hidden><h3 data-get-copy="iosTitle">На iPhone — через Safari</h3><ol>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8l-2 6-6 2 2-6z"/></svg><span data-get-copy="ios1">Відкрий цю сторінку в Safari.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 8H4v14h16V8h-4M12 16V2m-4 4l4-4 4 4"/></svg><span data-get-copy="ios2">Натисни «Поділитись».</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 7v10m-5-5h10"/></svg><span data-get-copy="ios3">Обери «На екран Домому» → «Додати».</span></li></ol></section></dialog>
+</main><footer class="get-footer"><a class="site-brand" href="/">synera<span aria-hidden="true">·</span></a><a href="/privacy.html" data-get-link data-get-copy="privacyLink">Приватність</a><a href="/legal.html#draft-terms" data-get-link data-get-copy="terms">Умови</a><a href="/legal.html#draft-impressum" data-get-link data-get-copy="impressum">Impressum</a></footer></body></html>

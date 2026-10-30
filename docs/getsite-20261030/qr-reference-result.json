@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "casesMatched": 216,
+  "mode": "byte",
+  "ecc": "M",
+  "versions": "1-10",
+  "reference": "https://www.nayuki.io/res/qr-code-generator-library/qrcodegen.js",
+  "referenceSHA256": "2511bc17f40a3c41d4a0578995db956b38997334d3d20113a5d4dc5c49c69480",
+  "qrSHA256": "c803bc38bbe9114c310c167d912349606574448ddd6747ddc093cae3c505af97",
+  "vectors": [
+    {
+      "text": "https://synera-phone-preview.vercel.app/",
+      "version": 3,
+      "mask": 0,
+      "sha256": "791a789f3246d2a7485eaea6907984cc676d6045cf5f7ca7f46cc1fe246b67ba"
+    },
+    {
+      "text": "",
+      "version": 1,
+      "mask": 3,
+      "sha256": "c30ac51df3031a0d4219aac58b58f0b82efbdb32354c067967ff9db149b16f61"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxx",
+      "version": 2,
+      "mask": 0,
+      "sha256": "be1f4b93f39e9f2b2078c3ee1b75b380b920cf717fadc9593dca07aa7f0a32e0"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 3,
+      "mask": 2,
+      "sha256": "26ca721a90031f183fce0a0d53822e2e653349363900c4892064ca88290bc964"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 4,
+      "mask": 2,
+      "sha256": "1f4d2e04b148eb84316021d2c0135fc89d5177b03bb7e76a4190575baf7dc199"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 5,
+      "mask": 2,
+      "sha256": "fcc8278569d63b26ffb606f813853af872249d8da212fdd5a580b766bfea7146"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 6,
+      "mask": 0,
+      "sha256": "8b03df5e80a2420b68909e8417c061142f28cac4e8126a14980b3910754b7488"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 7,
+      "mask": 2,
+      "sha256": "f461d081f0015b88a3390a99d1ccdb1048f1451cdd5d5f11ef0b9a67f63883bb"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 8,
+      "mask": 2,
+      "sha256": "5926f6dcd6e9cb95c6da80988660cb86108d4c0dae2f62dc3e81b7c81f476e98"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 9,
+      "mask": 0,
+      "sha256": "591bbea64aed3057fdf779a510b3e83bc4cf9a26210f8a24c185eee6827d3934"
+    },
+    {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "version": 10,
+      "mask": 2,
+      "sha256": "6f87f0f4e0a3a51093cf8a62ff8b28bb46b0a7c7756a60d553f619c8139228b0"
+    }
+  ]
+}
