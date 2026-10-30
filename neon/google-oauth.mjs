@@ -112,14 +112,18 @@ async function upstream(fetchImpl, url, init) {
 }
 async function start(request, env, endpoints, fetchImpl) {
   if (!enabled(env)) throw new OAuthError(404, 'not_found');
-  await readConsent(request);
+  // Starting identity authentication grants no application consent or profile visibility.
+  if (request.method === 'POST') await readConsent(request);
   const response = await upstream(fetchImpl, endpoints.auth + '/sign-in/social', { method: 'POST', headers: {
     'Content-Type': 'application/json', Origin: endpoints.origin, 'X-Neon-Auth-Middleware': 'true'
-  }, body: JSON.stringify({ provider: 'google', callbackURL: endpoints.origin + CALLBACK_PATH, errorCallbackURL: endpoints.origin + '/', disableRedirect: true }) });
+  }, body: JSON.stringify({ provider: 'google', callbackURL: endpoints.origin + CALLBACK_PATH, errorCallbackURL: endpoints.origin + '/?signin=google-error', disableRedirect: true }) });
   const challenge = upstreamChallenge(response);
   let data;
   try { data = await response.json(); } catch { throw new OAuthError(503); }
-  return answer({ url: safeNeonInitUrl(data?.url, endpoints) }, 200, { 'Set-Cookie': localChallenge(challenge.name, challenge.value, challenge.maxAge) });
+  const destination = safeNeonInitUrl(data?.url, endpoints);
+  return request.method === 'GET'
+    ? answer(null, 303, { Location: destination, 'Set-Cookie': localChallenge(challenge.name, challenge.value, challenge.maxAge) })
+    : answer({ url: destination }, 200, { 'Set-Cookie': localChallenge(challenge.name, challenge.value, challenge.maxAge) });
 }
 async function callback(request, env, endpoints, allowed, fetchImpl) {
   if (!enabled(env)) throw new OAuthError(403, 'google_oauth_disabled');
@@ -144,7 +148,11 @@ async function callback(request, env, endpoints, allowed, fetchImpl) {
 export async function handleGoogleOAuth(request, env, endpoints, allowed, fetchImpl = fetch) {
   const path = new URL(request.url).pathname;
   try {
-    if (path === START_PATH && request.method === 'POST') return await start(request, env, endpoints, fetchImpl);
+    if (path === START_PATH && !new URL(request.url).search && ['GET', 'POST'].includes(request.method)) {
+      if (new URL(request.url).origin !== endpoints.origin || request.headers.get('Sec-Fetch-Site') === 'cross-site' ||
+          (request.headers.has('Origin') && request.headers.get('Origin') !== endpoints.origin)) throw new OAuthError(403);
+      return await start(request, env, endpoints, fetchImpl);
+    }
     if (path === CALLBACK_PATH && request.method === 'GET') return await callback(request, env, endpoints, allowed, fetchImpl);
     throw new OAuthError(404, 'not_found');
   } catch (error) {

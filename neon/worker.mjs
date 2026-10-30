@@ -63,7 +63,8 @@ function sessionCookie(value) { return `${SESSION_COOKIE}=${value}; Path=/; Secu
 function publicUser(data, allowed) {
   const user = data?.user;
   if (!user || typeof user.id !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(user.id) || typeof user.email !== 'string' || user.emailVerified !== true || !allowed.has(user.email.toLowerCase())) throw new GatewayError(401);
-  return { id: user.id, email: user.email };
+  const name = typeof user.name === 'string' ? user.name.trim() : '';
+  return { id: user.id, email: user.email, ...(name && name.length <= 60 && !/[@\x00-\x1f\x7f]/.test(name) ? { name } : {}) };
 }
 async function readJson(request, maxBytes = 4096) {
   if (!/^application\/json(?:;|$)/i.test(request.headers.get('content-type') || '')) throw new GatewayError(415);
@@ -116,6 +117,13 @@ async function getSession(fetchImpl, endpoints, cookie, allowed) {
 export async function handleNeon(request, env, fetchImpl = fetch) {
   try {
     const url = new URL(request.url), endpoints = neonEndpoints(env);
+    if (url.origin === endpoints.origin && url.pathname === '/api/neon/oauth/google/start' && request.method === 'GET' && !url.search) {
+      const result = await handleGoogleOAuth(request, env, endpoints, participants(env), fetchImpl);
+      if (result.status < 400 || env.SYNERA_GOOGLE_OAUTH_READY !== 'true') return result;
+      const headers = new Headers(result.headers);
+      headers.set('Location', endpoints.origin + '/?signin=google-error');
+      return new Response(null, { status: 303, headers });
+    }
     // OAuth returns by top-level navigation without the fetch-only client header.
     // Its dedicated challenge + verifier are checked by the OAuth adapter.
     if (url.origin === endpoints.origin && url.pathname === '/api/neon/oauth/google/callback' && request.method === 'GET') {
@@ -142,10 +150,6 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     }
     if (path === '/oauth/google/start' && request.method === 'POST' && !url.search) {
       return await handleGoogleOAuth(request, env, endpoints, allowed, fetchImpl);
-    }
-    // Starting authentication is a consent-bearing, same-origin POST.
-    if (path === '/oauth/google/start' && request.method === 'GET' && !url.search) {
-      throw new GatewayError(404, 'not_found');
     }
     if (path === '/otp/request' && request.method === 'POST' && !url.search) {
       if (env.SYNERA_REGISTRATION_ENABLED !== 'true') throw new GatewayError(403);
@@ -324,7 +328,9 @@ export function createNeonWorker(publicAssets) {
         liveAiProvider: liveAiReady(env) ? env.SYNERA_LIVE_AI_PROVIDER : null,
         liveAiUnavailableReason: liveAiReady(env) ? null : 'operator_setup_required',
         // This new gate is set only after the documented challenge bridge is verified live.
-        googleOAuthEnabled: googleOAuthEnabled && Boolean(googleOAuthInitUrl), googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
+        googleOAuthEnabled: googleOAuthEnabled && Boolean(googleOAuthInitUrl), googleOauthReady: googleOAuthEnabled && Boolean(googleOAuthInitUrl), googleOAuthInitUrl,
+        googleOAuthClientId: /^[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(env.SYNERA_GOOGLE_CLIENT_ID || '') ? env.SYNERA_GOOGLE_CLIENT_ID : undefined,
+        liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.
         realJourneyEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true',
         messageIntentsEnabled: ready && env.SYNERA_REAL_JOURNEY_READY === 'true' && env.SYNERA_MESSAGE_INTENTS_READY === 'true',

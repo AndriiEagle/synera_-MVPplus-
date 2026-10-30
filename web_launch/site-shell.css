@@ -2,6 +2,18 @@
 @import url("/privacy.css");
 @import url('/tokens.css');
 @import url('/adaptive.css');
+@font-face { font-family: 'Google Sans'; src: url('/google-sans.ttf') format('truetype'); font-style: normal; font-weight: 400 700; font-display: swap; }
+
+/* The ready product opens with one decision; preview keeps its local entry points. */
+.google-entry:not(.signed-in) :is(.intro, .how-it-works, .install-bar, #demo-journey, .more-modes, .mode-actions, #install-hint, .demo-device-notice) { display: none; }
+.google-entry:not(.signed-in) main { display: block; max-width: 520px; }
+.google-entry:not(.signed-in) #welcome { margin: clamp(24px, 8vh, 80px) auto 24px; }
+#google-signin { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 48px; padding: 12px; border: 1px solid #8e918f; border-radius: 24px; background: #131314; color: #e3e3e3; font: 500 14px/20px 'Google Sans', Arial, sans-serif; box-shadow: none; }
+#google-signin svg { flex: 0 0 20px; }
+#google-signin:hover { background: #242425; }
+#google-signin:focus-visible { outline: 3px solid #e3e3e3; outline-offset: 3px; }
+#email-toggle { display: block; margin: 8px auto; background: transparent; border-color: transparent; font-size: 13px; }
+#policy-pending { margin-bottom: 20px; }
 
 /* Release palette and shared type, independent of each page's older layout. */
 :root {

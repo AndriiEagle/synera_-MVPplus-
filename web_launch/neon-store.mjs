@@ -121,6 +121,7 @@ export class NeonStore extends ProfileStore {
   }
   async beginGoogleSignIn(accepted) {
     if (!this.googleOAuthEnabled || !this.pilotSafetyEnabled || !this.realPilotEnabled) throw new ServiceError(503);
+    if (accepted === undefined) { window.location.assign('/api/neon/oauth/google/start'); return; }
     const consent = consentRecord(accepted);
     const data = await this.#request('/api/neon/oauth/google/start', { method: 'POST', body: { consent } });
     let destination, expected;

@@ -38,13 +38,12 @@ async function openPreferences(page) {
   await expect(page.getByRole('combobox', { name: 'Мова', exact: true })).toBeVisible();
 }
 
-test('Google entry explains consent, sends no request before acceptance, and shows recoverable failure', async ({ page }, testInfo) => {
+test('Google entry starts identity only on tap and recovers cancellation to email without granting consent', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 375, height: 800 });
   await page.addInitScript(() => localStorage.setItem('synera.first-user-tour.v1', 'done'));
   await page.route('**/config.json', route => route.fulfill({ json: {
     backend: 'neon', pilotSafetyEnabled: true, realPilotEnabled: true,
-    registrationEnabled: true, googleOAuthEnabled: true,
-    googleOAuthInitUrl: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth/sign-in/social/init',
+    registrationEnabled: true, googleOAuthEnabled: true, googleOauthReady: true,
     googleOAuthInitUrl: 'https://ep-fixture.neonauth.us-east-2.aws.neon.tech/neondb/auth/sign-in/social/init',
   } }));
   let starts = 0;
@@ -52,10 +51,9 @@ test('Google entry explains consent, sends no request before acceptance, and sho
     const path = new URL(route.request().url()).pathname;
     if (path.endsWith('/oauth/google/start')) {
       starts++;
-      expect(route.request().method()).toBe('POST');
-      expect(route.request().postDataJSON().consent.terms_accepted).toBe(true);
-      expect(route.request().postDataJSON().consent.privacy_acknowledged).toBe(true);
-      await route.fulfill({ status: 503, json: { error: 'service_unavailable' } });
+      expect(route.request().method()).toBe('GET');
+      expect(route.request().postData()).toBeNull();
+      await route.fulfill({ status: 303, headers: { location: baseUrl + '/?signin=google-error' }, body: '' });
     } else await route.fulfill({ json: path.endsWith('/session') ? { user: null } : {} });
   });
   await page.goto(`${baseUrl}/?signin=google-error`);
@@ -63,19 +61,16 @@ test('Google entry explains consent, sends no request before acceptance, and sho
   await expect(page.locator('#notice')).toContainText('Не вдалося завершити Google-вхід');
   await expect(page.locator('#google-signin')).toBeEnabled();
   await expect(page.locator('#google-signin')).toHaveText('Продовжити з Google');
-  await page.locator('#google-signin').click();
-  await expect(page.locator('#policy-dialog')).toBeVisible();
-  expect(starts).toBe(0);
-  await page.locator('#policy-cancel').click();
   expect(starts).toBe(0);
   await page.locator('#google-signin').click();
-  await page.locator('#accept-terms').check();
-  await page.locator('#accept-privacy').check();
-  await page.locator('#policy-form button[type="submit"]').click();
   await expect.poll(() => starts).toBe(1);
+  await expect(page.locator('#notice')).toContainText('Не вдалося завершити Google-вхід');
   await expect(page.locator('#google-signin')).toBeEnabled();
   await expect(page.locator('#policy-dialog')).not.toBeVisible();
   await expect(page.locator('#auth-submit')).toBeEnabled();
+  await expect(page.locator('#email')).toBeVisible();
+  await expect(page.locator('#accept-terms')).not.toBeChecked();
+  await expect(page.locator('#accept-privacy')).not.toBeChecked();
   await page.screenshot({ path: testInfo.outputPath('google-entry-mobile.png') });
   await page.locator('#auth-form').screenshot({ path: testInfo.outputPath('google-auth-mobile.png') });
 });

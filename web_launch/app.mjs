@@ -39,6 +39,7 @@ function pollLocation() {
 }
 let importFormat = 'text', importedBrief, pageOffset = 0, morePeople = false, activeChat, safetyPerson, aiPayload, aiSource, aiDraft;
 let otpEmail = '', otpConsent = null;
+let emailExpanded = googleSignInError, policyPending = false;
 let importSnapshot = '', importRevision = 0;
 const labels = { pending: 'Очікує відповіді', accepted: 'Прийнято', declined: 'Відхилено', cancelled: 'Скасовано' };
 const peopleMap = createPeopleMap($('#people-map'), person => {
@@ -136,7 +137,13 @@ function applyAuthState() {
   $('.auth-heading').hidden = !onlineReady;
   $('#auth-closed').hidden = onlineReady;
   $('#signup').hidden = config?.backend === 'neon' || !config?.registrationEnabled;
-  $('#google-signin').hidden = config?.backend !== 'neon' || config?.googleOAuthEnabled !== true || Boolean(otpEmail) || Boolean(store?.user);
+  const googleReady = onlineReady && config?.backend === 'neon' && config?.registrationEnabled === true && config?.googleOauthReady === true && config?.googleOAuthEnabled === true && !store?.user;
+  $('#google-signin').hidden = !googleReady || Boolean(otpEmail);
+  $('#email-toggle').hidden = !googleReady || Boolean(otpEmail);
+  $('#email-toggle').setAttribute('aria-expanded', String(emailExpanded));
+  $('#email-login').hidden = googleReady && !emailExpanded && !otpEmail;
+  document.body.classList.toggle('google-entry', googleReady);
+  $('#policy-pending').hidden = !policyPending;
   $('#otp-tools').hidden = config?.backend !== 'neon' || !otpEmail;
   $('#otp-code').required = config?.backend === 'neon' && Boolean(otpEmail);
   if (config?.backend === 'neon') {
@@ -167,8 +174,9 @@ async function run(action) {
   } finally { busy = false; $('#auth-form').setAttribute('aria-busy', 'false'); previous.forEach((was, b) => { b.disabled = was; }); applyAuthState(); }
 }
 function knownError(text) { const error = new Error(text); error.userMessage = text; return error; }
-function requireAccount() { if (!store?.user) throw knownError('Це чернетка у вкладці. Для збереження, пошуку людей і зустрічей потрібно увійти.'); }
+function requireAccount() { if (policyPending) throw knownError('Спочатку прочитай правила й підтвердь повідомлення про дані.'); if (!store?.user) throw knownError('Це чернетка у вкладці. Для збереження, пошуку людей і зустрічей потрібно увійти.'); }
 function tab(name) {
+  if (name !== 'profile' && policyPending) { message('Спочатку прочитай правила й підтвердь повідомлення про дані.'); return; }
   if (name !== 'profile' && !store?.user) { message('Увійди, щоб перейти до реальних учасників, зустрічей і налаштувань.'); return; }
   currentTab = name;
   for (const value of ['people','profile','meetings','settings']) $('#' + value + '-view').hidden = name !== value;
@@ -181,7 +189,7 @@ function showSignedOut() {
   document.body.classList.remove('signed-in'); $('#workspace').hidden = true; $('#welcome').hidden = false; $('#demo-journey').hidden = false; $('#logout').hidden = true; $('#back-login').hidden = true;
   document.querySelectorAll('dialog').forEach(d => { if (d.open) d.close(); });
   form.reset(); $('#password').value = ''; $('#invite-note').value = ''; $('#people-search').value = '';
-  otpEmail = ''; otpConsent = null; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#email').readOnly = false;
+  otpEmail = ''; otpConsent = null; policyPending = false; emailExpanded = false; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#email').readOnly = false;
   if (config?.backend === 'neon') $('#auth-submit').textContent = 'Надіслати код';
   for (const selector of ['#profile-import-text','#profile-share-output','#ai-json','#ai-gpt-prompt','#chat-body','#report-detail','#delete-confirmation','#profile-erasure-confirmation','#complete-erasure-confirmation']) $(selector).value = '';
   $('#import-preview').querySelectorAll('input,textarea').forEach(node => { node.value = ''; });
@@ -207,7 +215,7 @@ async function checkOnline() {
   try { await store.availability(); }
   catch (error) { $('#mode').textContent = 'Вхід тимчасово недоступний'; $('#welcome-text').textContent = 'База тимчасово не приймає вхід. Ти можеш підготувати власний профіль у вкладці й зберегти копію файлом.'; throw error instanceof ServiceError ? error : knownError('Онлайн-вхід зараз недоступний. Чернетка та імпорт власного профілю працюють у вкладці.'); }
   if (!config.realPilotEnabled || !config.pilotSafetyEnabled) { $('#mode').textContent = 'Готуємо відкриття пілоту'; $('#welcome-text').textContent = 'Онлайн-сервіс відповідає. Реєстрація відкриється після перевірки правил і захисту даних.'; return; }
-  onlineReady = true; $('#mode').textContent = 'Приватний пілот'; $('#welcome-text').textContent = 'Увійди за запрошенням. Ми надішлемо одноразовий код на твій email.'; applyAuthState();
+  onlineReady = true; $('#mode').textContent = 'Synera'; $('#welcome-text').textContent = config.registrationEnabled ? 'Твій профіль починається з імені. Видимість обираєш ти.' : 'Увійди за запрошенням. Ми надішлемо одноразовий код на твій email.'; applyAuthState();
 }
 async function load({ profile = false } = {}) {
   requireAccount();
@@ -223,7 +231,7 @@ async function load({ profile = false } = {}) {
     locationSession.retain(meetings);
   }
   showWorkspace();
-  if (profile) { fillProfileForm(!saved.display_name && draft ? { ...draft, is_discoverable: false, map_visible: false } : saved); form.dataset.dirty = ''; draft = null; }
+  if (profile) { fillProfileForm(!saved.display_name ? { ...(draft || saved), display_name: draft?.display_name ?? providerProfileName(), is_discoverable: false, map_visible: false } : saved); form.dataset.dirty = ''; draft = null; }
   renderPeople(); renderMeetings(); tab(currentTab);
 }
 function publicReason(reason, person) { return reason.replaceAll(own?.id || 'never-id', 'Твій профіль').replaceAll(person.id, person.display_name); }
@@ -548,15 +556,34 @@ async function renderBlocks() {
   if(!rows.length) target.append(el('p','Немає заблокованих учасників.','fine'));
   rows.forEach((row,index)=>{const line=el('p');line.append(el('span','Учасник '+(index+1)+' · '+when(row.created_at)+' '),btn('Розблокувати',async()=>{await store.unblock(row.blocked_id);await renderBlocks();await load();},true));target.append(line);});
 }
+function providerProfileName() {
+  const name = typeof store.user?.name === 'string' ? store.user.name.trim() : '';
+  return name.length <= 60 && !/[@\x00-\x1f\x7f]/.test(name) ? name : '';
+}
 function requestPolicy(action) { policyAction=action;$('#policy-form').reset();$('#policy-context').textContent='Підтвердження правил зберігається з акаунтом і серверним часом. Публікація вмикається окремо.';$('#policy-dialog').showModal(); }
 async function finishOnlineSignIn(accepted) {
   if(!config.realPilotEnabled || !store.pilotSafetyEnabled) { await store.signOut();throw knownError('Пілот потребує перевірки серверного налаштування.'); }
   if(!await store.hasPolicy()) {
     if (accepted) await store.acceptPolicy(accepted);
-    else {requestPolicy(async accepted=>{await store.acceptPolicy(accepted);await load({profile:true});tab('profile');message('Правила підтверджено. Заповни власний профіль.');});return;}
+    else if (config.backend === 'neon') {
+      policyPending = true;
+      showWorkspace(); fillProfileForm(draft || { display_name: providerProfileName() });
+      tab('profile'); applyAuthState();
+      return;
+    } else {requestPolicy(async accepted=>{await store.acceptPolicy(accepted);await load({profile:true});tab('profile');message('Правила підтверджено. Заповни власний профіль.');});return;}
   }
   await load({profile:true}); if(!own.display_name)tab('profile');message('Ти увійшов. Зміни профілю зберігаються лише кнопкою «Зберегти».');
 }
+function confirmProfilePolicy() {
+  requestPolicy(async accepted => {
+    await store.acceptPolicy(accepted);
+    draft = readProfileForm(); draft.is_discoverable = false; draft.map_visible = false;
+    policyPending = false;
+    await load({ profile: true }); tab('profile'); applyAuthState();
+    message('Правила підтверджено. Перевір профіль і збережи.');
+  });
+}
+$('#profile-policy').addEventListener('click', confirmProfilePolicy);
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
 function openProfileDraft() {
   if ($('#workspace').hidden) { showWorkspace(); fillProfileForm(draft || {}); if (!store?.user) restoreProfileDraft(form); renderProfileProgress(); }
@@ -588,8 +615,9 @@ function requestLoginCode() {
 $('#resend-otp').addEventListener('click', requestLoginCode);
 $('#google-signin').addEventListener('click', () => {
   if (!config?.googleOAuthEnabled || !onlineReady) return;
-  requestPolicy(accepted => store.beginGoogleSignIn(accepted));
+  run(() => store.beginGoogleSignIn());
 });
+$('#email-toggle').addEventListener('click', () => { emailExpanded = !emailExpanded; applyAuthState(); if (emailExpanded) $('#email').focus(); });
 $('#change-otp-email').addEventListener('click', () => { otpEmail = ''; otpConsent = null; $('#email').readOnly = false; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#auth-submit').textContent = 'Надіслати код'; applyAuthState(); $('#email').focus(); });
 $('#auth-form').addEventListener('submit',event=>{event.preventDefault();
   if (config?.backend === 'neon') {
@@ -609,7 +637,7 @@ $('#map-zoom-in').addEventListener('click',()=>peopleMap.zoom(1));$('#map-zoom-o
 $('#map-roads').addEventListener('click',()=>{$('#map-roads').textContent=peopleMap.toggleRoads()?'Вимкнути OpenStreetMap':'Увімкнути OpenStreetMap';});
 form.addEventListener('input',()=>{form.dataset.dirty='true';renderProfileProgress();});
 $('#city-code').addEventListener('change',()=>{const city=CITIES[$('#city-code').value];if(city)form.elements.namedItem('city').value=city.label;});
-form.addEventListener('submit',event=>{event.preventDefault();run(async()=>{requireAccount();const profile=readProfileForm();const missing=briefProblems(profile.brief);if(profile.is_discoverable&&missing.length)throw knownError('Заповни перед публікацією: '+missing.join('; '));await store.saveProfile(profile);await load({profile:true});message(profile.is_discoverable?'Профіль збережено й доступний учасникам.':'Профіль збережено приватно.');});});
+form.addEventListener('submit',event=>{event.preventDefault();if(policyPending){confirmProfilePolicy();return;}run(async()=>{requireAccount();const profile=readProfileForm();const missing=briefProblems(profile.brief);if(profile.is_discoverable&&missing.length)throw knownError('Заповни перед публікацією: '+missing.join('; '));await store.saveProfile(profile);await load({profile:true});message(profile.is_discoverable?'Профіль збережено й доступний учасникам.':'Профіль збережено приватно.');});});
 $('#invite-cancel').addEventListener('click',()=>$('#invite-dialog').close());
 $('#invite-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{await store.invite(recipient,$('#invite-note').value,{proposed_at:$('#invite-time').value,duration_minutes:Number($('#invite-duration').value),meeting_place:$('#invite-place').value});$('#invite-dialog').close();await load();tab('meetings');message('Запрошення збережено. Дочекайся підтвердження іншої сторони.');});});
 $('#chat-cancel').addEventListener('click',()=>{$('#chat-body').value='';$('#chat-dialog').close();});$('#refresh-chat').addEventListener('click',()=>run(renderChat));
@@ -966,7 +994,7 @@ try {
   if (config.backend === 'neon') {
     $('#password').required = false; $('#password').closest('label').hidden = true;
     $('#auth-submit').textContent = 'Надіслати код'; rememberLabel.hidden = true; forgotPassword.hidden = true;
-    $('#session-hint').textContent = 'Вхід кодом із email. На спільному пристрої натискай «Вийти» після роботи.';
+    $('#session-hint').textContent = 'На спільному пристрої натискай «Вийти» після роботи.';
   }
   $('#registration-note').textContent = config.registrationEnabled ? 'Реєстрація відкрита. Для нового акаунта потрібні підтвердження email і пароль від 12 символів.' : 'Реєстрація закрита до завершення перевірки сервісу.';
   if (config.backend === 'neon') $('#registration-note').textContent = config.registrationEnabled ? 'Пароль не потрібен. Профіль прихований, доки ти сам не ввімкнеш його видимість.' : 'Готуємо вхід. Можна вже заповнити власну чернетку.';

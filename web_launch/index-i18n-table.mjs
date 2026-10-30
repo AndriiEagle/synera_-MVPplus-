@@ -11,6 +11,14 @@ import { NOTICE, TERMS, PILOT } from './legal-documents.mjs';
 // [Ukrainian, German, English] and is matched against text the page already shows. Shared wording (skills,
 // statuses, the view switcher) lives in real-journey-i18n.mjs and is reused from there.
 export const ROWS = [
+  ['або код на пошту', 'oder Code per E-Mail', 'or email code'],
+  ['Зараз працюють локальна чернетка та Demo. Онлайн-вхід ще не підключено.', 'Heute funktionieren ein lokaler Entwurf und Demo. Die Online-Anmeldung ist noch nicht eingerichtet.', 'A local draft and Demo work today. Online sign-in is not connected yet.'],
+  ['Твій профіль починається з імені. Видимість обираєш ти.', 'Dein Profil beginnt mit deinem Namen. Du bestimmst die Sichtbarkeit.', 'Your profile starts with your name. You choose its visibility.'],
+  ['На спільному пристрої натискай «Вийти» після роботи.', 'Auf einem gemeinsam genutzten Gerät nach der Nutzung «Abmelden» wählen.', 'On a shared device, choose “Sign out” when finished.'],
+  ['Це приватна чернетка. Перед збереженням прочитай правила й повідомлення про дані.', 'Dies ist ein privater Entwurf. Lies vor dem Speichern die Regeln und den Datenschutzhinweis.', 'This is a private draft. Read the rules and data notice before saving.'],
+  ['Прочитати й продовжити', 'Lesen und fortfahren', 'Read and continue'],
+  ['Спочатку прочитай правила й підтвердь повідомлення про дані.', 'Lies zuerst die Regeln und bestätige den Datenschutzhinweis.', 'Read the rules and acknowledge the data notice first.'],
+  ['Правила підтверджено. Перевір профіль і збережи.', 'Regeln bestätigt. Prüfe und speichere dein Profil.', 'Rules confirmed. Review and save your profile.'],
   ['Радар · Demo ↗', 'Radar · Demo ↗', 'Radar · Demo ↗'],
   ['Жива симуляція', 'Lebendige Simulation', 'Living simulation'],
   ['Відкрити живу симуляцію · Demo ↗', 'Lebendige Simulation öffnen · Demo ↗', 'Open living simulation · Demo ↗'],
