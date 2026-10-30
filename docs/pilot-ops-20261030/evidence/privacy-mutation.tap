@@ -1,0 +1,30 @@
+✖ closed/google flags order and KV gates; open blocked before fetch (512.5785ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 948.8867
+
+✖ failing tests:
+
+test at tools\pilot-ops.test.mjs:115:1
+✖ closed/google flags order and KV gates; open blocked before fetch (512.5785ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'CONFIGURED_REDEPLOY_REQUIRED'
+  - 'HOLD'
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-liveops2/tools/pilot-ops.test.mjs:122:78)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'CONFIGURED_REDEPLOY_REQUIRED',
+    expected: 'HOLD',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

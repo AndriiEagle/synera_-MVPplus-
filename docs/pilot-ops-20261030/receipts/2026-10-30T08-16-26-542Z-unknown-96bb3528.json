@@ -1,0 +1,9 @@
+{
+  "command": "unknown",
+  "at": "2026-10-30T08:16:26.542Z",
+  "toolSha256": "50a945410383e01e1ff69d0584c39188e7bcd3cf1fceab0529fa162b8a7779df",
+  "dryRun": false,
+  "status": "HOLD",
+  "calls": [],
+  "error": "USAGE"
+}

@@ -1,0 +1,30 @@
+✔ smoke checks exact Google client through Neon and stops before the Google login page (115.0779ms)
+✔ closed flags and missing or mismatched client pin never start OAuth (7.3108ms)
+✔ wrong clients, provider failures and unsafe redirects fail without visiting Google (21.5372ms)
+✔ SQL blocks retain dollar bodies, order and rollback; reject unclosed transaction (6.1507ms)
+✔ inspect prints catalog only and repeats read-only without mutation (337.0382ms)
+✔ inspect refuses a partial new migration while accepting entirely absent new objects (59.7084ms)
+✔ migrate uses one atomic ordered batch then read-only ROLLBACK, repeats safely (37.1528ms)
+✔ migration SQL error stops before catalog acceptance, members and any deployment (44.9093ms)
+✔ empty final catalog response cannot certify a migrated pilot (47.975ms)
+✔ member add/remove fill only validated email; repeated operations keep SQL semantics (146.3064ms)
+✔ deploy explicitly returns manual upload instead of guessed asset API; repeated no writes (53.6286ms)
+✔ env set preserves foreign vars and keeps risky flags off; secret set uses secret_text (77.4607ms)
+✔ google creates then updates one standard provider and one trusted origin (44.0089ms)
+✔ closed/google flags order and KV gates; open blocked before fetch (177.3258ms)
+✔ every command dry-run incl all uses no fetch, no credential read or random-secret append (168.8794ms)
+✔ all stops at manual deployment, never silently opens flags or sends OTP (24.557ms)
+✔ provider errors and malformed results never leak credentials or raw returned fields (49.2371ms)
+✔ owner env loading and generated secrets append once, preserve original lines (28.6142ms)
+✔ smoke checks real config/health and provider redirect without following Google; one OTP reservation (73.1161ms)
+✔ concurrent live invocations share a lock and cannot duplicate OTP/secret work (92.6082ms)
+✔ unknown baseline, elevated API role, missing KV and SQL errors fail closed before mutation (113.7747ms)
+✔ dry-run and live outputs/receipt files across commands contain no keys or member addresses (473.0501ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2715.1957
