@@ -7,6 +7,9 @@
 .legal-languages [aria-pressed=true] { outline:2px solid #c6aa68; outline-offset:2px; }
 .legal-evidence { font-size:.8rem; opacity:.85; }
 .legacy-pilot { margin:30px 0; }
+.legal-qr { display:flex; gap:16px; align-items:center; margin:16px 0; break-inside:avoid; }
+.legal-qr svg { flex:0 0 96px; width:96px; height:96px; }
+.legal-qr figcaption { font-size:.8rem; overflow-wrap:anywhere; }
 @media print {
   @page { size:A4; margin:13mm; }
   body.pilot-consent { background:white!important; color:black!important; font:10pt/1.25 Arial,sans-serif; }
@@ -16,4 +19,5 @@
   .pilot-paper p { font-size:10pt!important; line-height:1.25!important; margin:7pt 0; }
   .pilot-paper .privacy-draft { font-size:9pt!important; }
   .pilot-paper a { color:black; }
+  .legal-qr svg { print-color-adjust:exact; }
 }

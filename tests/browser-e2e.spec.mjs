@@ -515,20 +515,23 @@ test('Presentation leads to real app access and both phone guides without preten
   const privateRequests = [];
   page.on('request', request => { if (/\/api\/|\/auth\/|\/rest\//.test(request.url())) privateRequests.push(request.url()); });
   if (process.env.SYNERA_ACCESS_MUTATION === 'wrong-origin') {
-    await page.route('**/product-access.mjs', async route => {
+    await page.route('**/getsite.mjs', async route => {
       const response = await route.fetch();
-      await route.fulfill({ response, body: (await response.text()).replace('https://synera-pilot.pages.dev/', 'https://wrong-app.example.invalid/') });
+      await route.fulfill({ response, body: (await response.text()).replace('/?draft=1&lang=', 'https://wrong-app.example.invalid/?draft=1&lang=') });
     });
   }
   await page.goto(`${baseUrl}/summit.html`);
   await page.locator('.closing > a.primary').click();
   await expect(page.locator('[data-platform]')).toHaveCount(2, { timeout: 4000 });
-  await page.locator('[data-platform="ios"] summary').click();
-  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
+  await page.locator('#manual-install').click();
+  await page.locator('#guide-ios').click();
+  await expect(page.locator('[data-platform="ios"]')).toBeVisible();
   await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
+  await page.locator('#guide-android').click();
   await expect(page.locator('[data-platform="android"]')).toContainText('Chrome');
-  const app = page.locator('#open-live-app');
-  expect(new URL(await app.getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await page.locator('#install-guide-close').click();
+  const app = page.locator('#install-primary');
+  expect(new URL(await app.getAttribute('href'),baseUrl).origin).toBe(baseUrl);
   await expect(page.locator('#payment-availability')).toHaveAttribute('data-state', 'free-pilot');
   expect(await page.locator('a[href*="checkout.stripe.com"], a[href*="buy.stripe.com"], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').count()).toBe(0);
   expect(privateRequests).toEqual([]);
@@ -536,11 +539,11 @@ test('Presentation leads to real app access and both phone guides without preten
   await openPreferences(page);
   await page.locator('#site-language').selectOption('en');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  await expect(page.locator('#open-live-app')).toHaveText('Open Synera ↗');
+  await expect(page.locator('#install-primary')).toHaveText('Install on Android');
   await page.locator('#site-language').selectOption('uk');
   await expect(page.locator('html')).toHaveAttribute('lang', 'uk');
   await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
-  await expect(page.locator('#open-live-app')).toHaveText('Відкрити Synera ↗');
+  await expect(page.locator('#install-primary')).toHaveText('Встановити на Android');
   const { default: AxeBuilder } = await import('@axe-core/playwright');
   const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
   expect(audit.violations.filter(item => ['critical', 'serious'].includes(item.impact))).toEqual([]);
@@ -553,11 +556,10 @@ test('Phone access stays functional without JavaScript', async ({ browser }) => 
   const page = await context.newPage();
   await page.goto(`${baseUrl}/summit.html`);
   await page.locator('.closing > a.primary').click();
-  await expect(page.locator('[data-platform]')).toHaveCount(2);
-  await page.locator('[data-platform="ios"] summary').click();
-  await expect(page.locator('[data-platform="ios"]')).toHaveAttribute('open', '');
-  await expect(page.locator('[data-platform="ios"]')).toContainText('Safari');
-  expect(new URL(await page.locator('#open-live-app').getAttribute('href')).origin).toBe('https://synera-pilot.pages.dev');
+  await expect(page.locator('#install-fallback')).toContainText('Safari → Поділитись → На екран Домому');
+  expect(new URL(await page.locator('#install-primary').getAttribute('href'),baseUrl).origin).toBe(baseUrl);
+  await page.locator('#install-primary').click();
+  await expect(page).toHaveURL(`${baseUrl}/?draft=1&lang=uk`);
   await context.close();
 });
 

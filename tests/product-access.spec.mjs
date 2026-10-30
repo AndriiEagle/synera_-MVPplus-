@@ -33,6 +33,9 @@ test('Access and scenario remain readable without JavaScript', async ({ browser 
   await expect(page.locator('#payment-availability')).toContainText('CHF 0');
   await expect(page.locator('#pricing-scenario')).toContainText('CHF 12');
   await expect(page.locator('#feedback-note')).toContainText('Відгук добровільний');
+  await expect(page.locator('#install-primary')).toHaveAttribute('href','/?draft=1&lang=uk');
+  await expect(page.locator('#install-fallback')).toContainText('Safari');
+  await expect(page.locator('#install-fallback')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await context.close();
 });

@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "engine": "156.0.8078.74",
+  "physicalDevice": false,
+  "cache": "Service Worker public shell",
+  "cpuThrottle": 4,
+  "checks": [
+    {
+      "name": "Pixel 7",
+      "lang": "uk",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=uk",
+      "draftVisible": true
+    },
+    {
+      "name": "Pixel 7",
+      "lang": "de",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=de",
+      "draftVisible": true
+    },
+    {
+      "name": "Pixel 7",
+      "lang": "en",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=en",
+      "draftVisible": true
+    },
+    {
+      "name": "iPhone 13",
+      "lang": "uk",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=uk",
+      "draftVisible": true
+    },
+    {
+      "name": "iPhone 13",
+      "lang": "de",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=de",
+      "draftVisible": true
+    },
+    {
+      "name": "iPhone 13",
+      "lang": "en",
+      "axeViolations": 0,
+      "tapTargets": ">=44 CSS px (header open)",
+      "manifestStart": "/?draft=1&lang=en",
+      "draftVisible": true
+    },
+    {
+      "path": "/privacy.html",
+      "printQR": true
+    },
+    {
+      "path": "/legal.html",
+      "printQR": true
+    },
+    {
+      "path": "/pilot-consent.html",
+      "printQR": true
+    }
+  ],
+  "performance": {
+    "samples": [
+      {
+        "cls": 0,
+        "lcp": 412,
+        "shifts": [],
+        "fcp": 412,
+        "sw": true
+      },
+      {
+        "cls": 0,
+        "lcp": 664,
+        "shifts": [],
+        "fcp": 664,
+        "sw": true
+      },
+      {
+        "cls": 0,
+        "lcp": 644,
+        "shifts": [],
+        "fcp": 644,
+        "sw": true
+      }
+    ],
+    "limitMs": 1500,
+    "offline": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "base": "2f8bc71a95118b28d34ecb618ebe24701c04e953",
+  "branch": "claude/synera-getsite-20261030",
+  "files": {
+    "web_launch/get.html": "7a9bad29bf61569d53d2b0710de7a2a3ef18bb53c5992271b75e4533d3aae323",
+    "web_launch/getsite.mjs": "f705d2d47c5e23445d7f2e143f1944c1888956d3a02cf6686cd4ccdc2d1d350c",
+    "web_launch/getsite-copy.mjs": "9d655db375172de8e13089ff1e75359f35b94b03f8557551b1bb1889f4d537b0",
+    "web_launch/getsite.css": "ddae13be16446f41092480c4dd1970262be529eb21c71e6eb6f4fbc42a568250",
+    "web_launch/qr.mjs": "c803bc38bbe9114c310c167d912349606574448ddd6747ddc093cae3c505af97",
+    "web_launch/qr.test.mjs": "e0f95064bda9c9a665c5f94bce03d9f62e3b9757ff2a80075a4047654bf48db8",
+    "web_launch/get-uk.webmanifest": "2df788211d2643c3f27acc3c18a0ec5c87d7298785396e77010e67ea56662237",
+    "web_launch/get-de.webmanifest": "bab35d534a69b95d01ab95d3b577f05e56ce091d97c15d6a296ad3fc712e78ae",
+    "web_launch/get-en.webmanifest": "f8a4298c226fd46bc98772ebc4483ed9a4d028b61abf08139813c19542acce5a",
+    "web_launch/assets.mjs": "c4cd63e017cf58b29dd5a1d9de12cb8548cb10a78b74e580a0a686c9d9a579ae",
+    "web_launch/sw.mjs": "d7292ed9dfbe046c19c97114c7937528dbe40d8c4fadc1b52f09d798237072d3",
+    "web_launch/legal-documents.mjs": "4f89ae5b5f9d9232d2310544667dfbf6e3575641b847d4cbce7ee75cdc54a7f1",
+    "web_launch/legal-documents.css": "dfabfd7386923e5f899e76a0d06a0a1e8dd1cf05080e5896c709c065344a2c05",
+    "web_launch/privacy.html": "ecf6bc0bc8c9a57322b9dca62e540809152407b4b8472ff0bc3897d07eddcf97",
+    "web_launch/privacy-centre.mjs": "8dea95cd970045230427abd5e1a59c1b336392634f4a8fb77b4e4e8e2c04449d",
+    "web_launch/privacy.css": "f05a84e115314d76c71bcc6d31879a348535a01b36e86615fd6932eef8c545a5",
+    "tests/getsite-e2e.spec.mjs": "94f866767107aed9bda335ec3c31a4c8c044e3676415c0868e238a17dbaf6226",
+    "tests/product-access.spec.mjs": "9749525dbbe3a47bb90ea4b252bd929bfafd2ba9f805afc9ebc44bdab01a985a",
+    "tests/product-access-checks.mjs": "69d232783dba492d937bccf808328ef7c5111159fd78ea46e8166564d85d2315",
+    "tests/browser-e2e.spec.mjs": "321e113615f5075b950f729cc73efa4eeecce7301333e551aa094951c9b14aae",
+    "docs/graphics2-20261029/scenes.json": "9ca455f5c09b6172c1769089f68cfbf2395ec2068035138f74d2296fb6f2154c",
+    "tools/getsite-acceptance.mjs": "687c5a04d53d454d299be643536b27f8de3dfa68d1b24afaf3852ba08b4d6aa8",
+    "docs/getsite-20261030/playwright-chrome.config.mjs": "ea028c8c4b03681dd4502f7b3bf4c3c48283eeae402a6009b376579208551724"
+  }
+}

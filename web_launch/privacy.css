@@ -20,3 +20,9 @@
 .living .header-preferences summary { color:#dcc59a; font-size:1.2rem; }
 .sim.living .living-tabs button[aria-pressed=true] { background:#38322b; border-color:#dcc59a; }
 @media print { .demo-marker,.demo-device-controls { display:none; } }
+.privacy-print-link { display:none; }
+@media print {
+  .privacy-print-link { display:flex; align-items:center; gap:16px; break-inside:avoid; }
+  #privacy-print-qr { width:96px; flex:0 0 96px; print-color-adjust:exact; }
+  .privacy-print-link a { color:black; overflow-wrap:anywhere; }
+}
