@@ -86,6 +86,14 @@ jobs:
           SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
             node tools/audit-material-sql.mjs --receipt=artifacts/postgres-acceptance/material-budget.json
 
+      - name: Forced RLS catalog, non-superuser RPC and consent evidence acceptance
+        env:
+          SYNERA_ACCEPTANCE_DOCKER: ${{ job.services.postgres.id }}
+          SYNERA_ACCEPTANCE_PGPORT: '5432'
+        run: |
+          SYNERA_ACCEPTANCE_PSQL="$RUNNER_TEMP/synera-acceptance-psql" \
+            node tools/secure-sql-acceptance.mjs --receipt=artifacts/postgres-acceptance/secure.json
+
       - name: Upload SQL acceptance receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -118,12 +126,16 @@ jobs:
       - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs
       - run: node --test tests/pwa/*.test.mjs
       - run: node --test tests/i18n_ch/*.test.mjs
+      - run: node --test tools/secure-package.test.mjs
       - run: python3 -B -m unittest discover -s tools -p test_simulation_provider.py
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
-      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs tests/privacy-e2e.spec.mjs tests/graphics-e2e.spec.mjs tests/graphics2-e2e.spec.mjs tests/integrate-e2e.spec.mjs tests/simulation-living.spec.mjs tests/product-access.spec.mjs
+      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs tests/privacy-e2e.spec.mjs tests/graphics-e2e.spec.mjs tests/graphics2-e2e.spec.mjs tests/integrate-e2e.spec.mjs tests/simulation-living.spec.mjs tests/product-access.spec.mjs tests/secure-e2e.spec.mjs
       - run: node tools/header-layout-acceptance-20261013.mjs
       - run: node neon/build.mjs dist-neon-ci
+      - run: node web_launch/build.mjs
+      - name: Scan both PWA release bundles for secret patterns
+        run: node tools/check-client-bundle.mjs web_launch/dist-real web_launch/dist-neon-ci
       - run: node tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-ci
       - run: node tools/location-browser-acceptance.mjs
       - run: node tools/case-social-draft-browser.mjs

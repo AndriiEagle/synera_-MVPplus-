@@ -1,0 +1,26 @@
+[
+  {
+    "name": "python",
+    "command": "py -3 -B -m unittest discover -s tools -p test_simulation_provider.py",
+    "exit": 0,
+    "log": "tmp/python.log"
+  },
+  {
+    "name": "offline-build",
+    "command": "node neon/build.mjs dist-neon-ci",
+    "exit": 0,
+    "log": "tmp/offline-build.log"
+  },
+  {
+    "name": "offline-shell",
+    "command": "node --require C:/sw/task1601-header-chrome.cjs tools/offline-shell-acceptance.mjs --candidate=web_launch/dist-neon-ci",
+    "exit": 0,
+    "log": "tmp/offline-shell.log"
+  },
+  {
+    "name": "a11y",
+    "command": "node --require C:/sw/task1601-header-chrome.cjs web_launch/a11y_audit.mjs",
+    "exit": 0,
+    "log": "tmp/a11y.log"
+  }
+]

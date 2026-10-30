@@ -1,0 +1,83 @@
+{
+  "status": "PASS_LOCAL_POSTGRESQL",
+  "scope": "Disposable PostgreSQL with JWT identity shim and NON-SUPERUSER owner; no live Auth, provider deletion or backup proof",
+  "source_sha256": {
+    "neon/catalog_assert.sql": "638ac6cb8588bd6018640d279ac6bc12d98efdd8e7d52de0b377b9042e23b211",
+    "neon/schema.proposal.sql": "29d6dc4ce677ada3984f24c9a11a3e19d720546c1d2d66f0821a281c2a1c206a",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/case-expiry-repair.migration.sql": "d31d9f08d552024c294a893e8003a1b84b8fa0210b49355751f56ae631c7a20a",
+    "neon/meeting-status-guard.migration.sql": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "neon/meeting-address-agreement.migration.sql": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+    "neon/profile-erasure.migration.sql": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+    "neon/privacy-complete-erasure.migration.sql": "ea9b02c822f2ffb7ad14edc016fbe625bd5ac7050a146120d5ee1d374fe5d6d0",
+    "neon/privacy-retention-purge.migration.sql": "5074cd5457d83bf2a228fb5e13b440d0699cacdabb7b32efb3b70376083d493e",
+    "neon/consent-evidence.migration.sql": "250249397f116a4b4adced630a99b87b1401ba99b25d4cbac7354a0c1d0f2a28",
+    "neon/rls-hardening.migration.sql": "6fad753165a882f30996857a9ad27a696eba6db70b6dc5a8adc146a40cf9568d"
+  },
+  "checks": [
+    {
+      "name": "empty_schema_rejected",
+      "pass": true
+    },
+    {
+      "name": "baseline_without_journey_tables_rejected",
+      "pass": true
+    },
+    {
+      "name": "deploy_kit_generated_migrations_second_apply_is_idempotent",
+      "pass": true
+    },
+    {
+      "name": "all_protected_tables_enabled_forced_and_app_non_bypass",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_no_force",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_disabled_rls",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_new_unprotected_table",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_missing_table",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_bypassrls",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_owner_membership",
+      "pass": true
+    },
+    {
+      "name": "catalog_rejects_owner_policy_tampering",
+      "pass": true
+    },
+    {
+      "name": "non_superuser_definer_membership_still_works",
+      "pass": true
+    },
+    {
+      "name": "existing_profile_write_and_cross_account_isolation_under_force",
+      "pass": true
+    },
+    {
+      "name": "consent_hash_exact_document_append_withdraw_and_no_forgery",
+      "pass": true
+    },
+    {
+      "name": "complete_application_erasure_still_works_and_removes_new_evidence",
+      "pass": true
+    }
+  ]
+}

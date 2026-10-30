@@ -312,3 +312,62 @@ Runtime restart test у `tools/simulation-server.test.mjs` відтворює с
 Рівна взаємність обробляє на пристрої тільки події конкретної співпраці: внески, прохання, терміновість, перенесення/скасування, зміни умов, підтвердження. Однакове пояснення всім її учасникам, без психологічного профілю, загального бала, публічного ярлика чи автоблокування. Обчислений огляд — у пам'яті вкладки; шлях до оператора не надсилає його автоматично. Live-доставка іншим людям цією локальною реалізацією не доведена.
 
 Добір «схожі на корисних партнерів» використовує лише власний наявний `synera.journal.v1`, добровільні професійні теги та явно позначені корисні результати з окремою згодою. Нові записи `matching_profile`, `matching_consent`, `result.data.{ownerId,partner,useful,matchingConsent}` мають той самий строк до 30 днів від запису. Відкликання припиняє добір, стирання журналу прибирає його джерела. Жодної нової серверної категорії чи передавання зовнішній моделі. Точні рядки uk/de/en показуються центром приватності у `privacy-content.mjs`.
+
+
+## SECURE: документальні згоди й restore suppression (Part B)
+
+Локальний `synera.journal.v1` зберігає для нової Demo-дії точний показаний текст
+повідомлення, його SHA-256 і версію, locale uk/de/en, purpose, recipient, expires_at
+та action grant/withdraw. Це документування локального вибору, не дозвіл на cloud/AI.
+Старі записи не переписуються й не отримують вигаданого доказу згоди. Експорт і
+30-денне очищення лишаються чинними. Асинхронний digest скасовується при стиранні.
+Подія withdraw підтримана контрактом журналу; окремий новий UI-вимикач серверної
+згоди цією лінією не додається.
+
+`neon/consent-evidence.migration.sql` — additive proposal для append-only подій:
+точний текст і перевірений у PostgreSQL digest, locale, строк, grant/withdraw,
+purpose/recipient і subject від перевіреної сесії через RLS. UPDATE/DELETE клієнту
+не надані. FK на чинний pilot consent каскадно прибирає нові документальні рядки
+при повному прикладному стиранні. Історичні міграції й admission policies збережені.
+Міграція не застосована до Neon; Worker не отримує нового endpoint або cloud upload.
+
+`neon/rls-hardening.migration.sql` пропонує FORCE на 21 public-таблиці. Власницькі
+SECURITY DEFINER RPC отримують явно прив’язану до table owner maintenance policy;
+app role не може бути owner, superuser, BYPASSRLS чи членом відповідних ролей.
+Це зберігає наявну довірену owner-владу, а не захищає від адміністратора БД.
+`neon/catalog_assert.sql` відхиляє відсутню таблицю/роль, вимкнений ENABLE/FORCE,
+нову незахищену public-таблицю, небезпечну роль/членство й підмінену owner policy.
+Перед production потрібне окреме owner review всіх privileged RPC.
+
+Ledger за межами PITR — лише [дизайн і локальний test double](secure-20261030/ERASURE-LEDGER.uk.md).
+Нове зовнішнє сховище, монітор чи scheduler не створені.
+
+## SECURE: доповнення першої 72-годинної процедури з Part B
+
+Ці вікна — внутрішній порядок реагування, не дозвіл чекати. Швейцарське повідомлення
+за високого ризику йде якнайшвидше; це підтверджує
+[EDÖB guide v1.2 §1.3](https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf).
+Окрема вимога GDPR Art.33 протягом 72 год застосовується за його умовами;
+застосовність до Synera лишається юридичним gate.
+[EDPB, Data breaches, Obligations for data controllers](https://www.edpb.europa.eu/sme/assess-the-risks/data-breaches_en).
+
+| Вікно | Доповнення до наявної процедури | Предметний результат |
+|---|---|---|
+| 0–15 хв | Призначений оператор фіксує UTC detection/awareness, incident ID і відповідального; закриває лише зачеплений шлях, відкликає скомпрометовані ключі/сесії, бере захищену копію доказів | Час, owner і перелік фактичних containment-дій; originals не знищені |
+| 15–60 хв | Maintainer звіряє Neon Auth/branches, Worker/KV і SMTP, exports та admin-зміни; перевіряє точні місця зустрічі й небажані health/belief тексти | Категорії людей/даних, приблизні counts, відомий scope й явні unknowns; без raw OTP/URL/email у stdout |
+| 1–4 год | Оператор перевіряє ризик і рішення про негайне повідомлення; відсутність forensic completeness не затримує потрібного повідомлення | detected_at, assessed_at, nature, categories, subjects/records counts або unknown, effects, measures, risk rationale, contact, рішення/час/відповідальний |
+| 4–24 год | Доповнює portal submission і повідомлення людям, коли воно потрібне для захисту; зв’язується з процесорами через перевірені приватні контакти | Portal receipt і версії доповнень, фактичні адресати/час; це не новий дозволений строк очікування |
+| 24–72 год | Maintainer повторює cross-account/RLS, stale JWT, erasure і restore suppression; додає тест саме відтвореного дефекту; оператор переглядає рішення | Команди й фактичний результат; restored branch не відкривається до повторного стирання |
+
+До запуску оператор заповнює приватний контактний лист: основний і резервний
+контакт, способи входу до кабінетів без ноутбука, incident channel, межі доступу та
+місце захищених receipts. Публічний репозиторій містить лише процедуру.
+Наявні вимоги до DSV Art.15-пакета й його строку зберігання вище зберігаються;
+кабінетні логи Worker не є incident archive. Немає автоматичного повідомлення
+регулятору/людям чи твердження про проведений tabletop drill.
+
+Для Worker configuration в kit `env.md` додано `[observability.logs] invocation_logs=false`.
+Причина: invocation metadata може містити method/URL, навіть якщо custom logs
+санітизовані. Перевірено в [Cloudflare Workers Logs, Invocation Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs).
+При dashboard upload власник окремо перевіряє доступне equivalent setting і readback;
+цей kit налаштування платформи не змінює.
