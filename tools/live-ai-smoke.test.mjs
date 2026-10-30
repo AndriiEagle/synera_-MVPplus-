@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { liveAiSmoke } from './live-ai-smoke.mjs';
 test('one-shot smoke prints receipt-backed cost and refuses another generation',async()=>{
-  const directory=await fs.mkdtemp(path.resolve('tmp/live-ai-smoke-test-'));
+  const directory=await fs.mkdtemp(path.join(await fs.mkdir(path.resolve('tmp'),{recursive:true}).then(()=>path.resolve('tmp')),'live-ai-smoke-test-'));
   let calls=0;
   const fetchImpl=async url=>{
     if(url.endsWith('/config.json')) return Response.json({liveAiReady:true,liveAiModel:'z-ai/glm-5.3-flash'});
@@ -17,7 +17,7 @@ test('one-shot smoke prints receipt-backed cost and refuses another generation',
   await assert.rejects(liveAiSmoke(args),{code:'EEXIST'});assert.equal(calls,1);
 });
 test('timeout leaves a durable attempt and unknown outcome, with no retry',async()=>{
-  const directory=await fs.mkdtemp(path.resolve('tmp/live-ai-smoke-test-'));let calls=0;
+  const directory=await fs.mkdtemp(path.join(await fs.mkdir(path.resolve('tmp'),{recursive:true}).then(()=>path.resolve('tmp')),'live-ai-smoke-test-'));let calls=0;
   const fetchImpl=async url=>{
     if(url.endsWith('/config.json')) return Response.json({liveAiReady:true,liveAiModel:'z-ai/glm-5.3-flash'});
     if(url.endsWith('/spend')) return Response.json({costUsd:0,reservedUsd:0});

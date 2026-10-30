@@ -236,16 +236,17 @@ select pg_temp.act(pg_temp.b()::text);
 do $$ begin if (select count(*) from public.profile_blocks) <> 1 then raise exception 'The blocked person lifted the block'; end if; end $$;
 delete from public.profile_blocks where blocker_id=public.synera_user_id();
 
--- 9. Leaving: a person deletes only their own profile; admission counters outlive it.
+-- 9. Leaving: direct profile deletion is revoked for everyone (review finding R1, 30.10): a client DELETE used to
+--    cascade into the other person's meetings, messages and cases. Erasure goes only through the self-only RPCs of
+--    profile-erasure / privacy-complete-erasure, which have their own acceptance scripts. Admission counters outlive it.
 select pg_temp.act(pg_temp.a()::text);
 do $$ begin
-  delete from public.profiles where id=pg_temp.b();
-  if not exists(select 1 from public.profiles where id=pg_temp.b()) then raise exception 'A person deleted another person''s profile'; end if;
+  if pg_temp.try($q$delete from public.profiles where id=pg_temp.b()$q$) <> '42501' then raise exception 'A person could delete another person''s profile'; end if;
+  if pg_temp.try($q$delete from public.profiles where id=public.synera_user_id()$q$) <> '42501' then raise exception 'Direct self profile deletion is still granted'; end if;
 end $$;
-delete from public.profiles where id=public.synera_user_id();
 reset role;
 do $$ declare r text; t text; begin
-  if exists(select 1 from public.meeting_requests) or exists(select 1 from public.meeting_messages) or exists(select 1 from public.match_cases) then raise exception 'Profile deletion did not remove that person''s shared records'; end if;
+  if not exists(select 1 from public.profiles where id=pg_temp.a()) or not exists(select 1 from public.meeting_requests) or not exists(select 1 from public.match_cases) then raise exception 'A denied profile delete still removed rows'; end if;
   if (select invitations from public.synera_write_limits where user_id=pg_temp.a()) < 1 then raise exception 'Profile deletion reset admission'; end if;
   -- No anonymous role holds a privilege on any product table, including the tables added by later migrations.
   foreach r in array array['anon','anonymous'] loop
