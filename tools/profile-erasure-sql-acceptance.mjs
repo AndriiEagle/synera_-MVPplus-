@@ -76,7 +76,7 @@ try {
   assert.equal(must(database,"select count(*) from public.meeting_location_grants where status='active';"),'2');
   const before=must(database,`select json_build_object('profiles',(select json_agg(p order by id) from public.profiles p),'meetings',(select json_agg(m order by id) from public.meeting_requests m))::text;`);
   const migration=await read('neon/profile-erasure.migration.sql');must(database,migration);
-  check('legacy_delete_still_rejected_by_room_restrict',()=>reject(A,`delete from public.profiles where id='${A}';`,/foreign key/));
+  check('legacy_delete_rejected_by_revoked_grant_or_room_restrict',()=>reject(A,`delete from public.profiles where id='${A}';`,/permission denied|foreign key/));
   check('anonymous_null_and_arbitrary_target_denied',()=>{
     const anon=sql(database,'set role anonymous;'+rpc);assert.notEqual(anon.status,0);assert.match(anon.stderr,/permission denied/);
     reject('',rpc,/Erasure unavailable/);reject('44444444-4444-4444-8444-444444444444',rpc,/Erasure unavailable/);
