@@ -6,7 +6,7 @@ const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/style-switcher.mj
 SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs', '/live-location.mjs', '/meeting-location.mjs');
 SHELL.push(...VOICE);
 SHELL.push('/home-lazy.mjs');
-SHELL.push('/summit.html', '/summit.css', '/summit.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2', '/google-sans.ttf', '/google-sans-OFL.txt');
+SHELL.push('/summit.html', '/summit.css', '/summit.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2');
 SHELL.push('/location-session.mjs','/live-ai-client.mjs');
 SHELL.push('/get.html', '/product-access.mjs');
 SHELL.push('/qr.mjs','/getsite.mjs','/getsite-copy.mjs','/getsite.css','/get-uk.webmanifest','/get-de.webmanifest','/get-en.webmanifest');

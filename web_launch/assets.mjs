@@ -2,7 +2,6 @@
 export const PUBLIC_ASSETS = Object.freeze({
   'qr.mjs':'text/javascript', 'getsite.mjs':'text/javascript', 'getsite-copy.mjs':'text/javascript', 'getsite.css':'text/css',
   'get-uk.webmanifest':'application/manifest+json', 'get-de.webmanifest':'application/manifest+json', 'get-en.webmanifest':'application/manifest+json',
-  'google-sans.ttf': 'font/ttf', 'google-sans-OFL.txt': 'text/plain',
   'adapt-copy.mjs':'text/javascript', 'adapt-observer.mjs':'text/javascript', 'adapt-ui.mjs':'text/javascript',
   'sovereign.mjs':'text/javascript', 'sovereign-ui.mjs':'text/javascript', 'balance.mjs':'text/javascript',
   'journal-matching.mjs':'text/javascript', 'adapt-demo.mjs':'text/javascript',
