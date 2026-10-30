@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+const dir=new URL('../tmp/',import.meta.url);
+const source=await fs.readFile(new URL('../neon/live-ai.mjs',import.meta.url),'utf8');
+const guard="if(totals.halted || totals.charged+totals.reserved+b.reserve>b.cap) fail('live_ai_cap_reached');";
+if(!source.includes(guard)) throw Error('Budget guard changed; inspect mutation');
+let mutant=source.replace(guard,'/* Deliberately disabled budget guard for this negative control. */');
+await fs.writeFile(new URL('live-ai-mutant.mjs',dir),mutant);
+let oracle=await fs.readFile(new URL('../neon/live-ai.test.mjs',import.meta.url),'utf8');
+oracle=oracle.replace("'./live-ai.mjs'","'./live-ai-mutant.mjs'").replace("'./worker.mjs'","'../neon/worker.mjs'");
+await fs.writeFile(new URL('live-ai-mutant.test.mjs',dir),oracle);
+const result=spawnSync(process.execPath,['--test','--test-name-pattern=reservation stops',new URL('live-ai-mutant.test.mjs',dir).pathname.replace(/^\/([A-Za-z]:)/,'$1')],{encoding:'utf8'});
+await fs.writeFile(new URL('live-ai-mutation.txt',dir),result.stdout+'\n'+result.stderr);
+if(result.status===0 || !/2 !== 1/.test(result.stdout+result.stderr)) throw Error('Mutation did not fail the semantic concurrency guard as expected');
+console.log('PASS: disabling admission made the unchanged concurrency oracle fail (2 calls instead of 1).');

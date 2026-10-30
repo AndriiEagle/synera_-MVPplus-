@@ -19,7 +19,8 @@ const policyImport = "import { consentRecord, POLICY_VERSION } from '../web_laun
 const expectedImports = policyImport + "\nimport { handleGoogleOAuth } from './google-oauth.mjs';\nimport { handleMeetingLocation, locationReady } from './meeting-location.mjs';\nimport { handleGroupRoom, groupRoomsReady } from './group-room.mjs';\nimport { outcomeReady, outcomeRPCArgs } from './case-outcome.mjs';\nimport { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mjs';\nimport { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';";
 const budgetImport = "\nimport { caseMaterialBytes, CASE_MATERIAL_MAX_BYTES, CASE_REQUEST_MAX_BYTES } from '../web_launch/case-material-budget.mjs';";
 const abuseImport = "\nimport { normalizeOpenEmail, withOtpProtection, OtpProtectionError } from './otp-abuse.mjs';";
-const allExpectedImports = expectedImports + budgetImport + abuseImport;
+const aiImport = "\nimport { handleLiveAi, liveAiReady } from './live-ai.mjs';";
+const allExpectedImports = expectedImports + budgetImport + abuseImport + aiImport;
 const googleSource = await fs.readFile(new URL('./google-oauth.mjs', import.meta.url), 'utf8');
 if (!workerSource.startsWith(allExpectedImports) || /\bimport\s/.test(workerSource.slice(allExpectedImports.length)) ||
     !googleSource.startsWith(policyImport) || /\bimport\s/.test(googleSource.slice(policyImport.length))) throw new Error('Worker dependency changed; review build');
@@ -49,7 +50,13 @@ const budget = '\nconst {caseMaterialBytes,CASE_MATERIAL_MAX_BYTES,CASE_REQUEST_
 const abuseSource = await fs.readFile(new URL('./otp-abuse.mjs', import.meta.url), 'utf8');
 if (/\bimport\s/.test(abuseSource)) throw new Error('OTP dependencies changed; review build');
 const abuse = '\nconst {normalizeOpenEmail,withOtpProtection,OtpProtectionError}=(()=>{\n' + abuseSource.replace(/^export /gm, '') + '\nreturn {normalizeOpenEmail,withOtpProtection,OtpProtectionError};\n})();\n';
-const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + erasure + budget + abuse + workerSource.slice(allExpectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
+const aiSource = await fs.readFile(new URL('./live-ai.mjs', import.meta.url), 'utf8');
+const aiImports = "import { BOT_PROFILES } from '../web_launch/simulation-personas.mjs';\nimport { maskOpsText } from '../web_launch/ops-log.mjs';";
+if (!aiSource.startsWith(aiImports) || /\bimport\s/.test(aiSource.slice(aiImports.length))) throw new Error('Live AI dependencies changed; review build');
+const aiPersonas = await fs.readFile(path.join(root, 'simulation-personas.mjs'), 'utf8');
+const aiMask = await fs.readFile(path.join(root, 'ops-log.mjs'), 'utf8');
+const ai = '\nconst {handleLiveAi,liveAiReady}=(()=>{\n' + [aiPersonas, aiMask, aiSource.slice(aiImports.length)].map(s=>s.replace(/^export /gm,'')).join('\n') + '\nreturn {handleLiveAi,liveAiReady};\n})();\n';
+const worker = policy + '\nconst handleGoogleOAuth = (() => {\n' + google + '\nreturn handleGoogleOAuth;\n})();\n' + location + group + outcome + address + erasure + budget + abuse + ai + workerSource.slice(allExpectedImports.length) + '\nexport default createNeonWorker(' + JSON.stringify(assets) + ');\n';
 const receipt = { built_at: new Date().toISOString(), backend: 'neon', cloudflare_pages_advanced_mode: true, files: [], published: false, live_auth_verified: false, live_rls_verified: false, automatic_public_ai: false };
 for (const name of assets) await fs.copyFile(path.join(root, name), path.join(directory, name));
 await fs.writeFile(path.join(directory, '_worker.js'), worker);

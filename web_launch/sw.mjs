@@ -1,9 +1,10 @@
 // Cache only explicit public shell assets. Never cache API, tokens, profiles, map tiles or imports.
 const CACHE = 'synera-shell-20261029-gilbert1';
+// Optional replies need the consent UI offline too; API/config responses stay uncached.
 const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/style-switcher.mjs', '/onboarding-tour.mjs', '/demo-journey.mjs', '/online-store.mjs', '/profile-store.mjs', '/neon-store.mjs', '/profile-portability.mjs', '/profile-brief.mjs', '/profile-package.mjs', '/calendar.mjs', '/matching.mjs', '/map.mjs', '/pilot-policy.mjs', '/pwa.mjs', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/legal.html', '/catalogue.html', '/tokens.css', '/cascade.mjs', '/iceberg-client.mjs'];
 SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs', '/live-location.mjs', '/meeting-location.mjs');
 SHELL.push('/summit.html', '/summit.css', '/summit.mjs', '/montserrat-400.woff2', '/montserrat-500.woff2');
-SHELL.push('/location-session.mjs');
+SHELL.push('/location-session.mjs','/live-ai-client.mjs');
 SHELL.push('/get.html', '/product-access.mjs');
 SHELL.push('/triangle.html', '/triangle.css', '/triangle.mjs', '/triangle-room.mjs', '/explore-planner.mjs');
 SHELL.push('/profile-import.mjs', '/index-language.mjs', '/index-i18n.mjs', '/index-i18n-table.mjs', '/real-journey-i18n.mjs', '/legal-language.mjs', '/legal-i18n.mjs', '/atelier.mjs', '/atelier.css');

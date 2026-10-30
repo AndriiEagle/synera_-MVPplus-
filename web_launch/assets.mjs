@@ -1,5 +1,6 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'live-ai-client.mjs': 'text/javascript',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',
