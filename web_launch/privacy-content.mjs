@@ -1,3 +1,4 @@
+import { LIVE_AI_COPY } from './live-ai-client.mjs';
 // Draft legal copy from the supplied launch PLAN §1. No provider contract is certified here.
 const copy = {
   uk: {
@@ -118,6 +119,12 @@ const copy = {
     accountLink: 'Open account privacy', legalLink: 'Rules and pilot contact', noScript: 'Export and erasure require JavaScript. You can send a written request using the contact on the rules page.',
   },
 };
+export const LIVE_AI_RETENTION={
+  uk:'AI: згода та її відкликання — у локальному synera.journal.v1, 30 днів від запису. Текст промптів і відповідей Worker не журналює. KV зберігає лише суми, лічильники, ID квитанцій і модель до 90 днів; денний HMAC технічної IP-адреси для ліміту — KV 120 секунд, координатор до 3 діб. Тексти проходять через Worker транзитом. Невідома вартість рахується за консервативним резервом. Вимкнути AI можна тим самим перемикачем у Demo.',
+  de:'KI: Zustimmung und Widerruf liegen im lokalen synera.journal.v1, 30 Tage ab Eintrag. Der Worker protokolliert keine Prompt- oder Antworttexte. KV speichert nur Summen, Zähler, Beleg-IDs und Modell bis zu 90 Tage; täglicher HMAC der technischen IP für Limits: KV 120 Sekunden, Koordinator bis zu 3 Tage. Texte passieren den Worker nur im Transit. Unbekannte Kosten werden konservativ reserviert. KI lässt sich mit demselben Demo-Schalter ausschalten.',
+  en:'AI: consent and withdrawal stay in local synera.journal.v1, 30 days from entry. The Worker logs no prompt or reply text. KV keeps only totals, counters, receipt IDs and model for up to 90 days; daily HMAC of connection IP for rate limits: KV 120 seconds, coordinator up to 3 days. Text passes through the Worker in transit. Unknown costs use the conservative reservation. Switch AI off with the same control in Demo.'
+};
+for(const locale of ['uk','de','en']) copy[locale].liveAi=LIVE_AI_COPY[locale].notice+' '+LIVE_AI_RETENTION[locale];
 export const PRIVACY_COPY = Object.freeze(copy);
 export const languageCode = value => ['uk', 'de', 'en'].includes(value) ? value : 'uk';
 export const DEVICE_GROUPS = Object.freeze([

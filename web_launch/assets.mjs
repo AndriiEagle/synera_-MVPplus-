@@ -6,6 +6,7 @@ export const PUBLIC_ASSETS = Object.freeze({
   'simulation-mode.mjs':'text/javascript',
   'radar.html': 'text/html', 'radar.css': 'text/css', 'radar.mjs': 'text/javascript',
   'radar-ui.mjs': 'text/javascript', 'radar-copy.mjs': 'text/javascript', 'radar-events.json': 'application/json',
+  'live-ai-client.mjs': 'text/javascript',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',

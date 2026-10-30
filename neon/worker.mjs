@@ -7,6 +7,7 @@ import { meetingAddressReady, meetingAddressRPCArgs } from './meeting-address.mj
 import { profileErasureReady, profileErasureResult } from './profile-erasure.mjs';
 import { caseMaterialBytes, CASE_MATERIAL_MAX_BYTES, CASE_REQUEST_MAX_BYTES } from '../web_launch/case-material-budget.mjs';
 import { normalizeOpenEmail, withOtpProtection, OtpProtectionError } from './otp-abuse.mjs';
+import { handleLiveAi, liveAiReady } from './live-ai.mjs';
 
 // Deployment adapter, not an auth implementation: Neon verifies OTPs and owns sessions.
 // All provider tokens stay here. No owner API key, SQL password, or service-role key is used.
@@ -312,13 +313,17 @@ export function createNeonWorker(publicAssets) {
   return { async fetch(request, env) {
     const url = new URL(request.url);
     let response;
-    if (url.pathname.startsWith('/api/neon/')) response = await handleNeon(request, env);
+    if (url.pathname.startsWith('/api/ai/')) response = await handleLiveAi(request, env);
+    else if (url.pathname.startsWith('/api/neon/')) response = await handleNeon(request, env);
     else if (url.pathname === '/config.json' && request.method === 'GET') {
       const ready = env.SYNERA_PILOT_READY === 'true';
       const googleOAuthEnabled = ready && env.SYNERA_REGISTRATION_ENABLED === 'true' && env.SYNERA_GOOGLE_OAUTH_READY === 'true';
       // A misconfigured provider URL must close the optional sign-in, not crash the public configuration.
       let googleOAuthInitUrl; try { googleOAuthInitUrl = googleOAuthEnabled ? neonEndpoints(env).auth + '/sign-in/social/init' : undefined; } catch { googleOAuthInitUrl = undefined; }
       response = answer({ backend: 'neon', supabaseUrl: '', publishableKey: '', pilotSafetyEnabled: ready, realPilotEnabled: ready,
+        liveAiReady: liveAiReady(env), liveAiModel: env.SYNERA_LIVE_AI_MODEL || 'z-ai/glm-5.3-flash',
+        liveAiProvider: liveAiReady(env) ? env.SYNERA_LIVE_AI_PROVIDER : null,
+        liveAiUnavailableReason: liveAiReady(env) ? null : 'operator_setup_required',
         // This new gate is set only after the documented challenge bridge is verified live.
         googleOAuthEnabled: googleOAuthEnabled && Boolean(googleOAuthInitUrl), googleOAuthInitUrl, liveLocationEnabled: locationReady(env), groupRoomsEnabled: groupRoomsReady(env),
         // Closed until case SQL/RLS and two distinct provider sessions pass acceptance.

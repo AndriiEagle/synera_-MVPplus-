@@ -28,5 +28,12 @@
 .composer-row { display:flex; gap:.5rem; align-items:end; }.composer-row textarea { flex:1; scroll-margin-bottom:12rem; }.composer-row button { background:#dcc59a; color:#211d17; }.living-chips { display:flex; flex-wrap:wrap; gap:.4rem; }.living-chips button { font-size:.8rem; min-height:44px; padding:.5rem .7rem; }
 #journal-events time { display:block; color:var(--living-muted); font-size:.8rem; margin-bottom:.5rem; }.living-footer { display:block; height:auto; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--living-line); font-size:.9rem; }
 @media(max-width:600px) { .living-people { grid-template-columns:repeat(2,minmax(0,1fr)); }.living-person { display:grid; grid-template-columns:48px 1fr; column-gap:.6rem; }.living-person .living-avatar { grid-row:span 3; }.living-person :is(strong,small) { grid-column:2; }.living-threads { grid-template-columns:1fr; }.living-tabs button { flex:auto; padding:.6rem; }.living-header { align-items:start; flex-wrap:wrap; }.living-composer { position:static; }.composer-row { display:grid; grid-template-columns:minmax(0,1fr); }.composer-row button { justify-self:end; } }
+.living #live-ai-switch { display:flex; align-items:center; gap:.8rem; min-height:48px; cursor:pointer; }
+.living #live-ai-switch[hidden] { display:none; }
+.living #live-ai-toggle { appearance:none; flex:0 0 48px; width:48px; min-height:28px; height:28px; border-radius:16px; padding:3px; background:#363641; }
+.living #live-ai-toggle::before { content:''; display:block; width:20px; height:20px; border-radius:50%; background:#f6f2ec; }
+.living #live-ai-toggle:checked { background:var(--living-gold); }
+.living #live-ai-toggle:checked::before { transform:translateX(20px); background:#222; }
+.living .ai-tag { border:1px solid var(--living-gold); border-radius:6px; padding:.15rem .4rem; color:var(--living-gold); }
 @media(prefers-reduced-motion:reduce) { .living * { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 @media print { .living { color:#111; background:white; }.living-header,.living-tabs,#living-feed,#living-join,.living-footer,.living-controls,#living-status,.living-honest,.living-main>.lead,.living-main>.eyebrow { display:none!important; }#living-journal { display:block!important; }.living-bubble { break-inside:avoid; background:white; color:#111; border-color:#bbb; }#journal-events time,#journal-local { color:#333; }.living-main { width:100%; padding:0; } }

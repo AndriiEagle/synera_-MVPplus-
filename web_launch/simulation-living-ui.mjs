@@ -8,6 +8,7 @@ import { mountSovereign } from './sovereign-ui.mjs';
 import { demoBalanceContext, demoParties } from './adapt-demo.mjs';
 import { adaptCopy, MATCH_COPY } from './adapt-copy.mjs';
 import { similarPeople } from './journal-matching.mjs';
+import { mountLiveAi, LIVE_AI_COPY } from './live-ai-client.mjs';
 
 const $ = id => document.getElementById(id);
 let storage; try { storage = localStorage; } catch {}
@@ -36,6 +37,7 @@ function bubble(e) {
   const item = el('li', undefined, `living-bubble ${e.actor === 'visitor' ? 'from-visitor' : ''}`);
   const head = el('div', undefined, 'bubble-heading'); if (e.actor !== 'visitor') head.append(avatar(e.actor));
   head.append(el('strong', `${personName(e.actor).replace(' · Demo', '')} · Demo`), el('small', t(e.kind === 'message' ? 'messageKind' : e.kind === 'result' ? 'resultKind' : e.kind)));
+  if (e.ai) { const tag=el('small', LIVE_AI_COPY[lang]?.tag || LIVE_AI_COPY.uk.tag, 'ai-tag'); tag.dataset.aiTag=''; head.append(tag); }
   item.append(head, el('p', e.text)); return item;
 }
 root.innerHTML = `<header class="living-header"><a href="/" class="brand">synera<span>· Demo</span></a><nav id="living-language"><a href="?lang=uk" lang="uk">УКР</a><a href="?lang=de" lang="de">DE</a><a href="?lang=en" lang="en">EN</a></nav><details class="header-preferences"><summary>☰</summary><div class="header-preferences-content"><a data-privacy-link href="/privacy.html"></a></div></details></header>
@@ -93,6 +95,11 @@ root.querySelector('.header-preferences summary').setAttribute('aria-label',root
 for (const [id, key] of Object.entries({ 'living-eyebrow': 'eyebrow', 'living-title': 'title', 'living-lead': 'lead', 'living-honest': 'honest', 'feed-title': 'feed', 'who-title': 'who', 'name-label': 'name', 'offers-label': 'offers', 'seeks-label': 'seeks', 'partner-label': 'partner', 'local-note': 'local', 'visitor-start': 'start', 'message-label': 'message', 'visitor-send': 'send', 'visitor-result': 'record', 'visitor-closed': 'closed', 'journal-title': 'journal', 'journal-local': 'local', 'filter-label': 'filter', 'journal-export': 'export', 'journal-print': 'print', 'journal-erase': 'erase', 'living-home': 'home', 'living-lab': 'lab' })) $(id).textContent = t(key);
 $('visitor-text').placeholder = t('placeholder');
 $('living-language').setAttribute('aria-label', t('language'));
+const liveAi = mountLiveAi({target:$('living-join'),locale:lang,record:add,onChange:enabled=>{
+  $('living-honest').textContent=enabled?LIVE_AI_COPY[lang].active:t('honest');
+  $('local-note').textContent=enabled?LIVE_AI_COPY[lang].local:t('local');
+  status();
+}});
 const profile = journal.profile();
 if (profile) { for (const k of ['name', 'offers', 'seeks']) $('visitor-card').elements[k].value = profile[k] || ''; $('saved-note').textContent = t('saved'); }
 for (const p of BOT_PROFILES) {
@@ -107,7 +114,7 @@ function view(which) {
   if (which === 'journal') renderJournal();
 }
 for (const tab of root.querySelectorAll('[data-view]')) { tab.textContent = t(tab.dataset.view); tab.addEventListener('click', () => view(tab.dataset.view)); }
-function status(message) { $('living-status').textContent = message || (!journal.persistent ? t('storageError') : navigator.onLine ? t('online') : t('offline')); }
+function status(message) { $('living-status').textContent = message || (!journal.persistent ? t('storageError') : navigator.onLine ? (liveAi.enabled?LIVE_AI_COPY[lang].active:t('online')) : t('offline')); }
 function add(kind, actor, text, data) { journal.add(kind, actor, text, data); status(); }
 const pauseButton = button(t(paused ? 'play' : 'pause'), () => { paused = !paused; scheduleFeed(); }, 'feed-pause');
 $('feed-controls').append(pauseButton, button(t('next'), nextEvent, 'feed-next'), button(t('restart'), () => {
@@ -137,10 +144,11 @@ function scheduleFeed() {
   if (!paused && !document.hidden && cursor < feed.length) feedTimer = setTimeout(() => { if (!autoWriteAllowed()) return; nextEvent(); scheduleFeed(); }, 3200);
 }
 function externalErase() {
+  liveAi.disable(false);
   clearTimeout(replyTimer); session = null; paused = true; scheduleFeed(); journal = createJournal(storage);
   $('visitor-card').reset(); similarOpt.checked=false; $('saved-note').textContent = ''; renderVisitor(); renderSimilar(); renderJournal(); status(t('erased'));
 }
-window.addEventListener('synera:before-device-erase', () => { journal.cancelPending(); clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
+window.addEventListener('synera:before-device-erase', () => { journal.cancelPending(); liveAi.disable(false); clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
 window.addEventListener('synera:device-erased', externalErase);
 function autoWriteAllowed() {
   // Storage events can arrive AFTER an already queued timer. Check the key at
@@ -149,7 +157,8 @@ function autoWriteAllowed() {
   return true;
 }
 function persistMessages(previousCount) {
-  for (const m of session.messages.slice(previousCount)) add(m.kind, m.actor, m.text, { source: 'visitor', version: session.version, state: session });
+  for (const m of session.messages.slice(previousCount)) add(m.kind, m.actor, m.text, { source: 'visitor', version: session.version, state: session,
+    ...(m.ai?{ai:true,model:m.model,requestId:m.requestId}:{}) });
 }
 function renderVisitor() {
   $('visitor-chat').hidden = !session;
@@ -174,7 +183,18 @@ function scheduleReply() {
   clearTimeout(replyTimer);
   if (!session?.pendingIntent) return;
   const current = session;
-  replyTimer = setTimeout(() => { if (session !== current || !autoWriteAllowed()) return; const count = session.messages.length; session = personaRespond(session, lang); persistMessages(count); renderVisitor(); }, motion.matches ? 0 : 1600);
+  replyTimer = setTimeout(async () => {
+    if (session !== current || !autoWriteAllowed()) return;
+    const reply=liveAi.enabled?await liveAi.reply(current):null;
+    if (session !== current || !autoWriteAllowed()) return;
+    const count=session.messages.length;
+    if(reply) {
+      // Generated text cannot sign another party's approval or create a real meeting.
+      session=structuredClone(session);session.pendingIntent=null;
+      session.messages.push({actor:session.personId,kind:'message',text:reply.text,demo:true,ai:true,model:reply.model,requestId:reply.requestId});
+    } else session=personaRespond(session,lang);
+    persistMessages(count);renderVisitor();
+  }, motion.matches ? 0 : 1600);
 }
 function send(value) {
   if (!session || session.pendingIntent || !value.trim()) return;
@@ -184,7 +204,7 @@ function send(value) {
 for (const key of ['accept', 'questionChip', 'scopeChip', 'rewardChip', 'limitsChip', 'timeChip', 'decline']) $('visitor-chips').append(button(t(key), () => send(t(key))));
 $('visitor-composer').addEventListener('submit', e => { e.preventDefault(); send($('visitor-text').value); });
 $('visitor-card').addEventListener('submit', async e => {
-  e.preventDefault(); clearTimeout(replyTimer);
+  e.preventDefault(); clearTimeout(replyTimer); liveAi.disable();
   const form = e.currentTarget, profile = Object.fromEntries(['name', 'offers', 'seeks'].map(k => [k, form.elements[k].value.trim()]));
   if (Object.values(profile).some(v => !v)) return;
   const start = $('visitor-start'); if (start.disabled) return; start.disabled = true;
@@ -204,6 +224,7 @@ function renderJournal() {
   $('journal-events').replaceChildren(...entries.map(e => {
     const n = el('li', undefined, 'living-bubble'), time = el('time', new Date(e.at).toLocaleString(document.documentElement.lang)); time.dateTime = e.at;
     n.append(time, el('strong', `${e.actor === 'visitor' ? t('you') : personName(e.actor)} · ${t(e.kind === 'profile' ? 'profile' : e.kind === 'consent' ? 'consentKind' : e.kind === 'message' ? 'messageKind' : e.kind === 'result' ? 'resultKind' : e.kind)}`), el('p', e.text));
+    if(e.data.ai) { const tag=el('small',LIVE_AI_COPY[lang].tag,'ai-tag');tag.dataset.aiTag='';n.append(tag); }
     if (e.data.profile) for (const k of ['name', 'offers', 'seeks']) n.append(el('p', `${t(k)} ${e.data.profile[k]}`)); return n;
   }));
 }
@@ -215,6 +236,7 @@ $('journal-export').addEventListener('click', () => {
 $('journal-print').addEventListener('click', () => { renderJournal(); window.print(); });
 $('journal-erase').addEventListener('click', () => {
   if (!confirm(t('eraseAsk'))) return;
+  liveAi.disable(false);
   try { journal.erase(); paused = true; clearTimeout(replyTimer); session = null; similarOpt.checked=false; $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); scheduleFeed(); status(t('erased')); }
   catch { status(t('storageError')); }
 });

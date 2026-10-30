@@ -1,0 +1,15 @@
+name = "synera-live-ai-budget"
+main = "live-ai-budget-worker.mjs"
+compatibility_date = "2026-10-29"
+
+[[durable_objects.bindings]]
+name = "SYNERA_LIVE_AI_BUDGET"
+class_name = "LiveAiBudget"
+
+[[migrations]]
+tag = "live-ai-v1"
+new_sqlite_classes = ["LiveAiBudget"]
+
+[[kv_namespaces]]
+binding = "SYNERA_LOCATION_EPHEMERAL"
+id = "OWNER_MUST_SET_EXISTING_KV_ID"

@@ -123,14 +123,14 @@ jobs:
       # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
       # Glob *.test.mjs розгортається bash'ем на ubuntu; другий і третій аргументи — neon-воркер і Iceberg-машини.
       - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
-      - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs
+      - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs tools/live-ai-smoke.test.mjs
       - run: node --test tests/pwa/*.test.mjs
       - run: node --test tests/i18n_ch/*.test.mjs
       - run: node --test tools/secure-package.test.mjs
       - run: python3 -B -m unittest discover -s tools -p test_simulation_provider.py
 
       # Браузерний регресійний прогін, включно з SYN_PHASE9_A11Y_E2E.
-      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs tests/privacy-e2e.spec.mjs tests/graphics-e2e.spec.mjs tests/graphics2-e2e.spec.mjs tests/integrate-e2e.spec.mjs tests/simulation-living.spec.mjs tests/product-access.spec.mjs tests/secure-e2e.spec.mjs
+      - run: npx playwright test tests/browser-e2e.spec.mjs tests/studio-e2e.spec.mjs tests/privacy-e2e.spec.mjs tests/graphics-e2e.spec.mjs tests/graphics2-e2e.spec.mjs tests/integrate-e2e.spec.mjs tests/simulation-living.spec.mjs tests/product-access.spec.mjs tests/secure-e2e.spec.mjs tests/live-ai.spec.mjs
       - run: node tools/header-layout-acceptance-20261013.mjs
       - run: node neon/build.mjs dist-neon-ci
       - run: node web_launch/build.mjs

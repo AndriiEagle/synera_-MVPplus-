@@ -12,6 +12,7 @@ SHELL.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.
 SHELL.push('/scenes.css','/scene-simulation.webp','/scene-simulation@2x.webp');
 SHELL.push('/adapt-copy.mjs','/adapt-observer.mjs','/adapt-ui.mjs','/sovereign.mjs','/sovereign-ui.mjs','/balance.mjs','/journal-matching.mjs','/adapt-demo.mjs');
 SHELL.push('/simulation-mode.mjs');
+SHELL.push('/scenes.css','/scene-simulation.webp','/scene-simulation@2x.webp','/live-ai-client.mjs');
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll([...new Set(SHELL)]))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('synera-simulation-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {

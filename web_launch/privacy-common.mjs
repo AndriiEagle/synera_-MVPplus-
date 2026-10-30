@@ -5,7 +5,7 @@ function element(tag, text) { const node = document.createElement(tag); if (text
 export function renderNotice(target) {
   const c = PRIVACY_COPY[code()]; target.replaceChildren();
   const draft = element('p', c.draft); draft.className = 'privacy-draft'; target.append(draft);
-  for (const [heading, paragraphs] of [['stored', ['inventory', 'memory', 'adaptiveData', 'balanceData', 'radar']], ['retention', ['serverRetention', 'runtime']], ['processors', ['neon', 'cloudflare', 'email', 'maps']], ['rights', ['rightsText', 'contact']], [null, ['cookies', 'demo']]]) {
+  for (const [heading, paragraphs] of [['stored', ['inventory', 'memory', 'adaptiveData', 'balanceData', 'radar']], ['retention', ['serverRetention', 'runtime']], ['processors', ['neon', 'cloudflare', 'email', 'maps', 'liveAi']], ['rights', ['rightsText', 'contact']], [null, ['cookies', 'demo']]]) {
     if (heading) target.append(element('h2', c[heading]));
     for (const key of paragraphs) target.append(element('p', c[key]));
     if (heading === 'stored') {
