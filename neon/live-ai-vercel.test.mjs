@@ -112,3 +112,20 @@ test('one-shot smoke exercises the Vercel handler with both fake provider calls 
   const result=await liveAiSmoke(args);assert.equal(result.status,'PASS_TRANSPORT_AND_COST');assert.equal(result.costUsd,0.002);assert.equal(result.judged,'accepted');
   await assert.rejects(liveAiSmoke(args),{code:'EEXIST'});assert.equal(posts,1);assert.equal(calls.length,2);
 });
+
+import { test as nodeTest } from 'node:test';
+import nodeAssert from 'node:assert/strict';
+nodeTest('Vercel injects ?action=<segment> on the dynamic route; it never turns a persona reply into a 404, other query strings still do', async () => {
+  const { handleNode } = await import('../vercel/live-ai.mjs');
+  const fakeRes = () => ({ statusCode: 200, headers: {}, setHeader(k, v) { this.headers[k] = v; }, end(b) { this.body = String(b ?? ''); } });
+  const headers = { host: 'preview.example', 'x-forwarded-proto': 'https', 'content-type': 'application/json', origin: 'https://preview.example' };
+  const injected = fakeRes();
+  await handleNode({ url: '/api/ai/persona-reply?action=persona-reply', method: 'POST', headers, body: '{}' }, injected);
+  nodeAssert.notEqual(injected.statusCode, 404, injected.body);
+  const foreign = fakeRes();
+  await handleNode({ url: '/api/ai/persona-reply?debug=1', method: 'POST', headers, body: '{}' }, foreign);
+  nodeAssert.equal(foreign.statusCode, 404);
+  const spend = fakeRes();
+  await handleNode({ url: '/api/ai/spend?action=spend', method: 'GET', headers }, spend);
+  nodeAssert.equal(spend.statusCode, 200, spend.body);
+});

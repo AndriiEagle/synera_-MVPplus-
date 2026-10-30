@@ -113,6 +113,8 @@ export async function handleNode(req,res) {
   try {
     const headers=new Headers();for(const [key,value] of Object.entries(req.headers)) if(value!==undefined) headers.set(key,Array.isArray(value)?value.join(','):value);
     const url=new URL(req.url,`${headers.get('x-forwarded-proto')==='http'?'http':'https'}://${headers.get('host')}`);
+    // Vercel's dynamic route api/ai/[action].js injects ?action=<segment> into req.url; it is not a client query string.
+    if(url.searchParams.get('action')===url.pathname.split('/').pop()) url.searchParams.delete('action');
     let body;
     if(!['GET','HEAD'].includes(req.method)) {
       if(req.body!==undefined) body=typeof req.body==='string'||Buffer.isBuffer(req.body)?req.body:JSON.stringify(req.body);
