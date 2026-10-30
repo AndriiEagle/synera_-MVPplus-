@@ -1,0 +1,217 @@
+{
+  "command": "all",
+  "at": "2026-10-30T08:07:48.747Z",
+  "toolSha256": "32945141768dcaeebde66bacb66490c0bb65079f0f377cb5c47c5717eb1d6646",
+  "dryRun": true,
+  "status": "DRY_RUN",
+  "calls": [
+    {
+      "step": "inspect",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches?search=production&limit=100",
+      "condition": "when not yet resolved"
+    },
+    {
+      "step": "inspect",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/databases",
+      "condition": "when not yet resolved"
+    },
+    {
+      "step": "inspect",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/roles",
+      "condition": "when not yet resolved"
+    },
+    {
+      "step": "inspect",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/connection_uri?branch_id=<production-branch-id>&database_name=neondb&role_name=<database-owner>&pooled=false",
+      "condition": "when not yet resolved"
+    },
+    {
+      "step": "inspect",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "00-inspect + baseline guard, read-only batch, ROLLBACK"
+    },
+    {
+      "step": "migrate",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "repeat read-only inspection"
+    },
+    {
+      "step": "migrate",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "ordered 10-migrate transaction"
+    },
+    {
+      "step": "migrate",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "read-only final acceptance + ROLLBACK"
+    },
+    {
+      "step": "member",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "20/21 SQL transaction; one per supplied/allowlisted email, payload redacted"
+    },
+    {
+      "step": "deploy",
+      "method": "MANUAL",
+      "url": "Cloudflare Pages > synera-pilot > Production > Direct Upload",
+      "detail": "kit ZIP; all stops here until manual continuation"
+    },
+    {
+      "step": "env",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot"
+    },
+    {
+      "step": "env",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth"
+    },
+    {
+      "step": "env",
+      "method": "PATCH",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot",
+      "detail": "production env_vars; risky flags off; redeploy required"
+    },
+    {
+      "step": "secret",
+      "method": "LOCAL",
+      "url": "C:/Users/Andrii/Desktop/KI/.env.local",
+      "detail": "append only missing random secrets on live run"
+    },
+    {
+      "step": "secret",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot"
+    },
+    {
+      "step": "secret",
+      "method": "PATCH",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot",
+      "detail": "secret_text; values redacted; redeploy required"
+    },
+    {
+      "step": "google",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth"
+    },
+    {
+      "step": "google",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/oauth_providers"
+    },
+    {
+      "step": "google",
+      "method": "POST or PATCH",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/oauth_providers[/google]",
+      "detail": "credentials redacted; existing provider selects PATCH"
+    },
+    {
+      "step": "google",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/domains"
+    },
+    {
+      "step": "google",
+      "method": "POST",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/domains",
+      "detail": "trusted origin, only if absent"
+    },
+    {
+      "step": "google",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/oauth_providers",
+      "detail": "readback"
+    },
+    {
+      "step": "flags closed",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot",
+      "detail": "KV binding required"
+    },
+    {
+      "step": "flags closed",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "read-only inspection"
+    },
+    {
+      "step": "flags closed",
+      "method": "POST",
+      "url": "https://<resolved-production-endpoint>/sql",
+      "detail": "read-only final acceptance + ROLLBACK"
+    },
+    {
+      "step": "flags closed",
+      "method": "PATCH",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot",
+      "detail": "closed flags + private allowlist; redeploy required"
+    },
+    {
+      "step": "flags google",
+      "method": "GET",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot"
+    },
+    {
+      "step": "flags google",
+      "method": "GET",
+      "url": "https://console.neon.tech/api/v2/projects/quiet-credit-94155104/branches/<production-branch-id>/auth/oauth_providers"
+    },
+    {
+      "step": "flags google",
+      "method": "PATCH",
+      "url": "https://api.cloudflare.com/client/v4/accounts/37d2df88cd4557b3c81da2a7002bba1e/pages/projects/synera-pilot",
+      "detail": "Google flag; redeploy required"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "https://synera-pilot.pages.dev/release.json",
+      "detail": "compare kit file hashes"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "https://synera-pilot.pages.dev/config.json"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "https://synera-pilot.pages.dev/api/neon/health",
+      "detail": "X-Synera-Client: 1"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "https://synera-pilot.pages.dev/config.json",
+      "detail": "existing Google smoke helper"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "https://synera-pilot.pages.dev/api/neon/oauth/google/start",
+      "detail": "manual redirect"
+    },
+    {
+      "step": "smoke",
+      "method": "GET",
+      "url": "<validated-Neon-Auth-bridge>",
+      "detail": "manual redirect; never request Google"
+    },
+    {
+      "step": "smoke",
+      "method": "POST",
+      "url": "https://synera-pilot.pages.dev/api/neon/otp/request",
+      "detail": "one owner OTP per 15 minutes; payload redacted; no sign-in"
+    }
+  ],
+  "liveVerified": false
+}

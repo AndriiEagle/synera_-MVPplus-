@@ -1,0 +1,9 @@
+{
+  "command": "flags",
+  "at": "2026-10-30T08:07:49.290Z",
+  "toolSha256": "32945141768dcaeebde66bacb66490c0bb65079f0f377cb5c47c5717eb1d6646",
+  "dryRun": true,
+  "status": "HOLD",
+  "calls": [],
+  "error": "OPEN_REGISTRATION_BLOCKED"
+}

@@ -123,7 +123,7 @@ jobs:
       # УСІ тести запускаються з кореня: шляхи в тестах root-відносні.
       # Glob *.test.mjs розгортається bash'ем на ubuntu; другий і третій аргументи — neon-воркер і Iceberg-машини.
       - run: node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs
-      - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs tools/live-ai-smoke.test.mjs tools/google-signin-smoke.test.mjs tools/preview-bundle.test.mjs
+      - run: node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs tools/live-ai-smoke.test.mjs tools/google-signin-smoke.test.mjs tools/preview-bundle.test.mjs tools/pilot-ops.test.mjs
       - run: node --test tests/pwa/*.test.mjs
       - run: node --test tests/i18n_ch/*.test.mjs
       - run: node --test tools/secure-package.test.mjs

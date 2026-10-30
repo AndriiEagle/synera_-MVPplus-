@@ -1,0 +1,101 @@
+{
+  "command": "all",
+  "at": "2026-10-30T07:51:44.403Z",
+  "dryRun": true,
+  "status": "DRY_RUN",
+  "calls": [
+    {
+      "step": "inspect",
+      "action": "GET Neon production branch/databases/roles/connection_uri"
+    },
+    {
+      "step": "inspect",
+      "action": "POST endpoint /sql read-only inventory + baseline guard + ROLLBACK"
+    },
+    {
+      "step": "migrate",
+      "action": "POST endpoint /sql atomic ordered migration batch"
+    },
+    {
+      "step": "migrate",
+      "action": "POST endpoint /sql read-only catalog acceptance + ROLLBACK"
+    },
+    {
+      "step": "member",
+      "action": "POST endpoint /sql 20-add-member or 21-remove-member transaction; email redacted"
+    },
+    {
+      "step": "deploy",
+      "action": "MANUAL Cloudflare Production Direct Upload of kit ZIP (no guessed asset API)"
+    },
+    {
+      "step": "env",
+      "action": "GET Pages project + Neon Auth integration"
+    },
+    {
+      "step": "env",
+      "action": "PATCH Pages production env_vars; redeploy required"
+    },
+    {
+      "step": "secret",
+      "action": "LOCAL append missing generated secrets only on live run"
+    },
+    {
+      "step": "secret",
+      "action": "GET/PATCH Pages production secret_text; values redacted"
+    },
+    {
+      "step": "google",
+      "action": "GET Neon Auth integration/providers/domains"
+    },
+    {
+      "step": "google",
+      "action": "POST or PATCH Google provider; secret redacted"
+    },
+    {
+      "step": "google",
+      "action": "POST trusted origin only if absent"
+    },
+    {
+      "step": "google",
+      "action": "GET provider readback"
+    },
+    {
+      "step": "flags closed",
+      "action": "GET Pages config; verify OTP KV binding"
+    },
+    {
+      "step": "flags closed",
+      "action": "POST SQL inspection"
+    },
+    {
+      "step": "flags closed",
+      "action": "PATCH closed flags + private allowlist; redeploy required"
+    },
+    {
+      "step": "flags google",
+      "action": "GET Pages config + Google provider"
+    },
+    {
+      "step": "flags google",
+      "action": "PATCH Google readiness; redeploy required"
+    },
+    {
+      "step": "smoke",
+      "action": "GET /config.json"
+    },
+    {
+      "step": "smoke",
+      "action": "GET /api/neon/health with X-Synera-Client"
+    },
+    {
+      "step": "smoke",
+      "action": "GET Google start and Neon bridge, redirect manual; never request Google"
+    },
+    {
+      "step": "smoke",
+      "action": "POST /api/neon/otp/request at most once per 15 minutes; no sign-in"
+    }
+  ],
+  "liveVerified": false
+}

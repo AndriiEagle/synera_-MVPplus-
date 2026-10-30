@@ -1,0 +1,28 @@
+✖ empty final catalog response cannot certify a migrated pilot (84.5294ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 378.7731
+
+✖ failing tests:
+
+test at tools\pilot-ops.test.mjs:86:1
+✖ empty final catalog response cannot certify a migrated pilot (84.5294ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'PASS' !== 'HOLD'
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-liveops2/tools/pilot-ops.test.mjs:87:50)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'PASS',
+    expected: 'HOLD',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

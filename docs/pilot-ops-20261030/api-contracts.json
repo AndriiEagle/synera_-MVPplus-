@@ -1,0 +1,62 @@
+{
+  "checked": "2026-10-30",
+  "scope": "Public reference only; no credentials, API execution or live acceptance",
+  "neon": {
+    "source": "https://neon.com/api_spec/release/v2.json",
+    "sha256": "fcc7b2c39f15df03adedf90aa7cde7f1f5e7729ae50b10fd9c7a959f3fb1f82d",
+    "operations": [
+      {
+        "path": "/projects/{project_id}/connection_uri",
+        "verb": "get",
+        "operationId": "getConnectionURI"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth",
+        "verb": "get",
+        "operationId": "getNeonAuth"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth",
+        "verb": "post",
+        "operationId": "createNeonAuth"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers",
+        "verb": "get",
+        "operationId": "listBranchNeonAuthOauthProviders"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers",
+        "verb": "post",
+        "operationId": "addBranchNeonAuthOauthProvider"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}",
+        "verb": "patch",
+        "operationId": "updateBranchNeonAuthOauthProvider"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth/domains",
+        "verb": "get",
+        "operationId": "listBranchNeonAuthTrustedDomains"
+      },
+      {
+        "path": "/projects/{project_id}/branches/{branch_id}/auth/domains",
+        "verb": "post",
+        "operationId": "addBranchNeonAuthTrustedDomain"
+      }
+    ]
+  },
+  "http": {
+    "source": "https://github.com/neondatabase/serverless/blob/main/src/http/index.ts",
+    "sha256": "b5060ac1303fa06f0d0d26fc5906355fbf19ece34d3fd1c53f27e0751eb3a0f7",
+    "contract": "POST https://<endpoint-host>/sql; Neon-Connection-String; {queries:[{query,params:[]}]}; Neon-Batch-Read-Only; response {results:[{rows:...}]}",
+    "limitation": "Production HTTP/ROLLBACK and privileges require owner-token runtime verification"
+  },
+  "cloudflare": {
+    "deployment": "https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/methods/create/",
+    "secretPatch": "https://github.com/cloudflare/workers-sdk/blob/main/packages/wrangler/src/pages/secret/index.ts",
+    "secretPatchSha256": "4d89f51dfc5cd7be987056e0804e4ee3f9eb716aa7b71ff5ae902255e8885b69",
+    "decision": "MANUAL_REQUIRED for asset upload: documented manifest references preuploaded content hashes; full asset upload protocol not specified by this API reference. Production env_vars PATCH sends only changed keys."
+  }
+}

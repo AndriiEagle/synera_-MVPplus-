@@ -1,0 +1,169 @@
+{
+  "status": "LOCAL_VERIFIED_LIVE_HOLD",
+  "date": "2026-10-30",
+  "branch": "claude/synera-liveops2-20261030",
+  "base": "1ed7c5020fd02bb36a6dc8ff66e9fe2c8bd23dcd",
+  "sources": [
+    {
+      "name": "tools/pilot-ops.mjs",
+      "sha256": "50a945410383e01e1ff69d0584c39188e7bcd3cf1fceab0529fa162b8a7779df"
+    },
+    {
+      "name": "tools/pilot-ops.test.mjs",
+      "sha256": "fcebf5d7f5ab0ba2d7c2948622dc155a3f8e183f8cefda40501848ec5618e2e9"
+    },
+    {
+      "name": "tests/argon-fixes.cases.mjs",
+      "sha256": "223a4c06f6e6c722742e7e79f26282dcf98935462ce9ea5e063078482d4a5f79"
+    },
+    {
+      "name": ".github/workflows/ci.yml",
+      "sha256": "90eb5596fd73cc990b44a3cdac81451198284043579783a24f96f950962aa5b2"
+    },
+    {
+      "name": "docs/LIVEOPS-20261030.uk.md",
+      "sha256": "c377949773f5cf22e829c49f715682598fb6b34062e0eaa0c3df54f01ea6b73e"
+    }
+  ],
+  "tests": {
+    "mainNode": {
+      "command": "node --test web_launch/*.test.mjs web_launch/iceberg/*.test.mjs neon/*.test.mjs plan/v6/workflow/approval-boundary.test.mjs tools/pilot-ops.test.mjs tools/pilot-deploy-kit.test.mjs tools/google-signin-smoke.test.mjs tests/pwa/*.test.mjs tests/i18n_ch/*.test.mjs",
+      "passed": 896,
+      "skipped": 1,
+      "failed": 0,
+      "note": "Earlier stable point with 15 pilot-ops tests; final 19 pilot-ops tests separately passed"
+    },
+    "cliAndGoogle": {
+      "command": "node --test tools/pilot-ops.test.mjs tools/google-signin-smoke.test.mjs",
+      "passed": 22,
+      "failed": 0
+    },
+    "ciTools": {
+      "command": "node --test tools/simulation-server.test.mjs tools/simulation-runner.test.mjs tools/live-ai-smoke.test.mjs tools/google-signin-smoke.test.mjs tools/pilot-ops.test.mjs tools/secure-package.test.mjs",
+      "passed": 37,
+      "failed": 0
+    },
+    "python": {
+      "command": "py -3 -B -m unittest discover -s tools -p test_simulation_provider.py",
+      "passed": 3
+    },
+    "playwright": {
+      "specs": 14,
+      "total": 156,
+      "firstRun": {
+        "passed": 155,
+        "failed": 1
+      },
+      "failure": "Argon F3 fixture omitted googleOauthReady and googleOAuthInitUrl",
+      "repair": "Updated only the fixture, preserving assertions and production behavior",
+      "recheck": {
+        "command": "node --require C:/sw/task1601-header-chrome.cjs node_modules/@playwright/test/cli.js test --config tmp/liveops-playwright.config.mjs tests/browser-e2e.spec.mjs --grep \"F3 closed sign-in\"",
+        "passed": 1,
+        "failed": 0
+      },
+      "config": "Imported C:/sw/pw-chrome.config.mjs and overrode its other-worktree testDir/outputDir to this lane",
+      "fullSetRerunAfterFixtureOnlyChange": false
+    },
+    "header": "PASS 12 cases",
+    "offline": "PASS_CACHE_ONLY_OFFLINE_STARTUP fresh dist-neon-ci",
+    "a11y": "No critical or serious violations",
+    "bundleScan": {
+      "distRealFiles": 209,
+      "distNeonFiles": 208,
+      "status": "PATTERN_SCAN_PASS",
+      "limitation": "Pattern scan cannot prove absence of every secret"
+    },
+    "browserAcceptanceScripts": "Six scripts exit=0; see logs.browserAcceptances",
+    "privacyMutation": {
+      "mutation": "Remove privacy gate",
+      "exit": 1,
+      "verdict": "Caught by refusal test; original source restored"
+    }
+  },
+  "kit": {
+    "commit": "1ed7c5020fd02bb36a6dc8ff66e9fe2c8bd23dcd",
+    "files": 208,
+    "zip": {
+      "name": "synera-pilot-1ed7c5020fd02bb36a6dc8ff66e9fe2c8bd23dcd.zip",
+      "bytes": 6135260,
+      "sha256": "6959b94ee1905282439f325ee84171030765854fb4289e9ac9e4110e04de6c8c"
+    },
+    "published": false,
+    "localScratch": "tmp/liveops-built-kit",
+    "note": "Owner runtime regenerates kit in docs/deploy-kit-20261029/liveops"
+  },
+  "dryRun": {
+    "status": "DRY_RUN",
+    "plannedCalls": 36,
+    "networkCalls": 0,
+    "ownerEnvRead": false
+  },
+  "screenshots": {
+    "paths": [
+      "shots/iphone13-signin.png",
+      "shots/pixel7-signin.png"
+    ],
+    "reviewed": true,
+    "scope": "Chromium phone emulation, existing sign-in screen with synthetic ready-server; not physical phones or live Google"
+  },
+  "live": {
+    "status": "HOLD",
+    "ownerEnvRead": false,
+    "credentialedProviderCalls": 0,
+    "deployments": 0,
+    "otpRequests": 0,
+    "realSignIns": 0,
+    "persistence": "UNVERIFIED",
+    "googleProviderCallback": "OWNER_CONSOLE_REQUIRED"
+  },
+  "limitations": [
+    "Direct Upload asset protocol not guessed: deploy/all stop MANUAL_REQUIRED",
+    "Pages env changes need subsequent manual Production ZIP deployment",
+    "OTP KV binding required; no namespace created",
+    "OPENROUTER_API_KEY must already exist as Pages secret or owner runtime env",
+    "Backup/restore and production HTTP SQL not verified",
+    "Remote CI not run: no commit or push"
+  ],
+  "logs": {
+    "mainNode": {
+      "file": "tmp/liveops-node.tap",
+      "sha256": "9d1d2797df58de09d0492bc5d8bc951701799b7242cef97d386844e6ab68c828",
+      "summary": "✔ C11.L6: WTP-крива — частки по цінах; < k ціна непублічна (3.006ms)\n✔ C11.L6: viablePrice — перша ціна з часткою >= порогу (6.6571ms)\n✔ C11.L6: некоректний вхід — reason codes, не throw (4.5124ms)\nℹ tests 897\nℹ suites 0\nℹ pass 896\nℹ fail 0\nℹ cancelled 0\nℹ skipped 1\nℹ todo 0\nℹ duration_ms 52126.8844\n"
+    },
+    "cliAndGoogle": {
+      "file": "tmp/liveops-final.tap",
+      "sha256": "29697cee1fc8ce3eac69377108edee650243fb5f2c25a8a44eb60121630959e6",
+      "summary": "✔ concurrent live invocations share a lock and cannot duplicate OTP/secret work (92.6082ms)\n✔ unknown baseline, elevated API role, missing KV and SQL errors fail closed before mutation (113.7747ms)\n✔ dry-run and live outputs/receipt files across commands contain no keys or member addresses (473.0501ms)\nℹ tests 22\nℹ suites 0\nℹ pass 22\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2715.1957\n"
+    },
+    "ciTools": {
+      "file": "tmp/liveops-ci-tools.tap",
+      "sha256": "64f12a11dbb866101b535dc55c4628a4337751fe45c9b85f3d8e8fd596030a58",
+      "summary": "✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (145.3701ms)\n✔ executor refuses stale, cross-action payloads and unbounded fields (2.2208ms)\n✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (67.0492ms)\nℹ tests 37\nℹ suites 0\nℹ pass 37\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2792.8227\n"
+    },
+    "python": {
+      "file": "tmp/liveops-python.log",
+      "sha256": "d86a9b37041cc642cb37217fcbc0a79542903d79a5a6c37451af4c409a461bb9",
+      "summary": "py : ...\nIn Zeile:2 Zeichen:393\n+ ... ct -Last 8; py -3 -B -m unittest discover -s tools -p test_simulation ...\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (...:String) [], RemoteException\n    + FullyQualifiedErrorId : NativeCommandError\n \n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "header": {
+      "file": "tmp/liveops-header.log",
+      "sha256": "12dd435823c5fd32781a03839cd8ffaf0f9d8b4abd38b16c254fb2e90c0ea9f0",
+      "summary": "{\"variant\":\"candidate\",\"status\":\"PASS\",\"cases\":12,\"failed\":[],\"errors\":[]}\n"
+    },
+    "offline": {
+      "file": "tmp/liveops-offline.log",
+      "sha256": "1476999f71daa6c643cb57fa947a209c95f474dd85dd707fcdb0ef2c0b455b82",
+      "summary": "{\"variant\":\"reviewed\",\"status\":\"PASS_CACHE_ONLY_OFFLINE_STARTUP\",\"failed\":[],\"out\":\"C:\\\\sw\\\\synera-liveops2\\\\artifacts\\\\offline-shell-acceptance\\\\PASS3_REVIEWED\"}\n"
+    },
+    "a11y": {
+      "file": "tmp/liveops-a11y.log",
+      "sha256": "06aebbe1bc7e0fa8fc38584670d4f5e1a700f5b8e2b60ab7e625e4f76997f8b4",
+      "summary": "Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)\nPasses: 44, Incomplete: 1\n\n=== Auditing catalogue.html ===\nViolations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)\nPasses: 44, Incomplete: 1\n\nDetailed report written to: C:\\sw\\synera-liveops2\\web_launch\\a11y_audit_report.json\nSummary written to: C:\\sw\\synera-liveops2\\web_launch\\a11y_audit.md\n\n✅ No critical or serious violations\n"
+    },
+    "browserAcceptances": {
+      "file": "tmp/liveops-browser-acceptances.txt",
+      "sha256": "4f87e61396e9b3b5b65c4539b5ec9f81b31a3cc816949c4fc8ccc261aeb7596f",
+      "summary": "tools/location-browser-acceptance.mjs exit=0\ntools/case-social-draft-browser.mjs exit=0\ntools/profile-erasure-browser.mjs exit=0\ntools/audit-session-cookie-browser.mjs exit=0\ntools/audit-paid-journey-browser.mjs exit=0\ntools/simulation-browser-acceptance.mjs exit=0\n"
+    }
+  }
+}
