@@ -6,7 +6,9 @@ export async function checkAccessPage(page, { width, language, base, screenshot 
   page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/*',async route=>{
     const request=route.request();
-    if(!request.url().startsWith(base+'/')||request.method()!=='GET'||/\/api\//.test(request.url())){unexpected.push(request.url());return route.abort();}
+    // The only non-GET the page may send is its same-origin HEAD probe for the signed APK (hidden row until 200).
+    const apkProbe=request.method()==='HEAD'&&new URL(request.url()).pathname==='/synera.apk';
+    if(!request.url().startsWith(base+'/')||(request.method()!=='GET'&&!apkProbe)||/\/api\//.test(request.url())){unexpected.push(request.url());return route.abort();}
     if(process.env.SYNERA_ACCESS_MUTATION==='demo-primary'&&new URL(request.url()).pathname==='/get.html'){
       const response=await route.fetch();return route.fulfill({response,body:(await response.text()).replace('id="open-demo-journey"','class="primary" id="open-demo-journey"')});
     }

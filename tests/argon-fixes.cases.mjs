@@ -66,7 +66,7 @@ test.describe('Argon regression acceptance', () => {
     await expect(page.locator('#auth-closed')).toBeVisible();
     await page.locator('#auth-closed a').click();
     await expect(page.locator('#workspace')).toBeVisible();
-    await page.route('**/config.json', route => route.fulfill({ json: { backend: 'neon', pilotSafetyEnabled: true, realPilotEnabled: true, registrationEnabled: true, googleOAuthEnabled: true } }));
+    await page.route('**/config.json', route => route.fulfill({ json: { backend: 'neon', pilotSafetyEnabled: true, realPilotEnabled: true, registrationEnabled: true, googleOAuthEnabled: true, googleOauthReady: true } }));
     await page.route('**/api/neon/**', route => route.fulfill({ json: { user: null } }));
     await page.goto(base);
     await expect(page.locator('#auth-form')).toBeVisible();
