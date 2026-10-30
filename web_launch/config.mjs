@@ -48,6 +48,10 @@ export function validateConfig(config) {
     if (config.googleOAuthEnabled && config.backend !== 'neon') throw new Error('Google-вхід доступний лише через Neon Auth');
     optional.googleOAuthEnabled = config.googleOAuthEnabled;
   }
+  if (config.googleOauthReady !== undefined) {
+    if (typeof config.googleOauthReady !== 'boolean' || (config.googleOauthReady && (!config.googleOAuthEnabled || !registrationEnabled))) throw new Error('Некоректне налаштування Google входу');
+    optional.googleOauthReady = config.googleOauthReady;
+  }
   if (config.googleOAuthInitUrl !== undefined) {
     const url = new URL(config.googleOAuthInitUrl);
     if (config.backend !== 'neon' || url.protocol !== 'https:' || url.username || url.password || url.search || url.hash ||

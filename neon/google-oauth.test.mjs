@@ -24,6 +24,22 @@ const responseWithCookies = (body, values, status = 200) => {
 };
 const googleInit = new URL(endpoints.auth + '/sign-in/social/init?token=opaque-init-token-0123456789');
 
+test('one-tap GET redirects through Neon without manufacturing application consent', async () => {
+  const calls = [];
+  const response = await handleGoogleOAuth(request('/api/neon/oauth/google/start'), env, endpoints, allowed, async (url, init) => {
+    calls.push(JSON.parse(init.body));
+    return responseWithCookies({ url: googleInit.href }, [`${challengeName}=challenge; Secure; HttpOnly; Max-Age=600`]);
+  });
+  assert.equal(response.status, 303);
+  assert.equal(response.headers.get('location'), googleInit.href);
+  assert.equal(calls[0].errorCallbackURL, origin + '/?signin=google-error');
+  assert.equal(Object.hasOwn(calls[0], 'consent'), false);
+  assert.ok(localChallenge(response));
+  let fetched = false;
+  const denied = await handleGoogleOAuth(request('/api/neon/oauth/google/start', { headers: { 'Sec-Fetch-Site': 'cross-site' } }), env, endpoints, allowed, async () => { fetched = true; });
+  assert.equal(denied.status, 403); assert.equal(fetched, false);
+});
+
 test('Google OAuth bridges an explicit-consent start and callback without exposing provider values', async () => {
   const calls = [];
   const start = await handleGoogleOAuth(request('/api/neon/oauth/google/start', { method: 'POST', body: { consent } }), env, endpoints, allowed, async (url, init) => {
@@ -37,7 +53,7 @@ test('Google OAuth bridges an explicit-consent start and callback without exposi
   assert.equal(calls[0].init.method, 'POST');
   assert.equal(calls[0].init.headers.Origin, origin);
   assert.equal(calls[0].init.headers['X-Neon-Auth-Middleware'], 'true');
-  assert.deepEqual(JSON.parse(calls[0].init.body), { provider: 'google', callbackURL: origin + '/api/neon/oauth/google/callback', errorCallbackURL: origin + '/', disableRedirect: true });
+  assert.deepEqual(JSON.parse(calls[0].init.body), { provider: 'google', callbackURL: origin + '/api/neon/oauth/google/callback', errorCallbackURL: origin + '/?signin=google-error', disableRedirect: true });
   assert.match(localChallenge(start), /HttpOnly; SameSite=Lax/);
   assert.doesNotMatch(JSON.stringify([...start.headers]), /challenge-value/);
 

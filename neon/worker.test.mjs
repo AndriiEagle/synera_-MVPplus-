@@ -71,7 +71,15 @@ test('Google visibility requires the new rollout gate, registration and pilot re
     const response = await worker.fetch(new Request(origin + '/config.json'), { ...env, ...extra });
     const config = await response.json();
     assert.equal(config.googleOAuthEnabled, expected);
+    assert.equal(config.googleOauthReady, expected);
     assert.equal(config.googleOAuthInitUrl, expected ? env.SYNERA_NEON_AUTH_URL + '/sign-in/social/init' : undefined);
+  }
+});
+
+test('session exposes a bounded provider name, never an email as the profile name', async () => {
+  for (const [name, expected] of [[' Demo Ada ', 'Demo Ada'], [user.email, undefined], ['x'.repeat(61), undefined], ['Name\nOther', undefined], [null, undefined]]) {
+    const response = await handleNeon(request('/session', { headers: browserCookie }), env, async () => Response.json({ user: { ...user, name }, session: { id: 's' } }, { headers: { 'set-auth-jwt': 'header.payload.signature' } }));
+    assert.equal((await response.json()).user.name, expected);
   }
 });
 
