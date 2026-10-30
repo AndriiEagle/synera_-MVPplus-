@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "public",
+  "functions": {"api/ai/*.js": {"maxDuration": 25}},
+  "headers": [
+    {"source": "/api/:path*", "headers": [{"key": "Cache-Control", "value": "no-store"}]},
+    {"source": "/config.json", "headers": [{"key": "Cache-Control", "value": "no-store"}]}
+  ]
+}

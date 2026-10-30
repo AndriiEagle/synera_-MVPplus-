@@ -8,12 +8,14 @@ export async function liveAiSmoke({origin,receiptPath,operatorToken,fetchImpl=fe
   receiptPath=path.resolve(receiptPath);
   if(!receiptPath.startsWith(path.resolve('tmp')+path.sep)) throw Error('Smoke receipts must stay inside this worktree tmp/');
   const site=new URL(origin);
-  if(site.protocol!=='https:'||site.username||site.password||site.pathname!=='/'||site.search||site.hash||!operatorToken) throw Error('HTTPS origin and operator token required');
+  if(site.protocol!=='https:'||site.username||site.password||site.pathname!=='/'||site.search||site.hash) throw Error('HTTPS origin required');
   const config=await fetchImpl(site.origin+'/config.json',{cache:'no-store'}).then(r=>r.json());
   if(config.liveAiReady!==true||config.liveAiModel!=='z-ai/glm-5.3-flash') throw Error('Live AI is not ready; no model call made');
-  const spend=await fetchImpl(site.origin+'/api/ai/spend',{headers:{Authorization:`Bearer ${operatorToken}`},cache:'no-store'});
+  const vercel=config.liveAiRuntime==='vercel';
+  if(!vercel&&!operatorToken) throw Error('Worker operator token required');
+  const spend=await fetchImpl(site.origin+'/api/ai/spend',{headers:operatorToken?{Authorization:`Bearer ${operatorToken}`}:{},cache:'no-store'});
   if(!spend.ok) throw Error('Operator spend authentication failed; no model call made');
-  const before=await spend.json(); if(before.halted||before.costUsd+before.reservedUsd>=3) throw Error('Spend gate closed; no model call made');
+  const before=await spend.json(); if(before.halted||!Number.isFinite(before.costUsd)||!Number.isFinite(before.reservedUsd)||before.costUsd+before.reservedUsd>=(before.capUsd??3)) throw Error('Spend gate closed; no model call made');
   await fs.mkdir(path.dirname(receiptPath),{recursive:true});
   const attempt=receiptPath+'.attempt.json';
   await fs.writeFile(attempt,JSON.stringify({status:'ATTEMPT_RESERVED',origin:site.origin,at:new Date().toISOString()}),{flag:'wx'});
@@ -25,18 +27,18 @@ export async function liveAiSmoke({origin,receiptPath,operatorToken,fetchImpl=fe
       headers:{Origin:site.origin,'Content-Type':'application/json','X-Synera-Client':'1','X-Synera-AI-Consent':'live-ai-v1'},body:JSON.stringify(body)});
     const data=await response.json();
     result={status:'NEEDS_REVIEW',httpStatus:response.status,origin:site.origin,model:data.model,requestId:data.requestId,
-      promptTokens:data.promptTokens,completionTokens:data.completionTokens,costUsd:data.costUsd,costStatus:data.costStatus,
+      promptTokens:data.promptTokens,completionTokens:data.completionTokens,costUsd:data.costUsd,costStatus:data.costStatus,judged:data.judged,
       inputSha256:hash(JSON.stringify(body)),outputSha256:hash(data.text||''),at:new Date().toISOString()};
     if(response.ok && data.model==='z-ai/glm-5.3-flash' && typeof data.text==='string' && data.text.includes('Demo') &&
-      data.costStatus==='reported' && Number.isFinite(data.costUsd) && data.costUsd>=0 && data.promptTokens>0 && data.completionTokens>0 && data.requestId) result.status='PASS_TRANSPORT_AND_COST';
+      data.costStatus==='reported' && Number.isFinite(data.costUsd) && data.costUsd>=0 && data.promptTokens>0 && data.completionTokens>0 && data.requestId && (!vercel||data.judged==='accepted')) result.status='PASS_TRANSPORT_AND_COST';
     else result.error=data.error||'Missing cost/identity/output evidence';
-  } catch { result={status:'OUTCOME_UNKNOWN',origin:site.origin,at:new Date().toISOString(),error:'Reconcile Worker spend by time/request before any retry'}; }
+  } catch { result={status:'OUTCOME_UNKNOWN',origin:site.origin,at:new Date().toISOString(),error:'Reconcile provider/Vercel logs or Worker spend by time/request before any retry'}; }
   await fs.writeFile(receiptPath,JSON.stringify(result,null,2),{flag:'wx'});
   return result;
 }
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=name=>process.argv.find(a=>a.startsWith(name+'='))?.slice(name.length+1);
-  if(!process.argv.includes('--execute')) { console.error('Owner/Claude only: --execute --origin=https://PILOT --receipt=tmp/live-ai-smoke.json; SYNERA_OPERATOR_TOKEN in environment. One attempt, no retry.');process.exitCode=2; }
+  if(!process.argv.includes('--execute')) { console.error('Owner/Claude only: --execute --origin=https://PILOT --receipt=tmp/live-ai-smoke.json; Worker needs SYNERA_OPERATOR_TOKEN, Vercel does not. One persona request (GLM + Jev on Vercel), no retry.');process.exitCode=2; }
   else {
     try { const r=await liveAiSmoke({origin:arg('--origin'),receiptPath:path.resolve(arg('--receipt')||'tmp/live-ai-smoke.json'),operatorToken:process.env.SYNERA_OPERATOR_TOKEN});console.log(JSON.stringify(r));if(r.status!=='PASS_TRANSPORT_AND_COST') process.exitCode=1; }
     catch(error) { console.error(error.code==='EEXIST'?'Attempt already reserved. Collect/reconcile existing Worker receipts; do not rerun generation.':error.message);process.exitCode=1; }

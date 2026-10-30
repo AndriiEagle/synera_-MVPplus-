@@ -8,8 +8,8 @@ test.beforeAll(async()=>{
   origin=await new Promise((resolve,reject)=>{let out='';const timer=setTimeout(()=>reject(Error(out)),30000);server.stdout.on('data',b=>{out+=b;const m=out.match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);resolve(m[0]);}});server.stderr.on('data',b=>out+=b);server.on('exit',()=>reject(Error(out)));});
 });
 test.afterAll(()=>server?.kill());
-async function open(page,ready=true,lang='en') {
-  await page.route('**/config.json',r=>r.fulfill({json:{liveAiReady:ready,liveAiModel:'z-ai/glm-5.3-flash',liveAiProvider:'Fixture Inference',liveAiUnavailableReason:ready?null:'operator_setup_required'}}));
+async function open(page,ready=true,lang='en',runtime='worker') {
+  await page.route('**/config.json',r=>r.fulfill({json:{liveAiReady:ready,liveAiModel:'z-ai/glm-5.3-flash',liveAiProvider:'Fixture Inference',liveAiRuntime:runtime,liveAiUnavailableReason:ready?null:'operator_setup_required'}}));
   await page.emulateMedia({reducedMotion:'reduce'}); await page.goto(origin+'/simulation.html?lang='+lang);
   await page.locator('[data-view=join]').click();
   await page.locator('[name=name]').fill('PRIVATE PROFILE NAME'); await page.locator('[name=offers]').fill('PRIVATE PROFILE OFFER'); await page.locator('[name=seeks]').fill('PRIVATE PROFILE NEED'); await page.locator('#visitor-start').click();
@@ -35,6 +35,18 @@ test('cap reached falls back visibly; AI never signs persona agreement',async({p
   await page.route('**/api/ai/persona-reply',r=>r.fulfill({status:503,json:{error:'live_ai_cap_reached'}}));await open(page);await enable(page);await send(page);
   await expect(page.locator('#live-ai-status')).toContainText('daily');await expect(page.locator('#visitor-wait')).toBeEmpty();await expect(page.locator('[data-ai-tag]')).toHaveCount(0);
 });
+test('Vercel health hides the switch when the runtime key is missing',async({page})=>{
+  await page.route('**/api/ai/health',r=>r.fulfill({json:{liveAiReady:false,error:'live_ai_not_configured'}}));
+  await open(page);
+  await page.route('**/config.json',r=>r.fulfill({json:{liveAiReady:true,liveAiModel:'z-ai/glm-5.3-flash',liveAiProvider:'OpenRouter',liveAiRuntime:'vercel'}}));
+  await page.reload();await page.locator('[data-view=join]').click();
+  await expect(page.locator('#live-ai-toggle')).toBeHidden();
+});
+test('Jev rejection uses the existing script and never gets an AI tag',async({page})=>{
+  await page.route('**/api/ai/persona-reply',r=>r.fulfill({json:{text:'Demo · Scripted fallback',model:'z-ai/glm-5.3-flash',requestId:'rejected',judged:'rejected',scripted:true}}));
+  await open(page);await enable(page);await send(page);await expect(page.locator('#visitor-wait')).toBeEmpty();
+  await expect(page.locator('#visitor-chat')).not.toContainText('Scripted fallback');await expect(page.locator('[data-ai-tag]')).toHaveCount(0);
+});
 test('withdrawal and device erasure discard late model output',async({page})=>{
   let release;const held=new Promise(r=>release=r);await page.route('**/api/ai/persona-reply',async r=>{await held;await r.fulfill({json:{text:'Demo late AI',model:'z-ai/glm-5.3-flash',requestId:'late'}}).catch(()=>{});});
   await open(page);await enable(page);await send(page);await page.locator('#live-ai-toggle').click();release();await expect(page.locator('#visitor-wait')).toBeEmpty();await expect(page.locator('[data-ai-tag]')).toHaveCount(0);
@@ -52,9 +64,10 @@ test('failed configuration fetch reports unverified connection without claiming 
 for(const [name,device] of [['iPhone13',devices['iPhone 13']],['Pixel7',devices['Pixel 7']]]) test(`${name}: notice and marked answer fit phone`,async({browser})=>{
   const context=await browser.newContext({...device,defaultBrowserType:undefined,serviceWorkers:'block'});const page=await context.newPage();
   await page.route('**/api/ai/persona-reply',r=>r.fulfill({json:{text:'Demo · Один ескіз за коротке інтерв’ю. Почнемо з чернетки?',model:'z-ai/glm-5.3-flash',promptTokens:30,completionTokens:20,costUsd:0.0001,requestId:'shot'}}));
-  await open(page,true,'uk');await page.locator('#live-ai-toggle').click();await page.locator('#live-ai-notice').scrollIntoViewIfNeeded();
+  await page.route('**/api/ai/health',r=>r.fulfill({json:{liveAiReady:true,model:'z-ai/glm-5.3-flash',provider:'OpenRouter'}}));
+  await open(page,true,'uk','vercel');await page.locator('#live-ai-toggle').click();await page.locator('#live-ai-notice').scrollIntoViewIfNeeded();
   expect((await new AxeBuilder({page}).include('#live-ai-notice').analyze()).violations.filter(v=>['critical','serious'].includes(v.impact))).toEqual([]);
-  await fs.mkdir('docs/live-ai-20261030/shots',{recursive:true});await page.screenshot({path:`docs/live-ai-20261030/shots/${name}-notice.png`,fullPage:true});
+  await fs.mkdir('docs/live-ai-vercel-20261030/shots',{recursive:true});await page.screenshot({path:`docs/live-ai-vercel-20261030/shots/${name}-notice.png`,fullPage:true});
   await page.locator('#live-ai-accept').click();await send(page,'Що можемо спробувати?');await expect(page.locator('[data-ai-tag]')).toHaveCount(1);await page.locator('[data-ai-tag]').scrollIntoViewIfNeeded();
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:`docs/live-ai-20261030/shots/${name}-answer.png`,fullPage:true});await context.close();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:`docs/live-ai-vercel-20261030/shots/${name}-answer.png`,fullPage:true});await context.close();
 });
