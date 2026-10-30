@@ -57,4 +57,4 @@ export function installOnboardingTour({ document: doc = document, storage } = {}
   return { start, finish, get index() { return index; } };
 }
 
-if (typeof document !== 'undefined' && typeof window !== 'undefined') installOnboardingTour();
+export const activeTour = typeof document !== 'undefined' && typeof window !== 'undefined' ? installOnboardingTour() : null;

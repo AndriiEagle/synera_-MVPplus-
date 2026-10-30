@@ -11,11 +11,11 @@ import { createPeopleMap } from './map.mjs';
 import { consentRecord } from './pilot-policy.mjs';
 import { CHATGPT_PROFILE_PROMPT, summarizeTransfer } from './chatgpt-transfer.mjs';
 // SYN_IMPORT: export parsing stays local, deterministic, in-memory only.
-import { parseChatGptExport, parseClaudeExport, redactHints, mapHintsToProfileDraft } from './profile-import.mjs';
 import { meetingCalendar } from './calendar.mjs';
 import { closeLocationGrantForMeeting } from './live-location.mjs';
 import { meetingLocationSection } from './meeting-location.mjs';
 import { LocationSession } from './location-session.mjs';
+import { restoreProfileDraft } from './input-drafts.mjs';
 const $ = selector => document.querySelector(selector);
 const form = $('#profile-form');
 const callbackUrl = new URL(location.href);
@@ -559,7 +559,7 @@ async function finishOnlineSignIn(accepted) {
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
 function openProfileDraft() {
-  if ($('#workspace').hidden) { showWorkspace(); fillProfileForm(draft || {}); }
+  if ($('#workspace').hidden) { showWorkspace(); fillProfileForm(draft || {}); if (!store?.user) restoreProfileDraft(form); renderProfileProgress(); }
   tab('profile');
   if (!store?.user) {
     $('#mode').textContent='Твоя чернетка · у цій вкладці';
@@ -837,6 +837,7 @@ $('#share-dialog .actions').append(btn('Завантажити JSON', () => {
 // The flag is a code constant, default OFF; nothing in localStorage, URL or config may enable it.
 const AI_MEMORY_IMPORT_ENABLED = false;
 if (AI_MEMORY_IMPORT_ENABLED) {
+  const { parseChatGptExport, parseClaudeExport, redactHints, mapHintsToProfileDraft } = await import('./profile-import.mjs');
   const MEMORY_IMPORT_PARSERS = { chatgpt: parseChatGptExport, claude: parseClaudeExport };
   const MAX_MEMORY_IMPORT_BYTES = 40000, MAX_MEMORY_IMPORT_CHARS = 20000;
   const MEMORY_ROLE_LABELS = { buyer: 'покупець', supplier: 'постачальник', introducer: 'рекомендую (інтродюсер)', seeker: 'шукаю рекомендацію' };

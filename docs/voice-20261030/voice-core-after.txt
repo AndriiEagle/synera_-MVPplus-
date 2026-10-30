@@ -1,0 +1,13 @@
+✔ capture preserves phrases, punctuation and unassigned words in all three languages (26.3243ms)
+✔ dictation replaces only selection, adds spacing and never silently truncates (1.1457ms)
+✔ capture preserves complete subject phrases including spoken English contractions (0.744ms)
+✔ voice labels have exact key symmetry and locale follows only supported UI choices (1.4327ms)
+✔ tab autosave restores exact words but never restores visibility or consent (1.0884ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 414.1778

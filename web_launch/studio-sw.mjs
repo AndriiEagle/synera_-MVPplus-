@@ -6,6 +6,7 @@ ASSETS.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive
 ASSETS.push('/adapt-copy.mjs','/adapt-observer.mjs','/adapt-ui.mjs','/sovereign.mjs','/sovereign-ui.mjs','/balance.mjs','/journal-matching.mjs','/adapt-demo.mjs','/b-matching.mjs','/simulation-personas.mjs');
 ASSETS.push('/simulation-mode.mjs');
 ASSETS.push('/privacy.html','/privacy.css','/privacy-retention.mjs','/privacy-content.mjs','/privacy-device.mjs','/privacy-common.mjs','/privacy-centre.mjs','/style.css','/legal.html','/ops-log.mjs');
+ASSETS.push('/voice-core.mjs','/voice-copy.mjs','/voice-input.mjs','/voice-ui.mjs','/input-drafts.mjs','/voice.css','/journal.mjs');
 ASSETS.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.css','/pilot-consent.html','/privacy.html','/privacy.css','/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/site-shell.css','/site-shell.mjs','/style-switcher.mjs','/adaptive-ui.mjs','/adaptive.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css','/legal.html','/tokens.css','/style.css');
 ASSETS.push('/scenes.css','/scene-studio.webp','/scene-studio@2x.webp');
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll([...new Set(ASSETS)])).then(()=>self.skipWaiting())));

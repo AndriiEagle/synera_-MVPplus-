@@ -1,0 +1,44 @@
+✔ capture preserves phrases, punctuation and unassigned words in all three languages (16.2029ms)
+✔ dictation replaces only selection, adds spacing and never silently truncates (0.8843ms)
+✖ capture preserves complete subject phrases including spoken English contractions (3.8549ms)
+✔ voice labels have exact key symmetry and locale follows only supported UI choices (0.6385ms)
+✔ tab autosave restores exact words but never restores visibility or consent (1.1829ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 284.7999
+
+✖ failing tests:
+
+test at tmp\voice-core-before.test.mjs:25:1
+✖ capture preserves complete subject phrases including spoken English contractions (3.8549ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      goal: '',
+      offers: '',
+  +   seeks: 'looking for a website.',
+  +   unassigned: 'I am'
+  -   seeks: 'I am looking for a website.',
+  -   unassigned: ''
+    }
+  
+      at TestContext.<anonymous> (file:///C:/sw/synera-secfix/tmp/voice-core-before.test.mjs:27:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { offers: '', seeks: 'looking for a website.', goal: '', unassigned: 'I am' },
+    expected: { offers: '', seeks: 'I am looking for a website.', goal: '', unassigned: '' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

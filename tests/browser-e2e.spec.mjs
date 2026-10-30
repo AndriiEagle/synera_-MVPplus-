@@ -574,26 +574,26 @@ test('Triangle L local journey preserves explicit answers, version changes, opti
   await page.locator('#room-goal').fill('Перший прототип для трьох');
   for(const [id,name]of [['a','Mara'],['b','Leo'],['c','Noor']])await page.locator(`#name-${id}`).fill(name);
   await page.locator('#local-understood').check();
-  await page.locator('#room-setup button').click();
+  await page.locator('#room-setup button[type=submit]').click();
   for(const form of await page.locator('#contributions form').all()){
-    await form.locator('textarea').fill('Зроблю свою частину'); await form.locator('button').click();
+    await form.locator('textarea').fill('Зроблю свою частину'); await form.locator('button[type=submit]').click();
   }
   await page.locator('#message-body').fill('<img src=x onerror="window.__bad=true"> Приватна ідея');
-  await page.locator('#message-form button').click();
+  await page.locator('#message-form button[type=submit]').click();
   await expect(page.locator('#room-messages')).toContainText('<img src=x');
   expect(await page.locator('#room-messages img').count()).toBe(0);
   await page.locator('#task-title').fill('Перевірити прототип із клієнтом');
-  await page.locator('#task-form button').click();
+  await page.locator('#task-form button[type=submit]').click();
   await page.locator('#ask-l').click();
   await expect(page.locator('#l-note')).toContainText('відкритий крок');
   await page.locator('#budget-purpose').fill('Прототип: погодити витрати й права');
-  await page.locator('#budget-form button').click();
-  const vote=async(index,choice)=>{const form=page.locator('.budget-vote').nth(index);await form.locator('select').selectOption(choice);await form.locator('button').click();};
+  await page.locator('#budget-form button[type=submit]').click();
+  const vote=async(index,choice)=>{const form=page.locator('.budget-vote').nth(index);await form.locator('select').selectOption(choice);await form.locator('button[type=submit]').click();};
   await vote(0,'yes'); await vote(1,'yes');
   await expect(page.locator('#budget-state')).toHaveAttribute('data-state','awaiting_responses');
   await vote(2,'no');await expect(page.locator('#budget-state')).toHaveAttribute('data-state','declined');
   await vote(2,'yes');await expect(page.locator('#budget-state')).toHaveAttribute('data-state','unanimous_local_notes');
-  const first=page.locator('#contributions form').first();await first.locator('textarea').fill('Змінив обсяг роботи');await first.locator('button').click();
+  const first=page.locator('#contributions form').first();await first.locator('textarea').fill('Змінив обсяг роботи');await first.locator('button[type=submit]').click();
   await expect(page.locator('#budget-state')).toHaveAttribute('data-state','awaiting_responses');
   await expect(page.locator('.budget-vote').first()).toContainText('Відповіді ще немає');
   await page.locator('#round-seconds').fill('15');await page.locator('#round-agreed').check();await page.locator('#round-form button').click();await page.locator('#round-start').click();
@@ -618,9 +618,10 @@ test('Opportunity map layers explain complementarity and fair-place proposal use
   for(const [i,name,times]of [[0,'Місце A Zürich',[2,40,30]],[1,'Місце B Zürich',[20,20,20]],[2,'Місце C Zürich',[15,18,16]]]){
     await page.locator(`#place-${i}`).fill(name);for(let j=0;j<3;j++)await page.locator(`#minutes-${i}-${j}`).fill(String(times[j]));await page.locator(`#acceptable-${i}`).check();
   }
-  await page.locator('#place-form button').click();await expect(page.locator('#place-result')).toContainText('Місце C Zürich');
+  await expect(page.locator('#place-form button[type=submit]')).toHaveCount(1);
+  await page.locator('#place-form button[type=submit]').click();await expect(page.locator('#place-result')).toContainText('Місце C Zürich');
   const route=new URL(await page.locator('#place-result a').getAttribute('href'));expect(route.searchParams.get('destination')).toBe('Місце C Zürich');expect(route.searchParams.has('origin')).toBe(false);
-  await page.locator('#limit-a').fill('1');await page.locator('#place-form button').click();await expect(page.locator('#place-result')).toHaveAttribute('data-state','no_feasible_place');
+  await page.locator('#limit-a').fill('1');await page.locator('#place-form button[type=submit]').click();await expect(page.locator('#place-result')).toHaveAttribute('data-state','no_feasible_place');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
   await page.screenshot({path:testInfo.outputPath('atlas-mobile.png'),fullPage:true});

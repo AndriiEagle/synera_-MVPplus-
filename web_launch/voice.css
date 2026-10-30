@@ -1,0 +1,39 @@
+.voice-field { min-width:0; }
+.voice-tools { display:flex; flex-wrap:wrap; gap:.35rem; align-items:center; margin:.35rem 0 .6rem; min-width:0; font-size:.85rem; }
+.voice-tools button,.voice-tools button.quiet { min-width:44px; min-height:44px; padding:.45rem .6rem; font-size:.85rem; margin:0; }
+.voice-tools [data-voice-mic] { display:inline-flex; gap:.35rem; align-items:center; justify-content:center; }
+.voice-languages { display:flex; gap:.15rem; }
+.voice-languages [aria-pressed="true"],.voice-tools [data-voice-mic][aria-pressed="true"] { outline:2px solid var(--accent,#d9c59c); outline-offset:-2px; }
+.voice-status { display:block; flex-basis:100%; min-width:0; overflow-wrap:anywhere; color:inherit; font-size:.85rem; white-space:pre-wrap; }
+.voice-status:empty { display:none; }
+.quick-capture { padding:1.1rem; border:1px solid var(--border,#68606a); border-radius:18px; background:var(--panel,#201f28); margin:1rem 0; max-width:44rem; text-align:left; }
+.quick-capture h2 { font-size:1.2rem; margin:0 0 .5rem; }
+.quick-capture p { font-size:.9rem; margin:.5rem 0; }
+.quick-capture label { display:grid; gap:.4rem; margin:.7rem 0; }
+.quick-capture textarea { width:100%; min-height:90px; }
+.quick-capture [data-capture-preview] { border-top:1px solid var(--border,#68606a); margin-top:1rem; padding-top:.6rem; }
+.quick-capture button { min-height:44px; }
+[data-voice-journal] { margin:1rem 0; max-width:44rem; }
+#voice-notice { max-width:36rem; max-height:85dvh; overflow:auto; }
+#voice-notice .check { display:flex; gap:.7rem; align-items:center; min-height:44px; }
+#voice-notice input { width:24px; height:24px; flex:none; }
+.composer-row { flex-wrap:wrap; }
+.composer-row .voice-tools { flex-basis:100%; order:2; }
+.composer-row textarea { min-width:0; }
+.composer-row button[type="submit"] { min-width:44px; min-height:44px; }
+.living .voice-tools button { background:#272832; color:#f6f2ec; }
+.living .voice-tools button[aria-pressed="true"] { background:#38322b; color:#f6f2ec; }
+.living .living-composer { position:sticky; bottom:var(--living-keyboard,0px); }
+.living .living-chips { flex-wrap:nowrap; overflow-x:auto; padding-bottom:.25rem; }
+.living .living-chips button { flex:none; }
+.living-composer,.sim-conversation form { scroll-margin-bottom:1rem; }
+/* Lay out inactive input panels during startup, so the first tap does not pay
+   the native-control/font setup cost. They stay invisible, unfocusable and clipped. */
+.living-main { position:relative; }
+.living #living-join[hidden],.living #living-journal[hidden] {
+  display:block!important; visibility:hidden; position:absolute;
+  left:max(1rem,env(safe-area-inset-left)); right:max(1rem,env(safe-area-inset-right));
+  block-size:0; overflow:clip; contain:layout style;
+}
+@media print { .living #living-journal[hidden] { visibility:visible; position:static; block-size:auto; overflow:visible; contain:none; } }
+@media print { .voice-tools,.quick-capture,[data-voice-journal] { display:none!important; } }

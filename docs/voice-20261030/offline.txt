@@ -1,0 +1,1 @@
+{"variant":"voice-20261030","status":"PASS_CACHE_ONLY_OFFLINE_STARTUP","failed":[],"out":"C:\\sw\\synera-secfix\\artifacts\\offline-shell-acceptance\\PASS3_VOICE-20261030"}

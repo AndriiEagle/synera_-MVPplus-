@@ -13,6 +13,8 @@ const page = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/in
 // Reading it and choosing a language must not create browser records.
 const languageStorage = page === '/get' ? null : storage;
 if (['/index','/summit','/studio','/studio-journey','/triangle'].includes(page)) demoMarker();
+// Keep the shared shell and Demo notice independent of the larger input graph.
+import('./voice-ui.mjs');
 if (page === '/legal' || page === '/pilot-consent') import('./legal-documents.mjs').then(module => module.renderDocuments(page === '/pilot-consent'));
 const ownLanguage = ['/real-journey', '/summit', '/get'].includes(page);
 const query = new URLSearchParams(location.search);
