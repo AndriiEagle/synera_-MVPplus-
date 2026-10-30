@@ -1,5 +1,4 @@
--- REVIEW ONLY. Read-only inventory regenerated from this SECFIX source; not live acceptance.
--- The rest of this older kit MUST be regenerated after merge before use.
+-- Read-only catalog inventory. false means absent; never reads member emails or private rows.
 select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:USAGE:schema public' as object, coalesce((has_schema_privilege('authenticated','public','usage')),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'function' as kind, 'public.synera_user_id()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_user_id' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
@@ -847,6 +846,138 @@ union all
 select 'privacy-retention-purge.migration.sql' as migration, 'function' as kind, 'public.synera_purge_expired_privacy_data()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_expired_privacy_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
 select 'privacy-retention-purge.migration.sql' as migration, 'grant' as kind, 'service_role:EXECUTE:public.synera_purge_expired_privacy_data()' as object, coalesce((coalesce(has_function_privilege('service_role',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_expired_privacy_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'table' as kind, 'public.consent_events' as object, coalesce((to_regclass('public.consent_events') is not null),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.id' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='id')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.user_id' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='user_id')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.policy_version' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='policy_version')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.action' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='action')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.purpose' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='purpose')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.recipient' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='recipient')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.document_version' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='document_version')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.document_text' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='document_text')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.document_sha256' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='document_sha256')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.locale' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='locale')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.occurred_at' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='occurred_at')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'column' as kind, 'public.consent_events.expires_at' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='consent_events' and column_name='expires_at')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'rls' as kind, 'public.consent_events' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.consent_events')),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:SELECT:public.consent_events' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.consent_events'),'select'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.user_id' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='user_id' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.action' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='action' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.purpose' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='purpose' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.recipient' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='recipient' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.document_version' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='document_version' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.document_text' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='document_text' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.document_sha256' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='document_sha256' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.locale' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='locale' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.consent_events.expires_at' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.consent_events'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.consent_events') and attname='expires_at' and not attisdropped),'insert'),false)),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'policy' as kind, 'public.consent_events.consent_events_read' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.consent_events') and polname='consent_events_read')),false) as present
+union all
+select 'consent-evidence.migration.sql' as migration, 'policy' as kind, 'public.consent_events.consent_events_create' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.consent_events') and polname='consent_events_create')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'table' as kind, 'public.openness' as object, coalesce((to_regclass('public.openness') is not null),false) as present
+union all
+select 'openness.migration.sql' as migration, 'column' as kind, 'public.openness.until' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='openness' and column_name='until')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'column' as kind, 'public.openness.precision' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='openness' and column_name='precision')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'column' as kind, 'public.openness.district' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='openness' and column_name='district')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'column' as kind, 'public.openness.give' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='openness' and column_name='give')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'column' as kind, 'public.openness.need' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='openness' and column_name='need')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'index' as kind, 'public.openness_until' as object, coalesce((to_regclass('public.openness_until') is not null),false) as present
+union all
+select 'openness.migration.sql' as migration, 'rls' as kind, 'public.openness' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.openness')),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'grant' as kind, 'authenticated:SELECT:public.openness' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.openness'),'select'),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.openness' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.openness'),'insert'),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'grant' as kind, 'authenticated:UPDATE:public.openness' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.openness'),'update'),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'grant' as kind, 'authenticated:DELETE:public.openness' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.openness'),'delete'),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'function' as kind, 'public.synera_is_open()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_is_open' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
+union all
+select 'openness.migration.sql' as migration, 'grant' as kind, 'authenticated:EXECUTE:public.synera_is_open()' as object, coalesce((coalesce(has_function_privilege('authenticated',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_is_open' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
+union all
+select 'openness.migration.sql' as migration, 'policy' as kind, 'public.openness.openness_read' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.openness') and polname='openness_read')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'policy' as kind, 'public.openness.openness_insert' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.openness') and polname='openness_insert')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'policy' as kind, 'public.openness.openness_update' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.openness') and polname='openness_update')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'policy' as kind, 'public.openness.openness_revoke' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.openness') and polname='openness_revoke')),false) as present
+union all
+select 'openness.migration.sql' as migration, 'function' as kind, 'public.synera_purge_openness()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_openness' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.profiles' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.profiles') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.meeting_requests' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.meeting_requests') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.pilot_consents' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.pilot_consents') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.profile_blocks' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.profile_blocks') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.meeting_messages' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.meeting_messages') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.profile_reports' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.profile_reports') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.synera_write_limits' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.synera_write_limits') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.synera_pilot_members' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.synera_pilot_members') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.match_cases' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.match_cases') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.match_case_approvals' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.match_case_approvals') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.meeting_location_grants' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.meeting_location_grants') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.location_consent_intents' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.location_consent_intents') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.group_rooms' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.group_rooms') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.group_room_members' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.group_room_members') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.group_room_messages' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.group_room_messages') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.group_room_events' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.group_room_events') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.match_outcome_events' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.match_outcome_events') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.meeting_address_events' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.meeting_address_events') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.profile_erasures' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.profile_erasures') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.synera_privacy_ops_logs' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.synera_privacy_ops_logs') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
+union all
+select 'rls-hardening.migration.sql' as migration, 'forced-rls' as kind, 'public.consent_events' as object, coalesce((exists(select 1 from pg_catalog.pg_class c join pg_catalog.pg_policy p on p.polrelid=c.oid where c.oid=to_regclass('public.consent_events') and c.relforcerowsecurity and p.polname='synera_owner_maintenance' and p.polroles=ARRAY[c.relowner]::oid[] and pg_get_expr(p.polqual,c.oid)='true' and pg_get_expr(p.polwithcheck,c.oid)='true')),false) as present
 order by migration,kind,object;
 
 BEGIN READ ONLY;

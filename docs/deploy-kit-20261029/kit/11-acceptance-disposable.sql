@@ -24,7 +24,7 @@ create table public.profiles (
 );
 alter table public.profiles enable row level security;
 revoke all on public.profiles from public, authenticated;
-grant select, delete on public.profiles to authenticated;
+grant select on public.profiles to authenticated;
 grant insert (id, display_name, city, offers, seeks, is_discoverable),
       update (id, display_name, city, offers, seeks, is_discoverable)
       on public.profiles to authenticated;
@@ -34,8 +34,6 @@ create policy profiles_create on public.profiles for insert to authenticated
   with check ((select public.synera_user_id()) = id);
 create policy profiles_update on public.profiles for update to authenticated
   using ((select public.synera_user_id()) = id) with check ((select public.synera_user_id()) = id);
-create policy profiles_delete on public.profiles for delete to authenticated
-  using ((select public.synera_user_id()) = id);
 create table public.meeting_requests (
   id uuid primary key default gen_random_uuid(),
   sender_id uuid not null references public.profiles(id) on delete cascade,
@@ -380,10 +378,15 @@ set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
 delete from public.profile_blocks where blocker_id=public.synera_user_id();
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-delete from public.profiles where id=public.synera_user_id();
+do $ begin
+  begin delete from public.profiles where id=public.synera_user_id();
+raise exception 'Direct profile DELETE passed';
+exception when insufficient_privilege then null;
+end;
+end $;
 reset role;
 do $$ begin
-  if exists(select 1 from public.meeting_requests) or exists(select 1 from public.meeting_messages) then raise exception 'Profile deletion did not cascade'; end if;
+  if not exists(select 1 from public.meeting_requests) or not exists(select 1 from public.meeting_messages) then raise exception 'Direct DELETE lost shared evidence'; end if;
   if (select invitations from public.synera_write_limits where user_id='11111111-1111-4111-8111-111111111111') <> 1 then raise exception 'Profile deletion reset admission'; end if;
 end $$;
 do $$ declare r text; t text; begin
@@ -2029,7 +2032,7 @@ select id,'Case fixture','Product design','B2B sales',id <> '33333333-3333-4333-
 from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');
 insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
 select id,'2026-09-05-pilot-3',true,true from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('case-outcome-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-30","due_on":"2026-11-05","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58',now()+interval '14 days');
+insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('case-outcome-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-31","due_on":"2026-11-06","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d',now()+interval '14 days');
 RESET ROLE;
 
 set local role authenticated;
@@ -2315,17 +2318,17 @@ select id,'Case fixture','Product design','B2B sales',id <> '33333333-3333-4333-
 from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');
 insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
 select id,'2026-09-05-pilot-3',true,true from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('case-address-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-30","due_on":"2026-11-05","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58',now()+interval '14 days');
+insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('case-address-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-31","due_on":"2026-11-06","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d',now()+interval '14 days');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('case-address-ab','11111111-1111-4111-8111-111111111111',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('case-address-ab','11111111-1111-4111-8111-111111111111',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('case-address-ab','22222222-2222-4222-8222-222222222222',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('case-address-ab','22222222-2222-4222-8222-222222222222',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
 insert into public.meeting_requests(id,sender_id,recipient_id,note,status,proposed_at,duration_minutes,meeting_place) values('44444444-4444-4444-8444-444444444444','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','Disposable agreed exchange','accepted',now()+interval '1 day',30,'Zürich');
-select set_config('synera.revised_material','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-30","due_on":"2026-11-05","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen revised","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}',true); select set_config('synera.revised_hash','2d40fa12ae19f37348774ac2a8646711d7db52f6e4794f20a8785c5eacc3a5e2',true);
+select set_config('synera.revised_material','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-31","due_on":"2026-11-06","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen revised","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}',true); select set_config('synera.revised_hash','4cad4795108bdadc1446d5c53e79ec13b399175fecd83308f2ff0b9631b4d312',true);
 
 select set_config('synera.test_hash',(select terms_hash from public.match_cases where case_id='case-address-ab'),true);
 create function pg_temp.address_call(a text,i uuid,p uuid,d text default null,consent boolean default null) returns jsonb
@@ -2546,13 +2549,13 @@ select id,'Case fixture','Product design','B2B sales',id <> '33333333-3333-4333-
 from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');
 insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
 select id,'2026-09-05-pilot-3',true,true from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('message-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-30","due_on":"2026-11-05","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58',now()+interval '14 days');
+insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('message-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-31","due_on":"2026-11-06","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d',now()+interval '14 days');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('message-ab','11111111-1111-4111-8111-111111111111',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('message-ab','11111111-1111-4111-8111-111111111111',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('message-ab','22222222-2222-4222-8222-222222222222',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('message-ab','22222222-2222-4222-8222-222222222222',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
 insert into public.meeting_requests(id,sender_id,recipient_id,note,status,proposed_at,duration_minutes,meeting_place) values('44444444-4444-4444-8444-444444444444','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','Disposable agreed exchange','accepted',now()+interval '1 day',30,'Zürich');
@@ -2798,13 +2801,13 @@ select id,'Case fixture','Product design','B2B sales',id <> '33333333-3333-4333-
 from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');
 insert into public.pilot_consents(user_id,policy_version,terms_accepted,privacy_acknowledged)
 select id,'2026-09-05-pilot-3',true,true from neon_auth."user" where id in ('11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','33333333-3333-4333-8333-333333333333');SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('erase-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-30","due_on":"2026-11-05","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58',now()+interval '14 days');
+insert into public.match_cases(case_id,participant_low,participant_high,mode,material,terms_hash,expires_at) values('erase-ab','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','exchange','{"mode":"exchange","components":["exchange"],"outcomes":[{"receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen"},{"receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype"}],"trial":{"starts_on":"2026-10-31","due_on":"2026-11-06","deliverables":[{"giver_id":"22222222-2222-4222-8222-222222222222","receiver_id":"11111111-1111-4111-8111-111111111111","capability_tag":"design","target":"One reviewed screen","acceptance_criteria":"Both reviewed on their own phone"},{"giver_id":"11111111-1111-4111-8111-111111111111","receiver_id":"22222222-2222-4222-8222-222222222222","capability_tag":"automation","target":"One working prototype","acceptance_criteria":"Opens the agreed screen"}]},"compensation":{"status":"agreed_exchange","amount_minor":null,"currency":"","invoice_required":null},"terms":{"revision_limit":1,"confidentiality":"required","intellectual_property":"shared","cancellation":"mutual_written_notice"}}'::jsonb,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d',now()+interval '14 days');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('erase-ab','11111111-1111-4111-8111-111111111111',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('erase-ab','11111111-1111-4111-8111-111111111111',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 SET LOCAL ROLE authenticated; SELECT set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
-insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('erase-ab','22222222-2222-4222-8222-222222222222',1,'2f11710ca10e79f424042eec8dad1723752e22b2292f85cb55bbb77b71ff6e58');
+insert into public.match_case_approvals(case_id,party_id,approved_version,approved_terms_hash) values('erase-ab','22222222-2222-4222-8222-222222222222',1,'24d42fe8329ee2d52fc4f734f89670958e853f4384700f1e2f1bf6df3f631b0d');
 RESET ROLE;
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
 insert into public.meeting_requests(id,sender_id,recipient_id,note,status,proposed_at,duration_minutes,meeting_place) values('44444444-4444-4444-8444-444444444444','11111111-1111-4111-8111-111111111111','22222222-2222-4222-8222-222222222222','Disposable agreed exchange','accepted',now()+interval '1 day',30,'Zürich');
@@ -2878,6 +2881,10 @@ RESET ROLE;
 ROLLBACK TO SAVEPOINT fixtures;
 RELEASE SAVEPOINT fixtures;
 
+-- profile-delete-guard.migration.sql
+drop policy if exists profiles_delete on public.profiles;
+revoke delete on public.profiles from authenticated;
+
 -- privacy-complete-erasure.migration.sql
 do $$ begin
   if to_regprocedure('public.synera_erase_profile_data()') is null
@@ -2891,6 +2898,19 @@ do $$ begin
     raise exception 'Inspect existing complete erasure migration';
   end if;
 end $$;
+alter table public.profile_reports drop constraint profile_reports_reported_id_fkey;
+alter table public.profile_reports add column safety_hold_until timestamptz;
+create function public.synera_report_target_guard() returns trigger
+language plpgsql security definer set search_path='' as $$
+begin
+  if new.safety_hold_until is not null or new.reported_id='00000000-0000-4000-8000-000000000000'::uuid
+    or not exists(select 1 from neon_auth."user" u where u.id=new.reported_id) then
+    raise exception 'Report target unavailable' using errcode='23503';
+  end if;
+  return new;
+end $$;
+revoke all on function public.synera_report_target_guard() from public,authenticated;
+create trigger report_target_guard before insert on public.profile_reports for each row execute function public.synera_report_target_guard();
 create function public.synera_complete_erase_application_data() returns jsonb
 language plpgsql security definer set search_path='' set lock_timeout='5s' as $$
 declare actor uuid:=public.synera_user_id(); repeated boolean; erased jsonb;
@@ -2911,10 +2931,13 @@ begin
   delete from public.match_cases where participant_low=actor or participant_high=actor;
   delete from public.profile_blocks where blocker_id=actor or blocked_id=actor;
   delete from public.pilot_consents where user_id=actor;
-  -- Reports can contain free text about either party. Complete erasure removes
-  -- both directions; retaining a report about the requester would not be a
-  -- truthful complete application-data erasure claim.
-  delete from public.profile_reports where reporter_id=actor or reported_id=actor;
+  -- Delete the actor's authored free text, retain another reporter's evidence.
+  -- Proposed safety hold: 90 days from this erasure, never extended by retries;
+  -- service-role purge removes expired holds. Owner/legal review and a verified
+  -- daily scheduler are prerequisites for enabling COMPLETE_ERASURE_READY.
+  delete from public.profile_reports where reporter_id=actor;
+  update public.profile_reports set reported_id='00000000-0000-4000-8000-000000000000',
+    safety_hold_until=coalesce(safety_hold_until,now()+interval '90 days') where reported_id=actor;
 
   -- A room belongs to several people. Remove the erased person's authored text
   -- and events; revoke membership. A room created by the erased person is
@@ -2977,7 +3000,7 @@ alter table public.synera_privacy_ops_logs enable row level security;
 revoke all on public.synera_privacy_ops_logs from public,authenticated;
 create function public.synera_purge_expired_privacy_data() returns jsonb
 language plpgsql security definer set search_path='' as $$
-declare invitations bigint; intents bigint; logs bigint;
+declare invitations bigint; intents bigint; logs bigint; reports bigint;
 begin
   -- Daily: pending invitations expire at proposed_at, or at creation time for
   -- legacy rows that predate scheduling. A live grant retains its replay intent.
@@ -2988,11 +3011,128 @@ begin
   get diagnostics intents = row_count;
   delete from public.synera_privacy_ops_logs where created_at < now()-interval '90 days';
   get diagnostics logs = row_count;
+  delete from public.profile_reports where safety_hold_until <= now();
+  get diagnostics reports = row_count;
   return jsonb_build_object('schedule','daily','expiredInvitations',invitations,
-    'expiredLocationIntents',intents,'expiredOpsLogs',logs);
+    'expiredLocationIntents',intents,'expiredOpsLogs',logs,'expiredSafetyReports',reports);
 end $$;
 revoke all on function public.synera_purge_expired_privacy_data() from public,authenticated;
 grant execute on function public.synera_purge_expired_privacy_data() to service_role;
+
+-- consent-evidence.migration.sql
+create table public.consent_events (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null,
+  policy_version text not null default '2026-09-05-pilot-3',
+  action text not null check(action in ('grant','withdraw')),
+  purpose text not null check(length(btrim(purpose)) between 1 and 120),
+  recipient text not null check(length(btrim(recipient)) between 1 and 120),
+  document_version text not null check(length(btrim(document_version)) between 1 and 120),
+  document_text text not null check(octet_length(document_text) between 1 and 65536),
+  document_sha256 text not null check(document_sha256 ~ '^[0-9a-f]{64}$'
+    and document_sha256=encode(sha256(convert_to(document_text,'UTF8')),'hex')),
+  locale text not null check(locale in ('uk','de','en')),
+  occurred_at timestamptz not null default now(),
+  expires_at timestamptz,
+  check(expires_at is null or action='withdraw' or expires_at > occurred_at),
+  
+  
+  foreign key(user_id,policy_version) references public.pilot_consents(user_id,policy_version) on delete cascade
+);
+alter table public.consent_events enable row level security;
+revoke all on public.consent_events from public, authenticated;
+grant select on public.consent_events to authenticated;
+grant insert (user_id,action,purpose,recipient,document_version,document_text,document_sha256,locale,expires_at) on public.consent_events to authenticated;
+create policy consent_events_read on public.consent_events for select to authenticated
+  using(user_id=(select public.synera_user_id()) and (select public.synera_pilot_member()));
+create policy consent_events_create on public.consent_events for insert to authenticated
+  with check(user_id=(select public.synera_user_id()) and (select public.synera_pilot_member()));
+
+-- openness.migration.sql
+create table public.openness (
+  "user" uuid primary key references public.profiles(id) on delete cascade,
+  until timestamptz not null,
+  precision text not null check (precision in ('city','district')),
+  district text,
+  give text not null check (char_length(trim(give)) between 1 and 180),
+  need text not null check (char_length(trim(need)) between 1 and 180),
+  check ((precision='city' and district is null) or
+    (precision='district' and district is not null and district in ('altstadt','kreis4','kreis5','seefeld','wiedikon')))
+);
+create index openness_until on public.openness(until);
+alter table public.openness enable row level security;
+revoke all on public.openness from public, authenticated;
+grant select, insert, update, delete on public.openness to authenticated;
+create function public.synera_is_open() returns boolean
+language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.openness o
+    where o."user"=public.synera_user_id() and o.until>statement_timestamp());
+$$;
+revoke all on function public.synera_is_open() from public;
+grant execute on function public.synera_is_open() to authenticated;
+create policy openness_read on public.openness for select to authenticated
+  using (until>statement_timestamp() and public.synera_is_open());
+create policy openness_insert on public.openness for insert to authenticated
+  with check ("user"=public.synera_user_id() and until>statement_timestamp()
+    and until<=statement_timestamp()+interval '27 hours');
+create policy openness_update on public.openness for update to authenticated
+  using ("user"=public.synera_user_id())
+  with check ("user"=public.synera_user_id() and until>statement_timestamp()
+    and until<=statement_timestamp()+interval '27 hours');
+create policy openness_revoke on public.openness for delete to authenticated
+  using ("user"=public.synera_user_id());
+create function public.synera_purge_openness() returns bigint
+language plpgsql security definer set search_path = '' as $$
+declare removed bigint;
+begin
+  delete from public.openness where until<=statement_timestamp();
+  get diagnostics removed = row_count;
+  return removed;
+end $$;
+revoke all on function public.synera_purge_openness() from public, authenticated;
+do $$ declare r text; begin
+  foreach r in array array['anon','anonymous'] loop
+    if exists (select 1 from pg_roles where rolname=r) then
+      execute format('revoke all on public.openness from %I',r);
+      execute format('revoke all on function public.synera_is_open() from %I',r);
+      execute format('revoke all on function public.synera_purge_openness() from %I',r);
+    end if;
+  end loop;
+end $$;
+
+-- rls-hardening.migration.sql
+do $owner$ declare t record; begin
+  if not exists(select 1 from pg_roles where rolname='authenticated' and not rolbypassrls and not rolsuper) then
+    raise exception 'Missing or unsafe authenticated role';
+  end if;
+  for t in select c.relname,c.relowner,r.rolname from pg_class c
+    join pg_namespace n on n.oid=c.relnamespace join pg_roles r on r.oid=c.relowner
+    where n.nspname='public' and c.relkind in ('r','p') loop
+    if pg_has_role('authenticated',t.relowner,'MEMBER') then raise exception 'Application can assume protected owner'; end if;
+    execute format('create policy synera_owner_maintenance on public.%I for all to %I using (true) with check (true)',t.relname,t.rolname);
+  end loop;
+end $owner$;
+alter table public.profiles force row level security;
+alter table public.meeting_requests force row level security;
+alter table public.pilot_consents force row level security;
+alter table public.profile_blocks force row level security;
+alter table public.meeting_messages force row level security;
+alter table public.profile_reports force row level security;
+alter table public.synera_write_limits force row level security;
+alter table public.synera_pilot_members force row level security;
+alter table public.match_cases force row level security;
+alter table public.match_case_approvals force row level security;
+alter table public.meeting_location_grants force row level security;
+alter table public.location_consent_intents force row level security;
+alter table public.group_rooms force row level security;
+alter table public.group_room_members force row level security;
+alter table public.group_room_messages force row level security;
+alter table public.group_room_events force row level security;
+alter table public.match_outcome_events force row level security;
+alter table public.meeting_address_events force row level security;
+alter table public.profile_erasures force row level security;
+alter table public.synera_privacy_ops_logs force row level security;
+alter table public.consent_events force row level security;
 SAVEPOINT fixtures;
 insert into neon_auth."user"(id,name,email,"emailVerified","createdAt","updatedAt") values
 ('11111111-1111-4111-8111-111111111111','Acceptance A','a@synera-acceptance.example',true,now(),now()),

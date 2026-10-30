@@ -11,7 +11,7 @@ const sha = b => createHash('sha256').update(b).digest('hex');
 const lit = s => "'" + String(s).replaceAll("'", "''") + "'";
 const json = x => JSON.stringify(x, null, 2) + '\n';
 const slash = s => s.replaceAll('\\', '/');
-export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'profile-delete-guard', 'privacy-complete-erasure', 'privacy-retention-purge', 'consent-evidence', 'rls-hardening'];
+export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'profile-delete-guard', 'privacy-complete-erasure', 'privacy-retention-purge', 'consent-evidence', 'openness', 'rls-hardening'];
 
 // Read-only: owner runs this again after migrations and before enabling flags.
 export function securityInspectionSQL() {

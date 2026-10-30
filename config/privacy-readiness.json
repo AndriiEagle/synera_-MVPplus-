@@ -1,0 +1,12 @@
+{
+  "status": "OWNER_EVIDENCE_REQUIRED",
+  "requirements": {
+    "dpa_accepted": false,
+    "notice_published_with_operator_data": false,
+    "deletion_accepted_live": false,
+    "dpia_decided": false,
+    "transfer_basis_confirmed": false
+  },
+  "evidence": {},
+  "limits": "Booleans are release declarations, not evidence. Operator must review private receipts before changing them. Closed pilot remains subject to its existing gates. No deployment is authorized."
+}
