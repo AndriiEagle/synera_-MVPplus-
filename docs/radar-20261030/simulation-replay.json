@@ -1,0 +1,28 @@
+{
+  "args": [
+    "node",
+    "--require",
+    "C:/sw/task1601-header-chrome.cjs",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "tmp/radar-pw.config.mjs",
+    "simulation-living.spec.mjs"
+  ],
+  "exit": 1,
+  "tail": [
+    "      100 |   await page.clock.runFor(6000);",
+    "      101 |   expect(await page.evaluate(()=>localStorage.getItem('synera.journal.v1'))).toBeNull();",
+    "      102 |   await other.close();",
+    "        at C:\\sw\\synera-android\\tests\\simulation-living.spec.mjs:99:47",
+    "",
+    "    Error Context: tmp\\pw-results\\simulation-living-A3-erasu-10168-ithout-resurrecting-the-key\\error-context.md",
+    "",
+    "    Error Context: tmp\\pw-results\\simulation-living-A3-erasu-10168-ithout-resurrecting-the-key\\error-context.md",
+    "",
+    "  1 failed",
+    "    tests\\simulation-living.spec.mjs:90:1 \u203a A3: erasure in another tab cancels pending replies and autoplay without resurrecting the key ",
+    "  10 passed (1.2m)"
+  ],
+  "scope": "Unchanged simulation code/tests; confirms reproducibility only, not the root cause of the full-suite intermittent failure."
+}

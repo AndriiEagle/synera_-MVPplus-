@@ -1,0 +1,18 @@
+{
+  "pid": 12328,
+  "serverStopped": true,
+  "evidence": [
+    {
+      "device": "iphone13",
+      "pins": 6,
+      "external": [],
+      "errors": []
+    },
+    {
+      "device": "pixel7",
+      "pins": 6,
+      "external": [],
+      "errors": []
+    }
+  ]
+}

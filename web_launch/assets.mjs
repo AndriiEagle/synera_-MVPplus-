@@ -4,6 +4,8 @@ export const PUBLIC_ASSETS = Object.freeze({
   'sovereign.mjs':'text/javascript', 'sovereign-ui.mjs':'text/javascript', 'balance.mjs':'text/javascript',
   'journal-matching.mjs':'text/javascript', 'adapt-demo.mjs':'text/javascript',
   'simulation-mode.mjs':'text/javascript',
+  'radar.html': 'text/html', 'radar.css': 'text/css', 'radar.mjs': 'text/javascript',
+  'radar-ui.mjs': 'text/javascript', 'radar-copy.mjs': 'text/javascript', 'radar-events.json': 'application/json',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',
