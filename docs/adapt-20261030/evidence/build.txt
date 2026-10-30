@@ -1,0 +1,1 @@
+{"directory":"C:\\sw\\synera-adaptive\\web_launch\\dist-neon-ci","files":185,"published":false}

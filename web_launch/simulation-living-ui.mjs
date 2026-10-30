@@ -4,6 +4,10 @@ import { createJournal } from './journal.mjs';
 import { COPY, copy } from './simulation-copy.mjs';
 import { mountDeviceControls, inputNotice, demoMarker, DEMO_COPY } from './demo-device-controls.mjs';
 import { privacyLinks } from './privacy-common.mjs';
+import { mountSovereign } from './sovereign-ui.mjs';
+import { demoBalanceContext, demoParties } from './adapt-demo.mjs';
+import { adaptCopy, MATCH_COPY } from './adapt-copy.mjs';
+import { similarPeople } from './journal-matching.mjs';
 
 const $ = id => document.getElementById(id);
 let storage; try { storage = localStorage; } catch {}
@@ -49,6 +53,41 @@ demoMarker(); privacyLinks();
 inputNotice($('visitor-card'));
 $('visitor-text').setAttribute('aria-describedby',$('visitor-card').querySelector('[data-demo-input-notice]').id);
 const controls = mountDeviceControls(root.querySelector('.living-main'));
+const adaptText=adaptCopy(lang);
+const balanceDemo=el('details',undefined,'living-card');balanceDemo.dataset.demoBalance='';
+balanceDemo.append(el('summary',adaptText.demoBalance),el('p',adaptText.demoBalanceNote));
+const balanceTarget=el('div');balanceDemo.append(balanceTarget);$('living-feed').append(balanceDemo);
+mountSovereign(balanceTarget,demoBalanceContext(lang));
+const neutralTarget=el('div');$('visitor-chat').append(neutralTarget);
+const similarBox=el('section',undefined,'living-card'),similarLabel=el('label'),similarOpt=el('input'),similarList=el('div');similarOpt.type='checkbox';similarOpt.dataset.similarConsent='';
+similarLabel.append(similarOpt,el('span',adaptText.similarConsent));similarBox.append(el('h3',adaptText.similar),similarLabel,el('p',adaptText.similarNote),similarList);$('living-join').append(similarBox);
+const matchCopy=MATCH_COPY[lang]||MATCH_COPY.uk,matchingFields={};
+const savedMatching=journal.entries('visitor').findLast(e=>e.kind==='matching_profile'&&e.data.ownerId==='visitor')?.data.owner;
+for(const key of ['give','need']){
+  const label=el('label',matchCopy[key]),select=el('select');select.dataset.matchingField=key;
+  const blank=el('option',matchCopy.choose);blank.value='';select.append(blank);
+  for(const tag of ['design','sales','automation','finance','video','events','research']){const option=el('option',matchCopy[tag]);option.value=tag;select.append(option);}
+  select.value=savedMatching?.[key]?.[0]||'';label.append(select);similarBox.insertBefore(label,similarList);matchingFields[key]=select;
+  select.addEventListener('change',()=>{if(similarOpt.checked)add('matching_profile','visitor',matchCopy[key],{source:'visitor',ownerId:'visitor',owner:matchingOwner()});renderSimilar();});
+}
+function matchingOwner(){return {id:'visitor',give:matchingFields.give.value?[matchingFields.give.value]:[],need:matchingFields.need.value?[matchingFields.need.value]:[],formats:['remote'],limits:[]};}
+const useful=button(adaptText.useful,()=>{
+  if(session?.status!=='result'||!similarOpt.checked)return;
+  const partner=demoParties.find(p=>p.id===session.personId);
+  add('result','visitor',adaptText.useful,{source:'visitor',ownerId:'visitor',matchingConsent:true,useful:true,partner});renderSimilar();
+});useful.hidden=true;similarBox.append(useful);
+similarOpt.checked=journal.entries('visitor').findLast(e=>e.kind==='matching_consent')?.data.enabled===true;
+similarOpt.addEventListener('change',()=>{add('matching_consent','visitor',adaptText.similarConsent,{source:'visitor',enabled:similarOpt.checked});if(similarOpt.checked)add('matching_profile','visitor',adaptText.similar,{source:'visitor',ownerId:'visitor',owner:matchingOwner()});renderSimilar();});
+function renderSimilar(){
+  similarOpt.checked=journal.entries('visitor').findLast(e=>e.kind==='matching_consent')?.data.enabled===true;
+  similarList.replaceChildren();useful.hidden=session?.status!=='result'||!similarOpt.checked;
+  // Explicit selections only: no extraction of private profile text into tags.
+  const owner=matchingOwner();
+  const results=similarPeople({owner,candidates:demoParties,journal:journal.entries('visitor'),enabled:similarOpt.checked,lang});
+  if(!results.length)similarList.append(el('p',adaptText.similarEmpty));
+  for(const r of results){const row=el('article');row.append(el('strong',personName(r.id)),el('p',r.why));similarList.append(row);}
+}
+renderSimilar();
 $('living-honest').setAttribute('data-scripted-label', '');
 root.querySelector('.header-preferences summary').setAttribute('aria-label',root.querySelector('[data-privacy-link]').textContent);
 for (const [id, key] of Object.entries({ 'living-eyebrow': 'eyebrow', 'living-title': 'title', 'living-lead': 'lead', 'living-honest': 'honest', 'feed-title': 'feed', 'who-title': 'who', 'name-label': 'name', 'offers-label': 'offers', 'seeks-label': 'seeks', 'partner-label': 'partner', 'local-note': 'local', 'visitor-start': 'start', 'message-label': 'message', 'visitor-send': 'send', 'visitor-result': 'record', 'visitor-closed': 'closed', 'journal-title': 'journal', 'journal-local': 'local', 'filter-label': 'filter', 'journal-export': 'export', 'journal-print': 'print', 'journal-erase': 'erase', 'living-home': 'home', 'living-lab': 'lab' })) $(id).textContent = t(key);
@@ -99,7 +138,7 @@ function scheduleFeed() {
 }
 function externalErase() {
   clearTimeout(replyTimer); session = null; paused = true; scheduleFeed(); journal = createJournal(storage);
-  $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); status(t('erased'));
+  $('visitor-card').reset(); similarOpt.checked=false; $('saved-note').textContent = ''; renderVisitor(); renderSimilar(); renderJournal(); status(t('erased'));
 }
 window.addEventListener('synera:before-device-erase', () => { clearTimeout(replyTimer); clearTimeout(feedTimer); paused=true; session=null; });
 window.addEventListener('synera:device-erased', externalErase);
@@ -114,7 +153,8 @@ function persistMessages(previousCount) {
 }
 function renderVisitor() {
   $('visitor-chat').hidden = !session;
-  if (!session) return;
+  renderSimilar();
+  if (!session) {neutralTarget.replaceChildren();return;}
   $('visitor-title').textContent = `${session.profile.name} ↔ ${personName(session.personId)} · Demo`;
   $('visitor-terms').replaceChildren(el('h4', t('terms')));
   const list = el('dl'); for (const [key, label] of [['scope', 'scope'], ['reward', 'reward'], ['limits', 'limits'], ['meeting', 'time']]) list.append(el('dt', t(label)), el('dd', session.terms[key])); $('visitor-terms').append(list);
@@ -125,6 +165,10 @@ function renderVisitor() {
   $('visitor-composer').hidden = closed; $('visitor-closed').hidden = !closed;
   $('visitor-result').hidden = session.status !== 'agreed' || busy;
   for (const b of $('visitor-composer').querySelectorAll('button,textarea')) b.disabled = busy;
+  const parties=[{...matchingOwner(),goal:session.terms.scope,limits:[session.terms.limits]},demoParties.find(p=>p.id===session.personId)];
+  const collaborationId=`visitor-demo-${session.personId}-${session.seed}`;
+  const context={lang,parties,collaborationId,events:session.messages.map((m,i)=>({id:`visitor-${i}`,type:m.kind==='message'?'message':m.kind,actor:m.actor,text:m.text,collaborationId}))};
+  mountSovereign(neutralTarget,context,{onPause:()=>{clearTimeout(replyTimer);$('visitor-composer').hidden=true;},onResume:()=>{renderVisitor();scheduleReply();}});
 }
 function scheduleReply() {
   clearTimeout(replyTimer);
@@ -166,7 +210,7 @@ $('journal-export').addEventListener('click', () => {
 $('journal-print').addEventListener('click', () => { renderJournal(); window.print(); });
 $('journal-erase').addEventListener('click', () => {
   if (!confirm(t('eraseAsk'))) return;
-  try { journal.erase(); paused = true; clearTimeout(replyTimer); session = null; $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); scheduleFeed(); status(t('erased')); }
+  try { journal.erase(); paused = true; clearTimeout(replyTimer); session = null; similarOpt.checked=false; $('visitor-card').reset(); $('saved-note').textContent = ''; renderVisitor(); renderJournal(); scheduleFeed(); status(t('erased')); }
   catch { status(t('storageError')); }
 });
 window.addEventListener('storage', e => {
@@ -176,7 +220,7 @@ window.addEventListener('storage', e => {
   if (e.newValue === null) {
     externalErase(); return;
   }
-  renderJournal(); status();
+  renderJournal(); renderSimilar(); status();
 });
 document.addEventListener('visibilitychange', scheduleFeed);
 window.addEventListener('online', () => status()); window.addEventListener('offline', () => status());

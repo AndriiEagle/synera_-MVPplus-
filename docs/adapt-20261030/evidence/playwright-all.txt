@@ -1,0 +1,173 @@
+
+Running 124 tests using 2 workers
+
+
+
+node : (node:37736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:3 Zeichen:1
++ node node_modules/@playwright/test/cli.js test --config tmp/adapt-pw. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:37736) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/124] tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load
+[2/124] tests\argon-fixes.cases.mjs:35:3 › Argon regression acceptance › F1 all six tour targets are visible and usable from a fresh visit
+[3/124] tests\adapt-e2e.spec.mjs:21:1 › third-session consent/decline/accept/undo/reset, draft preserved, no outbound payload
+[4/124] tests\argon-fixes.cases.mjs:50:3 › Argon regression acceptance › F2 closed paths expose an editable draft and a local triangle prototype
+[5/124] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in uk
+[6/124] tests\argon-fixes.cases.mjs:62:3 › Argon regression acceptance › F3 closed sign-in is compact; a ready server restores the full form
+[7/124] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in de
+[8/124] tests\argon-fixes.cases.mjs:78:3 › Argon regression acceptance › F4 at most one installation surface on iPhone, Android and desktop
+[9/124] tests\adapt-e2e.spec.mjs:44:36 › Demo balance, explain/dismiss, pause/report, Triangle and journal opt-in en
+[10/124] tests\adapt-e2e.spec.mjs:64:1 › Triangle shows three-party prompts, completed local tasks and symmetric counts
+[11/124] tests\argon-fixes.cases.mjs:93:3 › Argon regression acceptance › F5 all static pages and every style match browser chrome to their canvas
+[12/124] tests\argon-fixes.cases.mjs:118:3 › Argon regression acceptance › F6 all shared-shell mobile headings share a 24px gutter and accented eyebrows
+[13/124] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow iPhone 13
+[14/124] tests\adapt-e2e.spec.mjs:75:45 › screenshots and no horizontal overflow Pixel 7
+[15/124] tests\argon-fixes.cases.mjs:132:3 › Argon regression acceptance › F7 diagram segments never intersect participant labels at 390x844
+[16/124] tests\argon-fixes.cases.mjs:149:3 › Argon regression acceptance › F8 mobile primary CTAs fill the common content width
+[17/124] tests\graphics-e2e.spec.mjs:23:3 › iphone13: graphics decode, CTA stays above fold, Demo faces remain fictional
+[18/124] tests\argon-fixes.cases.mjs:158:3 › Argon regression acceptance › F9 summit avatars use the display font
+[19/124] tests\argon-fixes.cases.mjs:164:3 › Argon regression acceptance › F10 every modes list marks both account-only destinations in all languages
+[20/124] tests\graphics-e2e.spec.mjs:23:3 › pixel7: graphics decode, CTA stays above fold, Demo faces remain fictional
+[21/124] tests\argon-fixes.cases.mjs:183:3 › Argon regression acceptance › F11 dated design correction preserves the original historical default
+[22/124] tests\browser-e2e.spec.mjs:41:1 › Google entry explains consent, sends no request before acceptance, and shows recoverable failure
+[23/124] tests\browser-e2e.spec.mjs:83:1 › index віддає 200 і показує бренд synera
+[24/124] tests\browser-e2e.spec.mjs:92:1 › hero h1 видимий на desktop viewport
+[25/124] tests\browser-e2e.spec.mjs:102:1 › hero h1 видимий на mobile viewport 375px
+[26/124] tests\browser-e2e.spec.mjs:109:1 › mobile first visit gives one visible action and keeps appearance settings available on demand
+[27/124] tests\browser-e2e.spec.mjs:126:3 › mobile 320px keeps the complete first action and expanded preferences within the viewport
+[28/124] tests\graphics-e2e.spec.mjs:81:1 › all portraits and both responsive scene variants are served and decoded
+[29/124] tests\graphics-e2e.spec.mjs:91:1 › image slots reserve their layout while images are delayed; translated Demo names survive switching
+[30/124] tests\browser-e2e.spec.mjs:126:3 › mobile 375px keeps the complete first action and expanded preferences within the viewport
+[31/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / summit.html: scene, first action, reduced motion, no shift
+[32/124] tests\browser-e2e.spec.mjs:152:1 › Dark with gold (Synera) is the default; Synera, Atelier and previous Web design remain reversible choices
+[33/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / studio.html: scene, first action, reduced motion, no shift
+[34/124] tests\browser-e2e.spec.mjs:168:1 › compact presets are visual-only choices alongside the three main styles
+[35/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / studio-journey.html: scene, first action, reduced motion, no shift
+[36/124] tests\browser-e2e.spec.mjs:178:1 › all ten compact presets visibly change the desktop surface without changing the document flow
+[37/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / triangle.html: scene, first action, reduced motion, no shift
+[38/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / real-journey.html: scene, first action, reduced motion, no shift
+[39/124] tests\browser-e2e.spec.mjs:191:1 › a compact preset remains selectable and visibly distinct at a 375px mobile viewport
+[40/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / rooms.html: scene, first action, reduced motion, no shift
+[41/124] tests\browser-e2e.spec.mjs:202:1 › synthetic demo walks people, mutual benefit, conditions and an unsent invitation draft
+[42/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / simulation.html: scene, first action, reduced motion, no shift
+[43/124] tests\browser-e2e.spec.mjs:214:1 › first-user tour highlights guidance without blocking the local profile draft
+[44/124] tests\browser-e2e.spec.mjs:226:1 › draft tour reaches the usable demo and preserves the profile when returning to login
+[45/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / privacy.html: scene, first action, reduced motion, no shift
+[46/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / legal.html: scene, first action, reduced motion, no shift
+[47/124] tests\browser-e2e.spec.mjs:245:1 › Synera keeps the disabled login action on the readable disabled surface
+[48/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / get.html: scene, first action, reduced motion, no shift
+[49/124] tests\browser-e2e.spec.mjs:262:1 › клік табу profile перемикає видиму секцію workspace
+[50/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / outcome-archive.html: scene, first action, reduced motion, no shift
+[51/124] tests\browser-e2e.spec.mjs:276:1 › mobile profile presents its first action without scrolling past the first screen
+[52/124] tests\graphics2-e2e.spec.mjs:19:3 › iphone13 / pilot-consent.html: scene, first action, reduced motion, no shift
+[53/124] tests\browser-e2e.spec.mjs:288:1 › small mobile view keeps the profile navigation and style control on screen
+[54/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / summit.html: scene, first action, reduced motion, no shift
+[55/124] tests\browser-e2e.spec.mjs:311:1 › catalogue.html віддає 200 і свій заголовок
+[56/124] tests\browser-e2e.spec.mjs:317:1 › config.json парситься з безпечними дефолтами демо-режиму
+[57/124] tests\browser-e2e.spec.mjs:325:1 › /.git/config і /config.public.json відкидаються 404 (allowlist-сервер)
+[58/124] tests\browser-e2e.spec.mjs:330:1 › жодна same-origin відповідь на index не має статусу ≥ 500
+[59/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / studio.html: scene, first action, reduced motion, no shift
+[60/124] tests\browser-e2e.spec.mjs:340:1 › нуль pageerror-подій під час навігації по табах
+[61/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / studio-journey.html: scene, first action, reduced motion, no shift
+[62/124] tests\browser-e2e.spec.mjs:359:1 › SYN_TOKEN_WIRED_E2E: tokens.css підключений і змінні розв'язуються в computed-стилях
+[63/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / triangle.html: scene, first action, reduced motion, no shift
+[64/124] tests\browser-e2e.spec.mjs:392:1 › SYN_PHASE9_A11Y_E2E: N1-N6 — контрол-рамки, disabled-поверхня, focus-visible
+[65/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / real-journey.html: scene, first action, reduced motion, no shift
+[66/124] tests\browser-e2e.spec.mjs:452:1 › GEO-01 meeting location: static map link, consent-gated grant for one recipient, revocation, no geolocation opened
+[67/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / rooms.html: scene, first action, reduced motion, no shift
+[68/124] tests\browser-e2e.spec.mjs:490:1 › Night map premium style: selectable, keeps the first action above the fold, no motion under reduced-motion
+[69/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / simulation.html: scene, first action, reduced motion, no shift
+[70/124] tests\browser-e2e.spec.mjs:511:1 › Presentation leads to real app access and both phone guides without pretending checkout is available
+[71/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / privacy.html: scene, first action, reduced motion, no shift
+[72/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / legal.html: scene, first action, reduced motion, no shift
+[73/124] tests\browser-e2e.spec.mjs:551:1 › Phone access stays functional without JavaScript
+[74/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / get.html: scene, first action, reduced motion, no shift
+[75/124] tests\browser-e2e.spec.mjs:564:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns
+[76/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / outcome-archive.html: scene, first action, reduced motion, no shift
+[77/124] tests\graphics2-e2e.spec.mjs:19:3 › pixel7 / pilot-consent.html: scene, first action, reduced motion, no shift
+[78/124] tests\graphics2-e2e.spec.mjs:51:1 › all scene variants are public WebP and 1x stays under 140 KB
+[79/124] tests\integrate-e2e.spec.mjs:12:1 › I1/I2: simulation notices, full JSON, optional end cleanup and no resurrection of pending reply
+[80/124] tests\integrate-e2e.spec.mjs:29:1 › I1/I2: unsaved profile export and erase are direct; cleared memory cannot restore draft
+[81/124] tests\integrate-e2e.spec.mjs:37:1 › I1: a fresh load purges old profile/session before UI recovery, and direct simulation links work
+[82/124] tests\integrate-e2e.spec.mjs:43:36 › I4: de notice checklist, paper-only consent, accessible and one printed page
+[83/124] tests\integrate-e2e.spec.mjs:43:36 › I4: uk notice checklist, paper-only consent, accessible and one printed page
+[84/124] tests\integrate-e2e.spec.mjs:43:36 › I4: en notice checklist, paper-only consent, accessible and one printed page
+[85/124] tests\integrate-e2e.spec.mjs:54:1 › I3: direct simulation installs the complete dependency graph and opens legal/consent offline
+[86/124] tests\integrate-e2e.spec.mjs:66:1 › I6: iPhone 13 and Pixel 7 screenshots of all six requested surfaces
+  1) tests\browser-e2e.spec.mjs:564:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.screenshot: Test timeout of 30000ms exceeded.
+    Call log:
+      - taking page screenshot
+      - waiting for fonts to load...
+      - fonts loaded
+
+
+      608 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+      609 |   const {default:AxeBuilder}=await import('@axe-core/playwright');const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();expect(audit.violations).toEqual([]);
+    > 610 |   await page.screenshot({path:testInfo.outputPath('triangle-mobile.png'),fullPage:true});
+          |              ^
+      611 | });
+      612 |
+      613 | test('Opportunity map layers explain complementarity and fair-place proposal uses entered limits, with no provider request', async ({page},testInfo)=>{
+        at C:\sw\synera-adaptive\tests\browser-e2e.spec.mjs:610:14
+
+    Error Context: tmp\pw-final-all\browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns\error-context.md
+
+    Error Context: tmp\pw-final-all\browser-e2e-Triangle-L-loc-1e1b4--export-and-voluntary-turns\error-context.md
+
+
+(node:11844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+[87/124] tests\browser-e2e.spec.mjs:613:1 › Opportunity map layers explain complementarity and fair-place proposal uses entered limits, with no provider request
+[88/124] tests\privacy-e2e.spec.mjs:13:3 › P1/P8: signed-out centre and legal copy in uk
+[89/124] tests\browser-e2e.spec.mjs:629:1 › Free launch displays a hypothetical usage-based map cost and restores existing presentation
+[90/124] tests\privacy-e2e.spec.mjs:13:3 › P1/P8: signed-out centre and legal copy in de
+[91/124] tests\product-access.spec.mjs:23:3 › Access journey en at 320
+[92/124] tests\privacy-e2e.spec.mjs:13:3 › P1/P8: signed-out centre and legal copy in en
+[93/124] tests\product-access.spec.mjs:23:3 › Access journey de at 320
+[94/124] tests\privacy-e2e.spec.mjs:26:1 › P1: each shared product page has header and footer access
+[95/124] tests\product-access.spec.mjs:23:3 › Access journey uk at 320
+[96/124] tests\privacy-e2e.spec.mjs:33:1 › P1/P2: complete local export, real IndexedDB expiry, cancel and scoped erasure
+[97/124] tests\product-access.spec.mjs:23:3 › Access journey en at 390
+[98/124] tests\privacy-e2e.spec.mjs:63:1 › P1: browser storage denied is an explicit partial result
+[99/124] tests\privacy-e2e.spec.mjs:69:1 › P1: privacy page works from the real offline shell
+[100/124] tests\privacy-e2e.spec.mjs:79:1 › P1/P8: phone screenshots show the default dark centre and legal notice
+[101/124] tests\product-access.spec.mjs:23:3 › Access journey de at 390
+[102/124] tests\product-access.spec.mjs:23:3 › Access journey uk at 390
+[103/124] tests\simulation-living.spec.mjs:21:1 › A1: home entry and real pacing, pause, manual reduced-motion, complete pairs/triads
+[104/124] tests\product-access.spec.mjs:23:3 › Access journey en at 1440
+[105/124] tests\simulation-living.spec.mjs:41:1 › A2/A3: chips, typed counter-offer, independent confirmations, journal export, reload, erase
+[106/124] tests\product-access.spec.mjs:23:3 › Access journey de at 1440
+[107/124] tests\simulation-living.spec.mjs:72:1 › A2: typed decline remains terminal and never creates a meeting
+[108/124] tests\simulation-living.spec.mjs:79:1 › A3: home draft handed over only after explicit local save; journal profile filter
+[109/124] tests\simulation-living.spec.mjs:90:1 › A3: erasure in another tab cancels pending replies and autoplay without resurrecting the key
+[110/124] tests\product-access.spec.mjs:23:3 › Access journey uk at 1440
+[111/124] tests\simulation-living.spec.mjs:104:1 › A1/A2: first home load caches simulation; reload offline still replies with no API
+[112/124] tests\product-access.spec.mjs:28:1 › Access and scenario remain readable without JavaScript
+[113/124] tests\simulation-living.spec.mjs:118:1 › A1/A4: direct simulation visit activates its worker even when every optional portrait is absent
+[114/124] tests\studio-e2e.spec.mjs:12:1 › private consent never exposes fit until separate visibility choice; two-way relevance is explained
+[115/124] tests\simulation-living.spec.mjs:128:38 › A4/A5: uk labels, portrait fallback, 320–430px and double text
+[116/124] tests\studio-e2e.spec.mjs:17:1 › current explicit confirmations gate social draft and revocation/change erase previous draft
+[117/124] tests\simulation-living.spec.mjs:128:38 › A4/A5: de labels, portrait fallback, 320–430px and double text
+[118/124] tests\simulation-living.spec.mjs:128:38 › A4/A5: en labels, portrait fallback, 320–430px and double text
+[119/124] tests\studio-e2e.spec.mjs:22:1 › portable gzip archive roundtrips inert original notes, exact source quotes and escaped share card
+[120/124] tests\simulation-living.spec.mjs:148:1 › A5: iPhone 13 and Pixel 7 emulation screenshots, visible input, no serious axe issues
+[121/124] tests\studio-e2e.spec.mjs:30:1 › device save requires consent and restores exact session after reload without automatic saving
+[122/124] tests\studio-e2e.spec.mjs:34:1 › new logistics revision removes votes and silent deadline applies only explicit labelled fallback
+[123/124] tests\studio-e2e.spec.mjs:40:2 › installed shell › public-host clean URL remains available after going offline
+[124/124] tests\studio-e2e.spec.mjs:47:2 › installed shell › dedicated manifest opens Studio and offline reload restores public shell with explicit saved session
+  1 failed
+    tests\browser-e2e.spec.mjs:564:1 › Triangle L local journey preserves explicit answers, version changes, optional notes export and voluntary turns 
+  123 passed (4.3m)

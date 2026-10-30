@@ -62,6 +62,15 @@ html:is([data-synera-style=atelier],[data-synera-style=original])[data-density] 
 .site-header .adaptive-hint .adaptive-actions button { width:100%; }
 .site-header .adaptive-actions button { width:auto; flex:1 1 100px; }
 .adaptive-storage { color:var(--ui-muted); margin:0; }
+[data-adapt-observer] ul { padding-inline-start:20px; }
+[data-adapt-observer] li button { margin:8px; }
+.sovereign-panel article { padding-block:12px; border-bottom:1px solid var(--ui-line); }
+.sovereign-panel :is(button,a) { min-height:44px; display:inline-flex; align-items:center; margin:4px; }
+.sovereign-panel details summary { cursor:pointer; padding-block:12px; }
+.sovereign-panel h4 { margin:0; }
+.sovereign-panel p { overflow-wrap:anywhere; }
+.adapt-voice-first { order:-1; }
+@media(prefers-reduced-motion:reduce) { .sovereign-panel,[data-adapt-observer],.adapt-voice-first { animation:none; transition:none; scroll-behavior:auto; } }
 .adaptive-preview { max-width:min(760px,calc(100% - 24px)); max-height:90dvh; overflow:auto; padding:24px; border:1px solid var(--ui-line); border-radius:16px; background:var(--ui-panel); color:var(--ui-ink); font:inherit; }
 .adaptive-preview::backdrop { background:#0009; }
 .adaptive-preview h2 { font-size:1.5rem; }

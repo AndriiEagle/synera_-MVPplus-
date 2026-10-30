@@ -2,6 +2,7 @@ import { createRoom, setContribution, addMessage, addTask, toggleTask, parseCHF,
   voteBudget, budgetStatus, startRound, roundAction, roundRemaining, facilitatorNote, exportRoom } from './triangle-room.mjs';
 import { chooseMeetingPlace, complimentarySkills, googleMapScenario } from './explore-planner.mjs';
 import { meetingDirectionsUrl } from './live-location.mjs';
+import { mountSovereign } from './sovereign-ui.mjs';
 
 const $ = selector => document.querySelector(selector);
 const all = selector => [...document.querySelectorAll(selector)];
@@ -9,6 +10,8 @@ function node(tag, text, className) { const el = document.createElement(tag); if
 const names = ['a','b','c'];
 const money = minor => (minor/100).toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2})+' CHF';
 let room = null;
+let roomEpoch=0;
+new MutationObserver(()=>{if(room)render();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 const guarded = operation => { try { operation(); $('#studio-status').textContent=''; } catch(error) { $('#studio-status').textContent=error.message; } };
 const modeCopy = {
   project:'Назвіть результат, власний внесок і найменший крок. Бюджет, права й доступи погоджуйте окремо.',
@@ -28,6 +31,7 @@ setPane(['room','atlas','launch'].includes(location.hash.slice(1))?location.hash
 $('#room-setup').addEventListener('submit',event=>{event.preventDefault();guarded(()=>{
   if(room&&!confirm('Нова кімната очистить локальні нотатки. Потрібний файл уже експортовано?'))return;
   room=createRoom({goal:$('#room-goal').value,names:names.map(id=>$(`#name-${id}`).value),mode:$('#room-mode').value});
+  roomEpoch++;
   $('#room-workspace').hidden=false;
   $('#room-setup button').textContent='Створити нову кімнату';
   $('#active-goal').textContent=room.goal; $('#mode-description').textContent=modeCopy[room.mode];
@@ -53,6 +57,12 @@ function render() {
   for(const t of room.tasks){const li=node('li'),label=node('label',undefined,'studio-check'),check=node('input');check.type='checkbox';check.checked=t.done;
     const content=node('span',t.title);content.append(node('small',room.members.find(m=>m.id===t.owner).name));
     check.addEventListener('change',()=>guarded(()=>{room=toggleTask(room,t.id);render();}));label.append(check,content);li.append(label);tasks.append(li);}
+  let assistant=$('#triangle-sovereign');if(!assistant){assistant=node('div');assistant.id='triangle-sovereign';$('#room-workspace').append(assistant);}
+  const collaborationId=`triangle-local-${roomEpoch}`;
+  const events=[...room.messages.map((m,i)=>({id:`triangle-${i}`,actor:m.member,type:'message',text:m.body,collaborationId})),
+    ...room.tasks.filter(t=>t.done).map(t=>({id:`task-${t.id}`,actor:t.owner,type:'contribution',contributionId:`task-${t.id}`,concrete:true,delivered:true,collaborationId})),
+    ...Object.entries(room.proposal?.votes||{}).filter(([,v])=>v.choice==='yes').map(([actor,v])=>({id:`vote-${v.revision}-${actor}`,actor,type:'confirmed',revision:String(v.revision),at:v.at,collaborationId}))];
+  mountSovereign(assistant,{lang:document.documentElement.lang,now:Date.now(),collaborationId,parties:room.members.map(m=>({id:m.id,give:[],need:[],goal:room.goal,limits:[],formats:[]})),events},{onPause:()=>{if(room.round)room=roundAction(room,'pause',Date.now());tick();}});
   renderBudget();tick();
 }
 $('#ask-l').addEventListener('click',()=>guarded(()=>{if(!room)throw new Error('Спочатку створи кімнату зі своєю ціллю.');$('#l-note').textContent=facilitatorNote(room,Date.now());}));

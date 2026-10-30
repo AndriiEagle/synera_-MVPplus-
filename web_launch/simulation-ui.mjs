@@ -3,7 +3,8 @@ import { getDeliverableProofStates } from './simulation-session.mjs';
 // Private links and existing actor URLs retain the unchanged live LAB path.
 const params = new URLSearchParams(location.search);
 if (!location.hash.includes('key=') && !params.has('person') && !params.has('lab')) {
-  await import('./simulation-living-ui.mjs');
+  try { await import('./simulation-living-ui.mjs'); }
+  catch(error) { document.documentElement.dataset.simulationMode='lab'; throw error; }
 } else {
 if (location.hash.includes('key=') && !params.has('lab')) {
   params.set('lab', '1'); history.replaceState(null, '', location.pathname + '?' + params + location.hash);

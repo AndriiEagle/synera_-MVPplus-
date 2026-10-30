@@ -1,0 +1,1 @@
+{"variant":"adapt-final","status":"PASS_CACHE_ONLY_OFFLINE_STARTUP","failed":[],"out":"C:\\sw\\synera-adaptive\\artifacts\\offline-shell-acceptance\\PASS3_ADAPT-FINAL"}

@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+
+
+node : (node:21560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:2 Zeichen:1
++ node node_modules/@playwright/test/cli.js test tests/adapt-e2e.spec.m ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:21560) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/1] tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load
+  1) tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load 
+
+    Error: expect(locator).not.toBeVisible() failed
+
+    Locator:  locator('#simulation-lab')
+    Expected: not visible
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "not toBeVisible" locator('#simulation-lab') with timeout 5000ms
+      - waiting for locator('#simulation-lab')
+        13 × locator resolved to <div id="simulation-lab">…</div>
+           - unexpected value "visible"
+
+
+      13 |   try {
+      14 |     await page.goto(`${base}/simulation.html`,{waitUntil:'domcontentloaded'});
+    > 15 |     await expect(page.locator('#simulation-lab')).not.toBeVisible();
+         |                                                       ^
+      16 |     await expect(page.locator('figure.scene-simulation')).not.toBeVisible();
+      17 |     release();await expect(page.locator('#living-title')).toBeVisible();
+      18 |     expect(await page.locator('figure.scene-simulation').evaluate(e=>e.previousElementSibling.id)).toBe('living-status');
+        at C:\sw\synera-adaptive\tests\adapt-e2e.spec.mjs:15:55
+
+    Error Context: tmp\shell-red\adapt-e2e-public-simulatio-38b8d-gacy-LAB-while-modules-load\error-context.md
+
+    Error Context: tmp\shell-red\adapt-e2e-public-simulatio-38b8d-gacy-LAB-while-modules-load\error-context.md
+
+
+  1 failed
+    tests\adapt-e2e.spec.mjs:10:1 › public simulation waits for its shell without flashing the legacy LAB while modules load 

@@ -1,0 +1,156 @@
+{
+  "branch": "claude/synera-adapt-20261030",
+  "base": "f69882f1e5e5b5085449505db0487351fc19c90b",
+  "files": [
+    {
+      "file": "web_launch/adapt-copy.mjs",
+      "bytes": 15508,
+      "sha256": "0f65844c59423e5f311368bc36bb5c4bd8995448d494a5aba52b940e5f450959"
+    },
+    {
+      "file": "web_launch/adapt-demo.mjs",
+      "bytes": 1258,
+      "sha256": "2edd52046e759364c57f4c4dae904b51bb665c8b59b83fdbdd0480cfb568d87c"
+    },
+    {
+      "file": "web_launch/adapt-observer.mjs",
+      "bytes": 6511,
+      "sha256": "c4b44472eaf0cd0c3df7b141c8a368ce7c7d2690aa9d467fead6540c6da1b0c8"
+    },
+    {
+      "file": "web_launch/adapt-observer.test.mjs",
+      "bytes": 4138,
+      "sha256": "d8d2275598883d6ea7cede3128c2291f0740383b42784c611f6a020bc1932a07"
+    },
+    {
+      "file": "web_launch/adapt-shell.test.mjs",
+      "bytes": 707,
+      "sha256": "5616f4f90e2e25991058fbb2bd2d3a8be281ca625313064779cb0b1fe3dbfdad"
+    },
+    {
+      "file": "web_launch/adapt-ui.mjs",
+      "bytes": 6183,
+      "sha256": "65b8f478373738fa7c860dd077df416013546a10043c12e4f978a18a4e4bac2e"
+    },
+    {
+      "file": "web_launch/balance.mjs",
+      "bytes": 2963,
+      "sha256": "6a1353a0e3dc5791e74429151dedab5b78e7dd989671b1683157bbb5847f7d34"
+    },
+    {
+      "file": "web_launch/journal-matching.mjs",
+      "bytes": 1486,
+      "sha256": "87fe66f509f5d4d0e87866a18d53a27db6f4b16e4af522edffdaedd5cfd614c4"
+    },
+    {
+      "file": "web_launch/sovereign.mjs",
+      "bytes": 3443,
+      "sha256": "e645abaabeafc19909f806f69dd52975c95c58bf52c2607a3a7aefb9585d2286"
+    },
+    {
+      "file": "web_launch/sovereign.test.mjs",
+      "bytes": 6961,
+      "sha256": "031fa0fca0359e4656b620c6c5e9804a5ca215af165f60648c7a367f42234b85"
+    },
+    {
+      "file": "web_launch/sovereign-ui.mjs",
+      "bytes": 2881,
+      "sha256": "5e6011acf86e6a685da15df53198ca539ce9091026f142c559355cc807b114f1"
+    },
+    {
+      "file": "web_launch/simulation-mode.mjs",
+      "bytes": 365,
+      "sha256": "a402d568e0cc19e68b20d4a2b8bcff037de2679b4fc199ff02bc80b6dcdf298d"
+    },
+    {
+      "file": "web_launch/adaptive-ui.mjs",
+      "bytes": 13159,
+      "sha256": "f6440dc5b557d9d8b2248f43bcea21f70ae4a908d369db3e3ef62d18baba6978"
+    },
+    {
+      "file": "web_launch/adaptive.css",
+      "bytes": 8775,
+      "sha256": "04971bbcf79452c785e0ac5d024f8841df1e9cb35d54737ebb3364fc492d0d9a"
+    },
+    {
+      "file": "web_launch/assets.mjs",
+      "bytes": 7060,
+      "sha256": "9d539211022169a8647afd9eb9201b208f8d85a3db250f507f5d7dbf9ee8869c"
+    },
+    {
+      "file": "web_launch/privacy-common.mjs",
+      "bytes": 2515,
+      "sha256": "50be2e30fe43361c0268346e90907eb436773fc821d178d4bc0e4227fce38ef3"
+    },
+    {
+      "file": "web_launch/privacy-content.mjs",
+      "bytes": 24562,
+      "sha256": "6535b22d932781d0bcb01a5ae0fab20e483cd0ab0c9e7b09c6ff4183b443df37"
+    },
+    {
+      "file": "web_launch/simulation-living-ui.mjs",
+      "bytes": 22666,
+      "sha256": "b375a97e5a23972b44ec25e6a319afbb0f27c3480f963d8f8647ad66ce99eb90"
+    },
+    {
+      "file": "web_launch/simulation-sw.mjs",
+      "bytes": 2701,
+      "sha256": "23fd38d4ca8ce49b67d33a4d8e757090a98817108a13be5cae34190b3ce1bcbf"
+    },
+    {
+      "file": "web_launch/simulation-ui.mjs",
+      "bytes": 22858,
+      "sha256": "27eefdfcbab08dd452f4de014c6d891874984955b7057a6c62f39e5c5fb58244"
+    },
+    {
+      "file": "web_launch/simulation.css",
+      "bytes": 6060,
+      "sha256": "ee640a68a31aa3914835c46862164ec7ea3ebca2681f38aa186f09de221f17c5"
+    },
+    {
+      "file": "web_launch/simulation.html",
+      "bytes": 9430,
+      "sha256": "d21bb8080c72d80be48bdb7fa5be8660d361de74bf9666acae6fee51e05a492f"
+    },
+    {
+      "file": "web_launch/studio-sw.mjs",
+      "bytes": 3286,
+      "sha256": "23f4e56ee2c7a58226c4ab4bb6a57b33aa9771519ae566f4495366f364bb2a2c"
+    },
+    {
+      "file": "web_launch/sw.mjs",
+      "bytes": 6187,
+      "sha256": "ae5f51f53dc265a89cd63c035182bbe845c8fa7c86eb2f052bb0f1b80e60284f"
+    },
+    {
+      "file": "web_launch/triangle.mjs",
+      "bytes": 17222,
+      "sha256": "b9320a52342646aea62959a2417495cd60e643769df7838f6bce686e75a3213f"
+    },
+    {
+      "file": "tests/adapt-e2e.spec.mjs",
+      "bytes": 9132,
+      "sha256": "cb8f8803497dd49b0b98e94d8f63ccadff1d5657ded15c97bba43e9787ff852c"
+    },
+    {
+      "file": "tools/adapt-mutation.mjs",
+      "bytes": 1419,
+      "sha256": "7e47898e7469296c9c29a10c0f740d108eb5396810f26987c9e09fc61b9834d8"
+    },
+    {
+      "file": "docs/ADAPT-20261030.uk.md",
+      "bytes": 15789,
+      "sha256": "2ec63a004f952130c57c25f42f744a3eb13a553984ec266c1a1f1f4051499115"
+    },
+    {
+      "file": "docs/SOVEREIGN-AI-20261030.uk.md",
+      "bytes": 9971,
+      "sha256": "7efb5e49891265ec6df7de5653e17d262855017f2869cf185e6bdaa0f730fa1e"
+    },
+    {
+      "file": "docs/PRIVACY-BY-DESIGN-20261029.uk.md",
+      "bytes": 39243,
+      "sha256": "597bc222aff356d36554f39aa2d119078aa1c9b83f731665dea9bdfb308621cf"
+    }
+  ]
+}
