@@ -1,7 +1,7 @@
 import { ADAPTIVE_ROWS } from './adaptive-i18n-table.mjs';
 import { COPY as SIMULATION_COPY } from './simulation-copy.mjs';
 import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
-import { PRIVACY_COPY, LIVE_AI_RETENTION } from './privacy-content.mjs';
+import { PRIVACY_COPY, LIVE_AI_RETENTION, LIVE_AI_VERCEL_RETENTION } from './privacy-content.mjs';
 import { LIVE_AI_COPY } from './live-ai-client.mjs';
 import { DEMO_COPY } from './demo-device-controls.mjs';
 import { VOICE_COPY } from './voice-copy.mjs';
@@ -973,6 +973,7 @@ ROWS.push(...Object.keys(SIMULATION_COPY.uk).map(key => [SIMULATION_COPY.uk[key]
 const draftRows = [];
 for (const table of [PRIVACY_COPY, DEMO_COPY, LIVE_AI_COPY, VOICE_COPY]) for (const key of Object.keys(table.uk)) draftRows.push([table.uk[key],table.de[key],table.en[key]]);
 draftRows.push([LIVE_AI_RETENTION.uk,LIVE_AI_RETENTION.de,LIVE_AI_RETENTION.en]);
+draftRows.push([LIVE_AI_VERCEL_RETENTION.uk,LIVE_AI_VERCEL_RETENTION.de,LIVE_AI_VERCEL_RETENTION.en]);
 draftRows.push(['УКР','UK','UK']);
 for (const key of Object.keys(NOTICE.uk)) {
   if (key==='title') draftRows.push([NOTICE.uk.title,NOTICE.de.title,NOTICE.en.title]);

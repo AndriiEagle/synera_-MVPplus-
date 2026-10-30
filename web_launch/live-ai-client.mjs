@@ -1,22 +1,25 @@
 export const LIVE_AI_NOTICE_VERSION='live-ai-v1';
 export const LIVE_AI_COPY={
   uk:{toggle:'Живі відповіді (AI)',title:'Передати повідомлення для AI-відповіді?',processor:'Виконавець запиту через OpenRouter',
-    unreachable:'Живий AI недоступний: з’єднання з Worker не підтверджене. Відповіді за сценарієм.',
-    notice:'Це необов’язковий Demo. Твоє нове повідомлення та до 8 попередніх введених тобою повідомлень цієї розмови підуть через Cloudflare до OpenRouter і названого нижче виконавця запиту. Модель: GLM 5.3 Flash, розробник Z.ai. Картка профілю не передається. Email, телефони та посилання маскуються; це не гарантує анонімності. Фактичний сервер і країни обробки не підтверджені; можливі США, Китай та інші країни. Запит дозволяє лише маршрути без навчання на даних і з нульовим зберіганням (ZDR); договори й фактичне виконання ще перевіряються. Не вводь чужі приватні або чутливі дані. Вимкнення припиняє нові надсилання, але не повертає вже надісланий текст. Згода діє лише в цій вкладці до перезавантаження.',
+    unreachable:'Живий AI недоступний: з’єднання із сервером не підтверджене. Відповіді за сценарієм.',
+    judgeNotice:'На Vercel відповідь також перевіряє TypeSafe Jev 1.14 через OpenRouter: він отримує замасковану розмову, вигадану роль і запропоновану відповідь. Країна обробки не підтверджена.',
+    notice:'Це необов’язковий Demo. Твоє нове повідомлення та до 8 попередніх введених тобою повідомлень цієї розмови підуть через сервер Synera до OpenRouter і названого нижче виконавця запиту. Модель: GLM 5.3 Flash, розробник Z.ai. Картка профілю не передається. Email, телефони та посилання маскуються; це не гарантує анонімності. Фактичний сервер і країни обробки не підтверджені; можливі США, Китай та інші країни. Запит дозволяє лише маршрути без навчання на даних і з нульовим зберіганням (ZDR); договори й фактичне виконання ще перевіряються. Не вводь чужі приватні або чутливі дані. Вимкнення припиняє нові надсилання, але не повертає вже надісланий текст. Згода діє лише в цій вкладці до перезавантаження.',
     accept:'Погоджуюсь',decline:'Ні, за сценарієм',active:'Demo · Стрічка за сценарієм. У твоїй розмові відповідає AI. Люди, зустрічі й результати вигадані.',
     local:'Картка залишається на пристрої. Лише введені тобою повідомлення цієї розмови передаються для AI-відповіді за твоєю згодою.',
     off:'AI вимкнено. Нові повідомлення не надсилаються моделі.',unavailable:'Живий AI недоступний: оператор ще не завершив налаштування. Відповіді за сценарієм.',
     fallback:'AI зараз недоступний. Відповідь за сценарієм.',cap:'Денний ліміт AI вичерпано. Відповідь за сценарієм.',privacy:'Твої дані',tag:'AI · створено ШІ',grant:'Згоду на AI надано',revoke:'Згоду на AI відкликано'},
   de:{toggle:'Live-Antworten (KI)',title:'Nachrichten für eine KI-Antwort senden?',processor:'Ausführender Anbieter über OpenRouter',
-    unreachable:'Live-KI nicht verfügbar: Die Verbindung zum Worker ist nicht bestätigt. Antworten nach Skript.',
-    notice:'Dieser Demo-Modus ist freiwillig. Deine neue und bis zu 8 frühere, von dir eingegebene Nachrichten dieses Gesprächs gehen über Cloudflare an OpenRouter und den unten genannten ausführenden Anbieter. Modell: GLM 5.3 Flash, Entwickler Z.ai. Deine Profilkarte wird nicht gesendet. E-Mail, Telefonnummern und Links werden maskiert; das garantiert keine Anonymität. Tatsächliche Server und Verarbeitungsländer sind nicht bestätigt; USA, China und andere Länder sind möglich. Die Anfrage erlaubt nur Routen ohne Datentraining und mit Zero Data Retention (ZDR); Verträge und tatsächliche Umsetzung werden noch geprüft. Keine privaten Daten anderer oder sensiblen Angaben eingeben. Ausschalten stoppt neue Übertragungen; bereits gesendeten Text kann es nicht zurückholen. Die Zustimmung gilt nur in diesem Tab bis zum Neuladen.',
+    unreachable:'Live-KI nicht verfügbar: Die Verbindung zum Server ist nicht bestätigt. Antworten nach Skript.',
+    judgeNotice:'Auf Vercel prüft auch TypeSafe Jev 1.14 die Antwort über OpenRouter: Er erhält das maskierte Gespräch, die fiktive Rolle und den Antwortentwurf. Das Verarbeitungsland ist nicht bestätigt.',
+    notice:'Dieser Demo-Modus ist freiwillig. Deine neue und bis zu 8 frühere, von dir eingegebene Nachrichten dieses Gesprächs gehen über den Synera-Server an OpenRouter und den unten genannten ausführenden Anbieter. Modell: GLM 5.3 Flash, Entwickler Z.ai. Deine Profilkarte wird nicht gesendet. E-Mail, Telefonnummern und Links werden maskiert; das garantiert keine Anonymität. Tatsächliche Server und Verarbeitungsländer sind nicht bestätigt; USA, China und andere Länder sind möglich. Die Anfrage erlaubt nur Routen ohne Datentraining und mit Zero Data Retention (ZDR); Verträge und tatsächliche Umsetzung werden noch geprüft. Keine privaten Daten anderer oder sensiblen Angaben eingeben. Ausschalten stoppt neue Übertragungen; bereits gesendeten Text kann es nicht zurückholen. Die Zustimmung gilt nur in diesem Tab bis zum Neuladen.',
     accept:'Ich stimme zu',decline:'Nein, nach Skript',active:'Demo · Der Feed folgt einem Skript. In deinem Gespräch antwortet KI. Menschen, Treffen und Ergebnisse sind fiktiv.',
     local:'Die Profilkarte bleibt auf dem Gerät. Nur deine eingegebenen Gesprächsnachrichten werden mit deiner Zustimmung für KI-Antworten übertragen.',
     off:'KI ausgeschaltet. Neue Nachrichten werden nicht an das Modell gesendet.',unavailable:'Live-KI nicht verfügbar: Die Einrichtung durch den Betreiber ist noch offen. Antworten nach Skript.',
     fallback:'KI derzeit nicht verfügbar. Antwort nach Skript.',cap:'Das tägliche KI-Limit ist erreicht. Antwort nach Skript.',privacy:'Deine Daten',tag:'AI · KI-generiert',grant:'KI-Zustimmung erteilt',revoke:'KI-Zustimmung widerrufen'},
   en:{toggle:'Live replies (AI)',title:'Send messages for an AI reply?',processor:'Inference provider through OpenRouter',
-    unreachable:'Live AI unavailable: the Worker connection could not be verified. Replies use the script.',
-    notice:'This Demo mode is optional. Your new message and up to 8 previous messages you typed in this conversation go through Cloudflare to OpenRouter and the inference provider named below. Model: GLM 5.3 Flash, developed by Z.ai. Your profile card is not sent. Emails, phones and links are masked; this does not guarantee anonymity. Actual servers and processing countries are unconfirmed; the US, China and other countries are possible. Requests allow only routes without data training and with Zero Data Retention (ZDR); contracts and actual execution are still under review. Do not enter other people’s private or sensitive data. Switching off stops new transfers; it cannot retrieve text already sent. Consent lasts only in this tab until reload.',
+    unreachable:'Live AI unavailable: the server connection could not be verified. Replies use the script.',
+    judgeNotice:'On Vercel, TypeSafe Jev 1.14 also reviews the reply through OpenRouter: it receives the masked conversation, fictional role and proposed reply. The country of processing is unconfirmed.',
+    notice:'This Demo mode is optional. Your new message and up to 8 previous messages you typed in this conversation go through the Synera server to OpenRouter and the inference provider named below. Model: GLM 5.3 Flash, developed by Z.ai. Your profile card is not sent. Emails, phones and links are masked; this does not guarantee anonymity. Actual servers and processing countries are unconfirmed; the US, China and other countries are possible. Requests allow only routes without data training and with Zero Data Retention (ZDR); contracts and actual execution are still under review. Do not enter other people’s private or sensitive data. Switching off stops new transfers; it cannot retrieve text already sent. Consent lasts only in this tab until reload.',
     accept:'I agree',decline:'No, use the script',active:'Demo · The feed is scripted. AI replies in your conversation. People, meetings and results are fictional.',
     local:'Your profile card stays on this device. Only messages you typed in this conversation are sent for AI replies with your consent.',
     off:'AI is off. New messages are not sent to the model.',unavailable:'Live AI unavailable: operator setup is not complete. Replies use the script.',
@@ -52,10 +55,15 @@ export function mountLiveAi({target,locale,record,onChange,fetchImpl=fetch}) {
     if(!ready) return; consent('grant'); enabled=true;epoch++;toggle.checked=true;notice.hidden=true;status.textContent=c.active;onChange(true);toggle.focus();
   });
   status.textContent=c.unavailable;
-  fetchImpl('/config.json',{cache:'no-store',credentials:'same-origin'}).then(r=>{if(!r.ok) throw Error();return r.json();}).then(config=>{
+  fetchImpl('/config.json',{cache:'no-store',credentials:'same-origin'}).then(r=>{if(!r.ok) throw Error();return r.json();}).then(async config=>{
     provider=config.liveAiProvider;
     ready=config.liveAiReady===true && config.liveAiModel==='z-ai/glm-5.3-flash' && typeof provider==='string' && provider.length>0;
-    notice.querySelector('p').textContent=c.notice+' '+c.processor+': '+(provider||'—')+'.';
+    if(ready&&config.liveAiRuntime==='vercel') {
+      const response=await fetchImpl('/api/ai/health',{cache:'no-store',credentials:'same-origin'});
+      if(!response.ok) throw Error();const health=await response.json();
+      ready=health.liveAiReady===true&&health.model==='z-ai/glm-5.3-flash';provider=health.provider||provider;
+    }
+    notice.querySelector('p').textContent=c.notice+' '+(config.liveAiRuntime==='vercel'?c.judgeNotice+' ':'')+c.processor+': '+(provider||'—')+'.';
     $('#live-ai-switch').hidden=!ready;status.textContent=ready?c.off:c.unavailable;
   }).catch(()=>{status.textContent=c.unreachable;});
   return {
@@ -71,6 +79,10 @@ export function mountLiveAi({target,locale,record,onChange,fetchImpl=fetch}) {
           headers:{'Content-Type':'application/json','X-Synera-Client':'1','X-Synera-AI-Consent':LIVE_AI_NOTICE_VERSION},body:JSON.stringify(body)});
         const data=await response.json();
         if(!enabled||current!==epoch) return null;
+        if(data.error==='live_ai_not_configured') {
+          ready=false;disable();$('#live-ai-switch').hidden=true;status.textContent=c.unavailable;return null;
+        }
+        if(data.judged==='rejected'||data.scripted===true) {status.textContent=data.error==='live_ai_cap_reached'?c.cap:c.fallback;return null;}
         if(!response.ok || data.model!=='z-ai/glm-5.3-flash' || typeof data.text!=='string' || !data.text.trim()) {
           status.textContent=data.error==='live_ai_cap_reached'?c.cap:c.fallback;return null;
         }
