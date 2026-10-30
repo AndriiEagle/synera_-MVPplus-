@@ -11,7 +11,42 @@ const sha = b => createHash('sha256').update(b).digest('hex');
 const lit = s => "'" + String(s).replaceAll("'", "''") + "'";
 const json = x => JSON.stringify(x, null, 2) + '\n';
 const slash = s => s.replaceAll('\\', '/');
-export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'privacy-complete-erasure', 'privacy-retention-purge', 'consent-evidence', 'rls-hardening'];
+export const ORDER = ['case-state', 'case-expiry-repair', 'meeting-status-guard', 'meeting-location', 'group-room', 'case-outcome', 'meeting-address-agreement', 'message-intent', 'profile-erasure', 'profile-delete-guard', 'privacy-complete-erasure', 'privacy-retention-purge', 'consent-evidence', 'rls-hardening'];
+
+// Read-only: owner runs this again after migrations and before enabling flags.
+export function securityInspectionSQL() {
+  return `
+BEGIN READ ONLY;
+-- FALSE / HOLD blocks both SYNERA_LOCATION_READY and SYNERA_MEETING_ADDRESS_READY.
+select exists(select 1 from pg_catalog.pg_trigger t where t.tgrelid=to_regclass('public.meeting_requests')
+  and t.tgname='meeting_status_guard' and not t.tgisinternal and t.tgenabled in ('O','A')
+  and t.tgfoid=to_regprocedure('public.synera_meeting_status_guard()') and t.tgtype=19) as meeting_status_guard_ready;
+select current_user,session_user;
+select not exists(select 1 from pg_catalog.pg_policies where schemaname='public' and tablename='profiles' and policyname='profiles_delete')
+  and not has_table_privilege('authenticated','public.profiles','DELETE') as profiles_direct_delete_disabled;
+select c.relname,r.rolname as api_role,r.rolsuper,r.rolbypassrls,
+  pg_catalog.pg_has_role(r.oid,c.relowner,'USAGE') as inherits_table_owner,
+  c.relrowsecurity,c.relforcerowsecurity
+  from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid=c.relnamespace
+  cross join pg_catalog.pg_roles r where n.nspname='public' and c.relkind in ('r','p') and r.rolname='authenticated' order by c.relname;
+-- Inventory actual Data API role separately: owner/superuser/BYPASSRLS can bypass RLS.
+select c.relname,r.rolname as owner,c.relrowsecurity,c.relforcerowsecurity,r.rolsuper,r.rolbypassrls
+  from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid=c.relnamespace
+  join pg_catalog.pg_roles r on r.oid=c.relowner where n.nspname='public' and c.relkind in ('r','p') order by c.relname;
+select schemaname,tablename,policyname,permissive,roles,cmd,qual,with_check from pg_catalog.pg_policies where schemaname='public' order by tablename,policyname;
+select c.relname,t.tgname,t.tgenabled,pg_catalog.pg_get_triggerdef(t.oid) as definition
+  from pg_catalog.pg_trigger t join pg_catalog.pg_class c on c.oid=t.tgrelid
+  join pg_catalog.pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and not t.tgisinternal order by c.relname,t.tgname;
+-- Include implicit PUBLIC EXECUTE through acldefault, not just explicit grants.
+select p.oid::regprocedure as function,p.prosecdef,p.proconfig,
+  case when a.grantee=0 then 'PUBLIC' else pg_catalog.pg_get_userbyid(a.grantee) end as grantee,a.privilege_type
+  from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace
+  cross join lateral pg_catalog.aclexplode(coalesce(p.proacl,pg_catalog.acldefault('f',p.proowner))) a
+  where n.nspname='public' and a.privilege_type='EXECUTE' order by 1,4;
+select rolname,rolsuper,rolbypassrls,rolinherit from pg_catalog.pg_roles order by rolname;
+ROLLBACK;
+`;
+}
 
 // Split only at SQL statement boundaries; dollar bodies and quoted text stay verbatim.
 export function splitSQL(sql) {
@@ -65,7 +100,7 @@ export function migrationInventory(source, sql) {
     } else if ((m = s.match(/^create policy (\w+) on (public\.\w+)/i))) {
       add('policy',m[2]+'.'+m[1],`exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass(${lit(m[2])}) and polname=${lit(m[1])})`,{statement:s,table:m[2],name:m[1]});
     } else if ((m = s.match(/^create trigger (\w+)[\s\S]*? on (public\.\w+)/i))) {
-      add('trigger',m[2]+'.'+m[1],`exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass(${lit(m[2])}) and tgname=${lit(m[1])} and not tgisinternal)`);
+      add('trigger',m[2]+'.'+m[1],`exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass(${lit(m[2])}) and tgname=${lit(m[1])} and not tgisinternal and tgenabled in ('O','A')${m[1]==='meeting_status_guard' ? " and tgfoid=to_regprocedure('public.synera_meeting_status_guard()') and tgtype=19" : ''})`);
     } else if ((m = s.match(/^create (?:unique )?index (\w+) on/i))) {
       add('index','public.'+m[1],tableCheck('public.'+m[1]));
     } else if ((m = s.match(/^alter table (public\.\w+)\s+([\s\S]*)/i))) {
@@ -160,13 +195,16 @@ export function migrationSQL(base, migrations, allRows) {
     const marker=own.length?has(own):null;
     const body=splitSQL(migration.sql).filter(s=>! /^(begin|commit|rollback)$/i.test(s)).map(s=>s+';').join('\n');
     let condition;
-    if(marker) condition=`if (${marker}) then\nraise notice 'Already complete: ${migration.name}';\nelsif (${own.map(r=>'not coalesce(('+r.check+'),false)').join(' and ')}) then\n${body}\nelse raise exception 'Partial or unexpected migration: ${migration.name}';\nend if;`;
+    if(migration.name==='profile-delete-guard.migration.sql') condition=body; // idempotent policy DROP + REVOKE; no data effects
+    else if(marker) condition=`if (${marker}) then\nraise notice 'Already complete: ${migration.name}';\nelsif (${own.map(r=>'not coalesce(('+r.check+'),false)').join(' and ')}) then\n${body}\nelse raise exception 'Partial or unexpected migration: ${migration.name}';\nend if;`;
     else {
       const fn=migration.rows.find(r=>r.kind==='function' && r.body!==null);
       if(!fn || migration.rows.some(r=>r.kind!=='function')) throw Error('Migration without a structural marker needs review: '+migration.name);
       condition=`if exists(select 1 from pg_catalog.pg_proc where oid=${proc(fn.object)} and btrim(prosrc)=btrim(${lit(fn.body)})) then raise notice 'Already complete: ${migration.name}'; else\n${body}\nend if;`;
     }
-    sql+=`\n-- ${migration.name} sha256=${sha(migration.sql)}\nDO $kit$ BEGIN\n${condition}\nEND $kit$;\n`;
+    const requiresGuard=['meeting-location.migration.sql','meeting-address-agreement.migration.sql'].includes(migration.name)
+      ? "if not exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_status_guard' and not tgisinternal and tgenabled in ('O','A') and tgfoid=to_regprocedure('public.synera_meeting_status_guard()') and tgtype=19) then raise exception 'Meeting status guard required before address/location'; end if;\n" : '';
+    sql+=`\n-- ${migration.name} sha256=${sha(migration.sql)}\nDO $kit$ BEGIN\n${requiresGuard}${condition}\nEND $kit$;\n`;
     for(const r of migration.rows)seen.add(r.kind+':'+r.object);
   }
   // Recheck every expected structural object and positive grant before committing any DDL.
@@ -176,7 +214,7 @@ export function migrationSQL(base, migrations, allRows) {
 }
 
 function envValues(env,r8) {
-  const values={ASSETS:['Pages automatic binding','Pages supplies the static asset service'],SYNERA_SITE_URL:['https://synera-pilot.pages.dev','same HTTPS origin'],SYNERA_NEON_AUTH_URL:['owner fills','copy current production Auth URL ending /neondb/auth; keep existing'],SYNERA_NEON_DATA_URL:['owner fills','copy current production Data API URL ending /neondb/rest/v1; same branch/database'],SYNERA_PILOT_EMAILS:['owner fills','exact owner email,<PARTNER_EMAIL>; private, 2 distinct addresses, 1–10 supported'],SYNERA_PILOT_READY:['true','only after SQL/backup/config checks'],SYNERA_REGISTRATION_ENABLED:['true','false during preparation; true for the two admitted people'],SYNERA_REAL_JOURNEY_READY:['true','only after SQL acceptance; enables terms and two-party confirmations'],SYNERA_CASE_OUTCOMES_READY:['true','only after outcome SQL acceptance'],SYNERA_MESSAGE_INTENTS_READY:['true','only after message-intent SQL acceptance'],SYNERA_MEETING_ADDRESS_READY:['true','only after address SQL acceptance'],SYNERA_OPEN_REGISTRATION:['false','MUST STAY OFF: two-person closed pilot'],SYNERA_GOOGLE_OAUTH_READY:['false','MUST STAY OFF until provider and callback configured and tested'],SYNERA_LOCATION_READY:['false','keep GPS OFF for this walk'],SYNERA_GROUP_ROOMS_READY:['false','keep rooms OFF for this walk'],SYNERA_PROFILE_ERASURE_READY:['false','keep erasure OFF until separate live acceptance'],SYNERA_COMPLETE_ERASURE_READY:['false','keep complete account erasure OFF until the identity-provider deletion (gate G7) is accepted live'],SYNERA_LOCATION_EPHEMERAL:['not required while GPS/open registration OFF','KV binding with get/put/delete, only if those features later enabled']};
+  const values={ASSETS:['Pages automatic binding','Pages supplies the static asset service'],SYNERA_SITE_URL:['https://synera-pilot.pages.dev','same HTTPS origin'],SYNERA_NEON_AUTH_URL:['owner fills','copy current production Auth URL ending /neondb/auth; keep existing'],SYNERA_NEON_DATA_URL:['owner fills','copy current production Data API URL ending /neondb/rest/v1; same branch/database'],SYNERA_PILOT_EMAILS:['owner fills','exact owner email,<PARTNER_EMAIL>; private, 2 distinct addresses, 1–10 supported'],SYNERA_PILOT_READY:['true','only after SQL/backup/config checks'],SYNERA_REGISTRATION_ENABLED:['true','false during preparation; true for the two admitted people'],SYNERA_REAL_JOURNEY_READY:['true','only after SQL acceptance; enables terms and two-party confirmations'],SYNERA_CASE_OUTCOMES_READY:['true','only after outcome SQL acceptance'],SYNERA_MESSAGE_INTENTS_READY:['true','only after message-intent SQL acceptance'],SYNERA_MEETING_ADDRESS_READY:['true','only after address SQL acceptance'],SYNERA_OPEN_REGISTRATION:['false','MUST STAY OFF: two-person closed pilot'],SYNERA_GOOGLE_OAUTH_READY:['false','MUST STAY OFF until provider and callback configured and tested'],SYNERA_LOCATION_READY:['false','keep GPS OFF for this walk'],SYNERA_GROUP_ROOMS_READY:['false','keep rooms OFF for this walk'],SYNERA_PROFILE_ERASURE_READY:['false','keep erasure OFF until separate live acceptance'],SYNERA_COMPLETE_ERASURE_READY:['false','keep application erasure OFF until SQL, safety-hold basis/term, daily purge and live acceptance are verified; provider deletion stays separate'],SYNERA_LOCATION_EPHEMERAL:['required for OTP in both registration modes','KV binding with get/put/delete; required before opening closed-pilot OTP as well']};
   return {...env,variables:env.variables.map(r=>{if(!values[r.name])throw Error('New env binding requires an owner value: '+r.name);return {...r,value:values[r.name][0],instructions:values[r.name][1],r8:r.name==='ASSETS'?'automatic binding already used by r8 Pages Advanced mode':r8.includes('`'+r.name+'`')?'documented in r8 launch instructions; current dashboard value UNVERIFIED':'new since documented r8; current dashboard presence UNVERIFIED'};})};
 }
 
@@ -220,7 +258,7 @@ export async function generateKit({root=fileURLToPath(new URL('../',import.meta.
   const allRows=[...base,...migrations.flatMap(m=>m.rows)];
   const zipName='synera-pilot-'+commit+'.zip',zipBytes=zip(files),artifacts=new Map();
   artifacts.set(zipName,zipBytes);
-  artifacts.set('00-inspect.sql','-- Read-only catalog inventory. false means absent; never reads member emails or private rows.\n'+checksSQL(allRows)+'\norder by migration,kind,object;\n');
+  artifacts.set('00-inspect.sql','-- Read-only catalog inventory. false means absent; never reads member emails or private rows.\n'+checksSQL(allRows)+'\norder by migration,kind,object;\n'+securityInspectionSQL());
   artifacts.set('10-migrate.sql',migrationSQL(base,migrations,allRows));
   const member=`DO $member$ DECLARE partner_email text := lower(btrim('<PARTNER_EMAIL>')); BEGIN\nif partner_email='<partner_email>' or partner_email !~ '^[^[:space:]@]+@[^[:space:]@]+\\.[^[:space:]@]+$' then raise exception 'Replace PARTNER_EMAIL locally'; end if;\nif to_regclass('public.synera_pilot_members') is null then raise exception 'Admission schema missing'; end if;\nif exists(select 1 from neon_auth."user" u join public.profile_erasures e on e.user_id=u.id where lower(u.email)=partner_email) then raise exception 'Partner has an erasure tombstone; do not bypass'; end if;\ninsert into public.synera_pilot_members(email) values(partner_email) on conflict do nothing;\nEND $member$;`;
   artifacts.set('20-add-member.sql',`-- ONE email only. Keep the owner's existing row. Do not commit the filled file.\nBEGIN;\n${member}\nselect exists(select 1 from public.synera_pilot_members where email=lower(btrim('<PARTNER_EMAIL>'))) as admitted;\nCOMMIT;\n-- Removal is separate: 21-remove-member.sql.\n`);

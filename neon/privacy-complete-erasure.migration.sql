@@ -15,6 +15,25 @@ do $$ begin
   end if;
 end $$;
 
+-- Safety complaints belong to their reporter. A provider account deletion must
+-- not cascade them away. Replace only the target FK with an insertion guard;
+-- no synthetic provider identity is created. One reserved, stable tombstone
+-- deliberately does not link complaints back to an erased provider subject.
+alter table public.profile_reports drop constraint profile_reports_reported_id_fkey;
+alter table public.profile_reports add column safety_hold_until timestamptz;
+-- Trigger-only definer: ordinary members need no SELECT on provider Auth tables.
+create function public.synera_report_target_guard() returns trigger
+language plpgsql security definer set search_path='' as $$
+begin
+  if new.safety_hold_until is not null or new.reported_id='00000000-0000-4000-8000-000000000000'::uuid
+    or not exists(select 1 from neon_auth."user" u where u.id=new.reported_id) then
+    raise exception 'Report target unavailable' using errcode='23503';
+  end if;
+  return new;
+end $$;
+revoke all on function public.synera_report_target_guard() from public,authenticated;
+create trigger report_target_guard before insert on public.profile_reports for each row execute function public.synera_report_target_guard();
+
 -- This endpoint intentionally has no argument: the verified JWT subject is the
 -- only subject it can erase. The legacy erasure runs first to retain its
 -- stale-session tombstone and admission lock semantics.
@@ -38,10 +57,13 @@ begin
   delete from public.match_cases where participant_low=actor or participant_high=actor;
   delete from public.profile_blocks where blocker_id=actor or blocked_id=actor;
   delete from public.pilot_consents where user_id=actor;
-  -- Reports can contain free text about either party. Complete erasure removes
-  -- both directions; retaining a report about the requester would not be a
-  -- truthful complete application-data erasure claim.
-  delete from public.profile_reports where reporter_id=actor or reported_id=actor;
+  -- Delete the actor's authored free text, retain another reporter's evidence.
+  -- Proposed safety hold: 90 days from this erasure, never extended by retries;
+  -- service-role purge removes expired holds. Owner/legal review and a verified
+  -- daily scheduler are prerequisites for enabling COMPLETE_ERASURE_READY.
+  delete from public.profile_reports where reporter_id=actor;
+  update public.profile_reports set reported_id='00000000-0000-4000-8000-000000000000',
+    safety_hold_until=coalesce(safety_hold_until,now()+interval '90 days') where reported_id=actor;
 
   -- A room belongs to several people. Remove the erased person's authored text
   -- and events; revoke membership. A room created by the erased person is

@@ -27,6 +27,7 @@ async function upstream(url, init = {}) {
   const target = new URL(url), cookie = new Headers(init.headers).get('Cookie') || '';
   upstreamCalls.push({ path: target.pathname, cookie });
   const token = /__Secure-neon-auth\.session_token=([^;]+)/.exec(cookie)?.[1];
+  if (target.pathname.endsWith('/email-otp/send-verification-otp')) return json({});
   if (target.pathname.endsWith('/sign-in/email-otp')) {
     const body = JSON.parse(init.body), actor = body.email === A.email ? A : body.email === B.email ? B : null;
     if (!actor) return json({}, { status: 401 });
@@ -51,6 +52,8 @@ async function observedAfter(start, predicate) {
 function headers(req) { return Object.fromEntries(Object.entries(req.headers).filter(([, value]) => value !== undefined)); }
 async function read(req) { const chunks = []; for await (const chunk of req) chunks.push(chunk); return Buffer.concat(chunks); }
 const env = { SYNERA_SITE_URL: 'https://localhost', SYNERA_NEON_AUTH_URL: 'https://audit.neonauth.local.aws.neon.tech/project/auth', SYNERA_NEON_DATA_URL: 'https://audit.apirest.local.aws.neon.tech/project/rest/v1', SYNERA_PILOT_EMAILS: `${A.email},${B.email}`, SYNERA_PILOT_READY: 'true', SYNERA_PROFILE_ERASURE_READY: 'true', SYNERA_REGISTRATION_ENABLED: 'true' };
+const otpRows=new Map();
+env.SYNERA_LOCATION_EPHEMERAL={async get(key){return otpRows.has(key)?JSON.parse(otpRows.get(key)):null;},async put(key,value){otpRows.set(key,value);}};
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   if (url.pathname === '/') return void res.end('<script type="module">import {NeonStore} from "/web_launch/neon-store.mjs"; window.makeStore=()=>new NeonStore({backend:"neon",profileErasureEnabled:true,realPilotEnabled:true,pilotSafetyEnabled:true},fetch)</script>');
@@ -63,6 +66,7 @@ const server = http.createServer(async (req, res) => {
   // Chromium accepts Secure cookies on localhost. This preserves actual Set-Cookie processing;
   // only the test bridge's Request URL and Origin are HTTPS so handleNeon's production check runs.
   const requestHeaders = new Headers(headers(req)); requestHeaders.set('Origin', 'https://localhost');
+  requestHeaders.set('CF-Connecting-IP','127.0.0.1'); // test bridge emulates the edge-owned IP header
   const request = new Request(`https://localhost${req.url}`, { method: req.method, headers: requestHeaders, body: ['GET', 'HEAD'].includes(req.method) ? undefined : body });
   const response = await handleNeon(request, env, upstream); const out = new Headers(response.headers);
   for (const value of out.getSetCookie()) res.appendHeader('Set-Cookie', value);
@@ -80,23 +84,24 @@ try {
   await Promise.all([a.goto(base), b.goto(base)]);
   report.runtime.chromium = browser.version();
   // JS handles cannot cross the page boundary, so keep each store on its tab.
-  await a.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, A);
+  await a.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, A);
   assert.match(await cookie(context), /^token-a-\d+$/, 'A login did not create an accepted __Host cookie');
-  await b.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, B);
+  await b.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, B);
   assert.match(await cookie(context), /^token-b-\d+$/, 'B login did not replace the shared browser cookie');
   const beforeMismatch = rpcCalls;
   const mismatch = await a.evaluate(async () => { try { await window.store.eraseProfileData(); } catch (error) { return { status: error.status, code: error.code, user: window.store.user }; } });
   assert.deepEqual({ status: mismatch.status, code: mismatch.code, user: mismatch.user }, { status: 409, code: 'profile_erasure_subject_mismatch', user: null });
   assert.equal(rpcCalls, beforeMismatch, 'wrong displayed A dispatched destructive RPC for B'); report.checks.push('TA01 two tabs: A display + B shared cookie returns 409 and makes zero RPC');
-  await a.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, A);
+  await a.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, A);
   const beforeOwn = rpcCalls; await a.evaluate(() => window.store.eraseProfileData()); assert.equal(rpcCalls, beforeOwn + 1); report.checks.push('TA01 own displayed subject reaches exactly one synthetic RPC');
   for (const kind of ['401', 'null']) for (const next of [B, A]) for (const order of ['before', 'after']) {
-    await a.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, A);
+    otpRows.clear(); // independent cookie-race scenario, fresh ephemeral abuse window
+    await a.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, A);
     const old = await cookie(context), beforeRestore = upstreamCalls.length, release = arm(old, kind);
     const pending = a.evaluate(() => window.store.restore().then(() => ({ ok: true, user: window.store.user })).catch(error => ({ ok: false, status: error.status, user: window.store.user }))).catch(error => ({ transport: error.message }));
     await observedAfter(beforeRestore, value => value.path.endsWith('/get-session') && value.cookie.includes(old));
     if (order === 'before') { release(); await pending; assert.equal(await cookie(context), old, `stale ${kind} response cleared old A cookie before re-login`); }
-    await b.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, next);
+    await b.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, next);
     const fresh = await cookie(context); if (next === A) assert.notEqual(fresh, old, 'same-A re-login did not create a new session generation');
     if (order === 'after') { release(); await pending; }
     assert.equal(await cookie(context), fresh, `stale ${kind} ${order} response cleared ${next.id} cookie`);
@@ -107,7 +112,7 @@ try {
   await a.goto(base + '/test-invalid-cookie'); assert.equal(await cookie(context), 'invalid-token', 'synthetic HTTP invalid cookie was not accepted');
   assert.deepEqual(await b.evaluate(async () => { try { await window.store.restore(); } catch (error) { return { status: error.status, user: window.store.user }; } }), { status: 401, user: null });
   assert.equal(await cookie(context), 'invalid-token', 'invalid provider credential response cleared browser cookie'); report.checks.push('actual browser invalid token returns 401 without clearing cookie');
-  await b.evaluate(async value => { window.store = window.makeStore(); await window.store.verifyOtp(value.email, '123456'); }, A);
+  await b.evaluate(async value => { window.store = window.makeStore(); await window.store.requestOtp(value.email,{terms:true,privacy:true}); await window.store.verifyOtp(value.email, '123456'); }, A);
   signOutStatus = 503;
   assert.deepEqual(await b.evaluate(async () => { try { await window.store.signOut(); } catch (error) { return { status: error.status, user: window.store.user }; } }), { status: 503, user: null });
   assert.equal(await cookie(context), null, 'explicit logout after upstream 503 did not clear cookie'); report.checks.push('actual browser explicit logout clears cookie after upstream 503');

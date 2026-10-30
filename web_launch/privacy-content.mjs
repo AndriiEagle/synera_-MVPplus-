@@ -37,7 +37,7 @@ const copy = {
     contact: 'Контакт: [EMAIL]. Відповідальний: [OPERATOR NAME], [ADDRESS], Швейцарія. Реквізити з юридичної чернетки ще потрібно заповнити перед запуском. Поточний канал пілоту є на сторінці правил.',
     cookies: 'У коді цієї версії немає cookie для стеження чи реклами. Після входу може бути захищена HttpOnly cookie сесії Neon; локальна симуляція має окрему HttpOnly cookie. Це технічні cookies. Налаштування й чернетки в сховищі браузера не є tracking cookies.',
     demo: 'Demo-люди вигадані. Сценарії та приклади синтетичні, без даних реальних учасників. Текст, який ти сам вводиш, може бути реальним: не додавай чужих приватних даних. Зовнішній AI потребує окремого повідомлення й твого вибору; автоматичного передавання немає.',
-    account: 'Серверні дані акаунта', accountText: 'Увійди й відкрий наявний розділ «Приватність»: там доступні серверний експорт і дозволені операції видалення. Локальне стирання не видаляє акаунт входу.',
+    account: 'Серверні дані акаунта', accountText: 'Увійди й відкрий наявний розділ «Приватність»: там доступні серверний експорт і дозволені операції видалення. Локальне стирання не видаляє акаунт входу. Після окремого стирання даних застосунку чужі скарги зберігають текст без ідентифікатора адресата до 90 днів для розгляду безпеки; згадки в чужих текстах розглядає оператор. Строк і підстава потребують підтвердження перед увімкненням.',
     accountLink: 'Відкрити «Приватність» акаунта', legalLink: 'Правила й контакт пілоту', noScript: 'Для експорту й стирання потрібен JavaScript. Письмовий запит можна подати оператору через сторінку правил.',
   },
   de: {
@@ -76,7 +76,7 @@ const copy = {
     contact: 'Kontakt: [EMAIL]. Verantwortlich: [OPERATOR NAME], [ADDRESS], Schweiz. Die Platzhalter des Rechtsentwurfs müssen vor dem Start ausgefüllt werden. Der aktuelle Pilotkontakt steht auf der Regelseite.',
     cookies: 'Der Code dieser Version setzt keine Tracking- oder Werbe-Cookies. Nach Anmeldung kann ein geschütztes HttpOnly-Sitzungscookie von Neon bestehen; die lokale Simulation hat ein separates HttpOnly-Cookie. Dies sind technische Cookies. Einstellungen und Entwürfe im Browserspeicher sind keine Tracking-Cookies.',
     demo: 'Demo-Personen sind erfunden. Szenarien und Beispiele sind synthetisch, ohne Daten realer Teilnehmender. Deine eigenen Eingaben können reale Daten sein: Gib keine privaten Daten anderer ein. Externe KI erfordert eine getrennte Information und deine Wahl; keine automatische Übermittlung.',
-    account: 'Kontodaten auf dem Server', accountText: 'Melde dich an und öffne «Privatsphäre»: Dort findest du den bestehenden Serverexport und verfügbare Löschaktionen. Lokale Löschung entfernt das Anmeldekonto nicht.',
+    account: 'Kontodaten auf dem Server', accountText: 'Melde dich an und öffne «Privatsphäre»: Dort findest du den bestehenden Serverexport und verfügbare Löschaktionen. Lokale Löschung entfernt das Anmeldekonto nicht. Nach separater Löschung der Anwendungsdaten bleiben fremde Beschwerden ohne Zielkennung bis zu 90 Tage zur Sicherheitsprüfung erhalten; Erwähnungen in fremden Texten prüft der Betreiber. Frist und Grundlage müssen vor Aktivierung bestätigt werden.',
     accountLink: 'Privatsphäre des Kontos öffnen', legalLink: 'Regeln und Pilotkontakt', noScript: 'Export und Löschung benötigen JavaScript. Eine schriftliche Anfrage ist über den Kontakt auf der Regelseite möglich.',
   },
   en: {
@@ -115,7 +115,7 @@ const copy = {
     contact: 'Contact: [EMAIL]. Controller: [OPERATOR NAME], [ADDRESS], Switzerland. These legal-draft placeholders must be filled before launch. The current pilot contact is on the rules page.',
     cookies: 'This version’s code sets no tracking or advertising cookies. Signing in may set a protected Neon HttpOnly session cookie; the local simulation has a separate HttpOnly cookie. These are technical cookies. Preferences and drafts in browser storage are not tracking cookies.',
     demo: 'Demo people are fictional. Scenarios and examples are synthetic, with no real participant data. Your own input may contain real data: do not enter other people’s private data. External AI requires separate notice and your choice; there is no automatic transfer.',
-    account: 'Server account data', accountText: 'Sign in and open the existing “Privacy” tab for server export and available deletion actions. Local erasure does not delete the sign-in account.',
+    account: 'Server account data', accountText: 'Sign in and open the existing “Privacy” tab for server export and available deletion actions. Local erasure does not delete the sign-in account. After separate application data erasure, other people’s complaints retain their text without the target identifier for up to 90 days for safety review; mentions in other people’s texts require operator review. The term and basis must be confirmed before activation.',
     accountLink: 'Open account privacy', legalLink: 'Rules and pilot contact', noScript: 'Export and erasure require JavaScript. You can send a written request using the contact on the rules page.',
   },
 };
@@ -133,7 +133,7 @@ export const DEVICE_GROUPS = Object.freeze([
   ['journal', 'localStorage', ['synera.journal.v1 (at, kind, actor, text, data; profile and simulation state)']],
   ['drafts', 'localStorage', ['synera.sim.draft.v1:<actor>:<personId>', 'synera.privacy.retention.v1']],
   ['radarStorage', 'localStorage', ['synera.radar.openness.v1', 'synera.radar.demo-start.v1', 'synera.radar.events.v1']],
-  ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1']],
+  ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.adaptive.session-check', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1']],
   ['login', 'localStorage', ['synera-session:<Supabase URL>']],
   ['studio', 'IndexedDB', ['synera-studio-v1 / sessions / <sessionId> (id, at, json)']],
   ['caches', 'CacheStorage', ['synera-shell-20261029-gilbert1', 'synera-studio-20261029-gilbert1', 'synera-simulation-20261029-gilbert1', 'synera-shell-* / synera-studio-* / synera-simulation-*']],

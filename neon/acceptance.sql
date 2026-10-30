@@ -93,10 +93,13 @@ set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"22222222-2222-4222-8222-222222222222","role":"authenticated"}',true);
 delete from public.profile_blocks where blocker_id=public.synera_user_id();
 select set_config('request.jwt.claims','{"sub":"11111111-1111-4111-8111-111111111111","role":"authenticated"}',true);
-delete from public.profiles where id=public.synera_user_id();
+do $ begin
+  begin delete from public.profiles where id=public.synera_user_id(); raise exception 'Direct profile DELETE passed';
+  exception when insufficient_privilege then null; end;
+end $;
 reset role;
 do $$ begin
-  if exists(select 1 from public.meeting_requests) or exists(select 1 from public.meeting_messages) then raise exception 'Profile deletion did not cascade'; end if;
+  if not exists(select 1 from public.meeting_requests) or not exists(select 1 from public.meeting_messages) then raise exception 'Direct DELETE lost shared evidence'; end if;
   if (select invitations from public.synera_write_limits where user_id='11111111-1111-4111-8111-111111111111') <> 1 then raise exception 'Profile deletion reset admission'; end if;
 end $$;
 do $$ declare r text; t text; begin

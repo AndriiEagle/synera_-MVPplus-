@@ -129,6 +129,7 @@ function importPreviewProfile() { return cleanProfileFields({ display_name: $('#
 function currentPublicUrl() { return config?.publicSiteUrl || (location.protocol === 'https:' ? location.href : ''); }
 function applyAuthState() {
   $('#profile-erasure-controls').hidden = config?.backend !== 'neon' || config?.profileErasureEnabled !== true || typeof store?.eraseProfileData !== 'function';
+  $('#complete-erasure-controls').hidden = config?.backend !== 'neon' || config?.completeErasureEnabled !== true || config?.profileErasureEnabled !== true || typeof store?.eraseCompleteApplicationData !== 'function';
   $('#auth-fields').disabled = busy || !onlineReady;
   // Readiness, rather than a temporary busy state, owns the closed-entry presentation.
   $('#auth-form').hidden = !onlineReady;
@@ -176,12 +177,13 @@ function tab(name) {
 }
 function showWorkspace() { $('#welcome').hidden = true; $('#demo-journey').hidden = true; $('#workspace').hidden = false; $('#logout').hidden = !store?.user; $('#back-login').hidden = Boolean(store?.user); document.body.classList.add('signed-in'); }
 function showSignedOut() {
+  $('#erasure-session-signout').hidden=true;
   document.body.classList.remove('signed-in'); $('#workspace').hidden = true; $('#welcome').hidden = false; $('#demo-journey').hidden = false; $('#logout').hidden = true; $('#back-login').hidden = true;
   document.querySelectorAll('dialog').forEach(d => { if (d.open) d.close(); });
   form.reset(); $('#password').value = ''; $('#invite-note').value = ''; $('#people-search').value = '';
   otpEmail = ''; otpConsent = null; $('#otp-code').value = ''; $('#otp-field').hidden = true; $('#email').readOnly = false;
   if (config?.backend === 'neon') $('#auth-submit').textContent = 'Надіслати код';
-  for (const selector of ['#profile-import-text','#profile-share-output','#ai-json','#ai-gpt-prompt','#chat-body','#report-detail','#delete-confirmation','#profile-erasure-confirmation']) $(selector).value = '';
+  for (const selector of ['#profile-import-text','#profile-share-output','#ai-json','#ai-gpt-prompt','#chat-body','#report-detail','#delete-confirmation','#profile-erasure-confirmation','#complete-erasure-confirmation']) $(selector).value = '';
   $('#import-preview').querySelectorAll('input,textarea').forEach(node => { node.value = ''; });
   for (const selector of ['#people','#meetings','#blocked-people','#chat-messages','#ai-result','#ai-payload','#map-selected']) $(selector).replaceChildren();
   peopleMap.clear(); own = null; people = []; meetings = []; draft = null; aiDraft = aiPayload = aiSource = null; activeChat = safetyPerson = null;
@@ -615,7 +617,7 @@ $('#chat-form').addEventListener('submit',event=>{event.preventDefault();run(asy
 $('#safety-cancel').addEventListener('click',()=>$('#safety-dialog').close());
 $('#safety-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{await store.report(safetyPerson,$('#report-reason').value,$('#report-detail').value);$('#safety-dialog').close();message('Скаргу збережено для ручного розгляду оператором.');});});
 $('#block-person').addEventListener('click',()=>run(async()=>{await store.block(safetyPerson);$('#safety-dialog').close();closeDialog('#chat-dialog');await load();message('Блокування збережено. Нові запрошення й повідомлення між вами припинено.');}));
-$('#export-account').addEventListener('click',()=>run(async()=>{const data=await store.exportAccount();download(JSON.stringify(data,null,2),'synera-my-data.private.json','application/json');message('Підготовлено приватний файл твоїх даних. Збережи його на власному пристрої.');}));
+$('#export-account').addEventListener('click',()=>run(async()=>{const data=await store.exportAccount();download(JSON.stringify(data,null,2),'synera-my-data.private.json','application/json');message('Підготовлено частковий приватний експорт. Перелік відсутніх категорій є у файлі; повну копію запроси в оператора.');}));
 $('#delete-profile').addEventListener('click',()=>{$('#delete-confirmation').value='';$('#delete-dialog').showModal();});
 $('#delete-cancel').addEventListener('click',()=>$('#delete-dialog').close());
 $('#delete-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!deletionConfirmed($('#delete-confirmation').value))return;await store.deleteProfile();$('#delete-dialog').close();draft=null;await load({profile:true});tab('profile');message('Профіль, зустрічі й повідомлення видалено. Акаунт для входу залишився.');});});
@@ -625,8 +627,9 @@ $('#profile-erasure-form').addEventListener('submit', event => {
     if (!deletionConfirmed($('#profile-erasure-confirmation').value)) return;
     const owner = store, actor = store?.user;
     if (!actor || config?.profileErasureEnabled !== true) return;
+    let result;
     try {
-      await owner.eraseProfileData();
+      result=await owner.eraseProfileData();
     } catch (error) {
       if (store !== owner || (store.user && store.user !== actor)) return;
       throw error;
@@ -638,9 +641,30 @@ $('#profile-erasure-form').addEventListener('submit', event => {
     $('#ai-consent').checked = false;
     resetAI();
     $('#profile-erasure-confirmation').value = '';
-    message('Дані профілю стерто, доступ до пілоту відкликано. Спільні записи збережені. Видалення акаунта для входу очікує оператора.');
+    $('#erasure-session-signout').hidden=result.sessionRevoked;
+    message('Дані профілю стерто, доступ до пілоту відкликано. Спільні записи збережені. Видалення акаунта для входу очікує оператора.'+(result.sessionRevoked?'':' '+'Сеанс входу не відкликано. Натисни «Завершити сеанс входу», щоб явно вийти.'));
   });
 });
+$('#complete-erasure-form').addEventListener('submit', event => {
+  event.preventDefault();
+  run(async () => {
+    const phrase=$('#complete-erasure-confirmation').value;
+    const owner=store,actor=store?.user;
+    if(!actor || config?.completeErasureEnabled!==true || phrase!=='DELETE ALL')return;
+    let result;
+    try {result=await owner.eraseCompleteApplicationData(phrase);}
+    catch(error){if(store!==owner||(store.user&&store.user!==actor))return;throw error;}
+    if(store!==owner||store.user)return;
+    showSignedOut();
+    Object.assign(consentState, CONSENT_PANEL_DEFAULTS);
+    $('#consent-panel').querySelectorAll('input[type="checkbox"]').forEach(input=>{input.checked=false;});
+    $('#ai-consent').checked=false;resetAI();
+    $('#complete-erasure-confirmation').value='';
+    $('#erasure-session-signout').hidden=result.sessionRevoked;
+    message('Дані застосунку стерто. Скарги інших людей зберігаються без ідентифікатора адресата до 90 днів. Згадки в чужих текстах і видалення акаунта входу потребують оператора.'+(result.sessionRevoked?'':' '+'Сеанс входу не відкликано. Натисни «Завершити сеанс входу», щоб явно вийти.'));
+  });
+});
+$('#erasure-session-signout').addEventListener('click',()=>run(async()=>{locationSession?.clear();try{await store.signOut();}finally{showSignedOut();message('Ти вийшов. Дані сесії та форми очищено.');}}));
 function resetAI() { aiDraft=null;$('#ai-result').replaceChildren();$('#apply-ai').hidden=true;applyAuthState(); }
 $('#prepare-ai').addEventListener('click',()=>{
   try {

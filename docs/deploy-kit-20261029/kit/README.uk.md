@@ -1,5 +1,12 @@
 # Комплект власника
 
+**SECFIX 30.10 — HOLD до перегенерації.** `00-inspect.sql` оновлено під
+поточні security-виправлення й він лише читає каталоги. Старі ZIP, manifest,
+`10-migrate.sql` та решта цього комплекту не є новим SECFIX-релізом.
+Після merge власник лінії kit має перегенерувати весь комплект із чистих
+build inputs і знову прийняти його. Не завантажувати старий ZIP як security fix.
+Деталі: [SECFIX](../../SECFIX-20261030.uk.md).
+
 1. Почни з CHECKLIST.uk.md. Нічого не застосовано й не опубліковано.
 2. 00-inspect.sql — лише каталоги; 10-migrate.sql — атомарний conditional apply відсутніх повних відомих міграцій. Невідомі function body/атрибути, RLS policy definition, частковий marker або відсутня база r8 — RAISE і rollback усіх DDL. Повторний apply пропускає завершені міграції. RLS probes створюються й видаляються всередині тієї самої транзакції; назовні вони не публікуються. Історичний GRANT meeting_address після нової міграції навмисно відсутній; фінальна перевірка враховує REVOKE.
 3. 11-acceptance-disposable.sql — **лише EMPTY disposable database** з сумісними provider identity fixtures; створює базу/міграції тимчасово й закінчується ROLLBACK. Усі 11 вихідних suites включені: base, case-state, meeting-status-guard, meeting-location, group-room, outcome, address, message consent, erasure surfaces/lifecycle, stack-invariants. Fixtures outcome/address/message/erasure відтворюють контракти наявних JS runners. Кожний набір відкочується до SAVEPOINT; фінальний ROLLBACK прибирає весь replay.

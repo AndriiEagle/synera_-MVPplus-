@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 const read=name=>fs.readFile(new URL(name,import.meta.url),'utf8');
 test('P3 complete erasure is separate, self-only, and retains the stale-session tombstone',async()=>{
   const sql=await read('./privacy-complete-erasure.migration.sql');
-  for(const token of ['synera_complete_erase_application_data()','synera_erase_profile_data()','pg_advisory_xact_lock','delete from public.meeting_requests','delete from public.match_cases','delete from public.pilot_consents','delete from public.profile_reports where reporter_id=actor or reported_id=actor','delete from public.group_room_members','staleSessionTombstone'])assert.match(sql,new RegExp(token.replaceAll('(','\\(').replaceAll(')','\\)')));
+  for(const token of ['synera_complete_erase_application_data()','synera_erase_profile_data()','pg_advisory_xact_lock','delete from public.meeting_requests','delete from public.match_cases','delete from public.pilot_consents','delete from public.profile_reports where reporter_id=actor;','delete from public.group_room_members','staleSessionTombstone'])assert.match(sql,new RegExp(token.replaceAll('(','\\(').replaceAll(')','\\)')));
   assert.match(sql,/revoke all on function public\.synera_complete_erase_application_data\(\) from public,authenticated;/);
   assert.match(sql,/grant execute on function public\.synera_complete_erase_application_data\(\) to authenticated;/);
   assert.match(sql,/update public\.group_rooms r set status='closed'/);

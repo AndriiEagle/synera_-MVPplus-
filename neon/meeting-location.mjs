@@ -21,10 +21,16 @@ export async function handleMeetingLocation(request, env, session, rpc) {
   const url = new URL(request.url), match = url.pathname.match(/^\/api\/neon\/location\/([^/]+)\/(grant|sample|view|revoke)$/);
   if (request.method !== 'POST' || url.search || !match || !uuid(match[1])) return reply({ error: 'not_found', status: 404 }, 404);
   const [, meetingId, action] = match;
-  const raw = await request.text();
-  if (new TextEncoder().encode(raw).length > 1024) return invalid();
   let body;
-  try { body = JSON.parse(raw); } catch { return invalid(); }
+  try {
+    if (Number(request.headers.get('content-length')) > 1024) { await request.body?.cancel(); return invalid(); }
+    const reader=request.body?.getReader();let size=0;const chunks=[];
+    if(reader)while(true){const {value,done}=await reader.read();if(done)break;size+=value.byteLength;
+      if(size>1024){await reader.cancel();return invalid();}chunks.push(value);}
+    const bytes=new Uint8Array(size);let offset=0;
+    for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+    body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+  } catch { return invalid(); }
   const fields = { grant: ['precision', 'leadMinutes', 'consent', 'intentId'], sample: ['lat', 'lon', 'accuracyM'], view: [], revoke: [] }[action];
   if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(name => !fields.includes(name))) return invalid();
   const args = { p_meeting_id: meetingId }, kv = env.SYNERA_LOCATION_EPHEMERAL;

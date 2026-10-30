@@ -1,0 +1,131 @@
+COMMAND OUTPUT: tmp/main-node-final.log
+✔ C11.L6: дубль учасника неможливий; append-only (0.569ms)
+✔ C11.L6: WTP-крива — частки по цінах; < k ціна непублічна (1.2477ms)
+✔ C11.L6: viablePrice — перша ціна з часткою >= порогу (2.767ms)
+✔ C11.L6: некоректний вхід — reason codes, не throw (2.3722ms)
+ℹ tests 786
+ℹ suites 0
+ℹ pass 785
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 34279.1888
+
+COMMAND OUTPUT: tmp/pwa-i18n-final.log
+✔ known gaps on secondary entry pages are recorded, not hidden (91.3466ms)
+✔ positive fixture registers a module worker at the root scope with guards (19.5173ms)
+✔ negative fixture: unguarded, relative, reload-on-update registration is rejected (11.0736ms)
+✔ a page without any registration is reported, not silently passed (0.78ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3747.9271
+
+COMMAND OUTPUT: tmp/playwright-final.log
+  ok 109 tests\simulation-living.spec.mjs:133:38 › A4/A5: de labels, portrait fallback, 320–430px and double text (3.1s)
+  ok 110 tests\simulation-living.spec.mjs:133:38 › A4/A5: en labels, portrait fallback, 320–430px and double text (3.1s)
+  ok 111 tests\simulation-living.spec.mjs:153:1 › A5: iPhone 13 and Pixel 7 emulation screenshots, visible input, no serious axe issues (15.2s)
+  ok 112 tests\studio-e2e.spec.mjs:12:1 › private consent never exposes fit until separate visibility choice; two-way relevance is explained (2.5s)
+  ok 113 tests\studio-e2e.spec.mjs:17:1 › current explicit confirmations gate social draft and revocation/change erase previous draft (6.3s)
+  ok 114 tests\studio-e2e.spec.mjs:22:1 › portable gzip archive roundtrips inert original notes, exact source quotes and escaped share card (7.7s)
+  ok 115 tests\studio-e2e.spec.mjs:30:1 › device save requires consent and restores exact session after reload without automatic saving (4.5s)
+  ok 116 tests\studio-e2e.spec.mjs:34:1 › new logistics revision removes votes and silent deadline applies only explicit labelled fallback (7.2s)
+  ok 117 tests\studio-e2e.spec.mjs:40:2 › installed shell › public-host clean URL remains available after going offline (4.5s)
+  ok 118 tests\studio-e2e.spec.mjs:47:2 › installed shell › dedicated manifest opens Studio and offline reload restores public shell with explicit saved session (8.0s)
+
+  118 passed (6.4m)
+
+COMMAND OUTPUT: tmp/header-final.log
+{"variant":"candidate","status":"PASS","cases":12,"failed":[],"errors":[]}
+
+COMMAND OUTPUT: tmp/offline-final.log
+{"variant":"reviewed","status":"PASS_CACHE_ONLY_OFFLINE_STARTUP","failed":[],"out":"C:\\sw\\synera-secfix\\artifacts\\offline-shell-acceptance\\PASS3_REVIEWED"}
+
+COMMAND OUTPUT: tmp/a11y-final.log
+=== Auditing index.html ===
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 41, Incomplete: 1
+
+=== Auditing catalogue.html ===
+Violations: 0 (critical: 0, serious: 0, moderate: 0, minor: 0)
+Passes: 43, Incomplete: 1
+
+Detailed report written to: C:\sw\synera-secfix\web_launch\a11y_audit_report.json
+Summary written to: C:\sw\synera-secfix\web_launch\a11y_audit.md
+
+✅ No critical or serious violations
+
+COMMAND OUTPUT: tmp/profile-browser.log
+{"status":"PASS_LOCAL_PROFILE_ERASURE_BROWSER","checks":["default off keeps direct DELETE disabled","error preserves account and form; invalid confirmation makes zero requests","normal logout clears typed destructive confirmation before another sign-in","320/390 actual focus and keyboard reach erasure confirmation without navigation occlusion","subject mismatch clears stale private UI and typed confirmation, asks for fresh account confirmation without success claim","success purges current local form/consents and reports retained records plus pending provider deletion"],"scope":"Real Chromium 390x844; synthetic account/API, no signed JWT, live Neon or provider deletion","provider_calls":0,"provider_usd":0,"focus_geometry":[{"width":320,"top":397.203125,"bottom":447.203125,"height":844,"focused":true,"unobscured":true},{"width":390,"top":397.296875,"bottom":447.296875,"height":844,"focused":true,"unobscured":true}],"source_sha256":{"web_launch/app.mjs":"5bdaa0515aafa267f4a024d698d4015a315ea23372dd8498ea83f4d9adced4dd","web_launch/index.html":"6e0782aed7523809445c8b5ce8f2dd6d0492cbfa8fc2104ce159214cda16a8ef","web_launch/neon-store.mjs":"5d3d8902959ce35acdb8f83a3dac3a2b56459b95b251d446ae4d1715487f496b","tools/profile-erasure-browser.mjs":"8164838beb3c191dd73a54b824d3451a2d850c70817d7f4a458f3ad9637bb9be"}}
+
+COMMAND OUTPUT: tmp/location-browser-acceptance.log
+{"pass":true,"scope":"Real Chromium at 390px; real client/store/worker; simulated two-account Auth/Data API/KV and browser GPS; not physical Android or live providers","checks":["no capture before consent","saved address reaches Google Maps","remote address sync","coarsening before peer display","independent sharing","revocation hides peer link","cancellation stops GPS","remote cancellation sync","no mobile overflow","no page errors","no critical or serious WCAG violations in location UI"],"provider_calls":0}
+
+COMMAND OUTPUT: tmp/case-social-draft-browser.log
+{"status":"PASS_LOCAL_CASE_SOCIAL_BROWSER","checks":10,"external_requests":0}
+
+COMMAND OUTPUT: tmp/audit-session-cookie-browser.log
+{"status":"PASS_LOCAL_BROWSER_HTTP_COOKIE","checks":14,"rpc_calls":1}
+
+COMMAND OUTPUT: tmp/audit-paid-journey-browser.log
+{"status":"PASS","checks":{"buyer_profile_has_no_offer_and_paid_match_is_eligible":true,"buyer_no_offer_one_supplier_deliverable":true,"two_independent_approvals":true,"accepted_result_step_is_current":true,"supplier_private_card_after_genuine_buyer_acceptance":true,"supplier_card_downloads_with_private_CSP":true,"server_413_keeps_all_manual_unicode_fields":true,"empty_action_and_keyboard":true,"accepted_result_step_clears_on_revision":true,"accepted_result_step_clears_on_logout":true,"layout_current_uk_320":{"viewport":320,"width":320,"text":null},"layout_atelier_uk_320":{"viewport":320,"width":320,"text":null},"layout_current_de_390_200pct":{"viewport":390,"width":390,"text":{"method":"all_visible_text_and_controls_dom_style","count":87,"allDoubled":true}},"layout_atelier_de_390_200pct":{"viewport":390,"width":390,"text":{"method":"all_visible_text_and_controls_dom_style","count":87,"allDoubled":true}},"layout_current_en_1440":{"viewport":1440,"width":1440,"text":null},"layout_atelier_en_1440":{"viewport":1440,"width":1440,"text":null},"page_errors":[]}}
+
+COMMAND OUTPUT: tmp/simulation-browser-acceptance.log
+    "actual_http_two_actor_paid_cycle_receiver_only": true,
+    "synthetic_frame_receipts_on_actor_events": true,
+    "explicit_stop_invalidates_actor": true,
+    "widths_and_double_text_no_horizontal_overflow": true,
+    "axe_no_serious_or_critical": true,
+    "query_url_bypassed_canonical_offline_shell_has_no_private_room_or_fake_ai": true,
+    "real_png_runner_stop_rejects_delayed_synthetic_decision": true,
+    "no_browser_exceptions": true
+  },
+  "providerCalls": 0,
+  "output": "tmp/simulation-browser"
+}
+
+COMMAND OUTPUT: tmp/simulation-node.log
+✔ I1: runtime restart atomically removes expired sessions, preserves fresh ones and does not renew reads (163.3135ms)
+✔ private HTTP sessions reject wrong origin, forged actor, stale request and private cache (352.7605ms)
+✔ executor refuses stale, cross-action payloads and unbounded fields (2.5658ms)
+✔ provider consent belongs to the selected pair and STOP rejects an in-flight actor (139.3778ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2882.3298
+
+COMMAND OUTPUT: tmp/simulation-python.log
+py : ...
+In Zeile:2 Zeichen:107
++ ... n-node.log; py -3 -B -m unittest discover -s tools -p test_simulation ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+COMMAND OUTPUT: tmp/kit-unit.log
+✔ SQL splitter preserves quoted semicolons, comments and dollar bodies (4.9283ms)
+✔ inventory includes columns, function signatures, policies, grants and replacement fingerprints (15.2172ms)
+✔ ZIP boundary rejects traversal, maps, tests, secret material and size overflow (13.34ms)
+✔ environment discovery refuses dynamic names instead of silently omitting a binding (64.6826ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 513.2442

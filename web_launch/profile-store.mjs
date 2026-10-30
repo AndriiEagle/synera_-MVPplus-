@@ -66,10 +66,11 @@ export class ServiceError extends Error {
       session_token_unavailable: 'Вхід підтверджено, але доступ до профілю ще не отримано. Спробуй продовжити вхід. Код помилки: AUTH-TOKEN.',
       session_unavailable: 'Не вдалося відновити з’єднання з акаунтом. Спробуй ще раз.',
       profile_delete_conflict: "Профіль не видалено: сервер відхилив видалення. Збережи приватний експорт у «Приватність» і звернися до оператора через «Правила та приватність».",
+      profile_delete_disabled: 'Пряме видалення профілю вимкнено. Використай доступні дії стирання або звернися до оператора.',
       profile_erasure_subject_mismatch: 'Акаунт змінився в іншій вкладці. Нічого не стерто. Увійди знову, перевір акаунт і підтверди дію ще раз.',
       data_unavailable: 'Не вдалося завантажити або зберегти дані. Повтори дію; введені поля залишаються у формі.',
     };
-    super((code === 'otp_invalid' || (status === 409 && ['profile_delete_conflict', 'profile_erasure_subject_mismatch'].includes(code)) || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
+    super((code === 'otp_invalid' || code === 'profile_delete_disabled' || (status === 409 && ['profile_delete_conflict', 'profile_erasure_subject_mismatch'].includes(code)) || status >= 500 ? authMessages[code] : '') || messages[status] || 'Сервіс тимчасово недоступний. Спробуй пізніше.');
     this.name = 'ServiceError'; this.status = status; this.code = Object.hasOwn(authMessages, code) ? code : undefined;
   }
 }
@@ -153,16 +154,8 @@ export class ProfileStore {
   }
   async deleteProfile() {
     this.requireRealPilot();
-    let rows;
-    try {
-      rows = await this._send(`/rest/v1/profiles?id=eq.${encodeURIComponent(this.requireUser())}`, { method: 'DELETE', authenticated: true, prefer: 'return=representation' });
-    } catch (error) {
-      // A profile deletion conflict must not look like a duplicate meeting invitation.
-      // Preserve all data and the session; only the operator can resolve retention.
-      if (error instanceof ServiceError && error.status === 409) throw new ServiceError(409, 'profile_delete_conflict');
-      throw error;
-    }
-    if (rows.length !== 1) throw new Error('Профіль не видалено: він недоступний або вже відсутній.');
+    // Retained for older callers: shared records can only be handled by erasure RPCs.
+    throw new ServiceError(405, 'profile_delete_disabled');
   }
   // SYN_CASE_STORE_MATCHES_SQL: the client writes the normalized SQL columns, never a
   // JSON state blob. caseState reconstructs the domain state from match_cases plus the
@@ -281,10 +274,11 @@ export class ProfileStore {
   }
   async exportAccount() {
     this.requireRealPilot();
+    const subject=this.user;
     const collect = async (table, columns, filter = '') => {
       const all = [];
       for (let offset = 0; offset < 100000; offset += 500) {
-        const rows = await this._send('/rest/v1/' + table + '?select=' + columns + filter + '&order=' + (table === 'pilot_consents' ? 'accepted_at' : 'created_at') + '.asc&limit=500&offset=' + offset, { authenticated: true });
+        const rows = await this._send('/rest/v1/' + table + '?select=' + columns + filter + '&order=' + (table === 'pilot_consents' ? 'accepted_at' : table === 'match_case_approvals' ? 'approved_at' : 'created_at') + '.asc&limit=500&offset=' + offset, { authenticated: true });
         all.push(...rows);
         if (rows.length < 500) return all;
       }
@@ -297,6 +291,16 @@ export class ProfileStore {
       collect('profile_blocks','blocked_id,created_at','&blocker_id=eq.' + encodeURIComponent(this.requireUser())),
       collect('profile_reports','reported_id,reason,detail,created_at'),
     ]);
-    return { format: 'synera-account-export-1', private: true, exported_at: new Date().toISOString(), account: { id: this.user.id, email: this.user.email }, profile, consents, invitations, messages, blocks, reports };
+    const actor=subject.id,cases=this.caseExportEnabled ? await collect('match_cases',CASE_SELECT) : [];
+    if(cases.some(row=>![row.participant_low,row.participant_high].includes(actor)))throw new Error('Export rights check failed');
+    const approvals=this.caseExportEnabled ? await collect('match_case_approvals','case_id,'+APPROVAL_SELECT) : [];
+    const visible=new Map(cases.map(row=>[row.case_id,row]));
+    if(approvals.some(row=>!visible.has(row.case_id)||![visible.get(row.case_id).participant_low,visible.get(row.case_id).participant_high].includes(row.party_id)))throw new Error('Export rights check failed');
+    // These surfaces require their own reviewed RPCs; never widen grants for an export.
+    const omitted=['match_outcome_events','meeting_address_events','meeting_address','meeting_location_grants','location_consent_intents','group_rooms','group_room_members','group_room_messages','group_room_events'];
+    if(!this.caseExportEnabled)omitted.push('match_cases','match_case_approvals');
+    if(this.user!==subject)throw new Error('Export session changed');
+    return { format: 'synera-account-export-1', private: true, exported_at: new Date().toISOString(), account: { id: subject.id, email: subject.email }, profile, consents, invitations, messages, blocks, reports, cases, approvals,
+      coverage:{status:'partial',omitted,followUp:'operator_request_required_with_identity_and_per_record_rights_review'} };
   }
 }

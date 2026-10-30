@@ -18,7 +18,7 @@ self.addEventListener('activate', event => event.waitUntil(caches.keys().then(ke
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== self.location.origin ||
-      !(SHELL.includes(url.pathname) || PORTRAITS.includes(url.pathname)) || (url.search && url.pathname !== '/simulation.html')) return;
+      !(SHELL.includes(url.pathname) || PORTRAITS.includes(url.pathname)) || url.search) return;
   event.respondWith(fetch(event.request).then(async response => {
     if (response.ok) await (await caches.open(CACHE)).put(url.pathname, response.clone());
     return response;

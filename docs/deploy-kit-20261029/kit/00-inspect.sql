@@ -1,4 +1,5 @@
--- Read-only catalog inventory. false means absent; never reads member emails or private rows.
+-- REVIEW ONLY. Read-only inventory regenerated from this SECFIX source; not live acceptance.
+-- The rest of this older kit MUST be regenerated after merge before use.
 select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:USAGE:schema public' as object, coalesce((has_schema_privilege('authenticated','public','usage')),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'function' as kind, 'public.synera_user_id()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_user_id' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
@@ -24,8 +25,6 @@ union all
 select 'schema.proposal.sql' as migration, 'rls' as kind, 'public.profiles' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.profiles')),false)),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:SELECT:public.profiles' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.profiles'),'select'),false)),false) as present
-union all
-select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:DELETE:public.profiles' as object, coalesce((coalesce(has_table_privilege('authenticated',to_regclass('public.profiles'),'delete'),false)),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:INSERT:public.profiles.id' as object, coalesce((coalesce(has_column_privilege('authenticated',to_regclass('public.profiles'),(select attnum from pg_catalog.pg_attribute where attrelid=to_regclass('public.profiles') and attname='id' and not attisdropped),'insert'),false)),false) as present
 union all
@@ -56,8 +55,6 @@ union all
 select 'schema.proposal.sql' as migration, 'policy' as kind, 'public.profiles.profiles_create' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.profiles') and polname='profiles_create')),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'policy' as kind, 'public.profiles.profiles_update' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.profiles') and polname='profiles_update')),false) as present
-union all
-select 'schema.proposal.sql' as migration, 'policy' as kind, 'public.profiles.profiles_delete' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.profiles') and polname='profiles_delete')),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'table' as kind, 'public.meeting_requests' as object, coalesce((to_regclass('public.meeting_requests') is not null),false) as present
 union all
@@ -151,7 +148,7 @@ select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:UPDAT
 union all
 select 'schema.proposal.sql' as migration, 'function' as kind, 'public.synera_touch_profile()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_touch_profile' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.profiles.synera_profile_updated' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='synera_profile_updated' and not tgisinternal)),false) as present
+select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.profiles.synera_profile_updated' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='synera_profile_updated' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'policy' as kind, 'public.profiles.profiles_consent' as object, coalesce((exists(select 1 from pg_catalog.pg_policy where polrelid=to_regclass('public.profiles') and polname='profiles_consent')),false) as present
 union all
@@ -205,7 +202,7 @@ select 'schema.proposal.sql' as migration, 'grant' as kind, 'authenticated:INSER
 union all
 select 'schema.proposal.sql' as migration, 'function' as kind, 'public.synera_meeting_names()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_meeting_names' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_names' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_names' and not tgisinternal)),false) as present
+select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_names' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_names' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'index' as kind, 'public.meetings_pending_pair' as object, coalesce((to_regclass('public.meetings_pending_pair') is not null),false) as present
 union all
@@ -295,11 +292,11 @@ select 'schema.proposal.sql' as migration, 'rls' as kind, 'public.synera_write_l
 union all
 select 'schema.proposal.sql' as migration, 'function' as kind, 'public.synera_limit_writes()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_limit_writes' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_requests.invitations_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='invitations_rate' and not tgisinternal)),false) as present
+select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_requests.invitations_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='invitations_rate' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
-select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_messages.messages_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_messages') and tgname='messages_rate' and not tgisinternal)),false) as present
+select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.meeting_messages.messages_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_messages') and tgname='messages_rate' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
-select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.profile_reports.reports_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profile_reports') and tgname='reports_rate' and not tgisinternal)),false) as present
+select 'schema.proposal.sql' as migration, 'trigger' as kind, 'public.profile_reports.reports_rate' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profile_reports') and tgname='reports_rate' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'schema.proposal.sql' as migration, 'table' as kind, 'public.synera_pilot_members' as object, coalesce((to_regclass('public.synera_pilot_members') is not null),false) as present
 union all
@@ -363,11 +360,11 @@ select 'case-state.migration.sql' as migration, 'index' as kind, 'public.match_c
 union all
 select 'case-state.migration.sql' as migration, 'function' as kind, 'public.synera_case_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_case_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.match_case_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='match_case_guard' and not tgisinternal)),false) as present
+select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.match_case_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='match_case_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'case-state.migration.sql' as migration, 'function' as kind, 'public.synera_case_project_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_case_project_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.match_case_project_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='match_case_project_guard' and not tgisinternal)),false) as present
+select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.match_case_project_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='match_case_project_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'case-state.migration.sql' as migration, 'rls' as kind, 'public.match_cases' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.match_cases')),false)),false) as present
 union all
@@ -433,7 +430,7 @@ select 'case-state.migration.sql' as migration, 'index' as kind, 'public.approva
 union all
 select 'case-state.migration.sql' as migration, 'function' as kind, 'public.synera_approval_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_approval_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_case_approvals.match_case_approval_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_case_approvals') and tgname='match_case_approval_guard' and not tgisinternal)),false) as present
+select 'case-state.migration.sql' as migration, 'trigger' as kind, 'public.match_case_approvals.match_case_approval_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_case_approvals') and tgname='match_case_approval_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'case-state.migration.sql' as migration, 'rls' as kind, 'public.match_case_approvals' as object, coalesce((coalesce((select relrowsecurity from pg_catalog.pg_class where oid=to_regclass('public.match_case_approvals')),false)),false) as present
 union all
@@ -467,7 +464,7 @@ select 'case-expiry-repair.migration.sql' as migration, 'function' as kind, 'pub
 union all
 select 'meeting-status-guard.migration.sql' as migration, 'function' as kind, 'public.synera_meeting_status_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_meeting_status_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'meeting-status-guard.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_status_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_status_guard' and not tgisinternal)),false) as present
+select 'meeting-status-guard.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_status_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_status_guard' and not tgisinternal and tgenabled in ('O','A') and tgfoid=to_regprocedure('public.synera_meeting_status_guard()') and tgtype=19)),false) as present
 union all
 select 'meeting-location.migration.sql' as migration, 'column' as kind, 'public.meeting_requests.meeting_address' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='meeting_requests' and column_name='meeting_address')),false) as present
 union all
@@ -477,7 +474,7 @@ select 'meeting-location.migration.sql' as migration, 'policy' as kind, 'public.
 union all
 select 'meeting-location.migration.sql' as migration, 'function' as kind, 'public.synera_meeting_address_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_meeting_address_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_address_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_address_guard' and not tgisinternal)),false) as present
+select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.meeting_address_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='meeting_address_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'meeting-location.migration.sql' as migration, 'table' as kind, 'public.meeting_location_grants' as object, coalesce((to_regclass('public.meeting_location_grants') is not null),false) as present
 union all
@@ -553,13 +550,13 @@ select 'meeting-location.migration.sql' as migration, 'function' as kind, 'publi
 union all
 select 'meeting-location.migration.sql' as migration, 'function' as kind, 'public.synera_location_invalidate()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_location_invalidate' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.location_meeting_changed' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='location_meeting_changed' and not tgisinternal)),false) as present
+select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.meeting_requests.location_meeting_changed' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.meeting_requests') and tgname='location_meeting_changed' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
-select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.location_case_changed' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='location_case_changed' and not tgisinternal)),false) as present
+select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.match_cases.location_case_changed' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_cases') and tgname='location_case_changed' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
-select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.match_case_approvals.location_approval_withdrawn' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_case_approvals') and tgname='location_approval_withdrawn' and not tgisinternal)),false) as present
+select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.match_case_approvals.location_approval_withdrawn' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.match_case_approvals') and tgname='location_approval_withdrawn' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
-select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.profile_blocks.location_participant_blocked' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profile_blocks') and tgname='location_participant_blocked' and not tgisinternal)),false) as present
+select 'meeting-location.migration.sql' as migration, 'trigger' as kind, 'public.profile_blocks.location_participant_blocked' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profile_blocks') and tgname='location_participant_blocked' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'meeting-location.migration.sql' as migration, 'grant' as kind, 'authenticated:EXECUTE:public.synera_location_grant(uuid,text,integer,boolean,uuid)' as object, coalesce((coalesce(has_function_privilege('authenticated',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_location_grant' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='uuid, text, integer, boolean, uuid'),'EXECUTE'),false)),false) as present
 union all
@@ -809,17 +806,23 @@ select 'profile-erasure.migration.sql' as migration, 'grant' as kind, 'authentic
 union all
 select 'profile-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_profile_erasure_statement_lock()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_profile_erasure_statement_lock' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'profile-erasure.migration.sql' as migration, 'trigger' as kind, 'public.profiles.profile_erasure_statement_lock' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='profile_erasure_statement_lock' and not tgisinternal)),false) as present
+select 'profile-erasure.migration.sql' as migration, 'trigger' as kind, 'public.profiles.profile_erasure_statement_lock' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='profile_erasure_statement_lock' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'profile-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_profile_erasure_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_profile_erasure_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
-select 'profile-erasure.migration.sql' as migration, 'trigger' as kind, 'public.profiles.profile_erasure_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='profile_erasure_guard' and not tgisinternal)),false) as present
+select 'profile-erasure.migration.sql' as migration, 'trigger' as kind, 'public.profiles.profile_erasure_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profiles') and tgname='profile_erasure_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'profile-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_erase_profile_data()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_erase_profile_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
 select 'profile-erasure.migration.sql' as migration, 'grant' as kind, 'authenticated:EXECUTE:public.synera_erase_profile_data()' as object, coalesce((coalesce(has_function_privilege('authenticated',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_erase_profile_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
 union all
 select 'profile-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_case_outcome(text,jsonb)' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_case_outcome' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='text, jsonb') is not null),false) as present
+union all
+select 'privacy-complete-erasure.migration.sql' as migration, 'column' as kind, 'public.profile_reports.safety_hold_until' as object, coalesce((exists(select 1 from information_schema.columns where table_schema='public' and table_name='profile_reports' and column_name='safety_hold_until')),false) as present
+union all
+select 'privacy-complete-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_report_target_guard()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_report_target_guard' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
+union all
+select 'privacy-complete-erasure.migration.sql' as migration, 'trigger' as kind, 'public.profile_reports.report_target_guard' as object, coalesce((exists(select 1 from pg_catalog.pg_trigger where tgrelid=to_regclass('public.profile_reports') and tgname='report_target_guard' and not tgisinternal and tgenabled in ('O','A'))),false) as present
 union all
 select 'privacy-complete-erasure.migration.sql' as migration, 'function' as kind, 'public.synera_complete_erase_application_data()' as object, coalesce(((select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_complete_erase_application_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')='') is not null),false) as present
 union all
@@ -845,3 +848,33 @@ select 'privacy-retention-purge.migration.sql' as migration, 'function' as kind,
 union all
 select 'privacy-retention-purge.migration.sql' as migration, 'grant' as kind, 'service_role:EXECUTE:public.synera_purge_expired_privacy_data()' as object, coalesce((coalesce(has_function_privilege('service_role',(select p.oid from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='synera_purge_expired_privacy_data' and replace(pg_catalog.oidvectortypes(p.proargtypes),'public.','')=''),'EXECUTE'),false)),false) as present
 order by migration,kind,object;
+
+BEGIN READ ONLY;
+-- FALSE / HOLD blocks both SYNERA_LOCATION_READY and SYNERA_MEETING_ADDRESS_READY.
+select exists(select 1 from pg_catalog.pg_trigger t where t.tgrelid=to_regclass('public.meeting_requests')
+  and t.tgname='meeting_status_guard' and not t.tgisinternal and t.tgenabled in ('O','A')
+  and t.tgfoid=to_regprocedure('public.synera_meeting_status_guard()') and t.tgtype=19) as meeting_status_guard_ready;
+select current_user,session_user;
+select not exists(select 1 from pg_catalog.pg_policies where schemaname='public' and tablename='profiles' and policyname='profiles_delete')
+  and not has_table_privilege('authenticated','public.profiles','DELETE') as profiles_direct_delete_disabled;
+select c.relname,r.rolname as api_role,r.rolsuper,r.rolbypassrls,
+  pg_catalog.pg_has_role(r.oid,c.relowner,'USAGE') as inherits_table_owner,
+  c.relrowsecurity,c.relforcerowsecurity
+  from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid=c.relnamespace
+  cross join pg_catalog.pg_roles r where n.nspname='public' and c.relkind in ('r','p') and r.rolname='authenticated' order by c.relname;
+-- Inventory actual Data API role separately: owner/superuser/BYPASSRLS can bypass RLS.
+select c.relname,r.rolname as owner,c.relrowsecurity,c.relforcerowsecurity,r.rolsuper,r.rolbypassrls
+  from pg_catalog.pg_class c join pg_catalog.pg_namespace n on n.oid=c.relnamespace
+  join pg_catalog.pg_roles r on r.oid=c.relowner where n.nspname='public' and c.relkind in ('r','p') order by c.relname;
+select schemaname,tablename,policyname,permissive,roles,cmd,qual,with_check from pg_catalog.pg_policies where schemaname='public' order by tablename,policyname;
+select c.relname,t.tgname,t.tgenabled,pg_catalog.pg_get_triggerdef(t.oid) as definition
+  from pg_catalog.pg_trigger t join pg_catalog.pg_class c on c.oid=t.tgrelid
+  join pg_catalog.pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and not t.tgisinternal order by c.relname,t.tgname;
+-- Include implicit PUBLIC EXECUTE through acldefault, not just explicit grants.
+select p.oid::regprocedure as function,p.prosecdef,p.proconfig,
+  case when a.grantee=0 then 'PUBLIC' else pg_catalog.pg_get_userbyid(a.grantee) end as grantee,a.privilege_type
+  from pg_catalog.pg_proc p join pg_catalog.pg_namespace n on n.oid=p.pronamespace
+  cross join lateral pg_catalog.aclexplode(coalesce(p.proacl,pg_catalog.acldefault('f',p.proowner))) a
+  where n.nspname='public' and a.privilege_type='EXECUTE' order by 1,4;
+select rolname,rolsuper,rolbypassrls,rolinherit from pg_catalog.pg_roles order by rolname;
+ROLLBACK;

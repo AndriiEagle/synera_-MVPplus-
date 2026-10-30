@@ -16,10 +16,21 @@ const env = { SYNERA_SITE_URL: origin, SYNERA_NEON_AUTH_URL: 'https://ep-fixture
 const user = { id: '11111111-1111-4111-8111-111111111111', email: 'pilot@example.com', emailVerified: true };
 const jwt = 'eyJhbGciOiJub25lIn0.eyJzdWIiOiJmaXh0dXJlIn0.signature'; // Shape-only public fixture. Never sent to a provider.
 const request = (path, { method = 'GET', body, headers = {} } = {}) => new Request(origin + '/api/neon' + path, { method,
-  headers: { 'X-Synera-Client': '1', Origin: origin, 'Content-Type': 'application/json', ...headers },
+  headers: { 'X-Synera-Client': '1', Origin: origin, 'Content-Type': 'application/json', 'CF-Connecting-IP': '192.0.2.1', ...headers },
   ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
 const upstreamSession = () => new Response(JSON.stringify({ user, session: { token: 'opaque-secret', id: 'session-id' } }), { headers: { 'Set-Auth-Jwt': jwt } });
 const browserCookie = { Cookie: '__Host-synera-session=opaque-secret' };
+
+async function issuedEnv() {
+  const rows = new Map();
+  const settings = { ...env, SYNERA_LOCATION_EPHEMERAL: {
+    async get(key) { return rows.has(key) ? JSON.parse(rows.get(key)) : null; },
+    async put(key, value) { rows.set(key, value); },
+  } };
+  const result = await handleNeon(request('/otp/request', { method: 'POST', body: { email: user.email, consent: consentRecord({terms:true,privacy:true}) } }), settings, async () => Response.json({}));
+  assert.equal(result.status, 200);
+  return settings;
+}
 
 test('closed backend, wrong origins, bad configuration and unsupported routes make no upstream request', async () => {
   let calls = 0; const never = async () => { calls++; throw new Error('Unexpected request'); };
@@ -143,6 +154,7 @@ test('the case-state tables are reachable through the gateway and the allowlist 
 });
 
 test('OTP requires an invited email, explicit current consent and a bounded body before sending', async () => {
+  const env = await issuedEnv();
   const calls = []; const upstream = async (...args) => { calls.push(args); return new Response('{}'); };
   const consent = consentRecord({ terms: true, privacy: true });
   for (const [body, status] of [[{ email: user.email }, 400], [{ email: 'not-invited@example.com', consent }, 403], [{ email: user.email, consent, admin: true }, 400], [{ email: 'x'.repeat(5000), consent }, 413]]) {
@@ -162,13 +174,13 @@ test('OTP verification keeps provider session, identity metadata and JWT out of 
   const calls = [];
   const upstream = async (...args) => { calls.push(args); return new Response(JSON.stringify({ user: { ...user, privateMetadata: 'unnecessary' }, token: 'secret-provider-token' }),
     { headers: { 'Set-Cookie': '__Secure-neon-auth.session_token=opaque-secret; Path=/; Domain=neon.tech; Secure; HttpOnly; SameSite=None; Max-Age=604800', 'Set-Auth-Jwt': jwt } }); };
-  const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env, upstream);
+  const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), await issuedEnv(), upstream);
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { user: { id: user.id, email: user.email } });
   assert.equal(response.headers.get('set-cookie'), '__Host-synera-session=opaque-secret; Path=/; Secure; HttpOnly; SameSite=Lax');
   assert.equal(response.headers.get('set-auth-jwt'), null);
   assert.equal(calls.length, 1);
-  const bad = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+  const bad = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), await issuedEnv(),
     async () => new Response(JSON.stringify({ user: { ...user, emailVerified: false } })));
   assert.equal(bad.status, 401); assert.equal(bad.headers.get('set-cookie'), null);
 });
@@ -189,7 +201,7 @@ test('current Neon cookie survives OTP -> browser session -> data; unrelated coo
   const headers = new Headers();
   headers.append('Set-Cookie', '__Secure-neon-auth.session_data=private-cache; Path=/; Secure; HttpOnly');
   headers.append('Set-Cookie', '__Secure-neon-auth.session_token=signed.opaque%2Bvalue; Path=/; Secure; HttpOnly; SameSite=None');
-  const verified = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+  const verified = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), await issuedEnv(),
     async () => new Response(JSON.stringify({ user }), { headers }));
   assert.equal(verified.status, 200);
   const cookie = verified.headers.get('set-cookie').split(';')[0];
@@ -226,13 +238,13 @@ test('missing or ambiguous provider cookies fail closed with an actionable code,
     ['__Secure-neon-auth.session_token=a; Path=/', '__Secure-neon-auth.session_token=b; Path=/'],
   ]) {
     const headers = new Headers(); values.forEach(v => headers.append('Set-Cookie', v));
-    const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+    const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), await issuedEnv(),
       async () => new Response(JSON.stringify({ user }), { headers }));
     assert.equal(response.status, 503);
     assert.deepEqual(await response.json(), { error: 'session_cookie_unavailable', status: 503 });
     assert.equal(response.headers.get('set-cookie'), null);
   }
-  const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), env,
+  const response = await handleNeon(request('/otp/verify', { method: 'POST', body: { email: user.email, otp: '123456' } }), await issuedEnv(),
     async () => new Response(JSON.stringify({ message: 'private email and code must not leak' }), { status: 400 }));
   assert.deepEqual(await response.json(), { error: 'otp_invalid', status: 400 });
 });

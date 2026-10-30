@@ -1,0 +1,9 @@
+{
+  "status": "PASS_GUARD_REJECTS_REINTRODUCED_OTP_BYPASS",
+  "baseline_exit": 0,
+  "mutated_exit": 1,
+  "source_sha256": "d115c1a5321076cc7aedfca099ec149d6e92697b266b86cf02568d8af3207b35",
+  "mutated_sha256": "26abf6658f421a1ad801df221d3511d04aa15f274ce1294b43c53c31ed56634c",
+  "isolated": true,
+  "provider_calls": 0
+}
