@@ -1,5 +1,5 @@
 // Cache only explicit public shell assets. Never cache API, tokens, profiles, map tiles or imports.
-const CACHE = 'synera-shell-20261030-wave2';
+const CACHE = 'synera-shell-20261030-wave3';
 // Optional replies need the consent UI offline too; API/config responses stay uncached.
 const VOICE = ['/voice-core.mjs','/voice-copy.mjs','/voice-input.mjs','/voice-ui.mjs','/input-drafts.mjs','/voice.css'];
 const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/style-switcher.mjs', '/onboarding-tour.mjs', '/demo-journey.mjs', '/online-store.mjs', '/profile-store.mjs', '/neon-store.mjs', '/profile-portability.mjs', '/profile-brief.mjs', '/profile-package.mjs', '/calendar.mjs', '/matching.mjs', '/map.mjs', '/pilot-policy.mjs', '/pwa.mjs', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/legal.html', '/catalogue.html', '/tokens.css', '/cascade.mjs', '/iceberg-client.mjs'];

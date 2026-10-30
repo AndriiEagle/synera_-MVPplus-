@@ -76,3 +76,5 @@ body[data-device=desktop] #phone-qr { width:208px; min-height:208px; }
   body[data-device=desktop] .get-transfer { flex-direction:column; }
 }
 @media(prefers-reduced-motion:reduce) { .getsite * { animation:none!important; transition:none!important; } }
+#apk-row { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+#apk-sha256 { font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--syn-muted, #a9a7a1); word-break: break-all; }

@@ -69,4 +69,20 @@ document.querySelector('#install-guide-close').addEventListener('click',()=>guid
 document.querySelector('#guide-android').addEventListener('click',()=>chooseGuide(false));
 document.querySelector('#guide-ios').addEventListener('click',()=>chooseGuide(true));
 render();
+// The APK button exists only where the signed file and its public receipt are really served (K5, docs/APK-20261030.uk.md).
+async function showApkDownload() {
+  const row = document.querySelector('#apk-row'), hash = document.querySelector('#apk-sha256');
+  row.hidden = true;
+  try {
+    const head = await fetch('/synera.apk', { method: 'HEAD', cache: 'no-store', redirect: 'error' });
+    if (head.status !== 200) return;
+    const meta = await fetch('/android-release.json', { cache: 'no-store', redirect: 'error' });
+    if (meta.status !== 200) return;
+    const release = await meta.json();
+    if (release.packageId !== 'ch.synera.app' || !/^[a-f0-9]{64}$/.test(release.sha256)) return;
+    hash.textContent = `SHA-256 ${release.sha256}`;
+    row.hidden = false;
+  } catch { /* No APK on this origin: the row stays hidden. */ }
+}
+showApkDownload();
 if ('serviceWorker' in navigator && window.isSecureContext) navigator.serviceWorker.register('/sw.mjs',{type:'module',updateViaCache:'none'}).catch(()=>{});

@@ -85,3 +85,20 @@ test('standalone opens same-origin draft with language; desktop QR and switch pr
   await page.locator('#install-primary').click();await expect(page).toHaveURL(/\/\?draft=1&lang=en/);
   await expect(page.locator('#profile-form')).toBeVisible();
 });
+
+test('APK download appears only where the signed file and its receipt are served', async ({page}) => {
+  await page.goto(`${base}/get.html?lang=de`);
+  await page.waitForLoadState('networkidle');
+  await expect(page.locator('#apk-row')).toBeHidden();
+  const sha = 'a'.repeat(64);
+  await page.route('**/synera.apk', route => route.fulfill({status:200, body:''}));
+  await page.route('**/android-release.json', route => route.fulfill({status:200, contentType:'application/json', body: JSON.stringify({packageId:'ch.synera.app', sha256: sha})}));
+  await page.reload();
+  await expect(page.locator('#apk-download')).toBeVisible();
+  await expect(page.locator('#apk-download')).toHaveText('APK herunterladen');
+  await expect(page.locator('#apk-download')).toHaveAttribute('href', '/synera.apk');
+  await expect(page.locator('#apk-sha256')).toContainText(sha);
+  await page.locator('.header-preferences > summary').click();
+  await page.locator('#site-language').selectOption('en');
+  await expect(page.locator('#apk-download')).toHaveText('Download APK');
+});
