@@ -128,16 +128,22 @@ try {
   checks.axe_no_serious_or_critical = true;
   await owner.reload(); await owner.waitForFunction(() => document.body.dataset.revision !== undefined);
   await owner.evaluate(() => navigator.serviceWorker.ready);
+  const privateOfflineURL=owner.url();
   await ownerContext.setOffline(true);
-  await owner.reload();
-  await owner.locator('#sim-message').waitFor();
-  assert.match(await owner.locator('#sim-status').innerText(), /посилання|офлайн|fetch|Failed/i);
-  assert.equal(await owner.locator('#sim-send').isEnabled(), false);
+  // C1: private/query LAB URLs bypass shared caching; only the canonical
+  // public shell may reload offline, with no private room or live-AI claim.
+  await assert.rejects(owner.reload(), /ERR_INTERNET_DISCONNECTED/);
+  const publicOffline=await ownerContext.newPage();
+  await publicOffline.goto(app.origin+'/simulation.html');
+  await publicOffline.locator('#living-title').waitFor();
+  assert.equal(await publicOffline.locator('#simulation-lab').isHidden(),true);
+  assert.equal(await publicOffline.locator('#sim-send').isEnabled(), false);
   await ownerContext.setOffline(false);
-  checks.offline_shell_loads_but_no_fake_ai_or_private_cache = true;
-  const cached = await owner.evaluate(async () => (await Promise.all((await caches.keys()).map(async name =>
+  checks.query_url_bypassed_canonical_offline_shell_has_no_private_room_or_fake_ai = true;
+  const cached = await publicOffline.evaluate(async () => (await Promise.all((await caches.keys()).map(async name =>
     (await (await caches.open(name)).keys()).map(r => new URL(r.url).pathname)))).flat());
   assert.equal(cached.some(p => p.startsWith('/api/')), false);
+  await publicOffline.close();
 
   // Actual PNG capture and stale-response guard, with explicitly injected local decision.
   let pendingModel, captured;
@@ -153,7 +159,7 @@ try {
       await new Promise(resolve => { pendingModel = resolve; });
       return { decision: { action: 'wait', revision: (await actorRun.snapshot()).revision }, receipt: { syntheticTest: true } };
     } });
-  await owner.reload(); await owner.waitForFunction(() => document.body.dataset.revision !== undefined);
+  await owner.goto(privateOfflineURL); await owner.waitForFunction(() => document.body.dataset.revision !== undefined);
   await owner.locator('#sim-consent').check(); await owner.locator('#sim-run').click();
   await owner.waitForResponse(r => r.url().includes('/api/sim/session?'));
   const gotCapture = new Promise(resolve => { captured = resolve; });

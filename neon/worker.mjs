@@ -159,8 +159,7 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
           if (env.SYNERA_OPEN_REGISTRATION !== 'true' || !(error instanceof GatewayError) || ![400, 401, 403, 404, 409, 422].includes(error.upstreamStatus ?? error.status)) throw error;
         }
       };
-      if (env.SYNERA_OPEN_REGISTRATION === 'true') await withOtpProtection(env, email, request, 'request', send, consentRecord(body.consent));
-      else await send();
+      await withOtpProtection(env, email, request, 'request', send, consentRecord(body.consent));
       return answer({ sent: true });
     }
     if (path === '/otp/verify' && request.method === 'POST' && !url.search) {
@@ -178,8 +177,7 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
           throw error;
         }
       };
-      return env.SYNERA_OPEN_REGISTRATION === 'true'
-        ? await withOtpProtection(env, email, request, 'verify', verify, { policy_version: POLICY_VERSION }) : await verify();
+      return await withOtpProtection(env, email, request, 'verify', verify, { policy_version: POLICY_VERSION });
     }
     if (path === '/session' && request.method === 'GET' && !url.search) {
       const session = await getSession(fetchImpl, endpoints, cookie, allowed);
@@ -275,6 +273,7 @@ export async function handleNeon(request, env, fetchImpl = fetch) {
     }
     const match = path.match(/^\/data\/([a-z_]+)$/);
     if (!match || !TABLES.has(match[1]) || url.search.length > 4096) throw new GatewayError(404);
+    if (match[1] === 'profiles' && request.method === 'DELETE') throw new GatewayError(405, 'profile_delete_disabled');
     if (['match_cases', 'match_case_approvals'].includes(match[1]) && env.SYNERA_REAL_JOURNEY_READY !== 'true') throw new GatewayError(503, 'real_journey_not_ready');
     if (match[1] === 'match_cases' && request.method === 'PATCH') {
       const filters = [['case_id', /^eq\.[A-Za-z0-9_:-]{1,64}$/], ['version', /^eq\.[1-9][0-9]{0,8}$/], ['terms_hash', /^eq\.[a-f0-9]{64}$/], ['status', /^eq\.open$/]];
@@ -327,6 +326,7 @@ export function createNeonWorker(publicAssets) {
         caseOutcomesEnabled: outcomeReady(env),
         meetingAddressEnabled: meetingAddressReady(env),
         profileErasureEnabled: profileErasureReady(env),
+        completeErasureEnabled: profileErasureReady(env) && env.SYNERA_COMPLETE_ERASURE_READY === 'true',
         registrationEnabled: ready && env.SYNERA_REGISTRATION_ENABLED === 'true', publicSiteUrl: url.origin });
     } else if (allowedAssets.has(url.pathname) && ['GET', 'HEAD'].includes(request.method)) response = await env.ASSETS.fetch(request);
     else response = answer({ error: 'not_found' }, 404);

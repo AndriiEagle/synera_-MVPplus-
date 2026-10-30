@@ -29,7 +29,7 @@ create table public.profiles (
 );
 alter table public.profiles enable row level security;
 revoke all on public.profiles from public, authenticated;
-grant select, delete on public.profiles to authenticated;
+grant select on public.profiles to authenticated;
 grant insert (id, display_name, city, offers, seeks, is_discoverable),
       update (id, display_name, city, offers, seeks, is_discoverable)
       on public.profiles to authenticated;
@@ -40,8 +40,7 @@ create policy profiles_create on public.profiles for insert to authenticated
   with check ((select public.synera_user_id()) = id);
 create policy profiles_update on public.profiles for update to authenticated
   using ((select public.synera_user_id()) = id) with check ((select public.synera_user_id()) = id);
-create policy profiles_delete on public.profiles for delete to authenticated
-  using ((select public.synera_user_id()) = id);
+-- Direct profile DELETE is disabled; use reviewed erasure RPCs.
 
 create table public.meeting_requests (
   id uuid primary key default gen_random_uuid(),

@@ -1,0 +1,101 @@
+{
+  "status": "PASS_LOCAL_SECFIX_OWNER_REVIEW_PENDING",
+  "base": "f69882f1e5e5b5085449505db0487351fc19c90b",
+  "branch": "claude/synera-secfix-20261030",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": {
+    "main_node": {
+      "pass": 785,
+      "fail": 0,
+      "skip": 1
+    },
+    "pwa_i18n": {
+      "pass": 43,
+      "fail": 0
+    },
+    "playwright": {
+      "pass": 118,
+      "fail": 0
+    },
+    "privacy_sql": {
+      "status": "PASS_LOCAL_PRIVACY_SQL",
+      "checks": 10
+    },
+    "header": {
+      "pass": 12
+    },
+    "offline": {
+      "status": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+      "fresh_build_files": 176
+    },
+    "a11y": {
+      "critical": 0,
+      "serious": 0
+    },
+    "cookie_browser": {
+      "checks": 14
+    },
+    "simulation_node": {
+      "pass": 8
+    },
+    "simulation_python": {
+      "pass": 3
+    },
+    "kit_unit": {
+      "pass": 4
+    }
+  },
+  "limits": [
+    "REVIEW_ONLY_SQL_NOT_APPLIED",
+    "LIVE_NEON_ROLES_AUTH_KV_NOT_ACCEPTED",
+    "D3_EXPORT_PARTIAL",
+    "OWNER_LEGAL_RETENTION_DECISIONS_OPEN",
+    "OLD_DEPLOY_KIT_REQUIRES_CLEAN_REGENERATION",
+    "PRIMARY_SUBSCRIPTION_COST_UNKNOWN_NOT_PROVIDER_COST",
+    "STABILIZER_OWNER_EXPORT_NOT_SIGNED",
+    "SET_THREAD_TITLE_TOOL_UNAVAILABLE"
+  ],
+  "source_sha256": {
+    "docs/PRIVACY-BY-DESIGN-20261029.uk.md": "b5b9cf94b6b378667bfefe9b4742f596effccc123112c9b8a34f960566ccbfed",
+    "docs/SECFIX-20261030.uk.md": "26d0363f36b7f53e10ed4afacc4a49bac41ed263736d3fd9d416d8da07731846",
+    "docs/deploy-kit-20261029/kit/00-inspect.sql": "5f90979f90b8b2b78eb0de5779cf05cf4cc4bdac25905cab61fa9fd17dc4fbc1",
+    "docs/deploy-kit-20261029/kit/README.uk.md": "e71d5c25c2031ddb1c8a7aa7d3fa6e6e1f8bdf0a9ba16c0c9dc336e0aa25bdf9",
+    "neon/acceptance.sql": "079d8a9438881f19135ad966235c56411ae1cc0deee77dc9133352e6dcac1bd6",
+    "neon/generate-schema.mjs": "c262301697168cb1f48bca1442b211f89c5f3cc3dffedf5362cd9ed7561d30fb",
+    "neon/meeting-location.mjs": "49d28d654974648a927002b4f2aa5ecd483484596e36d5761b04b3d5eba97d9f",
+    "neon/open-registration.test.mjs": "0316b588d4ea8c1475ba59c1ec23632eb998f8cebb56344dd47fb66db4cbc6f1",
+    "neon/privacy-complete-erasure.acceptance.sql": "9d702af4fdfb24188d1470b649a544bcf19671a2c4dcb2def7f055fb0992cecf",
+    "neon/privacy-complete-erasure.migration.sql": "8e02d08b9ea8f4a75b2c1c8115cac5eb06bfe6e4bdc6ab25d89d3dc6bbbf96b3",
+    "neon/privacy-complete-erasure.test.mjs": "d5ea3f15ab2a8665c1a0387d6eaa0a16adcab5086be45d21cd897d7e821874e2",
+    "neon/privacy-retention-purge.migration.sql": "6c912c060fae019063aecd789cc93844357edbb8a1bf0c04c8d404da9fff8abb",
+    "neon/profile-delete-guard.acceptance.sql": "d5e24e0d98c6a6436ab901d28808b6c089e440ca74053688c69010599188dc9f",
+    "neon/profile-delete-guard.migration.sql": "a7ccb688dce9e565cde18480f77be3996cde3c7e412982c189b0330ed08e1351",
+    "neon/profile-delete.test.mjs": "661865f67b08a97047601a0f0c64a3921c8972ed2d4f21cc33d6db669af5913e",
+    "neon/schema.proposal.sql": "a530d291a5afe4059f47ca08bc8778c6c870b8a1c92878f7a9e20e831620310f",
+    "neon/worker.mjs": "d115c1a5321076cc7aedfca099ec149d6e92697b266b86cf02568d8af3207b35",
+    "neon/worker.test.mjs": "69105600eaf68c6eb92e093d9576e20b88648018b3d9c92e5beba43d8e3c96bb",
+    "tests/secfix-e2e.spec.mjs": "0958bd82fcd7dfc5813caffbd53bf788edcbbc751a9153a716340a59ce032a69",
+    "tests/simulation-living.spec.mjs": "19248baf161e377e8bd74c429db32c1119d3f3ad895c6a33bf67b2bea4a50c6e",
+    "tools/audit-session-cookie-browser.mjs": "262584417967c002fcd1fd2845d854586216104d00147893325b46879d7ee1b5",
+    "tools/pilot-deploy-kit.mjs": "d0bcb0f18e76705fe189d8f220ac4d8e693fed1a191f6d5bd366d8e05f900a95",
+    "tools/privacy-sql-acceptance.mjs": "382f5c023aa62e6be550c9065fd3d2547c953481add7aef8cf050bf9e4e06b6f",
+    "tools/profile-erasure-browser.mjs": "8164838beb3c191dd73a54b824d3451a2d850c70817d7f4a458f3ad9637bb9be",
+    "tools/simulation-browser-acceptance.mjs": "43ee75499011504b9763fe39f4b882a869984c26019b4610a9201729580dba9c",
+    "web_launch/app.mjs": "c5b3d0553a16e038bc6e3988603ceb96aaa9692c73cc6f5195f3651a4379ab4a",
+    "web_launch/index-i18n-table.mjs": "39bfb4aa33bf80678055d2fa8d2d60b21d2f109161bc80de8bccc80c0af4463f",
+    "web_launch/index.html": "6e0782aed7523809445c8b5ce8f2dd6d0492cbfa8fc2104ce159214cda16a8ef",
+    "web_launch/neon-store.mjs": "5d3d8902959ce35acdb8f83a3dac3a2b56459b95b251d446ae4d1715487f496b",
+    "web_launch/privacy-content.mjs": "9fdc769a38278effe6bfc604fb4a6e3fe5707e11f8834b47487debba1fd6a171",
+    "web_launch/profile-store.mjs": "9e9283a72c177a641cee08f302f21d822618c1b6fead75796dc88b12dc9ef3b3",
+    "web_launch/secfix.test.mjs": "b72a4a5506143f199e63dc42a6591fbe50304baca95809b4f3d8412908457104",
+    "web_launch/simulation-sw.mjs": "775a15818225461fb271f889edfc168247742eb567ab3540f46b8cf3d1a1a846",
+    "web_launch/studio-sw.mjs": "558b1fd72586e09ee140429e5f257bc5f074e8b42b8571187183dddf7d77276f",
+    "web_launch/studio-sw.test.mjs": "0930038e08f0d917c3cf473f8cc06a295821f12b533b91020a149973d4224a63"
+  },
+  "input_sha256": {
+    "C:/Users/Andrii/Desktop/KI/plans/synera-lanes-20261029/wave2/RULES-wave2.md": "959e70ea3281fe2546576689bcf434d99d3e66ccd868c628d7981ab85a62b344",
+    "C:/Users/Andrii/Desktop/KI/research/synera-privacy-20261029/results/REPORT_D_findings.md": "421bbcf80e3f0c44df27905cc658cfbaf4c5c65d346b40ca5b98057c9c65b4dd"
+  },
+  "local_config_sha256": "2d14813eb40794fe84438fca6b127978152f95279210979cd105300ab2f4b2c0"
+}

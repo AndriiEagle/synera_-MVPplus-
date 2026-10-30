@@ -1,0 +1,72 @@
+{
+  "status": "PASS_LOCAL_PRIVACY_SQL",
+  "database": "synera_privacy_1793318974665",
+  "scope": "Disposable loopback PostgreSQL identity shim; no signed JWT, Neon Auth/KV, backup or deployment",
+  "provider_calls": 0,
+  "provider_usd": 0,
+  "checks": [
+    {
+      "name": "R1_additive_guard_revokes_old_policy_and_grant_idempotently",
+      "pass": true
+    },
+    {
+      "name": "R2_R4_read_only_catalog_inventory_executes_on_PostgreSQL",
+      "pass": true
+    },
+    {
+      "name": "R2_catalog_gate_rejects_disabled_meeting_guard",
+      "pass": true
+    },
+    {
+      "name": "D1_new_report_targets_remain_valid_without_provider_table_grants",
+      "pass": true
+    },
+    {
+      "name": "transactional_SQL_acceptance_scripts_pass_and_rollback",
+      "pass": true
+    },
+    {
+      "name": "ordinary_member_cannot_run_global_purge",
+      "pass": true
+    },
+    {
+      "name": "caller_cannot_target_another_account",
+      "pass": true
+    },
+    {
+      "name": "P3_complete_erasure_runs_with_normal_triggers_removes_application_data_and_preserves_peer_and_tombstone",
+      "pass": true
+    },
+    {
+      "name": "P4_purges_expired_only_and_rejects_free_text_counters",
+      "pass": true
+    },
+    {
+      "name": "D1_expired_hold_is_purged_while_unexpired_peer_evidence_survives",
+      "pass": true
+    }
+  ],
+  "source_sha256": {
+    "neon/schema.proposal.sql": "a530d291a5afe4059f47ca08bc8778c6c870b8a1c92878f7a9e20e831620310f",
+    "neon/case-state.migration.sql": "40bb511e4d7c20d75588cdfe60cbc3920e4754286d2b6f6a39a1827d375cbbc4",
+    "neon/meeting-status-guard.migration.sql": "a90c6e38ed75fe45faf2afe613835005e6e77e17484df1191bd04b2ed7ad2f33",
+    "neon/meeting-location.migration.sql": "38215329f654807991472f97df75e8ac233f4616aaaa7ce584968a290e31277b",
+    "neon/group-room.migration.sql": "58e85f7534871a40936c081960861cea569f68ffc69c157d988e2473778115da",
+    "neon/case-outcome.migration.sql": "5cd6a796b2abe15c01661074e192cc8d0e3de860ca1883855e10a5f5a7073ef6",
+    "neon/meeting-address-agreement.migration.sql": "d13733d295535d041f238fff0eb06b53952bdac530c5e3fbd4770eb7ca6f047a",
+    "neon/message-intent.migration.sql": "8a83a008ceff1ef009c4081f32480bd20b2948e6c14c4e84d6d3eed1bb7a647e",
+    "neon/profile-erasure.migration.sql": "2b7e6012ea3c2306f768c102d76ff47a751eeb2fc9393fa544a1ea52c81e61dd",
+    "neon/profile-delete-guard.migration.sql": "a7ccb688dce9e565cde18480f77be3996cde3c7e412982c189b0330ed08e1351",
+    "neon/privacy-complete-erasure.migration.sql": "8e02d08b9ea8f4a75b2c1c8115cac5eb06bfe6e4bdc6ab25d89d3dc6bbbf96b3",
+    "neon/privacy-retention-purge.migration.sql": "6c912c060fae019063aecd789cc93844357edbb8a1bf0c04c8d404da9fff8abb",
+    "neon/case-state.acceptance.sql": "d255f8cc8e2981b8d7c6f7b660c109710865c0761f565c3129d7f69fdc662c27",
+    "neon/profile-delete-guard.acceptance.sql": "d5e24e0d98c6a6436ab901d28808b6c089e440ca74053688c69010599188dc9f",
+    "docs/deploy-kit-20261029/kit/00-inspect.sql": "5f90979f90b8b2b78eb0de5779cf05cf4cc4bdac25905cab61fa9fd17dc4fbc1",
+    "neon/privacy-complete-erasure.acceptance.sql": "9d702af4fdfb24188d1470b649a544bcf19671a2c4dcb2def7f055fb0992cecf",
+    "neon/privacy-retention-purge.acceptance.sql": "f98cb9d6b3a089396ecaef766948f2b4623a8e9b6f6ee558d51be325366e4e00"
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 55491
+  }
+}

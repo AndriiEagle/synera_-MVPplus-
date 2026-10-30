@@ -118,9 +118,14 @@ test('A1/A2: first home load caches simulation; reload offline still replies wit
 test('A1/A4: direct simulation visit activates its worker even when every optional portrait is absent', async ({ browser }) => {
   const context=await browser.newContext({serviceWorkers:'allow', reducedMotion:'reduce'});
   try {
+    await context.addInitScript(()=>localStorage.setItem('synera.real-journey.language.v1','de'));
     const page=await context.newPage(); await open(page,'de');
     await expect.poll(()=>page.evaluate(async()=>Boolean((await navigator.serviceWorker.getRegistration('/simulation'))?.active)),{timeout:12000}).toBe(true);
-    await page.evaluate(()=>navigator.serviceWorker.ready); await context.setOffline(true); await page.reload();
+    await page.evaluate(()=>navigator.serviceWorker.ready);
+    // C1: only canonical public URLs enter the shared offline cache. The chosen
+    // language remains in the existing preference; query variants bypass SW.
+    await page.evaluate(()=>history.replaceState(null,'',location.pathname));
+    await context.setOffline(true); await page.reload();
     await expect(page.locator('#living-title')).toHaveText('Lebendige Simulation');
     await expect(page.locator('.living-person')).toHaveCount(10);
   } finally {await context.close();}

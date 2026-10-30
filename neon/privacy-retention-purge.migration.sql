@@ -33,7 +33,7 @@ revoke all on public.synera_privacy_ops_logs from public,authenticated;
 
 create function public.synera_purge_expired_privacy_data() returns jsonb
 language plpgsql security definer set search_path='' as $$
-declare invitations bigint; intents bigint; logs bigint;
+declare invitations bigint; intents bigint; logs bigint; reports bigint;
 begin
   -- Daily: pending invitations expire at proposed_at, or at creation time for
   -- legacy rows that predate scheduling. A live grant retains its replay intent.
@@ -44,8 +44,10 @@ begin
   get diagnostics intents = row_count;
   delete from public.synera_privacy_ops_logs where created_at < now()-interval '90 days';
   get diagnostics logs = row_count;
+  delete from public.profile_reports where safety_hold_until <= now();
+  get diagnostics reports = row_count;
   return jsonb_build_object('schedule','daily','expiredInvitations',invitations,
-    'expiredLocationIntents',intents,'expiredOpsLogs',logs);
+    'expiredLocationIntents',intents,'expiredOpsLogs',logs,'expiredSafetyReports',reports);
 end $$;
 revoke all on function public.synera_purge_expired_privacy_data() from public,authenticated;
 grant execute on function public.synera_purge_expired_privacy_data() to service_role;

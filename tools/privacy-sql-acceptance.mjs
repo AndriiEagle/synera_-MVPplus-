@@ -10,6 +10,7 @@ import {neonAuthShimSql} from '../neon/local_acceptance.mjs';
 import {exchangeMaterial} from '../web_launch/real-journey-client.mjs';
 import {hashMaterialPayload} from '../web_launch/business-case.mjs';
 import {A,B,C,fields} from './fixtures/real-journey-fixture.mjs';
+import {migrationInventory} from './pilot-deploy-kit.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const psql=process.env.SYNERA_ACCEPTANCE_PSQL||'psql',host=process.env.SYNERA_ACCEPTANCE_PGHOST||'127.0.0.1';
 const port=process.env.SYNERA_ACCEPTANCE_PGPORT||'',user=process.env.SYNERA_ACCEPTANCE_PGUSER||'postgres';
@@ -30,7 +31,7 @@ try {
   report.server=JSON.parse(must('postgres',"select json_build_object('host',host(inet_server_addr()),'port',inet_server_port());"));
   assert.ok(['127.0.0.1','::1'].includes(report.server.host));
   must('postgres',`create database ${database} template template0 encoding 'UTF8';`);must(database,neonAuthShimSql());
-  for(const file of ['neon/schema.proposal.sql','neon/case-state.migration.sql','neon/meeting-status-guard.migration.sql','neon/meeting-location.migration.sql','neon/group-room.migration.sql','neon/case-outcome.migration.sql','neon/meeting-address-agreement.migration.sql','neon/message-intent.migration.sql','neon/profile-erasure.migration.sql','neon/privacy-complete-erasure.migration.sql','neon/privacy-retention-purge.migration.sql'])must(database,await source(file));
+  for(const file of ['neon/schema.proposal.sql','neon/case-state.migration.sql','neon/meeting-status-guard.migration.sql','neon/meeting-location.migration.sql','neon/group-room.migration.sql','neon/case-outcome.migration.sql','neon/meeting-address-agreement.migration.sql','neon/message-intent.migration.sql','neon/profile-erasure.migration.sql','neon/profile-delete-guard.migration.sql','neon/privacy-complete-erasure.migration.sql','neon/privacy-retention-purge.migration.sql'])must(database,await source(file));
   // The shared disposal fixture creates verified A/B/C and their profiles/consents.
   const fixture=(await source('neon/case-state.acceptance.sql')).split('set local role authenticated;')[0].replace(/^begin;\r?\n/m,'');must(database,fixture);
   const materialAB=exchangeMaterial(A,B,fields()),materialBC=exchangeMaterial(B,C,fields());
@@ -76,8 +77,31 @@ try {
     insert into public.profile_reports(reporter_id,reported_id,reason,detail) values('${A}','${B}','other','Private report'),('${B}','${A}','other','Safety evidence');
     insert into public.synera_privacy_ops_logs(event_code,counters,created_at) values('privacy.purge', '{}',now()-interval '91 days'),('privacy.erasure','{}',now()-interval '89 days');
     set session_replication_role=origin;`);
+  // Reproduce the OLD live grant/policy shape, then exercise the additive guard.
+  must(database,"grant delete on public.profiles to authenticated;create policy profiles_delete on public.profiles for delete to authenticated using ((select public.synera_user_id())=id);");
+  const deleteGuard=await source('neon/profile-delete-guard.migration.sql');
+  must(database,deleteGuard);must(database,deleteGuard);
+  assert.equal(must(database,"select has_table_privilege('authenticated','public.profiles','DELETE');"),'f');
+  report.checks.push({name:'R1_additive_guard_revokes_old_policy_and_grant_idempotently',pass:true});
+  const deleteAcceptance=must(database,await source('neon/profile-delete-guard.acceptance.sql'));
+  assert.match(deleteAcceptance,/PROFILE_DELETE_GUARD_ACCEPTANCE_PASS/);
+  must(database,await source('docs/deploy-kit-20261029/kit/00-inspect.sql'));
+  report.checks.push({name:'R2_R4_read_only_catalog_inventory_executes_on_PostgreSQL',pass:true});
+  check('R2_catalog_gate_rejects_disabled_meeting_guard',()=>{
+    const row=migrationInventory('guard','create trigger meeting_status_guard before update on public.meeting_requests for each row execute function public.synera_meeting_status_guard();')[0];
+    assert.equal(must(database,'select '+row.check+';'),'t');
+    must(database,'alter table public.meeting_requests disable trigger meeting_status_guard;');
+    try { assert.equal(must(database,'select '+row.check+';'),'f'); }
+    finally { must(database,'alter table public.meeting_requests enable trigger meeting_status_guard;'); }
+  });
   const completeAcceptance=must(database,await source('neon/privacy-complete-erasure.acceptance.sql'));
   assert.match(completeAcceptance,/PRIVACY_COMPLETE_ERASURE_ACCEPTANCE_PASS/);
+  check('D1_new_report_targets_remain_valid_without_provider_table_grants',()=>{
+    reject(database,session(B)+"insert into public.profile_reports(reporter_id,reported_id,reason,detail) values('"+B+"','00000000-0000-4000-8000-000000000000','other','spoofed tombstone');",/Report target unavailable/);
+    reject(database,session(B)+"insert into public.profile_reports(reporter_id,reported_id,reason,detail) values('"+B+"','99999999-9999-4999-8999-999999999999','other','unknown target');",/Report target unavailable/);
+    must(database,session(B)+"begin;insert into public.profile_reports(reporter_id,reported_id,reason,detail) values('"+B+"','"+C+"','other','valid target');rollback;");
+    reject(database,session(B)+'select public.synera_report_target_guard();',/permission denied/);
+  });
   const purgeAcceptance=must(database,await source('neon/privacy-retention-purge.acceptance.sql'));
   assert.match(purgeAcceptance,/PRIVACY_RETENTION_PURGE_ACCEPTANCE_PASS/);
   report.checks.push({name:'transactional_SQL_acceptance_scripts_pass_and_rollback',pass:true});
@@ -87,12 +111,17 @@ try {
     assert.equal(must(database,'show session_replication_role;'),'origin');
     const out=JSON.parse(must(database,session(A)+'select public.synera_complete_erase_application_data();').split('\n').at(-1));assert.deepEqual(out,{status:'application_data_completely_erased',providerDeletion:'pending',staleSessionTombstone:'retained',repeated:false});
     for(const q of [`select count(*) from public.pilot_consents where user_id='${A}'`,`select count(*) from public.meeting_requests where sender_id='${A}' or recipient_id='${A}'`,`select count(*) from public.meeting_location_grants where grantor_id='${A}'`,`select count(*) from public.meeting_address_events`,`select count(*) from public.match_cases where participant_low='${A}' or participant_high='${A}'`,`select count(*) from public.match_outcome_events`,`select count(*) from public.group_room_messages where sender_id='${A}'`,`select count(*) from public.group_room_events where actor_id='${A}'`,`select count(*) from public.group_room_members where user_id='${A}'`,`select count(*) from public.group_rooms where creator_id='${A}'`,`select count(*) from public.profile_blocks where blocker_id='${A}' or blocked_id='${A}'`,`select count(*) from public.profile_reports where reporter_id='${A}' or reported_id='${A}'`])assert.equal(must(database,q),'0',q);
+    assert.equal(must(database,`select count(*) from public.profile_reports where reporter_id='${B}' and reported_id='00000000-0000-4000-8000-000000000000' and detail='Safety evidence' and safety_hold_until>now() and safety_hold_until<=now()+interval '90 days';`),'1');
     assert.equal(must(database,"select status from public.group_rooms where id='eeeeeeee-eeee-4eee-8eee-eeeeeeeeeee2';"),'closed');assert.equal(must(database,`select count(*) from public.group_room_members where room_id='eeeeeeee-eeee-4eee-8eee-eeeeeeeeeee2' and user_id='${B}';`),'1');assert.equal(must(database,`select count(*) from public.group_room_messages where room_id='eeeeeeee-eeee-4eee-8eee-eeeeeeeeeee2' and sender_id='${B}';`),'1');assert.equal(must(database,`select count(*) from public.group_room_events where room_id='eeeeeeee-eeee-4eee-8eee-eeeeeeeeeee2' and actor_id='${B}';`),'2');
     assert.equal(must(database,`select count(*) from public.profiles where id='${B}';`),'1');
     assert.equal(must(database,`select count(*) from public.profile_erasures where user_id='${A}';`),'1');assert.equal(must(database,session(A)+'select public.synera_pilot_member();').split('\n').at(-1),'f');
     const again=JSON.parse(must(database,session(A)+'select public.synera_complete_erase_application_data();').split('\n').at(-1));assert.deepEqual(again,{...out,repeated:true});
   });
-  check('P4_purges_expired_only_and_rejects_free_text_counters',()=>{reject(database,"insert into public.synera_privacy_ops_logs(event_code,counters) values('privacy.error','{\"email\":\"person@example.test\"}');",/violates check constraint/);reject(database,"insert into public.synera_privacy_ops_logs(event_code,counters) values('arbitrary.name','{}');",/violates check constraint/);const out=JSON.parse(must(database,'set role service_role;select public.synera_purge_expired_privacy_data();').split('\n').at(-1));assert.deepEqual(out,{schedule:'daily',expiredInvitations:2,expiredLocationIntents:1,expiredOpsLogs:1});assert.equal(must(database,"select count(*) from public.meeting_requests where id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4';"),'1');assert.equal(must(database,"select count(*) from public.location_consent_intents where intent_id='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb3';"),'1');assert.equal(must(database,"select count(*) from public.location_consent_intents where intent_id='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb4';"),'1');assert.equal(must(database,"select count(*) from public.synera_privacy_ops_logs where event_code='privacy.erasure';"),'1');});
+  must(database,`set session_replication_role=replica;insert into public.profile_reports(reporter_id,reported_id,reason,detail,safety_hold_until) values('${B}','00000000-0000-4000-8000-000000000000','other','Expired safety evidence',now()-interval '1 second');set session_replication_role=origin;`);
+  check('P4_purges_expired_only_and_rejects_free_text_counters',()=>{reject(database,"insert into public.synera_privacy_ops_logs(event_code,counters) values('privacy.error','{\"email\":\"person@example.test\"}');",/violates check constraint/);reject(database,"insert into public.synera_privacy_ops_logs(event_code,counters) values('arbitrary.name','{}');",/violates check constraint/);const out=JSON.parse(must(database,'set role service_role;select public.synera_purge_expired_privacy_data();').split('\n').at(-1));assert.deepEqual(out,{schedule:'daily',expiredInvitations:2,expiredLocationIntents:1,expiredOpsLogs:1,expiredSafetyReports:1});assert.equal(must(database,"select count(*) from public.meeting_requests where id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4';"),'1');assert.equal(must(database,"select count(*) from public.location_consent_intents where intent_id='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb3';"),'1');assert.equal(must(database,"select count(*) from public.location_consent_intents where intent_id='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb4';"),'1');assert.equal(must(database,"select count(*) from public.synera_privacy_ops_logs where event_code='privacy.erasure';"),'1');});
+  assert.equal(must(database,"select count(*) from public.profile_reports where detail='Expired safety evidence';"),'0');
+  assert.equal(must(database,"select count(*) from public.profile_reports where detail='Safety evidence' and safety_hold_until>now();"),'1');
+  report.checks.push({name:'D1_expired_hold_is_purged_while_unexpired_peer_evidence_survives',pass:true});
   report.status='PASS_LOCAL_PRIVACY_SQL';
 } catch(error) { report.error=error.message; throw error; }
 finally { try { if(database) must('postgres',`drop database if exists ${database} with (force);`); } catch {} if(receipt){await fs.mkdir(path.dirname(receipt),{recursive:true});await fs.writeFile(receipt,JSON.stringify(report,null,2)+'\n');} }

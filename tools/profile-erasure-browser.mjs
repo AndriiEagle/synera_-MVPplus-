@@ -45,7 +45,7 @@ try {
     await page.locator('[data-tab="settings"]').click();
     const controls = page.locator('#profile-erasure-controls');
     assert.equal(await controls.isHidden(), !enabled);
-    assert.equal(await page.locator('#delete-profile').isVisible(), true);
+    assert.equal(await page.locator('#delete-profile').isVisible(), false);
     if (enabled) {
       await controls.locator('summary').click();
       assert.match(await controls.innerText(), /повідомлення, адреси та записи безпеки збережуться/);
@@ -90,7 +90,7 @@ try {
       assert.match(await page.locator('#notice').innerText(), /Видалення акаунта для входу очікує оператора/);
       assert.deepEqual(requests, Array.from({length:3},()=>({confirm:'ERASE_APPLICATION_DATA',expectedSubject:A})));
       report.checks.push('success purges current local form/consents and reports retained records plus pending provider deletion');
-    } else report.checks.push('default off preserves the separate legacy deletion route');
+    } else report.checks.push('default off keeps direct DELETE disabled');
     assert.deepEqual(errors, []); await context.close();
   }
   report.source_sha256 = Object.fromEntries(await Promise.all(['web_launch/app.mjs', 'web_launch/index.html', 'web_launch/neon-store.mjs', 'tools/profile-erasure-browser.mjs'].map(async file => [file, createHash('sha256').update(await fs.readFile(file)).digest('hex')])));

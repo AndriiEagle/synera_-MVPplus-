@@ -11,6 +11,6 @@ self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=
 self.addEventListener('fetch',event=>{const u=new URL(event.request.url);
   // The public host redirects .html to a clean URL. Both routes use the same public shell.
   const cacheKey=['/studio','/studio/'].includes(u.pathname)?'/studio.html':['/studio-journey','/studio-journey/'].includes(u.pathname)?'/studio-journey.html':u.pathname;
-  if(event.request.method!=='GET'||u.origin!==self.location.origin||(u.search&&cacheKey!=='/studio-journey.html')||!ASSETS.includes(cacheKey))return;
+  if(event.request.method!=='GET'||u.origin!==self.location.origin||u.search||!ASSETS.includes(cacheKey))return;
   event.respondWith(fetch(event.request).then(async response=>{if(response.ok)await(await caches.open(CACHE)).put(cacheKey,response.clone());return response;}).catch(()=>caches.match(cacheKey)));
 });

@@ -16,6 +16,8 @@ export class NeonStore extends ProfileStore {
     this.liveLocationEnabled = config.liveLocationEnabled === true;
     this.meetingAddressEnabled = config.meetingAddressEnabled === true;
     this.profileErasureEnabled = config.profileErasureEnabled === true;
+    this.completeErasureEnabled = this.profileErasureEnabled && config.completeErasureEnabled === true;
+    this.caseExportEnabled = config.realJourneyEnabled === true;
     this.googleOAuthInitUrl = config.googleOAuthInitUrl || '';
     this.publicSiteUrl = config.publicSiteUrl || '';
   }
@@ -38,12 +40,20 @@ export class NeonStore extends ProfileStore {
   }
   async availability() { return this.#request('/api/neon/health'); }
   async eraseProfileData() {
+    return this.#eraseData(false);
+  }
+  async eraseCompleteApplicationData(confirmation) {
+    if (!this.completeErasureEnabled) throw new ServiceError(503, 'profile_erasure_not_ready');
+    if (confirmation !== 'DELETE ALL') throw new ServiceError(400, 'profile_erasure_confirmation_required');
+    return this.#eraseData(true);
+  }
+  async #eraseData(complete) {
     this.requireUser();
     if (!this.profileErasureEnabled) throw new ServiceError(503, 'profile_erasure_not_ready');
     const actor = this.#user;
     let result;
     try {
-      result = await this.#request('/api/neon/profile-erasure', {method:'POST',body:{confirm:'ERASE_APPLICATION_DATA',expectedSubject:actor.id}});
+      result = await this.#request(complete ? '/api/neon/privacy-erasure' : '/api/neon/profile-erasure', {method:'POST',body:{confirm:complete ? 'ERASE_ALL_APPLICATION_DATA' : 'ERASE_APPLICATION_DATA',expectedSubject:actor.id}});
     } catch (error) {
       // Drop the stale displayed account, but never overwrite a newer local login.
       if (error.code === 'profile_erasure_subject_mismatch' && this.#user === actor) this.#user = null;
@@ -52,8 +62,8 @@ export class NeonStore extends ProfileStore {
     if (this.#user !== actor) throw Object.assign(new ServiceError(409), {
       code:'profile_erasure_session_changed', message:'Сесія змінилася. Результат попереднього запиту не змінює поточний акаунт.',
     });
-    if (result?.status !== 'application_data_erased' || result.providerDeletion !== 'pending' ||
-        result.retainedScope !== 'bilateral_records_and_safety_evidence' || typeof result.repeated !== 'boolean' ||
+    if (result?.status !== (complete ? 'application_data_completely_erased' : 'application_data_erased') || result.providerDeletion !== 'pending' ||
+        (complete ? result.staleSessionTombstone !== 'retained' : result.retainedScope !== 'bilateral_records_and_safety_evidence') || typeof result.repeated !== 'boolean' ||
         typeof result.sessionRevoked !== 'boolean') throw new ServiceError(503, 'profile_erasure_unconfirmed');
     this.#user = null;
     return result;

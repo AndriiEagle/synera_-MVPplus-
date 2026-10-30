@@ -21,6 +21,27 @@ const send = (env, email = 'new@example.com', upstream = async () => Response.js
   handleNeon(request('/otp/request', { email, consent }, ip), env, upstream);
 const verify = (env, email = 'new@example.com', upstream = success, otp = '123456') =>
   handleNeon(request('/otp/verify', { email, otp }), env, upstream);
+
+test('W1 closed pilot protects issuance and five guesses with allowlist checked before KV', async () => {
+  const env = { ...base, SYNERA_LOCATION_EPHEMERAL: kvStore() };
+  let calls = 0;
+  const fail = async () => { calls++; return Response.json({}, { status: 400 }); };
+  assert.equal((await verify(env, 'pilot@example.com', fail)).status, 400);
+  assert.equal(calls, 0, 'no issuance means no provider guessing');
+  assert.equal((await send(env, 'pilot@example.com')).status, 200);
+  for (let i = 0; i < 5; i++) assert.equal((await verify(env, 'pilot@example.com', fail)).status, 400);
+  assert.equal((await verify(env, 'pilot@example.com', fail)).status, 429);
+  assert.equal(calls, 5);
+  assert.equal((await send(env, 'pilot@example.com')).status, 200);
+  assert.equal((await verify(env, 'pilot@example.com', fail)).status, 429, 'resend cannot reset guesses');
+  assert.equal((await send(env, 'pilot@example.com')).status, 200);
+  assert.equal((await send(env, 'pilot@example.com')).status, 429);
+  const absent = { ...base };
+  assert.equal((await send(absent, 'pilot@example.com')).status, 503);
+  assert.equal((await send(absent, 'stranger@example.com')).status, 403);
+  assert.equal((await verify(absent, 'stranger@example.com', fail)).status, 403);
+  assert.equal(calls, 5);
+});
 function success() { return Response.json({ user: { id: 'new-user', email: 'new@example.com', emailVerified: true } },
   { headers: { 'Set-Cookie': '__Secure-neon-auth.session_token=synthetic-session; Secure; HttpOnly' } }); }
 
@@ -28,7 +49,7 @@ test('off-mode pins allowlist errors, normalization, verification and missing/ov
   for (const flag of [undefined, 'false', 'TRUE', true]) {
     let calls = 0;
     const upstream = async () => { calls++; return Response.json({}); };
-    const env = { ...base, SYNERA_OPEN_REGISTRATION: flag };
+    const env = { ...base, SYNERA_OPEN_REGISTRATION: flag, SYNERA_LOCATION_EPHEMERAL: kvStore() };
     for (const [body, status] of [[{ email: 'new@example.com', consent }, 403], [{ email: 'pilot@example.com' }, 400]]) {
       const response = await handleNeon(request('/otp/request', body), env, upstream);
       assert.equal(response.status, status);
