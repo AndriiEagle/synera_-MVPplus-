@@ -1,4 +1,4 @@
-const CACHE = 'synera-simulation-20261029-gilbert1';
+const CACHE = 'synera-simulation-20261030-wave2';
 const PORTRAITS = ['mira','leo','nora','felix','ines','sam','tessa','noah','lina','omar'].map(key => `/persona-${key}.webp`);
 const SHELL = ['/simulation.html', '/simulation.css', '/simulation-ui.mjs', '/simulation-session.mjs',
   '/simulation-living.mjs', '/simulation-copy.mjs', '/simulation-living-ui.mjs', '/simulation-living.css', '/journal.mjs',

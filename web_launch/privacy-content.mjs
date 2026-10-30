@@ -136,5 +136,5 @@ export const DEVICE_GROUPS = Object.freeze([
   ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.adaptive.session-check', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1']],
   ['login', 'localStorage', ['synera-session:<Supabase URL>']],
   ['studio', 'IndexedDB', ['synera-studio-v1 / sessions / <sessionId> (id, at, json)']],
-  ['caches', 'CacheStorage', ['synera-shell-20261029-gilbert1', 'synera-studio-20261029-gilbert1', 'synera-simulation-20261029-gilbert1', 'synera-shell-* / synera-studio-* / synera-simulation-*']],
+  ['caches', 'CacheStorage', ['synera-shell-20261030-wave2', 'synera-studio-20261030-wave2', 'synera-simulation-20261030-wave2', 'synera-shell-* / synera-studio-* / synera-simulation-*']],
 ]);

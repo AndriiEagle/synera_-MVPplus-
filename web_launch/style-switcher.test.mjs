@@ -65,9 +65,9 @@ test('the PWA refresh caches the visual module with a new shell version', async 
   let installation;
   listeners.install({ waitUntil: promise => { installation = promise; } });
   await installation;
-  assert.equal(cacheName, 'synera-shell-20261029-gilbert1');
+  assert.equal(cacheName, 'synera-shell-20261030-wave2');
   for (const asset of ["/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp"]) assert.ok(cachedShell.includes(asset), asset);
-  for (const previous of ['synera-shell-20261002-triangle-v11', 'synera-shell-20261019-audit-followup1', 'synera-shell-20261027-phone-v12', 'synera-shell-20261028-phone-merge1', 'synera-shell-20261029-adaptive1', 'synera-shell-20261029-darkgold1', 'synera-shell-20261029-argon1'])
+  for (const previous of ['synera-shell-20261002-triangle-v11', 'synera-shell-20261019-audit-followup1', 'synera-shell-20261027-phone-v12', 'synera-shell-20261028-phone-merge1', 'synera-shell-20261029-adaptive1', 'synera-shell-20261029-darkgold1', 'synera-shell-20261029-gilbert1', 'synera-shell-20261029-argon1'])
     assert.notEqual(cacheName, previous, 'changed shell dependencies invalidate the previous cache');
   assert.ok(cachedShell.includes('/install-hint.mjs'));
   assert.ok(cachedShell.includes('/style-switcher.mjs'));

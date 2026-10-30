@@ -1,5 +1,5 @@
 // Cache only explicit public shell assets. Never cache API, tokens, profiles, map tiles or imports.
-const CACHE = 'synera-shell-20261029-gilbert1';
+const CACHE = 'synera-shell-20261030-wave2';
 // Optional replies need the consent UI offline too; API/config responses stay uncached.
 const SHELL = ['/', '/index.html', '/style.css', '/app.mjs', '/style-switcher.mjs', '/onboarding-tour.mjs', '/demo-journey.mjs', '/online-store.mjs', '/profile-store.mjs', '/neon-store.mjs', '/profile-portability.mjs', '/profile-brief.mjs', '/profile-package.mjs', '/calendar.mjs', '/matching.mjs', '/map.mjs', '/pilot-policy.mjs', '/pwa.mjs', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/legal.html', '/catalogue.html', '/tokens.css', '/cascade.mjs', '/iceberg-client.mjs'];
 SHELL.push('/chatgpt-transfer.mjs', '/business-case.mjs', '/i18n.mjs', '/proof-state.mjs', '/need-decay.mjs', '/b-matching.mjs', '/field-audience.mjs', '/swiss-compliance.mjs', '/funnel-analytics.mjs', '/live-location.mjs', '/meeting-location.mjs');

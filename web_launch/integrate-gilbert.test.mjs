@@ -26,9 +26,9 @@ test('I3: all worker installations include their new public dependencies and inv
   const { PUBLIC_ASSETS } = await import('./assets.mjs');
   for (const [file, family, old] of [['sw','shell','synera-shell-20261029-argon1'],['studio-sw','studio','synera-studio-20261029-argon1'],['simulation-sw','simulation','synera-simulation-20261020-v1']]) {
     let name, assets; const listeners={},deleted=[];
-    vm.runInNewContext(await readFile(`web_launch/${file}.mjs`,'utf8'), { URL, self:{location:{origin:'https://example.test'},skipWaiting(){},clients:{claim:async()=>{}},addEventListener:(event,fn)=>{listeners[event]=fn;}}, caches:{open:async key=>{name=key;return {addAll:async list=>{assets=list;}};},keys:async()=>[old,`synera-${family}-20261029-gilbert1`,'another-app-cache'],delete:async key=>deleted.push(key)} });
+    vm.runInNewContext(await readFile(`web_launch/${file}.mjs`,'utf8'), { URL, self:{location:{origin:'https://example.test'},skipWaiting(){},clients:{claim:async()=>{}},addEventListener:(event,fn)=>{listeners[event]=fn;}}, caches:{open:async key=>{name=key;return {addAll:async list=>{assets=list;}};},keys:async()=>[old,`synera-${family}-20261030-wave2`,'another-app-cache'],delete:async key=>deleted.push(key)} });
     const promises=[];listeners.install({waitUntil:p=>promises.push(p)});await Promise.all(promises);
-    assert.equal(name,`synera-${family}-20261029-gilbert1`); assert.notEqual(name,old);
+    assert.equal(name,`synera-${family}-20261030-wave2`); assert.notEqual(name,old);
     listeners.activate({waitUntil:p=>promises.push(p)});await Promise.all(promises);assert.deepEqual(deleted,[old]);
     for (const asset of assets) assert.ok(asset==='/' || PUBLIC_ASSETS[asset.slice(1)],`${file}: unserved ${asset}`);
     for (const dep of ['/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/pilot-consent.html','/legal-documents.mjs','/legal-documents.css','/demo-device-controls.mjs']) assert.ok(assets.includes(dep), `${file}: missing ${dep}`);
