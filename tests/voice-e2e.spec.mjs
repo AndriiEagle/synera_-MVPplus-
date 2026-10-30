@@ -164,16 +164,16 @@ for (const lang of ['uk','de','en']) test(`V1 readonly revokes ongoing dictation
   await mockSpeech(page); await ready(page, `/?lang=${lang}`);
   const raw=page.locator('#capture-home'), bar=toolsFor(page,'capture-home');
   await raw.fill('Demo original'); await bar.locator('[data-voice-mic]').click(); await allow(page);
-  await raw.evaluate(e=>{e.readOnly=true;});
-  await page.evaluate(()=>speechMock.emit([['late words',true]]));
+  // The callback may arrive before MutationObserver reconciles the toolbar.
+  await raw.evaluate(e=>{e.readOnly=true; speechMock.emit([['late words',true]]);});
   await expect(raw).toHaveValue('Demo original');
   await expect(bar.locator('[data-voice-mic]')).toBeDisabled();
 });
 
-test('V4 overlay keyboard keeps focused composer inside visual viewport and resets on blur', async ({browser}) => {
-  const context=await browser.newContext({...devices['iPhone 13'],serviceWorkers:'block'});
+for (const device of ['iPhone 13','Pixel 7']) for (const lang of ['uk','de','en']) test(`V4 overlay keyboard ${device} ${lang}: focused composer stays visible and resets on blur`, async ({browser}) => {
+  const context=await browser.newContext({...devices[device],serviceWorkers:'block'});
   try {
-    const page=await context.newPage(); await ready(page,'/simulation.html?lang=en');
+    const page=await context.newPage(); await ready(page,`/simulation.html?lang=${lang}`);
     await page.locator('[data-view=join]').click();
     for (const [name,text] of Object.entries({name:'Demo',offers:'Photos',seeks:'Website'})) await page.locator(`#visitor-card [name=${name}]`).fill(text);
     await page.locator('#visitor-start').click();

@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-30T01:47:24.3665454Z",
+  "registered_server_starts": 29,
+  "acceptance_pids": [
+    34648,
+    26140,
+    12436
+  ],
+  "killed_at_final_check": [],
+  "remaining_owned_processes": [],
+  "status": "PASS_NO_OWNED_SERVER_LEFT",
+  "remaining_owned_count": 0
+}

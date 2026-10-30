@@ -1,0 +1,195 @@
+{
+  "status": "PASS_LOCAL_V1_V2_V4",
+  "worktree": "C:\\sw\\synera-secfix",
+  "branch": "claude/synera-voice-20261030",
+  "base_sha": "5ecdc487432e9205638d4a2b05d03f4534c9e468",
+  "sources": {
+    "web_launch/voice-core.mjs": "3122221c443cdbddd0e7f690a9b900ecee87d9a332dffbaa77b7aa1eeae4da1a",
+    "web_launch/voice-input.mjs": "dda5df110712d4fad8b7e3ba741f708b93483307d62c28a9058b1593ae32d4de",
+    "web_launch/simulation-living-ui.mjs": "594a1e46fc16a7e28fcf70c49e43384014b5d5bb819cc83a83bad94051d3a26c",
+    "tests/voice-e2e.spec.mjs": "836f6719c2989c1cc587e39d47f06fddf4682f8e501859c0687cda91f365cac8",
+    "web_launch/voice-core.test.mjs": "dacd2da3d15f92d4e04a56d599cadba5219230e9bb54a7e3f6af434f9675311f"
+  },
+  "results": {
+    "main_node": {
+      "exit": 0,
+      "pass": 784,
+      "fail": 0,
+      "skip": 1,
+      "skip_reason": "Existing PostgreSQL integration gate: SYNERA_ACCEPTANCE_PG absent"
+    },
+    "pwa_i18n": {
+      "exit": 0,
+      "pass": 43,
+      "fail": 0,
+      "skip": 0
+    },
+    "playwright": [
+      {
+        "attempt": 1,
+        "exit": 1,
+        "pass": 145,
+        "fail": 1,
+        "timeout_ms": 30000,
+        "failure": "Triangle L overall test timeout at #round-form button"
+      },
+      {
+        "attempt": 2,
+        "exit": 0,
+        "pass": 146,
+        "fail": 0,
+        "timeout_ms": 60000
+      }
+    ],
+    "voice_browser": {
+      "pass": 30,
+      "fail": 0
+    },
+    "header": {
+      "exit": 0,
+      "status": "PASS",
+      "cases": 12
+    },
+    "offline": {
+      "exit": 0,
+      "status": "PASS_CACHE_ONLY_OFFLINE_STARTUP",
+      "pass": 15,
+      "fail": 0
+    },
+    "a11y": [
+      {
+        "page": "index.html",
+        "summary": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "incomplete": 1
+      },
+      {
+        "page": "catalogue.html",
+        "summary": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "incomplete": 1
+      }
+    ],
+    "build": {
+      "exit": 0,
+      "files": 183,
+      "published": false
+    }
+  },
+  "baseline": {
+    "V1": "Readonly accepts late dictation: reproduced in uk/de/en before correction",
+    "V2": "Unchanged oracle against HEAD fails on I am looking for; corrected core 5/5 PASS",
+    "V4": "Blur left composer bottom=164 instead of zero before correction"
+  },
+  "V3": {
+    "status": "SKIPPED_BY_USER",
+    "executed": false,
+    "modified": false,
+    "sha256": "2ff7f60f5569645f736a91c14e62ffae617ef7be4dbf13cf5b0d0496a4d8b2fb"
+  },
+  "screenshots": [
+    {
+      "path": "docs/voice-20261030/iPhone-13-capture.png",
+      "sha256": "37f007e38939d699ca817b0f9361561f7a4ff378a4112131c367dcf5d8a05e95",
+      "width": 1170,
+      "height": 1992,
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/voice-20261030/iPhone-13-composer.png",
+      "sha256": "f48f99c2a8ea302fa03de83b6b25f17efadbaa1a86f1a833cac4f00fa8ee3831",
+      "width": 1170,
+      "height": 1500,
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/voice-20261030/Pixel-7-capture.png",
+      "sha256": "ac2eab404b98c68c1d4122ba4699f3d6076fe254ddcc39239766de68e5db3916",
+      "width": 1082,
+      "height": 2202,
+      "visually_reviewed": true
+    },
+    {
+      "path": "docs/voice-20261030/Pixel-7-composer.png",
+      "sha256": "b25dee6a9b916b0b6f43daa1e09ce920b2fb6d9a448b466a7576fe13267d8a1f",
+      "width": 1082,
+      "height": 1313,
+      "visually_reviewed": true
+    }
+  ],
+  "logs": {
+    "voice-before": {
+      "path": "docs/voice-20261030/voice-before.txt",
+      "sha256": "3e14f0ff0d7dc3b00f0d92279bc86b5cd7c1348ad63613929edb4498dfabe54b"
+    },
+    "voice-core-before": {
+      "path": "docs/voice-20261030/voice-core-before.txt",
+      "sha256": "8c103d9977eabd5ba7a56cc54a9c749c6af45b6d48ade2fcb871258b01e276fb"
+    },
+    "voice-core-after": {
+      "path": "docs/voice-20261030/voice-core-after.txt",
+      "sha256": "cae16ce8e832394586b3d73d306c5ab96f4ff797e5fd2644c1a4ebc2153132b4"
+    },
+    "main-node": {
+      "path": "docs/voice-20261030/main-node.txt",
+      "sha256": "a9bbb99b0c6ff348597317e4b37bc29ff7481afb837a61913d34cf572defa09c"
+    },
+    "pwa-i18n": {
+      "path": "docs/voice-20261030/pwa-i18n.txt",
+      "sha256": "9689ca6f6c5f50dda9caf67b69e04389acc7d6494f5b9987b5ce175c366bfda5"
+    },
+    "playwright-attempt1": {
+      "path": "docs/voice-20261030/playwright-attempt1.txt",
+      "sha256": "27216d86fe4655259255f39a759542eee67753224c8e752599b2d59273881322"
+    },
+    "playwright-attempt2": {
+      "path": "docs/voice-20261030/playwright-attempt2.txt",
+      "sha256": "8b58264d3a4961b10f1c8ea4ccfb0264de10db55acb335a91801402faa33c616"
+    },
+    "header": {
+      "path": "docs/voice-20261030/header.txt",
+      "sha256": "3e10c633893aeaf69fef3524321ba96585486e7e964c7b031179b600964f1fc5"
+    },
+    "offline": {
+      "path": "docs/voice-20261030/offline.txt",
+      "sha256": "74308b1916220d29e3a1f3184ff6b60f14f352a7d25360978d77cbce60680796"
+    },
+    "a11y": {
+      "path": "docs/voice-20261030/a11y.txt",
+      "sha256": "df86ffad944924563c1be17c3376e537ced991f7c69e1b89e891c7cf1e6e3bd9"
+    },
+    "build-neon": {
+      "path": "docs/voice-20261030/build-neon.txt",
+      "sha256": "0f20a34ddfff264cd31c84191ea697770185d346711868e998bfa726e48b73f9"
+    }
+  },
+  "cleanup": {
+    "checked_at": "2026-10-30T01:47:24.3665454Z",
+    "registered_server_starts": 29,
+    "acceptance_pids": [
+      34648,
+      26140,
+      12436
+    ],
+    "killed_at_final_check": [],
+    "remaining_owned_processes": [],
+    "status": "PASS_NO_OWNED_SERVER_LEFT",
+    "remaining_owned_count": 0
+  },
+  "limitations": [
+    "Chromium device emulation, not physical devices or Safari",
+    "Web Speech mock and simulated VisualViewport; no acoustic or real OS keyboard acceptance",
+    "One existing PG skip and one incomplete automated axe check per audited page",
+    "No deploy, commit, push, install or provider call"
+  ],
+  "provider_calls": 0,
+  "usd": 0
+}

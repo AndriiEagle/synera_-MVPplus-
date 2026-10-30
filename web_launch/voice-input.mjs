@@ -71,7 +71,7 @@ export function mountVoice(field) {
   function update() {
     const c = copy(), on = active === entry;
     label(micLabel, c[on ? 'stop' : 'mic']); attribute(mic, 'aria-label', `${c[on ? 'stop' : 'mic']}: ${title}`); attribute(mic, 'aria-pressed', String(on));
-    const disabled = field.matches(':disabled');
+    const disabled = field.matches(':disabled') || field.readOnly;
     if (mic.disabled !== disabled) mic.disabled = disabled;
     label(undo, '↶ ' + c.undo); if (undo.disabled !== (!entry.history.length || disabled)) undo.disabled = !entry.history.length || disabled;
     attribute(languages, 'aria-label', c.language);
@@ -85,7 +85,7 @@ export function mountVoice(field) {
     let startAt = field.selectionStart ?? field.value.length, endAt = field.selectionEnd ?? startAt, last = field.value;
     const finalIds = new Set();
     r.onresult = e => {
-      if (entry.recognition !== r || !field.isConnected || field.matches(':disabled') || field.closest('[hidden]')) { if (entry.recognition === r) entry.abort(); return; }
+      if (entry.recognition !== r || !field.isConnected || field.matches(':disabled') || field.readOnly || field.closest('[hidden]')) { if (entry.recognition === r) entry.abort(); return; }
       if (field.value !== last) { entry.abort(); return; }
       const interim = [];
       for (let i = 0; i < e.results.length; i++) {
@@ -123,7 +123,7 @@ export function enhanceVoice(root = document) {
   for (const field of root.querySelectorAll('input,textarea')) mountVoice(field);
   for (const entry of entries) {
     if (!entry.field.isConnected) { entry.abort(); entries.delete(entry); }
-    else { if (entry.field.matches(':disabled') || entry.field.closest('[hidden]')) { if (active === entry) entry.abort(); } entry.update(); }
+    else { if (entry.field.matches(':disabled') || entry.field.readOnly || entry.field.closest('[hidden]')) { if (active === entry) entry.abort(); } entry.update(); }
   }
 }
 export function followVoiceLanguage() {

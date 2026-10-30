@@ -1,0 +1,138 @@
+
+Running 4 tests using 1 worker
+
+node : (node:29952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+In Zeile:2 Zeichen:74
++ ... ntime.cjs'; node node_modules/@playwright/test/cli.js test tests/voic ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:29952) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation uk (8.1s)
+(node:35288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation de (9.0s)
+(node:34112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation en (8.6s)
+(node:26096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 tests\voice-e2e.spec.mjs:173:1 › V4 overlay keyboard keeps focused composer inside visual viewport and resets on blur (7.6s)
+
+
+  1) tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation uk ────────────────────
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  locator('#capture-home')
+    Expected: "Demo original"
+    Received: "Demo original late words"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" locator('#capture-home') with timeout 5000ms
+      - waiting for locator('#capture-home')
+        13 × locator resolved to <textarea rows="2" readonly id="capture-home" aria-describedby="capture-home-voice-status"></textarea>
+           - unexpected value "Demo original late words"
+
+
+      167 |   await raw.evaluate(e=>{e.readOnly=true;});
+      168 |   await page.evaluate(()=>speechMock.emit([['late words',true]]));
+    > 169 |   await expect(raw).toHaveValue('Demo original');
+          |                     ^
+      170 |   await expect(bar.locator('[data-voice-mic]')).toBeDisabled();
+      171 | });
+      172 |
+        at C:\sw\synera-secfix\tests\voice-e2e.spec.mjs:169:21
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-uk\error-context.md
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-uk\error-context.md
+
+  2) tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation de ────────────────────
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  locator('#capture-home')
+    Expected: "Demo original"
+    Received: "Demo original late words"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" locator('#capture-home') with timeout 5000ms
+      - waiting for locator('#capture-home')
+        13 × locator resolved to <textarea rows="2" readonly id="capture-home" aria-describedby="capture-home-voice-status"></textarea>
+           - unexpected value "Demo original late words"
+
+
+      167 |   await raw.evaluate(e=>{e.readOnly=true;});
+      168 |   await page.evaluate(()=>speechMock.emit([['late words',true]]));
+    > 169 |   await expect(raw).toHaveValue('Demo original');
+          |                     ^
+      170 |   await expect(bar.locator('[data-voice-mic]')).toBeDisabled();
+      171 | });
+      172 |
+        at C:\sw\synera-secfix\tests\voice-e2e.spec.mjs:169:21
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-de\error-context.md
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-de\error-context.md
+
+  3) tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation en ────────────────────
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  locator('#capture-home')
+    Expected: "Demo original"
+    Received: "Demo original late words"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" locator('#capture-home') with timeout 5000ms
+      - waiting for locator('#capture-home')
+        12 × locator resolved to <textarea rows="2" readonly id="capture-home" aria-describedby="capture-home-voice-status"></textarea>
+           - unexpected value "Demo original late words"
+
+
+      167 |   await raw.evaluate(e=>{e.readOnly=true;});
+      168 |   await page.evaluate(()=>speechMock.emit([['late words',true]]));
+    > 169 |   await expect(raw).toHaveValue('Demo original');
+          |                     ^
+      170 |   await expect(bar.locator('[data-voice-mic]')).toBeDisabled();
+      171 | });
+      172 |
+        at C:\sw\synera-secfix\tests\voice-e2e.spec.mjs:169:21
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-en\error-context.md
+
+    Error Context: tmp\pw-results\voice-e2e-V1-readonly-revokes-ongoing-dictation-en\error-context.md
+
+  4) tests\voice-e2e.spec.mjs:173:1 › V4 overlay keyboard keeps focused composer inside visual viewport and resets on blur 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 164
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      188 |     await expect(page.locator('#visitor-text')).toHaveValue('Demo unsent draft');
+      189 |     await page.locator('#visitor-text').evaluate(e=>e.blur());
+    > 190 |     await expect.poll(()=>page.locator('#visitor-composer').evaluate(e=>parseFloat(getComputedStyle(e).bottom))).toBe(0);
+          |                                                                                                                  ^
+      191 |   } finally {await context.close();}
+      192 | });
+      193 | test('home defers the optional tour and memory parser until needed; tour still opens', async ({ page }) => {
+        at C:\sw\synera-secfix\tests\voice-e2e.spec.mjs:190:114
+
+    Error Context: tmp\pw-results\voice-e2e-V4-overlay-keybo-37368-viewport-and-resets-on-blur\error-context.md
+
+    Error Context: tmp\pw-results\voice-e2e-V4-overlay-keybo-37368-viewport-and-resets-on-blur\error-context.md
+
+  4 failed
+    tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation uk ─────────────────────
+    tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation de ─────────────────────
+    tests\voice-e2e.spec.mjs:163:38 › V1 readonly revokes ongoing dictation en ─────────────────────
+    tests\voice-e2e.spec.mjs:173:1 › V4 overlay keyboard keeps focused composer inside visual viewport and resets on blur 

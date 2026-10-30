@@ -1,7 +1,7 @@
 // No DOM, audio upload, AI or network. Keep source phrases verbatim.
 export const SPEECH_LOCALES = Object.freeze({ uk: 'uk-UA', de: 'de-CH', en: 'en-GB' });
 export const speechLanguage = code => Object.hasOwn(SPEECH_LOCALES, code) ? code : 'uk';
-const markers = /(?<![\p{L}\p{N}_])(?:я\s+|ich\s+|i\s+)?(можу|вмію|пропоную|шукаю|потрібно|хочу|мета|ціль|kann|biete|suche|brauche|möchte|ziel|can|offer|looking for|need|want|goal)(?![\p{L}\p{N}_])/giu;
+const markers = /(?<![\p{L}\p{N}_])(?:я\s+|ich\s+|i(?:\s+am|['’]m)?\s+)?(можу|вмію|пропоную|шукаю|потрібно|хочу|мета|ціль|kann|biete|suche|brauche|möchte|ziel|can|offer|looking for|need|want|goal)(?![\p{L}\p{N}_])/giu;
 const offers = new Set(['можу','вмію','пропоную','kann','biete','can','offer']);
 const goals = new Set(['мета','ціль','ziel','goal']);
 export function splitCapture(value) {

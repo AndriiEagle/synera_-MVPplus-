@@ -207,6 +207,15 @@ if ('serviceWorker' in navigator) Promise.all([
     // Warm optional portraits AFTER activation, so absent graphics never block the shell.
     for (const p of BOT_PROFILES) fetch(`/persona-${p.id.replace('bot-', '')}.webp`).catch(() => {});
   }).catch(() => {});
-// VisualViewport follows the real keyboard; the composer remains in document flow.
-function keyboard() { const v = visualViewport; document.documentElement.style.setProperty('--living-keyboard', `${v ? Math.max(0, innerHeight - v.height - v.offsetTop) : 0}px`); }
-visualViewport?.addEventListener('resize', keyboard); visualViewport?.addEventListener('scroll', keyboard); keyboard();
+// Lift only the focused composer; browser chrome or zoom alone is not a keyboard.
+function keyboard() {
+  const v = globalThis.visualViewport;
+  const focused = $('visitor-composer').contains(document.activeElement);
+  const inset = focused && v ? Math.max(0, innerHeight - v.height - v.offsetTop) : 0;
+  document.documentElement.style.setProperty('--living-keyboard', `${inset}px`);
+}
+globalThis.visualViewport?.addEventListener('resize', keyboard);
+globalThis.visualViewport?.addEventListener('scroll', keyboard);
+$('visitor-composer').addEventListener('focusin', keyboard);
+$('visitor-composer').addEventListener('focusout', () => queueMicrotask(keyboard));
+keyboard();
