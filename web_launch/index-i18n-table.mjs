@@ -3,6 +3,7 @@ import { COPY as SIMULATION_COPY } from './simulation-copy.mjs';
 import { TABLE as SHARED_ROWS } from './real-journey-i18n.mjs';
 import { PRIVACY_COPY } from './privacy-content.mjs';
 import { DEMO_COPY } from './demo-device-controls.mjs';
+import { VOICE_COPY } from './voice-copy.mjs';
 import { NOTICE, TERMS, PILOT } from './legal-documents.mjs';
 // German and English text for the sign-in and profile page. Loaded only after a person picks one of them,
 // so a Ukrainian visit never downloads or runs this file. The Ukrainian page stays the source: each row is
@@ -960,7 +961,8 @@ ROWS.push(...ADAPTIVE_ROWS.filter(([key]) => !ROWS.some(row => row[0] === key) &
 ROWS.push(...Object.keys(SIMULATION_COPY.uk).map(key => [SIMULATION_COPY.uk[key], SIMULATION_COPY.de[key], SIMULATION_COPY.en[key]])
   .filter(([key]) => !ROWS.some(row => row[0] === key) && !SHARED_ROWS.some(row => row[0] === key)));
 const draftRows = [];
-for (const table of [PRIVACY_COPY, DEMO_COPY]) for (const key of Object.keys(table.uk)) draftRows.push([table.uk[key],table.de[key],table.en[key]]);
+for (const table of [PRIVACY_COPY, DEMO_COPY, VOICE_COPY]) for (const key of Object.keys(table.uk)) draftRows.push([table.uk[key],table.de[key],table.en[key]]);
+draftRows.push(['УКР','UK','UK']);
 for (const key of Object.keys(NOTICE.uk)) {
   if (key==='title') draftRows.push([NOTICE.uk.title,NOTICE.de.title,NOTICE.en.title]);
   else for(let i=0;i<2;i++)draftRows.push([NOTICE.uk[key][i],NOTICE.de[key][i],NOTICE.en[key][i]]);

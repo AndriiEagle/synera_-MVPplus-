@@ -17,7 +17,6 @@ const copy = {
     studio: 'Сесії Studio · 30 днів від збереження; прострочені стираються при відкритті',
     caches: 'Код і статичні сторінки офлайн · до оновлення або твого стирання',
     journal: "Журнал, явно збережена чернетка профілю та стан симуляції · 30 днів від запису; прострочені записи стираються при відкритті, читання не подовжує строк",
-    memory: "Незбережена чернетка профілю, імпорт і AI-прев’ю — у пам’яті вкладки. Явне збереження або перехід до симуляції записує профіль у synera.journal.v1 на цьому пристрої. JSON містить журнал і стан симуляції; завантажені копії стирай сам.",
     runtime: "Журнал окремого приватного LAB-сервера — поза браузером, ці кнопки його не читають і не стирають. Сервер очищає прострочені сесії через 30 днів після останнього запису при старті та перед наступним записом. Ця демонстрація працює без нього.",
     retention: 'Строки серверних даних',
     serverRetention: 'Профіль, повідомлення, домовленості, адреси, кімнати та згоди — доки потрібні для участі; повне прикладне стирання потребує окремої перевіреної процедури. Незавершені запрошення з минулим часом і старі intent-записи очищає щоденна SQL-процедура після її підключення. Строки резервних копій, Auth і журналів постачальників — перевіряються. Наші знеособлені ops-події — 90 днів. Це проєкт строків, а не підтвердження живого очищення.',
@@ -51,7 +50,6 @@ const copy = {
     studio: 'Studio-Sitzungen · 30 Tage ab Speicherung; abgelaufene Einträge werden beim Öffnen gelöscht',
     caches: 'Code und statische Offline-Seiten · bis zur Aktualisierung oder deiner Löschung',
     journal: "Journal, ausdrücklich gespeicherter Profilentwurf und Simulationszustand · 30 Tage ab Eintrag; Bereinigung beim Öffnen, Lesen verlängert die Frist nicht",
-    memory: "Ungespeicherter Profilentwurf, Import und KI-Vorschau bleiben im Tab-Speicher. Ausdrückliches Speichern oder Wechsel zur Simulation speichert das Profil lokal in synera.journal.v1. JSON enthält Journal und Simulationszustand; heruntergeladene Kopien löschst du selbst.",
     runtime: "Das getrennte private LAB-Serverjournal liegt ausserhalb des Browsers. Diese Schaltflächen lesen oder löschen es nicht. Der Server bereinigt Sitzungen 30 Tage nach dem letzten Eintrag beim Start und vor dem nächsten Speichern. Diese Demo benötigt ihn nicht.",
     retention: 'Aufbewahrung auf dem Server',
     serverRetention: 'Profil, Nachrichten, Vereinbarungen, Adressen, Räume und Zustimmungen: solange für die Teilnahme nötig; vollständige Anwendungsdatenlöschung erfordert ein separat geprüftes Verfahren. Vergangene offene Einladungen und alte Intent-Einträge bereinigt nach Einrichtung eine tägliche SQL-Prozedur. Fristen für Backups, Auth und Anbieterprotokolle werden geprüft. Unsere anonymisierten Betriebsereignisse: 90 Tage. Dies ist ein Fristenentwurf, kein Nachweis einer laufenden Bereinigung.',
@@ -85,7 +83,6 @@ const copy = {
     studio: 'Studio sessions · 30 days after saving; expired entries are purged on opening',
     caches: 'Code and static offline pages · until update or your erasure',
     journal: "Journal, explicitly saved profile draft and simulation state · 30 days from each entry; purged on opening, reading does not renew expiry",
-    memory: "Unsaved profile drafts, imports and AI previews stay in tab memory. Explicit saving or moving to the simulation stores the profile locally in synera.journal.v1. JSON includes the journal and simulation state; erase downloaded copies yourself.",
     runtime: "The separate private LAB server journal is outside this browser. These buttons do not read or erase it. The server purges sessions 30 days after the last entry on startup and before the next write. This Demo needs no such server.",
     retention: 'Server retention',
     serverRetention: 'Profiles, messages, agreements, addresses, rooms and consents: while needed for participation; complete application-data erasure requires a separately verified procedure. A daily SQL procedure clears past pending invitations and old intent entries once connected. Backup, Auth and provider log retention are under review. Our anonymised ops events: 90 days. This is a retention draft, not evidence of a live purge.',
@@ -103,13 +100,20 @@ const copy = {
     accountLink: 'Open account privacy', legalLink: 'Rules and pilot contact', noScript: 'Export and erasure require JavaScript. You can send a written request using the contact on the rules page.',
   },
 };
+// Voice is a separate browser action, never covered by the external-AI switch.
+const voicePrivacy = {
+  uk: ['Голосовий ввід', 'Браузер може розпізнавати голос на пристрої або передавати аудіо своєму постачальнику (у Chrome — Google). Synera не записує і не зберігає аудіо та не може гарантувати роботу офлайн. Перед першим запуском є окреме повідомлення й кнопка дозволу. Кожне наступне диктування запускаєш сам; «Зупинити» відкликає дозвіл на поточну сесію. Збереження «не показувати знову» діє лише на цьому пристрої; нижче його можна скинути. Видалення локальних даних не видаляє дані у постачальника браузера.', 'Розповідь, текстові поля чернетки профілю, пошук, повідомлення симуляції та незбережені нотатки автоматично зберігаються у sessionStorage цієї вкладки для відновлення після перезавантаження. Видимість і згоди не відновлюються. Закриття вкладки або стирання даних прибирає чернетки; браузер може відновлювати вкладки. Явно збережений профіль, журнал і стан симуляції — у synera.journal.v1 на 30 днів від кожного запису.'],
+  de: ['Spracheingabe', 'Der Browser kann Sprache auf dem Gerät erkennen oder Audio an seinen Anbieter senden (in Chrome: Google). Synera nimmt kein Audio auf und speichert es nicht; Offlinebetrieb ist nicht garantiert. Vor dem ersten Start erscheinen ein eigener Hinweis und eine Freigabe. Jedes weitere Diktieren startest du selbst; «Stoppen» widerruft die Freigabe für die laufende Sitzung. «Nicht mehr anzeigen» gilt nur auf diesem Gerät und lässt sich unten zurücksetzen. Lokales Löschen löscht keine Daten beim Browseranbieter.', 'Beschreibung, Textfelder des Profilentwurfs, Suche, Simulationsnachricht und ungespeicherte Notizen werden für das Neuladen automatisch im sessionStorage dieses Tabs gespeichert. Sichtbarkeit und Einwilligungen werden nicht wiederhergestellt. Schliessen des Tabs oder Löschen entfernt Entwürfe; Browser können Tabs wiederherstellen. Explizit gespeichertes Profil, Journal und Simulation liegen 30 Tage ab jedem Eintrag in synera.journal.v1.'],
+  en: ['Voice input', 'Your browser may recognise speech on the device or send audio to its vendor (Google in Chrome). Synera does not record or store audio; offline use is not guaranteed. The first start has a separate notice and permission button. You start each later dictation yourself; “Stop” revokes permission for the current session. “Do not show again” is device-specific and can be reset below. Local erasure does not erase data at the browser vendor.', 'Descriptions, profile draft text fields, search, simulation messages and unsaved notes are saved automatically in this tab’s sessionStorage to recover after reload. Visibility and consents are not restored. Closing the tab or erasing data removes drafts; browsers may restore tabs. Explicitly saved profiles, journal and simulation state stay in synera.journal.v1 for 30 days from each entry.'],
+};
+for (const [lang, [speech, speechText, memory]] of Object.entries(voicePrivacy)) Object.assign(copy[lang], { speech, speechText, memory });
 export const PRIVACY_COPY = Object.freeze(copy);
 export const languageCode = value => ['uk', 'de', 'en'].includes(value) ? value : 'uk';
 export const DEVICE_GROUPS = Object.freeze([
-  ['preferences', 'localStorage', ['synera.style', 'synera.real-journey.language.v1', 'synera.adaptive.preferences.v1', 'synera.atelier.preferences.v1', 'synera.first-user-tour.v1', 'synera.install-hint.dismissed.v1']],
+  ['preferences', 'localStorage', ['synera.style', 'synera.real-journey.language.v1', 'synera.adaptive.preferences.v1', 'synera.atelier.preferences.v1', 'synera.first-user-tour.v1', 'synera.install-hint.dismissed.v1', 'synera.voice.notice.v1']],
   ['journal', 'localStorage', ['synera.journal.v1 (at, kind, actor, text, data; profile and simulation state)']],
   ['drafts', 'localStorage', ['synera.sim.draft.v1:<actor>:<personId>', 'synera.privacy.retention.v1']],
-  ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1']],
+  ['session', 'sessionStorage', ['synera.adaptive.session.v1', 'synera.studio.journey-handoff.v1', 'synera.message-intent-retry.v1', 'synera.voice.draft.v1:<profile|search|capture:home|capture:draft|capture-preview:<home|draft>|visitor-card:<name|offers|seeks>|visitor-message|journal-note>']],
   ['login', 'localStorage', ['synera-session:<Supabase URL>']],
   ['studio', 'IndexedDB', ['synera-studio-v1 / sessions / <sessionId> (id, at, json)']],
   ['caches', 'CacheStorage', ['synera-shell-20261029-gilbert1', 'synera-studio-20261029-gilbert1', 'synera-simulation-20261029-gilbert1', 'synera-shell-* / synera-studio-* / synera-simulation-*']],

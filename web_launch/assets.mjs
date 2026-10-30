@@ -1,5 +1,8 @@
 // One public-file allowlist shared by the local server and static release builder.
 export const PUBLIC_ASSETS = Object.freeze({
+  'home-lazy.mjs': 'text/javascript',
+  'voice-core.mjs': 'text/javascript', 'voice-copy.mjs': 'text/javascript', 'voice-input.mjs': 'text/javascript',
+  'voice-ui.mjs': 'text/javascript', 'input-drafts.mjs': 'text/javascript', 'voice.css': 'text/css',
   'demo-device-controls.mjs': 'text/javascript',
   'legal-documents.mjs': 'text/javascript',
   'legal-documents.css': 'text/css',

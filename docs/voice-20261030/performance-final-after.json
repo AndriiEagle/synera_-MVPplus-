@@ -1,0 +1,1150 @@
+{
+  "label": "final-after",
+  "at": "2026-10-30T00:34:17.092Z",
+  "environment": "System Chrome; Pixel 7 UA/viewport; CDP CPU x4; warm SW cache; local HTTP; 3 home navigations and 6 real simulation tab switches after network/font readiness",
+  "browserVersion": "156.0.8078.73",
+  "fcpMedianMs": 424,
+  "tabNextPaintMaxMs": 138.1000000089407,
+  "eventTimingMaxMs": 384,
+  "tabEventTimingMaxMs": 168,
+  "preInputMaxCls": 0.14620489083457527,
+  "maxCls": 0.14620489083457527,
+  "simulationTabs": [
+    57.3999999910593,
+    138.1000000089407,
+    59.70000000298023,
+    41.400000005960464,
+    55.400000005960464,
+    67
+  ],
+  "simulationEvents": [
+    {
+      "name": "pointerdown",
+      "duration": 104,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 104,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 104,
+      "tab": true
+    },
+    {
+      "name": "pointerdown",
+      "duration": 168,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 168,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 168,
+      "tab": true
+    },
+    {
+      "name": "pointerdown",
+      "duration": 88,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 88,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 88,
+      "tab": true
+    },
+    {
+      "name": "pointerdown",
+      "duration": 120,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 120,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 120,
+      "tab": true
+    },
+    {
+      "name": "pointerdown",
+      "duration": 96,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 96,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 96,
+      "tab": true
+    },
+    {
+      "name": "pointerdown",
+      "duration": 96,
+      "tab": true
+    },
+    {
+      "name": "pointerup",
+      "duration": 96,
+      "tab": true
+    },
+    {
+      "name": "click",
+      "duration": 96,
+      "tab": true
+    }
+  ],
+  "tabWork": [
+    {
+      "name": "join",
+      "ScriptDuration": 0.016963000000000006,
+      "LayoutDuration": 0.0008289999999999687,
+      "RecalcStyleDuration": 0.03902800000000001,
+      "TaskDuration": 0.40781199999999984,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 9
+    },
+    {
+      "name": "journal",
+      "ScriptDuration": 0.020098999999999978,
+      "LayoutDuration": 0.0514349999999999,
+      "RecalcStyleDuration": 0.054954,
+      "TaskDuration": 0.2868789999999999,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 11
+    },
+    {
+      "name": "feed",
+      "ScriptDuration": 0.003663000000000083,
+      "LayoutDuration": 0.001902999999999988,
+      "RecalcStyleDuration": 0.03867799999999999,
+      "TaskDuration": 0.15207300000000012,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 15
+    },
+    {
+      "name": "join",
+      "ScriptDuration": 0.005392999999999981,
+      "LayoutDuration": 0.0010639999999999539,
+      "RecalcStyleDuration": 0.028681000000000012,
+      "TaskDuration": 0.1507839999999998,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 17
+    },
+    {
+      "name": "journal",
+      "ScriptDuration": 0.010337999999999958,
+      "LayoutDuration": 0.0032690000000001884,
+      "RecalcStyleDuration": 0.04379099999999997,
+      "TaskDuration": 0.22570599999999974,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 20
+    },
+    {
+      "name": "feed",
+      "ScriptDuration": 0.0067989999999999995,
+      "LayoutDuration": 0.0244629999999999,
+      "RecalcStyleDuration": 0.029590000000000005,
+      "TaskDuration": 0.17406600000000028,
+      "LayoutCount": 1,
+      "RecalcStyleCount": 14
+    }
+  ],
+  "runs": [
+    {
+      "fcp": 420,
+      "navigation": {
+        "name": "http://127.0.0.1:59670/",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 880,
+        "navigationId": 2164,
+        "initiatorType": "navigation",
+        "deliveryType": "cache-storage",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "",
+        "workerStart": 2.3999999910593033,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 2.699999988079071,
+        "domainLookupStart": 2.699999988079071,
+        "domainLookupEnd": 2.699999988079071,
+        "connectStart": 2.699999988079071,
+        "secureConnectionStart": 0,
+        "connectEnd": 2.699999988079071,
+        "requestStart": 2.699999988079071,
+        "responseStart": 5.299999997019768,
+        "firstInterimResponseStart": 5.299999997019768,
+        "finalResponseHeadersStart": 0,
+        "responseEnd": 14.699999988079071,
+        "transferSize": 0,
+        "encodedBodySize": 35428,
+        "decodedBodySize": 35428,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 19.099999994039536,
+        "unloadEventEnd": 19.099999994039536,
+        "domInteractive": 395.59999999403954,
+        "domContentLoadedEventStart": 650.5999999940395,
+        "domContentLoadedEventEnd": 651.7999999970198,
+        "domComplete": 880,
+        "loadEventStart": 880,
+        "loadEventEnd": 880,
+        "type": "navigate",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "low"
+        }
+      },
+      "cls": 0.14620489083457527,
+      "shifts": [
+        {
+          "value": 0.14620489083457527,
+          "at": 988.0999999940395,
+          "nodes": [
+            {
+              "tag": "PICTURE",
+              "id": "",
+              "previous": {
+                "x": 24,
+                "y": 589,
+                "width": 364,
+                "height": 242.65625,
+                "top": 589,
+                "right": 388,
+                "bottom": 831.65625,
+                "left": 24
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ],
+      "events": [],
+      "tabNextPaint": [],
+      "imagesWithoutDimensions": [],
+      "modules": [
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 8.5,
+          "bytes": 3048
+        },
+        {
+          "path": "/install-hint.mjs",
+          "duration": 14,
+          "bytes": 1722
+        },
+        {
+          "path": "/app.mjs",
+          "duration": 13.900000005960464,
+          "bytes": 106531
+        },
+        {
+          "path": "/style-switcher.mjs",
+          "duration": 16.700000002980232,
+          "bytes": 4218
+        },
+        {
+          "path": "/home-lazy.mjs",
+          "duration": 28.600000008940697,
+          "bytes": 467
+        },
+        {
+          "path": "/demo-journey.mjs",
+          "duration": 28.5,
+          "bytes": 3402
+        },
+        {
+          "path": "/simulation-entry.mjs",
+          "duration": 28.900000005960464,
+          "bytes": 1668
+        },
+        {
+          "path": "/pwa.mjs",
+          "duration": 32.6000000089407,
+          "bytes": 3498
+        },
+        {
+          "path": "/atelier.mjs",
+          "duration": 43.70000000298023,
+          "bytes": 6942
+        },
+        {
+          "path": "/site-shell.mjs",
+          "duration": 20.200000002980232,
+          "bytes": 3363
+        },
+        {
+          "path": "/journal.mjs",
+          "duration": 12,
+          "bytes": 2522
+        },
+        {
+          "path": "/simulation-copy.mjs",
+          "duration": 11.899999991059303,
+          "bytes": 18901
+        },
+        {
+          "path": "/demo-device-controls.mjs",
+          "duration": 11.800000011920929,
+          "bytes": 6040
+        },
+        {
+          "path": "/online-store.mjs",
+          "duration": 4.299999997019768,
+          "bytes": 6033
+        },
+        {
+          "path": "/neon-store.mjs",
+          "duration": 5.5,
+          "bytes": 7645
+        },
+        {
+          "path": "/profile-portability.mjs",
+          "duration": 7.800000011920929,
+          "bytes": 14063
+        },
+        {
+          "path": "/profile-package.mjs",
+          "duration": 9.200000002980232,
+          "bytes": 1703
+        },
+        {
+          "path": "/profile-brief.mjs",
+          "duration": 10.099999994039536,
+          "bytes": 10615
+        },
+        {
+          "path": "/business-case.mjs",
+          "duration": 10,
+          "bytes": 36621
+        },
+        {
+          "path": "/matching.mjs",
+          "duration": 12,
+          "bytes": 22878
+        },
+        {
+          "path": "/pilot-policy.mjs",
+          "duration": 15.799999997019768,
+          "bytes": 1854
+        },
+        {
+          "path": "/map.mjs",
+          "duration": 13.400000005960464,
+          "bytes": 5356
+        },
+        {
+          "path": "/chatgpt-transfer.mjs",
+          "duration": 23.700000002980232,
+          "bytes": 4554
+        },
+        {
+          "path": "/calendar.mjs",
+          "duration": 28.5,
+          "bytes": 1602
+        },
+        {
+          "path": "/live-location.mjs",
+          "duration": 32.3999999910593,
+          "bytes": 7546
+        },
+        {
+          "path": "/meeting-location.mjs",
+          "duration": 32.30000001192093,
+          "bytes": 10929
+        },
+        {
+          "path": "/location-session.mjs",
+          "duration": 35.29999999701977,
+          "bytes": 5764
+        },
+        {
+          "path": "/input-drafts.mjs",
+          "duration": 37.19999998807907,
+          "bytes": 1315
+        },
+        {
+          "path": "/adaptive-ui.mjs",
+          "duration": 33.79999999701977,
+          "bytes": 12709
+        },
+        {
+          "path": "/privacy-common.mjs",
+          "duration": 34.599999994039536,
+          "bytes": 2512
+        },
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 16.400000005960464,
+          "bytes": 3048
+        },
+        {
+          "path": "/privacy-device.mjs",
+          "duration": 16.700000002980232,
+          "bytes": 5149
+        },
+        {
+          "path": "/privacy-content.mjs",
+          "duration": 16.599999994039536,
+          "bytes": 23836
+        },
+        {
+          "path": "/profile-store.mjs",
+          "duration": 8.799999997019768,
+          "bytes": 25223
+        },
+        {
+          "path": "/need-decay.mjs",
+          "duration": 8,
+          "bytes": 2419
+        },
+        {
+          "path": "/b-matching.mjs",
+          "duration": 7.9000000059604645,
+          "bytes": 5280
+        },
+        {
+          "path": "/proof-state.mjs",
+          "duration": 12.800000011920929,
+          "bytes": 3362
+        },
+        {
+          "path": "/case-material-budget.mjs",
+          "duration": 13.699999988079071,
+          "bytes": 1572
+        },
+        {
+          "path": "/adaptive.mjs",
+          "duration": 18.099999994039536,
+          "bytes": 8771
+        },
+        {
+          "path": "/adaptive-config.mjs",
+          "duration": 19.900000005960464,
+          "bytes": 11167
+        },
+        {
+          "path": "/adaptive-i18n-table.mjs",
+          "duration": 19.799999997019768,
+          "bytes": 9487
+        },
+        {
+          "path": "/voice-ui.mjs",
+          "duration": 2.699999988079071,
+          "bytes": 8325
+        },
+        {
+          "path": "/voice-input.mjs",
+          "duration": 4.799999997019768,
+          "bytes": 10076
+        },
+        {
+          "path": "/voice-core.mjs",
+          "duration": 4.700000002980232,
+          "bytes": 2140
+        },
+        {
+          "path": "/voice-copy.mjs",
+          "duration": 4.299999997019768,
+          "bytes": 7499
+        }
+      ],
+      "controlled": true,
+      "beforeInput": {
+        "cls": 0.14620489083457527,
+        "at": 1453.8999999910593
+      }
+    },
+    {
+      "fcp": 424,
+      "navigation": {
+        "name": "http://127.0.0.1:59670/",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 836,
+        "navigationId": 6328,
+        "initiatorType": "navigation",
+        "deliveryType": "cache-storage",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "",
+        "workerStart": 2.5,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 2.7999999970197678,
+        "domainLookupStart": 2.7999999970197678,
+        "domainLookupEnd": 2.7999999970197678,
+        "connectStart": 2.7999999970197678,
+        "secureConnectionStart": 0,
+        "connectEnd": 2.7999999970197678,
+        "requestStart": 2.7999999970197678,
+        "responseStart": 5.4000000059604645,
+        "firstInterimResponseStart": 5.4000000059604645,
+        "finalResponseHeadersStart": 0,
+        "responseEnd": 17.200000002980232,
+        "transferSize": 0,
+        "encodedBodySize": 35428,
+        "decodedBodySize": 35428,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 55.79999999701977,
+        "unloadEventEnd": 55.79999999701977,
+        "domInteractive": 161,
+        "domContentLoadedEventStart": 701.5,
+        "domContentLoadedEventEnd": 702.9000000059605,
+        "domComplete": 836,
+        "loadEventStart": 836,
+        "loadEventEnd": 836,
+        "type": "navigate",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "low"
+        }
+      },
+      "cls": 0,
+      "shifts": [],
+      "events": [
+        {
+          "name": "pointerdown",
+          "duration": 384,
+          "tab": false
+        },
+        {
+          "name": "pointerup",
+          "duration": 384,
+          "tab": false
+        },
+        {
+          "name": "click",
+          "duration": 384,
+          "tab": false
+        }
+      ],
+      "tabNextPaint": [],
+      "imagesWithoutDimensions": [],
+      "modules": [
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 7.799999997019768,
+          "bytes": 3048
+        },
+        {
+          "path": "/install-hint.mjs",
+          "duration": 8.600000008940697,
+          "bytes": 1722
+        },
+        {
+          "path": "/app.mjs",
+          "duration": 29.399999991059303,
+          "bytes": 106531
+        },
+        {
+          "path": "/style-switcher.mjs",
+          "duration": 32.400000005960464,
+          "bytes": 4218
+        },
+        {
+          "path": "/home-lazy.mjs",
+          "duration": 32.599999994039536,
+          "bytes": 467
+        },
+        {
+          "path": "/demo-journey.mjs",
+          "duration": 33.8999999910593,
+          "bytes": 3402
+        },
+        {
+          "path": "/simulation-entry.mjs",
+          "duration": 42.400000005960464,
+          "bytes": 1668
+        },
+        {
+          "path": "/pwa.mjs",
+          "duration": 44.20000000298023,
+          "bytes": 3498
+        },
+        {
+          "path": "/atelier.mjs",
+          "duration": 47.1000000089407,
+          "bytes": 6942
+        },
+        {
+          "path": "/site-shell.mjs",
+          "duration": 46.900000005960464,
+          "bytes": 3363
+        },
+        {
+          "path": "/online-store.mjs",
+          "duration": 53.70000000298023,
+          "bytes": 6033
+        },
+        {
+          "path": "/neon-store.mjs",
+          "duration": 62,
+          "bytes": 7645
+        },
+        {
+          "path": "/profile-portability.mjs",
+          "duration": 61.80000001192093,
+          "bytes": 14063
+        },
+        {
+          "path": "/profile-package.mjs",
+          "duration": 61.599999994039536,
+          "bytes": 1703
+        },
+        {
+          "path": "/profile-brief.mjs",
+          "duration": 61.5,
+          "bytes": 10615
+        },
+        {
+          "path": "/business-case.mjs",
+          "duration": 61.3999999910593,
+          "bytes": 36621
+        },
+        {
+          "path": "/matching.mjs",
+          "duration": 64.5,
+          "bytes": 22878
+        },
+        {
+          "path": "/map.mjs",
+          "duration": 64.3999999910593,
+          "bytes": 5356
+        },
+        {
+          "path": "/pilot-policy.mjs",
+          "duration": 64.5,
+          "bytes": 1854
+        },
+        {
+          "path": "/chatgpt-transfer.mjs",
+          "duration": 64.3999999910593,
+          "bytes": 4554
+        },
+        {
+          "path": "/calendar.mjs",
+          "duration": 64.30000001192093,
+          "bytes": 1602
+        },
+        {
+          "path": "/live-location.mjs",
+          "duration": 64.20000000298023,
+          "bytes": 7546
+        },
+        {
+          "path": "/meeting-location.mjs",
+          "duration": 64,
+          "bytes": 10929
+        },
+        {
+          "path": "/location-session.mjs",
+          "duration": 66.09999999403954,
+          "bytes": 5764
+        },
+        {
+          "path": "/input-drafts.mjs",
+          "duration": 65.69999998807907,
+          "bytes": 1315
+        },
+        {
+          "path": "/journal.mjs",
+          "duration": 59.79999999701977,
+          "bytes": 2522
+        },
+        {
+          "path": "/simulation-copy.mjs",
+          "duration": 58.19999998807907,
+          "bytes": 18901
+        },
+        {
+          "path": "/demo-device-controls.mjs",
+          "duration": 55.599999994039536,
+          "bytes": 6040
+        },
+        {
+          "path": "/adaptive-ui.mjs",
+          "duration": 73.09999999403954,
+          "bytes": 12709
+        },
+        {
+          "path": "/privacy-common.mjs",
+          "duration": 73,
+          "bytes": 2512
+        },
+        {
+          "path": "/profile-store.mjs",
+          "duration": 50.70000000298023,
+          "bytes": 25223
+        },
+        {
+          "path": "/proof-state.mjs",
+          "duration": 42,
+          "bytes": 3362
+        },
+        {
+          "path": "/case-material-budget.mjs",
+          "duration": 43.79999999701977,
+          "bytes": 1572
+        },
+        {
+          "path": "/need-decay.mjs",
+          "duration": 37.6000000089407,
+          "bytes": 2419
+        },
+        {
+          "path": "/b-matching.mjs",
+          "duration": 40,
+          "bytes": 5280
+        },
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 41.19999998807907,
+          "bytes": 3048
+        },
+        {
+          "path": "/privacy-device.mjs",
+          "duration": 41.099999994039536,
+          "bytes": 5149
+        },
+        {
+          "path": "/privacy-content.mjs",
+          "duration": 41,
+          "bytes": 23836
+        },
+        {
+          "path": "/adaptive.mjs",
+          "duration": 2.699999988079071,
+          "bytes": 8771
+        },
+        {
+          "path": "/adaptive-config.mjs",
+          "duration": 3.7999999970197678,
+          "bytes": 11167
+        },
+        {
+          "path": "/adaptive-i18n-table.mjs",
+          "duration": 4.100000008940697,
+          "bytes": 9487
+        },
+        {
+          "path": "/voice-ui.mjs",
+          "duration": 2.6000000089406967,
+          "bytes": 8325
+        },
+        {
+          "path": "/voice-input.mjs",
+          "duration": 3.0999999940395355,
+          "bytes": 10076
+        },
+        {
+          "path": "/voice-core.mjs",
+          "duration": 4.600000008940697,
+          "bytes": 2140
+        },
+        {
+          "path": "/voice-copy.mjs",
+          "duration": 5,
+          "bytes": 7499
+        }
+      ],
+      "controlled": true,
+      "beforeInput": {
+        "cls": 0,
+        "at": 1390.4000000059605
+      }
+    },
+    {
+      "fcp": 668,
+      "navigation": {
+        "name": "http://127.0.0.1:59670/",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 1334.2999999970198,
+        "navigationId": 5719,
+        "initiatorType": "navigation",
+        "deliveryType": "cache-storage",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "",
+        "workerStart": 2.5,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 2.8999999910593033,
+        "domainLookupStart": 2.8999999910593033,
+        "domainLookupEnd": 2.8999999910593033,
+        "connectStart": 2.8999999910593033,
+        "secureConnectionStart": 0,
+        "connectEnd": 2.8999999910593033,
+        "requestStart": 2.8999999910593033,
+        "responseStart": 7.5999999940395355,
+        "firstInterimResponseStart": 7.5999999940395355,
+        "finalResponseHeadersStart": 0,
+        "responseEnd": 14.200000002980232,
+        "transferSize": 0,
+        "encodedBodySize": 35428,
+        "decodedBodySize": 35428,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 48.8999999910593,
+        "unloadEventEnd": 48.8999999910593,
+        "domInteractive": 431.79999999701977,
+        "domContentLoadedEventStart": 936,
+        "domContentLoadedEventEnd": 938.0999999940395,
+        "domComplete": 1333.7999999970198,
+        "loadEventStart": 1334.2000000029802,
+        "loadEventEnd": 1334.2999999970198,
+        "type": "navigate",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "low"
+        }
+      },
+      "cls": 0.14620489083457527,
+      "shifts": [
+        {
+          "value": 0.14620489083457527,
+          "at": 1611.5999999940395,
+          "nodes": [
+            {
+              "tag": "PICTURE",
+              "id": "",
+              "previous": {
+                "x": 24,
+                "y": 589,
+                "width": 364,
+                "height": 242.65625,
+                "top": 589,
+                "right": 388,
+                "bottom": 831.65625,
+                "left": 24
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "pointerdown",
+          "duration": 336,
+          "tab": false
+        },
+        {
+          "name": "pointerup",
+          "duration": 336,
+          "tab": false
+        },
+        {
+          "name": "click",
+          "duration": 336,
+          "tab": false
+        }
+      ],
+      "tabNextPaint": [],
+      "imagesWithoutDimensions": [],
+      "modules": [
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 9.5,
+          "bytes": 3048
+        },
+        {
+          "path": "/install-hint.mjs",
+          "duration": 11.600000008940697,
+          "bytes": 1722
+        },
+        {
+          "path": "/app.mjs",
+          "duration": 6.5999999940395355,
+          "bytes": 106531
+        },
+        {
+          "path": "/style-switcher.mjs",
+          "duration": 17.799999997019768,
+          "bytes": 4218
+        },
+        {
+          "path": "/home-lazy.mjs",
+          "duration": 16.899999991059303,
+          "bytes": 467
+        },
+        {
+          "path": "/demo-journey.mjs",
+          "duration": 14.299999997019768,
+          "bytes": 3402
+        },
+        {
+          "path": "/simulation-entry.mjs",
+          "duration": 3.9000000059604645,
+          "bytes": 1668
+        },
+        {
+          "path": "/pwa.mjs",
+          "duration": 3.2999999970197678,
+          "bytes": 3498
+        },
+        {
+          "path": "/atelier.mjs",
+          "duration": 9.799999997019768,
+          "bytes": 6942
+        },
+        {
+          "path": "/site-shell.mjs",
+          "duration": 10.200000002980232,
+          "bytes": 3363
+        },
+        {
+          "path": "/online-store.mjs",
+          "duration": 3.800000011920929,
+          "bytes": 6033
+        },
+        {
+          "path": "/neon-store.mjs",
+          "duration": 8.200000002980232,
+          "bytes": 7645
+        },
+        {
+          "path": "/profile-portability.mjs",
+          "duration": 9.800000011920929,
+          "bytes": 14063
+        },
+        {
+          "path": "/profile-package.mjs",
+          "duration": 16.899999991059303,
+          "bytes": 1703
+        },
+        {
+          "path": "/profile-brief.mjs",
+          "duration": 17.700000002980232,
+          "bytes": 10615
+        },
+        {
+          "path": "/business-case.mjs",
+          "duration": 17.700000002980232,
+          "bytes": 36621
+        },
+        {
+          "path": "/matching.mjs",
+          "duration": 19.200000002980232,
+          "bytes": 22878
+        },
+        {
+          "path": "/map.mjs",
+          "duration": 21.799999997019768,
+          "bytes": 5356
+        },
+        {
+          "path": "/pilot-policy.mjs",
+          "duration": 22.700000002980232,
+          "bytes": 1854
+        },
+        {
+          "path": "/chatgpt-transfer.mjs",
+          "duration": 25.200000002980232,
+          "bytes": 4554
+        },
+        {
+          "path": "/calendar.mjs",
+          "duration": 28.5,
+          "bytes": 1602
+        },
+        {
+          "path": "/live-location.mjs",
+          "duration": 28.400000005960464,
+          "bytes": 7546
+        },
+        {
+          "path": "/meeting-location.mjs",
+          "duration": 38.400000005960464,
+          "bytes": 10929
+        },
+        {
+          "path": "/location-session.mjs",
+          "duration": 40.79999999701977,
+          "bytes": 5764
+        },
+        {
+          "path": "/input-drafts.mjs",
+          "duration": 41.20000000298023,
+          "bytes": 1315
+        },
+        {
+          "path": "/journal.mjs",
+          "duration": 36.400000005960464,
+          "bytes": 2522
+        },
+        {
+          "path": "/simulation-copy.mjs",
+          "duration": 39.5,
+          "bytes": 18901
+        },
+        {
+          "path": "/demo-device-controls.mjs",
+          "duration": 45.3999999910593,
+          "bytes": 6040
+        },
+        {
+          "path": "/adaptive-ui.mjs",
+          "duration": 41.5,
+          "bytes": 12709
+        },
+        {
+          "path": "/privacy-common.mjs",
+          "duration": 43.19999998807907,
+          "bytes": 2512
+        },
+        {
+          "path": "/profile-store.mjs",
+          "duration": 44.30000001192093,
+          "bytes": 25223
+        },
+        {
+          "path": "/need-decay.mjs",
+          "duration": 4.200000002980232,
+          "bytes": 2419
+        },
+        {
+          "path": "/b-matching.mjs",
+          "duration": 6.4000000059604645,
+          "bytes": 5280
+        },
+        {
+          "path": "/proof-state.mjs",
+          "duration": 6.4000000059604645,
+          "bytes": 3362
+        },
+        {
+          "path": "/case-material-budget.mjs",
+          "duration": 6,
+          "bytes": 1572
+        },
+        {
+          "path": "/privacy-retention.mjs",
+          "duration": 15.099999994039536,
+          "bytes": 3048
+        },
+        {
+          "path": "/privacy-device.mjs",
+          "duration": 41.099999994039536,
+          "bytes": 5149
+        },
+        {
+          "path": "/privacy-content.mjs",
+          "duration": 42.70000000298023,
+          "bytes": 23836
+        },
+        {
+          "path": "/adaptive.mjs",
+          "duration": 44.29999999701977,
+          "bytes": 8771
+        },
+        {
+          "path": "/adaptive-config.mjs",
+          "duration": 44.400000005960464,
+          "bytes": 11167
+        },
+        {
+          "path": "/adaptive-i18n-table.mjs",
+          "duration": 44.20000000298023,
+          "bytes": 9487
+        },
+        {
+          "path": "/voice-ui.mjs",
+          "duration": 6.0999999940395355,
+          "bytes": 8325
+        },
+        {
+          "path": "/voice-input.mjs",
+          "duration": 3.5,
+          "bytes": 10076
+        },
+        {
+          "path": "/voice-core.mjs",
+          "duration": 5.9000000059604645,
+          "bytes": 2140
+        },
+        {
+          "path": "/voice-copy.mjs",
+          "duration": 5.700000002980232,
+          "bytes": 7499
+        }
+      ],
+      "controlled": true,
+      "beforeInput": {
+        "cls": 0.14620489083457527,
+        "at": 1933.5
+      }
+    }
+  ],
+  "targets": {
+    "cachedFcp": true,
+    "tabNextPaint": false,
+    "tabEventTiming": false,
+    "imageDimensions": true
+  },
+  "status": "HOLD_LOCAL_TARGETS"
+}

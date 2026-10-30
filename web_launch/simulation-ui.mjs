@@ -1,4 +1,5 @@
 import { getDeliverableProofStates } from './simulation-session.mjs';
+import './voice-ui.mjs';
 
 // Private links and existing actor URLs retain the unchanged live LAB path.
 const params = new URLSearchParams(location.search);

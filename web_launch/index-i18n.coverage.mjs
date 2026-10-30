@@ -1,6 +1,11 @@
 // Test data, not shipped. Ukrainian literals of the sign-in/profile page that never become page text, with the
 // reason, and literals that only appear inside a longer assembled text (covered by a pattern).
 export const NOT_PAGE_TEXT = new Map([
+  ['можу','Local quick-capture parser marker, never rendered as interface copy'],
+  ['вмію','Local quick-capture parser marker, never rendered as interface copy'],
+  ['пропоную','Local quick-capture parser marker, never rendered as interface copy'],
+  ['мета','Local quick-capture parser marker, never rendered as interface copy'],
+  ['ціль','Local quick-capture parser marker, never rendered as interface copy'],
   ["Критерій прийняття формулює й підтверджує отримувач до початку проби.","stored data value: default acceptance_criteria written into the in-memory case material (hashed with the terms); app.mjs never renders it"],
   ["ВИДАЛИТИ","comparison key: the typed confirmation word is compared with the #delete-confirmation input value; never rendered by app.mjs"],
   ["Конфігурація недоступна","internal Error text: thrown and swallowed by the bare catch on line 905, never shown"],

@@ -8,6 +8,7 @@ const SHELL = ['/simulation.html', '/simulation.css', '/simulation-ui.mjs', '/si
 // Optional graphics must not hold the installation transaction open. They are
 // cached on successful requests after activation; missing portraits use initials.
 SHELL.push('/privacy-centre.mjs','/atelier.mjs','/atelier.css','/legal-language.mjs');
+SHELL.push('/voice-core.mjs','/voice-copy.mjs','/voice-input.mjs','/voice-ui.mjs','/input-drafts.mjs','/voice.css');
 SHELL.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.css','/pilot-consent.html','/privacy.html','/privacy.css','/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/site-shell.css','/site-shell.mjs','/style-switcher.mjs','/adaptive-ui.mjs','/adaptive.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css','/legal.html','/tokens.css','/style.css','/legal-i18n.mjs','/index-i18n.mjs','/index-i18n-table.mjs','/real-journey-i18n.mjs');
 SHELL.push('/scenes.css','/scene-simulation.webp','/scene-simulation@2x.webp');
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll([...new Set(SHELL)]))));

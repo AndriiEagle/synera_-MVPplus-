@@ -4,6 +4,7 @@ const ASSETS=['/studio.html','/studio.css','/studio.mjs','/studio-journey.html',
 ASSETS.push('/style-switcher.mjs','/real-journey-i18n.mjs','/index-i18n.mjs','/index-i18n-table.mjs','/legal-i18n.mjs',"/site-shell.css","/site-shell.mjs","/premium-match.webp","/premium-calendar.webp","/premium-terms.webp","/premium-signature.webp");
 ASSETS.push('/adaptive.mjs','/adaptive-ui.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css');
 ASSETS.push('/privacy.html','/privacy.css','/privacy-retention.mjs','/privacy-content.mjs','/privacy-device.mjs','/privacy-common.mjs','/privacy-centre.mjs','/style.css','/legal.html','/ops-log.mjs');
+ASSETS.push('/voice-core.mjs','/voice-copy.mjs','/voice-input.mjs','/voice-ui.mjs','/input-drafts.mjs','/voice.css','/journal.mjs');
 ASSETS.push('/demo-device-controls.mjs','/legal-documents.mjs','/legal-documents.css','/pilot-consent.html','/privacy.html','/privacy.css','/privacy-common.mjs','/privacy-device.mjs','/privacy-content.mjs','/privacy-retention.mjs','/site-shell.css','/site-shell.mjs','/style-switcher.mjs','/adaptive-ui.mjs','/adaptive.mjs','/adaptive-config.mjs','/adaptive-i18n-table.mjs','/adaptive.css','/legal.html','/tokens.css','/style.css');
 ASSETS.push('/scenes.css','/scene-studio.webp','/scene-studio@2x.webp');
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll([...new Set(ASSETS)])).then(()=>self.skipWaiting())));
