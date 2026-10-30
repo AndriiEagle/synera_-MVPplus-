@@ -36,7 +36,7 @@ HTTP 503 `live_ai_not_configured`; health — `liveAiReady:false`, switch при
 - Defaults: `SYNERA_LIVE_AI_MODEL=z-ai/glm-5.3-flash`, `SYNERA_LIVE_AI_DAILY_CAP_USD=3`.
   `SYNERA_LIVE_AI_PROVIDER` необов’язковий, задає `provider.only` лише для GLM.
   Інша модель потребує окремої перевірки notice: зараз вона вимикає readiness.
-- GLM: `max_tokens:600`, `stream:false`, reasoning вимкнений, щоб він не витрачав малий
+- GLM: `max_tokens:1000`, `stream:false`, `reasoning:{effort:'low'}` (інтеграція 30.10: OpenRouter відповідає 400 «Reasoning is mandatory for this endpoint» на `enabled:false`; перший smoke на Vercel саме так упав у 503). Попередній текст лінії: reasoning вимкнений, щоб він не витрачав малий
   бюджет видимого повідомлення. Один 20 s deadline охоплює metadata reads і обидва inference calls;
   function max duration — 25 s. Generation не повторюється автоматично.
 - Перевіряється `GET /api/v1/key`: daily key limit не більше $3, позитивний remaining.

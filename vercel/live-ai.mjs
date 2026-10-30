@@ -27,7 +27,8 @@ async function prices(model,provider,fetchImpl,signal) {
   if(values.some(p=>Object.values(p).some(v=>!number(v)))) fail('live_ai_price_unavailable');
   return Object.fromEntries(['prompt','completion','request'].map(k=>[k,Math.max(...values.map(p=>p[k]))]));
 }
-const reservation=(body,price)=>units((bytes(body)+2048)*price.prompt+600*price.completion+price.request);
+const MAX_OUTPUT=1000; // GLM 5.3 Flash cannot disable reasoning (OpenRouter 400, measured 30.10); low effort + headroom keeps the visible answer whole.
+const reservation=(body,price)=>units((bytes(body)+2048)*price.prompt+MAX_OUTPUT*price.completion+price.request);
 function routing(price,provider) {
   return {...(provider?{only:[provider]}:{}),allow_fallbacks:false,data_collection:'deny',zdr:true,
     max_price:{prompt:price.prompt*1e6,completion:price.completion*1e6,request:price.request}};
@@ -65,7 +66,7 @@ export function createLiveAi({env=process.env,fetchImpl=fetch,now=()=>new Date()
       const signal=AbortSignal.timeout(20000);
       const key=await checkPilotKey(fetchImpl,signal,env);
       const [price,judgePrice]=await Promise.all([prices(MODEL,env.SYNERA_LIVE_AI_PROVIDER,fetchImpl,signal),prices(JUDGE,null,fetchImpl,signal)]);
-      const chat={model:MODEL,messages,max_tokens:600,stream:false,reasoning:{enabled:false},usage:{include:true},provider:routing(price,env.SYNERA_LIVE_AI_PROVIDER)};
+      const chat={model:MODEL,messages,max_tokens:MAX_OUTPUT,stream:false,reasoning:{effort:'low'},usage:{include:true},provider:routing(price,env.SYNERA_LIVE_AI_PROVIDER)};
       const draftReserve=reservation(chat,price),judgeReserve=reservation(judgment(messages,'x'.repeat(8000),locale),judgePrice);
       pending=draftReserve+judgeReserve;
       if(s.cost+s.reserved+pending>units(cap)||s.reserved+pending>units(key.limit_remaining)) {pending=0;fail('live_ai_cap_reached');}

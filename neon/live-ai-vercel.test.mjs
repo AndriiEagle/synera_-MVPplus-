@@ -32,8 +32,8 @@ test('Vercel masks this conversation, judges via Decisions and logs both billed 
   const response=await ai.handle(request({...payload,visitorText:'a@example.com +41 79 123 45 67 https://private.example/path',conversation:[{role:'user',content:'old@example.com www.private.ch'}]}));
   assert.equal(response.status,200);const data=await response.json();
   assert.equal(data.judged,'accepted');assert.equal(data.costUsd,0.002);assert.equal(data.costStatus,'reported');assert.match(data.text,/Demo/);
-  assert.equal(calls.length,2);assert.equal(calls[0].body.max_tokens,600);assert.equal(calls[0].body.stream,false);
-  assert.deepEqual(calls[0].body.reasoning,{enabled:false});
+  assert.equal(calls.length,2);assert.equal(calls[0].body.max_tokens,1000);assert.equal(calls[0].body.stream,false);
+  assert.deepEqual(calls[0].body.reasoning,{effort:'low'});
   assert.deepEqual(calls[0].body.provider.only,['fixture']);assert.equal(calls[0].options.signal,calls[1].options.signal);
   const outbound=JSON.stringify(calls.map(c=>c.body));
   for(const value of ['a@example.com','old@example.com','+41 79 123 45 67','private.example','www.private.ch']) assert.ok(!outbound.includes(value));
